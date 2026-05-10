@@ -20,6 +20,7 @@ from .bucket_https_config import *
 from .bucket_logging import *
 from .bucket_meta_query import *
 from .bucket_object import *
+from .bucket_object_worm_configuration import *
 from .bucket_overwrite_config import *
 from .bucket_policy import *
 from .bucket_public_access_block import *

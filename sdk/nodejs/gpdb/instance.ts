@@ -111,11 +111,13 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly dataShareStatus: pulumi.Output<string>;
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     declare public readonly dbInstanceCategory: pulumi.Output<string>;
     /**
      * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     declare public readonly dbInstanceClass: pulumi.Output<string | undefined>;
@@ -129,11 +131,13 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string>;
     /**
      * The ID of the encryption key.
+     *
      * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      */
     declare public readonly encryptionKey: pulumi.Output<string | undefined>;
     /**
      * The encryption type. Valid values: `CloudDisk`.
+     *
      * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
      */
     declare public readonly encryptionType: pulumi.Output<string | undefined>;
@@ -160,10 +164,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceNetworkType: pulumi.Output<string>;
     /**
-     * The specification of segment nodes. Valid values:
+     * The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
      * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
      * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     *
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
     declare public readonly instanceSpec: pulumi.Output<string | undefined>;
@@ -236,6 +241,7 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly segDiskPerformanceLevel: pulumi.Output<string>;
     /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     declare public readonly segNodeNum: pulumi.Output<number>;
@@ -257,6 +263,7 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     declare public readonly storageSize: pulumi.Output<number>;
@@ -428,11 +435,13 @@ export interface InstanceState {
     dataShareStatus?: pulumi.Input<string | undefined>;
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceCategory?: pulumi.Input<string | undefined>;
     /**
      * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceClass?: pulumi.Input<string | undefined>;
@@ -446,11 +455,13 @@ export interface InstanceState {
     description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the encryption key.
+     *
      * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      */
     encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The encryption type. Valid values: `CloudDisk`.
+     *
      * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
      */
     encryptionType?: pulumi.Input<string | undefined>;
@@ -477,10 +488,11 @@ export interface InstanceState {
      */
     instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
-     * The specification of segment nodes. Valid values:
+     * The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
      * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
      * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     *
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
     instanceSpec?: pulumi.Input<string | undefined>;
@@ -553,6 +565,7 @@ export interface InstanceState {
     segDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     segNodeNum?: pulumi.Input<number | undefined>;
@@ -574,6 +587,7 @@ export interface InstanceState {
     status?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     storageSize?: pulumi.Input<number | undefined>;
@@ -623,11 +637,13 @@ export interface InstanceArgs {
     dataShareStatus?: pulumi.Input<string | undefined>;
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceCategory?: pulumi.Input<string | undefined>;
     /**
      * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     dbInstanceClass?: pulumi.Input<string | undefined>;
@@ -641,11 +657,13 @@ export interface InstanceArgs {
     description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the encryption key.
+     *
      * > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      */
     encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The encryption type. Valid values: `CloudDisk`.
+     *
      * > **NOTE:** Disk encryption cannot be disabled after it is enabled.
      */
     encryptionType?: pulumi.Input<string | undefined>;
@@ -672,10 +690,11 @@ export interface InstanceArgs {
      */
     instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
-     * The specification of segment nodes. Valid values:
+     * The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
      * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
      * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     *
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
     instanceSpec?: pulumi.Input<string | undefined>;
@@ -744,6 +763,7 @@ export interface InstanceArgs {
     segDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     segNodeNum?: pulumi.Input<number | undefined>;
@@ -761,6 +781,7 @@ export interface InstanceArgs {
     sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+     *
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
     storageSize?: pulumi.Input<number | undefined>;

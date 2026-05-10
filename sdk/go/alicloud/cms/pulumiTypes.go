@@ -5453,6 +5453,121 @@ func (o MonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Monit
 	}).(MonitorGroupInstancesInstanceOutput)
 }
 
+type PrometheusViewPrometheusInstance struct {
+	// The ID of the prometheus instance.
+	PrometheusInstanceId string `pulumi:"prometheusInstanceId"`
+	// The region ID of the prometheus instance.
+	RegionId string `pulumi:"regionId"`
+	// The user ID of the prometheus instance.
+	UserId string `pulumi:"userId"`
+}
+
+// PrometheusViewPrometheusInstanceInput is an input type that accepts PrometheusViewPrometheusInstanceArgs and PrometheusViewPrometheusInstanceOutput values.
+// You can construct a concrete instance of `PrometheusViewPrometheusInstanceInput` via:
+//
+//	PrometheusViewPrometheusInstanceArgs{...}
+type PrometheusViewPrometheusInstanceInput interface {
+	pulumi.Input
+
+	ToPrometheusViewPrometheusInstanceOutput() PrometheusViewPrometheusInstanceOutput
+	ToPrometheusViewPrometheusInstanceOutputWithContext(context.Context) PrometheusViewPrometheusInstanceOutput
+}
+
+type PrometheusViewPrometheusInstanceArgs struct {
+	// The ID of the prometheus instance.
+	PrometheusInstanceId pulumi.StringInput `pulumi:"prometheusInstanceId"`
+	// The region ID of the prometheus instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The user ID of the prometheus instance.
+	UserId pulumi.StringInput `pulumi:"userId"`
+}
+
+func (PrometheusViewPrometheusInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusViewPrometheusInstance)(nil)).Elem()
+}
+
+func (i PrometheusViewPrometheusInstanceArgs) ToPrometheusViewPrometheusInstanceOutput() PrometheusViewPrometheusInstanceOutput {
+	return i.ToPrometheusViewPrometheusInstanceOutputWithContext(context.Background())
+}
+
+func (i PrometheusViewPrometheusInstanceArgs) ToPrometheusViewPrometheusInstanceOutputWithContext(ctx context.Context) PrometheusViewPrometheusInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusViewPrometheusInstanceOutput)
+}
+
+// PrometheusViewPrometheusInstanceArrayInput is an input type that accepts PrometheusViewPrometheusInstanceArray and PrometheusViewPrometheusInstanceArrayOutput values.
+// You can construct a concrete instance of `PrometheusViewPrometheusInstanceArrayInput` via:
+//
+//	PrometheusViewPrometheusInstanceArray{ PrometheusViewPrometheusInstanceArgs{...} }
+type PrometheusViewPrometheusInstanceArrayInput interface {
+	pulumi.Input
+
+	ToPrometheusViewPrometheusInstanceArrayOutput() PrometheusViewPrometheusInstanceArrayOutput
+	ToPrometheusViewPrometheusInstanceArrayOutputWithContext(context.Context) PrometheusViewPrometheusInstanceArrayOutput
+}
+
+type PrometheusViewPrometheusInstanceArray []PrometheusViewPrometheusInstanceInput
+
+func (PrometheusViewPrometheusInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusViewPrometheusInstance)(nil)).Elem()
+}
+
+func (i PrometheusViewPrometheusInstanceArray) ToPrometheusViewPrometheusInstanceArrayOutput() PrometheusViewPrometheusInstanceArrayOutput {
+	return i.ToPrometheusViewPrometheusInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i PrometheusViewPrometheusInstanceArray) ToPrometheusViewPrometheusInstanceArrayOutputWithContext(ctx context.Context) PrometheusViewPrometheusInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusViewPrometheusInstanceArrayOutput)
+}
+
+type PrometheusViewPrometheusInstanceOutput struct{ *pulumi.OutputState }
+
+func (PrometheusViewPrometheusInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusViewPrometheusInstance)(nil)).Elem()
+}
+
+func (o PrometheusViewPrometheusInstanceOutput) ToPrometheusViewPrometheusInstanceOutput() PrometheusViewPrometheusInstanceOutput {
+	return o
+}
+
+func (o PrometheusViewPrometheusInstanceOutput) ToPrometheusViewPrometheusInstanceOutputWithContext(ctx context.Context) PrometheusViewPrometheusInstanceOutput {
+	return o
+}
+
+// The ID of the prometheus instance.
+func (o PrometheusViewPrometheusInstanceOutput) PrometheusInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusViewPrometheusInstance) string { return v.PrometheusInstanceId }).(pulumi.StringOutput)
+}
+
+// The region ID of the prometheus instance.
+func (o PrometheusViewPrometheusInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusViewPrometheusInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The user ID of the prometheus instance.
+func (o PrometheusViewPrometheusInstanceOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusViewPrometheusInstance) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+type PrometheusViewPrometheusInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (PrometheusViewPrometheusInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrometheusViewPrometheusInstance)(nil)).Elem()
+}
+
+func (o PrometheusViewPrometheusInstanceArrayOutput) ToPrometheusViewPrometheusInstanceArrayOutput() PrometheusViewPrometheusInstanceArrayOutput {
+	return o
+}
+
+func (o PrometheusViewPrometheusInstanceArrayOutput) ToPrometheusViewPrometheusInstanceArrayOutputWithContext(ctx context.Context) PrometheusViewPrometheusInstanceArrayOutput {
+	return o
+}
+
+func (o PrometheusViewPrometheusInstanceArrayOutput) Index(i pulumi.IntInput) PrometheusViewPrometheusInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrometheusViewPrometheusInstance {
+		return vs[0].([]PrometheusViewPrometheusInstance)[vs[1].(int)]
+	}).(PrometheusViewPrometheusInstanceOutput)
+}
+
 type SiteMonitorCustomSchedule struct {
 	// The days in a week.
 	Days []int `pulumi:"days"`
@@ -12376,6 +12491,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceInput)(nil)).Elem(), MonitorGroupInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceArrayInput)(nil)).Elem(), MonitorGroupInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusViewPrometheusInstanceInput)(nil)).Elem(), PrometheusViewPrometheusInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrometheusViewPrometheusInstanceArrayInput)(nil)).Elem(), PrometheusViewPrometheusInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorCustomScheduleInput)(nil)).Elem(), SiteMonitorCustomScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorCustomSchedulePtrInput)(nil)).Elem(), SiteMonitorCustomScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityInput)(nil)).Elem(), SiteMonitorIspCityArgs{})
@@ -12536,6 +12653,8 @@ func init() {
 	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(PrometheusViewPrometheusInstanceOutput{})
+	pulumi.RegisterOutputType(PrometheusViewPrometheusInstanceArrayOutput{})
 	pulumi.RegisterOutputType(SiteMonitorCustomScheduleOutput{})
 	pulumi.RegisterOutputType(SiteMonitorCustomSchedulePtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})

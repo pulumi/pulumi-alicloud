@@ -85,6 +85,8 @@ __all__ = [
     'MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict',
     'MonitorGroupInstancesInstanceArgs',
     'MonitorGroupInstancesInstanceArgsDict',
+    'PrometheusViewPrometheusInstanceArgs',
+    'PrometheusViewPrometheusInstanceArgsDict',
     'SiteMonitorCustomScheduleArgs',
     'SiteMonitorCustomScheduleArgsDict',
     'SiteMonitorIspCityArgs',
@@ -3118,6 +3120,72 @@ class MonitorGroupInstancesInstanceArgs:
     @region_id.setter
     def region_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region_id", value)
+
+
+class PrometheusViewPrometheusInstanceArgsDict(TypedDict):
+    prometheus_instance_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the prometheus instance.
+    """
+    region_id: pulumi.Input[_builtins.str]
+    """
+    The region ID of the prometheus instance.
+    """
+    user_id: pulumi.Input[_builtins.str]
+    """
+    The user ID of the prometheus instance.
+    """
+
+@pulumi.input_type
+class PrometheusViewPrometheusInstanceArgs:
+    def __init__(__self__, *,
+                 prometheus_instance_id: pulumi.Input[_builtins.str],
+                 region_id: pulumi.Input[_builtins.str],
+                 user_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] prometheus_instance_id: The ID of the prometheus instance.
+        :param pulumi.Input[_builtins.str] region_id: The region ID of the prometheus instance.
+        :param pulumi.Input[_builtins.str] user_id: The user ID of the prometheus instance.
+        """
+        pulumi.set(__self__, "prometheus_instance_id", prometheus_instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="prometheusInstanceId")
+    def prometheus_instance_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the prometheus instance.
+        """
+        return pulumi.get(self, "prometheus_instance_id")
+
+    @prometheus_instance_id.setter
+    def prometheus_instance_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prometheus_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The region ID of the prometheus instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The user ID of the prometheus instance.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "user_id", value)
 
 
 class SiteMonitorCustomScheduleArgsDict(TypedDict):

@@ -135,14 +135,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:oss/bucketObject:BucketObject")
 public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      * 
      */
     @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
-     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
+     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      * 
      */
     public Output<Optional<String>> acl() {
@@ -305,9 +305,6 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
      * 
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
@@ -315,12 +312,41 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
      * 
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     * 
      */
     public Output<Optional<String>> kmsKeyId() {
         return Codegen.optional(this.kmsKeyId);
+    }
+    /**
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * 
+     */
+    @Export(name="objectWormMode", refs={String.class}, tree="[0]")
+    private Output<String> objectWormMode;
+
+    /**
+     * @return The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * 
+     */
+    public Output<String> objectWormMode() {
+        return this.objectWormMode;
+    }
+    /**
+     * The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     * 
+     * &gt; **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     * 
+     */
+    @Export(name="objectWormRetainUntilDate", refs={String.class}, tree="[0]")
+    private Output<String> objectWormRetainUntilDate;
+
+    /**
+     * @return The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     * 
+     * &gt; **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     * 
+     */
+    public Output<String> objectWormRetainUntilDate() {
+        return this.objectWormRetainUntilDate;
     }
     /**
      * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.

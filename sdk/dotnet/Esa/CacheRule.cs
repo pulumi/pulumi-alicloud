@@ -41,9 +41,9 @@ namespace Pulumi.AliCloud.Esa
     ///         CheckPresenceHeader = "headername",
     ///         IncludeCookie = "cookie_exapmle",
     ///         EdgeCacheMode = "follow_origin",
-    ///         AdditionalCacheablePorts = "2053",
+    ///         AdditionalCacheablePorts = "8880,2052",
     ///         RuleName = "rule_example",
-    ///         EdgeStatusCodeCacheTtl = "300",
+    ///         EdgeStatusCodeCacheTtl = "4xx=30",
     ///         BrowserCacheTtl = "300",
     ///         QueryString = "example",
     ///         UserGeo = "off",
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Esa
     public partial class CacheRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        /// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         /// </summary>
         [Output("additionalCacheablePorts")]
         public Output<string?> AdditionalCacheablePorts { get; private set; } = null!;
@@ -145,7 +145,10 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> EdgeCacheTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Status code cache expiration time in seconds.
+        /// The status code cache TTL, in seconds.
+        /// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+        /// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+        /// - You can specify multiple status code TTLs, separated by commas (,).
         /// </summary>
         [Output("edgeStatusCodeCacheTtl")]
         public Output<string?> EdgeStatusCodeCacheTtl { get; private set; } = null!;
@@ -307,7 +310,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CacheRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        /// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         /// </summary>
         [Input("additionalCacheablePorts")]
         public Input<string>? AdditionalCacheablePorts { get; set; }
@@ -367,7 +370,10 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? EdgeCacheTtl { get; set; }
 
         /// <summary>
-        /// Status code cache expiration time in seconds.
+        /// The status code cache TTL, in seconds.
+        /// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+        /// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+        /// - You can specify multiple status code TTLs, separated by commas (,).
         /// </summary>
         [Input("edgeStatusCodeCacheTtl")]
         public Input<string>? EdgeStatusCodeCacheTtl { get; set; }
@@ -491,7 +497,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CacheRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        /// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         /// </summary>
         [Input("additionalCacheablePorts")]
         public Input<string>? AdditionalCacheablePorts { get; set; }
@@ -557,7 +563,10 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? EdgeCacheTtl { get; set; }
 
         /// <summary>
-        /// Status code cache expiration time in seconds.
+        /// The status code cache TTL, in seconds.
+        /// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+        /// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+        /// - You can specify multiple status code TTLs, separated by commas (,).
         /// </summary>
         [Input("edgeStatusCodeCacheTtl")]
         public Input<string>? EdgeStatusCodeCacheTtl { get; set; }

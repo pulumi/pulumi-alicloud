@@ -49,6 +49,10 @@ __all__ = [
     'BucketLifecycleRuleTransitionArgsDict',
     'BucketLoggingArgs',
     'BucketLoggingArgsDict',
+    'BucketObjectWormConfigurationRuleArgs',
+    'BucketObjectWormConfigurationRuleArgsDict',
+    'BucketObjectWormConfigurationRuleDefaultRetentionArgs',
+    'BucketObjectWormConfigurationRuleDefaultRetentionArgsDict',
     'BucketOverwriteConfigRuleArgs',
     'BucketOverwriteConfigRuleArgsDict',
     'BucketOverwriteConfigRulePrincipalsArgs',
@@ -1503,6 +1507,104 @@ class BucketLoggingArgs:
     @target_prefix.setter
     def target_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_prefix", value)
+
+
+class BucketObjectWormConfigurationRuleArgsDict(TypedDict):
+    default_retention: NotRequired[pulumi.Input[Optional['BucketObjectWormConfigurationRuleDefaultRetentionArgs']]]
+    """
+    Container for the default retention policy.   See `default_retention` below.
+    """
+
+@pulumi.input_type
+class BucketObjectWormConfigurationRuleArgs:
+    def __init__(__self__, *,
+                 default_retention: pulumi.Input[Optional['BucketObjectWormConfigurationRuleDefaultRetentionArgs']] = None):
+        """
+        :param pulumi.Input['BucketObjectWormConfigurationRuleDefaultRetentionArgs'] default_retention: Container for the default retention policy.   See `default_retention` below.
+        """
+        if default_retention is not None:
+            pulumi.set(__self__, "default_retention", default_retention)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRetention")
+    def default_retention(self) -> pulumi.Input[Optional['BucketObjectWormConfigurationRuleDefaultRetentionArgs']]:
+        """
+        Container for the default retention policy.   See `default_retention` below.
+        """
+        return pulumi.get(self, "default_retention")
+
+    @default_retention.setter
+    def default_retention(self, value: pulumi.Input[Optional['BucketObjectWormConfigurationRuleDefaultRetentionArgs']]):
+        pulumi.set(self, "default_retention", value)
+
+
+class BucketObjectWormConfigurationRuleDefaultRetentionArgsDict(TypedDict):
+    days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Compliance retention mode.
+    """
+    years: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+    """
+
+@pulumi.input_type
+class BucketObjectWormConfigurationRuleDefaultRetentionArgs:
+    def __init__(__self__, *,
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] days: The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+        :param pulumi.Input[_builtins.str] mode: Compliance retention mode.
+        :param pulumi.Input[_builtins.int] years: Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+        """
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if years is not None:
+            pulumi.set(__self__, "years", years)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "days", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Compliance retention mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def years(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+        """
+        return pulumi.get(self, "years")
+
+    @years.setter
+    def years(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "years", value)
 
 
 class BucketOverwriteConfigRuleArgsDict(TypedDict):

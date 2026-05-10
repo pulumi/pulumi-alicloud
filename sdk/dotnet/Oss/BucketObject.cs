@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Oss
     public partial class BucketObject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `Private`.
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -169,12 +169,23 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// Specifies the primary key managed by KMS. This parameter is valid when the value of `ServerSideEncryption` is set to KMS.
-        /// 
-        /// Either `Source` or `Content` must be provided to specify the bucket content.
-        /// These two arguments are mutually-exclusive.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `ObjectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+        /// </summary>
+        [Output("objectWormMode")]
+        public Output<string> ObjectWormMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `ObjectWormMode`.
+        /// 
+        /// &gt; **Note:** Either `Source` or `Content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+        /// </summary>
+        [Output("objectWormRetainUntilDate")]
+        public Output<string> ObjectWormRetainUntilDate { get; private set; } = null!;
 
         /// <summary>
         /// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
@@ -241,7 +252,7 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `Private`.
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -302,12 +313,23 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// Specifies the primary key managed by KMS. This parameter is valid when the value of `ServerSideEncryption` is set to KMS.
-        /// 
-        /// Either `Source` or `Content` must be provided to specify the bucket content.
-        /// These two arguments are mutually-exclusive.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `ObjectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+        /// </summary>
+        [Input("objectWormMode")]
+        public Input<string>? ObjectWormMode { get; set; }
+
+        /// <summary>
+        /// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `ObjectWormMode`.
+        /// 
+        /// &gt; **Note:** Either `Source` or `Content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+        /// </summary>
+        [Input("objectWormRetainUntilDate")]
+        public Input<string>? ObjectWormRetainUntilDate { get; set; }
 
         /// <summary>
         /// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
@@ -330,7 +352,7 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+        /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `Private`.
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -403,12 +425,23 @@ namespace Pulumi.AliCloud.Oss
 
         /// <summary>
         /// Specifies the primary key managed by KMS. This parameter is valid when the value of `ServerSideEncryption` is set to KMS.
-        /// 
-        /// Either `Source` or `Content` must be provided to specify the bucket content.
-        /// These two arguments are mutually-exclusive.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
+
+        /// <summary>
+        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `ObjectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+        /// </summary>
+        [Input("objectWormMode")]
+        public Input<string>? ObjectWormMode { get; set; }
+
+        /// <summary>
+        /// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `ObjectWormMode`.
+        /// 
+        /// &gt; **Note:** Either `Source` or `Content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+        /// </summary>
+        [Input("objectWormRetainUntilDate")]
+        public Input<string>? ObjectWormRetainUntilDate { get; set; }
 
         /// <summary>
         /// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.

@@ -29,9 +29,9 @@ import * as utilities from "../utilities";
  *     checkPresenceHeader: "headername",
  *     includeCookie: "cookie_exapmle",
  *     edgeCacheMode: "follow_origin",
- *     additionalCacheablePorts: "2053",
+ *     additionalCacheablePorts: "8880,2052",
  *     ruleName: "rule_example",
- *     edgeStatusCodeCacheTtl: "300",
+ *     edgeStatusCodeCacheTtl: "4xx=30",
  *     browserCacheTtl: "300",
  *     queryString: "example",
  *     userGeo: "off",
@@ -90,7 +90,7 @@ export class CacheRule extends pulumi.CustomResource {
     }
 
     /**
-     * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+     * Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
      */
     declare public readonly additionalCacheablePorts: pulumi.Output<string | undefined>;
     /**
@@ -134,7 +134,10 @@ export class CacheRule extends pulumi.CustomResource {
      */
     declare public readonly edgeCacheTtl: pulumi.Output<string | undefined>;
     /**
-     * Status code cache expiration time in seconds.
+     * The status code cache TTL, in seconds.
+     * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+     * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+     * - You can specify multiple status code TTLs, separated by commas (,).
      */
     declare public readonly edgeStatusCodeCacheTtl: pulumi.Output<string | undefined>;
     /**
@@ -301,7 +304,7 @@ export class CacheRule extends pulumi.CustomResource {
  */
 export interface CacheRuleState {
     /**
-     * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+     * Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
      */
     additionalCacheablePorts?: pulumi.Input<string | undefined>;
     /**
@@ -345,7 +348,10 @@ export interface CacheRuleState {
      */
     edgeCacheTtl?: pulumi.Input<string | undefined>;
     /**
-     * Status code cache expiration time in seconds.
+     * The status code cache TTL, in seconds.
+     * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+     * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+     * - You can specify multiple status code TTLs, separated by commas (,).
      */
     edgeStatusCodeCacheTtl?: pulumi.Input<string | undefined>;
     /**
@@ -429,7 +435,7 @@ export interface CacheRuleState {
  */
 export interface CacheRuleArgs {
     /**
-     * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+     * Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
      */
     additionalCacheablePorts?: pulumi.Input<string | undefined>;
     /**
@@ -469,7 +475,10 @@ export interface CacheRuleArgs {
      */
     edgeCacheTtl?: pulumi.Input<string | undefined>;
     /**
-     * Status code cache expiration time in seconds.
+     * The status code cache TTL, in seconds.
+     * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+     * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+     * - You can specify multiple status code TTLs, separated by commas (,).
      */
     edgeStatusCodeCacheTtl?: pulumi.Input<string | undefined>;
     /**

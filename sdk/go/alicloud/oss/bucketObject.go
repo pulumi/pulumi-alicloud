@@ -118,7 +118,7 @@ import (
 type BucketObject struct {
 	pulumi.CustomResourceState
 
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// The name of the bucket to put the file in.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
@@ -143,10 +143,13 @@ type BucketObject struct {
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	ObjectWormMode pulumi.StringOutput `pulumi:"objectWormMode"`
+	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+	//
+	// > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+	ObjectWormRetainUntilDate pulumi.StringOutput `pulumi:"objectWormRetainUntilDate"`
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption pulumi.StringPtrOutput `pulumi:"serverSideEncryption"`
 	// The path to the source file being uploaded to the bucket.
@@ -191,7 +194,7 @@ func GetBucketObject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketObject resources.
 type bucketObjectState struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 	Acl *string `pulumi:"acl"`
 	// The name of the bucket to put the file in.
 	Bucket *string `pulumi:"bucket"`
@@ -216,10 +219,13 @@ type bucketObjectState struct {
 	// The name of the object once it is in the bucket.
 	Key *string `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	ObjectWormMode *string `pulumi:"objectWormMode"`
+	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+	//
+	// > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+	ObjectWormRetainUntilDate *string `pulumi:"objectWormRetainUntilDate"`
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption *string `pulumi:"serverSideEncryption"`
 	// The path to the source file being uploaded to the bucket.
@@ -229,7 +235,7 @@ type bucketObjectState struct {
 }
 
 type BucketObjectState struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 	Acl pulumi.StringPtrInput
 	// The name of the bucket to put the file in.
 	Bucket pulumi.StringPtrInput
@@ -254,10 +260,13 @@ type BucketObjectState struct {
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringPtrInput
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
 	KmsKeyId pulumi.StringPtrInput
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	ObjectWormMode pulumi.StringPtrInput
+	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+	//
+	// > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+	ObjectWormRetainUntilDate pulumi.StringPtrInput
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption pulumi.StringPtrInput
 	// The path to the source file being uploaded to the bucket.
@@ -271,7 +280,7 @@ func (BucketObjectState) ElementType() reflect.Type {
 }
 
 type bucketObjectArgs struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 	Acl *string `pulumi:"acl"`
 	// The name of the bucket to put the file in.
 	Bucket string `pulumi:"bucket"`
@@ -292,10 +301,13 @@ type bucketObjectArgs struct {
 	// The name of the object once it is in the bucket.
 	Key string `pulumi:"key"`
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	ObjectWormMode *string `pulumi:"objectWormMode"`
+	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+	//
+	// > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+	ObjectWormRetainUntilDate *string `pulumi:"objectWormRetainUntilDate"`
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption *string `pulumi:"serverSideEncryption"`
 	// The path to the source file being uploaded to the bucket.
@@ -304,7 +316,7 @@ type bucketObjectArgs struct {
 
 // The set of arguments for constructing a BucketObject resource.
 type BucketObjectArgs struct {
-	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+	// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 	Acl pulumi.StringPtrInput
 	// The name of the bucket to put the file in.
 	Bucket pulumi.StringInput
@@ -325,10 +337,13 @@ type BucketObjectArgs struct {
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringInput
 	// Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
 	KmsKeyId pulumi.StringPtrInput
+	// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+	ObjectWormMode pulumi.StringPtrInput
+	// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+	//
+	// > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+	ObjectWormRetainUntilDate pulumi.StringPtrInput
 	// Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
 	ServerSideEncryption pulumi.StringPtrInput
 	// The path to the source file being uploaded to the bucket.
@@ -422,7 +437,7 @@ func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
 func (o BucketObjectOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
 }
@@ -483,11 +498,20 @@ func (o BucketObjectOutput) Key() pulumi.StringOutput {
 }
 
 // Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-//
-// Either `source` or `content` must be provided to specify the bucket content.
-// These two arguments are mutually-exclusive.
 func (o BucketObjectOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+func (o BucketObjectOutput) ObjectWormMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ObjectWormMode }).(pulumi.StringOutput)
+}
+
+// The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+//
+// > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+func (o BucketObjectOutput) ObjectWormRetainUntilDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ObjectWormRetainUntilDate }).(pulumi.StringOutput)
 }
 
 // Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.

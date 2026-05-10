@@ -593,14 +593,14 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      * 
      */
     @Import(name="proxyMode")
     private @Nullable Output<String> proxyMode;
 
     /**
-     * @return Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     * @return kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      * 
      */
     public Optional<Output<String>> proxyMode() {
@@ -1860,7 +1860,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param proxyMode Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+         * @param proxyMode kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
          * 
          * @return builder
          * 
@@ -1871,7 +1871,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param proxyMode Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+         * @param proxyMode kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
          * 
          * @return builder
          * 

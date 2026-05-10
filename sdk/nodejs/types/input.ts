@@ -4920,6 +4920,21 @@ export namespace cms {
         regionId: pulumi.Input<string>;
     }
 
+    export interface PrometheusViewPrometheusInstance {
+        /**
+         * The ID of the prometheus instance.
+         */
+        prometheusInstanceId: pulumi.Input<string>;
+        /**
+         * The region ID of the prometheus instance.
+         */
+        regionId: pulumi.Input<string>;
+        /**
+         * The user ID of the prometheus instance.
+         */
+        userId: pulumi.Input<string>;
+    }
+
     export interface SiteMonitorCustomSchedule {
         /**
          * The days in a week.
@@ -18036,6 +18051,28 @@ export namespace oss {
          * To specify a key prefix for log objects.
          */
         targetPrefix?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketObjectWormConfigurationRule {
+        /**
+         * Container for the default retention policy.   See `defaultRetention` below.
+         */
+        defaultRetention?: pulumi.Input<inputs.oss.BucketObjectWormConfigurationRuleDefaultRetention | undefined>;
+    }
+
+    export interface BucketObjectWormConfigurationRuleDefaultRetention {
+        /**
+         * The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+         */
+        days?: pulumi.Input<number | undefined>;
+        /**
+         * Compliance retention mode.
+         */
+        mode?: pulumi.Input<string | undefined>;
+        /**
+         * Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+         */
+        years?: pulumi.Input<number | undefined>;
     }
 
     export interface BucketOverwriteConfigRule {

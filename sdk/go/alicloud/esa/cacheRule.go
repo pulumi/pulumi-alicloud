@@ -47,9 +47,9 @@ import (
 //				CheckPresenceHeader:      pulumi.String("headername"),
 //				IncludeCookie:            pulumi.String("cookie_exapmle"),
 //				EdgeCacheMode:            pulumi.String("follow_origin"),
-//				AdditionalCacheablePorts: pulumi.String("2053"),
+//				AdditionalCacheablePorts: pulumi.String("8880,2052"),
 //				RuleName:                 pulumi.String("rule_example"),
-//				EdgeStatusCodeCacheTtl:   pulumi.String("300"),
+//				EdgeStatusCodeCacheTtl:   pulumi.String("4xx=30"),
 //				BrowserCacheTtl:          pulumi.String("300"),
 //				QueryString:              pulumi.String("example"),
 //				UserGeo:                  pulumi.String("off"),
@@ -88,7 +88,7 @@ import (
 type CacheRule struct {
 	pulumi.CustomResourceState
 
-	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+	// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 	AdditionalCacheablePorts pulumi.StringPtrOutput `pulumi:"additionalCacheablePorts"`
 	// Browser cache mode. Possible values:
 	BrowserCacheMode pulumi.StringPtrOutput `pulumi:"browserCacheMode"`
@@ -110,7 +110,10 @@ type CacheRule struct {
 	EdgeCacheMode pulumi.StringPtrOutput `pulumi:"edgeCacheMode"`
 	// Edge cache expiration time in seconds.
 	EdgeCacheTtl pulumi.StringPtrOutput `pulumi:"edgeCacheTtl"`
-	// Status code cache expiration time in seconds.
+	// The status code cache TTL, in seconds.
+	// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+	// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+	// - You can specify multiple status code TTLs, separated by commas (,).
 	EdgeStatusCodeCacheTtl pulumi.StringPtrOutput `pulumi:"edgeStatusCodeCacheTtl"`
 	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie pulumi.StringPtrOutput `pulumi:"includeCookie"`
@@ -185,7 +188,7 @@ func GetCacheRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CacheRule resources.
 type cacheRuleState struct {
-	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+	// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 	AdditionalCacheablePorts *string `pulumi:"additionalCacheablePorts"`
 	// Browser cache mode. Possible values:
 	BrowserCacheMode *string `pulumi:"browserCacheMode"`
@@ -207,7 +210,10 @@ type cacheRuleState struct {
 	EdgeCacheMode *string `pulumi:"edgeCacheMode"`
 	// Edge cache expiration time in seconds.
 	EdgeCacheTtl *string `pulumi:"edgeCacheTtl"`
-	// Status code cache expiration time in seconds.
+	// The status code cache TTL, in seconds.
+	// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+	// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+	// - You can specify multiple status code TTLs, separated by commas (,).
 	EdgeStatusCodeCacheTtl *string `pulumi:"edgeStatusCodeCacheTtl"`
 	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie *string `pulumi:"includeCookie"`
@@ -250,7 +256,7 @@ type cacheRuleState struct {
 }
 
 type CacheRuleState struct {
-	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+	// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 	AdditionalCacheablePorts pulumi.StringPtrInput
 	// Browser cache mode. Possible values:
 	BrowserCacheMode pulumi.StringPtrInput
@@ -272,7 +278,10 @@ type CacheRuleState struct {
 	EdgeCacheMode pulumi.StringPtrInput
 	// Edge cache expiration time in seconds.
 	EdgeCacheTtl pulumi.StringPtrInput
-	// Status code cache expiration time in seconds.
+	// The status code cache TTL, in seconds.
+	// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+	// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+	// - You can specify multiple status code TTLs, separated by commas (,).
 	EdgeStatusCodeCacheTtl pulumi.StringPtrInput
 	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie pulumi.StringPtrInput
@@ -319,7 +328,7 @@ func (CacheRuleState) ElementType() reflect.Type {
 }
 
 type cacheRuleArgs struct {
-	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+	// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 	AdditionalCacheablePorts *string `pulumi:"additionalCacheablePorts"`
 	// Browser cache mode. Possible values:
 	BrowserCacheMode *string `pulumi:"browserCacheMode"`
@@ -339,7 +348,10 @@ type cacheRuleArgs struct {
 	EdgeCacheMode *string `pulumi:"edgeCacheMode"`
 	// Edge cache expiration time in seconds.
 	EdgeCacheTtl *string `pulumi:"edgeCacheTtl"`
-	// Status code cache expiration time in seconds.
+	// The status code cache TTL, in seconds.
+	// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+	// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+	// - You can specify multiple status code TTLs, separated by commas (,).
 	EdgeStatusCodeCacheTtl *string `pulumi:"edgeStatusCodeCacheTtl"`
 	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie *string `pulumi:"includeCookie"`
@@ -383,7 +395,7 @@ type cacheRuleArgs struct {
 
 // The set of arguments for constructing a CacheRule resource.
 type CacheRuleArgs struct {
-	// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+	// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 	AdditionalCacheablePorts pulumi.StringPtrInput
 	// Browser cache mode. Possible values:
 	BrowserCacheMode pulumi.StringPtrInput
@@ -403,7 +415,10 @@ type CacheRuleArgs struct {
 	EdgeCacheMode pulumi.StringPtrInput
 	// Edge cache expiration time in seconds.
 	EdgeCacheTtl pulumi.StringPtrInput
-	// Status code cache expiration time in seconds.
+	// The status code cache TTL, in seconds.
+	// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+	// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+	// - You can specify multiple status code TTLs, separated by commas (,).
 	EdgeStatusCodeCacheTtl pulumi.StringPtrInput
 	// When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
 	IncludeCookie pulumi.StringPtrInput
@@ -532,7 +547,7 @@ func (o CacheRuleOutput) ToCacheRuleOutputWithContext(ctx context.Context) Cache
 	return o
 }
 
-// Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+// Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
 func (o CacheRuleOutput) AdditionalCacheablePorts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.AdditionalCacheablePorts }).(pulumi.StringPtrOutput)
 }
@@ -587,7 +602,10 @@ func (o CacheRuleOutput) EdgeCacheTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.EdgeCacheTtl }).(pulumi.StringPtrOutput)
 }
 
-// Status code cache expiration time in seconds.
+// The status code cache TTL, in seconds.
+// - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+// - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+// - You can specify multiple status code TTLs, separated by commas (,).
 func (o CacheRuleOutput) EdgeStatusCodeCacheTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.EdgeStatusCodeCacheTtl }).(pulumi.StringPtrOutput)
 }

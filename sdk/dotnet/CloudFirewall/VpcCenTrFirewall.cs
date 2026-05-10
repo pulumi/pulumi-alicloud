@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// <summary>
     /// Provides a Cloud Firewall Vpc Cen Tr Firewall resource.
     /// 
-    /// VPC firewall Cloud Enterprise Network Enterprise Edition.
+    /// VPC Firewall for Cloud Enterprise Network Enterprise Edition.
     /// 
     /// For information about Cloud Firewall Vpc Cen Tr Firewall and how to use it, see [What is Vpc Cen Tr Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/developer-reference/api-cloudfw-2017-12-07-createtrfirewallv2).
     /// 
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> FirewallEniVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Cloud Firewall.
+        /// The name of the Cloud Firewall instance.
         /// </summary>
         [Output("firewallName")]
         public Output<string> FirewallName { get; private set; } = null!;
@@ -200,10 +200,10 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
         /// </summary>
         [Output("firewallSubnetCidr")]
-        public Output<string> FirewallSubnetCidr { get; private set; } = null!;
+        public Output<string?> FirewallSubnetCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the firewall VPC connection.
+        /// The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
         /// </summary>
         [Output("firewallVpcAttachmentId")]
         public Output<string> FirewallVpcAttachmentId { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> FirewallVpcCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The region ID of the transit router instance.
+        /// The region ID of transit router instance I.
         /// </summary>
         [Output("regionNo")]
         public Output<string> RegionNo { get; private set; } = null!;
@@ -236,32 +236,32 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         /// </summary>
         [Output("trAttachmentMasterCidr")]
-        public Output<string> TrAttachmentMasterCidr { get; private set; } = null!;
+        public Output<string?> TrAttachmentMasterCidr { get; private set; } = null!;
 
         /// <summary>
         /// The primary zone of the vSwitch.
         /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("trAttachmentMasterZone")]
         public Output<string?> TrAttachmentMasterZone { get; private set; } = null!;
 
         /// <summary>
-        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         /// </summary>
         [Output("trAttachmentSlaveCidr")]
-        public Output<string> TrAttachmentSlaveCidr { get; private set; } = null!;
+        public Output<string?> TrAttachmentSlaveCidr { get; private set; } = null!;
 
         /// <summary>
         /// The secondary zone of the vSwitch.
         /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("trAttachmentSlaveZone")]
         public Output<string?> TrAttachmentSlaveZone { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Transit Router instance.
+        /// The ID of the transit router instance.
         /// </summary>
         [Output("transitRouterId")]
         public Output<string> TransitRouterId { get; private set; } = null!;
@@ -325,7 +325,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? FirewallDescription { get; set; }
 
         /// <summary>
-        /// The name of the Cloud Firewall.
+        /// The name of the Cloud Firewall instance.
         /// </summary>
         [Input("firewallName", required: true)]
         public Input<string> FirewallName { get; set; } = null!;
@@ -333,8 +333,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
         /// </summary>
-        [Input("firewallSubnetCidr", required: true)]
-        public Input<string> FirewallSubnetCidr { get; set; } = null!;
+        [Input("firewallSubnetCidr")]
+        public Input<string>? FirewallSubnetCidr { get; set; }
 
         /// <summary>
         /// The CIDR block of the firewall VPC in automatic mode.
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> FirewallVpcCidr { get; set; } = null!;
 
         /// <summary>
-        /// The region ID of the transit router instance.
+        /// The region ID of transit router instance I.
         /// </summary>
         [Input("regionNo", required: true)]
         public Input<string> RegionNo { get; set; } = null!;
@@ -357,33 +357,33 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         /// </summary>
-        [Input("trAttachmentMasterCidr", required: true)]
-        public Input<string> TrAttachmentMasterCidr { get; set; } = null!;
+        [Input("trAttachmentMasterCidr")]
+        public Input<string>? TrAttachmentMasterCidr { get; set; }
 
         /// <summary>
         /// The primary zone of the vSwitch.
         /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentMasterZone")]
         public Input<string>? TrAttachmentMasterZone { get; set; }
 
         /// <summary>
-        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         /// </summary>
-        [Input("trAttachmentSlaveCidr", required: true)]
-        public Input<string> TrAttachmentSlaveCidr { get; set; } = null!;
+        [Input("trAttachmentSlaveCidr")]
+        public Input<string>? TrAttachmentSlaveCidr { get; set; }
 
         /// <summary>
         /// The secondary zone of the vSwitch.
         /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentSlaveZone")]
         public Input<string>? TrAttachmentSlaveZone { get; set; }
 
         /// <summary>
-        /// The ID of the Transit Router instance.
+        /// The ID of the transit router instance.
         /// </summary>
         [Input("transitRouterId", required: true)]
         public Input<string> TransitRouterId { get; set; } = null!;
@@ -421,7 +421,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? FirewallEniVpcId { get; set; }
 
         /// <summary>
-        /// The name of the Cloud Firewall.
+        /// The name of the Cloud Firewall instance.
         /// </summary>
         [Input("firewallName")]
         public Input<string>? FirewallName { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? FirewallSubnetCidr { get; set; }
 
         /// <summary>
-        /// The ID of the firewall VPC connection.
+        /// The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
         /// </summary>
         [Input("firewallVpcAttachmentId")]
         public Input<string>? FirewallVpcAttachmentId { get; set; }
@@ -445,7 +445,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? FirewallVpcCidr { get; set; }
 
         /// <summary>
-        /// The region ID of the transit router instance.
+        /// The region ID of transit router instance I.
         /// </summary>
         [Input("regionNo")]
         public Input<string>? RegionNo { get; set; }
@@ -471,13 +471,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The primary zone of the vSwitch.
         /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentMasterZone")]
         public Input<string>? TrAttachmentMasterZone { get; set; }
 
         /// <summary>
-        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+        /// The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         /// </summary>
         [Input("trAttachmentSlaveCidr")]
         public Input<string>? TrAttachmentSlaveCidr { get; set; }
@@ -485,13 +485,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The secondary zone of the vSwitch.
         /// 
-        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("trAttachmentSlaveZone")]
         public Input<string>? TrAttachmentSlaveZone { get; set; }
 
         /// <summary>
-        /// The ID of the Transit Router instance.
+        /// The ID of the transit router instance.
         /// </summary>
         [Input("transitRouterId")]
         public Input<string>? TransitRouterId { get; set; }

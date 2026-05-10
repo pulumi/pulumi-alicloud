@@ -77,6 +77,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -85,6 +86,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The db instance category. Valid values: `Basic`, `HighAvailability`.
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -94,6 +96,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -102,6 +105,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -141,6 +145,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the encryption key.
+     * 
      * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      * 
      */
@@ -149,6 +154,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the encryption key.
+     * 
      * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
      * 
      */
@@ -158,6 +164,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The encryption type. Valid values: `CloudDisk`.
+     * 
      * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
      * 
      */
@@ -166,6 +173,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The encryption type. Valid values: `CloudDisk`.
+     * 
      * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
      * 
      */
@@ -257,10 +265,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of segment nodes. Valid values:
+     * The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
      * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
      * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     * 
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
@@ -268,10 +277,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceSpec;
 
     /**
-     * @return The specification of segment nodes. Valid values:
+     * @return The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
      * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
      * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+     * 
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
@@ -517,6 +527,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
      */
@@ -525,6 +536,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
      */
@@ -579,6 +591,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -587,6 +600,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+     * 
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
      */
@@ -820,6 +834,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbInstanceCategory The db instance category. Valid values: `Basic`, `HighAvailability`.
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -832,6 +847,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbInstanceCategory The db instance category. Valid values: `Basic`, `HighAvailability`.
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -843,6 +859,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -855,6 +872,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbInstanceClass The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -908,6 +926,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptionKey The ID of the encryption key.
+         * 
          * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
          * 
          * @return builder
@@ -920,6 +939,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptionKey The ID of the encryption key.
+         * 
          * &gt; **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
          * 
          * @return builder
@@ -931,6 +951,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptionType The encryption type. Valid values: `CloudDisk`.
+         * 
          * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
          * 
          * @return builder
@@ -943,6 +964,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptionType The encryption type. Valid values: `CloudDisk`.
+         * 
          * &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
          * 
          * @return builder
@@ -1066,10 +1088,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceSpec The specification of segment nodes. Valid values:
+         * @param instanceSpec The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
          * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
          * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
          * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+         * 
          * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
          * 
          * @return builder
@@ -1081,10 +1104,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceSpec The specification of segment nodes. Valid values:
+         * @param instanceSpec The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
          * - If `dbInstanceCategory` is set to `HighAvailability`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
          * - If `dbInstanceCategory` is set to `Basic`, and `dbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
          * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+         * 
          * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
          * 
          * @return builder
@@ -1451,6 +1475,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param segNodeNum Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
          * 
          * @return builder
@@ -1463,6 +1488,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param segNodeNum Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
          * 
          * @return builder
@@ -1537,6 +1563,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSize The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder
@@ -1549,6 +1576,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param storageSize The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+         * 
          * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
          * 
          * @return builder

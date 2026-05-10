@@ -86,7 +86,7 @@ export class BucketObject extends pulumi.CustomResource {
     }
 
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      */
     declare public readonly acl: pulumi.Output<string | undefined>;
     /**
@@ -135,11 +135,18 @@ export class BucketObject extends pulumi.CustomResource {
     declare public readonly key: pulumi.Output<string>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-     *
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
      */
     declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
+    /**
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     */
+    declare public readonly objectWormMode: pulumi.Output<string>;
+    /**
+     * The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     *
+     * > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     */
+    declare public readonly objectWormRetainUntilDate: pulumi.Output<string>;
     /**
      * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      */
@@ -179,6 +186,8 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["expires"] = state?.expires;
             resourceInputs["key"] = state?.key;
             resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["objectWormMode"] = state?.objectWormMode;
+            resourceInputs["objectWormRetainUntilDate"] = state?.objectWormRetainUntilDate;
             resourceInputs["serverSideEncryption"] = state?.serverSideEncryption;
             resourceInputs["source"] = state?.source;
             resourceInputs["versionId"] = state?.versionId;
@@ -201,6 +210,8 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["expires"] = args?.expires;
             resourceInputs["key"] = args?.key;
             resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["objectWormMode"] = args?.objectWormMode;
+            resourceInputs["objectWormRetainUntilDate"] = args?.objectWormRetainUntilDate;
             resourceInputs["serverSideEncryption"] = args?.serverSideEncryption;
             resourceInputs["source"] = args?.source;
             resourceInputs["contentLength"] = undefined /*out*/;
@@ -217,7 +228,7 @@ export class BucketObject extends pulumi.CustomResource {
  */
 export interface BucketObjectState {
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      */
     acl?: pulumi.Input<string | undefined>;
     /**
@@ -266,11 +277,18 @@ export interface BucketObjectState {
     key?: pulumi.Input<string | undefined>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-     *
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     */
+    objectWormMode?: pulumi.Input<string | undefined>;
+    /**
+     * The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     *
+     * > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     */
+    objectWormRetainUntilDate?: pulumi.Input<string | undefined>;
     /**
      * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      */
@@ -290,7 +308,7 @@ export interface BucketObjectState {
  */
 export interface BucketObjectArgs {
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      */
     acl?: pulumi.Input<string | undefined>;
     /**
@@ -331,11 +349,18 @@ export interface BucketObjectArgs {
     key: pulumi.Input<string>;
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
-     *
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
      */
     kmsKeyId?: pulumi.Input<string | undefined>;
+    /**
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     */
+    objectWormMode?: pulumi.Input<string | undefined>;
+    /**
+     * The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     *
+     * > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     */
+    objectWormRetainUntilDate?: pulumi.Input<string | undefined>;
     /**
      * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      */

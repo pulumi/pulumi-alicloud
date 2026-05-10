@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
 
         /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        /// kube-proxy proxy mode. Default: `Ipvs`. Options: `Iptables`, `Ipvs`, `Nftables`.
         /// </summary>
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
@@ -775,7 +775,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        /// kube-proxy proxy mode. Default: `Ipvs`. Options: `Iptables`, `Ipvs`, `Nftables`.
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
@@ -1206,7 +1206,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        /// kube-proxy proxy mode. Default: `Ipvs`. Options: `Iptables`, `Ipvs`, `Nftables`.
         /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }

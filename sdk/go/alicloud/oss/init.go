@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketMetaQuery{}
 	case "alicloud:oss/bucketObject:BucketObject":
 		r = &BucketObject{}
+	case "alicloud:oss/bucketObjectWormConfiguration:BucketObjectWormConfiguration":
+		r = &BucketObjectWormConfiguration{}
 	case "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig":
 		r = &BucketOverwriteConfig{}
 	case "alicloud:oss/bucketPolicy:BucketPolicy":
@@ -158,6 +160,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketObject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketObjectWormConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -16,6 +16,8 @@ namespace Pulumi.AliCloud.Eais
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// 
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
+        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage
@@ -28,6 +30,8 @@ namespace Pulumi.AliCloud.Eais
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
         /// 
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
+        /// 
         /// ## Example Usage
         /// 
         /// Basic Usage
@@ -39,6 +43,8 @@ namespace Pulumi.AliCloud.Eais
         /// This data source provides the Eais Instances of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// &gt; **DEPRECATED:** This data source has been deprecated since v1.278.0.
         /// 
         /// ## Example Usage
         /// 

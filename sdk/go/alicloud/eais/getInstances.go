@@ -15,6 +15,8 @@ import (
 //
 // > **NOTE:** Available in v1.137.0+.
 //
+// > **DEPRECATED:** This data source has been deprecated since v1.278.0.
+//
 // ## Example Usage
 //
 // Basic Usage

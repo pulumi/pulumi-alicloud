@@ -72,21 +72,26 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
+               
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[_builtins.str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[_builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values:
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
                - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
                - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+               
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -104,11 +109,13 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[_builtins.str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[_builtins.int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+               
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
@@ -298,6 +305,7 @@ class InstanceArgs:
     def db_instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db instance category. Valid values: `Basic`, `HighAvailability`.
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_category")
@@ -311,6 +319,7 @@ class InstanceArgs:
     def db_instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_class")
@@ -336,6 +345,7 @@ class InstanceArgs:
     def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the encryption key.
+
         > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         """
         return pulumi.get(self, "encryption_key")
@@ -349,6 +359,7 @@ class InstanceArgs:
     def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption type. Valid values: `CloudDisk`.
+
         > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         """
         return pulumi.get(self, "encryption_type")
@@ -398,10 +409,11 @@ class InstanceArgs:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The specification of segment nodes. Valid values:
+        The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
         - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         """
         return pulumi.get(self, "instance_spec")
@@ -587,6 +599,7 @@ class InstanceArgs:
     def seg_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+
         > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         """
         return pulumi.get(self, "seg_node_num")
@@ -636,6 +649,7 @@ class InstanceArgs:
     def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "storage_size")
@@ -759,24 +773,29 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
+               
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[_builtins.str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[_builtins.str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[_builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values:
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
                - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
                - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+               
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -795,12 +814,14 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[_builtins.str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[_builtins.int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+               
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
@@ -965,6 +986,7 @@ class _InstanceState:
     def db_instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db instance category. Valid values: `Basic`, `HighAvailability`.
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_category")
@@ -978,6 +1000,7 @@ class _InstanceState:
     def db_instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_class")
@@ -1015,6 +1038,7 @@ class _InstanceState:
     def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the encryption key.
+
         > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         """
         return pulumi.get(self, "encryption_key")
@@ -1028,6 +1052,7 @@ class _InstanceState:
     def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption type. Valid values: `CloudDisk`.
+
         > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         """
         return pulumi.get(self, "encryption_type")
@@ -1101,10 +1126,11 @@ class _InstanceState:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The specification of segment nodes. Valid values:
+        The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
         - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         """
         return pulumi.get(self, "instance_spec")
@@ -1302,6 +1328,7 @@ class _InstanceState:
     def seg_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+
         > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         """
         return pulumi.get(self, "seg_node_num")
@@ -1363,6 +1390,7 @@ class _InstanceState:
     def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "storage_size")
@@ -1552,24 +1580,29 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
+               
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[_builtins.str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[_builtins.str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[_builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values:
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
                - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
                - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+               
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -1587,11 +1620,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[_builtins.str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[_builtins.int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+               
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
@@ -1841,24 +1876,29 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
+               
                > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         :param pulumi.Input[_builtins.str] encryption_type: The encryption type. Valid values: `CloudDisk`.
+               
                > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[_builtins.str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[_builtins.str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         :param pulumi.Input[_builtins.int] instance_group_count: The number of nodes. Valid values: `2`, `4`, `8`, `12`, `16`, `24`, `32`, `64`, `96`, `128`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of the instance. Valid values: `VPC`.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values:
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
                - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
                - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+               
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
@@ -1877,12 +1917,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         :param pulumi.Input[_builtins.str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[_builtins.int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+               
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+               
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] used_time: The used time. When the parameter `period` is `Year`, the `used_time` value is `1` to `3`. When the parameter `period` is `Month`, the `used_time` value is `1` to `9`.
@@ -1978,6 +2020,7 @@ class Instance(pulumi.CustomResource):
     def db_instance_category(self) -> pulumi.Output[_builtins.str]:
         """
         The db instance category. Valid values: `Basic`, `HighAvailability`.
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_category")
@@ -1987,6 +2030,7 @@ class Instance(pulumi.CustomResource):
     def db_instance_class(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "db_instance_class")
@@ -2012,6 +2056,7 @@ class Instance(pulumi.CustomResource):
     def encryption_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the encryption key.
+
         > **NOTE:** If `encryption_type` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         """
         return pulumi.get(self, "encryption_key")
@@ -2021,6 +2066,7 @@ class Instance(pulumi.CustomResource):
     def encryption_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The encryption type. Valid values: `CloudDisk`.
+
         > **NOTE:** Disk encryption cannot be disabled after it is enabled.
         """
         return pulumi.get(self, "encryption_type")
@@ -2070,10 +2116,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The specification of segment nodes. Valid values:
+        The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
         - If `db_instance_category` is set to `Basic`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         """
         return pulumi.get(self, "instance_spec")
@@ -2207,6 +2254,7 @@ class Instance(pulumi.CustomResource):
     def seg_node_num(self) -> pulumi.Output[_builtins.int]:
         """
         Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+
         > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         """
         return pulumi.get(self, "seg_node_num")
@@ -2248,6 +2296,7 @@ class Instance(pulumi.CustomResource):
     def storage_size(self) -> pulumi.Output[_builtins.int]:
         """
         The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+
         > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         """
         return pulumi.get(self, "storage_size")

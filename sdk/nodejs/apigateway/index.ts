@@ -80,6 +80,11 @@ export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
 
+export { GroupPluginAttachmentArgs, GroupPluginAttachmentState } from "./groupPluginAttachment";
+export type GroupPluginAttachment = import("./groupPluginAttachment").GroupPluginAttachment;
+export const GroupPluginAttachment: typeof import("./groupPluginAttachment").GroupPluginAttachment = null as any;
+utilities.lazyLoad(exports, ["GroupPluginAttachment"], () => require("./groupPluginAttachment"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
@@ -134,6 +139,8 @@ const _module = {
                 return new Backend(name, <any>undefined, { urn })
             case "alicloud:apigateway/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "alicloud:apigateway/groupPluginAttachment:GroupPluginAttachment":
+                return new GroupPluginAttachment(name, <any>undefined, { urn })
             case "alicloud:apigateway/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "alicloud:apigateway/instanceAclAttachment:InstanceAclAttachment":
@@ -160,6 +167,7 @@ pulumi.runtime.registerResourceModule("alicloud", "apigateway/app", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/appAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/backend", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/group", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/groupPluginAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/instance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/instanceAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/logConfig", _module)

@@ -648,7 +648,7 @@ type ManagedKubernetes struct {
 	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
 	// * `Acs`: ACS cluster.
 	Profile pulumi.StringOutput `pulumi:"profile"`
-	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -836,7 +836,7 @@ type managedKubernetesState struct {
 	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
 	// * `Acs`: ACS cluster.
 	Profile *string `pulumi:"profile"`
-	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -995,7 +995,7 @@ type ManagedKubernetesState struct {
 	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
 	// * `Acs`: ACS cluster.
 	Profile pulumi.StringPtrInput
-	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -1150,7 +1150,7 @@ type managedKubernetesArgs struct {
 	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
 	// * `Acs`: ACS cluster.
 	Profile *string `pulumi:"profile"`
-	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -1290,7 +1290,7 @@ type ManagedKubernetesArgs struct {
 	// * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
 	// * `Acs`: ACS cluster.
 	Profile pulumi.StringPtrInput
-	// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode pulumi.StringPtrInput
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -1622,7 +1622,7 @@ func (o ManagedKubernetesOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.Profile }).(pulumi.StringOutput)
 }
 
-// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 func (o ManagedKubernetesOutput) ProxyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.ProxyMode }).(pulumi.StringPtrOutput)
 }

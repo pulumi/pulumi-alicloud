@@ -14315,6 +14315,21 @@ export namespace cms {
         regionId: string;
     }
 
+    export interface PrometheusViewPrometheusInstance {
+        /**
+         * The ID of the prometheus instance.
+         */
+        prometheusInstanceId: string;
+        /**
+         * The region ID of the prometheus instance.
+         */
+        regionId: string;
+        /**
+         * The user ID of the prometheus instance.
+         */
+        userId: string;
+    }
+
     export interface SiteMonitorCustomSchedule {
         /**
          * The days in a week.
@@ -48621,6 +48636,28 @@ export namespace oss {
          * To specify a key prefix for log objects.
          */
         targetPrefix?: string;
+    }
+
+    export interface BucketObjectWormConfigurationRule {
+        /**
+         * Container for the default retention policy.   See `defaultRetention` below.
+         */
+        defaultRetention?: outputs.oss.BucketObjectWormConfigurationRuleDefaultRetention;
+    }
+
+    export interface BucketObjectWormConfigurationRuleDefaultRetention {
+        /**
+         * The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+         */
+        days?: number;
+        /**
+         * Compliance retention mode.
+         */
+        mode?: string;
+        /**
+         * Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+         */
+        years?: number;
     }
 
     export interface BucketOverwriteConfigRule {

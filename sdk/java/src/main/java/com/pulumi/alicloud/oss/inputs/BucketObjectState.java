@@ -16,14 +16,14 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     public static final BucketObjectState Empty = new BucketObjectState();
 
     /**
-     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
+     * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      * 
      */
     @Import(name="acl")
     private @Nullable Output<String> acl;
 
     /**
-     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
+     * @return The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
      * 
      */
     public Optional<Output<String>> acl() {
@@ -198,9 +198,6 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
      * 
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
@@ -208,12 +205,43 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
      * 
-     * Either `source` or `content` must be provided to specify the bucket content.
-     * These two arguments are mutually-exclusive.
-     * 
      */
     public Optional<Output<String>> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
+    }
+
+    /**
+     * The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * 
+     */
+    @Import(name="objectWormMode")
+    private @Nullable Output<String> objectWormMode;
+
+    /**
+     * @return The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+     * 
+     */
+    public Optional<Output<String>> objectWormMode() {
+        return Optional.ofNullable(this.objectWormMode);
+    }
+
+    /**
+     * The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     * 
+     * &gt; **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     * 
+     */
+    @Import(name="objectWormRetainUntilDate")
+    private @Nullable Output<String> objectWormRetainUntilDate;
+
+    /**
+     * @return The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+     * 
+     * &gt; **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+     * 
+     */
+    public Optional<Output<String>> objectWormRetainUntilDate() {
+        return Optional.ofNullable(this.objectWormRetainUntilDate);
     }
 
     /**
@@ -277,6 +305,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         this.expires = $.expires;
         this.key = $.key;
         this.kmsKeyId = $.kmsKeyId;
+        this.objectWormMode = $.objectWormMode;
+        this.objectWormRetainUntilDate = $.objectWormRetainUntilDate;
         this.serverSideEncryption = $.serverSideEncryption;
         this.source = $.source;
         this.versionId = $.versionId;
@@ -301,7 +331,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
+         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
          * 
          * @return builder
          * 
@@ -312,7 +342,7 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
+         * @param acl The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to `private`.
          * 
          * @return builder
          * 
@@ -555,9 +585,6 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param kmsKeyId Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
          * 
-         * Either `source` or `content` must be provided to specify the bucket content.
-         * These two arguments are mutually-exclusive.
-         * 
          * @return builder
          * 
          */
@@ -569,14 +596,57 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param kmsKeyId Specifies the primary key managed by KMS. This parameter is valid when the value of `serverSideEncryption` is set to KMS.
          * 
-         * Either `source` or `content` must be provided to specify the bucket content.
-         * These two arguments are mutually-exclusive.
-         * 
          * @return builder
          * 
          */
         public Builder kmsKeyId(String kmsKeyId) {
             return kmsKeyId(Output.of(kmsKeyId));
+        }
+
+        /**
+         * @param objectWormMode The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectWormMode(@Nullable Output<String> objectWormMode) {
+            $.objectWormMode = objectWormMode;
+            return this;
+        }
+
+        /**
+         * @param objectWormMode The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `objectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `objectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectWormMode(String objectWormMode) {
+            return objectWormMode(Output.of(objectWormMode));
+        }
+
+        /**
+         * @param objectWormRetainUntilDate The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+         * 
+         * &gt; **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectWormRetainUntilDate(@Nullable Output<String> objectWormRetainUntilDate) {
+            $.objectWormRetainUntilDate = objectWormRetainUntilDate;
+            return this;
+        }
+
+        /**
+         * @param objectWormRetainUntilDate The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `objectWormMode`.
+         * 
+         * &gt; **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectWormRetainUntilDate(String objectWormRetainUntilDate) {
+            return objectWormRetainUntilDate(Output.of(objectWormRetainUntilDate));
         }
 
         /**

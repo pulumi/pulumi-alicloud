@@ -47,14 +47,14 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the Cloud Firewall.
+     * The name of the Cloud Firewall instance.
      * 
      */
     @Import(name="firewallName", required=true)
     private Output<String> firewallName;
 
     /**
-     * @return The name of the Cloud Firewall.
+     * @return The name of the Cloud Firewall instance.
      * 
      */
     public Output<String> firewallName() {
@@ -65,15 +65,15 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
      * The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      * 
      */
-    @Import(name="firewallSubnetCidr", required=true)
-    private Output<String> firewallSubnetCidr;
+    @Import(name="firewallSubnetCidr")
+    private @Nullable Output<String> firewallSubnetCidr;
 
     /**
      * @return The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      * 
      */
-    public Output<String> firewallSubnetCidr() {
-        return this.firewallSubnetCidr;
+    public Optional<Output<String>> firewallSubnetCidr() {
+        return Optional.ofNullable(this.firewallSubnetCidr);
     }
 
     /**
@@ -92,14 +92,14 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The region ID of the transit router instance.
+     * The region ID of transit router instance I.
      * 
      */
     @Import(name="regionNo", required=true)
     private Output<String> regionNo;
 
     /**
-     * @return The region ID of the transit router instance.
+     * @return The region ID of transit router instance I.
      * 
      */
     public Output<String> regionNo() {
@@ -125,21 +125,21 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
      * The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
-    @Import(name="trAttachmentMasterCidr", required=true)
-    private Output<String> trAttachmentMasterCidr;
+    @Import(name="trAttachmentMasterCidr")
+    private @Nullable Output<String> trAttachmentMasterCidr;
 
     /**
      * @return The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
-    public Output<String> trAttachmentMasterCidr() {
-        return this.trAttachmentMasterCidr;
+    public Optional<Output<String>> trAttachmentMasterCidr() {
+        return Optional.ofNullable(this.trAttachmentMasterCidr);
     }
 
     /**
      * The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="trAttachmentMasterZone")
@@ -148,7 +148,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> trAttachmentMasterZone() {
@@ -156,24 +156,24 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
-    @Import(name="trAttachmentSlaveCidr", required=true)
-    private Output<String> trAttachmentSlaveCidr;
+    @Import(name="trAttachmentSlaveCidr")
+    private @Nullable Output<String> trAttachmentSlaveCidr;
 
     /**
-     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
-    public Output<String> trAttachmentSlaveCidr() {
-        return this.trAttachmentSlaveCidr;
+    public Optional<Output<String>> trAttachmentSlaveCidr() {
+        return Optional.ofNullable(this.trAttachmentSlaveCidr);
     }
 
     /**
      * The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="trAttachmentSlaveZone")
@@ -182,7 +182,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> trAttachmentSlaveZone() {
@@ -190,14 +190,14 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the Transit Router instance.
+     * The ID of the transit router instance.
      * 
      */
     @Import(name="transitRouterId", required=true)
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the Transit Router instance.
+     * @return The ID of the transit router instance.
      * 
      */
     public Output<String> transitRouterId() {
@@ -282,7 +282,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param firewallName The name of the Cloud Firewall.
+         * @param firewallName The name of the Cloud Firewall instance.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param firewallName The name of the Cloud Firewall.
+         * @param firewallName The name of the Cloud Firewall instance.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder firewallSubnetCidr(Output<String> firewallSubnetCidr) {
+        public Builder firewallSubnetCidr(@Nullable Output<String> firewallSubnetCidr) {
             $.firewallSubnetCidr = firewallSubnetCidr;
             return this;
         }
@@ -345,7 +345,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param regionNo The region ID of the transit router instance.
+         * @param regionNo The region ID of transit router instance I.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param regionNo The region ID of the transit router instance.
+         * @param regionNo The region ID of transit router instance I.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder trAttachmentMasterCidr(Output<String> trAttachmentMasterCidr) {
+        public Builder trAttachmentMasterCidr(@Nullable Output<String> trAttachmentMasterCidr) {
             $.trAttachmentMasterCidr = trAttachmentMasterCidr;
             return this;
         }
@@ -410,7 +410,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param trAttachmentMasterZone The primary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param trAttachmentMasterZone The primary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -433,18 +433,18 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
          * 
          * @return builder
          * 
          */
-        public Builder trAttachmentSlaveCidr(Output<String> trAttachmentSlaveCidr) {
+        public Builder trAttachmentSlaveCidr(@Nullable Output<String> trAttachmentSlaveCidr) {
             $.trAttachmentSlaveCidr = trAttachmentSlaveCidr;
             return this;
         }
 
         /**
-         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param trAttachmentSlaveZone The secondary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param trAttachmentSlaveZone The secondary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param transitRouterId The ID of the Transit Router instance.
+         * @param transitRouterId The ID of the transit router instance.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param transitRouterId The ID of the Transit Router instance.
+         * @param transitRouterId The ID of the transit router instance.
          * 
          * @return builder
          * 
@@ -506,9 +506,6 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
             if ($.firewallName == null) {
                 throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "firewallName");
             }
-            if ($.firewallSubnetCidr == null) {
-                throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "firewallSubnetCidr");
-            }
             if ($.firewallVpcCidr == null) {
                 throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "firewallVpcCidr");
             }
@@ -517,12 +514,6 @@ public final class VpcCenTrFirewallArgs extends com.pulumi.resources.ResourceArg
             }
             if ($.routeMode == null) {
                 throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "routeMode");
-            }
-            if ($.trAttachmentMasterCidr == null) {
-                throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "trAttachmentMasterCidr");
-            }
-            if ($.trAttachmentSlaveCidr == null) {
-                throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "trAttachmentSlaveCidr");
             }
             if ($.transitRouterId == null) {
                 throw new MissingRequiredPropertyException("VpcCenTrFirewallArgs", "transitRouterId");

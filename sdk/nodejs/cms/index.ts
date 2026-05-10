@@ -160,6 +160,11 @@ export type PrometheusInstance = import("./prometheusInstance").PrometheusInstan
 export const PrometheusInstance: typeof import("./prometheusInstance").PrometheusInstance = null as any;
 utilities.lazyLoad(exports, ["PrometheusInstance"], () => require("./prometheusInstance"));
 
+export { PrometheusViewArgs, PrometheusViewState } from "./prometheusView";
+export type PrometheusView = import("./prometheusView").PrometheusView;
+export const PrometheusView: typeof import("./prometheusView").PrometheusView = null as any;
+utilities.lazyLoad(exports, ["PrometheusView"], () => require("./prometheusView"));
+
 export { SiteMonitorArgs, SiteMonitorState } from "./siteMonitor";
 export type SiteMonitor = import("./siteMonitor").SiteMonitor;
 export const SiteMonitor: typeof import("./siteMonitor").SiteMonitor = null as any;
@@ -210,6 +215,8 @@ const _module = {
                 return new Namespace(name, <any>undefined, { urn })
             case "alicloud:cms/prometheusInstance:PrometheusInstance":
                 return new PrometheusInstance(name, <any>undefined, { urn })
+            case "alicloud:cms/prometheusView:PrometheusView":
+                return new PrometheusView(name, <any>undefined, { urn })
             case "alicloud:cms/siteMonitor:SiteMonitor":
                 return new SiteMonitor(name, <any>undefined, { urn })
             case "alicloud:cms/slsGroup:SlsGroup":
@@ -236,6 +243,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/monitorGroupInstances", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/prometheusInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/prometheusView", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/siteMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/slsGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/workspace", _module)

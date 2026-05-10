@@ -977,6 +977,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/groupPluginAttachment",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/groupPluginAttachment:GroupPluginAttachment": "GroupPluginAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/instance",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -2457,6 +2465,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/prometheusView",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/prometheusView:PrometheusView": "PrometheusView"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cms/siteMonitor",
   "fqn": "pulumi_alicloud.cms",
   "classes": {
@@ -3573,6 +3589,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/diskAttachment:DiskAttachment": "DiskAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/diskDefaultKmsKey",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/diskDefaultKmsKey:DiskDefaultKmsKey": "DiskDefaultKmsKey"
   }
  },
  {
@@ -6893,6 +6917,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketObject:BucketObject": "BucketObject"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketObjectWormConfiguration",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketObjectWormConfiguration:BucketObjectWormConfiguration": "BucketObjectWormConfiguration"
   }
  },
  {

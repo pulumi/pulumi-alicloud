@@ -18,14 +18,14 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static final CacheRuleArgs Empty = new CacheRuleArgs();
 
     /**
-     * Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+     * Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
      * 
      */
     @Import(name="additionalCacheablePorts")
     private @Nullable Output<String> additionalCacheablePorts;
 
     /**
-     * @return Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+     * @return Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
      * 
      */
     public Optional<Output<String>> additionalCacheablePorts() {
@@ -168,14 +168,20 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status code cache expiration time in seconds.
+     * The status code cache TTL, in seconds.
+     * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+     * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+     * - You can specify multiple status code TTLs, separated by commas (,).
      * 
      */
     @Import(name="edgeStatusCodeCacheTtl")
     private @Nullable Output<String> edgeStatusCodeCacheTtl;
 
     /**
-     * @return Status code cache expiration time in seconds.
+     * @return The status code cache TTL, in seconds.
+     * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+     * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+     * - You can specify multiple status code TTLs, separated by commas (,).
      * 
      */
     public Optional<Output<String>> edgeStatusCodeCacheTtl() {
@@ -509,7 +515,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacheablePorts Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+         * @param additionalCacheablePorts Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
          * 
          * @return builder
          * 
@@ -520,7 +526,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalCacheablePorts Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+         * @param additionalCacheablePorts Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
          * 
          * @return builder
          * 
@@ -719,7 +725,10 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeStatusCodeCacheTtl Status code cache expiration time in seconds.
+         * @param edgeStatusCodeCacheTtl The status code cache TTL, in seconds.
+         * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+         * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+         * - You can specify multiple status code TTLs, separated by commas (,).
          * 
          * @return builder
          * 
@@ -730,7 +739,10 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edgeStatusCodeCacheTtl Status code cache expiration time in seconds.
+         * @param edgeStatusCodeCacheTtl The status code cache TTL, in seconds.
+         * - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+         * - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+         * - You can specify multiple status code TTLs, separated by commas (,).
          * 
          * @return builder
          * 

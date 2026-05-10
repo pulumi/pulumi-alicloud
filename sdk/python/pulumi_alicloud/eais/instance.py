@@ -452,6 +452,8 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.137.0.
 
+        > **DEPRECATED:** This resource has been deprecated since v1.278.0.
+
         ## Example Usage
 
         Basic Usage
@@ -528,6 +530,8 @@ class Instance(pulumi.CustomResource):
         For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 
         > **NOTE:** Available since v1.137.0.
+
+        > **DEPRECATED:** This resource has been deprecated since v1.278.0.
 
         ## Example Usage
 

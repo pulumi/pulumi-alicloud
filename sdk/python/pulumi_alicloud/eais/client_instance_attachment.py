@@ -245,6 +245,8 @@ class ClientInstanceAttachment(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.246.0.
 
+        > **DEPRECATED:** This resource has been deprecated since v1.278.0.
+
         ## Example Usage
 
         Basic Usage
@@ -354,6 +356,8 @@ class ClientInstanceAttachment(pulumi.CustomResource):
         For information about EAIS Client Instance Attachment and how to use it, see [What is Client Instance Attachment](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-clientinstanceattachment).
 
         > **NOTE:** Available since v1.246.0.
+
+        > **DEPRECATED:** This resource has been deprecated since v1.278.0.
 
         ## Example Usage
 

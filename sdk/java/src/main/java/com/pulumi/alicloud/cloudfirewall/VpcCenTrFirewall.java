@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Firewall Vpc Cen Tr Firewall resource.
  * 
- * VPC firewall Cloud Enterprise Network Enterprise Edition.
+ * VPC Firewall for Cloud Enterprise Network Enterprise Edition.
  * 
  * For information about Cloud Firewall Vpc Cen Tr Firewall and how to use it, see [What is Vpc Cen Tr Firewall](https://www.alibabacloud.com/help/en/cloud-firewall/cloudfirewall/developer-reference/api-cloudfw-2017-12-07-createtrfirewallv2).
  * 
@@ -238,14 +238,14 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
         return this.firewallEniVpcId;
     }
     /**
-     * The name of the Cloud Firewall.
+     * The name of the Cloud Firewall instance.
      * 
      */
     @Export(name="firewallName", refs={String.class}, tree="[0]")
     private Output<String> firewallName;
 
     /**
-     * @return The name of the Cloud Firewall.
+     * @return The name of the Cloud Firewall instance.
      * 
      */
     public Output<String> firewallName() {
@@ -256,24 +256,24 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="firewallSubnetCidr", refs={String.class}, tree="[0]")
-    private Output<String> firewallSubnetCidr;
+    private Output</* @Nullable */ String> firewallSubnetCidr;
 
     /**
      * @return The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
      * 
      */
-    public Output<String> firewallSubnetCidr() {
-        return this.firewallSubnetCidr;
+    public Output<Optional<String>> firewallSubnetCidr() {
+        return Codegen.optional(this.firewallSubnetCidr);
     }
     /**
-     * The ID of the firewall VPC connection.
+     * The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
      * 
      */
     @Export(name="firewallVpcAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> firewallVpcAttachmentId;
 
     /**
-     * @return The ID of the firewall VPC connection.
+     * @return The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
      * 
      */
     public Output<String> firewallVpcAttachmentId() {
@@ -294,14 +294,14 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
         return this.firewallVpcCidr;
     }
     /**
-     * The region ID of the transit router instance.
+     * The region ID of transit router instance I.
      * 
      */
     @Export(name="regionNo", refs={String.class}, tree="[0]")
     private Output<String> regionNo;
 
     /**
-     * @return The region ID of the transit router instance.
+     * @return The region ID of transit router instance I.
      * 
      */
     public Output<String> regionNo() {
@@ -340,19 +340,19 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="trAttachmentMasterCidr", refs={String.class}, tree="[0]")
-    private Output<String> trAttachmentMasterCidr;
+    private Output</* @Nullable */ String> trAttachmentMasterCidr;
 
     /**
      * @return The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
-    public Output<String> trAttachmentMasterCidr() {
-        return this.trAttachmentMasterCidr;
+    public Output<Optional<String>> trAttachmentMasterCidr() {
+        return Codegen.optional(this.trAttachmentMasterCidr);
     }
     /**
      * The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="trAttachmentMasterZone", refs={String.class}, tree="[0]")
@@ -361,30 +361,30 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
     /**
      * @return The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> trAttachmentMasterZone() {
         return Codegen.optional(this.trAttachmentMasterZone);
     }
     /**
-     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
     @Export(name="trAttachmentSlaveCidr", refs={String.class}, tree="[0]")
-    private Output<String> trAttachmentSlaveCidr;
+    private Output</* @Nullable */ String> trAttachmentSlaveCidr;
 
     /**
-     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
-    public Output<String> trAttachmentSlaveCidr() {
-        return this.trAttachmentSlaveCidr;
+    public Output<Optional<String>> trAttachmentSlaveCidr() {
+        return Codegen.optional(this.trAttachmentSlaveCidr);
     }
     /**
      * The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="trAttachmentSlaveZone", refs={String.class}, tree="[0]")
@@ -393,21 +393,21 @@ public class VpcCenTrFirewall extends com.pulumi.resources.CustomResource {
     /**
      * @return The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> trAttachmentSlaveZone() {
         return Codegen.optional(this.trAttachmentSlaveZone);
     }
     /**
-     * The ID of the Transit Router instance.
+     * The ID of the transit router instance.
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
-     * @return The ID of the Transit Router instance.
+     * @return The ID of the transit router instance.
      * 
      */
     public Output<String> transitRouterId() {

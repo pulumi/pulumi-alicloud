@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.CR
     /// 
     /// &gt; **NOTE:** Available since v1.124.0.
     /// 
+    /// &gt; **NOTE:** International site only support `Basic` and `Advance` instance types.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
