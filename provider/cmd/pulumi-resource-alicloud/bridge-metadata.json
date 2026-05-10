@@ -716,6 +716,9 @@
                     }
                 }
             },
+            "alicloud_api_gateway_group_plugin_attachment": {
+                "current": "alicloud:apigateway/groupPluginAttachment:GroupPluginAttachment"
+            },
             "alicloud_api_gateway_instance": {
                 "current": "alicloud:apigateway/instance:Instance",
                 "fields": {
@@ -2054,6 +2057,14 @@
             },
             "alicloud_cms_prometheus_instance": {
                 "current": "alicloud:cms/prometheusInstance:PrometheusInstance"
+            },
+            "alicloud_cms_prometheus_view": {
+                "current": "alicloud:cms/prometheusView:PrometheusView",
+                "fields": {
+                    "prometheus_instances": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_cms_site_monitor": {
                 "current": "alicloud:cms/siteMonitor:SiteMonitor",
@@ -4152,6 +4163,9 @@
             },
             "alicloud_ecs_disk_attachment": {
                 "current": "alicloud:ecs/ecsDiskAttachment:EcsDiskAttachment"
+            },
+            "alicloud_ecs_disk_default_kms_key": {
+                "current": "alicloud:ecs/diskDefaultKmsKey:DiskDefaultKmsKey"
             },
             "alicloud_ecs_disk_encryption_by_default": {
                 "current": "alicloud:ecs/diskEncryptionByDefault:DiskEncryptionByDefault"
@@ -8326,6 +8340,21 @@
             },
             "alicloud_oss_bucket_object": {
                 "current": "alicloud:oss/bucketObject:BucketObject"
+            },
+            "alicloud_oss_bucket_object_worm_configuration": {
+                "current": "alicloud:oss/bucketObjectWormConfiguration:BucketObjectWormConfiguration",
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "default_retention": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "alicloud_oss_bucket_overwrite_config": {
                 "current": "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig",
