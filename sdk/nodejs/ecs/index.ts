@@ -50,6 +50,11 @@ export type DiskAttachment = import("./diskAttachment").DiskAttachment;
 export const DiskAttachment: typeof import("./diskAttachment").DiskAttachment = null as any;
 utilities.lazyLoad(exports, ["DiskAttachment"], () => require("./diskAttachment"));
 
+export { DiskDefaultKmsKeyArgs, DiskDefaultKmsKeyState } from "./diskDefaultKmsKey";
+export type DiskDefaultKmsKey = import("./diskDefaultKmsKey").DiskDefaultKmsKey;
+export const DiskDefaultKmsKey: typeof import("./diskDefaultKmsKey").DiskDefaultKmsKey = null as any;
+utilities.lazyLoad(exports, ["DiskDefaultKmsKey"], () => require("./diskDefaultKmsKey"));
+
 export { DiskEncryptionByDefaultArgs, DiskEncryptionByDefaultState } from "./diskEncryptionByDefault";
 export type DiskEncryptionByDefault = import("./diskEncryptionByDefault").DiskEncryptionByDefault;
 export const DiskEncryptionByDefault: typeof import("./diskEncryptionByDefault").DiskEncryptionByDefault = null as any;
@@ -458,6 +463,8 @@ const _module = {
                 return new Disk(name, <any>undefined, { urn })
             case "alicloud:ecs/diskAttachment:DiskAttachment":
                 return new DiskAttachment(name, <any>undefined, { urn })
+            case "alicloud:ecs/diskDefaultKmsKey:DiskDefaultKmsKey":
+                return new DiskDefaultKmsKey(name, <any>undefined, { urn })
             case "alicloud:ecs/diskEncryptionByDefault:DiskEncryptionByDefault":
                 return new DiskEncryptionByDefault(name, <any>undefined, { urn })
             case "alicloud:ecs/ecsAutoSnapshotPolicyAttachment:EcsAutoSnapshotPolicyAttachment":
@@ -558,6 +565,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/copyImage", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/dedicatedHost", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/disk", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/diskAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/diskDefaultKmsKey", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/diskEncryptionByDefault", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsAutoSnapshotPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsDedicatedHostCluster", _module)

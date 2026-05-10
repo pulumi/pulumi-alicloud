@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Namespace{}
 	case "alicloud:cms/prometheusInstance:PrometheusInstance":
 		r = &PrometheusInstance{}
+	case "alicloud:cms/prometheusView:PrometheusView":
+		r = &PrometheusView{}
 	case "alicloud:cms/siteMonitor:SiteMonitor":
 		r = &SiteMonitor{}
 	case "alicloud:cms/slsGroup:SlsGroup":
@@ -143,6 +145,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/prometheusInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/prometheusView",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

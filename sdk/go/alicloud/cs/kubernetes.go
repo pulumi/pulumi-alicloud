@@ -164,7 +164,7 @@ type Kubernetes struct {
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
-	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayOutput `pulumi:"rdsInstances"`
@@ -354,7 +354,7 @@ type kubernetesState struct {
 	PodCidr *string `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
-	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
@@ -502,7 +502,7 @@ type KubernetesState struct {
 	PodCidr pulumi.StringPtrInput
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayInput
-	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode pulumi.StringPtrInput
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
@@ -644,7 +644,7 @@ type kubernetesArgs struct {
 	PodCidr *string `pulumi:"podCidr"`
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
-	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode *string `pulumi:"proxyMode"`
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances []string `pulumi:"rdsInstances"`
@@ -773,7 +773,7 @@ type KubernetesArgs struct {
 	PodCidr pulumi.StringPtrInput
 	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
 	PodVswitchIds pulumi.StringArrayInput
-	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+	// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 	ProxyMode pulumi.StringPtrInput
 	// RDS instance list, You can choose which RDS instances whitelist to add instances to.
 	RdsInstances pulumi.StringArrayInput
@@ -1123,7 +1123,7 @@ func (o KubernetesOutput) PodVswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.PodVswitchIds }).(pulumi.StringArrayOutput)
 }
 
-// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+// kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
 func (o KubernetesOutput) ProxyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.ProxyMode }).(pulumi.StringPtrOutput)
 }

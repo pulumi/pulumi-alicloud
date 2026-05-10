@@ -112,6 +112,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The db instance category. Valid values: `Basic`, `HighAvailability`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Output("dbInstanceCategory")]
@@ -119,6 +120,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Output("dbInstanceClass")]
@@ -138,6 +140,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The ID of the encryption key.
+        /// 
         /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         /// </summary>
         [Output("encryptionKey")]
@@ -145,6 +148,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The encryption type. Valid values: `CloudDisk`.
+        /// 
         /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
         /// </summary>
         [Output("encryptionType")]
@@ -181,10 +185,11 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> InstanceNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of segment nodes. Valid values:
+        /// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         /// - If `DbInstanceCategory` is set to `HighAvailability`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// - If `DbInstanceCategory` is set to `Basic`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         /// </summary>
         [Output("instanceSpec")]
@@ -283,6 +288,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
         [Output("segNodeNum")]
@@ -314,6 +320,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Output("storageSize")]
@@ -421,6 +428,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The db instance category. Valid values: `Basic`, `HighAvailability`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceCategory")]
@@ -428,6 +436,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceClass")]
@@ -447,6 +456,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The ID of the encryption key.
+        /// 
         /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         /// </summary>
         [Input("encryptionKey")]
@@ -454,6 +464,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The encryption type. Valid values: `CloudDisk`.
+        /// 
         /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
         /// </summary>
         [Input("encryptionType")]
@@ -490,10 +501,11 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. Valid values:
+        /// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         /// - If `DbInstanceCategory` is set to `HighAvailability`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// - If `DbInstanceCategory` is set to `Basic`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         /// </summary>
         [Input("instanceSpec")]
@@ -605,6 +617,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
         [Input("segNodeNum")]
@@ -630,6 +643,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("storageSize")]
@@ -711,6 +725,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The db instance category. Valid values: `Basic`, `HighAvailability`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceCategory")]
@@ -718,6 +733,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("dbInstanceClass")]
@@ -737,6 +753,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The ID of the encryption key.
+        /// 
         /// &gt; **NOTE:** If `EncryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
         /// </summary>
         [Input("encryptionKey")]
@@ -744,6 +761,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The encryption type. Valid values: `CloudDisk`.
+        /// 
         /// &gt; **NOTE:** Disk encryption cannot be disabled after it is enabled.
         /// </summary>
         [Input("encryptionType")]
@@ -780,10 +798,11 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. Valid values:
+        /// The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         /// - If `DbInstanceCategory` is set to `HighAvailability`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// - If `DbInstanceCategory` is set to `Basic`, and `DbInstanceMode` is set to `StorageElastic`. Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// - If `DbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
         /// </summary>
         [Input("instanceSpec")]
@@ -901,6 +920,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
         [Input("segNodeNum")]
@@ -932,6 +952,7 @@ namespace Pulumi.AliCloud.Gpdb
 
         /// <summary>
         /// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
+        /// 
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
         [Input("storageSize")]

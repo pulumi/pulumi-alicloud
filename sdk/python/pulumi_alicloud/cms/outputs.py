@@ -51,6 +51,7 @@ __all__ = [
     'MetricRuleTemplateAlertTemplateEscalationsInfo',
     'MetricRuleTemplateAlertTemplateEscalationsWarn',
     'MonitorGroupInstancesInstance',
+    'PrometheusViewPrometheusInstance',
     'SiteMonitorCustomSchedule',
     'SiteMonitorIspCity',
     'SiteMonitorOptionJson',
@@ -2511,6 +2512,67 @@ class MonitorGroupInstancesInstance(dict):
         The region id of instance.
         """
         return pulumi.get(self, "region_id")
+
+
+@pulumi.output_type
+class PrometheusViewPrometheusInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "prometheusInstanceId":
+            suggest = "prometheus_instance_id"
+        elif key == "regionId":
+            suggest = "region_id"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrometheusViewPrometheusInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrometheusViewPrometheusInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrometheusViewPrometheusInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prometheus_instance_id: _builtins.str,
+                 region_id: _builtins.str,
+                 user_id: _builtins.str):
+        """
+        :param _builtins.str prometheus_instance_id: The ID of the prometheus instance.
+        :param _builtins.str region_id: The region ID of the prometheus instance.
+        :param _builtins.str user_id: The user ID of the prometheus instance.
+        """
+        pulumi.set(__self__, "prometheus_instance_id", prometheus_instance_id)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="prometheusInstanceId")
+    def prometheus_instance_id(self) -> _builtins.str:
+        """
+        The ID of the prometheus instance.
+        """
+        return pulumi.get(self, "prometheus_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        The region ID of the prometheus instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        The user ID of the prometheus instance.
+        """
+        return pulumi.get(self, "user_id")
 
 
 @pulumi.output_type

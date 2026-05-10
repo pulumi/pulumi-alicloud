@@ -76,14 +76,14 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the Cloud Firewall.
+     * The name of the Cloud Firewall instance.
      * 
      */
     @Import(name="firewallName")
     private @Nullable Output<String> firewallName;
 
     /**
-     * @return The name of the Cloud Firewall.
+     * @return The name of the Cloud Firewall instance.
      * 
      */
     public Optional<Output<String>> firewallName() {
@@ -106,14 +106,14 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the firewall VPC connection.
+     * The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
      * 
      */
     @Import(name="firewallVpcAttachmentId")
     private @Nullable Output<String> firewallVpcAttachmentId;
 
     /**
-     * @return The ID of the firewall VPC connection.
+     * @return The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
      * 
      */
     public Optional<Output<String>> firewallVpcAttachmentId() {
@@ -136,14 +136,14 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The region ID of the transit router instance.
+     * The region ID of transit router instance I.
      * 
      */
     @Import(name="regionNo")
     private @Nullable Output<String> regionNo;
 
     /**
-     * @return The region ID of the transit router instance.
+     * @return The region ID of transit router instance I.
      * 
      */
     public Optional<Output<String>> regionNo() {
@@ -198,7 +198,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     /**
      * The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="trAttachmentMasterZone")
@@ -207,7 +207,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     /**
      * @return The primary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> trAttachmentMasterZone() {
@@ -215,14 +215,14 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+     * The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
     @Import(name="trAttachmentSlaveCidr")
     private @Nullable Output<String> trAttachmentSlaveCidr;
 
     /**
-     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+     * @return The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
      * 
      */
     public Optional<Output<String>> trAttachmentSlaveCidr() {
@@ -232,7 +232,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     /**
      * The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="trAttachmentSlaveZone")
@@ -241,7 +241,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     /**
      * @return The secondary zone of the vSwitch.
      * 
-     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> trAttachmentSlaveZone() {
@@ -249,14 +249,14 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the Transit Router instance.
+     * The ID of the transit router instance.
      * 
      */
     @Import(name="transitRouterId")
     private @Nullable Output<String> transitRouterId;
 
     /**
-     * @return The ID of the Transit Router instance.
+     * @return The ID of the transit router instance.
      * 
      */
     public Optional<Output<String>> transitRouterId() {
@@ -387,7 +387,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param firewallName The name of the Cloud Firewall.
+         * @param firewallName The name of the Cloud Firewall instance.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param firewallName The name of the Cloud Firewall.
+         * @param firewallName The name of the Cloud Firewall instance.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param firewallVpcAttachmentId The ID of the firewall VPC connection.
+         * @param firewallVpcAttachmentId The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param firewallVpcAttachmentId The ID of the firewall VPC connection.
+         * @param firewallVpcAttachmentId The attachment ID used in the firewall VPC to connect to the transit router (TR) in automatic mode.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionNo The region ID of the transit router instance.
+         * @param regionNo The region ID of transit router instance I.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionNo The region ID of the transit router instance.
+         * @param regionNo The region ID of transit router instance I.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         /**
          * @param trAttachmentMasterZone The primary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         /**
          * @param trAttachmentMasterZone The primary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
+         * @param trAttachmentSlaveCidr The secondary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         /**
          * @param trAttachmentSlaveZone The secondary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         /**
          * @param trAttachmentSlaveZone The secondary zone of the vSwitch.
          * 
-         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transitRouterId The ID of the Transit Router instance.
+         * @param transitRouterId The ID of the transit router instance.
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class VpcCenTrFirewallState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transitRouterId The ID of the Transit Router instance.
+         * @param transitRouterId The ID of the transit router instance.
          * 
          * @return builder
          * 

@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.137.0.
 //
+// > **DEPRECATED:** This resource has been deprecated since v1.278.0.
+//
 // ## Example Usage
 //
 // # Basic Usage

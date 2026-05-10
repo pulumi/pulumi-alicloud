@@ -699,14 +699,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.podVswitchIds);
     }
     /**
-     * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      * 
      */
     @Export(name="proxyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyMode;
 
     /**
-     * @return Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+     * @return kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      * 
      */
     public Output<Optional<String>> proxyMode() {

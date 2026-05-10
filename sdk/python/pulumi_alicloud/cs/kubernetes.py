@@ -118,7 +118,7 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.str] platform: The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -727,7 +727,7 @@ class KubernetesArgs:
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         """
         return pulumi.get(self, "proxy_mode")
 
@@ -1012,7 +1012,7 @@ class _KubernetesState:
         :param pulumi.Input[_builtins.str] platform: The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -1698,7 +1698,7 @@ class _KubernetesState:
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         """
         return pulumi.get(self, "proxy_mode")
 
@@ -2232,7 +2232,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] platform: The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -2726,7 +2726,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] platform: The architecture of the nodes that run pods, its valid value `AliyunLinux`, `AliyunLinux3`. Default to `AliyunLinux3`.
         :param pulumi.Input[_builtins.str] pod_cidr: [Flannel Specific] The CIDR block for the pod network when using Flannel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_vswitch_ids: [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
@@ -3170,7 +3170,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+        kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         """
         return pulumi.get(self, "proxy_mode")
 

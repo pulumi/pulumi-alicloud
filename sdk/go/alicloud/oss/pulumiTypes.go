@@ -2610,6 +2610,320 @@ func (o BucketLoggingTypePtrOutput) TargetPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketObjectWormConfigurationRule struct {
+	// Container for the default retention policy.   See `defaultRetention` below.
+	DefaultRetention *BucketObjectWormConfigurationRuleDefaultRetention `pulumi:"defaultRetention"`
+}
+
+// BucketObjectWormConfigurationRuleInput is an input type that accepts BucketObjectWormConfigurationRuleArgs and BucketObjectWormConfigurationRuleOutput values.
+// You can construct a concrete instance of `BucketObjectWormConfigurationRuleInput` via:
+//
+//	BucketObjectWormConfigurationRuleArgs{...}
+type BucketObjectWormConfigurationRuleInput interface {
+	pulumi.Input
+
+	ToBucketObjectWormConfigurationRuleOutput() BucketObjectWormConfigurationRuleOutput
+	ToBucketObjectWormConfigurationRuleOutputWithContext(context.Context) BucketObjectWormConfigurationRuleOutput
+}
+
+type BucketObjectWormConfigurationRuleArgs struct {
+	// Container for the default retention policy.   See `defaultRetention` below.
+	DefaultRetention BucketObjectWormConfigurationRuleDefaultRetentionPtrInput `pulumi:"defaultRetention"`
+}
+
+func (BucketObjectWormConfigurationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectWormConfigurationRule)(nil)).Elem()
+}
+
+func (i BucketObjectWormConfigurationRuleArgs) ToBucketObjectWormConfigurationRuleOutput() BucketObjectWormConfigurationRuleOutput {
+	return i.ToBucketObjectWormConfigurationRuleOutputWithContext(context.Background())
+}
+
+func (i BucketObjectWormConfigurationRuleArgs) ToBucketObjectWormConfigurationRuleOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectWormConfigurationRuleOutput)
+}
+
+func (i BucketObjectWormConfigurationRuleArgs) ToBucketObjectWormConfigurationRulePtrOutput() BucketObjectWormConfigurationRulePtrOutput {
+	return i.ToBucketObjectWormConfigurationRulePtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectWormConfigurationRuleArgs) ToBucketObjectWormConfigurationRulePtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectWormConfigurationRuleOutput).ToBucketObjectWormConfigurationRulePtrOutputWithContext(ctx)
+}
+
+// BucketObjectWormConfigurationRulePtrInput is an input type that accepts BucketObjectWormConfigurationRuleArgs, BucketObjectWormConfigurationRulePtr and BucketObjectWormConfigurationRulePtrOutput values.
+// You can construct a concrete instance of `BucketObjectWormConfigurationRulePtrInput` via:
+//
+//	        BucketObjectWormConfigurationRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketObjectWormConfigurationRulePtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectWormConfigurationRulePtrOutput() BucketObjectWormConfigurationRulePtrOutput
+	ToBucketObjectWormConfigurationRulePtrOutputWithContext(context.Context) BucketObjectWormConfigurationRulePtrOutput
+}
+
+type bucketObjectWormConfigurationRulePtrType BucketObjectWormConfigurationRuleArgs
+
+func BucketObjectWormConfigurationRulePtr(v *BucketObjectWormConfigurationRuleArgs) BucketObjectWormConfigurationRulePtrInput {
+	return (*bucketObjectWormConfigurationRulePtrType)(v)
+}
+
+func (*bucketObjectWormConfigurationRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectWormConfigurationRule)(nil)).Elem()
+}
+
+func (i *bucketObjectWormConfigurationRulePtrType) ToBucketObjectWormConfigurationRulePtrOutput() BucketObjectWormConfigurationRulePtrOutput {
+	return i.ToBucketObjectWormConfigurationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectWormConfigurationRulePtrType) ToBucketObjectWormConfigurationRulePtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectWormConfigurationRulePtrOutput)
+}
+
+type BucketObjectWormConfigurationRuleOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectWormConfigurationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectWormConfigurationRule)(nil)).Elem()
+}
+
+func (o BucketObjectWormConfigurationRuleOutput) ToBucketObjectWormConfigurationRuleOutput() BucketObjectWormConfigurationRuleOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRuleOutput) ToBucketObjectWormConfigurationRuleOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRuleOutput) ToBucketObjectWormConfigurationRulePtrOutput() BucketObjectWormConfigurationRulePtrOutput {
+	return o.ToBucketObjectWormConfigurationRulePtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectWormConfigurationRuleOutput) ToBucketObjectWormConfigurationRulePtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectWormConfigurationRule) *BucketObjectWormConfigurationRule {
+		return &v
+	}).(BucketObjectWormConfigurationRulePtrOutput)
+}
+
+// Container for the default retention policy.   See `defaultRetention` below.
+func (o BucketObjectWormConfigurationRuleOutput) DefaultRetention() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return o.ApplyT(func(v BucketObjectWormConfigurationRule) *BucketObjectWormConfigurationRuleDefaultRetention {
+		return v.DefaultRetention
+	}).(BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput)
+}
+
+type BucketObjectWormConfigurationRulePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectWormConfigurationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectWormConfigurationRule)(nil)).Elem()
+}
+
+func (o BucketObjectWormConfigurationRulePtrOutput) ToBucketObjectWormConfigurationRulePtrOutput() BucketObjectWormConfigurationRulePtrOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRulePtrOutput) ToBucketObjectWormConfigurationRulePtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRulePtrOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRulePtrOutput) Elem() BucketObjectWormConfigurationRuleOutput {
+	return o.ApplyT(func(v *BucketObjectWormConfigurationRule) BucketObjectWormConfigurationRule {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectWormConfigurationRule
+		return ret
+	}).(BucketObjectWormConfigurationRuleOutput)
+}
+
+// Container for the default retention policy.   See `defaultRetention` below.
+func (o BucketObjectWormConfigurationRulePtrOutput) DefaultRetention() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return o.ApplyT(func(v *BucketObjectWormConfigurationRule) *BucketObjectWormConfigurationRuleDefaultRetention {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRetention
+	}).(BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput)
+}
+
+type BucketObjectWormConfigurationRuleDefaultRetention struct {
+	// The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+	Days *int `pulumi:"days"`
+	// Compliance retention mode.
+	Mode *string `pulumi:"mode"`
+	// Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+	Years *int `pulumi:"years"`
+}
+
+// BucketObjectWormConfigurationRuleDefaultRetentionInput is an input type that accepts BucketObjectWormConfigurationRuleDefaultRetentionArgs and BucketObjectWormConfigurationRuleDefaultRetentionOutput values.
+// You can construct a concrete instance of `BucketObjectWormConfigurationRuleDefaultRetentionInput` via:
+//
+//	BucketObjectWormConfigurationRuleDefaultRetentionArgs{...}
+type BucketObjectWormConfigurationRuleDefaultRetentionInput interface {
+	pulumi.Input
+
+	ToBucketObjectWormConfigurationRuleDefaultRetentionOutput() BucketObjectWormConfigurationRuleDefaultRetentionOutput
+	ToBucketObjectWormConfigurationRuleDefaultRetentionOutputWithContext(context.Context) BucketObjectWormConfigurationRuleDefaultRetentionOutput
+}
+
+type BucketObjectWormConfigurationRuleDefaultRetentionArgs struct {
+	// The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+	Days pulumi.IntPtrInput `pulumi:"days"`
+	// Compliance retention mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+	Years pulumi.IntPtrInput `pulumi:"years"`
+}
+
+func (BucketObjectWormConfigurationRuleDefaultRetentionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectWormConfigurationRuleDefaultRetention)(nil)).Elem()
+}
+
+func (i BucketObjectWormConfigurationRuleDefaultRetentionArgs) ToBucketObjectWormConfigurationRuleDefaultRetentionOutput() BucketObjectWormConfigurationRuleDefaultRetentionOutput {
+	return i.ToBucketObjectWormConfigurationRuleDefaultRetentionOutputWithContext(context.Background())
+}
+
+func (i BucketObjectWormConfigurationRuleDefaultRetentionArgs) ToBucketObjectWormConfigurationRuleDefaultRetentionOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleDefaultRetentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectWormConfigurationRuleDefaultRetentionOutput)
+}
+
+func (i BucketObjectWormConfigurationRuleDefaultRetentionArgs) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutput() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return i.ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectWormConfigurationRuleDefaultRetentionArgs) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectWormConfigurationRuleDefaultRetentionOutput).ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx)
+}
+
+// BucketObjectWormConfigurationRuleDefaultRetentionPtrInput is an input type that accepts BucketObjectWormConfigurationRuleDefaultRetentionArgs, BucketObjectWormConfigurationRuleDefaultRetentionPtr and BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput values.
+// You can construct a concrete instance of `BucketObjectWormConfigurationRuleDefaultRetentionPtrInput` via:
+//
+//	        BucketObjectWormConfigurationRuleDefaultRetentionArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketObjectWormConfigurationRuleDefaultRetentionPtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutput() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput
+	ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(context.Context) BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput
+}
+
+type bucketObjectWormConfigurationRuleDefaultRetentionPtrType BucketObjectWormConfigurationRuleDefaultRetentionArgs
+
+func BucketObjectWormConfigurationRuleDefaultRetentionPtr(v *BucketObjectWormConfigurationRuleDefaultRetentionArgs) BucketObjectWormConfigurationRuleDefaultRetentionPtrInput {
+	return (*bucketObjectWormConfigurationRuleDefaultRetentionPtrType)(v)
+}
+
+func (*bucketObjectWormConfigurationRuleDefaultRetentionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectWormConfigurationRuleDefaultRetention)(nil)).Elem()
+}
+
+func (i *bucketObjectWormConfigurationRuleDefaultRetentionPtrType) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutput() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return i.ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectWormConfigurationRuleDefaultRetentionPtrType) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput)
+}
+
+type BucketObjectWormConfigurationRuleDefaultRetentionOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectWormConfigurationRuleDefaultRetentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectWormConfigurationRuleDefaultRetention)(nil)).Elem()
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) ToBucketObjectWormConfigurationRuleDefaultRetentionOutput() BucketObjectWormConfigurationRuleDefaultRetentionOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) ToBucketObjectWormConfigurationRuleDefaultRetentionOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleDefaultRetentionOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutput() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return o.ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketObjectWormConfigurationRuleDefaultRetention) *BucketObjectWormConfigurationRuleDefaultRetention {
+		return &v
+	}).(BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput)
+}
+
+// The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketObjectWormConfigurationRuleDefaultRetention) *int { return v.Days }).(pulumi.IntPtrOutput)
+}
+
+// Compliance retention mode.
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectWormConfigurationRuleDefaultRetention) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+func (o BucketObjectWormConfigurationRuleDefaultRetentionOutput) Years() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketObjectWormConfigurationRuleDefaultRetention) *int { return v.Years }).(pulumi.IntPtrOutput)
+}
+
+type BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectWormConfigurationRuleDefaultRetention)(nil)).Elem()
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutput() BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) ToBucketObjectWormConfigurationRuleDefaultRetentionPtrOutputWithContext(ctx context.Context) BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput {
+	return o
+}
+
+func (o BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) Elem() BucketObjectWormConfigurationRuleDefaultRetentionOutput {
+	return o.ApplyT(func(v *BucketObjectWormConfigurationRuleDefaultRetention) BucketObjectWormConfigurationRuleDefaultRetention {
+		if v != nil {
+			return *v
+		}
+		var ret BucketObjectWormConfigurationRuleDefaultRetention
+		return ret
+	}).(BucketObjectWormConfigurationRuleDefaultRetentionOutput)
+}
+
+// The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+func (o BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketObjectWormConfigurationRuleDefaultRetention) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntPtrOutput)
+}
+
+// Compliance retention mode.
+func (o BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectWormConfigurationRuleDefaultRetention) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+func (o BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput) Years() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BucketObjectWormConfigurationRuleDefaultRetention) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Years
+	}).(pulumi.IntPtrOutput)
+}
+
 type BucketOverwriteConfigRule struct {
 	// The operation type. Currently, only "forbid" is supported.
 	Action *string `pulumi:"action"`
@@ -10142,6 +10456,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleTransitionArrayInput)(nil)).Elem(), BucketLifecycleRuleTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingTypeInput)(nil)).Elem(), BucketLoggingTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingTypePtrInput)(nil)).Elem(), BucketLoggingTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectWormConfigurationRuleInput)(nil)).Elem(), BucketObjectWormConfigurationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectWormConfigurationRulePtrInput)(nil)).Elem(), BucketObjectWormConfigurationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectWormConfigurationRuleDefaultRetentionInput)(nil)).Elem(), BucketObjectWormConfigurationRuleDefaultRetentionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectWormConfigurationRuleDefaultRetentionPtrInput)(nil)).Elem(), BucketObjectWormConfigurationRuleDefaultRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRuleInput)(nil)).Elem(), BucketOverwriteConfigRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRuleArrayInput)(nil)).Elem(), BucketOverwriteConfigRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketOverwriteConfigRulePrincipalsInput)(nil)).Elem(), BucketOverwriteConfigRulePrincipalsArgs{})
@@ -10268,6 +10586,10 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleRuleTransitionArrayOutput{})
 	pulumi.RegisterOutputType(BucketLoggingTypeOutput{})
 	pulumi.RegisterOutputType(BucketLoggingTypePtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectWormConfigurationRuleOutput{})
+	pulumi.RegisterOutputType(BucketObjectWormConfigurationRulePtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectWormConfigurationRuleDefaultRetentionOutput{})
+	pulumi.RegisterOutputType(BucketObjectWormConfigurationRuleDefaultRetentionPtrOutput{})
 	pulumi.RegisterOutputType(BucketOverwriteConfigRuleOutput{})
 	pulumi.RegisterOutputType(BucketOverwriteConfigRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketOverwriteConfigRulePrincipalsOutput{})

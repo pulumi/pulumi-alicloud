@@ -433,7 +433,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     declare public readonly podVswitchIds: pulumi.Output<string[] | undefined>;
     /**
-     * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      */
     declare public readonly proxyMode: pulumi.Output<string | undefined>;
     /**
@@ -856,7 +856,7 @@ export interface KubernetesState {
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      */
     proxyMode?: pulumi.Input<string | undefined>;
     /**
@@ -1111,7 +1111,7 @@ export interface KubernetesArgs {
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      */
     proxyMode?: pulumi.Input<string | undefined>;
     /**

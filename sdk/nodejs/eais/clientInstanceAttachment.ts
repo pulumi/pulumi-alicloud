@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.246.0.
  *
+ * > **DEPRECATED:** This resource has been deprecated since v1.278.0.
+ *
  * ## Example Usage
  *
  * Basic Usage

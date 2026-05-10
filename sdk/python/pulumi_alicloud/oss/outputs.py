@@ -33,6 +33,8 @@ __all__ = [
     'BucketLifecycleRuleNoncurrentVersionTransition',
     'BucketLifecycleRuleTransition',
     'BucketLogging',
+    'BucketObjectWormConfigurationRule',
+    'BucketObjectWormConfigurationRuleDefaultRetention',
     'BucketOverwriteConfigRule',
     'BucketOverwriteConfigRulePrincipals',
     'BucketRefererConfig',
@@ -1209,6 +1211,85 @@ class BucketLogging(dict):
         To specify a key prefix for log objects.
         """
         return pulumi.get(self, "target_prefix")
+
+
+@pulumi.output_type
+class BucketObjectWormConfigurationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRetention":
+            suggest = "default_retention"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketObjectWormConfigurationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketObjectWormConfigurationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketObjectWormConfigurationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_retention: Optional['outputs.BucketObjectWormConfigurationRuleDefaultRetention'] = None):
+        """
+        :param 'BucketObjectWormConfigurationRuleDefaultRetentionArgs' default_retention: Container for the default retention policy.   See `default_retention` below.
+        """
+        if default_retention is not None:
+            pulumi.set(__self__, "default_retention", default_retention)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRetention")
+    def default_retention(self) -> Optional['outputs.BucketObjectWormConfigurationRuleDefaultRetention']:
+        """
+        Container for the default retention policy.   See `default_retention` below.
+        """
+        return pulumi.get(self, "default_retention")
+
+
+@pulumi.output_type
+class BucketObjectWormConfigurationRuleDefaultRetention(dict):
+    def __init__(__self__, *,
+                 days: Optional[_builtins.int] = None,
+                 mode: Optional[_builtins.str] = None,
+                 years: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int days: The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+        :param _builtins.str mode: Compliance retention mode.
+        :param _builtins.int years: Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+        """
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if years is not None:
+            pulumi.set(__self__, "years", years)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Optional[_builtins.int]:
+        """
+        The number of days for compliant retention. This parameter is mutually exclusive with the Years parameter; only one of them can be specified.
+        """
+        return pulumi.get(self, "days")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Compliance retention mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def years(self) -> Optional[_builtins.int]:
+        """
+        Default retention period in years. Valid values: 1 to 100. You can specify either Days or Years, but not both.
+        """
+        return pulumi.get(self, "years")
 
 
 @pulumi.output_type

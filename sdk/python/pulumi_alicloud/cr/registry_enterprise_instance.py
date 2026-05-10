@@ -805,6 +805,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.124.0.
 
+        > **NOTE:** International site only support `Basic` and `Advance` instance types.
+
         ## Example Usage
 
         Basic Usage
@@ -906,6 +908,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         For information about CR Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm).
 
         > **NOTE:** Available since v1.124.0.
+
+        > **NOTE:** International site only support `Basic` and `Advance` instance types.
 
         ## Example Usage
 

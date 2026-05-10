@@ -75,6 +75,11 @@ export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
 utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
 
+export { BucketObjectWormConfigurationArgs, BucketObjectWormConfigurationState } from "./bucketObjectWormConfiguration";
+export type BucketObjectWormConfiguration = import("./bucketObjectWormConfiguration").BucketObjectWormConfiguration;
+export const BucketObjectWormConfiguration: typeof import("./bucketObjectWormConfiguration").BucketObjectWormConfiguration = null as any;
+utilities.lazyLoad(exports, ["BucketObjectWormConfiguration"], () => require("./bucketObjectWormConfiguration"));
+
 export { BucketOverwriteConfigArgs, BucketOverwriteConfigState } from "./bucketOverwriteConfig";
 export type BucketOverwriteConfig = import("./bucketOverwriteConfig").BucketOverwriteConfig;
 export const BucketOverwriteConfig: typeof import("./bucketOverwriteConfig").BucketOverwriteConfig = null as any;
@@ -208,6 +213,8 @@ const _module = {
                 return new BucketMetaQuery(name, <any>undefined, { urn })
             case "alicloud:oss/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketObjectWormConfiguration:BucketObjectWormConfiguration":
+                return new BucketObjectWormConfiguration(name, <any>undefined, { urn })
             case "alicloud:oss/bucketOverwriteConfig:BucketOverwriteConfig":
                 return new BucketOverwriteConfig(name, <any>undefined, { urn })
             case "alicloud:oss/bucketPolicy:BucketPolicy":
@@ -255,6 +262,7 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _modu
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketLogging", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketMetaQuery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObjectWormConfiguration", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketOverwriteConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPublicAccessBlock", _module)

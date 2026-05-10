@@ -502,7 +502,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public readonly profile: pulumi.Output<string>;
     /**
-     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      */
     declare public readonly proxyMode: pulumi.Output<string | undefined>;
     /**
@@ -904,7 +904,7 @@ export interface ManagedKubernetesState {
      */
     profile?: pulumi.Input<string | undefined>;
     /**
-     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      */
     proxyMode?: pulumi.Input<string | undefined>;
     /**
@@ -1162,7 +1162,7 @@ export interface ManagedKubernetesArgs {
      */
     profile?: pulumi.Input<string | undefined>;
     /**
-     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+     * kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
      */
     proxyMode?: pulumi.Input<string | undefined>;
     /**

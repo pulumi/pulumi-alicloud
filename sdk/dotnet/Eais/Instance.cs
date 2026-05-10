@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Eais
     /// 
     /// &gt; **NOTE:** Available since v1.137.0.
     /// 
+    /// &gt; **DEPRECATED:** This resource has been deprecated since v1.278.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

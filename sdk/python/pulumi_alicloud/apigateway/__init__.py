@@ -21,6 +21,7 @@ from .get_models import *
 from .get_plugins import *
 from .get_service import *
 from .group import *
+from .group_plugin_attachment import *
 from .instance import *
 from .instance_acl_attachment import *
 from .log_config import *

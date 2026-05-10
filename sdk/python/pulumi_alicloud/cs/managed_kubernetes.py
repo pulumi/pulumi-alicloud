@@ -114,7 +114,7 @@ class ManagedKubernetesArgs:
                * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
                * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
                * `Acs`: ACS cluster.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -641,7 +641,7 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         """
         return pulumi.get(self, "proxy_mode")
 
@@ -959,7 +959,7 @@ class _ManagedKubernetesState:
                * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
                * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
                * `Acs`: ACS cluster.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
@@ -1550,7 +1550,7 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         """
         return pulumi.get(self, "proxy_mode")
 
@@ -2241,7 +2241,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
                * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
                * `Acs`: ACS cluster.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
@@ -2838,7 +2838,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                * `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
                * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
                * `Acs`: ACS cluster.
-        :param pulumi.Input[_builtins.str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        :param pulumi.Input[_builtins.str] proxy_mode: kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] retain_resources: Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retain_resources`. There are several aspects to pay attention to when using `retain_resources` to retain resources. After configuring `retain_resources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
         :param pulumi.Input[Union['ManagedKubernetesRrsaMetadataArgs', 'ManagedKubernetesRrsaMetadataArgsDict']] rrsa_metadata: (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
@@ -3229,7 +3229,7 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="proxyMode")
     def proxy_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
+        kube-proxy proxy mode. Default: `ipvs`. Options: `iptables`, `ipvs`, `nftables`.
         """
         return pulumi.get(self, "proxy_mode")
 

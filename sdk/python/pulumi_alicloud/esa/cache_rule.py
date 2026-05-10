@@ -52,7 +52,7 @@ class CacheRuleArgs:
         The set of arguments for constructing a CacheRule resource.
 
         :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the [ListSites] API.
-        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         :param pulumi.Input[_builtins.str] browser_cache_mode: Browser cache mode. Possible values:
         :param pulumi.Input[_builtins.str] browser_cache_ttl: Browser cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] bypass_cache: Set the bypass cache mode. Possible values:
@@ -62,7 +62,10 @@ class CacheRuleArgs:
         :param pulumi.Input[_builtins.str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] edge_cache_mode: Edge cache mode. Possible values:
         :param pulumi.Input[_builtins.str] edge_cache_ttl: Edge cache expiration time in seconds.
-        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: The status code cache TTL, in seconds.
+               - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+               - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+               - You can specify multiple status code TTLs, separated by commas (,).
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
@@ -157,7 +160,7 @@ class CacheRuleArgs:
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
@@ -277,7 +280,10 @@ class CacheRuleArgs:
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
     def edge_status_code_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Status code cache expiration time in seconds.
+        The status code cache TTL, in seconds.
+        - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+        - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+        - You can specify multiple status code TTLs, separated by commas (,).
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
@@ -528,7 +534,7 @@ class _CacheRuleState:
         """
         Input properties used for looking up and filtering CacheRule resources.
 
-        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         :param pulumi.Input[_builtins.str] browser_cache_mode: Browser cache mode. Possible values:
         :param pulumi.Input[_builtins.str] browser_cache_ttl: Browser cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] bypass_cache: Set the bypass cache mode. Possible values:
@@ -539,7 +545,10 @@ class _CacheRuleState:
         :param pulumi.Input[_builtins.str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] edge_cache_mode: Edge cache mode. Possible values:
         :param pulumi.Input[_builtins.str] edge_cache_ttl: Edge cache expiration time in seconds.
-        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: The status code cache TTL, in seconds.
+               - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+               - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+               - You can specify multiple status code TTLs, separated by commas (,).
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
@@ -626,7 +635,7 @@ class _CacheRuleState:
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
@@ -758,7 +767,10 @@ class _CacheRuleState:
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
     def edge_status_code_cache_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Status code cache expiration time in seconds.
+        The status code cache TTL, in seconds.
+        - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+        - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+        - You can specify multiple status code TTLs, separated by commas (,).
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
@@ -1044,9 +1056,9 @@ class CacheRule(pulumi.CustomResource):
             check_presence_header="headername",
             include_cookie="cookie_exapmle",
             edge_cache_mode="follow_origin",
-            additional_cacheable_ports="2053",
+            additional_cacheable_ports="8880,2052",
             rule_name="rule_example",
-            edge_status_code_cache_ttl="300",
+            edge_status_code_cache_ttl="4xx=30",
             browser_cache_ttl="300",
             query_string="example",
             user_geo="off",
@@ -1078,7 +1090,7 @@ class CacheRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         :param pulumi.Input[_builtins.str] browser_cache_mode: Browser cache mode. Possible values:
         :param pulumi.Input[_builtins.str] browser_cache_ttl: Browser cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] bypass_cache: Set the bypass cache mode. Possible values:
@@ -1088,7 +1100,10 @@ class CacheRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] edge_cache_mode: Edge cache mode. Possible values:
         :param pulumi.Input[_builtins.str] edge_cache_ttl: Edge cache expiration time in seconds.
-        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: The status code cache TTL, in seconds.
+               - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+               - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+               - You can specify multiple status code TTLs, separated by commas (,).
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
@@ -1139,9 +1154,9 @@ class CacheRule(pulumi.CustomResource):
             check_presence_header="headername",
             include_cookie="cookie_exapmle",
             edge_cache_mode="follow_origin",
-            additional_cacheable_ports="2053",
+            additional_cacheable_ports="8880,2052",
             rule_name="rule_example",
-            edge_status_code_cache_ttl="300",
+            edge_status_code_cache_ttl="4xx=30",
             browser_cache_ttl="300",
             query_string="example",
             user_geo="off",
@@ -1303,7 +1318,7 @@ class CacheRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        :param pulumi.Input[_builtins.str] additional_cacheable_ports: Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         :param pulumi.Input[_builtins.str] browser_cache_mode: Browser cache mode. Possible values:
         :param pulumi.Input[_builtins.str] browser_cache_ttl: Browser cache expiration time in seconds.
         :param pulumi.Input[_builtins.str] bypass_cache: Set the bypass cache mode. Possible values:
@@ -1314,7 +1329,10 @@ class CacheRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] check_presence_header: When generating the cache key, check if the header exists. If it does, add the header name (case-insensitive) to the cache key. Multiple header names are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] edge_cache_mode: Edge cache mode. Possible values:
         :param pulumi.Input[_builtins.str] edge_cache_ttl: Edge cache expiration time in seconds.
-        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: Status code cache expiration time in seconds.
+        :param pulumi.Input[_builtins.str] edge_status_code_cache_ttl: The status code cache TTL, in seconds.
+               - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+               - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+               - You can specify multiple status code TTLs, separated by commas (,).
         :param pulumi.Input[_builtins.str] include_cookie: When generating the cache key, add the specified cookie names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] include_header: When generating the cache key, add the specified header names and their values. Multiple values are supported, separated by spaces.
         :param pulumi.Input[_builtins.str] post_body_cache_key: Processing pattern for the cache key.
@@ -1376,7 +1394,7 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="additionalCacheablePorts")
     def additional_cacheable_ports(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Enable caching on specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096
+        Specifies additional ports on which caching is enabled. You can specify multiple ports, separated by commas (,). Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
         """
         return pulumi.get(self, "additional_cacheable_ports")
 
@@ -1464,7 +1482,10 @@ class CacheRule(pulumi.CustomResource):
     @pulumi.getter(name="edgeStatusCodeCacheTtl")
     def edge_status_code_cache_ttl(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Status code cache expiration time in seconds.
+        The status code cache TTL, in seconds.
+        - You can set the cache TTL for a specific status code. For example, 404=10 caches responses with a 404 status code for 10 seconds.
+        - You can set the cache TTL for a series of status codes, such as 4xx or 5xx. For example, 4xx=10 caches all responses that have a status code in the 4xx series for 10 seconds.
+        - You can specify multiple status code TTLs, separated by commas (,).
         """
         return pulumi.get(self, "edge_status_code_cache_ttl")
 
