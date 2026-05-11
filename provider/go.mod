@@ -24,7 +24,7 @@ replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-ex
 require (
 	github.com/aliyun/terraform-provider-alicloud v1.278.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.3-0.20260511084817-1aa8025fac5e
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.3-0.20260511133410-d6720eddca16
 	github.com/pulumi/pulumi/sdk/v3 v3.236.0
 )
 
@@ -263,7 +263,7 @@ require (
 	github.com/prometheus/common v0.67.5 // indirect
 	github.com/prometheus/procfs v0.19.2 // indirect
 	github.com/prometheus/prometheus v0.40.0 // indirect
-	github.com/pulumi-labs/pulumi-hcl v0.2.1-0.20260509154040-780b07cf961c // indirect
+	github.com/pulumi-labs/pulumi-hcl v0.2.1-0.20260511132453-b649e00ac6d2 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.23.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect

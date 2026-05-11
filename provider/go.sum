@@ -4095,8 +4095,8 @@ github.com/prometheus/procfs v0.19.2 h1:zUMhqEW66Ex7OXIiDkll3tl9a1ZdilUOd/F6ZXw4
 github.com/prometheus/procfs v0.19.2/go.mod h1:M0aotyiemPhBCM0z5w87kL22CxfcH05ZpYlu+b4J7mw=
 github.com/prometheus/prometheus v0.40.0 h1:l1X90CYt2Kizrv6oBDt5lbHHdPabJ/Ms9EwBrdrVU10=
 github.com/prometheus/prometheus v0.40.0/go.mod h1:/UhsWkOXkO11wqTW2Bx5YDOwRweSDcaFBlTIzFe7P0Y=
-github.com/pulumi-labs/pulumi-hcl v0.2.1-0.20260509154040-780b07cf961c h1:Ctr1dLevW1fAfdU/sCRk3araECFiqCjoeRU5TjIZ7e4=
-github.com/pulumi-labs/pulumi-hcl v0.2.1-0.20260509154040-780b07cf961c/go.mod h1:z4fF6RrsxI1ZZaX8TXcT9yho24HTn4f19Y4Czc/+8YM=
+github.com/pulumi-labs/pulumi-hcl v0.2.1-0.20260511132453-b649e00ac6d2 h1:W/2xK/m7+HVwfrdd6Sv3qpw6UPsUUr3QXf72dHIC3hU=
+github.com/pulumi-labs/pulumi-hcl v0.2.1-0.20260511132453-b649e00ac6d2/go.mod h1:z4fF6RrsxI1ZZaX8TXcT9yho24HTn4f19Y4Czc/+8YM=
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 h1:vkHw5I/plNdTr435cARxCW6q9gc0S/Yxz7Mkd38pOb0=
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231/go.mod h1:murToZ2N9hNJzewjHBgfFdXhZKjY3z5cYC1VXk+lbFE=
 github.com/pulumi/esc v0.23.0 h1:5lOXO+5vvXOEQxXw7cTuYhjg9lVng23f9XNLWDR9EP4=
@@ -4109,8 +4109,8 @@ github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.105.0 h1:3MCtuuD+nC
 github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.105.0/go.mod h1:B1sWR+CVYy2F32bJThE1URCUqmfhkWt7z9WPmTYlDhQ=
 github.com/pulumi/pulumi-java v1.26.0 h1:3tOwjnmjS8PuKUwPCu3t0P0MFbSMaLLbG81B+v7vQpg=
 github.com/pulumi/pulumi-java v1.26.0/go.mod h1:0UPSCXPjc1hjnRzOzfqH5v2OdUnLcDuvXPuEVL6OPiQ=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.3-0.20260511084817-1aa8025fac5e h1:YUFc4fn9a9YIMEkmQbCkq5LwWM5jIcjKRltbgAt+AE4=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.3-0.20260511084817-1aa8025fac5e/go.mod h1:EJVfCe6X9q4d9dOdYZ4TG4MnzoCaP4tBbblB5cqNhq8=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.3-0.20260511133410-d6720eddca16 h1:n5p2nrrZAiXylI0qeZYQpVM5OwbfBXWRes6KEgHCPZ4=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.3-0.20260511133410-d6720eddca16/go.mod h1:YfYG5qTGDTondYux993DU6nNa+Xm8fDY3DtZOTdK8Os=
 github.com/pulumi/pulumi-yaml v1.33.0 h1:LXeLs5tGmddLYaoTxKWOlmrUJXPj1/Fvn8vSksve5uc=
 github.com/pulumi/pulumi-yaml v1.33.0/go.mod h1:owu3qOcwK4xGC6UcMgnGpUv7f9OcTl8ESDuStx+lQ30=
 github.com/pulumi/pulumi/pkg/v3 v3.236.0 h1:Yj8ZHVGDzgITh6CwY7X1900oiYAUP+wN/5zF8Wr1DLo=
