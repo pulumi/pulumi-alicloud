@@ -324,7 +324,7 @@ class HoneypotPresetMetaArgs:
 
 
 class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
-    bind_port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]]
+    bind_port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgsDict']]]]]
     """
     List of listening ports.See the following `Block BindPortList`.
     """

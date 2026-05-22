@@ -4917,9 +4917,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -4984,9 +4984,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -5051,9 +5051,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -5118,9 +5118,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -5185,9 +5185,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -5252,9 +5252,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -5319,9 +5319,9 @@ public final class VpcFunctions {
      *             .tags(Map.of("k1", "v1"))
      *             .build());
      * 
-     *         final var defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName().applyValue(_ipamScopeName -> VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
-     *             .ipamScopeName(_ipamScopeName)
-     *             .build()));
+     *         final var defaultGetIpamIpamScopes = VpcFunctions.getIpamIpamScopes(GetIpamIpamScopesArgs.builder()
+     *             .ipamScopeName(defaultIpamIpamScope.ipamScopeName())
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.applyValue(_defaultGetIpamIpamScopes -> _defaultGetIpamIpamScopes.scopes()[0].id()));
      *     }
@@ -5377,15 +5377,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
@@ -5441,15 +5437,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
@@ -5505,15 +5497,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
@@ -5569,15 +5557,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
@@ -5633,15 +5617,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
@@ -5697,15 +5677,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }
@@ -5761,15 +5737,11 @@ public final class VpcFunctions {
      *             .operatingRegionLists("cn-hangzhou")
      *             .build());
      * 
-     *         final var defaultGetIpamIpams = Output.tuple(defaultIpamIpam.id(), defaultIpamIpam.ipamName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var ipamName = values.t2;
-     *             return VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
-     *                 .ids(id)
-     *                 .nameRegex(ipamName)
-     *                 .ipamName(name)
-     *                 .build());
-     *         });
+     *         final var defaultGetIpamIpams = VpcFunctions.getIpamIpams(GetIpamIpamsArgs.builder()
+     *             .ids(defaultIpamIpam.id())
+     *             .nameRegex(defaultIpamIpam.ipamName())
+     *             .ipamName(name)
+     *             .build());
      * 
      *         ctx.export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.applyValue(_defaultGetIpamIpams -> _defaultGetIpamIpams.ipams()[0].id()));
      *     }

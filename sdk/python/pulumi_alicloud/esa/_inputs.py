@@ -828,7 +828,7 @@ class LoadBalancerRandomSteeringArgs:
 
 
 class LoadBalancerRuleArgsDict(TypedDict):
-    fixed_response: NotRequired[pulumi.Input[Optional['LoadBalancerRuleFixedResponseArgs']]]
+    fixed_response: NotRequired[pulumi.Input[Optional['LoadBalancerRuleFixedResponseArgsDict']]]
     """
     Executes a specified response after matching the rule. See `fixed_response` below.
     """
@@ -1082,7 +1082,7 @@ class OriginPoolOriginArgsDict(TypedDict):
     """
     Origin Address.
     """
-    auth_conf: NotRequired[pulumi.Input[Optional['OriginPoolOriginAuthConfArgs']]]
+    auth_conf: NotRequired[pulumi.Input[Optional['OriginPoolOriginAuthConfArgsDict']]]
     """
     The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
     """
@@ -1797,7 +1797,7 @@ class SiteDeliveryTaskHttpDeliveryArgsDict(TypedDict):
     max_retry: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     query_param: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     standard_auth_on: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
-    standard_auth_param: NotRequired[pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgs']]]
+    standard_auth_param: NotRequired[pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryStandardAuthParamArgsDict']]]
     """
     See `standard_auth_param` below.
     """
@@ -2379,27 +2379,27 @@ class SiteDeliveryTaskSlsDeliveryArgs:
 
 
 class SiteSiteWafSettingsArgsDict(TypedDict):
-    add_bot_protection_headers: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsAddBotProtectionHeadersArgs']]]
+    add_bot_protection_headers: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsAddBotProtectionHeadersArgsDict']]]
     """
     Add BOT Protection Header. See `add_bot_protection_headers` below.
     """
-    add_security_headers: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsAddSecurityHeadersArgs']]]
+    add_security_headers: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsAddSecurityHeadersArgsDict']]]
     """
     Add Security Header. See `add_security_headers` below.
     """
-    bandwidth_abuse_protection: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBandwidthAbuseProtectionArgs']]]
+    bandwidth_abuse_protection: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBandwidthAbuseProtectionArgsDict']]]
     """
     Anti-theft brush. See `bandwidth_abuse_protection` below.
     """
-    bot_management: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementArgs']]]
+    bot_management: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementArgsDict']]]
     """
     Bot Management. See `bot_management` below.
     """
-    client_ip_identifier: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsClientIpIdentifierArgs']]]
+    client_ip_identifier: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsClientIpIdentifierArgsDict']]]
     """
     Client IP Identification. See `client_ip_identifier` below.
     """
-    security_level: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsSecurityLevelArgs']]]
+    security_level: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsSecurityLevelArgsDict']]]
     """
     Security Level. See `security_level` below.
     """
@@ -2635,23 +2635,23 @@ class SiteSiteWafSettingsBandwidthAbuseProtectionArgs:
 
 
 class SiteSiteWafSettingsBotManagementArgsDict(TypedDict):
-    definite_bots: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementDefiniteBotsArgs']]]
+    definite_bots: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementDefiniteBotsArgsDict']]]
     """
     Definitely Bot.
     """
-    effect_on_static: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementEffectOnStaticArgs']]]
+    effect_on_static: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementEffectOnStaticArgsDict']]]
     """
     VApply to Static Resource Requests. See `effect_on_static` below.
     """
-    js_detection: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementJsDetectionArgs']]]
+    js_detection: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementJsDetectionArgsDict']]]
     """
     JavaScript Challenge. See `js_detection` below.
     """
-    likely_bots: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementLikelyBotsArgs']]]
+    likely_bots: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementLikelyBotsArgsDict']]]
     """
     Likely Bot.
     """
-    verified_bots: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementVerifiedBotsArgs']]]
+    verified_bots: NotRequired[pulumi.Input[Optional['SiteSiteWafSettingsBotManagementVerifiedBotsArgsDict']]]
     """
     Verified Bot.
     """
@@ -3208,15 +3208,15 @@ class WafRuleConfigArgsDict(TypedDict):
     """
     The action performed on requests that match the managed rule.
     """
-    actions: NotRequired[pulumi.Input[Optional['WafRuleConfigActionsArgs']]]
+    actions: NotRequired[pulumi.Input[Optional['WafRuleConfigActionsArgsDict']]]
     """
     Extended action configurations, including custom responses and bypass settings. See `actions` below.
     """
-    app_package: NotRequired[pulumi.Input[Optional['WafRuleConfigAppPackageArgs']]]
+    app_package: NotRequired[pulumi.Input[Optional['WafRuleConfigAppPackageArgsDict']]]
     """
     Security mechanism to prevent apps from being repackaged. See `app_package` below.
     """
-    app_sdk: NotRequired[pulumi.Input[Optional['WafRuleConfigAppSdkArgs']]]
+    app_sdk: NotRequired[pulumi.Input[Optional['WafRuleConfigAppSdkArgsDict']]]
     """
     Mobile app SDK-related configurations. See `app_sdk` below.
     """
@@ -3236,7 +3236,7 @@ class WafRuleConfigArgsDict(TypedDict):
     """
     The name of the managed list applied to this rule.
     """
-    managed_rulesets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigManagedRulesetArgs']]]]]
+    managed_rulesets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigManagedRulesetArgsDict']]]]]
     """
     The managed rulesets referenced by this rule and their configurations. See `managed_rulesets` below.
     """
@@ -3248,11 +3248,11 @@ class WafRuleConfigArgsDict(TypedDict):
     """
     Additional notes about this rule.
     """
-    rate_limit: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitArgs']]]
+    rate_limit: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitArgsDict']]]
     """
     Configuration of the rate limiting rule. See `rate_limit` below.
     """
-    security_level: NotRequired[pulumi.Input[Optional['WafRuleConfigSecurityLevelArgs']]]
+    security_level: NotRequired[pulumi.Input[Optional['WafRuleConfigSecurityLevelArgsDict']]]
     """
     The overall security protection level of WAF.
     Valid values:
@@ -3271,7 +3271,7 @@ class WafRuleConfigArgsDict(TypedDict):
     """
     The status of the managed rule: whether it is enabled or disabled.
     """
-    timer: NotRequired[pulumi.Input[Optional['WafRuleConfigTimerArgs']]]
+    timer: NotRequired[pulumi.Input[Optional['WafRuleConfigTimerArgsDict']]]
     """
     Configuration for the time schedule when the rule takes effect. See `timer` below.
     """
@@ -3594,11 +3594,11 @@ class WafRuleConfigArgs:
 
 
 class WafRuleConfigActionsArgsDict(TypedDict):
-    bypass: NotRequired[pulumi.Input[Optional['WafRuleConfigActionsBypassArgs']]]
+    bypass: NotRequired[pulumi.Input[Optional['WafRuleConfigActionsBypassArgsDict']]]
     """
     The skip configuration specified by the whitelist rule. See `bypass` below.
     """
-    response: NotRequired[pulumi.Input[Optional['WafRuleConfigActionsResponseArgs']]]
+    response: NotRequired[pulumi.Input[Optional['WafRuleConfigActionsResponseArgsDict']]]
 
 @pulumi.input_type
 class WafRuleConfigActionsArgs:
@@ -3787,7 +3787,7 @@ class WafRuleConfigActionsResponseArgs:
 
 
 class WafRuleConfigAppPackageArgsDict(TypedDict):
-    package_signs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigAppPackagePackageSignArgs']]]]]
+    package_signs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigAppPackagePackageSignArgsDict']]]]]
     """
     Security mechanism to prevent apps from being repackaged. See `package_signs` below.
     """
@@ -3858,7 +3858,7 @@ class WafRuleConfigAppPackagePackageSignArgs:
 
 
 class WafRuleConfigAppSdkArgsDict(TypedDict):
-    custom_sign: NotRequired[pulumi.Input[Optional['WafRuleConfigAppSdkCustomSignArgs']]]
+    custom_sign: NotRequired[pulumi.Input[Optional['WafRuleConfigAppSdkCustomSignArgsDict']]]
     """
     Custom fields used for mobile app signature validation. See `custom_sign` below.
     """
@@ -3981,7 +3981,7 @@ class WafRuleConfigManagedRulesetArgsDict(TypedDict):
     """
     The primary attack type targeted by this ruleset.
     """
-    managed_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigManagedRulesetManagedRuleArgs']]]]]
+    managed_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigManagedRulesetManagedRuleArgsDict']]]]]
     """
     The individual managed rules included in this ruleset. See `managed_rules` below.
     """
@@ -4160,7 +4160,7 @@ class WafRuleConfigManagedRulesetManagedRuleArgs:
 
 
 class WafRuleConfigRateLimitArgsDict(TypedDict):
-    characteristics: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitCharacteristicsArgs']]]
+    characteristics: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitCharacteristicsArgsDict']]]
     """
     The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
     """
@@ -4172,7 +4172,7 @@ class WafRuleConfigRateLimitArgsDict(TypedDict):
     """
     Indicates whether the rule applies to requests that hit the cache.
     """
-    threshold: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitThresholdArgs']]]
+    threshold: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitThresholdArgsDict']]]
     """
     Threshold settings for the rate limiting rule. See `threshold` below.
     """
@@ -4269,7 +4269,7 @@ class WafRuleConfigRateLimitArgs:
 
 
 class WafRuleConfigRateLimitCharacteristicsArgsDict(TypedDict):
-    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaArgs']]]]]
+    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict']]]]]
     logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
@@ -4302,7 +4302,7 @@ class WafRuleConfigRateLimitCharacteristicsArgs:
 
 
 class WafRuleConfigRateLimitCharacteristicsCriteriaArgsDict(TypedDict):
-    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs']]]]]
+    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict']]]]]
     logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -4348,7 +4348,7 @@ class WafRuleConfigRateLimitCharacteristicsCriteriaArgs:
 
 
 class WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgsDict(TypedDict):
-    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs']]]]]
+    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgsDict']]]]]
     logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -4426,7 +4426,7 @@ class WafRuleConfigRateLimitThresholdArgsDict(TypedDict):
     """
     The maximum number of allowed requests within a time interval.
     """
-    response_status: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitThresholdResponseStatusArgs']]]
+    response_status: NotRequired[pulumi.Input[Optional['WafRuleConfigRateLimitThresholdResponseStatusArgsDict']]]
     """
     Limits on the frequency of returning specific HTTP status codes. See `response_status` below.
     """
@@ -4614,12 +4614,12 @@ class WafRuleConfigSecurityLevelArgs:
 
 
 class WafRuleConfigTimerArgsDict(TypedDict):
-    periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigTimerPeriodArgs']]]]]
+    periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigTimerPeriodArgsDict']]]]]
     scopes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timing type:
     """
-    weekly_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodArgs']]]]]
+    weekly_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodArgsDict']]]]]
     """
     Weekly recurring time schedules. See `weekly_periods` below.
     """
@@ -4745,7 +4745,7 @@ class WafRuleConfigTimerPeriodArgs:
 
 
 class WafRuleConfigTimerWeeklyPeriodArgsDict(TypedDict):
-    daily_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs']]]]]
+    daily_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleConfigTimerWeeklyPeriodDailyPeriodArgsDict']]]]]
     """
     Daily effective time periods within a weekly schedule. See `daily_periods` below.
     """
@@ -4847,7 +4847,7 @@ class WafRuleSharedArgsDict(TypedDict):
     """
     The default action executed under shared configuration.
     """
-    actions: NotRequired[pulumi.Input[Optional['WafRuleSharedActionsArgs']]]
+    actions: NotRequired[pulumi.Input[Optional['WafRuleSharedActionsArgsDict']]]
     """
     Extended action configurations under shared settings. See `actions` below.
     """
@@ -4859,7 +4859,7 @@ class WafRuleSharedArgsDict(TypedDict):
     """
     The match expression used in shared configuration.
     """
-    match: NotRequired[pulumi.Input[Optional['WafRuleSharedMatchArgs']]]
+    match: NotRequired[pulumi.Input[Optional['WafRuleSharedMatchArgsDict']]]
     """
     Configuration of the request matching logic engine. See `match` below.
     """
@@ -5012,7 +5012,7 @@ class WafRuleSharedArgs:
 
 
 class WafRuleSharedActionsArgsDict(TypedDict):
-    response: NotRequired[pulumi.Input[Optional['WafRuleSharedActionsResponseArgs']]]
+    response: NotRequired[pulumi.Input[Optional['WafRuleSharedActionsResponseArgsDict']]]
 
 @pulumi.input_type
 class WafRuleSharedActionsArgs:
@@ -5074,7 +5074,7 @@ class WafRuleSharedActionsResponseArgs:
 
 
 class WafRuleSharedMatchArgsDict(TypedDict):
-    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaArgs']]]]]
+    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaArgsDict']]]]]
     logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -5120,7 +5120,7 @@ class WafRuleSharedMatchArgs:
 
 
 class WafRuleSharedMatchCriteriaArgsDict(TypedDict):
-    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaArgs']]]]]
+    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaArgsDict']]]]]
     logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -5166,7 +5166,7 @@ class WafRuleSharedMatchCriteriaArgs:
 
 
 class WafRuleSharedMatchCriteriaCriteriaArgsDict(TypedDict):
-    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaCriteriaArgs']]]]]
+    criterias: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WafRuleSharedMatchCriteriaCriteriaCriteriaArgsDict']]]]]
     logic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 

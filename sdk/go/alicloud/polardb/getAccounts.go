@@ -83,14 +83,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := pulumi.All(polardbClustersDs, account.AccountName).ApplyT(func(_args []interface{}) (polardb.GetAccountsResult, error) {
-//				polardbClustersDs := _args[0].(polardb.GetClustersResult)
-//				accountName := _args[1].(string)
-//				return polardb.GetAccountsResult(interface{}(polardb.GetAccounts(ctx, &polardb.GetAccountsArgs{
-//					DbClusterId: polardbClustersDs.Clusters[0].Id,
-//					NameRegex:   pulumi.StringRef(pulumi.StringRef(accountName)),
-//				}, nil))), nil
-//			}).(polardb.GetAccountsResultOutput)
+//			_default := polardb.GetAccountsOutput(ctx, polardb.GetAccountsOutputArgs{
+//				DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+//					return &polardbClustersDs.Clusters[0].Id, nil
+//				}).(pulumi.StringPtrOutput),
+//				NameRegex: account.AccountName,
+//			}, nil)
 //			ctx.Export("account", _default.ApplyT(func(_default polardb.GetAccountsResult) (*string, error) {
 //				return &_default.Accounts[0].AccountName, nil
 //			}).(pulumi.StringPtrOutput))

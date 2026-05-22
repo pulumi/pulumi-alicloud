@@ -52,20 +52,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids := pulumi.All(defaultWafRuleset.ID(), defaultWafRuleset.SiteId, defaultWafRuleset.Phase, defaultWafRuleset.SiteVersion).ApplyT(func(_args []interface{}) (esa.GetWafRulesetsResult, error) {
-//				id := _args[0].(string)
-//				siteId := _args[1].(string)
-//				phase := _args[2].(string)
-//				siteVersion := _args[3].(*int)
-//				return esa.GetWafRulesetsResult(interface{}(esa.GetWafRulesets(ctx, &esa.GetWafRulesetsArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					SiteId:      siteId,
-//					Phase:       phase,
-//					SiteVersion: siteVersion,
-//				}, nil))), nil
-//			}).(esa.GetWafRulesetsResultOutput)
+//			ids := esa.GetWafRulesetsOutput(ctx, esa.GetWafRulesetsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultWafRuleset.ID(),
+//				},
+//				SiteId:      defaultWafRuleset.SiteId,
+//				Phase:       defaultWafRuleset.Phase,
+//				SiteVersion: defaultWafRuleset.SiteVersion,
+//			}, nil)
 //			ctx.Export("esaWafRulesetsId0", ids.ApplyT(func(ids esa.GetWafRulesetsResult) (*string, error) {
 //				return &ids.Sets[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

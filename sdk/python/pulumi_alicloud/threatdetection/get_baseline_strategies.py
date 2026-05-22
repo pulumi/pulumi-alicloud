@@ -149,9 +149,9 @@ def get_baseline_strategies(custom_type: Optional[_builtins.str] = None,
         target_type="groupId",
         start_time="05:00:00",
         risk_sub_type_name="hc_exploit_redis")
-    default = default_baseline_strategy.id.apply(lambda id: alicloud.threatdetection.get_baseline_strategies_output(ids=[id],
+    default = alicloud.threatdetection.get_baseline_strategies_output(ids=[default_baseline_strategy.id],
         name_regex=default_baseline_strategy.name,
-        custom_type="custom"))
+        custom_type="custom")
     pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
     ```
 
@@ -204,9 +204,9 @@ def get_baseline_strategies_output(custom_type: pulumi.Input[Optional[Optional[_
         target_type="groupId",
         start_time="05:00:00",
         risk_sub_type_name="hc_exploit_redis")
-    default = default_baseline_strategy.id.apply(lambda id: alicloud.threatdetection.get_baseline_strategies_output(ids=[id],
+    default = alicloud.threatdetection.get_baseline_strategies_output(ids=[default_baseline_strategy.id],
         name_regex=default_baseline_strategy.name,
-        custom_type="custom"))
+        custom_type="custom")
     pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
     ```
 

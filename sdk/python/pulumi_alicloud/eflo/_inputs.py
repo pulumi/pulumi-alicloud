@@ -92,7 +92,7 @@ __all__ = [
 ]
 
 class ClusterComponentArgsDict(TypedDict):
-    component_config: NotRequired[pulumi.Input[Optional['ClusterComponentComponentConfigArgs']]]
+    component_config: NotRequired[pulumi.Input[Optional['ClusterComponentComponentConfigArgsDict']]]
     """
     Component Configuration See `component_config` below.
     """
@@ -193,11 +193,11 @@ class ClusterComponentComponentConfigArgs:
 
 
 class ClusterNetworksArgsDict(TypedDict):
-    ip_allocation_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]]]
+    ip_allocation_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgsDict']]]]]
     """
     IP allocation policy See `ip_allocation_policy` below.
     """
-    new_vpd_info: NotRequired[pulumi.Input[Optional['ClusterNetworksNewVpdInfoArgs']]]
+    new_vpd_info: NotRequired[pulumi.Input[Optional['ClusterNetworksNewVpdInfoArgsDict']]]
     """
     Vpd configuration information See `new_vpd_info` below.
     """
@@ -213,7 +213,7 @@ class ClusterNetworksArgsDict(TypedDict):
     """
     VPC ID
     """
-    vpd_info: NotRequired[pulumi.Input[Optional['ClusterNetworksVpdInfoArgs']]]
+    vpd_info: NotRequired[pulumi.Input[Optional['ClusterNetworksVpdInfoArgsDict']]]
     """
     Multiplexing VPD information See `vpd_info` below.
     """
@@ -362,15 +362,15 @@ class ClusterNetworksArgs:
 
 
 class ClusterNetworksIpAllocationPolicyArgsDict(TypedDict):
-    bond_policy: NotRequired[pulumi.Input[Optional['ClusterNetworksIpAllocationPolicyBondPolicyArgs']]]
+    bond_policy: NotRequired[pulumi.Input[Optional['ClusterNetworksIpAllocationPolicyBondPolicyArgsDict']]]
     """
     Bond policy See `bond_policy` below.
     """
-    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]]]
+    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict']]]]]
     """
     Model Assignment Policy See `machine_type_policy` below.
     """
-    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]]]
+    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgsDict']]]]]
     """
     Node allocation policy See `node_policy` below.
     """
@@ -435,7 +435,7 @@ class ClusterNetworksIpAllocationPolicyBondPolicyArgsDict(TypedDict):
     """
     Default bond cluster subnet
     """
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -529,7 +529,7 @@ class ClusterNetworksIpAllocationPolicyBondPolicyBondArgs:
 
 
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -620,7 +620,7 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs:
 
 
 class ClusterNetworksIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -735,7 +735,7 @@ class ClusterNetworksNewVpdInfoArgsDict(TypedDict):
     """
     Cluster network segment
     """
-    vpd_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]]]
+    vpd_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgsDict']]]]]
     """
     List of cluster subnet ID
     """
@@ -987,7 +987,7 @@ class ClusterNodeGroupArgsDict(TypedDict):
     """
     Node Group Name
     """
-    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupNodeArgsDict']]]]]
     """
     Node List See `nodes` below.
     """
@@ -1815,15 +1815,15 @@ class NodeGroupAttachmentDataDiskArgs:
 
 
 class NodeGroupIpAllocationPolicyArgsDict(TypedDict):
-    bond_policy: NotRequired[pulumi.Input[Optional['NodeGroupIpAllocationPolicyBondPolicyArgs']]]
+    bond_policy: NotRequired[pulumi.Input[Optional['NodeGroupIpAllocationPolicyBondPolicyArgsDict']]]
     """
     Specify the cluster subnet ID based on the bond name See `bond_policy` below.
     """
-    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]]]
+    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict']]]]]
     """
     Model Assignment Policy See `machine_type_policy` below.
     """
-    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]]]
+    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgsDict']]]]]
     """
     Node allocation policy See `node_policy` below.
     """
@@ -1888,7 +1888,7 @@ class NodeGroupIpAllocationPolicyBondPolicyArgsDict(TypedDict):
     """
     Default bond cluster subnet
     """
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -1982,7 +1982,7 @@ class NodeGroupIpAllocationPolicyBondPolicyBondArgs:
 
 
 class NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -2080,7 +2080,7 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs:
 
 
 class NodeGroupIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -2280,15 +2280,15 @@ class NodeGroupNodeArgs:
 
 
 class NodeIpAllocationPolicyArgsDict(TypedDict):
-    bond_policy: NotRequired[pulumi.Input[Optional['NodeIpAllocationPolicyBondPolicyArgs']]]
+    bond_policy: NotRequired[pulumi.Input[Optional['NodeIpAllocationPolicyBondPolicyArgsDict']]]
     """
     Specify the cluster subnet ID based on the bond name See `bond_policy` below.
     """
-    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]]
+    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgsDict']]]]]
     """
     Model Assignment Policy See `machine_type_policy` below.
     """
-    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]]
+    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgsDict']]]]]
     """
     Node allocation policy See `node_policy` below.
     """
@@ -2353,7 +2353,7 @@ class NodeIpAllocationPolicyBondPolicyArgsDict(TypedDict):
     """
     Default bond cluster subnet
     """
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -2447,7 +2447,7 @@ class NodeIpAllocationPolicyBondPolicyBondArgs:
 
 
 class NodeIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -2545,7 +2545,7 @@ class NodeIpAllocationPolicyMachineTypePolicyBondArgs:
 
 
 class NodeIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgsDict']]]]]
     """
     Bond information See `bonds` below.
     """

@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  * });
  * const ids = alicloud.eds.getNasFileSystems({});
  * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?.[0]?.id);
- * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystemsOutput({
- *     nameRegex: nasFileSystemName,
- * }));
+ * const nameRegex = alicloud.eds.getNasFileSystemsOutput({
+ *     nameRegex: defaultNasFileSystem.nasFileSystemName,
+ * });
  * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
  */
@@ -118,9 +118,9 @@ export interface GetNasFileSystemsResult {
  * });
  * const ids = alicloud.eds.getNasFileSystems({});
  * export const ecdNasFileSystemId1 = ids.then(ids => ids.systems?.[0]?.id);
- * const nameRegex = defaultNasFileSystem.nasFileSystemName.apply(nasFileSystemName => alicloud.eds.getNasFileSystemsOutput({
- *     nameRegex: nasFileSystemName,
- * }));
+ * const nameRegex = alicloud.eds.getNasFileSystemsOutput({
+ *     nameRegex: defaultNasFileSystem.nasFileSystemName,
+ * });
  * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
  */

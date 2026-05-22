@@ -32,7 +32,7 @@ __all__ = [
 ]
 
 class GatewayLogConfigArgsDict(TypedDict):
-    sls: NotRequired[pulumi.Input[Optional['GatewayLogConfigSlsArgs']]]
+    sls: NotRequired[pulumi.Input[Optional['GatewayLogConfigSlsArgsDict']]]
     """
     Sls See `sls` below.
     """

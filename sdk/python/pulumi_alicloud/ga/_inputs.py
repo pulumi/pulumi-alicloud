@@ -401,7 +401,7 @@ class ForwardingRuleRuleActionArgsDict(TypedDict):
     """
     The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
     """
-    forward_group_config: NotRequired[pulumi.Input[Optional['ForwardingRuleRuleActionForwardGroupConfigArgs']]]
+    forward_group_config: NotRequired[pulumi.Input[Optional['ForwardingRuleRuleActionForwardGroupConfigArgsDict']]]
     """
     Forwarding configuration. See `forward_group_config` below.
     > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
@@ -543,12 +543,12 @@ class ForwardingRuleRuleConditionArgsDict(TypedDict):
     """
     The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
     """
-    host_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]]
+    host_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgsDict']]]]]
     """
     The configuration of the domain name. See `host_config` below.
     > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
     """
-    path_config: NotRequired[pulumi.Input[Optional['ForwardingRuleRuleConditionPathConfigArgs']]]
+    path_config: NotRequired[pulumi.Input[Optional['ForwardingRuleRuleConditionPathConfigArgsDict']]]
     """
     The configuration of the path. See `path_config` below.
     """

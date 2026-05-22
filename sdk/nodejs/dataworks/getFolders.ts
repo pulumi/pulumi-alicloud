@@ -23,11 +23,11 @@ import * as utilities from "../utilities";
  *     projectId: "xxxx",
  *     folderPath: "Business Flow/tfTestAcc/folderDi",
  * });
- * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFoldersOutput({
- *     ids: [folderId],
- *     projectId: projectId,
+ * const ids = alicloud.dataworks.getFoldersOutput({
+ *     ids: [_default.folderId],
+ *     projectId: _default.projectId,
  *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
- * }));
+ * });
  * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
  */
@@ -94,11 +94,11 @@ export interface GetFoldersResult {
  *     projectId: "xxxx",
  *     folderPath: "Business Flow/tfTestAcc/folderDi",
  * });
- * const ids = pulumi.all([_default.folderId, _default.projectId]).apply(([folderId, projectId]) => alicloud.dataworks.getFoldersOutput({
- *     ids: [folderId],
- *     projectId: projectId,
+ * const ids = alicloud.dataworks.getFoldersOutput({
+ *     ids: [_default.folderId],
+ *     projectId: _default.projectId,
  *     parentFolderPath: "Business Flow/tfTestAcc/folderDi",
- * }));
+ * });
  * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
  */

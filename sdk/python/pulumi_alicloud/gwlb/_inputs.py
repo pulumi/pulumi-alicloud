@@ -36,7 +36,7 @@ class LoadBalancerZoneMappingArgsDict(TypedDict):
     """
     The zone ID. You can call the DescribeZones operation to query the most recent zone list.
     """
-    load_balancer_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]]
+    load_balancer_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]]
     """
     The information about the IP addresses used by the GWLB instance.
     """

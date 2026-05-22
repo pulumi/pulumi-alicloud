@@ -99,11 +99,9 @@ import (
 //			ctx.Export("ecdDesktopId1", ids.ApplyT(func(ids eds.GetDesktopsResult) (*string, error) {
 //				return &ids.Desktops[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
-//			nameRegex := defaultDesktop.DesktopName.ApplyT(func(desktopName *string) (eds.GetDesktopsResult, error) {
-//				return eds.GetDesktopsResult(interface{}(eds.GetDesktops(ctx, &eds.GetDesktopsArgs{
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(desktopName))),
-//				}, nil))), nil
-//			}).(eds.GetDesktopsResultOutput)
+//			nameRegex := eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
+//				NameRegex: defaultDesktop.DesktopName,
+//			}, nil)
 //			ctx.Export("ecdDesktopId2", nameRegex.ApplyT(func(nameRegex eds.GetDesktopsResult) (*string, error) {
 //				return &nameRegex.Desktops[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

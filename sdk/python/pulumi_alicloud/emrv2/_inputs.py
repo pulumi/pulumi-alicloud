@@ -736,7 +736,7 @@ class ClusterNodeGroupArgsDict(TypedDict):
     """
     Host Ecs system disk information in this node group. See `system_disk` below.
     """
-    ack_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAckConfigArgs']]]
+    ack_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAckConfigArgsDict']]]
     """
     The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
     """
@@ -744,11 +744,11 @@ class ClusterNodeGroupArgsDict(TypedDict):
     """
     Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
     """
-    auto_scaling_policy: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyArgs']]]
+    auto_scaling_policy: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyArgsDict']]]
     """
     The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
     """
-    cost_optimized_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupCostOptimizedConfigArgs']]]
+    cost_optimized_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupCostOptimizedConfigArgsDict']]]
     """
     The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
     """
@@ -768,11 +768,11 @@ class ClusterNodeGroupArgsDict(TypedDict):
     """
     Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
     """
-    private_pool_options: NotRequired[pulumi.Input[Optional['ClusterNodeGroupPrivatePoolOptionsArgs']]]
+    private_pool_options: NotRequired[pulumi.Input[Optional['ClusterNodeGroupPrivatePoolOptionsArgsDict']]]
     """
     The node group specific private pool resources. See `private_pool_options` below.
     """
-    spot_bid_prices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]]
+    spot_bid_prices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgsDict']]]]]
     """
     The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
     """
@@ -784,7 +784,7 @@ class ClusterNodeGroupArgsDict(TypedDict):
     """
     The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
     """
-    subscription_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupSubscriptionConfigArgs']]]
+    subscription_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupSubscriptionConfigArgsDict']]]
     """
     The detail configuration of subscription payment type. See `subscription_config` below.
     """
@@ -1159,11 +1159,11 @@ class ClusterNodeGroupAckConfigArgsDict(TypedDict):
     """
     The job pod resource of request memory.
     """
-    custom_annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]]]
+    custom_annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgsDict']]]]]
     """
     The ack cluster custom annotations. See `custom_annotations` below.
     """
-    custom_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]]]
+    custom_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgsDict']]]]]
     """
     The ack cluster custom labels. See `custom_labels` below.
     """
@@ -1171,7 +1171,7 @@ class ClusterNodeGroupAckConfigArgsDict(TypedDict):
     """
     The ack cluster node affinity.
     """
-    node_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]]]
+    node_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgsDict']]]]]
     """
     The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
     """
@@ -1187,19 +1187,19 @@ class ClusterNodeGroupAckConfigArgsDict(TypedDict):
     """
     The job pod pre start command.
     """
-    pvcs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]]]
+    pvcs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgsDict']]]]]
     """
     The ack cluster persistent volume claim. See `pvcs` below.
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgsDict']]]]]
     """
     The ack cluster tolerations. See `tolerations` below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgsDict']]]]]
     """
     The ack cluster volume mounts. See `volume_mounts` below.
     """
-    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgsDict']]]]]
     """
     The ack cluster volumes. See `volumes` below.
     """
@@ -1909,11 +1909,11 @@ class ClusterNodeGroupAckConfigVolumeMountArgs:
 
 
 class ClusterNodeGroupAutoScalingPolicyArgsDict(TypedDict):
-    constraints: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]]
+    constraints: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict']]]
     """
     The constraints of auto scaling policy. See `constraints` below.
     """
-    scaling_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]]
+    scaling_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict']]]]]
     """
     The scaling rules of auto scaling policy. See `scaling_rules` below.
     """
@@ -2027,7 +2027,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict(TypedDict):
     """
     The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
     """
-    metrics_trigger: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]]
+    metrics_trigger: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict']]]
     """
     The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
     """
@@ -2035,7 +2035,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict(TypedDict):
     """
     The minimum adjustment value of auto scaling policy.
     """
-    time_trigger: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]]
+    time_trigger: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict']]]
     """
     The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
     """
@@ -2184,7 +2184,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict(TypedDi
     """
     The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
     """
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict']]]]]
     """
     The conditions for this scaling rule specific metrics trigger. See `conditions` below.
     """
@@ -2192,7 +2192,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict(TypedDi
     """
     The time of cool down interval for this scaling rule specific metrics trigger.
     """
-    time_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]]
+    time_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict']]]]]
     """
     The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
     """
@@ -2315,7 +2315,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDic
     """
     The threshold for this scaling rule specific metrics trigger.
     """
-    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict']]]]]
     """
     A mapping of tags to assign to the resource.
     """

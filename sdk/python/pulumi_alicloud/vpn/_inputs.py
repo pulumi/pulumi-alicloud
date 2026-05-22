@@ -596,7 +596,7 @@ class ConnectionTunnelOptionsSpecificationArgsDict(TypedDict):
     """
     The negotiation status of Tunnel.
     """
-    tunnel_bgp_config: NotRequired[pulumi.Input[Optional['ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs']]]
+    tunnel_bgp_config: NotRequired[pulumi.Input[Optional['ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgsDict']]]
     """
     The bgp config of Tunnel. See `tunnel_bgp_config` below.
     """
@@ -604,11 +604,11 @@ class ConnectionTunnelOptionsSpecificationArgsDict(TypedDict):
     """
     The tunnel ID of IPsec-VPN connection.
     """
-    tunnel_ike_config: NotRequired[pulumi.Input[Optional['ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs']]]
+    tunnel_ike_config: NotRequired[pulumi.Input[Optional['ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgsDict']]]
     """
     The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
     """
-    tunnel_ipsec_config: NotRequired[pulumi.Input[Optional['ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs']]]
+    tunnel_ipsec_config: NotRequired[pulumi.Input[Optional['ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgsDict']]]
     """
     IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
     """
@@ -1712,7 +1712,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict(TypedDict):
     """
     The negotiation status of Tunnel.
     """
-    tunnel_bgp_config: NotRequired[pulumi.Input[Optional['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgs']]]
+    tunnel_bgp_config: NotRequired[pulumi.Input[Optional['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfigArgsDict']]]
     """
     Add the BGP configuration for the tunnel.
 
@@ -1723,11 +1723,11 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict(TypedDict):
     """
     The tunnel ID of IPsec-VPN connection.
     """
-    tunnel_ike_config: NotRequired[pulumi.Input[Optional['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs']]]
+    tunnel_ike_config: NotRequired[pulumi.Input[Optional['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgsDict']]]
     """
     Configuration information for the first phase negotiation. See `tunnel_ike_config` below.
     """
-    tunnel_ipsec_config: NotRequired[pulumi.Input[Optional['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgs']]]
+    tunnel_ipsec_config: NotRequired[pulumi.Input[Optional['GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfigArgsDict']]]
     """
     Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
     """

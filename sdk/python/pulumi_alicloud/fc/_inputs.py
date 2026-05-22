@@ -337,11 +337,11 @@ class CustomDomainRouteConfigArgs:
 
 
 class FunctionAsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
-    on_failure: NotRequired[pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]]
+    on_failure: NotRequired[pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict']]]
     """
     Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
     """
-    on_success: NotRequired[pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]]
+    on_success: NotRequired[pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]]
     """
     Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
     """
@@ -1002,7 +1002,7 @@ class V2FunctionCustomContainerConfigArgs:
 
 
 class V2FunctionCustomDnsArgsDict(TypedDict):
-    dns_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]]
+    dns_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgsDict']]]]]
     """
     DNS resolver configuration parameter list. See `dns_options` below.
     """
@@ -1298,11 +1298,11 @@ class V2FunctionCustomRuntimeConfigArgs:
 
 
 class V2FunctionInstanceLifecycleConfigArgsDict(TypedDict):
-    pre_freeze: NotRequired[pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]]
+    pre_freeze: NotRequired[pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreFreezeArgsDict']]]
     """
     PreFreeze function configuration. See `pre_freeze` below.
     """
-    pre_stop: NotRequired[pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreStopArgs']]]
+    pre_stop: NotRequired[pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreStopArgsDict']]]
     """
     PreStop function configuration. See `pre_stop` below.
     """
@@ -1445,11 +1445,11 @@ class V2FunctionInstanceLifecycleConfigPreStopArgs:
 
 
 class V3AsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
-    on_failure: NotRequired[pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]]
+    on_failure: NotRequired[pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict']]]
     """
     Failed callback target structure See `on_failure` below.
     """
-    on_success: NotRequired[pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]]
+    on_success: NotRequired[pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]]
     """
     Successful callback target structure See `on_success` below.
     """
@@ -1799,7 +1799,7 @@ class V3CustomDomainCorsConfigArgs:
 
 
 class V3CustomDomainRouteConfigArgsDict(TypedDict):
-    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]]
+    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgsDict']]]]]
     """
     Routing Configuration List See `routes` below.
     """
@@ -1844,7 +1844,7 @@ class V3CustomDomainRouteConfigRouteArgsDict(TypedDict):
     """
     Version or Alias
     """
-    rewrite_config: NotRequired[pulumi.Input[Optional['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]]
+    rewrite_config: NotRequired[pulumi.Input[Optional['V3CustomDomainRouteConfigRouteRewriteConfigArgsDict']]]
     """
     Override Configuration See `rewrite_config` below.
     """
@@ -1937,15 +1937,15 @@ class V3CustomDomainRouteConfigRouteArgs:
 
 
 class V3CustomDomainRouteConfigRouteRewriteConfigArgsDict(TypedDict):
-    equal_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]]
+    equal_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict']]]]]
     """
     Exact Match Rule List See `equal_rules` below.
     """
-    regex_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]]
+    regex_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict']]]]]
     """
     Regular match rule list See `regex_rules` below.
     """
-    wildcard_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]]
+    wildcard_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict']]]]]
     """
     List of wildcard matching rules See `wildcard_rules` below.
     """
@@ -2340,7 +2340,7 @@ class V3FunctionCodeArgs:
 
 
 class V3FunctionCustomContainerConfigArgsDict(TypedDict):
-    acceleration_info: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigAccelerationInfoArgs']]]
+    acceleration_info: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigAccelerationInfoArgsDict']]]
     """
     (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
     """
@@ -2360,7 +2360,7 @@ class V3FunctionCustomContainerConfigArgsDict(TypedDict):
     """
     Container start command.
     """
-    health_check_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]]
+    health_check_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgsDict']]]
     """
     Function custom health check configuration See `health_check_config` below.
     """
@@ -2659,7 +2659,7 @@ class V3FunctionCustomContainerConfigHealthCheckConfigArgs:
 
 
 class V3FunctionCustomDnsArgsDict(TypedDict):
-    dns_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]]]
+    dns_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgsDict']]]]]
     """
     List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
     """
@@ -2785,7 +2785,7 @@ class V3FunctionCustomRuntimeConfigArgsDict(TypedDict):
     """
     Instance start command.
     """
-    health_check_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']]]
+    health_check_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict']]]
     """
     Function custom health check configuration. See `health_check_config` below.
     """
@@ -3009,11 +3009,11 @@ class V3FunctionGpuConfigArgs:
 
 
 class V3FunctionInstanceLifecycleConfigArgsDict(TypedDict):
-    initializer: NotRequired[pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigInitializerArgs']]]
+    initializer: NotRequired[pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigInitializerArgsDict']]]
     """
     Initializer handler method configuration See `initializer` below.
     """
-    pre_stop: NotRequired[pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigPreStopArgs']]]
+    pre_stop: NotRequired[pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigPreStopArgsDict']]]
     """
     PreStop handler method configuration See `pre_stop` below.
     """
@@ -3351,7 +3351,7 @@ class V3FunctionNasConfigArgsDict(TypedDict):
     """
     Group ID
     """
-    mount_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]]
+    mount_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgsDict']]]]]
     """
     Mount point list See `mount_points` below.
     """
@@ -3478,7 +3478,7 @@ class V3FunctionNasConfigMountPointArgs:
 
 
 class V3FunctionOssMountConfigArgsDict(TypedDict):
-    mount_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]]
+    mount_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgsDict']]]]]
     """
     OSS mount point list See `mount_points` below.
     """

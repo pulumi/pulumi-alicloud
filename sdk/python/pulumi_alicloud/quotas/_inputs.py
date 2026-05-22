@@ -252,7 +252,7 @@ class TemplateApplicationsQuotaApplicationDetailArgsDict(TypedDict):
     - 0 (default): No.
     - 3: Yes.
     """
-    period: NotRequired[pulumi.Input[Optional['TemplateApplicationsQuotaApplicationDetailPeriodArgs']]]
+    period: NotRequired[pulumi.Input[Optional['TemplateApplicationsQuotaApplicationDetailPeriodArgsDict']]]
     """
     Quota calculation period.
     """

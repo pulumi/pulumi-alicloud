@@ -47,14 +47,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := defaultAntiBruteForceRule.ID().ApplyT(func(id string) (threatdetection.GetAntiBruteForceRulesResult, error) {
-//				return threatdetection.GetAntiBruteForceRulesResult(interface{}(threatdetection.GetAntiBruteForceRules(ctx, &threatdetection.GetAntiBruteForceRulesArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(defaultAntiBruteForceRule.Name))),
-//				}, nil))), nil
-//			}).(threatdetection.GetAntiBruteForceRulesResultOutput)
+//			_default := threatdetection.GetAntiBruteForceRulesOutput(ctx, threatdetection.GetAntiBruteForceRulesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAntiBruteForceRule.ID(),
+//				},
+//				NameRegex: defaultAntiBruteForceRule.Name,
+//			}, nil)
 //			ctx.Export("alicloudThreatDetectionAntiBruteForceRuleExampleId", _default.ApplyT(func(_default threatdetection.GetAntiBruteForceRulesResult) (*string, error) {
 //				return &_default.Rules[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

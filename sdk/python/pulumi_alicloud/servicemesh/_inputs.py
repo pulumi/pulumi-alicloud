@@ -192,15 +192,15 @@ class ServiceMeshLoadBalancerArgs:
 
 
 class ServiceMeshMeshConfigArgsDict(TypedDict):
-    access_log: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigAccessLogArgs']]]
+    access_log: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigAccessLogArgsDict']]]
     """
     The access logging configuration See `access_log` below.
     """
-    audit: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigAuditArgs']]]
+    audit: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigAuditArgsDict']]]
     """
     Audit information See `audit` below.
     """
-    control_plane_log: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigControlPlaneLogArgs']]]
+    control_plane_log: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigControlPlaneLogArgsDict']]]
     """
     Control plane log collection configuration. See `control_plane_log` below.
     """
@@ -216,11 +216,11 @@ class ServiceMeshMeshConfigArgsDict(TypedDict):
     """
     The IP ADDRESS range
     """
-    kiali: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiArgs']]]
+    kiali: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiArgsDict']]]
     """
     Kiali configuration See `kiali` below.
     """
-    opa: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigOpaArgs']]]
+    opa: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigOpaArgsDict']]]
     """
     The open-door policy of agent (OPA) plug-in information See `opa` below.
     """
@@ -228,19 +228,19 @@ class ServiceMeshMeshConfigArgsDict(TypedDict):
     """
     Out to the traffic policy
     """
-    pilot: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigPilotArgs']]]
+    pilot: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigPilotArgsDict']]]
     """
     Link trace sampling information See `pilot` below.
     """
-    prometheus: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigPrometheusArgs']]]
+    prometheus: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigPrometheusArgsDict']]]
     """
     Prometheus configuration
     """
-    proxy: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigProxyArgs']]]
+    proxy: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigProxyArgsDict']]]
     """
     Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `proxy` below.
     """
-    sidecar_injector: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigSidecarInjectorArgs']]]
+    sidecar_injector: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigSidecarInjectorArgsDict']]]
     """
     Sidecar injector configuration See `sidecar_injector` below.
     """
@@ -783,15 +783,15 @@ class ServiceMeshMeshConfigKialiArgsDict(TypedDict):
     """
     Annotations for the Service corresponding to the mesh topology service. When the mesh topology service integrates CLB, annotations can be used to control the CLB specifications. The attribute type is map, the key is the Kubernetes cluster id, and the value is the mesh topology service annotation map under the corresponding Kubernetes cluster. When using the managed mode mesh topology, the key is the service mesh instance id. For annotation content, refer to [Configuring traditional load balancing CLB through Annotation](https://www.alibabacloud.com/help/en/ack/serverless-kubernetes/user-guide/use-annotations-to-configure-load-balancing).(Service mesh instance version 1.17.2.19 or above is required)
     """
-    open_id_config: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiOpenIdConfigArgs']]]
+    open_id_config: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiOpenIdConfigArgsDict']]]
     """
     When the mesh topology's authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `open_id_config` below.
     """
-    ram_oauth_config: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiRamOauthConfigArgs']]]
+    ram_oauth_config: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiRamOauthConfigArgsDict']]]
     """
     When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ram_oauth_config` below.
     """
-    server_config: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiServerConfigArgs']]]
+    server_config: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigKialiServerConfigArgsDict']]]
     """
     When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
     """
@@ -1587,7 +1587,7 @@ class ServiceMeshMeshConfigSidecarInjectorArgsDict(TypedDict):
     """
     Whether it is the all namespaces you turn on the auto injection capabilities
     """
-    init_cni_configuration: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs']]]
+    init_cni_configuration: NotRequired[pulumi.Input[Optional['ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgsDict']]]
     """
     CNI configuration See `init_cni_configuration` below.
     """

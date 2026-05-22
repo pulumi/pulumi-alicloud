@@ -61,11 +61,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetIpamIpamScopes := defaultIpamIpamScope.IpamScopeName.ApplyT(func(ipamScopeName *string) (vpc.GetIpamIpamScopesResult, error) {
-//				return vpc.GetIpamIpamScopesResult(interface{}(vpc.GetIpamIpamScopes(ctx, &vpc.GetIpamIpamScopesArgs{
-//					IpamScopeName: pulumi.StringRef(pulumi.StringRef(pulumi.String(ipamScopeName))),
-//				}, nil))), nil
-//			}).(vpc.GetIpamIpamScopesResultOutput)
+//			defaultGetIpamIpamScopes := vpc.GetIpamIpamScopesOutput(ctx, vpc.GetIpamIpamScopesOutputArgs{
+//				IpamScopeName: defaultIpamIpamScope.IpamScopeName,
+//			}, nil)
 //			ctx.Export("alicloudVpcIpamIpamScopeExampleId", defaultGetIpamIpamScopes.ApplyT(func(defaultGetIpamIpamScopes vpc.GetIpamIpamScopesResult) (*string, error) {
 //				return &defaultGetIpamIpamScopes.Scopes[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

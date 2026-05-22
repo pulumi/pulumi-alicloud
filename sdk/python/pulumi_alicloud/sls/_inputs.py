@@ -74,7 +74,7 @@ __all__ = [
 ]
 
 class AlertConfigurationArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationAnnotationArgs']]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationAnnotationArgsDict']]]]]
     """
     Template Annotations.
     """
@@ -82,7 +82,7 @@ class AlertConfigurationArgsDict(TypedDict):
     """
     Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
     """
-    condition_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationConditionConfigurationArgs']]]
+    condition_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationConditionConfigurationArgsDict']]]
     """
     Alarm trigger condition. See `condition_configuration` below.
     """
@@ -90,15 +90,15 @@ class AlertConfigurationArgsDict(TypedDict):
     """
     The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
     """
-    group_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationGroupConfigurationArgs']]]
+    group_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationGroupConfigurationArgsDict']]]
     """
     Group evaluation configuration. See `group_configuration` below.
     """
-    join_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgs']]]]]
+    join_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationJoinConfigurationArgsDict']]]]]
     """
     Set operation configuration. See `join_configurations` below.
     """
-    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationLabelArgs']]]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationLabelArgsDict']]]]]
     """
     Label. See `labels` below.
     """
@@ -114,11 +114,11 @@ class AlertConfigurationArgsDict(TypedDict):
     """
     Alarm severity when no data triggers an alarm.
     """
-    policy_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationPolicyConfigurationArgs']]]
+    policy_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationPolicyConfigurationArgsDict']]]
     """
     Alert policy configuration. See `policy_configuration` below.
     """
-    query_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationQueryListArgs']]]]]
+    query_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationQueryListArgsDict']]]]]
     """
     Query the statistical list. See `query_list` below.
     """
@@ -126,19 +126,19 @@ class AlertConfigurationArgsDict(TypedDict):
     """
     Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
     """
-    severity_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgs']]]]]
+    severity_configurations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertConfigurationSeverityConfigurationArgsDict']]]]]
     """
     Trigger condition, set at least one trigger condition. See `severity_configurations` below.
     """
-    sink_alerthub: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkAlerthubArgs']]]
+    sink_alerthub: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkAlerthubArgsDict']]]
     """
     Configuration of Alerts Sent to Alerthub. See `sink_alerthub` below.
     """
-    sink_cms: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkCmsArgs']]]
+    sink_cms: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkCmsArgsDict']]]
     """
     Configure alerts sent to CloudMonitor. See `sink_cms` below.
     """
-    sink_event_store: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkEventStoreArgs']]]
+    sink_event_store: NotRequired[pulumi.Input[Optional['AlertConfigurationSinkEventStoreArgsDict']]]
     """
     Configuration of sending alarms to EventStore. See `sink_event_store` below.
     """
@@ -146,7 +146,7 @@ class AlertConfigurationArgsDict(TypedDict):
     """
     Customize the category of alarm monitoring rules.
     """
-    template_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationTemplateConfigurationArgs']]]
+    template_configuration: NotRequired[pulumi.Input[Optional['AlertConfigurationTemplateConfigurationArgsDict']]]
     """
     Alarm rule template configuration. See `template_configuration` below.
     """
@@ -1092,7 +1092,7 @@ class AlertConfigurationQueryListArgs:
 
 
 class AlertConfigurationSeverityConfigurationArgsDict(TypedDict):
-    eval_condition: NotRequired[pulumi.Input[Optional['AlertConfigurationSeverityConfigurationEvalConditionArgs']]]
+    eval_condition: NotRequired[pulumi.Input[Optional['AlertConfigurationSeverityConfigurationEvalConditionArgsDict']]]
     """
     Trigger condition. See `eval_condition` below.
     """

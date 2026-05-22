@@ -60,11 +60,11 @@ import * as utilities from "../utilities";
  *     appName: "example",
  *     desc: "example",
  * });
- * const exampleGetNacosConfigs = pulumi.all([exampleCluster.id, exampleEngineNamespace.namespaceId]).apply(([id, namespaceId]) => alicloud.mse.getNacosConfigsOutput({
- *     instanceId: id,
+ * const exampleGetNacosConfigs = alicloud.mse.getNacosConfigsOutput({
+ *     instanceId: exampleCluster.id,
  *     enableDetails: true,
- *     namespaceId: namespaceId,
- * }));
+ *     namespaceId: exampleEngineNamespace.namespaceId,
+ * });
  * ```
  */
 export function getNacosConfigs(args: GetNacosConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetNacosConfigsResult> {
@@ -225,11 +225,11 @@ export interface GetNacosConfigsResult {
  *     appName: "example",
  *     desc: "example",
  * });
- * const exampleGetNacosConfigs = pulumi.all([exampleCluster.id, exampleEngineNamespace.namespaceId]).apply(([id, namespaceId]) => alicloud.mse.getNacosConfigsOutput({
- *     instanceId: id,
+ * const exampleGetNacosConfigs = alicloud.mse.getNacosConfigsOutput({
+ *     instanceId: exampleCluster.id,
  *     enableDetails: true,
- *     namespaceId: namespaceId,
- * }));
+ *     namespaceId: exampleEngineNamespace.namespaceId,
+ * });
  * ```
  */
 export function getNacosConfigsOutput(args: GetNacosConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNacosConfigsResult> {

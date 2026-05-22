@@ -185,16 +185,10 @@ def get_waf_rulesets(ids: Optional[Sequence[_builtins.str]] = None,
         phase="http_custom",
         site_version=0,
         name=name)
-    ids = pulumi.Output.all(
-        id=default_waf_ruleset.id,
+    ids = alicloud.esa.get_waf_rulesets_output(ids=[default_waf_ruleset.id],
         site_id=default_waf_ruleset.site_id,
         phase=default_waf_ruleset.phase,
-        site_version=default_waf_ruleset.site_version
-    ).apply(lambda resolved_outputs: alicloud.esa.get_waf_rulesets_output(ids=[resolved_outputs['id']],
-        site_id=resolved_outputs['site_id'],
-        phase=resolved_outputs['phase'],
-        site_version=resolved_outputs['site_version']))
-
+        site_version=default_waf_ruleset.site_version)
     pulumi.export("esaWafRulesetsId0", ids.sets[0].id)
     ```
 
@@ -264,16 +258,10 @@ def get_waf_rulesets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builti
         phase="http_custom",
         site_version=0,
         name=name)
-    ids = pulumi.Output.all(
-        id=default_waf_ruleset.id,
+    ids = alicloud.esa.get_waf_rulesets_output(ids=[default_waf_ruleset.id],
         site_id=default_waf_ruleset.site_id,
         phase=default_waf_ruleset.phase,
-        site_version=default_waf_ruleset.site_version
-    ).apply(lambda resolved_outputs: alicloud.esa.get_waf_rulesets_output(ids=[resolved_outputs['id']],
-        site_id=resolved_outputs['site_id'],
-        phase=resolved_outputs['phase'],
-        site_version=resolved_outputs['site_version']))
-
+        site_version=default_waf_ruleset.site_version)
     pulumi.export("esaWafRulesetsId0", ids.sets[0].id)
     ```
 

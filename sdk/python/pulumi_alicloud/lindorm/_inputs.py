@@ -43,7 +43,7 @@ class InstanceV2EngineListArgsDict(TypedDict):
     - `LROW`: Wide table Engine 3.0
     - `LSTREAM`: Stream engine
     """
-    connect_address_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]]]
+    connect_address_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgsDict']]]]]
     """
     Connect Address List
     """
@@ -55,7 +55,7 @@ class InstanceV2EngineListArgsDict(TypedDict):
     """
     Latest Version
     """
-    node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]]]
+    node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgsDict']]]]]
     """
     Node Group List See `node_group` below.
     """

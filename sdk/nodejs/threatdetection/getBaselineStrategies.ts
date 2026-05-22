@@ -26,11 +26,11 @@ import * as utilities from "../utilities";
  *     startTime: "05:00:00",
  *     riskSubTypeName: "hc_exploit_redis",
  * });
- * const _default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
- *     ids: [id],
+ * const _default = alicloud.threatdetection.getBaselineStrategiesOutput({
+ *     ids: [defaultBaselineStrategy.id],
  *     nameRegex: defaultBaselineStrategy.name,
  *     customType: "custom",
- * }));
+ * });
  * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
  * ```
  */
@@ -116,11 +116,11 @@ export interface GetBaselineStrategiesResult {
  *     startTime: "05:00:00",
  *     riskSubTypeName: "hc_exploit_redis",
  * });
- * const _default = defaultBaselineStrategy.id.apply(id => alicloud.threatdetection.getBaselineStrategiesOutput({
- *     ids: [id],
+ * const _default = alicloud.threatdetection.getBaselineStrategiesOutput({
+ *     ids: [defaultBaselineStrategy.id],
  *     nameRegex: defaultBaselineStrategy.name,
  *     customType: "custom",
- * }));
+ * });
  * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
  * ```
  */

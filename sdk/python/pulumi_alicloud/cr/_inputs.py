@@ -40,13 +40,13 @@ __all__ = [
 ]
 
 class ChainChainConfigArgsDict(TypedDict):
-    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeArgs']]]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeArgsDict']]]]]
     """
     Each node in the delivery chain. See `nodes` below.
 
     > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
     """
-    routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]]
+    routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterArgsDict']]]]]
     """
     Execution sequence relationship between delivery chain nodes. See `routers` below.
     """
@@ -99,7 +99,7 @@ class ChainChainConfigNodeArgsDict(TypedDict):
     """
     Whether to enable the delivery chain node. Valid values: `true`, `false`.
     """
-    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgs']]]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgsDict']]]]]
     """
     The configuration of delivery chain node. See `node_config` below.
     """
@@ -164,7 +164,7 @@ class ChainChainConfigNodeArgs:
 
 
 class ChainChainConfigNodeNodeConfigArgsDict(TypedDict):
-    deny_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]]
+    deny_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgsDict']]]]]
     """
     Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
     """
@@ -282,11 +282,11 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
 
 
 class ChainChainConfigRouterArgsDict(TypedDict):
-    froms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterFromArgs']]]]]
+    froms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterFromArgsDict']]]]]
     """
     Source node. See `from` below.
     """
-    tos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterToArgs']]]]]
+    tos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ChainChainConfigRouterToArgsDict']]]]]
     """
     Destination node. See `to` below.
     """
@@ -389,7 +389,7 @@ class ChainChainConfigRouterToArgs:
 
 
 class RegistryEnterpriseInstanceInstanceEndpointArgsDict(TypedDict):
-    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgs']]]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict']]]]]
     """
     Domain List
     """

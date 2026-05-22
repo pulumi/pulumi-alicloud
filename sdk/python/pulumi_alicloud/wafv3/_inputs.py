@@ -52,7 +52,7 @@ class DefenseRuleConfigArgsDict(TypedDict):
     """
     The regions outside China from which you want to block requests. Separate multiple region codes with commas (,). You can call the DescribeIpAbroadCountryInfos operation to query the countries and regions outside China that can be blocked.
     """
-    account_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgs']]]]]
+    account_identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigAccountIdentifierArgsDict']]]]]
     """
     The policies for account extraction. Up to five policies are supported. Each policy is a JSON string. For more information, see accountIdentifiers description. See `account_identifiers` below.
     """
@@ -129,11 +129,11 @@ class DefenseRuleConfigArgsDict(TypedDict):
     """
     The type to enable decoding. Value:
     """
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigConditionArgsDict']]]]]
     """
     The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
     """
-    gray_config: NotRequired[pulumi.Input[Optional['DefenseRuleConfigGrayConfigArgs']]]
+    gray_config: NotRequired[pulumi.Input[Optional['DefenseRuleConfigGrayConfigArgsDict']]]
     """
     The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `gray_config` below.
     """
@@ -153,7 +153,7 @@ class DefenseRuleConfigArgsDict(TypedDict):
     """
     The protocol type of the cached page address. Valid values: http, https.
     """
-    rate_limit: NotRequired[pulumi.Input[Optional['DefenseRuleConfigRateLimitArgs']]]
+    rate_limit: NotRequired[pulumi.Input[Optional['DefenseRuleConfigRateLimitArgsDict']]]
     """
     The detailed speed limit configuration, which is described in the JSON string format. This information is configured only when CcStatus is set to 1. For specific configuration information, see detailed configuration of Ratelimit. See `rate_limit` below.
     """
@@ -177,7 +177,7 @@ class DefenseRuleConfigArgsDict(TypedDict):
     - qps: indicates throttling based on queries per second (QPS).
     - ratio (default): indicates throttling based on percentage.
     """
-    time_config: NotRequired[pulumi.Input[Optional['DefenseRuleConfigTimeConfigArgs']]]
+    time_config: NotRequired[pulumi.Input[Optional['DefenseRuleConfigTimeConfigArgsDict']]]
     """
     The scheduled rule configuration. The value is a JSON.  See `time_config` below.
     """
@@ -189,7 +189,7 @@ class DefenseRuleConfigArgsDict(TypedDict):
     """
     The address of the cached page.
     """
-    waf_base_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigWafBaseConfigArgs']]]]]
+    waf_base_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigWafBaseConfigArgsDict']]]]]
     """
     The configuration of the Web core protection rules to be modified. See `waf_base_config` below.
     """
@@ -1061,7 +1061,7 @@ class DefenseRuleConfigRateLimitArgsDict(TypedDict):
     The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
     Valid values: 1 to 1800 seconds.
     """
-    status: NotRequired[pulumi.Input[Optional['DefenseRuleConfigRateLimitStatusArgs']]]
+    status: NotRequired[pulumi.Input[Optional['DefenseRuleConfigRateLimitStatusArgsDict']]]
     """
     Response code frequency setting. The description is in the JSON string format. See `status` below.
     """
@@ -1275,7 +1275,7 @@ class DefenseRuleConfigRateLimitStatusArgs:
 
 
 class DefenseRuleConfigTimeConfigArgsDict(TypedDict):
-    time_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigTimeConfigTimePeriodArgs']]]]]
+    time_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigTimeConfigTimePeriodArgsDict']]]]]
     """
     The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `time_periods` below.
     """
@@ -1287,7 +1287,7 @@ class DefenseRuleConfigTimeConfigArgsDict(TypedDict):
     """
     The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
     """
-    week_time_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigTimeConfigWeekTimePeriodArgs']]]]]
+    week_time_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigTimeConfigWeekTimePeriodArgsDict']]]]]
     """
     The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `week_time_periods` below.
     """
@@ -1417,7 +1417,7 @@ class DefenseRuleConfigTimeConfigWeekTimePeriodArgsDict(TypedDict):
     """
     The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
     """
-    day_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs']]]]]
+    day_periods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgsDict']]]]]
     """
     The time period of each day when the rule is effective.  See `day_periods` below.
     """
@@ -1515,7 +1515,7 @@ class DefenseRuleConfigWafBaseConfigArgsDict(TypedDict):
     """
     The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
     """
-    rule_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigWafBaseConfigRuleDetailArgs']]]]]
+    rule_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DefenseRuleConfigWafBaseConfigRuleDetailArgsDict']]]]]
     """
     The configuration of the Web core protection rules to be modified. See `rule_detail` below.
     """
@@ -2071,7 +2071,7 @@ class DomainRedirectArgsDict(TypedDict):
     """
     The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
     """
-    request_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]]]]
+    request_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgsDict']]]]]
     """
     The traffic marking field and value of the domain name, which is used to mark the traffic processed by WAF.
     By specifying custom request header fields and corresponding values, when the access traffic of the domain name passes through WAF, WAF automatically adds the set custom field value to the request header as a traffic mark, which facilitates the statistics of back-end services. See `request_headers` below.

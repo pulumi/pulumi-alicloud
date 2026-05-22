@@ -185,11 +185,11 @@ class OtsBackupPlanRuleArgs:
 
 
 class PolicyBindingAdvancedOptionsArgsDict(TypedDict):
-    oss_detail: NotRequired[pulumi.Input[Optional['PolicyBindingAdvancedOptionsOssDetailArgs']]]
+    oss_detail: NotRequired[pulumi.Input[Optional['PolicyBindingAdvancedOptionsOssDetailArgsDict']]]
     """
     OSS Backup Advanced options See `oss_detail` below.
     """
-    udm_detail: NotRequired[pulumi.Input[Optional['PolicyBindingAdvancedOptionsUdmDetailArgs']]]
+    udm_detail: NotRequired[pulumi.Input[Optional['PolicyBindingAdvancedOptionsUdmDetailArgsDict']]]
     """
     ECS Backup Advanced options See `udm_detail` below.
     """
@@ -384,7 +384,7 @@ class PolicyRuleArgsDict(TypedDict):
     """
     This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
     """
-    data_source_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]]
+    data_source_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgsDict']]]]]
     """
     This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
     """
@@ -400,7 +400,7 @@ class PolicyRuleArgsDict(TypedDict):
     """
     Retention time, in days
     """
-    retention_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]]
+    retention_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgsDict']]]]]
     """
     This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
     """
@@ -412,7 +412,7 @@ class PolicyRuleArgsDict(TypedDict):
     """
     This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
     """
-    tag_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]]
+    tag_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgsDict']]]]]
     """
     This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
     """

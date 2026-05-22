@@ -28,10 +28,10 @@ import * as utilities from "../utilities";
  * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitchesOutput({
- *     vpcId: defaultGetNetworks.ids?.[0],
+ * const defaultGetSwitches = alicloud.vpc.getSwitchesOutput({
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *     zoneId: zoneId,
- * }));
+ * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
  *     name: name,
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
@@ -168,10 +168,10 @@ export interface GetInstancesResult {
  * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitchesOutput({
- *     vpcId: defaultGetNetworks.ids?.[0],
+ * const defaultGetSwitches = alicloud.vpc.getSwitchesOutput({
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *     zoneId: zoneId,
- * }));
+ * });
  * const group = new alicloud.ecs.SecurityGroup("group", {
  *     name: name,
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),

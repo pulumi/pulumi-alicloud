@@ -60,9 +60,9 @@ import * as utilities from "../utilities";
  *     ids: [defaultImage.id],
  * });
  * export const ecdImageId1 = ids.apply(ids => ids.images?.[0]?.id);
- * const nameRegex = defaultImage.imageName.apply(imageName => alicloud.eds.getImagesOutput({
- *     nameRegex: imageName,
- * }));
+ * const nameRegex = alicloud.eds.getImagesOutput({
+ *     nameRegex: defaultImage.imageName,
+ * });
  * export const ecdImageId2 = nameRegex.apply(nameRegex => nameRegex.images?.[0]?.id);
  * ```
  */
@@ -186,9 +186,9 @@ export interface GetImagesResult {
  *     ids: [defaultImage.id],
  * });
  * export const ecdImageId1 = ids.apply(ids => ids.images?.[0]?.id);
- * const nameRegex = defaultImage.imageName.apply(imageName => alicloud.eds.getImagesOutput({
- *     nameRegex: imageName,
- * }));
+ * const nameRegex = alicloud.eds.getImagesOutput({
+ *     nameRegex: defaultImage.imageName,
+ * });
  * export const ecdImageId2 = nameRegex.apply(nameRegex => nameRegex.images?.[0]?.id);
  * ```
  */

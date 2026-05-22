@@ -541,18 +541,12 @@ public final class EsaFunctions {
      *             .name(name)
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var siteId = values.t2;
-     *             var phase = values.t3;
-     *             var siteVersion = values.t4;
-     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
-     *                 .ids(id)
-     *                 .siteId(siteId)
-     *                 .phase(phase)
-     *                 .siteVersion(siteVersion)
-     *                 .build());
-     *         });
+     *         final var ids = EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *             .ids(defaultWafRuleset.id())
+     *             .siteId(defaultWafRuleset.siteId())
+     *             .phase(defaultWafRuleset.phase())
+     *             .siteVersion(defaultWafRuleset.siteVersion())
+     *             .build());
      * 
      *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
      *     }
@@ -611,18 +605,12 @@ public final class EsaFunctions {
      *             .name(name)
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var siteId = values.t2;
-     *             var phase = values.t3;
-     *             var siteVersion = values.t4;
-     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
-     *                 .ids(id)
-     *                 .siteId(siteId)
-     *                 .phase(phase)
-     *                 .siteVersion(siteVersion)
-     *                 .build());
-     *         });
+     *         final var ids = EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *             .ids(defaultWafRuleset.id())
+     *             .siteId(defaultWafRuleset.siteId())
+     *             .phase(defaultWafRuleset.phase())
+     *             .siteVersion(defaultWafRuleset.siteVersion())
+     *             .build());
      * 
      *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
      *     }
@@ -681,18 +669,12 @@ public final class EsaFunctions {
      *             .name(name)
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var siteId = values.t2;
-     *             var phase = values.t3;
-     *             var siteVersion = values.t4;
-     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
-     *                 .ids(id)
-     *                 .siteId(siteId)
-     *                 .phase(phase)
-     *                 .siteVersion(siteVersion)
-     *                 .build());
-     *         });
+     *         final var ids = EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *             .ids(defaultWafRuleset.id())
+     *             .siteId(defaultWafRuleset.siteId())
+     *             .phase(defaultWafRuleset.phase())
+     *             .siteVersion(defaultWafRuleset.siteVersion())
+     *             .build());
      * 
      *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
      *     }
@@ -751,18 +733,12 @@ public final class EsaFunctions {
      *             .name(name)
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var siteId = values.t2;
-     *             var phase = values.t3;
-     *             var siteVersion = values.t4;
-     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
-     *                 .ids(id)
-     *                 .siteId(siteId)
-     *                 .phase(phase)
-     *                 .siteVersion(siteVersion)
-     *                 .build());
-     *         });
+     *         final var ids = EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *             .ids(defaultWafRuleset.id())
+     *             .siteId(defaultWafRuleset.siteId())
+     *             .phase(defaultWafRuleset.phase())
+     *             .siteVersion(defaultWafRuleset.siteVersion())
+     *             .build());
      * 
      *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
      *     }
@@ -821,18 +797,12 @@ public final class EsaFunctions {
      *             .name(name)
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultWafRuleset.id(), defaultWafRuleset.siteId(), defaultWafRuleset.phase(), defaultWafRuleset.siteVersion()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var siteId = values.t2;
-     *             var phase = values.t3;
-     *             var siteVersion = values.t4;
-     *             return EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
-     *                 .ids(id)
-     *                 .siteId(siteId)
-     *                 .phase(phase)
-     *                 .siteVersion(siteVersion)
-     *                 .build());
-     *         });
+     *         final var ids = EsaFunctions.getWafRulesets(GetWafRulesetsArgs.builder()
+     *             .ids(defaultWafRuleset.id())
+     *             .siteId(defaultWafRuleset.siteId())
+     *             .phase(defaultWafRuleset.phase())
+     *             .siteVersion(defaultWafRuleset.siteVersion())
+     *             .build());
      * 
      *         ctx.export("esaWafRulesetsId0", ids.applyValue(_ids -> _ids.sets()[0].id()));
      *     }

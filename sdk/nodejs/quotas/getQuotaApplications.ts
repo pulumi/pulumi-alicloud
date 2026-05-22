@@ -31,12 +31,12 @@ import * as utilities from "../utilities";
  *     envLanguage: "zh",
  *     quotaCategory: "WhiteListLabel",
  * });
- * const _default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ * const _default = alicloud.quotas.getQuotaApplicationsOutput({
  *     productCode: "vpc",
  *     enableDetails: true,
- *     quotaCategory: quotaCategory,
- *     ids: [id],
- * }));
+ *     quotaCategory: defaultQuotaApplication.quotaCategory,
+ *     ids: [defaultQuotaApplication.id],
+ * });
  * ```
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
@@ -137,12 +137,12 @@ export interface GetQuotaApplicationsResult {
  *     envLanguage: "zh",
  *     quotaCategory: "WhiteListLabel",
  * });
- * const _default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ * const _default = alicloud.quotas.getQuotaApplicationsOutput({
  *     productCode: "vpc",
  *     enableDetails: true,
- *     quotaCategory: quotaCategory,
- *     ids: [id],
- * }));
+ *     quotaCategory: defaultQuotaApplication.quotaCategory,
+ *     ids: [defaultQuotaApplication.id],
+ * });
  * ```
  */
 export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotaApplicationsResult> {

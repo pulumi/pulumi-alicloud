@@ -52,7 +52,7 @@ class ServiceGroupMonitoringAgentProcessAlertConfigArgsDict(TypedDict):
     """
     The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
     """
-    target_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]]]
+    target_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict']]]]]
     """
     The alert triggers. See `target_list` below.
     """

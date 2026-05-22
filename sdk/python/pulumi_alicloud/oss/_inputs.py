@@ -720,15 +720,15 @@ class BucketLifecycleRuleArgsDict(TypedDict):
     """
     Specifies lifecycle rule status.
     """
-    abort_multipart_uploads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgs']]]]]
+    abort_multipart_uploads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgsDict']]]]]
     """
     Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
     """
-    expirations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgs']]]]]
+    expirations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgsDict']]]]]
     """
     Specifies a period in the object's expire. See `expiration` below.
     """
-    filter: NotRequired[pulumi.Input[Optional['BucketLifecycleRuleFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['BucketLifecycleRuleFilterArgsDict']]]
     """
     Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
 
@@ -738,11 +738,11 @@ class BucketLifecycleRuleArgsDict(TypedDict):
     """
     Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
     """
-    noncurrent_version_expirations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgs']]]]]
+    noncurrent_version_expirations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]]]
     """
     Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
     """
-    noncurrent_version_transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgs']]]]]
+    noncurrent_version_transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgsDict']]]]]
     """
     Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
     """
@@ -754,7 +754,7 @@ class BucketLifecycleRuleArgsDict(TypedDict):
     """
     Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
     """
-    transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgs']]]]]
+    transitions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgsDict']]]]]
     """
     Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
     """
@@ -1074,7 +1074,7 @@ class BucketLifecycleRuleExpirationArgs:
 
 
 class BucketLifecycleRuleFilterArgsDict(TypedDict):
-    not_: NotRequired[pulumi.Input[Optional['BucketLifecycleRuleFilterNotArgs']]]
+    not_: NotRequired[pulumi.Input[Optional['BucketLifecycleRuleFilterNotArgsDict']]]
     """
     The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
     """
@@ -1147,7 +1147,7 @@ class BucketLifecycleRuleFilterNotArgsDict(TypedDict):
     """
     The prefix in the names of the objects to which the lifecycle rule does not apply.
     """
-    tag: NotRequired[pulumi.Input[Optional['BucketLifecycleRuleFilterNotTagArgs']]]
+    tag: NotRequired[pulumi.Input[Optional['BucketLifecycleRuleFilterNotTagArgsDict']]]
     """
     The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
     """
@@ -1510,7 +1510,7 @@ class BucketLoggingArgs:
 
 
 class BucketObjectWormConfigurationRuleArgsDict(TypedDict):
-    default_retention: NotRequired[pulumi.Input[Optional['BucketObjectWormConfigurationRuleDefaultRetentionArgs']]]
+    default_retention: NotRequired[pulumi.Input[Optional['BucketObjectWormConfigurationRuleDefaultRetentionArgsDict']]]
     """
     Container for the default retention policy.   See `default_retention` below.
     """
@@ -1620,7 +1620,7 @@ class BucketOverwriteConfigRuleArgsDict(TypedDict):
     """
     The prefix of the Object name, which is used to filter objects to be processed.
     """
-    principals: NotRequired[pulumi.Input[Optional['BucketOverwriteConfigRulePrincipalsArgs']]]
+    principals: NotRequired[pulumi.Input[Optional['BucketOverwriteConfigRulePrincipalsArgsDict']]]
     """
     A collection of authorized principals. The usage is similar to that of the Principal of the Bucket Policy. You can enter the primary account, sub-account, or role. If this parameter is empty or not configured, overwriting is not allowed for objects that meet the preceding and suffix conditions. See `principals` below.
     """
@@ -2032,7 +2032,7 @@ class BucketReplicationRtcArgs:
 
 
 class BucketReplicationSourceSelectionCriteriaArgsDict(TypedDict):
-    sse_kms_encrypted_objects: NotRequired[pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs']]]
+    sse_kms_encrypted_objects: NotRequired[pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict']]]
     """
     Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
     """
@@ -2090,11 +2090,11 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
 
 
 class BucketResponseHeaderRuleArgsDict(TypedDict):
-    filters: NotRequired[pulumi.Input[Optional['BucketResponseHeaderRuleFiltersArgs']]]
+    filters: NotRequired[pulumi.Input[Optional['BucketResponseHeaderRuleFiltersArgsDict']]]
     """
     The container that holds the operations that need to be apply rules. See `filters` below.
     """
-    hide_headers: NotRequired[pulumi.Input[Optional['BucketResponseHeaderRuleHideHeadersArgs']]]
+    hide_headers: NotRequired[pulumi.Input[Optional['BucketResponseHeaderRuleHideHeadersArgsDict']]]
     """
     The container that holds the response headers that need to be hidden. See `hide_headers` below.
     """
@@ -2507,7 +2507,7 @@ class BucketWebsiteIndexDocumentArgs:
 
 
 class BucketWebsiteRoutingRulesArgsDict(TypedDict):
-    routing_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgs']]]]]
+    routing_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleArgsDict']]]]]
     """
     Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
     """
@@ -2536,15 +2536,15 @@ class BucketWebsiteRoutingRulesArgs:
 
 
 class BucketWebsiteRoutingRulesRoutingRuleArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict']]]
     """
     Save the criteria that the rule needs to match. See `condition` below.
     """
-    lua_config: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgs']]]
+    lua_config: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleLuaConfigArgsDict']]]
     """
     The Lua script configuration to be executed. See `lua_config` below.
     """
-    redirect: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict']]]
     """
     Specifies the action to perform after this rule is matched. See `redirect` below.
     """
@@ -2629,7 +2629,7 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionArgsDict(TypedDict):
     """
     When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
     """
-    include_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgs']]]]]
+    include_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeaderArgsDict']]]]]
     """
     This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
     """
@@ -2853,7 +2853,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
     """
     The status code of the mirror back-to-source trigger asynchronous pull mode.
     """
-    mirror_auth: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgs']]]
+    mirror_auth: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuthArgsDict']]]
     """
     Image back Source station authentication information See `mirror_auth` below.
     """
@@ -2877,7 +2877,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
     """
     If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
     """
-    mirror_headers: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgs']]]
+    mirror_headers: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict']]]
     """
     Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirror_headers` below.
     """
@@ -2885,7 +2885,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
     """
     Whether it is a mirror back-to-source high-speed Channel
     """
-    mirror_multi_alternates: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgs']]]
+    mirror_multi_alternates: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict']]]
     """
     Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_multi_alternates` below.
     """
@@ -2901,7 +2901,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
     """
     Whether mirroring back to source does not save data
     """
-    mirror_return_headers: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgs']]]
+    mirror_return_headers: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict']]]
     """
     The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_return_headers` below.
     """
@@ -2921,7 +2921,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectArgsDict(TypedDict):
     """
     It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
     """
-    mirror_taggings: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgs']]]
+    mirror_taggings: NotRequired[pulumi.Input[Optional['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict']]]
     """
     Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirror_taggings` below.
     """
@@ -3675,7 +3675,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersArgsDict(TypedDic
     """
     Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
     """
-    sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs']]]]]
+    sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgsDict']]]]]
     """
     Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
     """
@@ -3794,7 +3794,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSetArgs:
 
 
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesArgsDict(TypedDict):
-    mirror_multi_alternates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgs']]]]]
+    mirror_multi_alternates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternateArgsDict']]]]]
     """
     Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
     """
@@ -3912,7 +3912,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMul
 
 
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersArgsDict(TypedDict):
-    return_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgs']]]]]
+    return_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeaderArgsDict']]]]]
     """
     The list of response header rules for mirroring back-to-source return. See `return_header` below.
     """
@@ -3983,7 +3983,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeade
 
 
 class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsArgsDict(TypedDict):
-    taggings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgs']]]]]
+    taggings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTaggingArgsDict']]]]]
     """
     Image back-to-source save label rule list See `taggings` below.
     """

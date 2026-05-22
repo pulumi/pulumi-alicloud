@@ -113,7 +113,7 @@ class FirewallVpcFirewallCenLocalVpcArgsDict(TypedDict):
     """
     The list of network segments protected by the VPC firewall.
     """
-    eni_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgs']]]]]
+    eni_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgsDict']]]]]
     """
     List of elastic network cards.
     """
@@ -153,7 +153,7 @@ class FirewallVpcFirewallCenLocalVpcArgsDict(TypedDict):
     """
     The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
     """
-    vpc_cidr_table_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs']]]]]
+    vpc_cidr_table_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict']]]]]
     """
     The VPC network segment list.
     """
@@ -494,7 +494,7 @@ class FirewallVpcFirewallCenLocalVpcEniListArgs:
 
 
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict(TypedDict):
-    route_entry_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs']]]]]
+    route_entry_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict']]]]]
     """
     The list of route entries in the VPC.
     """

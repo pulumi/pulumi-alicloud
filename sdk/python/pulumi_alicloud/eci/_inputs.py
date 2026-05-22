@@ -195,7 +195,7 @@ class ContainerGroupContainerArgsDict(TypedDict):
     """
     The amount of CPU resources allocated to the container. Default value: `0`.
     """
-    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgsDict']]]]]
     """
     The structure of environmentVars. See `environment_vars` below.
     """
@@ -211,7 +211,7 @@ class ContainerGroupContainerArgsDict(TypedDict):
     """
     The commands to be executed in containers when you use the CLI to specify the preStop callback function.
     """
-    liveness_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]]]
+    liveness_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgsDict']]]]]
     """
     The health check of the container. See `liveness_probe` below.
     """
@@ -219,11 +219,11 @@ class ContainerGroupContainerArgsDict(TypedDict):
     """
     The amount of memory resources allocated to the container. Default value: `0`.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerPortArgsDict']]]]]
     """
     The structure of port. See `ports` below.
     """
-    readiness_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]]]
+    readiness_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgsDict']]]]]
     """
     The health check of the container. See `readiness_probe` below.
     """
@@ -235,11 +235,11 @@ class ContainerGroupContainerArgsDict(TypedDict):
     """
     The number of times that the container restarted.
     """
-    security_contexts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]]
+    security_contexts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgsDict']]]]]
     """
     The security context of the container. See `security_context` below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgsDict']]]]]
     """
     The structure of volumeMounts. See `volume_mounts` below.
     """
@@ -542,7 +542,7 @@ class ContainerGroupContainerArgs:
 
 
 class ContainerGroupContainerEnvironmentVarArgsDict(TypedDict):
-    field_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]]
+    field_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgsDict']]]]]
     key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -608,7 +608,7 @@ class ContainerGroupContainerEnvironmentVarFieldRefArgs:
 
 
 class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
-    execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]]
+    execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgsDict']]]]]
     """
     Health check using command line method. See `exec` below.
     """
@@ -616,7 +616,7 @@ class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
     """
     Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
     """
-    http_gets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]]
+    http_gets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgsDict']]]]]
     """
     Health check using HTTP request method. See `http_get` below.
 
@@ -634,7 +634,7 @@ class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
     """
     The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
     """
-    tcp_sockets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]]
+    tcp_sockets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgsDict']]]]]
     """
     Health check using TCP socket method. See `tcp_socket` below.
     """
@@ -911,7 +911,7 @@ class ContainerGroupContainerPortArgs:
 
 
 class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
-    execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]]
+    execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgsDict']]]]]
     """
     Health check using command line method. See `exec` below.
     """
@@ -919,7 +919,7 @@ class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
     """
     Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
     """
-    http_gets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]]
+    http_gets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgsDict']]]]]
     """
     Health check using HTTP request method. See `http_get` below.
 
@@ -937,7 +937,7 @@ class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
     """
     The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
     """
-    tcp_sockets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]]
+    tcp_sockets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgsDict']]]]]
     """
     Health check using TCP socket method. See `tcp_socket` below.
     """
@@ -1181,7 +1181,7 @@ class ContainerGroupContainerReadinessProbeTcpSocketArgs:
 
 
 class ContainerGroupContainerSecurityContextArgsDict(TypedDict):
-    capabilities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]]
+    capabilities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgsDict']]]]]
     privileged: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
@@ -1306,7 +1306,7 @@ class ContainerGroupDnsConfigArgsDict(TypedDict):
     """
     The list of DNS server IP addresses.
     """
-    options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]]]
+    options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgsDict']]]]]
     """
     The structure of options. See `options` below.
     """
@@ -1531,7 +1531,7 @@ class ContainerGroupInitContainerArgsDict(TypedDict):
     """
     The amount of CPU resources allocated to the container. Default value: `0`.
     """
-    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgsDict']]]]]
     """
     The structure of environmentVars. See `environment_vars` below.
     """
@@ -1555,7 +1555,7 @@ class ContainerGroupInitContainerArgsDict(TypedDict):
     """
     The name of the mounted volume.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgsDict']]]]]
     """
     The structure of port. See `ports` below.
     """
@@ -1567,11 +1567,11 @@ class ContainerGroupInitContainerArgsDict(TypedDict):
     """
     The number of times that the container restarted.
     """
-    security_contexts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]]
+    security_contexts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgsDict']]]]]
     """
     The security context of the container. See `security_context` below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgsDict']]]]]
     """
     The structure of volumeMounts. See `volume_mounts` below.
     """
@@ -1828,7 +1828,7 @@ class ContainerGroupInitContainerArgs:
 
 
 class ContainerGroupInitContainerEnvironmentVarArgsDict(TypedDict):
-    field_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]]
+    field_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict']]]]]
     key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
@@ -1927,7 +1927,7 @@ class ContainerGroupInitContainerPortArgs:
 
 
 class ContainerGroupInitContainerSecurityContextArgsDict(TypedDict):
-    capabilities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]]
+    capabilities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgsDict']]]]]
     run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
@@ -2026,7 +2026,7 @@ class ContainerGroupInitContainerVolumeMountArgs:
 
 
 class ContainerGroupSecurityContextArgsDict(TypedDict):
-    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]]
+    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgsDict']]]]]
     """
     Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
     """
@@ -2088,7 +2088,7 @@ class ContainerGroupSecurityContextSysctlArgs:
 
 
 class ContainerGroupVolumeArgsDict(TypedDict):
-    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]]
+    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]]
     """
     The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
     > **NOTE:** Every volumes mounted must have `name` and `type` attributes.

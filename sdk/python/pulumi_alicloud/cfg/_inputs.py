@@ -40,7 +40,7 @@ class AggregateCompliancePackConfigRuleArgsDict(TypedDict):
     """
     The Managed Rule Identifier.
     """
-    config_rule_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]]
+    config_rule_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict']]]]]
     """
     A list of parameter rules. See `config_rule_parameters` below.
     """
@@ -235,7 +235,7 @@ class CompliancePackConfigRuleArgsDict(TypedDict):
     """
     The Managed Rule Identifier.
     """
-    config_rule_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]]
+    config_rule_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgsDict']]]]]
     """
     A list of Config Rule Parameters. See `config_rule_parameters` below.
     """

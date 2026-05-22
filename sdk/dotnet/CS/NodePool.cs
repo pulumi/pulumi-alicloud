@@ -599,24 +599,24 @@ namespace Pulumi.AliCloud.CS
     ///         }).ToList(),
     ///         Name = k8sNameTerway,
     ///         ClusterSpec = clusterSpec,
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         PodVswitchIds = Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
-    ///         PodVswitchIds = Std.Join.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         NewNatGateway = true,
     ///         ServiceCidr = "10.11.0.0/16",
     ///         SlbInternetEnabled = true,
@@ -653,15 +653,15 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         NodePoolName = nodepoolName,
     ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         AutoMode = new AliCloud.CS.Inputs.NodePoolAutoModeArgs
     ///         {
     ///             Enabled = true,
@@ -756,15 +756,15 @@ namespace Pulumi.AliCloud.CS
     ///     {
     ///         NodePoolName = "upgrade_nodepool",
     ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = Std.Join.Invoke(new()
+    ///         VswitchIds = Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         InstanceTypes = new[]
     ///         {
     ///             "ecs.c6.xlarge",

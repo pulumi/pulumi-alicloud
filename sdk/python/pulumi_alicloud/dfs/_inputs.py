@@ -30,7 +30,7 @@ class VscMountPointInstanceArgsDict(TypedDict):
     """
     The status of the ECS instance on which the HDFS file system is mounted.
     """
-    vscs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]]
+    vscs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VscMountPointInstanceVscArgsDict']]]]]
     """
     The VSC list of mounted HDFS file systems.
     """

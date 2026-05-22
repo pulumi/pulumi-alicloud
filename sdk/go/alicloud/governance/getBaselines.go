@@ -86,16 +86,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := pulumi.All(defaultBaseline.ID(), defaultBaseline.BaselineName).ApplyT(func(_args []interface{}) (governance.GetBaselinesResult, error) {
-//				id := _args[0].(string)
-//				baselineName := _args[1].(*string)
-//				return governance.GetBaselinesResult(interface{}(governance.GetBaselines(ctx, &governance.GetBaselinesArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(baselineName))),
-//				}, nil))), nil
-//			}).(governance.GetBaselinesResultOutput)
+//			_default := governance.GetBaselinesOutput(ctx, governance.GetBaselinesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultBaseline.ID(),
+//				},
+//				NameRegex: defaultBaseline.BaselineName,
+//			}, nil)
 //			ctx.Export("alicloudGovernanceBaselineExampleId", _default.ApplyT(func(_default governance.GetBaselinesResult) (*string, error) {
 //				return &_default.Baselines[0].BaselineId, nil
 //			}).(pulumi.StringPtrOutput))

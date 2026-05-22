@@ -83,15 +83,15 @@ namespace Pulumi.AliCloud.CS
     ///         Name = $"{name}-{defaultInteger.Result}",
     ///         ClusterSpec = "ack.pro.small",
     ///         Version = @default.Apply(@default =&gt; @default.Apply(getKubernetesVersionResult =&gt; getKubernetesVersionResult.Metadatas[0]?.Version)),
-    ///         WorkerVswitchIds = Std.Join.Invoke(new()
+    ///         WorkerVswitchIds = Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Input = defaultSwitch.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = defaultSwitch.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         NewNatGateway = false,
     ///         PodCidr = podCidr,
     ///         ServiceCidr = serviceCidr,

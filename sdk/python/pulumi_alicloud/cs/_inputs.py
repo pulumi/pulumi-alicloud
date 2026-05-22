@@ -2693,7 +2693,7 @@ class ManagedKubernetesMaintenanceWindowArgs:
 
 
 class ManagedKubernetesOperationPolicyArgsDict(TypedDict):
-    cluster_auto_upgrade: NotRequired[pulumi.Input[Optional['ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs']]]
+    cluster_auto_upgrade: NotRequired[pulumi.Input[Optional['ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict']]]
     """
     Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
     """
@@ -3752,7 +3752,7 @@ class NodePoolKubeletConfigurationArgsDict(TypedDict):
     """
     Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
     """
-    reserved_memories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]]]]
+    reserved_memories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgsDict']]]]]
     """
     Reserve memory for NUMA nodes. See `reserved_memory` below.
     """
@@ -3772,7 +3772,7 @@ class NodePoolKubeletConfigurationArgsDict(TypedDict):
     """
     Name of the Topology Manager policy used.
     """
-    tracing: NotRequired[pulumi.Input[Optional['NodePoolKubeletConfigurationTracingArgs']]]
+    tracing: NotRequired[pulumi.Input[Optional['NodePoolKubeletConfigurationTracingArgsDict']]]
     """
     OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
     """
@@ -4447,7 +4447,7 @@ class NodePoolManagementArgsDict(TypedDict):
     """
     Whether to enable automatic repair. Valid values: `true`: Automatic repair. `false`: not automatically repaired.
     """
-    auto_repair_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoRepairPolicyArgs']]]
+    auto_repair_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoRepairPolicyArgsDict']]]
     """
     Automatic repair node policy. See `auto_repair_policy` below.
     """
@@ -4455,7 +4455,7 @@ class NodePoolManagementArgsDict(TypedDict):
     """
     Specifies whether to enable auto update. Valid values: `true`: enables auto update. `false`: disables auto update.
     """
-    auto_upgrade_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoUpgradePolicyArgs']]]
+    auto_upgrade_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoUpgradePolicyArgsDict']]]
     """
     The auto update policy. See `auto_upgrade_policy` below.
     """
@@ -4463,7 +4463,7 @@ class NodePoolManagementArgsDict(TypedDict):
     """
     Specifies whether to automatically patch CVE vulnerabilities. Valid values: `true`, `false`.
     """
-    auto_vul_fix_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoVulFixPolicyArgs']]]
+    auto_vul_fix_policy: NotRequired[pulumi.Input[Optional['NodePoolManagementAutoVulFixPolicyArgsDict']]]
     """
     The auto CVE patching policy. See `auto_vul_fix_policy` below.
     """
@@ -5764,7 +5764,7 @@ class ServerlessKubernetesMaintenanceWindowArgs:
 
 
 class ServerlessKubernetesOperationPolicyArgsDict(TypedDict):
-    cluster_auto_upgrade: NotRequired[pulumi.Input[Optional['ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs']]]
+    cluster_auto_upgrade: NotRequired[pulumi.Input[Optional['ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgsDict']]]
     """
     Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
     """

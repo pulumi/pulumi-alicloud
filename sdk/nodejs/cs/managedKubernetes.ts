@@ -114,26 +114,26 @@ import * as utilities from "../utilities";
  *     }).then(invoke => std.split({
  *         separator: ",",
  *         text: invoke.result,
- *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.splitOutput({
  *         separator: ",",
- *         input: vswitches.map(__item => __item.id),
- *     }).apply(invoke => std.splitOutput({
- *         separator: ",",
- *         text: invoke.result,
- *     })).apply(invoke => invoke.result),
+ *         text: std.joinOutput({
+ *             separator: ",",
+ *             input: vswitches.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
  *         separator: ",",
  *         input: terwayVswitchIds,
  *     }).then(invoke => std.split({
  *         separator: ",",
  *         text: invoke.result,
- *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.splitOutput({
  *         separator: ",",
- *         input: terwayVswitches.map(__item => __item.id),
- *     }).apply(invoke => std.splitOutput({
- *         separator: ",",
- *         text: invoke.result,
- *     })).apply(invoke => invoke.result),
+ *         text: std.joinOutput({
+ *             separator: ",",
+ *             input: terwayVswitches.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     newNatGateway: true,
  *     proxyMode: proxyMode,
  *     serviceCidr: serviceCidr,

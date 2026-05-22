@@ -225,15 +225,16 @@ import (
 // tmp5 = pulumi.StringArray{
 // }
 // } else {
-// tmp5 = pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// tmp5 = pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// Separator: pulumi.String(","),
+// Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:108,19-34),
-// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
-// return std.SplitResult(interface{}(std.Split(ctx, &std.SplitArgs{
-// Separator: ",",
-// Text: invoke.Result,
-// }, nil))), nil
-// }).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+// val := invoke.Result
+// return &val, nil
+// }).(pulumi.StringPtrOutput),
+// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringArrayOutput))
 // }
@@ -254,15 +255,16 @@ import (
 // tmp7 = pulumi.StringArray{
 // }
 // } else {
-// tmp7 = pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// tmp7 = pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// Separator: pulumi.String(","),
+// Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:121,19-40),
-// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
-// return std.SplitResult(interface{}(std.Split(ctx, &std.SplitArgs{
-// Separator: ",",
-// Text: invoke.Result,
-// }, nil))), nil
-// }).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+// val := invoke.Result
+// return &val, nil
+// }).(pulumi.StringPtrOutput),
+// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringArrayOutput))
 // }

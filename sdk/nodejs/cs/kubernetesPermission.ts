@@ -62,13 +62,13 @@ import * as utilities from "../utilities";
  *     name: `${name}-${defaultInteger.result}`,
  *     clusterSpec: "ack.pro.small",
  *     version: _default.then(_default => _default.metadatas?.[0]?.version),
- *     workerVswitchIds: std.joinOutput({
+ *     workerVswitchIds: std.splitOutput({
  *         separator: ",",
- *         input: defaultSwitch.map(__item => __item.id),
- *     }).apply(invoke => std.splitOutput({
- *         separator: ",",
- *         text: invoke.result,
- *     })).apply(invoke => invoke.result),
+ *         text: std.joinOutput({
+ *             separator: ",",
+ *             input: defaultSwitch.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     newNatGateway: false,
  *     podCidr: podCidr,
  *     serviceCidr: serviceCidr,

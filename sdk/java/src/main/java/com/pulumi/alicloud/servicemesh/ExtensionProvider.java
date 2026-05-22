@@ -75,13 +75,13 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         final var defaultGetSwitches = Output.tuple(defaultGetNetworks.ids().length(), defaultNetwork[0].id()).applyValue(values -> {
- *             var length = values.t1;
- *             var id = values.t2;
- *             return length > 0 ? defaultGetNetworks.ids()[0] : id;
- *         }).applyValue(_value -> VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(_value)
- *             .build()));
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(Output.tuple(defaultGetNetworks.ids().length(), defaultNetwork[0].id()).applyValue(values -> {
+ *                 var length = values.t1;
+ *                 var id = values.t2;
+ *                 return length > 0 ? defaultGetNetworks.ids()[0] : id;
+ *             }))
+ *             .build());
  * 
  *         for (var i = 0; i < defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()

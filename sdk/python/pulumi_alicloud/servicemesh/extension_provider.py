@@ -198,11 +198,11 @@ class ExtensionProvider(pulumi.CustomResource):
                 default_network.append(alicloud.vpc.Network(f"default-{range['value']}"))
 
         len(default_get_networks.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_get_switches = pulumi.Output.all(
+        default_get_switches = alicloud.vpc.get_switches_output(vpc_id=pulumi.Output.all(
             length=len(default_get_networks.ids),
             id=default_network[0].id
         ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        .apply(lambda value: alicloud.vpc.get_switches_output(vpc_id=value))
+        )
         default_switch: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
@@ -295,11 +295,11 @@ class ExtensionProvider(pulumi.CustomResource):
                 default_network.append(alicloud.vpc.Network(f"default-{range['value']}"))
 
         len(default_get_networks.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_get_switches = pulumi.Output.all(
+        default_get_switches = alicloud.vpc.get_switches_output(vpc_id=pulumi.Output.all(
             length=len(default_get_networks.ids),
             id=default_network[0].id
         ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
-        .apply(lambda value: alicloud.vpc.get_switches_output(vpc_id=value))
+        )
         default_switch: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:

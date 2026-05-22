@@ -28,11 +28,11 @@ __all__ = [
 ]
 
 class JobJobMonitorInfoArgsDict(TypedDict):
-    contact_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgs']]]]]
+    contact_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobJobMonitorInfoContactInfoArgsDict']]]]]
     """
     Contact information. See `contact_info` below.
     """
-    monitor_config: NotRequired[pulumi.Input[Optional['JobJobMonitorInfoMonitorConfigArgs']]]
+    monitor_config: NotRequired[pulumi.Input[Optional['JobJobMonitorInfoMonitorConfigArgsDict']]]
     """
     Alarm switch and threshold configuration. See `monitor_config` below.
     """

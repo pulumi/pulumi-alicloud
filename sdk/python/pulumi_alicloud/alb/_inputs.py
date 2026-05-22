@@ -325,7 +325,7 @@ class ListenerAccessLogTracingConfigArgs:
 
 
 class ListenerAclConfigArgsDict(TypedDict):
-    acl_relations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]]]
+    acl_relations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgsDict']]]]]
     """
     The ACLs that are associated with the listener. See `acl_relations` below for details.
     """
@@ -485,7 +485,7 @@ class ListenerDefaultActionArgsDict(TypedDict):
     """
     The action type. Value: ForwardGroup, indicating forwarding to the server group.
     """
-    forward_group_config: NotRequired[pulumi.Input[Optional['ListenerDefaultActionForwardGroupConfigArgs']]]
+    forward_group_config: NotRequired[pulumi.Input[Optional['ListenerDefaultActionForwardGroupConfigArgsDict']]]
     """
     Forwarding Action Configurations See `forward_group_config` below.
     """
@@ -1186,7 +1186,7 @@ class LoadBalancerZoneMappingArgsDict(TypedDict):
     """
     An IP address of the IPv6 type.
     """
-    load_balancer_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]]
+    load_balancer_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]]
     """
     The instance address.
     """
@@ -1525,39 +1525,39 @@ class RuleRuleActionArgsDict(TypedDict):
     **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
     **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
     """
-    cors_config: NotRequired[pulumi.Input[Optional['RuleRuleActionCorsConfigArgs']]]
+    cors_config: NotRequired[pulumi.Input[Optional['RuleRuleActionCorsConfigArgsDict']]]
     """
     Request forwarding based on CORS. See `cors_config` below.
     """
-    fixed_response_config: NotRequired[pulumi.Input[Optional['RuleRuleActionFixedResponseConfigArgs']]]
+    fixed_response_config: NotRequired[pulumi.Input[Optional['RuleRuleActionFixedResponseConfigArgsDict']]]
     """
     The configuration of the fixed response. See `fixed_response_config` below.
     """
-    forward_group_config: NotRequired[pulumi.Input[Optional['RuleRuleActionForwardGroupConfigArgs']]]
+    forward_group_config: NotRequired[pulumi.Input[Optional['RuleRuleActionForwardGroupConfigArgsDict']]]
     """
     The forward response action within ALB. See `forward_group_config` below.
     """
-    insert_header_config: NotRequired[pulumi.Input[Optional['RuleRuleActionInsertHeaderConfigArgs']]]
+    insert_header_config: NotRequired[pulumi.Input[Optional['RuleRuleActionInsertHeaderConfigArgsDict']]]
     """
     The configuration of the inserted header field. See `insert_header_config` below.
     """
-    redirect_config: NotRequired[pulumi.Input[Optional['RuleRuleActionRedirectConfigArgs']]]
+    redirect_config: NotRequired[pulumi.Input[Optional['RuleRuleActionRedirectConfigArgsDict']]]
     """
     The configuration of the external redirect action. See `redirect_config` below.
     """
-    remove_header_config: NotRequired[pulumi.Input[Optional['RuleRuleActionRemoveHeaderConfigArgs']]]
+    remove_header_config: NotRequired[pulumi.Input[Optional['RuleRuleActionRemoveHeaderConfigArgsDict']]]
     """
     The configuration of the inserted header field. See `remove_header_config` below.
     """
-    rewrite_config: NotRequired[pulumi.Input[Optional['RuleRuleActionRewriteConfigArgs']]]
+    rewrite_config: NotRequired[pulumi.Input[Optional['RuleRuleActionRewriteConfigArgsDict']]]
     """
     The redirect action within ALB. See `rewrite_config` below.
     """
-    traffic_limit_config: NotRequired[pulumi.Input[Optional['RuleRuleActionTrafficLimitConfigArgs']]]
+    traffic_limit_config: NotRequired[pulumi.Input[Optional['RuleRuleActionTrafficLimitConfigArgsDict']]]
     """
     The Flow speed limit. See `traffic_limit_config` below.
     """
-    traffic_mirror_config: NotRequired[pulumi.Input[Optional['RuleRuleActionTrafficMirrorConfigArgs']]]
+    traffic_mirror_config: NotRequired[pulumi.Input[Optional['RuleRuleActionTrafficMirrorConfigArgsDict']]]
     """
     The Traffic mirroring. See `traffic_mirror_config` below.
     """
@@ -1947,11 +1947,11 @@ class RuleRuleActionFixedResponseConfigArgs:
 
 
 class RuleRuleActionForwardGroupConfigArgsDict(TypedDict):
-    server_group_sticky_session: NotRequired[pulumi.Input[Optional['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']]]
+    server_group_sticky_session: NotRequired[pulumi.Input[Optional['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgsDict']]]
     """
     The configuration of session persistence for server groups. See `server_group_sticky_session` below.
     """
-    server_group_tuples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]]]
+    server_group_tuples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgsDict']]]]]
     """
     The destination server group to which requests are forwarded. See `server_group_tuples` below.
     """
@@ -2428,7 +2428,7 @@ class RuleRuleActionTrafficLimitConfigArgs:
 
 
 class RuleRuleActionTrafficMirrorConfigArgsDict(TypedDict):
-    mirror_group_config: NotRequired[pulumi.Input[Optional['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']]]
+    mirror_group_config: NotRequired[pulumi.Input[Optional['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict']]]
     """
     The Traffic is mirrored to the server group. See `mirror_group_config` below.
     """
@@ -2477,7 +2477,7 @@ class RuleRuleActionTrafficMirrorConfigArgs:
 
 
 class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgsDict(TypedDict):
-    server_group_tuples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]]]
+    server_group_tuples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgsDict']]]]]
     """
     The destination server group to which requests are forwarded. See `server_group_tuples` below.
     """
@@ -2548,39 +2548,39 @@ class RuleRuleConditionArgsDict(TypedDict):
     - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
     - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
     """
-    cookie_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionCookieConfigArgs']]]
+    cookie_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionCookieConfigArgsDict']]]
     """
     The configuration of the cookie. See See `cookie_config` below.
     """
-    header_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionHeaderConfigArgs']]]
+    header_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionHeaderConfigArgsDict']]]
     """
     The configuration of the header field. See `header_config` below.
     """
-    host_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionHostConfigArgs']]]
+    host_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionHostConfigArgsDict']]]
     """
     The configuration of the host field. See `host_config` below.
     """
-    method_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionMethodConfigArgs']]]
+    method_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionMethodConfigArgsDict']]]
     """
     The configuration of the request method. See `method_config` below.
     """
-    path_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionPathConfigArgs']]]
+    path_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionPathConfigArgsDict']]]
     """
     The configuration of the path for the request to be forwarded. See `path_config` below.
     """
-    query_string_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionQueryStringConfigArgs']]]
+    query_string_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionQueryStringConfigArgsDict']]]
     """
     The configuration of the query string. See `query_string_config` below.
     """
-    response_header_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionResponseHeaderConfigArgs']]]
+    response_header_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionResponseHeaderConfigArgsDict']]]
     """
     The configuration of the header field. See `response_header_config` below.
     """
-    response_status_code_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionResponseStatusCodeConfigArgs']]]
+    response_status_code_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionResponseStatusCodeConfigArgsDict']]]
     """
     The configuration of the header field. See `response_status_code_config` below.
     """
-    source_ip_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionSourceIpConfigArgs']]]
+    source_ip_config: NotRequired[pulumi.Input[Optional['RuleRuleConditionSourceIpConfigArgsDict']]]
     """
     The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
     """
@@ -2770,7 +2770,7 @@ class RuleRuleConditionArgs:
 
 
 class RuleRuleConditionCookieConfigArgsDict(TypedDict):
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgsDict']]]]]
     """
     Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
     """
@@ -2961,7 +2961,7 @@ class RuleRuleConditionPathConfigArgs:
 
 
 class RuleRuleConditionQueryStringConfigArgsDict(TypedDict):
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgsDict']]]]]
     """
     Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
     """

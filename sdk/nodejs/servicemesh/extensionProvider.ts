@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *         defaultNetwork.push(new alicloud.vpc.Network(`default-${range.value}`, {}));
  *     }
  * });
- * const defaultGetSwitches = pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id).apply(value => alicloud.vpc.getSwitchesOutput({
- *     vpcId: value,
- * }));
+ * const defaultGetSwitches = alicloud.vpc.getSwitchesOutput({
+ *     vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
+ * });
  * const defaultSwitch: alicloud.vpc.Switch[] = [];
  * defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
  *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {

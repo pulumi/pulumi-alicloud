@@ -180,13 +180,9 @@ def get_ipam_ipams(ids: Optional[Sequence[_builtins.str]] = None,
         ipam_description="This is my first Ipam.",
         ipam_name=name,
         operating_region_lists=["cn-hangzhou"])
-    default_get_ipam_ipams = pulumi.Output.all(
-        id=default_ipam_ipam.id,
-        ipam_name=default_ipam_ipam.ipam_name
-    ).apply(lambda resolved_outputs: alicloud.vpc.get_ipam_ipams_output(ids=[resolved_outputs['id']],
-        name_regex=resolved_outputs['ipam_name'],
-        ipam_name=name))
-
+    default_get_ipam_ipams = alicloud.vpc.get_ipam_ipams_output(ids=[default_ipam_ipam.id],
+        name_regex=default_ipam_ipam.ipam_name,
+        ipam_name=name)
     pulumi.export("alicloudVpcIpamIpamExampleId", default_get_ipam_ipams.ipams[0].id)
     ```
 
@@ -249,13 +245,9 @@ def get_ipam_ipams_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins
         ipam_description="This is my first Ipam.",
         ipam_name=name,
         operating_region_lists=["cn-hangzhou"])
-    default_get_ipam_ipams = pulumi.Output.all(
-        id=default_ipam_ipam.id,
-        ipam_name=default_ipam_ipam.ipam_name
-    ).apply(lambda resolved_outputs: alicloud.vpc.get_ipam_ipams_output(ids=[resolved_outputs['id']],
-        name_regex=resolved_outputs['ipam_name'],
-        ipam_name=name))
-
+    default_get_ipam_ipams = alicloud.vpc.get_ipam_ipams_output(ids=[default_ipam_ipam.id],
+        name_regex=default_ipam_ipam.ipam_name,
+        ipam_name=name)
     pulumi.export("alicloudVpcIpamIpamExampleId", default_get_ipam_ipams.ipams[0].id)
     ```
 

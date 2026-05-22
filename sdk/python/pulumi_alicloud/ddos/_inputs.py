@@ -66,7 +66,7 @@ class BgpPolicyContentArgsDict(TypedDict):
     """
     Whether the intelligent switch is on.
     """
-    finger_print_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgs']]]]]
+    finger_print_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgsDict']]]]]
     """
     Fingerprint Rules. See `finger_print_rule_list` below.
     """
@@ -74,11 +74,11 @@ class BgpPolicyContentArgsDict(TypedDict):
     """
     Smart mode. Valid values: weak, hard, and default.
     """
-    layer4_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgs']]]]]
+    layer4_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgsDict']]]]]
     """
     L4 protection rules. See `layer4_rule_list` below.
     """
-    port_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgs']]]]]
+    port_rule_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgsDict']]]]]
     """
     Port Rule List. See `port_rule_list` below.
     """
@@ -94,11 +94,11 @@ class BgpPolicyContentArgsDict(TypedDict):
     """
     List of Prohibited Provinces by Region.
     """
-    source_block_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgs']]]]]
+    source_block_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgsDict']]]]]
     """
     Source pull Black. See `source_block_list` below.
     """
-    source_limit: NotRequired[pulumi.Input[Optional['BgpPolicyContentSourceLimitArgs']]]
+    source_limit: NotRequired[pulumi.Input[Optional['BgpPolicyContentSourceLimitArgsDict']]]
     """
     Do not fill in when the source speed limit is deleted. See `source_limit` below.
     """
@@ -1247,11 +1247,11 @@ class CooWebCcRuleRuleDetailArgsDict(TypedDict):
     """
     Rate limiting statistics. See `rate_limit` below.
     """
-    statistics: NotRequired[pulumi.Input[Optional['CooWebCcRuleRuleDetailStatisticsArgs']]]
+    statistics: NotRequired[pulumi.Input[Optional['CooWebCcRuleRuleDetailStatisticsArgsDict']]]
     """
     Deduplicated statistics. This parameter is optional. If omitted, deduplication is not applied. See `statistics` below.
     """
-    status_code: NotRequired[pulumi.Input[Optional['CooWebCcRuleRuleDetailStatusCodeArgs']]]
+    status_code: NotRequired[pulumi.Input[Optional['CooWebCcRuleRuleDetailStatusCodeArgsDict']]]
     """
     The HTTP status code. See `status_code` below.
     """

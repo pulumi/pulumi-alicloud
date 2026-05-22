@@ -308,7 +308,7 @@ class EciScalingConfigurationContainerArgsDict(TypedDict):
     """
     The amount of CPU resources allocated to the container.
     """
-    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgsDict']]]]]
     """
     The structure of environmentVars.
     See `environment_vars` below for details.
@@ -377,7 +377,7 @@ class EciScalingConfigurationContainerArgsDict(TypedDict):
     """
     The name of the mounted volume.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgsDict']]]]]
     """
     The structure of port. See `ports` below for details.
     """
@@ -443,7 +443,7 @@ class EciScalingConfigurationContainerArgsDict(TypedDict):
     """
     Specifies whether to enable the Interaction feature. Valid values: true, false.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgsDict']]]]]
     """
     The structure of volumeMounts. 
     See `volume_mounts` below for details.
@@ -1416,7 +1416,7 @@ class EciScalingConfigurationInitContainerArgsDict(TypedDict):
     """
     The amount of CPU resources allocated to the container.
     """
-    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgsDict']]]]]
     """
     The structure of environmentVars. 
     See `environment_vars` below for details.
@@ -1441,7 +1441,7 @@ class EciScalingConfigurationInitContainerArgsDict(TypedDict):
     """
     The name of the mounted volume.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgsDict']]]]]
     """
     The structure of port. See `ports` below for details.
     """
@@ -1459,7 +1459,7 @@ class EciScalingConfigurationInitContainerArgsDict(TypedDict):
     """
     Specifies user ID  under which all processes run.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgsDict']]]]]
     """
     The structure of volumeMounts. See `volume_mounts` below for details.
     """
@@ -1922,7 +1922,7 @@ class EciScalingConfigurationSecurityContextSysctlArgs:
 
 
 class EciScalingConfigurationVolumeArgsDict(TypedDict):
-    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]]
+    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]]
     """
     ConfigFileVolumeConfigFileToPaths.
     See `config_file_volume_config_file_to_paths` below for details.
@@ -2392,7 +2392,7 @@ class InstanceRefreshDesiredConfigurationContainerArgsDict(TypedDict):
     """
     The container startup command.
     """
-    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict']]]]]
     """
     Information about the environment variables. See `environment_vars` below for details.
     """
@@ -3870,7 +3870,7 @@ class ScalingRuleAlarmDimensionArgs:
 
 
 class ScalingRuleHybridMetricArgsDict(TypedDict):
-    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgs']]]]]
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricDimensionArgsDict']]]]]
     """
     The structure of volumeMounts.
     See `dimensions` below for details.

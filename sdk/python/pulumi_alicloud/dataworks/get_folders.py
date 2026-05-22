@@ -116,13 +116,9 @@ def get_folders(ids: Optional[Sequence[_builtins.str]] = None,
     default = alicloud.dataworks.Folder("default",
         project_id="xxxx",
         folder_path="Business Flow/tfTestAcc/folderDi")
-    ids = pulumi.Output.all(
-        folder_id=default.folder_id,
-        project_id=default.project_id
-    ).apply(lambda resolved_outputs: alicloud.dataworks.get_folders_output(ids=[resolved_outputs['folder_id']],
-        project_id=resolved_outputs['project_id'],
-        parent_folder_path="Business Flow/tfTestAcc/folderDi"))
-
+    ids = alicloud.dataworks.get_folders_output(ids=[default.folder_id],
+        project_id=default.project_id,
+        parent_folder_path="Business Flow/tfTestAcc/folderDi")
     pulumi.export("dataWorksFolderId1", ids.folders[0].id)
     ```
 
@@ -168,13 +164,9 @@ def get_folders_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     default = alicloud.dataworks.Folder("default",
         project_id="xxxx",
         folder_path="Business Flow/tfTestAcc/folderDi")
-    ids = pulumi.Output.all(
-        folder_id=default.folder_id,
-        project_id=default.project_id
-    ).apply(lambda resolved_outputs: alicloud.dataworks.get_folders_output(ids=[resolved_outputs['folder_id']],
-        project_id=resolved_outputs['project_id'],
-        parent_folder_path="Business Flow/tfTestAcc/folderDi"))
-
+    ids = alicloud.dataworks.get_folders_output(ids=[default.folder_id],
+        project_id=default.project_id,
+        parent_folder_path="Business Flow/tfTestAcc/folderDi")
     pulumi.export("dataWorksFolderId1", ids.folders[0].id)
     ```
 
