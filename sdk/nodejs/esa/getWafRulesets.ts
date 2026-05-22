@@ -30,12 +30,12 @@ import * as utilities from "../utilities";
  *     siteVersion: 0,
  *     name: name,
  * });
- * const ids = pulumi.all([defaultWafRuleset.id, defaultWafRuleset.siteId, defaultWafRuleset.phase, defaultWafRuleset.siteVersion]).apply(([id, siteId, phase, siteVersion]) => alicloud.esa.getWafRulesetsOutput({
- *     ids: [id],
- *     siteId: siteId,
- *     phase: phase,
- *     siteVersion: siteVersion,
- * }));
+ * const ids = alicloud.esa.getWafRulesetsOutput({
+ *     ids: [defaultWafRuleset.id],
+ *     siteId: defaultWafRuleset.siteId,
+ *     phase: defaultWafRuleset.phase,
+ *     siteVersion: defaultWafRuleset.siteVersion,
+ * });
  * export const esaWafRulesetsId0 = ids.apply(ids => ids.sets?.[0]?.id);
  * ```
  */
@@ -146,12 +146,12 @@ export interface GetWafRulesetsResult {
  *     siteVersion: 0,
  *     name: name,
  * });
- * const ids = pulumi.all([defaultWafRuleset.id, defaultWafRuleset.siteId, defaultWafRuleset.phase, defaultWafRuleset.siteVersion]).apply(([id, siteId, phase, siteVersion]) => alicloud.esa.getWafRulesetsOutput({
- *     ids: [id],
- *     siteId: siteId,
- *     phase: phase,
- *     siteVersion: siteVersion,
- * }));
+ * const ids = alicloud.esa.getWafRulesetsOutput({
+ *     ids: [defaultWafRuleset.id],
+ *     siteId: defaultWafRuleset.siteId,
+ *     phase: defaultWafRuleset.phase,
+ *     siteVersion: defaultWafRuleset.siteVersion,
+ * });
  * export const esaWafRulesetsId0 = ids.apply(ids => ids.sets?.[0]?.id);
  * ```
  */

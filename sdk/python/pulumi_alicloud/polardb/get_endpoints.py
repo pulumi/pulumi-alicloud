@@ -119,7 +119,7 @@ def get_endpoints(db_cluster_id: Optional[_builtins.str] = None,
         vswitch_id=default_switch.id)
     polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.description,
         status="Running")
-    default = polardb_clusters_ds.apply(lambda polardb_clusters_ds: alicloud.polardb.get_endpoints_output(db_cluster_id=polardb_clusters_ds.clusters[0].id))
+    default = alicloud.polardb.get_endpoints_output(db_cluster_id=polardb_clusters_ds.clusters[0].id)
     pulumi.export("endpoint", default.endpoints[0].db_endpoint_id)
     ```
 
@@ -174,7 +174,7 @@ def get_endpoints_output(db_cluster_id: pulumi.Input[Optional[_builtins.str]] = 
         vswitch_id=default_switch.id)
     polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.description,
         status="Running")
-    default = polardb_clusters_ds.apply(lambda polardb_clusters_ds: alicloud.polardb.get_endpoints_output(db_cluster_id=polardb_clusters_ds.clusters[0].id))
+    default = alicloud.polardb.get_endpoints_output(db_cluster_id=polardb_clusters_ds.clusters[0].id)
     pulumi.export("endpoint", default.endpoints[0].db_endpoint_id)
     ```
 

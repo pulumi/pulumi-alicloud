@@ -175,13 +175,10 @@ def get_quota_applications(dimensions: Optional[Sequence[Union['GetQuotaApplicat
         audit_mode="Sync",
         env_language="zh",
         quota_category="WhiteListLabel")
-    default = pulumi.Output.all(
-        quota_category=default_quota_application.quota_category,
-        id=default_quota_application.id
-    ).apply(lambda resolved_outputs: alicloud.quotas.get_quota_applications_output(product_code="vpc",
+    default = alicloud.quotas.get_quota_applications_output(product_code="vpc",
         enable_details=True,
-        quota_category=resolved_outputs['quota_category'],
-        ids=[resolved_outputs['id']]))
+        quota_category=default_quota_application.quota_category,
+        ids=[default_quota_application.id])
     ```
 
 
@@ -253,13 +250,10 @@ def get_quota_applications_output(dimensions: pulumi.Input[Optional[Optional[Seq
         audit_mode="Sync",
         env_language="zh",
         quota_category="WhiteListLabel")
-    default = pulumi.Output.all(
-        quota_category=default_quota_application.quota_category,
-        id=default_quota_application.id
-    ).apply(lambda resolved_outputs: alicloud.quotas.get_quota_applications_output(product_code="vpc",
+    default = alicloud.quotas.get_quota_applications_output(product_code="vpc",
         enable_details=True,
-        quota_category=resolved_outputs['quota_category'],
-        ids=[resolved_outputs['id']]))
+        quota_category=default_quota_application.quota_category,
+        ids=[default_quota_application.id])
     ```
 
 

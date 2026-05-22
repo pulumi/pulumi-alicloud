@@ -104,7 +104,7 @@ class AlarmCompositeExpressionArgsDict(TypedDict):
     """
     The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
     """
-    expression_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]]
+    expression_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgsDict']]]]]
     """
     The trigger conditions that are created in standard mode. See `expression_list` below.
     """
@@ -1581,15 +1581,15 @@ class EventRuleWebhookParameterArgs:
 
 
 class GroupMetricRuleEscalationsArgsDict(TypedDict):
-    critical: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsCriticalArgs']]]
+    critical: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsCriticalArgsDict']]]
     """
     The critical level. See `critical` below.
     """
-    info: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsInfoArgs']]]
+    info: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsInfoArgsDict']]]
     """
     The info level. See `info` below.
     """
-    warn: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsWarnArgs']]]
+    warn: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsWarnArgsDict']]]
     """
     The warn level. See `warn` below.
     """
@@ -2058,19 +2058,19 @@ class HybridMonitorSlsTaskAttachLabelArgs:
 
 
 class HybridMonitorSlsTaskSlsProcessConfigArgsDict(TypedDict):
-    expresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]]]
+    expresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict']]]]]
     """
     The extended field that specifies the result of basic operations that are performed on aggregation results.
     """
-    filter: NotRequired[pulumi.Input[Optional['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict']]]
     """
     The conditions that are used to filter logs imported from Log Service. See `filter` below.
     """
-    group_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]]]
+    group_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict']]]]]
     """
     The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
     """
-    statistics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]]]
+    statistics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict']]]]]
     """
     The method that is used to aggregate logs imported from Log Service. See `statistics` below.
     """
@@ -2196,7 +2196,7 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
 
 
 class HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict(TypedDict):
-    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict']]]]]
     """
     The conditions that are used to filter logs imported from Log Service. See `filters` below.
     """
@@ -2587,7 +2587,7 @@ class MetricRuleTemplateAlertTemplateArgsDict(TypedDict):
     """
     The name of the alert rule.
     """
-    escalations: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsArgs']]]
+    escalations: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsArgsDict']]]
     """
     The information about the trigger condition based on the alert level. See `escalations` below.
     """
@@ -2702,15 +2702,15 @@ class MetricRuleTemplateAlertTemplateArgs:
 
 
 class MetricRuleTemplateAlertTemplateEscalationsArgsDict(TypedDict):
-    critical: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']]]
+    critical: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict']]]
     """
     The condition for triggering critical-level alerts. See `critical` below.
     """
-    info: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']]]
+    info: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict']]]
     """
     The condition for triggering info-level alerts. See `info` below.
     """
-    warn: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']]]
+    warn: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict']]]
     """
     The condition for triggering warn-level alerts. See `warn` below.
     """
@@ -3347,7 +3347,7 @@ class SiteMonitorIspCityArgs:
 
 
 class SiteMonitorOptionJsonArgsDict(TypedDict):
-    assertions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]]
+    assertions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgsDict']]]]]
     """
     Assertion configuration group. See `assertions` below.
     """

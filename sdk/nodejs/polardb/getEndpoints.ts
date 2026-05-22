@@ -46,9 +46,9 @@ import * as utilities from "../utilities";
  *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const _default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
- *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- * }));
+ * const _default = alicloud.polardb.getEndpointsOutput({
+ *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ * });
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
  */
@@ -132,9 +132,9 @@ export interface GetEndpointsResult {
  *     descriptionRegex: cluster.description,
  *     status: "Running",
  * });
- * const _default = polardbClustersDs.apply(polardbClustersDs => alicloud.polardb.getEndpointsOutput({
- *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- * }));
+ * const _default = alicloud.polardb.getEndpointsOutput({
+ *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ * });
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
  */

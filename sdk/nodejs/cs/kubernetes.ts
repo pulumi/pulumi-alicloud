@@ -144,7 +144,7 @@ import * as utilities from "../utilities";
  *     status: "OK",
  * });
  * const cloudEssd = (new Array(3)).map((_, i) => i).map(__index => (alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: _arg0_.zones[__index < _arg1_ ? __index : 0].zoneId,
+ *     availabilityZone: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[__index < length ? __index : 0].zoneId),
  *     cpuCoreCount: 4,
  *     memorySize: 8,
  *     systemDiskCategory: "cloud_essd",
@@ -168,26 +168,26 @@ import * as utilities from "../utilities";
  *     }).then(invoke => std.split({
  *         separator: ",",
  *         text: invoke.result,
- *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *     })).then(invoke => invoke.result) : vswitchCidrs.length < 1 ? [] : std.splitOutput({
  *         separator: ",",
- *         input: vswitches.map(__item => __item.id),
- *     }).apply(invoke => std.splitOutput({
- *         separator: ",",
- *         text: invoke.result,
- *     })).apply(invoke => invoke.result),
+ *         text: std.joinOutput({
+ *             separator: ",",
+ *             input: vswitches.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
  *         separator: ",",
  *         input: terwayVswitchIds,
  *     }).then(invoke => std.split({
  *         separator: ",",
  *         text: invoke.result,
- *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.joinOutput({
+ *     })).then(invoke => invoke.result) : terwayVswitchCidrs.length < 1 ? [] : std.splitOutput({
  *         separator: ",",
- *         input: terwayVswitches.map(__item => __item.id),
- *     }).apply(invoke => std.splitOutput({
- *         separator: ",",
- *         text: invoke.result,
- *     })).apply(invoke => invoke.result),
+ *         text: std.joinOutput({
+ *             separator: ",",
+ *             input: terwayVswitches.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     masterInstanceTypes: [
  *         cloudEssd[0].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
  *         cloudEssd[1].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),

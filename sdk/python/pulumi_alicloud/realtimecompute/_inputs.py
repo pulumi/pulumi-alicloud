@@ -76,15 +76,15 @@ class DeploymentArtifactArgsDict(TypedDict):
     """
     Artifact type
     """
-    jar_artifact: NotRequired[pulumi.Input[Optional['DeploymentArtifactJarArtifactArgs']]]
+    jar_artifact: NotRequired[pulumi.Input[Optional['DeploymentArtifactJarArtifactArgsDict']]]
     """
     JarArtifact See `jar_artifact` below.
     """
-    python_artifact: NotRequired[pulumi.Input[Optional['DeploymentArtifactPythonArtifactArgs']]]
+    python_artifact: NotRequired[pulumi.Input[Optional['DeploymentArtifactPythonArtifactArgsDict']]]
     """
     PythonArtifact See `python_artifact` below.
     """
-    sql_artifact: NotRequired[pulumi.Input[Optional['DeploymentArtifactSqlArtifactArgs']]]
+    sql_artifact: NotRequired[pulumi.Input[Optional['DeploymentArtifactSqlArtifactArgsDict']]]
     """
     SqlArtifact See `sql_artifact` below.
     """
@@ -427,7 +427,7 @@ class DeploymentArtifactSqlArtifactArgs:
 
 
 class DeploymentBatchResourceSettingArgsDict(TypedDict):
-    basic_resource_setting: NotRequired[pulumi.Input[Optional['DeploymentBatchResourceSettingBasicResourceSettingArgs']]]
+    basic_resource_setting: NotRequired[pulumi.Input[Optional['DeploymentBatchResourceSettingBasicResourceSettingArgsDict']]]
     """
     Resource settings for basic mode See `basic_resource_setting` below.
     """
@@ -476,9 +476,9 @@ class DeploymentBatchResourceSettingArgs:
 
 
 class DeploymentBatchResourceSettingBasicResourceSettingArgsDict(TypedDict):
-    jobmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']]]
+    jobmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict']]]
     parallelism: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    taskmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']]]
+    taskmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict']]]
 
 @pulumi.input_type
 class DeploymentBatchResourceSettingBasicResourceSettingArgs:
@@ -688,11 +688,11 @@ class DeploymentLoggingArgsDict(TypedDict):
     """
     Custom log template
     """
-    log4j_loggers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgs']]]]]
+    log4j_loggers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLoggingLog4jLoggerArgsDict']]]]]
     """
     log4j configuration   See `log4j_loggers` below.
     """
-    log_reserve_policy: NotRequired[pulumi.Input[Optional['DeploymentLoggingLogReservePolicyArgs']]]
+    log_reserve_policy: NotRequired[pulumi.Input[Optional['DeploymentLoggingLogReservePolicyArgsDict']]]
     """
     Log retention policy   See `log_reserve_policy` below.
     """
@@ -871,11 +871,11 @@ class DeploymentLoggingLogReservePolicyArgs:
 
 
 class DeploymentStreamingResourceSettingArgsDict(TypedDict):
-    basic_resource_setting: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingBasicResourceSettingArgs']]]
+    basic_resource_setting: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingBasicResourceSettingArgsDict']]]
     """
     Resource settings for basic mode See `basic_resource_setting` below.
     """
-    expert_resource_setting: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingExpertResourceSettingArgs']]]
+    expert_resource_setting: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingExpertResourceSettingArgsDict']]]
     """
     Expert mode resource settings See `expert_resource_setting` below.
     """
@@ -940,9 +940,9 @@ class DeploymentStreamingResourceSettingArgs:
 
 
 class DeploymentStreamingResourceSettingBasicResourceSettingArgsDict(TypedDict):
-    jobmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs']]]
+    jobmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgsDict']]]
     parallelism: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    taskmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs']]]
+    taskmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgsDict']]]
 
 @pulumi.input_type
 class DeploymentStreamingResourceSettingBasicResourceSettingArgs:
@@ -1052,7 +1052,7 @@ class DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceS
 
 
 class DeploymentStreamingResourceSettingExpertResourceSettingArgsDict(TypedDict):
-    jobmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs']]]
+    jobmanager_resource_setting_spec: NotRequired[pulumi.Input[Optional['DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgsDict']]]
     resource_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource plan for expert mode
@@ -1269,7 +1269,7 @@ class JobStatusArgsDict(TypedDict):
     """
     Job current status
     """
-    failure: NotRequired[pulumi.Input[Optional['JobStatusFailureArgs']]]
+    failure: NotRequired[pulumi.Input[Optional['JobStatusFailureArgsDict']]]
     """
     Job failure information
     """
@@ -1281,7 +1281,7 @@ class JobStatusArgsDict(TypedDict):
     """
     Risk level, which indicates the risk level of the operation status of the job.
     """
-    running: NotRequired[pulumi.Input[Optional['JobStatusRunningArgs']]]
+    running: NotRequired[pulumi.Input[Optional['JobStatusRunningArgsDict']]]
     """
     job running status, which has value when the job is Running.
     """

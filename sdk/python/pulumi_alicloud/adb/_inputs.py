@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 class LakeAccountAccountPrivilegeArgsDict(TypedDict):
-    privilege_object: NotRequired[pulumi.Input[Optional['LakeAccountAccountPrivilegePrivilegeObjectArgs']]]
+    privilege_object: NotRequired[pulumi.Input[Optional['LakeAccountAccountPrivilegePrivilegeObjectArgsDict']]]
     """
     Object associated to privileges. See `privilege_object` below.
     """

@@ -44,13 +44,13 @@ import * as utilities from "../utilities";
  *     namePrefix: clusterName,
  *     clusterSpec: "ack.standard",
  *     profile: "Default",
- *     vswitchIds: std.joinOutput({
+ *     vswitchIds: std.splitOutput({
  *         separator: ",",
- *         input: createVSwitch.map(__item => __item.id),
- *     }).apply(invoke => std.splitOutput({
- *         separator: ",",
- *         text: invoke.result,
- *     })).apply(invoke => invoke.result),
+ *         text: std.joinOutput({
+ *             separator: ",",
+ *             input: createVSwitch.map(__item => __item.id),
+ *         }).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     podCidr: podCidr,
  *     serviceCidr: serviceCidr,
  *     isEnterpriseSecurityGroup: true,

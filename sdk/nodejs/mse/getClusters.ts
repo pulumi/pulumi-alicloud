@@ -45,12 +45,12 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  * });
  * // Declare the data source
- * const exampleGetClusters = pulumi.all([exampleCluster.id, exampleCluster.clusterAliasName]).apply(([id, clusterAliasName]) => alicloud.mse.getClustersOutput({
+ * const exampleGetClusters = alicloud.mse.getClustersOutput({
  *     enableDetails: true,
- *     ids: [id],
+ *     ids: [exampleCluster.id],
  *     status: "INIT_SUCCESS",
- *     nameRegex: clusterAliasName,
- * }));
+ *     nameRegex: exampleCluster.clusterAliasName,
+ * });
  * export const instanceId = exampleGetClusters.apply(exampleGetClusters => exampleGetClusters.clusters?.[0]?.id);
  * ```
  */
@@ -171,12 +171,12 @@ export interface GetClustersResult {
  *     vpcId: exampleNetwork.id,
  * });
  * // Declare the data source
- * const exampleGetClusters = pulumi.all([exampleCluster.id, exampleCluster.clusterAliasName]).apply(([id, clusterAliasName]) => alicloud.mse.getClustersOutput({
+ * const exampleGetClusters = alicloud.mse.getClustersOutput({
  *     enableDetails: true,
- *     ids: [id],
+ *     ids: [exampleCluster.id],
  *     status: "INIT_SUCCESS",
- *     nameRegex: clusterAliasName,
- * }));
+ *     nameRegex: exampleCluster.clusterAliasName,
+ * });
  * export const instanceId = exampleGetClusters.apply(exampleGetClusters => exampleGetClusters.clusters?.[0]?.id);
  * ```
  */

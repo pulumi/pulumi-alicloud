@@ -123,7 +123,7 @@ class ProjectPropertiesArgsDict(TypedDict):
     """
     Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
     """
-    encryption: NotRequired[pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']]]
+    encryption: NotRequired[pulumi.Input[Optional['ProjectPropertiesEncryptionArgsDict']]]
     """
     Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
     > **NOTE :**:
@@ -145,7 +145,7 @@ class ProjectPropertiesArgsDict(TypedDict):
     Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
     Unit: scan volume (GB)* complexity.
     """
-    table_lifecycle: NotRequired[pulumi.Input[Optional['ProjectPropertiesTableLifecycleArgs']]]
+    table_lifecycle: NotRequired[pulumi.Input[Optional['ProjectPropertiesTableLifecycleArgsDict']]]
     """
     Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
     """
@@ -479,7 +479,7 @@ class ProjectSecurityPropertiesArgsDict(TypedDict):
     """
     The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
     """
-    project_protection: NotRequired[pulumi.Input[Optional['ProjectSecurityPropertiesProjectProtectionArgs']]]
+    project_protection: NotRequired[pulumi.Input[Optional['ProjectSecurityPropertiesProjectProtectionArgsDict']]]
     """
     Project protection See `project_protection` below.
     """
@@ -661,11 +661,11 @@ class ProjectSecurityPropertiesProjectProtectionArgs:
 
 
 class QuotaPlanQuotaArgsDict(TypedDict):
-    parameter: NotRequired[pulumi.Input[Optional['QuotaPlanQuotaParameterArgs']]]
+    parameter: NotRequired[pulumi.Input[Optional['QuotaPlanQuotaParameterArgsDict']]]
     """
     Level 2 Quota CU configuration See `parameter` below.
     """
-    sub_quota_info_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]]]
+    sub_quota_info_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgsDict']]]]]
     """
     Secondary Quota list
 
@@ -797,7 +797,7 @@ class QuotaPlanQuotaSubQuotaInfoListArgsDict(TypedDict):
     """
     The nickname of the level-2 quota.
     """
-    parameter: NotRequired[pulumi.Input[Optional['QuotaPlanQuotaSubQuotaInfoListParameterArgs']]]
+    parameter: NotRequired[pulumi.Input[Optional['QuotaPlanQuotaSubQuotaInfoListParameterArgsDict']]]
     """
     The parameters of level-1 quota.
     """
@@ -923,7 +923,7 @@ class QuotaScheduleScheduleListArgsDict(TypedDict):
 
     > **NOTE:** Currently, only daily is supported.
     """
-    condition: NotRequired[pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgsDict']]]
     """
     The value of effective condition. See `condition` below.
     """
@@ -1026,7 +1026,7 @@ class QuotaSubQuotaInfoListArgsDict(TypedDict):
 
     > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
     """
-    parameter: NotRequired[pulumi.Input[Optional['QuotaSubQuotaInfoListParameterArgs']]]
+    parameter: NotRequired[pulumi.Input[Optional['QuotaSubQuotaInfoListParameterArgsDict']]]
     """
     Parameter See `parameter` below.
     """
@@ -1247,7 +1247,7 @@ class TunnelQuotaTimerQuotaTimerArgsDict(TypedDict):
     """
     The end time of the timesharing configuration. Reference value: 24:00
     """
-    tunnel_quota_parameter: NotRequired[pulumi.Input[Optional['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']]]
+    tunnel_quota_parameter: NotRequired[pulumi.Input[Optional['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict']]]
     """
     Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
     """

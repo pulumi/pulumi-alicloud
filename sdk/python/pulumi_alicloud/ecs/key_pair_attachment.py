@@ -179,6 +179,12 @@ class KeyPairAttachment(pulumi.CustomResource):
 
         > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
 
+        ## Example Usage
+
+        Basic Usage
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -198,6 +204,12 @@ class KeyPairAttachment(pulumi.CustomResource):
         Provides a key pair attachment resource to bind key pair for several ECS instances.
 
         > **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
+
+        ## Example Usage
+
+        Basic Usage
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
 
         :param str resource_name: The name of the resource.

@@ -145,18 +145,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids := pulumi.All(defaultTransitRouterVpnAttachment.ID(), defaultTransitRouterVpnAttachment.CenId, defaultTransitRouterVpnAttachment.TransitRouterId).ApplyT(func(_args []interface{}) (cen.GetTransitRouterVpnAttachmentsResult, error) {
-//				id := _args[0].(string)
-//				cenId := _args[1].(string)
-//				transitRouterId := _args[2].(*string)
-//				return cen.GetTransitRouterVpnAttachmentsResult(interface{}(cen.GetTransitRouterVpnAttachments(ctx, &cen.GetTransitRouterVpnAttachmentsArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					CenId:           pulumi.StringRef(pulumi.StringRef(cenId)),
-//					TransitRouterId: pulumi.StringRef(pulumi.StringRef(pulumi.String(transitRouterId))),
-//				}, nil))), nil
-//			}).(cen.GetTransitRouterVpnAttachmentsResultOutput)
+//			ids := cen.GetTransitRouterVpnAttachmentsOutput(ctx, cen.GetTransitRouterVpnAttachmentsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultTransitRouterVpnAttachment.ID(),
+//				},
+//				CenId:           defaultTransitRouterVpnAttachment.CenId,
+//				TransitRouterId: defaultTransitRouterVpnAttachment.TransitRouterId,
+//			}, nil)
 //			ctx.Export("cenTransitRouterVpnAttachmentId0", ids.ApplyT(func(ids cen.GetTransitRouterVpnAttachmentsResult) (*string, error) {
 //				return &ids.Attachments[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

@@ -64,7 +64,7 @@ class ClusterAdditionalVolumeArgsDict(TypedDict):
     """
     The remote directory to which the additional file system is mounted.
     """
-    roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]]]
+    roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgsDict']]]]]
     """
     The roles. See `roles` below.
     """
@@ -500,19 +500,19 @@ class ClusterV2ClusterCredentialsArgs:
 
 
 class ClusterV2ManagerArgsDict(TypedDict):
-    directory_service: NotRequired[pulumi.Input[Optional['ClusterV2ManagerDirectoryServiceArgs']]]
+    directory_service: NotRequired[pulumi.Input[Optional['ClusterV2ManagerDirectoryServiceArgsDict']]]
     """
     The configurations of the domain account service. See `directory_service` below.
     """
-    dns: NotRequired[pulumi.Input[Optional['ClusterV2ManagerDnsArgs']]]
+    dns: NotRequired[pulumi.Input[Optional['ClusterV2ManagerDnsArgsDict']]]
     """
     The configurations of the domain name resolution service. See `dns` below.
     """
-    manager_node: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeArgs']]]
+    manager_node: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeArgsDict']]]
     """
     The hardware configurations of the management node. See `manager_node` below.
     """
-    scheduler: NotRequired[pulumi.Input[Optional['ClusterV2ManagerSchedulerArgs']]]
+    scheduler: NotRequired[pulumi.Input[Optional['ClusterV2ManagerSchedulerArgsDict']]]
     """
     The configurations of the scheduler service. See `scheduler` below.
     """
@@ -781,7 +781,7 @@ class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
     - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
     - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
     """
-    system_disk: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']]]
+    system_disk: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgsDict']]]
     """
     System disk configuration of the management node. See `system_disk` below.
     """
@@ -1411,7 +1411,7 @@ class QueueComputeNodeArgsDict(TypedDict):
     """
     SpotStrategy
     """
-    system_disk: NotRequired[pulumi.Input[Optional['QueueComputeNodeSystemDiskArgs']]]
+    system_disk: NotRequired[pulumi.Input[Optional['QueueComputeNodeSystemDiskArgsDict']]]
     """
     SystemDisk See `system_disk` below.
     """

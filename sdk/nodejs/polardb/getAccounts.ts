@@ -54,10 +54,10 @@ import * as utilities from "../utilities";
  *         accountDescription: "tf_account_description",
  *         accountType: "Normal",
  *     });
- *     const _default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
- *         dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- *         nameRegex: accountName,
- *     }));
+ *     const _default = alicloud.polardb.getAccountsOutput({
+ *         dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *         nameRegex: account.accountName,
+ *     });
  *     return {
  *         account: _default.apply(_default => _default.accounts?.[0]?.accountName),
  *     };
@@ -153,10 +153,10 @@ export interface GetAccountsResult {
  *         accountDescription: "tf_account_description",
  *         accountType: "Normal",
  *     });
- *     const _default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
- *         dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- *         nameRegex: accountName,
- *     }));
+ *     const _default = alicloud.polardb.getAccountsOutput({
+ *         dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *         nameRegex: account.accountName,
+ *     });
  *     return {
  *         account: _default.apply(_default => _default.accounts?.[0]?.accountName),
  *     };

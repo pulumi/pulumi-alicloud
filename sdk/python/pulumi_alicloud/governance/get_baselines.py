@@ -155,12 +155,8 @@ def get_baselines(ids: Optional[Sequence[_builtins.str]] = None,
         }],
         description=name,
         baseline_name=f"{name}-{default_integer['result']}")
-    default = pulumi.Output.all(
-        id=default_baseline.id,
-        baseline_name=default_baseline.baseline_name
-    ).apply(lambda resolved_outputs: alicloud.governance.get_baselines_output(ids=[resolved_outputs['id']],
-        name_regex=resolved_outputs['baseline_name']))
-
+    default = alicloud.governance.get_baselines_output(ids=[default_baseline.id],
+        name_regex=default_baseline.baseline_name)
     pulumi.export("alicloudGovernanceBaselineExampleId", default.baselines[0].baseline_id)
     ```
 
@@ -234,12 +230,8 @@ def get_baselines_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
         }],
         description=name,
         baseline_name=f"{name}-{default_integer['result']}")
-    default = pulumi.Output.all(
-        id=default_baseline.id,
-        baseline_name=default_baseline.baseline_name
-    ).apply(lambda resolved_outputs: alicloud.governance.get_baselines_output(ids=[resolved_outputs['id']],
-        name_regex=resolved_outputs['baseline_name']))
-
+    default = alicloud.governance.get_baselines_output(ids=[default_baseline.id],
+        name_regex=default_baseline.baseline_name)
     pulumi.export("alicloudGovernanceBaselineExampleId", default.baselines[0].baseline_id)
     ```
 

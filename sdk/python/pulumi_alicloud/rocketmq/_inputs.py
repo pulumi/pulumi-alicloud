@@ -162,7 +162,7 @@ class RocketMQInstanceNetworkInfoArgsDict(TypedDict):
     """
     Proprietary network information. See `vpc_info` below.
     """
-    endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]]
+    endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgsDict']]]]]
     """
     Access point list.
     """
@@ -405,7 +405,7 @@ class RocketMQInstanceNetworkInfoVpcInfoArgsDict(TypedDict):
     """
     VPC switch id.
     """
-    vswitches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]]
+    vswitches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict']]]]]
     """
     Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
     """

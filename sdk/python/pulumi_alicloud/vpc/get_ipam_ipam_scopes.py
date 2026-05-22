@@ -213,7 +213,7 @@ def get_ipam_ipam_scopes(ids: Optional[Sequence[_builtins.str]] = None,
         tags={
             "k1": "v1",
         })
-    default_get_ipam_ipam_scopes = default_ipam_ipam_scope.ipam_scope_name.apply(lambda ipam_scope_name: alicloud.vpc.get_ipam_ipam_scopes_output(ipam_scope_name=ipam_scope_name))
+    default_get_ipam_ipam_scopes = alicloud.vpc.get_ipam_ipam_scopes_output(ipam_scope_name=default_ipam_ipam_scope.ipam_scope_name)
     pulumi.export("alicloudVpcIpamIpamScopeExampleId", default_get_ipam_ipam_scopes.scopes[0].id)
     ```
 
@@ -291,7 +291,7 @@ def get_ipam_ipam_scopes_output(ids: pulumi.Input[Optional[Optional[Sequence[_bu
         tags={
             "k1": "v1",
         })
-    default_get_ipam_ipam_scopes = default_ipam_ipam_scope.ipam_scope_name.apply(lambda ipam_scope_name: alicloud.vpc.get_ipam_ipam_scopes_output(ipam_scope_name=ipam_scope_name))
+    default_get_ipam_ipam_scopes = alicloud.vpc.get_ipam_ipam_scopes_output(ipam_scope_name=default_ipam_ipam_scope.ipam_scope_name)
     pulumi.export("alicloudVpcIpamIpamScopeExampleId", default_get_ipam_ipam_scopes.scopes[0].id)
     ```
 

@@ -61,13 +61,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(zoneId),
+//			defaultGetSwitches := vpc.GetSwitchesOutput(ctx, vpc.GetSwitchesOutputArgs{
+//				VpcId:  pulumi.String(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.String(zoneId),
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			_, err = ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.Any(name),
 //				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
@@ -87,8 +84,10 @@ import (
 //				Description:  pulumi.Any(name),
 //				Force:        pulumi.Bool(true),
 //				KeyPairName:  defaultKeyPair.KeyPairName,
-//				VswitchId:    pulumi.String(defaultGetSwitches.Ids[0]),
-//				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
+//				VswitchId: pulumi.String(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (*string, error) {
+//					return &defaultGetSwitches.Ids[0], nil
+//				}).(pulumi.StringPtrOutput)),
+//				ImageId: pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
 //				InstanceType: pulumi.String(instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
 //					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)]), nil
 //				}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {

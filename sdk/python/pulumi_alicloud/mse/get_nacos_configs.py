@@ -232,12 +232,9 @@ def get_nacos_configs(accept_language: Optional[_builtins.str] = None,
         tags="example",
         app_name="example",
         desc="example")
-    example_get_nacos_configs = pulumi.Output.all(
-        id=example_cluster.id,
-        namespace_id=example_engine_namespace.namespace_id
-    ).apply(lambda resolved_outputs: alicloud.mse.get_nacos_configs_output(instance_id=resolved_outputs['id'],
+    example_get_nacos_configs = alicloud.mse.get_nacos_configs_output(instance_id=example_cluster.id,
         enable_details=True,
-        namespace_id=resolved_outputs['namespace_id']))
+        namespace_id=example_engine_namespace.namespace_id)
     ```
 
 
@@ -342,12 +339,9 @@ def get_nacos_configs_output(accept_language: pulumi.Input[Optional[Optional[_bu
         tags="example",
         app_name="example",
         desc="example")
-    example_get_nacos_configs = pulumi.Output.all(
-        id=example_cluster.id,
-        namespace_id=example_engine_namespace.namespace_id
-    ).apply(lambda resolved_outputs: alicloud.mse.get_nacos_configs_output(instance_id=resolved_outputs['id'],
+    example_get_nacos_configs = alicloud.mse.get_nacos_configs_output(instance_id=example_cluster.id,
         enable_details=True,
-        namespace_id=resolved_outputs['namespace_id']))
+        namespace_id=example_engine_namespace.namespace_id)
     ```
 
 

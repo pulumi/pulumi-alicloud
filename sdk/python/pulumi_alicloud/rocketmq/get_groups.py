@@ -176,9 +176,9 @@ def get_groups(group_id_regex: Optional[_builtins.str] = None,
         group_name=group_name,
         instance_id=default.id,
         remark="dafault_ons_group_remark")
-    groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups_output(instance_id=instance_id,
+    groups_ds = alicloud.rocketmq.get_groups_output(instance_id=default_group.instance_id,
         name_regex=group_id,
-        output_file="groups.txt"))
+        output_file="groups.txt")
     pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
     ```
 
@@ -245,9 +245,9 @@ def get_groups_output(group_id_regex: pulumi.Input[Optional[Optional[_builtins.s
         group_name=group_name,
         instance_id=default.id,
         remark="dafault_ons_group_remark")
-    groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups_output(instance_id=instance_id,
+    groups_ds = alicloud.rocketmq.get_groups_output(instance_id=default_group.instance_id,
         name_regex=group_id,
-        output_file="groups.txt"))
+        output_file="groups.txt")
     pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
     ```
 

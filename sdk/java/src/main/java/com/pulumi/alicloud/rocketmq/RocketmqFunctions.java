@@ -71,11 +71,11 @@ public final class RocketmqFunctions {
      *             .remark("dafault_ons_group_remark")
      *             .build());
      * 
-     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
-     *             .instanceId(_instanceId)
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
      *             .nameRegex(groupId)
      *             .outputFile("groups.txt")
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
      *     }
@@ -134,11 +134,11 @@ public final class RocketmqFunctions {
      *             .remark("dafault_ons_group_remark")
      *             .build());
      * 
-     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
-     *             .instanceId(_instanceId)
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
      *             .nameRegex(groupId)
      *             .outputFile("groups.txt")
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
      *     }
@@ -197,11 +197,11 @@ public final class RocketmqFunctions {
      *             .remark("dafault_ons_group_remark")
      *             .build());
      * 
-     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
-     *             .instanceId(_instanceId)
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
      *             .nameRegex(groupId)
      *             .outputFile("groups.txt")
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
      *     }
@@ -260,11 +260,11 @@ public final class RocketmqFunctions {
      *             .remark("dafault_ons_group_remark")
      *             .build());
      * 
-     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
-     *             .instanceId(_instanceId)
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
      *             .nameRegex(groupId)
      *             .outputFile("groups.txt")
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
      *     }
@@ -323,11 +323,11 @@ public final class RocketmqFunctions {
      *             .remark("dafault_ons_group_remark")
      *             .build());
      * 
-     *         final var groupsDs = defaultGroup.instanceId().applyValue(_instanceId -> RocketmqFunctions.getGroups(GetGroupsArgs.builder()
-     *             .instanceId(_instanceId)
+     *         final var groupsDs = RocketmqFunctions.getGroups(GetGroupsArgs.builder()
+     *             .instanceId(defaultGroup.instanceId())
      *             .nameRegex(groupId)
      *             .outputFile("groups.txt")
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("firstGroupName", groupsDs.applyValue(_groupsDs -> _groupsDs.groups()[0].groupName()));
      *     }

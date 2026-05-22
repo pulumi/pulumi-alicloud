@@ -75,21 +75,19 @@ import (
 //				}
 //				defaultNetwork = append(defaultNetwork, __res)
 //			}
-//			defaultGetSwitches := pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
-//				length := _args[0].(int)
-//				id := _args[1].(string)
-//				var tmp1 *string
-//				if length > 0 {
-//					tmp1 = defaultGetNetworks.Ids[0]
-//				} else {
-//					tmp1 = id
-//				}
-//				return &tmp1, nil
-//			}).(pulumi.StringPtrOutput).ApplyT(func(value *string) (vpc.GetSwitchesResult, error) {
-//				return vpc.GetSwitchesResult(interface{}(vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//					VpcId: pulumi.StringRef(pulumi.StringRef(pulumi.String(value))),
-//				}, nil))), nil
-//			}).(vpc.GetSwitchesResultOutput)
+//			defaultGetSwitches := vpc.GetSwitchesOutput(ctx, vpc.GetSwitchesOutputArgs{
+//				VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
+//					length := _args[0].(int)
+//					id := _args[1].(string)
+//					var tmp1 *string
+//					if length > 0 {
+//						tmp1 = defaultGetNetworks.Ids[0]
+//					} else {
+//						tmp1 = id
+//					}
+//					return &tmp1, nil
+//				}).(pulumi.StringPtrOutput),
+//			}, nil)
 //			invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
 //				Input:   defaultGetNetworks.Vpcs[0].CidrBlock,
 //				Newbits: 8,

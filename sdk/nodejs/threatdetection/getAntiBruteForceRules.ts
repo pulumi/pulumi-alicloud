@@ -26,10 +26,10 @@ import * as utilities from "../utilities";
  *     failCount: 80,
  *     span: 10,
  * });
- * const _default = defaultAntiBruteForceRule.id.apply(id => alicloud.threatdetection.getAntiBruteForceRulesOutput({
- *     ids: [id],
+ * const _default = alicloud.threatdetection.getAntiBruteForceRulesOutput({
+ *     ids: [defaultAntiBruteForceRule.id],
  *     nameRegex: defaultAntiBruteForceRule.name,
- * }));
+ * });
  * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
  * ```
  */
@@ -104,10 +104,10 @@ export interface GetAntiBruteForceRulesResult {
  *     failCount: 80,
  *     span: 10,
  * });
- * const _default = defaultAntiBruteForceRule.id.apply(id => alicloud.threatdetection.getAntiBruteForceRulesOutput({
- *     ids: [id],
+ * const _default = alicloud.threatdetection.getAntiBruteForceRulesOutput({
+ *     ids: [defaultAntiBruteForceRule.id],
  *     nameRegex: defaultAntiBruteForceRule.name,
- * }));
+ * });
  * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
  * ```
  */

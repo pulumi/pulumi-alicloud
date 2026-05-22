@@ -62,9 +62,9 @@ import * as utilities from "../utilities";
  *     ids: [defaultDesktop.id],
  * });
  * export const ecdDesktopId1 = ids.apply(ids => ids.desktops?.[0]?.id);
- * const nameRegex = defaultDesktop.desktopName.apply(desktopName => alicloud.eds.getDesktopsOutput({
- *     nameRegex: desktopName,
- * }));
+ * const nameRegex = alicloud.eds.getDesktopsOutput({
+ *     nameRegex: defaultDesktop.desktopName,
+ * });
  * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
  * ```
  */
@@ -193,9 +193,9 @@ export interface GetDesktopsResult {
  *     ids: [defaultDesktop.id],
  * });
  * export const ecdDesktopId1 = ids.apply(ids => ids.desktops?.[0]?.id);
- * const nameRegex = defaultDesktop.desktopName.apply(desktopName => alicloud.eds.getDesktopsOutput({
- *     nameRegex: desktopName,
- * }));
+ * const nameRegex = alicloud.eds.getDesktopsOutput({
+ *     nameRegex: defaultDesktop.desktopName,
+ * });
  * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
  * ```
  */

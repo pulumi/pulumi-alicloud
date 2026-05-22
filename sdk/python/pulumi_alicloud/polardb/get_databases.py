@@ -132,12 +132,8 @@ def get_databases(db_cluster_id: Optional[_builtins.str] = None,
         db_cluster_id=polardb_clusters_ds.clusters[0].id,
         db_name=polardb_clusters_ds.apply(lambda polardb_clusters_ds: f"tfaccountpri_{polardb_clusters_ds.clusters[0].id}"),
         db_description="from terraform")
-    default = pulumi.Output.all(
-        polardb_clusters_ds=polardb_clusters_ds,
-        db_name=default_database.db_name
-    ).apply(lambda resolved_outputs: alicloud.polardb.get_databases_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
-        name_regex=resolved_outputs['db_name']))
-
+    default = alicloud.polardb.get_databases_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        name_regex=default_database.db_name)
     pulumi.export("database", default.databases[0].db_name)
     ```
 
@@ -197,12 +193,8 @@ def get_databases_output(db_cluster_id: pulumi.Input[Optional[_builtins.str]] = 
         db_cluster_id=polardb_clusters_ds.clusters[0].id,
         db_name=polardb_clusters_ds.apply(lambda polardb_clusters_ds: f"tfaccountpri_{polardb_clusters_ds.clusters[0].id}"),
         db_description="from terraform")
-    default = pulumi.Output.all(
-        polardb_clusters_ds=polardb_clusters_ds,
-        db_name=default_database.db_name
-    ).apply(lambda resolved_outputs: alicloud.polardb.get_databases_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
-        name_regex=resolved_outputs['db_name']))
-
+    default = alicloud.polardb.get_databases_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+        name_regex=default_database.db_name)
     pulumi.export("database", default.databases[0].db_name)
     ```
 

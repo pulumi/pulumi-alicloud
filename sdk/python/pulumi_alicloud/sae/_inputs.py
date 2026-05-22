@@ -210,7 +210,7 @@ class ApplicationCustomHostAliasV2Args:
 
 
 class ApplicationKafkaConfigsArgsDict(TypedDict):
-    kafka_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]]]
+    kafka_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgsDict']]]]]
     """
     One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
     """
@@ -348,7 +348,7 @@ class ApplicationKafkaConfigsKafkaConfigArgs:
 
 
 class ApplicationLivenessV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2ExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2ExecArgsDict']]]
     """
     Execute. See `exec` below.
     """
@@ -356,7 +356,7 @@ class ApplicationLivenessV2ArgsDict(TypedDict):
     """
     The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
     """
-    http_get: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2HttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2HttpGetArgsDict']]]
     """
     The liveness check settings of the container. See `http_get` below.
     """
@@ -368,7 +368,7 @@ class ApplicationLivenessV2ArgsDict(TypedDict):
     """
     The interval at which the health check is performed.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2TcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2TcpSocketArgsDict']]]
     """
     The liveness check settings of the container. See `tcp_socket` below.
     """
@@ -816,7 +816,7 @@ class ApplicationOssMountDescsV2Args:
 
 
 class ApplicationPostStartV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['ApplicationPostStartV2ExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationPostStartV2ExecArgsDict']]]
     """
     Execute. See `exec` below.
     """
@@ -874,7 +874,7 @@ class ApplicationPostStartV2ExecArgs:
 
 
 class ApplicationPreStopV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['ApplicationPreStopV2ExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationPreStopV2ExecArgsDict']]]
     """
     Execute. See `exec` below.
     """
@@ -940,7 +940,7 @@ class ApplicationPvtzDiscoverySvcArgsDict(TypedDict):
     """
     The ID of the namespace.
     """
-    port_protocols: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]]]
+    port_protocols: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgsDict']]]]]
     """
     The port number and protocol. See `port_protocols` below.
     """
@@ -1063,7 +1063,7 @@ class ApplicationPvtzDiscoverySvcPortProtocolArgs:
 
 
 class ApplicationReadinessV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2ExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2ExecArgsDict']]]
     """
     Execute. See `exec` below.
     """
@@ -1071,7 +1071,7 @@ class ApplicationReadinessV2ArgsDict(TypedDict):
     """
     The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
     """
-    http_get: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2HttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2HttpGetArgsDict']]]
     """
     The liveness check settings of the container. See `http_get` below.
     """
@@ -1087,7 +1087,7 @@ class ApplicationReadinessV2ArgsDict(TypedDict):
     """
     The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2TcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2TcpSocketArgsDict']]]
     """
     The liveness check settings of the container. See `tcp_socket` below.
     """
@@ -1357,7 +1357,7 @@ class ApplicationScalingRuleScalingRuleMetricArgsDict(TypedDict):
     """
     Maximum number of instances applied.
     """
-    metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]]
+    metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgsDict']]]]]
     """
     Indicator rule configuration. See `metrics` below.
     """
@@ -1365,11 +1365,11 @@ class ApplicationScalingRuleScalingRuleMetricArgsDict(TypedDict):
     """
     Minimum number of instances applied.
     """
-    scale_down_rules: NotRequired[pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]]
+    scale_down_rules: NotRequired[pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict']]]
     """
     Apply shrink rules. See `scale_down_rules` below.
     """
-    scale_up_rules: NotRequired[pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]]
+    scale_up_rules: NotRequired[pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict']]]
     """
     Apply expansion rules. See `scale_up_rules` below.
     """
@@ -1771,7 +1771,7 @@ class ApplicationScalingRuleScalingRuleTimerArgsDict(TypedDict):
     """
     The period in which a timed elastic scaling strategy is executed.
     """
-    schedules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]]
+    schedules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgsDict']]]]]
     """
     Resilient Scaling Strategy Trigger Timing. See `schedules` below.
     """
@@ -2032,7 +2032,7 @@ class ApplicationTomcatConfigV2Args:
 
 
 class ApplicationUpdateStrategyV2ArgsDict(TypedDict):
-    batch_update: NotRequired[pulumi.Input[Optional['ApplicationUpdateStrategyV2BatchUpdateArgs']]]
+    batch_update: NotRequired[pulumi.Input[Optional['ApplicationUpdateStrategyV2BatchUpdateArgsDict']]]
     """
     The phased release policy. See `batch_update` below.
     """
@@ -2158,7 +2158,7 @@ class GreyTagRouteDubboRuleArgsDict(TypedDict):
     """
     The service group.
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgsDict']]]]]
     """
     A list of conditions items. See `items` below.
     """
@@ -2371,7 +2371,7 @@ class GreyTagRouteScRuleArgsDict(TypedDict):
     """
     The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgsDict']]]]]
     """
     A list of conditions items. See `items` below.
     """

@@ -289,7 +289,7 @@ class DbInstanceInstanceNetInfoArgsDict(TypedDict):
     """
     The network type of the instance.
     """
-    port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgs']]]]]
+    port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgsDict']]]]]
     """
     A list for port provides SelectDB service.
     """

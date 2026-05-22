@@ -102,11 +102,11 @@ import * as utilities from "../utilities";
  *         For: "VpnAttachment",
  *     },
  * });
- * const ids = pulumi.all([defaultTransitRouterVpnAttachment.id, defaultTransitRouterVpnAttachment.cenId, defaultTransitRouterVpnAttachment.transitRouterId]).apply(([id, cenId, transitRouterId]) => alicloud.cen.getTransitRouterVpnAttachmentsOutput({
- *     ids: [id],
- *     cenId: cenId,
- *     transitRouterId: transitRouterId,
- * }));
+ * const ids = alicloud.cen.getTransitRouterVpnAttachmentsOutput({
+ *     ids: [defaultTransitRouterVpnAttachment.id],
+ *     cenId: defaultTransitRouterVpnAttachment.cenId,
+ *     transitRouterId: defaultTransitRouterVpnAttachment.transitRouterId,
+ * });
  * export const cenTransitRouterVpnAttachmentId0 = ids.apply(ids => ids.attachments?.[0]?.id);
  * ```
  */
@@ -299,11 +299,11 @@ export interface GetTransitRouterVpnAttachmentsResult {
  *         For: "VpnAttachment",
  *     },
  * });
- * const ids = pulumi.all([defaultTransitRouterVpnAttachment.id, defaultTransitRouterVpnAttachment.cenId, defaultTransitRouterVpnAttachment.transitRouterId]).apply(([id, cenId, transitRouterId]) => alicloud.cen.getTransitRouterVpnAttachmentsOutput({
- *     ids: [id],
- *     cenId: cenId,
- *     transitRouterId: transitRouterId,
- * }));
+ * const ids = alicloud.cen.getTransitRouterVpnAttachmentsOutput({
+ *     ids: [defaultTransitRouterVpnAttachment.id],
+ *     cenId: defaultTransitRouterVpnAttachment.cenId,
+ *     transitRouterId: defaultTransitRouterVpnAttachment.transitRouterId,
+ * });
  * export const cenTransitRouterVpnAttachmentId0 = ids.apply(ids => ids.attachments?.[0]?.id);
  * ```
  */

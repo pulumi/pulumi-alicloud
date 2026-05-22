@@ -71,11 +71,11 @@ import (
 //				DescriptionRegex: cluster.Description,
 //				Status:           pulumi.String("Running"),
 //			}, nil)
-//			_default := polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (polardb.GetEndpointsResult, error) {
-//				return polardb.GetEndpointsResult(interface{}(polardb.GetEndpoints(ctx, &polardb.GetEndpointsArgs{
-//					DbClusterId: polardbClustersDs.Clusters[0].Id,
-//				}, nil))), nil
-//			}).(polardb.GetEndpointsResultOutput)
+//			_default := polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
+//				DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+//					return &polardbClustersDs.Clusters[0].Id, nil
+//				}).(pulumi.StringPtrOutput),
+//			}, nil)
 //			ctx.Export("endpoint", _default.ApplyT(func(_default polardb.GetEndpointsResult) (*string, error) {
 //				return &_default.Endpoints[0].DbEndpointId, nil
 //			}).(pulumi.StringPtrOutput))

@@ -50,17 +50,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetIpamIpams := pulumi.All(defaultIpamIpam.ID(), defaultIpamIpam.IpamName).ApplyT(func(_args []interface{}) (vpc.GetIpamIpamsResult, error) {
-//				id := _args[0].(string)
-//				ipamName := _args[1].(*string)
-//				return vpc.GetIpamIpamsResult(interface{}(vpc.GetIpamIpams(ctx, &vpc.GetIpamIpamsArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(ipamName))),
-//					IpamName:  pulumi.StringRef(pulumi.StringRef(name)),
-//				}, nil))), nil
-//			}).(vpc.GetIpamIpamsResultOutput)
+//			defaultGetIpamIpams := vpc.GetIpamIpamsOutput(ctx, vpc.GetIpamIpamsOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultIpamIpam.ID(),
+//				},
+//				NameRegex: defaultIpamIpam.IpamName,
+//				IpamName:  pulumi.String(pulumi.String(name)),
+//			}, nil)
 //			ctx.Export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.ApplyT(func(defaultGetIpamIpams vpc.GetIpamIpamsResult) (*string, error) {
 //				return &defaultGetIpamIpams.Ipams[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

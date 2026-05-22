@@ -209,7 +209,7 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
     instance_type_count_size = len(default_get_instance_types.instance_types)
     instance_type = instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[int(instance_type_count_size - 1)]).apply(lambda obj: obj.instance_type)
     default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+    default_get_switches = alicloud.vpc.get_switches_output(vpc_id=default_get_networks.ids[0],
         zone_id=zone_id)
     group = alicloud.ecs.SecurityGroup("group",
         name=name,
@@ -309,7 +309,7 @@ def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtin
     instance_type_count_size = len(default_get_instance_types.instance_types)
     instance_type = instance_type_count_size.apply(lambda instance_type_count_size: default_get_instance_types.instance_types[int(instance_type_count_size - 1)]).apply(lambda obj: obj.instance_type)
     default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+    default_get_switches = alicloud.vpc.get_switches_output(vpc_id=default_get_networks.ids[0],
         zone_id=zone_id)
     group = alicloud.ecs.SecurityGroup("group",
         name=name,

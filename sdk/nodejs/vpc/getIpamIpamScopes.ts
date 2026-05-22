@@ -33,9 +33,9 @@ import * as utilities from "../utilities";
  *         k1: "v1",
  *     },
  * });
- * const defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName.apply(ipamScopeName => alicloud.vpc.getIpamIpamScopesOutput({
- *     ipamScopeName: ipamScopeName,
- * }));
+ * const defaultGetIpamIpamScopes = alicloud.vpc.getIpamIpamScopesOutput({
+ *     ipamScopeName: defaultIpamIpamScope.ipamScopeName,
+ * });
  * export const alicloudVpcIpamIpamScopeExampleId = defaultGetIpamIpamScopes.apply(defaultGetIpamIpamScopes => defaultGetIpamIpamScopes.scopes?.[0]?.id);
  * ```
  */
@@ -171,9 +171,9 @@ export interface GetIpamIpamScopesResult {
  *         k1: "v1",
  *     },
  * });
- * const defaultGetIpamIpamScopes = defaultIpamIpamScope.ipamScopeName.apply(ipamScopeName => alicloud.vpc.getIpamIpamScopesOutput({
- *     ipamScopeName: ipamScopeName,
- * }));
+ * const defaultGetIpamIpamScopes = alicloud.vpc.getIpamIpamScopesOutput({
+ *     ipamScopeName: defaultIpamIpamScope.ipamScopeName,
+ * });
  * export const alicloudVpcIpamIpamScopeExampleId = defaultGetIpamIpamScopes.apply(defaultGetIpamIpamScopes => defaultGetIpamIpamScopes.scopes?.[0]?.id);
  * ```
  */

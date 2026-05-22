@@ -23,6 +23,12 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** After the key pair is attached with sone instances, there instances must be rebooted to make the key pair affect.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:ecs/keyPairAttachment:KeyPairAttachment")
 public class KeyPairAttachment extends com.pulumi.resources.CustomResource {

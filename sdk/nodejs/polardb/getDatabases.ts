@@ -51,10 +51,10 @@ import * as utilities from "../utilities";
  *     dbName: polardbClustersDs.apply(polardbClustersDs => `tfaccountpri_${polardbClustersDs.clusters?.[0]?.id}`),
  *     dbDescription: "from terraform",
  * });
- * const _default = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
- *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- *     nameRegex: dbName,
- * }));
+ * const _default = alicloud.polardb.getDatabasesOutput({
+ *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *     nameRegex: defaultDatabase.dbName,
+ * });
  * export const database = _default.apply(_default => _default.databases?.[0]?.dbName);
  * ```
  */
@@ -144,10 +144,10 @@ export interface GetDatabasesResult {
  *     dbName: polardbClustersDs.apply(polardbClustersDs => `tfaccountpri_${polardbClustersDs.clusters?.[0]?.id}`),
  *     dbDescription: "from terraform",
  * });
- * const _default = pulumi.all([polardbClustersDs, defaultDatabase.dbName]).apply(([polardbClustersDs, dbName]) => alicloud.polardb.getDatabasesOutput({
- *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- *     nameRegex: dbName,
- * }));
+ * const _default = alicloud.polardb.getDatabasesOutput({
+ *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *     nameRegex: defaultDatabase.dbName,
+ * });
  * export const database = _default.apply(_default => _default.databases?.[0]?.dbName);
  * ```
  */

@@ -112,23 +112,21 @@ import (
 // }
 // defaultSwitch = append(defaultSwitch, __res)
 // }
-// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
-// Separator: ",",
-// Text: invoke.Result,
-// }, nil)
-// if err != nil {
-// return err
-// }
 // // Create a new RAM cluster.
 // defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
 // Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // ClusterSpec: pulumi.String("ack.pro.small"),
 // Version: pulumi.String(pulumi.String(_default.Metadatas[0].Version)),
-// WorkerVswitchIds: pulumi.StringArray(std.JoinOutput(ctx, std.JoinOutputArgs{
+// WorkerVswitchIds: pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// Separator: pulumi.String(","),
+// Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:63,19-38),
-// }, nil).ApplyT(func(invoke std.JoinResult) (std.SplitResult, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.SplitResultOutput).ApplyT(func(invoke std.SplitResult) ([]string, error) {
+// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
+// val := invoke.Result
+// return &val, nil
+// }).(pulumi.StringPtrOutput),
+// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringArrayOutput)),
 // NewNatGateway: pulumi.Bool(false),

@@ -143,15 +143,15 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new[] {} : Std.Join.Invoke(new()
+    ///         })).Apply(invoke =&gt; invoke.Result) : vswitchCidrs.Length &lt; 1 ? new[] {} : Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = vswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         PodVswitchIds = terwayVswitchIds.Length &gt; 0 ? Std.Join.Invoke(new()
     ///         {
     ///             Separator = ",",
@@ -160,15 +160,15 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             Separator = ",",
     ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new[] {} : Std.Join.Invoke(new()
+    ///         })).Apply(invoke =&gt; invoke.Result) : terwayVswitchCidrs.Length &lt; 1 ? new[] {} : Std.Split.Invoke(new()
     ///         {
     ///             Separator = ",",
-    ///             Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
-    ///         }).Apply(invoke =&gt; Std.Split.Invoke(new()
-    ///         {
-    ///             Separator = ",",
-    ///             Text = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///             Text = Std.Join.Invoke(new()
+    ///             {
+    ///                 Separator = ",",
+    ///                 Input = terwayVswitches.Select(__item =&gt; __item.Id).ToList(),
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         NewNatGateway = true,
     ///         ProxyMode = proxyMode,
     ///         ServiceCidr = serviceCidr,

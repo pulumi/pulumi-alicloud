@@ -8860,16 +8860,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
@@ -9022,16 +9017,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
@@ -9184,16 +9174,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
@@ -9346,16 +9331,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
@@ -9508,16 +9488,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
@@ -9670,16 +9645,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }
@@ -9832,16 +9802,11 @@ public final class CenFunctions {
      *             ))
      *             .build());
      * 
-     *         final var ids = Output.tuple(defaultTransitRouterVpnAttachment.id(), defaultTransitRouterVpnAttachment.cenId(), defaultTransitRouterVpnAttachment.transitRouterId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var cenId = values.t2;
-     *             var transitRouterId = values.t3;
-     *             return CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *                 .ids(id)
-     *                 .cenId(cenId)
-     *                 .transitRouterId(transitRouterId)
-     *                 .build());
-     *         });
+     *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
+     *             .ids(defaultTransitRouterVpnAttachment.id())
+     *             .cenId(defaultTransitRouterVpnAttachment.cenId())
+     *             .transitRouterId(defaultTransitRouterVpnAttachment.transitRouterId())
+     *             .build());
      * 
      *         ctx.export("cenTransitRouterVpnAttachmentId0", ids.applyValue(_ids -> _ids.attachments()[0].id()));
      *     }

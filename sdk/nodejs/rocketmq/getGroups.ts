@@ -29,11 +29,11 @@ import * as utilities from "../utilities";
  *     instanceId: _default.id,
  *     remark: "dafault_ons_group_remark",
  * });
- * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroupsOutput({
- *     instanceId: instanceId,
+ * const groupsDs = alicloud.rocketmq.getGroupsOutput({
+ *     instanceId: defaultGroup.instanceId,
  *     nameRegex: groupId,
  *     outputFile: "groups.txt",
- * }));
+ * });
  * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?.[0]?.groupName);
  * ```
  */
@@ -134,11 +134,11 @@ export interface GetGroupsResult {
  *     instanceId: _default.id,
  *     remark: "dafault_ons_group_remark",
  * });
- * const groupsDs = defaultGroup.instanceId.apply(instanceId => alicloud.rocketmq.getGroupsOutput({
- *     instanceId: instanceId,
+ * const groupsDs = alicloud.rocketmq.getGroupsOutput({
+ *     instanceId: defaultGroup.instanceId,
  *     nameRegex: groupId,
  *     outputFile: "groups.txt",
- * }));
+ * });
  * export const firstGroupName = groupsDs.apply(groupsDs => groupsDs.groups?.[0]?.groupName);
  * ```
  */

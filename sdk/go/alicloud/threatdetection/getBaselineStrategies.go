@@ -41,15 +41,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = defaultBaselineStrategy.ID().ApplyT(func(id string) (threatdetection.GetBaselineStrategiesResult, error) {
-//				return threatdetection.GetBaselineStrategiesResult(interface{}(threatdetection.GetBaselineStrategies(ctx, &threatdetection.GetBaselineStrategiesArgs{
-//					Ids: []string{
-//						id,
-//					},
-//					NameRegex:  pulumi.StringRef(pulumi.StringRef(pulumi.String(defaultBaselineStrategy.Name))),
-//					CustomType: pulumi.StringRef(pulumi.StringRef("custom")),
-//				}, nil))), nil
-//			}).(threatdetection.GetBaselineStrategiesResultOutput)
+//			_ = threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultBaselineStrategy.ID(),
+//				},
+//				NameRegex:  defaultBaselineStrategy.Name,
+//				CustomType: pulumi.String("custom"),
+//			}, nil)
 //			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", pulumi.Any(defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id))
 //			return nil
 //		})

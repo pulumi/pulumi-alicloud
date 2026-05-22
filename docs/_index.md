@@ -30,7 +30,7 @@ with the proper credentials before it can be used.
 Use the navigation on the left to read about the available resources.
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -497,6 +497,71 @@ public class App {
             .build());
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    alicloud = {
+      source = "pulumi/alicloud"
+    }
+  }
+}
+
+data "alicloud_getzones" "default" {
+  available_disk_category     = "cloud_efficiency"
+  available_resource_creation = "VSwitch"
+}
+
+# Create a new ECS instance for VPC
+resource "alicloud_vpc_network" "vpc" {
+  vpc_name   = var.name
+  cidr_block = "172.16.0.0/16"
+}
+resource "alicloud_vpc_switch" "vswitch" {
+  vpc_id       = alicloud_vpc_network.vpc.id
+  cidr_block   = "172.16.0.0/24"
+  zone_id      = data.alicloud_getzones.default.zones[0].id
+  vswitch_name = var.name
+}
+# Create a new Security in a VPC
+resource "alicloud_ecs_securitygroup" "group" {
+  name        = var.name
+  description = "foo"
+  vpc_id      = alicloud_vpc_network.vpc.id
+}
+# Create a kms to encrypt the disk
+resource "alicloud_kms_key" "key" {
+  description            = "Hello KMS"
+  pending_window_in_days = "7"
+  status                 = "Enabled"
+}
+resource "alicloud_ecs_instance" "instance" {
+  availability_zone          = data.alicloud_getzones.default.zones[0].id
+  security_groups            = [alicloud_ecs_securitygroup.group][*].id
+  instance_type              = "ecs.n4.large"
+  system_disk_category       = "cloud_efficiency"
+  system_disk_name           = var.name
+  system_disk_description    = "system_disk_description"
+  image_id                   = "ubuntu_18_04_64_20G_alibase_20190624.vhd"
+  instance_name              = var.name
+  vswitch_id                 = alicloud_vpc_switch.vswitch.id
+  internet_max_bandwidth_out = 10
+  data_disks {
+    name        = "data-disk"
+    size        = 20
+    category    = "cloud_efficiency"
+    description = "disk-description"
+    encrypted   = true
+    kms_key_id  = alicloud_kms_key.key.id
+  }
+}
+variable "name" {
+  type    = string
+  default = "pulumi-example"
 }
 ```
 

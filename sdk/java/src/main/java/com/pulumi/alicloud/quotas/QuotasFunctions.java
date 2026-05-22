@@ -410,16 +410,12 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
-     *             var quotaCategory = values.t1;
-     *             var id = values.t2;
-     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *                 .productCode("vpc")
-     *                 .enableDetails(true)
-     *                 .quotaCategory(quotaCategory)
-     *                 .ids(id)
-     *                 .build());
-     *         });
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode("vpc")
+     *             .enableDetails(true)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
      * 
      *     }
      * }
@@ -476,16 +472,12 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
-     *             var quotaCategory = values.t1;
-     *             var id = values.t2;
-     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *                 .productCode("vpc")
-     *                 .enableDetails(true)
-     *                 .quotaCategory(quotaCategory)
-     *                 .ids(id)
-     *                 .build());
-     *         });
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode("vpc")
+     *             .enableDetails(true)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
      * 
      *     }
      * }
@@ -542,16 +534,12 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
-     *             var quotaCategory = values.t1;
-     *             var id = values.t2;
-     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *                 .productCode("vpc")
-     *                 .enableDetails(true)
-     *                 .quotaCategory(quotaCategory)
-     *                 .ids(id)
-     *                 .build());
-     *         });
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode("vpc")
+     *             .enableDetails(true)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
      * 
      *     }
      * }
@@ -608,16 +596,12 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
-     *             var quotaCategory = values.t1;
-     *             var id = values.t2;
-     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *                 .productCode("vpc")
-     *                 .enableDetails(true)
-     *                 .quotaCategory(quotaCategory)
-     *                 .ids(id)
-     *                 .build());
-     *         });
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode("vpc")
+     *             .enableDetails(true)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
      * 
      *     }
      * }
@@ -674,16 +658,12 @@ public final class QuotasFunctions {
      *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
-     *         final var default = Output.tuple(defaultQuotaApplication.quotaCategory(), defaultQuotaApplication.id()).applyValue(values -> {
-     *             var quotaCategory = values.t1;
-     *             var id = values.t2;
-     *             return QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *                 .productCode("vpc")
-     *                 .enableDetails(true)
-     *                 .quotaCategory(quotaCategory)
-     *                 .ids(id)
-     *                 .build());
-     *         });
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *             .productCode("vpc")
+     *             .enableDetails(true)
+     *             .quotaCategory(defaultQuotaApplication.quotaCategory())
+     *             .ids(defaultQuotaApplication.id())
+     *             .build());
      * 
      *     }
      * }

@@ -1307,7 +1307,7 @@ class StoreEncryptConfArgsDict(TypedDict):
     """
     Supported encryption type, only supports `default`(AES), `m4`.
     """
-    user_cmk_info: NotRequired[pulumi.Input[Optional['StoreEncryptConfUserCmkInfoArgs']]]
+    user_cmk_info: NotRequired[pulumi.Input[Optional['StoreEncryptConfUserCmkInfoArgsDict']]]
     """
     User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
     """
@@ -1457,7 +1457,7 @@ class StoreIndexFieldSearchArgsDict(TypedDict):
     """
     Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
     """
-    json_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]]
+    json_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgsDict']]]]]
     """
     Use nested index when type is json. See `json_keys` below.
     """

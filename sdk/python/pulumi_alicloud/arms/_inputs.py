@@ -839,7 +839,7 @@ class SyntheticTaskAvailableAssertionArgs:
 
 
 class SyntheticTaskCommonSettingArgsDict(TypedDict):
-    custom_host: NotRequired[pulumi.Input[Optional['SyntheticTaskCommonSettingCustomHostArgs']]]
+    custom_host: NotRequired[pulumi.Input[Optional['SyntheticTaskCommonSettingCustomHostArgsDict']]]
     """
     Custom host. See `custom_host` below.
     """
@@ -1217,31 +1217,31 @@ class SyntheticTaskMonitorArgs:
 
 
 class SyntheticTaskMonitorConfArgsDict(TypedDict):
-    api_http: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpArgs']]]
+    api_http: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpArgsDict']]]
     """
     HTTP(S) task configuration information. See `api_http` below.
     """
-    file_download: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfFileDownloadArgs']]]
+    file_download: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfFileDownloadArgsDict']]]
     """
     File download type task configuration. See `file_download` below.
     """
-    net_dns: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetDnsArgs']]]
+    net_dns: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetDnsArgsDict']]]
     """
     The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
     """
-    net_icmp: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetIcmpArgs']]]
+    net_icmp: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetIcmpArgsDict']]]
     """
     ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
     """
-    net_tcp: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetTcpArgs']]]
+    net_tcp: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetTcpArgsDict']]]
     """
     The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
     """
-    stream: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfStreamArgs']]]
+    stream: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfStreamArgsDict']]]
     """
     Streaming Media Dial Test Configuration. See `stream` below.
     """
-    website: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfWebsiteArgs']]]
+    website: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfWebsiteArgsDict']]]
     """
     Website speed measurement type task configuration. See `website` below.
     """
@@ -1378,7 +1378,7 @@ class SyntheticTaskMonitorConfApiHttpArgsDict(TypedDict):
     """
     HTTP method, GET or POST.
     """
-    request_body: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']]]
+    request_body: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict']]]
     """
     HTTP request body. See `request_body` below.
     """

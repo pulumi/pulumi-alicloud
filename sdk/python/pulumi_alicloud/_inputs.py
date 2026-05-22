@@ -237,7 +237,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
     """
     API version information, typically in date format, such as 2014-05-26.
     """
-    const_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]]
+    const_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict']]]]]
     """
     Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
     Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
@@ -553,7 +553,7 @@ class OpenApiExplorerApiMcpServerApiArgs:
 
 
 class OpenApiExplorerApiMcpServerPromptArgsDict(TypedDict):
-    arguments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]]
+    arguments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgsDict']]]]]
     """
     Parameters for the prompt. See `arguments` below.
     """

@@ -38,7 +38,7 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict(TypedDict):
     """
     Enable Snapshot replication.
     """
-    regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]]]
+    regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict']]]]]
     """
     Destination region for Snapshot replication. See `regions` below.
     """
@@ -235,7 +235,7 @@ class EnterpriseSnapshotPolicySpecialRetainRulesArgsDict(TypedDict):
     - true
     - false.
     """
-    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict']]]]]
     """
     List of special retention rules. See `rules` below.
     """

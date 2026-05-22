@@ -53,11 +53,9 @@ import (
 //				return err
 //			}
 //			ctx.Export("ecdNasFileSystemId1", ids.Systems[0].Id)
-//			nameRegex := defaultNasFileSystem.NasFileSystemName.ApplyT(func(nasFileSystemName *string) (eds.GetNasFileSystemsResult, error) {
-//				return eds.GetNasFileSystemsResult(interface{}(eds.GetNasFileSystems(ctx, &eds.GetNasFileSystemsArgs{
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(nasFileSystemName))),
-//				}, nil))), nil
-//			}).(eds.GetNasFileSystemsResultOutput)
+//			nameRegex := eds.GetNasFileSystemsOutput(ctx, eds.GetNasFileSystemsOutputArgs{
+//				NameRegex: defaultNasFileSystem.NasFileSystemName,
+//			}, nil)
 //			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (*string, error) {
 //				return &nameRegex.Systems[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

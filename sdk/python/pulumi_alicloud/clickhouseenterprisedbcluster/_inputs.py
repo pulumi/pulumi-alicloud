@@ -133,7 +133,7 @@ class ClickHouseEnterpriseDbClusterEndpointArgsDict(TypedDict):
     """
     The network type of the connection string.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClickHouseEnterpriseDbClusterEndpointPortArgsDict']]]]]
     """
     A list of port details.
     """

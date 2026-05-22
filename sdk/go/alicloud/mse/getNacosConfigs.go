@@ -92,15 +92,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = pulumi.All(exampleCluster.ID(), exampleEngineNamespace.NamespaceId).ApplyT(func(_args []interface{}) (mse.GetNacosConfigsResult, error) {
-//				id := _args[0].(string)
-//				namespaceId := _args[1].(string)
-//				return mse.GetNacosConfigsResult(interface{}(mse.GetNacosConfigs(ctx, &mse.GetNacosConfigsArgs{
-//					InstanceId:    id,
-//					EnableDetails: pulumi.BoolRef(pulumi.BoolRef(true)),
-//					NamespaceId:   pulumi.StringRef(pulumi.StringRef(namespaceId)),
-//				}, nil))), nil
-//			}).(mse.GetNacosConfigsResultOutput)
+//			_ = mse.GetNacosConfigsOutput(ctx, mse.GetNacosConfigsOutputArgs{
+//				InstanceId:    exampleCluster.ID(),
+//				EnableDetails: pulumi.Bool(true),
+//				NamespaceId:   exampleEngineNamespace.NamespaceId,
+//			}, nil)
 //			return nil
 //		})
 //	}

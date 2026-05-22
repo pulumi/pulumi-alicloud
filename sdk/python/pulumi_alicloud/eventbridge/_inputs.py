@@ -111,7 +111,7 @@ class ApiDestinationHttpApiParametersArgs:
 
 
 class ConnectionAuthParametersArgsDict(TypedDict):
-    api_key_auth_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersApiKeyAuthParametersArgs']]]
+    api_key_auth_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersApiKeyAuthParametersArgsDict']]]
     """
     The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
     """
@@ -119,11 +119,11 @@ class ConnectionAuthParametersArgsDict(TypedDict):
     """
     The type of the authentication. Valid values: `API_KEY_AUTH`, `BASIC_AUTH`, `OAUTH_AUTH`.
     """
-    basic_auth_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersBasicAuthParametersArgs']]]
+    basic_auth_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersBasicAuthParametersArgsDict']]]
     """
     The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
     """
-    oauth_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersOauthParametersArgs']]]
+    oauth_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersOauthParametersArgsDict']]]
     """
     The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
     """
@@ -302,7 +302,7 @@ class ConnectionAuthParametersOauthParametersArgsDict(TypedDict):
     """
     The IP address of the authorized endpoint.
     """
-    client_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersOauthParametersClientParametersArgs']]]
+    client_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersOauthParametersClientParametersArgsDict']]]
     """
     The parameters that are configured for the client. See `client_parameters` below.
     """
@@ -310,7 +310,7 @@ class ConnectionAuthParametersOauthParametersArgsDict(TypedDict):
     """
     The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
     """
-    oauth_http_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersOauthParametersOauthHttpParametersArgs']]]
+    oauth_http_parameters: NotRequired[pulumi.Input[Optional['ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict']]]
     """
     The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
     """
@@ -436,15 +436,15 @@ class ConnectionAuthParametersOauthParametersClientParametersArgs:
 
 
 class ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict(TypedDict):
-    body_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs']]]]]
+    body_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict']]]]]
     """
     The parameters that are configured for the request body. See `body_parameters` below.
     """
-    header_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs']]]]]
+    header_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict']]]]]
     """
     The parameters that are configured for the request header. See `header_parameters` below.
     """
-    query_string_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs']]]]]
+    query_string_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict']]]]]
     """
     The parameters that are configured for the request path. See `query_string_parameters` below.
     """
@@ -1256,7 +1256,7 @@ class EventSourceV2SourceOssEventParametersArgsDict(TypedDict):
     """
     OSS event type list.
     """
-    match_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['EventSourceV2SourceOssEventParametersMatchRuleArgs']]]]]]]
+    match_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['EventSourceV2SourceOssEventParametersMatchRuleArgsDict']]]]]]]
     """
     Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
     """
@@ -1985,7 +1985,7 @@ class RuleTargetArgsDict(TypedDict):
     The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
     **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
     """
-    dead_letter_queue: NotRequired[pulumi.Input[Optional['RuleTargetDeadLetterQueueArgs']]]
+    dead_letter_queue: NotRequired[pulumi.Input[Optional['RuleTargetDeadLetterQueueArgsDict']]]
     """
     The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
     """

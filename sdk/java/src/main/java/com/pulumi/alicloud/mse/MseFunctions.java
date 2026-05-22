@@ -96,16 +96,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -186,16 +182,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -276,16 +268,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -366,16 +354,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -456,16 +440,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -546,16 +526,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -636,16 +612,12 @@ public final class MseFunctions {
      *             .build());
      * 
      *         // Declare the data source
-     *         final var exampleGetClusters = Output.tuple(exampleCluster.id(), exampleCluster.clusterAliasName()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var clusterAliasName = values.t2;
-     *             return MseFunctions.getClusters(GetClustersArgs.builder()
-     *                 .enableDetails(true)
-     *                 .ids(id)
-     *                 .status("INIT_SUCCESS")
-     *                 .nameRegex(clusterAliasName)
-     *                 .build());
-     *         });
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails(true)
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
      * 
      *         ctx.export("instanceId", exampleGetClusters.applyValue(_exampleGetClusters -> _exampleGetClusters.clusters()[0].id()));
      *     }
@@ -1790,15 +1762,11 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var namespaceId = values.t2;
-     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *                 .instanceId(id)
-     *                 .enableDetails(true)
-     *                 .namespaceId(namespaceId)
-     *                 .build());
-     *         });
+     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .enableDetails(true)
+     *             .namespaceId(exampleEngineNamespace.namespaceId())
+     *             .build());
      * 
      *     }
      * }
@@ -1899,15 +1867,11 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var namespaceId = values.t2;
-     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *                 .instanceId(id)
-     *                 .enableDetails(true)
-     *                 .namespaceId(namespaceId)
-     *                 .build());
-     *         });
+     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .enableDetails(true)
+     *             .namespaceId(exampleEngineNamespace.namespaceId())
+     *             .build());
      * 
      *     }
      * }
@@ -2008,15 +1972,11 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var namespaceId = values.t2;
-     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *                 .instanceId(id)
-     *                 .enableDetails(true)
-     *                 .namespaceId(namespaceId)
-     *                 .build());
-     *         });
+     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .enableDetails(true)
+     *             .namespaceId(exampleEngineNamespace.namespaceId())
+     *             .build());
      * 
      *     }
      * }
@@ -2117,15 +2077,11 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var namespaceId = values.t2;
-     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *                 .instanceId(id)
-     *                 .enableDetails(true)
-     *                 .namespaceId(namespaceId)
-     *                 .build());
-     *         });
+     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .enableDetails(true)
+     *             .namespaceId(exampleEngineNamespace.namespaceId())
+     *             .build());
      * 
      *     }
      * }
@@ -2226,15 +2182,11 @@ public final class MseFunctions {
      *             .desc("example")
      *             .build());
      * 
-     *         final var exampleGetNacosConfigs = Output.tuple(exampleCluster.id(), exampleEngineNamespace.namespaceId()).applyValue(values -> {
-     *             var id = values.t1;
-     *             var namespaceId = values.t2;
-     *             return MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
-     *                 .instanceId(id)
-     *                 .enableDetails(true)
-     *                 .namespaceId(namespaceId)
-     *                 .build());
-     *         });
+     *         final var exampleGetNacosConfigs = MseFunctions.getNacosConfigs(GetNacosConfigsArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .enableDetails(true)
+     *             .namespaceId(exampleEngineNamespace.namespaceId())
+     *             .build());
      * 
      *     }
      * }

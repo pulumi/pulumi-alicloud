@@ -197,7 +197,7 @@ def get_desktops(desktop_name: Optional[_builtins.str] = None,
         end_user_ids=[default_user.id])
     ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
     pulumi.export("ecdDesktopId1", ids.desktops[0].id)
-    name_regex = default_desktop.desktop_name.apply(lambda desktop_name: alicloud.eds.get_desktops_output(name_regex=desktop_name))
+    name_regex = alicloud.eds.get_desktops_output(name_regex=default_desktop.desktop_name)
     pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
     ```
 
@@ -291,7 +291,7 @@ def get_desktops_output(desktop_name: pulumi.Input[Optional[Optional[_builtins.s
         end_user_ids=[default_user.id])
     ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
     pulumi.export("ecdDesktopId1", ids.desktops[0].id)
-    name_regex = default_desktop.desktop_name.apply(lambda desktop_name: alicloud.eds.get_desktops_output(name_regex=desktop_name))
+    name_regex = alicloud.eds.get_desktops_output(name_regex=default_desktop.desktop_name)
     pulumi.export("ecdDesktopId2", name_regex.desktops[0].id)
     ```
 

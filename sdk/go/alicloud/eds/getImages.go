@@ -95,11 +95,9 @@ import (
 //			ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (*string, error) {
 //				return &ids.Images[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
-//			nameRegex := defaultImage.ImageName.ApplyT(func(imageName *string) (eds.GetImagesResult, error) {
-//				return eds.GetImagesResult(interface{}(eds.GetImages(ctx, &eds.GetImagesArgs{
-//					NameRegex: pulumi.StringRef(pulumi.StringRef(pulumi.String(imageName))),
-//				}, nil))), nil
-//			}).(eds.GetImagesResultOutput)
+//			nameRegex := eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
+//				NameRegex: defaultImage.ImageName,
+//			}, nil)
 //			ctx.Export("ecdImageId2", nameRegex.ApplyT(func(nameRegex eds.GetImagesResult) (*string, error) {
 //				return &nameRegex.Images[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

@@ -25,11 +25,11 @@ import * as utilities from "../utilities";
  *     ipamName: name,
  *     operatingRegionLists: ["cn-hangzhou"],
  * });
- * const defaultGetIpamIpams = pulumi.all([defaultIpamIpam.id, defaultIpamIpam.ipamName]).apply(([id, ipamName]) => alicloud.vpc.getIpamIpamsOutput({
- *     ids: [id],
- *     nameRegex: ipamName,
+ * const defaultGetIpamIpams = alicloud.vpc.getIpamIpamsOutput({
+ *     ids: [defaultIpamIpam.id],
+ *     nameRegex: defaultIpamIpam.ipamName,
  *     ipamName: name,
- * }));
+ * });
  * export const alicloudVpcIpamIpamExampleId = defaultGetIpamIpams.apply(defaultGetIpamIpams => defaultGetIpamIpams.ipams?.[0]?.id);
  * ```
  */
@@ -139,11 +139,11 @@ export interface GetIpamIpamsResult {
  *     ipamName: name,
  *     operatingRegionLists: ["cn-hangzhou"],
  * });
- * const defaultGetIpamIpams = pulumi.all([defaultIpamIpam.id, defaultIpamIpam.ipamName]).apply(([id, ipamName]) => alicloud.vpc.getIpamIpamsOutput({
- *     ids: [id],
- *     nameRegex: ipamName,
+ * const defaultGetIpamIpams = alicloud.vpc.getIpamIpamsOutput({
+ *     ids: [defaultIpamIpam.id],
+ *     nameRegex: defaultIpamIpam.ipamName,
  *     ipamName: name,
- * }));
+ * });
  * export const alicloudVpcIpamIpamExampleId = defaultGetIpamIpams.apply(defaultGetIpamIpams => defaultGetIpamIpams.ipams?.[0]?.id);
  * ```
  */

@@ -1489,7 +1489,7 @@ class VPCRouteEntryNextHopArgsDict(TypedDict):
     """
     The region of the next instance.
     """
-    next_hop_related_info: NotRequired[pulumi.Input[Optional['VPCRouteEntryNextHopNextHopRelatedInfoArgs']]]
+    next_hop_related_info: NotRequired[pulumi.Input[Optional['VPCRouteEntryNextHopNextHopRelatedInfoArgsDict']]]
     """
     Next hop information.
     """

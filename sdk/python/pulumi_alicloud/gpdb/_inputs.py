@@ -36,27 +36,27 @@ __all__ = [
 ]
 
 class DbInstancePlanPlanConfigArgsDict(TypedDict):
-    pause: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigPauseArgs']]]
+    pause: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigPauseArgsDict']]]
     """
     Pause instance plan config. See `pause` below.
     """
-    resume: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigResumeArgs']]]
+    resume: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigResumeArgsDict']]]
     """
     Resume instance plan config. See `resume` below.
     """
-    scale_down: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleDownArgs']]]
+    scale_down: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleDownArgsDict']]]
     """
     Scale down instance plan config. See `scale_down` below.
     """
-    scale_in: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleInArgs']]]
+    scale_in: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleInArgsDict']]]
     """
     Scale In instance plan config. See `scale_in` below.
     """
-    scale_out: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleOutArgs']]]
+    scale_out: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleOutArgsDict']]]
     """
     Scale out instance plan config. See `scale_out` below.
     """
-    scale_up: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleUpArgs']]]
+    scale_up: NotRequired[pulumi.Input[Optional['DbInstancePlanPlanConfigScaleUpArgsDict']]]
     """
     Scale up instance plan config. See `scale_up` below.
     """

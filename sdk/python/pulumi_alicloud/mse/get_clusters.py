@@ -185,14 +185,10 @@ def get_clusters(cluster_alias_name: Optional[_builtins.str] = None,
         vswitch_id=example_switch.id,
         vpc_id=example_network.id)
     # Declare the data source
-    example_get_clusters = pulumi.Output.all(
-        id=example_cluster.id,
-        cluster_alias_name=example_cluster.cluster_alias_name
-    ).apply(lambda resolved_outputs: alicloud.mse.get_clusters_output(enable_details=True,
-        ids=[resolved_outputs['id']],
+    example_get_clusters = alicloud.mse.get_clusters_output(enable_details=True,
+        ids=[example_cluster.id],
         status="INIT_SUCCESS",
-        name_regex=resolved_outputs['cluster_alias_name']))
-
+        name_regex=example_cluster.cluster_alias_name)
     pulumi.export("instanceId", example_get_clusters.clusters[0].id)
     ```
 
@@ -269,14 +265,10 @@ def get_clusters_output(cluster_alias_name: pulumi.Input[Optional[Optional[_buil
         vswitch_id=example_switch.id,
         vpc_id=example_network.id)
     # Declare the data source
-    example_get_clusters = pulumi.Output.all(
-        id=example_cluster.id,
-        cluster_alias_name=example_cluster.cluster_alias_name
-    ).apply(lambda resolved_outputs: alicloud.mse.get_clusters_output(enable_details=True,
-        ids=[resolved_outputs['id']],
+    example_get_clusters = alicloud.mse.get_clusters_output(enable_details=True,
+        ids=[example_cluster.id],
         status="INIT_SUCCESS",
-        name_regex=resolved_outputs['cluster_alias_name']))
-
+        name_regex=example_cluster.cluster_alias_name)
     pulumi.export("instanceId", example_get_clusters.clusters[0].id)
     ```
 

@@ -263,14 +263,9 @@ def get_transit_router_vpn_attachments(cen_id: Optional[_builtins.str] = None,
             "Created": "TF",
             "For": "VpnAttachment",
         })
-    ids = pulumi.Output.all(
-        id=default_transit_router_vpn_attachment.id,
+    ids = alicloud.cen.get_transit_router_vpn_attachments_output(ids=[default_transit_router_vpn_attachment.id],
         cen_id=default_transit_router_vpn_attachment.cen_id,
-        transit_router_id=default_transit_router_vpn_attachment.transit_router_id
-    ).apply(lambda resolved_outputs: alicloud.cen.get_transit_router_vpn_attachments_output(ids=[resolved_outputs['id']],
-        cen_id=resolved_outputs['cen_id'],
-        transit_router_id=resolved_outputs['transit_router_id']))
-
+        transit_router_id=default_transit_router_vpn_attachment.transit_router_id)
     pulumi.export("cenTransitRouterVpnAttachmentId0", ids.attachments[0].id)
     ```
 
@@ -410,14 +405,9 @@ def get_transit_router_vpn_attachments_output(cen_id: pulumi.Input[Optional[Opti
             "Created": "TF",
             "For": "VpnAttachment",
         })
-    ids = pulumi.Output.all(
-        id=default_transit_router_vpn_attachment.id,
+    ids = alicloud.cen.get_transit_router_vpn_attachments_output(ids=[default_transit_router_vpn_attachment.id],
         cen_id=default_transit_router_vpn_attachment.cen_id,
-        transit_router_id=default_transit_router_vpn_attachment.transit_router_id
-    ).apply(lambda resolved_outputs: alicloud.cen.get_transit_router_vpn_attachments_output(ids=[resolved_outputs['id']],
-        cen_id=resolved_outputs['cen_id'],
-        transit_router_id=resolved_outputs['transit_router_id']))
-
+        transit_router_id=default_transit_router_vpn_attachment.transit_router_id)
     pulumi.export("cenTransitRouterVpnAttachmentId0", ids.attachments[0].id)
     ```
 

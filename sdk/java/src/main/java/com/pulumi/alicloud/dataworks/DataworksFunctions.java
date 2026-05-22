@@ -56,15 +56,11 @@ public final class DataworksFunctions {
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         final var ids = Output.tuple(default_.folderId(), default_.projectId()).applyValue(values -> {
-     *             var folderId = values.t1;
-     *             var projectId = values.t2;
-     *             return DataworksFunctions.getFolders(GetFoldersArgs.builder()
-     *                 .ids(folderId)
-     *                 .projectId(projectId)
-     *                 .parentFolderPath("Business Flow/tfTestAcc/folderDi")
-     *                 .build());
-     *         });
+     *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.folderId())
+     *             .projectId(default_.projectId())
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
+     *             .build());
      * 
      *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
      *     }
@@ -114,15 +110,11 @@ public final class DataworksFunctions {
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         final var ids = Output.tuple(default_.folderId(), default_.projectId()).applyValue(values -> {
-     *             var folderId = values.t1;
-     *             var projectId = values.t2;
-     *             return DataworksFunctions.getFolders(GetFoldersArgs.builder()
-     *                 .ids(folderId)
-     *                 .projectId(projectId)
-     *                 .parentFolderPath("Business Flow/tfTestAcc/folderDi")
-     *                 .build());
-     *         });
+     *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.folderId())
+     *             .projectId(default_.projectId())
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
+     *             .build());
      * 
      *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
      *     }
@@ -172,15 +164,11 @@ public final class DataworksFunctions {
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         final var ids = Output.tuple(default_.folderId(), default_.projectId()).applyValue(values -> {
-     *             var folderId = values.t1;
-     *             var projectId = values.t2;
-     *             return DataworksFunctions.getFolders(GetFoldersArgs.builder()
-     *                 .ids(folderId)
-     *                 .projectId(projectId)
-     *                 .parentFolderPath("Business Flow/tfTestAcc/folderDi")
-     *                 .build());
-     *         });
+     *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.folderId())
+     *             .projectId(default_.projectId())
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
+     *             .build());
      * 
      *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
      *     }
@@ -230,15 +218,11 @@ public final class DataworksFunctions {
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         final var ids = Output.tuple(default_.folderId(), default_.projectId()).applyValue(values -> {
-     *             var folderId = values.t1;
-     *             var projectId = values.t2;
-     *             return DataworksFunctions.getFolders(GetFoldersArgs.builder()
-     *                 .ids(folderId)
-     *                 .projectId(projectId)
-     *                 .parentFolderPath("Business Flow/tfTestAcc/folderDi")
-     *                 .build());
-     *         });
+     *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.folderId())
+     *             .projectId(default_.projectId())
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
+     *             .build());
      * 
      *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
      *     }
@@ -288,15 +272,11 @@ public final class DataworksFunctions {
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         final var ids = Output.tuple(default_.folderId(), default_.projectId()).applyValue(values -> {
-     *             var folderId = values.t1;
-     *             var projectId = values.t2;
-     *             return DataworksFunctions.getFolders(GetFoldersArgs.builder()
-     *                 .ids(folderId)
-     *                 .projectId(projectId)
-     *                 .parentFolderPath("Business Flow/tfTestAcc/folderDi")
-     *                 .build());
-     *         });
+     *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.folderId())
+     *             .projectId(default_.projectId())
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
+     *             .build());
      * 
      *         ctx.export("dataWorksFolderId1", ids.applyValue(_ids -> _ids.folders()[0].id()));
      *     }

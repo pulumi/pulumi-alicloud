@@ -46,18 +46,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = pulumi.All(defaultQuotaApplication.QuotaCategory, defaultQuotaApplication.ID()).ApplyT(func(_args []interface{}) (quotas.GetQuotaApplicationsResult, error) {
-//				quotaCategory := _args[0].(*string)
-//				id := _args[1].(string)
-//				return quotas.GetQuotaApplicationsResult(interface{}(quotas.GetQuotaApplications(ctx, &quotas.GetQuotaApplicationsArgs{
-//					ProductCode:   "vpc",
-//					EnableDetails: pulumi.BoolRef(pulumi.BoolRef(true)),
-//					QuotaCategory: pulumi.StringRef(pulumi.StringRef(pulumi.String(quotaCategory))),
-//					Ids: []string{
-//						id,
-//					},
-//				}, nil))), nil
-//			}).(quotas.GetQuotaApplicationsResultOutput)
+//			_ = quotas.GetQuotaApplicationsOutput(ctx, quotas.GetQuotaApplicationsOutputArgs{
+//				ProductCode:   pulumi.String("vpc"),
+//				EnableDetails: pulumi.Bool(true),
+//				QuotaCategory: defaultQuotaApplication.QuotaCategory,
+//				Ids: pulumi.StringArray{
+//					defaultQuotaApplication.ID(),
+//				},
+//			}, nil)
 //			return nil
 //		})
 //	}

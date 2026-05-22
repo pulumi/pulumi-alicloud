@@ -129,8 +129,8 @@ def get_anti_brute_force_rules(ids: Optional[Sequence[_builtins.str]] = None,
         uuid_lists=["7567806c-4ec5-4597-9543-7c9543381a13"],
         fail_count=80,
         span=10)
-    default = default_anti_brute_force_rule.id.apply(lambda id: alicloud.threatdetection.get_anti_brute_force_rules_output(ids=[id],
-        name_regex=default_anti_brute_force_rule.name))
+    default = alicloud.threatdetection.get_anti_brute_force_rules_output(ids=[default_anti_brute_force_rule.id],
+        name_regex=default_anti_brute_force_rule.name)
     pulumi.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default.rules[0].id)
     ```
 
@@ -178,8 +178,8 @@ def get_anti_brute_force_rules_output(ids: pulumi.Input[Optional[Optional[Sequen
         uuid_lists=["7567806c-4ec5-4597-9543-7c9543381a13"],
         fail_count=80,
         span=10)
-    default = default_anti_brute_force_rule.id.apply(lambda id: alicloud.threatdetection.get_anti_brute_force_rules_output(ids=[id],
-        name_regex=default_anti_brute_force_rule.name))
+    default = alicloud.threatdetection.get_anti_brute_force_rules_output(ids=[default_anti_brute_force_rule.id],
+        name_regex=default_anti_brute_force_rule.name)
     pulumi.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default.rules[0].id)
     ```
 

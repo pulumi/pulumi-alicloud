@@ -135,7 +135,7 @@ class DeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input[Optional['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]]
+    sls_properties: NotRequired[pulumi.Input[Optional['DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
@@ -273,7 +273,7 @@ class DeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]]
+    sls_properties: NotRequired[pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
@@ -492,7 +492,7 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]]
+    sls_properties: NotRequired[pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
@@ -630,7 +630,7 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]]
+    sls_properties: NotRequired[pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """

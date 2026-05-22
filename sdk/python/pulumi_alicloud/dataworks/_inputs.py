@@ -64,11 +64,11 @@ class DiAlarmRuleNotificationSettingsArgsDict(TypedDict):
     """
     Alarm suppression interval, in minutes
     """
-    notification_channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgs']]]]]
+    notification_channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationChannelArgsDict']]]]]
     """
     Alarm notification Channel See `notification_channels` below.
     """
-    notification_receivers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgs']]]]]
+    notification_receivers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiAlarmRuleNotificationSettingsNotificationReceiverArgsDict']]]]]
     """
     List of alert notification recipients See `notification_receivers` below.
     """
@@ -399,19 +399,19 @@ class DiJobJobSettingsArgsDict(TypedDict):
     For example,
     {"structInfo":"MANAGED","storageType":"TEXTFILE","writeMode":"APPEND","partitionColumns":[{"columnName":"pt","columnType":"STRING","comment":""}],"fieldDelimiter":""}
     """
-    column_data_type_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgs']]]]]
+    column_data_type_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsColumnDataTypeSettingArgsDict']]]]]
     """
     Column type mapping of the synchronization task See `column_data_type_settings` below.
     """
-    cycle_schedule_settings: NotRequired[pulumi.Input[Optional['DiJobJobSettingsCycleScheduleSettingsArgs']]]
+    cycle_schedule_settings: NotRequired[pulumi.Input[Optional['DiJobJobSettingsCycleScheduleSettingsArgsDict']]]
     """
     Periodic scheduling settings See `cycle_schedule_settings` below.
     """
-    ddl_handling_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgs']]]]]
+    ddl_handling_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsDdlHandlingSettingArgsDict']]]]]
     """
     List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
     """
-    runtime_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgs']]]]]
+    runtime_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobJobSettingsRuntimeSettingArgsDict']]]]]
     """
     Run-time setting parameter list See `runtime_settings` below.
     """
@@ -789,15 +789,15 @@ class DiJobJobSettingsRuntimeSettingArgs:
 
 
 class DiJobResourceSettingsArgsDict(TypedDict):
-    offline_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsOfflineResourceSettingsArgs']]]
+    offline_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsOfflineResourceSettingsArgsDict']]]
     """
     Offline Resource Group configuration See `offline_resource_settings` below.
     """
-    realtime_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsRealtimeResourceSettingsArgs']]]
+    realtime_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsRealtimeResourceSettingsArgsDict']]]
     """
     Real-time Resource Group See `realtime_resource_settings` below.
     """
-    schedule_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsScheduleResourceSettingsArgs']]]
+    schedule_resource_settings: NotRequired[pulumi.Input[Optional['DiJobResourceSettingsScheduleResourceSettingsArgsDict']]]
     """
     Scheduling Resource Groups See `schedule_resource_settings` below.
     """
@@ -1009,7 +1009,7 @@ class DiJobSourceDataSourceSettingArgsDict(TypedDict):
     """
     Data source name of a single source
     """
-    data_source_properties: NotRequired[pulumi.Input[Optional['DiJobSourceDataSourceSettingDataSourcePropertiesArgs']]]
+    data_source_properties: NotRequired[pulumi.Input[Optional['DiJobSourceDataSourceSettingDataSourcePropertiesArgsDict']]]
     """
     Single Source Data Source Properties See `data_source_properties` below.
     """
@@ -1103,11 +1103,11 @@ class DiJobSourceDataSourceSettingDataSourcePropertiesArgs:
 
 
 class DiJobTableMappingArgsDict(TypedDict):
-    source_object_selection_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgs']]]]]
+    source_object_selection_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingSourceObjectSelectionRuleArgsDict']]]]]
     """
     Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
     """
-    transformation_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgs']]]]]
+    transformation_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiJobTableMappingTransformationRuleArgsDict']]]]]
     """
     A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
     """
