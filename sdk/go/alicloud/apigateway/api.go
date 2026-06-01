@@ -88,6 +88,67 @@ import (
 //
 // ```
 //
+// # Backend Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/apigateway"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
+//				Name:        pulumi.String("tf-example"),
+//				Description: pulumi.String("tf-example"),
+//				BasePath:    pulumi.String("/"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleBackend, err := apigateway.NewBackend(ctx, "example", &apigateway.BackendArgs{
+//				BackendName: pulumi.String("tf-example-backend"),
+//				BackendType: pulumi.String("HTTP"),
+//				Description: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
+//				GroupId:         example.ID(),
+//				Name:            pulumi.String("tf-example"),
+//				Description:     pulumi.String("tf-example"),
+//				AuthType:        pulumi.String("APP"),
+//				ForceNonceCheck: pulumi.Bool(false),
+//				RequestConfig: &apigateway.ApiRequestConfigArgs{
+//					Protocol: pulumi.String("HTTP"),
+//					Method:   pulumi.String("GET"),
+//					Path:     pulumi.String("/example/path"),
+//					Mode:     pulumi.String("MAPPING"),
+//				},
+//				ServiceType: pulumi.String("HTTP"),
+//				HttpServiceConfig: &apigateway.ApiHttpServiceConfigArgs{
+//					Address: pulumi.String(""),
+//					Method:  pulumi.String("GET"),
+//					Path:    pulumi.String("/web/cloudapi"),
+//					Timeout: pulumi.Int(12),
+//				},
+//				BackendId:      exampleBackend.ID(),
+//				BackendEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -104,6 +165,10 @@ type Api struct {
 	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringOutput `pulumi:"authType"`
+	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+	BackendEnabled pulumi.BoolPtrOutput `pulumi:"backendEnabled"`
+	// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+	BackendId pulumi.StringPtrOutput `pulumi:"backendId"`
 	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters ApiConstantParameterArrayOutput `pulumi:"constantParameters"`
 	// The description of the api. Defaults to null.
@@ -183,6 +248,10 @@ type apiState struct {
 	ApiId *string `pulumi:"apiId"`
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType *string `pulumi:"authType"`
+	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+	BackendEnabled *bool `pulumi:"backendEnabled"`
+	// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+	BackendId *string `pulumi:"backendId"`
 	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters []ApiConstantParameter `pulumi:"constantParameters"`
 	// The description of the api. Defaults to null.
@@ -218,6 +287,10 @@ type ApiState struct {
 	ApiId pulumi.StringPtrInput
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringPtrInput
+	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+	BackendEnabled pulumi.BoolPtrInput
+	// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+	BackendId pulumi.StringPtrInput
 	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters ApiConstantParameterArrayInput
 	// The description of the api. Defaults to null.
@@ -255,6 +328,10 @@ func (ApiState) ElementType() reflect.Type {
 type apiArgs struct {
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType string `pulumi:"authType"`
+	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+	BackendEnabled *bool `pulumi:"backendEnabled"`
+	// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+	BackendId *string `pulumi:"backendId"`
 	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters []ApiConstantParameter `pulumi:"constantParameters"`
 	// The description of the api. Defaults to null.
@@ -289,6 +366,10 @@ type apiArgs struct {
 type ApiArgs struct {
 	// The authorization Type including APP and ANONYMOUS. Defaults to null.
 	AuthType pulumi.StringInput
+	// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+	BackendEnabled pulumi.BoolPtrInput
+	// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+	BackendId pulumi.StringPtrInput
 	// constant_parameters defines the constant parameters of the api. See `constantParameters` below.
 	ConstantParameters ApiConstantParameterArrayInput
 	// The description of the api. Defaults to null.
@@ -414,6 +495,16 @@ func (o ApiOutput) ApiId() pulumi.StringOutput {
 // The authorization Type including APP and ANONYMOUS. Defaults to null.
 func (o ApiOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+func (o ApiOutput) BackendEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Api) pulumi.BoolPtrOutput { return v.BackendEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+func (o ApiOutput) BackendId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.BackendId }).(pulumi.StringPtrOutput)
 }
 
 // constant_parameters defines the constant parameters of the api. See `constantParameters` below.

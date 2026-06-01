@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Rds.Inputs
     public sealed class CustomSystemDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud disk type of the system disk. Currently, only `CloudEssd`(ESSD cloud disk) is supported.
+        /// The system disk category. Valid values:
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        /// The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }

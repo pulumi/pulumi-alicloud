@@ -20,6 +20,10 @@ __all__ = [
     'StackGroupAutoDeployment',
     'StackGroupParameter',
     'StackInstanceParameterOverride',
+    'StackInstancesDeploymentTargets',
+    'StackInstancesOperationPreferences',
+    'StackInstancesParameterOverride',
+    'StackInstancesStackInstance',
     'StackParameter',
     'TemplateScratchPreferenceParameter',
     'TemplateScratchSourceResource',
@@ -235,6 +239,371 @@ class StackInstanceParameterOverride(dict):
         The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         """
         return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class StackInstancesDeploymentTargets(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountIds":
+            suggest = "account_ids"
+        elif key == "rdFolderIds":
+            suggest = "rd_folder_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackInstancesDeploymentTargets. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackInstancesDeploymentTargets.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackInstancesDeploymentTargets.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_ids: Optional[Sequence[_builtins.str]] = None,
+                 rd_folder_ids: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] account_ids: List of Alibaba Cloud account IDs for service-managed permissions. Maximum 50 accounts.
+        :param Sequence[_builtins.str] rd_folder_ids: List of Resource Directory folder IDs. Maximum 20 folders.
+        """
+        if account_ids is not None:
+            pulumi.set(__self__, "account_ids", account_ids)
+        if rd_folder_ids is not None:
+            pulumi.set(__self__, "rd_folder_ids", rd_folder_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="accountIds")
+    def account_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Alibaba Cloud account IDs for service-managed permissions. Maximum 50 accounts.
+        """
+        return pulumi.get(self, "account_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="rdFolderIds")
+    def rd_folder_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Resource Directory folder IDs. Maximum 20 folders.
+        """
+        return pulumi.get(self, "rd_folder_ids")
+
+
+@pulumi.output_type
+class StackInstancesOperationPreferences(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureToleranceCount":
+            suggest = "failure_tolerance_count"
+        elif key == "failureTolerancePercentage":
+            suggest = "failure_tolerance_percentage"
+        elif key == "maxConcurrentCount":
+            suggest = "max_concurrent_count"
+        elif key == "maxConcurrentPercentage":
+            suggest = "max_concurrent_percentage"
+        elif key == "regionConcurrencyType":
+            suggest = "region_concurrency_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackInstancesOperationPreferences. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackInstancesOperationPreferences.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackInstancesOperationPreferences.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failure_tolerance_count: Optional[_builtins.int] = None,
+                 failure_tolerance_percentage: Optional[_builtins.int] = None,
+                 max_concurrent_count: Optional[_builtins.int] = None,
+                 max_concurrent_percentage: Optional[_builtins.int] = None,
+                 region_concurrency_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int failure_tolerance_count: Number of failures tolerated per region. Valid values: 0 to 20. Conflicts with `failure_tolerance_percentage`.
+        :param _builtins.int failure_tolerance_percentage: Percentage of failures tolerated per region. Valid values: 0 to 100. Conflicts with `failure_tolerance_count`.
+        :param _builtins.int max_concurrent_count: Maximum number of concurrent operations per region. Valid values: 1 to 20. Conflicts with `max_concurrent_percentage`.
+        :param _builtins.int max_concurrent_percentage: Maximum percentage of concurrent targets per region. Valid values: 1 to 100. Conflicts with `max_concurrent_count`.
+        :param _builtins.str region_concurrency_type: Concurrency type for regions. Valid values: `SEQUENTIAL`, `PARALLEL`.
+        """
+        if failure_tolerance_count is not None:
+            pulumi.set(__self__, "failure_tolerance_count", failure_tolerance_count)
+        if failure_tolerance_percentage is not None:
+            pulumi.set(__self__, "failure_tolerance_percentage", failure_tolerance_percentage)
+        if max_concurrent_count is not None:
+            pulumi.set(__self__, "max_concurrent_count", max_concurrent_count)
+        if max_concurrent_percentage is not None:
+            pulumi.set(__self__, "max_concurrent_percentage", max_concurrent_percentage)
+        if region_concurrency_type is not None:
+            pulumi.set(__self__, "region_concurrency_type", region_concurrency_type)
+
+    @_builtins.property
+    @pulumi.getter(name="failureToleranceCount")
+    def failure_tolerance_count(self) -> Optional[_builtins.int]:
+        """
+        Number of failures tolerated per region. Valid values: 0 to 20. Conflicts with `failure_tolerance_percentage`.
+        """
+        return pulumi.get(self, "failure_tolerance_count")
+
+    @_builtins.property
+    @pulumi.getter(name="failureTolerancePercentage")
+    def failure_tolerance_percentage(self) -> Optional[_builtins.int]:
+        """
+        Percentage of failures tolerated per region. Valid values: 0 to 100. Conflicts with `failure_tolerance_count`.
+        """
+        return pulumi.get(self, "failure_tolerance_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentCount")
+    def max_concurrent_count(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of concurrent operations per region. Valid values: 1 to 20. Conflicts with `max_concurrent_percentage`.
+        """
+        return pulumi.get(self, "max_concurrent_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentPercentage")
+    def max_concurrent_percentage(self) -> Optional[_builtins.int]:
+        """
+        Maximum percentage of concurrent targets per region. Valid values: 1 to 100. Conflicts with `max_concurrent_count`.
+        """
+        return pulumi.get(self, "max_concurrent_percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="regionConcurrencyType")
+    def region_concurrency_type(self) -> Optional[_builtins.str]:
+        """
+        Concurrency type for regions. Valid values: `SEQUENTIAL`, `PARALLEL`.
+        """
+        return pulumi.get(self, "region_concurrency_type")
+
+
+@pulumi.output_type
+class StackInstancesParameterOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterKey":
+            suggest = "parameter_key"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackInstancesParameterOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackInstancesParameterOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackInstancesParameterOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_key: _builtins.str,
+                 parameter_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str parameter_key: The key of the parameter to override.
+        :param _builtins.str parameter_value: The value of the parameter to override. This field is sensitive and will be masked in logs.
+        """
+        pulumi.set(__self__, "parameter_key", parameter_key)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterKey")
+    def parameter_key(self) -> _builtins.str:
+        """
+        The key of the parameter to override.
+        """
+        return pulumi.get(self, "parameter_key")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the parameter to override. This field is sensitive and will be masked in logs.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class StackInstancesStackInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountId":
+            suggest = "account_id"
+        elif key == "driftDetectionTime":
+            suggest = "drift_detection_time"
+        elif key == "lastOperationId":
+            suggest = "last_operation_id"
+        elif key == "rdFolderId":
+            suggest = "rd_folder_id"
+        elif key == "regionId":
+            suggest = "region_id"
+        elif key == "stackDriftStatus":
+            suggest = "stack_drift_status"
+        elif key == "stackGroupId":
+            suggest = "stack_group_id"
+        elif key == "stackGroupName":
+            suggest = "stack_group_name"
+        elif key == "stackId":
+            suggest = "stack_id"
+        elif key == "statusReason":
+            suggest = "status_reason"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackInstancesStackInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackInstancesStackInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackInstancesStackInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_id: Optional[_builtins.str] = None,
+                 drift_detection_time: Optional[_builtins.str] = None,
+                 last_operation_id: Optional[_builtins.str] = None,
+                 rd_folder_id: Optional[_builtins.str] = None,
+                 region_id: Optional[_builtins.str] = None,
+                 stack_drift_status: Optional[_builtins.str] = None,
+                 stack_group_id: Optional[_builtins.str] = None,
+                 stack_group_name: Optional[_builtins.str] = None,
+                 stack_id: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 status_reason: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str account_id: The Alibaba Cloud account ID where the stack instance is deployed.
+        :param _builtins.str drift_detection_time: The timestamp when drift detection was last performed.
+        :param _builtins.str last_operation_id: The ID of the last operation performed on this stack instance.
+        :param _builtins.str rd_folder_id: The Resource Directory folder ID (if applicable).
+        :param _builtins.str region_id: The region ID where the stack instance is deployed.
+        :param _builtins.str stack_drift_status: The drift status of the stack. Valid values: `NOT_CHECKED`, `IN_SYNC`, `DRIFTED`, `CHECK_FAILED`, etc.
+        :param _builtins.str stack_group_id: The ID of the stack group to which this instance belongs.
+        :param _builtins.str stack_group_name: The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
+        :param _builtins.str stack_id: The ID of the underlying stack.
+        :param _builtins.str status: The status of the stack instance. Valid values: `CURRENT`, `OUTDATED`, `INOPERABLE`, `RUNNING`, `FAILED`, `SUCCEEDED`, etc.
+        :param _builtins.str status_reason: The reason for the current status of the stack instance.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if drift_detection_time is not None:
+            pulumi.set(__self__, "drift_detection_time", drift_detection_time)
+        if last_operation_id is not None:
+            pulumi.set(__self__, "last_operation_id", last_operation_id)
+        if rd_folder_id is not None:
+            pulumi.set(__self__, "rd_folder_id", rd_folder_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if stack_drift_status is not None:
+            pulumi.set(__self__, "stack_drift_status", stack_drift_status)
+        if stack_group_id is not None:
+            pulumi.set(__self__, "stack_group_id", stack_group_id)
+        if stack_group_name is not None:
+            pulumi.set(__self__, "stack_group_name", stack_group_name)
+        if stack_id is not None:
+            pulumi.set(__self__, "stack_id", stack_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if status_reason is not None:
+            pulumi.set(__self__, "status_reason", status_reason)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[_builtins.str]:
+        """
+        The Alibaba Cloud account ID where the stack instance is deployed.
+        """
+        return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="driftDetectionTime")
+    def drift_detection_time(self) -> Optional[_builtins.str]:
+        """
+        The timestamp when drift detection was last performed.
+        """
+        return pulumi.get(self, "drift_detection_time")
+
+    @_builtins.property
+    @pulumi.getter(name="lastOperationId")
+    def last_operation_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the last operation performed on this stack instance.
+        """
+        return pulumi.get(self, "last_operation_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rdFolderId")
+    def rd_folder_id(self) -> Optional[_builtins.str]:
+        """
+        The Resource Directory folder ID (if applicable).
+        """
+        return pulumi.get(self, "rd_folder_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[_builtins.str]:
+        """
+        The region ID where the stack instance is deployed.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="stackDriftStatus")
+    def stack_drift_status(self) -> Optional[_builtins.str]:
+        """
+        The drift status of the stack. Valid values: `NOT_CHECKED`, `IN_SYNC`, `DRIFTED`, `CHECK_FAILED`, etc.
+        """
+        return pulumi.get(self, "stack_drift_status")
+
+    @_builtins.property
+    @pulumi.getter(name="stackGroupId")
+    def stack_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the stack group to which this instance belongs.
+        """
+        return pulumi.get(self, "stack_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="stackGroupName")
+    def stack_group_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
+        """
+        return pulumi.get(self, "stack_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="stackId")
+    def stack_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the underlying stack.
+        """
+        return pulumi.get(self, "stack_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the stack instance. Valid values: `CURRENT`, `OUTDATED`, `INOPERABLE`, `RUNNING`, `FAILED`, `SUCCEEDED`, etc.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="statusReason")
+    def status_reason(self) -> Optional[_builtins.str]:
+        """
+        The reason for the current status of the stack instance.
+        """
+        return pulumi.get(self, "status_reason")
 
 
 @pulumi.output_type

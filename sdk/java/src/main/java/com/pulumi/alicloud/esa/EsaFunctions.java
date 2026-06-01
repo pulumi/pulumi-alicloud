@@ -4,10 +4,19 @@
 package com.pulumi.alicloud.esa;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
+import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsPlainArgs;
+import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
+import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsPlainArgs;
+import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
+import com.pulumi.alicloud.esa.inputs.GetOriginRulesPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
 import com.pulumi.alicloud.esa.inputs.GetSitesPlainArgs;
 import com.pulumi.alicloud.esa.inputs.GetWafRulesetsArgs;
 import com.pulumi.alicloud.esa.inputs.GetWafRulesetsPlainArgs;
+import com.pulumi.alicloud.esa.outputs.GetHttpsBasicConfigurationsResult;
+import com.pulumi.alicloud.esa.outputs.GetNetworkOptimizationsResult;
+import com.pulumi.alicloud.esa.outputs.GetOriginRulesResult;
 import com.pulumi.alicloud.esa.outputs.GetSitesResult;
 import com.pulumi.alicloud.esa.outputs.GetWafRulesetsResult;
 import com.pulumi.core.Output;
@@ -18,6 +27,1116 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class EsaFunctions {
+    /**
+     * This data source provides the Esa Https Basic Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfiguration;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfigurationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultHttpsBasicConfiguration = new HttpsBasicConfiguration("defaultHttpsBasicConfiguration", HttpsBasicConfigurationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .ciphersuite("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256")
+     *             .ciphersuiteGroup("all")
+     *             .tls10("on")
+     *             .tls11("on")
+     *             .tls12("on")
+     *             .tls13("on")
+     *             .ocspStapling("on")
+     *             .http2("on")
+     *             .http3("on")
+     *             .https("on")
+     *             .sequence(1)
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs.builder()
+     *             .ids(defaultHttpsBasicConfiguration.id())
+     *             .siteId(defaultHttpsBasicConfiguration.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHttpsBasicConfigurationsResult> getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs args) {
+        return getHttpsBasicConfigurations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Esa Https Basic Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfiguration;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfigurationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultHttpsBasicConfiguration = new HttpsBasicConfiguration("defaultHttpsBasicConfiguration", HttpsBasicConfigurationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .ciphersuite("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256")
+     *             .ciphersuiteGroup("all")
+     *             .tls10("on")
+     *             .tls11("on")
+     *             .tls12("on")
+     *             .tls13("on")
+     *             .ocspStapling("on")
+     *             .http2("on")
+     *             .http3("on")
+     *             .https("on")
+     *             .sequence(1)
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs.builder()
+     *             .ids(defaultHttpsBasicConfiguration.id())
+     *             .siteId(defaultHttpsBasicConfiguration.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHttpsBasicConfigurationsResult> getHttpsBasicConfigurationsPlain(GetHttpsBasicConfigurationsPlainArgs args) {
+        return getHttpsBasicConfigurationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Esa Https Basic Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfiguration;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfigurationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultHttpsBasicConfiguration = new HttpsBasicConfiguration("defaultHttpsBasicConfiguration", HttpsBasicConfigurationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .ciphersuite("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256")
+     *             .ciphersuiteGroup("all")
+     *             .tls10("on")
+     *             .tls11("on")
+     *             .tls12("on")
+     *             .tls13("on")
+     *             .ocspStapling("on")
+     *             .http2("on")
+     *             .http3("on")
+     *             .https("on")
+     *             .sequence(1)
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs.builder()
+     *             .ids(defaultHttpsBasicConfiguration.id())
+     *             .siteId(defaultHttpsBasicConfiguration.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHttpsBasicConfigurationsResult> getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations", TypeShape.of(GetHttpsBasicConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Https Basic Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfiguration;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfigurationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultHttpsBasicConfiguration = new HttpsBasicConfiguration("defaultHttpsBasicConfiguration", HttpsBasicConfigurationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .ciphersuite("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256")
+     *             .ciphersuiteGroup("all")
+     *             .tls10("on")
+     *             .tls11("on")
+     *             .tls12("on")
+     *             .tls13("on")
+     *             .ocspStapling("on")
+     *             .http2("on")
+     *             .http3("on")
+     *             .https("on")
+     *             .sequence(1)
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs.builder()
+     *             .ids(defaultHttpsBasicConfiguration.id())
+     *             .siteId(defaultHttpsBasicConfiguration.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetHttpsBasicConfigurationsResult> getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations", TypeShape.of(GetHttpsBasicConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Https Basic Configurations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfiguration;
+     * import com.pulumi.alicloud.esa.HttpsBasicConfigurationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetHttpsBasicConfigurationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultHttpsBasicConfiguration = new HttpsBasicConfiguration("defaultHttpsBasicConfiguration", HttpsBasicConfigurationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .ciphersuite("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256")
+     *             .ciphersuiteGroup("all")
+     *             .tls10("on")
+     *             .tls11("on")
+     *             .tls12("on")
+     *             .tls13("on")
+     *             .ocspStapling("on")
+     *             .http2("on")
+     *             .http3("on")
+     *             .https("on")
+     *             .sequence(1)
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getHttpsBasicConfigurations(GetHttpsBasicConfigurationsArgs.builder()
+     *             .ids(defaultHttpsBasicConfiguration.id())
+     *             .siteId(defaultHttpsBasicConfiguration.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaWafHttpsBasicConfigurationsId0", ids.applyValue(_ids -> _ids.configurations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetHttpsBasicConfigurationsResult> getHttpsBasicConfigurationsPlain(GetHttpsBasicConfigurationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations", TypeShape.of(GetHttpsBasicConfigurationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Network Optimizations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.NetworkOptimization;
+     * import com.pulumi.alicloud.esa.NetworkOptimizationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultNetworkOptimization = new NetworkOptimization("defaultNetworkOptimization", NetworkOptimizationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .smartRouting("on")
+     *             .websocket("on")
+     *             .http2Origin("on")
+     *             .grpc("on")
+     *             .uploadMaxFilesize("100")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getNetworkOptimizations(GetNetworkOptimizationsArgs.builder()
+     *             .ids(defaultNetworkOptimization.id())
+     *             .siteId(defaultNetworkOptimization.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkOptimizationsResult> getNetworkOptimizations(GetNetworkOptimizationsArgs args) {
+        return getNetworkOptimizations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Esa Network Optimizations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.NetworkOptimization;
+     * import com.pulumi.alicloud.esa.NetworkOptimizationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultNetworkOptimization = new NetworkOptimization("defaultNetworkOptimization", NetworkOptimizationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .smartRouting("on")
+     *             .websocket("on")
+     *             .http2Origin("on")
+     *             .grpc("on")
+     *             .uploadMaxFilesize("100")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getNetworkOptimizations(GetNetworkOptimizationsArgs.builder()
+     *             .ids(defaultNetworkOptimization.id())
+     *             .siteId(defaultNetworkOptimization.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkOptimizationsResult> getNetworkOptimizationsPlain(GetNetworkOptimizationsPlainArgs args) {
+        return getNetworkOptimizationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Esa Network Optimizations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.NetworkOptimization;
+     * import com.pulumi.alicloud.esa.NetworkOptimizationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultNetworkOptimization = new NetworkOptimization("defaultNetworkOptimization", NetworkOptimizationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .smartRouting("on")
+     *             .websocket("on")
+     *             .http2Origin("on")
+     *             .grpc("on")
+     *             .uploadMaxFilesize("100")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getNetworkOptimizations(GetNetworkOptimizationsArgs.builder()
+     *             .ids(defaultNetworkOptimization.id())
+     *             .siteId(defaultNetworkOptimization.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkOptimizationsResult> getNetworkOptimizations(GetNetworkOptimizationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getNetworkOptimizations:getNetworkOptimizations", TypeShape.of(GetNetworkOptimizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Network Optimizations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.NetworkOptimization;
+     * import com.pulumi.alicloud.esa.NetworkOptimizationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultNetworkOptimization = new NetworkOptimization("defaultNetworkOptimization", NetworkOptimizationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .smartRouting("on")
+     *             .websocket("on")
+     *             .http2Origin("on")
+     *             .grpc("on")
+     *             .uploadMaxFilesize("100")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getNetworkOptimizations(GetNetworkOptimizationsArgs.builder()
+     *             .ids(defaultNetworkOptimization.id())
+     *             .siteId(defaultNetworkOptimization.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkOptimizationsResult> getNetworkOptimizations(GetNetworkOptimizationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getNetworkOptimizations:getNetworkOptimizations", TypeShape.of(GetNetworkOptimizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Network Optimizations of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.NetworkOptimization;
+     * import com.pulumi.alicloud.esa.NetworkOptimizationArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetNetworkOptimizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultNetworkOptimization = new NetworkOptimization("defaultNetworkOptimization", NetworkOptimizationArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .smartRouting("on")
+     *             .websocket("on")
+     *             .http2Origin("on")
+     *             .grpc("on")
+     *             .uploadMaxFilesize("100")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getNetworkOptimizations(GetNetworkOptimizationsArgs.builder()
+     *             .ids(defaultNetworkOptimization.id())
+     *             .siteId(defaultNetworkOptimization.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaNetworkOptimizationsId0", ids.applyValue(_ids -> _ids.optimizations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkOptimizationsResult> getNetworkOptimizationsPlain(GetNetworkOptimizationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:esa/getNetworkOptimizations:getNetworkOptimizations", TypeShape.of(GetNetworkOptimizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Origin Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.OriginRule;
+     * import com.pulumi.alicloud.esa.OriginRuleArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultOriginRule = new OriginRule("defaultOriginRule", OriginRuleArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .originHost("origin.example.com")
+     *             .originScheme("http")
+     *             .originSni("origin.example.com")
+     *             .originHttpsPort("443")
+     *             .originHttpPort("8080")
+     *             .originReadTimeout("30")
+     *             .dnsRecord("test.example.com")
+     *             .originVerify("on")
+     *             .originMtls("on")
+     *             .follow302Enable("on")
+     *             .follow302MaxTries("3")
+     *             .follow302TargetHost("redirect.example.com")
+     *             .follow302RetainHeader("on")
+     *             .follow302RetainArgs("on")
+     *             .range("on")
+     *             .rangeChunkSize("1MB")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getOriginRules(GetOriginRulesArgs.builder()
+     *             .ids(defaultOriginRule.id())
+     *             .siteId(defaultOriginRule.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOriginRulesResult> getOriginRules(GetOriginRulesArgs args) {
+        return getOriginRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Esa Origin Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.OriginRule;
+     * import com.pulumi.alicloud.esa.OriginRuleArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultOriginRule = new OriginRule("defaultOriginRule", OriginRuleArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .originHost("origin.example.com")
+     *             .originScheme("http")
+     *             .originSni("origin.example.com")
+     *             .originHttpsPort("443")
+     *             .originHttpPort("8080")
+     *             .originReadTimeout("30")
+     *             .dnsRecord("test.example.com")
+     *             .originVerify("on")
+     *             .originMtls("on")
+     *             .follow302Enable("on")
+     *             .follow302MaxTries("3")
+     *             .follow302TargetHost("redirect.example.com")
+     *             .follow302RetainHeader("on")
+     *             .follow302RetainArgs("on")
+     *             .range("on")
+     *             .rangeChunkSize("1MB")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getOriginRules(GetOriginRulesArgs.builder()
+     *             .ids(defaultOriginRule.id())
+     *             .siteId(defaultOriginRule.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOriginRulesResult> getOriginRulesPlain(GetOriginRulesPlainArgs args) {
+        return getOriginRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Esa Origin Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.OriginRule;
+     * import com.pulumi.alicloud.esa.OriginRuleArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultOriginRule = new OriginRule("defaultOriginRule", OriginRuleArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .originHost("origin.example.com")
+     *             .originScheme("http")
+     *             .originSni("origin.example.com")
+     *             .originHttpsPort("443")
+     *             .originHttpPort("8080")
+     *             .originReadTimeout("30")
+     *             .dnsRecord("test.example.com")
+     *             .originVerify("on")
+     *             .originMtls("on")
+     *             .follow302Enable("on")
+     *             .follow302MaxTries("3")
+     *             .follow302TargetHost("redirect.example.com")
+     *             .follow302RetainHeader("on")
+     *             .follow302RetainArgs("on")
+     *             .range("on")
+     *             .rangeChunkSize("1MB")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getOriginRules(GetOriginRulesArgs.builder()
+     *             .ids(defaultOriginRule.id())
+     *             .siteId(defaultOriginRule.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOriginRulesResult> getOriginRules(GetOriginRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getOriginRules:getOriginRules", TypeShape.of(GetOriginRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Origin Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.OriginRule;
+     * import com.pulumi.alicloud.esa.OriginRuleArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultOriginRule = new OriginRule("defaultOriginRule", OriginRuleArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .originHost("origin.example.com")
+     *             .originScheme("http")
+     *             .originSni("origin.example.com")
+     *             .originHttpsPort("443")
+     *             .originHttpPort("8080")
+     *             .originReadTimeout("30")
+     *             .dnsRecord("test.example.com")
+     *             .originVerify("on")
+     *             .originMtls("on")
+     *             .follow302Enable("on")
+     *             .follow302MaxTries("3")
+     *             .follow302TargetHost("redirect.example.com")
+     *             .follow302RetainHeader("on")
+     *             .follow302RetainArgs("on")
+     *             .range("on")
+     *             .rangeChunkSize("1MB")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getOriginRules(GetOriginRulesArgs.builder()
+     *             .ids(defaultOriginRule.id())
+     *             .siteId(defaultOriginRule.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOriginRulesResult> getOriginRules(GetOriginRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:esa/getOriginRules:getOriginRules", TypeShape.of(GetOriginRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Esa Origin Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.esa.EsaFunctions;
+     * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+     * import com.pulumi.alicloud.esa.OriginRule;
+     * import com.pulumi.alicloud.esa.OriginRuleArgs;
+     * import com.pulumi.alicloud.esa.inputs.GetOriginRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+     *             .planSubscribeType("enterpriseplan")
+     *             .build());
+     * 
+     *         var defaultOriginRule = new OriginRule("defaultOriginRule", OriginRuleArgs.builder()
+     *             .siteId(default_.sites()[0].id())
+     *             .siteVersion(0)
+     *             .ruleEnable("on")
+     *             .ruleName(name)
+     *             .rule("true")
+     *             .sequence(1)
+     *             .originHost("origin.example.com")
+     *             .originScheme("http")
+     *             .originSni("origin.example.com")
+     *             .originHttpsPort("443")
+     *             .originHttpPort("8080")
+     *             .originReadTimeout("30")
+     *             .dnsRecord("test.example.com")
+     *             .originVerify("on")
+     *             .originMtls("on")
+     *             .follow302Enable("on")
+     *             .follow302MaxTries("3")
+     *             .follow302TargetHost("redirect.example.com")
+     *             .follow302RetainHeader("on")
+     *             .follow302RetainArgs("on")
+     *             .range("on")
+     *             .rangeChunkSize("1MB")
+     *             .build());
+     * 
+     *         final var ids = EsaFunctions.getOriginRules(GetOriginRulesArgs.builder()
+     *             .ids(defaultOriginRule.id())
+     *             .siteId(defaultOriginRule.siteId())
+     *             .build());
+     * 
+     *         ctx.export("esaOriginRulesId0", ids.applyValue(_ids -> _ids.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOriginRulesResult> getOriginRulesPlain(GetOriginRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:esa/getOriginRules:getOriginRules", TypeShape.of(GetOriginRulesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides Esa Site available to the user.[What is Site](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateSite)
      * 

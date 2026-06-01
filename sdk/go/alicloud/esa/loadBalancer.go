@@ -86,7 +86,7 @@ import (
 //				FallbackPool:     resourceOriginPoolLoadBalancer11.OriginPoolId,
 //				SiteId:           resourceSiteOriginPool.ID(),
 //				Description:      pulumi.String(pulumi.String(name)),
-//				DefaultPools: pulumi.IntArray{
+//				DefaultPools: pulumi.StringArray{
 //					resourceOriginPoolLoadBalancer11.OriginPoolId,
 //				},
 //				SteeringPolicy: pulumi.String("geo"),
@@ -123,15 +123,15 @@ type LoadBalancer struct {
 	// Cross-pool origin configuration. See `adaptiveRouting` below.
 	AdaptiveRouting LoadBalancerAdaptiveRoutingOutput `pulumi:"adaptiveRouting"`
 	// List of default pool IDs.
-	DefaultPools pulumi.IntArrayOutput `pulumi:"defaultPools"`
+	DefaultPools pulumi.StringArrayOutput `pulumi:"defaultPools"`
 	// The detailed description of the load balancer for easy management and identification.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the load balancer is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-	FallbackPool pulumi.IntOutput `pulumi:"fallbackPool"`
+	FallbackPool pulumi.StringOutput `pulumi:"fallbackPool"`
 	// The unique identifier ID of the load balancer.
-	LoadBalancerId pulumi.IntOutput `pulumi:"loadBalancerId"`
+	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
 	// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
 	LoadBalancerName pulumi.StringOutput `pulumi:"loadBalancerName"`
 	// Monitor configuration for health check. See `monitor` below.
@@ -207,15 +207,15 @@ type loadBalancerState struct {
 	// Cross-pool origin configuration. See `adaptiveRouting` below.
 	AdaptiveRouting *LoadBalancerAdaptiveRouting `pulumi:"adaptiveRouting"`
 	// List of default pool IDs.
-	DefaultPools []int `pulumi:"defaultPools"`
+	DefaultPools []string `pulumi:"defaultPools"`
 	// The detailed description of the load balancer for easy management and identification.
 	Description *string `pulumi:"description"`
 	// Whether the load balancer is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-	FallbackPool *int `pulumi:"fallbackPool"`
+	FallbackPool *string `pulumi:"fallbackPool"`
 	// The unique identifier ID of the load balancer.
-	LoadBalancerId *int `pulumi:"loadBalancerId"`
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// Monitor configuration for health check. See `monitor` below.
@@ -244,15 +244,15 @@ type LoadBalancerState struct {
 	// Cross-pool origin configuration. See `adaptiveRouting` below.
 	AdaptiveRouting LoadBalancerAdaptiveRoutingPtrInput
 	// List of default pool IDs.
-	DefaultPools pulumi.IntArrayInput
+	DefaultPools pulumi.StringArrayInput
 	// The detailed description of the load balancer for easy management and identification.
 	Description pulumi.StringPtrInput
 	// Whether the load balancer is enabled.
 	Enabled pulumi.BoolPtrInput
 	// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-	FallbackPool pulumi.IntPtrInput
+	FallbackPool pulumi.StringPtrInput
 	// The unique identifier ID of the load balancer.
-	LoadBalancerId pulumi.IntPtrInput
+	LoadBalancerId pulumi.StringPtrInput
 	// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
 	LoadBalancerName pulumi.StringPtrInput
 	// Monitor configuration for health check. See `monitor` below.
@@ -285,13 +285,13 @@ type loadBalancerArgs struct {
 	// Cross-pool origin configuration. See `adaptiveRouting` below.
 	AdaptiveRouting *LoadBalancerAdaptiveRouting `pulumi:"adaptiveRouting"`
 	// List of default pool IDs.
-	DefaultPools []int `pulumi:"defaultPools"`
+	DefaultPools []string `pulumi:"defaultPools"`
 	// The detailed description of the load balancer for easy management and identification.
 	Description *string `pulumi:"description"`
 	// Whether the load balancer is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-	FallbackPool int `pulumi:"fallbackPool"`
+	FallbackPool string `pulumi:"fallbackPool"`
 	// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
 	LoadBalancerName string `pulumi:"loadBalancerName"`
 	// Monitor configuration for health check. See `monitor` below.
@@ -319,13 +319,13 @@ type LoadBalancerArgs struct {
 	// Cross-pool origin configuration. See `adaptiveRouting` below.
 	AdaptiveRouting LoadBalancerAdaptiveRoutingPtrInput
 	// List of default pool IDs.
-	DefaultPools pulumi.IntArrayInput
+	DefaultPools pulumi.StringArrayInput
 	// The detailed description of the load balancer for easy management and identification.
 	Description pulumi.StringPtrInput
 	// Whether the load balancer is enabled.
 	Enabled pulumi.BoolPtrInput
 	// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-	FallbackPool pulumi.IntInput
+	FallbackPool pulumi.StringInput
 	// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
 	LoadBalancerName pulumi.StringInput
 	// Monitor configuration for health check. See `monitor` below.
@@ -441,8 +441,8 @@ func (o LoadBalancerOutput) AdaptiveRouting() LoadBalancerAdaptiveRoutingOutput 
 }
 
 // List of default pool IDs.
-func (o LoadBalancerOutput) DefaultPools() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.IntArrayOutput { return v.DefaultPools }).(pulumi.IntArrayOutput)
+func (o LoadBalancerOutput) DefaultPools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.DefaultPools }).(pulumi.StringArrayOutput)
 }
 
 // The detailed description of the load balancer for easy management and identification.
@@ -456,13 +456,13 @@ func (o LoadBalancerOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-func (o LoadBalancerOutput) FallbackPool() pulumi.IntOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.FallbackPool }).(pulumi.IntOutput)
+func (o LoadBalancerOutput) FallbackPool() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.FallbackPool }).(pulumi.StringOutput)
 }
 
 // The unique identifier ID of the load balancer.
-func (o LoadBalancerOutput) LoadBalancerId() pulumi.IntOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.LoadBalancerId }).(pulumi.IntOutput)
+func (o LoadBalancerOutput) LoadBalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
 // The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.

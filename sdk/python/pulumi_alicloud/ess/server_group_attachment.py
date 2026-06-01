@@ -19,42 +19,33 @@ __all__ = ['ServerGroupAttachmentArgs', 'ServerGroupAttachment']
 @pulumi.input_type
 class ServerGroupAttachmentArgs:
     def __init__(__self__, *,
-                 port: pulumi.Input[_builtins.int],
                  scaling_group_id: pulumi.Input[_builtins.str],
                  server_group_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 weight: pulumi.Input[_builtins.int],
-                 force_attach: pulumi.Input[Optional[_builtins.bool]] = None):
+                 force_attach: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServerGroupAttachment resource.
 
-        :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[_builtins.str] server_group_id: ID of Server Group.
-        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB.
-        :param pulumi.Input[_builtins.int] weight: The weight of an ECS instance attached to the Server Group.
+        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB, GWLB.
+               > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         :param pulumi.Input[_builtins.bool] force_attach: If instances of scaling group are attached/removed from backend server when
                server group from scaling group. Default to false.
+        :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
+        :param pulumi.Input[_builtins.int] weight: The weight of an ECS instance attached to the Server Group.
         """
-        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         pulumi.set(__self__, "server_group_id", server_group_id)
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "weight", weight)
         if force_attach is not None:
             pulumi.set(__self__, "force_attach", force_attach)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> pulumi.Input[_builtins.int]:
-        """
-        The port will be used for Server Group backend server.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "port", value)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
@@ -84,25 +75,14 @@ class ServerGroupAttachmentArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of server group N. Valid values: ALB, NLB.
+        The type of server group N. Valid values: ALB, NLB, GWLB.
+        > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def weight(self) -> pulumi.Input[_builtins.int]:
-        """
-        The weight of an ECS instance attached to the Server Group.
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "weight", value)
 
     @_builtins.property
     @pulumi.getter(name="forceAttach")
@@ -116,6 +96,30 @@ class ServerGroupAttachmentArgs:
     @force_attach.setter
     def force_attach(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_attach", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port will be used for Server Group backend server.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The weight of an ECS instance attached to the Server Group.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
@@ -135,7 +139,8 @@ class _ServerGroupAttachmentState:
         :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[_builtins.str] server_group_id: ID of Server Group.
-        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB.
+        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB, GWLB.
+               > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         :param pulumi.Input[_builtins.int] weight: The weight of an ECS instance attached to the Server Group.
         """
         if force_attach is not None:
@@ -204,7 +209,8 @@ class _ServerGroupAttachmentState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of server group N. Valid values: ALB, NLB.
+        The type of server group N. Valid values: ALB, NLB, GWLB.
+        > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         """
         return pulumi.get(self, "type")
 
@@ -331,7 +337,8 @@ class ServerGroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[_builtins.str] server_group_id: ID of Server Group.
-        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB.
+        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB, GWLB.
+               > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         :param pulumi.Input[_builtins.int] weight: The weight of an ECS instance attached to the Server Group.
         """
         ...
@@ -457,8 +464,6 @@ class ServerGroupAttachment(pulumi.CustomResource):
             __props__ = ServerGroupAttachmentArgs.__new__(ServerGroupAttachmentArgs)
 
             __props__.__dict__["force_attach"] = force_attach
-            if port is None and not opts.urn:
-                raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
@@ -469,8 +474,6 @@ class ServerGroupAttachment(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            if weight is None and not opts.urn:
-                raise TypeError("Missing required property 'weight'")
             __props__.__dict__["weight"] = weight
         super(ServerGroupAttachment, __self__).__init__(
             'alicloud:ess/serverGroupAttachment:ServerGroupAttachment',
@@ -500,7 +503,8 @@ class ServerGroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] port: The port will be used for Server Group backend server.
         :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group.
         :param pulumi.Input[_builtins.str] server_group_id: ID of Server Group.
-        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB.
+        :param pulumi.Input[_builtins.str] type: The type of server group N. Valid values: ALB, NLB, GWLB.
+               > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         :param pulumi.Input[_builtins.int] weight: The weight of an ECS instance attached to the Server Group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -526,7 +530,7 @@ class ServerGroupAttachment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> pulumi.Output[_builtins.int]:
+    def port(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The port will be used for Server Group backend server.
         """
@@ -552,13 +556,14 @@ class ServerGroupAttachment(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of server group N. Valid values: ALB, NLB.
+        The type of server group N. Valid values: ALB, NLB, GWLB.
+        > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
         """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[_builtins.int]:
+    def weight(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The weight of an ECS instance attached to the Server Group.
         """

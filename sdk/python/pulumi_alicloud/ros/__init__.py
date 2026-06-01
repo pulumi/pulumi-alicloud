@@ -17,6 +17,7 @@ from .get_templates import *
 from .stack import *
 from .stack_group import *
 from .stack_instance import *
+from .stack_instances import *
 from .template import *
 from .template_scratch import *
 from ._inputs import *

@@ -17,18 +17,14 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
     public static final CustomDataDiskArgs Empty = new CustomDataDiskArgs();
 
     /**
-     * Instance storage type
-     * local_ssd: local SSD disk
-     * cloud_essd:ESSD PL1 cloud disk
+     * The type of data disk. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Instance storage type
-     * local_ssd: local SSD disk
-     * cloud_essd:ESSD PL1 cloud disk
+     * @return The type of data disk. Valid values:
      * 
      */
     public Optional<Output<String>> category() {
@@ -36,16 +32,22 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Cloud Disk Performance
-     * Currently only supports PL1
+     * The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+     * - `PL0`
+     * - `PL1` (default)
+     * - `PL2`
+     * - `PL3`.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return Cloud Disk Performance
-     * Currently only supports PL1
+     * @return The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+     * - `PL0`
+     * - `PL1` (default)
+     * - `PL2`
+     * - `PL3`.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -53,14 +55,30 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Instance storage space. Unit: GB.
+     * The size of the data disk, in GiB. Valid values:
+     * - cloud_efficiency: 20 to 32,768.
+     * - cloud_ssd: 20 to 32,768.
+     * - cloud_auto: 1 to 65,536.
+     * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+     * - PL0: 1 to 65,536.
+     * - PL1: 20 to 65,536.
+     * - PL2: 461 to 65,536.
+     * - PL3: 1,261 to 65,536.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Instance storage space. Unit: GB.
+     * @return The size of the data disk, in GiB. Valid values:
+     * - cloud_efficiency: 20 to 32,768.
+     * - cloud_ssd: 20 to 32,768.
+     * - cloud_auto: 1 to 65,536.
+     * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+     * - PL0: 1 to 65,536.
+     * - PL1: 20 to 65,536.
+     * - PL2: 461 to 65,536.
+     * - PL3: 1,261 to 65,536.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -94,9 +112,7 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param category Instance storage type
-         * local_ssd: local SSD disk
-         * cloud_essd:ESSD PL1 cloud disk
+         * @param category The type of data disk. Valid values:
          * 
          * @return builder
          * 
@@ -107,9 +123,7 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param category Instance storage type
-         * local_ssd: local SSD disk
-         * cloud_essd:ESSD PL1 cloud disk
+         * @param category The type of data disk. Valid values:
          * 
          * @return builder
          * 
@@ -119,8 +133,11 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param performanceLevel Cloud Disk Performance
-         * Currently only supports PL1
+         * @param performanceLevel The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+         * - `PL0`
+         * - `PL1` (default)
+         * - `PL2`
+         * - `PL3`.
          * 
          * @return builder
          * 
@@ -131,8 +148,11 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param performanceLevel Cloud Disk Performance
-         * Currently only supports PL1
+         * @param performanceLevel The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+         * - `PL0`
+         * - `PL1` (default)
+         * - `PL2`
+         * - `PL3`.
          * 
          * @return builder
          * 
@@ -142,7 +162,15 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param size Instance storage space. Unit: GB.
+         * @param size The size of the data disk, in GiB. Valid values:
+         * - cloud_efficiency: 20 to 32,768.
+         * - cloud_ssd: 20 to 32,768.
+         * - cloud_auto: 1 to 65,536.
+         * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+         * - PL0: 1 to 65,536.
+         * - PL1: 20 to 65,536.
+         * - PL2: 461 to 65,536.
+         * - PL3: 1,261 to 65,536.
          * 
          * @return builder
          * 
@@ -153,7 +181,15 @@ public final class CustomDataDiskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param size Instance storage space. Unit: GB.
+         * @param size The size of the data disk, in GiB. Valid values:
+         * - cloud_efficiency: 20 to 32,768.
+         * - cloud_ssd: 20 to 32,768.
+         * - cloud_auto: 1 to 65,536.
+         * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+         * - PL0: 1 to 65,536.
+         * - PL1: 20 to 65,536.
+         * - PL2: 461 to 65,536.
+         * - PL3: 1,261 to 65,536.
          * 
          * @return builder
          * 

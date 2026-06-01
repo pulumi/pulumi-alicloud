@@ -1359,6 +1359,9 @@
             "alicloud_cen_transit_router_vpc_attachment": {
                 "current": "alicloud:cen/transitRouterVpcAttachment:TransitRouterVpcAttachment",
                 "fields": {
+                    "options": {
+                        "maxItemsOne": true
+                    },
                     "zone_mappings": {
                         "maxItemsOne": false
                     }
@@ -8746,6 +8749,23 @@
                     }
                 }
             },
+            "alicloud_polardb_application": {
+                "current": "alicloud:polardb/application:Application",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "parameters": {
+                        "maxItemsOne": false
+                    },
+                    "security_ip_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_application_endpoint": {
+                "current": "alicloud:polardb/applicationEndpoint:ApplicationEndpoint"
+            },
             "alicloud_polardb_backup_policy": {
                 "current": "alicloud:polardb/backupPolicy:BackupPolicy",
                 "fields": {
@@ -8756,6 +8776,17 @@
                         "maxItemsOne": false
                     },
                     "preferred_backup_period": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_polardb_batch_task": {
+                "current": "alicloud:polardb/batchTask:BatchTask",
+                "fields": {
+                    "instance_ids": {
+                        "maxItemsOne": false
+                    },
+                    "task_params": {
                         "maxItemsOne": false
                     }
                 }
@@ -9684,6 +9715,42 @@
                 "current": "alicloud:ros/stackInstance:StackInstance",
                 "fields": {
                     "parameter_overrides": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_ros_stack_instances": {
+                "current": "alicloud:ros/stackInstances:StackInstances",
+                "fields": {
+                    "account_ids": {
+                        "maxItemsOne": false
+                    },
+                    "deployment_options": {
+                        "maxItemsOne": true
+                    },
+                    "deployment_targets": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "account_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "rd_folder_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "operation_preferences": {
+                        "maxItemsOne": true
+                    },
+                    "parameter_overrides": {
+                        "maxItemsOne": false
+                    },
+                    "region_ids": {
+                        "maxItemsOne": false
+                    },
+                    "stack_instances": {
                         "maxItemsOne": false
                     }
                 }
@@ -13020,6 +13087,27 @@
                     }
                 }
             },
+            "alicloud_cdn_domain_configs": {
+                "current": "alicloud:cdn/getDomainConfigs:getDomainConfigs",
+                "fields": {
+                    "configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "function_args": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_cdn_ip_info": {
                 "current": "alicloud:cdn/getIpInfo:getIpInfo"
             },
@@ -13496,6 +13584,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "options": {
+                                    "maxItemsOne": false
+                                },
                                 "zone_mappings": {
                                     "maxItemsOne": false
                                 }
@@ -17866,6 +17957,48 @@
                         "maxItemsOne": false
                     },
                     "pairs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_esa_https_basic_configurations": {
+                "current": "alicloud:esa/getHttpsBasicConfigurations:getHttpsBasicConfigurations",
+                "fields": {
+                    "configurations": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_esa_network_optimizations": {
+                "current": "alicloud:esa/getNetworkOptimizations:getNetworkOptimizations",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "optimizations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_esa_origin_rules": {
+                "current": "alicloud:esa/getOriginRules:getOriginRules",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
                         "maxItemsOne": false
                     }
                 }

@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -148,27 +147,27 @@ public class OriginPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Whether the source address pool is enabled:
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * OriginPool Id
      * 
      */
-    @Export(name="originPoolId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> originPoolId;
+    @Export(name="originPoolId", refs={String.class}, tree="[0]")
+    private Output<String> originPoolId;
 
     /**
      * @return OriginPool Id
      * 
      */
-    public Output<Integer> originPoolId() {
+    public Output<String> originPoolId() {
         return this.originPoolId;
     }
     /**

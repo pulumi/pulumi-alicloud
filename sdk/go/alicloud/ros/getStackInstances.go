@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
+//			ids, err := ros.LookupStackInstances(ctx, &ros.LookupStackInstancesArgs{
 //				StackGroupName: "example_value",
 //				Ids: []string{
 //					"example_value-1",
@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			ctx.Export("rosStackInstanceId1", ids.Instances[0].Id)
-//			status, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
+//			status, err := ros.LookupStackInstances(ctx, &ros.LookupStackInstancesArgs{
 //				StackGroupName: "example_value",
 //				Status:         pulumi.StringRef("CURRENT"),
 //				EnableDetails:  pulumi.BoolRef(true),
@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			ctx.Export("rosStackInstanceId2", status.Instances[0].Id)
-//			regionId, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
+//			regionId, err := ros.LookupStackInstances(ctx, &ros.LookupStackInstancesArgs{
 //				StackGroupName:        "example_value",
 //				StackInstanceRegionId: pulumi.StringRef("example_value"),
 //				EnableDetails:         pulumi.BoolRef(true),
@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			ctx.Export("rosStackInstanceId3", regionId.Instances[0].Id)
-//			accountId, err := ros.GetStackInstances(ctx, &ros.GetStackInstancesArgs{
+//			accountId, err := ros.LookupStackInstances(ctx, &ros.LookupStackInstancesArgs{
 //				StackGroupName:         "example_value",
 //				StackInstanceAccountId: pulumi.StringRef("example_value"),
 //				EnableDetails:          pulumi.BoolRef(true),
@@ -75,9 +75,9 @@ import (
 //	}
 //
 // ```
-func GetStackInstances(ctx *pulumi.Context, args *GetStackInstancesArgs, opts ...pulumi.InvokeOption) (*GetStackInstancesResult, error) {
+func LookupStackInstances(ctx *pulumi.Context, args *LookupStackInstancesArgs, opts ...pulumi.InvokeOption) (*LookupStackInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetStackInstancesResult
+	var rv LookupStackInstancesResult
 	err := ctx.Invoke("alicloud:ros/getStackInstances:getStackInstances", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -86,7 +86,7 @@ func GetStackInstances(ctx *pulumi.Context, args *GetStackInstancesArgs, opts ..
 }
 
 // A collection of arguments for invoking getStackInstances.
-type GetStackInstancesArgs struct {
+type LookupStackInstancesArgs struct {
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Stack Instance IDs.
@@ -109,7 +109,7 @@ type GetStackInstancesArgs struct {
 }
 
 // A collection of values returned by getStackInstances.
-type GetStackInstancesResult struct {
+type LookupStackInstancesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string                      `pulumi:"id"`
@@ -122,17 +122,17 @@ type GetStackInstancesResult struct {
 	Status                 *string                     `pulumi:"status"`
 }
 
-func GetStackInstancesOutput(ctx *pulumi.Context, args GetStackInstancesOutputArgs, opts ...pulumi.InvokeOption) GetStackInstancesResultOutput {
+func LookupStackInstancesOutput(ctx *pulumi.Context, args LookupStackInstancesOutputArgs, opts ...pulumi.InvokeOption) LookupStackInstancesResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStackInstancesResultOutput, error) {
-			args := v.(GetStackInstancesArgs)
+		ApplyT(func(v interface{}) (LookupStackInstancesResultOutput, error) {
+			args := v.(LookupStackInstancesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("alicloud:ros/getStackInstances:getStackInstances", args, GetStackInstancesResultOutput{}, options).(GetStackInstancesResultOutput), nil
-		}).(GetStackInstancesResultOutput)
+			return ctx.InvokeOutput("alicloud:ros/getStackInstances:getStackInstances", args, LookupStackInstancesResultOutput{}, options).(LookupStackInstancesResultOutput), nil
+		}).(LookupStackInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getStackInstances.
-type GetStackInstancesOutputArgs struct {
+type LookupStackInstancesOutputArgs struct {
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Stack Instance IDs.
@@ -154,62 +154,62 @@ type GetStackInstancesOutputArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
-func (GetStackInstancesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStackInstancesArgs)(nil)).Elem()
+func (LookupStackInstancesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackInstancesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getStackInstances.
-type GetStackInstancesResultOutput struct{ *pulumi.OutputState }
+type LookupStackInstancesResultOutput struct{ *pulumi.OutputState }
 
-func (GetStackInstancesResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStackInstancesResult)(nil)).Elem()
+func (LookupStackInstancesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStackInstancesResult)(nil)).Elem()
 }
 
-func (o GetStackInstancesResultOutput) ToGetStackInstancesResultOutput() GetStackInstancesResultOutput {
+func (o LookupStackInstancesResultOutput) ToLookupStackInstancesResultOutput() LookupStackInstancesResultOutput {
 	return o
 }
 
-func (o GetStackInstancesResultOutput) ToGetStackInstancesResultOutputWithContext(ctx context.Context) GetStackInstancesResultOutput {
+func (o LookupStackInstancesResultOutput) ToLookupStackInstancesResultOutputWithContext(ctx context.Context) LookupStackInstancesResultOutput {
 	return o
 }
 
-func (o GetStackInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
+func (o LookupStackInstancesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetStackInstancesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupStackInstancesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetStackInstancesResultOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+func (o LookupStackInstancesResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetStackInstancesResultOutput) Instances() GetStackInstancesInstanceArrayOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) []GetStackInstancesInstance { return v.Instances }).(GetStackInstancesInstanceArrayOutput)
+func (o LookupStackInstancesResultOutput) Instances() GetStackInstancesInstanceArrayOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) []GetStackInstancesInstance { return v.Instances }).(GetStackInstancesInstanceArrayOutput)
 }
 
-func (o GetStackInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+func (o LookupStackInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-func (o GetStackInstancesResultOutput) StackGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) string { return v.StackGroupName }).(pulumi.StringOutput)
+func (o LookupStackInstancesResultOutput) StackGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) string { return v.StackGroupName }).(pulumi.StringOutput)
 }
 
-func (o GetStackInstancesResultOutput) StackInstanceAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) *string { return v.StackInstanceAccountId }).(pulumi.StringPtrOutput)
+func (o LookupStackInstancesResultOutput) StackInstanceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.StackInstanceAccountId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetStackInstancesResultOutput) StackInstanceRegionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) *string { return v.StackInstanceRegionId }).(pulumi.StringPtrOutput)
+func (o LookupStackInstancesResultOutput) StackInstanceRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.StackInstanceRegionId }).(pulumi.StringPtrOutput)
 }
 
-func (o GetStackInstancesResultOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetStackInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+func (o LookupStackInstancesResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStackInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetStackInstancesResultOutput{})
+	pulumi.RegisterOutputType(LookupStackInstancesResultOutput{})
 }

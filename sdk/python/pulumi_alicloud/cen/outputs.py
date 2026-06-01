@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'TrafficMarkingPolicyTrafficMatchRule',
     'TransitRouterMulticastDomainOptions',
+    'TransitRouterVpcAttachmentOptions',
     'TransitRouterVpcAttachmentZoneMapping',
     'TransitRouterVpnAttachmentZone',
     'GetBandwidthLimitsLimitResult',
@@ -51,6 +52,7 @@ __all__ = [
     'GetTransitRouterRouteTablesTableResult',
     'GetTransitRouterVbrAttachmentsAttachmentResult',
     'GetTransitRouterVpcAttachmentsAttachmentResult',
+    'GetTransitRouterVpcAttachmentsAttachmentOptionResult',
     'GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult',
     'GetTransitRouterVpnAttachmentsAttachmentResult',
     'GetTransitRouterVpnAttachmentsAttachmentZoneResult',
@@ -284,6 +286,56 @@ class TransitRouterMulticastDomainOptions(dict):
         Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
         """
         return pulumi.get(self, "igmpv2_support")
+
+
+@pulumi.output_type
+class TransitRouterVpcAttachmentOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applianceModeSupport":
+            suggest = "appliance_mode_support"
+        elif key == "ipv6Support":
+            suggest = "ipv6_support"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransitRouterVpcAttachmentOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransitRouterVpcAttachmentOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransitRouterVpcAttachmentOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 appliance_mode_support: Optional[_builtins.str] = None,
+                 ipv6_support: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str appliance_mode_support: Indicates whether appliance mode is enabled.
+        :param _builtins.str ipv6_support: Indicates whether IPv6 is supported.
+        """
+        if appliance_mode_support is not None:
+            pulumi.set(__self__, "appliance_mode_support", appliance_mode_support)
+        if ipv6_support is not None:
+            pulumi.set(__self__, "ipv6_support", ipv6_support)
+
+    @_builtins.property
+    @pulumi.getter(name="applianceModeSupport")
+    def appliance_mode_support(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether appliance mode is enabled.
+        """
+        return pulumi.get(self, "appliance_mode_support")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Support")
+    def ipv6_support(self) -> Optional[_builtins.str]:
+        """
+        Indicates whether IPv6 is supported.
+        """
+        return pulumi.get(self, "ipv6_support")
 
 
 @pulumi.output_type
@@ -3498,6 +3550,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
                  auto_publish_route_enabled: _builtins.bool,
                  cen_id: _builtins.str,
                  id: _builtins.str,
+                 options: Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentOptionResult'],
                  payment_type: _builtins.str,
                  resource_type: _builtins.str,
                  status: _builtins.str,
@@ -3512,6 +3565,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         :param _builtins.bool auto_publish_route_enabled: (Available since v1.224.0) Whether the transit router is automatically published to the VPC instance.
         :param _builtins.str cen_id: The ID of the CEN instance.
         :param _builtins.str id: The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
+        :param Sequence['GetTransitRouterVpcAttachmentsAttachmentOptionArgs'] options: (Available since v1.279.0) A collection of feature attributes.
         :param _builtins.str payment_type: The payment type of the resource.
         :param _builtins.str resource_type: The resource type of the Transit Router VPC Attachment.
         :param _builtins.str status: The status of the Transit Router VPC Attachment. Valid Values: `Attached`, `Attaching`, `Detaching`.
@@ -3526,6 +3580,7 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "resource_type", resource_type)
         pulumi.set(__self__, "status", status)
@@ -3560,6 +3615,14 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentOptionResult']:
+        """
+        (Available since v1.279.0) A collection of feature attributes.
+        """
+        return pulumi.get(self, "options")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
@@ -3640,6 +3703,35 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         The list of zone mapping of the VPC.
         """
         return pulumi.get(self, "zone_mappings")
+
+
+@pulumi.output_type
+class GetTransitRouterVpcAttachmentsAttachmentOptionResult(dict):
+    def __init__(__self__, *,
+                 appliance_mode_support: _builtins.str,
+                 ipv6_support: _builtins.str):
+        """
+        :param _builtins.str appliance_mode_support: Indicates whether appliance mode is enabled.
+        :param _builtins.str ipv6_support: Indicates whether IPv6 is supported.
+        """
+        pulumi.set(__self__, "appliance_mode_support", appliance_mode_support)
+        pulumi.set(__self__, "ipv6_support", ipv6_support)
+
+    @_builtins.property
+    @pulumi.getter(name="applianceModeSupport")
+    def appliance_mode_support(self) -> _builtins.str:
+        """
+        Indicates whether appliance mode is enabled.
+        """
+        return pulumi.get(self, "appliance_mode_support")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Support")
+    def ipv6_support(self) -> _builtins.str:
+        """
+        Indicates whether IPv6 is supported.
+        """
+        return pulumi.get(self, "ipv6_support")
 
 
 @pulumi.output_type
