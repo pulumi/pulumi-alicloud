@@ -39,15 +39,15 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
      * The port will be used for Server Group backend server.
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
     /**
      * @return The port will be used for Server Group backend server.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     /**
@@ -81,14 +81,16 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of server group N. Valid values: ALB, NLB.
+     * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of server group N. Valid values: ALB, NLB.
+     * @return The type of server group N. Valid values: ALB, NLB, GWLB.
+     * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
     public Output<String> type() {
@@ -99,15 +101,15 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
      * The weight of an ECS instance attached to the Server Group.
      * 
      */
-    @Import(name="weight", required=true)
-    private Output<Integer> weight;
+    @Import(name="weight")
+    private @Nullable Output<Integer> weight;
 
     /**
      * @return The weight of an ECS instance attached to the Server Group.
      * 
      */
-    public Output<Integer> weight() {
-        return this.weight;
+    public Optional<Output<Integer>> weight() {
+        return Optional.ofNullable(this.weight);
     }
 
     private ServerGroupAttachmentArgs() {}
@@ -168,7 +170,7 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
@@ -226,7 +228,8 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of server group N. Valid values: ALB, NLB.
+         * @param type The type of server group N. Valid values: ALB, NLB, GWLB.
+         * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
          * 
          * @return builder
          * 
@@ -237,7 +240,8 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of server group N. Valid values: ALB, NLB.
+         * @param type The type of server group N. Valid values: ALB, NLB, GWLB.
+         * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
          * 
          * @return builder
          * 
@@ -252,7 +256,7 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder weight(Output<Integer> weight) {
+        public Builder weight(@Nullable Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
@@ -268,9 +272,6 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
         }
 
         public ServerGroupAttachmentArgs build() {
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("ServerGroupAttachmentArgs", "port");
-            }
             if ($.scalingGroupId == null) {
                 throw new MissingRequiredPropertyException("ServerGroupAttachmentArgs", "scalingGroupId");
             }
@@ -279,9 +280,6 @@ public final class ServerGroupAttachmentArgs extends com.pulumi.resources.Resour
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("ServerGroupAttachmentArgs", "type");
-            }
-            if ($.weight == null) {
-                throw new MissingRequiredPropertyException("ServerGroupAttachmentArgs", "weight");
             }
             return $;
         }

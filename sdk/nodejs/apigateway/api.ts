@@ -63,6 +63,46 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Backend Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = new alicloud.apigateway.Group("example", {
+ *     name: "tf-example",
+ *     description: "tf-example",
+ *     basePath: "/",
+ * });
+ * const exampleBackend = new alicloud.apigateway.Backend("example", {
+ *     backendName: "tf-example-backend",
+ *     backendType: "HTTP",
+ *     description: "tf-example",
+ * });
+ * const exampleApi = new alicloud.apigateway.Api("example", {
+ *     groupId: example.id,
+ *     name: "tf-example",
+ *     description: "tf-example",
+ *     authType: "APP",
+ *     forceNonceCheck: false,
+ *     requestConfig: {
+ *         protocol: "HTTP",
+ *         method: "GET",
+ *         path: "/example/path",
+ *         mode: "MAPPING",
+ *     },
+ *     serviceType: "HTTP",
+ *     httpServiceConfig: {
+ *         address: "",
+ *         method: "GET",
+ *         path: "/web/cloudapi",
+ *         timeout: 12,
+ *     },
+ *     backendId: exampleBackend.id,
+ *     backendEnabled: true,
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
@@ -109,6 +149,14 @@ export class Api extends pulumi.CustomResource {
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
     declare public readonly authType: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     */
+    declare public readonly backendEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     */
+    declare public readonly backendId: pulumi.Output<string | undefined>;
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
@@ -181,6 +229,8 @@ export class Api extends pulumi.CustomResource {
             const state = argsOrState as ApiState | undefined;
             resourceInputs["apiId"] = state?.apiId;
             resourceInputs["authType"] = state?.authType;
+            resourceInputs["backendEnabled"] = state?.backendEnabled;
+            resourceInputs["backendId"] = state?.backendId;
             resourceInputs["constantParameters"] = state?.constantParameters;
             resourceInputs["description"] = state?.description;
             resourceInputs["fcServiceConfig"] = state?.fcServiceConfig;
@@ -213,6 +263,8 @@ export class Api extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceType'");
             }
             resourceInputs["authType"] = args?.authType;
+            resourceInputs["backendEnabled"] = args?.backendEnabled;
+            resourceInputs["backendId"] = args?.backendId;
             resourceInputs["constantParameters"] = args?.constantParameters;
             resourceInputs["description"] = args?.description;
             resourceInputs["fcServiceConfig"] = args?.fcServiceConfig;
@@ -246,6 +298,14 @@ export interface ApiState {
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
     authType?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     */
+    backendEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     */
+    backendId?: pulumi.Input<string | undefined>;
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */
@@ -312,6 +372,14 @@ export interface ApiArgs {
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      */
     authType: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     */
+    backendEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     */
+    backendId?: pulumi.Input<string | undefined>;
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      */

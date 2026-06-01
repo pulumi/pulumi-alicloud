@@ -7,7 +7,6 @@ import com.pulumi.alicloud.esa.inputs.OriginPoolOriginArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,13 +38,13 @@ public final class OriginPoolState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="originPoolId")
-    private @Nullable Output<Integer> originPoolId;
+    private @Nullable Output<String> originPoolId;
 
     /**
      * @return OriginPool Id
      * 
      */
-    public Optional<Output<Integer>> originPoolId() {
+    public Optional<Output<String>> originPoolId() {
         return Optional.ofNullable(this.originPoolId);
     }
 
@@ -149,7 +148,7 @@ public final class OriginPoolState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder originPoolId(@Nullable Output<Integer> originPoolId) {
+        public Builder originPoolId(@Nullable Output<String> originPoolId) {
             $.originPoolId = originPoolId;
             return this;
         }
@@ -160,7 +159,7 @@ public final class OriginPoolState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder originPoolId(Integer originPoolId) {
+        public Builder originPoolId(String originPoolId) {
             return originPoolId(Output.of(originPoolId));
         }
 

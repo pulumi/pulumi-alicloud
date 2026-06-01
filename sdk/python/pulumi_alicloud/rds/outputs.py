@@ -143,12 +143,21 @@ class CustomDataDisk(dict):
                  performance_level: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param _builtins.str category: Instance storage type
-               local_ssd: local SSD disk
-               cloud_essd:ESSD PL1 cloud disk
-        :param _builtins.str performance_level: Cloud Disk Performance
-               Currently only supports PL1
-        :param _builtins.int size: Instance storage space. Unit: GB.
+        :param _builtins.str category: The type of data disk. Valid values:
+        :param _builtins.str performance_level: The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+               - `PL0`
+               - `PL1` (default)
+               - `PL2`
+               - `PL3`.
+        :param _builtins.int size: The size of the data disk, in GiB. Valid values:
+               - cloud_efficiency: 20 to 32,768.
+               - cloud_ssd: 20 to 32,768.
+               - cloud_auto: 1 to 65,536.
+               - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+               - PL0: 1 to 65,536.
+               - PL1: 20 to 65,536.
+               - PL2: 461 to 65,536.
+               - PL3: 1,261 to 65,536.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -161,9 +170,7 @@ class CustomDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
         """
-        Instance storage type
-        local_ssd: local SSD disk
-        cloud_essd:ESSD PL1 cloud disk
+        The type of data disk. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -171,8 +178,11 @@ class CustomDataDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[_builtins.str]:
         """
-        Cloud Disk Performance
-        Currently only supports PL1
+        The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+        - `PL0`
+        - `PL1` (default)
+        - `PL2`
+        - `PL3`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -180,7 +190,15 @@ class CustomDataDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         """
-        Instance storage space. Unit: GB.
+        The size of the data disk, in GiB. Valid values:
+        - cloud_efficiency: 20 to 32,768.
+        - cloud_ssd: 20 to 32,768.
+        - cloud_auto: 1 to 65,536.
+        - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+        - PL0: 1 to 65,536.
+        - PL1: 20 to 65,536.
+        - PL2: 461 to 65,536.
+        - PL3: 1,261 to 65,536.
         """
         return pulumi.get(self, "size")
 
@@ -191,8 +209,8 @@ class CustomSystemDisk(dict):
                  category: Optional[_builtins.str] = None,
                  size: Optional[_builtins.str] = None):
         """
-        :param _builtins.str category: The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
-        :param _builtins.str size: System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        :param _builtins.str category: The system disk category. Valid values:
+        :param _builtins.str size: The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -203,7 +221,7 @@ class CustomSystemDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
         """
-        The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        The system disk category. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -211,7 +229,7 @@ class CustomSystemDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[_builtins.str]:
         """
-        System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
         """
         return pulumi.get(self, "size")
 

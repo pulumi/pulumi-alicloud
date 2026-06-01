@@ -257,10 +257,10 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        /// Network billing type, Values: PayByBandwidth or PayByTraffic.
         /// </summary>
         [Output("internetChargeType")]
-        public Output<string?> InternetChargeType { get; private set; } = null!;
+        public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
         /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
@@ -686,7 +686,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        /// Network billing type, Values: PayByBandwidth or PayByTraffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -1107,7 +1107,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        /// Network billing type, Values: PayByBandwidth or PayByTraffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }

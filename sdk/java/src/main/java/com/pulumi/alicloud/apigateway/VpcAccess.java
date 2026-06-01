@@ -180,6 +180,20 @@ public class VpcAccess extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
+     * The ID of the Vpc Access.
+     * 
+     */
+    @Export(name="vpcAccessId", refs={String.class}, tree="[0]")
+    private Output<String> vpcAccessId;
+
+    /**
+     * @return The ID of the Vpc Access.
+     * 
+     */
+    public Output<String> vpcAccessId() {
+        return this.vpcAccessId;
+    }
+    /**
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      * 
      */

@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Esa.Inputs
         /// Origin ID.
         /// </summary>
         [Input("originId")]
-        public Input<int>? OriginId { get; set; }
+        public Input<string>? OriginId { get; set; }
 
         /// <summary>
         /// Source station type:

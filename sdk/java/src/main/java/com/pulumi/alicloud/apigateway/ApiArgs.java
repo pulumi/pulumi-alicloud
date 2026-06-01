@@ -42,6 +42,36 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     * 
+     */
+    @Import(name="backendEnabled")
+    private @Nullable Output<Boolean> backendEnabled;
+
+    /**
+     * @return Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     * 
+     */
+    public Optional<Output<Boolean>> backendEnabled() {
+        return Optional.ofNullable(this.backendEnabled);
+    }
+
+    /**
+     * The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     * 
+     */
+    @Import(name="backendId")
+    private @Nullable Output<String> backendId;
+
+    /**
+     * @return The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     * 
+     */
+    public Optional<Output<String>> backendId() {
+        return Optional.ofNullable(this.backendId);
+    }
+
+    /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
      * 
      */
@@ -255,6 +285,8 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
 
     private ApiArgs(ApiArgs $) {
         this.authType = $.authType;
+        this.backendEnabled = $.backendEnabled;
+        this.backendId = $.backendId;
         this.constantParameters = $.constantParameters;
         this.description = $.description;
         this.fcServiceConfig = $.fcServiceConfig;
@@ -308,6 +340,48 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param backendEnabled Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendEnabled(@Nullable Output<Boolean> backendEnabled) {
+            $.backendEnabled = backendEnabled;
+            return this;
+        }
+
+        /**
+         * @param backendEnabled Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendEnabled(Boolean backendEnabled) {
+            return backendEnabled(Output.of(backendEnabled));
+        }
+
+        /**
+         * @param backendId The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendId(@Nullable Output<String> backendId) {
+            $.backendId = backendId;
+            return this;
+        }
+
+        /**
+         * @param backendId The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendId(String backendId) {
+            return backendId(Output.of(backendId));
         }
 
         /**

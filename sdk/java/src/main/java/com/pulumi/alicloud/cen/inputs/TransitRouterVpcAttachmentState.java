@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cen.inputs;
 
+import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentOptionsArgs;
 import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -100,6 +101,21 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * A collection of feature attributes. See `options` below.
+     * 
+     */
+    @Import(name="options")
+    private @Nullable Output<TransitRouterVpcAttachmentOptionsArgs> options;
+
+    /**
+     * @return A collection of feature attributes. See `options` below.
+     * 
+     */
+    public Optional<Output<TransitRouterVpcAttachmentOptionsArgs>> options() {
+        return Optional.ofNullable(this.options);
     }
 
     /**
@@ -403,6 +419,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         this.createTime = $.createTime;
         this.dryRun = $.dryRun;
         this.forceDelete = $.forceDelete;
+        this.options = $.options;
         this.orderType = $.orderType;
         this.paymentType = $.paymentType;
         this.regionId = $.regionId;
@@ -551,6 +568,27 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
          */
         public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param options A collection of feature attributes. See `options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(@Nullable Output<TransitRouterVpcAttachmentOptionsArgs> options) {
+            $.options = options;
+            return this;
+        }
+
+        /**
+         * @param options A collection of feature attributes. See `options` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder options(TransitRouterVpcAttachmentOptionsArgs options) {
+            return options(Output.of(options));
         }
 
         /**

@@ -133,6 +133,12 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the Vpc Access.
+        /// </summary>
+        [Output("vpcAccessId")]
+        public Output<string> VpcAccessId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         /// </summary>
         [Output("vpcId")]
@@ -233,6 +239,12 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// The ID of the Vpc Access.
+        /// </summary>
+        [Input("vpcAccessId")]
+        public Input<string>? VpcAccessId { get; set; }
 
         /// <summary>
         /// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.

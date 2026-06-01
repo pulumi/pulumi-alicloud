@@ -8,7 +8,10 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .account_privilege import *
+from .application import *
+from .application_endpoint import *
 from .backup_policy import *
+from .batch_task import *
 from .cluster import *
 from .cluster_endpoint import *
 from .database import *

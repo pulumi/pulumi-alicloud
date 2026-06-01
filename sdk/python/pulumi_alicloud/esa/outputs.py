@@ -78,6 +78,9 @@ __all__ = [
     'WafRuleSharedMatchCriteriaCriteria',
     'WafRuleSharedMatchCriteriaCriteriaCriteria',
     'WaitingRoomHostNameAndPath',
+    'GetHttpsBasicConfigurationsConfigurationResult',
+    'GetNetworkOptimizationsOptimizationResult',
+    'GetOriginRulesRuleResult',
     'GetSitesSiteResult',
     'GetWafRulesetsQueryArgsResult',
     'GetWafRulesetsSetResult',
@@ -786,7 +789,7 @@ class OriginPoolOrigin(dict):
                  enabled: Optional[_builtins.bool] = None,
                  header: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
-                 origin_id: Optional[_builtins.int] = None,
+                 origin_id: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None,
                  weight: Optional[_builtins.int] = None):
         """
@@ -795,7 +798,7 @@ class OriginPoolOrigin(dict):
         :param _builtins.bool enabled: Whether the source station is enabled:
         :param _builtins.str header: The request header that is sent when returning to the source. Only Host is supported.
         :param _builtins.str name: Origin Name.
-        :param _builtins.int origin_id: Origin ID.
+        :param _builtins.str origin_id: Origin ID.
         :param _builtins.str type: Source station type:
                ip_domain: ip or domain name type origin station;
                - `OSS`:OSS address source station;
@@ -861,7 +864,7 @@ class OriginPoolOrigin(dict):
 
     @_builtins.property
     @pulumi.getter(name="originId")
-    def origin_id(self) -> Optional[_builtins.int]:
+    def origin_id(self) -> Optional[_builtins.str]:
         """
         Origin ID.
         """
@@ -4005,6 +4008,621 @@ class WaitingRoomHostNameAndPath(dict):
         The subdomain.
         """
         return pulumi.get(self, "subdomain")
+
+
+@pulumi.output_type
+class GetHttpsBasicConfigurationsConfigurationResult(dict):
+    def __init__(__self__, *,
+                 ciphersuite: _builtins.str,
+                 ciphersuite_group: _builtins.str,
+                 config_id: _builtins.str,
+                 config_type: _builtins.str,
+                 http2: _builtins.str,
+                 http3: _builtins.str,
+                 https: _builtins.str,
+                 id: _builtins.str,
+                 ocsp_stapling: _builtins.str,
+                 rule: _builtins.str,
+                 rule_enable: _builtins.str,
+                 rule_name: _builtins.str,
+                 sequence: _builtins.int,
+                 tls10: _builtins.str,
+                 tls11: _builtins.str,
+                 tls12: _builtins.str,
+                 tls13: _builtins.str):
+        """
+        :param _builtins.str ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+        :param _builtins.str ciphersuite_group: Cipher suite group.
+        :param _builtins.str config_id: The ID of the Configuration.
+        :param _builtins.str config_type: The type of the Configuration. Valid values: `global`, `rule`.
+        :param _builtins.str http2: Whether to enable HTTP2.
+        :param _builtins.str http3: Whether to enable HTTP3.
+        :param _builtins.str https: Whether to enable HTTPS.
+        :param _builtins.str id: The ID of the Https Basic Configuration.
+        :param _builtins.str ocsp_stapling: Whether to enable OCSP.
+        :param _builtins.str rule: Rule content.
+        :param _builtins.str rule_enable: Rule switch.
+        :param _builtins.str rule_name: The name of the rule.
+        :param _builtins.int sequence: The rule execution order prioritizes lower numerical values.
+        :param _builtins.str tls10: Whether to enable TLS1.0.
+        :param _builtins.str tls11: Whether to enable TLS1.1.
+        :param _builtins.str tls12: Whether to enable TLS1.2.
+        :param _builtins.str tls13: Whether to enable TLS1.3.
+        """
+        pulumi.set(__self__, "ciphersuite", ciphersuite)
+        pulumi.set(__self__, "ciphersuite_group", ciphersuite_group)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "config_type", config_type)
+        pulumi.set(__self__, "http2", http2)
+        pulumi.set(__self__, "http3", http3)
+        pulumi.set(__self__, "https", https)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ocsp_stapling", ocsp_stapling)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "rule_enable", rule_enable)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "sequence", sequence)
+        pulumi.set(__self__, "tls10", tls10)
+        pulumi.set(__self__, "tls11", tls11)
+        pulumi.set(__self__, "tls12", tls12)
+        pulumi.set(__self__, "tls13", tls13)
+
+    @_builtins.property
+    @pulumi.getter
+    def ciphersuite(self) -> _builtins.str:
+        """
+        Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+        """
+        return pulumi.get(self, "ciphersuite")
+
+    @_builtins.property
+    @pulumi.getter(name="ciphersuiteGroup")
+    def ciphersuite_group(self) -> _builtins.str:
+        """
+        Cipher suite group.
+        """
+        return pulumi.get(self, "ciphersuite_group")
+
+    @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> _builtins.str:
+        """
+        The ID of the Configuration.
+        """
+        return pulumi.get(self, "config_id")
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> _builtins.str:
+        """
+        The type of the Configuration. Valid values: `global`, `rule`.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def http2(self) -> _builtins.str:
+        """
+        Whether to enable HTTP2.
+        """
+        return pulumi.get(self, "http2")
+
+    @_builtins.property
+    @pulumi.getter
+    def http3(self) -> _builtins.str:
+        """
+        Whether to enable HTTP3.
+        """
+        return pulumi.get(self, "http3")
+
+    @_builtins.property
+    @pulumi.getter
+    def https(self) -> _builtins.str:
+        """
+        Whether to enable HTTPS.
+        """
+        return pulumi.get(self, "https")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Https Basic Configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ocspStapling")
+    def ocsp_stapling(self) -> _builtins.str:
+        """
+        Whether to enable OCSP.
+        """
+        return pulumi.get(self, "ocsp_stapling")
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        Rule content.
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleEnable")
+    def rule_enable(self) -> _builtins.str:
+        """
+        Rule switch.
+        """
+        return pulumi.get(self, "rule_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> _builtins.str:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> _builtins.int:
+        """
+        The rule execution order prioritizes lower numerical values.
+        """
+        return pulumi.get(self, "sequence")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls10(self) -> _builtins.str:
+        """
+        Whether to enable TLS1.0.
+        """
+        return pulumi.get(self, "tls10")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls11(self) -> _builtins.str:
+        """
+        Whether to enable TLS1.1.
+        """
+        return pulumi.get(self, "tls11")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls12(self) -> _builtins.str:
+        """
+        Whether to enable TLS1.2.
+        """
+        return pulumi.get(self, "tls12")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls13(self) -> _builtins.str:
+        """
+        Whether to enable TLS1.3.
+        """
+        return pulumi.get(self, "tls13")
+
+
+@pulumi.output_type
+class GetNetworkOptimizationsOptimizationResult(dict):
+    def __init__(__self__, *,
+                 config_id: _builtins.str,
+                 config_type: _builtins.str,
+                 grpc: _builtins.str,
+                 http2_origin: _builtins.str,
+                 id: _builtins.str,
+                 rule: _builtins.str,
+                 rule_enable: _builtins.str,
+                 rule_name: _builtins.str,
+                 sequence: _builtins.int,
+                 site_version: _builtins.int,
+                 smart_routing: _builtins.str,
+                 upload_max_filesize: _builtins.str,
+                 websocket: _builtins.str):
+        """
+        :param _builtins.str config_id: The ID of the Configuration.
+        :param _builtins.str config_type: The type of the Configuration. Valid values: `global`, `rule`.
+        :param _builtins.str grpc: Whether to enable GRPC.
+        :param _builtins.str http2_origin: Whether to enable HTTP2 origin.
+        :param _builtins.str id: The ID of the Network Optimization.
+        :param _builtins.str rule: Rule content.
+        :param _builtins.str rule_enable: Rule switch.
+        :param _builtins.str rule_name: The name of the rule.
+        :param _builtins.int sequence: The rule execution order prioritizes lower numerical values.
+        :param _builtins.int site_version: The version of the site.
+        :param _builtins.str smart_routing: Whether to enable smart routing service.
+        :param _builtins.str upload_max_filesize: Maximum upload file size.
+        :param _builtins.str websocket: Whether to enable Websocket.
+        """
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "config_type", config_type)
+        pulumi.set(__self__, "grpc", grpc)
+        pulumi.set(__self__, "http2_origin", http2_origin)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "rule_enable", rule_enable)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "sequence", sequence)
+        pulumi.set(__self__, "site_version", site_version)
+        pulumi.set(__self__, "smart_routing", smart_routing)
+        pulumi.set(__self__, "upload_max_filesize", upload_max_filesize)
+        pulumi.set(__self__, "websocket", websocket)
+
+    @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> _builtins.str:
+        """
+        The ID of the Configuration.
+        """
+        return pulumi.get(self, "config_id")
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> _builtins.str:
+        """
+        The type of the Configuration. Valid values: `global`, `rule`.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def grpc(self) -> _builtins.str:
+        """
+        Whether to enable GRPC.
+        """
+        return pulumi.get(self, "grpc")
+
+    @_builtins.property
+    @pulumi.getter(name="http2Origin")
+    def http2_origin(self) -> _builtins.str:
+        """
+        Whether to enable HTTP2 origin.
+        """
+        return pulumi.get(self, "http2_origin")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Network Optimization.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        Rule content.
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleEnable")
+    def rule_enable(self) -> _builtins.str:
+        """
+        Rule switch.
+        """
+        return pulumi.get(self, "rule_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> _builtins.str:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> _builtins.int:
+        """
+        The rule execution order prioritizes lower numerical values.
+        """
+        return pulumi.get(self, "sequence")
+
+    @_builtins.property
+    @pulumi.getter(name="siteVersion")
+    def site_version(self) -> _builtins.int:
+        """
+        The version of the site.
+        """
+        return pulumi.get(self, "site_version")
+
+    @_builtins.property
+    @pulumi.getter(name="smartRouting")
+    def smart_routing(self) -> _builtins.str:
+        """
+        Whether to enable smart routing service.
+        """
+        return pulumi.get(self, "smart_routing")
+
+    @_builtins.property
+    @pulumi.getter(name="uploadMaxFilesize")
+    def upload_max_filesize(self) -> _builtins.str:
+        """
+        Maximum upload file size.
+        """
+        return pulumi.get(self, "upload_max_filesize")
+
+    @_builtins.property
+    @pulumi.getter
+    def websocket(self) -> _builtins.str:
+        """
+        Whether to enable Websocket.
+        """
+        return pulumi.get(self, "websocket")
+
+
+@pulumi.output_type
+class GetOriginRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 config_id: _builtins.str,
+                 config_type: _builtins.str,
+                 dns_record: _builtins.str,
+                 follow302_enable: _builtins.str,
+                 follow302_max_tries: _builtins.str,
+                 follow302_retain_args: _builtins.str,
+                 follow302_retain_header: _builtins.str,
+                 follow302_target_host: _builtins.str,
+                 id: _builtins.str,
+                 origin_host: _builtins.str,
+                 origin_http_port: _builtins.str,
+                 origin_https_port: _builtins.str,
+                 origin_mtls: _builtins.str,
+                 origin_read_timeout: _builtins.str,
+                 origin_scheme: _builtins.str,
+                 origin_sni: _builtins.str,
+                 origin_verify: _builtins.str,
+                 range: _builtins.str,
+                 range_chunk_size: _builtins.str,
+                 rule: _builtins.str,
+                 rule_enable: _builtins.str,
+                 rule_name: _builtins.str,
+                 sequence: _builtins.int,
+                 site_version: _builtins.int):
+        """
+        :param _builtins.str config_id: The ID of the Configuration.
+        :param _builtins.str config_type: The type of the Configuration. Valid values: `global`, `rule`.
+        :param _builtins.str dns_record: Overrides the DNS record for the origin request.
+        :param _builtins.str follow302_enable: Specifies whether to follow 302 redirects from the origin.
+        :param _builtins.str follow302_max_tries: The maximum number of 302 redirects to follow.
+        :param _builtins.str follow302_retain_args: Specifies whether to retain the original request parameters when following a redirect.
+        :param _builtins.str follow302_retain_header: Specifies whether to retain the original request header when following a redirect.
+        :param _builtins.str follow302_target_host: The host to use for the origin request after following a 302 redirect.
+        :param _builtins.str id: The ID of the Origin Rule.
+        :param _builtins.str origin_host: The Host header carried in the origin request.
+        :param _builtins.str origin_http_port: The origin server port used for origin requests over HTTP.
+        :param _builtins.str origin_https_port: The origin server port used for origin requests over HTTPS.
+        :param _builtins.str origin_mtls: Specifies whether mTLS is enabled.
+        :param _builtins.str origin_read_timeout: The read timeout, in seconds, for the origin server.
+        :param _builtins.str origin_scheme: The protocol used for origin requests.
+        :param _builtins.str origin_sni: The SNI carried in the origin request.
+        :param _builtins.str origin_verify: Specifies whether to verify the origin server certificate.
+        :param _builtins.str range: Specifies whether to use range-based requests to retrieve files from the origin.
+        :param _builtins.str range_chunk_size: The size of each chunk for range requests.
+        :param _builtins.str rule: Rule content.
+        :param _builtins.str rule_enable: Rule switch.
+        :param _builtins.str rule_name: The name of the rule.
+        :param _builtins.int sequence: The rule execution order prioritizes lower numerical values.
+        :param _builtins.int site_version: The version of the site.
+        """
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "config_type", config_type)
+        pulumi.set(__self__, "dns_record", dns_record)
+        pulumi.set(__self__, "follow302_enable", follow302_enable)
+        pulumi.set(__self__, "follow302_max_tries", follow302_max_tries)
+        pulumi.set(__self__, "follow302_retain_args", follow302_retain_args)
+        pulumi.set(__self__, "follow302_retain_header", follow302_retain_header)
+        pulumi.set(__self__, "follow302_target_host", follow302_target_host)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "origin_host", origin_host)
+        pulumi.set(__self__, "origin_http_port", origin_http_port)
+        pulumi.set(__self__, "origin_https_port", origin_https_port)
+        pulumi.set(__self__, "origin_mtls", origin_mtls)
+        pulumi.set(__self__, "origin_read_timeout", origin_read_timeout)
+        pulumi.set(__self__, "origin_scheme", origin_scheme)
+        pulumi.set(__self__, "origin_sni", origin_sni)
+        pulumi.set(__self__, "origin_verify", origin_verify)
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "range_chunk_size", range_chunk_size)
+        pulumi.set(__self__, "rule", rule)
+        pulumi.set(__self__, "rule_enable", rule_enable)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "sequence", sequence)
+        pulumi.set(__self__, "site_version", site_version)
+
+    @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> _builtins.str:
+        """
+        The ID of the Configuration.
+        """
+        return pulumi.get(self, "config_id")
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> _builtins.str:
+        """
+        The type of the Configuration. Valid values: `global`, `rule`.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsRecord")
+    def dns_record(self) -> _builtins.str:
+        """
+        Overrides the DNS record for the origin request.
+        """
+        return pulumi.get(self, "dns_record")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302Enable")
+    def follow302_enable(self) -> _builtins.str:
+        """
+        Specifies whether to follow 302 redirects from the origin.
+        """
+        return pulumi.get(self, "follow302_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302MaxTries")
+    def follow302_max_tries(self) -> _builtins.str:
+        """
+        The maximum number of 302 redirects to follow.
+        """
+        return pulumi.get(self, "follow302_max_tries")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainArgs")
+    def follow302_retain_args(self) -> _builtins.str:
+        """
+        Specifies whether to retain the original request parameters when following a redirect.
+        """
+        return pulumi.get(self, "follow302_retain_args")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainHeader")
+    def follow302_retain_header(self) -> _builtins.str:
+        """
+        Specifies whether to retain the original request header when following a redirect.
+        """
+        return pulumi.get(self, "follow302_retain_header")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302TargetHost")
+    def follow302_target_host(self) -> _builtins.str:
+        """
+        The host to use for the origin request after following a 302 redirect.
+        """
+        return pulumi.get(self, "follow302_target_host")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Origin Rule.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="originHost")
+    def origin_host(self) -> _builtins.str:
+        """
+        The Host header carried in the origin request.
+        """
+        return pulumi.get(self, "origin_host")
+
+    @_builtins.property
+    @pulumi.getter(name="originHttpPort")
+    def origin_http_port(self) -> _builtins.str:
+        """
+        The origin server port used for origin requests over HTTP.
+        """
+        return pulumi.get(self, "origin_http_port")
+
+    @_builtins.property
+    @pulumi.getter(name="originHttpsPort")
+    def origin_https_port(self) -> _builtins.str:
+        """
+        The origin server port used for origin requests over HTTPS.
+        """
+        return pulumi.get(self, "origin_https_port")
+
+    @_builtins.property
+    @pulumi.getter(name="originMtls")
+    def origin_mtls(self) -> _builtins.str:
+        """
+        Specifies whether mTLS is enabled.
+        """
+        return pulumi.get(self, "origin_mtls")
+
+    @_builtins.property
+    @pulumi.getter(name="originReadTimeout")
+    def origin_read_timeout(self) -> _builtins.str:
+        """
+        The read timeout, in seconds, for the origin server.
+        """
+        return pulumi.get(self, "origin_read_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="originScheme")
+    def origin_scheme(self) -> _builtins.str:
+        """
+        The protocol used for origin requests.
+        """
+        return pulumi.get(self, "origin_scheme")
+
+    @_builtins.property
+    @pulumi.getter(name="originSni")
+    def origin_sni(self) -> _builtins.str:
+        """
+        The SNI carried in the origin request.
+        """
+        return pulumi.get(self, "origin_sni")
+
+    @_builtins.property
+    @pulumi.getter(name="originVerify")
+    def origin_verify(self) -> _builtins.str:
+        """
+        Specifies whether to verify the origin server certificate.
+        """
+        return pulumi.get(self, "origin_verify")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        Specifies whether to use range-based requests to retrieve files from the origin.
+        """
+        return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeChunkSize")
+    def range_chunk_size(self) -> _builtins.str:
+        """
+        The size of each chunk for range requests.
+        """
+        return pulumi.get(self, "range_chunk_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        Rule content.
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleEnable")
+    def rule_enable(self) -> _builtins.str:
+        """
+        Rule switch.
+        """
+        return pulumi.get(self, "rule_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> _builtins.str:
+        """
+        The name of the rule.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> _builtins.int:
+        """
+        The rule execution order prioritizes lower numerical values.
+        """
+        return pulumi.get(self, "sequence")
+
+    @_builtins.property
+    @pulumi.getter(name="siteVersion")
+    def site_version(self) -> _builtins.int:
+        """
+        The version of the site.
+        """
+        return pulumi.get(self, "site_version")
 
 
 @pulumi.output_type

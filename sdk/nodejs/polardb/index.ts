@@ -15,10 +15,25 @@ export type AccountPrivilege = import("./accountPrivilege").AccountPrivilege;
 export const AccountPrivilege: typeof import("./accountPrivilege").AccountPrivilege = null as any;
 utilities.lazyLoad(exports, ["AccountPrivilege"], () => require("./accountPrivilege"));
 
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
+
+export { ApplicationEndpointArgs, ApplicationEndpointState } from "./applicationEndpoint";
+export type ApplicationEndpoint = import("./applicationEndpoint").ApplicationEndpoint;
+export const ApplicationEndpoint: typeof import("./applicationEndpoint").ApplicationEndpoint = null as any;
+utilities.lazyLoad(exports, ["ApplicationEndpoint"], () => require("./applicationEndpoint"));
+
 export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
 export type BackupPolicy = import("./backupPolicy").BackupPolicy;
 export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
 utilities.lazyLoad(exports, ["BackupPolicy"], () => require("./backupPolicy"));
+
+export { BatchTaskArgs, BatchTaskState } from "./batchTask";
+export type BatchTask = import("./batchTask").BatchTask;
+export const BatchTask: typeof import("./batchTask").BatchTask = null as any;
+utilities.lazyLoad(exports, ["BatchTask"], () => require("./batchTask"));
 
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
@@ -129,8 +144,14 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "alicloud:polardb/accountPrivilege:AccountPrivilege":
                 return new AccountPrivilege(name, <any>undefined, { urn })
+            case "alicloud:polardb/application:Application":
+                return new Application(name, <any>undefined, { urn })
+            case "alicloud:polardb/applicationEndpoint:ApplicationEndpoint":
+                return new ApplicationEndpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/backupPolicy:BackupPolicy":
                 return new BackupPolicy(name, <any>undefined, { urn })
+            case "alicloud:polardb/batchTask:BatchTask":
+                return new BatchTask(name, <any>undefined, { urn })
             case "alicloud:polardb/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "alicloud:polardb/clusterEndpoint:ClusterEndpoint":
@@ -162,7 +183,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "polardb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/accountPrivilege", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/application", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/applicationEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/backupPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/batchTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/clusterEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/database", _module)

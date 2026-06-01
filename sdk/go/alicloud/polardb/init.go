@@ -25,8 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "alicloud:polardb/accountPrivilege:AccountPrivilege":
 		r = &AccountPrivilege{}
+	case "alicloud:polardb/application:Application":
+		r = &Application{}
+	case "alicloud:polardb/applicationEndpoint:ApplicationEndpoint":
+		r = &ApplicationEndpoint{}
 	case "alicloud:polardb/backupPolicy:BackupPolicy":
 		r = &BackupPolicy{}
+	case "alicloud:polardb/batchTask:BatchTask":
+		r = &BatchTask{}
 	case "alicloud:polardb/cluster:Cluster":
 		r = &Cluster{}
 	case "alicloud:polardb/clusterEndpoint:ClusterEndpoint":
@@ -76,7 +82,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"polardb/application",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/applicationEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"polardb/backupPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/batchTask",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

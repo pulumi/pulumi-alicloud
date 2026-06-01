@@ -7201,10 +7201,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/application",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/applicationEndpoint",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/applicationEndpoint:ApplicationEndpoint": "ApplicationEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/backupPolicy",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
    "alicloud:polardb/backupPolicy:BackupPolicy": "BackupPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/batchTask",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/batchTask:BatchTask": "BatchTask"
   }
  },
  {
@@ -8181,6 +8205,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ros",
   "classes": {
    "alicloud:ros/stackInstance:StackInstance": "StackInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ros/stackInstances",
+  "fqn": "pulumi_alicloud.ros",
+  "classes": {
+   "alicloud:ros/stackInstances:StackInstances": "StackInstances"
   }
  },
  {

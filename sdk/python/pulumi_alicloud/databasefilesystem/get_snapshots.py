@@ -110,6 +110,8 @@ def get_snapshots(ids: Optional[Sequence[_builtins.str]] = None,
                   status: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotsResult:
     """
+    > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
     This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.156.0+.
@@ -158,6 +160,8 @@ def get_snapshots_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
                          status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
+    > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
     This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.156.0+.

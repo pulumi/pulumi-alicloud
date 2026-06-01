@@ -122,6 +122,8 @@ class InstanceAttachment(pulumi.CustomResource):
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE:** This resource has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
         Provides a Database File System (DBFS) Instance Attachment resource.
 
         For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
@@ -192,6 +194,8 @@ class InstanceAttachment(pulumi.CustomResource):
                  args: InstanceAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE:** This resource has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
         Provides a Database File System (DBFS) Instance Attachment resource.
 
         For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
