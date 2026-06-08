@@ -54,6 +54,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -254,6 +255,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -454,6 +456,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -654,6 +657,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -854,6 +858,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -1054,6 +1059,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -1254,6 +1260,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
      * import java.util.ArrayList;
@@ -1454,6 +1461,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;
@@ -1654,6 +1662,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;
@@ -1854,6 +1863,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;
@@ -2054,6 +2064,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;
@@ -2254,6 +2265,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;
@@ -2454,6 +2466,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;
@@ -2654,6 +2667,7 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
      * import java.util.ArrayList;

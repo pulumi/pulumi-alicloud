@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         final var default = ResourcemanagerFunctions.getResourceDirectories(GetResourceDirectoriesArgs.builder()
  *             .build());
  * 
- *         for (var i = 0; i < default_.directories().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < default_.directories().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new ResourceDirectory("defaultResourceDirectory-" + i, ResourceDirectoryArgs.builder()
  *                 .status("Enabled")
  *                 .build());

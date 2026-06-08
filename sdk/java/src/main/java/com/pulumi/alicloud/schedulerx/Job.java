@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.schedulerx.inputs.JobTimeConfigArgs;
  * import com.pulumi.alicloud.schedulerx.inputs.JobMapTaskXattrsArgs;
  * import com.pulumi.alicloud.schedulerx.inputs.JobJobMonitorInfoArgs;
+ * import com.pulumi.alicloud.schedulerx.inputs.JobJobMonitorInfoContactInfoArgs;
  * import com.pulumi.alicloud.schedulerx.inputs.JobJobMonitorInfoMonitorConfigArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;

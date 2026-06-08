@@ -1943,7 +1943,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;
@@ -2045,7 +2048,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;
@@ -2147,7 +2153,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;
@@ -2249,7 +2258,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;
@@ -2351,7 +2363,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;
@@ -2453,7 +2468,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;
@@ -2555,7 +2573,10 @@ public final class ArmsFunctions {
      * import com.pulumi.alicloud.arms.DispatchRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs;
      * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleNotifyObjectArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.ArrayList;

@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.alb.ListenerArgs;
  * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionArgs;
  * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionForwardGroupConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs;
  * import com.pulumi.alicloud.alb.Acl;
  * import com.pulumi.alicloud.alb.AclArgs;
  * import com.pulumi.alicloud.alb.AclEntryAttachment;

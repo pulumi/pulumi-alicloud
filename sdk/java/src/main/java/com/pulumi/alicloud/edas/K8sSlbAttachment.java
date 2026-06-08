@@ -55,6 +55,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.edas.K8sSlbAttachment;
  * import com.pulumi.alicloud.edas.K8sSlbAttachmentArgs;
  * import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigArgs;
+ * import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigPortMappingArgs;
+ * import com.pulumi.alicloud.edas.inputs.K8sSlbAttachmentSlbConfigPortMappingServicePortArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

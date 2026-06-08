@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.sls.Etl;
  * import com.pulumi.alicloud.sls.EtlArgs;
  * import com.pulumi.alicloud.sls.inputs.EtlConfigurationArgs;
+ * import com.pulumi.alicloud.sls.inputs.EtlConfigurationSinkArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

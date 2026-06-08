@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.arms.inputs.SyntheticTaskMonitorConfNetIcmpArgs;
  * import com.pulumi.alicloud.arms.inputs.SyntheticTaskCommonSettingArgs;
  * import com.pulumi.alicloud.arms.inputs.SyntheticTaskCommonSettingCustomHostArgs;
+ * import com.pulumi.alicloud.arms.inputs.SyntheticTaskCommonSettingCustomHostHostArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

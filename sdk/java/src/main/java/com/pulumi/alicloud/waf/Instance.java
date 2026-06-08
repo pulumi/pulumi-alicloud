@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
  *             .build());
  * 
- *         for (var i = 0; i < default_.instances().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < default_.instances().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
  *                 .bigScreen("0")
  *                 .exclusiveIpPackage("1")

@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.lindorm.InstanceV2;
  * import com.pulumi.alicloud.lindorm.InstanceV2Args;
  * import com.pulumi.alicloud.lindorm.inputs.InstanceV2EngineListArgs;
+ * import com.pulumi.alicloud.lindorm.inputs.InstanceV2EngineListNodeGroupArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

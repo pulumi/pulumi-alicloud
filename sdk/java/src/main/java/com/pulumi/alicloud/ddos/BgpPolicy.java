@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ddos.BgpPolicy;
  * import com.pulumi.alicloud.ddos.BgpPolicyArgs;
  * import com.pulumi.alicloud.ddos.inputs.BgpPolicyContentArgs;
+ * import com.pulumi.alicloud.ddos.inputs.BgpPolicyContentLayer4RuleListArgs;
+ * import com.pulumi.alicloud.ddos.inputs.BgpPolicyContentLayer4RuleListConditionListArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

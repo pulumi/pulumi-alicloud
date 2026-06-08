@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var authorizedUserId = config.get("authorizedUserId").orElse(123456789);
+ *         final var authorizedUserId = config.getDouble("authorizedUserId").orElse(123456789);
  *         var example = new UserVpcAuthorization("example", UserVpcAuthorizationArgs.builder()
  *             .authorizedUserId(authorizedUserId)
  *             .authChannel("RESOURCE_DIRECTORY")

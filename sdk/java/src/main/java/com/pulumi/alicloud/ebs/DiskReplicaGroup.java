@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(com.pulumi.alicloud.inputs.GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var defaultGetRegions = EbsFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = EbsFunctions.getRegions(com.pulumi.alicloud.ebs.inputs.GetRegionsArgs.builder()
  *             .regionId(default_.regions()[0].id())
  *             .build());
  * 

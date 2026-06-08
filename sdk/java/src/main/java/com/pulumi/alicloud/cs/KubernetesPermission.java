@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // According to the vswitch cidr blocks to launch several vswitches
- *         for (var i = 0; i < vswitchCidrs.length(); i++) {
+ *         for (var i = 0; i < vswitchCidrs.size(); i++) {
  *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
  *                 .vpcId(vpc.id())
  *                 .cidrBlock(vswitchCidrs[range.value()])

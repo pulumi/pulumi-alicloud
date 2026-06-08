@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cms.SiteMonitorArgs;
  * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
  * import com.pulumi.alicloud.cms.inputs.SiteMonitorOptionJsonArgs;
+ * import com.pulumi.alicloud.cms.inputs.SiteMonitorOptionJsonAssertionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

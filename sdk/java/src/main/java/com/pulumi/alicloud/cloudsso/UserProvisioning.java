@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetDirectories.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetDirectories.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
  *                 .directoryName(name)
  *                 .build());
  * 
  *         
  * }
- *         final var directoryId = defaultGetDirectories.ids().length().applyValue(_length -> _length > 0 ? defaultGetDirectories.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var directoryId = defaultGetDirectories.ids().size().applyValue(_length -> _length > 0 ? defaultGetDirectories.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultDirectory.stream().map(element -> element.id()).collect(toList()),
  *                 "")

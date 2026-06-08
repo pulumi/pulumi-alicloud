@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcessArgs;
  * import com.pulumi.alicloud.cloudmonitor.inputs.ServiceGroupMonitoringAgentProcessMatchExpressArgs;
  * import com.pulumi.alicloud.cloudmonitor.inputs.ServiceGroupMonitoringAgentProcessAlertConfigArgs;
+ * import com.pulumi.alicloud.cloudmonitor.inputs.ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
