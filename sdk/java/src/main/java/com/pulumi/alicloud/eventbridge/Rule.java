@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.eventbridge.Rule;
  * import com.pulumi.alicloud.eventbridge.RuleArgs;
  * import com.pulumi.alicloud.eventbridge.inputs.RuleTargetArgs;
+ * import com.pulumi.alicloud.eventbridge.inputs.RuleTargetParamListArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

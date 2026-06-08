@@ -3357,6 +3357,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;
@@ -3424,6 +3425,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;
@@ -3491,6 +3493,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;
@@ -3558,6 +3561,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;
@@ -3625,6 +3629,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;
@@ -3692,6 +3697,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;
@@ -3759,6 +3765,7 @@ public final class ThreatdetectionFunctions {
      * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
      * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
      * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+     * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
      * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
      * import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotProbesArgs;
      * import java.util.ArrayList;

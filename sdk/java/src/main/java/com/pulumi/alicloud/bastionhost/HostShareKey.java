@@ -80,14 +80,14 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetZones.zones()[0].id())
  *             .build());
  * 
- *         for (var i = 0; i < default_.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < default_.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .vpcId(defaultGetNetworks.ids()[0])
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i < default_.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < default_.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
  *                 .description(name)
  *                 .licenseCode("bhah_ent_50_asset")
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         final var instanceId = Output.tuple(default_.ids().length(), defaultInstance[0].id()).applyValue(values -> {
+ *         final var instanceId = Output.tuple(default_.ids().size(), defaultInstance[0].id()).applyValue(values -> {
  *             var length = values.t1;
  *             var id = values.t2;
  *             return length > 0 ? default_.ids()[0] : id;

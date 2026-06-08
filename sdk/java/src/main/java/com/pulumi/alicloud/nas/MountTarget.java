@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .fileSystemType("extreme")
  *             .build());
  * 
- *         final var countSize = default_.zones().length();
+ *         final var countSize = default_.zones().size();
  * 
  *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
  * 

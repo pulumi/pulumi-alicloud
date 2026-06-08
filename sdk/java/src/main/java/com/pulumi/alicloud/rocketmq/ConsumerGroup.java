@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceSoftwareArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoArgs;
+ * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs;
  * import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoInternetInfoArgs;
  * import com.pulumi.alicloud.rocketmq.ConsumerGroup;
  * import com.pulumi.alicloud.rocketmq.ConsumerGroupArgs;

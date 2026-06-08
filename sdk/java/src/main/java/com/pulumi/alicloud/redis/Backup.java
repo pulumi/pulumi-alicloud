@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .vpcId(default_.ids()[0])
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .vpcId(default_.ids()[0])
  *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         final var vswitchId = defaultGetSwitches.ids().length().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var vswitchId = defaultGetSwitches.ids().size().applyValue(_length -> _length > 0 ? defaultGetSwitches.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 vswitch.stream().map(element -> element.id()).collect(toList()),
  *                 "")

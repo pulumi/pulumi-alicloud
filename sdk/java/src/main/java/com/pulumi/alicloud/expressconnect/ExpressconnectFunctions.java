@@ -1908,6 +1908,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1972,6 +1973,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2036,6 +2038,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2100,6 +2103,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2164,6 +2168,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2228,6 +2233,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2292,6 +2298,7 @@ public final class ExpressconnectFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
      * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;

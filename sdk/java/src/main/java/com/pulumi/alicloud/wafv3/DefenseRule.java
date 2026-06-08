@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.wafv3.DefenseRule;
  * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
  * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
+ * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigAccountIdentifierArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

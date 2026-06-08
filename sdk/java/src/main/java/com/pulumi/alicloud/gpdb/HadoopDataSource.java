@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.emrv2.Cluster;
  * import com.pulumi.alicloud.emrv2.ClusterArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+ * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
  * import com.pulumi.alicloud.gpdb.Instance;

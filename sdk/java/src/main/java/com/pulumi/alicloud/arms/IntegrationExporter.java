@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.zones().length().applyValue(_length -> default_.zones()[_length - 1]).applyValue(_obj -> _obj.id()))
+ *             .zoneId(default_.zones().size().applyValue(_length -> default_.zones()[_length - 1]).applyValue(_obj -> _obj.id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()

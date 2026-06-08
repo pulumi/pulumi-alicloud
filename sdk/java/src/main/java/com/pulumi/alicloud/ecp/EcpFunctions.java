@@ -379,11 +379,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 
@@ -473,11 +473,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 
@@ -567,11 +567,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 
@@ -661,11 +661,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 
@@ -755,11 +755,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 
@@ -849,11 +849,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 
@@ -943,11 +943,11 @@ public final class EcpFunctions {
      *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .build());
      * 
-     *         final var countSize = default_.zones().length();
+     *         final var countSize = default_.zones().size();
      * 
      *         final var zoneId = countSize.applyValue(_countSize -> default_.zones()[_countSize - 1]).applyValue(_obj -> _obj.zoneId());
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.instanceTypes().size();
      * 
      *         final var instanceType = instanceTypeCountSize.applyValue(_instanceTypeCountSize -> defaultGetInstanceTypes.instanceTypes()[_instanceTypeCountSize - 1]).applyValue(_obj -> _obj.instanceType());
      * 

@@ -3784,7 +3784,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3793,7 +3793,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;
@@ -3851,7 +3851,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3860,7 +3860,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;
@@ -3918,7 +3918,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3927,7 +3927,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;
@@ -3985,7 +3985,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -3994,7 +3994,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;
@@ -4052,7 +4052,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -4061,7 +4061,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;
@@ -4119,7 +4119,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -4128,7 +4128,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;
@@ -4186,7 +4186,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i < default_.accelerators().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+     *         for (var i = 0; i < default_.accelerators().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
      *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
@@ -4195,7 +4195,7 @@ public final class GaFunctions {
      * 
      *         
      * }
-     *         final var acceleratorId = Output.tuple(default_.accelerators().length(), defaultAccelerator[0].id()).applyValue(values -> {
+     *         final var acceleratorId = Output.tuple(default_.accelerators().size(), defaultAccelerator[0].id()).applyValue(values -> {
      *             var length = values.t1;
      *             var id = values.t2;
      *             return length > 0 ? default_.accelerators()[0].id() : id;

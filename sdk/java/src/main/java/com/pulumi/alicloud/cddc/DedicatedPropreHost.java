@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetSecurityGroups.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetSecurityGroups.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .vpcId(defaultGetSwitches.vswitches()[0].vpcId())
  *                 .name("tf-exampleacc-cddc-dedicated_propre_host")
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetEcsDeploymentSets.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetEcsDeploymentSets.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new EcsDeploymentSet("defaultEcsDeploymentSet-" + i, EcsDeploymentSetArgs.builder()
  *                 .strategy("Availability")
  *                 .domain("Default")
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetKeyPairs.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetKeyPairs.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new KeyPair("defaultKeyPair-" + i, KeyPairArgs.builder()
  *                 .keyPairName("tf-exampleacc-cddc-dedicated_propre_host")
  *                 .build());
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("tf-exampleacc-cddc-dedicated_propre_host")
  *             .build());
  * 
- *         for (var i = 0; i < defaultGetDedicatedHostGroups.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *         for (var i = 0; i < defaultGetDedicatedHostGroups.ids().size().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
  *             new DedicatedHostGroup("defaultDedicatedHostGroup-" + i, DedicatedHostGroupArgs.builder()
  *                 .engine("MySQL")
  *                 .vpcId(defaultGetNetworks.ids()[0])
@@ -162,25 +162,25 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         final var alicloudSecurityGroupId = defaultGetSecurityGroups.ids().length().applyValue(_length -> _length > 0 ? defaultGetSecurityGroups.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var alicloudSecurityGroupId = defaultGetSecurityGroups.ids().size().applyValue(_length -> _length > 0 ? defaultGetSecurityGroups.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()),
  *                 "")
  *             .build()).result()[0]);
  * 
- *         final var alicloudEcsDeploymentSetId = defaultGetEcsDeploymentSets.ids().length().applyValue(_length -> _length > 0 ? defaultGetEcsDeploymentSets.sets()[0].deploymentSetId() : StdFunctions.concat(ConcatArgs.builder()
+ *         final var alicloudEcsDeploymentSetId = defaultGetEcsDeploymentSets.ids().size().applyValue(_length -> _length > 0 ? defaultGetEcsDeploymentSets.sets()[0].deploymentSetId() : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultEcsDeploymentSet.stream().map(element -> element.id()).collect(toList()),
  *                 "")
  *             .build()).result()[0]);
  * 
- *         final var alicloudKeyPairId = defaultGetKeyPairs.ids().length().applyValue(_length -> _length > 0 ? defaultGetKeyPairs.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var alicloudKeyPairId = defaultGetKeyPairs.ids().size().applyValue(_length -> _length > 0 ? defaultGetKeyPairs.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultKeyPair.stream().map(element -> element.id()).collect(toList()),
  *                 "")
  *             .build()).result()[0]);
  * 
- *         final var dedicatedHostGroupId = defaultGetDedicatedHostGroups.ids().length().applyValue(_length -> _length > 0 ? defaultGetDedicatedHostGroups.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
+ *         final var dedicatedHostGroupId = defaultGetDedicatedHostGroups.ids().size().applyValue(_length -> _length > 0 ? defaultGetDedicatedHostGroups.ids()[0] : StdFunctions.concat(ConcatArgs.builder()
  *             .input(            
  *                 defaultDedicatedHostGroup.stream().map(element -> element.id()).collect(toList()),
  *                 "")

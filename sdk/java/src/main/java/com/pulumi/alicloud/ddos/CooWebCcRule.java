@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ddos.CooWebCcRuleArgs;
  * import com.pulumi.alicloud.ddos.inputs.CooWebCcRuleRuleDetailArgs;
  * import com.pulumi.alicloud.ddos.inputs.CooWebCcRuleRuleDetailRateLimitArgs;
+ * import com.pulumi.alicloud.ddos.inputs.CooWebCcRuleRuleDetailConditionArgs;
  * import com.pulumi.alicloud.ddos.inputs.CooWebCcRuleRuleDetailStatisticsArgs;
  * import com.pulumi.alicloud.ddos.inputs.CooWebCcRuleRuleDetailStatusCodeArgs;
  * import java.util.ArrayList;

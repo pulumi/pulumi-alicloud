@@ -82,6 +82,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -172,6 +173,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -262,6 +264,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -352,6 +355,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -442,6 +446,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetEcsBackupPlansArgs;
      * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetBackupJobsFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3813,6 +3818,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3868,6 +3874,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3923,6 +3930,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3978,6 +3986,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4033,6 +4042,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4088,6 +4098,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -4143,6 +4154,7 @@ public final class HbrFunctions {
      * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
      * import com.pulumi.alicloud.hbr.HbrFunctions;
      * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansArgs;
+     * import com.pulumi.alicloud.hbr.inputs.GetServerBackupPlansFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;

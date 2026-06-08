@@ -38,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.maxcompute.QuotaPlanArgs;
  * import com.pulumi.alicloud.maxcompute.inputs.QuotaPlanQuotaArgs;
  * import com.pulumi.alicloud.maxcompute.inputs.QuotaPlanQuotaParameterArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaPlanQuotaSubQuotaInfoListArgs;
+ * import com.pulumi.alicloud.maxcompute.inputs.QuotaPlanQuotaSubQuotaInfoListParameterArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

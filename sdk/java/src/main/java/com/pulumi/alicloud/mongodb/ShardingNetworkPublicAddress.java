@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
  *             .build());
  * 
- *         final var index = default_.zones().length().applyValue(_length -> _length - 1);
+ *         final var index = default_.zones().size().applyValue(_length -> _length - 1);
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 

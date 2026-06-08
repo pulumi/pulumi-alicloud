@@ -96,6 +96,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.eflo.NodeArgs;
  * import com.pulumi.alicloud.eflo.inputs.NodeDataDiskArgs;
  * import com.pulumi.alicloud.eflo.inputs.NodeIpAllocationPolicyArgs;
+ * import com.pulumi.alicloud.eflo.inputs.NodeIpAllocationPolicyMachineTypePolicyArgs;
+ * import com.pulumi.alicloud.eflo.inputs.NodeIpAllocationPolicyMachineTypePolicyBondArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

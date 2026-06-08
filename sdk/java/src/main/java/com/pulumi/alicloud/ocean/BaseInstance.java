@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *         var defaultBaseInstance = new BaseInstance("defaultBaseInstance", BaseInstanceArgs.builder()
  *             .resourceGroupId(defaultGetResourceGroups.ids()[0])
  *             .zones(            
- *                 default_.ids().length().applyValue(_length -> default_.ids()[_length - 2]),
- *                 default_.ids().length().applyValue(_length -> default_.ids()[_length - 3]),
- *                 default_.ids().length().applyValue(_length -> default_.ids()[_length - 4]))
+ *                 default_.ids().size().applyValue(_length -> default_.ids()[_length - 2]),
+ *                 default_.ids().size().applyValue(_length -> default_.ids()[_length - 3]),
+ *                 default_.ids().size().applyValue(_length -> default_.ids()[_length - 4]))
  *             .autoRenew(false)
  *             .diskSize(100)
  *             .paymentType("PayAsYouGo")

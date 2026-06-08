@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.std.inputs.FormatArgs;
  * import com.pulumi.alicloud.message.ServiceEventRule;
  * import com.pulumi.alicloud.message.ServiceEventRuleArgs;
+ * import com.pulumi.alicloud.message.inputs.ServiceEventRuleMatchRuleArgs;
  * import com.pulumi.alicloud.message.inputs.ServiceEventRuleEndpointArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

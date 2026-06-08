@@ -1243,6 +1243,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -1293,6 +1294,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -1373,6 +1376,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -1423,6 +1428,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -1473,6 +1480,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -1539,6 +1549,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -1589,6 +1600,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -1669,6 +1682,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -1719,6 +1734,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -1769,6 +1786,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -1835,6 +1855,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -1885,6 +1906,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -1965,6 +1988,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2015,6 +2040,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2065,6 +2092,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2131,6 +2161,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -2181,6 +2212,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -2261,6 +2294,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2311,6 +2346,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2361,6 +2398,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2427,6 +2467,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -2477,6 +2518,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -2557,6 +2600,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2607,6 +2652,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2657,6 +2704,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2723,6 +2773,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -2773,6 +2824,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -2853,6 +2906,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2903,6 +2958,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -2953,6 +3010,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -3019,6 +3079,7 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -3069,6 +3130,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
      * import java.util.ArrayList;
@@ -3149,6 +3212,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -3199,6 +3264,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;
@@ -3249,6 +3316,9 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementPrincipalArgs;
+     * import com.pulumi.alicloud.ram.inputs.GetPolicyDocumentStatementConditionArgs;
      * import com.pulumi.alicloud.ram.Role;
      * import com.pulumi.alicloud.ram.RoleArgs;
      * import java.util.ArrayList;

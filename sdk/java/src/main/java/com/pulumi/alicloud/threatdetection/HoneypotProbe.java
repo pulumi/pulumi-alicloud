@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.threatdetection.HoneypotProbe;
  * import com.pulumi.alicloud.threatdetection.HoneypotProbeArgs;
  * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListArgs;
+ * import com.pulumi.alicloud.threatdetection.inputs.HoneypotProbeHoneypotBindListBindPortListArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

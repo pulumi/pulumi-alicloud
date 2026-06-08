@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         // According to the vswitch cidr blocks to launch several vswitches
- *         for (var i = 0; i < (vswitchIds.length() > 0 ? 0 : vswitchCidrs.length()); i++) {
+ *         for (var i = 0; i < (vswitchIds.size() > 0 ? 0 : vswitchCidrs.size()); i++) {
  *             new Switch("vswitches-" + i, SwitchArgs.builder()
  *                 .vpcId(vpcId == "" ? StdFunctions.join(JoinArgs.builder()
  *                     .separator("")
@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         // According to the vswitch cidr blocks to launch several vswitches
- *         for (var i = 0; i < (terwayVswitchIds.length() > 0 ? 0 : terwayVswitchCidrs.length()); i++) {
+ *         for (var i = 0; i < (terwayVswitchIds.size() > 0 ? 0 : terwayVswitchCidrs.size()); i++) {
  *             new Switch("terwayVswitches-" + i, SwitchArgs.builder()
  *                 .vpcId(vpcId == "" ? StdFunctions.join(JoinArgs.builder()
  *                     .separator("")
@@ -159,26 +159,26 @@ import javax.annotation.Nullable;
  *         var k8s = new ManagedKubernetes("k8s", ManagedKubernetesArgs.builder()
  *             .namePrefix(name)
  *             .clusterSpec("ack.pro.small")
- *             .vswitchIds(vswitchIds.length() > 0 ? StdFunctions.split(SplitArgs.builder()
+ *             .vswitchIds(vswitchIds.size() > 0 ? StdFunctions.split(SplitArgs.builder()
  *                 .separator(",")
  *                 .text(StdFunctions.join(JoinArgs.builder()
  *                     .separator(",")
  *                     .input(vswitchIds)
  *                     .build()).result())
- *                 .build()).result() : vswitchCidrs.length() < 1 ?  : StdFunctions.split(SplitArgs.builder()
+ *                 .build()).result() : vswitchCidrs.size() < 1 ?  : StdFunctions.split(SplitArgs.builder()
  *                 .separator(",")
  *                 .text(StdFunctions.join(JoinArgs.builder()
  *                     .separator(",")
  *                     .input(vswitches.stream().map(element -> element.id()).collect(toList()))
  *                     .build()).applyValue(_invoke -> _invoke.result()))
  *                 .build()).applyValue(_invoke -> _invoke.result()))
- *             .podVswitchIds(terwayVswitchIds.length() > 0 ? StdFunctions.split(SplitArgs.builder()
+ *             .podVswitchIds(terwayVswitchIds.size() > 0 ? StdFunctions.split(SplitArgs.builder()
  *                 .separator(",")
  *                 .text(StdFunctions.join(JoinArgs.builder()
  *                     .separator(",")
  *                     .input(terwayVswitchIds)
  *                     .build()).result())
- *                 .build()).result() : terwayVswitchCidrs.length() < 1 ?  : StdFunctions.split(SplitArgs.builder()
+ *                 .build()).result() : terwayVswitchCidrs.size() < 1 ?  : StdFunctions.split(SplitArgs.builder()
  *                 .separator(",")
  *                 .text(StdFunctions.join(JoinArgs.builder()
  *                     .separator(",")
