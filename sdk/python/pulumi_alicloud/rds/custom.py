@@ -38,6 +38,7 @@ class CustomArgs:
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
                  io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
@@ -45,6 +46,7 @@ class CustomArgs:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -57,52 +59,96 @@ class CustomArgs:
         """
         The set of arguments for constructing a Custom resource.
 
-        :param pulumi.Input[_builtins.str] instance_type: The type of the created RDS Custom dedicated host instance.
-        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               The network type InstanceNetworkType must be VPC.
-        :param pulumi.Input[_builtins.int] amount: Represents the number of instances created
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[_builtins.str] instance_type: The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
+        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
+        :param pulumi.Input[_builtins.int] amount: Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+               Valid values: `1` to `5`. Default value: `1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: Data disk See `data_disk` below.
+        :param pulumi.Input[_builtins.str] create_mode: Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: List of data disks.   See `data_disk` below.
+        :param pulumi.Input[_builtins.str] deployment_set_id: Deployment set ID.
+        :param pulumi.Input[_builtins.str] description: The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] direction: The instance specification change type. Valid values:
                
-               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
-        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
-        :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
+               > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+               - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+               - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
                
-               > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-               - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-               - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
-        :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the operation of creating an instance. Valid values:
-        :param pulumi.Input[_builtins.bool] force: Whether to forcibly release the running instance. Value: true/false
-        :param pulumi.Input[_builtins.bool] force_stop: Whether to force shutdown. Value range:
-        :param pulumi.Input[_builtins.str] host_name: The instance host name.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run of the instance creation request. Valid values:
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to forcibly release a running instance. Valid values:
+        :param pulumi.Input[_builtins.bool] force_stop: Specifies whether to force shut down the instance. Valid values:
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the instance.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.str] image_id: The ID of the image used by the instance.
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] io_optimized: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] key_pair_name: The key pair name. Only flyer names are supported.
-        :param pulumi.Input[_builtins.str] password: The account and password of the instance.
-        :param pulumi.Input[_builtins.int] period: Prepaid renewal duration, unit: Month/Year.
-        :param pulumi.Input[_builtins.str] period_unit: The unit of duration of the year-to-month billing method. Value range:
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Prepaid`: subscription.
+               - `Postpaid`: pay-as-you-go.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_name: The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameter. Not supported currently.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+               Valid values: 0 to 1024. Default value: 0.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] io_optimized: This parameter is reserved and currently unsupported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. Only a single key pair name is supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] password: The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.int] period: The subscription duration of the resource. Default value: `1`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of subscription duration for the subscription billing method. Valid values:
                - `Year`: Year
                - `Month` (default): Month
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Security group list
-        :param pulumi.Input[_builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-               - `NoSpot`: normal pay-as-you-go instances.
-               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
                
-               Default value: **NoSpot * *.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[_builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
-        :param pulumi.Input['CustomSystemDiskArgs'] system_disk: System disk specifications. See `system_disk` below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can call ListResourceGroups to obtain it.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: This is a reserved parameter and is not currently supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+               
+               > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+               - `NoSpot`: A regular pay-as-you-go instance.
+               - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+               
+               Default value: `NoSpot`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] status: The status of the instance. Valid values:
+               - `Pending`: The instance is being created.
+               - `Running`: The instance is running.
+               - `Starting`: The instance is starting.
+               - `Stopping`: The instance is stopping.
+               - `Stopped`: The instance is stopped.
+        :param pulumi.Input[_builtins.str] support_case: The deployment type of RDS Custom. Valid values:
+        :param pulumi.Input['CustomSystemDiskArgs'] system_disk: The system disk specification. See `system_disk` below.
+               
+               > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Details of the queried instances and their tags.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -136,6 +182,8 @@ class CustomArgs:
             pulumi.set(__self__, "image_id", image_id)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
@@ -150,6 +198,8 @@ class CustomArgs:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_enhancement_strategy is not None:
@@ -173,7 +223,7 @@ class CustomArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the created RDS Custom dedicated host instance.
+        The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
         """
         return pulumi.get(self, "instance_type")
 
@@ -185,8 +235,9 @@ class CustomArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        The network type InstanceNetworkType must be VPC.
+        The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+
+        > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -198,7 +249,10 @@ class CustomArgs:
     @pulumi.getter
     def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Represents the number of instances created
+        Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+        Valid values: `1` to `5`. Default value: `1`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "amount")
 
@@ -210,7 +264,7 @@ class CustomArgs:
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to pay automatically. Value range:
+        Specifies whether to enable automatic payment. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
@@ -222,7 +276,7 @@ class CustomArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -246,7 +300,7 @@ class CustomArgs:
     @pulumi.getter(name="createMode")
     def create_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+        Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
         """
         return pulumi.get(self, "create_mode")
 
@@ -258,9 +312,7 @@ class CustomArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomDataDiskArgs']]]]:
         """
-        Data disk See `data_disk` below.
-
-        ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+        List of data disks.   See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -272,7 +324,7 @@ class CustomArgs:
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the deployment set.
+        Deployment set ID.
         """
         return pulumi.get(self, "deployment_set_id")
 
@@ -284,7 +336,7 @@ class CustomArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -296,11 +348,13 @@ class CustomArgs:
     @pulumi.getter
     def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance configuration type, value range:
+        The instance specification change type. Valid values:
 
-        > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-        - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-        - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+        > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+        - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+        - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "direction")
 
@@ -312,7 +366,7 @@ class CustomArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to pre-check the operation of creating an instance. Valid values:
+        Specifies whether to perform a dry run of the instance creation request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -324,7 +378,7 @@ class CustomArgs:
     @pulumi.getter
     def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to forcibly release the running instance. Value: true/false
+        Specifies whether to forcibly release a running instance. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -336,7 +390,7 @@ class CustomArgs:
     @pulumi.getter(name="forceStop")
     def force_stop(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to force shutdown. Value range:
+        Specifies whether to force shut down the instance. Valid values:
         """
         return pulumi.get(self, "force_stop")
 
@@ -348,7 +402,9 @@ class CustomArgs:
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The instance host name.
+        The hostname of the instance.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "host_name")
 
@@ -361,6 +417,8 @@ class CustomArgs:
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image used by the instance.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "image_id")
 
@@ -372,7 +430,11 @@ class CustomArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+        The billing method. Valid values:
+        - `Prepaid`: subscription.
+        - `Postpaid`: pay-as-you-go.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -381,10 +443,24 @@ class CustomArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        Reserved parameter. Not supported currently.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -396,7 +472,10 @@ class CustomArgs:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Reserved parameters are not supported.
+        The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+        Valid values: 0 to 1024. Default value: 0.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -408,7 +487,9 @@ class CustomArgs:
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        This parameter is reserved and currently unsupported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "io_optimized")
 
@@ -420,7 +501,9 @@ class CustomArgs:
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The key pair name. Only flyer names are supported.
+        The name of the key pair. Only a single key pair name is supported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -432,7 +515,9 @@ class CustomArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The account and password of the instance.
+        The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "password")
 
@@ -444,7 +529,9 @@ class CustomArgs:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Prepaid renewal duration, unit: Month/Year.
+        The subscription duration of the resource. Default value: `1`.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "period")
 
@@ -456,9 +543,11 @@ class CustomArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unit of duration of the year-to-month billing method. Value range:
+        The unit of subscription duration for the subscription billing method. Valid values:
         - `Year`: Year
         - `Month` (default): Month
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "period_unit")
 
@@ -467,10 +556,22 @@ class CustomArgs:
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group
+        The resource group ID. You can call ListResourceGroups to obtain it.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -482,7 +583,9 @@ class CustomArgs:
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        This is a reserved parameter and is not currently supported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -494,7 +597,9 @@ class CustomArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Security group list
+        The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+
+        > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -506,11 +611,13 @@ class CustomArgs:
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-        - `NoSpot`: normal pay-as-you-go instances.
-        - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+        - `NoSpot`: A regular pay-as-you-go instance.
+        - `SpotAsPriceGo`: The system automatically bids based on the current market price.
 
-        Default value: **NoSpot * *.
+        Default value: `NoSpot`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -522,7 +629,12 @@ class CustomArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource
+        The status of the instance. Valid values:
+        - `Pending`: The instance is being created.
+        - `Running`: The instance is running.
+        - `Starting`: The instance is starting.
+        - `Stopping`: The instance is stopping.
+        - `Stopped`: The instance is stopped.
         """
         return pulumi.get(self, "status")
 
@@ -534,7 +646,7 @@ class CustomArgs:
     @pulumi.getter(name="supportCase")
     def support_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        The deployment type of RDS Custom. Valid values:
         """
         return pulumi.get(self, "support_case")
 
@@ -546,7 +658,9 @@ class CustomArgs:
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Input[Optional['CustomSystemDiskArgs']]:
         """
-        System disk specifications. See `system_disk` below.
+        The system disk specification. See `system_disk` below.
+
+        > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
         """
         return pulumi.get(self, "system_disk")
 
@@ -558,7 +672,7 @@ class CustomArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource
+        Details of the queried instances and their tags.
         """
         return pulumi.get(self, "tags")
 
@@ -570,7 +684,9 @@ class CustomArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone ID  of the resource
+        The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+
+        > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         return pulumi.get(self, "zone_id")
 
@@ -597,6 +713,7 @@ class _CustomState:
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
@@ -605,6 +722,7 @@ class _CustomState:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -613,59 +731,105 @@ class _CustomState:
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  support_case: pulumi.Input[Optional[_builtins.str]] = None,
                  system_disk: pulumi.Input[Optional['CustomSystemDiskArgs']] = None,
+                 system_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Custom resources.
 
-        :param pulumi.Input[_builtins.int] amount: Represents the number of instances created
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[_builtins.int] amount: Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+               Valid values: `1` to `5`. Default value: `1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: Data disk See `data_disk` below.
+        :param pulumi.Input[_builtins.str] create_mode: Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDataDiskArgs']]] data_disks: List of data disks.   See `data_disk` below.
+        :param pulumi.Input[_builtins.str] deployment_set_id: Deployment set ID.
+        :param pulumi.Input[_builtins.str] description: The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] direction: The instance specification change type. Valid values:
                
-               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
-        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
-        :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
+               > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+               - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+               - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
                
-               > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-               - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-               - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
-        :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the operation of creating an instance. Valid values:
-        :param pulumi.Input[_builtins.bool] force: Whether to forcibly release the running instance. Value: true/false
-        :param pulumi.Input[_builtins.bool] force_stop: Whether to force shutdown. Value range:
-        :param pulumi.Input[_builtins.str] host_name: The instance host name.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run of the instance creation request. Valid values:
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to forcibly release a running instance. Valid values:
+        :param pulumi.Input[_builtins.bool] force_stop: Specifies whether to force shut down the instance. Valid values:
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the instance.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.str] image_id: The ID of the image used by the instance.
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the created RDS Custom dedicated host instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] io_optimized: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] key_pair_name: The key pair name. Only flyer names are supported.
-        :param pulumi.Input[_builtins.str] password: The account and password of the instance.
-        :param pulumi.Input[_builtins.int] period: Prepaid renewal duration, unit: Month/Year.
-        :param pulumi.Input[_builtins.str] period_unit: The unit of duration of the year-to-month billing method. Value range:
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Prepaid`: subscription.
+               - `Postpaid`: pay-as-you-go.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_name: The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        :param pulumi.Input[_builtins.str] instance_type: The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
+        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameter. Not supported currently.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+               Valid values: 0 to 1024. Default value: 0.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] io_optimized: This parameter is reserved and currently unsupported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. Only a single key pair name is supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] password: The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.int] period: The subscription duration of the resource. Default value: `1`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of subscription duration for the subscription billing method. Valid values:
                - `Year`: Year
                - `Month` (default): Month
-        :param pulumi.Input[_builtins.str] region_id: The region ID. Callable DescribeRegions to get.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Security group list
-        :param pulumi.Input[_builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-               - `NoSpot`: normal pay-as-you-go instances.
-               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
                
-               Default value: **NoSpot * *.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[_builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
-        :param pulumi.Input['CustomSystemDiskArgs'] system_disk: System disk specifications. See `system_disk` below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               The network type InstanceNetworkType must be VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        :param pulumi.Input[_builtins.str] region_id: The region ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can call ListResourceGroups to obtain it.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: This is a reserved parameter and is not currently supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+               
+               > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+               - `NoSpot`: A regular pay-as-you-go instance.
+               - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+               
+               Default value: `NoSpot`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] status: The status of the instance. Valid values:
+               - `Pending`: The instance is being created.
+               - `Running`: The instance is running.
+               - `Starting`: The instance is starting.
+               - `Stopping`: The instance is stopping.
+               - `Stopped`: The instance is stopped.
+        :param pulumi.Input[_builtins.str] support_case: The deployment type of RDS Custom. Valid values:
+        :param pulumi.Input['CustomSystemDiskArgs'] system_disk: The system disk specification. See `system_disk` below.
+               
+               > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
+        :param pulumi.Input[_builtins.str] system_disk_id: The ID of the system disk attached to the Custom instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Details of the queried instances and their tags.
+        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         if amount is not None:
             pulumi.set(__self__, "amount", amount)
@@ -697,6 +861,8 @@ class _CustomState:
             pulumi.set(__self__, "image_id", image_id)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_name is not None:
+            pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if internet_charge_type is not None:
@@ -713,6 +879,8 @@ class _CustomState:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if region_id is not None:
             pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
@@ -729,6 +897,8 @@ class _CustomState:
             pulumi.set(__self__, "support_case", support_case)
         if system_disk is not None:
             pulumi.set(__self__, "system_disk", system_disk)
+        if system_disk_id is not None:
+            pulumi.set(__self__, "system_disk_id", system_disk_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vswitch_id is not None:
@@ -740,7 +910,10 @@ class _CustomState:
     @pulumi.getter
     def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Represents the number of instances created
+        Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+        Valid values: `1` to `5`. Default value: `1`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "amount")
 
@@ -752,7 +925,7 @@ class _CustomState:
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to pay automatically. Value range:
+        Specifies whether to enable automatic payment. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
@@ -764,7 +937,7 @@ class _CustomState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -788,7 +961,7 @@ class _CustomState:
     @pulumi.getter(name="createMode")
     def create_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+        Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
         """
         return pulumi.get(self, "create_mode")
 
@@ -800,9 +973,7 @@ class _CustomState:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomDataDiskArgs']]]]:
         """
-        Data disk See `data_disk` below.
-
-        ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+        List of data disks.   See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -814,7 +985,7 @@ class _CustomState:
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the deployment set.
+        Deployment set ID.
         """
         return pulumi.get(self, "deployment_set_id")
 
@@ -826,7 +997,7 @@ class _CustomState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -838,11 +1009,13 @@ class _CustomState:
     @pulumi.getter
     def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Instance configuration type, value range:
+        The instance specification change type. Valid values:
 
-        > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-        - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-        - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+        > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+        - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+        - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "direction")
 
@@ -854,7 +1027,7 @@ class _CustomState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to pre-check the operation of creating an instance. Valid values:
+        Specifies whether to perform a dry run of the instance creation request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -866,7 +1039,7 @@ class _CustomState:
     @pulumi.getter
     def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to forcibly release the running instance. Value: true/false
+        Specifies whether to forcibly release a running instance. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -878,7 +1051,7 @@ class _CustomState:
     @pulumi.getter(name="forceStop")
     def force_stop(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to force shutdown. Value range:
+        Specifies whether to force shut down the instance. Valid values:
         """
         return pulumi.get(self, "force_stop")
 
@@ -890,7 +1063,9 @@ class _CustomState:
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The instance host name.
+        The hostname of the instance.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "host_name")
 
@@ -903,6 +1078,8 @@ class _CustomState:
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image used by the instance.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "image_id")
 
@@ -914,7 +1091,11 @@ class _CustomState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+        The billing method. Valid values:
+        - `Prepaid`: subscription.
+        - `Postpaid`: pay-as-you-go.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -923,10 +1104,22 @@ class _CustomState:
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the created RDS Custom dedicated host instance.
+        The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
         """
         return pulumi.get(self, "instance_type")
 
@@ -938,7 +1131,9 @@ class _CustomState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        Reserved parameter. Not supported currently.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -950,7 +1145,10 @@ class _CustomState:
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Reserved parameters are not supported.
+        The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+        Valid values: 0 to 1024. Default value: 0.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -962,7 +1160,9 @@ class _CustomState:
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        This parameter is reserved and currently unsupported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "io_optimized")
 
@@ -974,7 +1174,9 @@ class _CustomState:
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The key pair name. Only flyer names are supported.
+        The name of the key pair. Only a single key pair name is supported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -986,7 +1188,9 @@ class _CustomState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The account and password of the instance.
+        The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "password")
 
@@ -998,7 +1202,9 @@ class _CustomState:
     @pulumi.getter
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Prepaid renewal duration, unit: Month/Year.
+        The subscription duration of the resource. Default value: `1`.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "period")
 
@@ -1010,9 +1216,11 @@ class _CustomState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unit of duration of the year-to-month billing method. Value range:
+        The unit of subscription duration for the subscription billing method. Valid values:
         - `Year`: Year
         - `Month` (default): Month
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1021,10 +1229,22 @@ class _CustomState:
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The region ID. Callable DescribeRegions to get.
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
@@ -1036,7 +1256,7 @@ class _CustomState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group
+        The resource group ID. You can call ListResourceGroups to obtain it.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1048,7 +1268,9 @@ class _CustomState:
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        This is a reserved parameter and is not currently supported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -1060,7 +1282,9 @@ class _CustomState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Security group list
+        The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+
+        > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1072,11 +1296,13 @@ class _CustomState:
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-        - `NoSpot`: normal pay-as-you-go instances.
-        - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+        - `NoSpot`: A regular pay-as-you-go instance.
+        - `SpotAsPriceGo`: The system automatically bids based on the current market price.
 
-        Default value: **NoSpot * *.
+        Default value: `NoSpot`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1088,7 +1314,12 @@ class _CustomState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource
+        The status of the instance. Valid values:
+        - `Pending`: The instance is being created.
+        - `Running`: The instance is running.
+        - `Starting`: The instance is starting.
+        - `Stopping`: The instance is stopping.
+        - `Stopped`: The instance is stopped.
         """
         return pulumi.get(self, "status")
 
@@ -1100,7 +1331,7 @@ class _CustomState:
     @pulumi.getter(name="supportCase")
     def support_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        The deployment type of RDS Custom. Valid values:
         """
         return pulumi.get(self, "support_case")
 
@@ -1112,7 +1343,9 @@ class _CustomState:
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Input[Optional['CustomSystemDiskArgs']]:
         """
-        System disk specifications. See `system_disk` below.
+        The system disk specification. See `system_disk` below.
+
+        > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
         """
         return pulumi.get(self, "system_disk")
 
@@ -1121,10 +1354,22 @@ class _CustomState:
         pulumi.set(self, "system_disk", value)
 
     @_builtins.property
+    @pulumi.getter(name="systemDiskId")
+    def system_disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the system disk attached to the Custom instance.
+        """
+        return pulumi.get(self, "system_disk_id")
+
+    @system_disk_id.setter
+    def system_disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "system_disk_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource
+        Details of the queried instances and their tags.
         """
         return pulumi.get(self, "tags")
 
@@ -1136,8 +1381,9 @@ class _CustomState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        The network type InstanceNetworkType must be VPC.
+        The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+
+        > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1149,7 +1395,9 @@ class _CustomState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone ID  of the resource
+        The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+
+        > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1179,6 +1427,7 @@ class Custom(pulumi.CustomResource):
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1187,6 +1436,7 @@ class Custom(pulumi.CustomResource):
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1201,7 +1451,7 @@ class Custom(pulumi.CustomResource):
         """
         Provides a RDS Custom resource.
 
-        Dedicated RDS User host.
+        RDS dedicated host for users.
 
         For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
 
@@ -1298,58 +1548,102 @@ class Custom(pulumi.CustomResource):
         RDS Custom can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rds/custom:Custom example <id>
+        $ pulumi import alicloud:rds/custom:Custom example <instance_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] amount: Represents the number of instances created
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[_builtins.int] amount: Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+               Valid values: `1` to `5`. Default value: `1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: Data disk See `data_disk` below.
+        :param pulumi.Input[_builtins.str] create_mode: Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: List of data disks.   See `data_disk` below.
+        :param pulumi.Input[_builtins.str] deployment_set_id: Deployment set ID.
+        :param pulumi.Input[_builtins.str] description: The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] direction: The instance specification change type. Valid values:
                
-               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
-        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
-        :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
+               > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+               - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+               - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
                
-               > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-               - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-               - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
-        :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the operation of creating an instance. Valid values:
-        :param pulumi.Input[_builtins.bool] force: Whether to forcibly release the running instance. Value: true/false
-        :param pulumi.Input[_builtins.bool] force_stop: Whether to force shutdown. Value range:
-        :param pulumi.Input[_builtins.str] host_name: The instance host name.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run of the instance creation request. Valid values:
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to forcibly release a running instance. Valid values:
+        :param pulumi.Input[_builtins.bool] force_stop: Specifies whether to force shut down the instance. Valid values:
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the instance.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.str] image_id: The ID of the image used by the instance.
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the created RDS Custom dedicated host instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] io_optimized: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] key_pair_name: The key pair name. Only flyer names are supported.
-        :param pulumi.Input[_builtins.str] password: The account and password of the instance.
-        :param pulumi.Input[_builtins.int] period: Prepaid renewal duration, unit: Month/Year.
-        :param pulumi.Input[_builtins.str] period_unit: The unit of duration of the year-to-month billing method. Value range:
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Prepaid`: subscription.
+               - `Postpaid`: pay-as-you-go.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_name: The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        :param pulumi.Input[_builtins.str] instance_type: The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
+        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameter. Not supported currently.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+               Valid values: 0 to 1024. Default value: 0.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] io_optimized: This parameter is reserved and currently unsupported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. Only a single key pair name is supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] password: The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.int] period: The subscription duration of the resource. Default value: `1`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of subscription duration for the subscription billing method. Valid values:
                - `Year`: Year
                - `Month` (default): Month
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Security group list
-        :param pulumi.Input[_builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-               - `NoSpot`: normal pay-as-you-go instances.
-               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
                
-               Default value: **NoSpot * *.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[_builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
-        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: System disk specifications. See `system_disk` below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               The network type InstanceNetworkType must be VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can call ListResourceGroups to obtain it.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: This is a reserved parameter and is not currently supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+               
+               > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+               - `NoSpot`: A regular pay-as-you-go instance.
+               - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+               
+               Default value: `NoSpot`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] status: The status of the instance. Valid values:
+               - `Pending`: The instance is being created.
+               - `Running`: The instance is running.
+               - `Starting`: The instance is starting.
+               - `Stopping`: The instance is stopping.
+               - `Stopped`: The instance is stopped.
+        :param pulumi.Input[_builtins.str] support_case: The deployment type of RDS Custom. Valid values:
+        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: The system disk specification. See `system_disk` below.
+               
+               > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Details of the queried instances and their tags.
+        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         ...
     @overload
@@ -1360,7 +1654,7 @@ class Custom(pulumi.CustomResource):
         """
         Provides a RDS Custom resource.
 
-        Dedicated RDS User host.
+        RDS dedicated host for users.
 
         For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
 
@@ -1457,7 +1751,7 @@ class Custom(pulumi.CustomResource):
         RDS Custom can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rds/custom:Custom example <id>
+        $ pulumi import alicloud:rds/custom:Custom example <instance_id>
         ```
 
 
@@ -1491,6 +1785,7 @@ class Custom(pulumi.CustomResource):
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
                  internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1499,6 +1794,7 @@ class Custom(pulumi.CustomResource):
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1533,6 +1829,7 @@ class Custom(pulumi.CustomResource):
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["instance_name"] = instance_name
             if instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
@@ -1543,6 +1840,7 @@ class Custom(pulumi.CustomResource):
             __props__.__dict__["password"] = password
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             __props__.__dict__["security_group_ids"] = security_group_ids
@@ -1556,6 +1854,7 @@ class Custom(pulumi.CustomResource):
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["region_id"] = None
+            __props__.__dict__["system_disk_id"] = None
         super(Custom, __self__).__init__(
             'alicloud:rds/custom:Custom',
             resource_name,
@@ -1581,6 +1880,7 @@ class Custom(pulumi.CustomResource):
             host_name: pulumi.Input[Optional[_builtins.str]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
             internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1589,6 +1889,7 @@ class Custom(pulumi.CustomResource):
             password: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1597,6 +1898,7 @@ class Custom(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             support_case: pulumi.Input[Optional[_builtins.str]] = None,
             system_disk: pulumi.Input[Optional[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']]] = None,
+            system_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Custom':
@@ -1607,53 +1909,98 @@ class Custom(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] amount: Represents the number of instances created
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        :param pulumi.Input[_builtins.int] amount: Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+               Valid values: `1` to `5`. Default value: `1`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable automatic payment. Valid values:
+        :param pulumi.Input[_builtins.bool] auto_renew: Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         :param pulumi.Input[_builtins.str] create_extra_param: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] create_mode: Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: Data disk See `data_disk` below.
+        :param pulumi.Input[_builtins.str] create_mode: Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDataDiskArgs', 'CustomDataDiskArgsDict']]]] data_disks: List of data disks.   See `data_disk` below.
+        :param pulumi.Input[_builtins.str] deployment_set_id: Deployment set ID.
+        :param pulumi.Input[_builtins.str] description: The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] direction: The instance specification change type. Valid values:
                
-               ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
-        :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set.
-        :param pulumi.Input[_builtins.str] description: Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
-        :param pulumi.Input[_builtins.str] direction: Instance configuration type, value range:
+               > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+               - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+               - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
                
-               > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-               - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-               - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
-        :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the operation of creating an instance. Valid values:
-        :param pulumi.Input[_builtins.bool] force: Whether to forcibly release the running instance. Value: true/false
-        :param pulumi.Input[_builtins.bool] force_stop: Whether to force shutdown. Value range:
-        :param pulumi.Input[_builtins.str] host_name: The instance host name.
+               > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
+        :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform a dry run of the instance creation request. Valid values:
+        :param pulumi.Input[_builtins.bool] force: Specifies whether to forcibly release a running instance. Valid values:
+        :param pulumi.Input[_builtins.bool] force_stop: Specifies whether to force shut down the instance. Valid values:
+        :param pulumi.Input[_builtins.str] host_name: The hostname of the instance.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.str] image_id: The ID of the image used by the instance.
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
-        :param pulumi.Input[_builtins.str] instance_type: The type of the created RDS Custom dedicated host instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] io_optimized: Reserved parameters are not supported.
-        :param pulumi.Input[_builtins.str] key_pair_name: The key pair name. Only flyer names are supported.
-        :param pulumi.Input[_builtins.str] password: The account and password of the instance.
-        :param pulumi.Input[_builtins.int] period: Prepaid renewal duration, unit: Month/Year.
-        :param pulumi.Input[_builtins.str] period_unit: The unit of duration of the year-to-month billing method. Value range:
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Prepaid`: subscription.
+               - `Postpaid`: pay-as-you-go.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] instance_name: The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        :param pulumi.Input[_builtins.str] instance_type: The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
+        :param pulumi.Input[_builtins.str] internet_charge_type: Reserved parameter. Not supported currently.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+               Valid values: 0 to 1024. Default value: 0.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] io_optimized: This parameter is reserved and currently unsupported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair. Only a single key pair name is supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] password: The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.int] period: The subscription duration of the resource. Default value: `1`.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        :param pulumi.Input[_builtins.str] period_unit: The unit of subscription duration for the subscription billing method. Valid values:
                - `Year`: Year
                - `Month` (default): Month
-        :param pulumi.Input[_builtins.str] region_id: The region ID. Callable DescribeRegions to get.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Reserved parameters are not supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Security group list
-        :param pulumi.Input[_builtins.str] spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-               - `NoSpot`: normal pay-as-you-go instances.
-               - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
                
-               Default value: **NoSpot * *.
-        :param pulumi.Input[_builtins.str] status: The status of the resource
-        :param pulumi.Input[_builtins.str] support_case: Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
-        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: System disk specifications. See `system_disk` below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-               The network type InstanceNetworkType must be VPC.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] private_ip_address: The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        :param pulumi.Input[_builtins.str] region_id: The region ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can call ListResourceGroups to obtain it.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: This is a reserved parameter and is not currently supported.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+               
+               > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+               - `NoSpot`: A regular pay-as-you-go instance.
+               - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+               
+               Default value: `NoSpot`.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        :param pulumi.Input[_builtins.str] status: The status of the instance. Valid values:
+               - `Pending`: The instance is being created.
+               - `Running`: The instance is running.
+               - `Starting`: The instance is starting.
+               - `Stopping`: The instance is stopping.
+               - `Stopped`: The instance is stopped.
+        :param pulumi.Input[_builtins.str] support_case: The deployment type of RDS Custom. Valid values:
+        :param pulumi.Input[Union['CustomSystemDiskArgs', 'CustomSystemDiskArgsDict']] system_disk: The system disk specification. See `system_disk` below.
+               
+               > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
+        :param pulumi.Input[_builtins.str] system_disk_id: The ID of the system disk attached to the Custom instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Details of the queried instances and their tags.
+        :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+               
+               > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1674,6 +2021,7 @@ class Custom(pulumi.CustomResource):
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
@@ -1682,6 +2030,7 @@ class Custom(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
+        __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
@@ -1690,6 +2039,7 @@ class Custom(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["support_case"] = support_case
         __props__.__dict__["system_disk"] = system_disk
+        __props__.__dict__["system_disk_id"] = system_disk_id
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -1699,7 +2049,10 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter
     def amount(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Represents the number of instances created
+        Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+        Valid values: `1` to `5`. Default value: `1`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "amount")
 
@@ -1707,7 +2060,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to pay automatically. Value range:
+        Specifies whether to enable automatic payment. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
@@ -1715,7 +2068,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -1731,7 +2084,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="createMode")
     def create_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+        Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
         """
         return pulumi.get(self, "create_mode")
 
@@ -1739,9 +2092,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Sequence['outputs.CustomDataDisk']]:
         """
-        Data disk See `data_disk` below.
-
-        ->**NOTE:** From version 1.275.0, If you want to use `data_disk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+        List of data disks.   See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -1749,15 +2100,15 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="deploymentSetId")
     def deployment_set_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ID of the deployment set.
+        Deployment set ID.
         """
         return pulumi.get(self, "deployment_set_id")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -1765,11 +2116,13 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Instance configuration type, value range:
+        The instance specification change type. Valid values:
 
-        > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-        - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-        - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+        > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+        - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+        - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+
+        > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         """
         return pulumi.get(self, "direction")
 
@@ -1777,7 +2130,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to pre-check the operation of creating an instance. Valid values:
+        Specifies whether to perform a dry run of the instance creation request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -1785,7 +2138,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to forcibly release the running instance. Value: true/false
+        Specifies whether to forcibly release a running instance. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -1793,7 +2146,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="forceStop")
     def force_stop(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to force shutdown. Value range:
+        Specifies whether to force shut down the instance. Valid values:
         """
         return pulumi.get(self, "force_stop")
 
@@ -1801,7 +2154,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="hostName")
     def host_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The instance host name.
+        The hostname of the instance.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "host_name")
 
@@ -1810,6 +2165,8 @@ class Custom(pulumi.CustomResource):
     def image_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the image used by the instance.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "image_id")
 
@@ -1817,15 +2174,27 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+        The billing method. Valid values:
+        - `Prepaid`: subscription.
+        - `Postpaid`: pay-as-you-go.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "instance_charge_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        """
+        return pulumi.get(self, "instance_name")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the created RDS Custom dedicated host instance.
+        The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
         """
         return pulumi.get(self, "instance_type")
 
@@ -1833,7 +2202,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        Reserved parameter. Not supported currently.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1841,7 +2212,10 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthOut")
     def internet_max_bandwidth_out(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Reserved parameters are not supported.
+        The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+        Valid values: 0 to 1024. Default value: 0.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
@@ -1849,7 +2223,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        This parameter is reserved and currently unsupported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "io_optimized")
 
@@ -1857,7 +2233,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The key pair name. Only flyer names are supported.
+        The name of the key pair. Only a single key pair name is supported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -1865,7 +2243,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The account and password of the instance.
+        The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "password")
 
@@ -1873,7 +2253,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Prepaid renewal duration, unit: Month/Year.
+        The subscription duration of the resource. Default value: `1`.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         """
         return pulumi.get(self, "period")
 
@@ -1881,17 +2263,27 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The unit of duration of the year-to-month billing method. Value range:
+        The unit of subscription duration for the subscription billing method. Valid values:
         - `Year`: Year
         - `Month` (default): Month
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "period_unit")
+
+    @_builtins.property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Output[_builtins.str]:
+        """
+        The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        """
+        return pulumi.get(self, "private_ip_address")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The region ID. Callable DescribeRegions to get.
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
@@ -1899,7 +2291,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group
+        The resource group ID. You can call ListResourceGroups to obtain it.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1907,7 +2299,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Reserved parameters are not supported.
+        This is a reserved parameter and is not currently supported.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -1915,7 +2309,9 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Security group list
+        The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+
+        > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1923,11 +2319,13 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-        - `NoSpot`: normal pay-as-you-go instances.
-        - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+        - `NoSpot`: A regular pay-as-you-go instance.
+        - `SpotAsPriceGo`: The system automatically bids based on the current market price.
 
-        Default value: **NoSpot * *.
+        Default value: `NoSpot`.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1935,7 +2333,12 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The status of the instance. Valid values:
+        - `Pending`: The instance is being created.
+        - `Running`: The instance is running.
+        - `Starting`: The instance is starting.
+        - `Stopping`: The instance is stopping.
+        - `Stopped`: The instance is stopped.
         """
         return pulumi.get(self, "status")
 
@@ -1943,7 +2346,7 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="supportCase")
     def support_case(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        The deployment type of RDS Custom. Valid values:
         """
         return pulumi.get(self, "support_case")
 
@@ -1951,15 +2354,25 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Output[Optional['outputs.CustomSystemDisk']]:
         """
-        System disk specifications. See `system_disk` below.
+        The system disk specification. See `system_disk` below.
+
+        > **NOTE:** Since v1.279.0, `system_disk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
         """
         return pulumi.get(self, "system_disk")
+
+    @_builtins.property
+    @pulumi.getter(name="systemDiskId")
+    def system_disk_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the system disk attached to the Custom instance.
+        """
+        return pulumi.get(self, "system_disk_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The tag of the resource
+        Details of the queried instances and their tags.
         """
         return pulumi.get(self, "tags")
 
@@ -1967,16 +2380,19 @@ class Custom(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        The network type InstanceNetworkType must be VPC.
+        The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+
+        > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone ID  of the resource
+        The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+
+        > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         """
         return pulumi.get(self, "zone_id")
 

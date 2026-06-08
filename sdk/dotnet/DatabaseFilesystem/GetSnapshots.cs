@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public static class GetSnapshots
     {
         /// <summary>
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// 
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.156.0+.
@@ -59,6 +61,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// 
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.156.0+.
@@ -106,6 +110,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:databasefilesystem/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// 
         /// This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.156.0+.

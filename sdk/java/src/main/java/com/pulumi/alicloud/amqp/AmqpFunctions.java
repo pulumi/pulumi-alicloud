@@ -10,6 +10,10 @@ import com.pulumi.alicloud.amqp.inputs.GetExchangesArgs;
 import com.pulumi.alicloud.amqp.inputs.GetExchangesPlainArgs;
 import com.pulumi.alicloud.amqp.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.amqp.inputs.GetInstancesPlainArgs;
+import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsArgs;
+import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsPlainArgs;
+import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsArgs;
+import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsPlainArgs;
 import com.pulumi.alicloud.amqp.inputs.GetQueuesArgs;
 import com.pulumi.alicloud.amqp.inputs.GetQueuesPlainArgs;
 import com.pulumi.alicloud.amqp.inputs.GetStaticAccountsArgs;
@@ -19,6 +23,8 @@ import com.pulumi.alicloud.amqp.inputs.GetVirtualHostsPlainArgs;
 import com.pulumi.alicloud.amqp.outputs.GetBindingsResult;
 import com.pulumi.alicloud.amqp.outputs.GetExchangesResult;
 import com.pulumi.alicloud.amqp.outputs.GetInstancesResult;
+import com.pulumi.alicloud.amqp.outputs.GetOpenSourceAccountsResult;
+import com.pulumi.alicloud.amqp.outputs.GetOpenSourcePermissionsResult;
 import com.pulumi.alicloud.amqp.outputs.GetQueuesResult;
 import com.pulumi.alicloud.amqp.outputs.GetStaticAccountsResult;
 import com.pulumi.alicloud.amqp.outputs.GetVirtualHostsResult;
@@ -968,6 +974,1151 @@ public final class AmqpFunctions {
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:amqp/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Account available to the user.[What is Open Source Account](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourceAccount)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccount;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccountArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var userName = config.get("userName").orElse("Suhao123_");
+     *         final var userNameUpdate = config.get("userNameUpdate").orElse("Suhao456_");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourceAccount = new OpenSourceAccount("defaultOpenSourceAccount", OpenSourceAccountArgs.builder()
+     *             .userName(userName)
+     *             .description(userName)
+     *             .password(userName)
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourceAccounts(GetOpenSourceAccountsArgs.builder()
+     *             .ids(defaultOpenSourceAccount.id())
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOpenSourceAccountsResult> getOpenSourceAccounts(GetOpenSourceAccountsArgs args) {
+        return getOpenSourceAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Account available to the user.[What is Open Source Account](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourceAccount)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccount;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccountArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var userName = config.get("userName").orElse("Suhao123_");
+     *         final var userNameUpdate = config.get("userNameUpdate").orElse("Suhao456_");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourceAccount = new OpenSourceAccount("defaultOpenSourceAccount", OpenSourceAccountArgs.builder()
+     *             .userName(userName)
+     *             .description(userName)
+     *             .password(userName)
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourceAccounts(GetOpenSourceAccountsArgs.builder()
+     *             .ids(defaultOpenSourceAccount.id())
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOpenSourceAccountsResult> getOpenSourceAccountsPlain(GetOpenSourceAccountsPlainArgs args) {
+        return getOpenSourceAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Account available to the user.[What is Open Source Account](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourceAccount)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccount;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccountArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var userName = config.get("userName").orElse("Suhao123_");
+     *         final var userNameUpdate = config.get("userNameUpdate").orElse("Suhao456_");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourceAccount = new OpenSourceAccount("defaultOpenSourceAccount", OpenSourceAccountArgs.builder()
+     *             .userName(userName)
+     *             .description(userName)
+     *             .password(userName)
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourceAccounts(GetOpenSourceAccountsArgs.builder()
+     *             .ids(defaultOpenSourceAccount.id())
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOpenSourceAccountsResult> getOpenSourceAccounts(GetOpenSourceAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:amqp/getOpenSourceAccounts:getOpenSourceAccounts", TypeShape.of(GetOpenSourceAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Account available to the user.[What is Open Source Account](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourceAccount)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccount;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccountArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var userName = config.get("userName").orElse("Suhao123_");
+     *         final var userNameUpdate = config.get("userNameUpdate").orElse("Suhao456_");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourceAccount = new OpenSourceAccount("defaultOpenSourceAccount", OpenSourceAccountArgs.builder()
+     *             .userName(userName)
+     *             .description(userName)
+     *             .password(userName)
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourceAccounts(GetOpenSourceAccountsArgs.builder()
+     *             .ids(defaultOpenSourceAccount.id())
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOpenSourceAccountsResult> getOpenSourceAccounts(GetOpenSourceAccountsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:amqp/getOpenSourceAccounts:getOpenSourceAccounts", TypeShape.of(GetOpenSourceAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Account available to the user.[What is Open Source Account](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourceAccount)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccount;
+     * import com.pulumi.alicloud.amqp.OpenSourceAccountArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourceAccountsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var userName = config.get("userName").orElse("Suhao123_");
+     *         final var userNameUpdate = config.get("userNameUpdate").orElse("Suhao456_");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourceAccount = new OpenSourceAccount("defaultOpenSourceAccount", OpenSourceAccountArgs.builder()
+     *             .userName(userName)
+     *             .description(userName)
+     *             .password(userName)
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourceAccounts(GetOpenSourceAccountsArgs.builder()
+     *             .ids(defaultOpenSourceAccount.id())
+     *             .instanceId(createInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourceAccountExampleId", default_.applyValue(_default_ -> _default_.accounts()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOpenSourceAccountsResult> getOpenSourceAccountsPlain(GetOpenSourceAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:amqp/getOpenSourceAccounts:getOpenSourceAccounts", TypeShape.of(GetOpenSourceAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Permission available to the user.[What is Open Source Permission](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourcePermission)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermission;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermissionArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var vhost = config.get("vhost").orElse("/");
+     *         final var userName = config.get("userName").orElse("Suhao123_WithPer");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourcePermission = new OpenSourcePermission("defaultOpenSourcePermission", OpenSourcePermissionArgs.builder()
+     *             .write(".*")
+     *             .read(".*")
+     *             .vhost(vhost)
+     *             .userName(userName)
+     *             .instanceId(createInstance.id())
+     *             .configure(".*")
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourcePermissions(GetOpenSourcePermissionsArgs.builder()
+     *             .ids(defaultOpenSourcePermission.id())
+     *             .instanceId(createInstance.id())
+     *             .userName(userName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOpenSourcePermissionsResult> getOpenSourcePermissions(GetOpenSourcePermissionsArgs args) {
+        return getOpenSourcePermissions(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Permission available to the user.[What is Open Source Permission](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourcePermission)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermission;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermissionArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var vhost = config.get("vhost").orElse("/");
+     *         final var userName = config.get("userName").orElse("Suhao123_WithPer");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourcePermission = new OpenSourcePermission("defaultOpenSourcePermission", OpenSourcePermissionArgs.builder()
+     *             .write(".*")
+     *             .read(".*")
+     *             .vhost(vhost)
+     *             .userName(userName)
+     *             .instanceId(createInstance.id())
+     *             .configure(".*")
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourcePermissions(GetOpenSourcePermissionsArgs.builder()
+     *             .ids(defaultOpenSourcePermission.id())
+     *             .instanceId(createInstance.id())
+     *             .userName(userName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOpenSourcePermissionsResult> getOpenSourcePermissionsPlain(GetOpenSourcePermissionsPlainArgs args) {
+        return getOpenSourcePermissionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Permission available to the user.[What is Open Source Permission](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourcePermission)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermission;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermissionArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var vhost = config.get("vhost").orElse("/");
+     *         final var userName = config.get("userName").orElse("Suhao123_WithPer");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourcePermission = new OpenSourcePermission("defaultOpenSourcePermission", OpenSourcePermissionArgs.builder()
+     *             .write(".*")
+     *             .read(".*")
+     *             .vhost(vhost)
+     *             .userName(userName)
+     *             .instanceId(createInstance.id())
+     *             .configure(".*")
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourcePermissions(GetOpenSourcePermissionsArgs.builder()
+     *             .ids(defaultOpenSourcePermission.id())
+     *             .instanceId(createInstance.id())
+     *             .userName(userName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOpenSourcePermissionsResult> getOpenSourcePermissions(GetOpenSourcePermissionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:amqp/getOpenSourcePermissions:getOpenSourcePermissions", TypeShape.of(GetOpenSourcePermissionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Permission available to the user.[What is Open Source Permission](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourcePermission)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermission;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermissionArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var vhost = config.get("vhost").orElse("/");
+     *         final var userName = config.get("userName").orElse("Suhao123_WithPer");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourcePermission = new OpenSourcePermission("defaultOpenSourcePermission", OpenSourcePermissionArgs.builder()
+     *             .write(".*")
+     *             .read(".*")
+     *             .vhost(vhost)
+     *             .userName(userName)
+     *             .instanceId(createInstance.id())
+     *             .configure(".*")
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourcePermissions(GetOpenSourcePermissionsArgs.builder()
+     *             .ids(defaultOpenSourcePermission.id())
+     *             .instanceId(createInstance.id())
+     *             .userName(userName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOpenSourcePermissionsResult> getOpenSourcePermissions(GetOpenSourcePermissionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:amqp/getOpenSourcePermissions:getOpenSourcePermissions", TypeShape.of(GetOpenSourcePermissionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides RabbitMQ (AMQP) Open Source Permission available to the user.[What is Open Source Permission](https://next.api.alibabacloud.com/document/amqp-open/2019-12-12/CreateOpenSourcePermission)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.amqp.Instance;
+     * import com.pulumi.alicloud.amqp.InstanceArgs;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermission;
+     * import com.pulumi.alicloud.amqp.OpenSourcePermissionArgs;
+     * import com.pulumi.alicloud.amqp.AmqpFunctions;
+     * import com.pulumi.alicloud.amqp.inputs.GetOpenSourcePermissionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var instanceName = config.get("instanceName").orElse("测试开源鉴权实例");
+     *         final var vhost = config.get("vhost").orElse("/");
+     *         final var userName = config.get("userName").orElse("Suhao123_WithPer");
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName(name)
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultB = new Switch("defaultB", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-b", name))
+     *             .cidrBlock("172.16.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-b")
+     *             .build());
+     * 
+     *         var defaultG = new Switch("defaultG", SwitchArgs.builder()
+     *             .vswitchName(String.format("%s-g", name))
+     *             .cidrBlock("172.16.1.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .securityGroupName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var createInstance = new Instance("createInstance", InstanceArgs.builder()
+     *             .renewalDuration(1)
+     *             .maxTps("3000")
+     *             .periodCycle("Month")
+     *             .maxConnections(2000)
+     *             .supportEip(true)
+     *             .autoRenew(false)
+     *             .renewalStatus("AutoRenewal")
+     *             .period(12)
+     *             .instanceName(instanceName)
+     *             .supportTracing(false)
+     *             .paymentType("Subscription")
+     *             .renewalDurationUnit("Month")
+     *             .instanceType("enterprise")
+     *             .queueCapacity("200")
+     *             .maxEipTps("128")
+     *             .vpcId(defaultNetwork.id())
+     *             .vswitchIds(            
+     *                 defaultB.id(),
+     *                 defaultG.id())
+     *             .securityGroupId(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         var defaultOpenSourcePermission = new OpenSourcePermission("defaultOpenSourcePermission", OpenSourcePermissionArgs.builder()
+     *             .write(".*")
+     *             .read(".*")
+     *             .vhost(vhost)
+     *             .userName(userName)
+     *             .instanceId(createInstance.id())
+     *             .configure(".*")
+     *             .build());
+     * 
+     *         final var default = AmqpFunctions.getOpenSourcePermissions(GetOpenSourcePermissionsArgs.builder()
+     *             .ids(defaultOpenSourcePermission.id())
+     *             .instanceId(createInstance.id())
+     *             .userName(userName)
+     *             .build());
+     * 
+     *         ctx.export("alicloudAmqpOpenSourcePermissionExampleId", default_.applyValue(_default_ -> _default_.permissions()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOpenSourcePermissionsResult> getOpenSourcePermissionsPlain(GetOpenSourcePermissionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:amqp/getOpenSourcePermissions:getOpenSourcePermissions", TypeShape.of(GetOpenSourcePermissionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Amqp Queues of the current Alibaba Cloud user.

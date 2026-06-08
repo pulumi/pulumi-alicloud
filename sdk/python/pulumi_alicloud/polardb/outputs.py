@@ -16,6 +16,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ApplicationComponent',
+    'ApplicationParameter',
+    'BatchTaskTaskParam',
     'ClusterDbClusterIpArray',
     'ClusterDbRevisionVersionList',
     'ClusterParameter',
@@ -36,6 +39,167 @@ __all__ = [
     'GetParameterGroupsGroupResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class ApplicationComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentClass":
+            suggest = "component_class"
+        elif key == "componentReplica":
+            suggest = "component_replica"
+        elif key == "componentType":
+            suggest = "component_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationComponent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_class: Optional[_builtins.str] = None,
+                 component_replica: Optional[_builtins.int] = None,
+                 component_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str component_class: The class/specification of the component.
+        :param _builtins.int component_replica: The number of replicas for the component.
+        :param _builtins.str component_type: The type of the component.
+        """
+        if component_class is not None:
+            pulumi.set(__self__, "component_class", component_class)
+        if component_replica is not None:
+            pulumi.set(__self__, "component_replica", component_replica)
+        if component_type is not None:
+            pulumi.set(__self__, "component_type", component_type)
+
+    @_builtins.property
+    @pulumi.getter(name="componentClass")
+    def component_class(self) -> Optional[_builtins.str]:
+        """
+        The class/specification of the component.
+        """
+        return pulumi.get(self, "component_class")
+
+    @_builtins.property
+    @pulumi.getter(name="componentReplica")
+    def component_replica(self) -> Optional[_builtins.int]:
+        """
+        The number of replicas for the component.
+        """
+        return pulumi.get(self, "component_replica")
+
+    @_builtins.property
+    @pulumi.getter(name="componentType")
+    def component_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the component.
+        """
+        return pulumi.get(self, "component_type")
+
+
+@pulumi.output_type
+class ApplicationParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parameter_name: Optional[_builtins.str] = None,
+                 parameter_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str parameter_name: The name of the parameter.
+        :param _builtins.str parameter_value: The value of the parameter.
+        """
+        if parameter_name is not None:
+            pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "parameter_value")
+
+
+@pulumi.output_type
+class BatchTaskTaskParam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "skillName":
+            suggest = "skill_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchTaskTaskParam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchTaskTaskParam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchTaskTaskParam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 skill_name: _builtins.str,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str skill_name: The name of the skill to be installed or uninstalled. For example, `polar_claw`.
+        :param _builtins.str version: The version of the skill. If not specified, the latest version may be used depending on the task type.
+        """
+        pulumi.set(__self__, "skill_name", skill_name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="skillName")
+    def skill_name(self) -> _builtins.str:
+        """
+        The name of the skill to be installed or uninstalled. For example, `polar_claw`.
+        """
+        return pulumi.get(self, "skill_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        The version of the skill. If not specified, the latest version may be used depending on the task type.
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class ClusterDbClusterIpArray(dict):

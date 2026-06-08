@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
 import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentState;
+import com.pulumi.alicloud.cen.outputs.TransitRouterVpcAttachmentOptions;
 import com.pulumi.alicloud.cen.outputs.TransitRouterVpcAttachmentZoneMapping;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -212,6 +213,20 @@ public class TransitRouterVpcAttachment extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<Boolean>> forceDelete() {
         return Codegen.optional(this.forceDelete);
+    }
+    /**
+     * A collection of feature attributes. See `options` below.
+     * 
+     */
+    @Export(name="options", refs={TransitRouterVpcAttachmentOptions.class}, tree="[0]")
+    private Output<TransitRouterVpcAttachmentOptions> options;
+
+    /**
+     * @return A collection of feature attributes. See `options` below.
+     * 
+     */
+    public Output<TransitRouterVpcAttachmentOptions> options() {
+        return this.options;
     }
     /**
      * The entity that pays the fees of the network instance. Valid values:

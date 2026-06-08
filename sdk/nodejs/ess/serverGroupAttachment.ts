@@ -137,7 +137,7 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
     /**
      * The port will be used for Server Group backend server.
      */
-    declare public readonly port: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * ID of the scaling group.
      */
@@ -147,13 +147,14 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
      */
     declare public readonly serverGroupId: pulumi.Output<string>;
     /**
-     * The type of server group N. Valid values: ALB, NLB.
+     * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
      * The weight of an ECS instance attached to the Server Group.
      */
-    declare public readonly weight: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number | undefined>;
 
     /**
      * Create a ServerGroupAttachment resource with the given unique name, arguments, and options.
@@ -176,9 +177,6 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
             resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as ServerGroupAttachmentArgs | undefined;
-            if (args?.port === undefined && !opts.urn) {
-                throw new Error("Missing required property 'port'");
-            }
             if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
@@ -187,9 +185,6 @@ export class ServerGroupAttachment extends pulumi.CustomResource {
             }
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
-            }
-            if (args?.weight === undefined && !opts.urn) {
-                throw new Error("Missing required property 'weight'");
             }
             resourceInputs["forceAttach"] = args?.forceAttach;
             resourceInputs["port"] = args?.port;
@@ -225,7 +220,8 @@ export interface ServerGroupAttachmentState {
      */
     serverGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The type of server group N. Valid values: ALB, NLB.
+     * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -246,7 +242,7 @@ export interface ServerGroupAttachmentArgs {
     /**
      * The port will be used for Server Group backend server.
      */
-    port: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * ID of the scaling group.
      */
@@ -256,11 +252,12 @@ export interface ServerGroupAttachmentArgs {
      */
     serverGroupId: pulumi.Input<string>;
     /**
-     * The type of server group N. Valid values: ALB, NLB.
+     * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      */
     type: pulumi.Input<string>;
     /**
      * The weight of an ECS instance attached to the Server Group.
      */
-    weight: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }

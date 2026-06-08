@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cen.outputs;
 
+import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpcAttachmentsAttachmentOption;
 import com.pulumi.alicloud.cen.outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMapping;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -28,6 +29,11 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
      * 
      */
     private String id;
+    /**
+     * @return (Available since v1.279.0) A collection of feature attributes.
+     * 
+     */
+    private List<GetTransitRouterVpcAttachmentsAttachmentOption> options;
     /**
      * @return The payment type of the resource.
      * 
@@ -100,6 +106,13 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (Available since v1.279.0) A collection of feature attributes.
+     * 
+     */
+    public List<GetTransitRouterVpcAttachmentsAttachmentOption> options() {
+        return this.options;
     }
     /**
      * @return The payment type of the resource.
@@ -184,6 +197,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
         private Boolean autoPublishRouteEnabled;
         private String cenId;
         private String id;
+        private List<GetTransitRouterVpcAttachmentsAttachmentOption> options;
         private String paymentType;
         private String resourceType;
         private String status;
@@ -200,6 +214,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
     	      this.autoPublishRouteEnabled = defaults.autoPublishRouteEnabled;
     	      this.cenId = defaults.cenId;
     	      this.id = defaults.id;
+    	      this.options = defaults.options;
     	      this.paymentType = defaults.paymentType;
     	      this.resourceType = defaults.resourceType;
     	      this.status = defaults.status;
@@ -235,6 +250,17 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder options(List<GetTransitRouterVpcAttachmentsAttachmentOption> options) {
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetTransitRouterVpcAttachmentsAttachment", "options");
+            }
+            this.options = options;
+            return this;
+        }
+        public Builder options(GetTransitRouterVpcAttachmentsAttachmentOption... options) {
+            return options(List.of(options));
         }
         @CustomType.Setter
         public Builder paymentType(String paymentType) {
@@ -324,6 +350,7 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
             _resultValue.autoPublishRouteEnabled = autoPublishRouteEnabled;
             _resultValue.cenId = cenId;
             _resultValue.id = id;
+            _resultValue.options = options;
             _resultValue.paymentType = paymentType;
             _resultValue.resourceType = resourceType;
             _resultValue.status = status;

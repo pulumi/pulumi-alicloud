@@ -21,8 +21,8 @@ __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 @pulumi.input_type
 class LoadBalancerArgs:
     def __init__(__self__, *,
-                 default_pools: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
-                 fallback_pool: pulumi.Input[_builtins.int],
+                 default_pools: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 fallback_pool: pulumi.Input[_builtins.str],
                  load_balancer_name: pulumi.Input[_builtins.str],
                  monitor: pulumi.Input['LoadBalancerMonitorArgs'],
                  site_id: pulumi.Input[_builtins.str],
@@ -39,8 +39,8 @@ class LoadBalancerArgs:
         """
         The set of arguments for constructing a LoadBalancer resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] default_pools: List of default pool IDs.
-        :param pulumi.Input[_builtins.int] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_pools: List of default pool IDs.
+        :param pulumi.Input[_builtins.str] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
         :param pulumi.Input['LoadBalancerMonitorArgs'] monitor: Monitor configuration for health check. See `monitor` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
@@ -82,26 +82,26 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultPools")
-    def default_pools(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
+    def default_pools(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         List of default pool IDs.
         """
         return pulumi.get(self, "default_pools")
 
     @default_pools.setter
-    def default_pools(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]):
+    def default_pools(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "default_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackPool")
-    def fallback_pool(self) -> pulumi.Input[_builtins.int]:
+    def fallback_pool(self) -> pulumi.Input[_builtins.str]:
         """
         The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         """
         return pulumi.get(self, "fallback_pool")
 
     @fallback_pool.setter
-    def fallback_pool(self, value: pulumi.Input[_builtins.int]):
+    def fallback_pool(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "fallback_pool", value)
 
     @_builtins.property
@@ -265,11 +265,11 @@ class LoadBalancerArgs:
 class _LoadBalancerState:
     def __init__(__self__, *,
                  adaptive_routing: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']] = None,
-                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
-                 load_balancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor: pulumi.Input[Optional['LoadBalancerMonitorArgs']] = None,
                  random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
@@ -285,11 +285,11 @@ class _LoadBalancerState:
         Input properties used for looking up and filtering LoadBalancer resources.
 
         :param pulumi.Input['LoadBalancerAdaptiveRoutingArgs'] adaptive_routing: Cross-pool origin configuration. See `adaptive_routing` below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] default_pools: List of default pool IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_pools: List of default pool IDs.
         :param pulumi.Input[_builtins.str] description: The detailed description of the load balancer for easy management and identification.
         :param pulumi.Input[_builtins.bool] enabled: Whether the load balancer is enabled.
-        :param pulumi.Input[_builtins.int] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-        :param pulumi.Input[_builtins.int] load_balancer_id: The unique identifier ID of the load balancer.
+        :param pulumi.Input[_builtins.str] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+        :param pulumi.Input[_builtins.str] load_balancer_id: The unique identifier ID of the load balancer.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
         :param pulumi.Input['LoadBalancerMonitorArgs'] monitor: Monitor configuration for health check. See `monitor` below.
         :param pulumi.Input['LoadBalancerRandomSteeringArgs'] random_steering: Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `random_steering` below.
@@ -351,14 +351,14 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="defaultPools")
-    def default_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+    def default_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of default pool IDs.
         """
         return pulumi.get(self, "default_pools")
 
     @default_pools.setter
-    def default_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+    def default_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_pools", value)
 
     @_builtins.property
@@ -387,26 +387,26 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="fallbackPool")
-    def fallback_pool(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def fallback_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         """
         return pulumi.get(self, "fallback_pool")
 
     @fallback_pool.setter
-    def fallback_pool(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def fallback_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier ID of the load balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
@@ -549,10 +549,10 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor: pulumi.Input[Optional[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
                  random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
@@ -636,10 +636,10 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']] adaptive_routing: Cross-pool origin configuration. See `adaptive_routing` below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] default_pools: List of default pool IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_pools: List of default pool IDs.
         :param pulumi.Input[_builtins.str] description: The detailed description of the load balancer for easy management and identification.
         :param pulumi.Input[_builtins.bool] enabled: Whether the load balancer is enabled.
-        :param pulumi.Input[_builtins.int] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+        :param pulumi.Input[_builtins.str] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
         :param pulumi.Input[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']] monitor: Monitor configuration for health check. See `monitor` below.
         :param pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']] random_steering: Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `random_steering` below.
@@ -742,10 +742,10 @@ class LoadBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
                  monitor: pulumi.Input[Optional[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
                  random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
@@ -805,11 +805,11 @@ class LoadBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-            default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
-            load_balancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+            fallback_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
             monitor: pulumi.Input[Optional[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
             random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
@@ -829,11 +829,11 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']] adaptive_routing: Cross-pool origin configuration. See `adaptive_routing` below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] default_pools: List of default pool IDs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_pools: List of default pool IDs.
         :param pulumi.Input[_builtins.str] description: The detailed description of the load balancer for easy management and identification.
         :param pulumi.Input[_builtins.bool] enabled: Whether the load balancer is enabled.
-        :param pulumi.Input[_builtins.int] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
-        :param pulumi.Input[_builtins.int] load_balancer_id: The unique identifier ID of the load balancer.
+        :param pulumi.Input[_builtins.str] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
+        :param pulumi.Input[_builtins.str] load_balancer_id: The unique identifier ID of the load balancer.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
         :param pulumi.Input[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']] monitor: Monitor configuration for health check. See `monitor` below.
         :param pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']] random_steering: Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `random_steering` below.
@@ -879,7 +879,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultPools")
-    def default_pools(self) -> pulumi.Output[Sequence[_builtins.int]]:
+    def default_pools(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         List of default pool IDs.
         """
@@ -903,7 +903,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="fallbackPool")
-    def fallback_pool(self) -> pulumi.Output[_builtins.int]:
+    def fallback_pool(self) -> pulumi.Output[_builtins.str]:
         """
         The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         """
@@ -911,7 +911,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> pulumi.Output[_builtins.int]:
+    def load_balancer_id(self) -> pulumi.Output[_builtins.str]:
         """
         The unique identifier ID of the load balancer.
         """

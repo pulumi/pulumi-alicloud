@@ -87,14 +87,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv6 CIDR block of the VSwitch.
+     * The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
      * 
      */
     @Import(name="ipv6CidrBlockMask")
     private @Nullable Output<Integer> ipv6CidrBlockMask;
 
     /**
-     * @return The IPv6 CIDR block of the VSwitch.
+     * @return The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
      * 
      */
     public Optional<Output<Integer>> ipv6CidrBlockMask() {
@@ -170,6 +170,25 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="vpcIpv6CidrBlock")
+    private @Nullable Output<String> vpcIpv6CidrBlock;
+
+    /**
+     * @return The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<String>> vpcIpv6CidrBlock() {
+        return Optional.ofNullable(this.vpcIpv6CidrBlock);
+    }
+
+    /**
      * The name of the VSwitch.
      * 
      */
@@ -211,6 +230,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
+        this.vpcIpv6CidrBlock = $.vpcIpv6CidrBlock;
         this.vswitchName = $.vswitchName;
         this.zoneId = $.zoneId;
     }
@@ -326,7 +346,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlockMask The IPv6 CIDR block of the VSwitch.
+         * @param ipv6CidrBlockMask The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
          * 
          * @return builder
          * 
@@ -337,7 +357,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlockMask The IPv6 CIDR block of the VSwitch.
+         * @param ipv6CidrBlockMask The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
          * 
          * @return builder
          * 
@@ -436,6 +456,31 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vpcIpv6CidrBlock The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcIpv6CidrBlock(@Nullable Output<String> vpcIpv6CidrBlock) {
+            $.vpcIpv6CidrBlock = vpcIpv6CidrBlock;
+            return this;
+        }
+
+        /**
+         * @param vpcIpv6CidrBlock The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcIpv6CidrBlock(String vpcIpv6CidrBlock) {
+            return vpcIpv6CidrBlock(Output.of(vpcIpv6CidrBlock));
         }
 
         /**

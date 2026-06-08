@@ -167,26 +167,34 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv6 CIDR block of the default VPC.
+     * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
+     * @deprecated
+     * Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * 
      */
+    @Deprecated /* Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
     @Import(name="ipv6CidrBlock")
     private @Nullable Output<String> ipv6CidrBlock;
 
     /**
-     * @return The IPv6 CIDR block of the default VPC.
+     * @return The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
+     * @deprecated
+     * Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * 
      */
+    @Deprecated /* Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
     public Optional<Output<String>> ipv6CidrBlock() {
         return Optional.ofNullable(this.ipv6CidrBlock);
     }
 
     /**
-     * The IPv6 address segment type of the VPC. Value:
+     * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
@@ -194,12 +202,16 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
+     * @deprecated
+     * Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * 
      */
+    @Deprecated /* Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
     @Import(name="ipv6Isp")
     private @Nullable Output<String> ipv6Isp;
 
     /**
-     * @return The IPv6 address segment type of the VPC. Value:
+     * @return The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
@@ -207,7 +219,11 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
+     * @deprecated
+     * Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * 
      */
+    @Deprecated /* Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
     public Optional<Output<String>> ipv6Isp() {
         return Optional.ofNullable(this.ipv6Isp);
     }
@@ -662,32 +678,40 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
          * 
          * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+         * 
          */
+        @Deprecated /* Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
         public Builder ipv6CidrBlock(@Nullable Output<String> ipv6CidrBlock) {
             $.ipv6CidrBlock = ipv6CidrBlock;
             return this;
         }
 
         /**
-         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
          * 
          * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+         * 
          */
+        @Deprecated /* Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
         public Builder ipv6CidrBlock(String ipv6CidrBlock) {
             return ipv6CidrBlock(Output.of(ipv6CidrBlock));
         }
 
         /**
-         * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
+         * @param ipv6Isp The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
          * - `BGP` (default): Alibaba Cloud BGP IPv6.
          * - `ChinaMobile`: China Mobile (single line).
          * - `ChinaUnicom`: China Unicom (single line).
@@ -697,14 +721,18 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+         * 
          */
+        @Deprecated /* Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
         public Builder ipv6Isp(@Nullable Output<String> ipv6Isp) {
             $.ipv6Isp = ipv6Isp;
             return this;
         }
 
         /**
-         * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
+         * @param ipv6Isp The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
          * - `BGP` (default): Alibaba Cloud BGP IPv6.
          * - `ChinaMobile`: China Mobile (single line).
          * - `ChinaUnicom`: China Unicom (single line).
@@ -714,7 +742,11 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+         * 
          */
+        @Deprecated /* Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
         public Builder ipv6Isp(String ipv6Isp) {
             return ipv6Isp(Output.of(ipv6Isp));
         }

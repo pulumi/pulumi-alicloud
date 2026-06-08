@@ -116,6 +116,13 @@ func NewMailAddress(ctx *pulumi.Context,
 	if args.Sendtype == nil {
 		return nil, errors.New("invalid value for required argument 'Sendtype'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MailAddress
 	err := ctx.RegisterResource("alicloud:directmail/mailAddress:MailAddress", name, args, &resource, opts...)

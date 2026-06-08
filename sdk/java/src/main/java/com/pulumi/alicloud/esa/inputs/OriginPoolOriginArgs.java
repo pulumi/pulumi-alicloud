@@ -98,13 +98,13 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="originId")
-    private @Nullable Output<Integer> originId;
+    private @Nullable Output<String> originId;
 
     /**
      * @return Origin ID.
      * 
      */
-    public Optional<Output<Integer>> originId() {
+    public Optional<Output<String>> originId() {
         return Optional.ofNullable(this.originId);
     }
 
@@ -286,7 +286,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder originId(@Nullable Output<Integer> originId) {
+        public Builder originId(@Nullable Output<String> originId) {
             $.originId = originId;
             return this;
         }
@@ -297,7 +297,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder originId(Integer originId) {
+        public Builder originId(String originId) {
             return originId(Output.of(originId));
         }
 

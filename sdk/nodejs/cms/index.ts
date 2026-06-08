@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AddonReleaseArgs, AddonReleaseState } from "./addonRelease";
+export type AddonRelease = import("./addonRelease").AddonRelease;
+export const AddonRelease: typeof import("./addonRelease").AddonRelease = null as any;
+utilities.lazyLoad(exports, ["AddonRelease"], () => require("./addonRelease"));
+
 export { AlarmArgs, AlarmState } from "./alarm";
 export type Alarm = import("./alarm").Alarm;
 export const Alarm: typeof import("./alarm").Alarm = null as any;
@@ -185,6 +190,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cms/addonRelease:AddonRelease":
+                return new AddonRelease(name, <any>undefined, { urn })
             case "alicloud:cms/alarm:Alarm":
                 return new Alarm(name, <any>undefined, { urn })
             case "alicloud:cms/alarmContact:AlarmContact":
@@ -228,6 +235,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cms/addonRelease", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)

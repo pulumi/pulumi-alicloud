@@ -129,6 +129,8 @@ def get_auto_snap_shot_policies(ids: Optional[Sequence[_builtins.str]] = None,
                                 page_size: Optional[_builtins.int] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAutoSnapShotPoliciesResult:
     """
+    > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
     This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
 
     > **NOTE:** Available in 1.202.0+
@@ -173,6 +175,8 @@ def get_auto_snap_shot_policies_output(ids: pulumi.Input[Optional[Optional[Seque
                                        page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutoSnapShotPoliciesResult]:
     """
+    > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
     This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
 
     > **NOTE:** Available in 1.202.0+

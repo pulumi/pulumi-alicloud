@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Esa
         /// List of default pool IDs.
         /// </summary>
         [Output("defaultPools")]
-        public Output<ImmutableArray<int>> DefaultPools { get; private set; } = null!;
+        public Output<ImmutableArray<string>> DefaultPools { get; private set; } = null!;
 
         /// <summary>
         /// The detailed description of the load balancer for easy management and identification.
@@ -135,13 +135,13 @@ namespace Pulumi.AliCloud.Esa
         /// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         /// </summary>
         [Output("fallbackPool")]
-        public Output<int> FallbackPool { get; private set; } = null!;
+        public Output<string> FallbackPool { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier ID of the load balancer.
         /// </summary>
         [Output("loadBalancerId")]
-        public Output<int> LoadBalancerId { get; private set; } = null!;
+        public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
@@ -262,14 +262,14 @@ namespace Pulumi.AliCloud.Esa
         public Input<Inputs.LoadBalancerAdaptiveRoutingArgs>? AdaptiveRouting { get; set; }
 
         [Input("defaultPools", required: true)]
-        private InputList<int>? _defaultPools;
+        private InputList<string>? _defaultPools;
 
         /// <summary>
         /// List of default pool IDs.
         /// </summary>
-        public InputList<int> DefaultPools
+        public InputList<string> DefaultPools
         {
-            get => _defaultPools ?? (_defaultPools = new InputList<int>());
+            get => _defaultPools ?? (_defaultPools = new InputList<string>());
             set => _defaultPools = value;
         }
 
@@ -289,7 +289,7 @@ namespace Pulumi.AliCloud.Esa
         /// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         /// </summary>
         [Input("fallbackPool", required: true)]
-        public Input<int> FallbackPool { get; set; } = null!;
+        public Input<string> FallbackPool { get; set; } = null!;
 
         /// <summary>
         /// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
@@ -372,14 +372,14 @@ namespace Pulumi.AliCloud.Esa
         public Input<Inputs.LoadBalancerAdaptiveRoutingGetArgs>? AdaptiveRouting { get; set; }
 
         [Input("defaultPools")]
-        private InputList<int>? _defaultPools;
+        private InputList<string>? _defaultPools;
 
         /// <summary>
         /// List of default pool IDs.
         /// </summary>
-        public InputList<int> DefaultPools
+        public InputList<string> DefaultPools
         {
-            get => _defaultPools ?? (_defaultPools = new InputList<int>());
+            get => _defaultPools ?? (_defaultPools = new InputList<string>());
             set => _defaultPools = value;
         }
 
@@ -399,13 +399,13 @@ namespace Pulumi.AliCloud.Esa
         /// The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         /// </summary>
         [Input("fallbackPool")]
-        public Input<int>? FallbackPool { get; set; }
+        public Input<string>? FallbackPool { get; set; }
 
         /// <summary>
         /// The unique identifier ID of the load balancer.
         /// </summary>
         [Input("loadBalancerId")]
-        public Input<int>? LoadBalancerId { get; set; }
+        public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
         /// The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.

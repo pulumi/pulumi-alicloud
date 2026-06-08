@@ -552,7 +552,7 @@ class Ipv6Address(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressDescription")
-    def ipv6_address_description(self) -> pulumi.Output[_builtins.str]:
+    def ipv6_address_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         """

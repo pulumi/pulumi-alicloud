@@ -33,8 +33,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.vpc.Network("default", {
- *     ipv6Isp: "BGP",
- *     description: "test",
+ *     description: "example description",
  *     cidrBlock: "10.0.0.0/8",
  *     vpcName: name,
  *     enableIpv6: true,
@@ -110,7 +109,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * Whether to enable the IPv6 network segment. Value:
      */
-    declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIpv6: pulumi.Output<boolean>;
     /**
      * Force delete vpc or not.
      */
@@ -126,9 +125,11 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly ipv4IpamPoolId: pulumi.Output<string | undefined>;
     /**
-     * The IPv6 CIDR block of the default VPC.
+     * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      *
      * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+     *
+     * @deprecated Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
      */
     declare public readonly ipv6CidrBlock: pulumi.Output<string>;
     /**
@@ -136,19 +137,21 @@ export class Network extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ipv6CidrBlocks: pulumi.Output<outputs.vpc.NetworkIpv6CidrBlock[]>;
     /**
-     * The IPv6 address segment type of the VPC. Value:
+     * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
      * - `ChinaTelecom`: China Telecom (single line).
      *
      * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+     *
+     * @deprecated Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
      */
-    declare public readonly ipv6Isp: pulumi.Output<string | undefined>;
+    declare public readonly ipv6Isp: pulumi.Output<string>;
     /**
      * Specifies whether to create the default VPC in the specified region. Valid values:
      */
-    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean>;
     /**
      * . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      *
@@ -355,9 +358,11 @@ export interface NetworkState {
      */
     ipv4IpamPoolId?: pulumi.Input<string | undefined>;
     /**
-     * The IPv6 CIDR block of the default VPC.
+     * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      *
      * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+     *
+     * @deprecated Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
      */
     ipv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
@@ -365,13 +370,15 @@ export interface NetworkState {
      */
     ipv6CidrBlocks?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkIpv6CidrBlock>[] | undefined>;
     /**
-     * The IPv6 address segment type of the VPC. Value:
+     * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
      * - `ChinaTelecom`: China Telecom (single line).
      *
      * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+     *
+     * @deprecated Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
      */
     ipv6Isp?: pulumi.Input<string | undefined>;
     /**
@@ -502,19 +509,23 @@ export interface NetworkArgs {
      */
     ipv4IpamPoolId?: pulumi.Input<string | undefined>;
     /**
-     * The IPv6 CIDR block of the default VPC.
+     * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      *
      * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+     *
+     * @deprecated Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
      */
     ipv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The IPv6 address segment type of the VPC. Value:
+     * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
      * - `ChinaTelecom`: China Telecom (single line).
      *
      * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+     *
+     * @deprecated Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
      */
     ipv6Isp?: pulumi.Input<string | undefined>;
     /**

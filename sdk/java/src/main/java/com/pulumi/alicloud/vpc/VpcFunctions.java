@@ -38,6 +38,8 @@ import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv4GatewaysPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesPlainArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksArgs;
+import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6EgressRulesPlainArgs;
 import com.pulumi.alicloud.vpc.inputs.GetIpv6GatewaysArgs;
@@ -107,6 +109,7 @@ import com.pulumi.alicloud.vpc.outputs.GetIpamIpamsResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpsecServersResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv4GatewaysResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6AddressesResult;
+import com.pulumi.alicloud.vpc.outputs.GetIpv6CidrBlocksResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6EgressRulesResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6GatewaysResult;
 import com.pulumi.alicloud.vpc.outputs.GetIpv6InternetBandwidthsResult;
@@ -6865,6 +6868,416 @@ public final class VpcFunctions {
      */
     public static CompletableFuture<GetIpv6AddressesResult> getIpv6AddressesPlain(GetIpv6AddressesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", TypeShape.of(GetIpv6AddressesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPC Ipv6 Cidr Block available to the user.[What is Ipv6 Cidr Block](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateVpcCidrBlock)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlock;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlockArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpv6Pool = new IpamIpamPool("defaultIpv6Pool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv6")
+     *             .build());
+     * 
+     *         var defaultIpv6PoolCidr = new IpamIpamPoolCidr("defaultIpv6PoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .ipamPoolId(defaultIpv6Pool.id())
+     *             .cidr("fd03:d00:a000::/48")
+     *             .build());
+     * 
+     *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("example-ipv6-cidr-block")
+     *             .build());
+     * 
+     *         var defaultIpv6CidrBlock = new Ipv6CidrBlock("defaultIpv6CidrBlock", Ipv6CidrBlockArgs.builder()
+     *             .ipv6IpamPoolId(defaultIpv6PoolCidr.ipamPoolId())
+     *             .vpcId(defaultVpc.id())
+     *             .ipv6CidrBlock("fd03:d00:a000::/60")
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpv6CidrBlocks(GetIpv6CidrBlocksArgs.builder()
+     *             .ids(defaultIpv6CidrBlock.id())
+     *             .vpcId(defaultVpc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIpv6CidrBlocksResult> getIpv6CidrBlocks(GetIpv6CidrBlocksArgs args) {
+        return getIpv6CidrBlocks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPC Ipv6 Cidr Block available to the user.[What is Ipv6 Cidr Block](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateVpcCidrBlock)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlock;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlockArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpv6Pool = new IpamIpamPool("defaultIpv6Pool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv6")
+     *             .build());
+     * 
+     *         var defaultIpv6PoolCidr = new IpamIpamPoolCidr("defaultIpv6PoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .ipamPoolId(defaultIpv6Pool.id())
+     *             .cidr("fd03:d00:a000::/48")
+     *             .build());
+     * 
+     *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("example-ipv6-cidr-block")
+     *             .build());
+     * 
+     *         var defaultIpv6CidrBlock = new Ipv6CidrBlock("defaultIpv6CidrBlock", Ipv6CidrBlockArgs.builder()
+     *             .ipv6IpamPoolId(defaultIpv6PoolCidr.ipamPoolId())
+     *             .vpcId(defaultVpc.id())
+     *             .ipv6CidrBlock("fd03:d00:a000::/60")
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpv6CidrBlocks(GetIpv6CidrBlocksArgs.builder()
+     *             .ids(defaultIpv6CidrBlock.id())
+     *             .vpcId(defaultVpc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIpv6CidrBlocksResult> getIpv6CidrBlocksPlain(GetIpv6CidrBlocksPlainArgs args) {
+        return getIpv6CidrBlocksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides VPC Ipv6 Cidr Block available to the user.[What is Ipv6 Cidr Block](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateVpcCidrBlock)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlock;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlockArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpv6Pool = new IpamIpamPool("defaultIpv6Pool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv6")
+     *             .build());
+     * 
+     *         var defaultIpv6PoolCidr = new IpamIpamPoolCidr("defaultIpv6PoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .ipamPoolId(defaultIpv6Pool.id())
+     *             .cidr("fd03:d00:a000::/48")
+     *             .build());
+     * 
+     *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("example-ipv6-cidr-block")
+     *             .build());
+     * 
+     *         var defaultIpv6CidrBlock = new Ipv6CidrBlock("defaultIpv6CidrBlock", Ipv6CidrBlockArgs.builder()
+     *             .ipv6IpamPoolId(defaultIpv6PoolCidr.ipamPoolId())
+     *             .vpcId(defaultVpc.id())
+     *             .ipv6CidrBlock("fd03:d00:a000::/60")
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpv6CidrBlocks(GetIpv6CidrBlocksArgs.builder()
+     *             .ids(defaultIpv6CidrBlock.id())
+     *             .vpcId(defaultVpc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIpv6CidrBlocksResult> getIpv6CidrBlocks(GetIpv6CidrBlocksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpv6CidrBlocks:getIpv6CidrBlocks", TypeShape.of(GetIpv6CidrBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPC Ipv6 Cidr Block available to the user.[What is Ipv6 Cidr Block](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateVpcCidrBlock)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlock;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlockArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpv6Pool = new IpamIpamPool("defaultIpv6Pool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv6")
+     *             .build());
+     * 
+     *         var defaultIpv6PoolCidr = new IpamIpamPoolCidr("defaultIpv6PoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .ipamPoolId(defaultIpv6Pool.id())
+     *             .cidr("fd03:d00:a000::/48")
+     *             .build());
+     * 
+     *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("example-ipv6-cidr-block")
+     *             .build());
+     * 
+     *         var defaultIpv6CidrBlock = new Ipv6CidrBlock("defaultIpv6CidrBlock", Ipv6CidrBlockArgs.builder()
+     *             .ipv6IpamPoolId(defaultIpv6PoolCidr.ipamPoolId())
+     *             .vpcId(defaultVpc.id())
+     *             .ipv6CidrBlock("fd03:d00:a000::/60")
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpv6CidrBlocks(GetIpv6CidrBlocksArgs.builder()
+     *             .ids(defaultIpv6CidrBlock.id())
+     *             .vpcId(defaultVpc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIpv6CidrBlocksResult> getIpv6CidrBlocks(GetIpv6CidrBlocksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpc/getIpv6CidrBlocks:getIpv6CidrBlocks", TypeShape.of(GetIpv6CidrBlocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides VPC Ipv6 Cidr Block available to the user.[What is Ipv6 Cidr Block](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/AssociateVpcCidrBlock)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.IpamIpam;
+     * import com.pulumi.alicloud.vpc.IpamIpamArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPool;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolArgs;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidr;
+     * import com.pulumi.alicloud.vpc.IpamIpamPoolCidrArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlock;
+     * import com.pulumi.alicloud.vpc.Ipv6CidrBlockArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetIpv6CidrBlocksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultIpam = new IpamIpam("defaultIpam", IpamIpamArgs.builder()
+     *             .operatingRegionLists("cn-hangzhou")
+     *             .build());
+     * 
+     *         var defaultIpv6Pool = new IpamIpamPool("defaultIpv6Pool", IpamIpamPoolArgs.builder()
+     *             .ipamScopeId(defaultIpam.privateDefaultScopeId())
+     *             .poolRegionId(defaultIpam.regionId())
+     *             .ipVersion("IPv6")
+     *             .build());
+     * 
+     *         var defaultIpv6PoolCidr = new IpamIpamPoolCidr("defaultIpv6PoolCidr", IpamIpamPoolCidrArgs.builder()
+     *             .ipamPoolId(defaultIpv6Pool.id())
+     *             .cidr("fd03:d00:a000::/48")
+     *             .build());
+     * 
+     *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("example-ipv6-cidr-block")
+     *             .build());
+     * 
+     *         var defaultIpv6CidrBlock = new Ipv6CidrBlock("defaultIpv6CidrBlock", Ipv6CidrBlockArgs.builder()
+     *             .ipv6IpamPoolId(defaultIpv6PoolCidr.ipamPoolId())
+     *             .vpcId(defaultVpc.id())
+     *             .ipv6CidrBlock("fd03:d00:a000::/60")
+     *             .build());
+     * 
+     *         final var default = VpcFunctions.getIpv6CidrBlocks(GetIpv6CidrBlocksArgs.builder()
+     *             .ids(defaultIpv6CidrBlock.id())
+     *             .vpcId(defaultVpc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpcIpv6CidrBlockExampleId", default_.applyValue(_default_ -> _default_.blocks()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIpv6CidrBlocksResult> getIpv6CidrBlocksPlain(GetIpv6CidrBlocksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpc/getIpv6CidrBlocks:getIpv6CidrBlocks", TypeShape.of(GetIpv6CidrBlocksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Vpc Ipv6 Egress Rules of the current Alibaba Cloud user.
@@ -13895,6 +14308,8 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
+     * &gt; **NOTE:** Available since v1.7.2.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -13957,6 +14372,8 @@ public final class VpcFunctions {
     }
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.7.2.
      * 
      * ## Example Usage
      * 
@@ -14021,6 +14438,8 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
+     * &gt; **NOTE:** Available since v1.7.2.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14083,6 +14502,8 @@ public final class VpcFunctions {
     }
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.7.2.
      * 
      * ## Example Usage
      * 
@@ -14147,6 +14568,8 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
+     * &gt; **NOTE:** Available since v1.7.2.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14210,6 +14633,8 @@ public final class VpcFunctions {
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
      * 
+     * &gt; **NOTE:** Available since v1.7.2.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14272,6 +14697,8 @@ public final class VpcFunctions {
     }
     /**
      * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+     * 
+     * &gt; **NOTE:** Available since v1.7.2.
      * 
      * ## Example Usage
      * 

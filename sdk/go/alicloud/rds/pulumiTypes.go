@@ -226,14 +226,23 @@ func (o AiInstanceStorageConfigListArrayOutput) Index(i pulumi.IntInput) AiInsta
 }
 
 type CustomDataDisk struct {
-	// Instance storage type
-	// local_ssd: local SSD disk
-	// cloud_essd:ESSD PL1 cloud disk
+	// The type of data disk. Valid values:
 	Category *string `pulumi:"category"`
-	// Cloud Disk Performance
-	// Currently only supports PL1
+	// The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+	// - `PL0`
+	// - `PL1` (default)
+	// - `PL2`
+	// - `PL3`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// Instance storage space. Unit: GB.
+	// The size of the data disk, in GiB. Valid values:
+	// - cloud_efficiency: 20 to 32,768.
+	// - cloud_ssd: 20 to 32,768.
+	// - cloud_auto: 1 to 65,536.
+	// - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+	// - PL0: 1 to 65,536.
+	// - PL1: 20 to 65,536.
+	// - PL2: 461 to 65,536.
+	// - PL3: 1,261 to 65,536.
 	Size *int `pulumi:"size"`
 }
 
@@ -249,14 +258,23 @@ type CustomDataDiskInput interface {
 }
 
 type CustomDataDiskArgs struct {
-	// Instance storage type
-	// local_ssd: local SSD disk
-	// cloud_essd:ESSD PL1 cloud disk
+	// The type of data disk. Valid values:
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Cloud Disk Performance
-	// Currently only supports PL1
+	// The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+	// - `PL0`
+	// - `PL1` (default)
+	// - `PL2`
+	// - `PL3`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// Instance storage space. Unit: GB.
+	// The size of the data disk, in GiB. Valid values:
+	// - cloud_efficiency: 20 to 32,768.
+	// - cloud_ssd: 20 to 32,768.
+	// - cloud_auto: 1 to 65,536.
+	// - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+	// - PL0: 1 to 65,536.
+	// - PL1: 20 to 65,536.
+	// - PL2: 461 to 65,536.
+	// - PL3: 1,261 to 65,536.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -311,20 +329,29 @@ func (o CustomDataDiskOutput) ToCustomDataDiskOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Instance storage type
-// local_ssd: local SSD disk
-// cloud_essd:ESSD PL1 cloud disk
+// The type of data disk. Valid values:
 func (o CustomDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Cloud Disk Performance
-// Currently only supports PL1
+// The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+// - `PL0`
+// - `PL1` (default)
+// - `PL2`
+// - `PL3`.
 func (o CustomDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Instance storage space. Unit: GB.
+// The size of the data disk, in GiB. Valid values:
+// - cloud_efficiency: 20 to 32,768.
+// - cloud_ssd: 20 to 32,768.
+// - cloud_auto: 1 to 65,536.
+// - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+// - PL0: 1 to 65,536.
+// - PL1: 20 to 65,536.
+// - PL2: 461 to 65,536.
+// - PL3: 1,261 to 65,536.
 func (o CustomDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CustomDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -350,9 +377,9 @@ func (o CustomDataDiskArrayOutput) Index(i pulumi.IntInput) CustomDataDiskOutput
 }
 
 type CustomSystemDisk struct {
-	// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+	// The system disk category. Valid values:
 	Category *string `pulumi:"category"`
-	// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+	// The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
 	Size *string `pulumi:"size"`
 }
 
@@ -368,9 +395,9 @@ type CustomSystemDiskInput interface {
 }
 
 type CustomSystemDiskArgs struct {
-	// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+	// The system disk category. Valid values:
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+	// The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
 	Size pulumi.StringPtrInput `pulumi:"size"`
 }
 
@@ -451,12 +478,12 @@ func (o CustomSystemDiskOutput) ToCustomSystemDiskPtrOutputWithContext(ctx conte
 	}).(CustomSystemDiskPtrOutput)
 }
 
-// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+// The system disk category. Valid values:
 func (o CustomSystemDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+// The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
 func (o CustomSystemDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomSystemDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
@@ -485,7 +512,7 @@ func (o CustomSystemDiskPtrOutput) Elem() CustomSystemDiskOutput {
 	}).(CustomSystemDiskOutput)
 }
 
-// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+// The system disk category. Valid values:
 func (o CustomSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomSystemDisk) *string {
 		if v == nil {
@@ -495,7 +522,7 @@ func (o CustomSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+// The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
 func (o CustomSystemDiskPtrOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomSystemDisk) *string {
 		if v == nil {

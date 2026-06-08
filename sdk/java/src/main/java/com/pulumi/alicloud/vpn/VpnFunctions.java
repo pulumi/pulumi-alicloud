@@ -8,6 +8,8 @@ import com.pulumi.alicloud.vpn.inputs.GetConnectionsArgs;
 import com.pulumi.alicloud.vpn.inputs.GetConnectionsPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysArgs;
 import com.pulumi.alicloud.vpn.inputs.GetCustomerGatewaysPlainArgs;
+import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVcoRoutesPlainArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewayVpnAttachmentsArgs;
@@ -18,6 +20,7 @@ import com.pulumi.alicloud.vpn.inputs.GetGatewaysArgs;
 import com.pulumi.alicloud.vpn.inputs.GetGatewaysPlainArgs;
 import com.pulumi.alicloud.vpn.outputs.GetConnectionsResult;
 import com.pulumi.alicloud.vpn.outputs.GetCustomerGatewaysResult;
+import com.pulumi.alicloud.vpn.outputs.GetGatewayEnhancedVpnGatewaysResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVcoRoutesResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayVpnAttachmentsResult;
 import com.pulumi.alicloud.vpn.outputs.GetGatewayZonesResult;
@@ -652,6 +655,594 @@ public final class VpnFunctions {
      */
     public static CompletableFuture<GetCustomerGatewaysResult> getCustomerGatewaysPlain(GetCustomerGatewaysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:vpn/getCustomerGateways:getCustomerGateways", TypeShape.of(GetCustomerGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGateways() {
+        return getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGatewaysPlain() {
+        return getGatewayEnhancedVpnGatewaysPlain(GetGatewayEnhancedVpnGatewaysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs args) {
+        return getGatewayEnhancedVpnGateways(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGatewaysPlain(GetGatewayEnhancedVpnGatewaysPlainArgs args) {
+        return getGatewayEnhancedVpnGatewaysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpn/getGatewayEnhancedVpnGateways:getGatewayEnhancedVpnGateways", TypeShape.of(GetGatewayEnhancedVpnGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:vpn/getGatewayEnhancedVpnGateways:getGatewayEnhancedVpnGateways", TypeShape.of(GetGatewayEnhancedVpnGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Vpn Gateway Enhanced Vpn Gateway available to the user.[What is Enhanced Vpn Gateway](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateEnhancedVpnGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.280.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGateway;
+     * import com.pulumi.alicloud.vpn.GatewayEnhancedVpnGatewayArgs;
+     * import com.pulumi.alicloud.vpn.VpnFunctions;
+     * import com.pulumi.alicloud.vpn.inputs.GetGatewayEnhancedVpnGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var region = config.get("region").orElse("ap-southeast-3");
+     *         final var zone2 = config.get("zone2").orElse("ap-southeast-3a");
+     *         final var zone1 = config.get("zone1").orElse("ap-southeast-3b");
+     *         var defaulttYTx5F = new Network("defaulttYTx5F", NetworkArgs.builder()
+     *             .cidrBlock("192.168.0.0/16")
+     *             .isDefault(false)
+     *             .build());
+     * 
+     *         var defaultTRk7k3 = new Switch("defaultTRk7k3", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone1)
+     *             .cidrBlock("192.168.10.0/24")
+     *             .build());
+     * 
+     *         var default23kGFr = new Switch("default23kGFr", SwitchArgs.builder()
+     *             .vpcId(defaulttYTx5F.id())
+     *             .zoneId(zone2)
+     *             .cidrBlock("192.168.20.0/24")
+     *             .build());
+     * 
+     *         var defaultGatewayEnhancedVpnGateway = new GatewayEnhancedVpnGateway("defaultGatewayEnhancedVpnGateway", GatewayEnhancedVpnGatewayArgs.builder()
+     *             .vpnType("Normal")
+     *             .description("default")
+     *             .disasterRecoveryVswitchId(default23kGFr.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .vpnGatewayName("default")
+     *             .networkType("public")
+     *             .vswitchId(defaultTRk7k3.id())
+     *             .gatewayType("Enhanced.SiteToSite")
+     *             .autoPropagate(false)
+     *             .build());
+     * 
+     *         final var default = VpnFunctions.getGatewayEnhancedVpnGateways(GetGatewayEnhancedVpnGatewaysArgs.builder()
+     *             .ids(defaultGatewayEnhancedVpnGateway.id())
+     *             .vpcId(defaulttYTx5F.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudVpnGatewayEnhancedVpnGatewayExampleId", default_.applyValue(_default_ -> _default_.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewayEnhancedVpnGatewaysResult> getGatewayEnhancedVpnGatewaysPlain(GetGatewayEnhancedVpnGatewaysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:vpn/getGatewayEnhancedVpnGateways:getGatewayEnhancedVpnGateways", TypeShape.of(GetGatewayEnhancedVpnGatewaysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.

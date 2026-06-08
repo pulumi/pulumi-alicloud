@@ -1194,11 +1194,11 @@ func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResour
 }
 
 type NetworkIpv6CidrBlock struct {
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
@@ -1220,11 +1220,11 @@ type NetworkIpv6CidrBlockInput interface {
 }
 
 type NetworkIpv6CidrBlockArgs struct {
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
 	Ipv6CidrBlock pulumi.StringPtrInput `pulumi:"ipv6CidrBlock"`
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
@@ -1285,14 +1285,14 @@ func (o NetworkIpv6CidrBlockOutput) ToNetworkIpv6CidrBlockOutputWithContext(ctx 
 	return o
 }
 
-// The IPv6 CIDR block of the default VPC.
+// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 //
 // > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
 func (o NetworkIpv6CidrBlockOutput) Ipv6CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkIpv6CidrBlock) *string { return v.Ipv6CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 address segment type of the VPC. Value:
+// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 // - `BGP` (default): Alibaba Cloud BGP IPv6.
 // - `ChinaMobile`: China Mobile (single line).
 // - `ChinaUnicom`: China Unicom (single line).
@@ -5841,6 +5841,112 @@ func (o GetIpv6AddressesAddressArrayOutput) Index(i pulumi.IntInput) GetIpv6Addr
 	}).(GetIpv6AddressesAddressOutput)
 }
 
+type GetIpv6CidrBlocksBlock struct {
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The additional IPv6 CIDR block to be removed.
+	Ipv6CidrBlock string `pulumi:"ipv6CidrBlock"`
+}
+
+// GetIpv6CidrBlocksBlockInput is an input type that accepts GetIpv6CidrBlocksBlockArgs and GetIpv6CidrBlocksBlockOutput values.
+// You can construct a concrete instance of `GetIpv6CidrBlocksBlockInput` via:
+//
+//	GetIpv6CidrBlocksBlockArgs{...}
+type GetIpv6CidrBlocksBlockInput interface {
+	pulumi.Input
+
+	ToGetIpv6CidrBlocksBlockOutput() GetIpv6CidrBlocksBlockOutput
+	ToGetIpv6CidrBlocksBlockOutputWithContext(context.Context) GetIpv6CidrBlocksBlockOutput
+}
+
+type GetIpv6CidrBlocksBlockArgs struct {
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The additional IPv6 CIDR block to be removed.
+	Ipv6CidrBlock pulumi.StringInput `pulumi:"ipv6CidrBlock"`
+}
+
+func (GetIpv6CidrBlocksBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6CidrBlocksBlock)(nil)).Elem()
+}
+
+func (i GetIpv6CidrBlocksBlockArgs) ToGetIpv6CidrBlocksBlockOutput() GetIpv6CidrBlocksBlockOutput {
+	return i.ToGetIpv6CidrBlocksBlockOutputWithContext(context.Background())
+}
+
+func (i GetIpv6CidrBlocksBlockArgs) ToGetIpv6CidrBlocksBlockOutputWithContext(ctx context.Context) GetIpv6CidrBlocksBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6CidrBlocksBlockOutput)
+}
+
+// GetIpv6CidrBlocksBlockArrayInput is an input type that accepts GetIpv6CidrBlocksBlockArray and GetIpv6CidrBlocksBlockArrayOutput values.
+// You can construct a concrete instance of `GetIpv6CidrBlocksBlockArrayInput` via:
+//
+//	GetIpv6CidrBlocksBlockArray{ GetIpv6CidrBlocksBlockArgs{...} }
+type GetIpv6CidrBlocksBlockArrayInput interface {
+	pulumi.Input
+
+	ToGetIpv6CidrBlocksBlockArrayOutput() GetIpv6CidrBlocksBlockArrayOutput
+	ToGetIpv6CidrBlocksBlockArrayOutputWithContext(context.Context) GetIpv6CidrBlocksBlockArrayOutput
+}
+
+type GetIpv6CidrBlocksBlockArray []GetIpv6CidrBlocksBlockInput
+
+func (GetIpv6CidrBlocksBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6CidrBlocksBlock)(nil)).Elem()
+}
+
+func (i GetIpv6CidrBlocksBlockArray) ToGetIpv6CidrBlocksBlockArrayOutput() GetIpv6CidrBlocksBlockArrayOutput {
+	return i.ToGetIpv6CidrBlocksBlockArrayOutputWithContext(context.Background())
+}
+
+func (i GetIpv6CidrBlocksBlockArray) ToGetIpv6CidrBlocksBlockArrayOutputWithContext(ctx context.Context) GetIpv6CidrBlocksBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIpv6CidrBlocksBlockArrayOutput)
+}
+
+type GetIpv6CidrBlocksBlockOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6CidrBlocksBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpv6CidrBlocksBlock)(nil)).Elem()
+}
+
+func (o GetIpv6CidrBlocksBlockOutput) ToGetIpv6CidrBlocksBlockOutput() GetIpv6CidrBlocksBlockOutput {
+	return o
+}
+
+func (o GetIpv6CidrBlocksBlockOutput) ToGetIpv6CidrBlocksBlockOutputWithContext(ctx context.Context) GetIpv6CidrBlocksBlockOutput {
+	return o
+}
+
+// The ID of the resource supplied above.
+func (o GetIpv6CidrBlocksBlockOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6CidrBlocksBlock) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The additional IPv6 CIDR block to be removed.
+func (o GetIpv6CidrBlocksBlockOutput) Ipv6CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpv6CidrBlocksBlock) string { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
+}
+
+type GetIpv6CidrBlocksBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIpv6CidrBlocksBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIpv6CidrBlocksBlock)(nil)).Elem()
+}
+
+func (o GetIpv6CidrBlocksBlockArrayOutput) ToGetIpv6CidrBlocksBlockArrayOutput() GetIpv6CidrBlocksBlockArrayOutput {
+	return o
+}
+
+func (o GetIpv6CidrBlocksBlockArrayOutput) ToGetIpv6CidrBlocksBlockArrayOutputWithContext(ctx context.Context) GetIpv6CidrBlocksBlockArrayOutput {
+	return o
+}
+
+func (o GetIpv6CidrBlocksBlockArrayOutput) Index(i pulumi.IntInput) GetIpv6CidrBlocksBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIpv6CidrBlocksBlock {
+		return vs[0].([]GetIpv6CidrBlocksBlock)[vs[1].(int)]
+	}).(GetIpv6CidrBlocksBlockOutput)
+}
+
 type GetIpv6EgressRulesRule struct {
 	// The description of the egress-only rule.
 	Description string `pulumi:"description"`
@@ -9902,6 +10008,8 @@ type GetSwitchesVswitch struct {
 	CreationTime string `pulumi:"creationTime"`
 	// Description of the vSwitch.
 	Description string `pulumi:"description"`
+	// Whether the IPv6 function is enabled in the vSwitch.
+	EnableIpv6 bool `pulumi:"enableIpv6"`
 	// ID of the vSwitch.
 	Id string `pulumi:"id"`
 	// The IPv6 CIDR block of the switch.
@@ -9948,6 +10056,8 @@ type GetSwitchesVswitchArgs struct {
 	CreationTime pulumi.StringInput `pulumi:"creationTime"`
 	// Description of the vSwitch.
 	Description pulumi.StringInput `pulumi:"description"`
+	// Whether the IPv6 function is enabled in the vSwitch.
+	EnableIpv6 pulumi.BoolInput `pulumi:"enableIpv6"`
 	// ID of the vSwitch.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The IPv6 CIDR block of the switch.
@@ -10043,6 +10153,11 @@ func (o GetSwitchesVswitchOutput) CreationTime() pulumi.StringOutput {
 // Description of the vSwitch.
 func (o GetSwitchesVswitchOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSwitchesVswitch) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the IPv6 function is enabled in the vSwitch.
+func (o GetSwitchesVswitchOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSwitchesVswitch) bool { return v.EnableIpv6 }).(pulumi.BoolOutput)
 }
 
 // ID of the vSwitch.
@@ -11095,6 +11210,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv4GatewaysGatewayArrayInput)(nil)).Elem(), GetIpv4GatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressInput)(nil)).Elem(), GetIpv6AddressesAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6AddressesAddressArrayInput)(nil)).Elem(), GetIpv6AddressesAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6CidrBlocksBlockInput)(nil)).Elem(), GetIpv6CidrBlocksBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6CidrBlocksBlockArrayInput)(nil)).Elem(), GetIpv6CidrBlocksBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6EgressRulesRuleInput)(nil)).Elem(), GetIpv6EgressRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6EgressRulesRuleArrayInput)(nil)).Elem(), GetIpv6EgressRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6GatewaysGatewayInput)(nil)).Elem(), GetIpv6GatewaysGatewayArgs{})
@@ -11223,6 +11340,8 @@ func init() {
 	pulumi.RegisterOutputType(GetIpv4GatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6AddressesAddressOutput{})
 	pulumi.RegisterOutputType(GetIpv6AddressesAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetIpv6CidrBlocksBlockOutput{})
+	pulumi.RegisterOutputType(GetIpv6CidrBlocksBlockArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6EgressRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetIpv6EgressRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6GatewaysGatewayOutput{})

@@ -148,19 +148,19 @@ export class Switch extends pulumi.CustomResource {
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
      */
-    declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIpv6: pulumi.Output<boolean>;
     /**
      * The IPv6 CIDR block of the VSwitch.
      */
     declare public /*out*/ readonly ipv6CidrBlock: pulumi.Output<string>;
     /**
-     * The IPv6 CIDR block of the VSwitch.
+     * The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
      */
     declare public readonly ipv6CidrBlockMask: pulumi.Output<number>;
     /**
      * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
      */
-    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean>;
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
@@ -179,6 +179,12 @@ export class Switch extends pulumi.CustomResource {
      * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
     declare public readonly vpcId: pulumi.Output<string>;
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    declare public readonly vpcIpv6CidrBlock: pulumi.Output<string | undefined>;
     /**
      * The name of the VSwitch.
      */
@@ -213,6 +219,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcIpv6CidrBlock"] = state?.vpcIpv6CidrBlock;
             resourceInputs["vswitchName"] = state?.vswitchName;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -226,6 +233,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcIpv6CidrBlock"] = args?.vpcIpv6CidrBlock;
             resourceInputs["vswitchName"] = args?.vswitchName;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -268,7 +276,7 @@ export interface SwitchState {
      */
     ipv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The IPv6 CIDR block of the VSwitch.
+     * The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
      */
     ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
     /**
@@ -293,6 +301,12 @@ export interface SwitchState {
      * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The name of the VSwitch.
      */
@@ -326,7 +340,7 @@ export interface SwitchArgs {
      */
     enableIpv6?: pulumi.Input<boolean | undefined>;
     /**
-     * The IPv6 CIDR block of the VSwitch.
+     * The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
      */
     ipv6CidrBlockMask?: pulumi.Input<number | undefined>;
     /**
@@ -347,6 +361,12 @@ export interface SwitchArgs {
      * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The name of the VSwitch.
      */

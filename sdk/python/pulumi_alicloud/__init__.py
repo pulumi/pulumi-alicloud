@@ -873,6 +873,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "amqp/openSourceAccount",
+  "fqn": "pulumi_alicloud.amqp",
+  "classes": {
+   "alicloud:amqp/openSourceAccount:OpenSourceAccount": "OpenSourceAccount"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "amqp/openSourcePermission",
+  "fqn": "pulumi_alicloud.amqp",
+  "classes": {
+   "alicloud:amqp/openSourcePermission:OpenSourcePermission": "OpenSourcePermission"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "amqp/queue",
   "fqn": "pulumi_alicloud.amqp",
   "classes": {
@@ -969,6 +985,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apigateway/backendModel",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/backendModel:BackendModel": "BackendModel"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/group",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -1029,6 +1053,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
    "alicloud:apigateway/pluginAttachment:PluginAttachment": "PluginAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apigateway/stageModel",
+  "fqn": "pulumi_alicloud.apigateway",
+  "classes": {
+   "alicloud:apigateway/stageModel:StageModel": "StageModel"
   }
  },
  {
@@ -2341,6 +2373,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudstoragegateway",
   "classes": {
    "alicloud:cloudstoragegateway/storageBundle:StorageBundle": "StorageBundle"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cms/addonRelease",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/addonRelease:AddonRelease": "AddonRelease"
   }
  },
  {
@@ -7201,10 +7241,42 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/aicluster",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/aicluster:Aicluster": "Aicluster"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/application",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/application:Application": "Application"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/applicationEndpoint",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/applicationEndpoint:ApplicationEndpoint": "ApplicationEndpoint"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/backupPolicy",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
    "alicloud:polardb/backupPolicy:BackupPolicy": "BackupPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/batchTask",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/batchTask:BatchTask": "BatchTask"
   }
  },
  {
@@ -8181,6 +8253,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ros",
   "classes": {
    "alicloud:ros/stackInstance:StackInstance": "StackInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ros/stackInstances",
+  "fqn": "pulumi_alicloud.ros",
+  "classes": {
+   "alicloud:ros/stackInstances:StackInstances": "StackInstances"
   }
  },
  {
@@ -9241,6 +9321,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "vpc/ipv6CidrBlock",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipv6CidrBlock:Ipv6CidrBlock": "Ipv6CidrBlock"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "vpc/ipv6EgressRule",
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
@@ -9525,6 +9613,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpn",
   "classes": {
    "alicloud:vpn/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpn/gatewayEnhancedVpnGateway",
+  "fqn": "pulumi_alicloud.vpn",
+  "classes": {
+   "alicloud:vpn/gatewayEnhancedVpnGateway:GatewayEnhancedVpnGateway": "GatewayEnhancedVpnGateway"
   }
  },
  {
