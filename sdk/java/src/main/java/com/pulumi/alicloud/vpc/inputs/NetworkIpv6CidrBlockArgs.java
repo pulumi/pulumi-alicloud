@@ -16,7 +16,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
     public static final NetworkIpv6CidrBlockArgs Empty = new NetworkIpv6CidrBlockArgs();
 
     /**
-     * The IPv6 CIDR block of the default VPC.
+     * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
@@ -25,7 +25,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> ipv6CidrBlock;
 
     /**
-     * @return The IPv6 CIDR block of the default VPC.
+     * @return The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
@@ -35,7 +35,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The IPv6 address segment type of the VPC. Value:
+     * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
@@ -48,7 +48,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> ipv6Isp;
 
     /**
-     * @return The IPv6 address segment type of the VPC. Value:
+     * @return The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
@@ -87,7 +87,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
          * 
          * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          * 
@@ -100,7 +100,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
          * 
          * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          * 
@@ -112,7 +112,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
+         * @param ipv6Isp The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
          * - `BGP` (default): Alibaba Cloud BGP IPv6.
          * - `ChinaMobile`: China Mobile (single line).
          * - `ChinaUnicom`: China Unicom (single line).
@@ -129,7 +129,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
+         * @param ipv6Isp The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
          * - `BGP` (default): Alibaba Cloud BGP IPv6.
          * - `ChinaMobile`: China Mobile (single line).
          * - `ChinaUnicom`: China Unicom (single line).

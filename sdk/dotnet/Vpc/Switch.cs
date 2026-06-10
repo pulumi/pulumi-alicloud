@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Vpc
         /// Whether the IPv6 function is enabled in the switch. Value:
         /// </summary>
         [Output("enableIpv6")]
-        public Output<bool?> EnableIpv6 { get; private set; } = null!;
+        public Output<bool> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 CIDR block of the VSwitch.
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv6 CIDR block of the VSwitch.
+        /// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
         /// </summary>
         [Output("ipv6CidrBlockMask")]
         public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Vpc
         /// Specifies whether to create the default VSwitch. Default value: `False`. Valid values:
         /// </summary>
         [Output("isDefault")]
-        public Output<bool?> IsDefault { get; private set; } = null!;
+        public Output<bool> IsDefault { get; private set; } = null!;
 
         /// <summary>
         /// Field `Name` has been deprecated from provider version 1.119.0. New field `VswitchName` instead.
@@ -216,6 +216,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("vpcIpv6CidrBlock")]
+        public Output<string?> VpcIpv6CidrBlock { get; private set; } = null!;
 
         /// <summary>
         /// The name of the VSwitch.
@@ -300,7 +308,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// The IPv6 CIDR block of the VSwitch.
+        /// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
         /// </summary>
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
@@ -334,6 +342,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("vpcIpv6CidrBlock")]
+        public Input<string>? VpcIpv6CidrBlock { get; set; }
 
         /// <summary>
         /// The name of the VSwitch.
@@ -392,7 +408,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv6CidrBlock { get; set; }
 
         /// <summary>
-        /// The IPv6 CIDR block of the VSwitch.
+        /// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
         /// </summary>
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
@@ -432,6 +448,14 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("vpcIpv6CidrBlock")]
+        public Input<string>? VpcIpv6CidrBlock { get; set; }
 
         /// <summary>
         /// The name of the VSwitch.

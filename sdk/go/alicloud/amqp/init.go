@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Exchange{}
 	case "alicloud:amqp/instance:Instance":
 		r = &Instance{}
+	case "alicloud:amqp/openSourceAccount:OpenSourceAccount":
+		r = &OpenSourceAccount{}
+	case "alicloud:amqp/openSourcePermission:OpenSourcePermission":
+		r = &OpenSourcePermission{}
 	case "alicloud:amqp/queue:Queue":
 		r = &Queue{}
 	case "alicloud:amqp/staticAccount:StaticAccount":
@@ -59,6 +63,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"amqp/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"amqp/openSourceAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"amqp/openSourcePermission",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -22,6 +22,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DatabasefilesystemFunctions {
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -65,6 +67,8 @@ public final class DatabasefilesystemFunctions {
         return getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -108,6 +112,8 @@ public final class DatabasefilesystemFunctions {
         return getAutoSnapShotPoliciesPlain(GetAutoSnapShotPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -151,6 +157,8 @@ public final class DatabasefilesystemFunctions {
         return getAutoSnapShotPolicies(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -194,6 +202,8 @@ public final class DatabasefilesystemFunctions {
         return getAutoSnapShotPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -237,6 +247,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -280,6 +292,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
      * 
      * &gt; **NOTE:** Available in 1.202.0+
@@ -323,6 +337,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", TypeShape.of(GetAutoSnapShotPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -373,6 +389,8 @@ public final class DatabasefilesystemFunctions {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -423,6 +441,8 @@ public final class DatabasefilesystemFunctions {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -473,6 +493,8 @@ public final class DatabasefilesystemFunctions {
         return getInstances(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -523,6 +545,8 @@ public final class DatabasefilesystemFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -573,6 +597,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -623,6 +649,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the DBFS Instances of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.136.0+.
@@ -673,6 +701,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:databasefilesystem/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.
@@ -728,6 +758,8 @@ public final class DatabasefilesystemFunctions {
         return getSnapshots(GetSnapshotsArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.
@@ -783,6 +815,8 @@ public final class DatabasefilesystemFunctions {
         return getSnapshotsPlain(GetSnapshotsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.
@@ -838,6 +872,8 @@ public final class DatabasefilesystemFunctions {
         return getSnapshots(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.
@@ -893,6 +929,8 @@ public final class DatabasefilesystemFunctions {
         return getSnapshotsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.
@@ -948,6 +986,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.
@@ -1003,6 +1043,8 @@ public final class DatabasefilesystemFunctions {
         return Deployment.getInstance().invoke("alicloud:databasefilesystem/getSnapshots:getSnapshots", TypeShape.of(GetSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+     * 
      * This data source provides the Dbfs Snapshots of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.156.0+.

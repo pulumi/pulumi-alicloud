@@ -547,6 +547,290 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetOpenSourceAccountsAccount struct {
+	// Description.
+	Description string `pulumi:"description"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// User password.
+	Password string `pulumi:"password"`
+	// User name.
+	UserName string `pulumi:"userName"`
+}
+
+// GetOpenSourceAccountsAccountInput is an input type that accepts GetOpenSourceAccountsAccountArgs and GetOpenSourceAccountsAccountOutput values.
+// You can construct a concrete instance of `GetOpenSourceAccountsAccountInput` via:
+//
+//	GetOpenSourceAccountsAccountArgs{...}
+type GetOpenSourceAccountsAccountInput interface {
+	pulumi.Input
+
+	ToGetOpenSourceAccountsAccountOutput() GetOpenSourceAccountsAccountOutput
+	ToGetOpenSourceAccountsAccountOutputWithContext(context.Context) GetOpenSourceAccountsAccountOutput
+}
+
+type GetOpenSourceAccountsAccountArgs struct {
+	// Description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// User password.
+	Password pulumi.StringInput `pulumi:"password"`
+	// User name.
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetOpenSourceAccountsAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSourceAccountsAccount)(nil)).Elem()
+}
+
+func (i GetOpenSourceAccountsAccountArgs) ToGetOpenSourceAccountsAccountOutput() GetOpenSourceAccountsAccountOutput {
+	return i.ToGetOpenSourceAccountsAccountOutputWithContext(context.Background())
+}
+
+func (i GetOpenSourceAccountsAccountArgs) ToGetOpenSourceAccountsAccountOutputWithContext(ctx context.Context) GetOpenSourceAccountsAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSourceAccountsAccountOutput)
+}
+
+// GetOpenSourceAccountsAccountArrayInput is an input type that accepts GetOpenSourceAccountsAccountArray and GetOpenSourceAccountsAccountArrayOutput values.
+// You can construct a concrete instance of `GetOpenSourceAccountsAccountArrayInput` via:
+//
+//	GetOpenSourceAccountsAccountArray{ GetOpenSourceAccountsAccountArgs{...} }
+type GetOpenSourceAccountsAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSourceAccountsAccountArrayOutput() GetOpenSourceAccountsAccountArrayOutput
+	ToGetOpenSourceAccountsAccountArrayOutputWithContext(context.Context) GetOpenSourceAccountsAccountArrayOutput
+}
+
+type GetOpenSourceAccountsAccountArray []GetOpenSourceAccountsAccountInput
+
+func (GetOpenSourceAccountsAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSourceAccountsAccount)(nil)).Elem()
+}
+
+func (i GetOpenSourceAccountsAccountArray) ToGetOpenSourceAccountsAccountArrayOutput() GetOpenSourceAccountsAccountArrayOutput {
+	return i.ToGetOpenSourceAccountsAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSourceAccountsAccountArray) ToGetOpenSourceAccountsAccountArrayOutputWithContext(ctx context.Context) GetOpenSourceAccountsAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSourceAccountsAccountArrayOutput)
+}
+
+type GetOpenSourceAccountsAccountOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSourceAccountsAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSourceAccountsAccount)(nil)).Elem()
+}
+
+func (o GetOpenSourceAccountsAccountOutput) ToGetOpenSourceAccountsAccountOutput() GetOpenSourceAccountsAccountOutput {
+	return o
+}
+
+func (o GetOpenSourceAccountsAccountOutput) ToGetOpenSourceAccountsAccountOutputWithContext(ctx context.Context) GetOpenSourceAccountsAccountOutput {
+	return o
+}
+
+// Description.
+func (o GetOpenSourceAccountsAccountOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourceAccountsAccount) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetOpenSourceAccountsAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourceAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instance ID.
+func (o GetOpenSourceAccountsAccountOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourceAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// User password.
+func (o GetOpenSourceAccountsAccountOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourceAccountsAccount) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// User name.
+func (o GetOpenSourceAccountsAccountOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourceAccountsAccount) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetOpenSourceAccountsAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSourceAccountsAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSourceAccountsAccount)(nil)).Elem()
+}
+
+func (o GetOpenSourceAccountsAccountArrayOutput) ToGetOpenSourceAccountsAccountArrayOutput() GetOpenSourceAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetOpenSourceAccountsAccountArrayOutput) ToGetOpenSourceAccountsAccountArrayOutputWithContext(ctx context.Context) GetOpenSourceAccountsAccountArrayOutput {
+	return o
+}
+
+func (o GetOpenSourceAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetOpenSourceAccountsAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSourceAccountsAccount {
+		return vs[0].([]GetOpenSourceAccountsAccount)[vs[1].(int)]
+	}).(GetOpenSourceAccountsAccountOutput)
+}
+
+type GetOpenSourcePermissionsPermission struct {
+	// Permission configuration, such as .
+	Configure string `pulumi:"configure"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// Read permission, such as .
+	Read string `pulumi:"read"`
+	// Username.
+	UserName string `pulumi:"userName"`
+	// Vhost of the instance.
+	Vhost string `pulumi:"vhost"`
+	// Write permission, such as .
+	Write string `pulumi:"write"`
+}
+
+// GetOpenSourcePermissionsPermissionInput is an input type that accepts GetOpenSourcePermissionsPermissionArgs and GetOpenSourcePermissionsPermissionOutput values.
+// You can construct a concrete instance of `GetOpenSourcePermissionsPermissionInput` via:
+//
+//	GetOpenSourcePermissionsPermissionArgs{...}
+type GetOpenSourcePermissionsPermissionInput interface {
+	pulumi.Input
+
+	ToGetOpenSourcePermissionsPermissionOutput() GetOpenSourcePermissionsPermissionOutput
+	ToGetOpenSourcePermissionsPermissionOutputWithContext(context.Context) GetOpenSourcePermissionsPermissionOutput
+}
+
+type GetOpenSourcePermissionsPermissionArgs struct {
+	// Permission configuration, such as .
+	Configure pulumi.StringInput `pulumi:"configure"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Read permission, such as .
+	Read pulumi.StringInput `pulumi:"read"`
+	// Username.
+	UserName pulumi.StringInput `pulumi:"userName"`
+	// Vhost of the instance.
+	Vhost pulumi.StringInput `pulumi:"vhost"`
+	// Write permission, such as .
+	Write pulumi.StringInput `pulumi:"write"`
+}
+
+func (GetOpenSourcePermissionsPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSourcePermissionsPermission)(nil)).Elem()
+}
+
+func (i GetOpenSourcePermissionsPermissionArgs) ToGetOpenSourcePermissionsPermissionOutput() GetOpenSourcePermissionsPermissionOutput {
+	return i.ToGetOpenSourcePermissionsPermissionOutputWithContext(context.Background())
+}
+
+func (i GetOpenSourcePermissionsPermissionArgs) ToGetOpenSourcePermissionsPermissionOutputWithContext(ctx context.Context) GetOpenSourcePermissionsPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSourcePermissionsPermissionOutput)
+}
+
+// GetOpenSourcePermissionsPermissionArrayInput is an input type that accepts GetOpenSourcePermissionsPermissionArray and GetOpenSourcePermissionsPermissionArrayOutput values.
+// You can construct a concrete instance of `GetOpenSourcePermissionsPermissionArrayInput` via:
+//
+//	GetOpenSourcePermissionsPermissionArray{ GetOpenSourcePermissionsPermissionArgs{...} }
+type GetOpenSourcePermissionsPermissionArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSourcePermissionsPermissionArrayOutput() GetOpenSourcePermissionsPermissionArrayOutput
+	ToGetOpenSourcePermissionsPermissionArrayOutputWithContext(context.Context) GetOpenSourcePermissionsPermissionArrayOutput
+}
+
+type GetOpenSourcePermissionsPermissionArray []GetOpenSourcePermissionsPermissionInput
+
+func (GetOpenSourcePermissionsPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSourcePermissionsPermission)(nil)).Elem()
+}
+
+func (i GetOpenSourcePermissionsPermissionArray) ToGetOpenSourcePermissionsPermissionArrayOutput() GetOpenSourcePermissionsPermissionArrayOutput {
+	return i.ToGetOpenSourcePermissionsPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSourcePermissionsPermissionArray) ToGetOpenSourcePermissionsPermissionArrayOutputWithContext(ctx context.Context) GetOpenSourcePermissionsPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSourcePermissionsPermissionArrayOutput)
+}
+
+type GetOpenSourcePermissionsPermissionOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSourcePermissionsPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSourcePermissionsPermission)(nil)).Elem()
+}
+
+func (o GetOpenSourcePermissionsPermissionOutput) ToGetOpenSourcePermissionsPermissionOutput() GetOpenSourcePermissionsPermissionOutput {
+	return o
+}
+
+func (o GetOpenSourcePermissionsPermissionOutput) ToGetOpenSourcePermissionsPermissionOutputWithContext(ctx context.Context) GetOpenSourcePermissionsPermissionOutput {
+	return o
+}
+
+// Permission configuration, such as .
+func (o GetOpenSourcePermissionsPermissionOutput) Configure() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.Configure }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetOpenSourcePermissionsPermissionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instance ID.
+func (o GetOpenSourcePermissionsPermissionOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Read permission, such as .
+func (o GetOpenSourcePermissionsPermissionOutput) Read() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.Read }).(pulumi.StringOutput)
+}
+
+// Username.
+func (o GetOpenSourcePermissionsPermissionOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+// Vhost of the instance.
+func (o GetOpenSourcePermissionsPermissionOutput) Vhost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.Vhost }).(pulumi.StringOutput)
+}
+
+// Write permission, such as .
+func (o GetOpenSourcePermissionsPermissionOutput) Write() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSourcePermissionsPermission) string { return v.Write }).(pulumi.StringOutput)
+}
+
+type GetOpenSourcePermissionsPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSourcePermissionsPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSourcePermissionsPermission)(nil)).Elem()
+}
+
+func (o GetOpenSourcePermissionsPermissionArrayOutput) ToGetOpenSourcePermissionsPermissionArrayOutput() GetOpenSourcePermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o GetOpenSourcePermissionsPermissionArrayOutput) ToGetOpenSourcePermissionsPermissionArrayOutputWithContext(ctx context.Context) GetOpenSourcePermissionsPermissionArrayOutput {
+	return o
+}
+
+func (o GetOpenSourcePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) GetOpenSourcePermissionsPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSourcePermissionsPermission {
+		return vs[0].([]GetOpenSourcePermissionsPermission)[vs[1].(int)]
+	}).(GetOpenSourcePermissionsPermissionOutput)
+}
+
 type GetQueuesQueue struct {
 	// The attributes for the Queue.
 	Attributes map[string]string `pulumi:"attributes"`
@@ -989,6 +1273,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExchangesExchangeArrayInput)(nil)).Elem(), GetExchangesExchangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSourceAccountsAccountInput)(nil)).Elem(), GetOpenSourceAccountsAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSourceAccountsAccountArrayInput)(nil)).Elem(), GetOpenSourceAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSourcePermissionsPermissionInput)(nil)).Elem(), GetOpenSourcePermissionsPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSourcePermissionsPermissionArrayInput)(nil)).Elem(), GetOpenSourcePermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueInput)(nil)).Elem(), GetQueuesQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesQueueArrayInput)(nil)).Elem(), GetQueuesQueueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStaticAccountsAccountInput)(nil)).Elem(), GetStaticAccountsAccountArgs{})
@@ -1001,6 +1289,10 @@ func init() {
 	pulumi.RegisterOutputType(GetExchangesExchangeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSourceAccountsAccountOutput{})
+	pulumi.RegisterOutputType(GetOpenSourceAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSourcePermissionsPermissionOutput{})
+	pulumi.RegisterOutputType(GetOpenSourcePermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueOutput{})
 	pulumi.RegisterOutputType(GetQueuesQueueArrayOutput{})
 	pulumi.RegisterOutputType(GetStaticAccountsAccountOutput{})

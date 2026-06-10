@@ -15,6 +15,12 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ApplicationComponentArgs',
+    'ApplicationComponentArgsDict',
+    'ApplicationParameterArgs',
+    'ApplicationParameterArgsDict',
+    'BatchTaskTaskParamArgs',
+    'BatchTaskTaskParamArgsDict',
     'ClusterDbClusterIpArrayArgs',
     'ClusterDbClusterIpArrayArgsDict',
     'ClusterDbRevisionVersionListArgs',
@@ -24,6 +30,172 @@ __all__ = [
     'ParameterGroupParameterArgs',
     'ParameterGroupParameterArgsDict',
 ]
+
+class ApplicationComponentArgsDict(TypedDict):
+    component_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The class/specification of the component.
+    """
+    component_replica: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of replicas for the component.
+    """
+    component_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the component.
+    """
+
+@pulumi.input_type
+class ApplicationComponentArgs:
+    def __init__(__self__, *,
+                 component_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 component_replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 component_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] component_class: The class/specification of the component.
+        :param pulumi.Input[_builtins.int] component_replica: The number of replicas for the component.
+        :param pulumi.Input[_builtins.str] component_type: The type of the component.
+        """
+        if component_class is not None:
+            pulumi.set(__self__, "component_class", component_class)
+        if component_replica is not None:
+            pulumi.set(__self__, "component_replica", component_replica)
+        if component_type is not None:
+            pulumi.set(__self__, "component_type", component_type)
+
+    @_builtins.property
+    @pulumi.getter(name="componentClass")
+    def component_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The class/specification of the component.
+        """
+        return pulumi.get(self, "component_class")
+
+    @component_class.setter
+    def component_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "component_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="componentReplica")
+    def component_replica(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of replicas for the component.
+        """
+        return pulumi.get(self, "component_replica")
+
+    @component_replica.setter
+    def component_replica(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "component_replica", value)
+
+    @_builtins.property
+    @pulumi.getter(name="componentType")
+    def component_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the component.
+        """
+        return pulumi.get(self, "component_type")
+
+    @component_type.setter
+    def component_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "component_type", value)
+
+
+class ApplicationParameterArgsDict(TypedDict):
+    parameter_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the parameter.
+    """
+    parameter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the parameter.
+    """
+
+@pulumi.input_type
+class ApplicationParameterArgs:
+    def __init__(__self__, *,
+                 parameter_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] parameter_name: The name of the parameter.
+        :param pulumi.Input[_builtins.str] parameter_value: The value of the parameter.
+        """
+        if parameter_name is not None:
+            pulumi.set(__self__, "parameter_name", parameter_name)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterName")
+    def parameter_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "parameter_name")
+
+    @parameter_name.setter
+    def parameter_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parameter_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @parameter_value.setter
+    def parameter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parameter_value", value)
+
+
+class BatchTaskTaskParamArgsDict(TypedDict):
+    skill_name: pulumi.Input[_builtins.str]
+    """
+    The name of the skill to be installed or uninstalled. For example, `polar_claw`.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The version of the skill. If not specified, the latest version may be used depending on the task type.
+    """
+
+@pulumi.input_type
+class BatchTaskTaskParamArgs:
+    def __init__(__self__, *,
+                 skill_name: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] skill_name: The name of the skill to be installed or uninstalled. For example, `polar_claw`.
+        :param pulumi.Input[_builtins.str] version: The version of the skill. If not specified, the latest version may be used depending on the task type.
+        """
+        pulumi.set(__self__, "skill_name", skill_name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="skillName")
+    def skill_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the skill to be installed or uninstalled. For example, `polar_claw`.
+        """
+        return pulumi.get(self, "skill_name")
+
+    @skill_name.setter
+    def skill_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "skill_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The version of the skill. If not specified, the latest version may be used depending on the task type.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
 
 class ClusterDbClusterIpArrayArgsDict(TypedDict):
     db_cluster_ip_array_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]

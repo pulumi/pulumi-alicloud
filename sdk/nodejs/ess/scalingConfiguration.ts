@@ -211,9 +211,9 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     declare public readonly instanceTypes: pulumi.Output<string[] | undefined>;
     /**
-     * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * Network billing type, Values: PayByBandwidth or PayByTraffic.
      */
-    declare public readonly internetChargeType: pulumi.Output<string | undefined>;
+    declare public readonly internetChargeType: pulumi.Output<string>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
@@ -590,7 +590,7 @@ export interface ScalingConfigurationState {
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * Network billing type, Values: PayByBandwidth or PayByTraffic.
      */
     internetChargeType?: pulumi.Input<string | undefined>;
     /**
@@ -836,7 +836,7 @@ export interface ScalingConfigurationArgs {
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * Network billing type, Values: PayByBandwidth or PayByTraffic.
      */
     internetChargeType?: pulumi.Input<string | undefined>;
     /**

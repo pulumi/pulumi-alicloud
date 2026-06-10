@@ -61,10 +61,10 @@ class NetworkArgs:
                
                > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
-        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
+        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
                
                > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
-        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Value:
+        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
                - `BGP` (default): Alibaba Cloud BGP IPv6.
                - `ChinaMobile`: China Mobile (single line).
                - `ChinaUnicom`: China Unicom (single line).
@@ -109,7 +109,13 @@ class NetworkArgs:
         if ipv4_ipam_pool_id is not None:
             pulumi.set(__self__, "ipv4_ipam_pool_id", ipv4_ipam_pool_id)
         if ipv6_cidr_block is not None:
+            warnings.warn("""Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""", DeprecationWarning)
+            pulumi.log.warn("""ipv6_cidr_block is deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
+        if ipv6_cidr_block is not None:
             pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
+        if ipv6_isp is not None:
+            warnings.warn("""Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""", DeprecationWarning)
+            pulumi.log.warn("""ipv6_isp is deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
         if ipv6_isp is not None:
             pulumi.set(__self__, "ipv6_isp", ipv6_isp)
         if is_default is not None:
@@ -260,9 +266,10 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
+    @_utilities.deprecated("""Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
     def ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IPv6 CIDR block of the default VPC.
+        The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 
         > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         """
@@ -274,9 +281,10 @@ class NetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
+    @_utilities.deprecated("""Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
     def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IPv6 address segment type of the VPC. Value:
+        The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
         - `ChinaMobile`: China Mobile (single line).
         - `ChinaUnicom`: China Unicom (single line).
@@ -484,11 +492,11 @@ class _NetworkState:
                
                > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
-        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
+        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
                
                > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]] ipv6_cidr_blocks: The IPv6 CIDR block information of the VPC.
-        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Value:
+        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
                - `BGP` (default): Alibaba Cloud BGP IPv6.
                - `ChinaMobile`: China Mobile (single line).
                - `ChinaUnicom`: China Unicom (single line).
@@ -540,9 +548,15 @@ class _NetworkState:
         if ipv4_ipam_pool_id is not None:
             pulumi.set(__self__, "ipv4_ipam_pool_id", ipv4_ipam_pool_id)
         if ipv6_cidr_block is not None:
+            warnings.warn("""Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""", DeprecationWarning)
+            pulumi.log.warn("""ipv6_cidr_block is deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
+        if ipv6_cidr_block is not None:
             pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_cidr_blocks is not None:
             pulumi.set(__self__, "ipv6_cidr_blocks", ipv6_cidr_blocks)
+        if ipv6_isp is not None:
+            warnings.warn("""Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""", DeprecationWarning)
+            pulumi.log.warn("""ipv6_isp is deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
         if ipv6_isp is not None:
             pulumi.set(__self__, "ipv6_isp", ipv6_isp)
         if is_default is not None:
@@ -718,9 +732,10 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
+    @_utilities.deprecated("""Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
     def ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IPv6 CIDR block of the default VPC.
+        The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 
         > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         """
@@ -744,9 +759,10 @@ class _NetworkState:
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
+    @_utilities.deprecated("""Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
     def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IPv6 address segment type of the VPC. Value:
+        The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
         - `ChinaMobile`: China Mobile (single line).
         - `ChinaUnicom`: China Unicom (single line).
@@ -1022,8 +1038,7 @@ class Network(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.vpc.Network("default",
-            ipv6_isp="BGP",
-            description="test",
+            description="example description",
             cidr_block="10.0.0.0/8",
             vpc_name=name,
             enable_ipv6=True)
@@ -1057,10 +1072,10 @@ class Network(pulumi.CustomResource):
                
                > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
-        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
+        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
                
                > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
-        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Value:
+        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
                - `BGP` (default): Alibaba Cloud BGP IPv6.
                - `ChinaMobile`: China Mobile (single line).
                - `ChinaUnicom`: China Unicom (single line).
@@ -1121,8 +1136,7 @@ class Network(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.vpc.Network("default",
-            ipv6_isp="BGP",
-            description="test",
+            description="example description",
             cidr_block="10.0.0.0/8",
             vpc_name=name,
             enable_ipv6=True)
@@ -1276,11 +1290,11 @@ class Network(pulumi.CustomResource):
                
                > **NOTE:**  when you specify the IPAM address pool to create a VPC, enter at least one of the CidrBlock or Ipv4CidrMask parameters.
         :param pulumi.Input[_builtins.str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
-        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
+        :param pulumi.Input[_builtins.str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
                
                > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkIpv6CidrBlockArgs', 'NetworkIpv6CidrBlockArgsDict']]]] ipv6_cidr_blocks: The IPv6 CIDR block information of the VPC.
-        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Value:
+        :param pulumi.Input[_builtins.str] ipv6_isp: The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
                - `BGP` (default): Alibaba Cloud BGP IPv6.
                - `ChinaMobile`: China Mobile (single line).
                - `ChinaUnicom`: China Unicom (single line).
@@ -1400,7 +1414,7 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to enable the IPv6 network segment. Value:
         """
@@ -1434,9 +1448,10 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipv6CidrBlock")
+    @_utilities.deprecated("""Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
     def ipv6_cidr_block(self) -> pulumi.Output[_builtins.str]:
         """
-        The IPv6 CIDR block of the default VPC.
+        The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 
         > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         """
@@ -1452,9 +1467,10 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
-    def ipv6_isp(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.""")
+    def ipv6_isp(self) -> pulumi.Output[_builtins.str]:
         """
-        The IPv6 address segment type of the VPC. Value:
+        The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
         - `ChinaMobile`: China Mobile (single line).
         - `ChinaUnicom`: China Unicom (single line).
@@ -1466,7 +1482,7 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_default(self) -> pulumi.Output[_builtins.bool]:
         """
         Specifies whether to create the default VPC in the specified region. Valid values:
         """

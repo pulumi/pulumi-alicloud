@@ -13,44 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomDataDisk {
     /**
-     * @return Instance storage type
-     * local_ssd: local SSD disk
-     * cloud_essd:ESSD PL1 cloud disk
+     * @return The type of data disk. Valid values:
      * 
      */
     private @Nullable String category;
     /**
-     * @return Cloud Disk Performance
-     * Currently only supports PL1
+     * @return The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+     * - `PL0`
+     * - `PL1` (default)
+     * - `PL2`
+     * - `PL3`.
      * 
      */
     private @Nullable String performanceLevel;
     /**
-     * @return Instance storage space. Unit: GB.
+     * @return The size of the data disk, in GiB. Valid values:
+     * - cloud_efficiency: 20 to 32,768.
+     * - cloud_ssd: 20 to 32,768.
+     * - cloud_auto: 1 to 65,536.
+     * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+     * - PL0: 1 to 65,536.
+     * - PL1: 20 to 65,536.
+     * - PL2: 461 to 65,536.
+     * - PL3: 1,261 to 65,536.
      * 
      */
     private @Nullable Integer size;
 
     private CustomDataDisk() {}
     /**
-     * @return Instance storage type
-     * local_ssd: local SSD disk
-     * cloud_essd:ESSD PL1 cloud disk
+     * @return The type of data disk. Valid values:
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Cloud Disk Performance
-     * Currently only supports PL1
+     * @return The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+     * - `PL0`
+     * - `PL1` (default)
+     * - `PL2`
+     * - `PL3`.
      * 
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return Instance storage space. Unit: GB.
+     * @return The size of the data disk, in GiB. Valid values:
+     * - cloud_efficiency: 20 to 32,768.
+     * - cloud_ssd: 20 to 32,768.
+     * - cloud_auto: 1 to 65,536.
+     * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+     * - PL0: 1 to 65,536.
+     * - PL1: 20 to 65,536.
+     * - PL2: 461 to 65,536.
+     * - PL3: 1,261 to 65,536.
      * 
      */
     public Optional<Integer> size() {

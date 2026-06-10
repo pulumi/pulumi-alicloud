@@ -43,10 +43,10 @@ export class Subnet extends pulumi.CustomResource {
     declare public readonly cidrBlock: pulumi.Output<string>;
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string | undefined>;
-    declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
+    declare public readonly enableIpv6: pulumi.Output<boolean>;
     declare public /*out*/ readonly ipv6CidrBlock: pulumi.Output<string>;
     declare public readonly ipv6CidrBlockMask: pulumi.Output<number>;
-    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -54,6 +54,7 @@ export class Subnet extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly vpcId: pulumi.Output<string>;
+    declare public readonly vpcIpv6CidrBlock: pulumi.Output<string | undefined>;
     declare public readonly vswitchName: pulumi.Output<string>;
     declare public readonly zoneId: pulumi.Output<string>;
 
@@ -85,6 +86,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcIpv6CidrBlock"] = state?.vpcIpv6CidrBlock;
             resourceInputs["vswitchName"] = state?.vswitchName;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -98,6 +100,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcIpv6CidrBlock"] = args?.vpcIpv6CidrBlock;
             resourceInputs["vswitchName"] = args?.vswitchName;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -131,6 +134,7 @@ export interface SubnetState {
     status?: pulumi.Input<string | undefined>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     vpcId?: pulumi.Input<string | undefined>;
+    vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
     vswitchName?: pulumi.Input<string | undefined>;
     zoneId?: pulumi.Input<string | undefined>;
 }
@@ -154,6 +158,7 @@ export interface SubnetArgs {
     name?: pulumi.Input<string | undefined>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     vpcId?: pulumi.Input<string | undefined>;
+    vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
     vswitchName?: pulumi.Input<string | undefined>;
     zoneId?: pulumi.Input<string | undefined>;
 }

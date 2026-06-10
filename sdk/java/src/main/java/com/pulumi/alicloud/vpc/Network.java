@@ -64,8 +64,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Network("default", NetworkArgs.builder()
- *             .ipv6Isp("BGP")
- *             .description("test")
+ *             .description("example description")
  *             .cidrBlock("10.0.0.0/8")
  *             .vpcName(name)
  *             .enableIpv6(true)
@@ -186,14 +185,14 @@ public class Network extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableIpv6;
+    private Output<Boolean> enableIpv6;
 
     /**
      * @return Whether to enable the IPv6 network segment. Value:
      * 
      */
-    public Output<Optional<Boolean>> enableIpv6() {
-        return Codegen.optional(this.enableIpv6);
+    public Output<Boolean> enableIpv6() {
+        return this.enableIpv6;
     }
     /**
      * Force delete vpc or not.
@@ -242,16 +241,20 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipv4IpamPoolId);
     }
     /**
-     * The IPv6 CIDR block of the default VPC.
+     * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
+     * @deprecated
+     * Field &#39;ipv6_cidr_block&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * 
      */
+    @Deprecated /* Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
     @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
 
     /**
-     * @return The IPv6 CIDR block of the default VPC.
+     * @return The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
      * 
      * &gt; **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
      * 
@@ -274,7 +277,7 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.ipv6CidrBlocks;
     }
     /**
-     * The IPv6 address segment type of the VPC. Value:
+     * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
@@ -282,12 +285,16 @@ public class Network extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
+     * @deprecated
+     * Field &#39;ipv6_isp&#39; has been deprecated from provider version 1.280.0. Please use the new resource &#39;alicloud_vpc_ipv6_cidr_block&#39;.
+     * 
      */
+    @Deprecated /* Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'. */
     @Export(name="ipv6Isp", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ipv6Isp;
+    private Output<String> ipv6Isp;
 
     /**
-     * @return The IPv6 address segment type of the VPC. Value:
+     * @return The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
      * - `BGP` (default): Alibaba Cloud BGP IPv6.
      * - `ChinaMobile`: China Mobile (single line).
      * - `ChinaUnicom`: China Unicom (single line).
@@ -296,22 +303,22 @@ public class Network extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
      * 
      */
-    public Output<Optional<String>> ipv6Isp() {
-        return Codegen.optional(this.ipv6Isp);
+    public Output<String> ipv6Isp() {
+        return this.ipv6Isp;
     }
     /**
      * Specifies whether to create the default VPC in the specified region. Valid values:
      * 
      */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isDefault;
+    private Output<Boolean> isDefault;
 
     /**
      * @return Specifies whether to create the default VPC in the specified region. Valid values:
      * 
      */
-    public Output<Optional<Boolean>> isDefault() {
-        return Codegen.optional(this.isDefault);
+    public Output<Boolean> isDefault() {
+        return this.isDefault;
     }
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE:** This resource has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+ *
  * Provides a Dbfs Auto Snap Shot Policy resource.
  *
  * For information about Dbfs Auto Snap Shot Policy and how to use it.

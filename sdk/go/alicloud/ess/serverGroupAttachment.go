@@ -173,15 +173,16 @@ type ServerGroupAttachment struct {
 	// server group from scaling group. Default to false.
 	ForceAttach pulumi.BoolPtrOutput `pulumi:"forceAttach"`
 	// The port will be used for Server Group backend server.
-	Port pulumi.IntOutput `pulumi:"port"`
+	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// ID of Server Group.
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
-	// The type of server group N. Valid values: ALB, NLB.
+	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The weight of an ECS instance attached to the Server Group.
-	Weight pulumi.IntOutput `pulumi:"weight"`
+	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
 
 // NewServerGroupAttachment registers a new resource with the given unique name, arguments, and options.
@@ -191,9 +192,6 @@ func NewServerGroupAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Port == nil {
-		return nil, errors.New("invalid value for required argument 'Port'")
-	}
 	if args.ScalingGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ScalingGroupId'")
 	}
@@ -202,9 +200,6 @@ func NewServerGroupAttachment(ctx *pulumi.Context,
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
-	}
-	if args.Weight == nil {
-		return nil, errors.New("invalid value for required argument 'Weight'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerGroupAttachment
@@ -238,7 +233,8 @@ type serverGroupAttachmentState struct {
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// ID of Server Group.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// The type of server group N. Valid values: ALB, NLB.
+	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type *string `pulumi:"type"`
 	// The weight of an ECS instance attached to the Server Group.
 	Weight *int `pulumi:"weight"`
@@ -254,7 +250,8 @@ type ServerGroupAttachmentState struct {
 	ScalingGroupId pulumi.StringPtrInput
 	// ID of Server Group.
 	ServerGroupId pulumi.StringPtrInput
-	// The type of server group N. Valid values: ALB, NLB.
+	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type pulumi.StringPtrInput
 	// The weight of an ECS instance attached to the Server Group.
 	Weight pulumi.IntPtrInput
@@ -269,15 +266,16 @@ type serverGroupAttachmentArgs struct {
 	// server group from scaling group. Default to false.
 	ForceAttach *bool `pulumi:"forceAttach"`
 	// The port will be used for Server Group backend server.
-	Port int `pulumi:"port"`
+	Port *int `pulumi:"port"`
 	// ID of the scaling group.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// ID of Server Group.
 	ServerGroupId string `pulumi:"serverGroupId"`
-	// The type of server group N. Valid values: ALB, NLB.
+	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type string `pulumi:"type"`
 	// The weight of an ECS instance attached to the Server Group.
-	Weight int `pulumi:"weight"`
+	Weight *int `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a ServerGroupAttachment resource.
@@ -286,15 +284,16 @@ type ServerGroupAttachmentArgs struct {
 	// server group from scaling group. Default to false.
 	ForceAttach pulumi.BoolPtrInput
 	// The port will be used for Server Group backend server.
-	Port pulumi.IntInput
+	Port pulumi.IntPtrInput
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringInput
 	// ID of Server Group.
 	ServerGroupId pulumi.StringInput
-	// The type of server group N. Valid values: ALB, NLB.
+	// The type of server group N. Valid values: ALB, NLB, GWLB.
+	// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 	Type pulumi.StringInput
 	// The weight of an ECS instance attached to the Server Group.
-	Weight pulumi.IntInput
+	Weight pulumi.IntPtrInput
 }
 
 func (ServerGroupAttachmentArgs) ElementType() reflect.Type {
@@ -391,8 +390,8 @@ func (o ServerGroupAttachmentOutput) ForceAttach() pulumi.BoolPtrOutput {
 }
 
 // The port will be used for Server Group backend server.
-func (o ServerGroupAttachmentOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+func (o ServerGroupAttachmentOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // ID of the scaling group.
@@ -405,14 +404,15 @@ func (o ServerGroupAttachmentOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.StringOutput { return v.ServerGroupId }).(pulumi.StringOutput)
 }
 
-// The type of server group N. Valid values: ALB, NLB.
+// The type of server group N. Valid values: ALB, NLB, GWLB.
+// > **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
 func (o ServerGroupAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // The weight of an ECS instance attached to the Server Group.
-func (o ServerGroupAttachmentOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+func (o ServerGroupAttachmentOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupAttachment) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
 }
 
 type ServerGroupAttachmentArrayOutput struct{ *pulumi.OutputState }

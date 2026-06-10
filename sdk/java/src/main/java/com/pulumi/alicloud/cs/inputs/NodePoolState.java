@@ -264,16 +264,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * The operating system image type and the `platform` parameter can be selected from the following values:
      * - `AliyunLinux` : Alinux2 image.
      * - `AliyunLinux3` : Alinux3 image.
-     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinux3Arm64` : Alinux3 image ARM version.
      * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
      * - `CentOS` : CentOS image.
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `AliyunLinuxSecurity` : Alinux security-hardened image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      * - `Custom`：Custom image.
      * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+     * - `AliyunLinux4`: Alinux4 image.
+     * - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+     * - `AliyunLinux4Security`: Alinux4 security-hardened image.
+     * - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
      * 
      */
     @Import(name="imageType")
@@ -283,16 +288,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * @return The operating system image type and the `platform` parameter can be selected from the following values:
      * - `AliyunLinux` : Alinux2 image.
      * - `AliyunLinux3` : Alinux3 image.
-     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinux3Arm64` : Alinux3 image ARM version.
      * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
      * - `CentOS` : CentOS image.
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `AliyunLinuxSecurity` : Alinux security-hardened image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
      * - `Custom`：Custom image.
      * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+     * - `AliyunLinux4`: Alinux4 image.
+     * - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+     * - `AliyunLinux4Security`: Alinux4 security-hardened image.
+     * - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -1805,16 +1815,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param imageType The operating system image type and the `platform` parameter can be selected from the following values:
          * - `AliyunLinux` : Alinux2 image.
          * - `AliyunLinux3` : Alinux3 image.
-         * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+         * - `AliyunLinux3Arm64` : Alinux3 image ARM version.
          * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
          * - `CentOS` : CentOS image.
          * - `Windows` : Windows image.
          * - `WindowsCore` : WindowsCore image.
          * - `ContainerOS` : container-optimized image.
+         * - `AliyunLinuxSecurity` : Alinux security-hardened image.
          * - `Ubuntu`: Ubuntu image.
          * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
          * - `Custom`：Custom image.
          * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+         * - `AliyunLinux4`: Alinux4 image.
+         * - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+         * - `AliyunLinux4Security`: Alinux4 security-hardened image.
+         * - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
          * 
          * @return builder
          * 
@@ -1828,16 +1843,21 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param imageType The operating system image type and the `platform` parameter can be selected from the following values:
          * - `AliyunLinux` : Alinux2 image.
          * - `AliyunLinux3` : Alinux3 image.
-         * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+         * - `AliyunLinux3Arm64` : Alinux3 image ARM version.
          * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
          * - `CentOS` : CentOS image.
          * - `Windows` : Windows image.
          * - `WindowsCore` : WindowsCore image.
          * - `ContainerOS` : container-optimized image.
+         * - `AliyunLinuxSecurity` : Alinux security-hardened image.
          * - `Ubuntu`: Ubuntu image.
          * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
          * - `Custom`：Custom image.
          * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+         * - `AliyunLinux4`: Alinux4 image.
+         * - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+         * - `AliyunLinux4Security`: Alinux4 security-hardened image.
+         * - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
          * 
          * @return builder
          * 

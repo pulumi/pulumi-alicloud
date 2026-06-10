@@ -43,13 +43,13 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="defaultPools", required=true)
-    private Output<List<Integer>> defaultPools;
+    private Output<List<String>> defaultPools;
 
     /**
      * @return List of default pool IDs.
      * 
      */
-    public Output<List<Integer>> defaultPools() {
+    public Output<List<String>> defaultPools() {
         return this.defaultPools;
     }
 
@@ -88,13 +88,13 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="fallbackPool", required=true)
-    private Output<Integer> fallbackPool;
+    private Output<String> fallbackPool;
 
     /**
      * @return The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      * 
      */
-    public Output<Integer> fallbackPool() {
+    public Output<String> fallbackPool() {
         return this.fallbackPool;
     }
 
@@ -313,7 +313,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPools(Output<List<Integer>> defaultPools) {
+        public Builder defaultPools(Output<List<String>> defaultPools) {
             $.defaultPools = defaultPools;
             return this;
         }
@@ -324,7 +324,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPools(List<Integer> defaultPools) {
+        public Builder defaultPools(List<String> defaultPools) {
             return defaultPools(Output.of(defaultPools));
         }
 
@@ -334,7 +334,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPools(Integer... defaultPools) {
+        public Builder defaultPools(String... defaultPools) {
             return defaultPools(List.of(defaultPools));
         }
 
@@ -386,7 +386,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder fallbackPool(Output<Integer> fallbackPool) {
+        public Builder fallbackPool(Output<String> fallbackPool) {
             $.fallbackPool = fallbackPool;
             return this;
         }
@@ -397,7 +397,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder fallbackPool(Integer fallbackPool) {
+        public Builder fallbackPool(String fallbackPool) {
             return fallbackPool(Output.of(fallbackPool));
         }
 

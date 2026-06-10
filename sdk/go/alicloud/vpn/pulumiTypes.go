@@ -5394,6 +5394,220 @@ func (o GetCustomerGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetCusto
 	}).(GetCustomerGatewaysGatewayOutput)
 }
 
+type GetGatewayEnhancedVpnGatewaysGateway struct {
+	// Specifies whether to automatically propagate BGP routes to the VPC.
+	AutoPropagate bool `pulumi:"autoPropagate"`
+	// The time when the VPN gateway was created.
+	CreateTime int `pulumi:"createTime"`
+	// The description of the VPN gateway.
+	Description string `pulumi:"description"`
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId string `pulumi:"disasterRecoveryVswitchId"`
+	// VPN gateway type.
+	GatewayType string `pulumi:"gatewayType"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Type of Gateway.
+	NetworkType string `pulumi:"networkType"`
+	// The status of the resource
+	Status string `pulumi:"status"`
+	// The Tag of.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the VPC to which the VPN gateway belongs.
+	VpcId string `pulumi:"vpcId"`
+	// The name of the VPN gateway.
+	VpnGatewayName string `pulumi:"vpnGatewayName"`
+	// The ID of the VPN gateway.
+	VpnInstanceId string `pulumi:"vpnInstanceId"`
+	// The Type of Vpn.
+	VpnType string `pulumi:"vpnType"`
+	// The ID of the VSwitch to which the VPN gateway is attached.
+	VswitchId string `pulumi:"vswitchId"`
+}
+
+// GetGatewayEnhancedVpnGatewaysGatewayInput is an input type that accepts GetGatewayEnhancedVpnGatewaysGatewayArgs and GetGatewayEnhancedVpnGatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetGatewayEnhancedVpnGatewaysGatewayInput` via:
+//
+//	GetGatewayEnhancedVpnGatewaysGatewayArgs{...}
+type GetGatewayEnhancedVpnGatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetGatewayEnhancedVpnGatewaysGatewayOutput() GetGatewayEnhancedVpnGatewaysGatewayOutput
+	ToGetGatewayEnhancedVpnGatewaysGatewayOutputWithContext(context.Context) GetGatewayEnhancedVpnGatewaysGatewayOutput
+}
+
+type GetGatewayEnhancedVpnGatewaysGatewayArgs struct {
+	// Specifies whether to automatically propagate BGP routes to the VPC.
+	AutoPropagate pulumi.BoolInput `pulumi:"autoPropagate"`
+	// The time when the VPN gateway was created.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// The description of the VPN gateway.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the backup VSwitch to which the VPN gateway is attached.
+	DisasterRecoveryVswitchId pulumi.StringInput `pulumi:"disasterRecoveryVswitchId"`
+	// VPN gateway type.
+	GatewayType pulumi.StringInput `pulumi:"gatewayType"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Type of Gateway.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The status of the resource
+	Status pulumi.StringInput `pulumi:"status"`
+	// The Tag of.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The ID of the VPC to which the VPN gateway belongs.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The name of the VPN gateway.
+	VpnGatewayName pulumi.StringInput `pulumi:"vpnGatewayName"`
+	// The ID of the VPN gateway.
+	VpnInstanceId pulumi.StringInput `pulumi:"vpnInstanceId"`
+	// The Type of Vpn.
+	VpnType pulumi.StringInput `pulumi:"vpnType"`
+	// The ID of the VSwitch to which the VPN gateway is attached.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+}
+
+func (GetGatewayEnhancedVpnGatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayEnhancedVpnGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewayEnhancedVpnGatewaysGatewayArgs) ToGetGatewayEnhancedVpnGatewaysGatewayOutput() GetGatewayEnhancedVpnGatewaysGatewayOutput {
+	return i.ToGetGatewayEnhancedVpnGatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayEnhancedVpnGatewaysGatewayArgs) ToGetGatewayEnhancedVpnGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewayEnhancedVpnGatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayEnhancedVpnGatewaysGatewayOutput)
+}
+
+// GetGatewayEnhancedVpnGatewaysGatewayArrayInput is an input type that accepts GetGatewayEnhancedVpnGatewaysGatewayArray and GetGatewayEnhancedVpnGatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetGatewayEnhancedVpnGatewaysGatewayArrayInput` via:
+//
+//	GetGatewayEnhancedVpnGatewaysGatewayArray{ GetGatewayEnhancedVpnGatewaysGatewayArgs{...} }
+type GetGatewayEnhancedVpnGatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutput() GetGatewayEnhancedVpnGatewaysGatewayArrayOutput
+	ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutputWithContext(context.Context) GetGatewayEnhancedVpnGatewaysGatewayArrayOutput
+}
+
+type GetGatewayEnhancedVpnGatewaysGatewayArray []GetGatewayEnhancedVpnGatewaysGatewayInput
+
+func (GetGatewayEnhancedVpnGatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayEnhancedVpnGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetGatewayEnhancedVpnGatewaysGatewayArray) ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutput() GetGatewayEnhancedVpnGatewaysGatewayArrayOutput {
+	return i.ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayEnhancedVpnGatewaysGatewayArray) ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewayEnhancedVpnGatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayEnhancedVpnGatewaysGatewayArrayOutput)
+}
+
+type GetGatewayEnhancedVpnGatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayEnhancedVpnGatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayEnhancedVpnGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) ToGetGatewayEnhancedVpnGatewaysGatewayOutput() GetGatewayEnhancedVpnGatewaysGatewayOutput {
+	return o
+}
+
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) ToGetGatewayEnhancedVpnGatewaysGatewayOutputWithContext(ctx context.Context) GetGatewayEnhancedVpnGatewaysGatewayOutput {
+	return o
+}
+
+// Specifies whether to automatically propagate BGP routes to the VPC.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) AutoPropagate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) bool { return v.AutoPropagate }).(pulumi.BoolOutput)
+}
+
+// The time when the VPN gateway was created.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The description of the VPN gateway.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the backup VSwitch to which the VPN gateway is attached.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) DisasterRecoveryVswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.DisasterRecoveryVswitchId }).(pulumi.StringOutput)
+}
+
+// VPN gateway type.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) GatewayType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.GatewayType }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Type of Gateway.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The status of the resource
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The Tag of.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the VPC to which the VPN gateway belongs.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The name of the VPN gateway.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) VpnGatewayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.VpnGatewayName }).(pulumi.StringOutput)
+}
+
+// The ID of the VPN gateway.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) VpnInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.VpnInstanceId }).(pulumi.StringOutput)
+}
+
+// The Type of Vpn.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) VpnType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.VpnType }).(pulumi.StringOutput)
+}
+
+// The ID of the VSwitch to which the VPN gateway is attached.
+func (o GetGatewayEnhancedVpnGatewaysGatewayOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayEnhancedVpnGatewaysGateway) string { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+type GetGatewayEnhancedVpnGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayEnhancedVpnGatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayEnhancedVpnGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetGatewayEnhancedVpnGatewaysGatewayArrayOutput) ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutput() GetGatewayEnhancedVpnGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewayEnhancedVpnGatewaysGatewayArrayOutput) ToGetGatewayEnhancedVpnGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetGatewayEnhancedVpnGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetGatewayEnhancedVpnGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewayEnhancedVpnGatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayEnhancedVpnGatewaysGateway {
+		return vs[0].([]GetGatewayEnhancedVpnGatewaysGateway)[vs[1].(int)]
+	}).(GetGatewayEnhancedVpnGatewaysGatewayOutput)
+}
+
 type GetGatewayVcoRoutesRoute struct {
 	// List of autonomous system numbers through which BGP routing entries pass.
 	AsPath string `pulumi:"asPath"`
@@ -7451,6 +7665,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionsConnectionVpnBgpConfigArrayInput)(nil)).Elem(), GetConnectionsConnectionVpnBgpConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomerGatewaysGatewayArrayInput)(nil)).Elem(), GetCustomerGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayEnhancedVpnGatewaysGatewayInput)(nil)).Elem(), GetGatewayEnhancedVpnGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayEnhancedVpnGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewayEnhancedVpnGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVcoRoutesRouteInput)(nil)).Elem(), GetGatewayVcoRoutesRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVcoRoutesRouteArrayInput)(nil)).Elem(), GetGatewayVcoRoutesRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayVpnAttachmentsAttachmentInput)(nil)).Elem(), GetGatewayVpnAttachmentsAttachmentArgs{})
@@ -7525,6 +7741,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionsConnectionVpnBgpConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomerGatewaysGatewayOutput{})
 	pulumi.RegisterOutputType(GetCustomerGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayEnhancedVpnGatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetGatewayEnhancedVpnGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayVcoRoutesRouteOutput{})
 	pulumi.RegisterOutputType(GetGatewayVcoRoutesRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewayVpnAttachmentsAttachmentOutput{})

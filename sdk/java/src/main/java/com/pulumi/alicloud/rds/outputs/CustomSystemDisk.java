@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomSystemDisk {
     /**
-     * @return The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+     * @return The system disk category. Valid values:
      * 
      */
     private @Nullable String category;
     /**
-     * @return System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+     * @return The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
      * 
      */
     private @Nullable String size;
 
     private CustomSystemDisk() {}
     /**
-     * @return The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+     * @return The system disk category. Valid values:
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+     * @return The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
      * 
      */
     public Optional<String> size() {

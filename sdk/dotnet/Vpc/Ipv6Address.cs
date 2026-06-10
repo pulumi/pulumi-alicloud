@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         /// </summary>
         [Output("ipv6AddressDescription")]
-        public Output<string> Ipv6AddressDescription { get; private set; } = null!;
+        public Output<string?> Ipv6AddressDescription { get; private set; } = null!;
 
         /// <summary>
         /// The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.

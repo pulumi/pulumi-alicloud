@@ -190,13 +190,13 @@ type Switch struct {
 	// The description of VSwitch.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
-	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
+	EnableIpv6 pulumi.BoolOutput `pulumi:"enableIpv6"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
-	// The IPv6 CIDR block of the VSwitch.
+	// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
 	Ipv6CidrBlockMask pulumi.IntOutput `pulumi:"ipv6CidrBlockMask"`
 	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
-	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
@@ -207,6 +207,10 @@ type Switch struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcIpv6CidrBlock pulumi.StringPtrOutput `pulumi:"vpcIpv6CidrBlock"`
 	// The name of the VSwitch.
 	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -257,7 +261,7 @@ type switchState struct {
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
-	// The IPv6 CIDR block of the VSwitch.
+	// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
 	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
 	IsDefault *bool `pulumi:"isDefault"`
@@ -271,6 +275,10 @@ type switchState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId *string `pulumi:"vpcId"`
+	// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcIpv6CidrBlock *string `pulumi:"vpcIpv6CidrBlock"`
 	// The name of the VSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -292,7 +300,7 @@ type SwitchState struct {
 	EnableIpv6 pulumi.BoolPtrInput
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringPtrInput
-	// The IPv6 CIDR block of the VSwitch.
+	// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
 	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
 	IsDefault pulumi.BoolPtrInput
@@ -306,6 +314,10 @@ type SwitchState struct {
 	Tags pulumi.StringMapInput
 	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId pulumi.StringPtrInput
+	// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcIpv6CidrBlock pulumi.StringPtrInput
 	// The name of the VSwitch.
 	VswitchName pulumi.StringPtrInput
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -327,7 +339,7 @@ type switchArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
-	// The IPv6 CIDR block of the VSwitch.
+	// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
 	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
 	IsDefault *bool `pulumi:"isDefault"`
@@ -339,6 +351,10 @@ type switchArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId *string `pulumi:"vpcId"`
+	// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcIpv6CidrBlock *string `pulumi:"vpcIpv6CidrBlock"`
 	// The name of the VSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -357,7 +373,7 @@ type SwitchArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 pulumi.BoolPtrInput
-	// The IPv6 CIDR block of the VSwitch.
+	// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
 	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
 	IsDefault pulumi.BoolPtrInput
@@ -369,6 +385,10 @@ type SwitchArgs struct {
 	Tags pulumi.StringMapInput
 	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId pulumi.StringPtrInput
+	// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	VpcIpv6CidrBlock pulumi.StringPtrInput
 	// The name of the VSwitch.
 	VswitchName pulumi.StringPtrInput
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -485,8 +505,8 @@ func (o SwitchOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Whether the IPv6 function is enabled in the switch. Value:
-func (o SwitchOutput) EnableIpv6() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Switch) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+func (o SwitchOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.EnableIpv6 }).(pulumi.BoolOutput)
 }
 
 // The IPv6 CIDR block of the VSwitch.
@@ -494,14 +514,14 @@ func (o SwitchOutput) Ipv6CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
 
-// The IPv6 CIDR block of the VSwitch.
+// The IPv6 CIDR block of the VSwitch. This parameter is used only for create and update operations.
 func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntOutput {
 	return o.ApplyT(func(v *Switch) pulumi.IntOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntOutput)
 }
 
 // Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
-func (o SwitchOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Switch) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+func (o SwitchOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
@@ -524,6 +544,13 @@ func (o SwitchOutput) Tags() pulumi.StringMapOutput {
 // The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 func (o SwitchOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o SwitchOutput) VpcIpv6CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.VpcIpv6CidrBlock }).(pulumi.StringPtrOutput)
 }
 
 // The name of the VSwitch.

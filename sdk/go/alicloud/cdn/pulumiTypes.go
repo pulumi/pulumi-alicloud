@@ -1681,6 +1681,254 @@ func (o GetBlockedRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetBlockedR
 	}).(GetBlockedRegionsRegionOutput)
 }
 
+type GetDomainConfigsConfig struct {
+	// The ID of the feature configuration.
+	ConfigId string `pulumi:"configId"`
+	// The args of the domain config.
+	FunctionArgs []GetDomainConfigsConfigFunctionArg `pulumi:"functionArgs"`
+	// The names of the features. Separate multiple feature names with commas (,).
+	FunctionName string `pulumi:"functionName"`
+	// The ID of the Domain Config.
+	Id string `pulumi:"id"`
+	// The ID of the rule condition.
+	ParentId string `pulumi:"parentId"`
+	// The status of the configuration. Valid values: `success`, `testing`, `failed`, `configuring`.
+	Status string `pulumi:"status"`
+}
+
+// GetDomainConfigsConfigInput is an input type that accepts GetDomainConfigsConfigArgs and GetDomainConfigsConfigOutput values.
+// You can construct a concrete instance of `GetDomainConfigsConfigInput` via:
+//
+//	GetDomainConfigsConfigArgs{...}
+type GetDomainConfigsConfigInput interface {
+	pulumi.Input
+
+	ToGetDomainConfigsConfigOutput() GetDomainConfigsConfigOutput
+	ToGetDomainConfigsConfigOutputWithContext(context.Context) GetDomainConfigsConfigOutput
+}
+
+type GetDomainConfigsConfigArgs struct {
+	// The ID of the feature configuration.
+	ConfigId pulumi.StringInput `pulumi:"configId"`
+	// The args of the domain config.
+	FunctionArgs GetDomainConfigsConfigFunctionArgArrayInput `pulumi:"functionArgs"`
+	// The names of the features. Separate multiple feature names with commas (,).
+	FunctionName pulumi.StringInput `pulumi:"functionName"`
+	// The ID of the Domain Config.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the rule condition.
+	ParentId pulumi.StringInput `pulumi:"parentId"`
+	// The status of the configuration. Valid values: `success`, `testing`, `failed`, `configuring`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDomainConfigsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainConfigsConfig)(nil)).Elem()
+}
+
+func (i GetDomainConfigsConfigArgs) ToGetDomainConfigsConfigOutput() GetDomainConfigsConfigOutput {
+	return i.ToGetDomainConfigsConfigOutputWithContext(context.Background())
+}
+
+func (i GetDomainConfigsConfigArgs) ToGetDomainConfigsConfigOutputWithContext(ctx context.Context) GetDomainConfigsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainConfigsConfigOutput)
+}
+
+// GetDomainConfigsConfigArrayInput is an input type that accepts GetDomainConfigsConfigArray and GetDomainConfigsConfigArrayOutput values.
+// You can construct a concrete instance of `GetDomainConfigsConfigArrayInput` via:
+//
+//	GetDomainConfigsConfigArray{ GetDomainConfigsConfigArgs{...} }
+type GetDomainConfigsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainConfigsConfigArrayOutput() GetDomainConfigsConfigArrayOutput
+	ToGetDomainConfigsConfigArrayOutputWithContext(context.Context) GetDomainConfigsConfigArrayOutput
+}
+
+type GetDomainConfigsConfigArray []GetDomainConfigsConfigInput
+
+func (GetDomainConfigsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainConfigsConfig)(nil)).Elem()
+}
+
+func (i GetDomainConfigsConfigArray) ToGetDomainConfigsConfigArrayOutput() GetDomainConfigsConfigArrayOutput {
+	return i.ToGetDomainConfigsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainConfigsConfigArray) ToGetDomainConfigsConfigArrayOutputWithContext(ctx context.Context) GetDomainConfigsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainConfigsConfigArrayOutput)
+}
+
+type GetDomainConfigsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDomainConfigsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainConfigsConfig)(nil)).Elem()
+}
+
+func (o GetDomainConfigsConfigOutput) ToGetDomainConfigsConfigOutput() GetDomainConfigsConfigOutput {
+	return o
+}
+
+func (o GetDomainConfigsConfigOutput) ToGetDomainConfigsConfigOutputWithContext(ctx context.Context) GetDomainConfigsConfigOutput {
+	return o
+}
+
+// The ID of the feature configuration.
+func (o GetDomainConfigsConfigOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfig) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// The args of the domain config.
+func (o GetDomainConfigsConfigOutput) FunctionArgs() GetDomainConfigsConfigFunctionArgArrayOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfig) []GetDomainConfigsConfigFunctionArg { return v.FunctionArgs }).(GetDomainConfigsConfigFunctionArgArrayOutput)
+}
+
+// The names of the features. Separate multiple feature names with commas (,).
+func (o GetDomainConfigsConfigOutput) FunctionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfig) string { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// The ID of the Domain Config.
+func (o GetDomainConfigsConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfig) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the rule condition.
+func (o GetDomainConfigsConfigOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfig) string { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// The status of the configuration. Valid values: `success`, `testing`, `failed`, `configuring`.
+func (o GetDomainConfigsConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDomainConfigsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainConfigsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainConfigsConfig)(nil)).Elem()
+}
+
+func (o GetDomainConfigsConfigArrayOutput) ToGetDomainConfigsConfigArrayOutput() GetDomainConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetDomainConfigsConfigArrayOutput) ToGetDomainConfigsConfigArrayOutputWithContext(ctx context.Context) GetDomainConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetDomainConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetDomainConfigsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainConfigsConfig {
+		return vs[0].([]GetDomainConfigsConfig)[vs[1].(int)]
+	}).(GetDomainConfigsConfigOutput)
+}
+
+type GetDomainConfigsConfigFunctionArg struct {
+	// The name of arg.
+	ArgName string `pulumi:"argName"`
+	// The value of arg.
+	ArgValue string `pulumi:"argValue"`
+}
+
+// GetDomainConfigsConfigFunctionArgInput is an input type that accepts GetDomainConfigsConfigFunctionArgArgs and GetDomainConfigsConfigFunctionArgOutput values.
+// You can construct a concrete instance of `GetDomainConfigsConfigFunctionArgInput` via:
+//
+//	GetDomainConfigsConfigFunctionArgArgs{...}
+type GetDomainConfigsConfigFunctionArgInput interface {
+	pulumi.Input
+
+	ToGetDomainConfigsConfigFunctionArgOutput() GetDomainConfigsConfigFunctionArgOutput
+	ToGetDomainConfigsConfigFunctionArgOutputWithContext(context.Context) GetDomainConfigsConfigFunctionArgOutput
+}
+
+type GetDomainConfigsConfigFunctionArgArgs struct {
+	// The name of arg.
+	ArgName pulumi.StringInput `pulumi:"argName"`
+	// The value of arg.
+	ArgValue pulumi.StringInput `pulumi:"argValue"`
+}
+
+func (GetDomainConfigsConfigFunctionArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainConfigsConfigFunctionArg)(nil)).Elem()
+}
+
+func (i GetDomainConfigsConfigFunctionArgArgs) ToGetDomainConfigsConfigFunctionArgOutput() GetDomainConfigsConfigFunctionArgOutput {
+	return i.ToGetDomainConfigsConfigFunctionArgOutputWithContext(context.Background())
+}
+
+func (i GetDomainConfigsConfigFunctionArgArgs) ToGetDomainConfigsConfigFunctionArgOutputWithContext(ctx context.Context) GetDomainConfigsConfigFunctionArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainConfigsConfigFunctionArgOutput)
+}
+
+// GetDomainConfigsConfigFunctionArgArrayInput is an input type that accepts GetDomainConfigsConfigFunctionArgArray and GetDomainConfigsConfigFunctionArgArrayOutput values.
+// You can construct a concrete instance of `GetDomainConfigsConfigFunctionArgArrayInput` via:
+//
+//	GetDomainConfigsConfigFunctionArgArray{ GetDomainConfigsConfigFunctionArgArgs{...} }
+type GetDomainConfigsConfigFunctionArgArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainConfigsConfigFunctionArgArrayOutput() GetDomainConfigsConfigFunctionArgArrayOutput
+	ToGetDomainConfigsConfigFunctionArgArrayOutputWithContext(context.Context) GetDomainConfigsConfigFunctionArgArrayOutput
+}
+
+type GetDomainConfigsConfigFunctionArgArray []GetDomainConfigsConfigFunctionArgInput
+
+func (GetDomainConfigsConfigFunctionArgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainConfigsConfigFunctionArg)(nil)).Elem()
+}
+
+func (i GetDomainConfigsConfigFunctionArgArray) ToGetDomainConfigsConfigFunctionArgArrayOutput() GetDomainConfigsConfigFunctionArgArrayOutput {
+	return i.ToGetDomainConfigsConfigFunctionArgArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainConfigsConfigFunctionArgArray) ToGetDomainConfigsConfigFunctionArgArrayOutputWithContext(ctx context.Context) GetDomainConfigsConfigFunctionArgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainConfigsConfigFunctionArgArrayOutput)
+}
+
+type GetDomainConfigsConfigFunctionArgOutput struct{ *pulumi.OutputState }
+
+func (GetDomainConfigsConfigFunctionArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainConfigsConfigFunctionArg)(nil)).Elem()
+}
+
+func (o GetDomainConfigsConfigFunctionArgOutput) ToGetDomainConfigsConfigFunctionArgOutput() GetDomainConfigsConfigFunctionArgOutput {
+	return o
+}
+
+func (o GetDomainConfigsConfigFunctionArgOutput) ToGetDomainConfigsConfigFunctionArgOutputWithContext(ctx context.Context) GetDomainConfigsConfigFunctionArgOutput {
+	return o
+}
+
+// The name of arg.
+func (o GetDomainConfigsConfigFunctionArgOutput) ArgName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfigFunctionArg) string { return v.ArgName }).(pulumi.StringOutput)
+}
+
+// The value of arg.
+func (o GetDomainConfigsConfigFunctionArgOutput) ArgValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainConfigsConfigFunctionArg) string { return v.ArgValue }).(pulumi.StringOutput)
+}
+
+type GetDomainConfigsConfigFunctionArgArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainConfigsConfigFunctionArgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainConfigsConfigFunctionArg)(nil)).Elem()
+}
+
+func (o GetDomainConfigsConfigFunctionArgArrayOutput) ToGetDomainConfigsConfigFunctionArgArrayOutput() GetDomainConfigsConfigFunctionArgArrayOutput {
+	return o
+}
+
+func (o GetDomainConfigsConfigFunctionArgArrayOutput) ToGetDomainConfigsConfigFunctionArgArrayOutputWithContext(ctx context.Context) GetDomainConfigsConfigFunctionArgArrayOutput {
+	return o
+}
+
+func (o GetDomainConfigsConfigFunctionArgArrayOutput) Index(i pulumi.IntInput) GetDomainConfigsConfigFunctionArgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainConfigsConfigFunctionArg {
+		return vs[0].([]GetDomainConfigsConfigFunctionArg)[vs[1].(int)]
+	}).(GetDomainConfigsConfigFunctionArgOutput)
+}
+
 type GetRealTimeLogDeliveriesDelivery struct {
 	// Real-Time Log Service Domain.
 	Domain string `pulumi:"domain"`
@@ -1846,6 +2094,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainReferConfigPtrInput)(nil)).Elem(), DomainReferConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockedRegionsRegionInput)(nil)).Elem(), GetBlockedRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBlockedRegionsRegionArrayInput)(nil)).Elem(), GetBlockedRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainConfigsConfigInput)(nil)).Elem(), GetDomainConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainConfigsConfigArrayInput)(nil)).Elem(), GetDomainConfigsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainConfigsConfigFunctionArgInput)(nil)).Elem(), GetDomainConfigsConfigFunctionArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainConfigsConfigFunctionArgArrayInput)(nil)).Elem(), GetDomainConfigsConfigFunctionArgArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRealTimeLogDeliveriesDeliveryInput)(nil)).Elem(), GetRealTimeLogDeliveriesDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRealTimeLogDeliveriesDeliveryArrayInput)(nil)).Elem(), GetRealTimeLogDeliveriesDeliveryArray{})
 	pulumi.RegisterOutputType(DomainAuthConfigOutput{})
@@ -1870,6 +2122,10 @@ func init() {
 	pulumi.RegisterOutputType(DomainReferConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetBlockedRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetBlockedRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainConfigsConfigOutput{})
+	pulumi.RegisterOutputType(GetDomainConfigsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainConfigsConfigFunctionArgOutput{})
+	pulumi.RegisterOutputType(GetDomainConfigsConfigFunctionArgArrayOutput{})
 	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesDeliveryOutput{})
 	pulumi.RegisterOutputType(GetRealTimeLogDeliveriesDeliveryArrayOutput{})
 }

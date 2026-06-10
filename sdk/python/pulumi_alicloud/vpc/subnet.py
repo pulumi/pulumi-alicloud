@@ -28,6 +28,7 @@ class SubnetArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -57,6 +58,8 @@ class SubnetArgs:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_ipv6_cidr_block is not None:
+            pulumi.set(__self__, "vpc_ipv6_cidr_block", vpc_ipv6_cidr_block)
         if vswitch_name is not None:
             pulumi.set(__self__, "vswitch_name", vswitch_name)
         if zone_id is not None:
@@ -146,6 +149,15 @@ class SubnetArgs:
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpcIpv6CidrBlock")
+    def vpc_ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "vpc_ipv6_cidr_block")
+
+    @vpc_ipv6_cidr_block.setter
+    def vpc_ipv6_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_ipv6_cidr_block", value)
+
+    @_builtins.property
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vswitch_name")
@@ -179,6 +191,7 @@ class _SubnetState:
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -214,6 +227,8 @@ class _SubnetState:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_ipv6_cidr_block is not None:
+            pulumi.set(__self__, "vpc_ipv6_cidr_block", vpc_ipv6_cidr_block)
         if vswitch_name is not None:
             pulumi.set(__self__, "vswitch_name", vswitch_name)
         if zone_id is not None:
@@ -330,6 +345,15 @@ class _SubnetState:
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpcIpv6CidrBlock")
+    def vpc_ipv6_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "vpc_ipv6_cidr_block")
+
+    @vpc_ipv6_cidr_block.setter
+    def vpc_ipv6_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_ipv6_cidr_block", value)
+
+    @_builtins.property
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vswitch_name")
@@ -368,6 +392,7 @@ class Subnet(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -410,6 +435,7 @@ class Subnet(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -431,6 +457,7 @@ class Subnet(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vpc_ipv6_cidr_block"] = vpc_ipv6_cidr_block
             __props__.__dict__["vswitch_name"] = vswitch_name
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
@@ -458,6 +485,7 @@ class Subnet(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ipv6_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_name: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Subnet':
         """
@@ -484,6 +512,7 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vpc_ipv6_cidr_block"] = vpc_ipv6_cidr_block
         __props__.__dict__["vswitch_name"] = vswitch_name
         __props__.__dict__["zone_id"] = zone_id
         return Subnet(resource_name, opts=opts, __props__=__props__)
@@ -511,7 +540,7 @@ class Subnet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_ipv6(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "enable_ipv6")
 
     @_builtins.property
@@ -526,7 +555,7 @@ class Subnet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_default(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "is_default")
 
     @_builtins.property
@@ -549,6 +578,11 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcIpv6CidrBlock")
+    def vpc_ipv6_cidr_block(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "vpc_ipv6_cidr_block")
 
     @_builtins.property
     @pulumi.getter(name="vswitchName")

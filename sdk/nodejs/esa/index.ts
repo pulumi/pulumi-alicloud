@@ -55,6 +55,21 @@ export type EdgeContainerAppRecord = import("./edgeContainerAppRecord").EdgeCont
 export const EdgeContainerAppRecord: typeof import("./edgeContainerAppRecord").EdgeContainerAppRecord = null as any;
 utilities.lazyLoad(exports, ["EdgeContainerAppRecord"], () => require("./edgeContainerAppRecord"));
 
+export { GetHttpsBasicConfigurationsArgs, GetHttpsBasicConfigurationsResult, GetHttpsBasicConfigurationsOutputArgs } from "./getHttpsBasicConfigurations";
+export const getHttpsBasicConfigurations: typeof import("./getHttpsBasicConfigurations").getHttpsBasicConfigurations = null as any;
+export const getHttpsBasicConfigurationsOutput: typeof import("./getHttpsBasicConfigurations").getHttpsBasicConfigurationsOutput = null as any;
+utilities.lazyLoad(exports, ["getHttpsBasicConfigurations","getHttpsBasicConfigurationsOutput"], () => require("./getHttpsBasicConfigurations"));
+
+export { GetNetworkOptimizationsArgs, GetNetworkOptimizationsResult, GetNetworkOptimizationsOutputArgs } from "./getNetworkOptimizations";
+export const getNetworkOptimizations: typeof import("./getNetworkOptimizations").getNetworkOptimizations = null as any;
+export const getNetworkOptimizationsOutput: typeof import("./getNetworkOptimizations").getNetworkOptimizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkOptimizations","getNetworkOptimizationsOutput"], () => require("./getNetworkOptimizations"));
+
+export { GetOriginRulesArgs, GetOriginRulesResult, GetOriginRulesOutputArgs } from "./getOriginRules";
+export const getOriginRules: typeof import("./getOriginRules").getOriginRules = null as any;
+export const getOriginRulesOutput: typeof import("./getOriginRules").getOriginRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getOriginRules","getOriginRulesOutput"], () => require("./getOriginRules"));
+
 export { GetSitesArgs, GetSitesResult, GetSitesOutputArgs } from "./getSites";
 export const getSites: typeof import("./getSites").getSites = null as any;
 export const getSitesOutput: typeof import("./getSites").getSitesOutput = null as any;

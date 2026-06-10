@@ -453,18 +453,18 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceTypes);
     }
     /**
-     * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * Network billing type, Values: PayByBandwidth or PayByTraffic.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> internetChargeType;
+    private Output<String> internetChargeType;
 
     /**
-     * @return Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * @return Network billing type, Values: PayByBandwidth or PayByTraffic.
      * 
      */
-    public Output<Optional<String>> internetChargeType() {
-        return Codegen.optional(this.internetChargeType);
+    public Output<String> internetChargeType() {
+        return this.internetChargeType;
     }
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).

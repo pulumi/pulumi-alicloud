@@ -42,9 +42,9 @@ class VpcEndpointArgs:
                - `DualStack`: dual-stack.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -139,9 +139,9 @@ class VpcEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The endpoint type.
-
-        Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The type of the endpoint. Valid values:
+        - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -297,9 +297,9 @@ class _VpcEndpointState:
         :param pulumi.Input[_builtins.str] endpoint_business_status: The service state of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_domain: The domain name of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.239.0) The region ID of the endpoint.
@@ -460,9 +460,9 @@ class _VpcEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The endpoint type.
-
-        Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The type of the endpoint. Valid values:
+        - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -710,9 +710,9 @@ class VpcEndpoint(pulumi.CustomResource):
                - `DualStack`: dual-stack.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -906,9 +906,9 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] endpoint_business_status: The service state of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_domain: The domain name of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.239.0) The region ID of the endpoint.
@@ -1021,9 +1021,9 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The endpoint type.
-
-        Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The type of the endpoint. Valid values:
+        - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
 

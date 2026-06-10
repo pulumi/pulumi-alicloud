@@ -60,6 +60,11 @@ export type StackInstance = import("./stackInstance").StackInstance;
 export const StackInstance: typeof import("./stackInstance").StackInstance = null as any;
 utilities.lazyLoad(exports, ["StackInstance"], () => require("./stackInstance"));
 
+export { StackInstancesArgs, StackInstancesState } from "./stackInstances";
+export type StackInstances = import("./stackInstances").StackInstances;
+export const StackInstances: typeof import("./stackInstances").StackInstances = null as any;
+utilities.lazyLoad(exports, ["StackInstances"], () => require("./stackInstances"));
+
 export { TemplateArgs, TemplateState } from "./template";
 export type Template = import("./template").Template;
 export const Template: typeof import("./template").Template = null as any;
@@ -83,6 +88,8 @@ const _module = {
                 return new StackGroup(name, <any>undefined, { urn })
             case "alicloud:ros/stackInstance:StackInstance":
                 return new StackInstance(name, <any>undefined, { urn })
+            case "alicloud:ros/stackInstances:StackInstances":
+                return new StackInstances(name, <any>undefined, { urn })
             case "alicloud:ros/template:Template":
                 return new Template(name, <any>undefined, { urn })
             case "alicloud:ros/templateScratch:TemplateScratch":
@@ -96,5 +103,6 @@ pulumi.runtime.registerResourceModule("alicloud", "ros/changeSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/stack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/stackGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/stackInstance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ros/stackInstances", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/template", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ros/templateScratch", _module)
