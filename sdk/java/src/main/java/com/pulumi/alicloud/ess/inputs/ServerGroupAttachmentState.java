@@ -80,14 +80,16 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The type of server group N. Valid values: ALB, NLB.
+     * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of server group N. Valid values: ALB, NLB.
+     * @return The type of server group N. Valid values: ALB, NLB, GWLB.
+     * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -225,7 +227,8 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The type of server group N. Valid values: ALB, NLB.
+         * @param type The type of server group N. Valid values: ALB, NLB, GWLB.
+         * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
          * 
          * @return builder
          * 
@@ -236,7 +239,8 @@ public final class ServerGroupAttachmentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The type of server group N. Valid values: ALB, NLB.
+         * @param type The type of server group N. Valid values: ALB, NLB, GWLB.
+         * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
          * 
          * @return builder
          * 

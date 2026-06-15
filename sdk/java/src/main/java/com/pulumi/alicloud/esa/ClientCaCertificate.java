@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -22,6 +23,10 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** Available since v1.244.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * ### Additional Examples
  * 
  * Basic Usage
  * 
@@ -95,14 +100,14 @@ public class ClientCaCertificate extends com.pulumi.resources.CustomResource {
         return this.certificate;
     }
     /**
-     * ClientCaCertificate Id
+     * ClientCaCertificate Id.
      * 
      */
     @Export(name="clientCaCertId", refs={String.class}, tree="[0]")
     private Output<String> clientCaCertId;
 
     /**
-     * @return ClientCaCertificate Id
+     * @return ClientCaCertificate Id.
      * 
      */
     public Output<String> clientCaCertId() {
@@ -121,6 +126,20 @@ public class ClientCaCertificate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> clientCaCertName() {
         return Codegen.optional(this.clientCaCertName);
+    }
+    /**
+     * Client Ca certificate bound domain list.
+     * 
+     */
+    @Export(name="clientCaCertificateHostnames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> clientCaCertificateHostnames;
+
+    /**
+     * @return Client Ca certificate bound domain list.
+     * 
+     */
+    public Output<Optional<List<String>>> clientCaCertificateHostnames() {
+        return Codegen.optional(this.clientCaCertificateHostnames);
     }
     /**
      * Creation time.

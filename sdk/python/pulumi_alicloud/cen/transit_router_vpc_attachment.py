@@ -27,6 +27,7 @@ class TransitRouterVpcAttachmentArgs:
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional['TransitRouterVpcAttachmentOptionsArgs']] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,7 @@ class TransitRouterVpcAttachmentArgs:
                > **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input['TransitRouterVpcAttachmentOptionsArgs'] options: A collection of feature attributes. See `options` below.
         :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
                
                - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -82,6 +84,8 @@ class TransitRouterVpcAttachmentArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
         if payment_type is not None:
@@ -191,6 +195,18 @@ class TransitRouterVpcAttachmentArgs:
     @force_delete.setter
     def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Input[Optional['TransitRouterVpcAttachmentOptionsArgs']]:
+        """
+        A collection of feature attributes. See `options` below.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: pulumi.Input[Optional['TransitRouterVpcAttachmentOptionsArgs']]):
+        pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
@@ -355,6 +371,7 @@ class _TransitRouterVpcAttachmentState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional['TransitRouterVpcAttachmentOptionsArgs']] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -384,6 +401,7 @@ class _TransitRouterVpcAttachmentState:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input['TransitRouterVpcAttachmentOptionsArgs'] options: A collection of feature attributes. See `options` below.
         :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
                
                - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -419,6 +437,8 @@ class _TransitRouterVpcAttachmentState:
             pulumi.set(__self__, "dry_run", dry_run)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if order_type is not None:
             pulumi.set(__self__, "order_type", order_type)
         if payment_type is not None:
@@ -526,6 +546,18 @@ class _TransitRouterVpcAttachmentState:
     @force_delete.setter
     def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Input[Optional['TransitRouterVpcAttachmentOptionsArgs']]:
+        """
+        A collection of feature attributes. See `options` below.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: pulumi.Input[Optional['TransitRouterVpcAttachmentOptionsArgs']]):
+        pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
@@ -752,6 +784,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -847,6 +880,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                > **NOTE:** This parameter is only evaluated during resource creation and deletion. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']] options: A collection of feature attributes. See `options` below.
         :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
                
                - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -964,6 +998,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
                  cen_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']]] = None,
                  order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -991,6 +1026,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             __props__.__dict__["cen_id"] = cen_id
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["force_delete"] = force_delete
+            __props__.__dict__["options"] = options
             __props__.__dict__["order_type"] = order_type
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["resource_type"] = resource_type
@@ -1028,6 +1064,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            options: pulumi.Input[Optional[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']]] = None,
             order_type: pulumi.Input[Optional[_builtins.str]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1061,6 +1098,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Whether to forcibly delete the VPC connection. The value is:
+        :param pulumi.Input[Union['TransitRouterVpcAttachmentOptionsArgs', 'TransitRouterVpcAttachmentOptionsArgsDict']] options: A collection of feature attributes. See `options` below.
         :param pulumi.Input[_builtins.str] order_type: The entity that pays the fees of the network instance. Valid values:
                
                - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -1095,6 +1133,7 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["force_delete"] = force_delete
+        __props__.__dict__["options"] = options
         __props__.__dict__["order_type"] = order_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["region_id"] = region_id
@@ -1157,6 +1196,14 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
         Whether to forcibly delete the VPC connection. The value is:
         """
         return pulumi.get(self, "force_delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Output['outputs.TransitRouterVpcAttachmentOptions']:
+        """
+        A collection of feature attributes. See `options` below.
+        """
+        return pulumi.get(self, "options")
 
     @_builtins.property
     @pulumi.getter(name="orderType")

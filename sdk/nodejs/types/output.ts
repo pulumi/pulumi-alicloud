@@ -3714,6 +3714,60 @@ export namespace amqp {
         supportEip: boolean;
     }
 
+    export interface GetOpenSourceAccountsAccount {
+        /**
+         * Description.
+         */
+        description: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Instance ID.
+         */
+        instanceId: string;
+        /**
+         * User password.
+         */
+        password: string;
+        /**
+         * User name.
+         */
+        userName: string;
+    }
+
+    export interface GetOpenSourcePermissionsPermission {
+        /**
+         * Permission configuration, such as .
+         */
+        configure: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Instance ID.
+         */
+        instanceId: string;
+        /**
+         * Read permission, such as .
+         */
+        read: string;
+        /**
+         * Username.
+         */
+        userName: string;
+        /**
+         * Vhost of the instance.
+         */
+        vhost: string;
+        /**
+         * Write permission, such as .
+         */
+        write: string;
+    }
+
     export interface GetQueuesQueue {
         /**
          * The attributes for the Queue.
@@ -3905,6 +3959,17 @@ export namespace apigateway {
          * RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
          */
         arnRole: string;
+        /**
+         * The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+         * * `DEFAULT`: Use the default value provided by API Gateway.
+         * * `CUSTOM`: Use a custom value.
+         * * `CLIENT`: Use the Content-Type header from the client request.
+         */
+        contentTypeCategory: string;
+        /**
+         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         */
+        contentTypeValue: string;
         /**
          * The base url of function compute service. Required if `functionType` is `HttpTrigger`.
          */
@@ -7228,6 +7293,44 @@ export namespace cdn {
         countriesAndRegionsName: string;
     }
 
+    export interface GetDomainConfigsConfig {
+        /**
+         * The ID of the feature configuration.
+         */
+        configId: string;
+        /**
+         * The args of the domain config.
+         */
+        functionArgs: outputs.cdn.GetDomainConfigsConfigFunctionArg[];
+        /**
+         * The names of the features. Separate multiple feature names with commas (,).
+         */
+        functionName: string;
+        /**
+         * The ID of the Domain Config.
+         */
+        id: string;
+        /**
+         * The ID of the rule condition.
+         */
+        parentId: string;
+        /**
+         * The status of the configuration. Valid values: `success`, `testing`, `failed`, `configuring`.
+         */
+        status: string;
+    }
+
+    export interface GetDomainConfigsConfigFunctionArg {
+        /**
+         * The name of arg.
+         */
+        argName: string;
+        /**
+         * The value of arg.
+         */
+        argValue: string;
+    }
+
     export interface GetRealTimeLogDeliveriesDelivery {
         /**
          * Real-Time Log Service Domain.
@@ -8400,6 +8503,10 @@ export namespace cen {
          */
         id: string;
         /**
+         * (Available since v1.279.0) A collection of feature attributes.
+         */
+        options: outputs.cen.GetTransitRouterVpcAttachmentsAttachmentOption[];
+        /**
          * The payment type of the resource.
          */
         paymentType: string;
@@ -8439,6 +8546,17 @@ export namespace cen {
          * The list of zone mapping of the VPC.
          */
         zoneMappings: outputs.cen.GetTransitRouterVpcAttachmentsAttachmentZoneMapping[];
+    }
+
+    export interface GetTransitRouterVpcAttachmentsAttachmentOption {
+        /**
+         * Indicates whether appliance mode is enabled.
+         */
+        applianceModeSupport: string;
+        /**
+         * Indicates whether IPv6 is supported.
+         */
+        ipv6Support: string;
     }
 
     export interface GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
@@ -8663,6 +8781,17 @@ export namespace cen {
          * Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
          */
         igmpv2Support: string;
+    }
+
+    export interface TransitRouterVpcAttachmentOptions {
+        /**
+         * Indicates whether appliance mode is enabled.
+         */
+        applianceModeSupport: string;
+        /**
+         * Indicates whether IPv6 is supported.
+         */
+        ipv6Support: string;
     }
 
     export interface TransitRouterVpcAttachmentZoneMapping {
@@ -16533,7 +16662,7 @@ export namespace cs {
          */
         imageId: string;
         /**
-         * The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+         * The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 image ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `AliyunLinuxSecurity` : Alinux security-hardened image.- `Ubuntu`: Ubuntu image.- `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.- `Custom`：Custom image.- `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.- `AliyunLinux4`: Alinux4 image.- `AliyunLinux4Arm64`: Alinux4 image ARM version.- `AliyunLinux4Security`: Alinux4 security-hardened image.- `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
          */
         imageType: string;
         /**
@@ -33472,6 +33601,231 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface GetHttpsBasicConfigurationsConfiguration {
+        /**
+         * Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+         */
+        ciphersuite: string;
+        /**
+         * Cipher suite group.
+         */
+        ciphersuiteGroup: string;
+        /**
+         * The ID of the Configuration.
+         */
+        configId: string;
+        /**
+         * The type of the Configuration. Valid values: `global`, `rule`.
+         */
+        configType: string;
+        /**
+         * Whether to enable HTTP2.
+         */
+        http2: string;
+        /**
+         * Whether to enable HTTP3.
+         */
+        http3: string;
+        /**
+         * Whether to enable HTTPS.
+         */
+        https: string;
+        /**
+         * The ID of the Https Basic Configuration.
+         */
+        id: string;
+        /**
+         * Whether to enable OCSP.
+         */
+        ocspStapling: string;
+        /**
+         * Rule content.
+         */
+        rule: string;
+        /**
+         * Rule switch.
+         */
+        ruleEnable: string;
+        /**
+         * The name of the rule.
+         */
+        ruleName: string;
+        /**
+         * The rule execution order prioritizes lower numerical values.
+         */
+        sequence: number;
+        /**
+         * Whether to enable TLS1.0.
+         */
+        tls10: string;
+        /**
+         * Whether to enable TLS1.1.
+         */
+        tls11: string;
+        /**
+         * Whether to enable TLS1.2.
+         */
+        tls12: string;
+        /**
+         * Whether to enable TLS1.3.
+         */
+        tls13: string;
+    }
+
+    export interface GetNetworkOptimizationsOptimization {
+        /**
+         * The ID of the Configuration.
+         */
+        configId: string;
+        /**
+         * The type of the Configuration. Valid values: `global`, `rule`.
+         */
+        configType: string;
+        /**
+         * Whether to enable GRPC.
+         */
+        grpc: string;
+        /**
+         * Whether to enable HTTP2 origin.
+         */
+        http2Origin: string;
+        /**
+         * The ID of the Network Optimization.
+         */
+        id: string;
+        /**
+         * Rule content.
+         */
+        rule: string;
+        /**
+         * Rule switch.
+         */
+        ruleEnable: string;
+        /**
+         * The name of the rule.
+         */
+        ruleName: string;
+        /**
+         * The rule execution order prioritizes lower numerical values.
+         */
+        sequence: number;
+        /**
+         * The version of the site.
+         */
+        siteVersion: number;
+        /**
+         * Whether to enable smart routing service.
+         */
+        smartRouting: string;
+        /**
+         * Maximum upload file size.
+         */
+        uploadMaxFilesize: string;
+        /**
+         * Whether to enable Websocket.
+         */
+        websocket: string;
+    }
+
+    export interface GetOriginRulesRule {
+        /**
+         * The ID of the Configuration.
+         */
+        configId: string;
+        /**
+         * The type of the Configuration. Valid values: `global`, `rule`.
+         */
+        configType: string;
+        /**
+         * Overrides the DNS record for the origin request.
+         */
+        dnsRecord: string;
+        /**
+         * Specifies whether to follow 302 redirects from the origin.
+         */
+        follow302Enable: string;
+        /**
+         * The maximum number of 302 redirects to follow.
+         */
+        follow302MaxTries: string;
+        /**
+         * Specifies whether to retain the original request parameters when following a redirect.
+         */
+        follow302RetainArgs: string;
+        /**
+         * Specifies whether to retain the original request header when following a redirect.
+         */
+        follow302RetainHeader: string;
+        /**
+         * The host to use for the origin request after following a 302 redirect.
+         */
+        follow302TargetHost: string;
+        /**
+         * The ID of the Origin Rule.
+         */
+        id: string;
+        /**
+         * The Host header carried in the origin request.
+         */
+        originHost: string;
+        /**
+         * The origin server port used for origin requests over HTTP.
+         */
+        originHttpPort: string;
+        /**
+         * The origin server port used for origin requests over HTTPS.
+         */
+        originHttpsPort: string;
+        /**
+         * Specifies whether mTLS is enabled.
+         */
+        originMtls: string;
+        /**
+         * The read timeout, in seconds, for the origin server.
+         */
+        originReadTimeout: string;
+        /**
+         * The protocol used for origin requests.
+         */
+        originScheme: string;
+        /**
+         * The SNI carried in the origin request.
+         */
+        originSni: string;
+        /**
+         * Specifies whether to verify the origin server certificate.
+         */
+        originVerify: string;
+        /**
+         * Specifies whether to use range-based requests to retrieve files from the origin.
+         */
+        range: string;
+        /**
+         * The size of each chunk for range requests.
+         */
+        rangeChunkSize: string;
+        /**
+         * Rule content.
+         */
+        rule: string;
+        /**
+         * Rule switch.
+         */
+        ruleEnable: string;
+        /**
+         * The name of the rule.
+         */
+        ruleName: string;
+        /**
+         * The rule execution order prioritizes lower numerical values.
+         */
+        sequence: number;
+        /**
+         * The version of the site.
+         */
+        siteVersion: number;
+    }
+
     export interface GetSitesSite {
         /**
          * Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
@@ -33803,7 +34157,7 @@ export namespace esa {
         /**
          * Origin ID.
          */
-        originId: number;
+        originId: string;
         /**
          * Source station type:
          * ip_domain: ip or domain name type origin station;
@@ -50053,6 +50407,43 @@ export namespace pai {
 }
 
 export namespace polardb {
+    export interface ApplicationComponent {
+        /**
+         * The class/specification of the component.
+         */
+        componentClass?: string;
+        /**
+         * The number of replicas for the component.
+         */
+        componentReplica?: number;
+        /**
+         * The type of the component.
+         */
+        componentType?: string;
+    }
+
+    export interface ApplicationParameter {
+        /**
+         * The name of the parameter.
+         */
+        parameterName?: string;
+        /**
+         * The value of the parameter.
+         */
+        parameterValue?: string;
+    }
+
+    export interface BatchTaskTaskParam {
+        /**
+         * The name of the skill to be installed or uninstalled. For example, `polarClaw`.
+         */
+        skillName: string;
+        /**
+         * The version of the skill. If not specified, the latest version may be used depending on the task type.
+         */
+        version?: string;
+    }
+
     export interface ClusterDbClusterIpArray {
         /**
          * The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
@@ -51818,29 +52209,38 @@ export namespace rds {
 
     export interface CustomDataDisk {
         /**
-         * Instance storage type
-         * local_ssd: local SSD disk
-         * cloud_essd:ESSD PL1 cloud disk
+         * The type of data disk. Valid values:
          */
         category?: string;
         /**
-         * Cloud Disk Performance
-         * Currently only supports PL1
+         * The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+         * - `PL0`
+         * - `PL1` (default)
+         * - `PL2`
+         * - `PL3`.
          */
         performanceLevel?: string;
         /**
-         * Instance storage space. Unit: GB.
+         * The size of the data disk, in GiB. Valid values:
+         * - cloud_efficiency: 20 to 32,768.
+         * - cloud_ssd: 20 to 32,768.
+         * - cloud_auto: 1 to 65,536.
+         * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+         * - PL0: 1 to 65,536.
+         * - PL1: 20 to 65,536.
+         * - PL2: 461 to 65,536.
+         * - PL3: 1,261 to 65,536.
          */
         size?: number;
     }
 
     export interface CustomSystemDisk {
         /**
-         * The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+         * The system disk category. Valid values:
          */
         category?: string;
         /**
-         * System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+         * The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
          */
         size?: string;
     }
@@ -54774,6 +55174,98 @@ export namespace ros {
          * The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
          */
         parameterValue?: string;
+    }
+
+    export interface StackInstancesDeploymentTargets {
+        /**
+         * List of Alibaba Cloud account IDs for service-managed permissions. Maximum 50 accounts.
+         */
+        accountIds?: string[];
+        /**
+         * List of Resource Directory folder IDs. Maximum 20 folders.
+         */
+        rdFolderIds?: string[];
+    }
+
+    export interface StackInstancesOperationPreferences {
+        /**
+         * Number of failures tolerated per region. Valid values: 0 to 20. Conflicts with `failureTolerancePercentage`.
+         */
+        failureToleranceCount?: number;
+        /**
+         * Percentage of failures tolerated per region. Valid values: 0 to 100. Conflicts with `failureToleranceCount`.
+         */
+        failureTolerancePercentage?: number;
+        /**
+         * Maximum number of concurrent operations per region. Valid values: 1 to 20. Conflicts with `maxConcurrentPercentage`.
+         */
+        maxConcurrentCount?: number;
+        /**
+         * Maximum percentage of concurrent targets per region. Valid values: 1 to 100. Conflicts with `maxConcurrentCount`.
+         */
+        maxConcurrentPercentage?: number;
+        /**
+         * Concurrency type for regions. Valid values: `SEQUENTIAL`, `PARALLEL`.
+         */
+        regionConcurrencyType?: string;
+    }
+
+    export interface StackInstancesParameterOverride {
+        /**
+         * The key of the parameter to override.
+         */
+        parameterKey: string;
+        /**
+         * The value of the parameter to override. This field is sensitive and will be masked in logs.
+         */
+        parameterValue?: string;
+    }
+
+    export interface StackInstancesStackInstance {
+        /**
+         * The Alibaba Cloud account ID where the stack instance is deployed.
+         */
+        accountId: string;
+        /**
+         * The timestamp when drift detection was last performed.
+         */
+        driftDetectionTime: string;
+        /**
+         * The ID of the last operation performed on this stack instance.
+         */
+        lastOperationId: string;
+        /**
+         * The Resource Directory folder ID (if applicable).
+         */
+        rdFolderId: string;
+        /**
+         * The region ID where the stack instance is deployed.
+         */
+        regionId: string;
+        /**
+         * The drift status of the stack. Valid values: `NOT_CHECKED`, `IN_SYNC`, `DRIFTED`, `CHECK_FAILED`, etc.
+         */
+        stackDriftStatus: string;
+        /**
+         * The ID of the stack group to which this instance belongs.
+         */
+        stackGroupId: string;
+        /**
+         * The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
+         */
+        stackGroupName: string;
+        /**
+         * The ID of the underlying stack.
+         */
+        stackId: string;
+        /**
+         * The status of the stack instance. Valid values: `CURRENT`, `OUTDATED`, `INOPERABLE`, `RUNNING`, `FAILED`, `SUCCEEDED`, etc.
+         */
+        status: string;
+        /**
+         * The reason for the current status of the stack instance.
+         */
+        statusReason: string;
     }
 
     export interface StackParameter {
@@ -61158,7 +61650,7 @@ export namespace threatdetection {
 
     export interface GetCheckItemConfigsConfig {
         /**
-         * The ID of the check item
+         * The ID of the check item.
          */
         checkId: number;
         /**
@@ -61166,7 +61658,7 @@ export namespace threatdetection {
          */
         checkShowName: string;
         /**
-         * The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+         * The source type of the Situation Awareness check item. Valid values: `CUSTOM` (user-defined), `SYSTEM` (predefined by the situational awareness platform).
          */
         checkType: string;
         /**
@@ -61182,15 +61674,42 @@ export namespace threatdetection {
          */
         estimatedCount: number;
         /**
-         * The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+         * The asset subtype of the cloud service. Valid values depend on `instanceType`:
+         * * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+         * * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+         * * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+         * * `WAF`: `DOMAIN`.
+         * * Other values: `INSTANCE`.
          */
         instanceSubType: string;
         /**
-         * The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+         * The asset type of the cloud service. Valid values:
+         * * `ECS`: Elastic Compute Service.
+         * * `SLB`: Server Load Balancer.
+         * * `RDS`: ApsaraDB RDS.
+         * * `MONGODB`: ApsaraDB for MongoDB.
+         * * `KVSTORE`: ApsaraDB for Redis.
+         * * `ACR`: Container Registry.
+         * * `CSK`: Container Service for Kubernetes.
+         * * `VPC`: Virtual Private Cloud.
+         * * `ACTIONTRAIL`: ActionTrail.
+         * * `CDN`: Alibaba Cloud CDN.
+         * * `CAS`: Certificate Management Service.
+         * * `RDC`: Apsara DevOps.
+         * * `RAM`: Resource Access Management.
+         * * `DDOS`: Anti-DDoS.
+         * * `WAF`: Web Application Firewall.
+         * * `OSS`: Object Storage Service.
+         * * `POLARDB`: PolarDB.
+         * * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+         * * `MSE`: Microservices Engine.
+         * * `NAS`: File Storage NAS.
+         * * `SDDP`: Sensitive Data Discovery and Protection.
+         * * `EIP`: Elastic IP Address.
          */
         instanceType: string;
         /**
-         * The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+         * The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
          */
         riskLevel: string;
         /**
@@ -61198,7 +61717,7 @@ export namespace threatdetection {
          */
         sectionIds: number[];
         /**
-         * The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+         * The type of the cloud asset. Valid values: `0` (an asset provided by Alibaba Cloud), `1` (an asset outside Alibaba Cloud), `2` (an asset in a data center), `3`/`4`/`5`/`7` (other cloud asset), `8` (a simple application server).
          */
         vendor: string;
     }
@@ -61228,7 +61747,7 @@ export namespace threatdetection {
 
     export interface GetCheckItemConfigsConfigDescription {
         /**
-         * The type of the description of the check item. Valid value:*   **text**.
+         * The type of the description of the check item. Valid value: `text`.
          */
         type: string;
         /**
@@ -61239,7 +61758,7 @@ export namespace threatdetection {
 
     export interface GetCheckStructuresStructure {
         /**
-         * The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+         * The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
          */
         standardType: string;
         /**
@@ -61258,11 +61777,11 @@ export namespace threatdetection {
          */
         requirements: outputs.threatdetection.GetCheckStructuresStructureStandardRequirement[];
         /**
-         * The display name of the standard for the check item.
+         * The display name of the section for the check item.
          */
         showName: string;
         /**
-         * The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+         * The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
          */
         type: string;
     }
@@ -61277,7 +61796,7 @@ export namespace threatdetection {
          */
         sections: outputs.threatdetection.GetCheckStructuresStructureStandardRequirementSection[];
         /**
-         * The display name of the standard for the check item.
+         * The display name of the section for the check item.
          */
         showName: string;
         /**
@@ -61292,7 +61811,7 @@ export namespace threatdetection {
          */
         id: number;
         /**
-         * The display name of the standard for the check item.
+         * The display name of the section for the check item.
          */
         showName: string;
     }
@@ -62877,6 +63396,17 @@ export namespace vpc {
         vswitchId: string;
     }
 
+    export interface GetIpv6CidrBlocksBlock {
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The additional IPv6 CIDR block to be removed.
+         */
+        ipv6CidrBlock: string;
+    }
+
     export interface GetIpv6EgressRulesRule {
         /**
          * The description of the egress-only rule.
@@ -63865,6 +64395,10 @@ export namespace vpc {
          */
         description: string;
         /**
+         * Whether the IPv6 function is enabled in the vSwitch.
+         */
+        enableIpv6: boolean;
+        /**
          * ID of the vSwitch.
          */
         id: string;
@@ -64329,13 +64863,13 @@ export namespace vpc {
 
     export interface NetworkIpv6CidrBlock {
         /**
-         * The IPv6 CIDR block of the default VPC.
+         * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
          *
          * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          */
         ipv6CidrBlock: string;
         /**
-         * The IPv6 address segment type of the VPC. Value:
+         * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
          * - `BGP` (default): Alibaba Cloud BGP IPv6.
          * - `ChinaMobile`: China Mobile (single line).
          * - `ChinaUnicom`: China Unicom (single line).
@@ -65217,6 +65751,65 @@ export namespace vpn {
          * The name of the VPN customer gateway.
          */
         name: string;
+    }
+
+    export interface GetGatewayEnhancedVpnGatewaysGateway {
+        /**
+         * Specifies whether to automatically propagate BGP routes to the VPC.
+         */
+        autoPropagate: boolean;
+        /**
+         * The time when the VPN gateway was created.
+         */
+        createTime: number;
+        /**
+         * The description of the VPN gateway.
+         */
+        description: string;
+        /**
+         * The ID of the backup VSwitch to which the VPN gateway is attached.
+         */
+        disasterRecoveryVswitchId: string;
+        /**
+         * VPN gateway type.
+         */
+        gatewayType: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Type of Gateway.
+         */
+        networkType: string;
+        /**
+         * The status of the resource
+         */
+        status: string;
+        /**
+         * The Tag of.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The ID of the VPC to which the VPN gateway belongs.
+         */
+        vpcId: string;
+        /**
+         * The name of the VPN gateway.
+         */
+        vpnGatewayName: string;
+        /**
+         * The ID of the VPN gateway.
+         */
+        vpnInstanceId: string;
+        /**
+         * The Type of Vpn.
+         */
+        vpnType: string;
+        /**
+         * The ID of the VSwitch to which the VPN gateway is attached.
+         */
+        vswitchId: string;
     }
 
     export interface GetGatewayVcoRoutesRoute {

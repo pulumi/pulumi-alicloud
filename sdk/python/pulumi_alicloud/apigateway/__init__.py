@@ -12,6 +12,7 @@ from .api import *
 from .app import *
 from .app_attachment import *
 from .backend import *
+from .backend_model import *
 from .get_apis import *
 from .get_apps import *
 from .get_backends import *
@@ -28,6 +29,7 @@ from .log_config import *
 from .model import *
 from .plugin import *
 from .plugin_attachment import *
+from .stage_model import *
 from .vpc_access import *
 from ._inputs import *
 from . import outputs

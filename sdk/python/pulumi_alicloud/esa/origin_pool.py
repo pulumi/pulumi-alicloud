@@ -93,7 +93,7 @@ class OriginPoolArgs:
 class _OriginPoolState:
     def __init__(__self__, *,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 origin_pool_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  origin_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                  origins: pulumi.Input[Optional[Sequence[pulumi.Input['OriginPoolOriginArgs']]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -101,7 +101,7 @@ class _OriginPoolState:
         Input properties used for looking up and filtering OriginPool resources.
 
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
-        :param pulumi.Input[_builtins.int] origin_pool_id: OriginPool Id
+        :param pulumi.Input[_builtins.str] origin_pool_id: OriginPool Id
         :param pulumi.Input[_builtins.str] origin_pool_name: The source address pool name.
         :param pulumi.Input[Sequence[pulumi.Input['OriginPoolOriginArgs']]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
@@ -131,14 +131,14 @@ class _OriginPoolState:
 
     @_builtins.property
     @pulumi.getter(name="originPoolId")
-    def origin_pool_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def origin_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OriginPool Id
         """
         return pulumi.get(self, "origin_pool_id")
 
     @origin_pool_id.setter
-    def origin_pool_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def origin_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin_pool_id", value)
 
     @_builtins.property
@@ -424,7 +424,7 @@ class OriginPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            origin_pool_id: pulumi.Input[Optional[_builtins.int]] = None,
+            origin_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             origin_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
             origins: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OriginPool':
@@ -436,7 +436,7 @@ class OriginPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the source address pool is enabled:
-        :param pulumi.Input[_builtins.int] origin_pool_id: OriginPool Id
+        :param pulumi.Input[_builtins.str] origin_pool_id: OriginPool Id
         :param pulumi.Input[_builtins.str] origin_pool_name: The source address pool name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OriginPoolOriginArgs', 'OriginPoolOriginArgsDict']]]] origins: The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
         :param pulumi.Input[_builtins.str] site_id: The site ID.
@@ -454,7 +454,7 @@ class OriginPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the source address pool is enabled:
         """
@@ -462,7 +462,7 @@ class OriginPool(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="originPoolId")
-    def origin_pool_id(self) -> pulumi.Output[_builtins.int]:
+    def origin_pool_id(self) -> pulumi.Output[_builtins.str]:
         """
         OriginPool Id
         """

@@ -208,30 +208,20 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database version. Default value: 1.0.
-     * 
-     * Rules for transferring parameters of different tair product types:
-     * 
-     * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
-     * 
-     * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
-     * 
-     * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
+     * - tair_rdb: Tair memory-enhanced instances are compatible with Redis 5.0, Redis 6.0, and Redis 7.0. Set the value to `5.0`, `6.0`, or `7.0`.
+     * - tair_scm: Tair persistent memory-optimized instances are compatible with Redis 6.0. Set the value to `1.0`.
+     * - tair_essd: Tair disk-based instances (ESSD/SSD) are compatible with Redis 6.0. Set the value to `1.0` to create an ESSD-based instance or `2.0` to create an SSD-based instance.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return Database version. Default value: 1.0.
-     * 
-     * Rules for transferring parameters of different tair product types:
-     * 
-     * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
-     * 
-     * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
-     * 
-     * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * @return The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
+     * - tair_rdb: Tair memory-enhanced instances are compatible with Redis 5.0, Redis 6.0, and Redis 7.0. Set the value to `5.0`, `6.0`, or `7.0`.
+     * - tair_scm: Tair persistent memory-optimized instances are compatible with Redis 6.0. Set the value to `1.0`.
+     * - tair_essd: Tair disk-based instances (ESSD/SSD) are compatible with Redis 6.0. Set the value to `1.0` to create an ESSD-based instance or `2.0` to create an SSD-based instance.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -1273,15 +1263,10 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Default value: 1.0.
-         * 
-         * Rules for transferring parameters of different tair product types:
-         * 
-         * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
-         * 
-         * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
-         * 
-         * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+         * @param engineVersion The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
+         * - tair_rdb: Tair memory-enhanced instances are compatible with Redis 5.0, Redis 6.0, and Redis 7.0. Set the value to `5.0`, `6.0`, or `7.0`.
+         * - tair_scm: Tair persistent memory-optimized instances are compatible with Redis 6.0. Set the value to `1.0`.
+         * - tair_essd: Tair disk-based instances (ESSD/SSD) are compatible with Redis 6.0. Set the value to `1.0` to create an ESSD-based instance or `2.0` to create an SSD-based instance.
          * 
          * @return builder
          * 
@@ -1292,15 +1277,10 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Default value: 1.0.
-         * 
-         * Rules for transferring parameters of different tair product types:
-         * 
-         * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
-         * 
-         * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
-         * 
-         * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+         * @param engineVersion The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
+         * - tair_rdb: Tair memory-enhanced instances are compatible with Redis 5.0, Redis 6.0, and Redis 7.0. Set the value to `5.0`, `6.0`, or `7.0`.
+         * - tair_scm: Tair persistent memory-optimized instances are compatible with Redis 6.0. Set the value to `1.0`.
+         * - tair_essd: Tair disk-based instances (ESSD/SSD) are compatible with Redis 6.0. Set the value to `1.0` to create an ESSD-based instance or `2.0` to create an SSD-based instance.
          * 
          * @return builder
          * 

@@ -62,6 +62,21 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the Vpc Access.
+     * 
+     */
+    @Import(name="vpcAccessId")
+    private @Nullable Output<String> vpcAccessId;
+
+    /**
+     * @return The ID of the Vpc Access.
+     * 
+     */
+    public Optional<Output<String>> vpcAccessId() {
+        return Optional.ofNullable(this.vpcAccessId);
+    }
+
+    /**
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      * 
      */
@@ -82,6 +97,7 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.name = $.name;
         this.port = $.port;
+        this.vpcAccessId = $.vpcAccessId;
         this.vpcId = $.vpcId;
     }
 
@@ -164,6 +180,27 @@ public final class VpcAccessState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param vpcAccessId The ID of the Vpc Access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcAccessId(@Nullable Output<String> vpcAccessId) {
+            $.vpcAccessId = vpcAccessId;
+            return this;
+        }
+
+        /**
+         * @param vpcAccessId The ID of the Vpc Access.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcAccessId(String vpcAccessId) {
+            return vpcAccessId(Output.of(vpcAccessId));
         }
 
         /**

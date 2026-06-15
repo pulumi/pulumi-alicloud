@@ -17,7 +17,7 @@ public final class GetCheckStructuresStructureStandardRequirementSection {
      */
     private Integer id;
     /**
-     * @return The display name of the standard for the check item.
+     * @return The display name of the section for the check item.
      * 
      */
     private String showName;
@@ -31,7 +31,7 @@ public final class GetCheckStructuresStructureStandardRequirementSection {
         return this.id;
     }
     /**
-     * @return The display name of the standard for the check item.
+     * @return The display name of the section for the check item.
      * 
      */
     public String showName() {

@@ -49,8 +49,7 @@ import (
 //				name = param
 //			}
 //			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				Ipv6Isp:     pulumi.String("BGP"),
-//				Description: pulumi.String("test"),
+//				Description: pulumi.String("example description"),
 //				CidrBlock:   pulumi.String("10.0.0.0/8"),
 //				VpcName:     pulumi.String(pulumi.String(name)),
 //				EnableIpv6:  pulumi.Bool(true),
@@ -93,7 +92,7 @@ type Network struct {
 	// Whether to PreCheck only this request. Value:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Whether to enable the IPv6 network segment. Value:
-	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
+	EnableIpv6 pulumi.BoolOutput `pulumi:"enableIpv6"`
 	// Force delete vpc or not.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Allocate VPC from The IPAM address pool by entering a mask.
@@ -102,22 +101,26 @@ type Network struct {
 	Ipv4CidrMask pulumi.IntPtrOutput `pulumi:"ipv4CidrMask"`
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId pulumi.StringPtrOutput `pulumi:"ipv4IpamPoolId"`
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+	//
+	// Deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block information of the VPC.
 	Ipv6CidrBlocks NetworkIpv6CidrBlockArrayOutput `pulumi:"ipv6CidrBlocks"`
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
 	// - `ChinaTelecom`: China Telecom (single line).
 	//
 	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
-	Ipv6Isp pulumi.StringPtrOutput `pulumi:"ipv6Isp"`
+	//
+	// Deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
+	Ipv6Isp pulumi.StringOutput `pulumi:"ipv6Isp"`
 	// Specifies whether to create the default VPC in the specified region. Valid values:
-	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
@@ -221,19 +224,23 @@ type networkState struct {
 	Ipv4CidrMask *int `pulumi:"ipv4CidrMask"`
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+	//
+	// Deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block information of the VPC.
 	Ipv6CidrBlocks []NetworkIpv6CidrBlock `pulumi:"ipv6CidrBlocks"`
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
 	// - `ChinaTelecom`: China Telecom (single line).
 	//
 	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+	//
+	// Deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6Isp *string `pulumi:"ipv6Isp"`
 	// Specifies whether to create the default VPC in the specified region. Valid values:
 	IsDefault *bool `pulumi:"isDefault"`
@@ -311,19 +318,23 @@ type NetworkState struct {
 	Ipv4CidrMask pulumi.IntPtrInput
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId pulumi.StringPtrInput
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+	//
+	// Deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6CidrBlock pulumi.StringPtrInput
 	// The IPv6 CIDR block information of the VPC.
 	Ipv6CidrBlocks NetworkIpv6CidrBlockArrayInput
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
 	// - `ChinaTelecom`: China Telecom (single line).
 	//
 	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+	//
+	// Deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6Isp pulumi.StringPtrInput
 	// Specifies whether to create the default VPC in the specified region. Valid values:
 	IsDefault pulumi.BoolPtrInput
@@ -403,17 +414,21 @@ type networkArgs struct {
 	Ipv4CidrMask *int `pulumi:"ipv4CidrMask"`
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+	//
+	// Deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
 	// - `ChinaTelecom`: China Telecom (single line).
 	//
 	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+	//
+	// Deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6Isp *string `pulumi:"ipv6Isp"`
 	// Specifies whether to create the default VPC in the specified region. Valid values:
 	IsDefault *bool `pulumi:"isDefault"`
@@ -478,17 +493,21 @@ type NetworkArgs struct {
 	Ipv4CidrMask pulumi.IntPtrInput
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId pulumi.StringPtrInput
-	// The IPv6 CIDR block of the default VPC.
+	// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 	//
 	// > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+	//
+	// Deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6CidrBlock pulumi.StringPtrInput
-	// The IPv6 address segment type of the VPC. Value:
+	// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 	// - `BGP` (default): Alibaba Cloud BGP IPv6.
 	// - `ChinaMobile`: China Mobile (single line).
 	// - `ChinaUnicom`: China Unicom (single line).
 	// - `ChinaTelecom`: China Telecom (single line).
 	//
 	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
+	//
+	// Deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 	Ipv6Isp pulumi.StringPtrInput
 	// Specifies whether to create the default VPC in the specified region. Valid values:
 	IsDefault pulumi.BoolPtrInput
@@ -649,8 +668,8 @@ func (o NetworkOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // Whether to enable the IPv6 network segment. Value:
-func (o NetworkOutput) EnableIpv6() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
+func (o NetworkOutput) EnableIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.EnableIpv6 }).(pulumi.BoolOutput)
 }
 
 // Force delete vpc or not.
@@ -670,9 +689,11 @@ func (o NetworkOutput) Ipv4IpamPoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv4IpamPoolId }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 CIDR block of the default VPC.
+// The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 //
 // > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
+//
+// Deprecated: Field 'ipv6_cidr_block' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
 func (o NetworkOutput) Ipv6CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
@@ -682,20 +703,22 @@ func (o NetworkOutput) Ipv6CidrBlocks() NetworkIpv6CidrBlockArrayOutput {
 	return o.ApplyT(func(v *Network) NetworkIpv6CidrBlockArrayOutput { return v.Ipv6CidrBlocks }).(NetworkIpv6CidrBlockArrayOutput)
 }
 
-// The IPv6 address segment type of the VPC. Value:
+// The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
 // - `BGP` (default): Alibaba Cloud BGP IPv6.
 // - `ChinaMobile`: China Mobile (single line).
 // - `ChinaUnicom`: China Unicom (single line).
 // - `ChinaTelecom`: China Telecom (single line).
 //
 // > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
-func (o NetworkOutput) Ipv6Isp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv6Isp }).(pulumi.StringPtrOutput)
+//
+// Deprecated: Field 'ipv6_isp' has been deprecated from provider version 1.280.0. Please use the new resource 'alicloud_vpc_ipv6_cidr_block'.
+func (o NetworkOutput) Ipv6Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv6Isp }).(pulumi.StringOutput)
 }
 
 // Specifies whether to create the default VPC in the specified region. Valid values:
-func (o NetworkOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+func (o NetworkOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
 // . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.

@@ -150,6 +150,11 @@ export const getIpv6Addresses: typeof import("./getIpv6Addresses").getIpv6Addres
 export const getIpv6AddressesOutput: typeof import("./getIpv6Addresses").getIpv6AddressesOutput = null as any;
 utilities.lazyLoad(exports, ["getIpv6Addresses","getIpv6AddressesOutput"], () => require("./getIpv6Addresses"));
 
+export { GetIpv6CidrBlocksArgs, GetIpv6CidrBlocksResult, GetIpv6CidrBlocksOutputArgs } from "./getIpv6CidrBlocks";
+export const getIpv6CidrBlocks: typeof import("./getIpv6CidrBlocks").getIpv6CidrBlocks = null as any;
+export const getIpv6CidrBlocksOutput: typeof import("./getIpv6CidrBlocks").getIpv6CidrBlocksOutput = null as any;
+utilities.lazyLoad(exports, ["getIpv6CidrBlocks","getIpv6CidrBlocksOutput"], () => require("./getIpv6CidrBlocks"));
+
 export { GetIpv6EgressRulesArgs, GetIpv6EgressRulesResult, GetIpv6EgressRulesOutputArgs } from "./getIpv6EgressRules";
 export const getIpv6EgressRules: typeof import("./getIpv6EgressRules").getIpv6EgressRules = null as any;
 export const getIpv6EgressRulesOutput: typeof import("./getIpv6EgressRules").getIpv6EgressRulesOutput = null as any;
@@ -344,6 +349,11 @@ export { Ipv6AddressArgs, Ipv6AddressState } from "./ipv6Address";
 export type Ipv6Address = import("./ipv6Address").Ipv6Address;
 export const Ipv6Address: typeof import("./ipv6Address").Ipv6Address = null as any;
 utilities.lazyLoad(exports, ["Ipv6Address"], () => require("./ipv6Address"));
+
+export { Ipv6CidrBlockArgs, Ipv6CidrBlockState } from "./ipv6CidrBlock";
+export type Ipv6CidrBlock = import("./ipv6CidrBlock").Ipv6CidrBlock;
+export const Ipv6CidrBlock: typeof import("./ipv6CidrBlock").Ipv6CidrBlock = null as any;
+utilities.lazyLoad(exports, ["Ipv6CidrBlock"], () => require("./ipv6CidrBlock"));
 
 export { Ipv6EgressRuleArgs, Ipv6EgressRuleState } from "./ipv6EgressRule";
 export type Ipv6EgressRule = import("./ipv6EgressRule").Ipv6EgressRule;
@@ -565,6 +575,8 @@ const _module = {
                 return new Ipv4Gateway(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6Address:Ipv6Address":
                 return new Ipv6Address(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipv6CidrBlock:Ipv6CidrBlock":
+                return new Ipv6CidrBlock(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule":
                 return new Ipv6EgressRule(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv6Gateway:Ipv6Gateway":
@@ -661,6 +673,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4CidrBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Address", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6CidrBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6EgressRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6InternetBandwidth", _module)

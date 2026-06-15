@@ -144,18 +144,18 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint type.
-     * 
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The endpoint type.
-     * 
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -563,9 +563,9 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.
-         * 
-         * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The type of the endpoint. Valid values:
+         * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+         * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
          * 
          * @return builder
          * 
@@ -576,9 +576,9 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.
-         * 
-         * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The type of the endpoint. Valid values:
+         * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+         * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
          * 
          * @return builder
          * 

@@ -20,6 +20,10 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// Basic Usage
     /// 
+    /// ### Additional Examples
+    /// 
+    /// Basic Usage
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,7 +69,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// ClientCaCertificate Id
+        /// ClientCaCertificate Id.
         /// </summary>
         [Output("clientCaCertId")]
         public Output<string> ClientCaCertId { get; private set; } = null!;
@@ -75,6 +79,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("clientCaCertName")]
         public Output<string?> ClientCaCertName { get; private set; } = null!;
+
+        /// <summary>
+        /// Client Ca certificate bound domain list.
+        /// </summary>
+        [Output("clientCaCertificateHostnames")]
+        public Output<ImmutableArray<string>> ClientCaCertificateHostnames { get; private set; } = null!;
 
         /// <summary>
         /// Creation time.
@@ -152,6 +162,18 @@ namespace Pulumi.AliCloud.Esa
         [Input("clientCaCertName")]
         public Input<string>? ClientCaCertName { get; set; }
 
+        [Input("clientCaCertificateHostnames")]
+        private InputList<string>? _clientCaCertificateHostnames;
+
+        /// <summary>
+        /// Client Ca certificate bound domain list.
+        /// </summary>
+        public InputList<string> ClientCaCertificateHostnames
+        {
+            get => _clientCaCertificateHostnames ?? (_clientCaCertificateHostnames = new InputList<string>());
+            set => _clientCaCertificateHostnames = value;
+        }
+
         /// <summary>
         /// Site Id
         /// </summary>
@@ -173,7 +195,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// ClientCaCertificate Id
+        /// ClientCaCertificate Id.
         /// </summary>
         [Input("clientCaCertId")]
         public Input<string>? ClientCaCertId { get; set; }
@@ -183,6 +205,18 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("clientCaCertName")]
         public Input<string>? ClientCaCertName { get; set; }
+
+        [Input("clientCaCertificateHostnames")]
+        private InputList<string>? _clientCaCertificateHostnames;
+
+        /// <summary>
+        /// Client Ca certificate bound domain list.
+        /// </summary>
+        public InputList<string> ClientCaCertificateHostnames
+        {
+            get => _clientCaCertificateHostnames ?? (_clientCaCertificateHostnames = new InputList<string>());
+            set => _clientCaCertificateHostnames = value;
+        }
 
         /// <summary>
         /// Creation time.

@@ -86,13 +86,11 @@ type CustomDisk struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-	// Default value: empty.
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The type of the data disk. Value range:
 	DiskCategory pulumi.StringOutput `pulumi:"diskCategory"`
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-	// Default value: empty.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
 	DiskName pulumi.StringPtrOutput `pulumi:"diskName"`
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
@@ -176,13 +174,11 @@ type customDiskState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-	// Default value: empty.
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
 	Description *string `pulumi:"description"`
 	// The type of the data disk. Value range:
 	DiskCategory *string `pulumi:"diskCategory"`
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-	// Default value: empty.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
 	DiskName *string `pulumi:"diskName"`
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -228,13 +224,11 @@ type CustomDiskState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-	// Default value: empty.
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
 	Description pulumi.StringPtrInput
 	// The type of the data disk. Value range:
 	DiskCategory pulumi.StringPtrInput
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-	// Default value: empty.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
 	DiskName pulumi.StringPtrInput
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun pulumi.BoolPtrInput
@@ -282,13 +276,11 @@ type customDiskArgs struct {
 	AutoPay *bool `pulumi:"autoPay"`
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-	// Default value: empty.
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
 	Description *string `pulumi:"description"`
 	// The type of the data disk. Value range:
 	DiskCategory string `pulumi:"diskCategory"`
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-	// Default value: empty.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
 	DiskName *string `pulumi:"diskName"`
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -327,13 +319,11 @@ type CustomDiskArgs struct {
 	AutoPay pulumi.BoolPtrInput
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew pulumi.BoolPtrInput
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-	// Default value: empty.
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
 	Description pulumi.StringPtrInput
 	// The type of the data disk. Value range:
 	DiskCategory pulumi.StringInput
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-	// Default value: empty.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
 	DiskName pulumi.StringPtrInput
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun pulumi.BoolPtrInput
@@ -468,8 +458,7 @@ func (o CustomDiskOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-// Default value: empty.
+// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
 func (o CustomDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -479,8 +468,7 @@ func (o CustomDiskOutput) DiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.DiskCategory }).(pulumi.StringOutput)
 }
 
-// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-// Default value: empty.
+// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
 func (o CustomDiskOutput) DiskName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.DiskName }).(pulumi.StringPtrOutput)
 }

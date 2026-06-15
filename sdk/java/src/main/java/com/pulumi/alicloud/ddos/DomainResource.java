@@ -275,6 +275,20 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
         return this.cname;
     }
     /**
+     * A custom list of cipher suites for TLS 1.2 and earlier versions.
+     * 
+     */
+    @Export(name="customCiphers", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> customCiphers;
+
+    /**
+     * @return A custom list of cipher suites for TLS 1.2 and earlier versions.
+     * 
+     */
+    public Output<Optional<List<String>>> customCiphers() {
+        return Codegen.optional(this.customCiphers);
+    }
+    /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
      * - Do not use the following default HTTP headers:
@@ -443,6 +457,68 @@ public class DomainResource extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> rsType() {
         return this.rsType;
+    }
+    /**
+     * Specifies whether to enable TLS 1.3. Valid values:
+     * 
+     */
+    @Export(name="ssl13Enabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ssl13Enabled;
+
+    /**
+     * @return Specifies whether to enable TLS 1.3. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> ssl13Enabled() {
+        return Codegen.optional(this.ssl13Enabled);
+    }
+    /**
+     * The type of cipher suite. Valid values:
+     * 
+     */
+    @Export(name="sslCiphers", refs={String.class}, tree="[0]")
+    private Output<String> sslCiphers;
+
+    /**
+     * @return The type of cipher suite. Valid values:
+     * 
+     */
+    public Output<String> sslCiphers() {
+        return this.sslCiphers;
+    }
+    /**
+     * The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     * 
+     */
+    @Export(name="sslProtocols", refs={String.class}, tree="[0]")
+    private Output<String> sslProtocols;
+
+    /**
+     * @return The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     * 
+     */
+    public Output<String> sslProtocols() {
+        return this.sslProtocols;
+    }
+    /**
+     * A custom list of cipher suites for TLS 1.3.
+     * 
+     */
+    @Export(name="tls13CustomCiphers", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tls13CustomCiphers;
+
+    /**
+     * @return A custom list of cipher suites for TLS 1.3.
+     * 
+     */
+    public Output<Optional<List<String>>> tls13CustomCiphers() {
+        return Codegen.optional(this.tls13CustomCiphers);
     }
     /**
      * IP whitelist list.

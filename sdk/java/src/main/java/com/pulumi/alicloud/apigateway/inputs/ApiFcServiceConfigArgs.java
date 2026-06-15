@@ -34,6 +34,42 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+     * * `DEFAULT`: Use the default value provided by API Gateway.
+     * * `CUSTOM`: Use a custom value.
+     * * `CLIENT`: Use the Content-Type header from the client request.
+     * 
+     */
+    @Import(name="contentTypeCategory")
+    private @Nullable Output<String> contentTypeCategory;
+
+    /**
+     * @return The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+     * * `DEFAULT`: Use the default value provided by API Gateway.
+     * * `CUSTOM`: Use a custom value.
+     * * `CLIENT`: Use the Content-Type header from the client request.
+     * 
+     */
+    public Optional<Output<String>> contentTypeCategory() {
+        return Optional.ofNullable(this.contentTypeCategory);
+    }
+
+    /**
+     * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * 
+     */
+    @Import(name="contentTypeValue")
+    private @Nullable Output<String> contentTypeValue;
+
+    /**
+     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * 
+     */
+    public Optional<Output<String>> contentTypeValue() {
+        return Optional.ofNullable(this.contentTypeValue);
+    }
+
+    /**
      * The base url of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
@@ -202,6 +238,8 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
 
     private ApiFcServiceConfigArgs(ApiFcServiceConfigArgs $) {
         this.arnRole = $.arnRole;
+        this.contentTypeCategory = $.contentTypeCategory;
+        this.contentTypeValue = $.contentTypeValue;
         this.functionBaseUrl = $.functionBaseUrl;
         this.functionName = $.functionName;
         this.functionType = $.functionType;
@@ -252,6 +290,54 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder arnRole(String arnRole) {
             return arnRole(Output.of(arnRole));
+        }
+
+        /**
+         * @param contentTypeCategory The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+         * * `DEFAULT`: Use the default value provided by API Gateway.
+         * * `CUSTOM`: Use a custom value.
+         * * `CLIENT`: Use the Content-Type header from the client request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeCategory(@Nullable Output<String> contentTypeCategory) {
+            $.contentTypeCategory = contentTypeCategory;
+            return this;
+        }
+
+        /**
+         * @param contentTypeCategory The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+         * * `DEFAULT`: Use the default value provided by API Gateway.
+         * * `CUSTOM`: Use a custom value.
+         * * `CLIENT`: Use the Content-Type header from the client request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeCategory(String contentTypeCategory) {
+            return contentTypeCategory(Output.of(contentTypeCategory));
+        }
+
+        /**
+         * @param contentTypeValue The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeValue(@Nullable Output<String> contentTypeValue) {
+            $.contentTypeValue = contentTypeValue;
+            return this;
+        }
+
+        /**
+         * @param contentTypeValue The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentTypeValue(String contentTypeValue) {
+            return contentTypeValue(Output.of(contentTypeValue));
         }
 
         /**

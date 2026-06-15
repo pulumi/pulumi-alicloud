@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class GetCheckItemConfigsConfigResult
     {
         /// <summary>
-        /// The ID of the check item
+        /// The ID of the check item.
         /// </summary>
         public readonly int CheckId;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string CheckShowName;
         /// <summary>
-        /// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+        /// The source type of the Situation Awareness check item. Valid values: `CUSTOM` (user-defined), `SYSTEM` (predefined by the situational awareness platform).
         /// </summary>
         public readonly string CheckType;
         /// <summary>
@@ -38,15 +38,42 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly int EstimatedCount;
         /// <summary>
-        /// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+        /// The asset subtype of the cloud service. Valid values depend on `InstanceType`:
+        /// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+        /// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+        /// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+        /// * `WAF`: `DOMAIN`.
+        /// * Other values: `INSTANCE`.
         /// </summary>
         public readonly string InstanceSubType;
         /// <summary>
-        /// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+        /// The asset type of the cloud service. Valid values:
+        /// * `ECS`: Elastic Compute Service.
+        /// * `SLB`: Server Load Balancer.
+        /// * `RDS`: ApsaraDB RDS.
+        /// * `MONGODB`: ApsaraDB for MongoDB.
+        /// * `KVSTORE`: ApsaraDB for Redis.
+        /// * `ACR`: Container Registry.
+        /// * `CSK`: Container Service for Kubernetes.
+        /// * `VPC`: Virtual Private Cloud.
+        /// * `ACTIONTRAIL`: ActionTrail.
+        /// * `CDN`: Alibaba Cloud CDN.
+        /// * `CAS`: Certificate Management Service.
+        /// * `RDC`: Apsara DevOps.
+        /// * `RAM`: Resource Access Management.
+        /// * `DDOS`: Anti-DDoS.
+        /// * `WAF`: Web Application Firewall.
+        /// * `OSS`: Object Storage Service.
+        /// * `POLARDB`: PolarDB.
+        /// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+        /// * `MSE`: Microservices Engine.
+        /// * `NAS`: File Storage NAS.
+        /// * `SDDP`: Sensitive Data Discovery and Protection.
+        /// * `EIP`: Elastic IP Address.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
-        /// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+        /// The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
         /// </summary>
         public readonly string RiskLevel;
         /// <summary>
@@ -54,7 +81,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly ImmutableArray<int> SectionIds;
         /// <summary>
-        /// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+        /// The type of the cloud asset. Valid values: `0` (an asset provided by Alibaba Cloud), `1` (an asset outside Alibaba Cloud), `2` (an asset in a data center), `3`/`4`/`5`/`7` (other cloud asset), `8` (a simple application server).
         /// </summary>
         public readonly string Vendor;
 

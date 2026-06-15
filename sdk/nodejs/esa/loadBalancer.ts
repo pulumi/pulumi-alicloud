@@ -113,7 +113,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * List of default pool IDs.
      */
-    declare public readonly defaultPools: pulumi.Output<number[]>;
+    declare public readonly defaultPools: pulumi.Output<string[]>;
     /**
      * The detailed description of the load balancer for easy management and identification.
      */
@@ -125,11 +125,11 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      */
-    declare public readonly fallbackPool: pulumi.Output<number>;
+    declare public readonly fallbackPool: pulumi.Output<string>;
     /**
      * The unique identifier ID of the load balancer.
      */
-    declare public /*out*/ readonly loadBalancerId: pulumi.Output<number>;
+    declare public /*out*/ readonly loadBalancerId: pulumi.Output<string>;
     /**
      * The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
      */
@@ -259,7 +259,7 @@ export interface LoadBalancerState {
     /**
      * List of default pool IDs.
      */
-    defaultPools?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    defaultPools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The detailed description of the load balancer for easy management and identification.
      */
@@ -271,11 +271,11 @@ export interface LoadBalancerState {
     /**
      * The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      */
-    fallbackPool?: pulumi.Input<number | undefined>;
+    fallbackPool?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier ID of the load balancer.
      */
-    loadBalancerId?: pulumi.Input<number | undefined>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
      */
@@ -333,7 +333,7 @@ export interface LoadBalancerArgs {
     /**
      * List of default pool IDs.
      */
-    defaultPools: pulumi.Input<pulumi.Input<number>[]>;
+    defaultPools: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The detailed description of the load balancer for easy management and identification.
      */
@@ -345,7 +345,7 @@ export interface LoadBalancerArgs {
     /**
      * The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      */
-    fallbackPool: pulumi.Input<number>;
+    fallbackPool: pulumi.Input<string>;
     /**
      * The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
      */

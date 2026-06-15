@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
  *
+ * > **NOTE:** Available since v1.7.2.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -179,6 +181,8 @@ export interface GetSwitchesResult {
 }
 /**
  * This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+ *
+ * > **NOTE:** Available since v1.7.2.
  *
  * ## Example Usage
  *

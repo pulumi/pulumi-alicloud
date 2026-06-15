@@ -15,6 +15,10 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ### Additional Examples
+ *
+ * Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -74,13 +78,17 @@ export class ClientCaCertificate extends pulumi.CustomResource {
      */
     declare public readonly certificate: pulumi.Output<string>;
     /**
-     * ClientCaCertificate Id
+     * ClientCaCertificate Id.
      */
     declare public /*out*/ readonly clientCaCertId: pulumi.Output<string>;
     /**
      * The certificate name.
      */
     declare public readonly clientCaCertName: pulumi.Output<string | undefined>;
+    /**
+     * Client Ca certificate bound domain list.
+     */
+    declare public readonly clientCaCertificateHostnames: pulumi.Output<string[] | undefined>;
     /**
      * Creation time.
      */
@@ -110,6 +118,7 @@ export class ClientCaCertificate extends pulumi.CustomResource {
             resourceInputs["certificate"] = state?.certificate;
             resourceInputs["clientCaCertId"] = state?.clientCaCertId;
             resourceInputs["clientCaCertName"] = state?.clientCaCertName;
+            resourceInputs["clientCaCertificateHostnames"] = state?.clientCaCertificateHostnames;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["status"] = state?.status;
@@ -123,6 +132,7 @@ export class ClientCaCertificate extends pulumi.CustomResource {
             }
             resourceInputs["certificate"] = args?.certificate;
             resourceInputs["clientCaCertName"] = args?.clientCaCertName;
+            resourceInputs["clientCaCertificateHostnames"] = args?.clientCaCertificateHostnames;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["clientCaCertId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -142,13 +152,17 @@ export interface ClientCaCertificateState {
      */
     certificate?: pulumi.Input<string | undefined>;
     /**
-     * ClientCaCertificate Id
+     * ClientCaCertificate Id.
      */
     clientCaCertId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name.
      */
     clientCaCertName?: pulumi.Input<string | undefined>;
+    /**
+     * Client Ca certificate bound domain list.
+     */
+    clientCaCertificateHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation time.
      */
@@ -175,6 +189,10 @@ export interface ClientCaCertificateArgs {
      * The certificate name.
      */
     clientCaCertName?: pulumi.Input<string | undefined>;
+    /**
+     * Client Ca certificate bound domain list.
+     */
+    clientCaCertificateHostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Site Id
      */

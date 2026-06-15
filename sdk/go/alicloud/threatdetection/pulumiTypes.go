@@ -2051,11 +2051,11 @@ func (o GetBaselineStrategiesStrategyArrayOutput) Index(i pulumi.IntInput) GetBa
 }
 
 type GetCheckItemConfigsConfig struct {
-	// The ID of the check item
+	// The ID of the check item.
 	CheckId int `pulumi:"checkId"`
 	// The name of the check item.
 	CheckShowName string `pulumi:"checkShowName"`
-	// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+	// The source type of the Situation Awareness check item. Valid values: `CUSTOM` (user-defined), `SYSTEM` (predefined by the situational awareness platform).
 	CheckType string `pulumi:"checkType"`
 	// The custom configuration items of the check item.
 	CustomConfigs []GetCheckItemConfigsConfigCustomConfig `pulumi:"customConfigs"`
@@ -2063,15 +2063,42 @@ type GetCheckItemConfigsConfig struct {
 	Description GetCheckItemConfigsConfigDescription `pulumi:"description"`
 	// The estimated quota that will be consumed by this check item.
 	EstimatedCount int `pulumi:"estimatedCount"`
-	// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+	// The asset subtype of the cloud service. Valid values depend on `instanceType`:
+	// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+	// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+	// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+	// * `WAF`: `DOMAIN`.
+	// * Other values: `INSTANCE`.
 	InstanceSubType string `pulumi:"instanceSubType"`
-	// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+	// The asset type of the cloud service. Valid values:
+	// * `ECS`: Elastic Compute Service.
+	// * `SLB`: Server Load Balancer.
+	// * `RDS`: ApsaraDB RDS.
+	// * `MONGODB`: ApsaraDB for MongoDB.
+	// * `KVSTORE`: ApsaraDB for Redis.
+	// * `ACR`: Container Registry.
+	// * `CSK`: Container Service for Kubernetes.
+	// * `VPC`: Virtual Private Cloud.
+	// * `ACTIONTRAIL`: ActionTrail.
+	// * `CDN`: Alibaba Cloud CDN.
+	// * `CAS`: Certificate Management Service.
+	// * `RDC`: Apsara DevOps.
+	// * `RAM`: Resource Access Management.
+	// * `DDOS`: Anti-DDoS.
+	// * `WAF`: Web Application Firewall.
+	// * `OSS`: Object Storage Service.
+	// * `POLARDB`: PolarDB.
+	// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+	// * `MSE`: Microservices Engine.
+	// * `NAS`: File Storage NAS.
+	// * `SDDP`: Sensitive Data Discovery and Protection.
+	// * `EIP`: Elastic IP Address.
 	InstanceType string `pulumi:"instanceType"`
-	// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+	// The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
 	RiskLevel string `pulumi:"riskLevel"`
 	// The IDs of the sections associated with the check items.
 	SectionIds []int `pulumi:"sectionIds"`
-	// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+	// The type of the cloud asset. Valid values: `0` (an asset provided by Alibaba Cloud), `1` (an asset outside Alibaba Cloud), `2` (an asset in a data center), `3`/`4`/`5`/`7` (other cloud asset), `8` (a simple application server).
 	Vendor string `pulumi:"vendor"`
 }
 
@@ -2087,11 +2114,11 @@ type GetCheckItemConfigsConfigInput interface {
 }
 
 type GetCheckItemConfigsConfigArgs struct {
-	// The ID of the check item
+	// The ID of the check item.
 	CheckId pulumi.IntInput `pulumi:"checkId"`
 	// The name of the check item.
 	CheckShowName pulumi.StringInput `pulumi:"checkShowName"`
-	// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+	// The source type of the Situation Awareness check item. Valid values: `CUSTOM` (user-defined), `SYSTEM` (predefined by the situational awareness platform).
 	CheckType pulumi.StringInput `pulumi:"checkType"`
 	// The custom configuration items of the check item.
 	CustomConfigs GetCheckItemConfigsConfigCustomConfigArrayInput `pulumi:"customConfigs"`
@@ -2099,15 +2126,42 @@ type GetCheckItemConfigsConfigArgs struct {
 	Description GetCheckItemConfigsConfigDescriptionInput `pulumi:"description"`
 	// The estimated quota that will be consumed by this check item.
 	EstimatedCount pulumi.IntInput `pulumi:"estimatedCount"`
-	// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+	// The asset subtype of the cloud service. Valid values depend on `instanceType`:
+	// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+	// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+	// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+	// * `WAF`: `DOMAIN`.
+	// * Other values: `INSTANCE`.
 	InstanceSubType pulumi.StringInput `pulumi:"instanceSubType"`
-	// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+	// The asset type of the cloud service. Valid values:
+	// * `ECS`: Elastic Compute Service.
+	// * `SLB`: Server Load Balancer.
+	// * `RDS`: ApsaraDB RDS.
+	// * `MONGODB`: ApsaraDB for MongoDB.
+	// * `KVSTORE`: ApsaraDB for Redis.
+	// * `ACR`: Container Registry.
+	// * `CSK`: Container Service for Kubernetes.
+	// * `VPC`: Virtual Private Cloud.
+	// * `ACTIONTRAIL`: ActionTrail.
+	// * `CDN`: Alibaba Cloud CDN.
+	// * `CAS`: Certificate Management Service.
+	// * `RDC`: Apsara DevOps.
+	// * `RAM`: Resource Access Management.
+	// * `DDOS`: Anti-DDoS.
+	// * `WAF`: Web Application Firewall.
+	// * `OSS`: Object Storage Service.
+	// * `POLARDB`: PolarDB.
+	// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+	// * `MSE`: Microservices Engine.
+	// * `NAS`: File Storage NAS.
+	// * `SDDP`: Sensitive Data Discovery and Protection.
+	// * `EIP`: Elastic IP Address.
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
-	// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+	// The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
 	RiskLevel pulumi.StringInput `pulumi:"riskLevel"`
 	// The IDs of the sections associated with the check items.
 	SectionIds pulumi.IntArrayInput `pulumi:"sectionIds"`
-	// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+	// The type of the cloud asset. Valid values: `0` (an asset provided by Alibaba Cloud), `1` (an asset outside Alibaba Cloud), `2` (an asset in a data center), `3`/`4`/`5`/`7` (other cloud asset), `8` (a simple application server).
 	Vendor pulumi.StringInput `pulumi:"vendor"`
 }
 
@@ -2162,7 +2216,7 @@ func (o GetCheckItemConfigsConfigOutput) ToGetCheckItemConfigsConfigOutputWithCo
 	return o
 }
 
-// The ID of the check item
+// The ID of the check item.
 func (o GetCheckItemConfigsConfigOutput) CheckId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) int { return v.CheckId }).(pulumi.IntOutput)
 }
@@ -2172,7 +2226,7 @@ func (o GetCheckItemConfigsConfigOutput) CheckShowName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.CheckShowName }).(pulumi.StringOutput)
 }
 
-// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+// The source type of the Situation Awareness check item. Valid values: `CUSTOM` (user-defined), `SYSTEM` (predefined by the situational awareness platform).
 func (o GetCheckItemConfigsConfigOutput) CheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.CheckType }).(pulumi.StringOutput)
 }
@@ -2192,17 +2246,44 @@ func (o GetCheckItemConfigsConfigOutput) EstimatedCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) int { return v.EstimatedCount }).(pulumi.IntOutput)
 }
 
-// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+// The asset subtype of the cloud service. Valid values depend on `instanceType`:
+// * `ECS`: `INSTANCE`, `DISK`, `SECURITY_GROUP`.
+// * `ACR`: `REPOSITORY_ENTERPRISE`, `REPOSITORY_PERSON`.
+// * `RAM`: `ALIAS`, `USER`, `POLICY`, `GROUP`.
+// * `WAF`: `DOMAIN`.
+// * Other values: `INSTANCE`.
 func (o GetCheckItemConfigsConfigOutput) InstanceSubType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.InstanceSubType }).(pulumi.StringOutput)
 }
 
-// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+// The asset type of the cloud service. Valid values:
+// * `ECS`: Elastic Compute Service.
+// * `SLB`: Server Load Balancer.
+// * `RDS`: ApsaraDB RDS.
+// * `MONGODB`: ApsaraDB for MongoDB.
+// * `KVSTORE`: ApsaraDB for Redis.
+// * `ACR`: Container Registry.
+// * `CSK`: Container Service for Kubernetes.
+// * `VPC`: Virtual Private Cloud.
+// * `ACTIONTRAIL`: ActionTrail.
+// * `CDN`: Alibaba Cloud CDN.
+// * `CAS`: Certificate Management Service.
+// * `RDC`: Apsara DevOps.
+// * `RAM`: Resource Access Management.
+// * `DDOS`: Anti-DDoS.
+// * `WAF`: Web Application Firewall.
+// * `OSS`: Object Storage Service.
+// * `POLARDB`: PolarDB.
+// * `POSTGRESQL`: ApsaraDB RDS for PostgreSQL.
+// * `MSE`: Microservices Engine.
+// * `NAS`: File Storage NAS.
+// * `SDDP`: Sensitive Data Discovery and Protection.
+// * `EIP`: Elastic IP Address.
 func (o GetCheckItemConfigsConfigOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+// The risk level of the check item. Valid values: `HIGH`, `MEDIUM`, `LOW`.
 func (o GetCheckItemConfigsConfigOutput) RiskLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.RiskLevel }).(pulumi.StringOutput)
 }
@@ -2212,7 +2293,7 @@ func (o GetCheckItemConfigsConfigOutput) SectionIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) []int { return v.SectionIds }).(pulumi.IntArrayOutput)
 }
 
-// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+// The type of the cloud asset. Valid values: `0` (an asset provided by Alibaba Cloud), `1` (an asset outside Alibaba Cloud), `2` (an asset in a data center), `3`/`4`/`5`/`7` (other cloud asset), `8` (a simple application server).
 func (o GetCheckItemConfigsConfigOutput) Vendor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.Vendor }).(pulumi.StringOutput)
 }
@@ -2371,7 +2452,7 @@ func (o GetCheckItemConfigsConfigCustomConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetCheckItemConfigsConfigDescription struct {
-	// The type of the description of the check item. Valid value:*   **text**.
+	// The type of the description of the check item. Valid value: `text`.
 	Type string `pulumi:"type"`
 	// The content of the description for the check item when the Type parameter is text.
 	Value string `pulumi:"value"`
@@ -2389,7 +2470,7 @@ type GetCheckItemConfigsConfigDescriptionInput interface {
 }
 
 type GetCheckItemConfigsConfigDescriptionArgs struct {
-	// The type of the description of the check item. Valid value:*   **text**.
+	// The type of the description of the check item. Valid value: `text`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The content of the description for the check item when the Type parameter is text.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -2421,7 +2502,7 @@ func (o GetCheckItemConfigsConfigDescriptionOutput) ToGetCheckItemConfigsConfigD
 	return o
 }
 
-// The type of the description of the check item. Valid value:*   **text**.
+// The type of the description of the check item. Valid value: `text`.
 func (o GetCheckItemConfigsConfigDescriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckItemConfigsConfigDescription) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2432,7 +2513,7 @@ func (o GetCheckItemConfigsConfigDescriptionOutput) Value() pulumi.StringOutput 
 }
 
 type GetCheckStructuresStructure struct {
-	// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+	// The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
 	StandardType string `pulumi:"standardType"`
 	// The structure information about the check items of the business type.
 	Standards []GetCheckStructuresStructureStandard `pulumi:"standards"`
@@ -2450,7 +2531,7 @@ type GetCheckStructuresStructureInput interface {
 }
 
 type GetCheckStructuresStructureArgs struct {
-	// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+	// The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
 	StandardType pulumi.StringInput `pulumi:"standardType"`
 	// The structure information about the check items of the business type.
 	Standards GetCheckStructuresStructureStandardArrayInput `pulumi:"standards"`
@@ -2507,7 +2588,7 @@ func (o GetCheckStructuresStructureOutput) ToGetCheckStructuresStructureOutputWi
 	return o
 }
 
-// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+// The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
 func (o GetCheckStructuresStructureOutput) StandardType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckStructuresStructure) string { return v.StandardType }).(pulumi.StringOutput)
 }
@@ -2542,9 +2623,9 @@ type GetCheckStructuresStructureStandard struct {
 	Id int `pulumi:"id"`
 	// The standards of the check items.
 	Requirements []GetCheckStructuresStructureStandardRequirement `pulumi:"requirements"`
-	// The display name of the standard for the check item.
+	// The display name of the section for the check item.
 	ShowName string `pulumi:"showName"`
-	// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+	// The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
 	Type string `pulumi:"type"`
 }
 
@@ -2564,9 +2645,9 @@ type GetCheckStructuresStructureStandardArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The standards of the check items.
 	Requirements GetCheckStructuresStructureStandardRequirementArrayInput `pulumi:"requirements"`
-	// The display name of the standard for the check item.
+	// The display name of the section for the check item.
 	ShowName pulumi.StringInput `pulumi:"showName"`
-	// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+	// The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2633,12 +2714,12 @@ func (o GetCheckStructuresStructureStandardOutput) Requirements() GetCheckStruct
 	}).(GetCheckStructuresStructureStandardRequirementArrayOutput)
 }
 
-// The display name of the standard for the check item.
+// The display name of the section for the check item.
 func (o GetCheckStructuresStructureStandardOutput) ShowName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckStructuresStructureStandard) string { return v.ShowName }).(pulumi.StringOutput)
 }
 
-// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+// The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
 func (o GetCheckStructuresStructureStandardOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckStructuresStructureStandard) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2668,7 +2749,7 @@ type GetCheckStructuresStructureStandardRequirement struct {
 	Id int `pulumi:"id"`
 	// The information about the sections of check items.
 	Sections []GetCheckStructuresStructureStandardRequirementSection `pulumi:"sections"`
-	// The display name of the standard for the check item.
+	// The display name of the section for the check item.
 	ShowName string `pulumi:"showName"`
 	// The total number of check items for the requirement.
 	TotalCheckCount int `pulumi:"totalCheckCount"`
@@ -2690,7 +2771,7 @@ type GetCheckStructuresStructureStandardRequirementArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The information about the sections of check items.
 	Sections GetCheckStructuresStructureStandardRequirementSectionArrayInput `pulumi:"sections"`
-	// The display name of the standard for the check item.
+	// The display name of the section for the check item.
 	ShowName pulumi.StringInput `pulumi:"showName"`
 	// The total number of check items for the requirement.
 	TotalCheckCount pulumi.IntInput `pulumi:"totalCheckCount"`
@@ -2759,7 +2840,7 @@ func (o GetCheckStructuresStructureStandardRequirementOutput) Sections() GetChec
 	}).(GetCheckStructuresStructureStandardRequirementSectionArrayOutput)
 }
 
-// The display name of the standard for the check item.
+// The display name of the section for the check item.
 func (o GetCheckStructuresStructureStandardRequirementOutput) ShowName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirement) string { return v.ShowName }).(pulumi.StringOutput)
 }
@@ -2792,7 +2873,7 @@ func (o GetCheckStructuresStructureStandardRequirementArrayOutput) Index(i pulum
 type GetCheckStructuresStructureStandardRequirementSection struct {
 	// The ID of the section for the check item.
 	Id int `pulumi:"id"`
-	// The display name of the standard for the check item.
+	// The display name of the section for the check item.
 	ShowName string `pulumi:"showName"`
 }
 
@@ -2810,7 +2891,7 @@ type GetCheckStructuresStructureStandardRequirementSectionInput interface {
 type GetCheckStructuresStructureStandardRequirementSectionArgs struct {
 	// The ID of the section for the check item.
 	Id pulumi.IntInput `pulumi:"id"`
-	// The display name of the standard for the check item.
+	// The display name of the section for the check item.
 	ShowName pulumi.StringInput `pulumi:"showName"`
 }
 
@@ -2870,7 +2951,7 @@ func (o GetCheckStructuresStructureStandardRequirementSectionOutput) Id() pulumi
 	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirementSection) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// The display name of the standard for the check item.
+// The display name of the section for the check item.
 func (o GetCheckStructuresStructureStandardRequirementSectionOutput) ShowName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirementSection) string { return v.ShowName }).(pulumi.StringOutput)
 }

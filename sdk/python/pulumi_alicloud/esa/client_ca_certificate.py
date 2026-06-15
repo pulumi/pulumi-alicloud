@@ -21,18 +21,22 @@ class ClientCaCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_certificate_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ClientCaCertificate resource.
 
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ca_certificate_hostnames: Client Ca certificate bound domain list.
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "site_id", site_id)
         if client_ca_cert_name is not None:
             pulumi.set(__self__, "client_ca_cert_name", client_ca_cert_name)
+        if client_ca_certificate_hostnames is not None:
+            pulumi.set(__self__, "client_ca_certificate_hostnames", client_ca_certificate_hostnames)
 
     @_builtins.property
     @pulumi.getter
@@ -70,6 +74,18 @@ class ClientCaCertificateArgs:
     def client_ca_cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ca_cert_name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="clientCaCertificateHostnames")
+    def client_ca_certificate_hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Client Ca certificate bound domain list.
+        """
+        return pulumi.get(self, "client_ca_certificate_hostnames")
+
+    @client_ca_certificate_hostnames.setter
+    def client_ca_certificate_hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "client_ca_certificate_hostnames", value)
+
 
 @pulumi.input_type
 class _ClientCaCertificateState:
@@ -77,6 +93,7 @@ class _ClientCaCertificateState:
                  certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ca_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_certificate_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
@@ -84,8 +101,9 @@ class _ClientCaCertificateState:
         Input properties used for looking up and filtering ClientCaCertificate resources.
 
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
-        :param pulumi.Input[_builtins.str] client_ca_cert_id: ClientCaCertificate Id
+        :param pulumi.Input[_builtins.str] client_ca_cert_id: ClientCaCertificate Id.
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ca_certificate_hostnames: Client Ca certificate bound domain list.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: Certificate status.
@@ -96,6 +114,8 @@ class _ClientCaCertificateState:
             pulumi.set(__self__, "client_ca_cert_id", client_ca_cert_id)
         if client_ca_cert_name is not None:
             pulumi.set(__self__, "client_ca_cert_name", client_ca_cert_name)
+        if client_ca_certificate_hostnames is not None:
+            pulumi.set(__self__, "client_ca_certificate_hostnames", client_ca_certificate_hostnames)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if site_id is not None:
@@ -119,7 +139,7 @@ class _ClientCaCertificateState:
     @pulumi.getter(name="clientCaCertId")
     def client_ca_cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ClientCaCertificate Id
+        ClientCaCertificate Id.
         """
         return pulumi.get(self, "client_ca_cert_id")
 
@@ -138,6 +158,18 @@ class _ClientCaCertificateState:
     @client_ca_cert_name.setter
     def client_ca_cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ca_cert_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCaCertificateHostnames")
+    def client_ca_certificate_hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Client Ca certificate bound domain list.
+        """
+        return pulumi.get(self, "client_ca_certificate_hostnames")
+
+    @client_ca_certificate_hostnames.setter
+    def client_ca_certificate_hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "client_ca_certificate_hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -184,6 +216,7 @@ class ClientCaCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_certificate_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -194,6 +227,10 @@ class ClientCaCertificate(pulumi.CustomResource):
         > **NOTE:** Available since v1.244.0.
 
         ## Example Usage
+
+        Basic Usage
+
+        ### Additional Examples
 
         Basic Usage
 
@@ -225,6 +262,7 @@ class ClientCaCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ca_certificate_hostnames: Client Ca certificate bound domain list.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         """
         ...
@@ -241,6 +279,10 @@ class ClientCaCertificate(pulumi.CustomResource):
         > **NOTE:** Available since v1.244.0.
 
         ## Example Usage
+
+        Basic Usage
+
+        ### Additional Examples
 
         Basic Usage
 
@@ -285,6 +327,7 @@ class ClientCaCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_certificate_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -299,6 +342,7 @@ class ClientCaCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'certificate'")
             __props__.__dict__["certificate"] = certificate
             __props__.__dict__["client_ca_cert_name"] = client_ca_cert_name
+            __props__.__dict__["client_ca_certificate_hostnames"] = client_ca_certificate_hostnames
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -318,6 +362,7 @@ class ClientCaCertificate(pulumi.CustomResource):
             certificate: pulumi.Input[Optional[_builtins.str]] = None,
             client_ca_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
             client_ca_cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_certificate_hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             site_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClientCaCertificate':
@@ -329,8 +374,9 @@ class ClientCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
-        :param pulumi.Input[_builtins.str] client_ca_cert_id: ClientCaCertificate Id
+        :param pulumi.Input[_builtins.str] client_ca_cert_id: ClientCaCertificate Id.
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_ca_certificate_hostnames: Client Ca certificate bound domain list.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: Certificate status.
@@ -342,6 +388,7 @@ class ClientCaCertificate(pulumi.CustomResource):
         __props__.__dict__["certificate"] = certificate
         __props__.__dict__["client_ca_cert_id"] = client_ca_cert_id
         __props__.__dict__["client_ca_cert_name"] = client_ca_cert_name
+        __props__.__dict__["client_ca_certificate_hostnames"] = client_ca_certificate_hostnames
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["status"] = status
@@ -359,7 +406,7 @@ class ClientCaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="clientCaCertId")
     def client_ca_cert_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ClientCaCertificate Id
+        ClientCaCertificate Id.
         """
         return pulumi.get(self, "client_ca_cert_id")
 
@@ -370,6 +417,14 @@ class ClientCaCertificate(pulumi.CustomResource):
         The certificate name.
         """
         return pulumi.get(self, "client_ca_cert_name")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCaCertificateHostnames")
+    def client_ca_certificate_hostnames(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Client Ca certificate bound domain list.
+        """
+        return pulumi.get(self, "client_ca_certificate_hostnames")
 
     @_builtins.property
     @pulumi.getter(name="createTime")

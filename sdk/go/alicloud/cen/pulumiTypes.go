@@ -388,6 +388,162 @@ func (o TransitRouterMulticastDomainOptionsPtrOutput) Igmpv2Support() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type TransitRouterVpcAttachmentOptions struct {
+	// Indicates whether appliance mode is enabled.
+	ApplianceModeSupport *string `pulumi:"applianceModeSupport"`
+	// Indicates whether IPv6 is supported.
+	Ipv6Support *string `pulumi:"ipv6Support"`
+}
+
+// TransitRouterVpcAttachmentOptionsInput is an input type that accepts TransitRouterVpcAttachmentOptionsArgs and TransitRouterVpcAttachmentOptionsOutput values.
+// You can construct a concrete instance of `TransitRouterVpcAttachmentOptionsInput` via:
+//
+//	TransitRouterVpcAttachmentOptionsArgs{...}
+type TransitRouterVpcAttachmentOptionsInput interface {
+	pulumi.Input
+
+	ToTransitRouterVpcAttachmentOptionsOutput() TransitRouterVpcAttachmentOptionsOutput
+	ToTransitRouterVpcAttachmentOptionsOutputWithContext(context.Context) TransitRouterVpcAttachmentOptionsOutput
+}
+
+type TransitRouterVpcAttachmentOptionsArgs struct {
+	// Indicates whether appliance mode is enabled.
+	ApplianceModeSupport pulumi.StringPtrInput `pulumi:"applianceModeSupport"`
+	// Indicates whether IPv6 is supported.
+	Ipv6Support pulumi.StringPtrInput `pulumi:"ipv6Support"`
+}
+
+func (TransitRouterVpcAttachmentOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitRouterVpcAttachmentOptions)(nil)).Elem()
+}
+
+func (i TransitRouterVpcAttachmentOptionsArgs) ToTransitRouterVpcAttachmentOptionsOutput() TransitRouterVpcAttachmentOptionsOutput {
+	return i.ToTransitRouterVpcAttachmentOptionsOutputWithContext(context.Background())
+}
+
+func (i TransitRouterVpcAttachmentOptionsArgs) ToTransitRouterVpcAttachmentOptionsOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentOptionsOutput)
+}
+
+func (i TransitRouterVpcAttachmentOptionsArgs) ToTransitRouterVpcAttachmentOptionsPtrOutput() TransitRouterVpcAttachmentOptionsPtrOutput {
+	return i.ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TransitRouterVpcAttachmentOptionsArgs) ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentOptionsOutput).ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(ctx)
+}
+
+// TransitRouterVpcAttachmentOptionsPtrInput is an input type that accepts TransitRouterVpcAttachmentOptionsArgs, TransitRouterVpcAttachmentOptionsPtr and TransitRouterVpcAttachmentOptionsPtrOutput values.
+// You can construct a concrete instance of `TransitRouterVpcAttachmentOptionsPtrInput` via:
+//
+//	        TransitRouterVpcAttachmentOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransitRouterVpcAttachmentOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTransitRouterVpcAttachmentOptionsPtrOutput() TransitRouterVpcAttachmentOptionsPtrOutput
+	ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(context.Context) TransitRouterVpcAttachmentOptionsPtrOutput
+}
+
+type transitRouterVpcAttachmentOptionsPtrType TransitRouterVpcAttachmentOptionsArgs
+
+func TransitRouterVpcAttachmentOptionsPtr(v *TransitRouterVpcAttachmentOptionsArgs) TransitRouterVpcAttachmentOptionsPtrInput {
+	return (*transitRouterVpcAttachmentOptionsPtrType)(v)
+}
+
+func (*transitRouterVpcAttachmentOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitRouterVpcAttachmentOptions)(nil)).Elem()
+}
+
+func (i *transitRouterVpcAttachmentOptionsPtrType) ToTransitRouterVpcAttachmentOptionsPtrOutput() TransitRouterVpcAttachmentOptionsPtrOutput {
+	return i.ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *transitRouterVpcAttachmentOptionsPtrType) ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitRouterVpcAttachmentOptionsPtrOutput)
+}
+
+type TransitRouterVpcAttachmentOptionsOutput struct{ *pulumi.OutputState }
+
+func (TransitRouterVpcAttachmentOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitRouterVpcAttachmentOptions)(nil)).Elem()
+}
+
+func (o TransitRouterVpcAttachmentOptionsOutput) ToTransitRouterVpcAttachmentOptionsOutput() TransitRouterVpcAttachmentOptionsOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentOptionsOutput) ToTransitRouterVpcAttachmentOptionsOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOptionsOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentOptionsOutput) ToTransitRouterVpcAttachmentOptionsPtrOutput() TransitRouterVpcAttachmentOptionsPtrOutput {
+	return o.ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TransitRouterVpcAttachmentOptionsOutput) ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitRouterVpcAttachmentOptions) *TransitRouterVpcAttachmentOptions {
+		return &v
+	}).(TransitRouterVpcAttachmentOptionsPtrOutput)
+}
+
+// Indicates whether appliance mode is enabled.
+func (o TransitRouterVpcAttachmentOptionsOutput) ApplianceModeSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitRouterVpcAttachmentOptions) *string { return v.ApplianceModeSupport }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether IPv6 is supported.
+func (o TransitRouterVpcAttachmentOptionsOutput) Ipv6Support() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitRouterVpcAttachmentOptions) *string { return v.Ipv6Support }).(pulumi.StringPtrOutput)
+}
+
+type TransitRouterVpcAttachmentOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TransitRouterVpcAttachmentOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitRouterVpcAttachmentOptions)(nil)).Elem()
+}
+
+func (o TransitRouterVpcAttachmentOptionsPtrOutput) ToTransitRouterVpcAttachmentOptionsPtrOutput() TransitRouterVpcAttachmentOptionsPtrOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentOptionsPtrOutput) ToTransitRouterVpcAttachmentOptionsPtrOutputWithContext(ctx context.Context) TransitRouterVpcAttachmentOptionsPtrOutput {
+	return o
+}
+
+func (o TransitRouterVpcAttachmentOptionsPtrOutput) Elem() TransitRouterVpcAttachmentOptionsOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachmentOptions) TransitRouterVpcAttachmentOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TransitRouterVpcAttachmentOptions
+		return ret
+	}).(TransitRouterVpcAttachmentOptionsOutput)
+}
+
+// Indicates whether appliance mode is enabled.
+func (o TransitRouterVpcAttachmentOptionsPtrOutput) ApplianceModeSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachmentOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplianceModeSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether IPv6 is supported.
+func (o TransitRouterVpcAttachmentOptionsPtrOutput) Ipv6Support() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachmentOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Support
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransitRouterVpcAttachmentZoneMapping struct {
 	// The ID of the vSwitch that you want to add to the VPC connection.
 	//
@@ -5655,6 +5811,8 @@ type GetTransitRouterVpcAttachmentsAttachment struct {
 	CenId string `pulumi:"cenId"`
 	// The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
 	Id string `pulumi:"id"`
+	// (Available since v1.279.0) A collection of feature attributes.
+	Options []GetTransitRouterVpcAttachmentsAttachmentOption `pulumi:"options"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
 	// The resource type of the Transit Router VPC Attachment.
@@ -5695,6 +5853,8 @@ type GetTransitRouterVpcAttachmentsAttachmentArgs struct {
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// The resource ID in terraform of Transit Router VPC Attachment. It formats as `<cen_id>:<transit_router_attachment_id>`.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.279.0) A collection of feature attributes.
+	Options GetTransitRouterVpcAttachmentsAttachmentOptionArrayInput `pulumi:"options"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// The resource type of the Transit Router VPC Attachment.
@@ -5783,6 +5943,13 @@ func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Id() pulumi.StringOutput
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Available since v1.279.0) A collection of feature attributes.
+func (o GetTransitRouterVpcAttachmentsAttachmentOutput) Options() GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) []GetTransitRouterVpcAttachmentsAttachmentOption {
+		return v.Options
+	}).(GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput)
+}
+
 // The payment type of the resource.
 func (o GetTransitRouterVpcAttachmentsAttachmentOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachment) string { return v.PaymentType }).(pulumi.StringOutput)
@@ -5853,6 +6020,112 @@ func (o GetTransitRouterVpcAttachmentsAttachmentArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVpcAttachmentsAttachment {
 		return vs[0].([]GetTransitRouterVpcAttachmentsAttachment)[vs[1].(int)]
 	}).(GetTransitRouterVpcAttachmentsAttachmentOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentOption struct {
+	// Indicates whether appliance mode is enabled.
+	ApplianceModeSupport string `pulumi:"applianceModeSupport"`
+	// Indicates whether IPv6 is supported.
+	Ipv6Support string `pulumi:"ipv6Support"`
+}
+
+// GetTransitRouterVpcAttachmentsAttachmentOptionInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentOptionArgs and GetTransitRouterVpcAttachmentsAttachmentOptionOutput values.
+// You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentOptionInput` via:
+//
+//	GetTransitRouterVpcAttachmentsAttachmentOptionArgs{...}
+type GetTransitRouterVpcAttachmentsAttachmentOptionInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVpcAttachmentsAttachmentOptionOutput() GetTransitRouterVpcAttachmentsAttachmentOptionOutput
+	ToGetTransitRouterVpcAttachmentsAttachmentOptionOutputWithContext(context.Context) GetTransitRouterVpcAttachmentsAttachmentOptionOutput
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentOptionArgs struct {
+	// Indicates whether appliance mode is enabled.
+	ApplianceModeSupport pulumi.StringInput `pulumi:"applianceModeSupport"`
+	// Indicates whether IPv6 is supported.
+	Ipv6Support pulumi.StringInput `pulumi:"ipv6Support"`
+}
+
+func (GetTransitRouterVpcAttachmentsAttachmentOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentOption)(nil)).Elem()
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentOptionArgs) ToGetTransitRouterVpcAttachmentsAttachmentOptionOutput() GetTransitRouterVpcAttachmentsAttachmentOptionOutput {
+	return i.ToGetTransitRouterVpcAttachmentsAttachmentOptionOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentOptionArgs) ToGetTransitRouterVpcAttachmentsAttachmentOptionOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentOptionOutput)
+}
+
+// GetTransitRouterVpcAttachmentsAttachmentOptionArrayInput is an input type that accepts GetTransitRouterVpcAttachmentsAttachmentOptionArray and GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput values.
+// You can construct a concrete instance of `GetTransitRouterVpcAttachmentsAttachmentOptionArrayInput` via:
+//
+//	GetTransitRouterVpcAttachmentsAttachmentOptionArray{ GetTransitRouterVpcAttachmentsAttachmentOptionArgs{...} }
+type GetTransitRouterVpcAttachmentsAttachmentOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput() GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput
+	ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutputWithContext(context.Context) GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentOptionArray []GetTransitRouterVpcAttachmentsAttachmentOptionInput
+
+func (GetTransitRouterVpcAttachmentsAttachmentOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVpcAttachmentsAttachmentOption)(nil)).Elem()
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentOptionArray) ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput() GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput {
+	return i.ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetTransitRouterVpcAttachmentsAttachmentOptionArray) ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentOptionOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsAttachmentOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentOption)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionOutput) ToGetTransitRouterVpcAttachmentsAttachmentOptionOutput() GetTransitRouterVpcAttachmentsAttachmentOptionOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionOutput) ToGetTransitRouterVpcAttachmentsAttachmentOptionOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOptionOutput {
+	return o
+}
+
+// Indicates whether appliance mode is enabled.
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionOutput) ApplianceModeSupport() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachmentOption) string { return v.ApplianceModeSupport }).(pulumi.StringOutput)
+}
+
+// Indicates whether IPv6 is supported.
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionOutput) Ipv6Support() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterVpcAttachmentsAttachmentOption) string { return v.Ipv6Support }).(pulumi.StringOutput)
+}
+
+type GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTransitRouterVpcAttachmentsAttachmentOption)(nil)).Elem()
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput() GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput) ToGetTransitRouterVpcAttachmentsAttachmentOptionArrayOutputWithContext(ctx context.Context) GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput {
+	return o
+}
+
+func (o GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput) Index(i pulumi.IntInput) GetTransitRouterVpcAttachmentsAttachmentOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTransitRouterVpcAttachmentsAttachmentOption {
+		return vs[0].([]GetTransitRouterVpcAttachmentsAttachmentOption)[vs[1].(int)]
+	}).(GetTransitRouterVpcAttachmentsAttachmentOptionOutput)
 }
 
 type GetTransitRouterVpcAttachmentsAttachmentZoneMapping struct {
@@ -6617,6 +6890,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMarkingPolicyTrafficMatchRuleArrayInput)(nil)).Elem(), TrafficMarkingPolicyTrafficMatchRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterMulticastDomainOptionsInput)(nil)).Elem(), TransitRouterMulticastDomainOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterMulticastDomainOptionsPtrInput)(nil)).Elem(), TransitRouterMulticastDomainOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentOptionsInput)(nil)).Elem(), TransitRouterVpcAttachmentOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentOptionsPtrInput)(nil)).Elem(), TransitRouterVpcAttachmentOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpcAttachmentZoneMappingArrayInput)(nil)).Elem(), TransitRouterVpcAttachmentZoneMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitRouterVpnAttachmentZoneInput)(nil)).Elem(), TransitRouterVpnAttachmentZoneArgs{})
@@ -6683,6 +6958,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVbrAttachmentsAttachmentArrayInput)(nil)).Elem(), GetTransitRouterVbrAttachmentsAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentArrayInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentOptionInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentOptionArrayInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentZoneMappingInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayInput)(nil)).Elem(), GetTransitRouterVpcAttachmentsAttachmentZoneMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitRouterVpnAttachmentsAttachmentInput)(nil)).Elem(), GetTransitRouterVpnAttachmentsAttachmentArgs{})
@@ -6697,6 +6974,8 @@ func init() {
 	pulumi.RegisterOutputType(TrafficMarkingPolicyTrafficMatchRuleArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterMulticastDomainOptionsOutput{})
 	pulumi.RegisterOutputType(TransitRouterMulticastDomainOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TransitRouterVpcAttachmentOptionsOutput{})
+	pulumi.RegisterOutputType(TransitRouterVpcAttachmentOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpcAttachmentZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(TransitRouterVpnAttachmentZoneOutput{})
@@ -6763,6 +7042,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTransitRouterVbrAttachmentsAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentOptionOutput{})
+	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentZoneMappingOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterVpcAttachmentsAttachmentZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetTransitRouterVpnAttachmentsAttachmentOutput{})

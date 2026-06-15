@@ -123,6 +123,10 @@ export class VpcAccess extends pulumi.CustomResource {
      */
     declare public readonly port: pulumi.Output<number>;
     /**
+     * The ID of the Vpc Access.
+     */
+    declare public /*out*/ readonly vpcAccessId: pulumi.Output<string>;
+    /**
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
     declare public readonly vpcId: pulumi.Output<string>;
@@ -143,6 +147,7 @@ export class VpcAccess extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["name"] = state?.name;
             resourceInputs["port"] = state?.port;
+            resourceInputs["vpcAccessId"] = state?.vpcAccessId;
             resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as VpcAccessArgs | undefined;
@@ -159,6 +164,7 @@ export class VpcAccess extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["port"] = args?.port;
             resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcAccessId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcAccess.__pulumiType, name, resourceInputs, opts);
@@ -181,6 +187,10 @@ export interface VpcAccessState {
      * The port number that corresponds to the instance.
      */
     port?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the Vpc Access.
+     */
+    vpcAccessId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */

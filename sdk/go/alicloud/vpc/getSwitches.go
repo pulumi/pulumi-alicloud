@@ -13,6 +13,8 @@ import (
 
 // This data source provides a list of VSwitches owned by an Alibaba Cloud account.
 //
+// > **NOTE:** Available since v1.7.2.
+//
 // ## Example Usage
 //
 // ```go

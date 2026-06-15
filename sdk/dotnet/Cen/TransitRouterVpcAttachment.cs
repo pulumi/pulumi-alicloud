@@ -143,6 +143,12 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
+        /// A collection of feature attributes. See `Options` below.
+        /// </summary>
+        [Output("options")]
+        public Output<Outputs.TransitRouterVpcAttachmentOptions> Options { get; private set; } = null!;
+
+        /// <summary>
         /// The entity that pays the fees of the network instance. Valid values:
         /// 
         /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -326,6 +332,12 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
+        /// A collection of feature attributes. See `Options` below.
+        /// </summary>
+        [Input("options")]
+        public Input<Inputs.TransitRouterVpcAttachmentOptionsArgs>? Options { get; set; }
+
+        /// <summary>
         /// The entity that pays the fees of the network instance. Valid values:
         /// 
         /// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -475,6 +487,12 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// A collection of feature attributes. See `Options` below.
+        /// </summary>
+        [Input("options")]
+        public Input<Inputs.TransitRouterVpcAttachmentOptionsGetArgs>? Options { get; set; }
 
         /// <summary>
         /// The entity that pays the fees of the network instance. Valid values:

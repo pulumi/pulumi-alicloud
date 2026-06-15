@@ -35,6 +35,7 @@ from .get_ipam_ipams import *
 from .get_ipsec_servers import *
 from .get_ipv4_gateways import *
 from .get_ipv6_addresses import *
+from .get_ipv6_cidr_blocks import *
 from .get_ipv6_egress_rules import *
 from .get_ipv6_gateways import *
 from .get_ipv6_internet_bandwidths import *
@@ -74,6 +75,7 @@ from .ipam_service import *
 from .ipv4_cidr_block import *
 from .ipv4_gateway import *
 from .ipv6_address import *
+from .ipv6_cidr_block import *
 from .ipv6_egress_rule import *
 from .ipv6_gateway import *
 from .ipv6_internet_bandwidth import *

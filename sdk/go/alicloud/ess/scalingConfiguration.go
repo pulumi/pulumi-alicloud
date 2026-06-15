@@ -202,8 +202,8 @@ type ScalingConfiguration struct {
 	InstanceTypeOverrides ScalingConfigurationInstanceTypeOverrideArrayOutput `pulumi:"instanceTypeOverrides"`
 	// Resource types of an ECS instance.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
+	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
@@ -367,7 +367,7 @@ type scalingConfigurationState struct {
 	InstanceTypeOverrides []ScalingConfigurationInstanceTypeOverride `pulumi:"instanceTypeOverrides"`
 	// Resource types of an ECS instance.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
@@ -500,7 +500,7 @@ type ScalingConfigurationState struct {
 	InstanceTypeOverrides ScalingConfigurationInstanceTypeOverrideArrayInput
 	// Resource types of an ECS instance.
 	InstanceTypes pulumi.StringArrayInput
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType pulumi.StringPtrInput
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn pulumi.IntPtrInput
@@ -637,7 +637,7 @@ type scalingConfigurationArgs struct {
 	InstanceTypeOverrides []ScalingConfigurationInstanceTypeOverride `pulumi:"instanceTypeOverrides"`
 	// Resource types of an ECS instance.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
@@ -771,7 +771,7 @@ type ScalingConfigurationArgs struct {
 	InstanceTypeOverrides ScalingConfigurationInstanceTypeOverrideArrayInput
 	// Resource types of an ECS instance.
 	InstanceTypes pulumi.StringArrayInput
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType pulumi.StringPtrInput
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn pulumi.IntPtrInput
@@ -1054,9 +1054,9 @@ func (o ScalingConfigurationOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-func (o ScalingConfigurationOutput) InternetChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+// Network billing type, Values: PayByBandwidth or PayByTraffic.
+func (o ScalingConfigurationOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).

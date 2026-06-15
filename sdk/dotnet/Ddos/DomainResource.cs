@@ -166,6 +166,12 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> Cname { get; private set; } = null!;
 
         /// <summary>
+        /// A custom list of cipher suites for TLS 1.2 and earlier versions.
+        /// </summary>
+        [Output("customCiphers")]
+        public Output<ImmutableArray<string>> CustomCiphers { get; private set; } = null!;
+
+        /// <summary>
         /// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
         /// Take note of the following items:
         /// - Do not use the following default HTTP headers:
@@ -240,6 +246,33 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Output("rsType")]
         public Output<int> RsType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable TLS 1.3. Valid values:
+        /// </summary>
+        [Output("ssl13Enabled")]
+        public Output<bool?> Ssl13Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of cipher suite. Valid values:
+        /// </summary>
+        [Output("sslCiphers")]
+        public Output<string> SslCiphers { get; private set; } = null!;
+
+        /// <summary>
+        /// The TLS protocol version. Valid values:
+        /// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+        /// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+        /// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        /// </summary>
+        [Output("sslProtocols")]
+        public Output<string> SslProtocols { get; private set; } = null!;
+
+        /// <summary>
+        /// A custom list of cipher suites for TLS 1.3.
+        /// </summary>
+        [Output("tls13CustomCiphers")]
+        public Output<ImmutableArray<string>> Tls13CustomCiphers { get; private set; } = null!;
 
         /// <summary>
         /// IP whitelist list.
@@ -405,6 +438,18 @@ namespace Pulumi.AliCloud.Ddos
             }
         }
 
+        [Input("customCiphers")]
+        private InputList<string>? _customCiphers;
+
+        /// <summary>
+        /// A custom list of cipher suites for TLS 1.2 and earlier versions.
+        /// </summary>
+        public InputList<string> CustomCiphers
+        {
+            get => _customCiphers ?? (_customCiphers = new InputList<string>());
+            set => _customCiphers = value;
+        }
+
         /// <summary>
         /// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
         /// Take note of the following items:
@@ -508,6 +553,39 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Input("rsType", required: true)]
         public Input<int> RsType { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable TLS 1.3. Valid values:
+        /// </summary>
+        [Input("ssl13Enabled")]
+        public Input<bool>? Ssl13Enabled { get; set; }
+
+        /// <summary>
+        /// The type of cipher suite. Valid values:
+        /// </summary>
+        [Input("sslCiphers")]
+        public Input<string>? SslCiphers { get; set; }
+
+        /// <summary>
+        /// The TLS protocol version. Valid values:
+        /// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+        /// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+        /// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        /// </summary>
+        [Input("sslProtocols")]
+        public Input<string>? SslProtocols { get; set; }
+
+        [Input("tls13CustomCiphers")]
+        private InputList<string>? _tls13CustomCiphers;
+
+        /// <summary>
+        /// A custom list of cipher suites for TLS 1.3.
+        /// </summary>
+        public InputList<string> Tls13CustomCiphers
+        {
+            get => _tls13CustomCiphers ?? (_tls13CustomCiphers = new InputList<string>());
+            set => _tls13CustomCiphers = value;
+        }
 
         [Input("whiteLists")]
         private InputList<string>? _whiteLists;
@@ -640,6 +718,18 @@ namespace Pulumi.AliCloud.Ddos
         [Input("cname")]
         public Input<string>? Cname { get; set; }
 
+        [Input("customCiphers")]
+        private InputList<string>? _customCiphers;
+
+        /// <summary>
+        /// A custom list of cipher suites for TLS 1.2 and earlier versions.
+        /// </summary>
+        public InputList<string> CustomCiphers
+        {
+            get => _customCiphers ?? (_customCiphers = new InputList<string>());
+            set => _customCiphers = value;
+        }
+
         /// <summary>
         /// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
         /// Take note of the following items:
@@ -743,6 +833,39 @@ namespace Pulumi.AliCloud.Ddos
         /// </summary>
         [Input("rsType")]
         public Input<int>? RsType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable TLS 1.3. Valid values:
+        /// </summary>
+        [Input("ssl13Enabled")]
+        public Input<bool>? Ssl13Enabled { get; set; }
+
+        /// <summary>
+        /// The type of cipher suite. Valid values:
+        /// </summary>
+        [Input("sslCiphers")]
+        public Input<string>? SslCiphers { get; set; }
+
+        /// <summary>
+        /// The TLS protocol version. Valid values:
+        /// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+        /// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+        /// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        /// </summary>
+        [Input("sslProtocols")]
+        public Input<string>? SslProtocols { get; set; }
+
+        [Input("tls13CustomCiphers")]
+        private InputList<string>? _tls13CustomCiphers;
+
+        /// <summary>
+        /// A custom list of cipher suites for TLS 1.3.
+        /// </summary>
+        public InputList<string> Tls13CustomCiphers
+        {
+            get => _tls13CustomCiphers ?? (_tls13CustomCiphers = new InputList<string>());
+            set => _tls13CustomCiphers = value;
+        }
 
         [Input("whiteLists")]
         private InputList<string>? _whiteLists;
