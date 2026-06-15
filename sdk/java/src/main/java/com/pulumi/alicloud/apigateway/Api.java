@@ -108,6 +108,76 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Backend Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.apigateway.Group;
+ * import com.pulumi.alicloud.apigateway.GroupArgs;
+ * import com.pulumi.alicloud.apigateway.Backend;
+ * import com.pulumi.alicloud.apigateway.BackendArgs;
+ * import com.pulumi.alicloud.apigateway.Api;
+ * import com.pulumi.alicloud.apigateway.ApiArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiRequestConfigArgs;
+ * import com.pulumi.alicloud.apigateway.inputs.ApiHttpServiceConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Group("example", GroupArgs.builder()
+ *             .name("tf-example")
+ *             .description("tf-example")
+ *             .basePath("/")
+ *             .build());
+ * 
+ *         var exampleBackend = new Backend("exampleBackend", BackendArgs.builder()
+ *             .backendName("tf-example-backend")
+ *             .backendType("HTTP")
+ *             .description("tf-example")
+ *             .build());
+ * 
+ *         var exampleApi = new Api("exampleApi", ApiArgs.builder()
+ *             .groupId(example.id())
+ *             .name("tf-example")
+ *             .description("tf-example")
+ *             .authType("APP")
+ *             .forceNonceCheck(false)
+ *             .requestConfig(ApiRequestConfigArgs.builder()
+ *                 .protocol("HTTP")
+ *                 .method("GET")
+ *                 .path("/example/path")
+ *                 .mode("MAPPING")
+ *                 .build())
+ *             .serviceType("HTTP")
+ *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
+ *                 .address("")
+ *                 .method("GET")
+ *                 .path("/web/cloudapi")
+ *                 .timeout(12)
+ *                 .build())
+ *             .backendId(exampleBackend.id())
+ *             .backendEnabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
@@ -148,6 +218,34 @@ public class Api extends com.pulumi.resources.CustomResource {
      */
     public Output<String> authType() {
         return this.authType;
+    }
+    /**
+     * Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     * 
+     */
+    @Export(name="backendEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> backendEnabled;
+
+    /**
+     * @return Specifies whether to enable the backend service. When set to `true`, the `backendId` will be sent to the API.
+     * 
+     */
+    public Output<Optional<Boolean>> backendEnabled() {
+        return Codegen.optional(this.backendEnabled);
+    }
+    /**
+     * The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     * 
+     */
+    @Export(name="backendId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backendId;
+
+    /**
+     * @return The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+     * 
+     */
+    public Output<Optional<String>> backendId() {
+        return Codegen.optional(this.backendId);
     }
     /**
      * constant_parameters defines the constant parameters of the api. See `constantParameters` below.
@@ -318,14 +416,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.serviceType;
     }
     /**
-     * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+     * Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `alicloud.apigateway.StageModel`.
      * 
      */
     @Export(name="stageNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> stageNames;
 
     /**
-     * @return Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+     * @return Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `alicloud.apigateway.StageModel`.
      * 
      */
     public Output<Optional<List<String>>> stageNames() {

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.esa.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,14 +32,14 @@ public final class ClientCaCertificateState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ClientCaCertificate Id
+     * ClientCaCertificate Id.
      * 
      */
     @Import(name="clientCaCertId")
     private @Nullable Output<String> clientCaCertId;
 
     /**
-     * @return ClientCaCertificate Id
+     * @return ClientCaCertificate Id.
      * 
      */
     public Optional<Output<String>> clientCaCertId() {
@@ -58,6 +59,21 @@ public final class ClientCaCertificateState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> clientCaCertName() {
         return Optional.ofNullable(this.clientCaCertName);
+    }
+
+    /**
+     * Client Ca certificate bound domain list.
+     * 
+     */
+    @Import(name="clientCaCertificateHostnames")
+    private @Nullable Output<List<String>> clientCaCertificateHostnames;
+
+    /**
+     * @return Client Ca certificate bound domain list.
+     * 
+     */
+    public Optional<Output<List<String>>> clientCaCertificateHostnames() {
+        return Optional.ofNullable(this.clientCaCertificateHostnames);
     }
 
     /**
@@ -111,6 +127,7 @@ public final class ClientCaCertificateState extends com.pulumi.resources.Resourc
         this.certificate = $.certificate;
         this.clientCaCertId = $.clientCaCertId;
         this.clientCaCertName = $.clientCaCertName;
+        this.clientCaCertificateHostnames = $.clientCaCertificateHostnames;
         this.createTime = $.createTime;
         this.siteId = $.siteId;
         this.status = $.status;
@@ -156,7 +173,7 @@ public final class ClientCaCertificateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientCaCertId ClientCaCertificate Id
+         * @param clientCaCertId ClientCaCertificate Id.
          * 
          * @return builder
          * 
@@ -167,7 +184,7 @@ public final class ClientCaCertificateState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientCaCertId ClientCaCertificate Id
+         * @param clientCaCertId ClientCaCertificate Id.
          * 
          * @return builder
          * 
@@ -195,6 +212,37 @@ public final class ClientCaCertificateState extends com.pulumi.resources.Resourc
          */
         public Builder clientCaCertName(String clientCaCertName) {
             return clientCaCertName(Output.of(clientCaCertName));
+        }
+
+        /**
+         * @param clientCaCertificateHostnames Client Ca certificate bound domain list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaCertificateHostnames(@Nullable Output<List<String>> clientCaCertificateHostnames) {
+            $.clientCaCertificateHostnames = clientCaCertificateHostnames;
+            return this;
+        }
+
+        /**
+         * @param clientCaCertificateHostnames Client Ca certificate bound domain list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaCertificateHostnames(List<String> clientCaCertificateHostnames) {
+            return clientCaCertificateHostnames(Output.of(clientCaCertificateHostnames));
+        }
+
+        /**
+         * @param clientCaCertificateHostnames Client Ca certificate bound domain list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaCertificateHostnames(String... clientCaCertificateHostnames) {
+            return clientCaCertificateHostnames(List.of(clientCaCertificateHostnames));
         }
 
         /**

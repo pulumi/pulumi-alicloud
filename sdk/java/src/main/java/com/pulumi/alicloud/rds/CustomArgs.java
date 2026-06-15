@@ -23,14 +23,20 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     public static final CustomArgs Empty = new CustomArgs();
 
     /**
-     * Represents the number of instances created
+     * Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+     * Valid values: `1` to `5`. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="amount")
     private @Nullable Output<Integer> amount;
 
     /**
-     * @return Represents the number of instances created
+     * @return Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+     * Valid values: `1` to `5`. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<Integer>> amount() {
@@ -38,14 +44,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to pay automatically. Value range:
+     * Specifies whether to enable automatic payment. Valid values:
      * 
      */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically. Value range:
+     * @return Specifies whether to enable automatic payment. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
@@ -53,14 +59,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+     * Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+     * @return Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -83,14 +89,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+     * Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
      * 
      */
     @Import(name="createMode")
     private @Nullable Output<String> createMode;
 
     /**
-     * @return Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+     * @return Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
      * 
      */
     public Optional<Output<String>> createMode() {
@@ -98,18 +104,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data disk See `dataDisk` below.
-     * 
-     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * List of data disks.   See `dataDisk` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<CustomDataDiskArgs>> dataDisks;
 
     /**
-     * @return Data disk See `dataDisk` below.
-     * 
-     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * @return List of data disks.   See `dataDisk` below.
      * 
      */
     public Optional<Output<List<CustomDataDiskArgs>>> dataDisks() {
@@ -117,14 +119,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the deployment set.
+     * Deployment set ID.
      * 
      */
     @Import(name="deploymentSetId")
     private @Nullable Output<String> deploymentSetId;
 
     /**
-     * @return The ID of the deployment set.
+     * @return Deployment set ID.
      * 
      */
     public Optional<Output<String>> deploymentSetId() {
@@ -132,14 +134,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+     * The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+     * @return The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> description() {
@@ -147,22 +149,26 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance configuration type, value range:
+     * The instance specification change type. Valid values:
      * 
-     * &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-     * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-     * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+     * &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+     * - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+     * - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return Instance configuration type, value range:
+     * @return The instance specification change type. Valid values:
      * 
-     * &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-     * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-     * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+     * &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+     * - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+     * - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -170,14 +176,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to pre-check the operation of creating an instance. Valid values:
+     * Specifies whether to perform a dry run of the instance creation request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check the operation of creating an instance. Valid values:
+     * @return Specifies whether to perform a dry run of the instance creation request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -185,14 +191,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to forcibly release the running instance. Value: true/false
+     * Specifies whether to forcibly release a running instance. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Whether to forcibly release the running instance. Value: true/false
+     * @return Specifies whether to forcibly release a running instance. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -200,14 +206,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to force shutdown. Value range:
+     * Specifies whether to force shut down the instance. Valid values:
      * 
      */
     @Import(name="forceStop")
     private @Nullable Output<Boolean> forceStop;
 
     /**
-     * @return Whether to force shutdown. Value range:
+     * @return Specifies whether to force shut down the instance. Valid values:
      * 
      */
     public Optional<Output<Boolean>> forceStop() {
@@ -215,14 +221,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance host name.
+     * The hostname of the instance.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
     /**
-     * @return The instance host name.
+     * @return The hostname of the instance.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     public Optional<Output<String>> hostName() {
@@ -232,6 +242,8 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the image used by the instance.
      * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
@@ -239,20 +251,30 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The ID of the image used by the instance.
      * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
      */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
     }
 
     /**
-     * The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+     * The billing method. Valid values:
+     * - `Prepaid`: subscription.
+     * - `Postpaid`: pay-as-you-go.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+     * @return The billing method. Valid values:
+     * - `Prepaid`: subscription.
+     * - `Postpaid`: pay-as-you-go.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -260,14 +282,29 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the created RDS Custom dedicated host instance.
+     * The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+     * 
+     */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
+     * The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
      * 
      */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
     /**
-     * @return The type of the created RDS Custom dedicated host instance.
+     * @return The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
      * 
      */
     public Output<String> instanceType() {
@@ -275,14 +312,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reserved parameters are not supported.
+     * Reserved parameter. Not supported currently.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return Reserved parameter. Not supported currently.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -290,14 +331,20 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reserved parameters are not supported.
+     * The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+     * Valid values: 0 to 1024. Default value: 0.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="internetMaxBandwidthOut")
     private @Nullable Output<Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+     * Valid values: 0 to 1024. Default value: 0.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthOut() {
@@ -305,14 +352,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reserved parameters are not supported.
+     * This parameter is reserved and currently unsupported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="ioOptimized")
     private @Nullable Output<String> ioOptimized;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return This parameter is reserved and currently unsupported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> ioOptimized() {
@@ -320,14 +371,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key pair name. Only flyer names are supported.
+     * The name of the key pair. Only a single key pair name is supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
     /**
-     * @return The key pair name. Only flyer names are supported.
+     * @return The name of the key pair. Only a single key pair name is supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> keyPairName() {
@@ -335,14 +390,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The account and password of the instance.
+     * The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!{@literal @}#$%^&amp;*-_+=|{}[]:;&#39;,.?/`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The account and password of the instance.
+     * @return The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!{@literal @}#$%^&amp;*-_+=|{}[]:;&#39;,.?/`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     public Optional<Output<String>> password() {
@@ -350,14 +409,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prepaid renewal duration, unit: Month/Year.
+     * The subscription duration of the resource. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Prepaid renewal duration, unit: Month/Year.
+     * @return The subscription duration of the resource. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -365,18 +428,22 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unit of duration of the year-to-month billing method. Value range:
+     * The unit of subscription duration for the subscription billing method. Valid values:
      * - `Year`: Year
      * - `Month` (default): Month
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The unit of duration of the year-to-month billing method. Value range:
+     * @return The unit of subscription duration for the subscription billing method. Valid values:
      * - `Year`: Year
      * - `Month` (default): Month
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -384,14 +451,29 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group
+     * The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+     * 
+     */
+    @Import(name="privateIpAddress")
+    private @Nullable Output<String> privateIpAddress;
+
+    /**
+     * @return The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+     * 
+     */
+    public Optional<Output<String>> privateIpAddress() {
+        return Optional.ofNullable(this.privateIpAddress);
+    }
+
+    /**
+     * The resource group ID. You can call ListResourceGroups to obtain it.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The resource group ID. You can call ListResourceGroups to obtain it.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -399,14 +481,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reserved parameters are not supported.
+     * This is a reserved parameter and is not currently supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="securityEnhancementStrategy")
     private @Nullable Output<String> securityEnhancementStrategy;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return This is a reserved parameter and is not currently supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> securityEnhancementStrategy() {
@@ -414,14 +500,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security group list
+     * The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+     * 
+     * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return Security group list
+     * @return The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+     * 
+     * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -429,22 +519,26 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-     * - `NoSpot`: normal pay-as-you-go instances.
-     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+     * - `NoSpot`: A regular pay-as-you-go instance.
+     * - `SpotAsPriceGo`: The system automatically bids based on the current market price.
      * 
-     * Default value: **NoSpot * *.
+     * Default value: `NoSpot`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="spotStrategy")
     private @Nullable Output<String> spotStrategy;
 
     /**
-     * @return The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-     * - `NoSpot`: normal pay-as-you-go instances.
-     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * @return The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+     * - `NoSpot`: A regular pay-as-you-go instance.
+     * - `SpotAsPriceGo`: The system automatically bids based on the current market price.
      * 
-     * Default value: **NoSpot * *.
+     * Default value: `NoSpot`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -452,14 +546,24 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource
+     * The status of the instance. Valid values:
+     * - `Pending`: The instance is being created.
+     * - `Running`: The instance is running.
+     * - `Starting`: The instance is starting.
+     * - `Stopping`: The instance is stopping.
+     * - `Stopped`: The instance is stopped.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the instance. Valid values:
+     * - `Pending`: The instance is being created.
+     * - `Running`: The instance is running.
+     * - `Starting`: The instance is starting.
+     * - `Stopping`: The instance is stopping.
+     * - `Stopped`: The instance is stopped.
      * 
      */
     public Optional<Output<String>> status() {
@@ -467,14 +571,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * The deployment type of RDS Custom. Valid values:
      * 
      */
     @Import(name="supportCase")
     private @Nullable Output<String> supportCase;
 
     /**
-     * @return Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * @return The deployment type of RDS Custom. Valid values:
      * 
      */
     public Optional<Output<String>> supportCase() {
@@ -482,14 +586,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * System disk specifications. See `systemDisk` below.
+     * The system disk specification. See `systemDisk` below.
+     * 
+     * &gt; **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `alicloud.rds.Custom` resource.
      * 
      */
     @Import(name="systemDisk")
     private @Nullable Output<CustomSystemDiskArgs> systemDisk;
 
     /**
-     * @return System disk specifications. See `systemDisk` below.
+     * @return The system disk specification. See `systemDisk` below.
+     * 
+     * &gt; **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `alicloud.rds.Custom` resource.
      * 
      */
     public Optional<Output<CustomSystemDiskArgs>> systemDisk() {
@@ -497,14 +605,14 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource
+     * Details of the queried instances and their tags.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource
+     * @return Details of the queried instances and their tags.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -512,16 +620,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * The network type InstanceNetworkType must be VPC.
+     * The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * The network type InstanceNetworkType must be VPC.
+     * @return The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
      * 
      */
     public Output<String> vswitchId() {
@@ -529,14 +639,18 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID  of the resource
+     * The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID  of the resource
+     * @return The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -561,6 +675,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         this.hostName = $.hostName;
         this.imageId = $.imageId;
         this.instanceChargeType = $.instanceChargeType;
+        this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
         this.internetChargeType = $.internetChargeType;
         this.internetMaxBandwidthOut = $.internetMaxBandwidthOut;
@@ -569,6 +684,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         this.password = $.password;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
+        this.privateIpAddress = $.privateIpAddress;
         this.resourceGroupId = $.resourceGroupId;
         this.securityEnhancementStrategy = $.securityEnhancementStrategy;
         this.securityGroupIds = $.securityGroupIds;
@@ -600,7 +716,10 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amount Represents the number of instances created
+         * @param amount Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+         * Valid values: `1` to `5`. Default value: `1`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -611,7 +730,10 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param amount Represents the number of instances created
+         * @param amount Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+         * Valid values: `1` to `5`. Default value: `1`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -621,7 +743,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPay Whether to pay automatically. Value range:
+         * @param autoPay Specifies whether to enable automatic payment. Valid values:
          * 
          * @return builder
          * 
@@ -632,7 +754,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPay Whether to pay automatically. Value range:
+         * @param autoPay Specifies whether to enable automatic payment. Valid values:
          * 
          * @return builder
          * 
@@ -642,7 +764,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+         * @param autoRenew Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
          * 
          * @return builder
          * 
@@ -653,7 +775,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+         * @param autoRenew Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
          * 
          * @return builder
          * 
@@ -684,7 +806,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createMode Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+         * @param createMode Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
          * 
          * @return builder
          * 
@@ -695,7 +817,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createMode Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+         * @param createMode Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
          * 
          * @return builder
          * 
@@ -705,9 +827,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk See `dataDisk` below.
-         * 
-         * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+         * @param dataDisks List of data disks.   See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -718,9 +838,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk See `dataDisk` below.
-         * 
-         * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+         * @param dataDisks List of data disks.   See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -730,9 +848,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataDisks Data disk See `dataDisk` below.
-         * 
-         * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+         * @param dataDisks List of data disks.   See `dataDisk` below.
          * 
          * @return builder
          * 
@@ -742,7 +858,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentSetId The ID of the deployment set.
+         * @param deploymentSetId Deployment set ID.
          * 
          * @return builder
          * 
@@ -753,7 +869,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentSetId The ID of the deployment set.
+         * @param deploymentSetId Deployment set ID.
          * 
          * @return builder
          * 
@@ -763,7 +879,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+         * @param description The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -774,7 +890,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+         * @param description The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -784,11 +900,13 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param direction Instance configuration type, value range:
+         * @param direction The instance specification change type. Valid values:
          * 
-         * &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-         * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-         * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+         * &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+         * - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+         * - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+         * 
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -799,11 +917,13 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param direction Instance configuration type, value range:
+         * @param direction The instance specification change type. Valid values:
          * 
-         * &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-         * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-         * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+         * &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+         * - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+         * - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+         * 
+         * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
          * 
          * @return builder
          * 
@@ -813,7 +933,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Whether to pre-check the operation of creating an instance. Valid values:
+         * @param dryRun Specifies whether to perform a dry run of the instance creation request. Valid values:
          * 
          * @return builder
          * 
@@ -824,7 +944,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Whether to pre-check the operation of creating an instance. Valid values:
+         * @param dryRun Specifies whether to perform a dry run of the instance creation request. Valid values:
          * 
          * @return builder
          * 
@@ -834,7 +954,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to forcibly release the running instance. Value: true/false
+         * @param force Specifies whether to forcibly release a running instance. Valid values:
          * 
          * @return builder
          * 
@@ -845,7 +965,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to forcibly release the running instance. Value: true/false
+         * @param force Specifies whether to forcibly release a running instance. Valid values:
          * 
          * @return builder
          * 
@@ -855,7 +975,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceStop Whether to force shutdown. Value range:
+         * @param forceStop Specifies whether to force shut down the instance. Valid values:
          * 
          * @return builder
          * 
@@ -866,7 +986,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceStop Whether to force shutdown. Value range:
+         * @param forceStop Specifies whether to force shut down the instance. Valid values:
          * 
          * @return builder
          * 
@@ -876,7 +996,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName The instance host name.
+         * @param hostName The hostname of the instance.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -887,7 +1009,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostName The instance host name.
+         * @param hostName The hostname of the instance.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -898,6 +1022,8 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageId The ID of the image used by the instance.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -910,6 +1036,8 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param imageId The ID of the image used by the instance.
          * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
          * @return builder
          * 
          */
@@ -918,7 +1046,11 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+         * @param instanceChargeType The billing method. Valid values:
+         * - `Prepaid`: subscription.
+         * - `Postpaid`: pay-as-you-go.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -929,7 +1061,11 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+         * @param instanceChargeType The billing method. Valid values:
+         * - `Prepaid`: subscription.
+         * - `Postpaid`: pay-as-you-go.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -939,7 +1075,28 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the created RDS Custom dedicated host instance.
+         * @param instanceName The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param instanceName The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
+        }
+
+        /**
+         * @param instanceType The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
          * 
          * @return builder
          * 
@@ -950,7 +1107,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the created RDS Custom dedicated host instance.
+         * @param instanceType The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
          * 
          * @return builder
          * 
@@ -960,7 +1117,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Reserved parameters are not supported.
+         * @param internetChargeType Reserved parameter. Not supported currently.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -971,7 +1130,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType Reserved parameters are not supported.
+         * @param internetChargeType Reserved parameter. Not supported currently.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -981,7 +1142,10 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut Reserved parameters are not supported.
+         * @param internetMaxBandwidthOut The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+         * Valid values: 0 to 1024. Default value: 0.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -992,7 +1156,10 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetMaxBandwidthOut Reserved parameters are not supported.
+         * @param internetMaxBandwidthOut The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+         * Valid values: 0 to 1024. Default value: 0.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1002,7 +1169,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ioOptimized Reserved parameters are not supported.
+         * @param ioOptimized This parameter is reserved and currently unsupported.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1013,7 +1182,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ioOptimized Reserved parameters are not supported.
+         * @param ioOptimized This parameter is reserved and currently unsupported.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1023,7 +1194,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyPairName The key pair name. Only flyer names are supported.
+         * @param keyPairName The name of the key pair. Only a single key pair name is supported.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1034,7 +1207,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyPairName The key pair name. Only flyer names are supported.
+         * @param keyPairName The name of the key pair. Only a single key pair name is supported.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1044,7 +1219,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The account and password of the instance.
+         * @param password The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!{@literal @}#$%^&amp;*-_+=|{}[]:;&#39;,.?/`.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -1055,7 +1232,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The account and password of the instance.
+         * @param password The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!{@literal @}#$%^&amp;*-_+=|{}[]:;&#39;,.?/`.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -1065,7 +1244,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Prepaid renewal duration, unit: Month/Year.
+         * @param period The subscription duration of the resource. Default value: `1`.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -1076,7 +1257,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Prepaid renewal duration, unit: Month/Year.
+         * @param period The subscription duration of the resource. Default value: `1`.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
          * 
          * @return builder
          * 
@@ -1086,9 +1269,11 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The unit of duration of the year-to-month billing method. Value range:
+         * @param periodUnit The unit of subscription duration for the subscription billing method. Valid values:
          * - `Year`: Year
          * - `Month` (default): Month
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1099,9 +1284,11 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The unit of duration of the year-to-month billing method. Value range:
+         * @param periodUnit The unit of subscription duration for the subscription billing method. Valid values:
          * - `Year`: Year
          * - `Month` (default): Month
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1111,7 +1298,28 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param privateIpAddress The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIpAddress(@Nullable Output<String> privateIpAddress) {
+            $.privateIpAddress = privateIpAddress;
+            return this;
+        }
+
+        /**
+         * @param privateIpAddress The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateIpAddress(String privateIpAddress) {
+            return privateIpAddress(Output.of(privateIpAddress));
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID. You can call ListResourceGroups to obtain it.
          * 
          * @return builder
          * 
@@ -1122,7 +1330,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The resource group ID. You can call ListResourceGroups to obtain it.
          * 
          * @return builder
          * 
@@ -1132,7 +1340,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityEnhancementStrategy Reserved parameters are not supported.
+         * @param securityEnhancementStrategy This is a reserved parameter and is not currently supported.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1143,7 +1353,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityEnhancementStrategy Reserved parameters are not supported.
+         * @param securityEnhancementStrategy This is a reserved parameter and is not currently supported.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1153,7 +1365,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds Security group list
+         * @param securityGroupIds The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+         * 
+         * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
          * 
          * @return builder
          * 
@@ -1164,7 +1378,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds Security group list
+         * @param securityGroupIds The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+         * 
+         * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
          * 
          * @return builder
          * 
@@ -1174,7 +1390,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds Security group list
+         * @param securityGroupIds The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+         * 
+         * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
          * 
          * @return builder
          * 
@@ -1184,11 +1402,13 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotStrategy The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-         * - `NoSpot`: normal pay-as-you-go instances.
-         * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+         * @param spotStrategy The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+         * - `NoSpot`: A regular pay-as-you-go instance.
+         * - `SpotAsPriceGo`: The system automatically bids based on the current market price.
          * 
-         * Default value: **NoSpot * *.
+         * Default value: `NoSpot`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1199,11 +1419,13 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spotStrategy The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-         * - `NoSpot`: normal pay-as-you-go instances.
-         * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+         * @param spotStrategy The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+         * - `NoSpot`: A regular pay-as-you-go instance.
+         * - `SpotAsPriceGo`: The system automatically bids based on the current market price.
          * 
-         * Default value: **NoSpot * *.
+         * Default value: `NoSpot`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -1213,7 +1435,12 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the instance. Valid values:
+         * - `Pending`: The instance is being created.
+         * - `Running`: The instance is running.
+         * - `Starting`: The instance is starting.
+         * - `Stopping`: The instance is stopping.
+         * - `Stopped`: The instance is stopped.
          * 
          * @return builder
          * 
@@ -1224,7 +1451,12 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource
+         * @param status The status of the instance. Valid values:
+         * - `Pending`: The instance is being created.
+         * - `Running`: The instance is running.
+         * - `Starting`: The instance is starting.
+         * - `Stopping`: The instance is stopping.
+         * - `Stopped`: The instance is stopped.
          * 
          * @return builder
          * 
@@ -1234,7 +1466,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportCase Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+         * @param supportCase The deployment type of RDS Custom. Valid values:
          * 
          * @return builder
          * 
@@ -1245,7 +1477,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param supportCase Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+         * @param supportCase The deployment type of RDS Custom. Valid values:
          * 
          * @return builder
          * 
@@ -1255,7 +1487,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDisk System disk specifications. See `systemDisk` below.
+         * @param systemDisk The system disk specification. See `systemDisk` below.
+         * 
+         * &gt; **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `alicloud.rds.Custom` resource.
          * 
          * @return builder
          * 
@@ -1266,7 +1500,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param systemDisk System disk specifications. See `systemDisk` below.
+         * @param systemDisk The system disk specification. See `systemDisk` below.
+         * 
+         * &gt; **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `alicloud.rds.Custom` resource.
          * 
          * @return builder
          * 
@@ -1276,7 +1512,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource
+         * @param tags Details of the queried instances and their tags.
          * 
          * @return builder
          * 
@@ -1287,7 +1523,7 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource
+         * @param tags Details of the queried instances and their tags.
          * 
          * @return builder
          * 
@@ -1297,8 +1533,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-         * The network type InstanceNetworkType must be VPC.
+         * @param vswitchId The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+         * 
+         * &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
          * 
          * @return builder
          * 
@@ -1309,8 +1546,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-         * The network type InstanceNetworkType must be VPC.
+         * @param vswitchId The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+         * 
+         * &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
          * 
          * @return builder
          * 
@@ -1320,7 +1558,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID  of the resource
+         * @param zoneId The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+         * 
+         * &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
          * 
          * @return builder
          * 
@@ -1331,7 +1571,9 @@ public final class CustomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID  of the resource
+         * @param zoneId The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+         * 
+         * &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
          * 
          * @return builder
          * 

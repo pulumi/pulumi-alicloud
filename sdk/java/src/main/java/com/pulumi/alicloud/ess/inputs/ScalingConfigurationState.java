@@ -334,14 +334,14 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * Network billing type, Values: PayByBandwidth or PayByTraffic.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * @return Network billing type, Values: PayByBandwidth or PayByTraffic.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -1469,7 +1469,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internetChargeType Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+         * @param internetChargeType Network billing type, Values: PayByBandwidth or PayByTraffic.
          * 
          * @return builder
          * 
@@ -1480,7 +1480,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param internetChargeType Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+         * @param internetChargeType Network billing type, Values: PayByBandwidth or PayByTraffic.
          * 
          * @return builder
          * 

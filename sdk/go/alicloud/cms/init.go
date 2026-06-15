@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cms/addonRelease:AddonRelease":
+		r = &AddonRelease{}
+	case "alicloud:cms/aggTaskGroup:AggTaskGroup":
+		r = &AggTaskGroup{}
 	case "alicloud:cms/alarm:Alarm":
 		r = &Alarm{}
 	case "alicloud:cms/alarmContact:AlarmContact":
@@ -72,6 +76,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/addonRelease",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cms/aggTaskGroup",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cms/alarm",

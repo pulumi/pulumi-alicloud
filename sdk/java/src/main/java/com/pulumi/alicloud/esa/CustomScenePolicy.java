@@ -91,16 +91,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:esa/customScenePolicy:CustomScenePolicy")
 public class CustomScenePolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+     * 
+     * @deprecated
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      * 
      */
+    @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
      * 
      */
     public Output<String> createTime() {
@@ -137,18 +139,34 @@ public class CustomScenePolicy extends com.pulumi.resources.CustomResource {
         return this.endTime;
     }
     /**
-     * The IDs of websites associated.
+     * The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      * 
      */
     @Export(name="siteIds", refs={String.class}, tree="[0]")
     private Output<String> siteIds;
 
     /**
-     * @return The IDs of websites associated.
+     * @return The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      * 
      */
     public Output<String> siteIds() {
         return this.siteIds;
+    }
+    /**
+     * The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    @Export(name="startTime", refs={String.class}, tree="[0]")
+    private Output<String> startTime;
+
+    /**
+     * @return The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    public Output<String> startTime() {
+        return this.startTime;
     }
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.

@@ -139,6 +139,8 @@ type DomainResource struct {
 	CertRegion pulumi.StringPtrOutput `pulumi:"certRegion"`
 	// The CNAME address to query.
 	Cname pulumi.StringOutput `pulumi:"cname"`
+	// A custom list of cipher suites for TLS 1.2 and earlier versions.
+	CustomCiphers pulumi.StringArrayOutput `pulumi:"customCiphers"`
 	// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 	// Take note of the following items:
 	// - Do not use the following default HTTP headers:
@@ -179,6 +181,17 @@ type DomainResource struct {
 	RealServers pulumi.StringArrayOutput `pulumi:"realServers"`
 	// The address type of the origin server. Valid values:
 	RsType pulumi.IntOutput `pulumi:"rsType"`
+	// Specifies whether to enable TLS 1.3. Valid values:
+	Ssl13Enabled pulumi.BoolPtrOutput `pulumi:"ssl13Enabled"`
+	// The type of cipher suite. Valid values:
+	SslCiphers pulumi.StringOutput `pulumi:"sslCiphers"`
+	// The TLS protocol version. Valid values:
+	// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+	// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+	// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+	SslProtocols pulumi.StringOutput `pulumi:"sslProtocols"`
+	// A custom list of cipher suites for TLS 1.3.
+	Tls13CustomCiphers pulumi.StringArrayOutput `pulumi:"tls13CustomCiphers"`
 	// IP whitelist list.
 	WhiteLists pulumi.StringArrayOutput `pulumi:"whiteLists"`
 }
@@ -282,6 +295,8 @@ type domainResourceState struct {
 	CertRegion *string `pulumi:"certRegion"`
 	// The CNAME address to query.
 	Cname *string `pulumi:"cname"`
+	// A custom list of cipher suites for TLS 1.2 and earlier versions.
+	CustomCiphers []string `pulumi:"customCiphers"`
 	// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 	// Take note of the following items:
 	// - Do not use the following default HTTP headers:
@@ -322,6 +337,17 @@ type domainResourceState struct {
 	RealServers []string `pulumi:"realServers"`
 	// The address type of the origin server. Valid values:
 	RsType *int `pulumi:"rsType"`
+	// Specifies whether to enable TLS 1.3. Valid values:
+	Ssl13Enabled *bool `pulumi:"ssl13Enabled"`
+	// The type of cipher suite. Valid values:
+	SslCiphers *string `pulumi:"sslCiphers"`
+	// The TLS protocol version. Valid values:
+	// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+	// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+	// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+	SslProtocols *string `pulumi:"sslProtocols"`
+	// A custom list of cipher suites for TLS 1.3.
+	Tls13CustomCiphers []string `pulumi:"tls13CustomCiphers"`
 	// IP whitelist list.
 	WhiteLists []string `pulumi:"whiteLists"`
 }
@@ -362,6 +388,8 @@ type DomainResourceState struct {
 	CertRegion pulumi.StringPtrInput
 	// The CNAME address to query.
 	Cname pulumi.StringPtrInput
+	// A custom list of cipher suites for TLS 1.2 and earlier versions.
+	CustomCiphers pulumi.StringArrayInput
 	// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 	// Take note of the following items:
 	// - Do not use the following default HTTP headers:
@@ -402,6 +430,17 @@ type DomainResourceState struct {
 	RealServers pulumi.StringArrayInput
 	// The address type of the origin server. Valid values:
 	RsType pulumi.IntPtrInput
+	// Specifies whether to enable TLS 1.3. Valid values:
+	Ssl13Enabled pulumi.BoolPtrInput
+	// The type of cipher suite. Valid values:
+	SslCiphers pulumi.StringPtrInput
+	// The TLS protocol version. Valid values:
+	// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+	// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+	// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+	SslProtocols pulumi.StringPtrInput
+	// A custom list of cipher suites for TLS 1.3.
+	Tls13CustomCiphers pulumi.StringArrayInput
 	// IP whitelist list.
 	WhiteLists pulumi.StringArrayInput
 }
@@ -444,6 +483,8 @@ type domainResourceArgs struct {
 	CertName *string `pulumi:"certName"`
 	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
 	CertRegion *string `pulumi:"certRegion"`
+	// A custom list of cipher suites for TLS 1.2 and earlier versions.
+	CustomCiphers []string `pulumi:"customCiphers"`
 	// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 	// Take note of the following items:
 	// - Do not use the following default HTTP headers:
@@ -484,6 +525,17 @@ type domainResourceArgs struct {
 	RealServers []string `pulumi:"realServers"`
 	// The address type of the origin server. Valid values:
 	RsType int `pulumi:"rsType"`
+	// Specifies whether to enable TLS 1.3. Valid values:
+	Ssl13Enabled *bool `pulumi:"ssl13Enabled"`
+	// The type of cipher suite. Valid values:
+	SslCiphers *string `pulumi:"sslCiphers"`
+	// The TLS protocol version. Valid values:
+	// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+	// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+	// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+	SslProtocols *string `pulumi:"sslProtocols"`
+	// A custom list of cipher suites for TLS 1.3.
+	Tls13CustomCiphers []string `pulumi:"tls13CustomCiphers"`
 	// IP whitelist list.
 	WhiteLists []string `pulumi:"whiteLists"`
 }
@@ -523,6 +575,8 @@ type DomainResourceArgs struct {
 	CertName pulumi.StringPtrInput
 	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
 	CertRegion pulumi.StringPtrInput
+	// A custom list of cipher suites for TLS 1.2 and earlier versions.
+	CustomCiphers pulumi.StringArrayInput
 	// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 	// Take note of the following items:
 	// - Do not use the following default HTTP headers:
@@ -563,6 +617,17 @@ type DomainResourceArgs struct {
 	RealServers pulumi.StringArrayInput
 	// The address type of the origin server. Valid values:
 	RsType pulumi.IntInput
+	// Specifies whether to enable TLS 1.3. Valid values:
+	Ssl13Enabled pulumi.BoolPtrInput
+	// The type of cipher suite. Valid values:
+	SslCiphers pulumi.StringPtrInput
+	// The TLS protocol version. Valid values:
+	// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+	// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+	// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+	SslProtocols pulumi.StringPtrInput
+	// A custom list of cipher suites for TLS 1.3.
+	Tls13CustomCiphers pulumi.StringArrayInput
 	// IP whitelist list.
 	WhiteLists pulumi.StringArrayInput
 }
@@ -719,6 +784,11 @@ func (o DomainResourceOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
 
+// A custom list of cipher suites for TLS 1.2 and earlier versions.
+func (o DomainResourceOutput) CustomCiphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.CustomCiphers }).(pulumi.StringArrayOutput)
+}
+
 // The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 // Take note of the following items:
 // - Do not use the following default HTTP headers:
@@ -784,6 +854,29 @@ func (o DomainResourceOutput) RealServers() pulumi.StringArrayOutput {
 // The address type of the origin server. Valid values:
 func (o DomainResourceOutput) RsType() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.IntOutput { return v.RsType }).(pulumi.IntOutput)
+}
+
+// Specifies whether to enable TLS 1.3. Valid values:
+func (o DomainResourceOutput) Ssl13Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.BoolPtrOutput { return v.Ssl13Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of cipher suite. Valid values:
+func (o DomainResourceOutput) SslCiphers() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.SslCiphers }).(pulumi.StringOutput)
+}
+
+// The TLS protocol version. Valid values:
+// - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+// - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+// - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+func (o DomainResourceOutput) SslProtocols() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.SslProtocols }).(pulumi.StringOutput)
+}
+
+// A custom list of cipher suites for TLS 1.3.
+func (o DomainResourceOutput) Tls13CustomCiphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.Tls13CustomCiphers }).(pulumi.StringArrayOutput)
 }
 
 // IP whitelist list.

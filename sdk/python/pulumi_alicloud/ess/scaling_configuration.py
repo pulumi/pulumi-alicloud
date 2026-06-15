@@ -100,7 +100,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -524,7 +524,7 @@ class ScalingConfigurationArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        Network billing type, Values: PayByBandwidth or PayByTraffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1027,7 +1027,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -1441,7 +1441,7 @@ class _ScalingConfigurationState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        Network billing type, Values: PayByBandwidth or PayByTraffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -2043,7 +2043,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -2413,7 +2413,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -2689,9 +2689,9 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        Network billing type, Values: PayByBandwidth or PayByTraffic.
         """
         return pulumi.get(self, "internet_charge_type")
 

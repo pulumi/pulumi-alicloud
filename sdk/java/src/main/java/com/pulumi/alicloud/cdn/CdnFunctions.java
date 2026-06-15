@@ -6,6 +6,8 @@ package com.pulumi.alicloud.cdn;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsArgs;
 import com.pulumi.alicloud.cdn.inputs.GetBlockedRegionsPlainArgs;
+import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsArgs;
+import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsPlainArgs;
 import com.pulumi.alicloud.cdn.inputs.GetIpInfoArgs;
 import com.pulumi.alicloud.cdn.inputs.GetIpInfoPlainArgs;
 import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesArgs;
@@ -13,6 +15,7 @@ import com.pulumi.alicloud.cdn.inputs.GetRealTimeLogDeliveriesPlainArgs;
 import com.pulumi.alicloud.cdn.inputs.GetServiceArgs;
 import com.pulumi.alicloud.cdn.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.cdn.outputs.GetBlockedRegionsResult;
+import com.pulumi.alicloud.cdn.outputs.GetDomainConfigsResult;
 import com.pulumi.alicloud.cdn.outputs.GetIpInfoResult;
 import com.pulumi.alicloud.cdn.outputs.GetRealTimeLogDeliveriesResult;
 import com.pulumi.alicloud.cdn.outputs.GetServiceResult;
@@ -243,6 +246,411 @@ public final class CdnFunctions {
      */
     public static CompletableFuture<GetBlockedRegionsResult> getBlockedRegionsPlain(GetBlockedRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cdn/getBlockedRegions:getBlockedRegions", TypeShape.of(GetBlockedRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cdn Domain Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cdn.DomainNew;
+     * import com.pulumi.alicloud.cdn.DomainNewArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+     * import com.pulumi.alicloud.cdn.DomainConfig;
+     * import com.pulumi.alicloud.cdn.DomainConfigArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainConfigFunctionArgArgs;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .cdnType("web")
+     *             .scope("overseas")
+     *             .sources(DomainNewSourceArgs.builder()
+     *                 .content("1.1.1.1")
+     *                 .type("ipaddr")
+     *                 .priority(20)
+     *                 .port(80)
+     *                 .weight(15)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDomainConfig = new DomainConfig("defaultDomainConfig", DomainConfigArgs.builder()
+     *             .domainName(defaultDomainNew.domainName())
+     *             .functionName("ip_allow_list_set")
+     *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+     *                 .argName("ip_list")
+     *                 .argValue("110.110.110.110")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CdnFunctions.getDomainConfigs(GetDomainConfigsArgs.builder()
+     *             .domainName(defaultDomainConfig.domainName())
+     *             .ids(defaultDomainConfig.id())
+     *             .build());
+     * 
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainConfigsResult> getDomainConfigs(GetDomainConfigsArgs args) {
+        return getDomainConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cdn Domain Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cdn.DomainNew;
+     * import com.pulumi.alicloud.cdn.DomainNewArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+     * import com.pulumi.alicloud.cdn.DomainConfig;
+     * import com.pulumi.alicloud.cdn.DomainConfigArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainConfigFunctionArgArgs;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .cdnType("web")
+     *             .scope("overseas")
+     *             .sources(DomainNewSourceArgs.builder()
+     *                 .content("1.1.1.1")
+     *                 .type("ipaddr")
+     *                 .priority(20)
+     *                 .port(80)
+     *                 .weight(15)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDomainConfig = new DomainConfig("defaultDomainConfig", DomainConfigArgs.builder()
+     *             .domainName(defaultDomainNew.domainName())
+     *             .functionName("ip_allow_list_set")
+     *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+     *                 .argName("ip_list")
+     *                 .argValue("110.110.110.110")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CdnFunctions.getDomainConfigs(GetDomainConfigsArgs.builder()
+     *             .domainName(defaultDomainConfig.domainName())
+     *             .ids(defaultDomainConfig.id())
+     *             .build());
+     * 
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainConfigsResult> getDomainConfigsPlain(GetDomainConfigsPlainArgs args) {
+        return getDomainConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Cdn Domain Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cdn.DomainNew;
+     * import com.pulumi.alicloud.cdn.DomainNewArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+     * import com.pulumi.alicloud.cdn.DomainConfig;
+     * import com.pulumi.alicloud.cdn.DomainConfigArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainConfigFunctionArgArgs;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .cdnType("web")
+     *             .scope("overseas")
+     *             .sources(DomainNewSourceArgs.builder()
+     *                 .content("1.1.1.1")
+     *                 .type("ipaddr")
+     *                 .priority(20)
+     *                 .port(80)
+     *                 .weight(15)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDomainConfig = new DomainConfig("defaultDomainConfig", DomainConfigArgs.builder()
+     *             .domainName(defaultDomainNew.domainName())
+     *             .functionName("ip_allow_list_set")
+     *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+     *                 .argName("ip_list")
+     *                 .argValue("110.110.110.110")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CdnFunctions.getDomainConfigs(GetDomainConfigsArgs.builder()
+     *             .domainName(defaultDomainConfig.domainName())
+     *             .ids(defaultDomainConfig.id())
+     *             .build());
+     * 
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainConfigsResult> getDomainConfigs(GetDomainConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cdn/getDomainConfigs:getDomainConfigs", TypeShape.of(GetDomainConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cdn Domain Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cdn.DomainNew;
+     * import com.pulumi.alicloud.cdn.DomainNewArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+     * import com.pulumi.alicloud.cdn.DomainConfig;
+     * import com.pulumi.alicloud.cdn.DomainConfigArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainConfigFunctionArgArgs;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .cdnType("web")
+     *             .scope("overseas")
+     *             .sources(DomainNewSourceArgs.builder()
+     *                 .content("1.1.1.1")
+     *                 .type("ipaddr")
+     *                 .priority(20)
+     *                 .port(80)
+     *                 .weight(15)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDomainConfig = new DomainConfig("defaultDomainConfig", DomainConfigArgs.builder()
+     *             .domainName(defaultDomainNew.domainName())
+     *             .functionName("ip_allow_list_set")
+     *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+     *                 .argName("ip_list")
+     *                 .argValue("110.110.110.110")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CdnFunctions.getDomainConfigs(GetDomainConfigsArgs.builder()
+     *             .domainName(defaultDomainConfig.domainName())
+     *             .ids(defaultDomainConfig.id())
+     *             .build());
+     * 
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainConfigsResult> getDomainConfigs(GetDomainConfigsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cdn/getDomainConfigs:getDomainConfigs", TypeShape.of(GetDomainConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Cdn Domain Configs of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.279.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cdn.DomainNew;
+     * import com.pulumi.alicloud.cdn.DomainNewArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
+     * import com.pulumi.alicloud.cdn.DomainConfig;
+     * import com.pulumi.alicloud.cdn.DomainConfigArgs;
+     * import com.pulumi.alicloud.cdn.inputs.DomainConfigFunctionArgArgs;
+     * import com.pulumi.alicloud.cdn.CdnFunctions;
+     * import com.pulumi.alicloud.cdn.inputs.GetDomainConfigsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
+     *             .build());
+     * 
+     *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
+     *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+     *             .cdnType("web")
+     *             .scope("overseas")
+     *             .sources(DomainNewSourceArgs.builder()
+     *                 .content("1.1.1.1")
+     *                 .type("ipaddr")
+     *                 .priority(20)
+     *                 .port(80)
+     *                 .weight(15)
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultDomainConfig = new DomainConfig("defaultDomainConfig", DomainConfigArgs.builder()
+     *             .domainName(defaultDomainNew.domainName())
+     *             .functionName("ip_allow_list_set")
+     *             .functionArgs(DomainConfigFunctionArgArgs.builder()
+     *                 .argName("ip_list")
+     *                 .argValue("110.110.110.110")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var ids = CdnFunctions.getDomainConfigs(GetDomainConfigsArgs.builder()
+     *             .domainName(defaultDomainConfig.domainName())
+     *             .ids(defaultDomainConfig.id())
+     *             .build());
+     * 
+     *         ctx.export("cdnDomainConfigsId0", ids.applyValue(_ids -> _ids.configs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainConfigsResult> getDomainConfigsPlain(GetDomainConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cdn/getDomainConfigs:getDomainConfigs", TypeShape.of(GetDomainConfigsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the function of verifying whether an IP is a CDN node.

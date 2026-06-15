@@ -92,6 +92,7 @@ class _VpcAccessState:
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_access_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcAccess resources.
@@ -99,6 +100,7 @@ class _VpcAccessState:
         :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
         :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
+        :param pulumi.Input[_builtins.str] vpc_access_id: The ID of the Vpc Access.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         if instance_id is not None:
@@ -107,6 +109,8 @@ class _VpcAccessState:
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if vpc_access_id is not None:
+            pulumi.set(__self__, "vpc_access_id", vpc_access_id)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
 
@@ -145,6 +149,18 @@ class _VpcAccessState:
     @port.setter
     def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcAccessId")
+    def vpc_access_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Vpc Access.
+        """
+        return pulumi.get(self, "vpc_access_id")
+
+    @vpc_access_id.setter
+    def vpc_access_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_access_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
@@ -361,6 +377,7 @@ class VpcAccess(pulumi.CustomResource):
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vpc_access_id"] = None
         super(VpcAccess, __self__).__init__(
             'alicloud:apigateway/vpcAccess:VpcAccess',
             resource_name,
@@ -374,6 +391,7 @@ class VpcAccess(pulumi.CustomResource):
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_access_id: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcAccess':
         """
         Get an existing VpcAccess resource's state with the given name, id, and optional extra
@@ -385,6 +403,7 @@ class VpcAccess(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: The ID of an ECS or SLB instance in the VPC.
         :param pulumi.Input[_builtins.str] name: The name of the authorization. The name must be unique.
         :param pulumi.Input[_builtins.int] port: The port number that corresponds to the instance.
+        :param pulumi.Input[_builtins.str] vpc_access_id: The ID of the Vpc Access.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -394,6 +413,7 @@ class VpcAccess(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
         __props__.__dict__["port"] = port
+        __props__.__dict__["vpc_access_id"] = vpc_access_id
         __props__.__dict__["vpc_id"] = vpc_id
         return VpcAccess(resource_name, opts=opts, __props__=__props__)
 
@@ -420,6 +440,14 @@ class VpcAccess(pulumi.CustomResource):
         The port number that corresponds to the instance.
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcAccessId")
+    def vpc_access_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the Vpc Access.
+        """
+        return pulumi.get(self, "vpc_access_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")

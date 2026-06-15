@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Ess
         /// The port will be used for Server Group backend server.
         /// </summary>
         [Output("port")]
-        public Output<int> Port { get; private set; } = null!;
+        public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
         /// ID of the scaling group.
@@ -171,7 +171,8 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of server group N. Valid values: ALB, NLB.
+        /// The type of server group N. Valid values: ALB, NLB, GWLB.
+        /// &gt; **NOTE:** From version 1.279.0, `Type` can be set to `GWLB`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -180,7 +181,7 @@ namespace Pulumi.AliCloud.Ess
         /// The weight of an ECS instance attached to the Server Group.
         /// </summary>
         [Output("weight")]
-        public Output<int> Weight { get; private set; } = null!;
+        public Output<int?> Weight { get; private set; } = null!;
 
 
         /// <summary>
@@ -238,8 +239,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// The port will be used for Server Group backend server.
         /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// ID of the scaling group.
@@ -254,7 +255,8 @@ namespace Pulumi.AliCloud.Ess
         public Input<string> ServerGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The type of server group N. Valid values: ALB, NLB.
+        /// The type of server group N. Valid values: ALB, NLB, GWLB.
+        /// &gt; **NOTE:** From version 1.279.0, `Type` can be set to `GWLB`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -262,8 +264,8 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// The weight of an ECS instance attached to the Server Group.
         /// </summary>
-        [Input("weight", required: true)]
-        public Input<int> Weight { get; set; } = null!;
+        [Input("weight")]
+        public Input<int>? Weight { get; set; }
 
         public ServerGroupAttachmentArgs()
         {
@@ -299,7 +301,8 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// The type of server group N. Valid values: ALB, NLB.
+        /// The type of server group N. Valid values: ALB, NLB, GWLB.
+        /// &gt; **NOTE:** From version 1.279.0, `Type` can be set to `GWLB`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

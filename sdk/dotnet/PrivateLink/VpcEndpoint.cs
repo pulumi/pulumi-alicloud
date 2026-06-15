@@ -157,9 +157,9 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> EndpointDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint type.
-        /// 
-        /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The type of the endpoint. Valid values:
+        /// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        /// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -305,9 +305,9 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointDescription { get; set; }
 
         /// <summary>
-        /// The endpoint type.
-        /// 
-        /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The type of the endpoint. Valid values:
+        /// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        /// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -445,9 +445,9 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? EndpointDomain { get; set; }
 
         /// <summary>
-        /// The endpoint type.
-        /// 
-        /// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        /// The type of the endpoint. Valid values:
+        /// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        /// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }

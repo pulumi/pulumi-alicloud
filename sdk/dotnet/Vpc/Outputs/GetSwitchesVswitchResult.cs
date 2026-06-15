@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Whether the IPv6 function is enabled in the vSwitch.
+        /// </summary>
+        public readonly bool EnableIpv6;
+        /// <summary>
         /// ID of the vSwitch.
         /// </summary>
         public readonly string Id;
@@ -88,6 +92,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
 
             string description,
 
+            bool enableIpv6,
+
             string id,
 
             string ipv6CidrBlock,
@@ -116,6 +122,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
             CidrBlock = cidrBlock;
             CreationTime = creationTime;
             Description = description;
+            EnableIpv6 = enableIpv6;
             Id = id;
             Ipv6CidrBlock = ipv6CidrBlock;
             IsDefault = isDefault;

@@ -79,8 +79,9 @@ export class CustomScenePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+     *
+     * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      */
     declare public readonly createTime: pulumi.Output<string>;
     /**
@@ -93,9 +94,14 @@ export class CustomScenePolicy extends pulumi.CustomResource {
      */
     declare public readonly endTime: pulumi.Output<string>;
     /**
-     * The IDs of websites associated.
+     * The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      */
     declare public readonly siteIds: pulumi.Output<string>;
+    /**
+     * The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     */
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.
      */
@@ -122,13 +128,11 @@ export class CustomScenePolicy extends pulumi.CustomResource {
             resourceInputs["customScenePolicyName"] = state?.customScenePolicyName;
             resourceInputs["endTime"] = state?.endTime;
             resourceInputs["siteIds"] = state?.siteIds;
+            resourceInputs["startTime"] = state?.startTime;
             resourceInputs["status"] = state?.status;
             resourceInputs["template"] = state?.template;
         } else {
             const args = argsOrState as CustomScenePolicyArgs | undefined;
-            if (args?.createTime === undefined && !opts.urn) {
-                throw new Error("Missing required property 'createTime'");
-            }
             if (args?.customScenePolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customScenePolicyName'");
             }
@@ -145,6 +149,7 @@ export class CustomScenePolicy extends pulumi.CustomResource {
             resourceInputs["customScenePolicyName"] = args?.customScenePolicyName;
             resourceInputs["endTime"] = args?.endTime;
             resourceInputs["siteIds"] = args?.siteIds;
+            resourceInputs["startTime"] = args?.startTime;
             resourceInputs["status"] = args?.status;
             resourceInputs["template"] = args?.template;
         }
@@ -158,8 +163,9 @@ export class CustomScenePolicy extends pulumi.CustomResource {
  */
 export interface CustomScenePolicyState {
     /**
-     * The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+     *
+     * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
@@ -172,9 +178,14 @@ export interface CustomScenePolicyState {
      */
     endTime?: pulumi.Input<string | undefined>;
     /**
-     * The IDs of websites associated.
+     * The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      */
     siteIds?: pulumi.Input<string | undefined>;
+    /**
+     * The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     */
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.
      */
@@ -190,10 +201,11 @@ export interface CustomScenePolicyState {
  */
 export interface CustomScenePolicyArgs {
     /**
-     * The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+     *
+     * @deprecated Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      */
-    createTime: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The policy name.
      */
@@ -204,9 +216,14 @@ export interface CustomScenePolicyArgs {
      */
     endTime: pulumi.Input<string>;
     /**
-     * The IDs of websites associated.
+     * The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      */
     siteIds: pulumi.Input<string>;
+    /**
+     * The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     */
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.
      */

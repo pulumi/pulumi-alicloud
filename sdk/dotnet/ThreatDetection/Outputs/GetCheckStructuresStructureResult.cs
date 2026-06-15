@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class GetCheckStructuresStructureResult
     {
         /// <summary>
-        /// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+        /// The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
         /// </summary>
         public readonly string StandardType;
         /// <summary>

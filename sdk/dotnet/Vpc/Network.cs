@@ -41,8 +41,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         Ipv6Isp = "BGP",
-    ///         Description = "test",
+    ///         Description = "example description",
     ///         CidrBlock = "10.0.0.0/8",
     ///         VpcName = name,
     ///         EnableIpv6 = true,
@@ -108,7 +107,7 @@ namespace Pulumi.AliCloud.Vpc
         /// Whether to enable the IPv6 network segment. Value:
         /// </summary>
         [Output("enableIpv6")]
-        public Output<bool?> EnableIpv6 { get; private set; } = null!;
+        public Output<bool> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
         /// Force delete vpc or not.
@@ -131,7 +130,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Ipv4IpamPoolId { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv6 CIDR block of the default VPC.
+        /// The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
         /// 
         /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
@@ -145,7 +144,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<Outputs.NetworkIpv6CidrBlock>> Ipv6CidrBlocks { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv6 address segment type of the VPC. Value:
+        /// The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
         /// - `BGP` (default): Alibaba Cloud BGP IPv6.
         /// - `ChinaMobile`: China Mobile (single line).
         /// - `ChinaUnicom`: China Unicom (single line).
@@ -154,13 +153,13 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to `ChinaTelecom` (China Telecom), `ChinaUnicom` (China Unicom), or `ChinaMobile` (China Mobile).
         /// </summary>
         [Output("ipv6Isp")]
-        public Output<string?> Ipv6Isp { get; private set; } = null!;
+        public Output<string> Ipv6Isp { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to create the default VPC in the specified region. Valid values:
         /// </summary>
         [Output("isDefault")]
-        public Output<bool?> IsDefault { get; private set; } = null!;
+        public Output<bool> IsDefault { get; private set; } = null!;
 
         /// <summary>
         /// . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
@@ -366,7 +365,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv4IpamPoolId { get; set; }
 
         /// <summary>
-        /// The IPv6 CIDR block of the default VPC.
+        /// The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
         /// 
         /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
@@ -374,7 +373,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv6CidrBlock { get; set; }
 
         /// <summary>
-        /// The IPv6 address segment type of the VPC. Value:
+        /// The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
         /// - `BGP` (default): Alibaba Cloud BGP IPv6.
         /// - `ChinaMobile`: China Mobile (single line).
         /// - `ChinaUnicom`: China Unicom (single line).
@@ -552,7 +551,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv4IpamPoolId { get; set; }
 
         /// <summary>
-        /// The IPv6 CIDR block of the default VPC.
+        /// The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
         /// 
         /// &gt; **NOTE:**  When `EnableIpv6` is set to `True`, this parameter is required.
         /// </summary>
@@ -572,7 +571,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The IPv6 address segment type of the VPC. Value:
+        /// The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
         /// - `BGP` (default): Alibaba Cloud BGP IPv6.
         /// - `ChinaMobile`: China Mobile (single line).
         /// - `ChinaUnicom`: China Unicom (single line).

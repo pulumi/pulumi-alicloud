@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// <summary>
         /// Origin ID.
         /// </summary>
-        public readonly int? OriginId;
+        public readonly string? OriginId;
         /// <summary>
         /// Source station type:
         /// ip_domain: ip or domain name type origin station;
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
 
             string? name,
 
-            int? originId,
+            string? originId,
 
             string? type,
 

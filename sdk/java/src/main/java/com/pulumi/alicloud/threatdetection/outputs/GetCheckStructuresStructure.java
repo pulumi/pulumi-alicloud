@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCheckStructuresStructure {
     /**
-     * @return The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+     * @return The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
      * 
      */
     private String standardType;
@@ -25,7 +25,7 @@ public final class GetCheckStructuresStructure {
 
     private GetCheckStructuresStructure() {}
     /**
-     * @return The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+     * @return The type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (Cloud Infrastructure Entitlement Management, CIEM), `COMPLIANCE` (security compliance).
      * 
      */
     public String standardType() {

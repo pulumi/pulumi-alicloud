@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class GetCheckItemConfigsConfigDescriptionResult
     {
         /// <summary>
-        /// The type of the description of the check item. Valid value:*   **text**.
+        /// The type of the description of the check item. Valid value: `Text`.
         /// </summary>
         public readonly string Type;
         /// <summary>

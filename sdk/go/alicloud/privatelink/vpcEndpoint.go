@@ -145,9 +145,9 @@ type VpcEndpoint struct {
 	EndpointDescription pulumi.StringPtrOutput `pulumi:"endpointDescription"`
 	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringOutput `pulumi:"endpointDomain"`
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
@@ -228,9 +228,9 @@ type vpcEndpointState struct {
 	EndpointDescription *string `pulumi:"endpointDescription"`
 	// The domain name of the endpoint.
 	EndpointDomain *string `pulumi:"endpointDomain"`
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType *string `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument *string `pulumi:"policyDocument"`
@@ -279,9 +279,9 @@ type VpcEndpointState struct {
 	EndpointDescription pulumi.StringPtrInput
 	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringPtrInput
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringPtrInput
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument pulumi.StringPtrInput
@@ -324,9 +324,9 @@ type vpcEndpointArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The description of the endpoint.
 	EndpointDescription *string `pulumi:"endpointDescription"`
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType *string `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument *string `pulumi:"policyDocument"`
@@ -362,9 +362,9 @@ type VpcEndpointArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The description of the endpoint.
 	EndpointDescription pulumi.StringPtrInput
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringPtrInput
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument pulumi.StringPtrInput
@@ -519,9 +519,9 @@ func (o VpcEndpointOutput) EndpointDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointDomain }).(pulumi.StringOutput)
 }
 
-// The endpoint type.
-//
-// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+// The type of the endpoint. Valid values:
+// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 func (o VpcEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }

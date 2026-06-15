@@ -30,6 +30,16 @@ export const getInstances: typeof import("./getInstances").getInstances = null a
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
 
+export { GetOpenSourceAccountsArgs, GetOpenSourceAccountsResult, GetOpenSourceAccountsOutputArgs } from "./getOpenSourceAccounts";
+export const getOpenSourceAccounts: typeof import("./getOpenSourceAccounts").getOpenSourceAccounts = null as any;
+export const getOpenSourceAccountsOutput: typeof import("./getOpenSourceAccounts").getOpenSourceAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenSourceAccounts","getOpenSourceAccountsOutput"], () => require("./getOpenSourceAccounts"));
+
+export { GetOpenSourcePermissionsArgs, GetOpenSourcePermissionsResult, GetOpenSourcePermissionsOutputArgs } from "./getOpenSourcePermissions";
+export const getOpenSourcePermissions: typeof import("./getOpenSourcePermissions").getOpenSourcePermissions = null as any;
+export const getOpenSourcePermissionsOutput: typeof import("./getOpenSourcePermissions").getOpenSourcePermissionsOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenSourcePermissions","getOpenSourcePermissionsOutput"], () => require("./getOpenSourcePermissions"));
+
 export { GetQueuesArgs, GetQueuesResult, GetQueuesOutputArgs } from "./getQueues";
 export const getQueues: typeof import("./getQueues").getQueues = null as any;
 export const getQueuesOutput: typeof import("./getQueues").getQueuesOutput = null as any;
@@ -49,6 +59,16 @@ export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { OpenSourceAccountArgs, OpenSourceAccountState } from "./openSourceAccount";
+export type OpenSourceAccount = import("./openSourceAccount").OpenSourceAccount;
+export const OpenSourceAccount: typeof import("./openSourceAccount").OpenSourceAccount = null as any;
+utilities.lazyLoad(exports, ["OpenSourceAccount"], () => require("./openSourceAccount"));
+
+export { OpenSourcePermissionArgs, OpenSourcePermissionState } from "./openSourcePermission";
+export type OpenSourcePermission = import("./openSourcePermission").OpenSourcePermission;
+export const OpenSourcePermission: typeof import("./openSourcePermission").OpenSourcePermission = null as any;
+utilities.lazyLoad(exports, ["OpenSourcePermission"], () => require("./openSourcePermission"));
 
 export { QueueArgs, QueueState } from "./queue";
 export type Queue = import("./queue").Queue;
@@ -76,6 +96,10 @@ const _module = {
                 return new Exchange(name, <any>undefined, { urn })
             case "alicloud:amqp/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:amqp/openSourceAccount:OpenSourceAccount":
+                return new OpenSourceAccount(name, <any>undefined, { urn })
+            case "alicloud:amqp/openSourcePermission:OpenSourcePermission":
+                return new OpenSourcePermission(name, <any>undefined, { urn })
             case "alicloud:amqp/queue:Queue":
                 return new Queue(name, <any>undefined, { urn })
             case "alicloud:amqp/staticAccount:StaticAccount":
@@ -90,6 +114,8 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "amqp/binding", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/exchange", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "amqp/openSourceAccount", _module)
+pulumi.runtime.registerResourceModule("alicloud", "amqp/openSourcePermission", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/queue", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/staticAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "amqp/virtualHost", _module)

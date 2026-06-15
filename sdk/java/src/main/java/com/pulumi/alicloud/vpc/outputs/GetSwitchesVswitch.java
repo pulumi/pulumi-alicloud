@@ -34,6 +34,11 @@ public final class GetSwitchesVswitch {
      */
     private String description;
     /**
+     * @return Whether the IPv6 function is enabled in the vSwitch.
+     * 
+     */
+    private Boolean enableIpv6;
+    /**
      * @return ID of the vSwitch.
      * 
      */
@@ -122,6 +127,13 @@ public final class GetSwitchesVswitch {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Whether the IPv6 function is enabled in the vSwitch.
+     * 
+     */
+    public Boolean enableIpv6() {
+        return this.enableIpv6;
     }
     /**
      * @return ID of the vSwitch.
@@ -221,6 +233,7 @@ public final class GetSwitchesVswitch {
         private String cidrBlock;
         private String creationTime;
         private String description;
+        private Boolean enableIpv6;
         private String id;
         private String ipv6CidrBlock;
         private Boolean isDefault;
@@ -240,6 +253,7 @@ public final class GetSwitchesVswitch {
     	      this.cidrBlock = defaults.cidrBlock;
     	      this.creationTime = defaults.creationTime;
     	      this.description = defaults.description;
+    	      this.enableIpv6 = defaults.enableIpv6;
     	      this.id = defaults.id;
     	      this.ipv6CidrBlock = defaults.ipv6CidrBlock;
     	      this.isDefault = defaults.isDefault;
@@ -284,6 +298,14 @@ public final class GetSwitchesVswitch {
               throw new MissingRequiredPropertyException("GetSwitchesVswitch", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableIpv6(Boolean enableIpv6) {
+            if (enableIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetSwitchesVswitch", "enableIpv6");
+            }
+            this.enableIpv6 = enableIpv6;
             return this;
         }
         @CustomType.Setter
@@ -388,6 +410,7 @@ public final class GetSwitchesVswitch {
             _resultValue.cidrBlock = cidrBlock;
             _resultValue.creationTime = creationTime;
             _resultValue.description = description;
+            _resultValue.enableIpv6 = enableIpv6;
             _resultValue.id = id;
             _resultValue.ipv6CidrBlock = ipv6CidrBlock;
             _resultValue.isDefault = isDefault;

@@ -32,14 +32,14 @@ public final class GetCheckItemConfigsPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      * 
      */
     @Import(name="lang")
     private @Nullable String lang;
 
     /**
-     * @return The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+     * @return The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      * 
      */
     public Optional<String> lang() {
@@ -62,14 +62,14 @@ public final class GetCheckItemConfigsPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Current page number.
+     * The page number. Must be greater than 0.
      * 
      */
     @Import(name="pageNumber")
     private @Nullable Integer pageNumber;
 
     /**
-     * @return Current page number.
+     * @return The page number. Must be greater than 0.
      * 
      */
     public Optional<Integer> pageNumber() {
@@ -77,14 +77,14 @@ public final class GetCheckItemConfigsPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Number of records per page.
+     * Number of records per page. Must be greater than 0.
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Number of records per page.
+     * @return Number of records per page. Must be greater than 0.
      * 
      */
     public Optional<Integer> pageSize() {
@@ -157,7 +157,7 @@ public final class GetCheckItemConfigsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param lang The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+         * @param lang The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GetCheckItemConfigsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param pageNumber Current page number.
+         * @param pageNumber The page number. Must be greater than 0.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GetCheckItemConfigsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param pageSize Number of records per page.
+         * @param pageSize Number of records per page. Must be greater than 0.
          * 
          * @return builder
          * 

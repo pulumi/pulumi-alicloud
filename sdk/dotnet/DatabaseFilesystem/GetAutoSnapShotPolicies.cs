@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public static class GetAutoSnapShotPolicies
     {
         /// <summary>
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// 
         /// This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
         /// 
         /// &gt; **NOTE:** Available in 1.202.0+
@@ -45,6 +47,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoSnapShotPoliciesResult>("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args ?? new GetAutoSnapShotPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// 
         /// This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
         /// 
         /// &gt; **NOTE:** Available in 1.202.0+
@@ -78,6 +82,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
             => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapShotPoliciesResult>("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args ?? new GetAutoSnapShotPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+        /// 
         /// This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
         /// 
         /// &gt; **NOTE:** Available in 1.202.0+

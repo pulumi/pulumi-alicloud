@@ -35,6 +35,11 @@ export type Backend = import("./backend").Backend;
 export const Backend: typeof import("./backend").Backend = null as any;
 utilities.lazyLoad(exports, ["Backend"], () => require("./backend"));
 
+export { BackendModelArgs, BackendModelState } from "./backendModel";
+export type BackendModel = import("./backendModel").BackendModel;
+export const BackendModel: typeof import("./backendModel").BackendModel = null as any;
+utilities.lazyLoad(exports, ["BackendModel"], () => require("./backendModel"));
+
 export { GetApisArgs, GetApisResult, GetApisOutputArgs } from "./getApis";
 export const getApis: typeof import("./getApis").getApis = null as any;
 export const getApisOutput: typeof import("./getApis").getApisOutput = null as any;
@@ -115,6 +120,11 @@ export type PluginAttachment = import("./pluginAttachment").PluginAttachment;
 export const PluginAttachment: typeof import("./pluginAttachment").PluginAttachment = null as any;
 utilities.lazyLoad(exports, ["PluginAttachment"], () => require("./pluginAttachment"));
 
+export { StageModelArgs, StageModelState } from "./stageModel";
+export type StageModel = import("./stageModel").StageModel;
+export const StageModel: typeof import("./stageModel").StageModel = null as any;
+utilities.lazyLoad(exports, ["StageModel"], () => require("./stageModel"));
+
 export { VpcAccessArgs, VpcAccessState } from "./vpcAccess";
 export type VpcAccess = import("./vpcAccess").VpcAccess;
 export const VpcAccess: typeof import("./vpcAccess").VpcAccess = null as any;
@@ -137,6 +147,8 @@ const _module = {
                 return new AppAttachment(name, <any>undefined, { urn })
             case "alicloud:apigateway/backend:Backend":
                 return new Backend(name, <any>undefined, { urn })
+            case "alicloud:apigateway/backendModel:BackendModel":
+                return new BackendModel(name, <any>undefined, { urn })
             case "alicloud:apigateway/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "alicloud:apigateway/groupPluginAttachment:GroupPluginAttachment":
@@ -153,6 +165,8 @@ const _module = {
                 return new Plugin(name, <any>undefined, { urn })
             case "alicloud:apigateway/pluginAttachment:PluginAttachment":
                 return new PluginAttachment(name, <any>undefined, { urn })
+            case "alicloud:apigateway/stageModel:StageModel":
+                return new StageModel(name, <any>undefined, { urn })
             case "alicloud:apigateway/vpcAccess:VpcAccess":
                 return new VpcAccess(name, <any>undefined, { urn })
             default:
@@ -166,6 +180,7 @@ pulumi.runtime.registerResourceModule("alicloud", "apigateway/api", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/app", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/appAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/backend", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/backendModel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/group", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/groupPluginAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/instance", _module)
@@ -174,4 +189,5 @@ pulumi.runtime.registerResourceModule("alicloud", "apigateway/logConfig", _modul
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/model", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/plugin", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/pluginAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apigateway/stageModel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apigateway/vpcAccess", _module)

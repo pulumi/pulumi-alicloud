@@ -162,6 +162,10 @@ class ApiFcServiceConfig(dict):
         suggest = None
         if key == "arnRole":
             suggest = "arn_role"
+        elif key == "contentTypeCategory":
+            suggest = "content_type_category"
+        elif key == "contentTypeValue":
+            suggest = "content_type_value"
         elif key == "functionBaseUrl":
             suggest = "function_base_url"
         elif key == "functionName":
@@ -190,6 +194,8 @@ class ApiFcServiceConfig(dict):
                  arn_role: _builtins.str,
                  region: _builtins.str,
                  timeout: _builtins.int,
+                 content_type_category: Optional[_builtins.str] = None,
+                 content_type_value: Optional[_builtins.str] = None,
                  function_base_url: Optional[_builtins.str] = None,
                  function_name: Optional[_builtins.str] = None,
                  function_type: Optional[_builtins.str] = None,
@@ -203,6 +209,11 @@ class ApiFcServiceConfig(dict):
         :param _builtins.str arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param _builtins.str region: The region that the function compute service belongs to.
         :param _builtins.int timeout: Backend service time-out time; unit: millisecond.
+        :param _builtins.str content_type_category: The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+               * `DEFAULT`: Use the default value provided by API Gateway.
+               * `CUSTOM`: Use a custom value.
+               * `CLIENT`: Use the Content-Type header from the client request.
+        :param _builtins.str content_type_value: The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
         :param _builtins.str function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         :param _builtins.str function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
         :param _builtins.str function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
@@ -216,6 +227,10 @@ class ApiFcServiceConfig(dict):
         pulumi.set(__self__, "arn_role", arn_role)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "timeout", timeout)
+        if content_type_category is not None:
+            pulumi.set(__self__, "content_type_category", content_type_category)
+        if content_type_value is not None:
+            pulumi.set(__self__, "content_type_value", content_type_value)
         if function_base_url is not None:
             pulumi.set(__self__, "function_base_url", function_base_url)
         if function_name is not None:
@@ -258,6 +273,25 @@ class ApiFcServiceConfig(dict):
         Backend service time-out time; unit: millisecond.
         """
         return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypeCategory")
+    def content_type_category(self) -> Optional[_builtins.str]:
+        """
+        The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+        * `DEFAULT`: Use the default value provided by API Gateway.
+        * `CUSTOM`: Use a custom value.
+        * `CLIENT`: Use the Content-Type header from the client request.
+        """
+        return pulumi.get(self, "content_type_category")
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypeValue")
+    def content_type_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+        """
+        return pulumi.get(self, "content_type_value")
 
     @_builtins.property
     @pulumi.getter(name="functionBaseUrl")

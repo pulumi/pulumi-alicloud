@@ -127,12 +127,14 @@ export class MailAddress extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sendtype'");
             }
             resourceInputs["accountName"] = args?.accountName;
-            resourceInputs["password"] = args?.password;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["replyAddress"] = args?.replyAddress;
             resourceInputs["sendtype"] = args?.sendtype;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(MailAddress.__pulumiType, name, resourceInputs, opts);
     }
 }

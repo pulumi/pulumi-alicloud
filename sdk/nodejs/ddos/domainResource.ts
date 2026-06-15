@@ -146,6 +146,10 @@ export class DomainResource extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
+     * A custom list of cipher suites for TLS 1.2 and earlier versions.
+     */
+    declare public readonly customCiphers: pulumi.Output<string[] | undefined>;
+    /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
      * - Do not use the following default HTTP headers:
@@ -204,6 +208,25 @@ export class DomainResource extends pulumi.CustomResource {
      */
     declare public readonly rsType: pulumi.Output<number>;
     /**
+     * Specifies whether to enable TLS 1.3. Valid values:
+     */
+    declare public readonly ssl13Enabled: pulumi.Output<boolean | undefined>;
+    /**
+     * The type of cipher suite. Valid values:
+     */
+    declare public readonly sslCiphers: pulumi.Output<string>;
+    /**
+     * The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     */
+    declare public readonly sslProtocols: pulumi.Output<string>;
+    /**
+     * A custom list of cipher suites for TLS 1.3.
+     */
+    declare public readonly tls13CustomCiphers: pulumi.Output<string[] | undefined>;
+    /**
      * IP whitelist list.
      */
     declare public readonly whiteLists: pulumi.Output<string[] | undefined>;
@@ -231,6 +254,7 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["certName"] = state?.certName;
             resourceInputs["certRegion"] = state?.certRegion;
             resourceInputs["cname"] = state?.cname;
+            resourceInputs["customCiphers"] = state?.customCiphers;
             resourceInputs["customHeaders"] = state?.customHeaders;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["httpsExt"] = state?.httpsExt;
@@ -240,6 +264,10 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["proxyTypes"] = state?.proxyTypes;
             resourceInputs["realServers"] = state?.realServers;
             resourceInputs["rsType"] = state?.rsType;
+            resourceInputs["ssl13Enabled"] = state?.ssl13Enabled;
+            resourceInputs["sslCiphers"] = state?.sslCiphers;
+            resourceInputs["sslProtocols"] = state?.sslProtocols;
+            resourceInputs["tls13CustomCiphers"] = state?.tls13CustomCiphers;
             resourceInputs["whiteLists"] = state?.whiteLists;
         } else {
             const args = argsOrState as DomainResourceArgs | undefined;
@@ -267,6 +295,7 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["certIdentifier"] = args?.certIdentifier ? pulumi.secret(args.certIdentifier) : undefined;
             resourceInputs["certName"] = args?.certName;
             resourceInputs["certRegion"] = args?.certRegion ? pulumi.secret(args.certRegion) : undefined;
+            resourceInputs["customCiphers"] = args?.customCiphers;
             resourceInputs["customHeaders"] = args?.customHeaders;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["httpsExt"] = args?.httpsExt;
@@ -276,6 +305,10 @@ export class DomainResource extends pulumi.CustomResource {
             resourceInputs["proxyTypes"] = args?.proxyTypes;
             resourceInputs["realServers"] = args?.realServers;
             resourceInputs["rsType"] = args?.rsType;
+            resourceInputs["ssl13Enabled"] = args?.ssl13Enabled;
+            resourceInputs["sslCiphers"] = args?.sslCiphers;
+            resourceInputs["sslProtocols"] = args?.sslProtocols;
+            resourceInputs["tls13CustomCiphers"] = args?.tls13CustomCiphers;
             resourceInputs["whiteLists"] = args?.whiteLists;
             resourceInputs["cname"] = undefined /*out*/;
         }
@@ -346,6 +379,10 @@ export interface DomainResourceState {
      */
     cname?: pulumi.Input<string | undefined>;
     /**
+     * A custom list of cipher suites for TLS 1.2 and earlier versions.
+     */
+    customCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
      * - Do not use the following default HTTP headers:
@@ -403,6 +440,25 @@ export interface DomainResourceState {
      * The address type of the origin server. Valid values:
      */
     rsType?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether to enable TLS 1.3. Valid values:
+     */
+    ssl13Enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The type of cipher suite. Valid values:
+     */
+    sslCiphers?: pulumi.Input<string | undefined>;
+    /**
+     * The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     */
+    sslProtocols?: pulumi.Input<string | undefined>;
+    /**
+     * A custom list of cipher suites for TLS 1.3.
+     */
+    tls13CustomCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IP whitelist list.
      */
@@ -465,6 +521,10 @@ export interface DomainResourceArgs {
      */
     certRegion?: pulumi.Input<string | undefined>;
     /**
+     * A custom list of cipher suites for TLS 1.2 and earlier versions.
+     */
+    customCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
      * - Do not use the following default HTTP headers:
@@ -522,6 +582,25 @@ export interface DomainResourceArgs {
      * The address type of the origin server. Valid values:
      */
     rsType: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable TLS 1.3. Valid values:
+     */
+    ssl13Enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The type of cipher suite. Valid values:
+     */
+    sslCiphers?: pulumi.Input<string | undefined>;
+    /**
+     * The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     */
+    sslProtocols?: pulumi.Input<string | undefined>;
+    /**
+     * A custom list of cipher suites for TLS 1.3.
+     */
+    tls13CustomCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IP whitelist list.
      */

@@ -137,16 +137,18 @@ def get_check_item_configs(ids: Optional[Sequence[_builtins.str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_check_item_configs()
+    default = alicloud.threatdetection.get_check_item_configs(lang="zh",
+        page_number=1,
+        page_size=10)
     pulumi.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default.configs[0].check_id)
     ```
 
 
     :param Sequence[_builtins.str] ids: A list of Check Item Config IDs.
-    :param _builtins.str lang: The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+    :param _builtins.str lang: The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.int page_number: Current page number.
-    :param _builtins.int page_size: Number of records per page.
+    :param _builtins.int page_number: The page number. Must be greater than 0.
+    :param _builtins.int page_size: Number of records per page. Must be greater than 0.
     :param Sequence[_builtins.str] task_sources: List of task sources.
     """
     __args__ = dict()
@@ -186,16 +188,18 @@ def get_check_item_configs_output(ids: pulumi.Input[Optional[Optional[Sequence[_
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_check_item_configs()
+    default = alicloud.threatdetection.get_check_item_configs(lang="zh",
+        page_number=1,
+        page_size=10)
     pulumi.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default.configs[0].check_id)
     ```
 
 
     :param Sequence[_builtins.str] ids: A list of Check Item Config IDs.
-    :param _builtins.str lang: The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+    :param _builtins.str lang: The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.int page_number: Current page number.
-    :param _builtins.int page_size: Number of records per page.
+    :param _builtins.int page_number: The page number. Must be greater than 0.
+    :param _builtins.int page_size: Number of records per page. Must be greater than 0.
     :param Sequence[_builtins.str] task_sources: List of task sources.
     """
     __args__ = dict()

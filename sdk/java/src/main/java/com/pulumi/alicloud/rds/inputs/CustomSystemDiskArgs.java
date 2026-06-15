@@ -16,14 +16,14 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
     public static final CustomSystemDiskArgs Empty = new CustomSystemDiskArgs();
 
     /**
-     * The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+     * The system disk category. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+     * @return The system disk category. Valid values:
      * 
      */
     public Optional<Output<String>> category() {
@@ -31,14 +31,14 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+     * The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+     * @return The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
      * 
      */
     public Optional<Output<String>> size() {
@@ -71,7 +71,7 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+         * @param category The system disk category. Valid values:
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param category The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+         * @param category The system disk category. Valid values:
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+         * @param size The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class CustomSystemDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+         * @param size The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
          * 
          * @return builder
          * 

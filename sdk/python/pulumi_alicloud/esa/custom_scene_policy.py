@@ -19,44 +19,39 @@ __all__ = ['CustomScenePolicyArgs', 'CustomScenePolicy']
 @pulumi.input_type
 class CustomScenePolicyArgs:
     def __init__(__self__, *,
-                 create_time: pulumi.Input[_builtins.str],
                  custom_scene_policy_name: pulumi.Input[_builtins.str],
                  end_time: pulumi.Input[_builtins.str],
                  site_ids: pulumi.Input[_builtins.str],
                  template: pulumi.Input[_builtins.str],
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomScenePolicy resource.
 
-        :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
-               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] custom_scene_policy_name: The policy name.
         :param pulumi.Input[_builtins.str] end_time: The time when the policy expires.
                The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] site_ids: The IDs of websites associated.
+        :param pulumi.Input[_builtins.str] site_ids: The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         :param pulumi.Input[_builtins.str] template: The name of the policy template. Valid value:
+        :param pulumi.Input[_builtins.str] create_time: Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
+        :param pulumi.Input[_builtins.str] start_time: The time when the policy takes effect.
+               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] status: Policy effective status. Valid values: `Disabled`, `Running`.
         """
-        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "custom_scene_policy_name", custom_scene_policy_name)
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "site_ids", site_ids)
         pulumi.set(__self__, "template", template)
+        if create_time is not None:
+            warnings.warn("""Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""", DeprecationWarning)
+            pulumi.log.warn("""create_time is deprecated: Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""")
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
-
-    @_builtins.property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> pulumi.Input[_builtins.str]:
-        """
-        The time when the policy takes effect.
-        The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customScenePolicyName")
@@ -87,7 +82,7 @@ class CustomScenePolicyArgs:
     @pulumi.getter(name="siteIds")
     def site_ids(self) -> pulumi.Input[_builtins.str]:
         """
-        The IDs of websites associated.
+        The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         """
         return pulumi.get(self, "site_ids")
 
@@ -106,6 +101,32 @@ class CustomScenePolicyArgs:
     @template.setter
     def template(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The time when the policy takes effect.
+        The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -127,20 +148,25 @@ class _CustomScenePolicyState:
                  custom_scene_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  site_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomScenePolicy resources.
 
-        :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
-               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] create_time: Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
         :param pulumi.Input[_builtins.str] custom_scene_policy_name: The policy name.
         :param pulumi.Input[_builtins.str] end_time: The time when the policy expires.
                The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] site_ids: The IDs of websites associated.
+        :param pulumi.Input[_builtins.str] site_ids: The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
+        :param pulumi.Input[_builtins.str] start_time: The time when the policy takes effect.
+               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] status: Policy effective status. Valid values: `Disabled`, `Running`.
         :param pulumi.Input[_builtins.str] template: The name of the policy template. Valid value:
         """
+        if create_time is not None:
+            warnings.warn("""Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""", DeprecationWarning)
+            pulumi.log.warn("""create_time is deprecated: Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""")
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if custom_scene_policy_name is not None:
@@ -149,6 +175,8 @@ class _CustomScenePolicyState:
             pulumi.set(__self__, "end_time", end_time)
         if site_ids is not None:
             pulumi.set(__self__, "site_ids", site_ids)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if template is not None:
@@ -156,10 +184,10 @@ class _CustomScenePolicyState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
+    @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The time when the policy takes effect.
-        The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
         """
         return pulumi.get(self, "create_time")
 
@@ -196,13 +224,26 @@ class _CustomScenePolicyState:
     @pulumi.getter(name="siteIds")
     def site_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IDs of websites associated.
+        The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         """
         return pulumi.get(self, "site_ids")
 
     @site_ids.setter
     def site_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The time when the policy takes effect.
+        The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -239,6 +280,7 @@ class CustomScenePolicy(pulumi.CustomResource):
                  custom_scene_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  site_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -289,12 +331,13 @@ class CustomScenePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
-               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] create_time: Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
         :param pulumi.Input[_builtins.str] custom_scene_policy_name: The policy name.
         :param pulumi.Input[_builtins.str] end_time: The time when the policy expires.
                The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] site_ids: The IDs of websites associated.
+        :param pulumi.Input[_builtins.str] site_ids: The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
+        :param pulumi.Input[_builtins.str] start_time: The time when the policy takes effect.
+               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] status: Policy effective status. Valid values: `Disabled`, `Running`.
         :param pulumi.Input[_builtins.str] template: The name of the policy template. Valid value:
         """
@@ -368,6 +411,7 @@ class CustomScenePolicy(pulumi.CustomResource):
                  custom_scene_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  site_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  template: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -379,8 +423,6 @@ class CustomScenePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomScenePolicyArgs.__new__(CustomScenePolicyArgs)
 
-            if create_time is None and not opts.urn:
-                raise TypeError("Missing required property 'create_time'")
             __props__.__dict__["create_time"] = create_time
             if custom_scene_policy_name is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_scene_policy_name'")
@@ -391,6 +433,7 @@ class CustomScenePolicy(pulumi.CustomResource):
             if site_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'site_ids'")
             __props__.__dict__["site_ids"] = site_ids
+            __props__.__dict__["start_time"] = start_time
             __props__.__dict__["status"] = status
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
@@ -409,6 +452,7 @@ class CustomScenePolicy(pulumi.CustomResource):
             custom_scene_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
             end_time: pulumi.Input[Optional[_builtins.str]] = None,
             site_ids: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             template: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomScenePolicy':
         """
@@ -418,12 +462,13 @@ class CustomScenePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: The time when the policy takes effect.
-               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[_builtins.str] create_time: Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
         :param pulumi.Input[_builtins.str] custom_scene_policy_name: The policy name.
         :param pulumi.Input[_builtins.str] end_time: The time when the policy expires.
                The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-        :param pulumi.Input[_builtins.str] site_ids: The IDs of websites associated.
+        :param pulumi.Input[_builtins.str] site_ids: The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
+        :param pulumi.Input[_builtins.str] start_time: The time when the policy takes effect.
+               The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] status: Policy effective status. Valid values: `Disabled`, `Running`.
         :param pulumi.Input[_builtins.str] template: The name of the policy template. Valid value:
         """
@@ -435,16 +480,17 @@ class CustomScenePolicy(pulumi.CustomResource):
         __props__.__dict__["custom_scene_policy_name"] = custom_scene_policy_name
         __props__.__dict__["end_time"] = end_time
         __props__.__dict__["site_ids"] = site_ids
+        __props__.__dict__["start_time"] = start_time
         __props__.__dict__["status"] = status
         __props__.__dict__["template"] = template
         return CustomScenePolicy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
+    @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead""")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The time when the policy takes effect.
-        The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        Field `create_time` has been deprecated from provider version 1.281.0. New field `start_time` instead.
         """
         return pulumi.get(self, "create_time")
 
@@ -469,9 +515,18 @@ class CustomScenePolicy(pulumi.CustomResource):
     @pulumi.getter(name="siteIds")
     def site_ids(self) -> pulumi.Output[_builtins.str]:
         """
-        The IDs of websites associated.
+        The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         """
         return pulumi.get(self, "site_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when the policy takes effect.
+        The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter

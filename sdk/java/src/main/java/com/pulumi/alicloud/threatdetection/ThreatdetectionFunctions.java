@@ -1522,6 +1522,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1564,6 +1567,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1606,6 +1612,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1648,6 +1657,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1690,6 +1702,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1732,6 +1747,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1774,6 +1792,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .lang("zh")
+     *             .pageNumber(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
@@ -1816,6 +1837,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
@@ -1858,6 +1882,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
@@ -1900,6 +1927,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
@@ -1942,6 +1972,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
@@ -1984,6 +2017,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
@@ -2026,6 +2062,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
@@ -2068,6 +2107,9 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .lang("zh")
+     *             .currentPage(1)
+     *             .pageSize(10)
      *             .build());
      * 
      *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());

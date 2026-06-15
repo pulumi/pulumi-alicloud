@@ -11,10 +11,14 @@ from .exchange import *
 from .get_bindings import *
 from .get_exchanges import *
 from .get_instances import *
+from .get_open_source_accounts import *
+from .get_open_source_permissions import *
 from .get_queues import *
 from .get_static_accounts import *
 from .get_virtual_hosts import *
 from .instance import *
+from .open_source_account import *
+from .open_source_permission import *
 from .queue import *
 from .static_account import *
 from .virtual_host import *

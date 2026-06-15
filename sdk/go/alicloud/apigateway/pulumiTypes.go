@@ -246,6 +246,13 @@ func (o ApiConstantParameterArrayOutput) Index(i pulumi.IntInput) ApiConstantPar
 type ApiFcServiceConfig struct {
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	ArnRole string `pulumi:"arnRole"`
+	// The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+	// * `DEFAULT`: Use the default value provided by API Gateway.
+	// * `CUSTOM`: Use a custom value.
+	// * `CLIENT`: Use the Content-Type header from the client request.
+	ContentTypeCategory *string `pulumi:"contentTypeCategory"`
+	// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+	ContentTypeValue *string `pulumi:"contentTypeValue"`
 	// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
 	FunctionBaseUrl *string `pulumi:"functionBaseUrl"`
 	// The function name of function compute service. Required if `functionType` is `FCEvent`.
@@ -284,6 +291,13 @@ type ApiFcServiceConfigInput interface {
 type ApiFcServiceConfigArgs struct {
 	// RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
 	ArnRole pulumi.StringInput `pulumi:"arnRole"`
+	// The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+	// * `DEFAULT`: Use the default value provided by API Gateway.
+	// * `CUSTOM`: Use a custom value.
+	// * `CLIENT`: Use the Content-Type header from the client request.
+	ContentTypeCategory pulumi.StringPtrInput `pulumi:"contentTypeCategory"`
+	// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+	ContentTypeValue pulumi.StringPtrInput `pulumi:"contentTypeValue"`
 	// The base url of function compute service. Required if `functionType` is `HttpTrigger`.
 	FunctionBaseUrl pulumi.StringPtrInput `pulumi:"functionBaseUrl"`
 	// The function name of function compute service. Required if `functionType` is `FCEvent`.
@@ -390,6 +404,19 @@ func (o ApiFcServiceConfigOutput) ArnRole() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) string { return v.ArnRole }).(pulumi.StringOutput)
 }
 
+// The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+// * `DEFAULT`: Use the default value provided by API Gateway.
+// * `CUSTOM`: Use a custom value.
+// * `CLIENT`: Use the Content-Type header from the client request.
+func (o ApiFcServiceConfigOutput) ContentTypeCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ContentTypeCategory }).(pulumi.StringPtrOutput)
+}
+
+// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+func (o ApiFcServiceConfigOutput) ContentTypeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.ContentTypeValue }).(pulumi.StringPtrOutput)
+}
+
 // The base url of function compute service. Required if `functionType` is `HttpTrigger`.
 func (o ApiFcServiceConfigOutput) FunctionBaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFcServiceConfig) *string { return v.FunctionBaseUrl }).(pulumi.StringPtrOutput)
@@ -476,6 +503,29 @@ func (o ApiFcServiceConfigPtrOutput) ArnRole() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ArnRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+// * `DEFAULT`: Use the default value provided by API Gateway.
+// * `CUSTOM`: Use a custom value.
+// * `CLIENT`: Use the Content-Type header from the client request.
+func (o ApiFcServiceConfigPtrOutput) ContentTypeCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypeCategory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+func (o ApiFcServiceConfigPtrOutput) ContentTypeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiFcServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypeValue
 	}).(pulumi.StringPtrOutput)
 }
 

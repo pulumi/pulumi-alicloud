@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppAttachment{}
 	case "alicloud:apigateway/backend:Backend":
 		r = &Backend{}
+	case "alicloud:apigateway/backendModel:BackendModel":
+		r = &BackendModel{}
 	case "alicloud:apigateway/group:Group":
 		r = &Group{}
 	case "alicloud:apigateway/groupPluginAttachment:GroupPluginAttachment":
@@ -49,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Plugin{}
 	case "alicloud:apigateway/pluginAttachment:PluginAttachment":
 		r = &PluginAttachment{}
+	case "alicloud:apigateway/stageModel:StageModel":
+		r = &StageModel{}
 	case "alicloud:apigateway/vpcAccess:VpcAccess":
 		r = &VpcAccess{}
 	default:
@@ -96,6 +100,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"apigateway/backendModel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"apigateway/group",
 		&module{version},
 	)
@@ -132,6 +141,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apigateway/pluginAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apigateway/stageModel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

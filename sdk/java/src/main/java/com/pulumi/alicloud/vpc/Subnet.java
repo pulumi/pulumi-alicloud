@@ -56,10 +56,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableIpv6;
+    private Output<Boolean> enableIpv6;
 
-    public Output<Optional<Boolean>> enableIpv6() {
-        return Codegen.optional(this.enableIpv6);
+    public Output<Boolean> enableIpv6() {
+        return this.enableIpv6;
     }
     @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
@@ -74,10 +74,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.ipv6CidrBlockMask;
     }
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isDefault;
+    private Output<Boolean> isDefault;
 
-    public Output<Optional<Boolean>> isDefault() {
-        return Codegen.optional(this.isDefault);
+    public Output<Boolean> isDefault() {
+        return this.isDefault;
     }
     /**
      * @deprecated
@@ -108,6 +108,12 @@ public class Subnet extends com.pulumi.resources.CustomResource {
 
     public Output<String> vpcId() {
         return this.vpcId;
+    }
+    @Export(name="vpcIpv6CidrBlock", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vpcIpv6CidrBlock;
+
+    public Output<Optional<String>> vpcIpv6CidrBlock() {
+        return Codegen.optional(this.vpcIpv6CidrBlock);
     }
     @Export(name="vswitchName", refs={String.class}, tree="[0]")
     private Output<String> vswitchName;
