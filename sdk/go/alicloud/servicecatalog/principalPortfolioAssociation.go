@@ -44,15 +44,15 @@ import (
 //				name = param
 //			}
 //			defaultDaXVxI, err := servicecatalog.NewPortfolio(ctx, "defaultDaXVxI", &servicecatalog.PortfolioArgs{
-//				ProviderName:  pulumi.String(pulumi.String(name)),
+//				ProviderName:  pulumi.String(name),
 //				Description:   pulumi.String("desc"),
-//				PortfolioName: pulumi.String(pulumi.String(name)),
+//				PortfolioName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default48JHf4, err := ram.NewRole(ctx, "default48JHf4", &ram.RoleArgs{
-//				Name: pulumi.String(pulumi.String(name)),
+//				Name: pulumi.String(name),
 //				Document: pulumi.String(`    {
 //	        \"Statement\": [
 //	        {

@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
 //			if err != nil {
@@ -56,23 +56,23 @@ import (
 //				return err
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-//				Name:      pulumi.String(pulumi.String(name)),
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				VpcId:     vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(pulumi.String(name)),
+//				Name:  pulumi.String(name),
 //				VpcId: vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewNetworkInterface(ctx, "default", &vpc.NetworkInterfaceArgs{
-//				NetworkInterfaceName: pulumi.String(pulumi.String(name)),
+//				NetworkInterfaceName: pulumi.String(name),
 //				VswitchId:            vswitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
 //					group.ID(),

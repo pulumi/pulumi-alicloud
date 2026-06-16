@@ -80,7 +80,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ramRolesId0", ids.ApplyT(func(ids ram.GetRolesResult) (*string, error) {
-//				return &ids.Roles[0].Id, nil
+//				return ids.Roles[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

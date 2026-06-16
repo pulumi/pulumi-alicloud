@@ -69,7 +69,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -85,8 +85,8 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
-//				InstanceStorage:       pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
 //				VswitchId:             exampleSwitch.ID(),
@@ -152,7 +152,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -168,8 +168,8 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceType:          pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
-//				InstanceStorage:       pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
 //				VswitchId:             exampleSwitch.ID(),
@@ -288,8 +288,8 @@ import (
 // _, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 // Engine: pulumi.String("MySQL"),
 // EngineVersion: pulumi.String("8.0"),
-// InstanceType: pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
-// InstanceStorage: pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
+// InstanceType: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+// InstanceStorage: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 // InstanceChargeType: pulumi.String("Postpaid"),
 // InstanceName: pulumi.String("terraform-example"),
 // VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
@@ -304,8 +304,8 @@ import (
 // SecurityGroupIds: pulumi.StringArray{
 // exampleSecurityGroup.ID(),
 // },
-// ZoneId: pulumi.String(pulumi.String(example.Zones[0].Id)),
-// ZoneIdSlaveA: pulumi.String(pulumi.String(example.Zones[1].Id)),
+// ZoneId: pulumi.String(example.Zones[0].Id),
+// ZoneIdSlaveA: pulumi.String(example.Zones[1].Id),
 // })
 // if err != nil {
 // return err
@@ -361,7 +361,7 @@ import (
 // return err
 // }
 // exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-// VpcName: pulumi.String(pulumi.String(name)),
+// VpcName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
 // if err != nil {
@@ -404,7 +404,7 @@ import (
 // exampleSwitch = append(exampleSwitch, __res)
 // }
 // _, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(pulumi.String(name)),
+// Name: pulumi.String(name),
 // VpcId: exampleNetwork.ID(),
 // })
 // if err != nil {
@@ -414,10 +414,10 @@ import (
 // Engine: pulumi.String("MySQL"),
 // EngineVersion: pulumi.String("8.0"),
 // Category: pulumi.String("HighAvailability"),
-// InstanceType: pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
-// InstanceStorage: pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
+// InstanceType: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
+// InstanceStorage: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 // InstanceChargeType: pulumi.String("Postpaid"),
-// InstanceName: pulumi.String(pulumi.String(name)),
+// InstanceName: pulumi.String(name),
 // VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:61,17-36),
@@ -427,8 +427,8 @@ import (
 // }).(pulumi.StringPtrOutput)),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("cloud_essd"),
-// ZoneId: pulumi.String(pulumi.String(example.Zones[0].Id)),
-// ZoneIdSlaveA: pulumi.String(pulumi.String(example.Zones[1].Id)),
+// ZoneId: pulumi.String(example.Zones[0].Id),
+// ZoneIdSlaveA: pulumi.String(example.Zones[1].Id),
 // })
 // if err != nil {
 // return err
@@ -482,7 +482,7 @@ import (
 // return err
 // }
 // exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-// VpcName: pulumi.String(pulumi.String(name)),
+// VpcName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
 // if err != nil {
@@ -525,7 +525,7 @@ import (
 // exampleSwitch = append(exampleSwitch, __res)
 // }
 // _, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-// Name: pulumi.String(pulumi.String(name)),
+// Name: pulumi.String(name),
 // VpcId: exampleNetwork.ID(),
 // })
 // if err != nil {
@@ -538,7 +538,7 @@ import (
 // InstanceType: pulumi.String("mysql.n2.xlarge.25"),
 // InstanceStorage: pulumi.Int(20),
 // InstanceChargeType: pulumi.String("Postpaid"),
-// InstanceName: pulumi.String(pulumi.String(name)),
+// InstanceName: pulumi.String(name),
 // VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:59,17-36),
@@ -548,8 +548,8 @@ import (
 // }).(pulumi.StringPtrOutput)),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("local_ssd"),
-// ZoneId: pulumi.String(pulumi.String(example.Zones[0].Id)),
-// ZoneIdSlaveA: pulumi.String(pulumi.String(example.Zones[1].Id)),
+// ZoneId: pulumi.String(example.Zones[0].Id),
+// ZoneIdSlaveA: pulumi.String(example.Zones[1].Id),
 // })
 // if err != nil {
 // return err
@@ -603,7 +603,7 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -612,8 +612,8 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(example.Ids[1])),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(example.Ids[1]),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -621,11 +621,11 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
-//				InstanceStorage:       pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
-//				InstanceType:          pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceChargeType:    pulumi.String("Serverless"),
-//				InstanceName:          pulumi.String(pulumi.String(name)),
-//				ZoneId:                pulumi.String(pulumi.String(example.Ids[1])),
+//				InstanceName:          pulumi.String(name),
+//				ZoneId:                pulumi.String(example.Ids[1]),
 //				VswitchId:             exampleSwitch.ID(),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				Category:              pulumi.String("serverless_basic"),
@@ -706,12 +706,12 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("PostgreSQL"),
 //				EngineVersion:         pulumi.String("14.0"),
-//				InstanceStorage:       pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
-//				InstanceType:          pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceChargeType:    pulumi.String("Serverless"),
-//				InstanceName:          pulumi.String(pulumi.String(name)),
-//				ZoneId:                pulumi.String(pulumi.String(example.Ids[1])),
-//				VswitchId:             pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				InstanceName:          pulumi.String(name),
+//				ZoneId:                pulumi.String(example.Ids[1]),
+//				VswitchId:             pulumi.String(defaultGetSwitches.Ids[0]),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				Category:              pulumi.String("serverless_basic"),
 //				ServerlessConfigs: rds.InstanceServerlessConfigArray{
@@ -775,7 +775,7 @@ import (
 //				return err
 //			}
 //			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -784,8 +784,8 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(example.Ids[1])),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(example.Ids[1]),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -793,12 +793,12 @@ import (
 //			_, err = rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:             pulumi.String("SQLServer"),
 //				EngineVersion:      pulumi.String("2019_std_sl"),
-//				InstanceStorage:    pulumi.Int(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min)),
-//				InstanceType:       pulumi.String(pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass)),
+//				InstanceStorage:    pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceChargeType: pulumi.String("Serverless"),
-//				InstanceName:       pulumi.String(pulumi.String(name)),
-//				ZoneId:             pulumi.String(pulumi.String(example.Ids[1])),
-//				ZoneIdSlaveA:       pulumi.String(pulumi.String(example.Ids[1])),
+//				InstanceName:       pulumi.String(name),
+//				ZoneId:             pulumi.String(example.Ids[1]),
+//				ZoneIdSlaveA:       pulumi.String(example.Ids[1]),
 //				VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String(","),
 //					Input: pulumi.StringArray{

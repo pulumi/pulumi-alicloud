@@ -52,7 +52,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ecdNetworkPackageId1", _default.ApplyT(func(_default eds.GetNetworkPackagesResult) (*string, error) {
-//				return &_default.Packages[0].Id, nil
+//				return _default.Packages[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

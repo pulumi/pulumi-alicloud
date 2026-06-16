@@ -66,10 +66,10 @@ import (
 //			}, nil)
 //			_, err = cr.NewEndpointAclPolicy(ctx, "default", &cr.EndpointAclPolicyArgs{
 //				InstanceId: pulumi.String(_default.ApplyT(func(_default cr.GetEndpointAclServiceResult) (*string, error) {
-//					return &_default.InstanceId, nil
+//					return _default.InstanceId, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Entry:        pulumi.String("192.168.1.0/24"),
-//				Description:  pulumi.String(pulumi.String(name)),
+//				Description:  pulumi.String(name),
 //				ModuleName:   pulumi.String("Registry"),
 //				EndpointType: pulumi.String("internet"),
 //			})

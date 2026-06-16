@@ -90,7 +90,7 @@ import (
 // return err
 // }
 // vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-// CidrBlock: pulumi.String(pulumi.String(vpcCidr)),
+// CidrBlock: pulumi.String(vpcCidr),
 // })
 // if err != nil {
 // return err
@@ -116,7 +116,7 @@ import (
 // defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
 // Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // ClusterSpec: pulumi.String("ack.pro.small"),
-// Version: pulumi.String(pulumi.String(_default.Metadatas[0].Version)),
+// Version: pulumi.String(_default.Metadatas[0].Version),
 // WorkerVswitchIds: pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
 // Separator: pulumi.String(","),
 // Text: std.JoinOutput(ctx, std.JoinOutputArgs{
@@ -130,8 +130,8 @@ import (
 // return invoke.Result, nil
 // }).(pulumi.StringArrayOutput)),
 // NewNatGateway: pulumi.Bool(false),
-// PodCidr: pulumi.String(pulumi.String(podCidr)),
-// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
+// PodCidr: pulumi.String(podCidr),
+// ServiceCidr: pulumi.String(serviceCidr),
 // SlbInternetEnabled: pulumi.Bool(false),
 // })
 // if err != nil {

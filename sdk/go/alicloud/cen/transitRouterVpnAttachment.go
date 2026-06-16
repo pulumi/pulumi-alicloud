@@ -42,24 +42,24 @@ import (
 //				name = param
 //			}
 //			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				CenId:                    example.ID(),
-//				TransitRouterDescription: pulumi.String(pulumi.String(name)),
-//				TransitRouterName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterDescription: pulumi.String(name),
+//				TransitRouterName:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleCustomerGateway, err := vpn.NewCustomerGateway(ctx, "example", &vpn.CustomerGatewayArgs{
-//				CustomerGatewayName: pulumi.String(pulumi.String(name)),
+//				CustomerGatewayName: pulumi.String(name),
 //				IpAddress:           pulumi.String("42.104.22.210"),
 //				Asn:                 pulumi.String("45014"),
-//				Description:         pulumi.String(pulumi.String(name)),
+//				Description:         pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -119,7 +119,7 @@ import (
 //						},
 //					},
 //				},
-//				VpnAttachmentName: pulumi.String(pulumi.String(name)),
+//				VpnAttachmentName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -127,8 +127,8 @@ import (
 //			exampleTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "example", &cen.TransitRouterCidrArgs{
 //				TransitRouterId:       exampleTransitRouter.TransitRouterId,
 //				Cidr:                  pulumi.String("192.168.0.0/16"),
-//				TransitRouterCidrName: pulumi.String(pulumi.String(name)),
-//				Description:           pulumi.String(pulumi.String(name)),
+//				TransitRouterCidrName: pulumi.String(name),
+//				Description:           pulumi.String(name),
 //				PublishCidrRoute:      pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -136,8 +136,8 @@ import (
 //			}
 //			_, err = cen.NewTransitRouterVpnAttachment(ctx, "example", &cen.TransitRouterVpnAttachmentArgs{
 //				AutoPublishRouteEnabled:            pulumi.Bool(false),
-//				TransitRouterAttachmentDescription: pulumi.String(pulumi.String(name)),
-//				TransitRouterVpnAttachmentName:     pulumi.String(pulumi.String(name)),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
+//				TransitRouterVpnAttachmentName:     pulumi.String(name),
 //				CenId:                              exampleTransitRouter.CenId,
 //				TransitRouterId:                    exampleTransitRouterCidr.TransitRouterId,
 //				VpnId:                              exampleGatewayVpnAttachment.ID(),

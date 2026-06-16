@@ -42,13 +42,13 @@ import (
 //				name = param
 //			}
 //			_default, err := log.NewProject(ctx, "default", &log.ProjectArgs{
-//				ProjectName: pulumi.String(pulumi.String(name)),
+//				ProjectName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewWorkspace(ctx, "default", &cms.WorkspaceArgs{
-//				WorkspaceName: pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(name),
 //				SlsProject:    _default.ProjectName,
 //			})
 //			if err != nil {

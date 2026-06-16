@@ -44,10 +44,10 @@ import (
 //				return err
 //			}
 //			defaultWafRuleset, err := esa.NewWafRuleset(ctx, "default", &esa.WafRulesetArgs{
-//				SiteId:      pulumi.String(pulumi.Int(_default.Sites[0].SiteId)),
+//				SiteId:      pulumi.Int(_default.Sites[0].SiteId),
 //				Phase:       pulumi.String("http_custom"),
 //				SiteVersion: pulumi.Int(0),
-//				Name:        pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //				SiteVersion: defaultWafRuleset.SiteVersion,
 //			}, nil)
 //			ctx.Export("esaWafRulesetsId0", ids.ApplyT(func(ids esa.GetWafRulesetsResult) (*string, error) {
-//				return &ids.Sets[0].Id, nil
+//				return ids.Sets[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

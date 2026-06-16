@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				Name:      pulumi.String(pulumi.String(name)),
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -52,14 +52,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(pulumi.String(name)),
+//				LoadBalancerName: pulumi.String(name),
 //				VswitchId:        defaultSwitch.ID(),
 //			})
 //			if err != nil {
@@ -85,7 +85,7 @@ import (
 //			_, err = slb.NewRule(ctx, "default", &slb.RuleArgs{
 //				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
 //				FrontendPort:   defaultListener.FrontendPort,
-//				Name:           pulumi.String(pulumi.String(name)),
+//				Name:           pulumi.String(name),
 //				Domain:         pulumi.String("*.aliyun.com"),
 //				Url:            pulumi.String("/image"),
 //				ServerGroupId:  defaultServerGroup.ID(),
@@ -98,7 +98,7 @@ import (
 //				FrontendPort:   pulumi.Int(22),
 //			}, nil)
 //			ctx.Export("firstSlbRuleId", sampleDs.ApplyT(func(sampleDs slb.GetRulesResult) (*string, error) {
-//				return &sampleDs.SlbRules[0].Id, nil
+//				return sampleDs.SlbRules[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

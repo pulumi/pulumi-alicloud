@@ -38,10 +38,10 @@ import (
 //				name = param
 //			}
 //			_default, err := oos.NewSecretParameter(ctx, "default", &oos.SecretParameterArgs{
-//				SecretParameterName: pulumi.String(pulumi.String(name)),
+//				SecretParameterName: pulumi.String(name),
 //				Value:               pulumi.String("tf-testacc-oos_secret_parameter"),
 //				Type:                pulumi.String("Secret"),
-//				Description:         pulumi.String(pulumi.String(name)),
+//				Description:         pulumi.String(name),
 //				Constraints: pulumi.String(`  {
 //	    \"AllowedValues\": [
 //	        \"tf-testacc-oos_secret_parameter\"
@@ -67,7 +67,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("oosSecretParameterId0", ids.ApplyT(func(ids oos.GetSecretParametersResult) (*string, error) {
-//				return &ids.Parameters[0].Id, nil
+//				return ids.Parameters[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

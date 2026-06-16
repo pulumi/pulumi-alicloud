@@ -51,9 +51,9 @@ import (
 //			}
 //			defaultServiceHybridDoubleWrite, err := cloudmonitor.NewServiceHybridDoubleWrite(ctx, "default", &cloudmonitor.ServiceHybridDoubleWriteArgs{
 //				SourceNamespace: source.ID(),
-//				SourceUserId:    pulumi.String(pulumi.String(_default.Id)),
+//				SourceUserId:    pulumi.String(_default.Id),
 //				Namespace:       defaultNamespace.ID(),
-//				UserId:          pulumi.String(pulumi.String(_default.Id)),
+//				UserId:          pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -64,7 +64,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("cloudMonitorServiceHybridDoubleWritesId1", ids.ApplyT(func(ids cloudmonitor.GetServiceHybridDoubleWritesResult) (*string, error) {
-//				return &ids.HybridDoubleWrites[0].Id, nil
+//				return ids.HybridDoubleWrites[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

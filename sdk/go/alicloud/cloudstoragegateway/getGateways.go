@@ -42,7 +42,7 @@ import (
 //				NameRegex:       pulumi.String("^my-Gateway"),
 //			}, nil)
 //			ctx.Export("cloudStorageGatewayGatewayId", nameRegex.ApplyT(func(nameRegex cloudstoragegateway.GetGatewaysResult) (*string, error) {
-//				return &nameRegex.Gateways[0].Id, nil
+//				return nameRegex.Gateways[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

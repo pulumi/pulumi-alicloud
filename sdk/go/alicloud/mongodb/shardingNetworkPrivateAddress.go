@@ -46,26 +46,26 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
-//				ZoneId:        pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				ZoneId:        pulumi.String(_default.Zones[0].Id),
 //				VswitchId:     defaultSwitch.ID(),
 //				EngineVersion: pulumi.String("4.2"),
-//				Name:          pulumi.String(pulumi.String(name)),
+//				Name:          pulumi.String(name),
 //				ShardLists: mongodb.ShardingInstanceShardListArray{
 //					&mongodb.ShardingInstanceShardListArgs{
 //						NodeClass:   pulumi.String("dds.shard.mid"),
@@ -92,7 +92,7 @@ import (
 //			_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "default", &mongodb.ShardingNetworkPrivateAddressArgs{
 //				DbInstanceId: defaultShardingInstance.ID(),
 //				NodeId: pulumi.String(defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (*string, error) {
-//					return &shardLists[0].NodeId, nil
+//					return shardLists[0].NodeId, nil
 //				}).(pulumi.StringPtrOutput)),
 //				ZoneId:          defaultShardingInstance.ZoneId,
 //				AccountName:     pulumi.String("example"),

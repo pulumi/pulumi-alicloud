@@ -42,7 +42,7 @@ import (
 //			}
 //			defaultIpamIpam, err := vpc.NewIpamIpam(ctx, "default", &vpc.IpamIpamArgs{
 //				IpamDescription: pulumi.String("This is my first Ipam."),
-//				IpamName:        pulumi.String(pulumi.String(name)),
+//				IpamName:        pulumi.String(name),
 //				OperatingRegionLists: pulumi.StringArray{
 //					pulumi.String("cn-hangzhou"),
 //				},
@@ -55,10 +55,10 @@ import (
 //					defaultIpamIpam.ID(),
 //				},
 //				NameRegex: defaultIpamIpam.IpamName,
-//				IpamName:  pulumi.String(pulumi.String(name)),
+//				IpamName:  pulumi.String(name),
 //			}, nil)
 //			ctx.Export("alicloudVpcIpamIpamExampleId", defaultGetIpamIpams.ApplyT(func(defaultGetIpamIpams vpc.GetIpamIpamsResult) (*string, error) {
-//				return &defaultGetIpamIpams.Ipams[0].Id, nil
+//				return defaultGetIpamIpams.Ipams[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

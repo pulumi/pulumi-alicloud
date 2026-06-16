@@ -52,14 +52,14 @@ import (
 //				anotherUid = param
 //			}
 //			local, err := vpc.NewNetwork(ctx, "local", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			acceptingNetwork, err := vpc.NewNetwork(ctx, "accepting", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
@@ -70,12 +70,12 @@ import (
 //				return err
 //			}
 //			_default, err := vpc.NewPeerConnection(ctx, "default", &vpc.PeerConnectionArgs{
-//				PeerConnectionName: pulumi.String(pulumi.String(name)),
+//				PeerConnectionName: pulumi.String(name),
 //				VpcId:              local.ID(),
-//				AcceptingAliUid:    pulumi.Int(pulumi.String(accepting.Id)),
-//				AcceptingRegionId:  pulumi.String(pulumi.String(acceptingRegion)),
+//				AcceptingAliUid:    pulumi.String(accepting.Id),
+//				AcceptingRegionId:  pulumi.String(acceptingRegion),
 //				AcceptingVpcId:     acceptingNetwork.ID(),
-//				Description:        pulumi.String(pulumi.String(name)),
+//				Description:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

@@ -44,7 +44,7 @@ import (
 //			}
 //			vpc_amp_instance_example, err := vpc.NewNetwork(ctx, "vpc-amp-instance-example", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -186,7 +186,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("alicloudKmsInstanceExampleId", _default.ApplyT(func(_default kms.GetInstancesResult) (*string, error) {
-//				return &_default.Instances[0].InstanceId, nil
+//				return _default.Instances[0].InstanceId, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

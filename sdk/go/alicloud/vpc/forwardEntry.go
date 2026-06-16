@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -59,15 +59,15 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
 //				VpcId:          defaultNetwork.ID(),
-//				NatGatewayName: pulumi.String(pulumi.String(name)),
+//				NatGatewayName: pulumi.String(name),
 //				NatType:        pulumi.String("Enhanced"),
 //				VswitchId:      defaultSwitch.ID(),
 //				NetworkType:    pulumi.String("intranet"),
@@ -77,7 +77,7 @@ import (
 //			}
 //			defaultNatIp, err := vpc.NewNatIp(ctx, "default", &vpc.NatIpArgs{
 //				NatIp:        pulumi.String("172.16.0.66"),
-//				NatIpName:    pulumi.String(pulumi.String(name)),
+//				NatIpName:    pulumi.String(name),
 //				NatGatewayId: defaultNatGateway.ID(),
 //				NatIpCidr:    defaultSwitch.CidrBlock,
 //			})
@@ -91,7 +91,7 @@ import (
 //				IpProtocol:       pulumi.String("tcp"),
 //				InternalIp:       pulumi.String("172.16.0.115"),
 //				InternalPort:     pulumi.String("8080"),
-//				ForwardEntryName: pulumi.String(pulumi.String(name)),
+//				ForwardEntryName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

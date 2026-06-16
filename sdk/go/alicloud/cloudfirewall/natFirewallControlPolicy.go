@@ -58,14 +58,14 @@ import (
 //			}
 //			defaultDEiWfM, err := vpc.NewNetwork(ctx, "defaultDEiWfM", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultFHDM3F, err := vpc.NewSwitch(ctx, "defaultFHDM3F", &vpc.SwitchArgs{
 //				VpcId:     defaultDEiWfM.ID(),
-//				ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //			}
 //			defaultMbS2Ts, err := vpc.NewNatGateway(ctx, "defaultMbS2Ts", &vpc.NatGatewayArgs{
 //				VpcId:          defaultDEiWfM.ID(),
-//				NatGatewayName: pulumi.String(pulumi.String(name)),
+//				NatGatewayName: pulumi.String(name),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
 //				VswitchId:      defaultFHDM3F.ID(),
 //				NatType:        pulumi.String("Enhanced"),
@@ -181,8 +181,8 @@ import (
 //				return err
 //			}
 //			_, err = cloudfirewall.NewAddressBook(ctx, "ip", &cloudfirewall.AddressBookArgs{
-//				Description: pulumi.String(pulumi.String(name)),
-//				GroupName:   pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(name),
+//				GroupName:   pulumi.String(name),
 //				GroupType:   pulumi.String("ip"),
 //				AddressLists: pulumi.StringArray{
 //					pulumi.String("1.1.1.1/32"),
@@ -196,7 +196,7 @@ import (
 //				ApplicationNameLists: pulumi.StringArray{
 //					pulumi.String("ANY"),
 //				},
-//				Description: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(name),
 //				Release:     pulumi.String("false"),
 //				IpVersion:   pulumi.String("4"),
 //				RepeatDays: pulumi.IntArray{

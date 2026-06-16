@@ -38,8 +38,8 @@ import (
 //				name = param
 //			}
 //			_default, err := ram.NewUser(ctx, "default", &ram.UserArgs{
-//				Name:        pulumi.String(pulumi.String(name)),
-//				DisplayName: pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(name),
+//				DisplayName: pulumi.String(name),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),
 //				Comments:    pulumi.String("example"),
@@ -49,7 +49,7 @@ import (
 //			}
 //			_, err = dms.NewEnterpriseUser(ctx, "default", &dms.EnterpriseUserArgs{
 //				Uid:      _default.ID(),
-//				UserName: pulumi.String(pulumi.String(name)),
+//				UserName: pulumi.String(name),
 //				RoleNames: pulumi.StringArray{
 //					pulumi.String("DBA"),
 //				},

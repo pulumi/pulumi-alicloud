@@ -47,7 +47,7 @@ import (
 //				NameRegex: bucket.Bucket,
 //			}, nil)
 //			ctx.Export("firstOssBucketName", ossBucketsDs.ApplyT(func(ossBucketsDs oss.GetBucketsResult) (*string, error) {
-//				return &ossBucketsDs.Buckets[0].Name, nil
+//				return ossBucketsDs.Buckets[0].Name, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -45,7 +45,7 @@ import (
 //				ProxyId: pulumi.String("1881"),
 //			}, nil)
 //			ctx.Export("alicloudDmsProxyAccesesExampleId", _default.ApplyT(func(_default dms.GetEnterpriseProxyAccessesResult) (*string, error) {
-//				return &_default.Accesses[0].Id, nil
+//				return _default.Accesses[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

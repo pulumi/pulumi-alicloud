@@ -50,9 +50,9 @@ import (
 //				return err
 //			}
 //			_, err = ens.NewSnapshot(ctx, "default", &ens.SnapshotArgs{
-//				Description:  pulumi.String(pulumi.String(name)),
+//				Description:  pulumi.String(name),
 //				EnsRegionId:  pulumi.String("ch-zurich-1"),
-//				SnapshotName: pulumi.String(pulumi.String(name)),
+//				SnapshotName: pulumi.String(name),
 //				DiskId:       disk.ID(),
 //			})
 //			if err != nil {

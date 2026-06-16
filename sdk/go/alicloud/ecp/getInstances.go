@@ -67,7 +67,7 @@ import (
 //			}, nil)
 //			_, err = ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.Any(name),
-//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

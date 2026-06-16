@@ -123,7 +123,7 @@ import (
 //						return &tmp2, nil
 //					}).(pulumi.StringPtrOutput)),
 //					CidrBlock: pulumi.String(invokeCidrsubnet.Result),
-//					ZoneId:    pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//					ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				})
 //				if err != nil {
 //					return err

@@ -43,7 +43,7 @@ import (
 //				name = param
 //			}
 //			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:  pulumi.String(pulumi.String(name)),
+//				InstanceName:  pulumi.String(name),
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("1000"),
 //				QueueCapacity: pulumi.String("50"),
@@ -104,14 +104,14 @@ import (
 //				return err
 //			}
 //			_, err = amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName: pulumi.String(pulumi.String(name)),
+//				InstanceName: pulumi.String(name),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
-//				VpcId:        pulumi.String(pulumi.String(defaultGetSwitches.VpcId)),
+//				VpcId:        pulumi.String(defaultGetSwitches.VpcId),
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
-//					pulumi.String(pulumi.String(defaultGetSwitches.Ids[1])),
+//					pulumi.String(defaultGetSwitches.Ids[0]),
+//					pulumi.String(defaultGetSwitches.Ids[1]),
 //				},
-//				SecurityGroupId:      pulumi.String(pulumi.String(defaultGetSecurityGroups.Ids[0])),
+//				SecurityGroupId:      pulumi.String(defaultGetSecurityGroups.Ids[0]),
 //				ServerlessChargeType: pulumi.String("onDemand"),
 //			})
 //			if err != nil {

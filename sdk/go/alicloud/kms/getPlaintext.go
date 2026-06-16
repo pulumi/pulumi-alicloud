@@ -49,7 +49,7 @@ import (
 //				CiphertextBlob: encrypted.CiphertextBlob,
 //			}, nil)
 //			ctx.Export("decrypted", plaintext.ApplyT(func(plaintext kms.GetPlaintextResult) (*string, error) {
-//				return &plaintext.Plaintext, nil
+//				return plaintext.Plaintext, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

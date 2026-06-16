@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(pulumi.String(_default.Ids[0])),
+//				VpcId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -67,11 +67,11 @@ import (
 //			defaultPrometheus, err := arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
-//				VpcId:             pulumi.String(pulumi.String(_default.Ids[0])),
-//				VswitchId:         pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				VpcId:             pulumi.String(_default.Ids[0]),
+//				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupId:   defaultSecurityGroup.ID(),
 //				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Ids[0]),
-//				ResourceGroupId:   pulumi.String(pulumi.String(defaultGetResourceGroups.Groups[1].Id)),
+//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Groups[1].Id),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("Prometheus"),
@@ -84,7 +84,7 @@ import (
 //				NameRegex: defaultPrometheus.ClusterName,
 //			}, nil)
 //			ctx.Export("armsPrometheisId", nameRegex.ApplyT(func(nameRegex arms.GetPrometheisResult) (*string, error) {
-//				return &nameRegex.Prometheis[0].Id, nil
+//				return nameRegex.Prometheis[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

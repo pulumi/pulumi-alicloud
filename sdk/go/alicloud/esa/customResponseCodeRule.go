@@ -69,7 +69,7 @@ import (
 //				Rule:        pulumi.String("(http.host eq \"video.example.com\")"),
 //				Sequence:    pulumi.Int(1),
 //				SiteVersion: pulumi.Int(0),
-//				RuleName:    pulumi.String(pulumi.String(name)),
+//				RuleName:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

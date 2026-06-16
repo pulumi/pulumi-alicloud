@@ -41,7 +41,7 @@ import (
 //				name = param
 //			}
 //			_, err := apigateway.NewInstance(ctx, "default", &apigateway.InstanceArgs{
-//				InstanceName: pulumi.String(pulumi.String(name)),
+//				InstanceName: pulumi.String(name),
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),
 //				ZoneId:       pulumi.String("cn-hangzhou-MAZ6(i,j,k)"),
@@ -79,7 +79,7 @@ import (
 //			}
 //			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -104,13 +104,13 @@ import (
 //			}
 //			securityGroup, err := ecs.NewSecurityGroup(ctx, "security_group", &ecs.SecurityGroupArgs{
 //				VpcId:             vpc2.ID(),
-//				SecurityGroupName: pulumi.String(pulumi.String(name)),
+//				SecurityGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = apigateway.NewInstance(ctx, "vpc_integration_instance", &apigateway.InstanceArgs{
-//				InstanceName: pulumi.String(pulumi.String(name)),
+//				InstanceName: pulumi.String(name),
 //				HttpsPolicy:  pulumi.String("HTTPS2_TLS1_0"),
 //				InstanceSpec: pulumi.String("api.s1.small"),
 //				InstanceType: pulumi.String("vpc_connect"),

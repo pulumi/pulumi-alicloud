@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			defaultc5kxyC, err := cen.NewInstance(ctx, "defaultc5kxyC", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +96,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("firstCenFlowlogId", _default.ApplyT(func(_default cen.GetFlowlogsResult) (*string, error) {
-//				return &_default.Flowlogs[0].Id, nil
+//				return _default.Flowlogs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

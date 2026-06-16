@@ -76,8 +76,8 @@ import (
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},
-//				AggregatorName: pulumi.String(pulumi.String(name)),
-//				Description:    pulumi.String(pulumi.String(name)),
+//				AggregatorName: pulumi.String(name),
+//				Description:    pulumi.String(name),
 //				AggregatorType: pulumi.String("CUSTOM"),
 //			})
 //			if err != nil {
@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
-//				LogstoreName: pulumi.String(pulumi.String(name)),
+//				LogstoreName: pulumi.String(name),
 //				ProjectName:  defaultProject.ProjectName,
 //			})
 //			if err != nil {
@@ -116,14 +116,14 @@ import (
 //				AggregatorId:                        defaultAggregator.ID(),
 //				ConfigurationItemChangeNotification: pulumi.Bool(true),
 //				NonCompliantNotification:            pulumi.Bool(true),
-//				DeliveryChannelName:                 pulumi.String(pulumi.String(name)),
+//				DeliveryChannelName:                 pulumi.String(name),
 //				DeliveryChannelTargetArn: pulumi.All(defaultProject.ProjectName, defaultStore.LogstoreName).ApplyT(func(_args []interface{}) (string, error) {
 //					projectName := _args[0].(string)
 //					logstoreName := _args[1].(string)
 //					return fmt.Sprintf("acs:log:%v:%v:project/%v/logstore/%v", this.Ids[0], thisGetAccount.Id, projectName, logstoreName), nil
 //				}).(pulumi.StringOutput),
 //				DeliveryChannelType: pulumi.String("SLS"),
-//				Description:         pulumi.String(pulumi.String(name)),
+//				Description:         pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

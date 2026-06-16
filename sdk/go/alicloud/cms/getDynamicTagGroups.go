@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.String(pulumi.String(name)),
+//				AlarmContactGroupName: pulumi.String(name),
 //				Describe:              pulumi.String("example_value"),
 //				EnableSubscribed:      pulumi.Bool(true),
 //			})
@@ -66,7 +66,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("cmsDynamicTagGroupId1", ids.ApplyT(func(ids cms.GetDynamicTagGroupsResult) (*string, error) {
-//				return &ids.Groups[0].Id, nil
+//				return ids.Groups[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

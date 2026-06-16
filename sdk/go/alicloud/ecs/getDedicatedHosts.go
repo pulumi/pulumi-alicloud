@@ -40,7 +40,7 @@ import (
 //			_default, err := ecs.NewDedicatedHost(ctx, "default", &ecs.DedicatedHostArgs{
 //				DedicatedHostType:   pulumi.String("ddh.c5"),
 //				Description:         pulumi.String("From_Terraform"),
-//				DedicatedHostName:   pulumi.String(pulumi.String(name)),
+//				DedicatedHostName:   pulumi.String(name),
 //				ActionOnMaintenance: pulumi.String("Migrate"),
 //				Tags: pulumi.StringMap{
 //					"Create": pulumi.String("TF"),
@@ -56,7 +56,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ecsDedicatedHostId0", ids.ApplyT(func(ids ecs.GetDedicatedHostsResult) (*string, error) {
-//				return &ids.Hosts[0].Id, nil
+//				return ids.Hosts[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

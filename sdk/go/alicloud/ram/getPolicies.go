@@ -76,7 +76,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ramPoliciesId0", ids.ApplyT(func(ids ram.GetPoliciesResult) (*string, error) {
-//				return &ids.Policies[0].Id, nil
+//				return ids.Policies[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

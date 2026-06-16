@@ -54,9 +54,9 @@ import (
 //				return err
 //			}
 //			_, err = apig.NewHttpApi(ctx, "default", &apig.HttpApiArgs{
-//				HttpApiName: pulumi.String(pulumi.String(name)),
+//				HttpApiName: pulumi.String(name),
 //				Protocols: pulumi.StringArray{
-//					pulumi.String(pulumi.String(protocol)),
+//					pulumi.String(protocol),
 //				},
 //				BasePath:    pulumi.String("/v1"),
 //				Description: pulumi.String("zhiwei_pop_examplecase"),

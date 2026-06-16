@@ -64,7 +64,7 @@ import (
 //				SiteName:  pulumi.String("bcd.com"),
 //			}, nil)
 //			ctx.Export("alicloudEsaSiteExampleId", _default.ApplyT(func(_default esa.GetSitesResult) (*int, error) {
-//				return &_default.Sites[0].Id, nil
+//				return _default.Sites[0].Id, nil
 //			}).(pulumi.IntPtrOutput))
 //			return nil
 //		})

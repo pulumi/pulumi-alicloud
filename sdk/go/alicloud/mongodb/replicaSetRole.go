@@ -49,14 +49,14 @@ import (
 //			zoneId := _default.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
-//				ZoneId:    pulumi.String(pulumi.String(zoneId)),
+//				ZoneId:    pulumi.String(zoneId),
 //				CidrBlock: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
-//				ZoneId:            pulumi.String(pulumi.String(zoneId)),
+//				ZoneId:            pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,7 @@ import (
 //			_, err = mongodb.NewReplicaSetRole(ctx, "private", &mongodb.ReplicaSetRoleArgs{
 //				DbInstanceId: defaultInstance.ID(),
 //				RoleId: pulumi.String(defaultInstance.ReplicaSets.ApplyT(func(replicaSets []mongodb.InstanceReplicaSet) (*string, error) {
-//					return &replicaSets[0].RoleId, nil
+//					return replicaSets[0].RoleId, nil
 //				}).(pulumi.StringPtrOutput)),
 //				ConnectionPrefix: pulumi.String("test-tf-private-change"),
 //				ConnectionPort:   pulumi.Int(3718),
@@ -99,7 +99,7 @@ import (
 //			_, err = mongodb.NewReplicaSetRole(ctx, "public", &mongodb.ReplicaSetRoleArgs{
 //				DbInstanceId: defaultInstance.ID(),
 //				RoleId: pulumi.String(defaultPublicNetworkAddress.ReplicaSets.ApplyT(func(replicaSets []mongodb.PublicNetworkAddressReplicaSet) (*string, error) {
-//					return &replicaSets[0].RoleId, nil
+//					return replicaSets[0].RoleId, nil
 //				}).(pulumi.StringPtrOutput)),
 //				ConnectionPrefix: pulumi.String("test-tf-public-0"),
 //				ConnectionPort:   pulumi.Int(3719),

@@ -99,7 +99,7 @@ import (
 //				NameRegex:  defaultUser.Name,
 //			}, nil)
 //			ctx.Export("firstUserId", usersDs.ApplyT(func(usersDs ram.GetUsersResult) (*string, error) {
-//				return &usersDs.Users[0].Id, nil
+//				return usersDs.Users[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

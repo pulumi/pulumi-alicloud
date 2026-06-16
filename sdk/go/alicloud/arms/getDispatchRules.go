@@ -107,7 +107,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("armsDispatchRuleId1", ids.ApplyT(func(ids arms.GetDispatchRulesResult) (*string, error) {
-//				return &ids.Rules[0].Id, nil
+//				return ids.Rules[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -44,7 +44,7 @@ import (
 //				name = param
 //			}
 //			example, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
-//				ServiceDescription:   pulumi.String(pulumi.String(name)),
+//				ServiceDescription:   pulumi.String(name),
 //				ConnectBandwidth:     pulumi.Int(103),
 //				AutoAcceptConnection: pulumi.Bool(false),
 //			})
@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			exampleUser, err := ram.NewUser(ctx, "example", &ram.UserArgs{
-//				Name:        pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(name),
 //				DisplayName: pulumi.String("user_display_name"),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),

@@ -66,8 +66,8 @@ import (
 //				EngineVersion:     pulumi.String("4.4"),
 //				DbInstanceClass:   pulumi.String("mdb.shard.2x.xlarge.d"),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VswitchId:         pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
-//				Name:              pulumi.String(pulumi.String(name)),
+//				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
+//				Name:              pulumi.String(name),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("Instance"),
@@ -82,7 +82,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("mongodbInstancesId0", ids.ApplyT(func(ids mongodb.GetInstancesResult) (*string, error) {
-//				return &ids.Instances[0].Id, nil
+//				return ids.Instances[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

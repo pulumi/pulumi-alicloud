@@ -64,7 +64,7 @@ import (
 //			}
 //			defaultIpamIpamPoolAllocation, err := vpc.NewIpamIpamPoolAllocation(ctx, "default", &vpc.IpamIpamPoolAllocationArgs{
 //				IpamPoolAllocationDescription: pulumi.String("init alloc desc"),
-//				IpamPoolAllocationName:        pulumi.String(pulumi.String(name)),
+//				IpamPoolAllocationName:        pulumi.String(name),
 //				Cidr:                          pulumi.String("10.0.0.0/20"),
 //				IpamPoolId:                    defaultIpamPoolCidr.IpamPoolId,
 //			})
@@ -77,7 +77,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("alicloudVpcIpamIpamPoolAllocationExampleId", defaultGetIpamIpamPoolAllocations.ApplyT(func(defaultGetIpamIpamPoolAllocations vpc.GetIpamIpamPoolAllocationsResult) (*string, error) {
-//				return &defaultGetIpamIpamPoolAllocations.Allocations[0].Id, nil
+//				return defaultGetIpamIpamPoolAllocations.Allocations[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

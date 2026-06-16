@@ -39,7 +39,7 @@ import (
 //			}
 //			defaultikZ0gD, err := vpc.NewNetwork(ctx, "defaultikZ0gD", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -47,15 +47,15 @@ import (
 //			defaultp4O7qi, err := vpc.NewSwitch(ctx, "defaultp4O7qi", &vpc.SwitchArgs{
 //				VpcId:       defaultikZ0gD.ID(),
 //				CidrBlock:   pulumi.String("172.16.6.0/24"),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String("cn-shenzhen-e"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default2iRZpC, err := vpc.NewNatGateway(ctx, "default2iRZpC", &vpc.NatGatewayArgs{
-//				Description:    pulumi.String(pulumi.String(name)),
-//				NatGatewayName: pulumi.String(pulumi.String(name)),
+//				Description:    pulumi.String(name),
+//				NatGatewayName: pulumi.String(name),
 //				EipBindMode:    pulumi.String("MULTI_BINDED"),
 //				NatType:        pulumi.String("Enhanced"),
 //				VpcId:          defaultikZ0gD.ID(),
@@ -95,7 +95,7 @@ import (
 //				VswitchAuto:  pulumi.String("true"),
 //				StrictMode:   pulumi.Int(0),
 //				VpcId:        defaultikZ0gD.ID(),
-//				ProxyName:    pulumi.String(pulumi.String(name)),
+//				ProxyName:    pulumi.String(name),
 //				Lang:         pulumi.String("zh"),
 //				NatGatewayId: default2iRZpC.ID(),
 //				NatRouteEntryLists: cloudfirewall.NatFirewallNatRouteEntryListArray{
@@ -120,13 +120,13 @@ import (
 //				},
 //				Lang:         pulumi.String("zh"),
 //				NatGatewayId: default2iRZpC.ID(),
-//				ProxyName:    pulumi.String(pulumi.String(name)),
+//				ProxyName:    pulumi.String(name),
 //				RegionNo:     pulumi.String("cn-shenzhen"),
 //				Status:       pulumi.String("closed"),
 //				VpcId:        defaultikZ0gD.ID(),
 //			}, nil)
 //			ctx.Export("alicloudCloudFirewallNatFirewallExampleId", _default.ApplyT(func(_default cloudfirewall.GetNatFirewallsResult) (*string, error) {
-//				return &_default.Firewalls[0].Id, nil
+//				return _default.Firewalls[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

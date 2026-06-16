@@ -36,7 +36,7 @@ import (
 //				name = param
 //			}
 //			_default, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
-//				Name:   pulumi.String(pulumi.String(name)),
+//				Name:   pulumi.String(name),
 //				Remark: pulumi.String("default_ons_instance_remark"),
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //				OutputFile: pulumi.String("instances.txt"),
 //			}, nil)
 //			ctx.Export("firstInstanceId", instancesDs.ApplyT(func(instancesDs rocketmq.GetInstancesResult) (*string, error) {
-//				return &instancesDs.Instances[0].InstanceId, nil
+//				return instancesDs.Instances[0].InstanceId, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
