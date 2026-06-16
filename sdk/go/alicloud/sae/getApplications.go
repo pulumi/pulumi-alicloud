@@ -55,16 +55,16 @@ import (
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
 //				VpcId:       vpc2.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
-//				NamespaceDescription: pulumi.String(pulumi.String(name)),
+//				NamespaceDescription: pulumi.String(name),
 //				NamespaceId:          pulumi.String("cn-hangzhou:tfacctest"),
-//				NamespaceName:        pulumi.String(pulumi.String(name)),
+//				NamespaceName:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -90,7 +90,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("saeApplicationId", defaultGetApplications.ApplyT(func(defaultGetApplications sae.GetApplicationsResult) (*string, error) {
-//				return &defaultGetApplications.Applications[0].Id, nil
+//				return defaultGetApplications.Applications[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

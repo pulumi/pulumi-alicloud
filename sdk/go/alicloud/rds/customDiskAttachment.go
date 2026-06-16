@@ -65,12 +65,12 @@ import (
 //				return err
 //			}
 //			defaultCustom, err := rds.NewCustom(ctx, "default", &rds.CustomArgs{
-//				ZoneId:             pulumi.String(pulumi.String(defaultGetSwitches.ZoneId)),
+//				ZoneId:             pulumi.String(defaultGetSwitches.ZoneId),
 //				InstanceChargeType: pulumi.String("PostPaid"),
-//				VswitchId:          pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
 //				Amount:             pulumi.Int(1),
 //				SecurityGroupIds: pulumi.StringArray{
-//					pulumi.String(pulumi.String(defaultGetSecurityGroups.Ids[0])),
+//					pulumi.String(defaultGetSecurityGroups.Ids[0]),
 //				},
 //				SystemDisk: &rds.CustomSystemDiskArgs{
 //					Size: pulumi.String("40"),
@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			defaultCustomDisk, err := rds.NewCustomDisk(ctx, "default", &rds.CustomDiskArgs{
-//				ZoneId:       pulumi.String(pulumi.String(defaultGetSwitches.ZoneId)),
+//				ZoneId:       pulumi.String(defaultGetSwitches.ZoneId),
 //				Size:         pulumi.Int(40),
 //				DiskCategory: pulumi.String("cloud_ssd"),
 //				AutoPay:      pulumi.Bool(true),

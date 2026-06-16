@@ -43,9 +43,9 @@ import (
 //				return err
 //			}
 //			defaultEcsKeyPair, err := ecs.NewEcsKeyPair(ctx, "default", &ecs.EcsKeyPairArgs{
-//				KeyPairName:     pulumi.String(pulumi.String(name)),
+//				KeyPairName:     pulumi.String(name),
 //				PublicKey:       pulumi.String("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg"),
-//				ResourceGroupId: pulumi.String(pulumi.String(_default.Ids[1])),
+//				ResourceGroupId: pulumi.String(_default.Ids[1]),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("KeyPair"),
@@ -60,7 +60,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ecsKeyPairId0", ids.ApplyT(func(ids ecs.GetEcsKeyPairsResult) (*string, error) {
-//				return &ids.Pairs[0].Id, nil
+//				return ids.Pairs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

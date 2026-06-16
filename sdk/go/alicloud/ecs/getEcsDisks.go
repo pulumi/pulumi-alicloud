@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				DiskName:    pulumi.String("terraform-example"),
 //				Description: pulumi.String("terraform-example"),
 //				Category:    pulumi.String("cloud_efficiency"),
@@ -57,7 +57,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ecsDiskId0", ids.ApplyT(func(ids ecs.GetEcsDisksResult) (*string, error) {
-//				return &ids.Disks[0].Id, nil
+//				return ids.Disks[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewDiskDefaultKmsKey(ctx, "default", &ecs.DiskDefaultKmsKeyArgs{
-//				KmsKeyId: pulumi.String(pulumi.String(_default.Ids[0])),
+//				KmsKeyId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

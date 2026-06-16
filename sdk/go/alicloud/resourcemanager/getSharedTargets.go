@@ -42,14 +42,14 @@ import (
 //				return err
 //			}
 //			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
-//				ResourceShareName: pulumi.String(pulumi.String(name)),
+//				ResourceShareName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSharedTarget, err := resourcemanager.NewSharedTarget(ctx, "default", &resourcemanager.SharedTargetArgs{
 //				ResourceShareId: defaultResourceShare.ID(),
-//				TargetId:        pulumi.String(pulumi.String(_default.Ids[0])),
+//				TargetId:        pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -60,13 +60,13 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("firstResourceManagerSharedTargetId", ids.ApplyT(func(ids resourcemanager.GetSharedTargetsResult) (*string, error) {
-//				return &ids.Targets[0].Id, nil
+//				return ids.Targets[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			resourceShareId := resourcemanager.GetSharedTargetsOutput(ctx, resourcemanager.GetSharedTargetsOutputArgs{
 //				ResourceShareId: defaultSharedTarget.ResourceShareId,
 //			}, nil)
 //			ctx.Export("secondResourceManagerSharedTargetId", resourceShareId.ApplyT(func(resourceShareId resourcemanager.GetSharedTargetsResult) (*string, error) {
-//				return &resourceShareId.Targets[0].Id, nil
+//				return resourceShareId.Targets[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

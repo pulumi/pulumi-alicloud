@@ -49,10 +49,10 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewWafRuleset(ctx, "default", &esa.WafRulesetArgs{
-//				SiteId:      pulumi.String(pulumi.Int(_default.Sites[0].SiteId)),
+//				SiteId:      pulumi.Int(_default.Sites[0].SiteId),
 //				Phase:       pulumi.String("http_custom"),
 //				SiteVersion: pulumi.Int(0),
-//				Name:        pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

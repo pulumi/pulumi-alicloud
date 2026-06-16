@@ -56,8 +56,8 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = sae.NewConfigMap(ctx, "example", &sae.ConfigMapArgs{
-//				Data:        pulumi.String(pulumi.String(json0)),
-//				Name:        pulumi.String(pulumi.String(configMapName)),
+//				Data:        pulumi.String(json0),
+//				Name:        pulumi.String(configMapName),
 //				NamespaceId: example.NamespaceId,
 //			})
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //				NameRegex:   pulumi.String("^example"),
 //			}, nil)
 //			ctx.Export("saeConfigMapId", nameRegex.ApplyT(func(nameRegex sae.GetConfigMapsResult) (*string, error) {
-//				return &nameRegex.Maps[0].Id, nil
+//				return nameRegex.Maps[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

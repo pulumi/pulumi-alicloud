@@ -43,14 +43,14 @@ import (
 //				name = param
 //			}
 //			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
-//				Ipv4GatewayName: pulumi.String(pulumi.String(name)),
+//				Ipv4GatewayName: pulumi.String(name),
 //				VpcId:           _default.ID(),
 //				Enabled:         pulumi.Bool(true),
 //			})

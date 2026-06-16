@@ -53,8 +53,8 @@ import (
 //						ParamValue: pulumi.String("86460"),
 //					},
 //				},
-//				ParameterGroupDesc: pulumi.String(pulumi.String(name)),
-//				ParameterGroupName: pulumi.String(pulumi.String(name)),
+//				ParameterGroupDesc: pulumi.String(name),
+//				ParameterGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

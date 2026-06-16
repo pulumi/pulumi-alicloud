@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cloudfirewall.NewAddressBook(ctx, "default", &cloudfirewall.AddressBookArgs{
-//				GroupName:     pulumi.String(pulumi.String(name)),
+//				GroupName:     pulumi.String(name),
 //				GroupType:     pulumi.String("ip"),
 //				Description:   pulumi.String("tf-description"),
 //				AutoAddTagEcs: pulumi.Int(0),
@@ -56,7 +56,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("cloudFirewallAddressBookId1", ids.ApplyT(func(ids cloudfirewall.GetAddressBooksResult) (*string, error) {
-//				return &ids.Books[0].Id, nil
+//				return ids.Books[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -47,17 +47,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = edas.NewCluster(ctx, "default", &edas.ClusterArgs{
-//				ClusterName:     pulumi.String(pulumi.String(name)),
+//				ClusterName:     pulumi.String(name),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
-//				LogicalRegionId: pulumi.String(pulumi.String(_default.Regions[0].Id)),
+//				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {

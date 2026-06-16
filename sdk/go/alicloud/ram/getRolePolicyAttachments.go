@@ -109,7 +109,7 @@ import (
 //				RoleName: role.ID(),
 //			}, nil)
 //			ctx.Export("alicloudRamRolePolicyAttachmentExampleId", _default.ApplyT(func(_default ram.GetRolePolicyAttachmentsResult) (*string, error) {
-//				return &_default.Attachments[0].Id, nil
+//				return _default.Attachments[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

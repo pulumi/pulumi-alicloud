@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := directmail.NewDomain(ctx, "default", &directmail.DomainArgs{
-//				DomainName: pulumi.String(pulumi.String(name)),
+//				DomainName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("directMailDomainsId0", ids.ApplyT(func(ids directmail.GetDomainsResult) (*string, error) {
-//				return &ids.Domains[0].Id, nil
+//				return ids.Domains[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

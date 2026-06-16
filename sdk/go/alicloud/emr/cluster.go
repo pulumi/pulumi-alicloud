@@ -123,7 +123,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
+//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -232,8 +232,8 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-create-cluster-test"),
-//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
-//				ClusterType: pulumi.String(pulumi.String(_default.MainVersions[0].ClusterTypes[0])),
+//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
+//				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -270,7 +270,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
+//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
 //				SecurityGroupId:        pulumi.String(tmp12),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
@@ -399,7 +399,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
+//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -508,8 +508,8 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-resize-cluster-test"),
-//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
-//				ClusterType: pulumi.String(pulumi.String(_default.MainVersions[0].ClusterTypes[0])),
+//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
+//				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -546,7 +546,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
+//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
 //				SecurityGroupId:        pulumi.String(tmp12),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
@@ -673,7 +673,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
+//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -782,8 +782,8 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-resize-cluster-test"),
-//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
-//				ClusterType: pulumi.String(pulumi.String(_default.MainVersions[0].ClusterTypes[0])),
+//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
+//				ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -820,7 +820,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
+//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
 //				SecurityGroupId:        pulumi.String(tmp12),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
@@ -939,7 +939,7 @@ import (
 //			}
 //			var tmp3 pulumi.String
 //			if availabilityZone == "" {
-//				tmp3 = pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId))
+//				tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
 //			} else {
 //				tmp3 = pulumi.Any(availabilityZone)
 //			}
@@ -1024,7 +1024,7 @@ import (
 //			}
 //			_, err = emr.NewCluster(ctx, "gateway", &emr.ClusterArgs{
 //				Name:        pulumi.String("terraform-gateway-cluster-test"),
-//				EmrVer:      pulumi.String(pulumi.String(_default.MainVersions[0].EmrVersion)),
+//				EmrVer:      pulumi.String(_default.MainVersions[0].EmrVersion),
 //				ClusterType: pulumi.String("GATEWAY"),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
@@ -1040,7 +1040,7 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
+//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
 //				SecurityGroupId:        pulumi.String(tmp8),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),

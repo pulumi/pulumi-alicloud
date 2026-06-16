@@ -65,7 +65,7 @@ import (
 //				Description: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				VpcId:       vpc2.ID(),
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				ZoneId:      pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
+//				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //					Input:   vpc2.CidrBlock,
 //					Newbits: pulumi.Int(8),
@@ -132,7 +132,7 @@ import (
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
-//						return &_default.InstanceTypes[0].Id, nil
+//						return _default.InstanceTypes[0].Id, nil
 //					}).(pulumi.StringPtrOutput)),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
@@ -197,7 +197,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvPodMonitorsId0", ids.ApplyT(func(ids arms.GetEnvPodMonitorsResult) (*string, error) {
-//				return &ids.Monitors[0].Id, nil
+//				return ids.Monitors[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := privatelink.NewVpcEndpointService(ctx, "default", &privatelink.VpcEndpointServiceArgs{
-//				ServiceDescription:   pulumi.String(pulumi.String(name)),
+//				ServiceDescription:   pulumi.String(name),
 //				AutoAcceptConnection: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("privatelinkVpcEndpointServicesId0", ids.ApplyT(func(ids privatelink.GetVpcEndpointServicesResult) (*string, error) {
-//				return &ids.Services[0].Id, nil
+//				return ids.Services[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

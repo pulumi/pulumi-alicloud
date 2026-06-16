@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -109,15 +109,15 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Stocks[0].ZoneId)),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(_default.Stocks[0].ZoneId),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGateway, err := cloudstoragegateway.NewGateway(ctx, "default", &cloudstoragegateway.GatewayArgs{
-//				GatewayName:            pulumi.String(pulumi.String(name)),
-//				Description:            pulumi.String(pulumi.String(name)),
+//				GatewayName:            pulumi.String(name),
+//				Description:            pulumi.String(name),
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("Iscsi"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),

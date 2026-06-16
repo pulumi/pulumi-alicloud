@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String(pulumi.String(name)),
+//				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
@@ -46,15 +46,15 @@ import (
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
 //				CenId:             _default.ID(),
-//				TransitRouterName: pulumi.String(pulumi.String(name)),
+//				TransitRouterName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "default", &cen.TransitRouterRouteTableArgs{
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				TransitRouterRouteTableDescription: pulumi.String(pulumi.String(name)),
-//				TransitRouterRouteTableName:        pulumi.String(pulumi.String(name)),
+//				TransitRouterRouteTableDescription: pulumi.String(name),
+//				TransitRouterRouteTableName:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +66,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("cenTransitRouterRouteTableId0", ids.ApplyT(func(ids cen.GetTransitRouterRouteTablesResult) (*string, error) {
-//				return &ids.Tables[0].Id, nil
+//				return ids.Tables[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

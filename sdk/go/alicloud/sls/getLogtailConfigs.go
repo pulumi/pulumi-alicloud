@@ -51,7 +51,7 @@ import (
 //				projectName = param
 //			}
 //			defaultuA28zS, err := log.NewProject(ctx, "defaultuA28zS", &log.ProjectArgs{
-//				ProjectName: pulumi.String(pulumi.String(projectName)),
+//				ProjectName: pulumi.String(projectName),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //					LogstoreName: pulumi.String("example"),
 //				},
 //				OutputType:        pulumi.String("LogService"),
-//				InputDetail:       pulumi.String(pulumi.String(json0)),
+//				InputDetail:       pulumi.String(json0),
 //				LogtailConfigName: pulumi.String("tfaccsls62147"),
 //				InputType:         pulumi.String("file"),
 //			})
@@ -118,12 +118,12 @@ import (
 //			_default := sls.GetLogtailConfigsOutput(ctx, sls.GetLogtailConfigsOutputArgs{
 //				LogtailConfigName: defaultLogtailConfig.LogtailConfigName,
 //				LogstoreName:      pulumi.String("example"),
-//				ProjectName:       pulumi.String(pulumi.String(projectName)),
+//				ProjectName:       pulumi.String(projectName),
 //				Offset:            pulumi.Int(0),
 //				Size:              pulumi.Int(100),
 //			}, nil)
 //			ctx.Export("alicloudSlsLogtailConfigExampleId", _default.ApplyT(func(_default sls.GetLogtailConfigsResult) (*string, error) {
-//				return &_default.Configs[0].Id, nil
+//				return _default.Configs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cas.NewServiceCertificate(ctx, "default", &cas.ServiceCertificateArgs{
-//				CertificateName: pulumi.String(pulumi.String(name)),
+//				CertificateName: pulumi.String(name),
 //				Cert: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -104,7 +104,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("sslCertificatesServiceCertificatesId0", ids.ApplyT(func(ids cas.GetServiceCertificatesResult) (*string, error) {
-//				return &ids.Certificates[0].Id, nil
+//				return ids.Certificates[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

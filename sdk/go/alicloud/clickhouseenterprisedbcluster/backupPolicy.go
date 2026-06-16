@@ -60,21 +60,21 @@ import (
 //				zoneIdI = param
 //			}
 //			defaultktKLuM, err := vpc.NewNetwork(ctx, "defaultktKLuM", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String(pulumi.String(vpcIpRange)),
+//				CidrBlock: pulumi.String(vpcIpRange),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTQWN3k, err := vpc.NewSwitch(ctx, "defaultTQWN3k", &vpc.SwitchArgs{
 //				VpcId:     defaultktKLuM.ID(),
-//				ZoneId:    pulumi.String(pulumi.String(zoneIdI)),
-//				CidrBlock: pulumi.String(pulumi.String(vswIpRangeI)),
+//				ZoneId:    pulumi.String(zoneIdI),
+//				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default1tTLwe, err := clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "default1tTLwe", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
-//				ZoneId:    pulumi.String(pulumi.String(zoneIdI)),
+//				ZoneId:    pulumi.String(zoneIdI),
 //				VpcId:     defaultktKLuM.ID(),
 //				ScaleMin:  pulumi.String("8"),
 //				ScaleMax:  pulumi.String("16"),

@@ -71,7 +71,7 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := vpc.NewNetwork(ctx, fmt.Sprintf("default-%v", key0), &vpc.NetworkArgs{
-//					VpcName:   pulumi.String(pulumi.String(name)),
+//					VpcName:   pulumi.String(name),
 //					CidrBlock: pulumi.String("172.16.0.0/12"),
 //				})
 //				if err != nil {
@@ -102,7 +102,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				VpcId: defaultNetwork[2].ID(),
-//				Name:  pulumi.String(pulumi.String(name)),
+//				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -111,7 +111,7 @@ import (
 //				EndpointName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				VpcId:           defaultNetwork[2].ID(),
-//				VpcRegionId:     pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Id)),
+//				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
 //				IpConfigs: pvtz.EndpointIpConfigArray{
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[0].ZoneId,
@@ -132,7 +132,7 @@ import (
 //				EndpointId: defaultEndpoint.ID(),
 //				RuleName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				Type:       pulumi.String("OUTBOUND"),
-//				ZoneName:   pulumi.String(pulumi.String(name)),
+//				ZoneName:   pulumi.String(name),
 //				ForwardIps: pvtz.RuleForwardIpArray{
 //					&pvtz.RuleForwardIpArgs{
 //						Ip:   pulumi.String("114.114.114.114"),

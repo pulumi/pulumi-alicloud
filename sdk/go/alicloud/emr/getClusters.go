@@ -94,8 +94,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(pulumi.String(name)),
-//				VpcId: pulumi.String(pulumi.String(defaultGetNetworks.Ids[0])),
+//				Name:  pulumi.String(name),
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
-//				Name: pulumi.String(pulumi.String(name)),
+//				Name: pulumi.String(name),
 //				Document: pulumi.String(`    {
 //	        \"Statement\": [
 //	        {
@@ -170,9 +170,9 @@ import (
 //				tmp5 = pulumi.String("160")
 //			}
 //			defaultCluster, err := emr.NewCluster(ctx, "default", &emr.ClusterArgs{
-//				Name:        pulumi.String(pulumi.String(name)),
-//				EmrVer:      pulumi.String(pulumi.String(defaultGetMainVersions.MainVersions[0].EmrVersion)),
-//				ClusterType: pulumi.String(pulumi.String(defaultGetMainVersions.MainVersions[0].ClusterTypes[0])),
+//				Name:        pulumi.String(name),
+//				EmrVer:      pulumi.String(defaultGetMainVersions.MainVersions[0].EmrVersion),
+//				ClusterType: pulumi.String(defaultGetMainVersions.MainVersions[0].ClusterTypes[0]),
 //				HostGroups: emr.ClusterHostGroupArray{
 //					&emr.ClusterHostGroupArgs{
 //						HostGroupName:   pulumi.String("master_group"),
@@ -209,11 +209,11 @@ import (
 //					},
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
-//				ZoneId:                 pulumi.String(pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)),
+//				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
 //				SecurityGroupId:        defaultSecurityGroup.ID(),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
-//				VswitchId:              pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				VswitchId:              pulumi.String(defaultGetSwitches.Ids[0]),
 //				UserDefinedEmrEcsRole:  defaultRole.Name,
 //				SshEnable:              pulumi.Bool(true),
 //				MasterPwd:              pulumi.String("ABCtest1234!"),
@@ -234,7 +234,7 @@ import (
 //				NameRegex: defaultCluster.Name,
 //			}, nil)
 //			ctx.Export("emrClusterId2", nameRegex.ApplyT(func(nameRegex emr.GetClustersResult) (*string, error) {
-//				return &nameRegex.Clusters[0].Id, nil
+//				return nameRegex.Clusters[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

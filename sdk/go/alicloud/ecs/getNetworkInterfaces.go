@@ -40,7 +40,7 @@ import (
 //				name = param
 //			}
 //			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
 //			if err != nil {
@@ -53,16 +53,16 @@ import (
 //				return err
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-//				VswitchName:      pulumi.String(pulumi.String(name)),
+//				VswitchName:      pulumi.String(name),
 //				CidrBlock:        pulumi.String("192.168.0.0/24"),
-//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				VpcId:            vpc2.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(pulumi.String(name)),
+//				Name:  pulumi.String(name),
 //				VpcId: vpc2.ID(),
 //			})
 //			if err != nil {
@@ -84,14 +84,14 @@ import (
 //				return err
 //			}
 //			instance, err := ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					group.ID(),
 //				},
 //				InstanceType:            pulumi.String("ecs.e3.xlarge"),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				ImageId:                 pulumi.String("centos_7_04_64_20G_alibase_201701015.vhd"),
-//				InstanceName:            pulumi.String(pulumi.String(name)),
+//				InstanceName:            pulumi.String(name),
 //				VswitchId:               vswitch.ID(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			})
@@ -109,7 +109,7 @@ import (
 //				Ids: pulumi.StringArray{
 //					attachment.NetworkInterfaceId,
 //				},
-//				NameRegex: pulumi.String(pulumi.String(name)),
+//				NameRegex: pulumi.String(name),
 //				Tags: pulumi.StringMap{
 //					"TF-VER": pulumi.String("0.11.3"),
 //				},
@@ -121,7 +121,7 @@ import (
 //				InstanceId:      instance.ID(),
 //			}, nil)
 //			ctx.Export("eni0Name", defaultGetNetworkInterfaces.ApplyT(func(defaultGetNetworkInterfaces ecs.GetNetworkInterfacesResult) (*string, error) {
-//				return &defaultGetNetworkInterfaces.Interfaces[0].Name, nil
+//				return defaultGetNetworkInterfaces.Interfaces[0].Name, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

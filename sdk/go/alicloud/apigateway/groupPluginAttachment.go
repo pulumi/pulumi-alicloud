@@ -60,7 +60,7 @@ import (
 //			examplePlugin, err := apigateway.NewPlugin(ctx, "example", &apigateway.PluginArgs{
 //				Description: pulumi.String("tf_example"),
 //				PluginName:  pulumi.String("tf-example-api-gateway-plugin"),
-//				PluginData:  pulumi.String(pulumi.String(json0)),
+//				PluginData:  pulumi.String(json0),
 //				PluginType:  pulumi.String("cors"),
 //			})
 //			if err != nil {

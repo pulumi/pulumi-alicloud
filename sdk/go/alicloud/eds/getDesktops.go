@@ -82,7 +82,7 @@ import (
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(pulumi.String(_default.Bundles[0].Id)),
+//				BundleId:      pulumi.String(_default.Bundles[0].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //				EndUserIds: pulumi.StringArray{
 //					defaultUser.ID(),
@@ -97,13 +97,13 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ecdDesktopId1", ids.ApplyT(func(ids eds.GetDesktopsResult) (*string, error) {
-//				return &ids.Desktops[0].Id, nil
+//				return ids.Desktops[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			nameRegex := eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
 //				NameRegex: defaultDesktop.DesktopName,
 //			}, nil)
 //			ctx.Export("ecdDesktopId2", nameRegex.ApplyT(func(nameRegex eds.GetDesktopsResult) (*string, error) {
-//				return &nameRegex.Desktops[0].Id, nil
+//				return nameRegex.Desktops[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

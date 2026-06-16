@@ -43,7 +43,7 @@ import (
 //				AlertRobotName: _default.AlertRobotName,
 //			}, nil)
 //			ctx.Export("armsAlertRobotId", nameRegex.ApplyT(func(nameRegex arms.GetAlertRobotsResult) (*string, error) {
-//				return &nameRegex.Robots[0].Id, nil
+//				return nameRegex.Robots[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

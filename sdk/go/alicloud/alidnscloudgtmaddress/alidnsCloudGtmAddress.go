@@ -86,7 +86,7 @@ import (
 //				Timeout:         pulumi.String("2000"),
 //				EvaluationCount: pulumi.Int(1),
 //				FailureRate:     pulumi.Int(50),
-//				ExtendInfo:      pulumi.String(pulumi.String(json0)),
+//				ExtendInfo:      pulumi.String(json0),
 //				IspCityNodes: alidnscloudgtm.MonitorTemplateIspCityNodeArray{
 //					&alidnscloudgtm.MonitorTemplateIspCityNodeArgs{
 //						CityCode: pulumi.String("357"),
@@ -117,7 +117,7 @@ import (
 //				Timeout:         pulumi.String("3000"),
 //				EvaluationCount: pulumi.Int(1),
 //				FailureRate:     pulumi.Int(50),
-//				ExtendInfo:      pulumi.String(pulumi.String(json1)),
+//				ExtendInfo:      pulumi.String(json1),
 //				IspCityNodes: alidnscloudgtm.MonitorTemplateIspCityNodeArray{
 //					&alidnscloudgtm.MonitorTemplateIspCityNodeArgs{
 //						CityCode: pulumi.String("357"),
@@ -133,7 +133,7 @@ import (
 //				return err
 //			}
 //			_, err = alidnscloudgtmaddress.NewAlidnsCloudGtmAddress(ctx, "default", &alidnscloudgtmaddress.AlidnsCloudGtmAddressArgs{
-//				Name:                  pulumi.String(pulumi.String(name)),
+//				Name:                  pulumi.String(name),
 //				Type:                  pulumi.String("IPv4"),
 //				Address:               pulumi.String("1.1.1.1"),
 //				EnableStatus:          pulumi.String("enable"),

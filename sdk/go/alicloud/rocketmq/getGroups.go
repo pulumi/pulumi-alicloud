@@ -40,14 +40,14 @@ import (
 //				groupName = param
 //			}
 //			_default, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
-//				InstanceName: pulumi.String(pulumi.String(name)),
+//				InstanceName: pulumi.String(name),
 //				Remark:       pulumi.String("default_ons_instance_remark"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGroup, err := rocketmq.NewGroup(ctx, "default", &rocketmq.GroupArgs{
-//				GroupName:  pulumi.String(pulumi.String(groupName)),
+//				GroupName:  pulumi.String(groupName),
 //				InstanceId: _default.ID(),
 //				Remark:     pulumi.String("dafault_ons_group_remark"),
 //			})
@@ -60,7 +60,7 @@ import (
 //				OutputFile: pulumi.String("groups.txt"),
 //			}, nil)
 //			ctx.Export("firstGroupName", groupsDs.ApplyT(func(groupsDs rocketmq.GetGroupsResult) (*string, error) {
-//				return &groupsDs.Groups[0].GroupName, nil
+//				return groupsDs.Groups[0].GroupName, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

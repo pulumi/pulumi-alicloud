@@ -76,11 +76,11 @@ import (
 //				BaselineItems: governance.BaselineBaselineItemArray{
 //					&governance.BaselineBaselineItemArgs{
 //						Version: pulumi.String("1.0"),
-//						Name:    pulumi.String(pulumi.String(itemPasswordPolicy)),
-//						Config:  pulumi.String(pulumi.String(json0)),
+//						Name:    pulumi.String(itemPasswordPolicy),
+//						Config:  pulumi.String(json0),
 //					},
 //				},
-//				Description:  pulumi.String(pulumi.String(name)),
+//				Description:  pulumi.String(name),
 //				BaselineName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ import (
 //				NameRegex: defaultBaseline.BaselineName,
 //			}, nil)
 //			ctx.Export("alicloudGovernanceBaselineExampleId", _default.ApplyT(func(_default governance.GetBaselinesResult) (*string, error) {
-//				return &_default.Baselines[0].BaselineId, nil
+//				return _default.Baselines[0].BaselineId, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

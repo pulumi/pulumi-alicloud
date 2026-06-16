@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceName:        pulumi.String(pulumi.String(name)),
+//				InstanceName:        pulumi.String(name),
 //				InstanceType:        pulumi.String("enterprise"),
 //				MaxTps:              pulumi.String("3000"),
 //				MaxConnections:      pulumi.Int(2000),
@@ -58,7 +58,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("amqpInstanceId0", ids.ApplyT(func(ids amqp.GetInstancesResult) (*string, error) {
-//				return &ids.Instances[0].Id, nil
+//				return ids.Instances[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

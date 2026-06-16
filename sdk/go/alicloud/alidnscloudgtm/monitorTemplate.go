@@ -54,14 +54,14 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = alidnscloudgtm.NewMonitorTemplate(ctx, "default", &alidnscloudgtm.MonitorTemplateArgs{
-//				Name:            pulumi.String(pulumi.String(name)),
+//				Name:            pulumi.String(name),
 //				Protocol:        pulumi.String("http"),
 //				IpVersion:       pulumi.String("IPv4"),
 //				Interval:        pulumi.String("60"),
 //				Timeout:         pulumi.String("2000"),
 //				EvaluationCount: pulumi.Int(2),
 //				FailureRate:     pulumi.Int(50),
-//				ExtendInfo:      pulumi.String(pulumi.String(json0)),
+//				ExtendInfo:      pulumi.String(json0),
 //				Remark:          pulumi.String("terraform-example-remark"),
 //				IspCityNodes: alidnscloudgtm.MonitorTemplateIspCityNodeArray{
 //					&alidnscloudgtm.MonitorTemplateIspCityNodeArgs{

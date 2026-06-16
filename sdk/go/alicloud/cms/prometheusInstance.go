@@ -56,14 +56,14 @@ import (
 //				return err
 //			}
 //			defaultWorkspace, err := cms.NewWorkspace(ctx, "default", &cms.WorkspaceArgs{
-//				WorkspaceName: pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(name),
 //				SlsProject:    defaultProject.ProjectName,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cms.NewPrometheusInstance(ctx, "default", &cms.PrometheusInstanceArgs{
-//				PrometheusInstanceName: pulumi.String(pulumi.String(name)),
+//				PrometheusInstanceName: pulumi.String(name),
 //				Workspace:              defaultWorkspace.ID(),
 //			})
 //			if err != nil {

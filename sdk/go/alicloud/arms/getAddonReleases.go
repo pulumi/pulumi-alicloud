@@ -65,7 +65,7 @@ import (
 //				Description: pulumi.String("api-resource-test1-hz"),
 //				VpcId:       vpc2.ID(),
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				ZoneId:      pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
+//				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //					Input:   vpc2.CidrBlock,
 //					Newbits: pulumi.Int(8),
@@ -132,7 +132,7 @@ import (
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
-//						return &_default.InstanceTypes[0].Id, nil
+//						return _default.InstanceTypes[0].Id, nil
 //					}).(pulumi.StringPtrOutput)),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
@@ -167,7 +167,7 @@ import (
 //				AddonName:     pulumi.String("mysql"),
 //				EnvironmentId: defaultEnvironment.ID(),
 //				AddonVersion:  pulumi.String("0.0.2"),
-//				Values:        pulumi.String(pulumi.String(json0)),
+//				Values:        pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
@@ -179,7 +179,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvServiceMonitorsId0", ids.ApplyT(func(ids arms.GetAddonReleasesResult) (*string, error) {
-//				return &ids.Releases[0].Id, nil
+//				return ids.Releases[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

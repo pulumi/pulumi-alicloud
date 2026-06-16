@@ -59,7 +59,7 @@ import (
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -74,14 +74,14 @@ import (
 //					val := invoke.Result
 //					return &val, nil
 //				}).(pulumi.StringPtrOutput)),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
-//				Name: pulumi.String(pulumi.String(name)),
+//				Name: pulumi.String(name),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),
@@ -105,7 +105,7 @@ import (
 //				InstanceTypeFamily: pulumi.String("ecs.sn1ne"),
 //			}, nil)
 //			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-//				Name:          pulumi.String(pulumi.String(name)),
+//				Name:          pulumi.String(name),
 //				ClusterSpec:   pulumi.String("ack.pro.small"),
 //				Version:       pulumi.String("1.24.6-aliyun.1"),
 //				NewNatGateway: pulumi.Bool(true),
@@ -141,7 +141,7 @@ import (
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultGetInstanceTypes.ApplyT(func(defaultGetInstanceTypes ecs.GetInstanceTypesResult) (*string, error) {
-//						return &defaultGetInstanceTypes.InstanceTypes[0].Id, nil
+//						return defaultGetInstanceTypes.InstanceTypes[0].Id, nil
 //					}).(pulumi.StringPtrOutput)),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),

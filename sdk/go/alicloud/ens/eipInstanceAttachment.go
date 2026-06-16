@@ -60,10 +60,10 @@ import (
 //				Status:                 pulumi.String("Running"),
 //				Amount:                 pulumi.Int(1),
 //				InternetChargeType:     pulumi.String("95BandwidthByMonth"),
-//				InstanceName:           pulumi.String(pulumi.String(name)),
+//				InstanceName:           pulumi.String(name),
 //				AutoUseCoupon:          pulumi.String("true"),
 //				InstanceChargeStrategy: pulumi.String("PriceHighPriority"),
-//				EnsRegionId:            pulumi.String(pulumi.String(ensRegionId)),
+//				EnsRegionId:            pulumi.String(ensRegionId),
 //				PeriodUnit:             pulumi.String("Month"),
 //			})
 //			if err != nil {
@@ -71,8 +71,8 @@ import (
 //			}
 //			defaultsGsN4e, err := ens.NewEip(ctx, "defaultsGsN4e", &ens.EipArgs{
 //				Bandwidth:          pulumi.Int(5),
-//				EipName:            pulumi.String(pulumi.String(name)),
-//				EnsRegionId:        pulumi.String(pulumi.String(ensRegionId)),
+//				EipName:            pulumi.String(name),
+//				EnsRegionId:        pulumi.String(ensRegionId),
 //				InternetChargeType: pulumi.String("95BandwidthByMonth"),
 //				PaymentType:        pulumi.String("PayAsYouGo"),
 //			})

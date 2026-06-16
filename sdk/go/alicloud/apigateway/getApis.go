@@ -38,16 +38,16 @@ import (
 //				name = param
 //			}
 //			_default, err := apigateway.NewGroup(ctx, "default", &apigateway.GroupArgs{
-//				Name:        pulumi.String(pulumi.String(name)),
-//				Description: pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(name),
+//				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultApi, err := apigateway.NewApi(ctx, "default", &apigateway.ApiArgs{
 //				GroupId:     _default.ID(),
-//				Name:        pulumi.String(pulumi.String(name)),
-//				Description: pulumi.String(pulumi.String(name)),
+//				Name:        pulumi.String(name),
+//				Description: pulumi.String(name),
 //				AuthType:    pulumi.String("APP"),
 //				ServiceType: pulumi.String("HTTP"),
 //				RequestConfig: &apigateway.ApiRequestConfigArgs{
@@ -65,12 +65,12 @@ import (
 //				},
 //				RequestParameters: apigateway.ApiRequestParameterArray{
 //					&apigateway.ApiRequestParameterArgs{
-//						Name:        pulumi.String(pulumi.String(name)),
+//						Name:        pulumi.String(name),
 //						Type:        pulumi.String("STRING"),
 //						Required:    pulumi.String("OPTIONAL"),
 //						In:          pulumi.String("QUERY"),
 //						InService:   pulumi.String("QUERY"),
-//						NameService: pulumi.String(pulumi.String(name)),
+//						NameService: pulumi.String(name),
 //					},
 //				},
 //			})
@@ -83,7 +83,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("apiGatewayApisId0", ids.ApplyT(func(ids apigateway.GetApisResult) (*string, error) {
-//				return &ids.Apis[0].Id, nil
+//				return ids.Apis[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

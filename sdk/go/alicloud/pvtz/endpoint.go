@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -88,16 +88,16 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				VpcId: defaultNetwork.ID(),
-//				Name:  pulumi.String(pulumi.String(name)),
+//				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
-//				EndpointName:    pulumi.String(pulumi.String(name)),
+//				EndpointName:    pulumi.String(name),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				VpcId:           defaultNetwork.ID(),
-//				VpcRegionId:     pulumi.String(pulumi.String(defaultGetRegions.Regions[0].Id)),
+//				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
 //				IpConfigs: pvtz.EndpointIpConfigArray{
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[0].ZoneId,

@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			_default, err := pvtz.NewZone(ctx, "default", &pvtz.ZoneArgs{
-//				ZoneName: pulumi.String(pulumi.String(name)),
+//				ZoneName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -49,7 +49,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("pvtzZonesId0", ids.ApplyT(func(ids pvtz.GetZonesResult) (*string, error) {
-//				return &ids.Zones[0].Id, nil
+//				return ids.Zones[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

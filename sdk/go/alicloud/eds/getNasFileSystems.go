@@ -57,7 +57,7 @@ import (
 //				NameRegex: defaultNasFileSystem.NasFileSystemName,
 //			}, nil)
 //			ctx.Export("ecdNasFileSystemId2", nameRegex.ApplyT(func(nameRegex eds.GetNasFileSystemsResult) (*string, error) {
-//				return &nameRegex.Systems[0].Id, nil
+//				return nameRegex.Systems[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -50,7 +50,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(this.Classes[0].ZoneId)),
+//				ZoneId:      pulumi.String(this.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //				DbVersion:   pulumi.String("8.0"),
 //				PayType:     pulumi.String("PostPaid"),
 //				DbNodeCount: pulumi.Int(2),
-//				DbNodeClass: pulumi.String(pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass)),
+//				DbNodeClass: pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				VswitchId:   defaultSwitch.ID(),
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //			}, nil)
 //			account, err := polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
 //				DbClusterId: pulumi.String(polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
-//					return &polardbClustersDs.Clusters[0].Id, nil
+//					return polardbClustersDs.Clusters[0].Id, nil
 //				}).(pulumi.StringPtrOutput)),
 //				AccountName:        pulumi.String("tfnormal_01"),
 //				AccountPassword:    pulumi.String("Test12345"),
@@ -85,12 +85,12 @@ import (
 //			}
 //			_default := polardb.GetAccountsOutput(ctx, polardb.GetAccountsOutputArgs{
 //				DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
-//					return &polardbClustersDs.Clusters[0].Id, nil
+//					return polardbClustersDs.Clusters[0].Id, nil
 //				}).(pulumi.StringPtrOutput),
 //				NameRegex: account.AccountName,
 //			}, nil)
 //			ctx.Export("account", _default.ApplyT(func(_default polardb.GetAccountsResult) (*string, error) {
-//				return &_default.Accounts[0].AccountName, nil
+//				return _default.Accounts[0].AccountName, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

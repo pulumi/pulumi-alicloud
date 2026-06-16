@@ -50,7 +50,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -85,10 +85,10 @@ import (
 //				InstanceId: exampleEngineNamespace.InstanceId,
 //			}, nil)
 //			ctx.Export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.ApplyT(func(exampleGetEngineNamespaces mse.GetEngineNamespacesResult) (*string, error) {
-//				return &exampleGetEngineNamespaces.Namespaces[0].Id, nil
+//				return exampleGetEngineNamespaces.Namespaces[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			ctx.Export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.ApplyT(func(exampleGetEngineNamespaces mse.GetEngineNamespacesResult) (*string, error) {
-//				return &exampleGetEngineNamespaces.Namespaces[1].Id, nil
+//				return exampleGetEngineNamespaces.Namespaces[1].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

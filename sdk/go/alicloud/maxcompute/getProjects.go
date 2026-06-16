@@ -37,8 +37,8 @@ import (
 //			}
 //			defaultProject, err := maxcompute.NewProject(ctx, "default", &maxcompute.ProjectArgs{
 //				DefaultQuota: pulumi.String("默认后付费Quota"),
-//				ProjectName:  pulumi.String(pulumi.String(name)),
-//				Comment:      pulumi.String(pulumi.String(name)),
+//				ProjectName:  pulumi.String(name),
+//				Comment:      pulumi.String(name),
 //				ProductType:  pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {
@@ -48,7 +48,7 @@ import (
 //				NameRegex: defaultProject.ProjectName,
 //			}, nil)
 //			ctx.Export("alicloudMaxcomputeProjectExampleId", _default.ApplyT(func(_default maxcompute.GetProjectsResult) (*string, error) {
-//				return &_default.Projects[0].ProjectName, nil
+//				return _default.Projects[0].ProjectName, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

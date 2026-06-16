@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultEnvironment, err := arms.NewEnvironment(ctx, "default", &arms.EnvironmentArgs{
-//				BindResourceId:     pulumi.String(pulumi.String(_default.Ids[0])),
+//				BindResourceId:     pulumi.String(_default.Ids[0]),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //				EnvironmentType:    pulumi.String("ECS"),
 //				EnvironmentName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
@@ -92,7 +92,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvCustomJobsId0", ids.ApplyT(func(ids arms.GetEnvCustomJobsResult) (*string, error) {
-//				return &ids.Jobs[0].Id, nil
+//				return ids.Jobs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -55,7 +55,7 @@ import (
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				VswitchId:              pulumi.String(defaultGetSwitches.Ids[0]),
 //				ReleaseAfterExpiration: pulumi.Bool(false),
 //				PublicNetworkBandwidth: pulumi.Int(40),
 //				StorageBundleId:        example.ID(),
@@ -80,7 +80,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("cloudStorageGatewayGatewaySmbUserId1", ids.ApplyT(func(ids cloudstoragegateway.GetGatewaySmbUsersResult) (*string, error) {
-//				return &ids.Users[0].Id, nil
+//				return ids.Users[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(myName)),
+//				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -65,8 +65,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
-//				VswitchName: pulumi.String(pulumi.String(myName)),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String(pulumi.String(myName)),
+//				ScalingGroupName: pulumi.String(myName),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
 //					pulumi.String("NewestInstance"),
@@ -88,7 +88,7 @@ import (
 //			}
 //			defaultScalingRule, err := ess.NewScalingRule(ctx, "default", &ess.ScalingRuleArgs{
 //				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ScalingRuleName: pulumi.String(pulumi.String(myName)),
+//				ScalingRuleName: pulumi.String(myName),
 //				AdjustmentType:  pulumi.String("PercentChangeInCapacity"),
 //				AdjustmentValue: pulumi.Int(1),
 //			})
@@ -100,10 +100,10 @@ import (
 //				Ids: pulumi.StringArray{
 //					defaultScalingRule.ID(),
 //				},
-//				NameRegex: pulumi.String(pulumi.String(myName)),
+//				NameRegex: pulumi.String(myName),
 //			}, nil)
 //			ctx.Export("firstScalingRule", scalingrulesDs.ApplyT(func(scalingrulesDs ess.GetScalingRulesResult) (*string, error) {
-//				return &scalingrulesDs.Rules[0].Id, nil
+//				return scalingrulesDs.Rules[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

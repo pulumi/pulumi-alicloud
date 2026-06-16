@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			defaultWorkspace, err := cms.NewWorkspace(ctx, "default", &cms.WorkspaceArgs{
-//				WorkspaceName: pulumi.String(pulumi.String(name)),
+//				WorkspaceName: pulumi.String(name),
 //				SlsProject:    defaultProject.ProjectName,
 //			})
 //			if err != nil {
@@ -66,7 +66,7 @@ import (
 //			}
 //			_, err = cms.NewIntegrationPolicy(ctx, "default", &cms.IntegrationPolicyArgs{
 //				PolicyType:            pulumi.String("ECS"),
-//				IntegrationPolicyName: pulumi.String(pulumi.String(name)),
+//				IntegrationPolicyName: pulumi.String(name),
 //				Workspace:             defaultWorkspace.ID(),
 //			})
 //			if err != nil {

@@ -57,7 +57,7 @@ import (
 //				DirectoryId: defaultQSrGmc.ID(),
 //			}, nil)
 //			ctx.Export("alicloudCloudSsoUserProvisioningEventExampleId", _default.ApplyT(func(_default cloudsso.GetUserProvisioningEventsResult) (*string, error) {
-//				return &_default.Events[0].Id, nil
+//				return _default.Events[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

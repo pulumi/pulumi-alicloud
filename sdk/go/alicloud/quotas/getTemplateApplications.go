@@ -41,7 +41,7 @@ import (
 //				ProductCode:     pulumi.String("vpc"),
 //				QuotaCategory:   pulumi.String("FlowControl"),
 //				AliyunUids: pulumi.StringArray{
-//					pulumi.String(pulumi.String(_default.Ids[0])),
+//					pulumi.String(_default.Ids[0]),
 //				},
 //				DesireValue: pulumi.Float64(6),
 //				NoticeType:  pulumi.Int(0),
@@ -74,7 +74,7 @@ import (
 //				QuotaCategory:   pulumi.String("FlowControl"),
 //			}, nil)
 //			ctx.Export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.ApplyT(func(defaultGetTemplateApplications quotas.GetTemplateApplicationsResult) (*string, error) {
-//				return &defaultGetTemplateApplications.Applications[0].Id, nil
+//				return defaultGetTemplateApplications.Applications[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

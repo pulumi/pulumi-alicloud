@@ -58,10 +58,10 @@ import (
 //			defaultIpamIpamPool, err := vpc.NewIpamIpamPool(ctx, "default", &vpc.IpamIpamPoolArgs{
 //				IpamScopeId:         defaultIpam.PrivateDefaultScopeId,
 //				PoolRegionId:        parentIpamPool.PoolRegionId,
-//				IpamPoolName:        pulumi.String(pulumi.String(name)),
+//				IpamPoolName:        pulumi.String(name),
 //				SourceIpamPoolId:    parentIpamPool.ID(),
 //				IpVersion:           pulumi.String("IPv4"),
-//				IpamPoolDescription: pulumi.String(pulumi.String(name)),
+//				IpamPoolDescription: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

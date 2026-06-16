@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
@@ -94,9 +94,9 @@ import (
 //				VpcId:                defaultNetwork.ID(),
 //				AddressType:          pulumi.String("Internet"),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
-//				LoadBalancerName:     pulumi.String(pulumi.String(name)),
+//				LoadBalancerName:     pulumi.String(name),
 //				LoadBalancerEdition:  pulumi.String("Standard"),
-//				ResourceGroupId:      pulumi.String(pulumi.String(defaultGetResourceGroups.Groups[0].Id)),
+//				ResourceGroupId:      pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
 //					PayType: pulumi.String("PayAsYouGo"),
 //				},
@@ -120,8 +120,8 @@ import (
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
 //				VpcId:           defaultNetwork.ID(),
-//				ServerGroupName: pulumi.String(pulumi.String(name)),
-//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Groups[0].Id)),
+//				ServerGroupName: pulumi.String(name),
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),
 //				},
@@ -139,7 +139,7 @@ import (
 //				LoadBalancerId:      defaultLoadBalancer.ID(),
 //				ListenerProtocol:    pulumi.String("HTTP"),
 //				ListenerPort:        pulumi.Int(80),
-//				ListenerDescription: pulumi.String(pulumi.String(name)),
+//				ListenerDescription: pulumi.String(name),
 //				DefaultActions: alb.ListenerDefaultActionArray{
 //					&alb.ListenerDefaultActionArgs{
 //						Type: pulumi.String("ForwardGroup"),
@@ -157,7 +157,7 @@ import (
 //				return err
 //			}
 //			defaultRule, err := alb.NewRule(ctx, "default", &alb.RuleArgs{
-//				RuleName:   pulumi.String(pulumi.String(name)),
+//				RuleName:   pulumi.String(name),
 //				ListenerId: defaultListener.ID(),
 //				Priority:   pulumi.Int(555),
 //				RuleConditions: alb.RuleRuleConditionArray{
@@ -196,7 +196,7 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("albRuleId", ids.ApplyT(func(ids alb.GetRulesResult) (*string, error) {
-//				return &ids.Rules[0].Id, nil
+//				return ids.Rules[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

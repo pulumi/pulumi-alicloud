@@ -63,7 +63,7 @@ import (
 //				IpamPoolId: defaultIpamIpamPoolCidr.IpamPoolId,
 //			}, nil)
 //			ctx.Export("alicloudVpcIpamIpamPoolCidrExampleId", _default.ApplyT(func(_default vpc.GetIpamIpamPoolCidrsResult) (*string, error) {
-//				return &_default.Cidrs[0].Id, nil
+//				return _default.Cidrs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

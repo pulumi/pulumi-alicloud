@@ -51,7 +51,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       _default.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(this.Classes[0].ZoneId)),
+//				ZoneId:      pulumi.String(this.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -62,7 +62,7 @@ import (
 //				DbVersion:   pulumi.String("8.0"),
 //				PayType:     pulumi.String("PostPaid"),
 //				DbNodeCount: pulumi.Int(2),
-//				DbNodeClass: pulumi.String(pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass)),
+//				DbNodeClass: pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				VswitchId:   defaultSwitch.ID(),
 //			})
 //			if err != nil {
@@ -81,13 +81,13 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("polardbGlobalDatabaseNetworkId1", ids.ApplyT(func(ids polardb.GetGlobalDatabaseNetworksResult) (*string, error) {
-//				return &ids.Networks[0].Id, nil
+//				return ids.Networks[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			description := polardb.GetGlobalDatabaseNetworksOutput(ctx, polardb.GetGlobalDatabaseNetworksOutputArgs{
 //				Description: defaultGlobalDatabaseNetwork.Description,
 //			}, nil)
 //			ctx.Export("polardbGlobalDatabaseNetworkId2", description.ApplyT(func(description polardb.GetGlobalDatabaseNetworksResult) (*string, error) {
-//				return &description.Networks[0].Id, nil
+//				return description.Networks[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

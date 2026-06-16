@@ -46,7 +46,7 @@ import (
 //				ParentFolderPath: pulumi.String("Business Flow/tfTestAcc/folderDi"),
 //			}, nil)
 //			ctx.Export("dataWorksFolderId1", ids.ApplyT(func(ids dataworks.GetFoldersResult) (*string, error) {
-//				return &ids.Folders[0].Id, nil
+//				return ids.Folders[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

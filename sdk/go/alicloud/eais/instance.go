@@ -48,23 +48,23 @@ import (
 //			}
 //			zoneId := "cn-hangzhou-h"
 //			_default, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(pulumi.String(name)),
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				VswitchName: pulumi.String(name),
 //				VpcId:       _default.ID(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
-//				ZoneId:      pulumi.String(pulumi.String(zoneId)),
+//				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(pulumi.String(name)),
+//				Name:  pulumi.String(name),
 //				VpcId: _default.ID(),
 //			})
 //			if err != nil {
@@ -74,7 +74,7 @@ import (
 //				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),
 //				VswitchId:       defaultSwitch.ID(),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
-//				InstanceName:    pulumi.String(pulumi.String(name)),
+//				InstanceName:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

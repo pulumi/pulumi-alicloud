@@ -43,8 +43,8 @@ import (
 //				name = param
 //			}
 //			network, err := ens.NewNetwork(ctx, "network", &ens.NetworkArgs{
-//				NetworkName: pulumi.String(pulumi.String(name)),
-//				Description: pulumi.String(pulumi.String(name)),
+//				NetworkName: pulumi.String(name),
+//				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //			})
@@ -52,9 +52,9 @@ import (
 //				return err
 //			}
 //			_switch, err := ens.NewVswitch(ctx, "switch", &ens.VswitchArgs{
-//				Description: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VswitchName: pulumi.String(pulumi.String(name)),
+//				VswitchName: pulumi.String(name),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //				NetworkId:   network.ID(),
 //			})
@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = ens.NewLoadBalancer(ctx, "default", &ens.LoadBalancerArgs{
-//				LoadBalancerName: pulumi.String(pulumi.String(name)),
+//				LoadBalancerName: pulumi.String(name),
 //				PaymentType:      pulumi.String("PayAsYouGo"),
 //				EnsRegionId:      pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
 //				LoadBalancerSpec: pulumi.String("elb.s1.small"),

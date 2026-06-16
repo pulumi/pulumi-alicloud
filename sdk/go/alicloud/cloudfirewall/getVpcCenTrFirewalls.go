@@ -105,7 +105,7 @@ import (
 //				CidrBlock:   pulumi.String("192.168.1.0/25"),
 //				VswitchName: pulumi.String("vpc1-vsw1"),
 //				VpcId:       vpc1.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(zone1)),
+//				ZoneId:      pulumi.String(zone1),
 //			})
 //			if err != nil {
 //				return err
@@ -114,7 +114,7 @@ import (
 //				VpcId:       vpc1.ID(),
 //				CidrBlock:   pulumi.String("192.168.1.128/26"),
 //				VswitchName: pulumi.String("vpc1-vsw2"),
-//				ZoneId:      pulumi.String(pulumi.String(zone2)),
+//				ZoneId:      pulumi.String(zone2),
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +131,7 @@ import (
 //				CidrBlock:   pulumi.String("192.168.2.0/25"),
 //				VswitchName: pulumi.String("vpc2-vsw1"),
 //				VpcId:       vpc2.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(zone1)),
+//				ZoneId:      pulumi.String(zone1),
 //			})
 //			if err != nil {
 //				return err
@@ -140,7 +140,7 @@ import (
 //				CidrBlock:   pulumi.String("192.168.2.128/26"),
 //				VswitchName: pulumi.String("vpc2-vsw2"),
 //				VpcId:       vpc2.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(zone2)),
+//				ZoneId:      pulumi.String(zone2),
 //			})
 //			if err != nil {
 //				return err
@@ -183,15 +183,15 @@ import (
 //			}
 //			defaultVpcCenTrFirewall, err := cloudfirewall.NewVpcCenTrFirewall(ctx, "default", &cloudfirewall.VpcCenTrFirewallArgs{
 //				FirewallDescription:    pulumi.String("VpcCenTrFirewall created by terraform"),
-//				RegionNo:               pulumi.String(pulumi.String(region)),
+//				RegionNo:               pulumi.String(region),
 //				RouteMode:              pulumi.String("managed"),
 //				CenId:                  cen2.ID(),
-//				FirewallVpcCidr:        pulumi.String(pulumi.String(firewallVpcCidr)),
+//				FirewallVpcCidr:        pulumi.String(firewallVpcCidr),
 //				TransitRouterId:        tr.TransitRouterId,
-//				TrAttachmentMasterCidr: pulumi.String(pulumi.String(trAttachmentMasterCidr)),
-//				FirewallName:           pulumi.String(pulumi.String(firewallName)),
-//				FirewallSubnetCidr:     pulumi.String(pulumi.String(firewallSubnetCidr)),
-//				TrAttachmentSlaveCidr:  pulumi.String(pulumi.String(trAttachmentSlaveCidr)),
+//				TrAttachmentMasterCidr: pulumi.String(trAttachmentMasterCidr),
+//				FirewallName:           pulumi.String(firewallName),
+//				FirewallSubnetCidr:     pulumi.String(firewallSubnetCidr),
+//				TrAttachmentSlaveCidr:  pulumi.String(trAttachmentSlaveCidr),
 //			})
 //			if err != nil {
 //				return err
@@ -201,13 +201,13 @@ import (
 //					defaultVpcCenTrFirewall.ID(),
 //				},
 //				CenId:           cen2.ID(),
-//				FirewallName:    pulumi.String(pulumi.String(firewallName)),
-//				RegionNo:        pulumi.String(pulumi.String(region)),
+//				FirewallName:    pulumi.String(firewallName),
+//				RegionNo:        pulumi.String(region),
 //				RouteMode:       pulumi.String("managed"),
 //				TransitRouterId: tr.TransitRouterId,
 //			}, nil)
 //			ctx.Export("alicloudCloudFirewallVpcCenTrFirewallExampleId", _default.ApplyT(func(_default cloudfirewall.GetVpcCenTrFirewallsResult) (*string, error) {
-//				return &_default.Firewalls[0].Id, nil
+//				return _default.Firewalls[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

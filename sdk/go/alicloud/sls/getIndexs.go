@@ -48,7 +48,7 @@ import (
 //			}
 //			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
 //				Description: pulumi.String("terraform example"),
-//				ProjectName: pulumi.String(pulumi.String(projectName)),
+//				ProjectName: pulumi.String(projectName),
 //			})
 //			if err != nil {
 //				return err
@@ -58,7 +58,7 @@ import (
 //				RetentionPeriod: pulumi.Int(30),
 //				ShardCount:      pulumi.Int(2),
 //				ProjectName:     defaultProject.ProjectName,
-//				LogstoreName:    pulumi.String(pulumi.String(logstoreName)),
+//				LogstoreName:    pulumi.String(logstoreName),
 //			})
 //			if err != nil {
 //				return err
@@ -108,9 +108,9 @@ import (
 //						pulumi.String("t"),
 //					},
 //				},
-//				Keys:         pulumi.String(pulumi.String(json0)),
+//				Keys:         pulumi.String(json0),
 //				LogstoreName: defaultStore.LogstoreName,
-//				ProjectName:  pulumi.String(pulumi.String(projectName)),
+//				ProjectName:  pulumi.String(projectName),
 //			})
 //			if err != nil {
 //				return err
@@ -120,7 +120,7 @@ import (
 //				ProjectName:  defaultProject.ProjectName,
 //			}, nil)
 //			ctx.Export("alicloudSlsIndexExampleId", _default.ApplyT(func(_default sls.GetIndexsResult) (*string, error) {
-//				return &_default.Indexs[0].Id, nil
+//				return _default.Indexs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

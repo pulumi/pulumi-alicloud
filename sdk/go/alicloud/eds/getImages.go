@@ -73,7 +73,7 @@ import (
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      pulumi.String(pulumi.String(_default.Bundles[1].Id)),
+//				BundleId:      pulumi.String(_default.Bundles[1].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //			})
 //			if err != nil {
@@ -93,13 +93,13 @@ import (
 //				},
 //			}, nil)
 //			ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (*string, error) {
-//				return &ids.Images[0].Id, nil
+//				return ids.Images[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			nameRegex := eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
 //				NameRegex: defaultImage.ImageName,
 //			}, nil)
 //			ctx.Export("ecdImageId2", nameRegex.ApplyT(func(nameRegex eds.GetImagesResult) (*string, error) {
-//				return &nameRegex.Images[0].Id, nil
+//				return nameRegex.Images[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

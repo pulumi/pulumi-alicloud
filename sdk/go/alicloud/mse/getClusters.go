@@ -49,7 +49,7 @@ import (
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(pulumi.String(example.Zones[0].Id)),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //				NameRegex: exampleCluster.ClusterAliasName,
 //			}, nil)
 //			ctx.Export("instanceId", exampleGetClusters.ApplyT(func(exampleGetClusters mse.GetClustersResult) (*string, error) {
-//				return &exampleGetClusters.Clusters[0].Id, nil
+//				return exampleGetClusters.Clusters[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

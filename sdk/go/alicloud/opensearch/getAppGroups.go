@@ -38,7 +38,7 @@ import (
 //				name = param
 //			}
 //			defaultAppGroup, err := opensearch.NewAppGroup(ctx, "default", &opensearch.AppGroupArgs{
-//				AppGroupName: pulumi.String(pulumi.String(name)),
+//				AppGroupName: pulumi.String(name),
 //				PaymentType:  pulumi.String("PayAsYouGo"),
 //				Type:         pulumi.String("standard"),
 //				Quota: &opensearch.AppGroupQuotaArgs{
@@ -57,7 +57,7 @@ import (
 //			}, nil)
 //			ctx.Export("appGroups", _default.ApplyT(func(_default opensearch.GetAppGroupsResult) ([]opensearch.GetAppGroupsGroup, error) {
 //				return []opensearch.GetAppGroupsGroup(_default.Groups), nil
-//			}).([]opensearch.GetAppGroupsGroupOutput))
+//			}).(pulumi.ArrayOutput))
 //			return nil
 //		})
 //	}

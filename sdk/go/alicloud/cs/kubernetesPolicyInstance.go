@@ -69,7 +69,7 @@ import (
 // return err
 // }
 // createVPC, err := vpc.NewNetwork(ctx, "CreateVPC", &vpc.NetworkArgs{
-// CidrBlock: pulumi.String(pulumi.String(vpcCidr)),
+// CidrBlock: pulumi.String(vpcCidr),
 // })
 // if err != nil {
 // return err
@@ -92,7 +92,7 @@ import (
 // createVSwitch = append(createVSwitch, __res)
 // }
 // createCluster, err := cs.NewManagedKubernetes(ctx, "CreateCluster", &cs.ManagedKubernetesArgs{
-// NamePrefix: pulumi.String(pulumi.String(clusterName)),
+// NamePrefix: pulumi.String(clusterName),
 // ClusterSpec: pulumi.String("ack.standard"),
 // Profile: pulumi.String("Default"),
 // VswitchIds: pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
@@ -107,8 +107,8 @@ import (
 // }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringArrayOutput)),
-// PodCidr: pulumi.String(pulumi.String(podCidr)),
-// ServiceCidr: pulumi.String(pulumi.String(serviceCidr)),
+// PodCidr: pulumi.String(podCidr),
+// ServiceCidr: pulumi.String(serviceCidr),
 // IsEnterpriseSecurityGroup: pulumi.Bool(true),
 // IpStack: pulumi.String("ipv4"),
 // ProxyMode: pulumi.String("ipvs"),
@@ -181,7 +181,7 @@ import (
 // ClusterId: createCluster.ID(),
 // PolicyName: pulumi.String("ACKAllowedRepos"),
 // Parameters: pulumi.StringMap{
-// "repos": pulumi.String(pulumi.String(json0)),
+// "repos": pulumi.String(json0),
 // },
 // })
 // if err != nil {
@@ -212,7 +212,7 @@ import (
 // pulumi.String("test3"),
 // },
 // Parameters: pulumi.StringMap{
-// "labels": pulumi.String(pulumi.String(json1)),
+// "labels": pulumi.String(json1),
 // },
 // })
 // if err != nil {

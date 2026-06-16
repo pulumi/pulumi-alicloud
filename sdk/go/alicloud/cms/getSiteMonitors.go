@@ -83,7 +83,7 @@ import (
 //				TaskType: pulumi.String("HTTP"),
 //			}, nil)
 //			ctx.Export("alicloudCmsSiteMonitorExampleId", _default.ApplyT(func(_default cms.GetSiteMonitorsResult) (*string, error) {
-//				return &_default.Monitors[0].TaskId, nil
+//				return _default.Monitors[0].TaskId, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

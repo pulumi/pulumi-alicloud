@@ -42,14 +42,14 @@ import (
 //			}
 //			_, err := log.NewProject(ctx, "defaultyJqrue", &log.ProjectArgs{
 //				Description: pulumi.String("for terraform example"),
-//				Name:        pulumi.String(pulumi.String(projectName)),
+//				Name:        pulumi.String(projectName),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultMachineGroup, err := sls.NewMachineGroup(ctx, "default", &sls.MachineGroupArgs{
 //				GroupName:           pulumi.String("group1"),
-//				ProjectName:         pulumi.String(pulumi.String(projectName)),
+//				ProjectName:         pulumi.String(projectName),
 //				MachineIdentifyType: pulumi.String("ip"),
 //				GroupAttribute: &sls.MachineGroupGroupAttributeArgs{
 //					GroupTopic:   pulumi.String("example"),
@@ -67,10 +67,10 @@ import (
 //					defaultMachineGroup.ID(),
 //				},
 //				GroupName:   pulumi.String("group1"),
-//				ProjectName: pulumi.String(pulumi.String(projectName)),
+//				ProjectName: pulumi.String(projectName),
 //			}, nil)
 //			ctx.Export("alicloudSlsMachineGroupExampleId", _default.ApplyT(func(_default sls.GetMachineGroupsResult) (*string, error) {
-//				return &_default.Groups[0].Id, nil
+//				return _default.Groups[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

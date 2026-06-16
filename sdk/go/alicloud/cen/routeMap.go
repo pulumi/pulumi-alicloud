@@ -72,7 +72,7 @@ import (
 //				InstanceId:            example.ID(),
 //				ChildInstanceId:       exampleHz.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(pulumi.String(sourceRegion)),
+//				ChildInstanceRegionId: pulumi.String(sourceRegion),
 //			})
 //			if err != nil {
 //				return err
@@ -81,13 +81,13 @@ import (
 //				InstanceId:            example.ID(),
 //				ChildInstanceId:       exampleSh.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(pulumi.String(destinationRegion)),
+//				ChildInstanceRegionId: pulumi.String(destinationRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewRouteMap(ctx, "default", &cen.RouteMapArgs{
-//				CenRegionId:       pulumi.String(pulumi.String(sourceRegion)),
+//				CenRegionId:       pulumi.String(sourceRegion),
 //				CenId:             example.ID(),
 //				Description:       pulumi.String("tf_example"),
 //				Priority:          pulumi.Int(1),
@@ -95,7 +95,7 @@ import (
 //				MapResult:         pulumi.String("Permit"),
 //				NextPriority:      pulumi.Int(1),
 //				SourceRegionIds: pulumi.StringArray{
-//					pulumi.String(pulumi.String(sourceRegion)),
+//					pulumi.String(sourceRegion),
 //				},
 //				SourceInstanceIds: pulumi.StringArray{
 //					exampleHzInstanceAttachment.ChildInstanceId,

@@ -60,14 +60,14 @@ import (
 //				return err
 //			}
 //			defaultResourceShare, err := resourcemanager.NewResourceShare(ctx, "default", &resourcemanager.ResourceShareArgs{
-//				ResourceShareName: pulumi.String(pulumi.String(name)),
+//				ResourceShareName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSharedResource, err := resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
 //				ResourceShareId: defaultResourceShare.ID(),
-//				ResourceId:      pulumi.String(pulumi.String(defaultGetSwitches.Ids[0])),
+//				ResourceId:      pulumi.String(defaultGetSwitches.Ids[0]),
 //				ResourceType:    pulumi.String("VSwitch"),
 //			})
 //			if err != nil {
@@ -92,7 +92,7 @@ import (
 //				ResourceShareId: defaultSharedResource.ResourceShareId,
 //			}, nil)
 //			ctx.Export("secondResourceManagerSharedResourceId", resourceShareId.ApplyT(func(resourceShareId resourcemanager.GetSharedResourcesResult) (*string, error) {
-//				return &resourceShareId.Resources[0].Id, nil
+//				return resourceShareId.Resources[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

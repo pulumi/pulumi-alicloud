@@ -163,7 +163,7 @@ import (
 //						pulumi.String("sls"),
 //					},
 //				},
-//				AlertName:   pulumi.String(pulumi.String(alertName)),
+//				AlertName:   pulumi.String(alertName),
 //				ProjectName: defaultINsMgl.ID(),
 //				Schedule: &sls.AlertScheduleArgs{
 //					Type:           pulumi.String("Cron"),
@@ -186,7 +186,7 @@ import (
 //				ProjectName: defaultINsMgl.ID(),
 //			}, nil)
 //			ctx.Export("alicloudSlsAlertExampleId", _default.ApplyT(func(_default sls.GetAlertsResult) (*string, error) {
-//				return &_default.Alerts[0].Id, nil
+//				return _default.Alerts[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

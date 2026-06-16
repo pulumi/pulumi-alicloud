@@ -244,7 +244,7 @@ import (
 //					},
 //				},
 //				ChainName:         pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Description:       pulumi.String(pulumi.String(name)),
+//				Description:       pulumi.String(name),
 //				InstanceId:        defaultRegistryEnterpriseNamespace.InstanceId,
 //				RepoName:          defaultRegistryEnterpriseRepo.Name,
 //				RepoNamespaceName: defaultRegistryEnterpriseNamespace.Name,

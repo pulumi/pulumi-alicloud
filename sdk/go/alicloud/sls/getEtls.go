@@ -59,7 +59,7 @@ import (
 //				Configuration: &sls.EtlConfigurationArgs{
 //					Script:  pulumi.String("* | extend a=1"),
 //					Lang:    pulumi.String("SPL"),
-//					RoleArn: pulumi.String(pulumi.String(name)),
+//					RoleArn: pulumi.String(name),
 //					Sinks: sls.EtlConfigurationSinkArray{
 //						&sls.EtlConfigurationSinkArgs{
 //							Name:     pulumi.String("11111"),
@@ -69,7 +69,7 @@ import (
 //							Datasets: pulumi.StringArray{
 //								pulumi.String("__UNNAMED__"),
 //							},
-//							RoleArn: pulumi.String(pulumi.String(name)),
+//							RoleArn: pulumi.String(name),
 //						},
 //					},
 //					Logstore: defaultzWKLkp.LogstoreName,
@@ -87,7 +87,7 @@ import (
 //				Project:  defaulthhAPo6.ID(),
 //			}, nil)
 //			ctx.Export("alicloudSlsEtlExampleId", _default.ApplyT(func(_default sls.GetEtlsResult) (*string, error) {
-//				return &_default.Etls[0].Id, nil
+//				return _default.Etls[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})

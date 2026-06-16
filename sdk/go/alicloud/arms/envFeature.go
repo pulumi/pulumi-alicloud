@@ -57,18 +57,18 @@ import (
 //				return err
 //			}
 //			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				Description: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/16"),
-//				VpcName:     pulumi.String(pulumi.String(name)),
+//				VpcName:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-//				Description: pulumi.String(pulumi.String(name)),
+//				Description: pulumi.String(name),
 //				VpcId:       vpc2.ID(),
-//				VswitchName: pulumi.String(pulumi.String(name)),
-//				ZoneId:      pulumi.String(pulumi.String(enhanced.Zones[0].ZoneId)),
+//				VswitchName: pulumi.String(name),
+//				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //					Input:   vpc2.CidrBlock,
 //					Newbits: pulumi.Int(8),
@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
-//				Name: pulumi.String(pulumi.String(name)),
+//				Name: pulumi.String(name),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),
@@ -135,7 +135,7 @@ import (
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
-//						return &_default.InstanceTypes[0].Id, nil
+//						return _default.InstanceTypes[0].Id, nil
 //					}).(pulumi.StringPtrOutput)),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
