@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Ros
         /// A list of stack instances with their latest operation tracking information. See `StackInstances` below.
         /// </summary>
         [Output("stackInstances")]
-        public Output<ImmutableArray<Outputs.StackInstancesStackInstance>> StackInstances { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.StackInstancesStackInstance>> Instances { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time in minutes that can elapse before the stack operation status is set to `TIMED_OUT`. Valid values: 1 to 1440. Default value: 60.
@@ -402,7 +402,7 @@ namespace Pulumi.AliCloud.Ros
         /// <summary>
         /// A list of stack instances with their latest operation tracking information. See `StackInstances` below.
         /// </summary>
-        public InputList<Inputs.StackInstancesStackInstanceGetArgs> StackInstances
+        public InputList<Inputs.StackInstancesStackInstanceGetArgs> Instances
         {
             get => _stackInstances ?? (_stackInstances = new InputList<Inputs.StackInstancesStackInstanceGetArgs>());
             set => _stackInstances = value;

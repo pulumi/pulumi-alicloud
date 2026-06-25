@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:**  If you specify `Ipv6CidrBlock`, the CIDR block must be reserved beforehand by calling the AllocateVpcIpv6Cidr operation, or you can specify `Ipv6IpamPoolId` instead. If you specify `Ipv6CidrMask`, you must also specify `Ipv6IpamPoolId`.
         /// </summary>
         [Output("ipv6CidrBlock")]
-        public Output<string> Ipv6CidrBlock { get; private set; } = null!;
+        public Output<string> CidrBlock { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:**  If you specify `Ipv6CidrBlock`, the CIDR block must be reserved beforehand by calling the AllocateVpcIpv6Cidr operation, or you can specify `Ipv6IpamPoolId` instead. If you specify `Ipv6CidrMask`, you must also specify `Ipv6IpamPoolId`.
         /// </summary>
         [Input("ipv6CidrBlock")]
-        public Input<string>? Ipv6CidrBlock { get; set; }
+        public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
         /// The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Vpc
         /// &gt; **NOTE:**  If you specify `Ipv6CidrBlock`, the CIDR block must be reserved beforehand by calling the AllocateVpcIpv6Cidr operation, or you can specify `Ipv6IpamPoolId` instead. If you specify `Ipv6CidrMask`, you must also specify `Ipv6IpamPoolId`.
         /// </summary>
         [Input("ipv6CidrBlock")]
-        public Input<string>? Ipv6CidrBlock { get; set; }
+        public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
         /// The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.

@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         Ipv6IpamPoolId = defaultIpv6PoolCidr.IpamPoolId,
         ///         VpcId = defaultVpc.Id,
-        ///         Ipv6CidrBlock = "fd03:d00:a000::/60",
+        ///         CidrBlock = "fd03:d00:a000::/60",
         ///     });
         /// 
         ///     var @default = AliCloud.Vpc.GetIpv6CidrBlocks.Invoke(new()
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         Ipv6IpamPoolId = defaultIpv6PoolCidr.IpamPoolId,
         ///         VpcId = defaultVpc.Id,
-        ///         Ipv6CidrBlock = "fd03:d00:a000::/60",
+        ///         CidrBlock = "fd03:d00:a000::/60",
         ///     });
         /// 
         ///     var @default = AliCloud.Vpc.GetIpv6CidrBlocks.Invoke(new()
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Vpc
         ///     {
         ///         Ipv6IpamPoolId = defaultIpv6PoolCidr.IpamPoolId,
         ///         VpcId = defaultVpc.Id,
-        ///         Ipv6CidrBlock = "fd03:d00:a000::/60",
+        ///         CidrBlock = "fd03:d00:a000::/60",
         ///     });
         /// 
         ///     var @default = AliCloud.Vpc.GetIpv6CidrBlocks.Invoke(new()
