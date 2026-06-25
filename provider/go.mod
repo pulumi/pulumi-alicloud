@@ -22,7 +22,7 @@ replace (
 replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.278.0
+	github.com/aliyun/terraform-provider-alicloud v1.282.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.133.0
 	github.com/pulumi/pulumi/sdk/v3 v3.246.0
@@ -78,14 +78,14 @@ require (
 	github.com/alibabacloud-go/tea-utils v1.4.5 // indirect
 	github.com/alibabacloud-go/tea-utils/v2 v2.0.7 // indirect
 	github.com/alibabacloud-go/tea-xml v1.1.3 // indirect
-	github.com/aliyun/alibaba-cloud-sdk-go v1.62.590 // indirect
+	github.com/aliyun/alibaba-cloud-sdk-go v1.63.107 // indirect
 	github.com/aliyun/alibabacloud-oss-go-sdk-v2 v1.5.0 // indirect
 	github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 // indirect
 	github.com/aliyun/aliyun-log-go-sdk v0.1.108 // indirect
 	github.com/aliyun/aliyun-mns-go-sdk v0.0.0-20210305050620-d1b5875bda58 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.9+incompatible // indirect
 	github.com/aliyun/aliyun-tablestore-go-sdk v4.1.3+incompatible // indirect
-	github.com/aliyun/credentials-go v1.4.10 // indirect
+	github.com/aliyun/credentials-go v1.4.12 // indirect
 	github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
