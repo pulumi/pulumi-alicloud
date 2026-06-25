@@ -142,6 +142,8 @@ type VpcAccess struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The port number that corresponds to the instance.
 	Port pulumi.IntOutput `pulumi:"port"`
+	// The ID of the Vpc Access.
+	VpcAccessId pulumi.StringOutput `pulumi:"vpcAccessId"`
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -191,6 +193,8 @@ type vpcAccessState struct {
 	Name *string `pulumi:"name"`
 	// The port number that corresponds to the instance.
 	Port *int `pulumi:"port"`
+	// The ID of the Vpc Access.
+	VpcAccessId *string `pulumi:"vpcAccessId"`
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId *string `pulumi:"vpcId"`
 }
@@ -202,6 +206,8 @@ type VpcAccessState struct {
 	Name pulumi.StringPtrInput
 	// The port number that corresponds to the instance.
 	Port pulumi.IntPtrInput
+	// The ID of the Vpc Access.
+	VpcAccessId pulumi.StringPtrInput
 	// The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
 	VpcId pulumi.StringPtrInput
 }
@@ -333,6 +339,11 @@ func (o VpcAccessOutput) Name() pulumi.StringOutput {
 // The port number that corresponds to the instance.
 func (o VpcAccessOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcAccess) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// The ID of the Vpc Access.
+func (o VpcAccessOutput) VpcAccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcAccess) pulumi.StringOutput { return v.VpcAccessId }).(pulumi.StringOutput)
 }
 
 // The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.

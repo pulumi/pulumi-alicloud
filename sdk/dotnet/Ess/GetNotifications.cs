@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available notification resources. 
         /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
+        /// &gt; **NOTE:** Available since v1.72.0
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available notification resources. 
         /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
+        /// &gt; **NOTE:** Available since v1.72.0
         /// 
         /// ## Example Usage
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ess
         /// <summary>
         /// This data source provides available notification resources. 
         /// 
-        /// &gt; **NOTE:** Available in 1.72.0+
+        /// &gt; **NOTE:** Available since v1.72.0
         /// 
         /// ## Example Usage
         /// 

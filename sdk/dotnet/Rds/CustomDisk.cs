@@ -83,8 +83,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-        /// Default value: empty.
+        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `Description` can be modified.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -96,8 +95,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-        /// Default value: empty.
+        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `DiskName` can be modified.
         /// </summary>
         [Output("diskName")]
         public Output<string?> DiskName { get; private set; } = null!;
@@ -244,8 +242,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-        /// Default value: empty.
+        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `Description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -257,8 +254,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> DiskCategory { get; set; } = null!;
 
         /// <summary>
-        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-        /// Default value: empty.
+        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `DiskName` can be modified.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
@@ -355,8 +351,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-        /// Default value: empty.
+        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `Description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -368,8 +363,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DiskCategory { get; set; }
 
         /// <summary>
-        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-        /// Default value: empty.
+        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `DiskName` can be modified.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }

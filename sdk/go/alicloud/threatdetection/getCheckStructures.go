@@ -29,7 +29,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := threatdetection.GetCheckStructures(ctx, &threatdetection.GetCheckStructuresArgs{}, nil)
+//			_default, err := threatdetection.GetCheckStructures(ctx, &threatdetection.GetCheckStructuresArgs{
+//				Lang:        pulumi.StringRef("zh"),
+//				CurrentPage: pulumi.IntRef(1),
+//				PageSize:    pulumi.IntRef(10),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -51,14 +55,16 @@ func GetCheckStructures(ctx *pulumi.Context, args *GetCheckStructuresArgs, opts 
 
 // A collection of arguments for invoking getCheckStructures.
 type GetCheckStructuresArgs struct {
-	// The page number.
+	// The page number. Must be greater than 0.
 	CurrentPage *int `pulumi:"currentPage"`
-	// A list of Check Structure IDs.
+	// A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
 	Ids []string `pulumi:"ids"`
-	// The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+	// The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
 	Lang *string `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
+	// Number of records per page. Must be greater than 0.
+	PageSize *int `pulumi:"pageSize"`
 	// List of task sources.
 	TaskSources []string `pulumi:"taskSources"`
 }
@@ -72,6 +78,7 @@ type GetCheckStructuresResult struct {
 	Ids        []string `pulumi:"ids"`
 	Lang       *string  `pulumi:"lang"`
 	OutputFile *string  `pulumi:"outputFile"`
+	PageSize   *int     `pulumi:"pageSize"`
 	// A list of Check Structure Entries. Each element contains the following attributes:
 	Structures  []GetCheckStructuresStructure `pulumi:"structures"`
 	TaskSources []string                      `pulumi:"taskSources"`
@@ -88,14 +95,16 @@ func GetCheckStructuresOutput(ctx *pulumi.Context, args GetCheckStructuresOutput
 
 // A collection of arguments for invoking getCheckStructures.
 type GetCheckStructuresOutputArgs struct {
-	// The page number.
+	// The page number. Must be greater than 0.
 	CurrentPage pulumi.IntPtrInput `pulumi:"currentPage"`
-	// A list of Check Structure IDs.
+	// A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+	// The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// Number of records per page. Must be greater than 0.
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// List of task sources.
 	TaskSources pulumi.StringArrayInput `pulumi:"taskSources"`
 }
@@ -139,6 +148,10 @@ func (o GetCheckStructuresResultOutput) Lang() pulumi.StringPtrOutput {
 
 func (o GetCheckStructuresResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCheckStructuresResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+func (o GetCheckStructuresResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetCheckStructuresResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 // A list of Check Structure Entries. Each element contains the following attributes:

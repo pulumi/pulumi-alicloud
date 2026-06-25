@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCheckStructuresStructureStandardRequirementSectionResult> Sections;
         /// <summary>
-        /// The display name of the standard for the check item.
+        /// The display name of the section for the check item.
         /// </summary>
         public readonly string ShowName;
         /// <summary>

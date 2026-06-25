@@ -18,6 +18,17 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string ArnRole;
         /// <summary>
+        /// The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+        /// * `DEFAULT`: Use the default value provided by API Gateway.
+        /// * `CUSTOM`: Use a custom value.
+        /// * `CLIENT`: Use the Content-Type header from the client request.
+        /// </summary>
+        public readonly string? ContentTypeCategory;
+        /// <summary>
+        /// The value of the Content-Type header when `ContentTypeCategory` is `DEFAULT` or `CUSTOM`.
+        /// </summary>
+        public readonly string? ContentTypeValue;
+        /// <summary>
         /// The base url of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         public readonly string? FunctionBaseUrl;
@@ -66,6 +77,10 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         private ApiFcServiceConfig(
             string arnRole,
 
+            string? contentTypeCategory,
+
+            string? contentTypeValue,
+
             string? functionBaseUrl,
 
             string? functionName,
@@ -89,6 +104,8 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
             int timeout)
         {
             ArnRole = arnRole;
+            ContentTypeCategory = contentTypeCategory;
+            ContentTypeValue = contentTypeValue;
             FunctionBaseUrl = functionBaseUrl;
             FunctionName = functionName;
             FunctionType = functionType;

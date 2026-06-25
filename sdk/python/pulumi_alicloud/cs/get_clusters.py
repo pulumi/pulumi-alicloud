@@ -85,7 +85,7 @@ class GetClustersResult:
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> Optional[_builtins.str]:
         """
-        After you set `cluster_type` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+        The cluster specification.
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -247,8 +247,13 @@ def get_clusters(cluster_id: Optional[_builtins.str] = None,
     :param _builtins.str cluster_id: The cluster ID.
     :param _builtins.str cluster_name: Custom cluster name.
     :param _builtins.str cluster_spec: The specification of the clusters to query. Valid values:
-           - `ack.pro.small`: ACK Pro clusters.
            - `ack.standard`: ACK Basic clusters.
+           - `ack.pro.small`: ACK Pro clusters.
+           - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+           - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+           - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+           
+           ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
     :param _builtins.str cluster_type: The type of the clusters to query. Valid values:
            - `Kubernetes`: ACK dedicated clusters.
            - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
@@ -363,8 +368,13 @@ def get_clusters_output(cluster_id: pulumi.Input[Optional[Optional[_builtins.str
     :param _builtins.str cluster_id: The cluster ID.
     :param _builtins.str cluster_name: Custom cluster name.
     :param _builtins.str cluster_spec: The specification of the clusters to query. Valid values:
-           - `ack.pro.small`: ACK Pro clusters.
            - `ack.standard`: ACK Basic clusters.
+           - `ack.pro.small`: ACK Pro clusters.
+           - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+           - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+           - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+           
+           ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
     :param _builtins.str cluster_type: The type of the clusters to query. Valid values:
            - `Kubernetes`: ACK dedicated clusters.
            - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.

@@ -149,14 +149,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * List of default pool IDs.
      * 
      */
-    @Export(name="defaultPools", refs={List.class,Integer.class}, tree="[0,1]")
-    private Output<List<Integer>> defaultPools;
+    @Export(name="defaultPools", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> defaultPools;
 
     /**
      * @return List of default pool IDs.
      * 
      */
-    public Output<List<Integer>> defaultPools() {
+    public Output<List<String>> defaultPools() {
         return this.defaultPools;
     }
     /**
@@ -191,28 +191,28 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      * 
      */
-    @Export(name="fallbackPool", refs={Integer.class}, tree="[0]")
-    private Output<Integer> fallbackPool;
+    @Export(name="fallbackPool", refs={String.class}, tree="[0]")
+    private Output<String> fallbackPool;
 
     /**
      * @return The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      * 
      */
-    public Output<Integer> fallbackPool() {
+    public Output<String> fallbackPool() {
         return this.fallbackPool;
     }
     /**
      * The unique identifier ID of the load balancer.
      * 
      */
-    @Export(name="loadBalancerId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> loadBalancerId;
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
+    private Output<String> loadBalancerId;
 
     /**
      * @return The unique identifier ID of the load balancer.
      * 
      */
-    public Output<Integer> loadBalancerId() {
+    public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
     /**

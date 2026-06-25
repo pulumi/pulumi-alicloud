@@ -11,6 +11,7 @@ import com.pulumi.alicloud.ess.outputs.ScalingConfigurationDataDisk;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationInstancePatternInfo;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationInstanceTypeOverride;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationNetworkInterface;
+import com.pulumi.alicloud.ess.outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationSpotPriceLimit;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -453,18 +454,18 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceTypes);
     }
     /**
-     * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * Network billing type, Values: PayByBandwidth or PayByTraffic.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> internetChargeType;
+    private Output<String> internetChargeType;
 
     /**
-     * @return Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+     * @return Network billing type, Values: PayByBandwidth or PayByTraffic.
      * 
      */
-    public Output<Optional<String>> internetChargeType() {
-        return Codegen.optional(this.internetChargeType);
+    public Output<String> internetChargeType() {
+        return this.internetChargeType;
     }
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
@@ -639,6 +640,84 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     * 
+     */
+    @Export(name="resourcePoolOptionsPrivatePoolIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> resourcePoolOptionsPrivatePoolIds;
+
+    /**
+     * @return Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     * 
+     */
+    public Output<Optional<List<String>>> resourcePoolOptionsPrivatePoolIds() {
+        return Codegen.optional(this.resourcePoolOptionsPrivatePoolIds);
+    }
+    /**
+     * Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+     * 
+     */
+    @Export(name="resourcePoolOptionsPrivatePoolTags", refs={List.class,ScalingConfigurationResourcePoolOptionsPrivatePoolTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ScalingConfigurationResourcePoolOptionsPrivatePoolTag>> resourcePoolOptionsPrivatePoolTags;
+
+    /**
+     * @return Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+     * 
+     */
+    public Output<Optional<List<ScalingConfigurationResourcePoolOptionsPrivatePoolTag>>> resourcePoolOptionsPrivatePoolTags() {
+        return Codegen.optional(this.resourcePoolOptionsPrivatePoolTags);
+    }
+    /**
+     * The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+     * - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+     * - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+     * - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+     * - `None`: Does not use a resource pool policy.
+     * 
+     * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+     * 
+     * &gt; **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+     * 
+     * &gt; **NOTE:** Restrictions on attaching ECS instances:
+     * 
+     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+     * - The attached ECS instances must in the running state.
+     * - The attached ECS instances has not been attached to other scaling groups.
+     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+     * 
+     * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
+     * 
+     */
+    @Export(name="resourcePoolOptionsStrategy", refs={String.class}, tree="[0]")
+    private Output<String> resourcePoolOptionsStrategy;
+
+    /**
+     * @return The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+     * - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+     * - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+     * - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+     * - `None`: Does not use a resource pool policy.
+     * 
+     * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+     * 
+     * &gt; **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+     * 
+     * &gt; **NOTE:** Restrictions on attaching ECS instances:
+     * 
+     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+     * - The attached ECS instances must in the running state.
+     * - The attached ECS instances has not been attached to other scaling groups.
+     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+     * 
+     * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
+     * 
+     */
+    public Output<String> resourcePoolOptionsStrategy() {
+        return this.resourcePoolOptionsStrategy;
+    }
+    /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      * 
      */
@@ -739,40 +818,12 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      * 
-     * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-     * 
-     * &gt; **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-     * 
-     * &gt; **NOTE:** Restrictions on attaching ECS instances:
-     * 
-     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-     * - The attached ECS instances must in the running state.
-     * - The attached ECS instances has not been attached to other scaling groups.
-     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-     * 
-     * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
-     * 
      */
     @Export(name="spotPriceLimits", refs={List.class,ScalingConfigurationSpotPriceLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingConfigurationSpotPriceLimit>> spotPriceLimits;
 
     /**
      * @return Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-     * 
-     * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-     * 
-     * &gt; **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-     * 
-     * &gt; **NOTE:** Restrictions on attaching ECS instances:
-     * 
-     * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-     * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-     * - The attached ECS instances must in the running state.
-     * - The attached ECS instances has not been attached to other scaling groups.
-     * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-     * 
-     * &gt; **NOTE:** The last scaling configuration can&#39;t be set to inactive and deleted alone.
      * 
      */
     public Output<Optional<List<ScalingConfigurationSpotPriceLimit>>> spotPriceLimits() {

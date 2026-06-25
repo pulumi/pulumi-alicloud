@@ -26,6 +26,8 @@ class ApiArgs:
                  group_id: pulumi.Input[_builtins.str],
                  request_config: pulumi.Input['ApiRequestConfigArgs'],
                  service_type: pulumi.Input[_builtins.str],
+                 backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_id: pulumi.Input[Optional[_builtins.str]] = None,
                  constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
                  fc_service_config: pulumi.Input[Optional['ApiFcServiceConfigArgs']] = None,
                  force_nonce_check: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -44,6 +46,8 @@ class ApiArgs:
         :param pulumi.Input[_builtins.str] group_id: The api gateway that the api belongs to. Defaults to null.
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[_builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
+        :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
         :param pulumi.Input[_builtins.bool] force_nonce_check: Whether to prevent API replay attack. Default value: `false`.
@@ -52,7 +56,7 @@ class ApiArgs:
         :param pulumi.Input['ApiMockServiceConfigArgs'] mock_service_config: http_service_config defines the config when service_type selected 'MOCK'. See `mock_service_config` below.
         :param pulumi.Input[_builtins.str] name: The name of the api gateway api. Defaults to null.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         pulumi.set(__self__, "auth_type", auth_type)
@@ -60,6 +64,10 @@ class ApiArgs:
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "request_config", request_config)
         pulumi.set(__self__, "service_type", service_type)
+        if backend_enabled is not None:
+            pulumi.set(__self__, "backend_enabled", backend_enabled)
+        if backend_id is not None:
+            pulumi.set(__self__, "backend_id", backend_id)
         if constant_parameters is not None:
             pulumi.set(__self__, "constant_parameters", constant_parameters)
         if fc_service_config is not None:
@@ -140,6 +148,30 @@ class ApiArgs:
     @service_type.setter
     def service_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendEnabled")
+    def backend_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        """
+        return pulumi.get(self, "backend_enabled")
+
+    @backend_enabled.setter
+    def backend_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "backend_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+        """
+        return pulumi.get(self, "backend_id")
+
+    @backend_id.setter
+    def backend_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_id", value)
 
     @_builtins.property
     @pulumi.getter(name="constantParameters")
@@ -241,7 +273,7 @@ class ApiArgs:
     @pulumi.getter(name="stageNames")
     def stage_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         """
         return pulumi.get(self, "stage_names")
 
@@ -267,6 +299,8 @@ class _ApiState:
     def __init__(__self__, *,
                  api_id: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_id: pulumi.Input[Optional[_builtins.str]] = None,
                  constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fc_service_config: pulumi.Input[Optional['ApiFcServiceConfigArgs']] = None,
@@ -286,6 +320,8 @@ class _ApiState:
 
         :param pulumi.Input[_builtins.str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
+        :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[_builtins.str] description: The description of the api. Defaults to null.
         :param pulumi.Input['ApiFcServiceConfigArgs'] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
@@ -298,13 +334,17 @@ class _ApiState:
         :param pulumi.Input['ApiRequestConfigArgs'] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[_builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         if api_id is not None:
             pulumi.set(__self__, "api_id", api_id)
         if auth_type is not None:
             pulumi.set(__self__, "auth_type", auth_type)
+        if backend_enabled is not None:
+            pulumi.set(__self__, "backend_enabled", backend_enabled)
+        if backend_id is not None:
+            pulumi.set(__self__, "backend_id", backend_id)
         if constant_parameters is not None:
             pulumi.set(__self__, "constant_parameters", constant_parameters)
         if description is not None:
@@ -357,6 +397,30 @@ class _ApiState:
     @auth_type.setter
     def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendEnabled")
+    def backend_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        """
+        return pulumi.get(self, "backend_enabled")
+
+    @backend_enabled.setter
+    def backend_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "backend_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+        """
+        return pulumi.get(self, "backend_id")
+
+    @backend_id.setter
+    def backend_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_id", value)
 
     @_builtins.property
     @pulumi.getter(name="constantParameters")
@@ -506,7 +570,7 @@ class _ApiState:
     @pulumi.getter(name="stageNames")
     def stage_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         """
         return pulumi.get(self, "stage_names")
 
@@ -534,6 +598,8 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_id: pulumi.Input[Optional[_builtins.str]] = None,
                  constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fc_service_config: pulumi.Input[Optional[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']]] = None,
@@ -604,6 +670,43 @@ class Api(pulumi.CustomResource):
             ])
         ```
 
+        Backend Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.apigateway.Group("example",
+            name="tf-example",
+            description="tf-example",
+            base_path="/")
+        example_backend = alicloud.apigateway.Backend("example",
+            backend_name="tf-example-backend",
+            backend_type="HTTP",
+            description="tf-example")
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name="tf-example",
+            description="tf-example",
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config={
+                "protocol": "HTTP",
+                "method": "GET",
+                "path": "/example/path",
+                "mode": "MAPPING",
+            },
+            service_type="HTTP",
+            http_service_config={
+                "address": "",
+                "method": "GET",
+                "path": "/web/cloudapi",
+                "timeout": 12,
+            },
+            backend_id=example_backend.id,
+            backend_enabled=True)
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -618,6 +721,8 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
+        :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[_builtins.str] description: The description of the api. Defaults to null.
         :param pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
@@ -630,7 +735,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[_builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         ...
@@ -694,6 +799,43 @@ class Api(pulumi.CustomResource):
             ])
         ```
 
+        Backend Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example = alicloud.apigateway.Group("example",
+            name="tf-example",
+            description="tf-example",
+            base_path="/")
+        example_backend = alicloud.apigateway.Backend("example",
+            backend_name="tf-example-backend",
+            backend_type="HTTP",
+            description="tf-example")
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name="tf-example",
+            description="tf-example",
+            auth_type="APP",
+            force_nonce_check=False,
+            request_config={
+                "protocol": "HTTP",
+                "method": "GET",
+                "path": "/example/path",
+                "mode": "MAPPING",
+            },
+            service_type="HTTP",
+            http_service_config={
+                "address": "",
+                "method": "GET",
+                "path": "/web/cloudapi",
+                "timeout": 12,
+            },
+            backend_id=example_backend.id,
+            backend_enabled=True)
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -721,6 +863,8 @@ class Api(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_id: pulumi.Input[Optional[_builtins.str]] = None,
                  constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fc_service_config: pulumi.Input[Optional[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']]] = None,
@@ -747,6 +891,8 @@ class Api(pulumi.CustomResource):
             if auth_type is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_type'")
             __props__.__dict__["auth_type"] = auth_type
+            __props__.__dict__["backend_enabled"] = backend_enabled
+            __props__.__dict__["backend_id"] = backend_id
             __props__.__dict__["constant_parameters"] = constant_parameters
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -782,6 +928,8 @@ class Api(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_id: pulumi.Input[Optional[_builtins.str]] = None,
             auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_id: pulumi.Input[Optional[_builtins.str]] = None,
             constant_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fc_service_config: pulumi.Input[Optional[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']]] = None,
@@ -805,6 +953,8 @@ class Api(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_id: The ID of the api of api gateway.
         :param pulumi.Input[_builtins.str] auth_type: The authorization Type including APP and ANONYMOUS. Defaults to null.
+        :param pulumi.Input[_builtins.bool] backend_enabled: Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        :param pulumi.Input[_builtins.str] backend_id: The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiConstantParameterArgs', 'ApiConstantParameterArgsDict']]]] constant_parameters: constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
         :param pulumi.Input[_builtins.str] description: The description of the api. Defaults to null.
         :param pulumi.Input[Union['ApiFcServiceConfigArgs', 'ApiFcServiceConfigArgsDict']] fc_service_config: fc_service_config defines the config when service_type selected 'FunctionCompute'. See `fc_service_config` below.
@@ -817,7 +967,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Union['ApiRequestConfigArgs', 'ApiRequestConfigArgsDict']] request_config: Request_config defines how users can send requests to your API. See `request_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiRequestParameterArgs', 'ApiRequestParameterArgsDict']]]] request_parameters: request_parameters defines the request parameters of the api. See `request_parameters` below.
         :param pulumi.Input[_builtins.str] service_type: The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] stage_names: Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiSystemParameterArgs', 'ApiSystemParameterArgsDict']]]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -826,6 +976,8 @@ class Api(pulumi.CustomResource):
 
         __props__.__dict__["api_id"] = api_id
         __props__.__dict__["auth_type"] = auth_type
+        __props__.__dict__["backend_enabled"] = backend_enabled
+        __props__.__dict__["backend_id"] = backend_id
         __props__.__dict__["constant_parameters"] = constant_parameters
         __props__.__dict__["description"] = description
         __props__.__dict__["fc_service_config"] = fc_service_config
@@ -857,6 +1009,22 @@ class Api(pulumi.CustomResource):
         The authorization Type including APP and ANONYMOUS. Defaults to null.
         """
         return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter(name="backendEnabled")
+    def backend_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the backend service. When set to `true`, the `backend_id` will be sent to the API.
+        """
+        return pulumi.get(self, "backend_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="backendId")
+    def backend_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the API Gateway Backend. When specified, the API references an existing backend created by `apigateway.Backend`.
+        """
+        return pulumi.get(self, "backend_id")
 
     @_builtins.property
     @pulumi.getter(name="constantParameters")
@@ -958,7 +1126,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="stageNames")
     def stage_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `apigateway.StageModel`.
         """
         return pulumi.get(self, "stage_names")
 

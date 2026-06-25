@@ -18,6 +18,25 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
     public static final NotificationArgs Empty = new NotificationArgs();
 
     /**
+     * The encoding method of the notification content. Valid values:
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     * 
+     */
+    @Import(name="messageEncoding")
+    private @Nullable Output<String> messageEncoding;
+
+    /**
+     * @return The encoding method of the notification content. Valid values:
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     * 
+     */
+    public Optional<Output<String>> messageEncoding() {
+        return Optional.ofNullable(this.messageEncoding);
+    }
+
+    /**
      * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
      * * region: the region ID of the scaling group. For more information, see `Regions and zones`
      * * account-id: the ID of your account.
@@ -86,6 +105,7 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
     private NotificationArgs() {}
 
     private NotificationArgs(NotificationArgs $) {
+        this.messageEncoding = $.messageEncoding;
         this.notificationArn = $.notificationArn;
         this.notificationTypes = $.notificationTypes;
         this.scalingGroupId = $.scalingGroupId;
@@ -108,6 +128,31 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NotificationArgs defaults) {
             $ = new NotificationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param messageEncoding The encoding method of the notification content. Valid values:
+         * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+         * - `Base64`: The content is Base64 encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageEncoding(@Nullable Output<String> messageEncoding) {
+            $.messageEncoding = messageEncoding;
+            return this;
+        }
+
+        /**
+         * @param messageEncoding The encoding method of the notification content. Valid values:
+         * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+         * - `Base64`: The content is Base64 encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageEncoding(String messageEncoding) {
+            return messageEncoding(Output.of(messageEncoding));
         }
 
         /**

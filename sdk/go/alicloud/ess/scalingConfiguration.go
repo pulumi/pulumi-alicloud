@@ -202,8 +202,8 @@ type ScalingConfiguration struct {
 	InstanceTypeOverrides ScalingConfigurationInstanceTypeOverrideArrayOutput `pulumi:"instanceTypeOverrides"`
 	// Resource types of an ECS instance.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
+	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
@@ -230,6 +230,30 @@ type ScalingConfiguration struct {
 	PasswordInherit pulumi.BoolPtrOutput `pulumi:"passwordInherit"`
 	// ID of resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+	ResourcePoolOptionsPrivatePoolIds pulumi.StringArrayOutput `pulumi:"resourcePoolOptionsPrivatePoolIds"`
+	// Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+	ResourcePoolOptionsPrivatePoolTags ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput `pulumi:"resourcePoolOptionsPrivatePoolTags"`
+	// The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+	// - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+	// - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+	// - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+	// - `None`: Does not use a resource pool policy.
+	//
+	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+	//
+	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+	//
+	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+	ResourcePoolOptionsStrategy pulumi.StringOutput `pulumi:"resourcePoolOptionsStrategy"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -245,20 +269,6 @@ type ScalingConfiguration struct {
 	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
 	SpotDuration pulumi.IntPtrOutput `pulumi:"spotDuration"`
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-	//
-	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-	//
-	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-	//
-	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
-	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-	// - The attached ECS instances must in the running state.
-	// - The attached ECS instances has not been attached to other scaling groups.
-	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-	//
-	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
 	SpotPriceLimits ScalingConfigurationSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
 	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
@@ -367,7 +377,7 @@ type scalingConfigurationState struct {
 	InstanceTypeOverrides []ScalingConfigurationInstanceTypeOverride `pulumi:"instanceTypeOverrides"`
 	// Resource types of an ECS instance.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
@@ -395,6 +405,30 @@ type scalingConfigurationState struct {
 	PasswordInherit *bool `pulumi:"passwordInherit"`
 	// ID of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+	ResourcePoolOptionsPrivatePoolIds []string `pulumi:"resourcePoolOptionsPrivatePoolIds"`
+	// Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+	ResourcePoolOptionsPrivatePoolTags []ScalingConfigurationResourcePoolOptionsPrivatePoolTag `pulumi:"resourcePoolOptionsPrivatePoolTags"`
+	// The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+	// - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+	// - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+	// - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+	// - `None`: Does not use a resource pool policy.
+	//
+	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+	//
+	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+	//
+	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+	ResourcePoolOptionsStrategy *string `pulumi:"resourcePoolOptionsStrategy"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -410,20 +444,6 @@ type scalingConfigurationState struct {
 	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
 	SpotDuration *int `pulumi:"spotDuration"`
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-	//
-	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-	//
-	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-	//
-	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
-	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-	// - The attached ECS instances must in the running state.
-	// - The attached ECS instances has not been attached to other scaling groups.
-	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-	//
-	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
 	SpotPriceLimits []ScalingConfigurationSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
@@ -500,7 +520,7 @@ type ScalingConfigurationState struct {
 	InstanceTypeOverrides ScalingConfigurationInstanceTypeOverrideArrayInput
 	// Resource types of an ECS instance.
 	InstanceTypes pulumi.StringArrayInput
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType pulumi.StringPtrInput
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn pulumi.IntPtrInput
@@ -528,6 +548,30 @@ type ScalingConfigurationState struct {
 	PasswordInherit pulumi.BoolPtrInput
 	// ID of resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+	ResourcePoolOptionsPrivatePoolIds pulumi.StringArrayInput
+	// Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+	ResourcePoolOptionsPrivatePoolTags ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayInput
+	// The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+	// - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+	// - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+	// - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+	// - `None`: Does not use a resource pool policy.
+	//
+	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+	//
+	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+	//
+	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+	ResourcePoolOptionsStrategy pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -543,20 +587,6 @@ type ScalingConfigurationState struct {
 	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
 	SpotDuration pulumi.IntPtrInput
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-	//
-	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-	//
-	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-	//
-	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
-	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-	// - The attached ECS instances must in the running state.
-	// - The attached ECS instances has not been attached to other scaling groups.
-	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-	//
-	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
 	SpotPriceLimits ScalingConfigurationSpotPriceLimitArrayInput
 	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
@@ -637,7 +667,7 @@ type scalingConfigurationArgs struct {
 	InstanceTypeOverrides []ScalingConfigurationInstanceTypeOverride `pulumi:"instanceTypeOverrides"`
 	// Resource types of an ECS instance.
 	InstanceTypes []string `pulumi:"instanceTypes"`
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
@@ -665,6 +695,30 @@ type scalingConfigurationArgs struct {
 	PasswordInherit *bool `pulumi:"passwordInherit"`
 	// ID of resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+	ResourcePoolOptionsPrivatePoolIds []string `pulumi:"resourcePoolOptionsPrivatePoolIds"`
+	// Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+	ResourcePoolOptionsPrivatePoolTags []ScalingConfigurationResourcePoolOptionsPrivatePoolTag `pulumi:"resourcePoolOptionsPrivatePoolTags"`
+	// The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+	// - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+	// - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+	// - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+	// - `None`: Does not use a resource pool policy.
+	//
+	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+	//
+	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+	//
+	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+	ResourcePoolOptionsStrategy *string `pulumi:"resourcePoolOptionsStrategy"`
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName *string `pulumi:"roleName"`
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -680,20 +734,6 @@ type scalingConfigurationArgs struct {
 	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
 	SpotDuration *int `pulumi:"spotDuration"`
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-	//
-	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-	//
-	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-	//
-	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
-	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-	// - The attached ECS instances must in the running state.
-	// - The attached ECS instances has not been attached to other scaling groups.
-	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-	//
-	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
 	SpotPriceLimits []ScalingConfigurationSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
@@ -771,7 +811,7 @@ type ScalingConfigurationArgs struct {
 	InstanceTypeOverrides ScalingConfigurationInstanceTypeOverrideArrayInput
 	// Resource types of an ECS instance.
 	InstanceTypes pulumi.StringArrayInput
-	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+	// Network billing type, Values: PayByBandwidth or PayByTraffic.
 	InternetChargeType pulumi.StringPtrInput
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
 	InternetMaxBandwidthIn pulumi.IntPtrInput
@@ -799,6 +839,30 @@ type ScalingConfigurationArgs struct {
 	PasswordInherit pulumi.BoolPtrInput
 	// ID of resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+	ResourcePoolOptionsPrivatePoolIds pulumi.StringArrayInput
+	// Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+	ResourcePoolOptionsPrivatePoolTags ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayInput
+	// The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+	// - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+	// - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+	// - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+	// - `None`: Does not use a resource pool policy.
+	//
+	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+	//
+	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+	//
+	// > **NOTE:** Restrictions on attaching ECS instances:
+	//
+	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+	// - The attached ECS instances must in the running state.
+	// - The attached ECS instances has not been attached to other scaling groups.
+	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+	//
+	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+	ResourcePoolOptionsStrategy pulumi.StringPtrInput
 	// Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 	RoleName pulumi.StringPtrInput
 	// Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
@@ -814,20 +878,6 @@ type ScalingConfigurationArgs struct {
 	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
 	SpotDuration pulumi.IntPtrInput
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-	//
-	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-	//
-	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-	//
-	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
-	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-	// - The attached ECS instances must in the running state.
-	// - The attached ECS instances has not been attached to other scaling groups.
-	// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-	//
-	// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
 	SpotPriceLimits ScalingConfigurationSpotPriceLimitArrayInput
 	// The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
 	SpotStrategy pulumi.StringPtrInput
@@ -1054,9 +1104,9 @@ func (o ScalingConfigurationOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-func (o ScalingConfigurationOutput) InternetChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
+// Network billing type, Values: PayByBandwidth or PayByTraffic.
+func (o ScalingConfigurationOutput) InternetChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
 // Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
@@ -1123,6 +1173,41 @@ func (o ScalingConfigurationOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+func (o ScalingConfigurationOutput) ResourcePoolOptionsPrivatePoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.ResourcePoolOptionsPrivatePoolIds }).(pulumi.StringArrayOutput)
+}
+
+// Sets private pool tags. See `resourcePoolOptionsPrivatePoolTags` below for details.
+func (o ScalingConfigurationOutput) ResourcePoolOptionsPrivatePoolTags() ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput {
+		return v.ResourcePoolOptionsPrivatePoolTags
+	}).(ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput)
+}
+
+// The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+// - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+// - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+// - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+// - `None`: Does not use a resource pool policy.
+//
+// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+//
+// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+//
+// > **NOTE:** Restrictions on attaching ECS instances:
+//
+// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+// - The attached ECS instances must in the running state.
+// - The attached ECS instances has not been attached to other scaling groups.
+// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+//
+// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+func (o ScalingConfigurationOutput) ResourcePoolOptionsStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.ResourcePoolOptionsStrategy }).(pulumi.StringOutput)
+}
+
 // Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
 func (o ScalingConfigurationOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.RoleName }).(pulumi.StringPtrOutput)
@@ -1159,20 +1244,6 @@ func (o ScalingConfigurationOutput) SpotDuration() pulumi.IntPtrOutput {
 }
 
 // Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
-//
-// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-//
-// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-//
-// > **NOTE:** Restrictions on attaching ECS instances:
-//
-// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-// - The attached ECS instances must in the running state.
-// - The attached ECS instances has not been attached to other scaling groups.
-// - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-//
-// > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
 func (o ScalingConfigurationOutput) SpotPriceLimits() ScalingConfigurationSpotPriceLimitArrayOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationSpotPriceLimitArrayOutput { return v.SpotPriceLimits }).(ScalingConfigurationSpotPriceLimitArrayOutput)
 }

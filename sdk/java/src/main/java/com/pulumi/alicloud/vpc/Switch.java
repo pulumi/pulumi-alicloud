@@ -270,14 +270,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableIpv6;
+    private Output<Boolean> enableIpv6;
 
     /**
      * @return Whether the IPv6 function is enabled in the switch. Value:
      * 
      */
-    public Output<Optional<Boolean>> enableIpv6() {
-        return Codegen.optional(this.enableIpv6);
+    public Output<Boolean> enableIpv6() {
+        return this.enableIpv6;
     }
     /**
      * The IPv6 CIDR block of the VSwitch.
@@ -294,14 +294,20 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.ipv6CidrBlock;
     }
     /**
-     * The IPv6 CIDR block of the VSwitch.
+     * The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
      * 
      */
     @Export(name="ipv6CidrBlockMask", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6CidrBlockMask;
 
     /**
-     * @return The IPv6 CIDR block of the VSwitch.
+     * @return The last 4, 8, or 12 bits of the IPv6 CIDR block of the VSwitch, corresponding to a VPC IPv6 address mask of `60`, `56`, or `52` respectively. It only takes effect and is required when `enableIpv6` is `true`, and is used only for create and update operations. The valid values are determined by the IPv6 address mask of the VPC:
+     * - When the VPC IPv6 address mask is `52`: `0` to `4095`.
+     * - When the VPC IPv6 address mask is `56`: `0` to `255`.
+     * - When the VPC IPv6 address mask is `60`: `0` to `15`.
      * 
      */
     public Output<Integer> ipv6CidrBlockMask() {
@@ -312,14 +318,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isDefault;
+    private Output<Boolean> isDefault;
 
     /**
      * @return Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
      * 
      */
-    public Output<Optional<Boolean>> isDefault() {
-        return Codegen.optional(this.isDefault);
+    public Output<Boolean> isDefault() {
+        return this.isDefault;
     }
     /**
      * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
@@ -380,6 +386,24 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vpcId() {
         return this.vpcId;
+    }
+    /**
+     * The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="vpcIpv6CidrBlock", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vpcIpv6CidrBlock;
+
+    /**
+     * @return The IPv6 CIDR block of the VPC. If the VPC has multiple IPv6 CIDR blocks, you can use this parameter to specify the IPv6 CIDR block range to which the VSwitch belongs. This parameter is used only for create and update operations.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<String>> vpcIpv6CidrBlock() {
+        return Codegen.optional(this.vpcIpv6CidrBlock);
     }
     /**
      * The name of the VSwitch.

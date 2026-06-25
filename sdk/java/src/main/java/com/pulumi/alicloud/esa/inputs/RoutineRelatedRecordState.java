@@ -76,6 +76,21 @@ public final class RoutineRelatedRecordState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * (Available since v1.282.0) site name.
+     * 
+     */
+    @Import(name="siteName")
+    private @Nullable Output<String> siteName;
+
+    /**
+     * @return (Available since v1.282.0) site name.
+     * 
+     */
+    public Optional<Output<String>> siteName() {
+        return Optional.ofNullable(this.siteName);
+    }
+
     private RoutineRelatedRecordState() {}
 
     private RoutineRelatedRecordState(RoutineRelatedRecordState $) {
@@ -83,6 +98,7 @@ public final class RoutineRelatedRecordState extends com.pulumi.resources.Resour
         this.recordId = $.recordId;
         this.recordName = $.recordName;
         this.siteId = $.siteId;
+        this.siteName = $.siteName;
     }
 
     public static Builder builder() {
@@ -185,6 +201,27 @@ public final class RoutineRelatedRecordState extends com.pulumi.resources.Resour
          */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
+        }
+
+        /**
+         * @param siteName (Available since v1.282.0) site name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteName(@Nullable Output<String> siteName) {
+            $.siteName = siteName;
+            return this;
+        }
+
+        /**
+         * @param siteName (Available since v1.282.0) site name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder siteName(String siteName) {
+            return siteName(Output.of(siteName));
         }
 
         public RoutineRelatedRecordState build() {

@@ -42,13 +42,13 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="defaultPools")
-    private @Nullable Output<List<Integer>> defaultPools;
+    private @Nullable Output<List<String>> defaultPools;
 
     /**
      * @return List of default pool IDs.
      * 
      */
-    public Optional<Output<List<Integer>>> defaultPools() {
+    public Optional<Output<List<String>>> defaultPools() {
         return Optional.ofNullable(this.defaultPools);
     }
 
@@ -87,13 +87,13 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="fallbackPool")
-    private @Nullable Output<Integer> fallbackPool;
+    private @Nullable Output<String> fallbackPool;
 
     /**
      * @return The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
      * 
      */
-    public Optional<Output<Integer>> fallbackPool() {
+    public Optional<Output<String>> fallbackPool() {
         return Optional.ofNullable(this.fallbackPool);
     }
 
@@ -102,13 +102,13 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="loadBalancerId")
-    private @Nullable Output<Integer> loadBalancerId;
+    private @Nullable Output<String> loadBalancerId;
 
     /**
      * @return The unique identifier ID of the load balancer.
      * 
      */
-    public Optional<Output<Integer>> loadBalancerId() {
+    public Optional<Output<String>> loadBalancerId() {
         return Optional.ofNullable(this.loadBalancerId);
     }
 
@@ -344,7 +344,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPools(@Nullable Output<List<Integer>> defaultPools) {
+        public Builder defaultPools(@Nullable Output<List<String>> defaultPools) {
             $.defaultPools = defaultPools;
             return this;
         }
@@ -355,7 +355,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPools(List<Integer> defaultPools) {
+        public Builder defaultPools(List<String> defaultPools) {
             return defaultPools(Output.of(defaultPools));
         }
 
@@ -365,7 +365,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder defaultPools(Integer... defaultPools) {
+        public Builder defaultPools(String... defaultPools) {
             return defaultPools(List.of(defaultPools));
         }
 
@@ -417,7 +417,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder fallbackPool(@Nullable Output<Integer> fallbackPool) {
+        public Builder fallbackPool(@Nullable Output<String> fallbackPool) {
             $.fallbackPool = fallbackPool;
             return this;
         }
@@ -428,7 +428,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder fallbackPool(Integer fallbackPool) {
+        public Builder fallbackPool(String fallbackPool) {
             return fallbackPool(Output.of(fallbackPool));
         }
 
@@ -438,7 +438,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder loadBalancerId(@Nullable Output<Integer> loadBalancerId) {
+        public Builder loadBalancerId(@Nullable Output<String> loadBalancerId) {
             $.loadBalancerId = loadBalancerId;
             return this;
         }
@@ -449,7 +449,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder loadBalancerId(Integer loadBalancerId) {
+        public Builder loadBalancerId(String loadBalancerId) {
             return loadBalancerId(Output.of(loadBalancerId));
         }
 

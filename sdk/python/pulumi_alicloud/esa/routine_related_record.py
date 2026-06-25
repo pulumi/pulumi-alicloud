@@ -77,7 +77,8 @@ class _RoutineRelatedRecordState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  record_id: pulumi.Input[Optional[_builtins.int]] = None,
                  record_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 site_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutineRelatedRecord resources.
 
@@ -85,6 +86,7 @@ class _RoutineRelatedRecordState:
         :param pulumi.Input[_builtins.int] record_id: The record ID.
         :param pulumi.Input[_builtins.str] record_name: The record name.
         :param pulumi.Input[_builtins.str] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] site_name: (Available since v1.282.0) site name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -94,6 +96,8 @@ class _RoutineRelatedRecordState:
             pulumi.set(__self__, "record_name", record_name)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
+        if site_name is not None:
+            pulumi.set(__self__, "site_name", site_name)
 
     @_builtins.property
     @pulumi.getter
@@ -143,6 +147,18 @@ class _RoutineRelatedRecordState:
     def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="siteName")
+    def site_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.282.0) site name.
+        """
+        return pulumi.get(self, "site_name")
+
+    @site_name.setter
+    def site_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "site_name", value)
+
 
 @pulumi.type_token("alicloud:esa/routineRelatedRecord:RoutineRelatedRecord")
 class RoutineRelatedRecord(pulumi.CustomResource):
@@ -173,14 +189,12 @@ class RoutineRelatedRecord(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_routine = alicloud.esa.Routine("default",
-            description="example-routine2",
-            name="example-routine2")
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_routine = alicloud.esa.Routine("default", name=name)
         default_routine_related_record = alicloud.esa.RoutineRelatedRecord("default",
             name=default_routine.id,
             record_name="tfexampleacc.com",
-            site_id="618651327383200")
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -225,14 +239,12 @@ class RoutineRelatedRecord(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_routine = alicloud.esa.Routine("default",
-            description="example-routine2",
-            name="example-routine2")
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_routine = alicloud.esa.Routine("default", name=name)
         default_routine_related_record = alicloud.esa.RoutineRelatedRecord("default",
             name=default_routine.id,
             record_name="tfexampleacc.com",
-            site_id="618651327383200")
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -281,6 +293,7 @@ class RoutineRelatedRecord(pulumi.CustomResource):
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["record_id"] = None
+            __props__.__dict__["site_name"] = None
         super(RoutineRelatedRecord, __self__).__init__(
             'alicloud:esa/routineRelatedRecord:RoutineRelatedRecord',
             resource_name,
@@ -294,7 +307,8 @@ class RoutineRelatedRecord(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             record_id: pulumi.Input[Optional[_builtins.int]] = None,
             record_name: pulumi.Input[Optional[_builtins.str]] = None,
-            site_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RoutineRelatedRecord':
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RoutineRelatedRecord':
         """
         Get an existing RoutineRelatedRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -306,6 +320,7 @@ class RoutineRelatedRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] record_id: The record ID.
         :param pulumi.Input[_builtins.str] record_name: The record name.
         :param pulumi.Input[_builtins.str] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] site_name: (Available since v1.282.0) site name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -315,6 +330,7 @@ class RoutineRelatedRecord(pulumi.CustomResource):
         __props__.__dict__["record_id"] = record_id
         __props__.__dict__["record_name"] = record_name
         __props__.__dict__["site_id"] = site_id
+        __props__.__dict__["site_name"] = site_name
         return RoutineRelatedRecord(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -348,4 +364,12 @@ class RoutineRelatedRecord(pulumi.CustomResource):
         The website ID.
         """
         return pulumi.get(self, "site_id")
+
+    @_builtins.property
+    @pulumi.getter(name="siteName")
+    def site_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.282.0) site name.
+        """
+        return pulumi.get(self, "site_name")
 

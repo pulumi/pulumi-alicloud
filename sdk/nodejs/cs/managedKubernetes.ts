@@ -392,9 +392,14 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     declare public readonly clusterDomain: pulumi.Output<string | undefined>;
     /**
-     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * The cluster specifications of kubernetes cluster, which can be empty. Valid values:
      * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
+     * * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+     * * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+     * * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+     *
+     * ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
      */
     declare public readonly clusterSpec: pulumi.Output<string>;
     /**
@@ -794,9 +799,14 @@ export interface ManagedKubernetesState {
      */
     clusterDomain?: pulumi.Input<string | undefined>;
     /**
-     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * The cluster specifications of kubernetes cluster, which can be empty. Valid values:
      * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
+     * * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+     * * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+     * * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+     *
+     * ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**
@@ -1060,9 +1070,14 @@ export interface ManagedKubernetesArgs {
      */
     clusterDomain?: pulumi.Input<string | undefined>;
     /**
-     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+     * The cluster specifications of kubernetes cluster, which can be empty. Valid values:
      * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
+     * * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+     * * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+     * * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+     *
+     * ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**

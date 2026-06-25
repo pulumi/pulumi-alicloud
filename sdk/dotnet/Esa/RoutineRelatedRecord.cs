@@ -30,22 +30,21 @@ namespace Pulumi.AliCloud.Esa
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRoutine = new AliCloud.Esa.Routine("default", new()
-    ///     {
-    ///         Description = "example-routine2",
-    ///         Name = "example-routine2",
-    ///     });
-    /// 
     ///     var @default = AliCloud.Esa.GetSites.Invoke(new()
     ///     {
     ///         PlanSubscribeType = "enterpriseplan",
+    ///     });
+    /// 
+    ///     var defaultRoutine = new AliCloud.Esa.Routine("default", new()
+    ///     {
+    ///         Name = name,
     ///     });
     /// 
     ///     var defaultRoutineRelatedRecord = new AliCloud.Esa.RoutineRelatedRecord("default", new()
     ///     {
     ///         Name = defaultRoutine.Id,
     ///         RecordName = "tfexampleacc.com",
-    ///         SiteId = "618651327383200",
+    ///         SiteId = @default.Apply(@default =&gt; @default.Apply(getSitesResult =&gt; getSitesResult.Sites[0]?.Id)),
     ///     });
     /// 
     /// });
@@ -87,6 +86,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.282.0) site name.
+        /// </summary>
+        [Output("siteName")]
+        public Output<string> SiteName { get; private set; } = null!;
 
 
         /// <summary>
@@ -183,6 +188,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.282.0) site name.
+        /// </summary>
+        [Input("siteName")]
+        public Input<string>? SiteName { get; set; }
 
         public RoutineRelatedRecordState()
         {

@@ -135,8 +135,13 @@ type GetClustersArgs struct {
 	// Custom cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// The specification of the clusters to query. Valid values:
-	// - `ack.pro.small`: ACK Pro clusters.
 	// - `ack.standard`: ACK Basic clusters.
+	// - `ack.pro.small`: ACK Pro clusters.
+	// - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+	// - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+	// - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+	//
+	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// The type of the clusters to query. Valid values:
 	// - `Kubernetes`: ACK dedicated clusters.
@@ -165,7 +170,7 @@ type GetClustersResult struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// Custom cluster name.
 	ClusterName *string `pulumi:"clusterName"`
-	// After you set `clusterType` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+	// The cluster specification.
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// The cluster type.
 	ClusterType *string `pulumi:"clusterType"`
@@ -200,8 +205,13 @@ type GetClustersOutputArgs struct {
 	// Custom cluster name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// The specification of the clusters to query. Valid values:
-	// - `ack.pro.small`: ACK Pro clusters.
 	// - `ack.standard`: ACK Basic clusters.
+	// - `ack.pro.small`: ACK Pro clusters.
+	// - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+	// - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+	// - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+	//
+	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec pulumi.StringPtrInput `pulumi:"clusterSpec"`
 	// The type of the clusters to query. Valid values:
 	// - `Kubernetes`: ACK dedicated clusters.
@@ -253,7 +263,7 @@ func (o GetClustersResultOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
 }
 
-// After you set `clusterType` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+// The cluster specification.
 func (o GetClustersResultOutput) ClusterSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterSpec }).(pulumi.StringPtrOutput)
 }

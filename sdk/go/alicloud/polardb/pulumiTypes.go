@@ -13,6 +13,333 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ApplicationComponent struct {
+	// The class/specification of the component.
+	ComponentClass *string `pulumi:"componentClass"`
+	// The number of replicas for the component.
+	ComponentReplica *int `pulumi:"componentReplica"`
+	// The type of the component.
+	ComponentType *string `pulumi:"componentType"`
+}
+
+// ApplicationComponentInput is an input type that accepts ApplicationComponentArgs and ApplicationComponentOutput values.
+// You can construct a concrete instance of `ApplicationComponentInput` via:
+//
+//	ApplicationComponentArgs{...}
+type ApplicationComponentInput interface {
+	pulumi.Input
+
+	ToApplicationComponentOutput() ApplicationComponentOutput
+	ToApplicationComponentOutputWithContext(context.Context) ApplicationComponentOutput
+}
+
+type ApplicationComponentArgs struct {
+	// The class/specification of the component.
+	ComponentClass pulumi.StringPtrInput `pulumi:"componentClass"`
+	// The number of replicas for the component.
+	ComponentReplica pulumi.IntPtrInput `pulumi:"componentReplica"`
+	// The type of the component.
+	ComponentType pulumi.StringPtrInput `pulumi:"componentType"`
+}
+
+func (ApplicationComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationComponent)(nil)).Elem()
+}
+
+func (i ApplicationComponentArgs) ToApplicationComponentOutput() ApplicationComponentOutput {
+	return i.ToApplicationComponentOutputWithContext(context.Background())
+}
+
+func (i ApplicationComponentArgs) ToApplicationComponentOutputWithContext(ctx context.Context) ApplicationComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationComponentOutput)
+}
+
+// ApplicationComponentArrayInput is an input type that accepts ApplicationComponentArray and ApplicationComponentArrayOutput values.
+// You can construct a concrete instance of `ApplicationComponentArrayInput` via:
+//
+//	ApplicationComponentArray{ ApplicationComponentArgs{...} }
+type ApplicationComponentArrayInput interface {
+	pulumi.Input
+
+	ToApplicationComponentArrayOutput() ApplicationComponentArrayOutput
+	ToApplicationComponentArrayOutputWithContext(context.Context) ApplicationComponentArrayOutput
+}
+
+type ApplicationComponentArray []ApplicationComponentInput
+
+func (ApplicationComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationComponent)(nil)).Elem()
+}
+
+func (i ApplicationComponentArray) ToApplicationComponentArrayOutput() ApplicationComponentArrayOutput {
+	return i.ToApplicationComponentArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationComponentArray) ToApplicationComponentArrayOutputWithContext(ctx context.Context) ApplicationComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationComponentArrayOutput)
+}
+
+type ApplicationComponentOutput struct{ *pulumi.OutputState }
+
+func (ApplicationComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationComponent)(nil)).Elem()
+}
+
+func (o ApplicationComponentOutput) ToApplicationComponentOutput() ApplicationComponentOutput {
+	return o
+}
+
+func (o ApplicationComponentOutput) ToApplicationComponentOutputWithContext(ctx context.Context) ApplicationComponentOutput {
+	return o
+}
+
+// The class/specification of the component.
+func (o ApplicationComponentOutput) ComponentClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationComponent) *string { return v.ComponentClass }).(pulumi.StringPtrOutput)
+}
+
+// The number of replicas for the component.
+func (o ApplicationComponentOutput) ComponentReplica() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationComponent) *int { return v.ComponentReplica }).(pulumi.IntPtrOutput)
+}
+
+// The type of the component.
+func (o ApplicationComponentOutput) ComponentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationComponent) *string { return v.ComponentType }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationComponent)(nil)).Elem()
+}
+
+func (o ApplicationComponentArrayOutput) ToApplicationComponentArrayOutput() ApplicationComponentArrayOutput {
+	return o
+}
+
+func (o ApplicationComponentArrayOutput) ToApplicationComponentArrayOutputWithContext(ctx context.Context) ApplicationComponentArrayOutput {
+	return o
+}
+
+func (o ApplicationComponentArrayOutput) Index(i pulumi.IntInput) ApplicationComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationComponent {
+		return vs[0].([]ApplicationComponent)[vs[1].(int)]
+	}).(ApplicationComponentOutput)
+}
+
+type ApplicationParameter struct {
+	// The name of the parameter.
+	ParameterName *string `pulumi:"parameterName"`
+	// The value of the parameter.
+	ParameterValue *string `pulumi:"parameterValue"`
+}
+
+// ApplicationParameterInput is an input type that accepts ApplicationParameterArgs and ApplicationParameterOutput values.
+// You can construct a concrete instance of `ApplicationParameterInput` via:
+//
+//	ApplicationParameterArgs{...}
+type ApplicationParameterInput interface {
+	pulumi.Input
+
+	ToApplicationParameterOutput() ApplicationParameterOutput
+	ToApplicationParameterOutputWithContext(context.Context) ApplicationParameterOutput
+}
+
+type ApplicationParameterArgs struct {
+	// The name of the parameter.
+	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
+	// The value of the parameter.
+	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
+}
+
+func (ApplicationParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationParameter)(nil)).Elem()
+}
+
+func (i ApplicationParameterArgs) ToApplicationParameterOutput() ApplicationParameterOutput {
+	return i.ToApplicationParameterOutputWithContext(context.Background())
+}
+
+func (i ApplicationParameterArgs) ToApplicationParameterOutputWithContext(ctx context.Context) ApplicationParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationParameterOutput)
+}
+
+// ApplicationParameterArrayInput is an input type that accepts ApplicationParameterArray and ApplicationParameterArrayOutput values.
+// You can construct a concrete instance of `ApplicationParameterArrayInput` via:
+//
+//	ApplicationParameterArray{ ApplicationParameterArgs{...} }
+type ApplicationParameterArrayInput interface {
+	pulumi.Input
+
+	ToApplicationParameterArrayOutput() ApplicationParameterArrayOutput
+	ToApplicationParameterArrayOutputWithContext(context.Context) ApplicationParameterArrayOutput
+}
+
+type ApplicationParameterArray []ApplicationParameterInput
+
+func (ApplicationParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationParameter)(nil)).Elem()
+}
+
+func (i ApplicationParameterArray) ToApplicationParameterArrayOutput() ApplicationParameterArrayOutput {
+	return i.ToApplicationParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationParameterArray) ToApplicationParameterArrayOutputWithContext(ctx context.Context) ApplicationParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationParameterArrayOutput)
+}
+
+type ApplicationParameterOutput struct{ *pulumi.OutputState }
+
+func (ApplicationParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationParameter)(nil)).Elem()
+}
+
+func (o ApplicationParameterOutput) ToApplicationParameterOutput() ApplicationParameterOutput {
+	return o
+}
+
+func (o ApplicationParameterOutput) ToApplicationParameterOutputWithContext(ctx context.Context) ApplicationParameterOutput {
+	return o
+}
+
+// The name of the parameter.
+func (o ApplicationParameterOutput) ParameterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationParameter) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+func (o ApplicationParameterOutput) ParameterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationParameter) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationParameter)(nil)).Elem()
+}
+
+func (o ApplicationParameterArrayOutput) ToApplicationParameterArrayOutput() ApplicationParameterArrayOutput {
+	return o
+}
+
+func (o ApplicationParameterArrayOutput) ToApplicationParameterArrayOutputWithContext(ctx context.Context) ApplicationParameterArrayOutput {
+	return o
+}
+
+func (o ApplicationParameterArrayOutput) Index(i pulumi.IntInput) ApplicationParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationParameter {
+		return vs[0].([]ApplicationParameter)[vs[1].(int)]
+	}).(ApplicationParameterOutput)
+}
+
+type BatchTaskTaskParam struct {
+	// The name of the skill to be installed or uninstalled. For example, `polarClaw`.
+	SkillName string `pulumi:"skillName"`
+	// The version of the skill. If not specified, the latest version may be used depending on the task type.
+	Version *string `pulumi:"version"`
+}
+
+// BatchTaskTaskParamInput is an input type that accepts BatchTaskTaskParamArgs and BatchTaskTaskParamOutput values.
+// You can construct a concrete instance of `BatchTaskTaskParamInput` via:
+//
+//	BatchTaskTaskParamArgs{...}
+type BatchTaskTaskParamInput interface {
+	pulumi.Input
+
+	ToBatchTaskTaskParamOutput() BatchTaskTaskParamOutput
+	ToBatchTaskTaskParamOutputWithContext(context.Context) BatchTaskTaskParamOutput
+}
+
+type BatchTaskTaskParamArgs struct {
+	// The name of the skill to be installed or uninstalled. For example, `polarClaw`.
+	SkillName pulumi.StringInput `pulumi:"skillName"`
+	// The version of the skill. If not specified, the latest version may be used depending on the task type.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (BatchTaskTaskParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchTaskTaskParam)(nil)).Elem()
+}
+
+func (i BatchTaskTaskParamArgs) ToBatchTaskTaskParamOutput() BatchTaskTaskParamOutput {
+	return i.ToBatchTaskTaskParamOutputWithContext(context.Background())
+}
+
+func (i BatchTaskTaskParamArgs) ToBatchTaskTaskParamOutputWithContext(ctx context.Context) BatchTaskTaskParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchTaskTaskParamOutput)
+}
+
+// BatchTaskTaskParamArrayInput is an input type that accepts BatchTaskTaskParamArray and BatchTaskTaskParamArrayOutput values.
+// You can construct a concrete instance of `BatchTaskTaskParamArrayInput` via:
+//
+//	BatchTaskTaskParamArray{ BatchTaskTaskParamArgs{...} }
+type BatchTaskTaskParamArrayInput interface {
+	pulumi.Input
+
+	ToBatchTaskTaskParamArrayOutput() BatchTaskTaskParamArrayOutput
+	ToBatchTaskTaskParamArrayOutputWithContext(context.Context) BatchTaskTaskParamArrayOutput
+}
+
+type BatchTaskTaskParamArray []BatchTaskTaskParamInput
+
+func (BatchTaskTaskParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BatchTaskTaskParam)(nil)).Elem()
+}
+
+func (i BatchTaskTaskParamArray) ToBatchTaskTaskParamArrayOutput() BatchTaskTaskParamArrayOutput {
+	return i.ToBatchTaskTaskParamArrayOutputWithContext(context.Background())
+}
+
+func (i BatchTaskTaskParamArray) ToBatchTaskTaskParamArrayOutputWithContext(ctx context.Context) BatchTaskTaskParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchTaskTaskParamArrayOutput)
+}
+
+type BatchTaskTaskParamOutput struct{ *pulumi.OutputState }
+
+func (BatchTaskTaskParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchTaskTaskParam)(nil)).Elem()
+}
+
+func (o BatchTaskTaskParamOutput) ToBatchTaskTaskParamOutput() BatchTaskTaskParamOutput {
+	return o
+}
+
+func (o BatchTaskTaskParamOutput) ToBatchTaskTaskParamOutputWithContext(ctx context.Context) BatchTaskTaskParamOutput {
+	return o
+}
+
+// The name of the skill to be installed or uninstalled. For example, `polarClaw`.
+func (o BatchTaskTaskParamOutput) SkillName() pulumi.StringOutput {
+	return o.ApplyT(func(v BatchTaskTaskParam) string { return v.SkillName }).(pulumi.StringOutput)
+}
+
+// The version of the skill. If not specified, the latest version may be used depending on the task type.
+func (o BatchTaskTaskParamOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchTaskTaskParam) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type BatchTaskTaskParamArrayOutput struct{ *pulumi.OutputState }
+
+func (BatchTaskTaskParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BatchTaskTaskParam)(nil)).Elem()
+}
+
+func (o BatchTaskTaskParamArrayOutput) ToBatchTaskTaskParamArrayOutput() BatchTaskTaskParamArrayOutput {
+	return o
+}
+
+func (o BatchTaskTaskParamArrayOutput) ToBatchTaskTaskParamArrayOutputWithContext(ctx context.Context) BatchTaskTaskParamArrayOutput {
+	return o
+}
+
+func (o BatchTaskTaskParamArrayOutput) Index(i pulumi.IntInput) BatchTaskTaskParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BatchTaskTaskParam {
+		return vs[0].([]BatchTaskTaskParam)[vs[1].(int)]
+	}).(BatchTaskTaskParamOutput)
+}
+
 type ClusterDbClusterIpArray struct {
 	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
 	// **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
@@ -2596,6 +2923,12 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationComponentInput)(nil)).Elem(), ApplicationComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationComponentArrayInput)(nil)).Elem(), ApplicationComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationParameterInput)(nil)).Elem(), ApplicationParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationParameterArrayInput)(nil)).Elem(), ApplicationParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchTaskTaskParamInput)(nil)).Elem(), BatchTaskTaskParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchTaskTaskParamArrayInput)(nil)).Elem(), BatchTaskTaskParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbClusterIpArrayInput)(nil)).Elem(), ClusterDbClusterIpArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbClusterIpArrayArrayInput)(nil)).Elem(), ClusterDbClusterIpArrayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbRevisionVersionListInput)(nil)).Elem(), ClusterDbRevisionVersionListArgs{})
@@ -2634,6 +2967,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterGroupsGroupArrayInput)(nil)).Elem(), GetParameterGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(ApplicationComponentOutput{})
+	pulumi.RegisterOutputType(ApplicationComponentArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationParameterOutput{})
+	pulumi.RegisterOutputType(ApplicationParameterArrayOutput{})
+	pulumi.RegisterOutputType(BatchTaskTaskParamOutput{})
+	pulumi.RegisterOutputType(BatchTaskTaskParamArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDbClusterIpArrayArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDbRevisionVersionListOutput{})

@@ -65,6 +65,8 @@ __all__ = [
     'ScalingConfigurationInstanceTypeOverrideArgsDict',
     'ScalingConfigurationNetworkInterfaceArgs',
     'ScalingConfigurationNetworkInterfaceArgsDict',
+    'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs',
+    'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict',
     'ScalingConfigurationSpotPriceLimitArgs',
     'ScalingConfigurationSpotPriceLimitArgsDict',
     'ScalingGroupAlbServerGroupArgs',
@@ -3497,6 +3499,55 @@ class ScalingConfigurationNetworkInterfaceArgs:
     @security_group_ids.setter
     def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+
+class ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key of the private pool tag. Filters available Target-mode private pools by tag.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the private pool tag.
+    """
+
+@pulumi.input_type
+class ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The key of the private pool tag. Filters available Target-mode private pools by tag.
+        :param pulumi.Input[_builtins.str] value: The value of the private pool tag.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key of the private pool tag. Filters available Target-mode private pools by tag.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the private pool tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class ScalingConfigurationSpotPriceLimitArgsDict(TypedDict):

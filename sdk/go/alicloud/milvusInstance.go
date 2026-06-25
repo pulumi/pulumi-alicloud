@@ -119,6 +119,10 @@ type MilvusInstance struct {
 
 	// Whether to enable automatic backup
 	AutoBackup pulumi.BoolOutput `pulumi:"autoBackup"`
+	// Whether to pay automatically.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -228,6 +232,10 @@ func GetMilvusInstance(ctx *pulumi.Context,
 type milvusInstanceState struct {
 	// Whether to enable automatic backup
 	AutoBackup *bool `pulumi:"autoBackup"`
+	// Whether to pay automatically.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	AutoPay *bool `pulumi:"autoPay"`
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -289,6 +297,10 @@ type milvusInstanceState struct {
 type MilvusInstanceState struct {
 	// Whether to enable automatic backup
 	AutoBackup pulumi.BoolPtrInput
+	// Whether to pay automatically.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	AutoPay pulumi.BoolPtrInput
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -354,6 +366,10 @@ func (MilvusInstanceState) ElementType() reflect.Type {
 type milvusInstanceArgs struct {
 	// Whether to enable automatic backup
 	AutoBackup *bool `pulumi:"autoBackup"`
+	// Whether to pay automatically.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	AutoPay *bool `pulumi:"autoPay"`
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -410,6 +426,10 @@ type milvusInstanceArgs struct {
 type MilvusInstanceArgs struct {
 	// Whether to enable automatic backup
 	AutoBackup pulumi.BoolPtrInput
+	// Whether to pay automatically.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+	AutoPay pulumi.BoolPtrInput
 	// Instance component information. Includes Starter Edition/Standard Edition.
 	// - Starter version: Array including standalone
 	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -552,6 +572,13 @@ func (o MilvusInstanceOutput) ToMilvusInstanceOutputWithContext(ctx context.Cont
 // Whether to enable automatic backup
 func (o MilvusInstanceOutput) AutoBackup() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolOutput { return v.AutoBackup }).(pulumi.BoolOutput)
+}
+
+// Whether to pay automatically.
+//
+// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+func (o MilvusInstanceOutput) AutoPay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MilvusInstance) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
 // Instance component information. Includes Starter Edition/Standard Edition.

@@ -705,7 +705,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
      * - 1: enables the feature.
      * - 0: disables the feature.
      * 
@@ -714,7 +714,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> forceEncryption;
 
     /**
-     * @return Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * @return Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
      * - 1: enables the feature.
      * - 0: disables the feature.
      * 
@@ -2918,7 +2918,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceEncryption Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+         * @param forceEncryption Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
          * - 1: enables the feature.
          * - 0: disables the feature.
          * 
@@ -2931,7 +2931,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceEncryption Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+         * @param forceEncryption Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
          * - 1: enables the feature.
          * - 0: disables the feature.
          * 

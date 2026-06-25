@@ -110,6 +110,8 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
                   status: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
+    > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
     This data source provides the DBFS Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.
@@ -156,6 +158,8 @@ def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.
                          status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
+    > **NOTE:** This data source has been deprecated since v1.279.0 and will be removed in the future. See: [DBFS](https://help.aliyun.com/en/dbfs/).
+
     This data source provides the DBFS Instances of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.136.0+.

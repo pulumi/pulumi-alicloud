@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// <summary>
     /// Provides a Express Connect Virtual Border Router resource.
     /// 
+    /// VBR VBR instance.
+    /// 
     /// For information about Express Connect Virtual Border Router and how to use it, see [What is Virtual Border Router](https://www.alibabacloud.com/help/en/doc-detail/44854.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
@@ -65,7 +67,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// Express Connect Virtual Border Router can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example &lt;id&gt;
+    /// $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example &lt;vbr_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter")]
@@ -78,7 +80,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string?> AssociatedPhysicalConnections { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        /// The bandwidth of the VBR instance. Unit: Mbps.
         /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
         /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
@@ -105,8 +107,8 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// Multiple of detection time.
-        /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-        /// Valid values: `3` to `10`.
+        /// That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        /// Valid values: **3 to 10 * *.
         /// </summary>
         [Output("detectMultiplier")]
         public Output<int> DetectMultiplier { get; private set; } = null!;
@@ -130,19 +132,19 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string?> LocalIpv6GatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        /// Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
         /// </summary>
         [Output("minRxInterval")]
         public Output<int> MinRxInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        /// Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
         /// </summary>
         [Output("minTxInterval")]
         public Output<int> MinTxInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum transmission unit.
+        /// Maximum transmission unit
         /// </summary>
         [Output("mtu")]
         public Output<int> Mtu { get; private set; } = null!;
@@ -178,37 +180,40 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> PhysicalConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+        /// (Available since v1.263.0) The ID of the route table of the VBR.
         /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow inter-IDC communication. Valid values: `True`, `False`.
+        /// Whether to allow inter-IDC communication
         /// </summary>
         [Output("sitelinkEnable")]
         public Output<bool?> SitelinkEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VBR. Valid values: `Active`, `Terminated`.
+        /// Status of the VBR
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        /// The account ID of the VBR instance owner.
+        /// The default value is the logon Alibaba Cloud account ID.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("vbrOwnerId")]
         public Output<string?> VbrOwnerId { get; private set; } = null!;
@@ -278,7 +283,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? AssociatedPhysicalConnections { get; set; }
 
         /// <summary>
-        /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        /// The bandwidth of the VBR instance. Unit: Mbps.
         /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
         /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
@@ -299,8 +304,8 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// Multiple of detection time.
-        /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-        /// Valid values: `3` to `10`.
+        /// That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        /// Valid values: **3 to 10 * *.
         /// </summary>
         [Input("detectMultiplier")]
         public Input<int>? DetectMultiplier { get; set; }
@@ -324,19 +329,19 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? LocalIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        /// Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
         /// </summary>
         [Input("minRxInterval")]
         public Input<int>? MinRxInterval { get; set; }
 
         /// <summary>
-        /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        /// Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
         /// </summary>
         [Input("minTxInterval")]
         public Input<int>? MinTxInterval { get; set; }
 
         /// <summary>
-        /// Maximum transmission unit.
+        /// Maximum transmission unit
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
@@ -372,19 +377,19 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string> PhysicalConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Whether to allow inter-IDC communication. Valid values: `True`, `False`.
+        /// Whether to allow inter-IDC communication
         /// </summary>
         [Input("sitelinkEnable")]
         public Input<bool>? SitelinkEnable { get; set; }
 
         /// <summary>
-        /// The status of the VBR. Valid values: `Active`, `Terminated`.
+        /// Status of the VBR
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -393,7 +398,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -402,7 +407,10 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        /// The account ID of the VBR instance owner.
+        /// The default value is the logon Alibaba Cloud account ID.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
@@ -434,7 +442,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? AssociatedPhysicalConnections { get; set; }
 
         /// <summary>
-        /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        /// The bandwidth of the VBR instance. Unit: Mbps.
         /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
         /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
@@ -461,8 +469,8 @@ namespace Pulumi.AliCloud.ExpressConnect
 
         /// <summary>
         /// Multiple of detection time.
-        /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-        /// Valid values: `3` to `10`.
+        /// That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        /// Valid values: **3 to 10 * *.
         /// </summary>
         [Input("detectMultiplier")]
         public Input<int>? DetectMultiplier { get; set; }
@@ -486,19 +494,19 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? LocalIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        /// Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
         /// </summary>
         [Input("minRxInterval")]
         public Input<int>? MinRxInterval { get; set; }
 
         /// <summary>
-        /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        /// Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
         /// </summary>
         [Input("minTxInterval")]
         public Input<int>? MinTxInterval { get; set; }
 
         /// <summary>
-        /// Maximum transmission unit.
+        /// Maximum transmission unit
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
@@ -534,25 +542,25 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? PhysicalConnectionId { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+        /// (Available since v1.263.0) The ID of the route table of the VBR.
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// Whether to allow inter-IDC communication. Valid values: `True`, `False`.
+        /// Whether to allow inter-IDC communication
         /// </summary>
         [Input("sitelinkEnable")]
         public Input<bool>? SitelinkEnable { get; set; }
 
         /// <summary>
-        /// The status of the VBR. Valid values: `Active`, `Terminated`.
+        /// Status of the VBR
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -561,7 +569,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -570,7 +578,10 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        /// The account ID of the VBR instance owner.
+        /// The default value is the logon Alibaba Cloud account ID.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }

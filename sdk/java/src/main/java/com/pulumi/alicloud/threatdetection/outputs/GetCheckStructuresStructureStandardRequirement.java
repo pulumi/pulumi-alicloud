@@ -24,7 +24,7 @@ public final class GetCheckStructuresStructureStandardRequirement {
      */
     private List<GetCheckStructuresStructureStandardRequirementSection> sections;
     /**
-     * @return The display name of the standard for the check item.
+     * @return The display name of the section for the check item.
      * 
      */
     private String showName;
@@ -50,7 +50,7 @@ public final class GetCheckStructuresStructureStandardRequirement {
         return this.sections;
     }
     /**
-     * @return The display name of the standard for the check item.
+     * @return The display name of the section for the check item.
      * 
      */
     public String showName() {

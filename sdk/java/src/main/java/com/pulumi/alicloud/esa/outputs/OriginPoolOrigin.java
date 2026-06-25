@@ -43,7 +43,7 @@ public final class OriginPoolOrigin {
      * @return Origin ID.
      * 
      */
-    private @Nullable Integer originId;
+    private @Nullable String originId;
     /**
      * @return Source station type:
      * ip_domain: ip or domain name type origin station;
@@ -98,7 +98,7 @@ public final class OriginPoolOrigin {
      * @return Origin ID.
      * 
      */
-    public Optional<Integer> originId() {
+    public Optional<String> originId() {
         return Optional.ofNullable(this.originId);
     }
     /**
@@ -133,7 +133,7 @@ public final class OriginPoolOrigin {
         private @Nullable Boolean enabled;
         private @Nullable String header;
         private @Nullable String name;
-        private @Nullable Integer originId;
+        private @Nullable String originId;
         private @Nullable String type;
         private @Nullable Integer weight;
         public Builder() {}
@@ -180,7 +180,7 @@ public final class OriginPoolOrigin {
             return this;
         }
         @CustomType.Setter
-        public Builder originId(@Nullable Integer originId) {
+        public Builder originId(@Nullable String originId) {
 
             this.originId = originId;
             return this;

@@ -190,14 +190,14 @@ public class ServerGroupAttachment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
-    private Output<Integer> port;
+    private Output</* @Nullable */ Integer> port;
 
     /**
      * @return The port will be used for Server Group backend server.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Output<Optional<Integer>> port() {
+        return Codegen.optional(this.port);
     }
     /**
      * ID of the scaling group.
@@ -228,14 +228,16 @@ public class ServerGroupAttachment extends com.pulumi.resources.CustomResource {
         return this.serverGroupId;
     }
     /**
-     * The type of server group N. Valid values: ALB, NLB.
+     * The type of server group N. Valid values: ALB, NLB, GWLB.
+     * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of server group N. Valid values: ALB, NLB.
+     * @return The type of server group N. Valid values: ALB, NLB, GWLB.
+     * &gt; **NOTE:** From version 1.279.0, `type` can be set to `GWLB`.
      * 
      */
     public Output<String> type() {
@@ -246,14 +248,14 @@ public class ServerGroupAttachment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="weight", refs={Integer.class}, tree="[0]")
-    private Output<Integer> weight;
+    private Output</* @Nullable */ Integer> weight;
 
     /**
      * @return The weight of an ECS instance attached to the Server Group.
      * 
      */
-    public Output<Integer> weight() {
-        return this.weight;
+    public Output<Optional<Integer>> weight() {
+        return Codegen.optional(this.weight);
     }
 
     /**

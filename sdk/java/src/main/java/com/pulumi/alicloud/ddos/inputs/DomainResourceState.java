@@ -200,6 +200,21 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * A custom list of cipher suites for TLS 1.2 and earlier versions.
+     * 
+     */
+    @Import(name="customCiphers")
+    private @Nullable Output<List<String>> customCiphers;
+
+    /**
+     * @return A custom list of cipher suites for TLS 1.2 and earlier versions.
+     * 
+     */
+    public Optional<Output<List<String>>> customCiphers() {
+        return Optional.ofNullable(this.customCiphers);
+    }
+
+    /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
      * - Do not use the following default HTTP headers:
@@ -379,6 +394,72 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Specifies whether to enable TLS 1.3. Valid values:
+     * 
+     */
+    @Import(name="ssl13Enabled")
+    private @Nullable Output<Boolean> ssl13Enabled;
+
+    /**
+     * @return Specifies whether to enable TLS 1.3. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> ssl13Enabled() {
+        return Optional.ofNullable(this.ssl13Enabled);
+    }
+
+    /**
+     * The type of cipher suite. Valid values:
+     * 
+     */
+    @Import(name="sslCiphers")
+    private @Nullable Output<String> sslCiphers;
+
+    /**
+     * @return The type of cipher suite. Valid values:
+     * 
+     */
+    public Optional<Output<String>> sslCiphers() {
+        return Optional.ofNullable(this.sslCiphers);
+    }
+
+    /**
+     * The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     * 
+     */
+    @Import(name="sslProtocols")
+    private @Nullable Output<String> sslProtocols;
+
+    /**
+     * @return The TLS protocol version. Valid values:
+     * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+     * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+     * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+     * 
+     */
+    public Optional<Output<String>> sslProtocols() {
+        return Optional.ofNullable(this.sslProtocols);
+    }
+
+    /**
+     * A custom list of cipher suites for TLS 1.3.
+     * 
+     */
+    @Import(name="tls13CustomCiphers")
+    private @Nullable Output<List<String>> tls13CustomCiphers;
+
+    /**
+     * @return A custom list of cipher suites for TLS 1.3.
+     * 
+     */
+    public Optional<Output<List<String>>> tls13CustomCiphers() {
+        return Optional.ofNullable(this.tls13CustomCiphers);
+    }
+
+    /**
      * IP whitelist list.
      * 
      */
@@ -406,6 +487,7 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         this.certName = $.certName;
         this.certRegion = $.certRegion;
         this.cname = $.cname;
+        this.customCiphers = $.customCiphers;
         this.customHeaders = $.customHeaders;
         this.domain = $.domain;
         this.httpsExt = $.httpsExt;
@@ -415,6 +497,10 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         this.proxyTypes = $.proxyTypes;
         this.realServers = $.realServers;
         this.rsType = $.rsType;
+        this.ssl13Enabled = $.ssl13Enabled;
+        this.sslCiphers = $.sslCiphers;
+        this.sslProtocols = $.sslProtocols;
+        this.tls13CustomCiphers = $.tls13CustomCiphers;
         this.whiteLists = $.whiteLists;
     }
 
@@ -687,6 +773,37 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param customCiphers A custom list of cipher suites for TLS 1.2 and earlier versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCiphers(@Nullable Output<List<String>> customCiphers) {
+            $.customCiphers = customCiphers;
+            return this;
+        }
+
+        /**
+         * @param customCiphers A custom list of cipher suites for TLS 1.2 and earlier versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCiphers(List<String> customCiphers) {
+            return customCiphers(Output.of(customCiphers));
+        }
+
+        /**
+         * @param customCiphers A custom list of cipher suites for TLS 1.2 and earlier versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCiphers(String... customCiphers) {
+            return customCiphers(List.of(customCiphers));
+        }
+
+        /**
          * @param customHeaders The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
          * Take note of the following items:
          * - Do not use the following default HTTP headers:
@@ -947,6 +1064,106 @@ public final class DomainResourceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder rsType(Integer rsType) {
             return rsType(Output.of(rsType));
+        }
+
+        /**
+         * @param ssl13Enabled Specifies whether to enable TLS 1.3. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssl13Enabled(@Nullable Output<Boolean> ssl13Enabled) {
+            $.ssl13Enabled = ssl13Enabled;
+            return this;
+        }
+
+        /**
+         * @param ssl13Enabled Specifies whether to enable TLS 1.3. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssl13Enabled(Boolean ssl13Enabled) {
+            return ssl13Enabled(Output.of(ssl13Enabled));
+        }
+
+        /**
+         * @param sslCiphers The type of cipher suite. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslCiphers(@Nullable Output<String> sslCiphers) {
+            $.sslCiphers = sslCiphers;
+            return this;
+        }
+
+        /**
+         * @param sslCiphers The type of cipher suite. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslCiphers(String sslCiphers) {
+            return sslCiphers(Output.of(sslCiphers));
+        }
+
+        /**
+         * @param sslProtocols The TLS protocol version. Valid values:
+         * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+         * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+         * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProtocols(@Nullable Output<String> sslProtocols) {
+            $.sslProtocols = sslProtocols;
+            return this;
+        }
+
+        /**
+         * @param sslProtocols The TLS protocol version. Valid values:
+         * - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+         * - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+         * - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslProtocols(String sslProtocols) {
+            return sslProtocols(Output.of(sslProtocols));
+        }
+
+        /**
+         * @param tls13CustomCiphers A custom list of cipher suites for TLS 1.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tls13CustomCiphers(@Nullable Output<List<String>> tls13CustomCiphers) {
+            $.tls13CustomCiphers = tls13CustomCiphers;
+            return this;
+        }
+
+        /**
+         * @param tls13CustomCiphers A custom list of cipher suites for TLS 1.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tls13CustomCiphers(List<String> tls13CustomCiphers) {
+            return tls13CustomCiphers(Output.of(tls13CustomCiphers));
+        }
+
+        /**
+         * @param tls13CustomCiphers A custom list of cipher suites for TLS 1.3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tls13CustomCiphers(String... tls13CustomCiphers) {
+            return tls13CustomCiphers(List.of(tls13CustomCiphers));
         }
 
         /**

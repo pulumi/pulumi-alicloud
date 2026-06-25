@@ -51,26 +51,29 @@ class VirtualBorderRouterArgs:
         :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps.
                - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
                - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
         :param pulumi.Input[_builtins.str] description: The description information of the VBR.
         :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
-               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-               Valid values: `3` to `10`.
+               That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: **3 to 10 * *.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
         :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit
         :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication
+        :param pulumi.Input[_builtins.str] status: Status of the VBR
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner.
+               The default value is the logon Alibaba Cloud account ID.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
         """
         pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
@@ -195,7 +198,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        The bandwidth of the VBR instance. Unit: Mbps.
         - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
         - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         """
@@ -234,8 +237,8 @@ class VirtualBorderRouterArgs:
     def detect_multiplier(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Multiple of detection time.
-        That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-        Valid values: `3` to `10`.
+        That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        Valid values: **3 to 10 * *.
         """
         return pulumi.get(self, "detect_multiplier")
 
@@ -271,7 +274,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="minRxInterval")
     def min_rx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
         """
         return pulumi.get(self, "min_rx_interval")
 
@@ -283,7 +286,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="minTxInterval")
     def min_tx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
         """
         return pulumi.get(self, "min_tx_interval")
 
@@ -295,7 +298,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter
     def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Maximum transmission unit.
+        Maximum transmission unit
         """
         return pulumi.get(self, "mtu")
 
@@ -331,7 +334,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -343,7 +346,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="sitelinkEnable")
     def sitelink_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        Whether to allow inter-IDC communication
         """
         return pulumi.get(self, "sitelink_enable")
 
@@ -355,7 +358,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the VBR. Valid values: `active`, `terminated`.
+        Status of the VBR
         """
         return pulumi.get(self, "status")
 
@@ -367,7 +370,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -379,7 +382,10 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        The account ID of the VBR instance owner.
+        The default value is the logon Alibaba Cloud account ID.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -432,32 +438,35 @@ class _VirtualBorderRouterState:
         Input properties used for looking up and filtering VirtualBorderRouter resources.
 
         :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps.
                - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
                - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The creation time of the VBR.
         :param pulumi.Input[_builtins.str] description: The description information of the VBR.
         :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
-               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-               Valid values: `3` to `10`.
+               That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: **3 to 10 * *.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
         :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
         :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit
         :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.str] route_table_id: (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
-        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] route_table_id: (Available since v1.263.0) The ID of the route table of the VBR.
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication
+        :param pulumi.Input[_builtins.str] status: Status of the VBR
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner.
+               The default value is the logon Alibaba Cloud account ID.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
@@ -532,7 +541,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        The bandwidth of the VBR instance. Unit: Mbps.
         - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
         - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         """
@@ -583,8 +592,8 @@ class _VirtualBorderRouterState:
     def detect_multiplier(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Multiple of detection time.
-        That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-        Valid values: `3` to `10`.
+        That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        Valid values: **3 to 10 * *.
         """
         return pulumi.get(self, "detect_multiplier")
 
@@ -632,7 +641,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="minRxInterval")
     def min_rx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
         """
         return pulumi.get(self, "min_rx_interval")
 
@@ -644,7 +653,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="minTxInterval")
     def min_tx_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
         """
         return pulumi.get(self, "min_tx_interval")
 
@@ -656,7 +665,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter
     def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Maximum transmission unit.
+        Maximum transmission unit
         """
         return pulumi.get(self, "mtu")
 
@@ -728,7 +737,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -740,7 +749,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+        (Available since v1.263.0) The ID of the route table of the VBR.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -752,7 +761,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="sitelinkEnable")
     def sitelink_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        Whether to allow inter-IDC communication
         """
         return pulumi.get(self, "sitelink_enable")
 
@@ -764,7 +773,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the VBR. Valid values: `active`, `terminated`.
+        Status of the VBR
         """
         return pulumi.get(self, "status")
 
@@ -776,7 +785,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -788,7 +797,10 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        The account ID of the VBR instance owner.
+        The default value is the logon Alibaba Cloud account ID.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -854,6 +866,8 @@ class VirtualBorderRouter(pulumi.CustomResource):
         """
         Provides a Express Connect Virtual Border Router resource.
 
+        VBR VBR instance.
+
         For information about Express Connect Virtual Border Router and how to use it, see [What is Virtual Border Router](https://www.alibabacloud.com/help/en/doc-detail/44854.htm).
 
         > **NOTE:** Available since v1.134.0.
@@ -894,37 +908,40 @@ class VirtualBorderRouter(pulumi.CustomResource):
         Express Connect Virtual Border Router can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
+        $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <vbr_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps.
                - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
                - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
         :param pulumi.Input[_builtins.str] description: The description information of the VBR.
         :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
-               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-               Valid values: `3` to `10`.
+               That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: **3 to 10 * *.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
         :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
         :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit
         :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication
+        :param pulumi.Input[_builtins.str] status: Status of the VBR
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner.
+               The default value is the logon Alibaba Cloud account ID.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
@@ -937,6 +954,8 @@ class VirtualBorderRouter(pulumi.CustomResource):
         """
         Provides a Express Connect Virtual Border Router resource.
 
+        VBR VBR instance.
+
         For information about Express Connect Virtual Border Router and how to use it, see [What is Virtual Border Router](https://www.alibabacloud.com/help/en/doc-detail/44854.htm).
 
         > **NOTE:** Available since v1.134.0.
@@ -977,7 +996,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
         Express Connect Virtual Border Router can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
+        $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <vbr_id>
         ```
 
 
@@ -1106,32 +1125,35 @@ class VirtualBorderRouter(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps.
                - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
                - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The creation time of the VBR.
         :param pulumi.Input[_builtins.str] description: The description information of the VBR.
         :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
-               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-               Valid values: `3` to `10`.
+               That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: **3 to 10 * *.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
         :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
         :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
-        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit
         :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
         :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[_builtins.str] route_table_id: (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
-        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
-        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] route_table_id: (Available since v1.263.0) The ID of the route table of the VBR.
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication
+        :param pulumi.Input[_builtins.str] status: Status of the VBR
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner.
+               The default value is the logon Alibaba Cloud account ID.
+               
+               > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
         :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
@@ -1179,7 +1201,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
-        The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        The bandwidth of the VBR instance. Unit: Mbps.
         - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
         - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         """
@@ -1214,8 +1236,8 @@ class VirtualBorderRouter(pulumi.CustomResource):
     def detect_multiplier(self) -> pulumi.Output[_builtins.int]:
         """
         Multiple of detection time.
-        That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-        Valid values: `3` to `10`.
+        That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        Valid values: **3 to 10 * *.
         """
         return pulumi.get(self, "detect_multiplier")
 
@@ -1247,7 +1269,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="minRxInterval")
     def min_rx_interval(self) -> pulumi.Output[_builtins.int]:
         """
-        Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
         """
         return pulumi.get(self, "min_rx_interval")
 
@@ -1255,7 +1277,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="minTxInterval")
     def min_tx_interval(self) -> pulumi.Output[_builtins.int]:
         """
-        Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
         """
         return pulumi.get(self, "min_tx_interval")
 
@@ -1263,7 +1285,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter
     def mtu(self) -> pulumi.Output[_builtins.int]:
         """
-        Maximum transmission unit.
+        Maximum transmission unit
         """
         return pulumi.get(self, "mtu")
 
@@ -1311,7 +1333,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1319,7 +1341,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+        (Available since v1.263.0) The ID of the route table of the VBR.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -1327,7 +1349,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="sitelinkEnable")
     def sitelink_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        Whether to allow inter-IDC communication
         """
         return pulumi.get(self, "sitelink_enable")
 
@@ -1335,7 +1357,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the VBR. Valid values: `active`, `terminated`.
+        Status of the VBR
         """
         return pulumi.get(self, "status")
 
@@ -1343,7 +1365,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -1351,7 +1373,10 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        The account ID of the VBR instance owner.
+        The default value is the logon Alibaba Cloud account ID.
+
+        > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "vbr_owner_id")
 

@@ -156,14 +156,14 @@ public class Ipv6Address extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipv6AddressDescription", refs={String.class}, tree="[0]")
-    private Output<String> ipv6AddressDescription;
+    private Output</* @Nullable */ String> ipv6AddressDescription;
 
     /**
      * @return The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
-    public Output<String> ipv6AddressDescription() {
-        return this.ipv6AddressDescription;
+    public Output<Optional<String>> ipv6AddressDescription() {
+        return Codegen.optional(this.ipv6AddressDescription);
     }
     /**
      * The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.

@@ -41,6 +41,7 @@ __all__ = [
     'ScalingConfigurationInstancePatternInfo',
     'ScalingConfigurationInstanceTypeOverride',
     'ScalingConfigurationNetworkInterface',
+    'ScalingConfigurationResourcePoolOptionsPrivatePoolTag',
     'ScalingConfigurationSpotPriceLimit',
     'ScalingGroupAlbServerGroup',
     'ScalingGroupLaunchTemplateOverride',
@@ -2616,6 +2617,37 @@ class ScalingConfigurationNetworkInterface(dict):
 
 
 @pulumi.output_type
+class ScalingConfigurationResourcePoolOptionsPrivatePoolTag(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The key of the private pool tag. Filters available Target-mode private pools by tag.
+        :param _builtins.str value: The value of the private pool tag.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The key of the private pool tag. Filters available Target-mode private pools by tag.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the private pool tag.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class ScalingConfigurationSpotPriceLimit(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3430,19 +3462,27 @@ class GetLifecycleHooksHookResult(dict):
 class GetNotificationsNotificationResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
+                 message_encoding: _builtins.str,
                  notification_arn: _builtins.str,
                  notification_types: Sequence[_builtins.str],
-                 scaling_group_id: _builtins.str):
+                 scaling_group_id: _builtins.str,
+                 time_zone: _builtins.str):
         """
         :param _builtins.str id: ID of the notification.
+        :param _builtins.str message_encoding: (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+               - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+               - `Base64`: The content is Base64-encoded.
         :param _builtins.str notification_arn: The Alibaba Cloud Resource Name (ARN) for the notification object.
         :param Sequence[_builtins.str] notification_types: The notification types of Auto Scaling events and resource changes.
         :param _builtins.str scaling_group_id: Scaling group id the notifications belong to.
+        :param _builtins.str time_zone: (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
         """
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "message_encoding", message_encoding)
         pulumi.set(__self__, "notification_arn", notification_arn)
         pulumi.set(__self__, "notification_types", notification_types)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        pulumi.set(__self__, "time_zone", time_zone)
 
     @_builtins.property
     @pulumi.getter
@@ -3451,6 +3491,16 @@ class GetNotificationsNotificationResult(dict):
         ID of the notification.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="messageEncoding")
+    def message_encoding(self) -> _builtins.str:
+        """
+        (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+        - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+        - `Base64`: The content is Base64-encoded.
+        """
+        return pulumi.get(self, "message_encoding")
 
     @_builtins.property
     @pulumi.getter(name="notificationArn")
@@ -3475,6 +3525,14 @@ class GetNotificationsNotificationResult(dict):
         Scaling group id the notifications belong to.
         """
         return pulumi.get(self, "scaling_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+        """
+        return pulumi.get(self, "time_zone")
 
 
 @pulumi.output_type

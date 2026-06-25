@@ -1531,7 +1531,7 @@ type OriginPoolOrigin struct {
 	// Origin Name.
 	Name *string `pulumi:"name"`
 	// Origin ID.
-	OriginId *int `pulumi:"originId"`
+	OriginId *string `pulumi:"originId"`
 	// Source station type:
 	// ip_domain: ip or domain name type origin station;
 	// - `OSS`:OSS address source station;
@@ -1564,7 +1564,7 @@ type OriginPoolOriginArgs struct {
 	// Origin Name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Origin ID.
-	OriginId pulumi.IntPtrInput `pulumi:"originId"`
+	OriginId pulumi.StringPtrInput `pulumi:"originId"`
 	// Source station type:
 	// ip_domain: ip or domain name type origin station;
 	// - `OSS`:OSS address source station;
@@ -1651,8 +1651,8 @@ func (o OriginPoolOriginOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Origin ID.
-func (o OriginPoolOriginOutput) OriginId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OriginPoolOrigin) *int { return v.OriginId }).(pulumi.IntPtrOutput)
+func (o OriginPoolOriginOutput) OriginId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.OriginId }).(pulumi.StringPtrOutput)
 }
 
 // Source station type:
@@ -10639,6 +10639,925 @@ func (o WaitingRoomHostNameAndPathArrayOutput) Index(i pulumi.IntInput) WaitingR
 	}).(WaitingRoomHostNameAndPathOutput)
 }
 
+type GetCacheReserveInstancesInstance struct {
+	// The ID of the Cache Reserve Instance.
+	CacheReserveInstanceId string `pulumi:"cacheReserveInstanceId"`
+	// The region where the cache reserve instance is used.
+	CrRegion string `pulumi:"crRegion"`
+	// The time when the instance was created.
+	CreateTime string `pulumi:"createTime"`
+	// The expiration time of the instance.
+	ExpireTime string `pulumi:"expireTime"`
+	// The ID of the Cache Reserve Instance.
+	Id string `pulumi:"id"`
+	// The payment type of the resource.
+	PaymentType string `pulumi:"paymentType"`
+	// The purchase duration of the instance, in months.
+	Period int `pulumi:"period"`
+	// The cache reserve capacity, in GB.
+	QuotaGb int `pulumi:"quotaGb"`
+	// The status of the cache reserve instance. Valid values: `online`, `offline`, `disable`, `overdue`.
+	Status string `pulumi:"status"`
+}
+
+// GetCacheReserveInstancesInstanceInput is an input type that accepts GetCacheReserveInstancesInstanceArgs and GetCacheReserveInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetCacheReserveInstancesInstanceInput` via:
+//
+//	GetCacheReserveInstancesInstanceArgs{...}
+type GetCacheReserveInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetCacheReserveInstancesInstanceOutput() GetCacheReserveInstancesInstanceOutput
+	ToGetCacheReserveInstancesInstanceOutputWithContext(context.Context) GetCacheReserveInstancesInstanceOutput
+}
+
+type GetCacheReserveInstancesInstanceArgs struct {
+	// The ID of the Cache Reserve Instance.
+	CacheReserveInstanceId pulumi.StringInput `pulumi:"cacheReserveInstanceId"`
+	// The region where the cache reserve instance is used.
+	CrRegion pulumi.StringInput `pulumi:"crRegion"`
+	// The time when the instance was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The expiration time of the instance.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The ID of the Cache Reserve Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The payment type of the resource.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The purchase duration of the instance, in months.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The cache reserve capacity, in GB.
+	QuotaGb pulumi.IntInput `pulumi:"quotaGb"`
+	// The status of the cache reserve instance. Valid values: `online`, `offline`, `disable`, `overdue`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCacheReserveInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCacheReserveInstancesInstance)(nil)).Elem()
+}
+
+func (i GetCacheReserveInstancesInstanceArgs) ToGetCacheReserveInstancesInstanceOutput() GetCacheReserveInstancesInstanceOutput {
+	return i.ToGetCacheReserveInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetCacheReserveInstancesInstanceArgs) ToGetCacheReserveInstancesInstanceOutputWithContext(ctx context.Context) GetCacheReserveInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCacheReserveInstancesInstanceOutput)
+}
+
+// GetCacheReserveInstancesInstanceArrayInput is an input type that accepts GetCacheReserveInstancesInstanceArray and GetCacheReserveInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetCacheReserveInstancesInstanceArrayInput` via:
+//
+//	GetCacheReserveInstancesInstanceArray{ GetCacheReserveInstancesInstanceArgs{...} }
+type GetCacheReserveInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetCacheReserveInstancesInstanceArrayOutput() GetCacheReserveInstancesInstanceArrayOutput
+	ToGetCacheReserveInstancesInstanceArrayOutputWithContext(context.Context) GetCacheReserveInstancesInstanceArrayOutput
+}
+
+type GetCacheReserveInstancesInstanceArray []GetCacheReserveInstancesInstanceInput
+
+func (GetCacheReserveInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCacheReserveInstancesInstance)(nil)).Elem()
+}
+
+func (i GetCacheReserveInstancesInstanceArray) ToGetCacheReserveInstancesInstanceArrayOutput() GetCacheReserveInstancesInstanceArrayOutput {
+	return i.ToGetCacheReserveInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetCacheReserveInstancesInstanceArray) ToGetCacheReserveInstancesInstanceArrayOutputWithContext(ctx context.Context) GetCacheReserveInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCacheReserveInstancesInstanceArrayOutput)
+}
+
+type GetCacheReserveInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetCacheReserveInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCacheReserveInstancesInstance)(nil)).Elem()
+}
+
+func (o GetCacheReserveInstancesInstanceOutput) ToGetCacheReserveInstancesInstanceOutput() GetCacheReserveInstancesInstanceOutput {
+	return o
+}
+
+func (o GetCacheReserveInstancesInstanceOutput) ToGetCacheReserveInstancesInstanceOutputWithContext(ctx context.Context) GetCacheReserveInstancesInstanceOutput {
+	return o
+}
+
+// The ID of the Cache Reserve Instance.
+func (o GetCacheReserveInstancesInstanceOutput) CacheReserveInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.CacheReserveInstanceId }).(pulumi.StringOutput)
+}
+
+// The region where the cache reserve instance is used.
+func (o GetCacheReserveInstancesInstanceOutput) CrRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.CrRegion }).(pulumi.StringOutput)
+}
+
+// The time when the instance was created.
+func (o GetCacheReserveInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The expiration time of the instance.
+func (o GetCacheReserveInstancesInstanceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Cache Reserve Instance.
+func (o GetCacheReserveInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The payment type of the resource.
+func (o GetCacheReserveInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The purchase duration of the instance, in months.
+func (o GetCacheReserveInstancesInstanceOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The cache reserve capacity, in GB.
+func (o GetCacheReserveInstancesInstanceOutput) QuotaGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) int { return v.QuotaGb }).(pulumi.IntOutput)
+}
+
+// The status of the cache reserve instance. Valid values: `online`, `offline`, `disable`, `overdue`.
+func (o GetCacheReserveInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCacheReserveInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCacheReserveInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCacheReserveInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCacheReserveInstancesInstance)(nil)).Elem()
+}
+
+func (o GetCacheReserveInstancesInstanceArrayOutput) ToGetCacheReserveInstancesInstanceArrayOutput() GetCacheReserveInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetCacheReserveInstancesInstanceArrayOutput) ToGetCacheReserveInstancesInstanceArrayOutputWithContext(ctx context.Context) GetCacheReserveInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetCacheReserveInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetCacheReserveInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCacheReserveInstancesInstance {
+		return vs[0].([]GetCacheReserveInstancesInstance)[vs[1].(int)]
+	}).(GetCacheReserveInstancesInstanceOutput)
+}
+
+type GetHttpsBasicConfigurationsConfiguration struct {
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	Ciphersuite string `pulumi:"ciphersuite"`
+	// Cipher suite group.
+	CiphersuiteGroup string `pulumi:"ciphersuiteGroup"`
+	// The ID of the Configuration.
+	ConfigId string `pulumi:"configId"`
+	// The type of the Configuration. Valid values: `global`, `rule`.
+	ConfigType string `pulumi:"configType"`
+	// Whether to enable HTTP2.
+	Http2 string `pulumi:"http2"`
+	// Whether to enable HTTP3.
+	Http3 string `pulumi:"http3"`
+	// Whether to enable HTTPS.
+	Https string `pulumi:"https"`
+	// The ID of the Https Basic Configuration.
+	Id string `pulumi:"id"`
+	// Whether to enable OCSP.
+	OcspStapling string `pulumi:"ocspStapling"`
+	// Rule content.
+	Rule string `pulumi:"rule"`
+	// Rule switch.
+	RuleEnable string `pulumi:"ruleEnable"`
+	// The name of the rule.
+	RuleName string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values.
+	Sequence int `pulumi:"sequence"`
+	// Whether to enable TLS1.0.
+	Tls10 string `pulumi:"tls10"`
+	// Whether to enable TLS1.1.
+	Tls11 string `pulumi:"tls11"`
+	// Whether to enable TLS1.2.
+	Tls12 string `pulumi:"tls12"`
+	// Whether to enable TLS1.3.
+	Tls13 string `pulumi:"tls13"`
+}
+
+// GetHttpsBasicConfigurationsConfigurationInput is an input type that accepts GetHttpsBasicConfigurationsConfigurationArgs and GetHttpsBasicConfigurationsConfigurationOutput values.
+// You can construct a concrete instance of `GetHttpsBasicConfigurationsConfigurationInput` via:
+//
+//	GetHttpsBasicConfigurationsConfigurationArgs{...}
+type GetHttpsBasicConfigurationsConfigurationInput interface {
+	pulumi.Input
+
+	ToGetHttpsBasicConfigurationsConfigurationOutput() GetHttpsBasicConfigurationsConfigurationOutput
+	ToGetHttpsBasicConfigurationsConfigurationOutputWithContext(context.Context) GetHttpsBasicConfigurationsConfigurationOutput
+}
+
+type GetHttpsBasicConfigurationsConfigurationArgs struct {
+	// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+	Ciphersuite pulumi.StringInput `pulumi:"ciphersuite"`
+	// Cipher suite group.
+	CiphersuiteGroup pulumi.StringInput `pulumi:"ciphersuiteGroup"`
+	// The ID of the Configuration.
+	ConfigId pulumi.StringInput `pulumi:"configId"`
+	// The type of the Configuration. Valid values: `global`, `rule`.
+	ConfigType pulumi.StringInput `pulumi:"configType"`
+	// Whether to enable HTTP2.
+	Http2 pulumi.StringInput `pulumi:"http2"`
+	// Whether to enable HTTP3.
+	Http3 pulumi.StringInput `pulumi:"http3"`
+	// Whether to enable HTTPS.
+	Https pulumi.StringInput `pulumi:"https"`
+	// The ID of the Https Basic Configuration.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to enable OCSP.
+	OcspStapling pulumi.StringInput `pulumi:"ocspStapling"`
+	// Rule content.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Rule switch.
+	RuleEnable pulumi.StringInput `pulumi:"ruleEnable"`
+	// The name of the rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values.
+	Sequence pulumi.IntInput `pulumi:"sequence"`
+	// Whether to enable TLS1.0.
+	Tls10 pulumi.StringInput `pulumi:"tls10"`
+	// Whether to enable TLS1.1.
+	Tls11 pulumi.StringInput `pulumi:"tls11"`
+	// Whether to enable TLS1.2.
+	Tls12 pulumi.StringInput `pulumi:"tls12"`
+	// Whether to enable TLS1.3.
+	Tls13 pulumi.StringInput `pulumi:"tls13"`
+}
+
+func (GetHttpsBasicConfigurationsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHttpsBasicConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (i GetHttpsBasicConfigurationsConfigurationArgs) ToGetHttpsBasicConfigurationsConfigurationOutput() GetHttpsBasicConfigurationsConfigurationOutput {
+	return i.ToGetHttpsBasicConfigurationsConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetHttpsBasicConfigurationsConfigurationArgs) ToGetHttpsBasicConfigurationsConfigurationOutputWithContext(ctx context.Context) GetHttpsBasicConfigurationsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHttpsBasicConfigurationsConfigurationOutput)
+}
+
+// GetHttpsBasicConfigurationsConfigurationArrayInput is an input type that accepts GetHttpsBasicConfigurationsConfigurationArray and GetHttpsBasicConfigurationsConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetHttpsBasicConfigurationsConfigurationArrayInput` via:
+//
+//	GetHttpsBasicConfigurationsConfigurationArray{ GetHttpsBasicConfigurationsConfigurationArgs{...} }
+type GetHttpsBasicConfigurationsConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetHttpsBasicConfigurationsConfigurationArrayOutput() GetHttpsBasicConfigurationsConfigurationArrayOutput
+	ToGetHttpsBasicConfigurationsConfigurationArrayOutputWithContext(context.Context) GetHttpsBasicConfigurationsConfigurationArrayOutput
+}
+
+type GetHttpsBasicConfigurationsConfigurationArray []GetHttpsBasicConfigurationsConfigurationInput
+
+func (GetHttpsBasicConfigurationsConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHttpsBasicConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (i GetHttpsBasicConfigurationsConfigurationArray) ToGetHttpsBasicConfigurationsConfigurationArrayOutput() GetHttpsBasicConfigurationsConfigurationArrayOutput {
+	return i.ToGetHttpsBasicConfigurationsConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetHttpsBasicConfigurationsConfigurationArray) ToGetHttpsBasicConfigurationsConfigurationArrayOutputWithContext(ctx context.Context) GetHttpsBasicConfigurationsConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHttpsBasicConfigurationsConfigurationArrayOutput)
+}
+
+type GetHttpsBasicConfigurationsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetHttpsBasicConfigurationsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHttpsBasicConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (o GetHttpsBasicConfigurationsConfigurationOutput) ToGetHttpsBasicConfigurationsConfigurationOutput() GetHttpsBasicConfigurationsConfigurationOutput {
+	return o
+}
+
+func (o GetHttpsBasicConfigurationsConfigurationOutput) ToGetHttpsBasicConfigurationsConfigurationOutputWithContext(ctx context.Context) GetHttpsBasicConfigurationsConfigurationOutput {
+	return o
+}
+
+// Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Ciphersuite() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Ciphersuite }).(pulumi.StringOutput)
+}
+
+// Cipher suite group.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) CiphersuiteGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.CiphersuiteGroup }).(pulumi.StringOutput)
+}
+
+// The ID of the Configuration.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// The type of the Configuration. Valid values: `global`, `rule`.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// Whether to enable HTTP2.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Http2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Http2 }).(pulumi.StringOutput)
+}
+
+// Whether to enable HTTP3.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Http3() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Http3 }).(pulumi.StringOutput)
+}
+
+// Whether to enable HTTPS.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Https() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Https }).(pulumi.StringOutput)
+}
+
+// The ID of the Https Basic Configuration.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to enable OCSP.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) OcspStapling() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.OcspStapling }).(pulumi.StringOutput)
+}
+
+// Rule content.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Rule switch.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) RuleEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.RuleEnable }).(pulumi.StringOutput)
+}
+
+// The name of the rule.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The rule execution order prioritizes lower numerical values.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) int { return v.Sequence }).(pulumi.IntOutput)
+}
+
+// Whether to enable TLS1.0.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Tls10() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Tls10 }).(pulumi.StringOutput)
+}
+
+// Whether to enable TLS1.1.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Tls11() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Tls11 }).(pulumi.StringOutput)
+}
+
+// Whether to enable TLS1.2.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Tls12() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Tls12 }).(pulumi.StringOutput)
+}
+
+// Whether to enable TLS1.3.
+func (o GetHttpsBasicConfigurationsConfigurationOutput) Tls13() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHttpsBasicConfigurationsConfiguration) string { return v.Tls13 }).(pulumi.StringOutput)
+}
+
+type GetHttpsBasicConfigurationsConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHttpsBasicConfigurationsConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHttpsBasicConfigurationsConfiguration)(nil)).Elem()
+}
+
+func (o GetHttpsBasicConfigurationsConfigurationArrayOutput) ToGetHttpsBasicConfigurationsConfigurationArrayOutput() GetHttpsBasicConfigurationsConfigurationArrayOutput {
+	return o
+}
+
+func (o GetHttpsBasicConfigurationsConfigurationArrayOutput) ToGetHttpsBasicConfigurationsConfigurationArrayOutputWithContext(ctx context.Context) GetHttpsBasicConfigurationsConfigurationArrayOutput {
+	return o
+}
+
+func (o GetHttpsBasicConfigurationsConfigurationArrayOutput) Index(i pulumi.IntInput) GetHttpsBasicConfigurationsConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHttpsBasicConfigurationsConfiguration {
+		return vs[0].([]GetHttpsBasicConfigurationsConfiguration)[vs[1].(int)]
+	}).(GetHttpsBasicConfigurationsConfigurationOutput)
+}
+
+type GetNetworkOptimizationsOptimization struct {
+	// The ID of the Configuration.
+	ConfigId string `pulumi:"configId"`
+	// The type of the Configuration. Valid values: `global`, `rule`.
+	ConfigType string `pulumi:"configType"`
+	// Whether to enable GRPC.
+	Grpc string `pulumi:"grpc"`
+	// Whether to enable HTTP2 origin.
+	Http2Origin string `pulumi:"http2Origin"`
+	// The ID of the Network Optimization.
+	Id string `pulumi:"id"`
+	// Rule content.
+	Rule string `pulumi:"rule"`
+	// Rule switch.
+	RuleEnable string `pulumi:"ruleEnable"`
+	// The name of the rule.
+	RuleName string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values.
+	Sequence int `pulumi:"sequence"`
+	// The version of the site.
+	SiteVersion int `pulumi:"siteVersion"`
+	// Whether to enable smart routing service.
+	SmartRouting string `pulumi:"smartRouting"`
+	// Maximum upload file size.
+	UploadMaxFilesize string `pulumi:"uploadMaxFilesize"`
+	// Whether to enable Websocket.
+	Websocket string `pulumi:"websocket"`
+}
+
+// GetNetworkOptimizationsOptimizationInput is an input type that accepts GetNetworkOptimizationsOptimizationArgs and GetNetworkOptimizationsOptimizationOutput values.
+// You can construct a concrete instance of `GetNetworkOptimizationsOptimizationInput` via:
+//
+//	GetNetworkOptimizationsOptimizationArgs{...}
+type GetNetworkOptimizationsOptimizationInput interface {
+	pulumi.Input
+
+	ToGetNetworkOptimizationsOptimizationOutput() GetNetworkOptimizationsOptimizationOutput
+	ToGetNetworkOptimizationsOptimizationOutputWithContext(context.Context) GetNetworkOptimizationsOptimizationOutput
+}
+
+type GetNetworkOptimizationsOptimizationArgs struct {
+	// The ID of the Configuration.
+	ConfigId pulumi.StringInput `pulumi:"configId"`
+	// The type of the Configuration. Valid values: `global`, `rule`.
+	ConfigType pulumi.StringInput `pulumi:"configType"`
+	// Whether to enable GRPC.
+	Grpc pulumi.StringInput `pulumi:"grpc"`
+	// Whether to enable HTTP2 origin.
+	Http2Origin pulumi.StringInput `pulumi:"http2Origin"`
+	// The ID of the Network Optimization.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Rule content.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Rule switch.
+	RuleEnable pulumi.StringInput `pulumi:"ruleEnable"`
+	// The name of the rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values.
+	Sequence pulumi.IntInput `pulumi:"sequence"`
+	// The version of the site.
+	SiteVersion pulumi.IntInput `pulumi:"siteVersion"`
+	// Whether to enable smart routing service.
+	SmartRouting pulumi.StringInput `pulumi:"smartRouting"`
+	// Maximum upload file size.
+	UploadMaxFilesize pulumi.StringInput `pulumi:"uploadMaxFilesize"`
+	// Whether to enable Websocket.
+	Websocket pulumi.StringInput `pulumi:"websocket"`
+}
+
+func (GetNetworkOptimizationsOptimizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkOptimizationsOptimization)(nil)).Elem()
+}
+
+func (i GetNetworkOptimizationsOptimizationArgs) ToGetNetworkOptimizationsOptimizationOutput() GetNetworkOptimizationsOptimizationOutput {
+	return i.ToGetNetworkOptimizationsOptimizationOutputWithContext(context.Background())
+}
+
+func (i GetNetworkOptimizationsOptimizationArgs) ToGetNetworkOptimizationsOptimizationOutputWithContext(ctx context.Context) GetNetworkOptimizationsOptimizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkOptimizationsOptimizationOutput)
+}
+
+// GetNetworkOptimizationsOptimizationArrayInput is an input type that accepts GetNetworkOptimizationsOptimizationArray and GetNetworkOptimizationsOptimizationArrayOutput values.
+// You can construct a concrete instance of `GetNetworkOptimizationsOptimizationArrayInput` via:
+//
+//	GetNetworkOptimizationsOptimizationArray{ GetNetworkOptimizationsOptimizationArgs{...} }
+type GetNetworkOptimizationsOptimizationArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkOptimizationsOptimizationArrayOutput() GetNetworkOptimizationsOptimizationArrayOutput
+	ToGetNetworkOptimizationsOptimizationArrayOutputWithContext(context.Context) GetNetworkOptimizationsOptimizationArrayOutput
+}
+
+type GetNetworkOptimizationsOptimizationArray []GetNetworkOptimizationsOptimizationInput
+
+func (GetNetworkOptimizationsOptimizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkOptimizationsOptimization)(nil)).Elem()
+}
+
+func (i GetNetworkOptimizationsOptimizationArray) ToGetNetworkOptimizationsOptimizationArrayOutput() GetNetworkOptimizationsOptimizationArrayOutput {
+	return i.ToGetNetworkOptimizationsOptimizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkOptimizationsOptimizationArray) ToGetNetworkOptimizationsOptimizationArrayOutputWithContext(ctx context.Context) GetNetworkOptimizationsOptimizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkOptimizationsOptimizationArrayOutput)
+}
+
+type GetNetworkOptimizationsOptimizationOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkOptimizationsOptimizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkOptimizationsOptimization)(nil)).Elem()
+}
+
+func (o GetNetworkOptimizationsOptimizationOutput) ToGetNetworkOptimizationsOptimizationOutput() GetNetworkOptimizationsOptimizationOutput {
+	return o
+}
+
+func (o GetNetworkOptimizationsOptimizationOutput) ToGetNetworkOptimizationsOptimizationOutputWithContext(ctx context.Context) GetNetworkOptimizationsOptimizationOutput {
+	return o
+}
+
+// The ID of the Configuration.
+func (o GetNetworkOptimizationsOptimizationOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// The type of the Configuration. Valid values: `global`, `rule`.
+func (o GetNetworkOptimizationsOptimizationOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// Whether to enable GRPC.
+func (o GetNetworkOptimizationsOptimizationOutput) Grpc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.Grpc }).(pulumi.StringOutput)
+}
+
+// Whether to enable HTTP2 origin.
+func (o GetNetworkOptimizationsOptimizationOutput) Http2Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.Http2Origin }).(pulumi.StringOutput)
+}
+
+// The ID of the Network Optimization.
+func (o GetNetworkOptimizationsOptimizationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Rule content.
+func (o GetNetworkOptimizationsOptimizationOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Rule switch.
+func (o GetNetworkOptimizationsOptimizationOutput) RuleEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.RuleEnable }).(pulumi.StringOutput)
+}
+
+// The name of the rule.
+func (o GetNetworkOptimizationsOptimizationOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The rule execution order prioritizes lower numerical values.
+func (o GetNetworkOptimizationsOptimizationOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) int { return v.Sequence }).(pulumi.IntOutput)
+}
+
+// The version of the site.
+func (o GetNetworkOptimizationsOptimizationOutput) SiteVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) int { return v.SiteVersion }).(pulumi.IntOutput)
+}
+
+// Whether to enable smart routing service.
+func (o GetNetworkOptimizationsOptimizationOutput) SmartRouting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.SmartRouting }).(pulumi.StringOutput)
+}
+
+// Maximum upload file size.
+func (o GetNetworkOptimizationsOptimizationOutput) UploadMaxFilesize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.UploadMaxFilesize }).(pulumi.StringOutput)
+}
+
+// Whether to enable Websocket.
+func (o GetNetworkOptimizationsOptimizationOutput) Websocket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkOptimizationsOptimization) string { return v.Websocket }).(pulumi.StringOutput)
+}
+
+type GetNetworkOptimizationsOptimizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkOptimizationsOptimizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkOptimizationsOptimization)(nil)).Elem()
+}
+
+func (o GetNetworkOptimizationsOptimizationArrayOutput) ToGetNetworkOptimizationsOptimizationArrayOutput() GetNetworkOptimizationsOptimizationArrayOutput {
+	return o
+}
+
+func (o GetNetworkOptimizationsOptimizationArrayOutput) ToGetNetworkOptimizationsOptimizationArrayOutputWithContext(ctx context.Context) GetNetworkOptimizationsOptimizationArrayOutput {
+	return o
+}
+
+func (o GetNetworkOptimizationsOptimizationArrayOutput) Index(i pulumi.IntInput) GetNetworkOptimizationsOptimizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkOptimizationsOptimization {
+		return vs[0].([]GetNetworkOptimizationsOptimization)[vs[1].(int)]
+	}).(GetNetworkOptimizationsOptimizationOutput)
+}
+
+type GetOriginRulesRule struct {
+	// The ID of the Configuration.
+	ConfigId string `pulumi:"configId"`
+	// The type of the Configuration. Valid values: `global`, `rule`.
+	ConfigType string `pulumi:"configType"`
+	// Overrides the DNS record for the origin request.
+	DnsRecord string `pulumi:"dnsRecord"`
+	// Specifies whether to follow 302 redirects from the origin.
+	Follow302Enable string `pulumi:"follow302Enable"`
+	// The maximum number of 302 redirects to follow.
+	Follow302MaxTries string `pulumi:"follow302MaxTries"`
+	// Specifies whether to retain the original request parameters when following a redirect.
+	Follow302RetainArgs string `pulumi:"follow302RetainArgs"`
+	// Specifies whether to retain the original request header when following a redirect.
+	Follow302RetainHeader string `pulumi:"follow302RetainHeader"`
+	// The host to use for the origin request after following a 302 redirect.
+	Follow302TargetHost string `pulumi:"follow302TargetHost"`
+	// The ID of the Origin Rule.
+	Id string `pulumi:"id"`
+	// The Host header carried in the origin request.
+	OriginHost string `pulumi:"originHost"`
+	// The origin server port used for origin requests over HTTP.
+	OriginHttpPort string `pulumi:"originHttpPort"`
+	// The origin server port used for origin requests over HTTPS.
+	OriginHttpsPort string `pulumi:"originHttpsPort"`
+	// Specifies whether mTLS is enabled.
+	OriginMtls string `pulumi:"originMtls"`
+	// The read timeout, in seconds, for the origin server.
+	OriginReadTimeout string `pulumi:"originReadTimeout"`
+	// The protocol used for origin requests.
+	OriginScheme string `pulumi:"originScheme"`
+	// The SNI carried in the origin request.
+	OriginSni string `pulumi:"originSni"`
+	// Specifies whether to verify the origin server certificate.
+	OriginVerify string `pulumi:"originVerify"`
+	// Specifies whether to use range-based requests to retrieve files from the origin.
+	Range string `pulumi:"range"`
+	// The size of each chunk for range requests.
+	RangeChunkSize string `pulumi:"rangeChunkSize"`
+	// Rule content.
+	Rule string `pulumi:"rule"`
+	// Rule switch.
+	RuleEnable string `pulumi:"ruleEnable"`
+	// The name of the rule.
+	RuleName string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values.
+	Sequence int `pulumi:"sequence"`
+	// The version of the site.
+	SiteVersion int `pulumi:"siteVersion"`
+}
+
+// GetOriginRulesRuleInput is an input type that accepts GetOriginRulesRuleArgs and GetOriginRulesRuleOutput values.
+// You can construct a concrete instance of `GetOriginRulesRuleInput` via:
+//
+//	GetOriginRulesRuleArgs{...}
+type GetOriginRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetOriginRulesRuleOutput() GetOriginRulesRuleOutput
+	ToGetOriginRulesRuleOutputWithContext(context.Context) GetOriginRulesRuleOutput
+}
+
+type GetOriginRulesRuleArgs struct {
+	// The ID of the Configuration.
+	ConfigId pulumi.StringInput `pulumi:"configId"`
+	// The type of the Configuration. Valid values: `global`, `rule`.
+	ConfigType pulumi.StringInput `pulumi:"configType"`
+	// Overrides the DNS record for the origin request.
+	DnsRecord pulumi.StringInput `pulumi:"dnsRecord"`
+	// Specifies whether to follow 302 redirects from the origin.
+	Follow302Enable pulumi.StringInput `pulumi:"follow302Enable"`
+	// The maximum number of 302 redirects to follow.
+	Follow302MaxTries pulumi.StringInput `pulumi:"follow302MaxTries"`
+	// Specifies whether to retain the original request parameters when following a redirect.
+	Follow302RetainArgs pulumi.StringInput `pulumi:"follow302RetainArgs"`
+	// Specifies whether to retain the original request header when following a redirect.
+	Follow302RetainHeader pulumi.StringInput `pulumi:"follow302RetainHeader"`
+	// The host to use for the origin request after following a 302 redirect.
+	Follow302TargetHost pulumi.StringInput `pulumi:"follow302TargetHost"`
+	// The ID of the Origin Rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Host header carried in the origin request.
+	OriginHost pulumi.StringInput `pulumi:"originHost"`
+	// The origin server port used for origin requests over HTTP.
+	OriginHttpPort pulumi.StringInput `pulumi:"originHttpPort"`
+	// The origin server port used for origin requests over HTTPS.
+	OriginHttpsPort pulumi.StringInput `pulumi:"originHttpsPort"`
+	// Specifies whether mTLS is enabled.
+	OriginMtls pulumi.StringInput `pulumi:"originMtls"`
+	// The read timeout, in seconds, for the origin server.
+	OriginReadTimeout pulumi.StringInput `pulumi:"originReadTimeout"`
+	// The protocol used for origin requests.
+	OriginScheme pulumi.StringInput `pulumi:"originScheme"`
+	// The SNI carried in the origin request.
+	OriginSni pulumi.StringInput `pulumi:"originSni"`
+	// Specifies whether to verify the origin server certificate.
+	OriginVerify pulumi.StringInput `pulumi:"originVerify"`
+	// Specifies whether to use range-based requests to retrieve files from the origin.
+	Range pulumi.StringInput `pulumi:"range"`
+	// The size of each chunk for range requests.
+	RangeChunkSize pulumi.StringInput `pulumi:"rangeChunkSize"`
+	// Rule content.
+	Rule pulumi.StringInput `pulumi:"rule"`
+	// Rule switch.
+	RuleEnable pulumi.StringInput `pulumi:"ruleEnable"`
+	// The name of the rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values.
+	Sequence pulumi.IntInput `pulumi:"sequence"`
+	// The version of the site.
+	SiteVersion pulumi.IntInput `pulumi:"siteVersion"`
+}
+
+func (GetOriginRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOriginRulesRule)(nil)).Elem()
+}
+
+func (i GetOriginRulesRuleArgs) ToGetOriginRulesRuleOutput() GetOriginRulesRuleOutput {
+	return i.ToGetOriginRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetOriginRulesRuleArgs) ToGetOriginRulesRuleOutputWithContext(ctx context.Context) GetOriginRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOriginRulesRuleOutput)
+}
+
+// GetOriginRulesRuleArrayInput is an input type that accepts GetOriginRulesRuleArray and GetOriginRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetOriginRulesRuleArrayInput` via:
+//
+//	GetOriginRulesRuleArray{ GetOriginRulesRuleArgs{...} }
+type GetOriginRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetOriginRulesRuleArrayOutput() GetOriginRulesRuleArrayOutput
+	ToGetOriginRulesRuleArrayOutputWithContext(context.Context) GetOriginRulesRuleArrayOutput
+}
+
+type GetOriginRulesRuleArray []GetOriginRulesRuleInput
+
+func (GetOriginRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOriginRulesRule)(nil)).Elem()
+}
+
+func (i GetOriginRulesRuleArray) ToGetOriginRulesRuleArrayOutput() GetOriginRulesRuleArrayOutput {
+	return i.ToGetOriginRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetOriginRulesRuleArray) ToGetOriginRulesRuleArrayOutputWithContext(ctx context.Context) GetOriginRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOriginRulesRuleArrayOutput)
+}
+
+type GetOriginRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetOriginRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOriginRulesRule)(nil)).Elem()
+}
+
+func (o GetOriginRulesRuleOutput) ToGetOriginRulesRuleOutput() GetOriginRulesRuleOutput {
+	return o
+}
+
+func (o GetOriginRulesRuleOutput) ToGetOriginRulesRuleOutputWithContext(ctx context.Context) GetOriginRulesRuleOutput {
+	return o
+}
+
+// The ID of the Configuration.
+func (o GetOriginRulesRuleOutput) ConfigId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// The type of the Configuration. Valid values: `global`, `rule`.
+func (o GetOriginRulesRuleOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// Overrides the DNS record for the origin request.
+func (o GetOriginRulesRuleOutput) DnsRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.DnsRecord }).(pulumi.StringOutput)
+}
+
+// Specifies whether to follow 302 redirects from the origin.
+func (o GetOriginRulesRuleOutput) Follow302Enable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Follow302Enable }).(pulumi.StringOutput)
+}
+
+// The maximum number of 302 redirects to follow.
+func (o GetOriginRulesRuleOutput) Follow302MaxTries() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Follow302MaxTries }).(pulumi.StringOutput)
+}
+
+// Specifies whether to retain the original request parameters when following a redirect.
+func (o GetOriginRulesRuleOutput) Follow302RetainArgs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Follow302RetainArgs }).(pulumi.StringOutput)
+}
+
+// Specifies whether to retain the original request header when following a redirect.
+func (o GetOriginRulesRuleOutput) Follow302RetainHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Follow302RetainHeader }).(pulumi.StringOutput)
+}
+
+// The host to use for the origin request after following a 302 redirect.
+func (o GetOriginRulesRuleOutput) Follow302TargetHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Follow302TargetHost }).(pulumi.StringOutput)
+}
+
+// The ID of the Origin Rule.
+func (o GetOriginRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Host header carried in the origin request.
+func (o GetOriginRulesRuleOutput) OriginHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginHost }).(pulumi.StringOutput)
+}
+
+// The origin server port used for origin requests over HTTP.
+func (o GetOriginRulesRuleOutput) OriginHttpPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginHttpPort }).(pulumi.StringOutput)
+}
+
+// The origin server port used for origin requests over HTTPS.
+func (o GetOriginRulesRuleOutput) OriginHttpsPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginHttpsPort }).(pulumi.StringOutput)
+}
+
+// Specifies whether mTLS is enabled.
+func (o GetOriginRulesRuleOutput) OriginMtls() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginMtls }).(pulumi.StringOutput)
+}
+
+// The read timeout, in seconds, for the origin server.
+func (o GetOriginRulesRuleOutput) OriginReadTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginReadTimeout }).(pulumi.StringOutput)
+}
+
+// The protocol used for origin requests.
+func (o GetOriginRulesRuleOutput) OriginScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginScheme }).(pulumi.StringOutput)
+}
+
+// The SNI carried in the origin request.
+func (o GetOriginRulesRuleOutput) OriginSni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginSni }).(pulumi.StringOutput)
+}
+
+// Specifies whether to verify the origin server certificate.
+func (o GetOriginRulesRuleOutput) OriginVerify() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.OriginVerify }).(pulumi.StringOutput)
+}
+
+// Specifies whether to use range-based requests to retrieve files from the origin.
+func (o GetOriginRulesRuleOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The size of each chunk for range requests.
+func (o GetOriginRulesRuleOutput) RangeChunkSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.RangeChunkSize }).(pulumi.StringOutput)
+}
+
+// Rule content.
+func (o GetOriginRulesRuleOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+// Rule switch.
+func (o GetOriginRulesRuleOutput) RuleEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.RuleEnable }).(pulumi.StringOutput)
+}
+
+// The name of the rule.
+func (o GetOriginRulesRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// The rule execution order prioritizes lower numerical values.
+func (o GetOriginRulesRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) int { return v.Sequence }).(pulumi.IntOutput)
+}
+
+// The version of the site.
+func (o GetOriginRulesRuleOutput) SiteVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOriginRulesRule) int { return v.SiteVersion }).(pulumi.IntOutput)
+}
+
+type GetOriginRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOriginRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOriginRulesRule)(nil)).Elem()
+}
+
+func (o GetOriginRulesRuleArrayOutput) ToGetOriginRulesRuleArrayOutput() GetOriginRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetOriginRulesRuleArrayOutput) ToGetOriginRulesRuleArrayOutputWithContext(ctx context.Context) GetOriginRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetOriginRulesRuleArrayOutput) Index(i pulumi.IntInput) GetOriginRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOriginRulesRule {
+		return vs[0].([]GetOriginRulesRule)[vs[1].(int)]
+	}).(GetOriginRulesRuleOutput)
+}
+
 type GetSitesSite struct {
 	// Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
 	AccessType string `pulumi:"accessType"`
@@ -11314,6 +12233,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaCriteriaArrayInput)(nil)).Elem(), WafRuleSharedMatchCriteriaCriteriaCriteriaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathInput)(nil)).Elem(), WaitingRoomHostNameAndPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCacheReserveInstancesInstanceInput)(nil)).Elem(), GetCacheReserveInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCacheReserveInstancesInstanceArrayInput)(nil)).Elem(), GetCacheReserveInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHttpsBasicConfigurationsConfigurationInput)(nil)).Elem(), GetHttpsBasicConfigurationsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHttpsBasicConfigurationsConfigurationArrayInput)(nil)).Elem(), GetHttpsBasicConfigurationsConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkOptimizationsOptimizationInput)(nil)).Elem(), GetNetworkOptimizationsOptimizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkOptimizationsOptimizationArrayInput)(nil)).Elem(), GetNetworkOptimizationsOptimizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOriginRulesRuleInput)(nil)).Elem(), GetOriginRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOriginRulesRuleArrayInput)(nil)).Elem(), GetOriginRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesetsQueryArgsInput)(nil)).Elem(), GetWafRulesetsQueryArgsArgs{})
@@ -11444,6 +12371,14 @@ func init() {
 	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathArrayOutput{})
+	pulumi.RegisterOutputType(GetCacheReserveInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetCacheReserveInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetHttpsBasicConfigurationsConfigurationOutput{})
+	pulumi.RegisterOutputType(GetHttpsBasicConfigurationsConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkOptimizationsOptimizationOutput{})
+	pulumi.RegisterOutputType(GetNetworkOptimizationsOptimizationArrayOutput{})
+	pulumi.RegisterOutputType(GetOriginRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetOriginRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteArrayOutput{})
 	pulumi.RegisterOutputType(GetWafRulesetsQueryArgsOutput{})

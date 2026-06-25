@@ -51,6 +51,7 @@ __all__ = [
     'GetIpsecServersServerIpsecConfigResult',
     'GetIpv4GatewaysGatewayResult',
     'GetIpv6AddressesAddressResult',
+    'GetIpv6CidrBlocksBlockResult',
     'GetIpv6EgressRulesRuleResult',
     'GetIpv6GatewaysGatewayResult',
     'GetIpv6InternetBandwidthsBandwidthResult',
@@ -836,10 +837,10 @@ class NetworkIpv6CidrBlock(dict):
                  ipv6_cidr_block: Optional[_builtins.str] = None,
                  ipv6_isp: Optional[_builtins.str] = None):
         """
-        :param _builtins.str ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
+        :param _builtins.str ipv6_cidr_block: The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
                
                > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
-        :param _builtins.str ipv6_isp: The IPv6 address segment type of the VPC. Value:
+        :param _builtins.str ipv6_isp: The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
                - `BGP` (default): Alibaba Cloud BGP IPv6.
                - `ChinaMobile`: China Mobile (single line).
                - `ChinaUnicom`: China Unicom (single line).
@@ -856,7 +857,7 @@ class NetworkIpv6CidrBlock(dict):
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[_builtins.str]:
         """
-        The IPv6 CIDR block of the default VPC.
+        The IPv6 CIDR block of the default VPC. Please use the new resource `vpc.Ipv6CidrBlock`.
 
         > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
         """
@@ -866,7 +867,7 @@ class NetworkIpv6CidrBlock(dict):
     @pulumi.getter(name="ipv6Isp")
     def ipv6_isp(self) -> Optional[_builtins.str]:
         """
-        The IPv6 address segment type of the VPC. Value:
+        The IPv6 address segment type of the VPC. Please use the new resource `vpc.Ipv6CidrBlock`. Value:
         - `BGP` (default): Alibaba Cloud BGP IPv6.
         - `ChinaMobile`: China Mobile (single line).
         - `ChinaUnicom`: China Unicom (single line).
@@ -3860,6 +3861,35 @@ class GetIpv6AddressesAddressResult(dict):
 
 
 @pulumi.output_type
+class GetIpv6CidrBlocksBlockResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 ipv6_cidr_block: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str ipv6_cidr_block: The additional IPv6 CIDR block to be removed.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> _builtins.str:
+        """
+        The additional IPv6 CIDR block to be removed.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
+
+
+@pulumi.output_type
 class GetIpv6EgressRulesRuleResult(dict):
     def __init__(__self__, *,
                  description: _builtins.str,
@@ -6504,6 +6534,7 @@ class GetSwitchesVswitchResult(dict):
                  cidr_block: _builtins.str,
                  creation_time: _builtins.str,
                  description: _builtins.str,
+                 enable_ipv6: _builtins.bool,
                  id: _builtins.str,
                  ipv6_cidr_block: _builtins.str,
                  is_default: _builtins.bool,
@@ -6521,6 +6552,7 @@ class GetSwitchesVswitchResult(dict):
         :param _builtins.str cidr_block: Filter results by a specific CIDR block. For example: "172.16.0.0/12".
         :param _builtins.str creation_time: Time of creation.
         :param _builtins.str description: Description of the vSwitch.
+        :param _builtins.bool enable_ipv6: Whether the IPv6 function is enabled in the vSwitch.
         :param _builtins.str id: ID of the vSwitch.
         :param _builtins.str ipv6_cidr_block: The IPv6 CIDR block of the switch.
         :param _builtins.bool is_default: Indicate whether the vSwitch is created by the system.
@@ -6538,6 +6570,7 @@ class GetSwitchesVswitchResult(dict):
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         pulumi.set(__self__, "is_default", is_default)
@@ -6582,6 +6615,14 @@ class GetSwitchesVswitchResult(dict):
         Description of the vSwitch.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="enableIpv6")
+    def enable_ipv6(self) -> _builtins.bool:
+        """
+        Whether the IPv6 function is enabled in the vSwitch.
+        """
+        return pulumi.get(self, "enable_ipv6")
 
     @_builtins.property
     @pulumi.getter

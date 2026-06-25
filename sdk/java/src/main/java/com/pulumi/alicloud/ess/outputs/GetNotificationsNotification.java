@@ -17,6 +17,13 @@ public final class GetNotificationsNotification {
      */
     private String id;
     /**
+     * @return (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+     * - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+     * - `Base64`: The content is Base64-encoded.
+     * 
+     */
+    private String messageEncoding;
+    /**
      * @return The Alibaba Cloud Resource Name (ARN) for the notification object.
      * 
      */
@@ -31,6 +38,11 @@ public final class GetNotificationsNotification {
      * 
      */
     private String scalingGroupId;
+    /**
+     * @return (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+     * 
+     */
+    private String timeZone;
 
     private GetNotificationsNotification() {}
     /**
@@ -39,6 +51,15 @@ public final class GetNotificationsNotification {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+     * - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+     * - `Base64`: The content is Base64-encoded.
+     * 
+     */
+    public String messageEncoding() {
+        return this.messageEncoding;
     }
     /**
      * @return The Alibaba Cloud Resource Name (ARN) for the notification object.
@@ -61,6 +82,13 @@ public final class GetNotificationsNotification {
     public String scalingGroupId() {
         return this.scalingGroupId;
     }
+    /**
+     * @return (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+     * 
+     */
+    public String timeZone() {
+        return this.timeZone;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -72,16 +100,20 @@ public final class GetNotificationsNotification {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private String messageEncoding;
         private String notificationArn;
         private List<String> notificationTypes;
         private String scalingGroupId;
+        private String timeZone;
         public Builder() {}
         public Builder(GetNotificationsNotification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.messageEncoding = defaults.messageEncoding;
     	      this.notificationArn = defaults.notificationArn;
     	      this.notificationTypes = defaults.notificationTypes;
     	      this.scalingGroupId = defaults.scalingGroupId;
+    	      this.timeZone = defaults.timeZone;
         }
 
         @CustomType.Setter
@@ -90,6 +122,14 @@ public final class GetNotificationsNotification {
               throw new MissingRequiredPropertyException("GetNotificationsNotification", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder messageEncoding(String messageEncoding) {
+            if (messageEncoding == null) {
+              throw new MissingRequiredPropertyException("GetNotificationsNotification", "messageEncoding");
+            }
+            this.messageEncoding = messageEncoding;
             return this;
         }
         @CustomType.Setter
@@ -119,12 +159,22 @@ public final class GetNotificationsNotification {
             this.scalingGroupId = scalingGroupId;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeZone(String timeZone) {
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetNotificationsNotification", "timeZone");
+            }
+            this.timeZone = timeZone;
+            return this;
+        }
         public GetNotificationsNotification build() {
             final var _resultValue = new GetNotificationsNotification();
             _resultValue.id = id;
+            _resultValue.messageEncoding = messageEncoding;
             _resultValue.notificationArn = notificationArn;
             _resultValue.notificationTypes = notificationTypes;
             _resultValue.scalingGroupId = scalingGroupId;
+            _resultValue.timeZone = timeZone;
             return _resultValue;
         }
     }

@@ -132,6 +132,10 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
+     * A collection of feature attributes. See `options` below.
+     */
+    declare public readonly options: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentOptions>;
+    /**
      * The entity that pays the fees of the network instance. Valid values:
      *
      * - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -231,6 +235,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["options"] = state?.options;
             resourceInputs["orderType"] = state?.orderType;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["regionId"] = state?.regionId;
@@ -260,6 +265,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
             resourceInputs["cenId"] = args?.cenId;
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["options"] = args?.options;
             resourceInputs["orderType"] = args?.orderType;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["resourceType"] = args?.resourceType;
@@ -312,6 +318,10 @@ export interface TransitRouterVpcAttachmentState {
      * Whether to forcibly delete the VPC connection. The value is:
      */
     forceDelete?: pulumi.Input<boolean | undefined>;
+    /**
+     * A collection of feature attributes. See `options` below.
+     */
+    options?: pulumi.Input<inputs.cen.TransitRouterVpcAttachmentOptions | undefined>;
     /**
      * The entity that pays the fees of the network instance. Valid values:
      *
@@ -419,6 +429,10 @@ export interface TransitRouterVpcAttachmentArgs {
      * Whether to forcibly delete the VPC connection. The value is:
      */
     forceDelete?: pulumi.Input<boolean | undefined>;
+    /**
+     * A collection of feature attributes. See `options` below.
+     */
+    options?: pulumi.Input<inputs.cen.TransitRouterVpcAttachmentOptions | undefined>;
     /**
      * The entity that pays the fees of the network instance. Valid values:
      *

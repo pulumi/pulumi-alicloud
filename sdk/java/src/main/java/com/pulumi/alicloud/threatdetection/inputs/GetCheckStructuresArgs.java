@@ -18,14 +18,14 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
     public static final GetCheckStructuresArgs Empty = new GetCheckStructuresArgs();
 
     /**
-     * The page number.
+     * The page number. Must be greater than 0.
      * 
      */
     @Import(name="currentPage")
     private @Nullable Output<Integer> currentPage;
 
     /**
-     * @return The page number.
+     * @return The page number. Must be greater than 0.
      * 
      */
     public Optional<Output<Integer>> currentPage() {
@@ -33,14 +33,14 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * A list of Check Structure IDs.
+     * A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of Check Structure IDs.
+     * @return A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -48,14 +48,14 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+     * @return The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      * 
      */
     public Optional<Output<String>> lang() {
@@ -75,6 +75,21 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
      */
     public Optional<Output<String>> outputFile() {
         return Optional.ofNullable(this.outputFile);
+    }
+
+    /**
+     * Number of records per page. Must be greater than 0.
+     * 
+     */
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
+
+    /**
+     * @return Number of records per page. Must be greater than 0.
+     * 
+     */
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     /**
@@ -99,6 +114,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         this.ids = $.ids;
         this.lang = $.lang;
         this.outputFile = $.outputFile;
+        this.pageSize = $.pageSize;
         this.taskSources = $.taskSources;
     }
 
@@ -121,7 +137,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param currentPage The page number.
+         * @param currentPage The page number. Must be greater than 0.
          * 
          * @return builder
          * 
@@ -132,7 +148,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param currentPage The page number.
+         * @param currentPage The page number. Must be greater than 0.
          * 
          * @return builder
          * 
@@ -142,7 +158,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of Check Structure IDs.
+         * @param ids A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
          * 
          * @return builder
          * 
@@ -153,7 +169,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of Check Structure IDs.
+         * @param ids A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
          * 
          * @return builder
          * 
@@ -163,7 +179,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ids A list of Check Structure IDs.
+         * @param ids A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
          * 
          * @return builder
          * 
@@ -173,7 +189,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param lang The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+         * @param lang The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
          * 
          * @return builder
          * 
@@ -184,7 +200,7 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param lang The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+         * @param lang The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
          * 
          * @return builder
          * 
@@ -212,6 +228,27 @@ public final class GetCheckStructuresArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
+        }
+
+        /**
+         * @param pageSize Number of records per page. Must be greater than 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param pageSize Number of records per page. Must be greater than 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
         }
 
         /**

@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a RDS Custom resource.
  * 
- * Dedicated RDS User host.
+ * RDS dedicated host for users.
  * 
  * For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
  * 
@@ -151,49 +151,55 @@ import javax.annotation.Nullable;
  * RDS Custom can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:rds/custom:Custom example &lt;id&gt;
+ * $ pulumi import alicloud:rds/custom:Custom example &lt;instance_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:rds/custom:Custom")
 public class Custom extends com.pulumi.resources.CustomResource {
     /**
-     * Represents the number of instances created
+     * Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+     * Valid values: `1` to `5`. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="amount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> amount;
 
     /**
-     * @return Represents the number of instances created
+     * @return Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+     * Valid values: `1` to `5`. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<Integer>> amount() {
         return Codegen.optional(this.amount);
     }
     /**
-     * Whether to pay automatically. Value range:
+     * Specifies whether to enable automatic payment. Valid values:
      * 
      */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically. Value range:
+     * @return Specifies whether to enable automatic payment. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+     * Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+     * @return Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
@@ -214,138 +220,142 @@ public class Custom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.createExtraParam);
     }
     /**
-     * Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+     * Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
      * 
      */
     @Export(name="createMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> createMode;
 
     /**
-     * @return Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+     * @return Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
      * 
      */
     public Output<Optional<String>> createMode() {
         return Codegen.optional(this.createMode);
     }
     /**
-     * Data disk See `dataDisk` below.
-     * 
-     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * List of data disks.   See `dataDisk` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,CustomDataDisk.class}, tree="[0,1]")
     private Output<List<CustomDataDisk>> dataDisks;
 
     /**
-     * @return Data disk See `dataDisk` below.
-     * 
-     * -&gt;**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+     * @return List of data disks.   See `dataDisk` below.
      * 
      */
     public Output<List<CustomDataDisk>> dataDisks() {
         return this.dataDisks;
     }
     /**
-     * The ID of the deployment set.
+     * Deployment set ID.
      * 
      */
     @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
     /**
-     * @return The ID of the deployment set.
+     * @return Deployment set ID.
      * 
      */
     public Output<Optional<String>> deploymentSetId() {
         return Codegen.optional(this.deploymentSetId);
     }
     /**
-     * Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+     * The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+     * @return The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * Instance configuration type, value range:
+     * The instance specification change type. Valid values:
      * 
-     * &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-     * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-     * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+     * &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+     * - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+     * - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> direction;
 
     /**
-     * @return Instance configuration type, value range:
+     * @return The instance specification change type. Valid values:
      * 
-     * &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-     * - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-     * - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+     * &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+     * - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+     * - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
      * 
      */
     public Output<Optional<String>> direction() {
         return Codegen.optional(this.direction);
     }
     /**
-     * Whether to pre-check the operation of creating an instance. Valid values:
+     * Specifies whether to perform a dry run of the instance creation request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check the operation of creating an instance. Valid values:
+     * @return Specifies whether to perform a dry run of the instance creation request. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Whether to forcibly release the running instance. Value: true/false
+     * Specifies whether to forcibly release a running instance. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Whether to forcibly release the running instance. Value: true/false
+     * @return Specifies whether to forcibly release a running instance. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * Whether to force shutdown. Value range:
+     * Specifies whether to force shut down the instance. Valid values:
      * 
      */
     @Export(name="forceStop", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceStop;
 
     /**
-     * @return Whether to force shutdown. Value range:
+     * @return Specifies whether to force shut down the instance. Valid values:
      * 
      */
     public Output<Optional<Boolean>> forceStop() {
         return Codegen.optional(this.forceStop);
     }
     /**
-     * The instance host name.
+     * The hostname of the instance.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
-     * @return The instance host name.
+     * @return The hostname of the instance.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     public Output<Optional<String>> hostName() {
@@ -354,6 +364,8 @@ public class Custom extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the image used by the instance.
      * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
@@ -361,303 +373,417 @@ public class Custom extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the image used by the instance.
      * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
      */
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
     }
     /**
-     * The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+     * The billing method. Valid values:
+     * - `Prepaid`: subscription.
+     * - `Postpaid`: pay-as-you-go.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
-     * @return The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+     * @return The billing method. Valid values:
+     * - `Prepaid`: subscription.
+     * - `Postpaid`: pay-as-you-go.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> instanceChargeType() {
         return Codegen.optional(this.instanceChargeType);
     }
     /**
-     * The type of the created RDS Custom dedicated host instance.
+     * The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+     * 
+     */
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
+    private Output<String> instanceName;
+
+    /**
+     * @return The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+     * 
+     */
+    public Output<String> instanceName() {
+        return this.instanceName;
+    }
+    /**
+     * The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the created RDS Custom dedicated host instance.
+     * @return The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * Reserved parameters are not supported.
+     * Reserved parameter. Not supported currently.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return Reserved parameter. Not supported currently.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * Reserved parameters are not supported.
+     * The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+     * Valid values: 0 to 1024. Default value: 0.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetMaxBandwidthOut;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+     * Valid values: 0 to 1024. Default value: 0.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<Integer>> internetMaxBandwidthOut() {
         return Codegen.optional(this.internetMaxBandwidthOut);
     }
     /**
-     * Reserved parameters are not supported.
+     * This parameter is reserved and currently unsupported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="ioOptimized", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ioOptimized;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return This parameter is reserved and currently unsupported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> ioOptimized() {
         return Codegen.optional(this.ioOptimized);
     }
     /**
-     * The key pair name. Only flyer names are supported.
+     * The name of the key pair. Only a single key pair name is supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
-     * @return The key pair name. Only flyer names are supported.
+     * @return The name of the key pair. Only a single key pair name is supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
     }
     /**
-     * The account and password of the instance.
+     * The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!{@literal @}#$%^&amp;*-_+=|{}[]:;&#39;,.?/`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The account and password of the instance.
+     * @return The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!{@literal @}#$%^&amp;*-_+=|{}[]:;&#39;,.?/`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * Prepaid renewal duration, unit: Month/Year.
+     * The subscription duration of the resource. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Prepaid renewal duration, unit: Month/Year.
+     * @return The subscription duration of the resource. Default value: `1`.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The unit of duration of the year-to-month billing method. Value range:
+     * The unit of subscription duration for the subscription billing method. Valid values:
      * - `Year`: Year
      * - `Month` (default): Month
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The unit of duration of the year-to-month billing method. Value range:
+     * @return The unit of subscription duration for the subscription billing method. Valid values:
      * - `Year`: Year
      * - `Month` (default): Month
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * The region ID. Callable DescribeRegions to get.
+     * The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+     * 
+     */
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
+    private Output<String> privateIpAddress;
+
+    /**
+     * @return The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+     * 
+     */
+    public Output<String> privateIpAddress() {
+        return this.privateIpAddress;
+    }
+    /**
+     * The region ID.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return The region ID. Callable DescribeRegions to get.
+     * @return The region ID.
      * 
      */
     public Output<String> regionId() {
         return this.regionId;
     }
     /**
-     * The ID of the resource group
+     * The resource group ID. You can call ListResourceGroups to obtain it.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The resource group ID. You can call ListResourceGroups to obtain it.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * Reserved parameters are not supported.
+     * This is a reserved parameter and is not currently supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="securityEnhancementStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityEnhancementStrategy;
 
     /**
-     * @return Reserved parameters are not supported.
+     * @return This is a reserved parameter and is not currently supported.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> securityEnhancementStrategy() {
         return Codegen.optional(this.securityEnhancementStrategy);
     }
     /**
-     * Security group list
+     * The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+     * 
+     * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
      * 
      */
     @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
-     * @return Security group list
+     * @return The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the &#34;Security groups&#34; section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+     * 
+     * &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
      * 
      */
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
     }
     /**
-     * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-     * - `NoSpot`: normal pay-as-you-go instances.
-     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+     * - `NoSpot`: A regular pay-as-you-go instance.
+     * - `SpotAsPriceGo`: The system automatically bids based on the current market price.
      * 
-     * Default value: **NoSpot * *.
+     * Default value: `NoSpot`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotStrategy;
 
     /**
-     * @return The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-     * - `NoSpot`: normal pay-as-you-go instances.
-     * - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+     * @return The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+     * - `NoSpot`: A regular pay-as-you-go instance.
+     * - `SpotAsPriceGo`: The system automatically bids based on the current market price.
      * 
-     * Default value: **NoSpot * *.
+     * Default value: `NoSpot`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> spotStrategy() {
         return Codegen.optional(this.spotStrategy);
     }
     /**
-     * The status of the resource
+     * The status of the instance. Valid values:
+     * - `Pending`: The instance is being created.
+     * - `Running`: The instance is running.
+     * - `Starting`: The instance is starting.
+     * - `Stopping`: The instance is stopping.
+     * - `Stopped`: The instance is stopped.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the instance. Valid values:
+     * - `Pending`: The instance is being created.
+     * - `Running`: The instance is running.
+     * - `Starting`: The instance is starting.
+     * - `Stopping`: The instance is stopping.
+     * - `Stopped`: The instance is stopped.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * The deployment type of RDS Custom. Valid values:
      * 
      */
     @Export(name="supportCase", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> supportCase;
 
     /**
-     * @return Supported scenarios: createMode:supportCase, for example: NATIVE(&#34;0&#34;, &#34;eni&#34;),RCK(&#34;1&#34;, &#34;rck&#34;),ACK_EDGE(&#34;1&#34;, &#34;edge&#34;);
+     * @return The deployment type of RDS Custom. Valid values:
      * 
      */
     public Output<Optional<String>> supportCase() {
         return Codegen.optional(this.supportCase);
     }
     /**
-     * System disk specifications. See `systemDisk` below.
+     * The system disk specification. See `systemDisk` below.
+     * 
+     * &gt; **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `alicloud.rds.Custom` resource.
      * 
      */
     @Export(name="systemDisk", refs={CustomSystemDisk.class}, tree="[0]")
     private Output</* @Nullable */ CustomSystemDisk> systemDisk;
 
     /**
-     * @return System disk specifications. See `systemDisk` below.
+     * @return The system disk specification. See `systemDisk` below.
+     * 
+     * &gt; **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `alicloud.rds.Custom` resource.
      * 
      */
     public Output<Optional<CustomSystemDisk>> systemDisk() {
         return Codegen.optional(this.systemDisk);
     }
     /**
-     * The tag of the resource
+     * The ID of the system disk attached to the Custom instance.
+     * 
+     */
+    @Export(name="systemDiskId", refs={String.class}, tree="[0]")
+    private Output<String> systemDiskId;
+
+    /**
+     * @return The ID of the system disk attached to the Custom instance.
+     * 
+     */
+    public Output<String> systemDiskId() {
+        return this.systemDiskId;
+    }
+    /**
+     * Details of the queried instances and their tags.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource
+     * @return Details of the queried instances and their tags.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * The network type InstanceNetworkType must be VPC.
+     * The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-     * The network type InstanceNetworkType must be VPC.
+     * @return The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
      * 
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
     }
     /**
-     * The zone ID  of the resource
+     * The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> zoneId;
+    private Output<String> zoneId;
 
     /**
-     * @return The zone ID  of the resource
+     * @return The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+     * 
+     * &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
      * 
      */
-    public Output<Optional<String>> zoneId() {
-        return Codegen.optional(this.zoneId);
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

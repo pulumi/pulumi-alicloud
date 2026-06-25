@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.esa.Routine;
- * import com.pulumi.alicloud.esa.RoutineArgs;
  * import com.pulumi.alicloud.esa.EsaFunctions;
  * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+ * import com.pulumi.alicloud.esa.Routine;
+ * import com.pulumi.alicloud.esa.RoutineArgs;
  * import com.pulumi.alicloud.esa.RoutineRelatedRecord;
  * import com.pulumi.alicloud.esa.RoutineRelatedRecordArgs;
  * import java.util.ArrayList;
@@ -53,19 +53,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultRoutine = new Routine("defaultRoutine", RoutineArgs.builder()
- *             .description("example-routine2")
- *             .name("example-routine2")
- *             .build());
- * 
  *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
  *             .planSubscribeType("enterpriseplan")
+ *             .build());
+ * 
+ *         var defaultRoutine = new Routine("defaultRoutine", RoutineArgs.builder()
+ *             .name(name)
  *             .build());
  * 
  *         var defaultRoutineRelatedRecord = new RoutineRelatedRecord("defaultRoutineRelatedRecord", RoutineRelatedRecordArgs.builder()
  *             .name(defaultRoutine.id())
  *             .recordName("tfexampleacc.com")
- *             .siteId("618651327383200")
+ *             .siteId(default_.sites()[0].id())
  *             .build());
  * 
  *     }
@@ -141,6 +140,20 @@ public class RoutineRelatedRecord extends com.pulumi.resources.CustomResource {
      */
     public Output<String> siteId() {
         return this.siteId;
+    }
+    /**
+     * (Available since v1.282.0) site name.
+     * 
+     */
+    @Export(name="siteName", refs={String.class}, tree="[0]")
+    private Output<String> siteName;
+
+    /**
+     * @return (Available since v1.282.0) site name.
+     * 
+     */
+    public Output<String> siteName() {
+        return this.siteName;
     }
 
     /**

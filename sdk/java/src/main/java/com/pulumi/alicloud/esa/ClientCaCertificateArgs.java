@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +48,21 @@ public final class ClientCaCertificateArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Client Ca certificate bound domain list.
+     * 
+     */
+    @Import(name="clientCaCertificateHostnames")
+    private @Nullable Output<List<String>> clientCaCertificateHostnames;
+
+    /**
+     * @return Client Ca certificate bound domain list.
+     * 
+     */
+    public Optional<Output<List<String>>> clientCaCertificateHostnames() {
+        return Optional.ofNullable(this.clientCaCertificateHostnames);
+    }
+
+    /**
      * Site Id
      * 
      */
@@ -66,6 +82,7 @@ public final class ClientCaCertificateArgs extends com.pulumi.resources.Resource
     private ClientCaCertificateArgs(ClientCaCertificateArgs $) {
         this.certificate = $.certificate;
         this.clientCaCertName = $.clientCaCertName;
+        this.clientCaCertificateHostnames = $.clientCaCertificateHostnames;
         this.siteId = $.siteId;
     }
 
@@ -127,6 +144,37 @@ public final class ClientCaCertificateArgs extends com.pulumi.resources.Resource
          */
         public Builder clientCaCertName(String clientCaCertName) {
             return clientCaCertName(Output.of(clientCaCertName));
+        }
+
+        /**
+         * @param clientCaCertificateHostnames Client Ca certificate bound domain list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaCertificateHostnames(@Nullable Output<List<String>> clientCaCertificateHostnames) {
+            $.clientCaCertificateHostnames = clientCaCertificateHostnames;
+            return this;
+        }
+
+        /**
+         * @param clientCaCertificateHostnames Client Ca certificate bound domain list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaCertificateHostnames(List<String> clientCaCertificateHostnames) {
+            return clientCaCertificateHostnames(Output.of(clientCaCertificateHostnames));
+        }
+
+        /**
+         * @param clientCaCertificateHostnames Client Ca certificate bound domain list.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientCaCertificateHostnames(String... clientCaCertificateHostnames) {
+            return clientCaCertificateHostnames(List.of(clientCaCertificateHostnames));
         }
 
         /**

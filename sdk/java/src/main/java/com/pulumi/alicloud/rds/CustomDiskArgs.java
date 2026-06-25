@@ -49,16 +49,14 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
-     * Default value: empty.
+     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
-     * Default value: empty.
+     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
      * 
      */
     public Optional<Output<String>> description() {
@@ -81,16 +79,14 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      * 
      */
     @Import(name="diskName")
     private @Nullable Output<String> diskName;
 
     /**
-     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      * 
      */
     public Optional<Output<String>> diskName() {
@@ -334,8 +330,7 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
-         * Default value: empty.
+         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
          * 
          * @return builder
          * 
@@ -346,8 +341,7 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
-         * Default value: empty.
+         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
          * 
          * @return builder
          * 
@@ -378,8 +372,7 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-         * Default value: empty.
+         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
          * 
          * @return builder
          * 
@@ -390,8 +383,7 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-         * Default value: empty.
+         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
          * 
          * @return builder
          * 

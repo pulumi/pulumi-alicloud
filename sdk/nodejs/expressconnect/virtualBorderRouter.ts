@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Express Connect Virtual Border Router resource.
  *
+ * VBR VBR instance.
+ *
  * For information about Express Connect Virtual Border Router and how to use it, see [What is Virtual Border Router](https://www.alibabacloud.com/help/en/doc-detail/44854.htm).
  *
  * > **NOTE:** Available since v1.134.0.
@@ -49,7 +51,7 @@ import * as utilities from "../utilities";
  * Express Connect Virtual Border Router can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <id>
+ * $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example <vbr_id>
  * ```
  */
 export class VirtualBorderRouter extends pulumi.CustomResource {
@@ -87,7 +89,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      */
     declare public readonly associatedPhysicalConnections: pulumi.Output<string | undefined>;
     /**
-     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
@@ -106,8 +108,8 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      */
     declare public readonly detectMultiplier: pulumi.Output<number>;
     /**
@@ -123,15 +125,15 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      */
     declare public readonly localIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
-     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      */
     declare public readonly minRxInterval: pulumi.Output<number>;
     /**
-     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      */
     declare public readonly minTxInterval: pulumi.Output<number>;
     /**
-     * Maximum transmission unit.
+     * Maximum transmission unit
      */
     declare public readonly mtu: pulumi.Output<number>;
     /**
@@ -155,27 +157,30 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      */
     declare public readonly physicalConnectionId: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.263.0) The ID of the route table of the VBR.
      */
     declare public /*out*/ readonly routeTableId: pulumi.Output<string>;
     /**
-     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * Whether to allow inter-IDC communication
      */
     declare public readonly sitelinkEnable: pulumi.Output<boolean | undefined>;
     /**
-     * The status of the VBR. Valid values: `active`, `terminated`.
+     * Status of the VBR
      */
     declare public readonly status: pulumi.Output<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     declare public readonly vbrOwnerId: pulumi.Output<string | undefined>;
     /**
@@ -284,7 +289,7 @@ export interface VirtualBorderRouterState {
      */
     associatedPhysicalConnections?: pulumi.Input<string | undefined>;
     /**
-     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
@@ -303,8 +308,8 @@ export interface VirtualBorderRouterState {
     description?: pulumi.Input<string | undefined>;
     /**
      * Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      */
     detectMultiplier?: pulumi.Input<number | undefined>;
     /**
@@ -320,15 +325,15 @@ export interface VirtualBorderRouterState {
      */
     localIpv6GatewayIp?: pulumi.Input<string | undefined>;
     /**
-     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      */
     minRxInterval?: pulumi.Input<number | undefined>;
     /**
-     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      */
     minTxInterval?: pulumi.Input<number | undefined>;
     /**
-     * Maximum transmission unit.
+     * Maximum transmission unit
      */
     mtu?: pulumi.Input<number | undefined>;
     /**
@@ -352,27 +357,30 @@ export interface VirtualBorderRouterState {
      */
     physicalConnectionId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.263.0) The ID of the route table of the VBR.
      */
     routeTableId?: pulumi.Input<string | undefined>;
     /**
-     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * Whether to allow inter-IDC communication
      */
     sitelinkEnable?: pulumi.Input<boolean | undefined>;
     /**
-     * The status of the VBR. Valid values: `active`, `terminated`.
+     * Status of the VBR
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     vbrOwnerId?: pulumi.Input<string | undefined>;
     /**
@@ -396,7 +404,7 @@ export interface VirtualBorderRouterArgs {
      */
     associatedPhysicalConnections?: pulumi.Input<string | undefined>;
     /**
-     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
@@ -411,8 +419,8 @@ export interface VirtualBorderRouterArgs {
     description?: pulumi.Input<string | undefined>;
     /**
      * Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      */
     detectMultiplier?: pulumi.Input<number | undefined>;
     /**
@@ -428,15 +436,15 @@ export interface VirtualBorderRouterArgs {
      */
     localIpv6GatewayIp?: pulumi.Input<string | undefined>;
     /**
-     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      */
     minRxInterval?: pulumi.Input<number | undefined>;
     /**
-     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      */
     minTxInterval?: pulumi.Input<number | undefined>;
     /**
-     * Maximum transmission unit.
+     * Maximum transmission unit
      */
     mtu?: pulumi.Input<number | undefined>;
     /**
@@ -460,23 +468,26 @@ export interface VirtualBorderRouterArgs {
      */
     physicalConnectionId: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * Whether to allow inter-IDC communication
      */
     sitelinkEnable?: pulumi.Input<boolean | undefined>;
     /**
-     * The status of the VBR. Valid values: `active`, `terminated`.
+     * Status of the VBR
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     *
+     * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     vbrOwnerId?: pulumi.Input<string | undefined>;
     /**

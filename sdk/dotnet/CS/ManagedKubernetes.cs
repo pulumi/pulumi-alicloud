@@ -469,9 +469,14 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        /// The cluster specifications of kubernetes cluster, which can be empty. Valid values:
         /// * ack.standard : Basic managed clusters.
         /// * ack.pro.small : Professional managed clusters.
+        /// * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+        /// * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+        /// * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+        /// 
+        /// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         /// </summary>
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
@@ -885,9 +890,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterDomain { get; set; }
 
         /// <summary>
-        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        /// The cluster specifications of kubernetes cluster, which can be empty. Valid values:
         /// * ack.standard : Basic managed clusters.
         /// * ack.pro.small : Professional managed clusters.
+        /// * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+        /// * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+        /// * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+        /// 
+        /// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
@@ -1270,9 +1280,14 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterDomain { get; set; }
 
         /// <summary>
-        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        /// The cluster specifications of kubernetes cluster, which can be empty. Valid values:
         /// * ack.standard : Basic managed clusters.
         /// * ack.pro.small : Professional managed clusters.
+        /// * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+        /// * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+        /// * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+        /// 
+        /// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }

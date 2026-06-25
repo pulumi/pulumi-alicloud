@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCheckStructuresStructureStandardRequirementResult> Requirements;
         /// <summary>
-        /// The display name of the standard for the check item.
+        /// The display name of the section for the check item.
         /// </summary>
         public readonly string ShowName;
         /// <summary>
-        /// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+        /// The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
         /// </summary>
         public readonly string Type;
 

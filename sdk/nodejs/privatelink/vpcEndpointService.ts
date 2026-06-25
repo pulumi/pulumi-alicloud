@@ -75,7 +75,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     declare public readonly autoAcceptConnection: pulumi.Output<boolean | undefined>;
     /**
-     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      */
     declare public readonly connectBandwidth: pulumi.Output<number>;
     /**
@@ -125,6 +125,10 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
+     * The list of remote region IDs that are supported by the endpoint service.
+     */
+    declare public readonly supportedRegionLists: pulumi.Output<string[]>;
+    /**
      * The list of tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -164,6 +168,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["serviceResourceType"] = state?.serviceResourceType;
             resourceInputs["serviceSupportIpv6"] = state?.serviceSupportIpv6;
             resourceInputs["status"] = state?.status;
+            resourceInputs["supportedRegionLists"] = state?.supportedRegionLists;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcEndpointServiceName"] = state?.vpcEndpointServiceName;
             resourceInputs["zoneAffinityEnabled"] = state?.zoneAffinityEnabled;
@@ -178,6 +183,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["serviceDescription"] = args?.serviceDescription;
             resourceInputs["serviceResourceType"] = args?.serviceResourceType;
             resourceInputs["serviceSupportIpv6"] = args?.serviceSupportIpv6;
+            resourceInputs["supportedRegionLists"] = args?.supportedRegionLists;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["zoneAffinityEnabled"] = args?.zoneAffinityEnabled;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -205,7 +211,7 @@ export interface VpcEndpointServiceState {
      */
     autoAcceptConnection?: pulumi.Input<boolean | undefined>;
     /**
-     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      */
     connectBandwidth?: pulumi.Input<number | undefined>;
     /**
@@ -255,6 +261,10 @@ export interface VpcEndpointServiceState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
+     * The list of remote region IDs that are supported by the endpoint service.
+     */
+    supportedRegionLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The list of tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -281,7 +291,7 @@ export interface VpcEndpointServiceArgs {
      */
     autoAcceptConnection?: pulumi.Input<boolean | undefined>;
     /**
-     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      */
     connectBandwidth?: pulumi.Input<number | undefined>;
     /**
@@ -310,6 +320,10 @@ export interface VpcEndpointServiceArgs {
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
      */
     serviceSupportIpv6?: pulumi.Input<boolean | undefined>;
+    /**
+     * The list of remote region IDs that are supported by the endpoint service.
+     */
+    supportedRegionLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of tags.
      */

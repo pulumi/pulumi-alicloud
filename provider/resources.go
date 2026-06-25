@@ -1333,6 +1333,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ros_template":         {Tok: resource(rosMod, "Template")},
 			"alicloud_ros_stack_instance":   {Tok: resource(rosMod, "StackInstance")},
 			"alicloud_ros_template_scratch": {Tok: resource(rosMod, "TemplateScratch")},
+			"alicloud_ros_stack_instances": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"stack_instances": {CSharpName: "Instances"},
+				},
+			},
 
 			// Sae
 			"alicloud_sae_namespace":                {Tok: resource(saeMod, "Namespace")},
@@ -1484,6 +1489,11 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_vpc_ipv6_address": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"ipv6_address": {CSharpName: "Address"},
+				},
+			},
+			"alicloud_vpc_ipv6_cidr_block": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"ipv6_cidr_block": {CSharpName: "CidrBlock"},
 				},
 			},
 			"alicloud_vpc_bgp_group":                      {Tok: resource(vpcMod, "BgpGroup")},

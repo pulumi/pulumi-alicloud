@@ -1004,7 +1004,7 @@ type Instance struct {
 	// - Yes
 	// - No
 	Force pulumi.StringPtrOutput `pulumi:"force"`
-	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
 	ForceEncryption pulumi.IntOutput `pulumi:"forceEncryption"`
@@ -1477,7 +1477,7 @@ type instanceState struct {
 	// - Yes
 	// - No
 	Force *string `pulumi:"force"`
-	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
 	ForceEncryption *int `pulumi:"forceEncryption"`
@@ -1878,7 +1878,7 @@ type InstanceState struct {
 	// - Yes
 	// - No
 	Force pulumi.StringPtrInput
-	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
 	ForceEncryption pulumi.IntPtrInput
@@ -2277,7 +2277,7 @@ type instanceArgs struct {
 	// - Yes
 	// - No
 	Force *string `pulumi:"force"`
-	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
 	ForceEncryption *int `pulumi:"forceEncryption"`
@@ -2667,7 +2667,7 @@ type InstanceArgs struct {
 	// - Yes
 	// - No
 	Force pulumi.StringPtrInput
-	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+	// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 	// - 1: enables the feature.
 	// - 0: disables the feature.
 	ForceEncryption pulumi.IntPtrInput
@@ -3247,7 +3247,7 @@ func (o InstanceOutput) Force() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
 // - 1: enables the feature.
 // - 0: disables the feature.
 func (o InstanceOutput) ForceEncryption() pulumi.IntOutput {

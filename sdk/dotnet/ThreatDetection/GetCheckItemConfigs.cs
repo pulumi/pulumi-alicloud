@@ -26,7 +26,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ThreatDetection.GetCheckItemConfigs.Invoke();
+        ///     var @default = AliCloud.ThreatDetection.GetCheckItemConfigs.Invoke(new()
+        ///     {
+        ///         Lang = "zh",
+        ///         PageNumber = 1,
+        ///         PageSize = 10,
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +58,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ThreatDetection.GetCheckItemConfigs.Invoke();
+        ///     var @default = AliCloud.ThreatDetection.GetCheckItemConfigs.Invoke(new()
+        ///     {
+        ///         Lang = "zh",
+        ///         PageNumber = 1,
+        ///         PageSize = 10,
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +90,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ThreatDetection.GetCheckItemConfigs.Invoke();
+        ///     var @default = AliCloud.ThreatDetection.GetCheckItemConfigs.Invoke(new()
+        ///     {
+        ///         Lang = "zh",
+        ///         PageNumber = 1,
+        ///         PageSize = 10,
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -109,7 +124,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values: `Zh` (Chinese), `En` (English).
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -121,13 +136,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Current page number.
+        /// The page number. Must be greater than 0.
         /// </summary>
         [Input("pageNumber")]
         public int? PageNumber { get; set; }
 
         /// <summary>
-        /// Number of records per page.
+        /// Number of records per page. Must be greater than 0.
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -165,7 +180,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values: `Zh` (Chinese), `En` (English).
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -177,13 +192,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Current page number.
+        /// The page number. Must be greater than 0.
         /// </summary>
         [Input("pageNumber")]
         public Input<int>? PageNumber { get; set; }
 
         /// <summary>
-        /// Number of records per page.
+        /// Number of records per page. Must be greater than 0.
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

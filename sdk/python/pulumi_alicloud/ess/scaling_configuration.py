@@ -55,6 +55,9 @@ class ScalingConfigurationArgs:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]]] = None,
+                 resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -100,7 +103,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -113,13 +116,13 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[_builtins.str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
-        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
-        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_pool_options_private_pool_ids: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        :param pulumi.Input[_builtins.str] resource_pool_options_strategy: The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+               - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+               - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+               - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+               - `None`: Does not use a resource pool policy.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
                
@@ -134,6 +137,13 @@ class ScalingConfigurationArgs:
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
                
                > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[_builtins.str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -224,6 +234,12 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "password_inherit", password_inherit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_pool_options_private_pool_ids is not None:
+            pulumi.set(__self__, "resource_pool_options_private_pool_ids", resource_pool_options_private_pool_ids)
+        if resource_pool_options_private_pool_tags is not None:
+            pulumi.set(__self__, "resource_pool_options_private_pool_tags", resource_pool_options_private_pool_tags)
+        if resource_pool_options_strategy is not None:
+            pulumi.set(__self__, "resource_pool_options_strategy", resource_pool_options_strategy)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
@@ -524,7 +540,7 @@ class ScalingConfigurationArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        Network billing type, Values: PayByBandwidth or PayByTraffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -678,6 +694,60 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsPrivatePoolIds")
+    def resource_pool_options_private_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        """
+        return pulumi.get(self, "resource_pool_options_private_pool_ids")
+
+    @resource_pool_options_private_pool_ids.setter
+    def resource_pool_options_private_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_pool_options_private_pool_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsPrivatePoolTags")
+    def resource_pool_options_private_pool_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]]]:
+        """
+        Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        """
+        return pulumi.get(self, "resource_pool_options_private_pool_tags")
+
+    @resource_pool_options_private_pool_tags.setter
+    def resource_pool_options_private_pool_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]]]):
+        pulumi.set(self, "resource_pool_options_private_pool_tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsStrategy")
+    def resource_pool_options_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+        - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+        - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+        - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+        - `None`: Does not use a resource pool policy.
+
+        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+
+        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+
+        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        """
+        return pulumi.get(self, "resource_pool_options_strategy")
+
+    @resource_pool_options_strategy.setter
+    def resource_pool_options_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_pool_options_strategy", value)
+
+    @_builtins.property
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -754,20 +824,6 @@ class ScalingConfigurationArgs:
     def spot_price_limits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
         """
         Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
-
-        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-
-        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-
-        > **NOTE:** Restrictions on attaching ECS instances:
-
-        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-        - The attached ECS instances must in the running state.
-        - The attached ECS instances has not been attached to other scaling groups.
-        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-
-        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -982,6 +1038,9 @@ class _ScalingConfigurationState:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]]] = None,
+                 resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1027,7 +1086,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -1040,14 +1099,13 @@ class _ScalingConfigurationState:
         :param pulumi.Input[_builtins.str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
-        :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
-        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
-        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_pool_options_private_pool_ids: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        :param pulumi.Input[_builtins.str] resource_pool_options_strategy: The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+               - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+               - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+               - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+               - `None`: Does not use a resource pool policy.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
                
@@ -1062,6 +1120,14 @@ class _ScalingConfigurationState:
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
                
                > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+        :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[_builtins.str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -1151,6 +1217,12 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "password_inherit", password_inherit)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_pool_options_private_pool_ids is not None:
+            pulumi.set(__self__, "resource_pool_options_private_pool_ids", resource_pool_options_private_pool_ids)
+        if resource_pool_options_private_pool_tags is not None:
+            pulumi.set(__self__, "resource_pool_options_private_pool_tags", resource_pool_options_private_pool_tags)
+        if resource_pool_options_strategy is not None:
+            pulumi.set(__self__, "resource_pool_options_strategy", resource_pool_options_strategy)
         if role_name is not None:
             pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
@@ -1441,7 +1513,7 @@ class _ScalingConfigurationState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        Network billing type, Values: PayByBandwidth or PayByTraffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1595,6 +1667,60 @@ class _ScalingConfigurationState:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsPrivatePoolIds")
+    def resource_pool_options_private_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        """
+        return pulumi.get(self, "resource_pool_options_private_pool_ids")
+
+    @resource_pool_options_private_pool_ids.setter
+    def resource_pool_options_private_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_pool_options_private_pool_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsPrivatePoolTags")
+    def resource_pool_options_private_pool_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]]]:
+        """
+        Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        """
+        return pulumi.get(self, "resource_pool_options_private_pool_tags")
+
+    @resource_pool_options_private_pool_tags.setter
+    def resource_pool_options_private_pool_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs']]]]):
+        pulumi.set(self, "resource_pool_options_private_pool_tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsStrategy")
+    def resource_pool_options_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+        - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+        - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+        - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+        - `None`: Does not use a resource pool policy.
+
+        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+
+        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+
+        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        """
+        return pulumi.get(self, "resource_pool_options_strategy")
+
+    @resource_pool_options_strategy.setter
+    def resource_pool_options_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_pool_options_strategy", value)
+
+    @_builtins.property
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1683,20 +1809,6 @@ class _ScalingConfigurationState:
     def spot_price_limits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
         """
         Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
-
-        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-
-        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-
-        > **NOTE:** Restrictions on attaching ECS instances:
-
-        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-        - The attached ECS instances must in the running state.
-        - The attached ECS instances has not been attached to other scaling groups.
-        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-
-        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         """
         return pulumi.get(self, "spot_price_limits")
 
@@ -1914,6 +2026,9 @@ class ScalingConfiguration(pulumi.CustomResource):
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]]] = None,
+                 resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2043,7 +2158,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -2056,14 +2171,13 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
-        :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
-        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_pool_options_private_pool_ids: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        :param pulumi.Input[_builtins.str] resource_pool_options_strategy: The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+               - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+               - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+               - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+               - `None`: Does not use a resource pool policy.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
                
@@ -2078,6 +2192,14 @@ class ScalingConfiguration(pulumi.CustomResource):
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
                
                > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+        :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[_builtins.str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -2233,6 +2355,9 @@ class ScalingConfiguration(pulumi.CustomResource):
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]]] = None,
+                 resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2297,6 +2422,9 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["password"] = password
             __props__.__dict__["password_inherit"] = password_inherit
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["resource_pool_options_private_pool_ids"] = resource_pool_options_private_pool_ids
+            __props__.__dict__["resource_pool_options_private_pool_tags"] = resource_pool_options_private_pool_tags
+            __props__.__dict__["resource_pool_options_strategy"] = resource_pool_options_strategy
             __props__.__dict__["role_name"] = role_name
             __props__.__dict__["scaling_configuration_name"] = scaling_configuration_name
             if scaling_group_id is None and not opts.urn:
@@ -2364,6 +2492,9 @@ class ScalingConfiguration(pulumi.CustomResource):
             password: pulumi.Input[Optional[_builtins.str]] = None,
             password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_options_private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_pool_options_private_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]]] = None,
+            resource_pool_options_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             role_name: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2413,7 +2544,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Resource types of an ECS instance.
-        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[_builtins.str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -2426,14 +2557,13 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[_builtins.bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         :param pulumi.Input[_builtins.str] resource_group_id: ID of resource group.
-        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
-        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
-        :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
-        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
-        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_pool_options_private_pool_ids: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs', 'ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgsDict']]]] resource_pool_options_private_pool_tags: Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        :param pulumi.Input[_builtins.str] resource_pool_options_strategy: The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+               - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+               - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+               - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+               - `None`: Does not use a resource pool policy.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
                
@@ -2448,6 +2578,14 @@ class ScalingConfiguration(pulumi.CustomResource):
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
                
                > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        :param pulumi.Input[_builtins.str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
+        :param pulumi.Input[_builtins.str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+        :param pulumi.Input[_builtins.str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        :param pulumi.Input[_builtins.str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[_builtins.int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
         :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[_builtins.str] substitute: The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
@@ -2502,6 +2640,9 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["password_inherit"] = password_inherit
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resource_pool_options_private_pool_ids"] = resource_pool_options_private_pool_ids
+        __props__.__dict__["resource_pool_options_private_pool_tags"] = resource_pool_options_private_pool_tags
+        __props__.__dict__["resource_pool_options_strategy"] = resource_pool_options_strategy
         __props__.__dict__["role_name"] = role_name
         __props__.__dict__["scaling_configuration_name"] = scaling_configuration_name
         __props__.__dict__["scaling_group_id"] = scaling_group_id
@@ -2689,9 +2830,9 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
+        Network billing type, Values: PayByBandwidth or PayByTraffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -2793,6 +2934,48 @@ class ScalingConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsPrivatePoolIds")
+    def resource_pool_options_private_pool_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        """
+        return pulumi.get(self, "resource_pool_options_private_pool_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsPrivatePoolTags")
+    def resource_pool_options_private_pool_tags(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationResourcePoolOptionsPrivatePoolTag']]]:
+        """
+        Sets private pool tags. See `resource_pool_options_private_pool_tags` below for details.
+        """
+        return pulumi.get(self, "resource_pool_options_private_pool_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolOptionsStrategy")
+    def resource_pool_options_strategy(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the private pool. The value can be the ID of an elastic assurance service or a capacity reservation service. You can specify only Target-mode private pool IDs. You cannot specify this parameter and the PrivatePoolTags parameter at the same time. N is an integer from 1 to 20.
+        - `PrivatePoolFirst`: Prioritizes private pools. The system attempts to launch instances in the following order: 1. The specific private pool matching ResourcePoolOptions.PrivatePoolIds or PrivatePoolTags. 2. Any available open private pool. 3. The public pool.
+        - `PrivatePoolOnly`: Launches instances only from a specific private pool. You must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the launch fails.
+        - `PublicPoolFirst`: Public pool first. The system prioritizes the public pool to create instances. If the public pool has insufficient resources, the system uses private pool resources as a supplement. The system first tries to automatically match an open private pool. If no suitable private pool is found, the system uses the Target-type private pool specified by ResourcePoolOptions.PrivatePoolIds or a Target-type private pool that meets the conditions of PrivatePoolTags.
+        - `None`: Does not use a resource pool policy.
+
+        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
+
+        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
+
+        > **NOTE:** Restrictions on attaching ECS instances:
+
+        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
+        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
+        - The attached ECS instances must in the running state.
+        - The attached ECS instances has not been attached to other scaling groups.
+        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
+
+        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
+        """
+        return pulumi.get(self, "resource_pool_options_strategy")
+
+    @_builtins.property
     @pulumi.getter(name="roleName")
     def role_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -2853,20 +3036,6 @@ class ScalingConfiguration(pulumi.CustomResource):
     def spot_price_limits(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationSpotPriceLimit']]]:
         """
         Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
-
-        > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
-
-        > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
-
-        > **NOTE:** Restrictions on attaching ECS instances:
-
-        - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
-        - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
-        - The attached ECS instances must in the running state.
-        - The attached ECS instances has not been attached to other scaling groups.
-        - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
-
-        > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
         """
         return pulumi.get(self, "spot_price_limits")
 

@@ -137,6 +137,8 @@ type VpcEndpoint struct {
 	ConnectionStatus pulumi.StringOutput `pulumi:"connectionStatus"`
 	// The time when the endpoint was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The cross-region bandwidth that is supported by the cross-region endpoint.
+	CrossRegionBandwidth pulumi.IntOutput `pulumi:"crossRegionBandwidth"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The service state of the endpoint.
@@ -145,9 +147,9 @@ type VpcEndpoint struct {
 	EndpointDescription pulumi.StringPtrOutput `pulumi:"endpointDescription"`
 	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringOutput `pulumi:"endpointDomain"`
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
@@ -165,6 +167,8 @@ type VpcEndpoint struct {
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// The region ID of the endpoint service.
+	ServiceRegionId pulumi.StringOutput `pulumi:"serviceRegionId"`
 	// The state of the endpoint.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The list of tags.
@@ -220,6 +224,8 @@ type vpcEndpointState struct {
 	ConnectionStatus *string `pulumi:"connectionStatus"`
 	// The time when the endpoint was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The cross-region bandwidth that is supported by the cross-region endpoint.
+	CrossRegionBandwidth *int `pulumi:"crossRegionBandwidth"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// The service state of the endpoint.
@@ -228,9 +234,9 @@ type vpcEndpointState struct {
 	EndpointDescription *string `pulumi:"endpointDescription"`
 	// The domain name of the endpoint.
 	EndpointDomain *string `pulumi:"endpointDomain"`
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType *string `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument *string `pulumi:"policyDocument"`
@@ -248,6 +254,8 @@ type vpcEndpointState struct {
 	ServiceId *string `pulumi:"serviceId"`
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName *string `pulumi:"serviceName"`
+	// The region ID of the endpoint service.
+	ServiceRegionId *string `pulumi:"serviceRegionId"`
 	// The state of the endpoint.
 	Status *string `pulumi:"status"`
 	// The list of tags.
@@ -271,6 +279,8 @@ type VpcEndpointState struct {
 	ConnectionStatus pulumi.StringPtrInput
 	// The time when the endpoint was created.
 	CreateTime pulumi.StringPtrInput
+	// The cross-region bandwidth that is supported by the cross-region endpoint.
+	CrossRegionBandwidth pulumi.IntPtrInput
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// The service state of the endpoint.
@@ -279,9 +289,9 @@ type VpcEndpointState struct {
 	EndpointDescription pulumi.StringPtrInput
 	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringPtrInput
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringPtrInput
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument pulumi.StringPtrInput
@@ -299,6 +309,8 @@ type VpcEndpointState struct {
 	ServiceId pulumi.StringPtrInput
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringPtrInput
+	// The region ID of the endpoint service.
+	ServiceRegionId pulumi.StringPtrInput
 	// The state of the endpoint.
 	Status pulumi.StringPtrInput
 	// The list of tags.
@@ -320,13 +332,15 @@ type vpcEndpointArgs struct {
 	// - `IPv4` (default): IPv4.
 	// - `DualStack`: dual-stack.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	// The cross-region bandwidth that is supported by the cross-region endpoint.
+	CrossRegionBandwidth *int `pulumi:"crossRegionBandwidth"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// The description of the endpoint.
 	EndpointDescription *string `pulumi:"endpointDescription"`
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType *string `pulumi:"endpointType"`
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument *string `pulumi:"policyDocument"`
@@ -342,6 +356,8 @@ type vpcEndpointArgs struct {
 	ServiceId *string `pulumi:"serviceId"`
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName *string `pulumi:"serviceName"`
+	// The region ID of the endpoint service.
+	ServiceRegionId *string `pulumi:"serviceRegionId"`
 	// The list of tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the endpoint.
@@ -358,13 +374,15 @@ type VpcEndpointArgs struct {
 	// - `IPv4` (default): IPv4.
 	// - `DualStack`: dual-stack.
 	AddressIpVersion pulumi.StringPtrInput
+	// The cross-region bandwidth that is supported by the cross-region endpoint.
+	CrossRegionBandwidth pulumi.IntPtrInput
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// The description of the endpoint.
 	EndpointDescription pulumi.StringPtrInput
-	// The endpoint type.
-	//
-	// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The type of the endpoint. Valid values:
+	// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+	// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 	EndpointType pulumi.StringPtrInput
 	// RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
 	PolicyDocument pulumi.StringPtrInput
@@ -380,6 +398,8 @@ type VpcEndpointArgs struct {
 	ServiceId pulumi.StringPtrInput
 	// The name of the endpoint service with which the endpoint is associated.
 	ServiceName pulumi.StringPtrInput
+	// The region ID of the endpoint service.
+	ServiceRegionId pulumi.StringPtrInput
 	// The list of tags.
 	Tags pulumi.StringMapInput
 	// The name of the endpoint.
@@ -499,6 +519,11 @@ func (o VpcEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The cross-region bandwidth that is supported by the cross-region endpoint.
+func (o VpcEndpointOutput) CrossRegionBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.IntOutput { return v.CrossRegionBandwidth }).(pulumi.IntOutput)
+}
+
 // Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 func (o VpcEndpointOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
@@ -519,9 +544,9 @@ func (o VpcEndpointOutput) EndpointDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointDomain }).(pulumi.StringOutput)
 }
 
-// The endpoint type.
-//
-// Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+// The type of the endpoint. Valid values:
+// - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+// - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
 func (o VpcEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -561,6 +586,11 @@ func (o VpcEndpointOutput) ServiceId() pulumi.StringOutput {
 // The name of the endpoint service with which the endpoint is associated.
 func (o VpcEndpointOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The region ID of the endpoint service.
+func (o VpcEndpointOutput) ServiceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.ServiceRegionId }).(pulumi.StringOutput)
 }
 
 // The state of the endpoint.

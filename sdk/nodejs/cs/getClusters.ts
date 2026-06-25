@@ -88,8 +88,13 @@ export interface GetClustersArgs {
     clusterName?: string;
     /**
      * The specification of the clusters to query. Valid values:
-     * - `ack.pro.small`: ACK Pro clusters.
      * - `ack.standard`: ACK Basic clusters.
+     * - `ack.pro.small`: ACK Pro clusters.
+     * - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+     * - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+     * - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+     *
+     * ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
      */
     clusterSpec?: string;
     /**
@@ -138,7 +143,7 @@ export interface GetClustersResult {
      */
     readonly clusterName?: string;
     /**
-     * After you set `clusterType` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+     * The cluster specification.
      */
     readonly clusterSpec?: string;
     /**
@@ -251,8 +256,13 @@ export interface GetClustersOutputArgs {
     clusterName?: pulumi.Input<string | undefined>;
     /**
      * The specification of the clusters to query. Valid values:
-     * - `ack.pro.small`: ACK Pro clusters.
      * - `ack.standard`: ACK Basic clusters.
+     * - `ack.pro.small`: ACK Pro clusters.
+     * - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+     * - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+     * - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+     *
+     * ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
      */
     clusterSpec?: pulumi.Input<string | undefined>;
     /**

@@ -105,6 +105,12 @@ export class MilvusInstance extends pulumi.CustomResource {
      */
     declare public readonly autoBackup: pulumi.Output<boolean>;
     /**
+     * Whether to pay automatically.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     */
+    declare public readonly autoPay: pulumi.Output<boolean | undefined>;
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -215,6 +221,7 @@ export class MilvusInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MilvusInstanceState | undefined;
             resourceInputs["autoBackup"] = state?.autoBackup;
+            resourceInputs["autoPay"] = state?.autoPay;
             resourceInputs["components"] = state?.components;
             resourceInputs["configuration"] = state?.configuration;
             resourceInputs["createTime"] = state?.createTime;
@@ -250,6 +257,7 @@ export class MilvusInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["autoBackup"] = args?.autoBackup;
+            resourceInputs["autoPay"] = args?.autoPay;
             resourceInputs["components"] = args?.components;
             resourceInputs["configuration"] = args?.configuration;
             resourceInputs["dbAdminPassword"] = args?.dbAdminPassword ? pulumi.secret(args.dbAdminPassword) : undefined;
@@ -286,6 +294,12 @@ export interface MilvusInstanceState {
      * Whether to enable automatic backup
      */
     autoBackup?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to pay automatically.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     */
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
@@ -392,6 +406,12 @@ export interface MilvusInstanceArgs {
      * Whether to enable automatic backup
      */
     autoBackup?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to pay automatically.
+     *
+     * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     */
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone

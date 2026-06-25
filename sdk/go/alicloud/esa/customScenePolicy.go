@@ -84,16 +84,20 @@ import (
 type CustomScenePolicy struct {
 	pulumi.CustomResourceState
 
-	// The time when the policy takes effect.
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The policy name.
 	CustomScenePolicyName pulumi.StringOutput `pulumi:"customScenePolicyName"`
 	// The time when the policy expires.
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The IDs of websites associated.
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 	SiteIds pulumi.StringOutput `pulumi:"siteIds"`
+	// The time when the policy takes effect.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Policy effective status. Valid values: `Disabled`, `Running`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The name of the policy template. Valid value:
@@ -107,9 +111,6 @@ func NewCustomScenePolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CreateTime == nil {
-		return nil, errors.New("invalid value for required argument 'CreateTime'")
-	}
 	if args.CustomScenePolicyName == nil {
 		return nil, errors.New("invalid value for required argument 'CustomScenePolicyName'")
 	}
@@ -145,16 +146,20 @@ func GetCustomScenePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomScenePolicy resources.
 type customScenePolicyState struct {
-	// The time when the policy takes effect.
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
 	CreateTime *string `pulumi:"createTime"`
 	// The policy name.
 	CustomScenePolicyName *string `pulumi:"customScenePolicyName"`
 	// The time when the policy expires.
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	EndTime *string `pulumi:"endTime"`
-	// The IDs of websites associated.
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 	SiteIds *string `pulumi:"siteIds"`
+	// The time when the policy takes effect.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime *string `pulumi:"startTime"`
 	// Policy effective status. Valid values: `Disabled`, `Running`.
 	Status *string `pulumi:"status"`
 	// The name of the policy template. Valid value:
@@ -162,16 +167,20 @@ type customScenePolicyState struct {
 }
 
 type CustomScenePolicyState struct {
-	// The time when the policy takes effect.
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
 	CreateTime pulumi.StringPtrInput
 	// The policy name.
 	CustomScenePolicyName pulumi.StringPtrInput
 	// The time when the policy expires.
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	EndTime pulumi.StringPtrInput
-	// The IDs of websites associated.
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 	SiteIds pulumi.StringPtrInput
+	// The time when the policy takes effect.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime pulumi.StringPtrInput
 	// Policy effective status. Valid values: `Disabled`, `Running`.
 	Status pulumi.StringPtrInput
 	// The name of the policy template. Valid value:
@@ -183,16 +192,20 @@ func (CustomScenePolicyState) ElementType() reflect.Type {
 }
 
 type customScenePolicyArgs struct {
-	// The time when the policy takes effect.
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	CreateTime string `pulumi:"createTime"`
+	// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+	CreateTime *string `pulumi:"createTime"`
 	// The policy name.
 	CustomScenePolicyName string `pulumi:"customScenePolicyName"`
 	// The time when the policy expires.
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	EndTime string `pulumi:"endTime"`
-	// The IDs of websites associated.
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 	SiteIds string `pulumi:"siteIds"`
+	// The time when the policy takes effect.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime *string `pulumi:"startTime"`
 	// Policy effective status. Valid values: `Disabled`, `Running`.
 	Status *string `pulumi:"status"`
 	// The name of the policy template. Valid value:
@@ -201,16 +214,20 @@ type customScenePolicyArgs struct {
 
 // The set of arguments for constructing a CustomScenePolicy resource.
 type CustomScenePolicyArgs struct {
-	// The time when the policy takes effect.
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-	CreateTime pulumi.StringInput
+	// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+	CreateTime pulumi.StringPtrInput
 	// The policy name.
 	CustomScenePolicyName pulumi.StringInput
 	// The time when the policy expires.
 	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	EndTime pulumi.StringInput
-	// The IDs of websites associated.
+	// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 	SiteIds pulumi.StringInput
+	// The time when the policy takes effect.
+	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	StartTime pulumi.StringPtrInput
 	// Policy effective status. Valid values: `Disabled`, `Running`.
 	Status pulumi.StringPtrInput
 	// The name of the policy template. Valid value:
@@ -304,8 +321,9 @@ func (o CustomScenePolicyOutput) ToCustomScenePolicyOutputWithContext(ctx contex
 	return o
 }
 
-// The time when the policy takes effect.
-// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+// Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+//
+// Deprecated: Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
 func (o CustomScenePolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomScenePolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -321,9 +339,15 @@ func (o CustomScenePolicyOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomScenePolicy) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The IDs of websites associated.
+// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
 func (o CustomScenePolicyOutput) SiteIds() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomScenePolicy) pulumi.StringOutput { return v.SiteIds }).(pulumi.StringOutput)
+}
+
+// The time when the policy takes effect.
+// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o CustomScenePolicyOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomScenePolicy) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }
 
 // Policy effective status. Valid values: `Disabled`, `Running`.

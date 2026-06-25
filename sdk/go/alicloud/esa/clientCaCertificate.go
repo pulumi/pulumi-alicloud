@@ -22,6 +22,10 @@ import (
 //
 // # Basic Usage
 //
+// ### Additional Examples
+//
+// # Basic Usage
+//
 // ```go
 // package main
 //
@@ -69,10 +73,12 @@ type ClientCaCertificate struct {
 
 	// Certificate content.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// ClientCaCertificate Id
+	// ClientCaCertificate Id.
 	ClientCaCertId pulumi.StringOutput `pulumi:"clientCaCertId"`
 	// The certificate name.
 	ClientCaCertName pulumi.StringPtrOutput `pulumi:"clientCaCertName"`
+	// Client Ca certificate bound domain list.
+	ClientCaCertificateHostnames pulumi.StringArrayOutput `pulumi:"clientCaCertificateHostnames"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Site Id
@@ -119,10 +125,12 @@ func GetClientCaCertificate(ctx *pulumi.Context,
 type clientCaCertificateState struct {
 	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
-	// ClientCaCertificate Id
+	// ClientCaCertificate Id.
 	ClientCaCertId *string `pulumi:"clientCaCertId"`
 	// The certificate name.
 	ClientCaCertName *string `pulumi:"clientCaCertName"`
+	// Client Ca certificate bound domain list.
+	ClientCaCertificateHostnames []string `pulumi:"clientCaCertificateHostnames"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Site Id
@@ -134,10 +142,12 @@ type clientCaCertificateState struct {
 type ClientCaCertificateState struct {
 	// Certificate content.
 	Certificate pulumi.StringPtrInput
-	// ClientCaCertificate Id
+	// ClientCaCertificate Id.
 	ClientCaCertId pulumi.StringPtrInput
 	// The certificate name.
 	ClientCaCertName pulumi.StringPtrInput
+	// Client Ca certificate bound domain list.
+	ClientCaCertificateHostnames pulumi.StringArrayInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
 	// Site Id
@@ -155,6 +165,8 @@ type clientCaCertificateArgs struct {
 	Certificate string `pulumi:"certificate"`
 	// The certificate name.
 	ClientCaCertName *string `pulumi:"clientCaCertName"`
+	// Client Ca certificate bound domain list.
+	ClientCaCertificateHostnames []string `pulumi:"clientCaCertificateHostnames"`
 	// Site Id
 	SiteId string `pulumi:"siteId"`
 }
@@ -165,6 +177,8 @@ type ClientCaCertificateArgs struct {
 	Certificate pulumi.StringInput
 	// The certificate name.
 	ClientCaCertName pulumi.StringPtrInput
+	// Client Ca certificate bound domain list.
+	ClientCaCertificateHostnames pulumi.StringArrayInput
 	// Site Id
 	SiteId pulumi.StringInput
 }
@@ -261,7 +275,7 @@ func (o ClientCaCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCaCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// ClientCaCertificate Id
+// ClientCaCertificate Id.
 func (o ClientCaCertificateOutput) ClientCaCertId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCaCertificate) pulumi.StringOutput { return v.ClientCaCertId }).(pulumi.StringOutput)
 }
@@ -269,6 +283,11 @@ func (o ClientCaCertificateOutput) ClientCaCertId() pulumi.StringOutput {
 // The certificate name.
 func (o ClientCaCertificateOutput) ClientCaCertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientCaCertificate) pulumi.StringPtrOutput { return v.ClientCaCertName }).(pulumi.StringPtrOutput)
+}
+
+// Client Ca certificate bound domain list.
+func (o ClientCaCertificateOutput) ClientCaCertificateHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientCaCertificate) pulumi.StringArrayOutput { return v.ClientCaCertificateHostnames }).(pulumi.StringArrayOutput)
 }
 
 // Creation time.

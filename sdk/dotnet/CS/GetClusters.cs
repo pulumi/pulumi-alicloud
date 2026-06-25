@@ -272,8 +272,13 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The specification of the clusters to query. Valid values:
-        /// - `ack.pro.small`: ACK Pro clusters.
         /// - `ack.standard`: ACK Basic clusters.
+        /// - `ack.pro.small`: ACK Pro clusters.
+        /// - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+        /// - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+        /// - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+        /// 
+        /// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         /// </summary>
         [Input("clusterSpec")]
         public string? ClusterSpec { get; set; }
@@ -349,8 +354,13 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The specification of the clusters to query. Valid values:
-        /// - `ack.pro.small`: ACK Pro clusters.
         /// - `ack.standard`: ACK Basic clusters.
+        /// - `ack.pro.small`: ACK Pro clusters.
+        /// - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+        /// - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+        /// - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+        /// 
+        /// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
@@ -423,7 +433,7 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly string? ClusterName;
         /// <summary>
-        /// After you set `ClusterType` to `ManagedKubernetes` and configure `Profile`, you can further specify the cluster specification.
+        /// The cluster specification.
         /// </summary>
         public readonly string? ClusterSpec;
         /// <summary>

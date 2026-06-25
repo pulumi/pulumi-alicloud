@@ -116,6 +116,10 @@ export class VpcEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * The cross-region bandwidth that is supported by the cross-region endpoint.
+     */
+    declare public readonly crossRegionBandwidth: pulumi.Output<number>;
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
@@ -132,9 +136,9 @@ export class VpcEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endpointDomain: pulumi.Output<string>;
     /**
-     * The endpoint type.
-     *
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      */
     declare public readonly endpointType: pulumi.Output<string>;
     /**
@@ -167,6 +171,10 @@ export class VpcEndpoint extends pulumi.CustomResource {
      * The name of the endpoint service with which the endpoint is associated.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    /**
+     * The region ID of the endpoint service.
+     */
+    declare public readonly serviceRegionId: pulumi.Output<string>;
     /**
      * The state of the endpoint.
      */
@@ -205,6 +213,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
             resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["connectionStatus"] = state?.connectionStatus;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["crossRegionBandwidth"] = state?.crossRegionBandwidth;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["endpointBusinessStatus"] = state?.endpointBusinessStatus;
             resourceInputs["endpointDescription"] = state?.endpointDescription;
@@ -217,6 +226,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
             resourceInputs["securityGroupIds"] = state?.securityGroupIds;
             resourceInputs["serviceId"] = state?.serviceId;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["serviceRegionId"] = state?.serviceRegionId;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcEndpointName"] = state?.vpcEndpointName;
@@ -228,6 +238,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["addressIpVersion"] = args?.addressIpVersion;
+            resourceInputs["crossRegionBandwidth"] = args?.crossRegionBandwidth;
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["endpointDescription"] = args?.endpointDescription;
             resourceInputs["endpointType"] = args?.endpointType;
@@ -237,6 +248,7 @@ export class VpcEndpoint extends pulumi.CustomResource {
             resourceInputs["securityGroupIds"] = args?.securityGroupIds;
             resourceInputs["serviceId"] = args?.serviceId;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["serviceRegionId"] = args?.serviceRegionId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcEndpointName"] = args?.vpcEndpointName;
             resourceInputs["vpcId"] = args?.vpcId;
@@ -277,6 +289,10 @@ export interface VpcEndpointState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
+     * The cross-region bandwidth that is supported by the cross-region endpoint.
+     */
+    crossRegionBandwidth?: pulumi.Input<number | undefined>;
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean | undefined>;
@@ -293,9 +309,9 @@ export interface VpcEndpointState {
      */
     endpointDomain?: pulumi.Input<string | undefined>;
     /**
-     * The endpoint type.
-     *
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      */
     endpointType?: pulumi.Input<string | undefined>;
     /**
@@ -329,6 +345,10 @@ export interface VpcEndpointState {
      */
     serviceName?: pulumi.Input<string | undefined>;
     /**
+     * The region ID of the endpoint service.
+     */
+    serviceRegionId?: pulumi.Input<string | undefined>;
+    /**
      * The state of the endpoint.
      */
     status?: pulumi.Input<string | undefined>;
@@ -361,6 +381,10 @@ export interface VpcEndpointArgs {
      */
     addressIpVersion?: pulumi.Input<string | undefined>;
     /**
+     * The cross-region bandwidth that is supported by the cross-region endpoint.
+     */
+    crossRegionBandwidth?: pulumi.Input<number | undefined>;
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean | undefined>;
@@ -369,9 +393,9 @@ export interface VpcEndpointArgs {
      */
     endpointDescription?: pulumi.Input<string | undefined>;
     /**
-     * The endpoint type.
-     *
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      */
     endpointType?: pulumi.Input<string | undefined>;
     /**
@@ -400,6 +424,10 @@ export interface VpcEndpointArgs {
      * The name of the endpoint service with which the endpoint is associated.
      */
     serviceName?: pulumi.Input<string | undefined>;
+    /**
+     * The region ID of the endpoint service.
+     */
+    serviceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The list of tags.
      */

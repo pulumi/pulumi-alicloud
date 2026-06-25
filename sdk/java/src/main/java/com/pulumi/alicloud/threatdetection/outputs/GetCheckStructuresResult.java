@@ -28,6 +28,7 @@ public final class GetCheckStructuresResult {
     private List<String> ids;
     private @Nullable String lang;
     private @Nullable String outputFile;
+    private @Nullable Integer pageSize;
     /**
      * @return A list of Check Structure Entries. Each element contains the following attributes:
      * 
@@ -59,6 +60,9 @@ public final class GetCheckStructuresResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     /**
      * @return A list of Check Structure Entries. Each element contains the following attributes:
      * 
@@ -84,6 +88,7 @@ public final class GetCheckStructuresResult {
         private List<String> ids;
         private @Nullable String lang;
         private @Nullable String outputFile;
+        private @Nullable Integer pageSize;
         private List<GetCheckStructuresStructure> structures;
         private @Nullable List<String> taskSources;
         public Builder() {}
@@ -94,6 +99,7 @@ public final class GetCheckStructuresResult {
     	      this.ids = defaults.ids;
     	      this.lang = defaults.lang;
     	      this.outputFile = defaults.outputFile;
+    	      this.pageSize = defaults.pageSize;
     	      this.structures = defaults.structures;
     	      this.taskSources = defaults.taskSources;
         }
@@ -136,6 +142,12 @@ public final class GetCheckStructuresResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder structures(List<GetCheckStructuresStructure> structures) {
             if (structures == null) {
               throw new MissingRequiredPropertyException("GetCheckStructuresResult", "structures");
@@ -162,6 +174,7 @@ public final class GetCheckStructuresResult {
             _resultValue.ids = ids;
             _resultValue.lang = lang;
             _resultValue.outputFile = outputFile;
+            _resultValue.pageSize = pageSize;
             _resultValue.structures = structures;
             _resultValue.taskSources = taskSources;
             return _resultValue;

@@ -107,7 +107,7 @@ type Ipv6Address struct {
 	// IPv6 address
 	Ipv6Address pulumi.StringOutput `pulumi:"ipv6Address"`
 	// The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
-	Ipv6AddressDescription pulumi.StringOutput `pulumi:"ipv6AddressDescription"`
+	Ipv6AddressDescription pulumi.StringPtrOutput `pulumi:"ipv6AddressDescription"`
 	// The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Ipv6AddressName pulumi.StringPtrOutput `pulumi:"ipv6AddressName"`
 	// The ID of the resource group to which the instance belongs.
@@ -346,8 +346,8 @@ func (o Ipv6AddressOutput) Ipv6Address() pulumi.StringOutput {
 }
 
 // The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
-func (o Ipv6AddressOutput) Ipv6AddressDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ipv6Address) pulumi.StringOutput { return v.Ipv6AddressDescription }).(pulumi.StringOutput)
+func (o Ipv6AddressOutput) Ipv6AddressDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ipv6Address) pulumi.StringPtrOutput { return v.Ipv6AddressDescription }).(pulumi.StringPtrOutput)
 }
 
 // The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.

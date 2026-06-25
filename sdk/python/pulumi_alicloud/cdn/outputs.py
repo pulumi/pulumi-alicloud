@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'DomainAuthConfig',
@@ -26,6 +27,8 @@ __all__ = [
     'DomainParameterFilterConfig',
     'DomainReferConfig',
     'GetBlockedRegionsRegionResult',
+    'GetDomainConfigsConfigResult',
+    'GetDomainConfigsConfigFunctionArgResult',
     'GetRealTimeLogDeliveriesDeliveryResult',
 ]
 
@@ -670,6 +673,108 @@ class GetBlockedRegionsRegionResult(dict):
         The name of the country and region.
         """
         return pulumi.get(self, "countries_and_regions_name")
+
+
+@pulumi.output_type
+class GetDomainConfigsConfigResult(dict):
+    def __init__(__self__, *,
+                 config_id: _builtins.str,
+                 function_args: Sequence['outputs.GetDomainConfigsConfigFunctionArgResult'],
+                 function_name: _builtins.str,
+                 id: _builtins.str,
+                 parent_id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str config_id: The ID of the feature configuration.
+        :param Sequence['GetDomainConfigsConfigFunctionArgArgs'] function_args: The args of the domain config.
+        :param _builtins.str function_name: The names of the features. Separate multiple feature names with commas (,).
+        :param _builtins.str id: The ID of the Domain Config.
+        :param _builtins.str parent_id: The ID of the rule condition.
+        :param _builtins.str status: The status of the configuration. Valid values: `success`, `testing`, `failed`, `configuring`.
+        """
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "function_args", function_args)
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "parent_id", parent_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> _builtins.str:
+        """
+        The ID of the feature configuration.
+        """
+        return pulumi.get(self, "config_id")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArgs")
+    def function_args(self) -> Sequence['outputs.GetDomainConfigsConfigFunctionArgResult']:
+        """
+        The args of the domain config.
+        """
+        return pulumi.get(self, "function_args")
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        """
+        The names of the features. Separate multiple feature names with commas (,).
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Domain Config.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> _builtins.str:
+        """
+        The ID of the rule condition.
+        """
+        return pulumi.get(self, "parent_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the configuration. Valid values: `success`, `testing`, `failed`, `configuring`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDomainConfigsConfigFunctionArgResult(dict):
+    def __init__(__self__, *,
+                 arg_name: _builtins.str,
+                 arg_value: _builtins.str):
+        """
+        :param _builtins.str arg_name: The name of arg.
+        :param _builtins.str arg_value: The value of arg.
+        """
+        pulumi.set(__self__, "arg_name", arg_name)
+        pulumi.set(__self__, "arg_value", arg_value)
+
+    @_builtins.property
+    @pulumi.getter(name="argName")
+    def arg_name(self) -> _builtins.str:
+        """
+        The name of arg.
+        """
+        return pulumi.get(self, "arg_name")
+
+    @_builtins.property
+    @pulumi.getter(name="argValue")
+    def arg_value(self) -> _builtins.str:
+        """
+        The value of arg.
+        """
+        return pulumi.get(self, "arg_value")
 
 
 @pulumi.output_type

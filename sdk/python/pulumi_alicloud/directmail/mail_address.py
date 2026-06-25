@@ -329,12 +329,14 @@ class MailAddress(pulumi.CustomResource):
             if account_name is None and not opts.urn:
                 raise TypeError("Missing required property 'account_name'")
             __props__.__dict__["account_name"] = account_name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["reply_address"] = reply_address
             if sendtype is None and not opts.urn:
                 raise TypeError("Missing required property 'sendtype'")
             __props__.__dict__["sendtype"] = sendtype
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MailAddress, __self__).__init__(
             'alicloud:directmail/mailAddress:MailAddress',
             resource_name,

@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available since v1.279.0) A collection of feature attributes.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTransitRouterVpcAttachmentsAttachmentOptionResult> Options;
+        /// <summary>
         /// The payment type of the resource.
         /// </summary>
         public readonly string PaymentType;
@@ -74,6 +78,8 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string id,
 
+            ImmutableArray<Outputs.GetTransitRouterVpcAttachmentsAttachmentOptionResult> options,
+
             string paymentType,
 
             string resourceType,
@@ -97,6 +103,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
             AutoPublishRouteEnabled = autoPublishRouteEnabled;
             CenId = cenId;
             Id = id;
+            Options = options;
             PaymentType = paymentType;
             ResourceType = resourceType;
             Status = status;

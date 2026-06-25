@@ -6,6 +6,8 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .addon_release import *
+from .agg_task_group import *
 from .alarm import *
 from .alarm_contact import *
 from .alarm_contact_group import *

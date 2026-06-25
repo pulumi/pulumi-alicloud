@@ -37,6 +37,25 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Whether to pay automatically.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    @Import(name="autoPay")
+    private @Nullable Output<Boolean> autoPay;
+
+    /**
+     * @return Whether to pay automatically.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    public Optional<Output<Boolean>> autoPay() {
+        return Optional.ofNullable(this.autoPay);
+    }
+
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -372,6 +391,7 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
 
     private MilvusInstanceState(MilvusInstanceState $) {
         this.autoBackup = $.autoBackup;
+        this.autoPay = $.autoPay;
         this.components = $.components;
         this.configuration = $.configuration;
         this.createTime = $.createTime;
@@ -431,6 +451,31 @@ public final class MilvusInstanceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder autoBackup(Boolean autoBackup) {
             return autoBackup(Output.of(autoBackup));
+        }
+
+        /**
+         * @param autoPay Whether to pay automatically.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPay(@Nullable Output<Boolean> autoPay) {
+            $.autoPay = autoPay;
+            return this;
+        }
+
+        /**
+         * @param autoPay Whether to pay automatically.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPay(Boolean autoPay) {
+            return autoPay(Output.of(autoPay));
         }
 
         /**

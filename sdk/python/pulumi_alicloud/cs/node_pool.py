@@ -124,16 +124,21 @@ class NodePoolArgs:
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
                - `AliyunLinux` : Alinux2 image.
                - `AliyunLinux3` : Alinux3 image.
-               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinux3Arm64` : Alinux3 image ARM version.
                - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
                - `CentOS` : CentOS image.
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
+               - `AliyunLinuxSecurity` : Alinux security-hardened image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
                - `Custom`：Custom image.
                - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+               - `AliyunLinux4`: Alinux4 image.
+               - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+               - `AliyunLinux4Security`: Alinux4 security-hardened image.
+               - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input['NodePoolInstanceMetadataOptionsArgs'] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
@@ -580,16 +585,21 @@ class NodePoolArgs:
         The operating system image type and the `platform` parameter can be selected from the following values:
         - `AliyunLinux` : Alinux2 image.
         - `AliyunLinux3` : Alinux3 image.
-        - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        - `AliyunLinux3Arm64` : Alinux3 image ARM version.
         - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
         - `CentOS` : CentOS image.
         - `Windows` : Windows image.
         - `WindowsCore` : WindowsCore image.
         - `ContainerOS` : container-optimized image.
+        - `AliyunLinuxSecurity` : Alinux security-hardened image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         - `Custom`：Custom image.
         - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+        - `AliyunLinux4`: Alinux4 image.
+        - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+        - `AliyunLinux4Security`: Alinux4 security-hardened image.
+        - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         """
         return pulumi.get(self, "image_type")
 
@@ -1506,16 +1516,21 @@ class _NodePoolState:
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
                - `AliyunLinux` : Alinux2 image.
                - `AliyunLinux3` : Alinux3 image.
-               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinux3Arm64` : Alinux3 image ARM version.
                - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
                - `CentOS` : CentOS image.
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
+               - `AliyunLinuxSecurity` : Alinux security-hardened image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
                - `Custom`：Custom image.
                - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+               - `AliyunLinux4`: Alinux4 image.
+               - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+               - `AliyunLinux4Security`: Alinux4 security-hardened image.
+               - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input['NodePoolInstanceMetadataOptionsArgs'] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
@@ -1969,16 +1984,21 @@ class _NodePoolState:
         The operating system image type and the `platform` parameter can be selected from the following values:
         - `AliyunLinux` : Alinux2 image.
         - `AliyunLinux3` : Alinux3 image.
-        - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        - `AliyunLinux3Arm64` : Alinux3 image ARM version.
         - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
         - `CentOS` : CentOS image.
         - `Windows` : Windows image.
         - `WindowsCore` : WindowsCore image.
         - `ContainerOS` : container-optimized image.
+        - `AliyunLinuxSecurity` : Alinux security-hardened image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         - `Custom`：Custom image.
         - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+        - `AliyunLinux4`: Alinux4 image.
+        - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+        - `AliyunLinux4Security`: Alinux4 security-hardened image.
+        - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         """
         return pulumi.get(self, "image_type")
 
@@ -3487,16 +3507,21 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
                - `AliyunLinux` : Alinux2 image.
                - `AliyunLinux3` : Alinux3 image.
-               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinux3Arm64` : Alinux3 image ARM version.
                - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
                - `CentOS` : CentOS image.
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
+               - `AliyunLinuxSecurity` : Alinux security-hardened image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
                - `Custom`：Custom image.
                - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+               - `AliyunLinux4`: Alinux4 image.
+               - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+               - `AliyunLinux4Security`: Alinux4 security-hardened image.
+               - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
@@ -4470,16 +4495,21 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
                - `AliyunLinux` : Alinux2 image.
                - `AliyunLinux3` : Alinux3 image.
-               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinux3Arm64` : Alinux3 image ARM version.
                - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
                - `CentOS` : CentOS image.
                - `Windows` : Windows image.
                - `WindowsCore` : WindowsCore image.
                - `ContainerOS` : container-optimized image.
+               - `AliyunLinuxSecurity` : Alinux security-hardened image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
                - `Custom`：Custom image.
                - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+               - `AliyunLinux4`: Alinux4 image.
+               - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+               - `AliyunLinux4Security`: Alinux4 security-hardened image.
+               - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
@@ -4786,16 +4816,21 @@ class NodePool(pulumi.CustomResource):
         The operating system image type and the `platform` parameter can be selected from the following values:
         - `AliyunLinux` : Alinux2 image.
         - `AliyunLinux3` : Alinux3 image.
-        - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        - `AliyunLinux3Arm64` : Alinux3 image ARM version.
         - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
         - `CentOS` : CentOS image.
         - `Windows` : Windows image.
         - `WindowsCore` : WindowsCore image.
         - `ContainerOS` : container-optimized image.
+        - `AliyunLinuxSecurity` : Alinux security-hardened image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
         - `Custom`：Custom image.
         - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+        - `AliyunLinux4`: Alinux4 image.
+        - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+        - `AliyunLinux4Security`: Alinux4 security-hardened image.
+        - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         """
         return pulumi.get(self, "image_type")
 
