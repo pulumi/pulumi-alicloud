@@ -2158,6 +2158,17 @@ export namespace apigateway {
          */
         arnRole: pulumi.Input<string>;
         /**
+         * The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+         * * `DEFAULT`: Use the default value provided by API Gateway.
+         * * `CUSTOM`: Use a custom value.
+         * * `CLIENT`: Use the Content-Type header from the client request.
+         */
+        contentTypeCategory?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         */
+        contentTypeValue?: pulumi.Input<string | undefined>;
+        /**
          * The base url of function compute service. Required if `functionType` is `HttpTrigger`.
          */
         functionBaseUrl?: pulumi.Input<string | undefined>;
@@ -3418,6 +3429,17 @@ export namespace cen {
          * Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
          */
         igmpv2Support?: pulumi.Input<string | undefined>;
+    }
+
+    export interface TransitRouterVpcAttachmentOptions {
+        /**
+         * Indicates whether appliance mode is enabled.
+         */
+        applianceModeSupport?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates whether IPv6 is supported.
+         */
+        ipv6Support?: pulumi.Input<string | undefined>;
     }
 
     export interface TransitRouterVpcAttachmentZoneMapping {
@@ -12148,7 +12170,7 @@ export namespace esa {
         /**
          * Origin ID.
          */
-        originId?: pulumi.Input<number | undefined>;
+        originId?: pulumi.Input<string | undefined>;
         /**
          * Source station type:
          * ip_domain: ip or domain name type origin station;
@@ -13639,6 +13661,17 @@ export namespace ess {
          * The ID of security group N to which ENI N belongs.
          */
         securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface ScalingConfigurationResourcePoolOptionsPrivatePoolTag {
+        /**
+         * The key of the private pool tag. Filters available Target-mode private pools by tag.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the private pool tag.
+         */
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface ScalingConfigurationSpotPriceLimit {
@@ -18778,6 +18811,43 @@ export namespace pai {
 }
 
 export namespace polardb {
+    export interface ApplicationComponent {
+        /**
+         * The class/specification of the component.
+         */
+        componentClass?: pulumi.Input<string | undefined>;
+        /**
+         * The number of replicas for the component.
+         */
+        componentReplica?: pulumi.Input<number | undefined>;
+        /**
+         * The type of the component.
+         */
+        componentType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ApplicationParameter {
+        /**
+         * The name of the parameter.
+         */
+        parameterName?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the parameter.
+         */
+        parameterValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BatchTaskTaskParam {
+        /**
+         * The name of the skill to be installed or uninstalled. For example, `polarClaw`.
+         */
+        skillName: pulumi.Input<string>;
+        /**
+         * The version of the skill. If not specified, the latest version may be used depending on the task type.
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
     export interface ClusterDbClusterIpArray {
         /**
          * The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
@@ -19233,29 +19303,38 @@ export namespace rds {
 
     export interface CustomDataDisk {
         /**
-         * Instance storage type
-         * local_ssd: local SSD disk
-         * cloud_essd:ESSD PL1 cloud disk
+         * The type of data disk. Valid values:
          */
         category?: pulumi.Input<string | undefined>;
         /**
-         * Cloud Disk Performance
-         * Currently only supports PL1
+         * The performance level for an ESSD cloud disk. For information about performance differences among ESSD cloud disks, see [ESSD cloud disks](https://help.aliyun.com/document_detail/2859916.html). Valid values:
+         * - `PL0`
+         * - `PL1` (default)
+         * - `PL2`
+         * - `PL3`.
          */
         performanceLevel?: pulumi.Input<string | undefined>;
         /**
-         * Instance storage space. Unit: GB.
+         * The size of the data disk, in GiB. Valid values:
+         * - cloud_efficiency: 20 to 32,768.
+         * - cloud_ssd: 20 to 32,768.
+         * - cloud_auto: 1 to 65,536.
+         * - cloud_essd: The valid range depends on the value of **DataDisk.PerformanceLevel**.
+         * - PL0: 1 to 65,536.
+         * - PL1: 20 to 65,536.
+         * - PL2: 461 to 65,536.
+         * - PL3: 1,261 to 65,536.
          */
         size?: pulumi.Input<number | undefined>;
     }
 
     export interface CustomSystemDisk {
         /**
-         * The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+         * The system disk category. Valid values:
          */
         category?: pulumi.Input<string | undefined>;
         /**
-         * System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+         * The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
          */
         size?: pulumi.Input<string | undefined>;
     }
@@ -20437,6 +20516,98 @@ export namespace ros {
          * The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
          */
         parameterValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface StackInstancesDeploymentTargets {
+        /**
+         * List of Alibaba Cloud account IDs for service-managed permissions. Maximum 50 accounts.
+         */
+        accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * List of Resource Directory folder IDs. Maximum 20 folders.
+         */
+        rdFolderIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface StackInstancesOperationPreferences {
+        /**
+         * Number of failures tolerated per region. Valid values: 0 to 20. Conflicts with `failureTolerancePercentage`.
+         */
+        failureToleranceCount?: pulumi.Input<number | undefined>;
+        /**
+         * Percentage of failures tolerated per region. Valid values: 0 to 100. Conflicts with `failureToleranceCount`.
+         */
+        failureTolerancePercentage?: pulumi.Input<number | undefined>;
+        /**
+         * Maximum number of concurrent operations per region. Valid values: 1 to 20. Conflicts with `maxConcurrentPercentage`.
+         */
+        maxConcurrentCount?: pulumi.Input<number | undefined>;
+        /**
+         * Maximum percentage of concurrent targets per region. Valid values: 1 to 100. Conflicts with `maxConcurrentCount`.
+         */
+        maxConcurrentPercentage?: pulumi.Input<number | undefined>;
+        /**
+         * Concurrency type for regions. Valid values: `SEQUENTIAL`, `PARALLEL`.
+         */
+        regionConcurrencyType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface StackInstancesParameterOverride {
+        /**
+         * The key of the parameter to override.
+         */
+        parameterKey: pulumi.Input<string>;
+        /**
+         * The value of the parameter to override. This field is sensitive and will be masked in logs.
+         */
+        parameterValue?: pulumi.Input<string | undefined>;
+    }
+
+    export interface StackInstancesStackInstance {
+        /**
+         * The Alibaba Cloud account ID where the stack instance is deployed.
+         */
+        accountId?: pulumi.Input<string | undefined>;
+        /**
+         * The timestamp when drift detection was last performed.
+         */
+        driftDetectionTime?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the last operation performed on this stack instance.
+         */
+        lastOperationId?: pulumi.Input<string | undefined>;
+        /**
+         * The Resource Directory folder ID (if applicable).
+         */
+        rdFolderId?: pulumi.Input<string | undefined>;
+        /**
+         * The region ID where the stack instance is deployed.
+         */
+        regionId?: pulumi.Input<string | undefined>;
+        /**
+         * The drift status of the stack. Valid values: `NOT_CHECKED`, `IN_SYNC`, `DRIFTED`, `CHECK_FAILED`, etc.
+         */
+        stackDriftStatus?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the stack group to which this instance belongs.
+         */
+        stackGroupId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
+         */
+        stackGroupName?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the underlying stack.
+         */
+        stackId?: pulumi.Input<string | undefined>;
+        /**
+         * The status of the stack instance. Valid values: `CURRENT`, `OUTDATED`, `INOPERABLE`, `RUNNING`, `FAILED`, `SUCCEEDED`, etc.
+         */
+        status?: pulumi.Input<string | undefined>;
+        /**
+         * The reason for the current status of the stack instance.
+         */
+        statusReason?: pulumi.Input<string | undefined>;
     }
 
     export interface StackParameter {
@@ -23146,13 +23317,13 @@ export namespace vpc {
 
     export interface NetworkIpv6CidrBlock {
         /**
-         * The IPv6 CIDR block of the default VPC.
+         * The IPv6 CIDR block of the default VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`.
          *
          * > **NOTE:**  When `EnableIpv6` is set to `true`, this parameter is required.
          */
         ipv6CidrBlock?: pulumi.Input<string | undefined>;
         /**
-         * The IPv6 address segment type of the VPC. Value:
+         * The IPv6 address segment type of the VPC. Please use the new resource `alicloud.vpc.Ipv6CidrBlock`. Value:
          * - `BGP` (default): Alibaba Cloud BGP IPv6.
          * - `ChinaMobile`: China Mobile (single line).
          * - `ChinaUnicom`: China Unicom (single line).

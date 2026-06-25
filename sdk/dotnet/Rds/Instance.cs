@@ -983,7 +983,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
         /// - 1: enables the feature.
         /// - 0: disables the feature.
         /// </summary>
@@ -1824,7 +1824,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
         /// - 1: enables the feature.
         /// - 0: disables the feature.
         /// </summary>
@@ -2719,7 +2719,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Force { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        /// Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
         /// - 1: enables the feature.
         /// - 0: disables the feature.
         /// </summary>

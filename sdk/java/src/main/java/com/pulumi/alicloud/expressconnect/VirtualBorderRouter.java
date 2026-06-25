@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a Express Connect Virtual Border Router resource.
  * 
+ * VBR VBR instance.
+ * 
  * For information about Express Connect Virtual Border Router and how to use it, see [What is Virtual Border Router](https://www.alibabacloud.com/help/en/doc-detail/44854.htm).
  * 
  * &gt; **NOTE:** Available since v1.134.0.
@@ -89,7 +91,7 @@ import javax.annotation.Nullable;
  * Express Connect Virtual Border Router can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example &lt;id&gt;
+ * $ pulumi import alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter example &lt;vbr_id&gt;
  * ```
  * 
  */
@@ -114,7 +116,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.associatedPhysicalConnections);
     }
     /**
-     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
@@ -123,7 +125,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
     private Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * @return The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
@@ -175,8 +177,8 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
     }
     /**
      * Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      * 
      */
     @Export(name="detectMultiplier", refs={Integer.class}, tree="[0]")
@@ -184,8 +186,8 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      * 
      */
     public Output<Integer> detectMultiplier() {
@@ -234,42 +236,42 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.localIpv6GatewayIp);
     }
     /**
-     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      * 
      */
     @Export(name="minRxInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> minRxInterval;
 
     /**
-     * @return Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * @return Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      * 
      */
     public Output<Integer> minRxInterval() {
         return this.minRxInterval;
     }
     /**
-     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      * 
      */
     @Export(name="minTxInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> minTxInterval;
 
     /**
-     * @return Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * @return Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      * 
      */
     public Output<Integer> minTxInterval() {
         return this.minTxInterval;
     }
     /**
-     * Maximum transmission unit.
+     * Maximum transmission unit
      * 
      */
     @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output<Integer> mtu;
 
     /**
-     * @return Maximum transmission unit.
+     * @return Maximum transmission unit
      * 
      */
     public Output<Integer> mtu() {
@@ -346,84 +348,90 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
         return this.physicalConnectionId;
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.263.0) The ID of the route table of the VBR.
      * 
      */
     @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
-     * @return (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+     * @return (Available since v1.263.0) The ID of the route table of the VBR.
      * 
      */
     public Output<String> routeTableId() {
         return this.routeTableId;
     }
     /**
-     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * Whether to allow inter-IDC communication
      * 
      */
     @Export(name="sitelinkEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sitelinkEnable;
 
     /**
-     * @return Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * @return Whether to allow inter-IDC communication
      * 
      */
     public Output<Optional<Boolean>> sitelinkEnable() {
         return Codegen.optional(this.sitelinkEnable);
     }
     /**
-     * The status of the VBR. Valid values: `active`, `terminated`.
+     * Status of the VBR
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VBR. Valid values: `active`, `terminated`.
+     * @return Status of the VBR
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="vbrOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vbrOwnerId;
 
     /**
-     * @return The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * @return The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> vbrOwnerId() {

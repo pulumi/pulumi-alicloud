@@ -117,6 +117,14 @@ namespace Pulumi.AliCloud.Ess
     public partial class Notification : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The encoding method of the notification content. Valid values: 
+        /// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+        /// - `Base64`: The content is Base64 encoded.
+        /// </summary>
+        [Output("messageEncoding")]
+        public Output<string?> MessageEncoding { get; private set; } = null!;
+
+        /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
         /// * region: the region ID of the scaling group. For more information, see `Regions and zones`
         /// * account-id: the ID of your account.
@@ -190,6 +198,14 @@ namespace Pulumi.AliCloud.Ess
     public sealed class NotificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The encoding method of the notification content. Valid values: 
+        /// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+        /// - `Base64`: The content is Base64 encoded.
+        /// </summary>
+        [Input("messageEncoding")]
+        public Input<string>? MessageEncoding { get; set; }
+
+        /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
         /// * region: the region ID of the scaling group. For more information, see `Regions and zones`
         /// * account-id: the ID of your account.
@@ -230,6 +246,14 @@ namespace Pulumi.AliCloud.Ess
 
     public sealed class NotificationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The encoding method of the notification content. Valid values: 
+        /// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+        /// - `Base64`: The content is Base64 encoded.
+        /// </summary>
+        [Input("messageEncoding")]
+        public Input<string>? MessageEncoding { get; set; }
+
         /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
         /// * region: the region ID of the scaling group. For more information, see `Regions and zones`

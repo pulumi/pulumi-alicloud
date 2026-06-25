@@ -70,8 +70,7 @@ namespace Pulumi.AliCloud.Esa
     public partial class CustomScenePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The time when the policy takes effect.
-        /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// Field `CreateTime` has been deprecated from provider version 1.281.0. New field `StartTime` instead.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -90,10 +89,17 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of websites associated.
+        /// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         /// </summary>
         [Output("siteIds")]
         public Output<string> SiteIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the policy takes effect.
+        /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
 
         /// <summary>
         /// Policy effective status. Valid values: `Disabled`, `Running`.
@@ -154,11 +160,10 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CustomScenePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time when the policy takes effect.
-        /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// Field `CreateTime` has been deprecated from provider version 1.281.0. New field `StartTime` instead.
         /// </summary>
-        [Input("createTime", required: true)]
-        public Input<string> CreateTime { get; set; } = null!;
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The policy name.
@@ -174,10 +179,17 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> EndTime { get; set; } = null!;
 
         /// <summary>
-        /// The IDs of websites associated.
+        /// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         /// </summary>
         [Input("siteIds", required: true)]
         public Input<string> SiteIds { get; set; } = null!;
+
+        /// <summary>
+        /// The time when the policy takes effect.
+        /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
 
         /// <summary>
         /// Policy effective status. Valid values: `Disabled`, `Running`.
@@ -200,8 +212,7 @@ namespace Pulumi.AliCloud.Esa
     public sealed class CustomScenePolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The time when the policy takes effect.
-        /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// Field `CreateTime` has been deprecated from provider version 1.281.0. New field `StartTime` instead.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -220,10 +231,17 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The IDs of websites associated.
+        /// The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
         /// </summary>
         [Input("siteIds")]
         public Input<string>? SiteIds { get; set; }
+
+        /// <summary>
+        /// The time when the policy takes effect.
+        /// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
 
         /// <summary>
         /// Policy effective status. Valid values: `Disabled`, `Running`.

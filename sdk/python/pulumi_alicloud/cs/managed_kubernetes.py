@@ -80,9 +80,14 @@ class ManagedKubernetesArgs:
                
                *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
+               * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+               * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+               * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+               
+               ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
@@ -364,9 +369,14 @@ class ManagedKubernetesArgs:
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        The cluster specifications of kubernetes cluster, which can be empty. Valid values:
         * ack.standard : Basic managed clusters.
         * ack.pro.small : Professional managed clusters.
+        * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+        * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+        * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+
+        ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -923,9 +933,14 @@ class _ManagedKubernetesState:
                
                *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
+               * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+               * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+               * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+               
+               ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param pulumi.Input['ManagedKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -1249,9 +1264,14 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        The cluster specifications of kubernetes cluster, which can be empty. Valid values:
         * ack.standard : Basic managed clusters.
         * ack.pro.small : Professional managed clusters.
+        * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+        * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+        * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+
+        ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -2207,9 +2227,14 @@ class ManagedKubernetes(pulumi.CustomResource):
                
                *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
+               * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+               * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+               * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+               
+               ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
@@ -2802,9 +2827,14 @@ class ManagedKubernetes(pulumi.CustomResource):
                
                *Removed params*
         :param pulumi.Input[_builtins.str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        :param pulumi.Input[_builtins.str] cluster_spec: The cluster specifications of kubernetes cluster, which can be empty. Valid values:
                * ack.standard : Basic managed clusters.
                * ack.pro.small : Professional managed clusters.
+               * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+               * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+               * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+               
+               ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']] connections: Map of kubernetes cluster connection information.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -3024,9 +3054,14 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> pulumi.Output[_builtins.str]:
         """
-        The cluster specifications of kubernetes cluster,which can be empty. Valid values:
+        The cluster specifications of kubernetes cluster, which can be empty. Valid values:
         * ack.standard : Basic managed clusters.
         * ack.pro.small : Professional managed clusters.
+        * ack.pro.xlarge : ACK Pro Provisioned Control Plane (Pro XL).
+        * ack.pro.2xlarge : ACK Pro Provisioned Control Plane (Pro 2XL).
+        * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
+
+        ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         """
         return pulumi.get(self, "cluster_spec")
 

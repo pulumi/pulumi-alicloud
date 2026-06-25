@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * 
  * For information about EIP Association and how to use it, see [What is Association](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-associateeipaddress).
  * 
- * &gt; **NOTE:** Available since v1.117.0.
+ * &gt; **NOTE:** Available since v1.5.1.
  * 
  * ## Example Usage
  * 

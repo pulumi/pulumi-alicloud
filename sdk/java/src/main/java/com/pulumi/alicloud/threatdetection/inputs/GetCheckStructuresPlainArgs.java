@@ -17,14 +17,14 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
     public static final GetCheckStructuresPlainArgs Empty = new GetCheckStructuresPlainArgs();
 
     /**
-     * The page number.
+     * The page number. Must be greater than 0.
      * 
      */
     @Import(name="currentPage")
     private @Nullable Integer currentPage;
 
     /**
-     * @return The page number.
+     * @return The page number. Must be greater than 0.
      * 
      */
     public Optional<Integer> currentPage() {
@@ -32,14 +32,14 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * A list of Check Structure IDs.
+     * A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of Check Structure IDs.
+     * @return A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
      * 
      */
     public Optional<List<String>> ids() {
@@ -47,14 +47,14 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      * 
      */
     @Import(name="lang")
     private @Nullable String lang;
 
     /**
-     * @return The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+     * @return The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      * 
      */
     public Optional<String> lang() {
@@ -74,6 +74,21 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
      */
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
+    }
+
+    /**
+     * Number of records per page. Must be greater than 0.
+     * 
+     */
+    @Import(name="pageSize")
+    private @Nullable Integer pageSize;
+
+    /**
+     * @return Number of records per page. Must be greater than 0.
+     * 
+     */
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
     }
 
     /**
@@ -98,6 +113,7 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
         this.ids = $.ids;
         this.lang = $.lang;
         this.outputFile = $.outputFile;
+        this.pageSize = $.pageSize;
         this.taskSources = $.taskSources;
     }
 
@@ -120,7 +136,7 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param currentPage The page number.
+         * @param currentPage The page number. Must be greater than 0.
          * 
          * @return builder
          * 
@@ -131,7 +147,7 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param ids A list of Check Structure IDs.
+         * @param ids A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
          * 
          * @return builder
          * 
@@ -142,7 +158,7 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param ids A list of Check Structure IDs.
+         * @param ids A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
          * 
          * @return builder
          * 
@@ -152,7 +168,7 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param lang The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+         * @param lang The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
          * 
          * @return builder
          * 
@@ -170,6 +186,17 @@ public final class GetCheckStructuresPlainArgs extends com.pulumi.resources.Invo
          */
         public Builder outputFile(@Nullable String outputFile) {
             $.outputFile = outputFile;
+            return this;
+        }
+
+        /**
+         * @param pageSize Number of records per page. Must be greater than 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(@Nullable Integer pageSize) {
+            $.pageSize = pageSize;
             return this;
         }
 

@@ -18,6 +18,12 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+        /// - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+        /// - `Base64`: The content is Base64-encoded.
+        /// </summary>
+        public readonly string MessageEncoding;
+        /// <summary>
         /// The Alibaba Cloud Resource Name (ARN) for the notification object.
         /// </summary>
         public readonly string NotificationArn;
@@ -29,21 +35,31 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// Scaling group id the notifications belong to.
         /// </summary>
         public readonly string ScalingGroupId;
+        /// <summary>
+        /// (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+        /// </summary>
+        public readonly string TimeZone;
 
         [OutputConstructor]
         private GetNotificationsNotificationResult(
             string id,
 
+            string messageEncoding,
+
             string notificationArn,
 
             ImmutableArray<string> notificationTypes,
 
-            string scalingGroupId)
+            string scalingGroupId,
+
+            string timeZone)
         {
             Id = id;
+            MessageEncoding = messageEncoding;
             NotificationArn = notificationArn;
             NotificationTypes = notificationTypes;
             ScalingGroupId = scalingGroupId;
+            TimeZone = timeZone;
         }
     }
 }

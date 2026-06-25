@@ -82,6 +82,59 @@ namespace Pulumi.AliCloud.ApiGateway
     /// });
     /// ```
     /// 
+    /// Backend Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AliCloud.ApiGateway.Group("example", new()
+    ///     {
+    ///         Name = "tf-example",
+    ///         Description = "tf-example",
+    ///         BasePath = "/",
+    ///     });
+    /// 
+    ///     var exampleBackend = new AliCloud.ApiGateway.Backend("example", new()
+    ///     {
+    ///         BackendName = "tf-example-backend",
+    ///         BackendType = "HTTP",
+    ///         Description = "tf-example",
+    ///     });
+    /// 
+    ///     var exampleApi = new AliCloud.ApiGateway.Api("example", new()
+    ///     {
+    ///         GroupId = example.Id,
+    ///         Name = "tf-example",
+    ///         Description = "tf-example",
+    ///         AuthType = "APP",
+    ///         ForceNonceCheck = false,
+    ///         RequestConfig = new AliCloud.ApiGateway.Inputs.ApiRequestConfigArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             Method = "GET",
+    ///             Path = "/example/path",
+    ///             Mode = "MAPPING",
+    ///         },
+    ///         ServiceType = "HTTP",
+    ///         HttpServiceConfig = new AliCloud.ApiGateway.Inputs.ApiHttpServiceConfigArgs
+    ///         {
+    ///             Address = "",
+    ///             Method = "GET",
+    ///             Path = "/web/cloudapi",
+    ///             Timeout = 12,
+    ///         },
+    ///         BackendId = exampleBackend.Id,
+    ///         BackendEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
@@ -106,6 +159,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Output("authType")]
         public Output<string> AuthType { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the backend service. When set to `True`, the `BackendId` will be sent to the API.
+        /// </summary>
+        [Output("backendEnabled")]
+        public Output<bool?> BackendEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+        /// </summary>
+        [Output("backendId")]
+        public Output<string?> BackendId { get; private set; } = null!;
 
         /// <summary>
         /// constant_parameters defines the constant parameters of the api. See `ConstantParameters` below.
@@ -180,7 +245,7 @@ namespace Pulumi.AliCloud.ApiGateway
         public Output<string> ServiceType { get; private set; } = null!;
 
         /// <summary>
-        /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        /// Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `alicloud.apigateway.StageModel`.
         /// </summary>
         [Output("stageNames")]
         public Output<ImmutableArray<string>> StageNames { get; private set; } = null!;
@@ -242,6 +307,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("authType", required: true)]
         public Input<string> AuthType { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the backend service. When set to `True`, the `BackendId` will be sent to the API.
+        /// </summary>
+        [Input("backendEnabled")]
+        public Input<bool>? BackendEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+        /// </summary>
+        [Input("backendId")]
+        public Input<string>? BackendId { get; set; }
 
         [Input("constantParameters")]
         private InputList<Inputs.ApiConstantParameterArgs>? _constantParameters;
@@ -331,7 +408,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<string>? _stageNames;
 
         /// <summary>
-        /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        /// Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `alicloud.apigateway.StageModel`.
         /// </summary>
         public InputList<string> StageNames
         {
@@ -370,6 +447,18 @@ namespace Pulumi.AliCloud.ApiGateway
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the backend service. When set to `True`, the `BackendId` will be sent to the API.
+        /// </summary>
+        [Input("backendEnabled")]
+        public Input<bool>? BackendEnabled { get; set; }
+
+        /// <summary>
+        /// The ID of the API Gateway Backend. When specified, the API references an existing backend created by `alicloud.apigateway.Backend`.
+        /// </summary>
+        [Input("backendId")]
+        public Input<string>? BackendId { get; set; }
 
         [Input("constantParameters")]
         private InputList<Inputs.ApiConstantParameterGetArgs>? _constantParameters;
@@ -459,7 +548,7 @@ namespace Pulumi.AliCloud.ApiGateway
         private InputList<string>? _stageNames;
 
         /// <summary>
-        /// Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
+        /// Stages that the api need to be deployed. Valid values: `RELEASE`, `PRE`, `TEST`, or any custom stage name created via `alicloud.apigateway.StageModel`.
         /// </summary>
         public InputList<string> StageNames
         {

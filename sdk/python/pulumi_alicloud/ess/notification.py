@@ -22,6 +22,7 @@ class NotificationArgs:
                  notification_arn: pulumi.Input[_builtins.str],
                  notification_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  scaling_group_id: pulumi.Input[_builtins.str],
+                 message_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notification resource.
@@ -32,11 +33,16 @@ class NotificationArgs:
                * resource-relative-id: the notification method. Valid values : `cloudmonitor`, MNS queue: `queue/{queuename}`, Replace the queuename with the specific MNS queue name, MNS topic: `topic/{topicname}`, Replace the topicname with the specific MNS topic name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_types: The notification types of Auto Scaling events and resource changes. Supported notification types: 'AUTOSCALING:SCALE_OUT_SUCCESS', 'AUTOSCALING:SCALE_IN_SUCCESS', 'AUTOSCALING:SCALE_OUT_ERROR', 'AUTOSCALING:SCALE_IN_ERROR', 'AUTOSCALING:SCALE_REJECT', 'AUTOSCALING:SCALE_OUT_START', 'AUTOSCALING:SCALE_IN_START', 'AUTOSCALING:SCHEDULE_TASK_EXPIRING'.
         :param pulumi.Input[_builtins.str] scaling_group_id: The ID of the Auto Scaling group.
+        :param pulumi.Input[_builtins.str] message_encoding: The encoding method of the notification content. Valid values: 
+               - `PlainText`: The content is not encoded and is transmitted in plaintext.
+               - `Base64`: The content is Base64 encoded.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
         """
         pulumi.set(__self__, "notification_arn", notification_arn)
         pulumi.set(__self__, "notification_types", notification_types)
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if message_encoding is not None:
+            pulumi.set(__self__, "message_encoding", message_encoding)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
 
@@ -80,6 +86,20 @@ class NotificationArgs:
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="messageEncoding")
+    def message_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encoding method of the notification content. Valid values: 
+        - `PlainText`: The content is not encoded and is transmitted in plaintext.
+        - `Base64`: The content is Base64 encoded.
+        """
+        return pulumi.get(self, "message_encoding")
+
+    @message_encoding.setter
+    def message_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_encoding", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -95,6 +115,7 @@ class NotificationArgs:
 @pulumi.input_type
 class _NotificationState:
     def __init__(__self__, *,
+                 message_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -102,6 +123,9 @@ class _NotificationState:
         """
         Input properties used for looking up and filtering Notification resources.
 
+        :param pulumi.Input[_builtins.str] message_encoding: The encoding method of the notification content. Valid values: 
+               - `PlainText`: The content is not encoded and is transmitted in plaintext.
+               - `Base64`: The content is Base64 encoded.
         :param pulumi.Input[_builtins.str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
@@ -110,6 +134,8 @@ class _NotificationState:
         :param pulumi.Input[_builtins.str] scaling_group_id: The ID of the Auto Scaling group.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
         """
+        if message_encoding is not None:
+            pulumi.set(__self__, "message_encoding", message_encoding)
         if notification_arn is not None:
             pulumi.set(__self__, "notification_arn", notification_arn)
         if notification_types is not None:
@@ -118,6 +144,20 @@ class _NotificationState:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter(name="messageEncoding")
+    def message_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The encoding method of the notification content. Valid values: 
+        - `PlainText`: The content is not encoded and is transmitted in plaintext.
+        - `Base64`: The content is Base64 encoded.
+        """
+        return pulumi.get(self, "message_encoding")
+
+    @message_encoding.setter
+    def message_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationArn")
@@ -177,6 +217,7 @@ class Notification(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 message_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -246,6 +287,9 @@ class Notification(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] message_encoding: The encoding method of the notification content. Valid values: 
+               - `PlainText`: The content is not encoded and is transmitted in plaintext.
+               - `Base64`: The content is Base64 encoded.
         :param pulumi.Input[_builtins.str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
@@ -337,6 +381,7 @@ class Notification(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 message_encoding: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -350,6 +395,7 @@ class Notification(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NotificationArgs.__new__(NotificationArgs)
 
+            __props__.__dict__["message_encoding"] = message_encoding
             if notification_arn is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_arn'")
             __props__.__dict__["notification_arn"] = notification_arn
@@ -370,6 +416,7 @@ class Notification(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            message_encoding: pulumi.Input[Optional[_builtins.str]] = None,
             notification_arn: pulumi.Input[Optional[_builtins.str]] = None,
             notification_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -381,6 +428,9 @@ class Notification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] message_encoding: The encoding method of the notification content. Valid values: 
+               - `PlainText`: The content is not encoded and is transmitted in plaintext.
+               - `Base64`: The content is Base64 encoded.
         :param pulumi.Input[_builtins.str] notification_arn: The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
                * region: the region ID of the scaling group. For more information, see `Regions and zones`
                * account-id: the ID of your account.
@@ -393,11 +443,22 @@ class Notification(pulumi.CustomResource):
 
         __props__ = _NotificationState.__new__(_NotificationState)
 
+        __props__.__dict__["message_encoding"] = message_encoding
         __props__.__dict__["notification_arn"] = notification_arn
         __props__.__dict__["notification_types"] = notification_types
         __props__.__dict__["scaling_group_id"] = scaling_group_id
         __props__.__dict__["time_zone"] = time_zone
         return Notification(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="messageEncoding")
+    def message_encoding(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The encoding method of the notification content. Valid values: 
+        - `PlainText`: The content is not encoded and is transmitted in plaintext.
+        - `Base64`: The content is Base64 encoded.
+        """
+        return pulumi.get(self, "message_encoding")
 
     @_builtins.property
     @pulumi.getter(name="notificationArn")

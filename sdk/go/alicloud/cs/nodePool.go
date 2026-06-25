@@ -433,16 +433,21 @@ type NodePool struct {
 	// The operating system image type and the `platform` parameter can be selected from the following values:
 	// - `AliyunLinux` : Alinux2 image.
 	// - `AliyunLinux3` : Alinux3 image.
-	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinux3Arm64` : Alinux3 image ARM version.
 	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
 	// - `CentOS` : CentOS image.
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
+	// - `AliyunLinuxSecurity` : Alinux security-hardened image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	// - `Custom`：Custom image.
 	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+	// - `AliyunLinux4`: Alinux4 image.
+	// - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+	// - `AliyunLinux4Security`: Alinux4 security-hardened image.
+	// - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
@@ -695,16 +700,21 @@ type nodePoolState struct {
 	// The operating system image type and the `platform` parameter can be selected from the following values:
 	// - `AliyunLinux` : Alinux2 image.
 	// - `AliyunLinux3` : Alinux3 image.
-	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinux3Arm64` : Alinux3 image ARM version.
 	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
 	// - `CentOS` : CentOS image.
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
+	// - `AliyunLinuxSecurity` : Alinux security-hardened image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	// - `Custom`：Custom image.
 	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+	// - `AliyunLinux4`: Alinux4 image.
+	// - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+	// - `AliyunLinux4Security`: Alinux4 security-hardened image.
+	// - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -914,16 +924,21 @@ type NodePoolState struct {
 	// The operating system image type and the `platform` parameter can be selected from the following values:
 	// - `AliyunLinux` : Alinux2 image.
 	// - `AliyunLinux3` : Alinux3 image.
-	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinux3Arm64` : Alinux3 image ARM version.
 	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
 	// - `CentOS` : CentOS image.
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
+	// - `AliyunLinuxSecurity` : Alinux security-hardened image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	// - `Custom`：Custom image.
 	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+	// - `AliyunLinux4`: Alinux4 image.
+	// - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+	// - `AliyunLinux4Security`: Alinux4 security-hardened image.
+	// - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -1137,16 +1152,21 @@ type nodePoolArgs struct {
 	// The operating system image type and the `platform` parameter can be selected from the following values:
 	// - `AliyunLinux` : Alinux2 image.
 	// - `AliyunLinux3` : Alinux3 image.
-	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinux3Arm64` : Alinux3 image ARM version.
 	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
 	// - `CentOS` : CentOS image.
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
+	// - `AliyunLinuxSecurity` : Alinux security-hardened image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	// - `Custom`：Custom image.
 	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+	// - `AliyunLinux4`: Alinux4 image.
+	// - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+	// - `AliyunLinux4Security`: Alinux4 security-hardened image.
+	// - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -1353,16 +1373,21 @@ type NodePoolArgs struct {
 	// The operating system image type and the `platform` parameter can be selected from the following values:
 	// - `AliyunLinux` : Alinux2 image.
 	// - `AliyunLinux3` : Alinux3 image.
-	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinux3Arm64` : Alinux3 image ARM version.
 	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
 	// - `CentOS` : CentOS image.
 	// - `Windows` : Windows image.
 	// - `WindowsCore` : WindowsCore image.
 	// - `ContainerOS` : container-optimized image.
+	// - `AliyunLinuxSecurity` : Alinux security-hardened image.
 	// - `Ubuntu`: Ubuntu image.
 	// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 	// - `Custom`：Custom image.
 	// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+	// - `AliyunLinux4`: Alinux4 image.
+	// - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+	// - `AliyunLinux4Security`: Alinux4 security-hardened image.
+	// - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -1696,16 +1721,21 @@ func (o NodePoolOutput) ImageId() pulumi.StringOutput {
 // The operating system image type and the `platform` parameter can be selected from the following values:
 // - `AliyunLinux` : Alinux2 image.
 // - `AliyunLinux3` : Alinux3 image.
-// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+// - `AliyunLinux3Arm64` : Alinux3 image ARM version.
 // - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
 // - `CentOS` : CentOS image.
 // - `Windows` : Windows image.
 // - `WindowsCore` : WindowsCore image.
 // - `ContainerOS` : container-optimized image.
+// - `AliyunLinuxSecurity` : Alinux security-hardened image.
 // - `Ubuntu`: Ubuntu image.
 // - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
 // - `Custom`：Custom image.
 // - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
+// - `AliyunLinux4`: Alinux4 image.
+// - `AliyunLinux4Arm64`: Alinux4 image ARM version.
+// - `AliyunLinux4Security`: Alinux4 security-hardened image.
+// - `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
 func (o NodePoolOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageType }).(pulumi.StringOutput)
 }

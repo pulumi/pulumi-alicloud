@@ -4696,8 +4696,13 @@ class GetClustersClusterResult(dict):
         :param _builtins.str cluster_id: The cluster ID.
         :param _builtins.str cluster_name: Custom cluster name.
         :param _builtins.str cluster_spec: The specification of the clusters to query. Valid values:
-               - `ack.pro.small`: ACK Pro clusters.
                - `ack.standard`: ACK Basic clusters.
+               - `ack.pro.small`: ACK Pro clusters.
+               - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+               - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+               - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+               
+               ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param _builtins.str cluster_type: The type of the clusters to query. Valid values:
                - `Kubernetes`: ACK dedicated clusters.
                - `ManagedKubernetes`: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
@@ -4789,8 +4794,13 @@ class GetClustersClusterResult(dict):
     def cluster_spec(self) -> _builtins.str:
         """
         The specification of the clusters to query. Valid values:
-        - `ack.pro.small`: ACK Pro clusters.
         - `ack.standard`: ACK Basic clusters.
+        - `ack.pro.small`: ACK Pro clusters.
+        - `ack.pro.xlarge`: ACK Pro Provisioned Control Plane (Pro XL).
+        - `ack.pro.2xlarge`: ACK Pro Provisioned Control Plane (Pro 2XL).
+        - `ack.pro.4xlarge`: ACK Pro Provisioned Control Plane (Pro 4XL).
+
+        ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -5977,7 +5987,7 @@ class GetKubernetesNodePoolsNodepoolResult(dict):
         :param _builtins.str deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param _builtins.str desired_size: Number of expected nodes in the node pool.
         :param _builtins.str image_id: The custom image ID. The system-provided image is used by default.
-        :param _builtins.str image_type: The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+        :param _builtins.str image_type: The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 image ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `AliyunLinuxSecurity` : Alinux security-hardened image.- `Ubuntu`: Ubuntu image.- `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.- `Custom`：Custom image.- `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.- `AliyunLinux4`: Alinux4 image.- `AliyunLinux4Arm64`: Alinux4 image ARM version.- `AliyunLinux4Security`: Alinux4 security-hardened image.- `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         :param _builtins.bool install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:- `true` : install cloud monitoring on the ECS node.- `false` : does not install cloud monitoring on the ECS node.
         :param _builtins.str instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param Sequence[_builtins.str] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -6174,7 +6184,7 @@ class GetKubernetesNodePoolsNodepoolResult(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> _builtins.str:
         """
-        The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 mirror ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `Ubuntu`: Ubuntu image.
+        The operating system image type and the `platform` parameter can be selected from the following values:- `AliyunLinux` : Alinux2 image.- `AliyunLinux3` : Alinux3 image.- `AliyunLinux3Arm64` : Alinux3 image ARM version.- `AliyunLinuxUEFI` : Alinux2 Image UEFI version.- `CentOS` : CentOS image.- `Windows` : Windows image.- `WindowsCore` : WindowsCore image.- `ContainerOS` : container-optimized image.- `AliyunLinuxSecurity` : Alinux security-hardened image.- `Ubuntu`: Ubuntu image.- `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.- `Custom`：Custom image.- `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.- `AliyunLinux4`: Alinux4 image.- `AliyunLinux4Arm64`: Alinux4 image ARM version.- `AliyunLinux4Security`: Alinux4 security-hardened image.- `AliyunLinux4ContainerOptimizedArm64`: Alinux4 container-optimized image ARM version.
         """
         return pulumi.get(self, "image_type")
 

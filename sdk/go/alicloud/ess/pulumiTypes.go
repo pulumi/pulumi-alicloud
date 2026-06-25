@@ -3706,6 +3706,112 @@ func (o ScalingConfigurationNetworkInterfaceArrayOutput) Index(i pulumi.IntInput
 	}).(ScalingConfigurationNetworkInterfaceOutput)
 }
 
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTag struct {
+	// The key of the private pool tag. Filters available Target-mode private pools by tag.
+	Key *string `pulumi:"key"`
+	// The value of the private pool tag.
+	Value *string `pulumi:"value"`
+}
+
+// ScalingConfigurationResourcePoolOptionsPrivatePoolTagInput is an input type that accepts ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs and ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput values.
+// You can construct a concrete instance of `ScalingConfigurationResourcePoolOptionsPrivatePoolTagInput` via:
+//
+//	ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs{...}
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTagInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput() ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput
+	ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutputWithContext(context.Context) ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput
+}
+
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs struct {
+	// The key of the private pool tag. Filters available Target-mode private pools by tag.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the private pool tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationResourcePoolOptionsPrivatePoolTag)(nil)).Elem()
+}
+
+func (i ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput() ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput {
+	return i.ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutputWithContext(ctx context.Context) ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput)
+}
+
+// ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayInput is an input type that accepts ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray and ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayInput` via:
+//
+//	ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray{ ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs{...} }
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput() ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput
+	ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutputWithContext(context.Context) ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput
+}
+
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray []ScalingConfigurationResourcePoolOptionsPrivatePoolTagInput
+
+func (ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationResourcePoolOptionsPrivatePoolTag)(nil)).Elem()
+}
+
+func (i ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput() ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput {
+	return i.ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutputWithContext(ctx context.Context) ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput)
+}
+
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationResourcePoolOptionsPrivatePoolTag)(nil)).Elem()
+}
+
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput() ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput {
+	return o
+}
+
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagOutputWithContext(ctx context.Context) ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput {
+	return o
+}
+
+// The key of the private pool tag. Filters available Target-mode private pools by tag.
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationResourcePoolOptionsPrivatePoolTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the private pool tag.
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationResourcePoolOptionsPrivatePoolTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationResourcePoolOptionsPrivatePoolTag)(nil)).Elem()
+}
+
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput() ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput) ToScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutputWithContext(ctx context.Context) ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationResourcePoolOptionsPrivatePoolTag {
+		return vs[0].([]ScalingConfigurationResourcePoolOptionsPrivatePoolTag)[vs[1].(int)]
+	}).(ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput)
+}
+
 type ScalingConfigurationSpotPriceLimit struct {
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
@@ -5185,12 +5291,18 @@ func (o GetLifecycleHooksHookArrayOutput) Index(i pulumi.IntInput) GetLifecycleH
 type GetNotificationsNotification struct {
 	// ID of the notification.
 	Id string `pulumi:"id"`
+	// (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+	// - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+	// - `Base64`: The content is Base64-encoded.
+	MessageEncoding string `pulumi:"messageEncoding"`
 	// The Alibaba Cloud Resource Name (ARN) for the notification object.
 	NotificationArn string `pulumi:"notificationArn"`
 	// The notification types of Auto Scaling events and resource changes.
 	NotificationTypes []string `pulumi:"notificationTypes"`
 	// Scaling group id the notifications belong to.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
+	// (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone string `pulumi:"timeZone"`
 }
 
 // GetNotificationsNotificationInput is an input type that accepts GetNotificationsNotificationArgs and GetNotificationsNotificationOutput values.
@@ -5207,12 +5319,18 @@ type GetNotificationsNotificationInput interface {
 type GetNotificationsNotificationArgs struct {
 	// ID of the notification.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+	// - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+	// - `Base64`: The content is Base64-encoded.
+	MessageEncoding pulumi.StringInput `pulumi:"messageEncoding"`
 	// The Alibaba Cloud Resource Name (ARN) for the notification object.
 	NotificationArn pulumi.StringInput `pulumi:"notificationArn"`
 	// The notification types of Auto Scaling events and resource changes.
 	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
 	// Scaling group id the notifications belong to.
 	ScalingGroupId pulumi.StringInput `pulumi:"scalingGroupId"`
+	// (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
 }
 
 func (GetNotificationsNotificationArgs) ElementType() reflect.Type {
@@ -5271,6 +5389,13 @@ func (o GetNotificationsNotificationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationsNotification) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Optional,Available since v1.283.0) The encoding format for the message content. Valid values:
+// - `PlainText`: PlainText: The content is in plaintext. No need to be encoded.
+// - `Base64`: The content is Base64-encoded.
+func (o GetNotificationsNotificationOutput) MessageEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsNotification) string { return v.MessageEncoding }).(pulumi.StringOutput)
+}
+
 // The Alibaba Cloud Resource Name (ARN) for the notification object.
 func (o GetNotificationsNotificationOutput) NotificationArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationsNotification) string { return v.NotificationArn }).(pulumi.StringOutput)
@@ -5284,6 +5409,11 @@ func (o GetNotificationsNotificationOutput) NotificationTypes() pulumi.StringArr
 // Scaling group id the notifications belong to.
 func (o GetNotificationsNotificationOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationsNotification) string { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// (Optional,Available since v1.283.0) The time zone of notifications. The value is displayed in UTC. For example, a value of UTC+8 indicates that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 indicates that the time is 7 hours behind Coordinated Universal Time.
+func (o GetNotificationsNotificationOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsNotification) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 type GetNotificationsNotificationArrayOutput struct{ *pulumi.OutputState }
@@ -7606,6 +7736,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstanceTypeOverrideArrayInput)(nil)).Elem(), ScalingConfigurationInstanceTypeOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationNetworkInterfaceInput)(nil)).Elem(), ScalingConfigurationNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationNetworkInterfaceArrayInput)(nil)).Elem(), ScalingConfigurationNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationResourcePoolOptionsPrivatePoolTagInput)(nil)).Elem(), ScalingConfigurationResourcePoolOptionsPrivatePoolTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayInput)(nil)).Elem(), ScalingConfigurationResourcePoolOptionsPrivatePoolTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupAlbServerGroupInput)(nil)).Elem(), ScalingGroupAlbServerGroupArgs{})
@@ -7702,6 +7834,8 @@ func init() {
 	pulumi.RegisterOutputType(ScalingConfigurationInstanceTypeOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationResourcePoolOptionsPrivatePoolTagOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationResourcePoolOptionsPrivatePoolTagArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupAlbServerGroupOutput{})

@@ -11,6 +11,7 @@ from .domain_config import *
 from .domain_new import *
 from .fc_trigger import *
 from .get_blocked_regions import *
+from .get_domain_configs import *
 from .get_ip_info import *
 from .get_real_time_log_deliveries import *
 from .get_service import *

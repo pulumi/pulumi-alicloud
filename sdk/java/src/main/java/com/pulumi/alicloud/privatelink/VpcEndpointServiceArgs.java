@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,14 +50,14 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      * 
      */
     @Import(name="connectBandwidth")
     private @Nullable Output<Integer> connectBandwidth;
 
     /**
-     * @return The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * @return The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      * 
      */
     public Optional<Output<Integer>> connectBandwidth() {
@@ -158,6 +159,21 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The list of remote region IDs that are supported by the endpoint service.
+     * 
+     */
+    @Import(name="supportedRegionLists")
+    private @Nullable Output<List<String>> supportedRegionLists;
+
+    /**
+     * @return The list of remote region IDs that are supported by the endpoint service.
+     * 
+     */
+    public Optional<Output<List<String>>> supportedRegionLists() {
+        return Optional.ofNullable(this.supportedRegionLists);
+    }
+
+    /**
      * The list of tags.
      * 
      */
@@ -199,6 +215,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         this.serviceDescription = $.serviceDescription;
         this.serviceResourceType = $.serviceResourceType;
         this.serviceSupportIpv6 = $.serviceSupportIpv6;
+        this.supportedRegionLists = $.supportedRegionLists;
         this.tags = $.tags;
         this.zoneAffinityEnabled = $.zoneAffinityEnabled;
     }
@@ -264,7 +281,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param connectBandwidth The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+         * @param connectBandwidth The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
          * 
          * @return builder
          * 
@@ -275,7 +292,7 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param connectBandwidth The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+         * @param connectBandwidth The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
          * 
          * @return builder
          * 
@@ -412,6 +429,37 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
          */
         public Builder serviceSupportIpv6(Boolean serviceSupportIpv6) {
             return serviceSupportIpv6(Output.of(serviceSupportIpv6));
+        }
+
+        /**
+         * @param supportedRegionLists The list of remote region IDs that are supported by the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegionLists(@Nullable Output<List<String>> supportedRegionLists) {
+            $.supportedRegionLists = supportedRegionLists;
+            return this;
+        }
+
+        /**
+         * @param supportedRegionLists The list of remote region IDs that are supported by the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegionLists(List<String> supportedRegionLists) {
+            return supportedRegionLists(Output.of(supportedRegionLists));
+        }
+
+        /**
+         * @param supportedRegionLists The list of remote region IDs that are supported by the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegionLists(String... supportedRegionLists) {
+            return supportedRegionLists(List.of(supportedRegionLists));
         }
 
         /**

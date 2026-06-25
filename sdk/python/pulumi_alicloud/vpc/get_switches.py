@@ -248,6 +248,8 @@ def get_switches(cidr_block: Optional[_builtins.str] = None,
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
 
+    > **NOTE:** Available since v1.7.2.
+
     ## Example Usage
 
     ```python
@@ -339,6 +341,8 @@ def get_switches_output(cidr_block: pulumi.Input[Optional[Optional[_builtins.str
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSwitchesResult]:
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+
+    > **NOTE:** Available since v1.7.2.
 
     ## Example Usage
 

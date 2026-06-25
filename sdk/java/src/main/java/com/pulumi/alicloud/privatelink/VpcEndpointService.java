@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -105,14 +106,14 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoAcceptConnection);
     }
     /**
-     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      * 
      */
     @Export(name="connectBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectBandwidth;
 
     /**
-     * @return The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+     * @return The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
      * 
      */
     public Output<Integer> connectBandwidth() {
@@ -275,6 +276,20 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The list of remote region IDs that are supported by the endpoint service.
+     * 
+     */
+    @Export(name="supportedRegionLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> supportedRegionLists;
+
+    /**
+     * @return The list of remote region IDs that are supported by the endpoint service.
+     * 
+     */
+    public Output<List<String>> supportedRegionLists() {
+        return this.supportedRegionLists;
     }
     /**
      * The list of tags.

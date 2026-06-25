@@ -17,20 +17,26 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
     public static final CustomScenePolicyArgs Empty = new CustomScenePolicyArgs();
 
     /**
-     * The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+     * 
+     * @deprecated
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      * 
      */
-    @Import(name="createTime", required=true)
-    private Output<String> createTime;
+    @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
 
     /**
-     * @return The time when the policy takes effect.
-     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * @return Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
+     * 
+     * @deprecated
+     * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
      * 
      */
-    public Output<String> createTime() {
-        return this.createTime;
+    @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -66,18 +72,35 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The IDs of websites associated.
+     * The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      * 
      */
     @Import(name="siteIds", required=true)
     private Output<String> siteIds;
 
     /**
-     * @return The IDs of websites associated.
+     * @return The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
      * 
      */
     public Output<String> siteIds() {
         return this.siteIds;
+    }
+
+    /**
+     * The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    @Import(name="startTime")
+    private @Nullable Output<String> startTime;
+
+    /**
+     * @return The time when the policy takes effect.
+     * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    public Optional<Output<String>> startTime() {
+        return Optional.ofNullable(this.startTime);
     }
 
     /**
@@ -117,6 +140,7 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
         this.customScenePolicyName = $.customScenePolicyName;
         this.endTime = $.endTime;
         this.siteIds = $.siteIds;
+        this.startTime = $.startTime;
         this.status = $.status;
         this.template = $.template;
     }
@@ -140,24 +164,30 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createTime The time when the policy takes effect.
-         * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param createTime Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+         * 
          */
-        public Builder createTime(Output<String> createTime) {
+        @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
+        public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
         /**
-         * @param createTime The time when the policy takes effect.
-         * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * @param createTime Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead
+         * 
          */
+        @Deprecated /* Field `createTime` has been deprecated from provider version 1.281.0. New field `startTime` instead */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
@@ -207,7 +237,7 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param siteIds The IDs of websites associated.
+         * @param siteIds The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
          * 
          * @return builder
          * 
@@ -218,13 +248,36 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param siteIds The IDs of websites associated.
+         * @param siteIds The IDs of the sites to associate with the policy. Separate multiple site IDs with commas.
          * 
          * @return builder
          * 
          */
         public Builder siteIds(String siteIds) {
             return siteIds(Output.of(siteIds));
+        }
+
+        /**
+         * @param startTime The time when the policy takes effect.
+         * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(@Nullable Output<String> startTime) {
+            $.startTime = startTime;
+            return this;
+        }
+
+        /**
+         * @param startTime The time when the policy takes effect.
+         * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(String startTime) {
+            return startTime(Output.of(startTime));
         }
 
         /**
@@ -270,9 +323,6 @@ public final class CustomScenePolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public CustomScenePolicyArgs build() {
-            if ($.createTime == null) {
-                throw new MissingRequiredPropertyException("CustomScenePolicyArgs", "createTime");
-            }
             if ($.customScenePolicyName == null) {
                 throw new MissingRequiredPropertyException("CustomScenePolicyArgs", "customScenePolicyName");
             }

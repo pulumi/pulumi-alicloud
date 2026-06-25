@@ -90,8 +90,7 @@ export class CustomDisk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-     * Default value: empty.
+     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -99,8 +98,7 @@ export class CustomDisk extends pulumi.CustomResource {
      */
     declare public readonly diskCategory: pulumi.Output<string>;
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      */
     declare public readonly diskName: pulumi.Output<string | undefined>;
     /**
@@ -246,8 +244,7 @@ export interface CustomDiskState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-     * Default value: empty.
+     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -255,8 +252,7 @@ export interface CustomDiskState {
      */
     diskCategory?: pulumi.Input<string | undefined>;
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      */
     diskName?: pulumi.Input<string | undefined>;
     /**
@@ -333,8 +329,7 @@ export interface CustomDiskArgs {
      */
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-     * Default value: empty.
+     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -342,8 +337,7 @@ export interface CustomDiskArgs {
      */
     diskCategory: pulumi.Input<string>;
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      */
     diskName?: pulumi.Input<string | undefined>;
     /**

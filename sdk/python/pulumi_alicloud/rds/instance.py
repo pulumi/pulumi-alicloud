@@ -254,7 +254,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
-        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -1089,7 +1089,7 @@ class InstanceArgs:
     @pulumi.getter(name="forceEncryption")
     def force_encryption(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
         - 1: enables the feature.
         - 0: disables the feature.
         """
@@ -2131,7 +2131,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
-        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -2999,7 +2999,7 @@ class _InstanceState:
     @pulumi.getter(name="forceEncryption")
     def force_encryption(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
         - 1: enables the feature.
         - 0: disables the feature.
         """
@@ -4533,7 +4533,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
-        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -5598,7 +5598,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
-        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
         :param pulumi.Input[_builtins.bool] force_restart: Set it to true to make some parameter efficient when modifying them. Default to false.
@@ -6235,7 +6235,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="forceEncryption")
     def force_encryption(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+        Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
         - 1: enables the feature.
         - 0: disables the feature.
         """

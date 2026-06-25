@@ -19,6 +19,21 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string> ArnRole { get; set; } = null!;
 
         /// <summary>
+        /// The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+        /// * `DEFAULT`: Use the default value provided by API Gateway.
+        /// * `CUSTOM`: Use a custom value.
+        /// * `CLIENT`: Use the Content-Type header from the client request.
+        /// </summary>
+        [Input("contentTypeCategory")]
+        public Input<string>? ContentTypeCategory { get; set; }
+
+        /// <summary>
+        /// The value of the Content-Type header when `ContentTypeCategory` is `DEFAULT` or `CUSTOM`.
+        /// </summary>
+        [Input("contentTypeValue")]
+        public Input<string>? ContentTypeValue { get; set; }
+
+        /// <summary>
         /// The base url of function compute service. Required if `FunctionType` is `HttpTrigger`.
         /// </summary>
         [Input("functionBaseUrl")]

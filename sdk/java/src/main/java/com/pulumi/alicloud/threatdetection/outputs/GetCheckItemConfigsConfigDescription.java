@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCheckItemConfigsConfigDescription {
     /**
-     * @return The type of the description of the check item. Valid value:*   **text**.
+     * @return The type of the description of the check item. Valid value: `text`.
      * 
      */
     private String type;
@@ -23,7 +23,7 @@ public final class GetCheckItemConfigsConfigDescription {
 
     private GetCheckItemConfigsConfigDescription() {}
     /**
-     * @return The type of the description of the check item. Valid value:*   **text**.
+     * @return The type of the description of the check item. Valid value: `text`.
      * 
      */
     public String type() {

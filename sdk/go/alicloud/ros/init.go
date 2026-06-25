@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StackGroup{}
 	case "alicloud:ros/stackInstance:StackInstance":
 		r = &StackInstance{}
+	case "alicloud:ros/stackInstances:StackInstances":
+		r = &StackInstances{}
 	case "alicloud:ros/template:Template":
 		r = &Template{}
 	case "alicloud:ros/templateScratch:TemplateScratch":
@@ -64,6 +66,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ros/stackInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ros/stackInstances",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

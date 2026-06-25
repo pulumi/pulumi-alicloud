@@ -17,7 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.threatdetection.getCheckStructures({});
+ * const _default = alicloud.threatdetection.getCheckStructures({
+ *     lang: "zh",
+ *     currentPage: 1,
+ *     pageSize: 10,
+ * });
  * export const alicloudThreatDetectionCheckStructureExampleStandardType = _default.then(_default => _default.structures?.[0]?.standardType);
  * ```
  */
@@ -29,6 +33,7 @@ export function getCheckStructures(args?: GetCheckStructuresArgs, opts?: pulumi.
         "ids": args.ids,
         "lang": args.lang,
         "outputFile": args.outputFile,
+        "pageSize": args.pageSize,
         "taskSources": args.taskSources,
     }, opts);
 }
@@ -38,21 +43,25 @@ export function getCheckStructures(args?: GetCheckStructuresArgs, opts?: pulumi.
  */
 export interface GetCheckStructuresArgs {
     /**
-     * The page number.
+     * The page number. Must be greater than 0.
      */
     currentPage?: number;
     /**
-     * A list of Check Structure IDs.
+     * A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
      */
     ids?: string[];
     /**
-     * The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      */
     lang?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * Number of records per page. Must be greater than 0.
+     */
+    pageSize?: number;
     /**
      * List of task sources.
      */
@@ -74,6 +83,7 @@ export interface GetCheckStructuresResult {
     readonly ids: string[];
     readonly lang?: string;
     readonly outputFile?: string;
+    readonly pageSize?: number;
     /**
      * A list of Check Structure Entries. Each element contains the following attributes:
      */
@@ -91,7 +101,11 @@ export interface GetCheckStructuresResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.threatdetection.getCheckStructures({});
+ * const _default = alicloud.threatdetection.getCheckStructures({
+ *     lang: "zh",
+ *     currentPage: 1,
+ *     pageSize: 10,
+ * });
  * export const alicloudThreatDetectionCheckStructureExampleStandardType = _default.then(_default => _default.structures?.[0]?.standardType);
  * ```
  */
@@ -103,6 +117,7 @@ export function getCheckStructuresOutput(args?: GetCheckStructuresOutputArgs, op
         "ids": args.ids,
         "lang": args.lang,
         "outputFile": args.outputFile,
+        "pageSize": args.pageSize,
         "taskSources": args.taskSources,
     }, opts);
 }
@@ -112,21 +127,25 @@ export function getCheckStructuresOutput(args?: GetCheckStructuresOutputArgs, op
  */
 export interface GetCheckStructuresOutputArgs {
     /**
-     * The page number.
+     * The page number. Must be greater than 0.
      */
     currentPage?: pulumi.Input<number | undefined>;
     /**
-     * A list of Check Structure IDs.
+     * A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      */
     lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string | undefined>;
+    /**
+     * Number of records per page. Must be greater than 0.
+     */
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * List of task sources.
      */

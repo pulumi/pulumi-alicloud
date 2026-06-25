@@ -105,6 +105,13 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vpcId);
     }
 
+    @Import(name="vpcIpv6CidrBlock")
+    private @Nullable Output<String> vpcIpv6CidrBlock;
+
+    public Optional<Output<String>> vpcIpv6CidrBlock() {
+        return Optional.ofNullable(this.vpcIpv6CidrBlock);
+    }
+
     @Import(name="vswitchName")
     private @Nullable Output<String> vswitchName;
 
@@ -131,6 +138,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
+        this.vpcIpv6CidrBlock = $.vpcIpv6CidrBlock;
         this.vswitchName = $.vswitchName;
         this.zoneId = $.zoneId;
     }
@@ -264,6 +272,15 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
+        }
+
+        public Builder vpcIpv6CidrBlock(@Nullable Output<String> vpcIpv6CidrBlock) {
+            $.vpcIpv6CidrBlock = vpcIpv6CidrBlock;
+            return this;
+        }
+
+        public Builder vpcIpv6CidrBlock(String vpcIpv6CidrBlock) {
+            return vpcIpv6CidrBlock(Output.of(vpcIpv6CidrBlock));
         }
 
         public Builder vswitchName(@Nullable Output<String> vswitchName) {

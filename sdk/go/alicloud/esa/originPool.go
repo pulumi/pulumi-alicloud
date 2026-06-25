@@ -129,9 +129,9 @@ type OriginPool struct {
 	pulumi.CustomResourceState
 
 	// Whether the source address pool is enabled:
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// OriginPool Id
-	OriginPoolId pulumi.IntOutput `pulumi:"originPoolId"`
+	OriginPoolId pulumi.StringOutput `pulumi:"originPoolId"`
 	// The source address pool name.
 	OriginPoolName pulumi.StringOutput `pulumi:"originPoolName"`
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
@@ -179,7 +179,7 @@ type originPoolState struct {
 	// Whether the source address pool is enabled:
 	Enabled *bool `pulumi:"enabled"`
 	// OriginPool Id
-	OriginPoolId *int `pulumi:"originPoolId"`
+	OriginPoolId *string `pulumi:"originPoolId"`
 	// The source address pool name.
 	OriginPoolName *string `pulumi:"originPoolName"`
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
@@ -192,7 +192,7 @@ type OriginPoolState struct {
 	// Whether the source address pool is enabled:
 	Enabled pulumi.BoolPtrInput
 	// OriginPool Id
-	OriginPoolId pulumi.IntPtrInput
+	OriginPoolId pulumi.StringPtrInput
 	// The source address pool name.
 	OriginPoolName pulumi.StringPtrInput
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
@@ -316,13 +316,13 @@ func (o OriginPoolOutput) ToOriginPoolOutputWithContext(ctx context.Context) Ori
 }
 
 // Whether the source address pool is enabled:
-func (o OriginPoolOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OriginPool) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o OriginPoolOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OriginPool) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // OriginPool Id
-func (o OriginPoolOutput) OriginPoolId() pulumi.IntOutput {
-	return o.ApplyT(func(v *OriginPool) pulumi.IntOutput { return v.OriginPoolId }).(pulumi.IntOutput)
+func (o OriginPoolOutput) OriginPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginPool) pulumi.StringOutput { return v.OriginPoolId }).(pulumi.StringOutput)
 }
 
 // The source address pool name.

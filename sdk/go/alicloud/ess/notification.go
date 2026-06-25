@@ -135,6 +135,10 @@ import (
 type Notification struct {
 	pulumi.CustomResourceState
 
+	// The encoding method of the notification content. Valid values:
+	// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+	// - `Base64`: The content is Base64 encoded.
+	MessageEncoding pulumi.StringPtrOutput `pulumi:"messageEncoding"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
 	// * region: the region ID of the scaling group. For more information, see `Regions and zones`
 	// * account-id: the ID of your account.
@@ -187,6 +191,10 @@ func GetNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notification resources.
 type notificationState struct {
+	// The encoding method of the notification content. Valid values:
+	// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+	// - `Base64`: The content is Base64 encoded.
+	MessageEncoding *string `pulumi:"messageEncoding"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
 	// * region: the region ID of the scaling group. For more information, see `Regions and zones`
 	// * account-id: the ID of your account.
@@ -201,6 +209,10 @@ type notificationState struct {
 }
 
 type NotificationState struct {
+	// The encoding method of the notification content. Valid values:
+	// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+	// - `Base64`: The content is Base64 encoded.
+	MessageEncoding pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
 	// * region: the region ID of the scaling group. For more information, see `Regions and zones`
 	// * account-id: the ID of your account.
@@ -219,6 +231,10 @@ func (NotificationState) ElementType() reflect.Type {
 }
 
 type notificationArgs struct {
+	// The encoding method of the notification content. Valid values:
+	// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+	// - `Base64`: The content is Base64 encoded.
+	MessageEncoding *string `pulumi:"messageEncoding"`
 	// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
 	// * region: the region ID of the scaling group. For more information, see `Regions and zones`
 	// * account-id: the ID of your account.
@@ -234,6 +250,10 @@ type notificationArgs struct {
 
 // The set of arguments for constructing a Notification resource.
 type NotificationArgs struct {
+	// The encoding method of the notification content. Valid values:
+	// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+	// - `Base64`: The content is Base64 encoded.
+	MessageEncoding pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
 	// * region: the region ID of the scaling group. For more information, see `Regions and zones`
 	// * account-id: the ID of your account.
@@ -332,6 +352,13 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
+}
+
+// The encoding method of the notification content. Valid values:
+// - `PlainText`: The content is not encoded and is transmitted in plaintext.
+// - `Base64`: The content is Base64 encoded.
+func (o NotificationOutput) MessageEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringPtrOutput { return v.MessageEncoding }).(pulumi.StringPtrOutput)
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.

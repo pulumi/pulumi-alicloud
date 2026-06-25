@@ -21,17 +21,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRoutine = new alicloud.esa.Routine("default", {
- *     description: "example-routine2",
- *     name: "example-routine2",
- * });
  * const _default = alicloud.esa.getSites({
  *     planSubscribeType: "enterpriseplan",
  * });
+ * const defaultRoutine = new alicloud.esa.Routine("default", {name: name});
  * const defaultRoutineRelatedRecord = new alicloud.esa.RoutineRelatedRecord("default", {
  *     name: defaultRoutine.id,
  *     recordName: "tfexampleacc.com",
- *     siteId: "618651327383200",
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  * });
  * ```
  *
@@ -89,6 +86,10 @@ export class RoutineRelatedRecord extends pulumi.CustomResource {
      * The website ID.
      */
     declare public readonly siteId: pulumi.Output<string>;
+    /**
+     * (Available since v1.282.0) site name.
+     */
+    declare public /*out*/ readonly siteName: pulumi.Output<string>;
 
     /**
      * Create a RoutineRelatedRecord resource with the given unique name, arguments, and options.
@@ -107,6 +108,7 @@ export class RoutineRelatedRecord extends pulumi.CustomResource {
             resourceInputs["recordId"] = state?.recordId;
             resourceInputs["recordName"] = state?.recordName;
             resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["siteName"] = state?.siteName;
         } else {
             const args = argsOrState as RoutineRelatedRecordArgs | undefined;
             if (args?.recordName === undefined && !opts.urn) {
@@ -119,6 +121,7 @@ export class RoutineRelatedRecord extends pulumi.CustomResource {
             resourceInputs["recordName"] = args?.recordName;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["recordId"] = undefined /*out*/;
+            resourceInputs["siteName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RoutineRelatedRecord.__pulumiType, name, resourceInputs, opts);
@@ -145,6 +148,10 @@ export interface RoutineRelatedRecordState {
      * The website ID.
      */
     siteId?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.282.0) site name.
+     */
+    siteName?: pulumi.Input<string | undefined>;
 }
 
 /**

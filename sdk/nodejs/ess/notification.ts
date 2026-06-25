@@ -101,6 +101,12 @@ export class Notification extends pulumi.CustomResource {
     }
 
     /**
+     * The encoding method of the notification content. Valid values: 
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     */
+    declare public readonly messageEncoding: pulumi.Output<string | undefined>;
+    /**
      * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
      * * region: the region ID of the scaling group. For more information, see `Regions and zones`
      * * account-id: the ID of your account.
@@ -133,6 +139,7 @@ export class Notification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationState | undefined;
+            resourceInputs["messageEncoding"] = state?.messageEncoding;
             resourceInputs["notificationArn"] = state?.notificationArn;
             resourceInputs["notificationTypes"] = state?.notificationTypes;
             resourceInputs["scalingGroupId"] = state?.scalingGroupId;
@@ -148,6 +155,7 @@ export class Notification extends pulumi.CustomResource {
             if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
+            resourceInputs["messageEncoding"] = args?.messageEncoding;
             resourceInputs["notificationArn"] = args?.notificationArn;
             resourceInputs["notificationTypes"] = args?.notificationTypes;
             resourceInputs["scalingGroupId"] = args?.scalingGroupId;
@@ -162,6 +170,12 @@ export class Notification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Notification resources.
  */
 export interface NotificationState {
+    /**
+     * The encoding method of the notification content. Valid values: 
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     */
+    messageEncoding?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
      * * region: the region ID of the scaling group. For more information, see `Regions and zones`
@@ -187,6 +201,12 @@ export interface NotificationState {
  * The set of arguments for constructing a Notification resource.
  */
 export interface NotificationArgs {
+    /**
+     * The encoding method of the notification content. Valid values: 
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     */
+    messageEncoding?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
      * * region: the region ID of the scaling group. For more information, see `Regions and zones`

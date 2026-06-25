@@ -136,6 +136,24 @@ public class MilvusInstance extends com.pulumi.resources.CustomResource {
         return this.autoBackup;
     }
     /**
+     * Whether to pay automatically.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoPay;
+
+    /**
+     * @return Whether to pay automatically.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    public Output<Optional<Boolean>> autoPay() {
+        return Codegen.optional(this.autoPay);
+    }
+    /**
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.

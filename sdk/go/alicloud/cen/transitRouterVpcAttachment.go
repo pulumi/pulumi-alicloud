@@ -138,6 +138,8 @@ type TransitRouterVpcAttachment struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Whether to forcibly delete the VPC connection. The value is:
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
+	// A collection of feature attributes. See `options` below.
+	Options TransitRouterVpcAttachmentOptionsOutput `pulumi:"options"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -237,6 +239,8 @@ type transitRouterVpcAttachmentState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether to forcibly delete the VPC connection. The value is:
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// A collection of feature attributes. See `options` below.
+	Options *TransitRouterVpcAttachmentOptions `pulumi:"options"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -301,6 +305,8 @@ type TransitRouterVpcAttachmentState struct {
 	DryRun pulumi.BoolPtrInput
 	// Whether to forcibly delete the VPC connection. The value is:
 	ForceDelete pulumi.BoolPtrInput
+	// A collection of feature attributes. See `options` below.
+	Options TransitRouterVpcAttachmentOptionsPtrInput
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -367,6 +373,8 @@ type transitRouterVpcAttachmentArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Whether to forcibly delete the VPC connection. The value is:
 	ForceDelete *bool `pulumi:"forceDelete"`
+	// A collection of feature attributes. See `options` below.
+	Options *TransitRouterVpcAttachmentOptions `pulumi:"options"`
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -424,6 +432,8 @@ type TransitRouterVpcAttachmentArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// Whether to forcibly delete the VPC connection. The value is:
 	ForceDelete pulumi.BoolPtrInput
+	// A collection of feature attributes. See `options` below.
+	Options TransitRouterVpcAttachmentOptionsPtrInput
 	// The entity that pays the fees of the network instance. Valid values:
 	//
 	// - `PayByCenOwner`: the Alibaba Cloud account that owns the CEN instance.
@@ -581,6 +591,11 @@ func (o TransitRouterVpcAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 // Whether to forcibly delete the VPC connection. The value is:
 func (o TransitRouterVpcAttachmentOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
+}
+
+// A collection of feature attributes. See `options` below.
+func (o TransitRouterVpcAttachmentOutput) Options() TransitRouterVpcAttachmentOptionsOutput {
+	return o.ApplyT(func(v *TransitRouterVpcAttachment) TransitRouterVpcAttachmentOptionsOutput { return v.Options }).(TransitRouterVpcAttachmentOptionsOutput)
 }
 
 // The entity that pays the fees of the network instance. Valid values:

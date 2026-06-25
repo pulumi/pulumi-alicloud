@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Rds
     /// <summary>
     /// Provides a RDS Custom resource.
     /// 
-    /// Dedicated RDS User host.
+    /// RDS dedicated host for users.
     /// 
     /// For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
     /// 
@@ -123,26 +123,29 @@ namespace Pulumi.AliCloud.Rds
     /// RDS Custom can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:rds/custom:Custom example &lt;id&gt;
+    /// $ pulumi import alicloud:rds/custom:Custom example &lt;instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/custom:Custom")]
     public partial class Custom : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Represents the number of instances created
+        /// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+        /// Valid values: `1` to `5`. Default value: `1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("amount")]
         public Output<int?> Amount { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to pay automatically. Value range:
+        /// Specifies whether to enable automatic payment. Valid values:
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        /// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
@@ -154,197 +157,254 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> CreateExtraParam { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+        /// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
         /// </summary>
         [Output("createMode")]
         public Output<string?> CreateMode { get; private set; } = null!;
 
         /// <summary>
-        /// Data disk See `DataDisk` below.
-        /// 
-        /// -&gt;**NOTE:** From version 1.275.0, If you want to use `DataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+        /// List of data disks.   See `DataDisk` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.CustomDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the deployment set.
+        /// Deployment set ID.
         /// </summary>
         [Output("deploymentSetId")]
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        /// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Instance configuration type, value range:
+        /// The instance specification change type. Valid values:
         /// 
-        /// &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-        /// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-        /// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+        /// &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+        /// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+        /// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Output("direction")]
         public Output<string?> Direction { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to pre-check the operation of creating an instance. Valid values:
+        /// Specifies whether to perform a dry run of the instance creation request. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to forcibly release the running instance. Value: true/false
+        /// Specifies whether to forcibly release a running instance. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to force shutdown. Value range:
+        /// Specifies whether to force shut down the instance. Valid values:
         /// </summary>
         [Output("forceStop")]
         public Output<bool?> ForceStop { get; private set; } = null!;
 
         /// <summary>
-        /// The instance host name.
+        /// The hostname of the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the image used by the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+        /// The billing method. Valid values:
+        /// - `Prepaid`: subscription.
+        /// - `Postpaid`: pay-as-you-go.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the created RDS Custom dedicated host instance.
+        /// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        /// </summary>
+        [Output("instanceName")]
+        public Output<string> InstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// Reserved parameter. Not supported currently.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+        /// Valid values: 0 to 1024. Default value: 0.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("internetMaxBandwidthOut")]
         public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// This parameter is reserved and currently unsupported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("ioOptimized")]
         public Output<string?> IoOptimized { get; private set; } = null!;
 
         /// <summary>
-        /// The key pair name. Only flyer names are supported.
+        /// The name of the key pair. Only a single key pair name is supported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
 
         /// <summary>
-        /// The account and password of the instance.
+        /// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&amp;*-_+=|{}[]:;',.?/`.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Prepaid renewal duration, unit: Month/Year.
+        /// The subscription duration of the resource. Default value: `1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The unit of duration of the year-to-month billing method. Value range:
+        /// The unit of subscription duration for the subscription billing method. Valid values:
         /// - `Year`: Year
         /// - `Month` (default): Month
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The region ID. Callable DescribeRegions to get.
+        /// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        /// </summary>
+        [Output("privateIpAddress")]
+        public Output<string> PrivateIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group
+        /// The resource group ID. You can call ListResourceGroups to obtain it.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// This is a reserved parameter and is not currently supported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("securityEnhancementStrategy")]
         public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// Security group list
+        /// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        /// 
+        /// &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-        /// - `NoSpot`: normal pay-as-you-go instances.
-        /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        /// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+        /// - `NoSpot`: A regular pay-as-you-go instance.
+        /// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
         /// 
-        /// Default value: **NoSpot * *.
+        /// Default value: `NoSpot`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("spotStrategy")]
         public Output<string?> SpotStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the instance. Valid values:
+        /// - `Pending`: The instance is being created.
+        /// - `Running`: The instance is running.
+        /// - `Starting`: The instance is starting.
+        /// - `Stopping`: The instance is stopping.
+        /// - `Stopped`: The instance is stopped.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        /// The deployment type of RDS Custom. Valid values:
         /// </summary>
         [Output("supportCase")]
         public Output<string?> SupportCase { get; private set; } = null!;
 
         /// <summary>
-        /// System disk specifications. See `SystemDisk` below.
+        /// The system disk specification. See `SystemDisk` below.
+        /// 
+        /// &gt; **NOTE:** Since v1.279.0, `SystemDisk` is treated as a ForceNew field. Any change to this field, including its nested `Category` and `Size` values, will force replacement of the `alicloud.rds.Custom` resource.
         /// </summary>
         [Output("systemDisk")]
         public Output<Outputs.CustomSystemDisk?> SystemDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource
+        /// The ID of the system disk attached to the Custom instance.
+        /// </summary>
+        [Output("systemDiskId")]
+        public Output<string> SystemDiskId { get; private set; } = null!;
+
+        /// <summary>
+        /// Details of the queried instances and their tags.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        /// The network type InstanceNetworkType must be VPC.
+        /// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+        /// 
+        /// &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID  of the resource
+        /// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+        /// 
+        /// &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         /// </summary>
         [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -393,19 +453,22 @@ namespace Pulumi.AliCloud.Rds
     public sealed class CustomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Represents the number of instances created
+        /// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+        /// Valid values: `1` to `5`. Default value: `1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// Whether to pay automatically. Value range:
+        /// Specifies whether to enable automatic payment. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        /// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -417,7 +480,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CreateExtraParam { get; set; }
 
         /// <summary>
-        /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+        /// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
         /// </summary>
         [Input("createMode")]
         public Input<string>? CreateMode { get; set; }
@@ -426,9 +489,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.CustomDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk See `DataDisk` below.
-        /// 
-        /// -&gt;**NOTE:** From version 1.275.0, If you want to use `DataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+        /// List of data disks.   See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.CustomDataDiskArgs> DataDisks
         {
@@ -437,121 +498,160 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The ID of the deployment set.
+        /// Deployment set ID.
         /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        /// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Instance configuration type, value range:
+        /// The instance specification change type. Valid values:
         /// 
-        /// &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-        /// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-        /// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+        /// &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+        /// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+        /// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Whether to pre-check the operation of creating an instance. Valid values:
+        /// Specifies whether to perform a dry run of the instance creation request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether to forcibly release the running instance. Value: true/false
+        /// Specifies whether to forcibly release a running instance. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Whether to force shutdown. Value range:
+        /// Specifies whether to force shut down the instance. Valid values:
         /// </summary>
         [Input("forceStop")]
         public Input<bool>? ForceStop { get; set; }
 
         /// <summary>
-        /// The instance host name.
+        /// The hostname of the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         /// <summary>
         /// The ID of the image used by the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+        /// The billing method. Valid values:
+        /// - `Prepaid`: subscription.
+        /// - `Postpaid`: pay-as-you-go.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The type of the created RDS Custom dedicated host instance.
+        /// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
+        /// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// Reserved parameter. Not supported currently.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+        /// Valid values: 0 to 1024. Default value: 0.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// This parameter is reserved and currently unsupported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
 
         /// <summary>
-        /// The key pair name. Only flyer names are supported.
+        /// The name of the key pair. Only a single key pair name is supported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The account and password of the instance.
+        /// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&amp;*-_+=|{}[]:;',.?/`.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Prepaid renewal duration, unit: Month/Year.
+        /// The subscription duration of the resource. Default value: `1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of duration of the year-to-month billing method. Value range:
+        /// The unit of subscription duration for the subscription billing method. Valid values:
         /// - `Year`: Year
         /// - `Month` (default): Month
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The resource group ID. You can call ListResourceGroups to obtain it.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// This is a reserved parameter and is not currently supported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -560,7 +660,9 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Security group list
+        /// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        /// 
+        /// &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -569,29 +671,38 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-        /// - `NoSpot`: normal pay-as-you-go instances.
-        /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        /// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+        /// - `NoSpot`: A regular pay-as-you-go instance.
+        /// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
         /// 
-        /// Default value: **NoSpot * *.
+        /// Default value: `NoSpot`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the instance. Valid values:
+        /// - `Pending`: The instance is being created.
+        /// - `Running`: The instance is running.
+        /// - `Starting`: The instance is starting.
+        /// - `Stopping`: The instance is stopping.
+        /// - `Stopped`: The instance is stopped.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        /// The deployment type of RDS Custom. Valid values:
         /// </summary>
         [Input("supportCase")]
         public Input<string>? SupportCase { get; set; }
 
         /// <summary>
-        /// System disk specifications. See `SystemDisk` below.
+        /// The system disk specification. See `SystemDisk` below.
+        /// 
+        /// &gt; **NOTE:** Since v1.279.0, `SystemDisk` is treated as a ForceNew field. Any change to this field, including its nested `Category` and `Size` values, will force replacement of the `alicloud.rds.Custom` resource.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.CustomSystemDiskArgs>? SystemDisk { get; set; }
@@ -600,7 +711,7 @@ namespace Pulumi.AliCloud.Rds
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource
+        /// Details of the queried instances and their tags.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -609,14 +720,17 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        /// The network type InstanceNetworkType must be VPC.
+        /// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+        /// 
+        /// &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID  of the resource
+        /// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+        /// 
+        /// &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -630,19 +744,22 @@ namespace Pulumi.AliCloud.Rds
     public sealed class CustomState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Represents the number of instances created
+        /// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+        /// Valid values: `1` to `5`. Default value: `1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("amount")]
         public Input<int>? Amount { get; set; }
 
         /// <summary>
-        /// Whether to pay automatically. Value range:
+        /// Specifies whether to enable automatic payment. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+        /// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
@@ -654,7 +771,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CreateExtraParam { get; set; }
 
         /// <summary>
-        /// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+        /// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
         /// </summary>
         [Input("createMode")]
         public Input<string>? CreateMode { get; set; }
@@ -663,9 +780,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.CustomDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// Data disk See `DataDisk` below.
-        /// 
-        /// -&gt;**NOTE:** From version 1.275.0, If you want to use `DataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+        /// List of data disks.   See `DataDisk` below.
         /// </summary>
         public InputList<Inputs.CustomDataDiskGetArgs> DataDisks
         {
@@ -674,127 +789,166 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The ID of the deployment set.
+        /// Deployment set ID.
         /// </summary>
         [Input("deploymentSetId")]
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        /// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Instance configuration type, value range:
+        /// The instance specification change type. Valid values:
         /// 
-        /// &gt; **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-        /// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-        /// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+        /// &gt; **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+        /// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+        /// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Whether to pre-check the operation of creating an instance. Valid values:
+        /// Specifies whether to perform a dry run of the instance creation request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether to forcibly release the running instance. Value: true/false
+        /// Specifies whether to forcibly release a running instance. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Whether to force shutdown. Value range:
+        /// Specifies whether to force shut down the instance. Valid values:
         /// </summary>
         [Input("forceStop")]
         public Input<bool>? ForceStop { get; set; }
 
         /// <summary>
-        /// The instance host name.
+        /// The hostname of the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         /// <summary>
         /// The ID of the image used by the instance.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+        /// The billing method. Valid values:
+        /// - `Prepaid`: subscription.
+        /// - `Postpaid`: pay-as-you-go.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The type of the created RDS Custom dedicated host instance.
+        /// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
+        /// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// Reserved parameter. Not supported currently.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+        /// Valid values: 0 to 1024. Default value: 0.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("internetMaxBandwidthOut")]
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// This parameter is reserved and currently unsupported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
 
         /// <summary>
-        /// The key pair name. Only flyer names are supported.
+        /// The name of the key pair. Only a single key pair name is supported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The account and password of the instance.
+        /// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&amp;*-_+=|{}[]:;',.?/`.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Prepaid renewal duration, unit: Month/Year.
+        /// The subscription duration of the resource. Default value: `1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The unit of duration of the year-to-month billing method. Value range:
+        /// The unit of subscription duration for the subscription billing method. Valid values:
         /// - `Year`: Year
         /// - `Month` (default): Month
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The region ID. Callable DescribeRegions to get.
+        /// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The region ID.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The resource group ID. You can call ListResourceGroups to obtain it.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Reserved parameters are not supported.
+        /// This is a reserved parameter and is not currently supported.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("securityEnhancementStrategy")]
         public Input<string>? SecurityEnhancementStrategy { get; set; }
@@ -803,7 +957,9 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _securityGroupIds;
 
         /// <summary>
-        /// Security group list
+        /// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+        /// 
+        /// &gt; **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
         /// </summary>
         public InputList<string> SecurityGroupIds
         {
@@ -812,38 +968,53 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-        /// - `NoSpot`: normal pay-as-you-go instances.
-        /// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+        /// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+        /// - `NoSpot`: A regular pay-as-you-go instance.
+        /// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
         /// 
-        /// Default value: **NoSpot * *.
+        /// Default value: `NoSpot`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the instance. Valid values:
+        /// - `Pending`: The instance is being created.
+        /// - `Running`: The instance is running.
+        /// - `Starting`: The instance is starting.
+        /// - `Stopping`: The instance is stopping.
+        /// - `Stopped`: The instance is stopped.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+        /// The deployment type of RDS Custom. Valid values:
         /// </summary>
         [Input("supportCase")]
         public Input<string>? SupportCase { get; set; }
 
         /// <summary>
-        /// System disk specifications. See `SystemDisk` below.
+        /// The system disk specification. See `SystemDisk` below.
+        /// 
+        /// &gt; **NOTE:** Since v1.279.0, `SystemDisk` is treated as a ForceNew field. Any change to this field, including its nested `Category` and `Size` values, will force replacement of the `alicloud.rds.Custom` resource.
         /// </summary>
         [Input("systemDisk")]
         public Input<Inputs.CustomSystemDiskGetArgs>? SystemDisk { get; set; }
+
+        /// <summary>
+        /// The ID of the system disk attached to the Custom instance.
+        /// </summary>
+        [Input("systemDiskId")]
+        public Input<string>? SystemDiskId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource
+        /// Details of the queried instances and their tags.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -852,14 +1023,17 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-        /// The network type InstanceNetworkType must be VPC.
+        /// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+        /// 
+        /// &gt; **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The zone ID  of the resource
+        /// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+        /// 
+        /// &gt; **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -102,7 +102,7 @@ def get_notifications(ids: Optional[Sequence[_builtins.str]] = None,
     """
     This data source provides available notification resources.
 
-    > **NOTE:** Available in 1.72.0+
+    > **NOTE:** Available since v1.72.0
 
     ## Example Usage
 
@@ -139,7 +139,7 @@ def get_notifications_output(ids: pulumi.Input[Optional[Optional[Sequence[_built
     """
     This data source provides available notification resources.
 
-    > **NOTE:** Available in 1.72.0+
+    > **NOTE:** Available since v1.72.0
 
     ## Example Usage
 

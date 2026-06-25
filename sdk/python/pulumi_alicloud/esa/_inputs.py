@@ -1098,7 +1098,7 @@ class OriginPoolOriginArgsDict(TypedDict):
     """
     Origin Name.
     """
-    origin_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    origin_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Origin ID.
     """
@@ -1122,7 +1122,7 @@ class OriginPoolOriginArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  header: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 origin_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -1131,7 +1131,7 @@ class OriginPoolOriginArgs:
         :param pulumi.Input[_builtins.bool] enabled: Whether the source station is enabled:
         :param pulumi.Input[_builtins.str] header: The request header that is sent when returning to the source. Only Host is supported.
         :param pulumi.Input[_builtins.str] name: Origin Name.
-        :param pulumi.Input[_builtins.int] origin_id: Origin ID.
+        :param pulumi.Input[_builtins.str] origin_id: Origin ID.
         :param pulumi.Input[_builtins.str] type: Source station type:
                ip_domain: ip or domain name type origin station;
                - `OSS`:OSS address source station;
@@ -1217,14 +1217,14 @@ class OriginPoolOriginArgs:
 
     @_builtins.property
     @pulumi.getter(name="originId")
-    def origin_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+    def origin_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Origin ID.
         """
         return pulumi.get(self, "origin_id")
 
     @origin_id.setter
-    def origin_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+    def origin_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin_id", value)
 
     @_builtins.property

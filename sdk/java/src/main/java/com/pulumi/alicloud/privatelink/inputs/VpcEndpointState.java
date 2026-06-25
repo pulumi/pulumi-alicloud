@@ -84,6 +84,21 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The cross-region bandwidth that is supported by the cross-region endpoint.
+     * 
+     */
+    @Import(name="crossRegionBandwidth")
+    private @Nullable Output<Integer> crossRegionBandwidth;
+
+    /**
+     * @return The cross-region bandwidth that is supported by the cross-region endpoint.
+     * 
+     */
+    public Optional<Output<Integer>> crossRegionBandwidth() {
+        return Optional.ofNullable(this.crossRegionBandwidth);
+    }
+
+    /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
@@ -144,18 +159,18 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint type.
-     * 
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The endpoint type.
-     * 
-     * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The type of the endpoint. Valid values:
+     * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+     * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -272,6 +287,21 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The region ID of the endpoint service.
+     * 
+     */
+    @Import(name="serviceRegionId")
+    private @Nullable Output<String> serviceRegionId;
+
+    /**
+     * @return The region ID of the endpoint service.
+     * 
+     */
+    public Optional<Output<String>> serviceRegionId() {
+        return Optional.ofNullable(this.serviceRegionId);
+    }
+
+    /**
      * The state of the endpoint.
      * 
      */
@@ -353,6 +383,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         this.bandwidth = $.bandwidth;
         this.connectionStatus = $.connectionStatus;
         this.createTime = $.createTime;
+        this.crossRegionBandwidth = $.crossRegionBandwidth;
         this.dryRun = $.dryRun;
         this.endpointBusinessStatus = $.endpointBusinessStatus;
         this.endpointDescription = $.endpointDescription;
@@ -365,6 +396,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         this.securityGroupIds = $.securityGroupIds;
         this.serviceId = $.serviceId;
         this.serviceName = $.serviceName;
+        this.serviceRegionId = $.serviceRegionId;
         this.status = $.status;
         this.tags = $.tags;
         this.vpcEndpointName = $.vpcEndpointName;
@@ -479,6 +511,27 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param crossRegionBandwidth The cross-region bandwidth that is supported by the cross-region endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossRegionBandwidth(@Nullable Output<Integer> crossRegionBandwidth) {
+            $.crossRegionBandwidth = crossRegionBandwidth;
+            return this;
+        }
+
+        /**
+         * @param crossRegionBandwidth The cross-region bandwidth that is supported by the cross-region endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossRegionBandwidth(Integer crossRegionBandwidth) {
+            return crossRegionBandwidth(Output.of(crossRegionBandwidth));
+        }
+
+        /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
@@ -563,9 +616,9 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.
-         * 
-         * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The type of the endpoint. Valid values:
+         * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+         * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
          * 
          * @return builder
          * 
@@ -576,9 +629,9 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointType The endpoint type.
-         * 
-         * Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * @param endpointType The type of the endpoint. Valid values:
+         * - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+         * - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
          * 
          * @return builder
          * 
@@ -748,6 +801,27 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param serviceRegionId The region ID of the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceRegionId(@Nullable Output<String> serviceRegionId) {
+            $.serviceRegionId = serviceRegionId;
+            return this;
+        }
+
+        /**
+         * @param serviceRegionId The region ID of the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceRegionId(String serviceRegionId) {
+            return serviceRegionId(Output.of(serviceRegionId));
         }
 
         /**

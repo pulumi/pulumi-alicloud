@@ -30,6 +30,11 @@ export const getBlockedRegions: typeof import("./getBlockedRegions").getBlockedR
 export const getBlockedRegionsOutput: typeof import("./getBlockedRegions").getBlockedRegionsOutput = null as any;
 utilities.lazyLoad(exports, ["getBlockedRegions","getBlockedRegionsOutput"], () => require("./getBlockedRegions"));
 
+export { GetDomainConfigsArgs, GetDomainConfigsResult, GetDomainConfigsOutputArgs } from "./getDomainConfigs";
+export const getDomainConfigs: typeof import("./getDomainConfigs").getDomainConfigs = null as any;
+export const getDomainConfigsOutput: typeof import("./getDomainConfigs").getDomainConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainConfigs","getDomainConfigsOutput"], () => require("./getDomainConfigs"));
+
 export { GetIpInfoArgs, GetIpInfoResult, GetIpInfoOutputArgs } from "./getIpInfo";
 export const getIpInfo: typeof import("./getIpInfo").getIpInfo = null as any;
 export const getIpInfoOutput: typeof import("./getIpInfo").getIpInfoOutput = null as any;

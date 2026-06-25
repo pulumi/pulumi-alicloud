@@ -127,13 +127,13 @@ namespace Pulumi.AliCloud.Esa
         /// Whether the source address pool is enabled:
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// OriginPool Id
         /// </summary>
         [Output("originPoolId")]
-        public Output<int> OriginPoolId { get; private set; } = null!;
+        public Output<string> OriginPoolId { get; private set; } = null!;
 
         /// <summary>
         /// The source address pool name.
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Esa
         /// OriginPool Id
         /// </summary>
         [Input("originPoolId")]
-        public Input<int>? OriginPoolId { get; set; }
+        public Input<string>? OriginPoolId { get; set; }
 
         /// <summary>
         /// The source address pool name.

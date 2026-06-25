@@ -20,6 +20,11 @@ export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
+export { GatewayEnhancedVpnGatewayArgs, GatewayEnhancedVpnGatewayState } from "./gatewayEnhancedVpnGateway";
+export type GatewayEnhancedVpnGateway = import("./gatewayEnhancedVpnGateway").GatewayEnhancedVpnGateway;
+export const GatewayEnhancedVpnGateway: typeof import("./gatewayEnhancedVpnGateway").GatewayEnhancedVpnGateway = null as any;
+utilities.lazyLoad(exports, ["GatewayEnhancedVpnGateway"], () => require("./gatewayEnhancedVpnGateway"));
+
 export { GatewayVcoRouteArgs, GatewayVcoRouteState } from "./gatewayVcoRoute";
 export type GatewayVcoRoute = import("./gatewayVcoRoute").GatewayVcoRoute;
 export const GatewayVcoRoute: typeof import("./gatewayVcoRoute").GatewayVcoRoute = null as any;
@@ -39,6 +44,11 @@ export { GetCustomerGatewaysArgs, GetCustomerGatewaysResult, GetCustomerGateways
 export const getCustomerGateways: typeof import("./getCustomerGateways").getCustomerGateways = null as any;
 export const getCustomerGatewaysOutput: typeof import("./getCustomerGateways").getCustomerGatewaysOutput = null as any;
 utilities.lazyLoad(exports, ["getCustomerGateways","getCustomerGatewaysOutput"], () => require("./getCustomerGateways"));
+
+export { GetGatewayEnhancedVpnGatewaysArgs, GetGatewayEnhancedVpnGatewaysResult, GetGatewayEnhancedVpnGatewaysOutputArgs } from "./getGatewayEnhancedVpnGateways";
+export const getGatewayEnhancedVpnGateways: typeof import("./getGatewayEnhancedVpnGateways").getGatewayEnhancedVpnGateways = null as any;
+export const getGatewayEnhancedVpnGatewaysOutput: typeof import("./getGatewayEnhancedVpnGateways").getGatewayEnhancedVpnGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayEnhancedVpnGateways","getGatewayEnhancedVpnGatewaysOutput"], () => require("./getGatewayEnhancedVpnGateways"));
 
 export { GetGatewayVcoRoutesArgs, GetGatewayVcoRoutesResult, GetGatewayVcoRoutesOutputArgs } from "./getGatewayVcoRoutes";
 export const getGatewayVcoRoutes: typeof import("./getGatewayVcoRoutes").getGatewayVcoRoutes = null as any;
@@ -96,6 +106,8 @@ const _module = {
                 return new CustomerGateway(name, <any>undefined, { urn })
             case "alicloud:vpn/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:vpn/gatewayEnhancedVpnGateway:GatewayEnhancedVpnGateway":
+                return new GatewayEnhancedVpnGateway(name, <any>undefined, { urn })
             case "alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute":
                 return new GatewayVcoRoute(name, <any>undefined, { urn })
             case "alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment":
@@ -118,6 +130,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "vpn/connection", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/customerGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpn/gatewayEnhancedVpnGateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/gatewayVcoRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/gatewayVpnAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpn/ipsecServer", _module)

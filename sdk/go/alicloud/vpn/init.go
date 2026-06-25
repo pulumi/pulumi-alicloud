@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomerGateway{}
 	case "alicloud:vpn/gateway:Gateway":
 		r = &Gateway{}
+	case "alicloud:vpn/gatewayEnhancedVpnGateway:GatewayEnhancedVpnGateway":
+		r = &GatewayEnhancedVpnGateway{}
 	case "alicloud:vpn/gatewayVcoRoute:GatewayVcoRoute":
 		r = &GatewayVcoRoute{}
 	case "alicloud:vpn/gatewayVpnAttachment:GatewayVpnAttachment":
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpn/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpn/gatewayEnhancedVpnGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

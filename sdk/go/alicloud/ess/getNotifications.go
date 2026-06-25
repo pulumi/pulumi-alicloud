@@ -13,7 +13,7 @@ import (
 
 // This data source provides available notification resources.
 //
-// > **NOTE:** Available in 1.72.0+
+// > **NOTE:** Available since v1.72.0
 //
 // ## Example Usage
 //

@@ -130,6 +130,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ess/notification:Notification")
 public class Notification extends com.pulumi.resources.CustomResource {
     /**
+     * The encoding method of the notification content. Valid values:
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     * 
+     */
+    @Export(name="messageEncoding", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> messageEncoding;
+
+    /**
+     * @return The encoding method of the notification content. Valid values:
+     * - `PlainText`: The content is not encoded and is transmitted in plaintext.
+     * - `Base64`: The content is Base64 encoded.
+     * 
+     */
+    public Output<Optional<String>> messageEncoding() {
+        return Codegen.optional(this.messageEncoding);
+    }
+    /**
      * The Alibaba Cloud Resource Name (ARN) of the notification object, The value must be in `acs:ess:{region}:{account-id}:{resource-relative-id}` format.
      * * region: the region ID of the scaling group. For more information, see `Regions and zones`
      * * account-id: the ID of your account.

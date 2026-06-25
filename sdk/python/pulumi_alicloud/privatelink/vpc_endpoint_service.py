@@ -28,6 +28,7 @@ class VpcEndpointServiceArgs:
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 supported_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -35,7 +36,7 @@ class VpcEndpointServiceArgs:
 
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
         :param pulumi.Input[_builtins.bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
         :param pulumi.Input[_builtins.str] payer: The payer of the endpoint service. Valid values:
                - `Endpoint`: the service consumer.
@@ -44,6 +45,7 @@ class VpcEndpointServiceArgs:
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_region_lists: The list of remote region IDs that are supported by the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         """
@@ -65,6 +67,8 @@ class VpcEndpointServiceArgs:
             pulumi.set(__self__, "service_resource_type", service_resource_type)
         if service_support_ipv6 is not None:
             pulumi.set(__self__, "service_support_ipv6", service_support_ipv6)
+        if supported_region_lists is not None:
+            pulumi.set(__self__, "supported_region_lists", supported_region_lists)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if zone_affinity_enabled is not None:
@@ -98,7 +102,7 @@ class VpcEndpointServiceArgs:
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         """
         return pulumi.get(self, "connect_bandwidth")
 
@@ -181,6 +185,18 @@ class VpcEndpointServiceArgs:
         pulumi.set(self, "service_support_ipv6", value)
 
     @_builtins.property
+    @pulumi.getter(name="supportedRegionLists")
+    def supported_region_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of remote region IDs that are supported by the endpoint service.
+        """
+        return pulumi.get(self, "supported_region_lists")
+
+    @supported_region_lists.setter
+    def supported_region_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "supported_region_lists", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -222,6 +238,7 @@ class _VpcEndpointServiceState:
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -230,7 +247,7 @@ class _VpcEndpointServiceState:
 
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
         :param pulumi.Input[_builtins.bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         :param pulumi.Input[_builtins.str] create_time: The time when the endpoint service was created.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
         :param pulumi.Input[_builtins.str] payer: The payer of the endpoint service. Valid values:
@@ -244,6 +261,7 @@ class _VpcEndpointServiceState:
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
         :param pulumi.Input[_builtins.str] status: The state of the endpoint service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_region_lists: The list of remote region IDs that are supported by the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] vpc_endpoint_service_name: The name of the endpoint service.
         :param pulumi.Input[_builtins.bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -276,6 +294,8 @@ class _VpcEndpointServiceState:
             pulumi.set(__self__, "service_support_ipv6", service_support_ipv6)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if supported_region_lists is not None:
+            pulumi.set(__self__, "supported_region_lists", supported_region_lists)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_endpoint_service_name is not None:
@@ -311,7 +331,7 @@ class _VpcEndpointServiceState:
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         """
         return pulumi.get(self, "connect_bandwidth")
 
@@ -454,6 +474,18 @@ class _VpcEndpointServiceState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter(name="supportedRegionLists")
+    def supported_region_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of remote region IDs that are supported by the endpoint service.
+        """
+        return pulumi.get(self, "supported_region_lists")
+
+    @supported_region_lists.setter
+    def supported_region_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "supported_region_lists", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -505,6 +537,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 supported_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -548,7 +581,7 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
         :param pulumi.Input[_builtins.bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
         :param pulumi.Input[_builtins.str] payer: The payer of the endpoint service. Valid values:
                - `Endpoint`: the service consumer.
@@ -557,6 +590,7 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_description: The description of the endpoint service.
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_region_lists: The list of remote region IDs that are supported by the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
         """
@@ -626,6 +660,7 @@ class VpcEndpointService(pulumi.CustomResource):
                  service_description: pulumi.Input[Optional[_builtins.str]] = None,
                  service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 supported_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -646,6 +681,7 @@ class VpcEndpointService(pulumi.CustomResource):
             __props__.__dict__["service_description"] = service_description
             __props__.__dict__["service_resource_type"] = service_resource_type
             __props__.__dict__["service_support_ipv6"] = service_support_ipv6
+            __props__.__dict__["supported_region_lists"] = supported_region_lists
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone_affinity_enabled"] = zone_affinity_enabled
             __props__.__dict__["create_time"] = None
@@ -678,6 +714,7 @@ class VpcEndpointService(pulumi.CustomResource):
             service_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
             service_support_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_region_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
             zone_affinity_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'VpcEndpointService':
@@ -690,7 +727,7 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version.
         :param pulumi.Input[_builtins.bool] auto_accept_connection: Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        :param pulumi.Input[_builtins.int] connect_bandwidth: The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         :param pulumi.Input[_builtins.str] create_time: The time when the endpoint service was created.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
         :param pulumi.Input[_builtins.str] payer: The payer of the endpoint service. Valid values:
@@ -704,6 +741,7 @@ class VpcEndpointService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_resource_type: The service resource type. Value:
         :param pulumi.Input[_builtins.bool] service_support_ipv6: Specifies whether to enable IPv6 for the endpoint service. Valid values:
         :param pulumi.Input[_builtins.str] status: The state of the endpoint service.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_region_lists: The list of remote region IDs that are supported by the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] vpc_endpoint_service_name: The name of the endpoint service.
         :param pulumi.Input[_builtins.bool] zone_affinity_enabled: Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -726,6 +764,7 @@ class VpcEndpointService(pulumi.CustomResource):
         __props__.__dict__["service_resource_type"] = service_resource_type
         __props__.__dict__["service_support_ipv6"] = service_support_ipv6
         __props__.__dict__["status"] = status
+        __props__.__dict__["supported_region_lists"] = supported_region_lists
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_endpoint_service_name"] = vpc_endpoint_service_name
         __props__.__dict__["zone_affinity_enabled"] = zone_affinity_enabled
@@ -751,7 +790,7 @@ class VpcEndpointService(pulumi.CustomResource):
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
-        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `service_resource_type` is `slb`, this field can be read from the remote API. When `service_resource_type` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
         """
         return pulumi.get(self, "connect_bandwidth")
 
@@ -844,6 +883,14 @@ class VpcEndpointService(pulumi.CustomResource):
         The state of the endpoint service.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedRegionLists")
+    def supported_region_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The list of remote region IDs that are supported by the endpoint service.
+        """
+        return pulumi.get(self, "supported_region_lists")
 
     @_builtins.property
     @pulumi.getter

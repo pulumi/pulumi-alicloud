@@ -29,7 +29,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := threatdetection.GetCheckItemConfigs(ctx, &threatdetection.GetCheckItemConfigsArgs{}, nil)
+//			_default, err := threatdetection.GetCheckItemConfigs(ctx, &threatdetection.GetCheckItemConfigsArgs{
+//				Lang:       pulumi.StringRef("zh"),
+//				PageNumber: pulumi.IntRef(1),
+//				PageSize:   pulumi.IntRef(10),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -53,13 +57,13 @@ func GetCheckItemConfigs(ctx *pulumi.Context, args *GetCheckItemConfigsArgs, opt
 type GetCheckItemConfigsArgs struct {
 	// A list of Check Item Config IDs.
 	Ids []string `pulumi:"ids"`
-	// The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+	// The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
 	Lang *string `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Current page number.
+	// The page number. Must be greater than 0.
 	PageNumber *int `pulumi:"pageNumber"`
-	// Number of records per page.
+	// Number of records per page. Must be greater than 0.
 	PageSize *int `pulumi:"pageSize"`
 	// List of task sources.
 	TaskSources []string `pulumi:"taskSources"`
@@ -93,13 +97,13 @@ func GetCheckItemConfigsOutput(ctx *pulumi.Context, args GetCheckItemConfigsOutp
 type GetCheckItemConfigsOutputArgs struct {
 	// A list of Check Item Config IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+	// The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Current page number.
+	// The page number. Must be greater than 0.
 	PageNumber pulumi.IntPtrInput `pulumi:"pageNumber"`
-	// Number of records per page.
+	// Number of records per page. Must be greater than 0.
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// List of task sources.
 	TaskSources pulumi.StringArrayInput `pulumi:"taskSources"`

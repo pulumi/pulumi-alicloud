@@ -18,6 +18,8 @@ __all__ = [
     'GetBindingsBindingResult',
     'GetExchangesExchangeResult',
     'GetInstancesInstanceResult',
+    'GetOpenSourceAccountsAccountResult',
+    'GetOpenSourcePermissionsPermissionResult',
     'GetQueuesQueueResult',
     'GetStaticAccountsAccountResult',
     'GetVirtualHostsHostResult',
@@ -372,6 +374,152 @@ class GetInstancesInstanceResult(dict):
         Indicates whether the instance supports elastic IP addresses (EIPs).
         """
         return pulumi.get(self, "support_eip")
+
+
+@pulumi.output_type
+class GetOpenSourceAccountsAccountResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 instance_id: _builtins.str,
+                 password: _builtins.str,
+                 user_name: _builtins.str):
+        """
+        :param _builtins.str description: Description.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str instance_id: Instance ID.
+        :param _builtins.str password: User password.
+        :param _builtins.str user_name: User name.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        Instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        User password.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> _builtins.str:
+        """
+        User name.
+        """
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class GetOpenSourcePermissionsPermissionResult(dict):
+    def __init__(__self__, *,
+                 configure: _builtins.str,
+                 id: _builtins.str,
+                 instance_id: _builtins.str,
+                 read: _builtins.str,
+                 user_name: _builtins.str,
+                 vhost: _builtins.str,
+                 write: _builtins.str):
+        """
+        :param _builtins.str configure: Permission configuration, such as .
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str instance_id: Instance ID.
+        :param _builtins.str read: Read permission, such as .
+        :param _builtins.str user_name: Username.
+        :param _builtins.str vhost: Vhost of the instance.
+        :param _builtins.str write: Write permission, such as .
+        """
+        pulumi.set(__self__, "configure", configure)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "read", read)
+        pulumi.set(__self__, "user_name", user_name)
+        pulumi.set(__self__, "vhost", vhost)
+        pulumi.set(__self__, "write", write)
+
+    @_builtins.property
+    @pulumi.getter
+    def configure(self) -> _builtins.str:
+        """
+        Permission configuration, such as .
+        """
+        return pulumi.get(self, "configure")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        Instance ID.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> _builtins.str:
+        """
+        Read permission, such as .
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> _builtins.str:
+        """
+        Username.
+        """
+        return pulumi.get(self, "user_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def vhost(self) -> _builtins.str:
+        """
+        Vhost of the instance.
+        """
+        return pulumi.get(self, "vhost")
+
+    @_builtins.property
+    @pulumi.getter
+    def write(self) -> _builtins.str:
+        """
+        Write permission, such as .
+        """
+        return pulumi.get(self, "write")
 
 
 @pulumi.output_type

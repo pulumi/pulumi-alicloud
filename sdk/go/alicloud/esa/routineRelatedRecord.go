@@ -40,23 +40,22 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRoutine, err := esa.NewRoutine(ctx, "default", &esa.RoutineArgs{
-//				Description: pulumi.String("example-routine2"),
-//				Name:        pulumi.String("example-routine2"),
-//			})
+//			_default, err := esa.GetSites(ctx, &esa.GetSitesArgs{
+//				PlanSubscribeType: pulumi.StringRef("enterpriseplan"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = esa.GetSites(ctx, &esa.GetSitesArgs{
-//				PlanSubscribeType: pulumi.StringRef("enterpriseplan"),
-//			}, nil)
+//			defaultRoutine, err := esa.NewRoutine(ctx, "default", &esa.RoutineArgs{
+//				Name: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = esa.NewRoutineRelatedRecord(ctx, "default", &esa.RoutineRelatedRecordArgs{
 //				Name:       defaultRoutine.ID(),
 //				RecordName: pulumi.String("tfexampleacc.com"),
-//				SiteId:     pulumi.String("618651327383200"),
+//				SiteId:     pulumi.Int(_default.Sites[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -87,6 +86,8 @@ type RoutineRelatedRecord struct {
 	RecordName pulumi.StringOutput `pulumi:"recordName"`
 	// The website ID.
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// (Available since v1.282.0) site name.
+	SiteName pulumi.StringOutput `pulumi:"siteName"`
 }
 
 // NewRoutineRelatedRecord registers a new resource with the given unique name, arguments, and options.
@@ -133,6 +134,8 @@ type routineRelatedRecordState struct {
 	RecordName *string `pulumi:"recordName"`
 	// The website ID.
 	SiteId *string `pulumi:"siteId"`
+	// (Available since v1.282.0) site name.
+	SiteName *string `pulumi:"siteName"`
 }
 
 type RoutineRelatedRecordState struct {
@@ -144,6 +147,8 @@ type RoutineRelatedRecordState struct {
 	RecordName pulumi.StringPtrInput
 	// The website ID.
 	SiteId pulumi.StringPtrInput
+	// (Available since v1.282.0) site name.
+	SiteName pulumi.StringPtrInput
 }
 
 func (RoutineRelatedRecordState) ElementType() reflect.Type {
@@ -274,6 +279,11 @@ func (o RoutineRelatedRecordOutput) RecordName() pulumi.StringOutput {
 // The website ID.
 func (o RoutineRelatedRecordOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.282.0) site name.
+func (o RoutineRelatedRecordOutput) SiteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.StringOutput { return v.SiteName }).(pulumi.StringOutput)
 }
 
 type RoutineRelatedRecordArrayOutput struct{ *pulumi.OutputState }

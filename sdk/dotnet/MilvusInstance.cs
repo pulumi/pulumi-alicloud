@@ -106,6 +106,14 @@ namespace Pulumi.AliCloud
         public Output<bool> AutoBackup { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to pay automatically.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        /// </summary>
+        [Output("autoPay")]
+        public Output<bool?> AutoPay { get; private set; } = null!;
+
+        /// <summary>
         /// Instance component information. Includes Starter Edition/Standard Edition.
         /// - Starter version: Array including standalone
         /// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -297,6 +305,14 @@ namespace Pulumi.AliCloud
         [Input("autoBackup")]
         public Input<bool>? AutoBackup { get; set; }
 
+        /// <summary>
+        /// Whether to pay automatically.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
+
         [Input("components")]
         private InputList<Inputs.MilvusInstanceComponentArgs>? _components;
 
@@ -456,6 +472,14 @@ namespace Pulumi.AliCloud
         /// </summary>
         [Input("autoBackup")]
         public Input<bool>? AutoBackup { get; set; }
+
+        /// <summary>
+        /// Whether to pay automatically.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        /// </summary>
+        [Input("autoPay")]
+        public Input<bool>? AutoPay { get; set; }
 
         [Input("components")]
         private InputList<Inputs.MilvusInstanceComponentGetArgs>? _components;

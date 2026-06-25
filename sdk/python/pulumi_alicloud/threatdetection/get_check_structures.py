@@ -27,7 +27,7 @@ class GetCheckStructuresResult:
     """
     A collection of values returned by getCheckStructures.
     """
-    def __init__(__self__, current_page=None, id=None, ids=None, lang=None, output_file=None, structures=None, task_sources=None):
+    def __init__(__self__, current_page=None, id=None, ids=None, lang=None, output_file=None, page_size=None, structures=None, task_sources=None):
         if current_page and not isinstance(current_page, int):
             raise TypeError("Expected argument 'current_page' to be a int")
         pulumi.set(__self__, "current_page", current_page)
@@ -43,6 +43,9 @@ class GetCheckStructuresResult:
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
+        if page_size and not isinstance(page_size, int):
+            raise TypeError("Expected argument 'page_size' to be a int")
+        pulumi.set(__self__, "page_size", page_size)
         if structures and not isinstance(structures, list):
             raise TypeError("Expected argument 'structures' to be a list")
         pulumi.set(__self__, "structures", structures)
@@ -82,6 +85,11 @@ class GetCheckStructuresResult:
         return pulumi.get(self, "output_file")
 
     @_builtins.property
+    @pulumi.getter(name="pageSize")
+    def page_size(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "page_size")
+
+    @_builtins.property
     @pulumi.getter
     def structures(self) -> Sequence['outputs.GetCheckStructuresStructureResult']:
         """
@@ -106,6 +114,7 @@ class AwaitableGetCheckStructuresResult(GetCheckStructuresResult):
             ids=self.ids,
             lang=self.lang,
             output_file=self.output_file,
+            page_size=self.page_size,
             structures=self.structures,
             task_sources=self.task_sources)
 
@@ -114,6 +123,7 @@ def get_check_structures(current_page: Optional[_builtins.int] = None,
                          ids: Optional[Sequence[_builtins.str]] = None,
                          lang: Optional[_builtins.str] = None,
                          output_file: Optional[_builtins.str] = None,
+                         page_size: Optional[_builtins.int] = None,
                          task_sources: Optional[Sequence[_builtins.str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCheckStructuresResult:
     """
@@ -127,15 +137,18 @@ def get_check_structures(current_page: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_check_structures()
+    default = alicloud.threatdetection.get_check_structures(lang="zh",
+        current_page=1,
+        page_size=10)
     pulumi.export("alicloudThreatDetectionCheckStructureExampleStandardType", default.structures[0].standard_type)
     ```
 
 
-    :param _builtins.int current_page: The page number.
-    :param Sequence[_builtins.str] ids: A list of Check Structure IDs.
-    :param _builtins.str lang: The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+    :param _builtins.int current_page: The page number. Must be greater than 0.
+    :param Sequence[_builtins.str] ids: A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
+    :param _builtins.str lang: The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.int page_size: Number of records per page. Must be greater than 0.
     :param Sequence[_builtins.str] task_sources: List of task sources.
     """
     __args__ = dict()
@@ -143,6 +156,7 @@ def get_check_structures(current_page: Optional[_builtins.int] = None,
     __args__['ids'] = ids
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
+    __args__['pageSize'] = page_size
     __args__['taskSources'] = task_sources
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getCheckStructures:getCheckStructures', __args__, opts=opts, typ=GetCheckStructuresResult).value
@@ -153,12 +167,14 @@ def get_check_structures(current_page: Optional[_builtins.int] = None,
         ids=pulumi.get(__ret__, 'ids'),
         lang=pulumi.get(__ret__, 'lang'),
         output_file=pulumi.get(__ret__, 'output_file'),
+        page_size=pulumi.get(__ret__, 'page_size'),
         structures=pulumi.get(__ret__, 'structures'),
         task_sources=pulumi.get(__ret__, 'task_sources'))
 def get_check_structures_output(current_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                 lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 task_sources: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCheckStructuresResult]:
     """
@@ -172,15 +188,18 @@ def get_check_structures_output(current_page: pulumi.Input[Optional[Optional[_bu
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_check_structures()
+    default = alicloud.threatdetection.get_check_structures(lang="zh",
+        current_page=1,
+        page_size=10)
     pulumi.export("alicloudThreatDetectionCheckStructureExampleStandardType", default.structures[0].standard_type)
     ```
 
 
-    :param _builtins.int current_page: The page number.
-    :param Sequence[_builtins.str] ids: A list of Check Structure IDs.
-    :param _builtins.str lang: The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+    :param _builtins.int current_page: The page number. Must be greater than 0.
+    :param Sequence[_builtins.str] ids: A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
+    :param _builtins.str lang: The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param _builtins.int page_size: Number of records per page. Must be greater than 0.
     :param Sequence[_builtins.str] task_sources: List of task sources.
     """
     __args__ = dict()
@@ -188,6 +207,7 @@ def get_check_structures_output(current_page: pulumi.Input[Optional[Optional[_bu
     __args__['ids'] = ids
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
+    __args__['pageSize'] = page_size
     __args__['taskSources'] = task_sources
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getCheckStructures:getCheckStructures', __args__, opts=opts, typ=GetCheckStructuresResult)
@@ -197,5 +217,6 @@ def get_check_structures_output(current_page: pulumi.Input[Optional[Optional[_bu
         ids=pulumi.get(__response__, 'ids'),
         lang=pulumi.get(__response__, 'lang'),
         output_file=pulumi.get(__response__, 'output_file'),
+        page_size=pulumi.get(__response__, 'page_size'),
         structures=pulumi.get(__response__, 'structures'),
         task_sources=pulumi.get(__response__, 'task_sources')))

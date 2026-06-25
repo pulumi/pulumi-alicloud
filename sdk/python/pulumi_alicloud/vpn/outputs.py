@@ -44,6 +44,7 @@ __all__ = [
     'GetConnectionsConnectionVcoHealthCheckResult',
     'GetConnectionsConnectionVpnBgpConfigResult',
     'GetCustomerGatewaysGatewayResult',
+    'GetGatewayEnhancedVpnGatewaysGatewayResult',
     'GetGatewayVcoRoutesRouteResult',
     'GetGatewayVpnAttachmentsAttachmentResult',
     'GetGatewayVpnAttachmentsAttachmentBgpConfigResult',
@@ -2946,6 +2947,167 @@ class GetCustomerGatewaysGatewayResult(dict):
         The name of the VPN customer gateway.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGatewayEnhancedVpnGatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 auto_propagate: _builtins.bool,
+                 create_time: _builtins.int,
+                 description: _builtins.str,
+                 disaster_recovery_vswitch_id: _builtins.str,
+                 gateway_type: _builtins.str,
+                 id: _builtins.str,
+                 network_type: _builtins.str,
+                 status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 vpc_id: _builtins.str,
+                 vpn_gateway_name: _builtins.str,
+                 vpn_instance_id: _builtins.str,
+                 vpn_type: _builtins.str,
+                 vswitch_id: _builtins.str):
+        """
+        :param _builtins.bool auto_propagate: Specifies whether to automatically propagate BGP routes to the VPC.
+        :param _builtins.int create_time: The time when the VPN gateway was created.
+        :param _builtins.str description: The description of the VPN gateway.
+        :param _builtins.str disaster_recovery_vswitch_id: The ID of the backup VSwitch to which the VPN gateway is attached.
+        :param _builtins.str gateway_type: VPN gateway type.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str network_type: Type of Gateway.
+        :param _builtins.str status: The status of the resource
+        :param Mapping[str, _builtins.str] tags: The Tag of.
+        :param _builtins.str vpc_id: The ID of the VPC to which the VPN gateway belongs.
+        :param _builtins.str vpn_gateway_name: The name of the VPN gateway.
+        :param _builtins.str vpn_instance_id: The ID of the VPN gateway.
+        :param _builtins.str vpn_type: The Type of Vpn.
+        :param _builtins.str vswitch_id: The ID of the VSwitch to which the VPN gateway is attached.
+        """
+        pulumi.set(__self__, "auto_propagate", auto_propagate)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disaster_recovery_vswitch_id", disaster_recovery_vswitch_id)
+        pulumi.set(__self__, "gateway_type", gateway_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpn_gateway_name", vpn_gateway_name)
+        pulumi.set(__self__, "vpn_instance_id", vpn_instance_id)
+        pulumi.set(__self__, "vpn_type", vpn_type)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter(name="autoPropagate")
+    def auto_propagate(self) -> _builtins.bool:
+        """
+        Specifies whether to automatically propagate BGP routes to the VPC.
+        """
+        return pulumi.get(self, "auto_propagate")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.int:
+        """
+        The time when the VPN gateway was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the VPN gateway.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="disasterRecoveryVswitchId")
+    def disaster_recovery_vswitch_id(self) -> _builtins.str:
+        """
+        The ID of the backup VSwitch to which the VPN gateway is attached.
+        """
+        return pulumi.get(self, "disaster_recovery_vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayType")
+    def gateway_type(self) -> _builtins.str:
+        """
+        VPN gateway type.
+        """
+        return pulumi.get(self, "gateway_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        Type of Gateway.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        The Tag of.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        The ID of the VPC to which the VPN gateway belongs.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpnGatewayName")
+    def vpn_gateway_name(self) -> _builtins.str:
+        """
+        The name of the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_gateway_name")
+
+    @_builtins.property
+    @pulumi.getter(name="vpnInstanceId")
+    def vpn_instance_id(self) -> _builtins.str:
+        """
+        The ID of the VPN gateway.
+        """
+        return pulumi.get(self, "vpn_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpnType")
+    def vpn_type(self) -> _builtins.str:
+        """
+        The Type of Vpn.
+        """
+        return pulumi.get(self, "vpn_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> _builtins.str:
+        """
+        The ID of the VSwitch to which the VPN gateway is attached.
+        """
+        return pulumi.get(self, "vswitch_id")
 
 
 @pulumi.output_type

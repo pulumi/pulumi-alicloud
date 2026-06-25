@@ -35,10 +35,15 @@ class DomainResourceArgs:
                  cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
                  https_ext: pulumi.Input[Optional[_builtins.str]] = None,
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssl_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocols: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13_custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DomainResource resource.
@@ -74,6 +79,7 @@ class DomainResourceArgs:
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_ciphers: A custom list of cipher suites for TLS 1.2 and earlier versions.
         :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
                Take note of the following items:
                - Do not use the following default HTTP headers:
@@ -98,6 +104,13 @@ class DomainResourceArgs:
                
                > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
         :param pulumi.Input[_builtins.bool] ocsp_enabled: Specifies whether to enable the OCSP feature. Valid values:
+        :param pulumi.Input[_builtins.bool] ssl13_enabled: Specifies whether to enable TLS 1.3. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_ciphers: The type of cipher suite. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_protocols: The TLS protocol version. Valid values:
+               - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+               - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+               - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls13_custom_ciphers: A custom list of cipher suites for TLS 1.3.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         pulumi.set(__self__, "domain", domain)
@@ -123,6 +136,8 @@ class DomainResourceArgs:
             pulumi.set(__self__, "cert_name", cert_name)
         if cert_region is not None:
             pulumi.set(__self__, "cert_region", cert_region)
+        if custom_ciphers is not None:
+            pulumi.set(__self__, "custom_ciphers", custom_ciphers)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
         if https_ext is not None:
@@ -131,6 +146,14 @@ class DomainResourceArgs:
             pulumi.set(__self__, "key", key)
         if ocsp_enabled is not None:
             pulumi.set(__self__, "ocsp_enabled", ocsp_enabled)
+        if ssl13_enabled is not None:
+            pulumi.set(__self__, "ssl13_enabled", ssl13_enabled)
+        if ssl_ciphers is not None:
+            pulumi.set(__self__, "ssl_ciphers", ssl_ciphers)
+        if ssl_protocols is not None:
+            pulumi.set(__self__, "ssl_protocols", ssl_protocols)
+        if tls13_custom_ciphers is not None:
+            pulumi.set(__self__, "tls13_custom_ciphers", tls13_custom_ciphers)
         if white_lists is not None:
             pulumi.set(__self__, "white_lists", white_lists)
 
@@ -320,6 +343,18 @@ class DomainResourceArgs:
         pulumi.set(self, "cert_region", value)
 
     @_builtins.property
+    @pulumi.getter(name="customCiphers")
+    def custom_ciphers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A custom list of cipher suites for TLS 1.2 and earlier versions.
+        """
+        return pulumi.get(self, "custom_ciphers")
+
+    @custom_ciphers.setter
+    def custom_ciphers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_ciphers", value)
+
+    @_builtins.property
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -388,6 +423,57 @@ class DomainResourceArgs:
         pulumi.set(self, "ocsp_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssl13Enabled")
+    def ssl13_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable TLS 1.3. Valid values:
+        """
+        return pulumi.get(self, "ssl13_enabled")
+
+    @ssl13_enabled.setter
+    def ssl13_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ssl13_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslCiphers")
+    def ssl_ciphers(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of cipher suite. Valid values:
+        """
+        return pulumi.get(self, "ssl_ciphers")
+
+    @ssl_ciphers.setter
+    def ssl_ciphers(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_ciphers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslProtocols")
+    def ssl_protocols(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The TLS protocol version. Valid values:
+        - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+        - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+        - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        """
+        return pulumi.get(self, "ssl_protocols")
+
+    @ssl_protocols.setter
+    def ssl_protocols(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_protocols", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tls13CustomCiphers")
+    def tls13_custom_ciphers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A custom list of cipher suites for TLS 1.3.
+        """
+        return pulumi.get(self, "tls13_custom_ciphers")
+
+    @tls13_custom_ciphers.setter
+    def tls13_custom_ciphers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tls13_custom_ciphers", value)
+
+    @_builtins.property
     @pulumi.getter(name="whiteLists")
     def white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -413,6 +499,7 @@ class _DomainResourceState:
                  cert_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_region: pulumi.Input[Optional[_builtins.str]] = None,
                  cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  https_ext: pulumi.Input[Optional[_builtins.str]] = None,
@@ -422,6 +509,10 @@ class _DomainResourceState:
                  proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
                  real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssl_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocols: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13_custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainResource resources.
@@ -451,6 +542,7 @@ class _DomainResourceState:
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
         :param pulumi.Input[_builtins.str] cname: The CNAME address to query.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_ciphers: A custom list of cipher suites for TLS 1.2 and earlier versions.
         :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
                Take note of the following items:
                - Do not use the following default HTTP headers:
@@ -482,6 +574,13 @@ class _DomainResourceState:
         :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[_builtins.bool] ssl13_enabled: Specifies whether to enable TLS 1.3. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_ciphers: The type of cipher suite. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_protocols: The TLS protocol version. Valid values:
+               - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+               - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+               - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls13_custom_ciphers: A custom list of cipher suites for TLS 1.3.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         if ai_mode is not None:
@@ -504,6 +603,8 @@ class _DomainResourceState:
             pulumi.set(__self__, "cert_region", cert_region)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
+        if custom_ciphers is not None:
+            pulumi.set(__self__, "custom_ciphers", custom_ciphers)
         if custom_headers is not None:
             pulumi.set(__self__, "custom_headers", custom_headers)
         if domain is not None:
@@ -522,6 +623,14 @@ class _DomainResourceState:
             pulumi.set(__self__, "real_servers", real_servers)
         if rs_type is not None:
             pulumi.set(__self__, "rs_type", rs_type)
+        if ssl13_enabled is not None:
+            pulumi.set(__self__, "ssl13_enabled", ssl13_enabled)
+        if ssl_ciphers is not None:
+            pulumi.set(__self__, "ssl_ciphers", ssl_ciphers)
+        if ssl_protocols is not None:
+            pulumi.set(__self__, "ssl_protocols", ssl_protocols)
+        if tls13_custom_ciphers is not None:
+            pulumi.set(__self__, "tls13_custom_ciphers", tls13_custom_ciphers)
         if white_lists is not None:
             pulumi.set(__self__, "white_lists", white_lists)
 
@@ -661,6 +770,18 @@ class _DomainResourceState:
         pulumi.set(self, "cname", value)
 
     @_builtins.property
+    @pulumi.getter(name="customCiphers")
+    def custom_ciphers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A custom list of cipher suites for TLS 1.2 and earlier versions.
+        """
+        return pulumi.get(self, "custom_ciphers")
+
+    @custom_ciphers.setter
+    def custom_ciphers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_ciphers", value)
+
+    @_builtins.property
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -791,6 +912,57 @@ class _DomainResourceState:
         pulumi.set(self, "rs_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="ssl13Enabled")
+    def ssl13_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable TLS 1.3. Valid values:
+        """
+        return pulumi.get(self, "ssl13_enabled")
+
+    @ssl13_enabled.setter
+    def ssl13_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ssl13_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslCiphers")
+    def ssl_ciphers(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of cipher suite. Valid values:
+        """
+        return pulumi.get(self, "ssl_ciphers")
+
+    @ssl_ciphers.setter
+    def ssl_ciphers(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_ciphers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sslProtocols")
+    def ssl_protocols(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The TLS protocol version. Valid values:
+        - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+        - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+        - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        """
+        return pulumi.get(self, "ssl_protocols")
+
+    @ssl_protocols.setter
+    def ssl_protocols(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ssl_protocols", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tls13CustomCiphers")
+    def tls13_custom_ciphers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A custom list of cipher suites for TLS 1.3.
+        """
+        return pulumi.get(self, "tls13_custom_ciphers")
+
+    @tls13_custom_ciphers.setter
+    def tls13_custom_ciphers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tls13_custom_ciphers", value)
+
+    @_builtins.property
     @pulumi.getter(name="whiteLists")
     def white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -818,6 +990,7 @@ class DomainResource(pulumi.CustomResource):
                  cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  https_ext: pulumi.Input[Optional[_builtins.str]] = None,
@@ -827,6 +1000,10 @@ class DomainResource(pulumi.CustomResource):
                  proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
                  real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssl_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocols: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13_custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -914,6 +1091,7 @@ class DomainResource(pulumi.CustomResource):
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_ciphers: A custom list of cipher suites for TLS 1.2 and earlier versions.
         :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
                Take note of the following items:
                - Do not use the following default HTTP headers:
@@ -945,6 +1123,13 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[_builtins.bool] ssl13_enabled: Specifies whether to enable TLS 1.3. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_ciphers: The type of cipher suite. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_protocols: The TLS protocol version. Valid values:
+               - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+               - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+               - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls13_custom_ciphers: A custom list of cipher suites for TLS 1.3.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         ...
@@ -1036,6 +1221,7 @@ class DomainResource(pulumi.CustomResource):
                  cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  https_ext: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1045,6 +1231,10 @@ class DomainResource(pulumi.CustomResource):
                  proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
                  real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssl_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocols: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls13_custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1064,6 +1254,7 @@ class DomainResource(pulumi.CustomResource):
             __props__.__dict__["cert_identifier"] = None if cert_identifier is None else pulumi.Output.secret(cert_identifier)
             __props__.__dict__["cert_name"] = cert_name
             __props__.__dict__["cert_region"] = None if cert_region is None else pulumi.Output.secret(cert_region)
+            __props__.__dict__["custom_ciphers"] = custom_ciphers
             __props__.__dict__["custom_headers"] = custom_headers
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
@@ -1083,6 +1274,10 @@ class DomainResource(pulumi.CustomResource):
             if rs_type is None and not opts.urn:
                 raise TypeError("Missing required property 'rs_type'")
             __props__.__dict__["rs_type"] = rs_type
+            __props__.__dict__["ssl13_enabled"] = ssl13_enabled
+            __props__.__dict__["ssl_ciphers"] = ssl_ciphers
+            __props__.__dict__["ssl_protocols"] = ssl_protocols
+            __props__.__dict__["tls13_custom_ciphers"] = tls13_custom_ciphers
             __props__.__dict__["white_lists"] = white_lists
             __props__.__dict__["cname"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cert", "certIdentifier", "certRegion", "key"])
@@ -1107,6 +1302,7 @@ class DomainResource(pulumi.CustomResource):
             cert_name: pulumi.Input[Optional[_builtins.str]] = None,
             cert_region: pulumi.Input[Optional[_builtins.str]] = None,
             cname: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             https_ext: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1116,6 +1312,10 @@ class DomainResource(pulumi.CustomResource):
             proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
             real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+            ssl13_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ssl_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_protocols: pulumi.Input[Optional[_builtins.str]] = None,
+            tls13_custom_ciphers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DomainResource':
         """
         Get an existing DomainResource resource's state with the given name, id, and optional extra
@@ -1149,6 +1349,7 @@ class DomainResource(pulumi.CustomResource):
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
         :param pulumi.Input[_builtins.str] cname: The CNAME address to query.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_ciphers: A custom list of cipher suites for TLS 1.2 and earlier versions.
         :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
                Take note of the following items:
                - Do not use the following default HTTP headers:
@@ -1180,6 +1381,13 @@ class DomainResource(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]] proxy_types: Protocol type and port number information. See `proxy_types` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] real_servers: Server address information of the source station.
         :param pulumi.Input[_builtins.int] rs_type: The address type of the origin server. Valid values:
+        :param pulumi.Input[_builtins.bool] ssl13_enabled: Specifies whether to enable TLS 1.3. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_ciphers: The type of cipher suite. Valid values:
+        :param pulumi.Input[_builtins.str] ssl_protocols: The TLS protocol version. Valid values:
+               - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+               - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+               - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls13_custom_ciphers: A custom list of cipher suites for TLS 1.3.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] white_lists: IP whitelist list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1196,6 +1404,7 @@ class DomainResource(pulumi.CustomResource):
         __props__.__dict__["cert_name"] = cert_name
         __props__.__dict__["cert_region"] = cert_region
         __props__.__dict__["cname"] = cname
+        __props__.__dict__["custom_ciphers"] = custom_ciphers
         __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["domain"] = domain
         __props__.__dict__["https_ext"] = https_ext
@@ -1205,6 +1414,10 @@ class DomainResource(pulumi.CustomResource):
         __props__.__dict__["proxy_types"] = proxy_types
         __props__.__dict__["real_servers"] = real_servers
         __props__.__dict__["rs_type"] = rs_type
+        __props__.__dict__["ssl13_enabled"] = ssl13_enabled
+        __props__.__dict__["ssl_ciphers"] = ssl_ciphers
+        __props__.__dict__["ssl_protocols"] = ssl_protocols
+        __props__.__dict__["tls13_custom_ciphers"] = tls13_custom_ciphers
         __props__.__dict__["white_lists"] = white_lists
         return DomainResource(resource_name, opts=opts, __props__=__props__)
 
@@ -1304,6 +1517,14 @@ class DomainResource(pulumi.CustomResource):
         return pulumi.get(self, "cname")
 
     @_builtins.property
+    @pulumi.getter(name="customCiphers")
+    def custom_ciphers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A custom list of cipher suites for TLS 1.2 and earlier versions.
+        """
+        return pulumi.get(self, "custom_ciphers")
+
+    @_builtins.property
     @pulumi.getter(name="customHeaders")
     def custom_headers(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1396,6 +1617,41 @@ class DomainResource(pulumi.CustomResource):
         The address type of the origin server. Valid values:
         """
         return pulumi.get(self, "rs_type")
+
+    @_builtins.property
+    @pulumi.getter(name="ssl13Enabled")
+    def ssl13_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable TLS 1.3. Valid values:
+        """
+        return pulumi.get(self, "ssl13_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCiphers")
+    def ssl_ciphers(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of cipher suite. Valid values:
+        """
+        return pulumi.get(self, "ssl_ciphers")
+
+    @_builtins.property
+    @pulumi.getter(name="sslProtocols")
+    def ssl_protocols(self) -> pulumi.Output[_builtins.str]:
+        """
+        The TLS protocol version. Valid values:
+        - `tls1.0`: Sets the minimum supported version to TLS 1.0.
+        - `tls1.1`: Sets the minimum supported version to TLS 1.1.
+        - `tls1.2`: Sets the minimum supported version to TLS 1.2.
+        """
+        return pulumi.get(self, "ssl_protocols")
+
+    @_builtins.property
+    @pulumi.getter(name="tls13CustomCiphers")
+    def tls13_custom_ciphers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A custom list of cipher suites for TLS 1.3.
+        """
+        return pulumi.get(self, "tls13_custom_ciphers")
 
     @_builtins.property
     @pulumi.getter(name="whiteLists")

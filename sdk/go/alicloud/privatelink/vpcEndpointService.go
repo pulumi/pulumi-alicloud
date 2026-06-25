@@ -69,7 +69,7 @@ type VpcEndpointService struct {
 	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection pulumi.BoolPtrOutput `pulumi:"autoAcceptConnection"`
-	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
 	ConnectBandwidth pulumi.IntOutput `pulumi:"connectBandwidth"`
 	// The time when the endpoint service was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -95,6 +95,8 @@ type VpcEndpointService struct {
 	ServiceSupportIpv6 pulumi.BoolOutput `pulumi:"serviceSupportIpv6"`
 	// The state of the endpoint service.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The list of remote region IDs that are supported by the endpoint service.
+	SupportedRegionLists pulumi.StringArrayOutput `pulumi:"supportedRegionLists"`
 	// The list of tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the endpoint service.
@@ -137,7 +139,7 @@ type vpcEndpointServiceState struct {
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
-	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
 	ConnectBandwidth *int `pulumi:"connectBandwidth"`
 	// The time when the endpoint service was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -163,6 +165,8 @@ type vpcEndpointServiceState struct {
 	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
 	// The state of the endpoint service.
 	Status *string `pulumi:"status"`
+	// The list of remote region IDs that are supported by the endpoint service.
+	SupportedRegionLists []string `pulumi:"supportedRegionLists"`
 	// The list of tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the endpoint service.
@@ -176,7 +180,7 @@ type VpcEndpointServiceState struct {
 	AddressIpVersion pulumi.StringPtrInput
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection pulumi.BoolPtrInput
-	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
 	ConnectBandwidth pulumi.IntPtrInput
 	// The time when the endpoint service was created.
 	CreateTime pulumi.StringPtrInput
@@ -202,6 +206,8 @@ type VpcEndpointServiceState struct {
 	ServiceSupportIpv6 pulumi.BoolPtrInput
 	// The state of the endpoint service.
 	Status pulumi.StringPtrInput
+	// The list of remote region IDs that are supported by the endpoint service.
+	SupportedRegionLists pulumi.StringArrayInput
 	// The list of tags.
 	Tags pulumi.StringMapInput
 	// The name of the endpoint service.
@@ -219,7 +225,7 @@ type vpcEndpointServiceArgs struct {
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
-	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
 	ConnectBandwidth *int `pulumi:"connectBandwidth"`
 	// Specifies whether to perform only a dry run, without performing the actual request.
 	DryRun *bool `pulumi:"dryRun"`
@@ -235,6 +241,8 @@ type vpcEndpointServiceArgs struct {
 	ServiceResourceType *string `pulumi:"serviceResourceType"`
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 *bool `pulumi:"serviceSupportIpv6"`
+	// The list of remote region IDs that are supported by the endpoint service.
+	SupportedRegionLists []string `pulumi:"supportedRegionLists"`
 	// The list of tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -247,7 +255,7 @@ type VpcEndpointServiceArgs struct {
 	AddressIpVersion pulumi.StringPtrInput
 	// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
 	AutoAcceptConnection pulumi.BoolPtrInput
-	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+	// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
 	ConnectBandwidth pulumi.IntPtrInput
 	// Specifies whether to perform only a dry run, without performing the actual request.
 	DryRun pulumi.BoolPtrInput
@@ -263,6 +271,8 @@ type VpcEndpointServiceArgs struct {
 	ServiceResourceType pulumi.StringPtrInput
 	// Specifies whether to enable IPv6 for the endpoint service. Valid values:
 	ServiceSupportIpv6 pulumi.BoolPtrInput
+	// The list of remote region IDs that are supported by the endpoint service.
+	SupportedRegionLists pulumi.StringArrayInput
 	// The list of tags.
 	Tags pulumi.StringMapInput
 	// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
@@ -366,7 +376,7 @@ func (o VpcEndpointServiceOutput) AutoAcceptConnection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.BoolPtrOutput { return v.AutoAcceptConnection }).(pulumi.BoolPtrOutput)
 }
 
-// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `serviceResourceType` is `slb`, this field can be read from the remote API. When `serviceResourceType` is `nlb`, `alb`, or `gwlb`, this field can be configured but is not returned by the remote API.
 func (o VpcEndpointServiceOutput) ConnectBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.IntOutput { return v.ConnectBandwidth }).(pulumi.IntOutput)
 }
@@ -426,6 +436,11 @@ func (o VpcEndpointServiceOutput) ServiceSupportIpv6() pulumi.BoolOutput {
 // The state of the endpoint service.
 func (o VpcEndpointServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The list of remote region IDs that are supported by the endpoint service.
+func (o VpcEndpointServiceOutput) SupportedRegionLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpcEndpointService) pulumi.StringArrayOutput { return v.SupportedRegionLists }).(pulumi.StringArrayOutput)
 }
 
 // The list of tags.

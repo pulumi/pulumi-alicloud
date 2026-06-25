@@ -42,7 +42,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
@@ -51,7 +51,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * @return The bandwidth of the VBR instance. Unit: Mbps.
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
@@ -107,8 +107,8 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
 
     /**
      * Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      * 
      */
     @Import(name="detectMultiplier")
@@ -116,8 +116,8 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
 
     /**
      * @return Multiple of detection time.
-     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-     * Valid values: `3` to `10`.
+     * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: **3 to 10 * *.
      * 
      */
     public Optional<Output<Integer>> detectMultiplier() {
@@ -170,14 +170,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      * 
      */
     @Import(name="minRxInterval")
     private @Nullable Output<Integer> minRxInterval;
 
     /**
-     * @return Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+     * @return Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
      * 
      */
     public Optional<Output<Integer>> minRxInterval() {
@@ -185,14 +185,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      * 
      */
     @Import(name="minTxInterval")
     private @Nullable Output<Integer> minTxInterval;
 
     /**
-     * @return Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+     * @return Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
      * 
      */
     public Optional<Output<Integer>> minTxInterval() {
@@ -200,14 +200,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Maximum transmission unit.
+     * Maximum transmission unit
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return Maximum transmission unit.
+     * @return Maximum transmission unit
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -290,14 +290,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -305,14 +305,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+     * (Available since v1.263.0) The ID of the route table of the VBR.
      * 
      */
     @Import(name="routeTableId")
     private @Nullable Output<String> routeTableId;
 
     /**
-     * @return (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+     * @return (Available since v1.263.0) The ID of the route table of the VBR.
      * 
      */
     public Optional<Output<String>> routeTableId() {
@@ -320,14 +320,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * Whether to allow inter-IDC communication
      * 
      */
     @Import(name="sitelinkEnable")
     private @Nullable Output<Boolean> sitelinkEnable;
 
     /**
-     * @return Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * @return Whether to allow inter-IDC communication
      * 
      */
     public Optional<Output<Boolean>> sitelinkEnable() {
@@ -335,14 +335,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The status of the VBR. Valid values: `active`, `terminated`.
+     * Status of the VBR
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VBR. Valid values: `active`, `terminated`.
+     * @return Status of the VBR
      * 
      */
     public Optional<Output<String>> status() {
@@ -350,14 +350,14 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -365,14 +365,20 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="vbrOwnerId")
     private @Nullable Output<String> vbrOwnerId;
 
     /**
-     * @return The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+     * @return The account ID of the VBR instance owner.
+     * The default value is the logon Alibaba Cloud account ID.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> vbrOwnerId() {
@@ -487,7 +493,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bandwidth The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+         * @param bandwidth The bandwidth of the VBR instance. Unit: Mbps.
          * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
          * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
          * 
@@ -500,7 +506,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bandwidth The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+         * @param bandwidth The bandwidth of the VBR instance. Unit: Mbps.
          * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
          * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
          * 
@@ -576,8 +582,8 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
 
         /**
          * @param detectMultiplier Multiple of detection time.
-         * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-         * Valid values: `3` to `10`.
+         * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+         * Valid values: **3 to 10 * *.
          * 
          * @return builder
          * 
@@ -589,8 +595,8 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
 
         /**
          * @param detectMultiplier Multiple of detection time.
-         * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
-         * Valid values: `3` to `10`.
+         * That is, the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+         * Valid values: **3 to 10 * *.
          * 
          * @return builder
          * 
@@ -663,7 +669,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param minRxInterval Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+         * @param minRxInterval Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
          * 
          * @return builder
          * 
@@ -674,7 +680,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param minRxInterval Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+         * @param minRxInterval Configure the receiving interval of BFD packets. Values: **200 to 1000**, in ms.
          * 
          * @return builder
          * 
@@ -684,7 +690,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param minTxInterval Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+         * @param minTxInterval Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
          * 
          * @return builder
          * 
@@ -695,7 +701,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param minTxInterval Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+         * @param minTxInterval Configure the sending interval of BFD packets. Value: **200~1000**, unit: ms.
          * 
          * @return builder
          * 
@@ -705,7 +711,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mtu Maximum transmission unit.
+         * @param mtu Maximum transmission unit
          * 
          * @return builder
          * 
@@ -716,7 +722,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mtu Maximum transmission unit.
+         * @param mtu Maximum transmission unit
          * 
          * @return builder
          * 
@@ -831,7 +837,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -842,7 +848,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of the resource group
          * 
          * @return builder
          * 
@@ -852,7 +858,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeTableId (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+         * @param routeTableId (Available since v1.263.0) The ID of the route table of the VBR.
          * 
          * @return builder
          * 
@@ -863,7 +869,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param routeTableId (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
+         * @param routeTableId (Available since v1.263.0) The ID of the route table of the VBR.
          * 
          * @return builder
          * 
@@ -873,7 +879,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sitelinkEnable Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+         * @param sitelinkEnable Whether to allow inter-IDC communication
          * 
          * @return builder
          * 
@@ -884,7 +890,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sitelinkEnable Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+         * @param sitelinkEnable Whether to allow inter-IDC communication
          * 
          * @return builder
          * 
@@ -894,7 +900,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the VBR. Valid values: `active`, `terminated`.
+         * @param status Status of the VBR
          * 
          * @return builder
          * 
@@ -905,7 +911,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the VBR. Valid values: `active`, `terminated`.
+         * @param status Status of the VBR
          * 
          * @return builder
          * 
@@ -915,7 +921,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -926,7 +932,7 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -936,7 +942,10 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vbrOwnerId The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+         * @param vbrOwnerId The account ID of the VBR instance owner.
+         * The default value is the logon Alibaba Cloud account ID.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -947,7 +956,10 @@ public final class VirtualBorderRouterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vbrOwnerId The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+         * @param vbrOwnerId The account ID of the VBR instance owner.
+         * The default value is the logon Alibaba Cloud account ID.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 

@@ -21,6 +21,7 @@ class VpcEndpointArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
                  address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_region_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -30,6 +31,7 @@ class VpcEndpointArgs:
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None):
@@ -40,11 +42,12 @@ class VpcEndpointArgs:
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
                - `IPv4` (default): IPv4.
                - `DualStack`: dual-stack.
+        :param pulumi.Input[_builtins.int] cross_region_bandwidth: The cross-region bandwidth that is supported by the cross-region endpoint.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -53,6 +56,7 @@ class VpcEndpointArgs:
                The endpoint can be associated with up to 10 security groups.
         :param pulumi.Input[_builtins.str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[_builtins.str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[_builtins.str] service_region_id: The region ID of the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] vpc_endpoint_name: The name of the endpoint.
         :param pulumi.Input[_builtins.int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
@@ -60,6 +64,8 @@ class VpcEndpointArgs:
         pulumi.set(__self__, "vpc_id", vpc_id)
         if address_ip_version is not None:
             pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if cross_region_bandwidth is not None:
+            pulumi.set(__self__, "cross_region_bandwidth", cross_region_bandwidth)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_description is not None:
@@ -78,6 +84,8 @@ class VpcEndpointArgs:
             pulumi.set(__self__, "service_id", service_id)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if service_region_id is not None:
+            pulumi.set(__self__, "service_region_id", service_region_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_endpoint_name is not None:
@@ -112,6 +120,18 @@ class VpcEndpointArgs:
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
+    @pulumi.getter(name="crossRegionBandwidth")
+    def cross_region_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cross-region bandwidth that is supported by the cross-region endpoint.
+        """
+        return pulumi.get(self, "cross_region_bandwidth")
+
+    @cross_region_bandwidth.setter
+    def cross_region_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cross_region_bandwidth", value)
+
+    @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -139,9 +159,9 @@ class VpcEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The endpoint type.
-
-        Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The type of the endpoint. Valid values:
+        - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -224,6 +244,18 @@ class VpcEndpointArgs:
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceRegionId")
+    def service_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the endpoint service.
+        """
+        return pulumi.get(self, "service_region_id")
+
+    @service_region_id.setter
+    def service_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_region_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -267,6 +299,7 @@ class _VpcEndpointState:
                  bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  connection_status: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_region_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_business_status: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -279,6 +312,7 @@ class _VpcEndpointState:
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -293,13 +327,14 @@ class _VpcEndpointState:
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         :param pulumi.Input[_builtins.str] connection_status: The state of the endpoint connection.
         :param pulumi.Input[_builtins.str] create_time: The time when the endpoint was created.
+        :param pulumi.Input[_builtins.int] cross_region_bandwidth: The cross-region bandwidth that is supported by the cross-region endpoint.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_business_status: The service state of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_domain: The domain name of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.239.0) The region ID of the endpoint.
@@ -309,6 +344,7 @@ class _VpcEndpointState:
                The endpoint can be associated with up to 10 security groups.
         :param pulumi.Input[_builtins.str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[_builtins.str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[_builtins.str] service_region_id: The region ID of the endpoint service.
         :param pulumi.Input[_builtins.str] status: The state of the endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] vpc_endpoint_name: The name of the endpoint.
@@ -323,6 +359,8 @@ class _VpcEndpointState:
             pulumi.set(__self__, "connection_status", connection_status)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_region_bandwidth is not None:
+            pulumi.set(__self__, "cross_region_bandwidth", cross_region_bandwidth)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_business_status is not None:
@@ -347,6 +385,8 @@ class _VpcEndpointState:
             pulumi.set(__self__, "service_id", service_id)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if service_region_id is not None:
+            pulumi.set(__self__, "service_region_id", service_region_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -409,6 +449,18 @@ class _VpcEndpointState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="crossRegionBandwidth")
+    def cross_region_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cross-region bandwidth that is supported by the cross-region endpoint.
+        """
+        return pulumi.get(self, "cross_region_bandwidth")
+
+    @cross_region_bandwidth.setter
+    def cross_region_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cross_region_bandwidth", value)
+
+    @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -460,9 +512,9 @@ class _VpcEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The endpoint type.
-
-        Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The type of the endpoint. Valid values:
+        - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -557,6 +609,18 @@ class _VpcEndpointState:
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceRegionId")
+    def service_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the endpoint service.
+        """
+        return pulumi.get(self, "service_region_id")
+
+    @service_region_id.setter
+    def service_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_region_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -624,6 +688,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_region_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -633,6 +698,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -708,11 +774,12 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address_ip_version: The IP address version. Valid values:
                - `IPv4` (default): IPv4.
                - `DualStack`: dual-stack.
+        :param pulumi.Input[_builtins.int] cross_region_bandwidth: The cross-region bandwidth that is supported by the cross-region endpoint.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -721,6 +788,7 @@ class VpcEndpoint(pulumi.CustomResource):
                The endpoint can be associated with up to 10 security groups.
         :param pulumi.Input[_builtins.str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[_builtins.str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[_builtins.str] service_region_id: The region ID of the endpoint service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] vpc_endpoint_name: The name of the endpoint.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the endpoint belongs.
@@ -813,6 +881,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_region_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -822,6 +891,7 @@ class VpcEndpoint(pulumi.CustomResource):
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -836,6 +906,7 @@ class VpcEndpoint(pulumi.CustomResource):
             __props__ = VpcEndpointArgs.__new__(VpcEndpointArgs)
 
             __props__.__dict__["address_ip_version"] = address_ip_version
+            __props__.__dict__["cross_region_bandwidth"] = cross_region_bandwidth
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["endpoint_description"] = endpoint_description
             __props__.__dict__["endpoint_type"] = endpoint_type
@@ -845,6 +916,7 @@ class VpcEndpoint(pulumi.CustomResource):
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["service_region_id"] = service_region_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_endpoint_name"] = vpc_endpoint_name
             if vpc_id is None and not opts.urn:
@@ -872,6 +944,7 @@ class VpcEndpoint(pulumi.CustomResource):
             bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             connection_status: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_region_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint_business_status: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -884,6 +957,7 @@ class VpcEndpoint(pulumi.CustomResource):
             security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -902,13 +976,14 @@ class VpcEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.
         :param pulumi.Input[_builtins.str] connection_status: The state of the endpoint connection.
         :param pulumi.Input[_builtins.str] create_time: The time when the endpoint was created.
+        :param pulumi.Input[_builtins.int] cross_region_bandwidth: The cross-region bandwidth that is supported by the cross-region endpoint.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[_builtins.str] endpoint_business_status: The service state of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_description: The description of the endpoint.
         :param pulumi.Input[_builtins.str] endpoint_domain: The domain name of the endpoint.
-        :param pulumi.Input[_builtins.str] endpoint_type: The endpoint type.
-               
-               Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[_builtins.str] endpoint_type: The type of the endpoint. Valid values:
+               - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+               - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         :param pulumi.Input[_builtins.str] policy_document: RAM access policies. For more information about policy definitions, see Alibaba Cloud-access control (RAM) official guidance.
         :param pulumi.Input[_builtins.bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.239.0) The region ID of the endpoint.
@@ -918,6 +993,7 @@ class VpcEndpoint(pulumi.CustomResource):
                The endpoint can be associated with up to 10 security groups.
         :param pulumi.Input[_builtins.str] service_id: The ID of the endpoint service with which the endpoint is associated.
         :param pulumi.Input[_builtins.str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[_builtins.str] service_region_id: The region ID of the endpoint service.
         :param pulumi.Input[_builtins.str] status: The state of the endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] vpc_endpoint_name: The name of the endpoint.
@@ -932,6 +1008,7 @@ class VpcEndpoint(pulumi.CustomResource):
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["connection_status"] = connection_status
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["cross_region_bandwidth"] = cross_region_bandwidth
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["endpoint_business_status"] = endpoint_business_status
         __props__.__dict__["endpoint_description"] = endpoint_description
@@ -944,6 +1021,7 @@ class VpcEndpoint(pulumi.CustomResource):
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["service_region_id"] = service_region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_endpoint_name"] = vpc_endpoint_name
@@ -986,6 +1064,14 @@ class VpcEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="crossRegionBandwidth")
+    def cross_region_bandwidth(self) -> pulumi.Output[_builtins.int]:
+        """
+        The cross-region bandwidth that is supported by the cross-region endpoint.
+        """
+        return pulumi.get(self, "cross_region_bandwidth")
+
+    @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1021,9 +1107,9 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The endpoint type.
-
-        Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        The type of the endpoint. Valid values:
+        - `Interface`: an interface endpoint. You can add Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB) instances as service resources.
+        - `GatewayLoadBalancer`: a Gateway Load Balancer endpoint. You can add a Gateway Load Balancer (GWLB) as a service resource.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -1084,6 +1170,14 @@ class VpcEndpoint(pulumi.CustomResource):
         The name of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRegionId")
+    def service_region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The region ID of the endpoint service.
+        """
+        return pulumi.get(self, "service_region_id")
 
     @_builtins.property
     @pulumi.getter

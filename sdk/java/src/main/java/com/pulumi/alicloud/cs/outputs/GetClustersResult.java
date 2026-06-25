@@ -26,7 +26,7 @@ public final class GetClustersResult {
      */
     private @Nullable String clusterName;
     /**
-     * @return After you set `clusterType` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+     * @return The cluster specification.
      * 
      */
     private @Nullable String clusterSpec;
@@ -80,7 +80,7 @@ public final class GetClustersResult {
         return Optional.ofNullable(this.clusterName);
     }
     /**
-     * @return After you set `clusterType` to `ManagedKubernetes` and configure `profile`, you can further specify the cluster specification.
+     * @return The cluster specification.
      * 
      */
     public Optional<String> clusterSpec() {

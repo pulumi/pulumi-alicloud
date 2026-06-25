@@ -26,6 +26,7 @@ class MilvusInstanceArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  components: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]] = None,
                  configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -49,6 +50,9 @@ class MilvusInstanceArgs:
                - Subscription: Package year package month
         :param pulumi.Input[_builtins.str] vpc_id: The VPC network ID. vpc-xxx.
         :param pulumi.Input[_builtins.bool] auto_backup: Whether to enable automatic backup
+        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -83,6 +87,8 @@ class MilvusInstanceArgs:
         pulumi.set(__self__, "vpc_id", vpc_id)
         if auto_backup is not None:
             pulumi.set(__self__, "auto_backup", auto_backup)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if components is not None:
             pulumi.set(__self__, "components", components)
         if configuration is not None:
@@ -171,6 +177,20 @@ class MilvusInstanceArgs:
     @auto_backup.setter
     def auto_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_backup", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to pay automatically.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter
@@ -347,6 +367,7 @@ class MilvusInstanceArgs:
 class _MilvusInstanceState:
     def __init__(__self__, *,
                  auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  components: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]] = None,
                  configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -371,6 +392,9 @@ class _MilvusInstanceState:
         Input properties used for looking up and filtering MilvusInstance resources.
 
         :param pulumi.Input[_builtins.bool] auto_backup: Whether to enable automatic backup
+        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -410,6 +434,8 @@ class _MilvusInstanceState:
         """
         if auto_backup is not None:
             pulumi.set(__self__, "auto_backup", auto_backup)
+        if auto_pay is not None:
+            pulumi.set(__self__, "auto_pay", auto_pay)
         if components is not None:
             pulumi.set(__self__, "components", components)
         if configuration is not None:
@@ -462,6 +488,20 @@ class _MilvusInstanceState:
     @auto_backup.setter
     def auto_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_backup", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to pay automatically.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        """
+        return pulumi.get(self, "auto_pay")
+
+    @auto_pay.setter
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter
@@ -727,6 +767,7 @@ class MilvusInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
                  configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -819,6 +860,9 @@ class MilvusInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_backup: Whether to enable automatic backup
+        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -946,6 +990,7 @@ class MilvusInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
                  configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -973,6 +1018,7 @@ class MilvusInstance(pulumi.CustomResource):
             __props__ = MilvusInstanceArgs.__new__(MilvusInstanceArgs)
 
             __props__.__dict__["auto_backup"] = auto_backup
+            __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["components"] = components
             __props__.__dict__["configuration"] = configuration
             __props__.__dict__["db_admin_password"] = None if db_admin_password is None else pulumi.Output.secret(db_admin_password)
@@ -1014,6 +1060,7 @@ class MilvusInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
             components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
             configuration: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1042,6 +1089,9 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_backup: Whether to enable automatic backup
+        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically.
+               
+               > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
@@ -1084,6 +1134,7 @@ class MilvusInstance(pulumi.CustomResource):
         __props__ = _MilvusInstanceState.__new__(_MilvusInstanceState)
 
         __props__.__dict__["auto_backup"] = auto_backup
+        __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["components"] = components
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["create_time"] = create_time
@@ -1113,6 +1164,16 @@ class MilvusInstance(pulumi.CustomResource):
         Whether to enable automatic backup
         """
         return pulumi.get(self, "auto_backup")
+
+    @_builtins.property
+    @pulumi.getter(name="autoPay")
+    def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to pay automatically.
+
+        > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        """
+        return pulumi.get(self, "auto_pay")
 
     @_builtins.property
     @pulumi.getter

@@ -26,7 +26,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ThreatDetection.GetCheckStructures.Invoke();
+        ///     var @default = AliCloud.ThreatDetection.GetCheckStructures.Invoke(new()
+        ///     {
+        ///         Lang = "zh",
+        ///         CurrentPage = 1,
+        ///         PageSize = 10,
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +58,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ThreatDetection.GetCheckStructures.Invoke();
+        ///     var @default = AliCloud.ThreatDetection.GetCheckStructures.Invoke(new()
+        ///     {
+        ///         Lang = "zh",
+        ///         CurrentPage = 1,
+        ///         PageSize = 10,
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +90,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = AliCloud.ThreatDetection.GetCheckStructures.Invoke();
+        ///     var @default = AliCloud.ThreatDetection.GetCheckStructures.Invoke(new()
+        ///     {
+        ///         Lang = "zh",
+        ///         CurrentPage = 1,
+        ///         PageSize = 10,
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -97,7 +112,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetCheckStructuresArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The page number.
+        /// The page number. Must be greater than 0.
         /// </summary>
         [Input("currentPage")]
         public int? CurrentPage { get; set; }
@@ -106,7 +121,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of Check Structure IDs.
+        /// A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
         /// </summary>
         public List<string> Ids
         {
@@ -115,7 +130,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values: `Zh` (Chinese), `En` (English).
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
@@ -125,6 +140,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
+
+        /// <summary>
+        /// Number of records per page. Must be greater than 0.
+        /// </summary>
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
 
         [Input("taskSources")]
         private List<string>? _taskSources;
@@ -147,7 +168,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetCheckStructuresInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The page number.
+        /// The page number. Must be greater than 0.
         /// </summary>
         [Input("currentPage")]
         public Input<int>? CurrentPage { get; set; }
@@ -156,7 +177,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of Check Structure IDs.
+        /// A list of standard IDs (matches `structures.*.standards.*.id`). When set, only structures containing at least one matching standard are returned.
         /// </summary>
         public InputList<string> Ids
         {
@@ -165,7 +186,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
+        /// The language of the content within the request and response. Default value: `Zh`. Valid values: `Zh` (Chinese), `En` (English).
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -175,6 +196,12 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
+
+        /// <summary>
+        /// Number of records per page. Must be greater than 0.
+        /// </summary>
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
 
         [Input("taskSources")]
         private InputList<string>? _taskSources;
@@ -209,6 +236,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public readonly ImmutableArray<string> Ids;
         public readonly string? Lang;
         public readonly string? OutputFile;
+        public readonly int? PageSize;
         /// <summary>
         /// A list of Check Structure Entries. Each element contains the following attributes:
         /// </summary>
@@ -227,6 +255,8 @@ namespace Pulumi.AliCloud.ThreatDetection
 
             string? outputFile,
 
+            int? pageSize,
+
             ImmutableArray<Outputs.GetCheckStructuresStructureResult> structures,
 
             ImmutableArray<string> taskSources)
@@ -236,6 +266,7 @@ namespace Pulumi.AliCloud.ThreatDetection
             Ids = ids;
             Lang = lang;
             OutputFile = outputFile;
+            PageSize = pageSize;
             Structures = structures;
             TaskSources = taskSources;
         }

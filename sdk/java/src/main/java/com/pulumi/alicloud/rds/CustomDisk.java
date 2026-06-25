@@ -129,16 +129,14 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
-     * Default value: empty.
+     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
-     * Default value: empty.
+     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
      * 
      */
     public Output<Optional<String>> description() {
@@ -159,16 +157,14 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return this.diskCategory;
     }
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      * 
      */
     @Export(name="diskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskName;
 
     /**
-     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-     * Default value: empty.
+     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
      * 
      */
     public Output<Optional<String>> diskName() {

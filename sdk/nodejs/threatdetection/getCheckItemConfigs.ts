@@ -17,7 +17,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.threatdetection.getCheckItemConfigs({});
+ * const _default = alicloud.threatdetection.getCheckItemConfigs({
+ *     lang: "zh",
+ *     pageNumber: 1,
+ *     pageSize: 10,
+ * });
  * export const alicloudThreatDetectionCheckItemConfigExampleCheckId = _default.then(_default => _default.configs?.[0]?.checkId);
  * ```
  */
@@ -43,7 +47,7 @@ export interface GetCheckItemConfigsArgs {
      */
     ids?: string[];
     /**
-     * The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      */
     lang?: string;
     /**
@@ -51,11 +55,11 @@ export interface GetCheckItemConfigsArgs {
      */
     outputFile?: string;
     /**
-     * Current page number.
+     * The page number. Must be greater than 0.
      */
     pageNumber?: number;
     /**
-     * Number of records per page.
+     * Number of records per page. Must be greater than 0.
      */
     pageSize?: number;
     /**
@@ -97,7 +101,11 @@ export interface GetCheckItemConfigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = alicloud.threatdetection.getCheckItemConfigs({});
+ * const _default = alicloud.threatdetection.getCheckItemConfigs({
+ *     lang: "zh",
+ *     pageNumber: 1,
+ *     pageSize: 10,
+ * });
  * export const alicloudThreatDetectionCheckItemConfigExampleCheckId = _default.then(_default => _default.configs?.[0]?.checkId);
  * ```
  */
@@ -123,7 +131,7 @@ export interface GetCheckItemConfigsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The language of the content within the request and response. Default value: **zh**. Valid value:*   **zh**: Chinese*   **en**: English
+     * The language of the content within the request and response. Default value: `zh`. Valid values: `zh` (Chinese), `en` (English).
      */
     lang?: pulumi.Input<string | undefined>;
     /**
@@ -131,11 +139,11 @@ export interface GetCheckItemConfigsOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * Current page number.
+     * The page number. Must be greater than 0.
      */
     pageNumber?: pulumi.Input<number | undefined>;
     /**
-     * Number of records per page.
+     * Number of records per page. Must be greater than 0.
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

@@ -41,10 +41,8 @@ class CustomDiskArgs:
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-               Default value: empty.
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -154,8 +152,7 @@ class CustomDiskArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-        Default value: empty.
+        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -167,8 +164,7 @@ class CustomDiskArgs:
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-        Default value: empty.
+        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         """
         return pulumi.get(self, "disk_name")
 
@@ -299,11 +295,9 @@ class _CustomDiskState:
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -405,8 +399,7 @@ class _CustomDiskState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-        Default value: empty.
+        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -430,8 +423,7 @@ class _CustomDiskState:
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-        Default value: empty.
+        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         """
         return pulumi.get(self, "disk_name")
 
@@ -669,11 +661,9 @@ class CustomDisk(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -850,11 +840,9 @@ class CustomDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-               Default value: empty.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -931,8 +919,7 @@ class CustomDisk(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
-        Default value: empty.
+        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -948,8 +935,7 @@ class CustomDisk(pulumi.CustomResource):
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
-        Default value: empty.
+        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
         """
         return pulumi.get(self, "disk_name")
 

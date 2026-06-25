@@ -1459,7 +1459,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     /**
-     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
      * - 1: enables the feature.
      * - 0: disables the feature.
      * 
@@ -1468,7 +1468,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> forceEncryption;
 
     /**
-     * @return Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances.Valid values:
+     * @return Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
      * - 1: enables the feature.
      * - 0: disables the feature.
      * 

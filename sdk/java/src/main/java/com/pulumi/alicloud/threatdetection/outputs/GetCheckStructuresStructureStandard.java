@@ -24,12 +24,12 @@ public final class GetCheckStructuresStructureStandard {
      */
     private List<GetCheckStructuresStructureStandardRequirement> requirements;
     /**
-     * @return The display name of the standard for the check item.
+     * @return The display name of the section for the check item.
      * 
      */
     private String showName;
     /**
-     * @return The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+     * @return The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
      * 
      */
     private String type;
@@ -50,14 +50,14 @@ public final class GetCheckStructuresStructureStandard {
         return this.requirements;
     }
     /**
-     * @return The display name of the standard for the check item.
+     * @return The display name of the section for the check item.
      * 
      */
     public String showName() {
         return this.showName;
     }
     /**
-     * @return The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+     * @return The standard type of the check item. Valid values: `RISK` (security risk), `IDENTITY_PERMISSION` (CIEM), `COMPLIANCE` (security compliance).
      * 
      */
     public String type() {

@@ -128,11 +128,11 @@ export class OriginPool extends pulumi.CustomResource {
     /**
      * Whether the source address pool is enabled:
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * OriginPool Id
      */
-    declare public /*out*/ readonly originPoolId: pulumi.Output<number>;
+    declare public /*out*/ readonly originPoolId: pulumi.Output<string>;
     /**
      * The source address pool name.
      */
@@ -194,7 +194,7 @@ export interface OriginPoolState {
     /**
      * OriginPool Id
      */
-    originPoolId?: pulumi.Input<number | undefined>;
+    originPoolId?: pulumi.Input<string | undefined>;
     /**
      * The source address pool name.
      */

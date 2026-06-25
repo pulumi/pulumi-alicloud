@@ -189,6 +189,17 @@ class ApiFcServiceConfigArgsDict(TypedDict):
     """
     Backend service time-out time; unit: millisecond.
     """
+    content_type_category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+    * `DEFAULT`: Use the default value provided by API Gateway.
+    * `CUSTOM`: Use a custom value.
+    * `CLIENT`: Use the Content-Type header from the client request.
+    """
+    content_type_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+    """
     function_base_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The base url of function compute service. Required if `function_type` is `HttpTrigger`.
@@ -232,6 +243,8 @@ class ApiFcServiceConfigArgs:
                  arn_role: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.int],
+                 content_type_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type_value: pulumi.Input[Optional[_builtins.str]] = None,
                  function_base_url: pulumi.Input[Optional[_builtins.str]] = None,
                  function_name: pulumi.Input[Optional[_builtins.str]] = None,
                  function_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -245,6 +258,11 @@ class ApiFcServiceConfigArgs:
         :param pulumi.Input[_builtins.str] arn_role: RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
         :param pulumi.Input[_builtins.str] region: The region that the function compute service belongs to.
         :param pulumi.Input[_builtins.int] timeout: Backend service time-out time; unit: millisecond.
+        :param pulumi.Input[_builtins.str] content_type_category: The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+               * `DEFAULT`: Use the default value provided by API Gateway.
+               * `CUSTOM`: Use a custom value.
+               * `CLIENT`: Use the Content-Type header from the client request.
+        :param pulumi.Input[_builtins.str] content_type_value: The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
         :param pulumi.Input[_builtins.str] function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         :param pulumi.Input[_builtins.str] function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
         :param pulumi.Input[_builtins.str] function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
@@ -258,6 +276,10 @@ class ApiFcServiceConfigArgs:
         pulumi.set(__self__, "arn_role", arn_role)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "timeout", timeout)
+        if content_type_category is not None:
+            pulumi.set(__self__, "content_type_category", content_type_category)
+        if content_type_value is not None:
+            pulumi.set(__self__, "content_type_value", content_type_value)
         if function_base_url is not None:
             pulumi.set(__self__, "function_base_url", function_base_url)
         if function_name is not None:
@@ -312,6 +334,33 @@ class ApiFcServiceConfigArgs:
     @timeout.setter
     def timeout(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypeCategory")
+    def content_type_category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+        * `DEFAULT`: Use the default value provided by API Gateway.
+        * `CUSTOM`: Use a custom value.
+        * `CLIENT`: Use the Content-Type header from the client request.
+        """
+        return pulumi.get(self, "content_type_category")
+
+    @content_type_category.setter
+    def content_type_category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "content_type_category", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypeValue")
+    def content_type_value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+        """
+        return pulumi.get(self, "content_type_value")
+
+    @content_type_value.setter
+    def content_type_value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "content_type_value", value)
 
     @_builtins.property
     @pulumi.getter(name="functionBaseUrl")

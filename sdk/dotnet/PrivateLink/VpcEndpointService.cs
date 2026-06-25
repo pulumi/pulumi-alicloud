@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<bool?> AutoAcceptConnection { get; private set; } = null!;
 
         /// <summary>
-        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `ServiceResourceType` is `Slb`, this field can be read from the remote API. When `ServiceResourceType` is `Nlb`, `Alb`, or `Gwlb`, this field can be configured but is not returned by the remote API.
         /// </summary>
         [Output("connectBandwidth")]
         public Output<int> ConnectBandwidth { get; private set; } = null!;
@@ -138,6 +138,12 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of remote region IDs that are supported by the endpoint service.
+        /// </summary>
+        [Output("supportedRegionLists")]
+        public Output<ImmutableArray<string>> SupportedRegionLists { get; private set; } = null!;
 
         /// <summary>
         /// The list of tags.
@@ -216,7 +222,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<bool>? AutoAcceptConnection { get; set; }
 
         /// <summary>
-        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `ServiceResourceType` is `Slb`, this field can be read from the remote API. When `ServiceResourceType` is `Nlb`, `Alb`, or `Gwlb`, this field can be configured but is not returned by the remote API.
         /// </summary>
         [Input("connectBandwidth")]
         public Input<int>? ConnectBandwidth { get; set; }
@@ -259,6 +265,18 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("serviceSupportIpv6")]
         public Input<bool>? ServiceSupportIpv6 { get; set; }
 
+        [Input("supportedRegionLists")]
+        private InputList<string>? _supportedRegionLists;
+
+        /// <summary>
+        /// The list of remote region IDs that are supported by the endpoint service.
+        /// </summary>
+        public InputList<string> SupportedRegionLists
+        {
+            get => _supportedRegionLists ?? (_supportedRegionLists = new InputList<string>());
+            set => _supportedRegionLists = value;
+        }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -298,7 +316,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<bool>? AutoAcceptConnection { get; set; }
 
         /// <summary>
-        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
+        /// The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s. When `ServiceResourceType` is `Slb`, this field can be read from the remote API. When `ServiceResourceType` is `Nlb`, `Alb`, or `Gwlb`, this field can be configured but is not returned by the remote API.
         /// </summary>
         [Input("connectBandwidth")]
         public Input<int>? ConnectBandwidth { get; set; }
@@ -370,6 +388,18 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("supportedRegionLists")]
+        private InputList<string>? _supportedRegionLists;
+
+        /// <summary>
+        /// The list of remote region IDs that are supported by the endpoint service.
+        /// </summary>
+        public InputList<string> SupportedRegionLists
+        {
+            get => _supportedRegionLists ?? (_supportedRegionLists = new InputList<string>());
+            set => _supportedRegionLists = value;
+        }
 
         [Input("tags")]
         private InputMap<string>? _tags;

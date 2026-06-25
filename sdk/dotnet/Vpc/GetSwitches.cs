@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
         /// 
+        /// &gt; **NOTE:** Available since v1.7.2.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +58,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
         /// 
+        /// &gt; **NOTE:** Available since v1.7.2.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -97,6 +101,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// This data source provides a list of VSwitches owned by an Alibaba Cloud account.
+        /// 
+        /// &gt; **NOTE:** Available since v1.7.2.
         /// 
         /// ## Example Usage
         /// 

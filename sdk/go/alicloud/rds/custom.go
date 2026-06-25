@@ -14,7 +14,7 @@ import (
 
 // Provides a RDS Custom resource.
 //
-// Dedicated RDS User host.
+// RDS dedicated host for users.
 //
 // For information about RDS Custom and how to use it, see [What is Custom](https://next.api.alibabacloud.com/document/Rds/2014-08-15/RunRCInstances).
 //
@@ -168,92 +168,140 @@ import (
 // RDS Custom can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:rds/custom:Custom example <id>
+// $ pulumi import alicloud:rds/custom:Custom example <instance_id>
 // ```
 type Custom struct {
 	pulumi.CustomResourceState
 
-	// Represents the number of instances created
+	// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+	// Valid values: `1` to `5`. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	Amount pulumi.IntPtrOutput `pulumi:"amount"`
-	// Whether to pay automatically. Value range:
+	// Specifies whether to enable automatic payment. Valid values:
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+	// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// Reserved parameters are not supported.
 	CreateExtraParam pulumi.StringPtrOutput `pulumi:"createExtraParam"`
-	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+	// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
 	CreateMode pulumi.StringPtrOutput `pulumi:"createMode"`
-	// Data disk See `dataDisk` below.
-	//
-	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+	// List of data disks.   See `dataDisk` below.
 	DataDisks CustomDataDiskArrayOutput `pulumi:"dataDisks"`
-	// The ID of the deployment set.
+	// Deployment set ID.
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
-	// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Instance configuration type, value range:
+	// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The instance specification change type. Valid values:
 	//
-	// > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-	// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-	// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+	// > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+	// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+	// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+	//
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
-	// Whether to pre-check the operation of creating an instance. Valid values:
+	// Specifies whether to perform a dry run of the instance creation request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Whether to forcibly release the running instance. Value: true/false
+	// Specifies whether to forcibly release a running instance. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// Whether to force shutdown. Value range:
+	// Specifies whether to force shut down the instance. Valid values:
 	ForceStop pulumi.BoolPtrOutput `pulumi:"forceStop"`
-	// The instance host name.
+	// The hostname of the instance.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
 	// The ID of the image used by the instance.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
-	// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+	// The billing method. Valid values:
+	// - `Prepaid`: subscription.
+	// - `Postpaid`: pay-as-you-go.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
-	// The type of the created RDS Custom dedicated host instance.
+	// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
+	// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// Reserved parameters are not supported.
+	// Reserved parameter. Not supported currently.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
-	// Reserved parameters are not supported.
+	// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+	// Valid values: 0 to 1024. Default value: 0.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
-	// Reserved parameters are not supported.
+	// This parameter is reserved and currently unsupported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
-	// The key pair name. Only flyer names are supported.
+	// The name of the key pair. Only a single key pair name is supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
-	// The account and password of the instance.
+	// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Prepaid renewal duration, unit: Month/Year.
+	// The subscription duration of the resource. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The unit of duration of the year-to-month billing method. Value range:
+	// The unit of subscription duration for the subscription billing method. Valid values:
 	// - `Year`: Year
 	// - `Month` (default): Month
-	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The region ID. Callable DescribeRegions to get.
-	RegionId pulumi.StringOutput `pulumi:"regionId"`
-	// The ID of the resource group
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Reserved parameters are not supported.
-	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
-	// Security group list
-	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-	// - `NoSpot`: normal pay-as-you-go instances.
-	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
 	//
-	// Default value: **NoSpot * *.
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
+	// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
+	// The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The resource group ID. You can call ListResourceGroups to obtain it.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// This is a reserved parameter and is not currently supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
+	// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+	// - `NoSpot`: A regular pay-as-you-go instance.
+	// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+	//
+	// Default value: `NoSpot`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
-	// The status of the resource
+	// The status of the instance. Valid values:
+	// - `Pending`: The instance is being created.
+	// - `Running`: The instance is running.
+	// - `Starting`: The instance is starting.
+	// - `Stopping`: The instance is stopping.
+	// - `Stopped`: The instance is stopped.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	// The deployment type of RDS Custom. Valid values:
 	SupportCase pulumi.StringPtrOutput `pulumi:"supportCase"`
-	// System disk specifications. See `systemDisk` below.
+	// The system disk specification. See `systemDisk` below.
+	//
+	// > **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
 	SystemDisk CustomSystemDiskPtrOutput `pulumi:"systemDisk"`
-	// The tag of the resource
+	// The ID of the system disk attached to the Custom instance.
+	SystemDiskId pulumi.StringOutput `pulumi:"systemDiskId"`
+	// Details of the queried instances and their tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	// The network type InstanceNetworkType must be VPC.
+	// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	// The zone ID  of the resource
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewCustom registers a new resource with the given unique name, arguments, and options.
@@ -292,170 +340,266 @@ func GetCustom(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Custom resources.
 type customState struct {
-	// Represents the number of instances created
+	// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+	// Valid values: `1` to `5`. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	Amount *int `pulumi:"amount"`
-	// Whether to pay automatically. Value range:
+	// Specifies whether to enable automatic payment. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`
-	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+	// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Reserved parameters are not supported.
 	CreateExtraParam *string `pulumi:"createExtraParam"`
-	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+	// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
 	CreateMode *string `pulumi:"createMode"`
-	// Data disk See `dataDisk` below.
-	//
-	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+	// List of data disks.   See `dataDisk` below.
 	DataDisks []CustomDataDisk `pulumi:"dataDisks"`
-	// The ID of the deployment set.
+	// Deployment set ID.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
-	// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+	// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// Instance configuration type, value range:
+	// The instance specification change type. Valid values:
 	//
-	// > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-	// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-	// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+	// > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+	// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+	// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+	//
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Direction *string `pulumi:"direction"`
-	// Whether to pre-check the operation of creating an instance. Valid values:
+	// Specifies whether to perform a dry run of the instance creation request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// Whether to forcibly release the running instance. Value: true/false
+	// Specifies whether to forcibly release a running instance. Valid values:
 	Force *bool `pulumi:"force"`
-	// Whether to force shutdown. Value range:
+	// Specifies whether to force shut down the instance. Valid values:
 	ForceStop *bool `pulumi:"forceStop"`
-	// The instance host name.
+	// The hostname of the instance.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	HostName *string `pulumi:"hostName"`
 	// The ID of the image used by the instance.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	ImageId *string `pulumi:"imageId"`
-	// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+	// The billing method. Valid values:
+	// - `Prepaid`: subscription.
+	// - `Postpaid`: pay-as-you-go.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The type of the created RDS Custom dedicated host instance.
+	// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+	InstanceName *string `pulumi:"instanceName"`
+	// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
 	InstanceType *string `pulumi:"instanceType"`
-	// Reserved parameters are not supported.
+	// Reserved parameter. Not supported currently.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// Reserved parameters are not supported.
+	// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+	// Valid values: 0 to 1024. Default value: 0.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// Reserved parameters are not supported.
+	// This parameter is reserved and currently unsupported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	IoOptimized *string `pulumi:"ioOptimized"`
-	// The key pair name. Only flyer names are supported.
+	// The name of the key pair. Only a single key pair name is supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	KeyPairName *string `pulumi:"keyPairName"`
-	// The account and password of the instance.
+	// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Password *string `pulumi:"password"`
-	// Prepaid renewal duration, unit: Month/Year.
+	// The subscription duration of the resource. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Period *int `pulumi:"period"`
-	// The unit of duration of the year-to-month billing method. Value range:
+	// The unit of subscription duration for the subscription billing method. Valid values:
 	// - `Year`: Year
 	// - `Month` (default): Month
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// The region ID. Callable DescribeRegions to get.
-	RegionId *string `pulumi:"regionId"`
-	// The ID of the resource group
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Reserved parameters are not supported.
-	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// Security group list
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-	// - `NoSpot`: normal pay-as-you-go instances.
-	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
 	//
-	// Default value: **NoSpot * *.
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The region ID.
+	RegionId *string `pulumi:"regionId"`
+	// The resource group ID. You can call ListResourceGroups to obtain it.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// This is a reserved parameter and is not currently supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
+	// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+	// - `NoSpot`: A regular pay-as-you-go instance.
+	// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+	//
+	// Default value: `NoSpot`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The status of the resource
+	// The status of the instance. Valid values:
+	// - `Pending`: The instance is being created.
+	// - `Running`: The instance is running.
+	// - `Starting`: The instance is starting.
+	// - `Stopping`: The instance is stopping.
+	// - `Stopped`: The instance is stopped.
 	Status *string `pulumi:"status"`
-	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	// The deployment type of RDS Custom. Valid values:
 	SupportCase *string `pulumi:"supportCase"`
-	// System disk specifications. See `systemDisk` below.
+	// The system disk specification. See `systemDisk` below.
+	//
+	// > **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
 	SystemDisk *CustomSystemDisk `pulumi:"systemDisk"`
-	// The tag of the resource
+	// The ID of the system disk attached to the Custom instance.
+	SystemDiskId *string `pulumi:"systemDiskId"`
+	// Details of the queried instances and their tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	// The network type InstanceNetworkType must be VPC.
+	// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The zone ID  of the resource
+	// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CustomState struct {
-	// Represents the number of instances created
+	// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+	// Valid values: `1` to `5`. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	Amount pulumi.IntPtrInput
-	// Whether to pay automatically. Value range:
+	// Specifies whether to enable automatic payment. Valid values:
 	AutoPay pulumi.BoolPtrInput
-	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+	// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
 	AutoRenew pulumi.BoolPtrInput
 	// Reserved parameters are not supported.
 	CreateExtraParam pulumi.StringPtrInput
-	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+	// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
 	CreateMode pulumi.StringPtrInput
-	// Data disk See `dataDisk` below.
-	//
-	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+	// List of data disks.   See `dataDisk` below.
 	DataDisks CustomDataDiskArrayInput
-	// The ID of the deployment set.
+	// Deployment set ID.
 	DeploymentSetId pulumi.StringPtrInput
-	// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+	// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	// Instance configuration type, value range:
+	// The instance specification change type. Valid values:
 	//
-	// > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-	// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-	// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+	// > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+	// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+	// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+	//
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Direction pulumi.StringPtrInput
-	// Whether to pre-check the operation of creating an instance. Valid values:
+	// Specifies whether to perform a dry run of the instance creation request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// Whether to forcibly release the running instance. Value: true/false
+	// Specifies whether to forcibly release a running instance. Valid values:
 	Force pulumi.BoolPtrInput
-	// Whether to force shutdown. Value range:
+	// Specifies whether to force shut down the instance. Valid values:
 	ForceStop pulumi.BoolPtrInput
-	// The instance host name.
+	// The hostname of the instance.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	HostName pulumi.StringPtrInput
 	// The ID of the image used by the instance.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	ImageId pulumi.StringPtrInput
-	// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+	// The billing method. Valid values:
+	// - `Prepaid`: subscription.
+	// - `Postpaid`: pay-as-you-go.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InstanceChargeType pulumi.StringPtrInput
-	// The type of the created RDS Custom dedicated host instance.
+	// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+	InstanceName pulumi.StringPtrInput
+	// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
 	InstanceType pulumi.StringPtrInput
-	// Reserved parameters are not supported.
+	// Reserved parameter. Not supported currently.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetChargeType pulumi.StringPtrInput
-	// Reserved parameters are not supported.
+	// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+	// Valid values: 0 to 1024. Default value: 0.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// Reserved parameters are not supported.
+	// This parameter is reserved and currently unsupported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	IoOptimized pulumi.StringPtrInput
-	// The key pair name. Only flyer names are supported.
+	// The name of the key pair. Only a single key pair name is supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	KeyPairName pulumi.StringPtrInput
-	// The account and password of the instance.
+	// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Password pulumi.StringPtrInput
-	// Prepaid renewal duration, unit: Month/Year.
+	// The subscription duration of the resource. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Period pulumi.IntPtrInput
-	// The unit of duration of the year-to-month billing method. Value range:
+	// The unit of subscription duration for the subscription billing method. Valid values:
 	// - `Year`: Year
 	// - `Month` (default): Month
-	PeriodUnit pulumi.StringPtrInput
-	// The region ID. Callable DescribeRegions to get.
-	RegionId pulumi.StringPtrInput
-	// The ID of the resource group
-	ResourceGroupId pulumi.StringPtrInput
-	// Reserved parameters are not supported.
-	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// Security group list
-	SecurityGroupIds pulumi.StringArrayInput
-	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-	// - `NoSpot`: normal pay-as-you-go instances.
-	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
 	//
-	// Default value: **NoSpot * *.
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	PeriodUnit pulumi.StringPtrInput
+	// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+	PrivateIpAddress pulumi.StringPtrInput
+	// The region ID.
+	RegionId pulumi.StringPtrInput
+	// The resource group ID. You can call ListResourceGroups to obtain it.
+	ResourceGroupId pulumi.StringPtrInput
+	// This is a reserved parameter and is not currently supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	SecurityEnhancementStrategy pulumi.StringPtrInput
+	// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+	SecurityGroupIds pulumi.StringArrayInput
+	// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+	// - `NoSpot`: A regular pay-as-you-go instance.
+	// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+	//
+	// Default value: `NoSpot`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	SpotStrategy pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the instance. Valid values:
+	// - `Pending`: The instance is being created.
+	// - `Running`: The instance is running.
+	// - `Starting`: The instance is starting.
+	// - `Stopping`: The instance is stopping.
+	// - `Stopped`: The instance is stopped.
 	Status pulumi.StringPtrInput
-	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	// The deployment type of RDS Custom. Valid values:
 	SupportCase pulumi.StringPtrInput
-	// System disk specifications. See `systemDisk` below.
+	// The system disk specification. See `systemDisk` below.
+	//
+	// > **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
 	SystemDisk CustomSystemDiskPtrInput
-	// The tag of the resource
+	// The ID of the system disk attached to the Custom instance.
+	SystemDiskId pulumi.StringPtrInput
+	// Details of the queried instances and their tags.
 	Tags pulumi.StringMapInput
-	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	// The network type InstanceNetworkType must be VPC.
+	// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
 	VswitchId pulumi.StringPtrInput
-	// The zone ID  of the resource
+	// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -464,167 +608,259 @@ func (CustomState) ElementType() reflect.Type {
 }
 
 type customArgs struct {
-	// Represents the number of instances created
+	// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+	// Valid values: `1` to `5`. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	Amount *int `pulumi:"amount"`
-	// Whether to pay automatically. Value range:
+	// Specifies whether to enable automatic payment. Valid values:
 	AutoPay *bool `pulumi:"autoPay"`
-	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+	// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// Reserved parameters are not supported.
 	CreateExtraParam *string `pulumi:"createExtraParam"`
-	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+	// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
 	CreateMode *string `pulumi:"createMode"`
-	// Data disk See `dataDisk` below.
-	//
-	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+	// List of data disks.   See `dataDisk` below.
 	DataDisks []CustomDataDisk `pulumi:"dataDisks"`
-	// The ID of the deployment set.
+	// Deployment set ID.
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
-	// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+	// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// Instance configuration type, value range:
+	// The instance specification change type. Valid values:
 	//
-	// > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-	// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-	// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+	// > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+	// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+	// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+	//
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Direction *string `pulumi:"direction"`
-	// Whether to pre-check the operation of creating an instance. Valid values:
+	// Specifies whether to perform a dry run of the instance creation request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// Whether to forcibly release the running instance. Value: true/false
+	// Specifies whether to forcibly release a running instance. Valid values:
 	Force *bool `pulumi:"force"`
-	// Whether to force shutdown. Value range:
+	// Specifies whether to force shut down the instance. Valid values:
 	ForceStop *bool `pulumi:"forceStop"`
-	// The instance host name.
+	// The hostname of the instance.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	HostName *string `pulumi:"hostName"`
 	// The ID of the image used by the instance.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	ImageId *string `pulumi:"imageId"`
-	// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+	// The billing method. Valid values:
+	// - `Prepaid`: subscription.
+	// - `Postpaid`: pay-as-you-go.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The type of the created RDS Custom dedicated host instance.
+	// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+	InstanceName *string `pulumi:"instanceName"`
+	// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
 	InstanceType string `pulumi:"instanceType"`
-	// Reserved parameters are not supported.
+	// Reserved parameter. Not supported currently.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// Reserved parameters are not supported.
+	// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+	// Valid values: 0 to 1024. Default value: 0.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// Reserved parameters are not supported.
+	// This parameter is reserved and currently unsupported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	IoOptimized *string `pulumi:"ioOptimized"`
-	// The key pair name. Only flyer names are supported.
+	// The name of the key pair. Only a single key pair name is supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	KeyPairName *string `pulumi:"keyPairName"`
-	// The account and password of the instance.
+	// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Password *string `pulumi:"password"`
-	// Prepaid renewal duration, unit: Month/Year.
+	// The subscription duration of the resource. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Period *int `pulumi:"period"`
-	// The unit of duration of the year-to-month billing method. Value range:
+	// The unit of subscription duration for the subscription billing method. Valid values:
 	// - `Year`: Year
 	// - `Month` (default): Month
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// The ID of the resource group
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Reserved parameters are not supported.
-	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// Security group list
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-	// - `NoSpot`: normal pay-as-you-go instances.
-	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
 	//
-	// Default value: **NoSpot * *.
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The resource group ID. You can call ListResourceGroups to obtain it.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// This is a reserved parameter and is not currently supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
+	// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+	// - `NoSpot`: A regular pay-as-you-go instance.
+	// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+	//
+	// Default value: `NoSpot`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// The status of the resource
+	// The status of the instance. Valid values:
+	// - `Pending`: The instance is being created.
+	// - `Running`: The instance is running.
+	// - `Starting`: The instance is starting.
+	// - `Stopping`: The instance is stopping.
+	// - `Stopped`: The instance is stopped.
 	Status *string `pulumi:"status"`
-	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	// The deployment type of RDS Custom. Valid values:
 	SupportCase *string `pulumi:"supportCase"`
-	// System disk specifications. See `systemDisk` below.
+	// The system disk specification. See `systemDisk` below.
+	//
+	// > **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
 	SystemDisk *CustomSystemDisk `pulumi:"systemDisk"`
-	// The tag of the resource
+	// Details of the queried instances and their tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	// The network type InstanceNetworkType must be VPC.
+	// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
 	VswitchId string `pulumi:"vswitchId"`
-	// The zone ID  of the resource
+	// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Custom resource.
 type CustomArgs struct {
-	// Represents the number of instances created
+	// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+	// Valid values: `1` to `5`. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	Amount pulumi.IntPtrInput
-	// Whether to pay automatically. Value range:
+	// Specifies whether to enable automatic payment. Valid values:
 	AutoPay pulumi.BoolPtrInput
-	// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+	// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
 	AutoRenew pulumi.BoolPtrInput
 	// Reserved parameters are not supported.
 	CreateExtraParam pulumi.StringPtrInput
-	// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+	// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
 	CreateMode pulumi.StringPtrInput
-	// Data disk See `dataDisk` below.
-	//
-	// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+	// List of data disks.   See `dataDisk` below.
 	DataDisks CustomDataDiskArrayInput
-	// The ID of the deployment set.
+	// Deployment set ID.
 	DeploymentSetId pulumi.StringPtrInput
-	// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
+	// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	// Instance configuration type, value range:
+	// The instance specification change type. Valid values:
 	//
-	// > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-	// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-	// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+	// > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+	// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+	// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+	//
+	// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 	Direction pulumi.StringPtrInput
-	// Whether to pre-check the operation of creating an instance. Valid values:
+	// Specifies whether to perform a dry run of the instance creation request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// Whether to forcibly release the running instance. Value: true/false
+	// Specifies whether to forcibly release a running instance. Valid values:
 	Force pulumi.BoolPtrInput
-	// Whether to force shutdown. Value range:
+	// Specifies whether to force shut down the instance. Valid values:
 	ForceStop pulumi.BoolPtrInput
-	// The instance host name.
+	// The hostname of the instance.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	HostName pulumi.StringPtrInput
 	// The ID of the image used by the instance.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	ImageId pulumi.StringPtrInput
-	// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+	// The billing method. Valid values:
+	// - `Prepaid`: subscription.
+	// - `Postpaid`: pay-as-you-go.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InstanceChargeType pulumi.StringPtrInput
-	// The type of the created RDS Custom dedicated host instance.
+	// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+	InstanceName pulumi.StringPtrInput
+	// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
 	InstanceType pulumi.StringInput
-	// Reserved parameters are not supported.
+	// Reserved parameter. Not supported currently.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetChargeType pulumi.StringPtrInput
-	// Reserved parameters are not supported.
+	// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+	// Valid values: 0 to 1024. Default value: 0.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// Reserved parameters are not supported.
+	// This parameter is reserved and currently unsupported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	IoOptimized pulumi.StringPtrInput
-	// The key pair name. Only flyer names are supported.
+	// The name of the key pair. Only a single key pair name is supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	KeyPairName pulumi.StringPtrInput
-	// The account and password of the instance.
+	// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Password pulumi.StringPtrInput
-	// Prepaid renewal duration, unit: Month/Year.
+	// The subscription duration of the resource. Default value: `1`.
+	//
+	// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 	Period pulumi.IntPtrInput
-	// The unit of duration of the year-to-month billing method. Value range:
+	// The unit of subscription duration for the subscription billing method. Valid values:
 	// - `Year`: Year
 	// - `Month` (default): Month
-	PeriodUnit pulumi.StringPtrInput
-	// The ID of the resource group
-	ResourceGroupId pulumi.StringPtrInput
-	// Reserved parameters are not supported.
-	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// Security group list
-	SecurityGroupIds pulumi.StringArrayInput
-	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-	// - `NoSpot`: normal pay-as-you-go instances.
-	// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
 	//
-	// Default value: **NoSpot * *.
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	PeriodUnit pulumi.StringPtrInput
+	// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+	PrivateIpAddress pulumi.StringPtrInput
+	// The resource group ID. You can call ListResourceGroups to obtain it.
+	ResourceGroupId pulumi.StringPtrInput
+	// This is a reserved parameter and is not currently supported.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+	SecurityEnhancementStrategy pulumi.StringPtrInput
+	// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+	//
+	// > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
+	SecurityGroupIds pulumi.StringArrayInput
+	// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+	// - `NoSpot`: A regular pay-as-you-go instance.
+	// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
+	//
+	// Default value: `NoSpot`.
+	//
+	// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 	SpotStrategy pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the instance. Valid values:
+	// - `Pending`: The instance is being created.
+	// - `Running`: The instance is running.
+	// - `Starting`: The instance is starting.
+	// - `Stopping`: The instance is stopping.
+	// - `Stopped`: The instance is stopped.
 	Status pulumi.StringPtrInput
-	// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+	// The deployment type of RDS Custom. Valid values:
 	SupportCase pulumi.StringPtrInput
-	// System disk specifications. See `systemDisk` below.
+	// The system disk specification. See `systemDisk` below.
+	//
+	// > **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
 	SystemDisk CustomSystemDiskPtrInput
-	// The tag of the resource
+	// Details of the queried instances and their tags.
 	Tags pulumi.StringMapInput
-	// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-	// The network type InstanceNetworkType must be VPC.
+	// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
 	VswitchId pulumi.StringInput
-	// The zone ID  of the resource
+	// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+	//
+	// > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -715,17 +951,20 @@ func (o CustomOutput) ToCustomOutputWithContext(ctx context.Context) CustomOutpu
 	return o
 }
 
-// Represents the number of instances created
+// Specifies the number of RDS Custom instances to create. This parameter applies only when creating multiple RDS Custom instances at once.
+// Valid values: `1` to `5`. Default value: `1`.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) Amount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.IntPtrOutput { return v.Amount }).(pulumi.IntPtrOutput)
 }
 
-// Whether to pay automatically. Value range:
+// Specifies whether to enable automatic payment. Valid values:
 func (o CustomOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the instance is automatically renewed. Valid values: true/false. The default is false.
+// Specifies whether the instance is automatically renewed. This parameter applies only when you create a subscription instance. Valid values:
 func (o CustomOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
@@ -735,167 +974,221 @@ func (o CustomOutput) CreateExtraParam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.CreateExtraParam }).(pulumi.StringPtrOutput)
 }
 
-// Whether to allow joining the ACK cluster. When this parameter is set to `1`, the created instance can be added to the ACK cluster through The `AttachRCInstances` API to efficiently manage container applications.
+// Specifies whether the instance can be added to an ACK cluster. When this parameter is set to `1`, the created instance can be added to an ACK cluster by using the `AttachRCInstances` API operation, enabling efficient management of containerized applications.
 func (o CustomOutput) CreateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.CreateMode }).(pulumi.StringPtrOutput)
 }
 
-// Data disk See `dataDisk` below.
-//
-// ->**NOTE:** From version 1.275.0, If you want to use `dataDisk`, We recommend you to use the resource alicloud_rds_custom_disk_attachment.
+// List of data disks.   See `dataDisk` below.
 func (o CustomOutput) DataDisks() CustomDataDiskArrayOutput {
 	return o.ApplyT(func(v *Custom) CustomDataDiskArrayOutput { return v.DataDisks }).(CustomDataDiskArrayOutput)
 }
 
-// The ID of the deployment set.
+// Deployment set ID.
 func (o CustomOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
 }
 
-// Instance description. It must be 2 to 256 characters in length and cannot start with http:// or https.
-func (o CustomOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+// The instance description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
+func (o CustomOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Instance configuration type, value range:
+// The instance specification change type. Valid values:
 //
-// > **NOTE:**  This parameter does not need to be uploaded, and the system can automatically determine whether to upgrade or downgrade. If you want to upload, please follow the following logic rules.
-// - `Up` (default): upgrade the instance specification. Please ensure that your account balance is sufficient.
-// - `Down`: Downgrade instance specifications. When the instance type set to InstanceType is lower than the current instance type, set Direction = down.
+// > **NOTE:**  You do not need to specify this parameter because the system can automatically determine whether to upgrade or downgrade the instance. If you choose to specify it, follow the rules below:
+// - `Up` (default): Upgrade the instance specification. Ensure that your account has sufficient balance.
+// - `Down`: Downgrade the instance specification. Set Direction=Down when the instance type specified by InstanceType is lower than the current instance type.
+//
+// > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
 func (o CustomOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// Whether to pre-check the operation of creating an instance. Valid values:
+// Specifies whether to perform a dry run of the instance creation request. Valid values:
 func (o CustomOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to forcibly release the running instance. Value: true/false
+// Specifies whether to forcibly release a running instance. Valid values:
 func (o CustomOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to force shutdown. Value range:
+// Specifies whether to force shut down the instance. Valid values:
 func (o CustomOutput) ForceStop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.BoolPtrOutput { return v.ForceStop }).(pulumi.BoolPtrOutput)
 }
 
-// The instance host name.
+// The hostname of the instance.
+//
+// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 func (o CustomOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the image used by the instance.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
 }
 
-// The Payment type. Currently, only `Prepaid` (package year and month) types are supported.
+// The billing method. Valid values:
+// - `Prepaid`: subscription.
+// - `Postpaid`: pay-as-you-go.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The type of the created RDS Custom dedicated host instance.
+// The name must be 2 to 128 characters in length, start with a letter or Chinese character, and can contain letters, Chinese characters, digits, periods (.), underscores (_), colons (:), or hyphens (-). By default, the instance name is the same as the InstanceId. When creating multiple RdsCustom instances, you can specify sequential instance names in batches by using square brackets ([]) and commas (,). For more information, see [Create an RDS Custom instance](https://help.aliyun.com/zh/rds/apsaradb-rds-for-mysql/create-an-rds-custom-instance?spm=a2c4g.11186623.0.0.36ef7288jg7aZD#00481f9ba381u).
+func (o CustomOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The target instance type for configuration changes. For the list of instance types supported by RDS Custom instances, see [RDS Custom Instance Types](https://help.aliyun.com/document_detail/2844823.html).
 func (o CustomOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// Reserved parameters are not supported.
+// Reserved parameter. Not supported currently.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
-// Reserved parameters are not supported.
+// The maximum outbound public bandwidth for Custom for SQL Server, measured in Mbit/s.
+// Valid values: 0 to 1024. Default value: 0.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
 }
 
-// Reserved parameters are not supported.
+// This parameter is reserved and currently unsupported.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) IoOptimized() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.IoOptimized }).(pulumi.StringPtrOutput)
 }
 
-// The key pair name. Only flyer names are supported.
+// The name of the key pair. Only a single key pair name is supported.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) KeyPairName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.KeyPairName }).(pulumi.StringPtrOutput)
 }
 
-// The account and password of the instance.
+// The account password for the instance. It must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include: `()~!@#$%^&*-_+=|{}[]:;',.?/`.
+//
+// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 func (o CustomOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Prepaid renewal duration, unit: Month/Year.
+// The subscription duration of the resource. Default value: `1`.
+//
+// > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
 func (o CustomOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The unit of duration of the year-to-month billing method. Value range:
+// The unit of subscription duration for the subscription billing method. Valid values:
 // - `Year`: Year
 // - `Month` (default): Month
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The region ID. Callable DescribeRegions to get.
+// The private IP address of the instance. When assigning a private IP address to an ECS instance in a Virtual Private Cloud (VPC), you must select an available IP address from the CIDR block of the specified vSwitch (VSwitchId).
+func (o CustomOutput) PrivateIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
+}
+
+// The region ID.
 func (o CustomOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group
+// The resource group ID. You can call ListResourceGroups to obtain it.
 func (o CustomOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Reserved parameters are not supported.
+// This is a reserved parameter and is not currently supported.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
 }
 
-// Security group list
+// The ID of the security group to which the instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security groups" section in [Limits](https://help.aliyun.com/document_detail/25412.html).
+//
+// > **NOTE:**  The SecurityGroupId determines the network type of the instance. For example, if the specified security group uses the Virtual Private Cloud (VPC) network type, the instance is of the VPC type and you must also specify the VSwitchId parameter.
 func (o CustomOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of `InstanceChargeType` is set to **PostPaid. Value range:
-// - `NoSpot`: normal pay-as-you-go instances.
-// - `SpotAsPriceGo`: The system automatically bids and follows the actual price in the current market.
+// The spot strategy for pay-as-you-go instances. This parameter takes effect only when `InstanceChargeType` is set to `PostPaid`. Valid values:
+// - `NoSpot`: A regular pay-as-you-go instance.
+// - `SpotAsPriceGo`: The system automatically bids based on the current market price.
 //
-// Default value: **NoSpot * *.
+// Default value: `NoSpot`.
+//
+// > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
 func (o CustomOutput) SpotStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.SpotStrategy }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource
+// The status of the instance. Valid values:
+// - `Pending`: The instance is being created.
+// - `Running`: The instance is running.
+// - `Starting`: The instance is starting.
+// - `Stopping`: The instance is stopping.
+// - `Stopped`: The instance is stopped.
 func (o CustomOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Supported scenarios: createMode:supportCase, for example: NATIVE("0", "eni"),RCK("1", "rck"),ACK_EDGE("1", "edge");
+// The deployment type of RDS Custom. Valid values:
 func (o CustomOutput) SupportCase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.SupportCase }).(pulumi.StringPtrOutput)
 }
 
-// System disk specifications. See `systemDisk` below.
+// The system disk specification. See `systemDisk` below.
+//
+// > **NOTE:** Since v1.279.0, `systemDisk` is treated as a ForceNew field. Any change to this field, including its nested `category` and `size` values, will force replacement of the `rds.Custom` resource.
 func (o CustomOutput) SystemDisk() CustomSystemDiskPtrOutput {
 	return o.ApplyT(func(v *Custom) CustomSystemDiskPtrOutput { return v.SystemDisk }).(CustomSystemDiskPtrOutput)
 }
 
-// The tag of the resource
+// The ID of the system disk attached to the Custom instance.
+func (o CustomOutput) SystemDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.SystemDiskId }).(pulumi.StringOutput)
+}
+
+// Details of the queried instances and their tags.
 func (o CustomOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
-// The network type InstanceNetworkType must be VPC.
+// The virtual switch ID of the target instance. If you are creating a VPC-type RDS Custom instance, you must specify the virtual switch ID, and the security group and virtual switch must belong to the same Virtual Private Cloud (VPC).
+//
+// > **NOTE:**  If you specify the VSwitchId parameter, the ZoneId parameter you set must match the zone where the virtual switch is located. Alternatively, you can omit the ZoneId parameter, and the system will automatically select the zone of the specified virtual switch.
 func (o CustomOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone ID  of the resource
-func (o CustomOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Custom) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+// The zone ID of the instance. You can call DescribeZones to obtain the list of available zones.
+//
+// > **NOTE:**  If you specify the VSwitchId parameter, the specified ZoneId must match the zone where the vSwitch is located. Alternatively, you can omit ZoneId, and the system will automatically select the zone of the specified vSwitch.
+func (o CustomOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Custom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type CustomArrayOutput struct{ *pulumi.OutputState }

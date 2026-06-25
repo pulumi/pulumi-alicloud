@@ -20,6 +20,19 @@ public final class ApiFcServiceConfig {
      */
     private String arnRole;
     /**
+     * @return The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+     * * `DEFAULT`: Use the default value provided by API Gateway.
+     * * `CUSTOM`: Use a custom value.
+     * * `CLIENT`: Use the Content-Type header from the client request.
+     * 
+     */
+    private @Nullable String contentTypeCategory;
+    /**
+     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * 
+     */
+    private @Nullable String contentTypeValue;
+    /**
      * @return The base url of function compute service. Required if `functionType` is `HttpTrigger`.
      * 
      */
@@ -82,6 +95,23 @@ public final class ApiFcServiceConfig {
      */
     public String arnRole() {
         return this.arnRole;
+    }
+    /**
+     * @return The strategy for setting the Content-Type header when calling an HTTP backend service. Valid values:
+     * * `DEFAULT`: Use the default value provided by API Gateway.
+     * * `CUSTOM`: Use a custom value.
+     * * `CLIENT`: Use the Content-Type header from the client request.
+     * 
+     */
+    public Optional<String> contentTypeCategory() {
+        return Optional.ofNullable(this.contentTypeCategory);
+    }
+    /**
+     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * 
+     */
+    public Optional<String> contentTypeValue() {
+        return Optional.ofNullable(this.contentTypeValue);
     }
     /**
      * @return The base url of function compute service. Required if `functionType` is `HttpTrigger`.
@@ -171,6 +201,8 @@ public final class ApiFcServiceConfig {
     @CustomType.Builder
     public static final class Builder {
         private String arnRole;
+        private @Nullable String contentTypeCategory;
+        private @Nullable String contentTypeValue;
         private @Nullable String functionBaseUrl;
         private @Nullable String functionName;
         private @Nullable String functionType;
@@ -186,6 +218,8 @@ public final class ApiFcServiceConfig {
         public Builder(ApiFcServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arnRole = defaults.arnRole;
+    	      this.contentTypeCategory = defaults.contentTypeCategory;
+    	      this.contentTypeValue = defaults.contentTypeValue;
     	      this.functionBaseUrl = defaults.functionBaseUrl;
     	      this.functionName = defaults.functionName;
     	      this.functionType = defaults.functionType;
@@ -205,6 +239,18 @@ public final class ApiFcServiceConfig {
               throw new MissingRequiredPropertyException("ApiFcServiceConfig", "arnRole");
             }
             this.arnRole = arnRole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentTypeCategory(@Nullable String contentTypeCategory) {
+
+            this.contentTypeCategory = contentTypeCategory;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder contentTypeValue(@Nullable String contentTypeValue) {
+
+            this.contentTypeValue = contentTypeValue;
             return this;
         }
         @CustomType.Setter
@@ -280,6 +326,8 @@ public final class ApiFcServiceConfig {
         public ApiFcServiceConfig build() {
             final var _resultValue = new ApiFcServiceConfig();
             _resultValue.arnRole = arnRole;
+            _resultValue.contentTypeCategory = contentTypeCategory;
+            _resultValue.contentTypeValue = contentTypeValue;
             _resultValue.functionBaseUrl = functionBaseUrl;
             _resultValue.functionName = functionName;
             _resultValue.functionType = functionType;
