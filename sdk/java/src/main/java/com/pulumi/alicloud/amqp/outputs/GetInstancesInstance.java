@@ -73,6 +73,11 @@ public final class GetInstancesInstance {
      */
     private String renewalStatus;
     /**
+     * @return (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+     * 
+     */
+    private Boolean serverlessSwitch;
+    /**
      * @return The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      * 
      */
@@ -169,6 +174,13 @@ public final class GetInstancesInstance {
         return this.renewalStatus;
     }
     /**
+     * @return (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+     * 
+     */
+    public Boolean serverlessSwitch() {
+        return this.serverlessSwitch;
+    }
+    /**
      * @return The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
      * 
      */
@@ -204,6 +216,7 @@ public final class GetInstancesInstance {
         private Integer renewalDuration;
         private String renewalDurationUnit;
         private String renewalStatus;
+        private Boolean serverlessSwitch;
         private String status;
         private Boolean supportEip;
         public Builder() {}
@@ -221,6 +234,7 @@ public final class GetInstancesInstance {
     	      this.renewalDuration = defaults.renewalDuration;
     	      this.renewalDurationUnit = defaults.renewalDurationUnit;
     	      this.renewalStatus = defaults.renewalStatus;
+    	      this.serverlessSwitch = defaults.serverlessSwitch;
     	      this.status = defaults.status;
     	      this.supportEip = defaults.supportEip;
         }
@@ -322,6 +336,14 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder serverlessSwitch(Boolean serverlessSwitch) {
+            if (serverlessSwitch == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "serverlessSwitch");
+            }
+            this.serverlessSwitch = serverlessSwitch;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
@@ -351,6 +373,7 @@ public final class GetInstancesInstance {
             _resultValue.renewalDuration = renewalDuration;
             _resultValue.renewalDurationUnit = renewalDurationUnit;
             _resultValue.renewalStatus = renewalStatus;
+            _resultValue.serverlessSwitch = serverlessSwitch;
             _resultValue.status = status;
             _resultValue.supportEip = supportEip;
             return _resultValue;

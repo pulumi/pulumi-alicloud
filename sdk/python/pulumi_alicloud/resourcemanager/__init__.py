@@ -36,6 +36,7 @@ from .policy import *
 from .policy_attachment import *
 from .policy_version import *
 from .resource_directory import *
+from .resource_directory_sharing import *
 from .resource_group import *
 from .resource_share import *
 from .role import *

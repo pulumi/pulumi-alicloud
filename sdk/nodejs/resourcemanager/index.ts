@@ -155,6 +155,11 @@ export type ResourceDirectory = import("./resourceDirectory").ResourceDirectory;
 export const ResourceDirectory: typeof import("./resourceDirectory").ResourceDirectory = null as any;
 utilities.lazyLoad(exports, ["ResourceDirectory"], () => require("./resourceDirectory"));
 
+export { ResourceDirectorySharingArgs, ResourceDirectorySharingState } from "./resourceDirectorySharing";
+export type ResourceDirectorySharing = import("./resourceDirectorySharing").ResourceDirectorySharing;
+export const ResourceDirectorySharing: typeof import("./resourceDirectorySharing").ResourceDirectorySharing = null as any;
+utilities.lazyLoad(exports, ["ResourceDirectorySharing"], () => require("./resourceDirectorySharing"));
+
 export { ResourceGroupArgs, ResourceGroupState } from "./resourceGroup";
 export type ResourceGroup = import("./resourceGroup").ResourceGroup;
 export const ResourceGroup: typeof import("./resourceGroup").ResourceGroup = null as any;
@@ -223,6 +228,8 @@ const _module = {
                 return new PolicyVersion(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/resourceDirectory:ResourceDirectory":
                 return new ResourceDirectory(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing":
+                return new ResourceDirectorySharing(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/resourceGroup:ResourceGroup":
                 return new ResourceGroup(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/resourceShare:ResourceShare":
@@ -256,6 +263,7 @@ pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policy", _mod
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceDirectory", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceDirectorySharing", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceShare", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/role", _module)

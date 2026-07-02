@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -206,6 +207,20 @@ public class RegistryEnterpriseRepo extends com.pulumi.resources.CustomResource 
      */
     public Output<String> summary() {
         return this.summary;
+    }
+    /**
+     * Whether to enable image tag immutability. Valid values:
+     * 
+     */
+    @Export(name="tagImmutability", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> tagImmutability;
+
+    /**
+     * @return Whether to enable image tag immutability. Valid values:
+     * 
+     */
+    public Output<Boolean> tagImmutability() {
+        return this.tagImmutability;
     }
 
     /**

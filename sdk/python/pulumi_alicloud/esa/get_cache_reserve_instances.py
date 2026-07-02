@@ -149,7 +149,6 @@ def get_cache_reserve_instances(cache_reserve_instance_id: Optional[_builtins.st
     default = alicloud.esa.CacheReserveInstance("default",
         quota_gb=10240,
         cr_region="CN-beijing",
-        auto_renew=True,
         period=1,
         payment_type="Subscription",
         auto_pay=True)
@@ -211,7 +210,6 @@ def get_cache_reserve_instances_output(cache_reserve_instance_id: pulumi.Input[O
     default = alicloud.esa.CacheReserveInstance("default",
         quota_gb=10240,
         cr_region="CN-beijing",
-        auto_renew=True,
         period=1,
         payment_type="Subscription",
         auto_pay=True)

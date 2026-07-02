@@ -98,6 +98,7 @@ type RegistryEnterpriseInstance struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	// - `DISABLE`: Disables the image security scan engine.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner pulumi.StringPtrOutput `pulumi:"imageScanner"`
@@ -109,6 +110,7 @@ type RegistryEnterpriseInstance struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	// - `Economy`: Economy instance
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
@@ -222,6 +224,7 @@ type registryEnterpriseInstanceState struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	// - `DISABLE`: Disables the image security scan engine.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner *string `pulumi:"imageScanner"`
@@ -233,6 +236,7 @@ type registryEnterpriseInstanceState struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	// - `Economy`: Economy instance
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType *string `pulumi:"instanceType"`
@@ -301,6 +305,7 @@ type RegistryEnterpriseInstanceState struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	// - `DISABLE`: Disables the image security scan engine.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner pulumi.StringPtrInput
@@ -312,6 +317,7 @@ type RegistryEnterpriseInstanceState struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	// - `Economy`: Economy instance
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType pulumi.StringPtrInput
@@ -376,6 +382,7 @@ type registryEnterpriseInstanceArgs struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	// - `DISABLE`: Disables the image security scan engine.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner *string `pulumi:"imageScanner"`
@@ -385,6 +392,7 @@ type registryEnterpriseInstanceArgs struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	// - `Economy`: Economy instance
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType string `pulumi:"instanceType"`
@@ -442,6 +450,7 @@ type RegistryEnterpriseInstanceArgs struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	// - `DISABLE`: Disables the image security scan engine.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner pulumi.StringPtrInput
@@ -451,6 +460,7 @@ type RegistryEnterpriseInstanceArgs struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	// - `Economy`: Economy instance
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType pulumi.StringInput
@@ -616,6 +626,7 @@ func (o RegistryEnterpriseInstanceOutput) EndTime() pulumi.StringOutput {
 // The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 // - `ACR`: Uses the Trivy scan engine provided by default.
 // - `SAS`: uses the enhanced cloud security scan engine.
+// - `DISABLE`: Disables the image security scan engine.
 //
 // > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RegistryEnterpriseInstanceOutput) ImageScanner() pulumi.StringPtrOutput {
@@ -638,6 +649,7 @@ func (o RegistryEnterpriseInstanceOutput) InstanceName() pulumi.StringOutput {
 // - `Basic`: Basic instance
 // - `Standard`: Standard instance
 // - `Advanced`: Advanced Edition Instance
+// - `Economy`: Economy instance
 //
 // > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RegistryEnterpriseInstanceOutput) InstanceType() pulumi.StringOutput {

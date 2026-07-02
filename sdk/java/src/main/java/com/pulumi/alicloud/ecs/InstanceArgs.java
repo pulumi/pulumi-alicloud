@@ -226,6 +226,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    @Import(name="enableHighDensityMode")
+    private @Nullable Output<Boolean> enableHighDensityMode;
+
+    /**
+     * @return Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    public Optional<Output<Boolean>> enableHighDensityMode() {
+        return Optional.ofNullable(this.enableHighDensityMode);
+    }
+
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      * 
      */
@@ -1416,6 +1435,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
         this.dryRun = $.dryRun;
+        this.enableHighDensityMode = $.enableHighDensityMode;
         this.enableJumboFrame = $.enableJumboFrame;
         this.forceDelete = $.forceDelete;
         this.hostName = $.hostName;
@@ -1786,6 +1806,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param enableHighDensityMode Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHighDensityMode(@Nullable Output<Boolean> enableHighDensityMode) {
+            $.enableHighDensityMode = enableHighDensityMode;
+            return this;
+        }
+
+        /**
+         * @param enableHighDensityMode Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHighDensityMode(Boolean enableHighDensityMode) {
+            return enableHighDensityMode(Output.of(enableHighDensityMode));
         }
 
         /**

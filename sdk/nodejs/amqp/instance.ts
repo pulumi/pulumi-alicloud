@@ -201,6 +201,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly serverlessChargeType: pulumi.Output<string | undefined>;
     /**
+     * Whether to enable the Serverless elastic capability on the instance.
+     */
+    declare public readonly serverlessSwitch: pulumi.Output<boolean>;
+    /**
      * The status of the resource.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
@@ -216,6 +220,10 @@ export class Instance extends pulumi.CustomResource {
      * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
      */
     declare public readonly supportTracing: pulumi.Output<boolean | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
@@ -262,10 +270,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = state?.renewalStatus;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["serverlessChargeType"] = state?.serverlessChargeType;
+            resourceInputs["serverlessSwitch"] = state?.serverlessSwitch;
             resourceInputs["status"] = state?.status;
             resourceInputs["storageSize"] = state?.storageSize;
             resourceInputs["supportEip"] = state?.supportEip;
             resourceInputs["supportTracing"] = state?.supportTracing;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["tracingStorageTime"] = state?.tracingStorageTime;
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vswitchIds"] = state?.vswitchIds;
@@ -293,9 +303,11 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args?.renewalStatus;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["serverlessChargeType"] = args?.serverlessChargeType;
+            resourceInputs["serverlessSwitch"] = args?.serverlessSwitch;
             resourceInputs["storageSize"] = args?.storageSize;
             resourceInputs["supportEip"] = args?.supportEip;
             resourceInputs["supportTracing"] = args?.supportTracing;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["tracingStorageTime"] = args?.tracingStorageTime;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchIds"] = args?.vswitchIds;
@@ -401,6 +413,10 @@ export interface InstanceState {
      */
     serverlessChargeType?: pulumi.Input<string | undefined>;
     /**
+     * Whether to enable the Serverless elastic capability on the instance.
+     */
+    serverlessSwitch?: pulumi.Input<boolean | undefined>;
+    /**
      * The status of the resource.
      */
     status?: pulumi.Input<string | undefined>;
@@ -416,6 +432,10 @@ export interface InstanceState {
      * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
      */
     supportTracing?: pulumi.Input<boolean | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
@@ -520,6 +540,10 @@ export interface InstanceArgs {
      */
     serverlessChargeType?: pulumi.Input<string | undefined>;
     /**
+     * Whether to enable the Serverless elastic capability on the instance.
+     */
+    serverlessSwitch?: pulumi.Input<boolean | undefined>;
+    /**
      * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      */
     storageSize?: pulumi.Input<string | undefined>;
@@ -531,6 +555,10 @@ export interface InstanceArgs {
      * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
      */
     supportTracing?: pulumi.Input<boolean | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */

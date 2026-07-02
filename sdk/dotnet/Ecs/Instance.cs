@@ -214,6 +214,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the high density mode for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Modifying `EnableHighDensityMode` requires the instance to be stopped.
+        /// </summary>
+        [Output("enableHighDensityMode")]
+        public Output<bool?> EnableHighDensityMode { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableJumboFrame")]
@@ -877,6 +885,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the high density mode for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Modifying `EnableHighDensityMode` requires the instance to be stopped.
+        /// </summary>
+        [Input("enableHighDensityMode")]
+        public Input<bool>? EnableHighDensityMode { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableJumboFrame")]
@@ -1506,6 +1522,14 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the high density mode for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Modifying `EnableHighDensityMode` requires the instance to be stopped.
+        /// </summary>
+        [Input("enableHighDensityMode")]
+        public Input<bool>? EnableHighDensityMode { get; set; }
 
         /// <summary>
         /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.

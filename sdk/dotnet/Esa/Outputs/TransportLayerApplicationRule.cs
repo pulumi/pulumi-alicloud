@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// Rule ID
+        /// Rule ID.
         /// </summary>
         public readonly int? RuleId;
         /// <summary>

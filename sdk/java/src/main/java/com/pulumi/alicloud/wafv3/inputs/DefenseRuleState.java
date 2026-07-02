@@ -88,6 +88,21 @@ public final class DefenseRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The modification time of the protection rule.
+     * 
+     */
+    @Import(name="gmtModified")
+    private @Nullable Output<String> gmtModified;
+
+    /**
+     * @return The modification time of the protection rule.
+     * 
+     */
+    public Optional<Output<String>> gmtModified() {
+        return Optional.ofNullable(this.gmtModified);
+    }
+
+    /**
      * The ID of the Web Application Firewall (WAF) instance.
      * 
      */
@@ -188,6 +203,7 @@ public final class DefenseRuleState extends com.pulumi.resources.ResourceArgs {
         this.defenseOrigin = $.defenseOrigin;
         this.defenseScene = $.defenseScene;
         this.defenseType = $.defenseType;
+        this.gmtModified = $.gmtModified;
         this.instanceId = $.instanceId;
         this.resource = $.resource;
         this.ruleId = $.ruleId;
@@ -306,6 +322,27 @@ public final class DefenseRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defenseType(String defenseType) {
             return defenseType(Output.of(defenseType));
+        }
+
+        /**
+         * @param gmtModified The modification time of the protection rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gmtModified(@Nullable Output<String> gmtModified) {
+            $.gmtModified = gmtModified;
+            return this;
+        }
+
+        /**
+         * @param gmtModified The modification time of the protection rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gmtModified(String gmtModified) {
+            return gmtModified(Output.of(gmtModified));
         }
 
         /**

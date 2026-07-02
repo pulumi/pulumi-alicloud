@@ -3705,6 +3705,10 @@ export namespace amqp {
          */
         renewalStatus: string;
         /**
+         * (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+         */
+        serverlessSwitch: boolean;
+        /**
          * The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
          */
         status: string;
@@ -34195,6 +34199,10 @@ export namespace esa {
          */
         header?: string;
         /**
+         * The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         */
+        ipVersionPolicy: string;
+        /**
          * Origin Name.
          */
         name?: string;
@@ -34203,10 +34211,7 @@ export namespace esa {
          */
         originId: string;
         /**
-         * Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * The type of the origin. Valid values:
          */
         type?: string;
         /**
@@ -34566,7 +34571,7 @@ export namespace esa {
          */
         protocol: string;
         /**
-         * Rule ID
+         * Rule ID.
          */
         ruleId: number;
         /**
@@ -52303,7 +52308,7 @@ export namespace rds {
         /**
          * The system disk category. Valid values:
          */
-        category?: string;
+        category: string;
         /**
          * The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
          */
@@ -67131,6 +67136,360 @@ export namespace wafv3 {
         value?: string;
     }
 
+    export interface GetAddressBooksBook {
+        /**
+         * The ID of the Address Book.
+         */
+        addressBookId: string;
+        /**
+         * The name of the Address Book.
+         */
+        addressBookName: string;
+        /**
+         * The type of the Address Book. Valid values: `ip`.
+         */
+        addressBookType: string;
+        /**
+         * The address list of the Address Book. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        addressLists: string[];
+        /**
+         * The description of the Address Book.
+         */
+        description: string;
+        /**
+         * The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+         */
+        id: string;
+    }
+
+    export interface GetDefenseRulesRule {
+        /**
+         * Rule configuration content, in JSON format, constructed with a series of parameters.
+         */
+        configs: outputs.wafv3.GetDefenseRulesRuleConfig[];
+        /**
+         * Sources of protection.
+         */
+        defenseOrigin: string;
+        /**
+         * The WAF protection scenario to be created.
+         */
+        defenseScene: string;
+        /**
+         * The protection rule type. Value:
+         */
+        defenseType: string;
+        /**
+         * The modification time of the protection rule.
+         */
+        gmtModified: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The protection object corresponding to the rule to be queried.
+         */
+        resource: string;
+        /**
+         * The protection rule ID.
+         */
+        ruleId: number;
+        /**
+         * The rule name.
+         */
+        ruleName: string;
+        /**
+         * Protection rule status.
+         */
+        ruleStatus: number;
+        /**
+         * The protection template ID of the protection rule to be created.
+         */
+        templateId: number;
+    }
+
+    export interface GetDefenseRulesRuleConfig {
+        /**
+         * The regions outside China from which you want to block requests.
+         */
+        abroadRegions: string;
+        /**
+         * The policies for account extraction.
+         */
+        accountIdentifiers: outputs.wafv3.GetDefenseRulesRuleConfigAccountIdentifier[];
+        /**
+         * Whether the new Web core protection rules are automatically updated.
+         */
+        autoUpdate: boolean;
+        /**
+         * The list of regular rule IDs that are not detected.
+         */
+        bypassRegularRules: string[];
+        /**
+         * The regular rule type is not detected.
+         */
+        bypassRegularTypes: string[];
+        /**
+         * The modules to which the whitelist applies.
+         */
+        bypassTags: string[];
+        /**
+         * Set the effective range of the speed limit.
+         */
+        ccEffect: string;
+        /**
+         * Whether to open the speed limit.
+         */
+        ccStatus: number;
+        /**
+         * The regions in China from which you want to block requests.
+         */
+        cnRegions: string;
+        /**
+         * The type to enable decoding.
+         */
+        codecLists: string[];
+        /**
+         * The traffic characteristics of ACL, which are described in JSON format.
+         */
+        conditions: outputs.wafv3.GetDefenseRulesRuleConfigCondition[];
+        /**
+         * The canary release configuration for the rule.
+         */
+        grayConfigs: outputs.wafv3.GetDefenseRulesRuleConfigGrayConfig[];
+        /**
+         * Specifies whether to enable canary release for the rule.
+         */
+        grayStatus: number;
+        /**
+         * The HTTP flood protection mode.
+         */
+        mode: number;
+        /**
+         * The protocol type of the cached page address.
+         */
+        protocol: string;
+        /**
+         * The detailed speed limit configuration, which is described in the JSON string format.
+         */
+        rateLimits: outputs.wafv3.GetDefenseRulesRuleConfigRateLimit[];
+        /**
+         * The IP addresses that you want to add to the blacklist.
+         */
+        remoteAddrs: string[];
+        /**
+         * Web core protection rule action.
+         */
+        ruleAction: string;
+        /**
+         * The throttling threshold.
+         */
+        throttleThrehold: number;
+        /**
+         * The throttling method.
+         */
+        throttleType: string;
+        /**
+         * The scheduled rule configuration.
+         */
+        timeConfigs: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfig[];
+        /**
+         * The User-Agent string that is allowed for access to the address.
+         */
+        ua: string;
+        /**
+         * The address of the cached page.
+         */
+        url: string;
+        /**
+         * The configuration of the Web core protection rules to be modified.
+         */
+        wafBaseConfigs: outputs.wafv3.GetDefenseRulesRuleConfigWafBaseConfig[];
+    }
+
+    export interface GetDefenseRulesRuleConfigAccountIdentifier {
+        /**
+         * The authentication mode.
+         */
+        decodeType: string;
+        /**
+         * Match field.
+         */
+        key: string;
+        /**
+         * The field that stores the decoded account information.
+         */
+        position: string;
+        /**
+         * The priority of the current extraction configuration.
+         */
+        priority: number;
+        /**
+         * The characteristics of the statistical object.
+         */
+        subKey: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigCondition {
+        /**
+         * Match field.
+         */
+        key: string;
+        /**
+         * Logical character.
+         */
+        opValue: string;
+        /**
+         * The characteristics of the statistical object.
+         */
+        subKey: string;
+        /**
+         * Match the content and fill in the corresponding content as needed.
+         */
+        values: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigGrayConfig {
+        /**
+         * The percentage of traffic for which the canary release takes effect.
+         */
+        grayRate: number;
+        /**
+         * The sub-feature of the statistical object.
+         */
+        graySubKey: string;
+        /**
+         * The type of the canary release object.
+         */
+        grayTarget: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigRateLimit {
+        /**
+         * The statistical period, in seconds.
+         */
+        interval: number;
+        /**
+         * Response code frequency setting.
+         */
+        statuses: outputs.wafv3.GetDefenseRulesRuleConfigRateLimitStatus[];
+        /**
+         * The characteristics of the statistical object.
+         */
+        subKey: string;
+        /**
+         * The type of the statistical object.
+         */
+        target: string;
+        /**
+         * The maximum number of requests that can be sent from a statistical object.
+         */
+        threshold: number;
+        /**
+         * The period of time during which you want the specified action to be valid.
+         */
+        ttl: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigRateLimitStatus {
+        /**
+         * Required.
+         */
+        code: number;
+        /**
+         * The threshold for the number of occurrences.
+         */
+        count: number;
+        /**
+         * The threshold for the proportion of occurrences (percentage).
+         */
+        ratio: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfig {
+        /**
+         * The time period during which the rule is effective.
+         */
+        timePeriods: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfigTimePeriod[];
+        /**
+         * The effective period of the rule.
+         */
+        timeScope: string;
+        /**
+         * The time zone in which the rule is effective.
+         */
+        timeZone: number;
+        /**
+         * The periodic time period during which the rule is effective.
+         */
+        weekTimePeriods: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod[];
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfigTimePeriod {
+        /**
+         * The end time of each day when the rule is effective.
+         */
+        end: number;
+        /**
+         * The start time of each day when the rule is effective.
+         */
+        start: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod {
+        /**
+         * The time period of each day when the rule is effective.
+         */
+        day: string;
+        /**
+         * The time period of each day when the rule is effective.
+         */
+        dayPeriods: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod[];
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+        /**
+         * The end time of each day when the rule is effective.
+         */
+        end: number;
+        /**
+         * The start time of each day when the rule is effective.
+         */
+        start: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigWafBaseConfig {
+        /**
+         * The batch operation on rules.
+         */
+        ruleBatchOperationConfig: string;
+        /**
+         * The configuration of the Web core protection rules to be modified.
+         */
+        ruleDetails: outputs.wafv3.GetDefenseRulesRuleConfigWafBaseConfigRuleDetail[];
+        /**
+         * The protection rule type. Value:
+         */
+        ruleType: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigWafBaseConfigRuleDetail {
+        /**
+         * Web core protection rule action.
+         */
+        ruleAction: string;
+        /**
+         * The protection rule ID.
+         */
+        ruleId: string;
+        /**
+         * Protection rule status.
+         */
+        ruleStatus: number;
+    }
+
     export interface GetDomainsDomain {
         /**
          * The CNAME assigned by WAF to the domain name.
@@ -67140,6 +67499,10 @@ export namespace wafv3 {
          * The name of the domain name to query.
          */
         domain: string;
+        /**
+         * The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+         */
+        domainId: string;
         /**
          * The ID of the domain. It formats as `<instance_id>:<domain>`.
          */

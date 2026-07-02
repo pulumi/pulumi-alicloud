@@ -373,6 +373,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    @Export(name="enableHighDensityMode", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableHighDensityMode;
+
+    /**
+     * @return Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    public Output<Optional<Boolean>> enableHighDensityMode() {
+        return Codegen.optional(this.enableHighDensityMode);
+    }
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      * 
      */

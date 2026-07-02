@@ -19,44 +19,67 @@ __all__ = ['RoutineRouteArgs', 'RoutineRoute']
 @pulumi.input_type
 class RoutineRouteArgs:
     def __init__(__self__, *,
+                 route_enable: pulumi.Input[_builtins.str],
+                 route_name: pulumi.Input[_builtins.str],
                  routine_name: pulumi.Input[_builtins.str],
+                 rule: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
                  bypass: pulumi.Input[Optional[_builtins.str]] = None,
                  fallback: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_enable: pulumi.Input[Optional[_builtins.str]] = None,
-                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rule: pulumi.Input[Optional[_builtins.str]] = None,
                  sequence: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RoutineRoute resource.
 
+        :param pulumi.Input[_builtins.str] route_enable: Routing switch. Value range:
+               - on: Open
+               - off: off
+        :param pulumi.Input[_builtins.str] route_name: The route name.
         :param pulumi.Input[_builtins.str] routine_name: The edge function Routine name.
+        :param pulumi.Input[_builtins.str] rule: The rule content.
         :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] bypass: Bypass mode. Value range:
                - on: Open
                - off: off
         :param pulumi.Input[_builtins.str] fallback: Spare
-        :param pulumi.Input[_builtins.str] route_enable: Routing switch. Value range:
-               - on: Open
-               - off: off
-        :param pulumi.Input[_builtins.str] route_name: The route name.
-        :param pulumi.Input[_builtins.str] rule: The rule content.
         :param pulumi.Input[_builtins.int] sequence: Rule execution order.
         """
+        pulumi.set(__self__, "route_enable", route_enable)
+        pulumi.set(__self__, "route_name", route_name)
         pulumi.set(__self__, "routine_name", routine_name)
+        pulumi.set(__self__, "rule", rule)
         pulumi.set(__self__, "site_id", site_id)
         if bypass is not None:
             pulumi.set(__self__, "bypass", bypass)
         if fallback is not None:
             pulumi.set(__self__, "fallback", fallback)
-        if route_enable is not None:
-            pulumi.set(__self__, "route_enable", route_enable)
-        if route_name is not None:
-            pulumi.set(__self__, "route_name", route_name)
-        if rule is not None:
-            pulumi.set(__self__, "rule", rule)
         if sequence is not None:
             pulumi.set(__self__, "sequence", sequence)
+
+    @_builtins.property
+    @pulumi.getter(name="routeEnable")
+    def route_enable(self) -> pulumi.Input[_builtins.str]:
+        """
+        Routing switch. Value range:
+        - on: Open
+        - off: off
+        """
+        return pulumi.get(self, "route_enable")
+
+    @route_enable.setter
+    def route_enable(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "route_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routeName")
+    def route_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The route name.
+        """
+        return pulumi.get(self, "route_name")
+
+    @route_name.setter
+    def route_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "route_name", value)
 
     @_builtins.property
     @pulumi.getter(name="routineName")
@@ -69,6 +92,18 @@ class RoutineRouteArgs:
     @routine_name.setter
     def routine_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "routine_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[_builtins.str]:
+        """
+        The rule content.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -107,44 +142,6 @@ class RoutineRouteArgs:
     @fallback.setter
     def fallback(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback", value)
-
-    @_builtins.property
-    @pulumi.getter(name="routeEnable")
-    def route_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Routing switch. Value range:
-        - on: Open
-        - off: off
-        """
-        return pulumi.get(self, "route_enable")
-
-    @route_enable.setter
-    def route_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "route_enable", value)
-
-    @_builtins.property
-    @pulumi.getter(name="routeName")
-    def route_name(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The route name.
-        """
-        return pulumi.get(self, "route_name")
-
-    @route_name.setter
-    def route_name(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "route_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The rule content.
-        """
-        return pulumi.get(self, "rule")
-
-    @rule.setter
-    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter
@@ -488,11 +485,17 @@ class RoutineRoute(pulumi.CustomResource):
 
             __props__.__dict__["bypass"] = bypass
             __props__.__dict__["fallback"] = fallback
+            if route_enable is None and not opts.urn:
+                raise TypeError("Missing required property 'route_enable'")
             __props__.__dict__["route_enable"] = route_enable
+            if route_name is None and not opts.urn:
+                raise TypeError("Missing required property 'route_name'")
             __props__.__dict__["route_name"] = route_name
             if routine_name is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_name'")
             __props__.__dict__["routine_name"] = routine_name
+            if rule is None and not opts.urn:
+                raise TypeError("Missing required property 'rule'")
             __props__.__dict__["rule"] = rule
             __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
@@ -556,7 +559,7 @@ class RoutineRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def bypass(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def bypass(self) -> pulumi.Output[_builtins.str]:
         """
         Bypass mode. Value range:
         - on: Open
@@ -582,7 +585,7 @@ class RoutineRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="routeEnable")
-    def route_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def route_enable(self) -> pulumi.Output[_builtins.str]:
         """
         Routing switch. Value range:
         - on: Open
@@ -592,7 +595,7 @@ class RoutineRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="routeName")
-    def route_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def route_name(self) -> pulumi.Output[_builtins.str]:
         """
         The route name.
         """
@@ -608,7 +611,7 @@ class RoutineRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def rule(self) -> pulumi.Output[_builtins.str]:
         """
         The rule content.
         """
@@ -616,7 +619,7 @@ class RoutineRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def sequence(self) -> pulumi.Output[_builtins.int]:
         """
         Rule execution order.
         """

@@ -127,6 +127,12 @@ namespace Pulumi.AliCloud.CS
         [Output("summary")]
         public Output<string> Summary { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable image tag immutability. Valid values:
+        /// </summary>
+        [Output("tagImmutability")]
+        public Output<bool> TagImmutability { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegistryEnterpriseRepo resource with the given unique name, arguments, and options.
@@ -211,6 +217,12 @@ namespace Pulumi.AliCloud.CS
         [Input("summary", required: true)]
         public Input<string> Summary { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to enable image tag immutability. Valid values:
+        /// </summary>
+        [Input("tagImmutability")]
+        public Input<bool>? TagImmutability { get; set; }
+
         public RegistryEnterpriseRepoArgs()
         {
         }
@@ -262,6 +274,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("summary")]
         public Input<string>? Summary { get; set; }
+
+        /// <summary>
+        /// Whether to enable image tag immutability. Valid values:
+        /// </summary>
+        [Input("tagImmutability")]
+        public Input<bool>? TagImmutability { get; set; }
 
         public RegistryEnterpriseRepoState()
         {

@@ -188,6 +188,7 @@ class _DefenseRuleState:
                  defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
                  defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
                  defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -206,6 +207,7 @@ class _DefenseRuleState:
                
                When the protection rule type `DefenseType` is set to `template`, the value is as follows:
         :param pulumi.Input[_builtins.str] defense_type: The protection rule type. Value:
+        :param pulumi.Input[_builtins.str] gmt_modified: The modification time of the protection rule.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[_builtins.str] resource: The protection object corresponding to the rule to be queried.
                
@@ -223,6 +225,8 @@ class _DefenseRuleState:
             pulumi.set(__self__, "defense_scene", defense_scene)
         if defense_type is not None:
             pulumi.set(__self__, "defense_type", defense_type)
+        if gmt_modified is not None:
+            pulumi.set(__self__, "gmt_modified", gmt_modified)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if resource is not None:
@@ -288,6 +292,18 @@ class _DefenseRuleState:
     @defense_type.setter
     def defense_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gmtModified")
+    def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The modification time of the protection rule.
+        """
+        return pulumi.get(self, "gmt_modified")
+
+    @gmt_modified.setter
+    def gmt_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gmt_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -593,6 +609,7 @@ class DefenseRule(pulumi.CustomResource):
             __props__.__dict__["rule_name"] = rule_name
             __props__.__dict__["rule_status"] = rule_status
             __props__.__dict__["template_id"] = template_id
+            __props__.__dict__["gmt_modified"] = None
             __props__.__dict__["rule_id"] = None
         super(DefenseRule, __self__).__init__(
             'alicloud:wafv3/defenseRule:DefenseRule',
@@ -608,6 +625,7 @@ class DefenseRule(pulumi.CustomResource):
             defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
             defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
             defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None,
             rule_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -630,6 +648,7 @@ class DefenseRule(pulumi.CustomResource):
                
                When the protection rule type `DefenseType` is set to `template`, the value is as follows:
         :param pulumi.Input[_builtins.str] defense_type: The protection rule type. Value:
+        :param pulumi.Input[_builtins.str] gmt_modified: The modification time of the protection rule.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[_builtins.str] resource: The protection object corresponding to the rule to be queried.
                
@@ -647,6 +666,7 @@ class DefenseRule(pulumi.CustomResource):
         __props__.__dict__["defense_origin"] = defense_origin
         __props__.__dict__["defense_scene"] = defense_scene
         __props__.__dict__["defense_type"] = defense_type
+        __props__.__dict__["gmt_modified"] = gmt_modified
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["resource"] = resource
         __props__.__dict__["rule_id"] = rule_id
@@ -691,6 +711,14 @@ class DefenseRule(pulumi.CustomResource):
         The protection rule type. Value:
         """
         return pulumi.get(self, "defense_type")
+
+    @_builtins.property
+    @pulumi.getter(name="gmtModified")
+    def gmt_modified(self) -> pulumi.Output[_builtins.str]:
+        """
+        The modification time of the protection rule.
+        """
+        return pulumi.get(self, "gmt_modified")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")

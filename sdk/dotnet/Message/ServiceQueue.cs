@@ -105,6 +105,12 @@ namespace Pulumi.AliCloud.Message
         public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the queue. Default value: `Normal`. Valid values:
+        /// </summary>
+        [Output("queueType")]
+        public Output<string> QueueType { get; private set; } = null!;
+
+        /// <summary>
         /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
@@ -204,6 +210,12 @@ namespace Pulumi.AliCloud.Message
         [Input("queueName", required: true)]
         public Input<string> QueueName { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the queue. Default value: `Normal`. Valid values:
+        /// </summary>
+        [Input("queueType")]
+        public Input<string>? QueueType { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -277,6 +289,12 @@ namespace Pulumi.AliCloud.Message
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
+
+        /// <summary>
+        /// The type of the queue. Default value: `Normal`. Valid values:
+        /// </summary>
+        [Input("queueType")]
+        public Input<string>? QueueType { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

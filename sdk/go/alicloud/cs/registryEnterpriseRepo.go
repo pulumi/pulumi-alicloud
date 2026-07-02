@@ -116,6 +116,8 @@ type RegistryEnterpriseRepo struct {
 	RepoType pulumi.StringOutput `pulumi:"repoType"`
 	// The summary about the repository.
 	Summary pulumi.StringOutput `pulumi:"summary"`
+	// Whether to enable image tag immutability. Valid values:
+	TagImmutability pulumi.BoolOutput `pulumi:"tagImmutability"`
 }
 
 // NewRegistryEnterpriseRepo registers a new resource with the given unique name, arguments, and options.
@@ -176,6 +178,8 @@ type registryEnterpriseRepoState struct {
 	RepoType *string `pulumi:"repoType"`
 	// The summary about the repository.
 	Summary *string `pulumi:"summary"`
+	// Whether to enable image tag immutability. Valid values:
+	TagImmutability *bool `pulumi:"tagImmutability"`
 }
 
 type RegistryEnterpriseRepoState struct {
@@ -195,6 +199,8 @@ type RegistryEnterpriseRepoState struct {
 	RepoType pulumi.StringPtrInput
 	// The summary about the repository.
 	Summary pulumi.StringPtrInput
+	// Whether to enable image tag immutability. Valid values:
+	TagImmutability pulumi.BoolPtrInput
 }
 
 func (RegistryEnterpriseRepoState) ElementType() reflect.Type {
@@ -216,6 +222,8 @@ type registryEnterpriseRepoArgs struct {
 	RepoType string `pulumi:"repoType"`
 	// The summary about the repository.
 	Summary string `pulumi:"summary"`
+	// Whether to enable image tag immutability. Valid values:
+	TagImmutability *bool `pulumi:"tagImmutability"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseRepo resource.
@@ -234,6 +242,8 @@ type RegistryEnterpriseRepoArgs struct {
 	RepoType pulumi.StringInput
 	// The summary about the repository.
 	Summary pulumi.StringInput
+	// Whether to enable image tag immutability. Valid values:
+	TagImmutability pulumi.BoolPtrInput
 }
 
 func (RegistryEnterpriseRepoArgs) ElementType() reflect.Type {
@@ -358,6 +368,11 @@ func (o RegistryEnterpriseRepoOutput) RepoType() pulumi.StringOutput {
 // The summary about the repository.
 func (o RegistryEnterpriseRepoOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.StringOutput { return v.Summary }).(pulumi.StringOutput)
+}
+
+// Whether to enable image tag immutability. Valid values:
+func (o RegistryEnterpriseRepoOutput) TagImmutability() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseRepo) pulumi.BoolOutput { return v.TagImmutability }).(pulumi.BoolOutput)
 }
 
 type RegistryEnterpriseRepoArrayOutput struct{ *pulumi.OutputState }

@@ -57,8 +57,8 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
      * - off: off
      * 
      */
-    @Import(name="routeEnable")
-    private @Nullable Output<String> routeEnable;
+    @Import(name="routeEnable", required=true)
+    private Output<String> routeEnable;
 
     /**
      * @return Routing switch. Value range:
@@ -66,23 +66,23 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
      * - off: off
      * 
      */
-    public Optional<Output<String>> routeEnable() {
-        return Optional.ofNullable(this.routeEnable);
+    public Output<String> routeEnable() {
+        return this.routeEnable;
     }
 
     /**
      * The route name.
      * 
      */
-    @Import(name="routeName")
-    private @Nullable Output<String> routeName;
+    @Import(name="routeName", required=true)
+    private Output<String> routeName;
 
     /**
      * @return The route name.
      * 
      */
-    public Optional<Output<String>> routeName() {
-        return Optional.ofNullable(this.routeName);
+    public Output<String> routeName() {
+        return this.routeName;
     }
 
     /**
@@ -104,15 +104,15 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
      * The rule content.
      * 
      */
-    @Import(name="rule")
-    private @Nullable Output<String> rule;
+    @Import(name="rule", required=true)
+    private Output<String> rule;
 
     /**
      * @return The rule content.
      * 
      */
-    public Optional<Output<String>> rule() {
-        return Optional.ofNullable(this.rule);
+    public Output<String> rule() {
+        return this.rule;
     }
 
     /**
@@ -230,7 +230,7 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder routeEnable(@Nullable Output<String> routeEnable) {
+        public Builder routeEnable(Output<String> routeEnable) {
             $.routeEnable = routeEnable;
             return this;
         }
@@ -253,7 +253,7 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder routeName(@Nullable Output<String> routeName) {
+        public Builder routeName(Output<String> routeName) {
             $.routeName = routeName;
             return this;
         }
@@ -295,7 +295,7 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder rule(@Nullable Output<String> rule) {
+        public Builder rule(Output<String> rule) {
             $.rule = rule;
             return this;
         }
@@ -353,8 +353,17 @@ public final class RoutineRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RoutineRouteArgs build() {
+            if ($.routeEnable == null) {
+                throw new MissingRequiredPropertyException("RoutineRouteArgs", "routeEnable");
+            }
+            if ($.routeName == null) {
+                throw new MissingRequiredPropertyException("RoutineRouteArgs", "routeName");
+            }
             if ($.routineName == null) {
                 throw new MissingRequiredPropertyException("RoutineRouteArgs", "routineName");
+            }
+            if ($.rule == null) {
+                throw new MissingRequiredPropertyException("RoutineRouteArgs", "rule");
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("RoutineRouteArgs", "siteId");

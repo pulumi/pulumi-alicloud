@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string Domain;
         /// <summary>
+        /// The numeric domain ID assigned by WAF. Populated only when `EnableDetails` is `True`.
+        /// </summary>
+        public readonly string DomainId;
+        /// <summary>
         /// The ID of the domain. It formats as `&lt;instance_id&gt;:&lt;domain&gt;`.
         /// </summary>
         public readonly string Id;
@@ -48,6 +52,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             string domain,
 
+            string domainId,
+
             string id,
 
             ImmutableArray<Outputs.GetDomainsDomainListenResult> listens,
@@ -60,6 +66,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         {
             Cname = cname;
             Domain = domain;
+            DomainId = domainId;
             Id = id;
             Listens = listens;
             Redirects = redirects;
