@@ -92,14 +92,14 @@ public final class TransportLayerApplicationRuleArgs extends com.pulumi.resource
     }
 
     /**
-     * Rule ID
+     * Rule ID.
      * 
      */
     @Import(name="ruleId")
     private @Nullable Output<Integer> ruleId;
 
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     public Optional<Output<Integer>> ruleId() {
@@ -281,7 +281,7 @@ public final class TransportLayerApplicationRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ruleId Rule ID
+         * @param ruleId Rule ID.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class TransportLayerApplicationRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ruleId Rule ID
+         * @param ruleId Rule ID.
          * 
          * @return builder
          * 

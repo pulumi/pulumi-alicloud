@@ -11,8 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.139.0.
  *
- * > **NOTE:** Deprecated since v1.269.0.
- *
  * > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
  *
  * ## Example Usage
@@ -86,6 +84,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly accountNumber: pulumi.Output<number | undefined>;
     /**
+     * Internet asset protection switch. Valid values: `true`, `false`.
+     */
+    declare public readonly autoAssetProtection: pulumi.Output<string>;
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
     declare public readonly bandWidth: pulumi.Output<number | undefined>;
@@ -122,7 +124,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly ipNumber: pulumi.Output<number>;
     /**
-     * The logistics.
+     * The logistics address of this order. The parameter is immutable after resource creation.
      */
     declare public readonly logistics: pulumi.Output<string | undefined>;
     /**
@@ -191,6 +193,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["accountNumber"] = state?.accountNumber;
+            resourceInputs["autoAssetProtection"] = state?.autoAssetProtection;
             resourceInputs["bandWidth"] = state?.bandWidth;
             resourceInputs["cfwAccount"] = state?.cfwAccount;
             resourceInputs["cfwLog"] = state?.cfwLog;
@@ -218,6 +221,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'paymentType'");
             }
             resourceInputs["accountNumber"] = args?.accountNumber;
+            resourceInputs["autoAssetProtection"] = args?.autoAssetProtection;
             resourceInputs["bandWidth"] = args?.bandWidth;
             resourceInputs["cfwAccount"] = args?.cfwAccount;
             resourceInputs["cfwLog"] = args?.cfwLog;
@@ -253,6 +257,10 @@ export interface InstanceState {
      * The number of multi account. It will be ignored when `cfwAccount = false`.
      */
     accountNumber?: pulumi.Input<number | undefined>;
+    /**
+     * Internet asset protection switch. Valid values: `true`, `false`.
+     */
+    autoAssetProtection?: pulumi.Input<string | undefined>;
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
@@ -290,7 +298,7 @@ export interface InstanceState {
      */
     ipNumber?: pulumi.Input<number | undefined>;
     /**
-     * The logistics.
+     * The logistics address of this order. The parameter is immutable after resource creation.
      */
     logistics?: pulumi.Input<string | undefined>;
     /**
@@ -355,6 +363,10 @@ export interface InstanceArgs {
      */
     accountNumber?: pulumi.Input<number | undefined>;
     /**
+     * Internet asset protection switch. Valid values: `true`, `false`.
+     */
+    autoAssetProtection?: pulumi.Input<string | undefined>;
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
     bandWidth?: pulumi.Input<number | undefined>;
@@ -383,7 +395,7 @@ export interface InstanceArgs {
      */
     ipNumber?: pulumi.Input<number | undefined>;
     /**
-     * The logistics.
+     * The logistics address of this order. The parameter is immutable after resource creation.
      */
     logistics?: pulumi.Input<string | undefined>;
     /**

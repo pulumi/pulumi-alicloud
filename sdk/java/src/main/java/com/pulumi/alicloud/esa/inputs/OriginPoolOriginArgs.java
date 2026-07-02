@@ -79,6 +79,21 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+     * 
+     */
+    @Import(name="ipVersionPolicy")
+    private @Nullable Output<String> ipVersionPolicy;
+
+    /**
+     * @return The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> ipVersionPolicy() {
+        return Optional.ofNullable(this.ipVersionPolicy);
+    }
+
+    /**
      * Origin Name.
      * 
      */
@@ -109,20 +124,14 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Source station type:
-     * ip_domain: ip or domain name type origin station;
-     * - `OSS`:OSS address source station;
-     * - `S3`:AWS S3 Source station.
+     * The type of the origin. Valid values:
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Source station type:
-     * ip_domain: ip or domain name type origin station;
-     * - `OSS`:OSS address source station;
-     * - `S3`:AWS S3 Source station.
+     * @return The type of the origin. Valid values:
      * 
      */
     public Optional<Output<String>> type() {
@@ -151,6 +160,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
         this.authConf = $.authConf;
         this.enabled = $.enabled;
         this.header = $.header;
+        this.ipVersionPolicy = $.ipVersionPolicy;
         this.name = $.name;
         this.originId = $.originId;
         this.type = $.type;
@@ -260,6 +270,27 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param ipVersionPolicy The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersionPolicy(@Nullable Output<String> ipVersionPolicy) {
+            $.ipVersionPolicy = ipVersionPolicy;
+            return this;
+        }
+
+        /**
+         * @param ipVersionPolicy The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersionPolicy(String ipVersionPolicy) {
+            return ipVersionPolicy(Output.of(ipVersionPolicy));
+        }
+
+        /**
          * @param name Origin Name.
          * 
          * @return builder
@@ -302,10 +333,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * @param type The type of the origin. Valid values:
          * 
          * @return builder
          * 
@@ -316,10 +344,7 @@ public final class OriginPoolOriginArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param type Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * @param type The type of the origin. Valid values:
          * 
          * @return builder
          * 

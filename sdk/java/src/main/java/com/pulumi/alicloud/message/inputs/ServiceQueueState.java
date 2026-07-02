@@ -140,6 +140,21 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The type of the queue. Default value: `normal`. Valid values:
+     * 
+     */
+    @Import(name="queueType")
+    private @Nullable Output<String> queueType;
+
+    /**
+     * @return The type of the queue. Default value: `normal`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> queueType() {
+        return Optional.ofNullable(this.queueType);
+    }
+
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */
@@ -180,6 +195,7 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
         this.messageRetentionPeriod = $.messageRetentionPeriod;
         this.pollingWaitSeconds = $.pollingWaitSeconds;
         this.queueName = $.queueName;
+        this.queueType = $.queueType;
         this.tags = $.tags;
         this.visibilityTimeout = $.visibilityTimeout;
     }
@@ -368,6 +384,27 @@ public final class ServiceQueueState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder queueName(String queueName) {
             return queueName(Output.of(queueName));
+        }
+
+        /**
+         * @param queueType The type of the queue. Default value: `normal`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueType(@Nullable Output<String> queueType) {
+            $.queueType = queueType;
+            return this;
+        }
+
+        /**
+         * @param queueType The type of the queue. Default value: `normal`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueType(String queueType) {
+            return queueType(Output.of(queueType));
         }
 
         /**

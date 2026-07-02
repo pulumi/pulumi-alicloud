@@ -3578,11 +3578,1959 @@ func (o DomainRedirectRequestHeaderArrayOutput) Index(i pulumi.IntInput) DomainR
 	}).(DomainRedirectRequestHeaderOutput)
 }
 
+type GetAddressBooksBook struct {
+	// The ID of the Address Book.
+	AddressBookId string `pulumi:"addressBookId"`
+	// The name of the Address Book.
+	AddressBookName string `pulumi:"addressBookName"`
+	// The type of the Address Book. Valid values: `ip`.
+	AddressBookType string `pulumi:"addressBookType"`
+	// The address list of the Address Book. **NOTE:** This field is only available when `enableDetails` is `true`.
+	AddressLists []string `pulumi:"addressLists"`
+	// The description of the Address Book.
+	Description string `pulumi:"description"`
+	// The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+	Id string `pulumi:"id"`
+}
+
+// GetAddressBooksBookInput is an input type that accepts GetAddressBooksBookArgs and GetAddressBooksBookOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookInput` via:
+//
+//	GetAddressBooksBookArgs{...}
+type GetAddressBooksBookInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookOutput() GetAddressBooksBookOutput
+	ToGetAddressBooksBookOutputWithContext(context.Context) GetAddressBooksBookOutput
+}
+
+type GetAddressBooksBookArgs struct {
+	// The ID of the Address Book.
+	AddressBookId pulumi.StringInput `pulumi:"addressBookId"`
+	// The name of the Address Book.
+	AddressBookName pulumi.StringInput `pulumi:"addressBookName"`
+	// The type of the Address Book. Valid values: `ip`.
+	AddressBookType pulumi.StringInput `pulumi:"addressBookType"`
+	// The address list of the Address Book. **NOTE:** This field is only available when `enableDetails` is `true`.
+	AddressLists pulumi.StringArrayInput `pulumi:"addressLists"`
+	// The description of the Address Book.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetAddressBooksBookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBook)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookArgs) ToGetAddressBooksBookOutput() GetAddressBooksBookOutput {
+	return i.ToGetAddressBooksBookOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookArgs) ToGetAddressBooksBookOutputWithContext(ctx context.Context) GetAddressBooksBookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookOutput)
+}
+
+// GetAddressBooksBookArrayInput is an input type that accepts GetAddressBooksBookArray and GetAddressBooksBookArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookArrayInput` via:
+//
+//	GetAddressBooksBookArray{ GetAddressBooksBookArgs{...} }
+type GetAddressBooksBookArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookArrayOutput() GetAddressBooksBookArrayOutput
+	ToGetAddressBooksBookArrayOutputWithContext(context.Context) GetAddressBooksBookArrayOutput
+}
+
+type GetAddressBooksBookArray []GetAddressBooksBookInput
+
+func (GetAddressBooksBookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBook)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookArray) ToGetAddressBooksBookArrayOutput() GetAddressBooksBookArrayOutput {
+	return i.ToGetAddressBooksBookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookArray) ToGetAddressBooksBookArrayOutputWithContext(ctx context.Context) GetAddressBooksBookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookArrayOutput)
+}
+
+type GetAddressBooksBookOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBook)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutput() GetAddressBooksBookOutput {
+	return o
+}
+
+func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutputWithContext(ctx context.Context) GetAddressBooksBookOutput {
+	return o
+}
+
+// The ID of the Address Book.
+func (o GetAddressBooksBookOutput) AddressBookId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.AddressBookId }).(pulumi.StringOutput)
+}
+
+// The name of the Address Book.
+func (o GetAddressBooksBookOutput) AddressBookName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.AddressBookName }).(pulumi.StringOutput)
+}
+
+// The type of the Address Book. Valid values: `ip`.
+func (o GetAddressBooksBookOutput) AddressBookType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.AddressBookType }).(pulumi.StringOutput)
+}
+
+// The address list of the Address Book. **NOTE:** This field is only available when `enableDetails` is `true`.
+func (o GetAddressBooksBookOutput) AddressLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) []string { return v.AddressLists }).(pulumi.StringArrayOutput)
+}
+
+// The description of the Address Book.
+func (o GetAddressBooksBookOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+func (o GetAddressBooksBookOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetAddressBooksBookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBook)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookArrayOutput) ToGetAddressBooksBookArrayOutput() GetAddressBooksBookArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookArrayOutput) ToGetAddressBooksBookArrayOutputWithContext(ctx context.Context) GetAddressBooksBookArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBook {
+		return vs[0].([]GetAddressBooksBook)[vs[1].(int)]
+	}).(GetAddressBooksBookOutput)
+}
+
+type GetDefenseRulesRule struct {
+	// Rule configuration content, in JSON format, constructed with a series of parameters.
+	Configs []GetDefenseRulesRuleConfig `pulumi:"configs"`
+	// Sources of protection.
+	DefenseOrigin string `pulumi:"defenseOrigin"`
+	// The WAF protection scenario to be created.
+	DefenseScene string `pulumi:"defenseScene"`
+	// The protection rule type. Value:
+	DefenseType string `pulumi:"defenseType"`
+	// The modification time of the protection rule.
+	GmtModified string `pulumi:"gmtModified"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// The protection object corresponding to the rule to be queried.
+	Resource string `pulumi:"resource"`
+	// The protection rule ID.
+	RuleId int `pulumi:"ruleId"`
+	// The rule name.
+	RuleName string `pulumi:"ruleName"`
+	// Protection rule status.
+	RuleStatus int `pulumi:"ruleStatus"`
+	// The protection template ID of the protection rule to be created.
+	TemplateId int `pulumi:"templateId"`
+}
+
+// GetDefenseRulesRuleInput is an input type that accepts GetDefenseRulesRuleArgs and GetDefenseRulesRuleOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleInput` via:
+//
+//	GetDefenseRulesRuleArgs{...}
+type GetDefenseRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleOutput() GetDefenseRulesRuleOutput
+	ToGetDefenseRulesRuleOutputWithContext(context.Context) GetDefenseRulesRuleOutput
+}
+
+type GetDefenseRulesRuleArgs struct {
+	// Rule configuration content, in JSON format, constructed with a series of parameters.
+	Configs GetDefenseRulesRuleConfigArrayInput `pulumi:"configs"`
+	// Sources of protection.
+	DefenseOrigin pulumi.StringInput `pulumi:"defenseOrigin"`
+	// The WAF protection scenario to be created.
+	DefenseScene pulumi.StringInput `pulumi:"defenseScene"`
+	// The protection rule type. Value:
+	DefenseType pulumi.StringInput `pulumi:"defenseType"`
+	// The modification time of the protection rule.
+	GmtModified pulumi.StringInput `pulumi:"gmtModified"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The protection object corresponding to the rule to be queried.
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// The protection rule ID.
+	RuleId pulumi.IntInput `pulumi:"ruleId"`
+	// The rule name.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	// Protection rule status.
+	RuleStatus pulumi.IntInput `pulumi:"ruleStatus"`
+	// The protection template ID of the protection rule to be created.
+	TemplateId pulumi.IntInput `pulumi:"templateId"`
+}
+
+func (GetDefenseRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRule)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleArgs) ToGetDefenseRulesRuleOutput() GetDefenseRulesRuleOutput {
+	return i.ToGetDefenseRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleArgs) ToGetDefenseRulesRuleOutputWithContext(ctx context.Context) GetDefenseRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleOutput)
+}
+
+// GetDefenseRulesRuleArrayInput is an input type that accepts GetDefenseRulesRuleArray and GetDefenseRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleArrayInput` via:
+//
+//	GetDefenseRulesRuleArray{ GetDefenseRulesRuleArgs{...} }
+type GetDefenseRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleArrayOutput() GetDefenseRulesRuleArrayOutput
+	ToGetDefenseRulesRuleArrayOutputWithContext(context.Context) GetDefenseRulesRuleArrayOutput
+}
+
+type GetDefenseRulesRuleArray []GetDefenseRulesRuleInput
+
+func (GetDefenseRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRule)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleArray) ToGetDefenseRulesRuleArrayOutput() GetDefenseRulesRuleArrayOutput {
+	return i.ToGetDefenseRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleArray) ToGetDefenseRulesRuleArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleArrayOutput)
+}
+
+type GetDefenseRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRule)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleOutput) ToGetDefenseRulesRuleOutput() GetDefenseRulesRuleOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleOutput) ToGetDefenseRulesRuleOutputWithContext(ctx context.Context) GetDefenseRulesRuleOutput {
+	return o
+}
+
+// Rule configuration content, in JSON format, constructed with a series of parameters.
+func (o GetDefenseRulesRuleOutput) Configs() GetDefenseRulesRuleConfigArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) []GetDefenseRulesRuleConfig { return v.Configs }).(GetDefenseRulesRuleConfigArrayOutput)
+}
+
+// Sources of protection.
+func (o GetDefenseRulesRuleOutput) DefenseOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.DefenseOrigin }).(pulumi.StringOutput)
+}
+
+// The WAF protection scenario to be created.
+func (o GetDefenseRulesRuleOutput) DefenseScene() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.DefenseScene }).(pulumi.StringOutput)
+}
+
+// The protection rule type. Value:
+func (o GetDefenseRulesRuleOutput) DefenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.DefenseType }).(pulumi.StringOutput)
+}
+
+// The modification time of the protection rule.
+func (o GetDefenseRulesRuleOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.GmtModified }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetDefenseRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The protection object corresponding to the rule to be queried.
+func (o GetDefenseRulesRuleOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// The protection rule ID.
+func (o GetDefenseRulesRuleOutput) RuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) int { return v.RuleId }).(pulumi.IntOutput)
+}
+
+// The rule name.
+func (o GetDefenseRulesRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) string { return v.RuleName }).(pulumi.StringOutput)
+}
+
+// Protection rule status.
+func (o GetDefenseRulesRuleOutput) RuleStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) int { return v.RuleStatus }).(pulumi.IntOutput)
+}
+
+// The protection template ID of the protection rule to be created.
+func (o GetDefenseRulesRuleOutput) TemplateId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRule) int { return v.TemplateId }).(pulumi.IntOutput)
+}
+
+type GetDefenseRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRule)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleArrayOutput) ToGetDefenseRulesRuleArrayOutput() GetDefenseRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleArrayOutput) ToGetDefenseRulesRuleArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRule {
+		return vs[0].([]GetDefenseRulesRule)[vs[1].(int)]
+	}).(GetDefenseRulesRuleOutput)
+}
+
+type GetDefenseRulesRuleConfig struct {
+	// The regions outside China from which you want to block requests.
+	AbroadRegions string `pulumi:"abroadRegions"`
+	// The policies for account extraction.
+	AccountIdentifiers []GetDefenseRulesRuleConfigAccountIdentifier `pulumi:"accountIdentifiers"`
+	// Whether the new Web core protection rules are automatically updated.
+	AutoUpdate bool `pulumi:"autoUpdate"`
+	// The list of regular rule IDs that are not detected.
+	BypassRegularRules []string `pulumi:"bypassRegularRules"`
+	// The regular rule type is not detected.
+	BypassRegularTypes []string `pulumi:"bypassRegularTypes"`
+	// The modules to which the whitelist applies.
+	BypassTags []string `pulumi:"bypassTags"`
+	// Set the effective range of the speed limit.
+	CcEffect string `pulumi:"ccEffect"`
+	// Whether to open the speed limit.
+	CcStatus int `pulumi:"ccStatus"`
+	// The regions in China from which you want to block requests.
+	CnRegions string `pulumi:"cnRegions"`
+	// The type to enable decoding.
+	CodecLists []string `pulumi:"codecLists"`
+	// The traffic characteristics of ACL, which are described in JSON format.
+	Conditions []GetDefenseRulesRuleConfigCondition `pulumi:"conditions"`
+	// The canary release configuration for the rule.
+	GrayConfigs []GetDefenseRulesRuleConfigGrayConfig `pulumi:"grayConfigs"`
+	// Specifies whether to enable canary release for the rule.
+	GrayStatus int `pulumi:"grayStatus"`
+	// The HTTP flood protection mode.
+	Mode int `pulumi:"mode"`
+	// The protocol type of the cached page address.
+	Protocol string `pulumi:"protocol"`
+	// The detailed speed limit configuration, which is described in the JSON string format.
+	RateLimits []GetDefenseRulesRuleConfigRateLimit `pulumi:"rateLimits"`
+	// The IP addresses that you want to add to the blacklist.
+	RemoteAddrs []string `pulumi:"remoteAddrs"`
+	// Web core protection rule action.
+	RuleAction string `pulumi:"ruleAction"`
+	// The throttling threshold.
+	ThrottleThrehold int `pulumi:"throttleThrehold"`
+	// The throttling method.
+	ThrottleType string `pulumi:"throttleType"`
+	// The scheduled rule configuration.
+	TimeConfigs []GetDefenseRulesRuleConfigTimeConfig `pulumi:"timeConfigs"`
+	// The User-Agent string that is allowed for access to the address.
+	Ua string `pulumi:"ua"`
+	// The address of the cached page.
+	Url string `pulumi:"url"`
+	// The configuration of the Web core protection rules to be modified.
+	WafBaseConfigs []GetDefenseRulesRuleConfigWafBaseConfig `pulumi:"wafBaseConfigs"`
+}
+
+// GetDefenseRulesRuleConfigInput is an input type that accepts GetDefenseRulesRuleConfigArgs and GetDefenseRulesRuleConfigOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigInput` via:
+//
+//	GetDefenseRulesRuleConfigArgs{...}
+type GetDefenseRulesRuleConfigInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigOutput() GetDefenseRulesRuleConfigOutput
+	ToGetDefenseRulesRuleConfigOutputWithContext(context.Context) GetDefenseRulesRuleConfigOutput
+}
+
+type GetDefenseRulesRuleConfigArgs struct {
+	// The regions outside China from which you want to block requests.
+	AbroadRegions pulumi.StringInput `pulumi:"abroadRegions"`
+	// The policies for account extraction.
+	AccountIdentifiers GetDefenseRulesRuleConfigAccountIdentifierArrayInput `pulumi:"accountIdentifiers"`
+	// Whether the new Web core protection rules are automatically updated.
+	AutoUpdate pulumi.BoolInput `pulumi:"autoUpdate"`
+	// The list of regular rule IDs that are not detected.
+	BypassRegularRules pulumi.StringArrayInput `pulumi:"bypassRegularRules"`
+	// The regular rule type is not detected.
+	BypassRegularTypes pulumi.StringArrayInput `pulumi:"bypassRegularTypes"`
+	// The modules to which the whitelist applies.
+	BypassTags pulumi.StringArrayInput `pulumi:"bypassTags"`
+	// Set the effective range of the speed limit.
+	CcEffect pulumi.StringInput `pulumi:"ccEffect"`
+	// Whether to open the speed limit.
+	CcStatus pulumi.IntInput `pulumi:"ccStatus"`
+	// The regions in China from which you want to block requests.
+	CnRegions pulumi.StringInput `pulumi:"cnRegions"`
+	// The type to enable decoding.
+	CodecLists pulumi.StringArrayInput `pulumi:"codecLists"`
+	// The traffic characteristics of ACL, which are described in JSON format.
+	Conditions GetDefenseRulesRuleConfigConditionArrayInput `pulumi:"conditions"`
+	// The canary release configuration for the rule.
+	GrayConfigs GetDefenseRulesRuleConfigGrayConfigArrayInput `pulumi:"grayConfigs"`
+	// Specifies whether to enable canary release for the rule.
+	GrayStatus pulumi.IntInput `pulumi:"grayStatus"`
+	// The HTTP flood protection mode.
+	Mode pulumi.IntInput `pulumi:"mode"`
+	// The protocol type of the cached page address.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The detailed speed limit configuration, which is described in the JSON string format.
+	RateLimits GetDefenseRulesRuleConfigRateLimitArrayInput `pulumi:"rateLimits"`
+	// The IP addresses that you want to add to the blacklist.
+	RemoteAddrs pulumi.StringArrayInput `pulumi:"remoteAddrs"`
+	// Web core protection rule action.
+	RuleAction pulumi.StringInput `pulumi:"ruleAction"`
+	// The throttling threshold.
+	ThrottleThrehold pulumi.IntInput `pulumi:"throttleThrehold"`
+	// The throttling method.
+	ThrottleType pulumi.StringInput `pulumi:"throttleType"`
+	// The scheduled rule configuration.
+	TimeConfigs GetDefenseRulesRuleConfigTimeConfigArrayInput `pulumi:"timeConfigs"`
+	// The User-Agent string that is allowed for access to the address.
+	Ua pulumi.StringInput `pulumi:"ua"`
+	// The address of the cached page.
+	Url pulumi.StringInput `pulumi:"url"`
+	// The configuration of the Web core protection rules to be modified.
+	WafBaseConfigs GetDefenseRulesRuleConfigWafBaseConfigArrayInput `pulumi:"wafBaseConfigs"`
+}
+
+func (GetDefenseRulesRuleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigArgs) ToGetDefenseRulesRuleConfigOutput() GetDefenseRulesRuleConfigOutput {
+	return i.ToGetDefenseRulesRuleConfigOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigArgs) ToGetDefenseRulesRuleConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigOutput)
+}
+
+// GetDefenseRulesRuleConfigArrayInput is an input type that accepts GetDefenseRulesRuleConfigArray and GetDefenseRulesRuleConfigArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigArray{ GetDefenseRulesRuleConfigArgs{...} }
+type GetDefenseRulesRuleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigArrayOutput() GetDefenseRulesRuleConfigArrayOutput
+	ToGetDefenseRulesRuleConfigArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigArrayOutput
+}
+
+type GetDefenseRulesRuleConfigArray []GetDefenseRulesRuleConfigInput
+
+func (GetDefenseRulesRuleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigArray) ToGetDefenseRulesRuleConfigArrayOutput() GetDefenseRulesRuleConfigArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigArray) ToGetDefenseRulesRuleConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigOutput) ToGetDefenseRulesRuleConfigOutput() GetDefenseRulesRuleConfigOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigOutput) ToGetDefenseRulesRuleConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigOutput {
+	return o
+}
+
+// The regions outside China from which you want to block requests.
+func (o GetDefenseRulesRuleConfigOutput) AbroadRegions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.AbroadRegions }).(pulumi.StringOutput)
+}
+
+// The policies for account extraction.
+func (o GetDefenseRulesRuleConfigOutput) AccountIdentifiers() GetDefenseRulesRuleConfigAccountIdentifierArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []GetDefenseRulesRuleConfigAccountIdentifier {
+		return v.AccountIdentifiers
+	}).(GetDefenseRulesRuleConfigAccountIdentifierArrayOutput)
+}
+
+// Whether the new Web core protection rules are automatically updated.
+func (o GetDefenseRulesRuleConfigOutput) AutoUpdate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) bool { return v.AutoUpdate }).(pulumi.BoolOutput)
+}
+
+// The list of regular rule IDs that are not detected.
+func (o GetDefenseRulesRuleConfigOutput) BypassRegularRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []string { return v.BypassRegularRules }).(pulumi.StringArrayOutput)
+}
+
+// The regular rule type is not detected.
+func (o GetDefenseRulesRuleConfigOutput) BypassRegularTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []string { return v.BypassRegularTypes }).(pulumi.StringArrayOutput)
+}
+
+// The modules to which the whitelist applies.
+func (o GetDefenseRulesRuleConfigOutput) BypassTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []string { return v.BypassTags }).(pulumi.StringArrayOutput)
+}
+
+// Set the effective range of the speed limit.
+func (o GetDefenseRulesRuleConfigOutput) CcEffect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.CcEffect }).(pulumi.StringOutput)
+}
+
+// Whether to open the speed limit.
+func (o GetDefenseRulesRuleConfigOutput) CcStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) int { return v.CcStatus }).(pulumi.IntOutput)
+}
+
+// The regions in China from which you want to block requests.
+func (o GetDefenseRulesRuleConfigOutput) CnRegions() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.CnRegions }).(pulumi.StringOutput)
+}
+
+// The type to enable decoding.
+func (o GetDefenseRulesRuleConfigOutput) CodecLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []string { return v.CodecLists }).(pulumi.StringArrayOutput)
+}
+
+// The traffic characteristics of ACL, which are described in JSON format.
+func (o GetDefenseRulesRuleConfigOutput) Conditions() GetDefenseRulesRuleConfigConditionArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []GetDefenseRulesRuleConfigCondition { return v.Conditions }).(GetDefenseRulesRuleConfigConditionArrayOutput)
+}
+
+// The canary release configuration for the rule.
+func (o GetDefenseRulesRuleConfigOutput) GrayConfigs() GetDefenseRulesRuleConfigGrayConfigArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []GetDefenseRulesRuleConfigGrayConfig { return v.GrayConfigs }).(GetDefenseRulesRuleConfigGrayConfigArrayOutput)
+}
+
+// Specifies whether to enable canary release for the rule.
+func (o GetDefenseRulesRuleConfigOutput) GrayStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) int { return v.GrayStatus }).(pulumi.IntOutput)
+}
+
+// The HTTP flood protection mode.
+func (o GetDefenseRulesRuleConfigOutput) Mode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) int { return v.Mode }).(pulumi.IntOutput)
+}
+
+// The protocol type of the cached page address.
+func (o GetDefenseRulesRuleConfigOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The detailed speed limit configuration, which is described in the JSON string format.
+func (o GetDefenseRulesRuleConfigOutput) RateLimits() GetDefenseRulesRuleConfigRateLimitArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []GetDefenseRulesRuleConfigRateLimit { return v.RateLimits }).(GetDefenseRulesRuleConfigRateLimitArrayOutput)
+}
+
+// The IP addresses that you want to add to the blacklist.
+func (o GetDefenseRulesRuleConfigOutput) RemoteAddrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []string { return v.RemoteAddrs }).(pulumi.StringArrayOutput)
+}
+
+// Web core protection rule action.
+func (o GetDefenseRulesRuleConfigOutput) RuleAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.RuleAction }).(pulumi.StringOutput)
+}
+
+// The throttling threshold.
+func (o GetDefenseRulesRuleConfigOutput) ThrottleThrehold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) int { return v.ThrottleThrehold }).(pulumi.IntOutput)
+}
+
+// The throttling method.
+func (o GetDefenseRulesRuleConfigOutput) ThrottleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.ThrottleType }).(pulumi.StringOutput)
+}
+
+// The scheduled rule configuration.
+func (o GetDefenseRulesRuleConfigOutput) TimeConfigs() GetDefenseRulesRuleConfigTimeConfigArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []GetDefenseRulesRuleConfigTimeConfig { return v.TimeConfigs }).(GetDefenseRulesRuleConfigTimeConfigArrayOutput)
+}
+
+// The User-Agent string that is allowed for access to the address.
+func (o GetDefenseRulesRuleConfigOutput) Ua() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.Ua }).(pulumi.StringOutput)
+}
+
+// The address of the cached page.
+func (o GetDefenseRulesRuleConfigOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// The configuration of the Web core protection rules to be modified.
+func (o GetDefenseRulesRuleConfigOutput) WafBaseConfigs() GetDefenseRulesRuleConfigWafBaseConfigArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfig) []GetDefenseRulesRuleConfigWafBaseConfig { return v.WafBaseConfigs }).(GetDefenseRulesRuleConfigWafBaseConfigArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigArrayOutput) ToGetDefenseRulesRuleConfigArrayOutput() GetDefenseRulesRuleConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigArrayOutput) ToGetDefenseRulesRuleConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfig {
+		return vs[0].([]GetDefenseRulesRuleConfig)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigOutput)
+}
+
+type GetDefenseRulesRuleConfigAccountIdentifier struct {
+	// The authentication mode.
+	DecodeType string `pulumi:"decodeType"`
+	// Match field.
+	Key string `pulumi:"key"`
+	// The field that stores the decoded account information.
+	Position string `pulumi:"position"`
+	// The priority of the current extraction configuration.
+	Priority int `pulumi:"priority"`
+	// The characteristics of the statistical object.
+	SubKey string `pulumi:"subKey"`
+}
+
+// GetDefenseRulesRuleConfigAccountIdentifierInput is an input type that accepts GetDefenseRulesRuleConfigAccountIdentifierArgs and GetDefenseRulesRuleConfigAccountIdentifierOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigAccountIdentifierInput` via:
+//
+//	GetDefenseRulesRuleConfigAccountIdentifierArgs{...}
+type GetDefenseRulesRuleConfigAccountIdentifierInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigAccountIdentifierOutput() GetDefenseRulesRuleConfigAccountIdentifierOutput
+	ToGetDefenseRulesRuleConfigAccountIdentifierOutputWithContext(context.Context) GetDefenseRulesRuleConfigAccountIdentifierOutput
+}
+
+type GetDefenseRulesRuleConfigAccountIdentifierArgs struct {
+	// The authentication mode.
+	DecodeType pulumi.StringInput `pulumi:"decodeType"`
+	// Match field.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The field that stores the decoded account information.
+	Position pulumi.StringInput `pulumi:"position"`
+	// The priority of the current extraction configuration.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The characteristics of the statistical object.
+	SubKey pulumi.StringInput `pulumi:"subKey"`
+}
+
+func (GetDefenseRulesRuleConfigAccountIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigAccountIdentifierArgs) ToGetDefenseRulesRuleConfigAccountIdentifierOutput() GetDefenseRulesRuleConfigAccountIdentifierOutput {
+	return i.ToGetDefenseRulesRuleConfigAccountIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigAccountIdentifierArgs) ToGetDefenseRulesRuleConfigAccountIdentifierOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigAccountIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigAccountIdentifierOutput)
+}
+
+// GetDefenseRulesRuleConfigAccountIdentifierArrayInput is an input type that accepts GetDefenseRulesRuleConfigAccountIdentifierArray and GetDefenseRulesRuleConfigAccountIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigAccountIdentifierArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigAccountIdentifierArray{ GetDefenseRulesRuleConfigAccountIdentifierArgs{...} }
+type GetDefenseRulesRuleConfigAccountIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutput() GetDefenseRulesRuleConfigAccountIdentifierArrayOutput
+	ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigAccountIdentifierArrayOutput
+}
+
+type GetDefenseRulesRuleConfigAccountIdentifierArray []GetDefenseRulesRuleConfigAccountIdentifierInput
+
+func (GetDefenseRulesRuleConfigAccountIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigAccountIdentifierArray) ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutput() GetDefenseRulesRuleConfigAccountIdentifierArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigAccountIdentifierArray) ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigAccountIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigAccountIdentifierArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigAccountIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigAccountIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) ToGetDefenseRulesRuleConfigAccountIdentifierOutput() GetDefenseRulesRuleConfigAccountIdentifierOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) ToGetDefenseRulesRuleConfigAccountIdentifierOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigAccountIdentifierOutput {
+	return o
+}
+
+// The authentication mode.
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) DecodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigAccountIdentifier) string { return v.DecodeType }).(pulumi.StringOutput)
+}
+
+// Match field.
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigAccountIdentifier) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The field that stores the decoded account information.
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) Position() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigAccountIdentifier) string { return v.Position }).(pulumi.StringOutput)
+}
+
+// The priority of the current extraction configuration.
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigAccountIdentifier) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The characteristics of the statistical object.
+func (o GetDefenseRulesRuleConfigAccountIdentifierOutput) SubKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigAccountIdentifier) string { return v.SubKey }).(pulumi.StringOutput)
+}
+
+type GetDefenseRulesRuleConfigAccountIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigAccountIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigAccountIdentifier)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigAccountIdentifierArrayOutput) ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutput() GetDefenseRulesRuleConfigAccountIdentifierArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigAccountIdentifierArrayOutput) ToGetDefenseRulesRuleConfigAccountIdentifierArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigAccountIdentifierArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigAccountIdentifierArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigAccountIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigAccountIdentifier {
+		return vs[0].([]GetDefenseRulesRuleConfigAccountIdentifier)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigAccountIdentifierOutput)
+}
+
+type GetDefenseRulesRuleConfigCondition struct {
+	// Match field.
+	Key string `pulumi:"key"`
+	// Logical character.
+	OpValue string `pulumi:"opValue"`
+	// The characteristics of the statistical object.
+	SubKey string `pulumi:"subKey"`
+	// Match the content and fill in the corresponding content as needed.
+	Values string `pulumi:"values"`
+}
+
+// GetDefenseRulesRuleConfigConditionInput is an input type that accepts GetDefenseRulesRuleConfigConditionArgs and GetDefenseRulesRuleConfigConditionOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigConditionInput` via:
+//
+//	GetDefenseRulesRuleConfigConditionArgs{...}
+type GetDefenseRulesRuleConfigConditionInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigConditionOutput() GetDefenseRulesRuleConfigConditionOutput
+	ToGetDefenseRulesRuleConfigConditionOutputWithContext(context.Context) GetDefenseRulesRuleConfigConditionOutput
+}
+
+type GetDefenseRulesRuleConfigConditionArgs struct {
+	// Match field.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Logical character.
+	OpValue pulumi.StringInput `pulumi:"opValue"`
+	// The characteristics of the statistical object.
+	SubKey pulumi.StringInput `pulumi:"subKey"`
+	// Match the content and fill in the corresponding content as needed.
+	Values pulumi.StringInput `pulumi:"values"`
+}
+
+func (GetDefenseRulesRuleConfigConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigCondition)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigConditionArgs) ToGetDefenseRulesRuleConfigConditionOutput() GetDefenseRulesRuleConfigConditionOutput {
+	return i.ToGetDefenseRulesRuleConfigConditionOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigConditionArgs) ToGetDefenseRulesRuleConfigConditionOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigConditionOutput)
+}
+
+// GetDefenseRulesRuleConfigConditionArrayInput is an input type that accepts GetDefenseRulesRuleConfigConditionArray and GetDefenseRulesRuleConfigConditionArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigConditionArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigConditionArray{ GetDefenseRulesRuleConfigConditionArgs{...} }
+type GetDefenseRulesRuleConfigConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigConditionArrayOutput() GetDefenseRulesRuleConfigConditionArrayOutput
+	ToGetDefenseRulesRuleConfigConditionArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigConditionArrayOutput
+}
+
+type GetDefenseRulesRuleConfigConditionArray []GetDefenseRulesRuleConfigConditionInput
+
+func (GetDefenseRulesRuleConfigConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigCondition)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigConditionArray) ToGetDefenseRulesRuleConfigConditionArrayOutput() GetDefenseRulesRuleConfigConditionArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigConditionArray) ToGetDefenseRulesRuleConfigConditionArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigConditionArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigConditionOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigCondition)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigConditionOutput) ToGetDefenseRulesRuleConfigConditionOutput() GetDefenseRulesRuleConfigConditionOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigConditionOutput) ToGetDefenseRulesRuleConfigConditionOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigConditionOutput {
+	return o
+}
+
+// Match field.
+func (o GetDefenseRulesRuleConfigConditionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigCondition) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Logical character.
+func (o GetDefenseRulesRuleConfigConditionOutput) OpValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigCondition) string { return v.OpValue }).(pulumi.StringOutput)
+}
+
+// The characteristics of the statistical object.
+func (o GetDefenseRulesRuleConfigConditionOutput) SubKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigCondition) string { return v.SubKey }).(pulumi.StringOutput)
+}
+
+// Match the content and fill in the corresponding content as needed.
+func (o GetDefenseRulesRuleConfigConditionOutput) Values() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigCondition) string { return v.Values }).(pulumi.StringOutput)
+}
+
+type GetDefenseRulesRuleConfigConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigCondition)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigConditionArrayOutput) ToGetDefenseRulesRuleConfigConditionArrayOutput() GetDefenseRulesRuleConfigConditionArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigConditionArrayOutput) ToGetDefenseRulesRuleConfigConditionArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigConditionArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigConditionArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigCondition {
+		return vs[0].([]GetDefenseRulesRuleConfigCondition)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigConditionOutput)
+}
+
+type GetDefenseRulesRuleConfigGrayConfig struct {
+	// The percentage of traffic for which the canary release takes effect.
+	GrayRate int `pulumi:"grayRate"`
+	// The sub-feature of the statistical object.
+	GraySubKey string `pulumi:"graySubKey"`
+	// The type of the canary release object.
+	GrayTarget string `pulumi:"grayTarget"`
+}
+
+// GetDefenseRulesRuleConfigGrayConfigInput is an input type that accepts GetDefenseRulesRuleConfigGrayConfigArgs and GetDefenseRulesRuleConfigGrayConfigOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigGrayConfigInput` via:
+//
+//	GetDefenseRulesRuleConfigGrayConfigArgs{...}
+type GetDefenseRulesRuleConfigGrayConfigInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigGrayConfigOutput() GetDefenseRulesRuleConfigGrayConfigOutput
+	ToGetDefenseRulesRuleConfigGrayConfigOutputWithContext(context.Context) GetDefenseRulesRuleConfigGrayConfigOutput
+}
+
+type GetDefenseRulesRuleConfigGrayConfigArgs struct {
+	// The percentage of traffic for which the canary release takes effect.
+	GrayRate pulumi.IntInput `pulumi:"grayRate"`
+	// The sub-feature of the statistical object.
+	GraySubKey pulumi.StringInput `pulumi:"graySubKey"`
+	// The type of the canary release object.
+	GrayTarget pulumi.StringInput `pulumi:"grayTarget"`
+}
+
+func (GetDefenseRulesRuleConfigGrayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigGrayConfigArgs) ToGetDefenseRulesRuleConfigGrayConfigOutput() GetDefenseRulesRuleConfigGrayConfigOutput {
+	return i.ToGetDefenseRulesRuleConfigGrayConfigOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigGrayConfigArgs) ToGetDefenseRulesRuleConfigGrayConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigGrayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigGrayConfigOutput)
+}
+
+// GetDefenseRulesRuleConfigGrayConfigArrayInput is an input type that accepts GetDefenseRulesRuleConfigGrayConfigArray and GetDefenseRulesRuleConfigGrayConfigArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigGrayConfigArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigGrayConfigArray{ GetDefenseRulesRuleConfigGrayConfigArgs{...} }
+type GetDefenseRulesRuleConfigGrayConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigGrayConfigArrayOutput() GetDefenseRulesRuleConfigGrayConfigArrayOutput
+	ToGetDefenseRulesRuleConfigGrayConfigArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigGrayConfigArrayOutput
+}
+
+type GetDefenseRulesRuleConfigGrayConfigArray []GetDefenseRulesRuleConfigGrayConfigInput
+
+func (GetDefenseRulesRuleConfigGrayConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigGrayConfigArray) ToGetDefenseRulesRuleConfigGrayConfigArrayOutput() GetDefenseRulesRuleConfigGrayConfigArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigGrayConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigGrayConfigArray) ToGetDefenseRulesRuleConfigGrayConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigGrayConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigGrayConfigArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigGrayConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigGrayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigGrayConfigOutput) ToGetDefenseRulesRuleConfigGrayConfigOutput() GetDefenseRulesRuleConfigGrayConfigOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigGrayConfigOutput) ToGetDefenseRulesRuleConfigGrayConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigGrayConfigOutput {
+	return o
+}
+
+// The percentage of traffic for which the canary release takes effect.
+func (o GetDefenseRulesRuleConfigGrayConfigOutput) GrayRate() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigGrayConfig) int { return v.GrayRate }).(pulumi.IntOutput)
+}
+
+// The sub-feature of the statistical object.
+func (o GetDefenseRulesRuleConfigGrayConfigOutput) GraySubKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigGrayConfig) string { return v.GraySubKey }).(pulumi.StringOutput)
+}
+
+// The type of the canary release object.
+func (o GetDefenseRulesRuleConfigGrayConfigOutput) GrayTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigGrayConfig) string { return v.GrayTarget }).(pulumi.StringOutput)
+}
+
+type GetDefenseRulesRuleConfigGrayConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigGrayConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigGrayConfigArrayOutput) ToGetDefenseRulesRuleConfigGrayConfigArrayOutput() GetDefenseRulesRuleConfigGrayConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigGrayConfigArrayOutput) ToGetDefenseRulesRuleConfigGrayConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigGrayConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigGrayConfigArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigGrayConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigGrayConfig {
+		return vs[0].([]GetDefenseRulesRuleConfigGrayConfig)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigGrayConfigOutput)
+}
+
+type GetDefenseRulesRuleConfigRateLimit struct {
+	// The statistical period, in seconds.
+	Interval int `pulumi:"interval"`
+	// Response code frequency setting.
+	Statuses []GetDefenseRulesRuleConfigRateLimitStatus `pulumi:"statuses"`
+	// The characteristics of the statistical object.
+	SubKey string `pulumi:"subKey"`
+	// The type of the statistical object.
+	Target string `pulumi:"target"`
+	// The maximum number of requests that can be sent from a statistical object.
+	Threshold int `pulumi:"threshold"`
+	// The period of time during which you want the specified action to be valid.
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetDefenseRulesRuleConfigRateLimitInput is an input type that accepts GetDefenseRulesRuleConfigRateLimitArgs and GetDefenseRulesRuleConfigRateLimitOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigRateLimitInput` via:
+//
+//	GetDefenseRulesRuleConfigRateLimitArgs{...}
+type GetDefenseRulesRuleConfigRateLimitInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigRateLimitOutput() GetDefenseRulesRuleConfigRateLimitOutput
+	ToGetDefenseRulesRuleConfigRateLimitOutputWithContext(context.Context) GetDefenseRulesRuleConfigRateLimitOutput
+}
+
+type GetDefenseRulesRuleConfigRateLimitArgs struct {
+	// The statistical period, in seconds.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// Response code frequency setting.
+	Statuses GetDefenseRulesRuleConfigRateLimitStatusArrayInput `pulumi:"statuses"`
+	// The characteristics of the statistical object.
+	SubKey pulumi.StringInput `pulumi:"subKey"`
+	// The type of the statistical object.
+	Target pulumi.StringInput `pulumi:"target"`
+	// The maximum number of requests that can be sent from a statistical object.
+	Threshold pulumi.IntInput `pulumi:"threshold"`
+	// The period of time during which you want the specified action to be valid.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetDefenseRulesRuleConfigRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitArgs) ToGetDefenseRulesRuleConfigRateLimitOutput() GetDefenseRulesRuleConfigRateLimitOutput {
+	return i.ToGetDefenseRulesRuleConfigRateLimitOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitArgs) ToGetDefenseRulesRuleConfigRateLimitOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigRateLimitOutput)
+}
+
+// GetDefenseRulesRuleConfigRateLimitArrayInput is an input type that accepts GetDefenseRulesRuleConfigRateLimitArray and GetDefenseRulesRuleConfigRateLimitArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigRateLimitArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigRateLimitArray{ GetDefenseRulesRuleConfigRateLimitArgs{...} }
+type GetDefenseRulesRuleConfigRateLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigRateLimitArrayOutput() GetDefenseRulesRuleConfigRateLimitArrayOutput
+	ToGetDefenseRulesRuleConfigRateLimitArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigRateLimitArrayOutput
+}
+
+type GetDefenseRulesRuleConfigRateLimitArray []GetDefenseRulesRuleConfigRateLimitInput
+
+func (GetDefenseRulesRuleConfigRateLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitArray) ToGetDefenseRulesRuleConfigRateLimitArrayOutput() GetDefenseRulesRuleConfigRateLimitArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigRateLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitArray) ToGetDefenseRulesRuleConfigRateLimitArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigRateLimitArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigRateLimitOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitOutput) ToGetDefenseRulesRuleConfigRateLimitOutput() GetDefenseRulesRuleConfigRateLimitOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitOutput) ToGetDefenseRulesRuleConfigRateLimitOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitOutput {
+	return o
+}
+
+// The statistical period, in seconds.
+func (o GetDefenseRulesRuleConfigRateLimitOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimit) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// Response code frequency setting.
+func (o GetDefenseRulesRuleConfigRateLimitOutput) Statuses() GetDefenseRulesRuleConfigRateLimitStatusArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimit) []GetDefenseRulesRuleConfigRateLimitStatus {
+		return v.Statuses
+	}).(GetDefenseRulesRuleConfigRateLimitStatusArrayOutput)
+}
+
+// The characteristics of the statistical object.
+func (o GetDefenseRulesRuleConfigRateLimitOutput) SubKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimit) string { return v.SubKey }).(pulumi.StringOutput)
+}
+
+// The type of the statistical object.
+func (o GetDefenseRulesRuleConfigRateLimitOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimit) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The maximum number of requests that can be sent from a statistical object.
+func (o GetDefenseRulesRuleConfigRateLimitOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimit) int { return v.Threshold }).(pulumi.IntOutput)
+}
+
+// The period of time during which you want the specified action to be valid.
+func (o GetDefenseRulesRuleConfigRateLimitOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimit) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetDefenseRulesRuleConfigRateLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigRateLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitArrayOutput) ToGetDefenseRulesRuleConfigRateLimitArrayOutput() GetDefenseRulesRuleConfigRateLimitArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitArrayOutput) ToGetDefenseRulesRuleConfigRateLimitArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigRateLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigRateLimit {
+		return vs[0].([]GetDefenseRulesRuleConfigRateLimit)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigRateLimitOutput)
+}
+
+type GetDefenseRulesRuleConfigRateLimitStatus struct {
+	// Required.
+	Code int `pulumi:"code"`
+	// The threshold for the number of occurrences.
+	Count int `pulumi:"count"`
+	// The threshold for the proportion of occurrences (percentage).
+	Ratio int `pulumi:"ratio"`
+}
+
+// GetDefenseRulesRuleConfigRateLimitStatusInput is an input type that accepts GetDefenseRulesRuleConfigRateLimitStatusArgs and GetDefenseRulesRuleConfigRateLimitStatusOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigRateLimitStatusInput` via:
+//
+//	GetDefenseRulesRuleConfigRateLimitStatusArgs{...}
+type GetDefenseRulesRuleConfigRateLimitStatusInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigRateLimitStatusOutput() GetDefenseRulesRuleConfigRateLimitStatusOutput
+	ToGetDefenseRulesRuleConfigRateLimitStatusOutputWithContext(context.Context) GetDefenseRulesRuleConfigRateLimitStatusOutput
+}
+
+type GetDefenseRulesRuleConfigRateLimitStatusArgs struct {
+	// Required.
+	Code pulumi.IntInput `pulumi:"code"`
+	// The threshold for the number of occurrences.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The threshold for the proportion of occurrences (percentage).
+	Ratio pulumi.IntInput `pulumi:"ratio"`
+}
+
+func (GetDefenseRulesRuleConfigRateLimitStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitStatusArgs) ToGetDefenseRulesRuleConfigRateLimitStatusOutput() GetDefenseRulesRuleConfigRateLimitStatusOutput {
+	return i.ToGetDefenseRulesRuleConfigRateLimitStatusOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitStatusArgs) ToGetDefenseRulesRuleConfigRateLimitStatusOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigRateLimitStatusOutput)
+}
+
+// GetDefenseRulesRuleConfigRateLimitStatusArrayInput is an input type that accepts GetDefenseRulesRuleConfigRateLimitStatusArray and GetDefenseRulesRuleConfigRateLimitStatusArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigRateLimitStatusArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigRateLimitStatusArray{ GetDefenseRulesRuleConfigRateLimitStatusArgs{...} }
+type GetDefenseRulesRuleConfigRateLimitStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutput() GetDefenseRulesRuleConfigRateLimitStatusArrayOutput
+	ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigRateLimitStatusArrayOutput
+}
+
+type GetDefenseRulesRuleConfigRateLimitStatusArray []GetDefenseRulesRuleConfigRateLimitStatusInput
+
+func (GetDefenseRulesRuleConfigRateLimitStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitStatusArray) ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutput() GetDefenseRulesRuleConfigRateLimitStatusArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigRateLimitStatusArray) ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigRateLimitStatusArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigRateLimitStatusOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigRateLimitStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitStatusOutput) ToGetDefenseRulesRuleConfigRateLimitStatusOutput() GetDefenseRulesRuleConfigRateLimitStatusOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitStatusOutput) ToGetDefenseRulesRuleConfigRateLimitStatusOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitStatusOutput {
+	return o
+}
+
+// Required.
+func (o GetDefenseRulesRuleConfigRateLimitStatusOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimitStatus) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// The threshold for the number of occurrences.
+func (o GetDefenseRulesRuleConfigRateLimitStatusOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimitStatus) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The threshold for the proportion of occurrences (percentage).
+func (o GetDefenseRulesRuleConfigRateLimitStatusOutput) Ratio() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigRateLimitStatus) int { return v.Ratio }).(pulumi.IntOutput)
+}
+
+type GetDefenseRulesRuleConfigRateLimitStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigRateLimitStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigRateLimitStatus)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitStatusArrayOutput) ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutput() GetDefenseRulesRuleConfigRateLimitStatusArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitStatusArrayOutput) ToGetDefenseRulesRuleConfigRateLimitStatusArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigRateLimitStatusArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigRateLimitStatusArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigRateLimitStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigRateLimitStatus {
+		return vs[0].([]GetDefenseRulesRuleConfigRateLimitStatus)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigRateLimitStatusOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfig struct {
+	// The time period during which the rule is effective.
+	TimePeriods []GetDefenseRulesRuleConfigTimeConfigTimePeriod `pulumi:"timePeriods"`
+	// The effective period of the rule.
+	TimeScope string `pulumi:"timeScope"`
+	// The time zone in which the rule is effective.
+	TimeZone int `pulumi:"timeZone"`
+	// The periodic time period during which the rule is effective.
+	WeekTimePeriods []GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod `pulumi:"weekTimePeriods"`
+}
+
+// GetDefenseRulesRuleConfigTimeConfigInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigArgs and GetDefenseRulesRuleConfigTimeConfigOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigArgs{...}
+type GetDefenseRulesRuleConfigTimeConfigInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigOutput() GetDefenseRulesRuleConfigTimeConfigOutput
+	ToGetDefenseRulesRuleConfigTimeConfigOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigArgs struct {
+	// The time period during which the rule is effective.
+	TimePeriods GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayInput `pulumi:"timePeriods"`
+	// The effective period of the rule.
+	TimeScope pulumi.StringInput `pulumi:"timeScope"`
+	// The time zone in which the rule is effective.
+	TimeZone pulumi.IntInput `pulumi:"timeZone"`
+	// The periodic time period during which the rule is effective.
+	WeekTimePeriods GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayInput `pulumi:"weekTimePeriods"`
+}
+
+func (GetDefenseRulesRuleConfigTimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigArgs) ToGetDefenseRulesRuleConfigTimeConfigOutput() GetDefenseRulesRuleConfigTimeConfigOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigArgs) ToGetDefenseRulesRuleConfigTimeConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigOutput)
+}
+
+// GetDefenseRulesRuleConfigTimeConfigArrayInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigArray and GetDefenseRulesRuleConfigTimeConfigArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigArray{ GetDefenseRulesRuleConfigTimeConfigArgs{...} }
+type GetDefenseRulesRuleConfigTimeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigArrayOutput() GetDefenseRulesRuleConfigTimeConfigArrayOutput
+	ToGetDefenseRulesRuleConfigTimeConfigArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigArrayOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigArray []GetDefenseRulesRuleConfigTimeConfigInput
+
+func (GetDefenseRulesRuleConfigTimeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigArray) ToGetDefenseRulesRuleConfigTimeConfigArrayOutput() GetDefenseRulesRuleConfigTimeConfigArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigArray) ToGetDefenseRulesRuleConfigTimeConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigOutput) ToGetDefenseRulesRuleConfigTimeConfigOutput() GetDefenseRulesRuleConfigTimeConfigOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigOutput) ToGetDefenseRulesRuleConfigTimeConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigOutput {
+	return o
+}
+
+// The time period during which the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigOutput) TimePeriods() GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfig) []GetDefenseRulesRuleConfigTimeConfigTimePeriod {
+		return v.TimePeriods
+	}).(GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput)
+}
+
+// The effective period of the rule.
+func (o GetDefenseRulesRuleConfigTimeConfigOutput) TimeScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfig) string { return v.TimeScope }).(pulumi.StringOutput)
+}
+
+// The time zone in which the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigOutput) TimeZone() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfig) int { return v.TimeZone }).(pulumi.IntOutput)
+}
+
+// The periodic time period during which the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigOutput) WeekTimePeriods() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfig) []GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod {
+		return v.WeekTimePeriods
+	}).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigArrayOutput() GetDefenseRulesRuleConfigTimeConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigTimeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigTimeConfig {
+		return vs[0].([]GetDefenseRulesRuleConfigTimeConfig)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigTimeConfigOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigTimePeriod struct {
+	// The end time of each day when the rule is effective.
+	End int `pulumi:"end"`
+	// The start time of each day when the rule is effective.
+	Start int `pulumi:"start"`
+}
+
+// GetDefenseRulesRuleConfigTimeConfigTimePeriodInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs and GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigTimePeriodInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs{...}
+type GetDefenseRulesRuleConfigTimeConfigTimePeriodInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutput() GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput
+	ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs struct {
+	// The end time of each day when the rule is effective.
+	End pulumi.IntInput `pulumi:"end"`
+	// The start time of each day when the rule is effective.
+	Start pulumi.IntInput `pulumi:"start"`
+}
+
+func (GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutput() GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput)
+}
+
+// GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigTimePeriodArray and GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigTimePeriodArray{ GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs{...} }
+type GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput
+	ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigTimePeriodArray []GetDefenseRulesRuleConfigTimeConfigTimePeriodInput
+
+func (GetDefenseRulesRuleConfigTimeConfigTimePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigTimePeriodArray) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigTimePeriodArray) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutput() GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput {
+	return o
+}
+
+// The end time of each day when the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfigTimePeriod) int { return v.End }).(pulumi.IntOutput)
+}
+
+// The start time of each day when the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfigTimePeriod) int { return v.Start }).(pulumi.IntOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigTimeConfigTimePeriod {
+		return vs[0].([]GetDefenseRulesRuleConfigTimeConfigTimePeriod)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod struct {
+	// The time period of each day when the rule is effective.
+	Day string `pulumi:"day"`
+	// The time period of each day when the rule is effective.
+	DayPeriods []GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod `pulumi:"dayPeriods"`
+}
+
+// GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs and GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs{...}
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs struct {
+	// The time period of each day when the rule is effective.
+	Day pulumi.StringInput `pulumi:"day"`
+	// The time period of each day when the rule is effective.
+	DayPeriods GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput `pulumi:"dayPeriods"`
+}
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput)
+}
+
+// GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray and GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray{ GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs{...} }
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray []GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodInput
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput {
+	return o
+}
+
+// The time period of each day when the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// The time period of each day when the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput) DayPeriods() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod) []GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+		return v.DayPeriods
+	}).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod {
+		return vs[0].([]GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod struct {
+	// The end time of each day when the rule is effective.
+	End int `pulumi:"end"`
+	// The start time of each day when the rule is effective.
+	Start int `pulumi:"start"`
+}
+
+// GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs and GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{...}
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs struct {
+	// The end time of each day when the rule is effective.
+	End pulumi.IntInput `pulumi:"end"`
+	// The start time of each day when the rule is effective.
+	Start pulumi.IntInput `pulumi:"start"`
+}
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput)
+}
+
+// GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput is an input type that accepts GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray and GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray{ GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{...} }
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput
+	ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray []GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodInput
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return o
+}
+
+// The end time of each day when the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod) int { return v.End }).(pulumi.IntOutput)
+}
+
+// The start time of each day when the rule is effective.
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod) int { return v.Start }).(pulumi.IntOutput)
+}
+
+type GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput() GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) ToGetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+		return vs[0].([]GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput)
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfig struct {
+	// The batch operation on rules.
+	RuleBatchOperationConfig string `pulumi:"ruleBatchOperationConfig"`
+	// The configuration of the Web core protection rules to be modified.
+	RuleDetails []GetDefenseRulesRuleConfigWafBaseConfigRuleDetail `pulumi:"ruleDetails"`
+	// The protection rule type. Value:
+	RuleType string `pulumi:"ruleType"`
+}
+
+// GetDefenseRulesRuleConfigWafBaseConfigInput is an input type that accepts GetDefenseRulesRuleConfigWafBaseConfigArgs and GetDefenseRulesRuleConfigWafBaseConfigOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigWafBaseConfigInput` via:
+//
+//	GetDefenseRulesRuleConfigWafBaseConfigArgs{...}
+type GetDefenseRulesRuleConfigWafBaseConfigInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigWafBaseConfigOutput() GetDefenseRulesRuleConfigWafBaseConfigOutput
+	ToGetDefenseRulesRuleConfigWafBaseConfigOutputWithContext(context.Context) GetDefenseRulesRuleConfigWafBaseConfigOutput
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigArgs struct {
+	// The batch operation on rules.
+	RuleBatchOperationConfig pulumi.StringInput `pulumi:"ruleBatchOperationConfig"`
+	// The configuration of the Web core protection rules to be modified.
+	RuleDetails GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayInput `pulumi:"ruleDetails"`
+	// The protection rule type. Value:
+	RuleType pulumi.StringInput `pulumi:"ruleType"`
+}
+
+func (GetDefenseRulesRuleConfigWafBaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigArgs) ToGetDefenseRulesRuleConfigWafBaseConfigOutput() GetDefenseRulesRuleConfigWafBaseConfigOutput {
+	return i.ToGetDefenseRulesRuleConfigWafBaseConfigOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigArgs) ToGetDefenseRulesRuleConfigWafBaseConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigWafBaseConfigOutput)
+}
+
+// GetDefenseRulesRuleConfigWafBaseConfigArrayInput is an input type that accepts GetDefenseRulesRuleConfigWafBaseConfigArray and GetDefenseRulesRuleConfigWafBaseConfigArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigWafBaseConfigArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigWafBaseConfigArray{ GetDefenseRulesRuleConfigWafBaseConfigArgs{...} }
+type GetDefenseRulesRuleConfigWafBaseConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutput() GetDefenseRulesRuleConfigWafBaseConfigArrayOutput
+	ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigWafBaseConfigArrayOutput
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigArray []GetDefenseRulesRuleConfigWafBaseConfigInput
+
+func (GetDefenseRulesRuleConfigWafBaseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigArray) ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutput() GetDefenseRulesRuleConfigWafBaseConfigArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigArray) ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigWafBaseConfigArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigWafBaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigOutput) ToGetDefenseRulesRuleConfigWafBaseConfigOutput() GetDefenseRulesRuleConfigWafBaseConfigOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigOutput) ToGetDefenseRulesRuleConfigWafBaseConfigOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigOutput {
+	return o
+}
+
+// The batch operation on rules.
+func (o GetDefenseRulesRuleConfigWafBaseConfigOutput) RuleBatchOperationConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigWafBaseConfig) string { return v.RuleBatchOperationConfig }).(pulumi.StringOutput)
+}
+
+// The configuration of the Web core protection rules to be modified.
+func (o GetDefenseRulesRuleConfigWafBaseConfigOutput) RuleDetails() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigWafBaseConfig) []GetDefenseRulesRuleConfigWafBaseConfigRuleDetail {
+		return v.RuleDetails
+	}).(GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput)
+}
+
+// The protection rule type. Value:
+func (o GetDefenseRulesRuleConfigWafBaseConfigOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigWafBaseConfig) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigWafBaseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigWafBaseConfig)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigArrayOutput) ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutput() GetDefenseRulesRuleConfigWafBaseConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigArrayOutput) ToGetDefenseRulesRuleConfigWafBaseConfigArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigWafBaseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigWafBaseConfig {
+		return vs[0].([]GetDefenseRulesRuleConfigWafBaseConfig)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigWafBaseConfigOutput)
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetail struct {
+	// Web core protection rule action.
+	RuleAction string `pulumi:"ruleAction"`
+	// The protection rule ID.
+	RuleId string `pulumi:"ruleId"`
+	// Protection rule status.
+	RuleStatus int `pulumi:"ruleStatus"`
+}
+
+// GetDefenseRulesRuleConfigWafBaseConfigRuleDetailInput is an input type that accepts GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs and GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigWafBaseConfigRuleDetailInput` via:
+//
+//	GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs{...}
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetailInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput
+	ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutputWithContext(context.Context) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs struct {
+	// Web core protection rule action.
+	RuleAction pulumi.StringInput `pulumi:"ruleAction"`
+	// The protection rule ID.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// Protection rule status.
+	RuleStatus pulumi.IntInput `pulumi:"ruleStatus"`
+}
+
+func (GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput {
+	return i.ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput)
+}
+
+// GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayInput is an input type that accepts GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray and GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput values.
+// You can construct a concrete instance of `GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayInput` via:
+//
+//	GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray{ GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs{...} }
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput
+	ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(context.Context) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray []GetDefenseRulesRuleConfigWafBaseConfigRuleDetailInput
+
+func (GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return i.ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput)
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput {
+	return o
+}
+
+// Web core protection rule action.
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput) RuleAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigWafBaseConfigRuleDetail) string { return v.RuleAction }).(pulumi.StringOutput)
+}
+
+// The protection rule ID.
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigWafBaseConfigRuleDetail) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// Protection rule status.
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput) RuleStatus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDefenseRulesRuleConfigWafBaseConfigRuleDetail) int { return v.RuleStatus }).(pulumi.IntOutput)
+}
+
+type GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDefenseRulesRuleConfigWafBaseConfigRuleDetail)(nil)).Elem()
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput() GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput) ToGetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutputWithContext(ctx context.Context) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput {
+	return o
+}
+
+func (o GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput) Index(i pulumi.IntInput) GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDefenseRulesRuleConfigWafBaseConfigRuleDetail {
+		return vs[0].([]GetDefenseRulesRuleConfigWafBaseConfigRuleDetail)[vs[1].(int)]
+	}).(GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput)
+}
+
 type GetDomainsDomain struct {
 	// The CNAME assigned by WAF to the domain name.
 	Cname string `pulumi:"cname"`
 	// The name of the domain name to query.
 	Domain string `pulumi:"domain"`
+	// The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+	DomainId string `pulumi:"domainId"`
 	// The ID of the domain. It formats as `<instance_id>:<domain>`.
 	Id string `pulumi:"id"`
 	// Configure listening information
@@ -3611,6 +5559,8 @@ type GetDomainsDomainArgs struct {
 	Cname pulumi.StringInput `pulumi:"cname"`
 	// The name of the domain name to query.
 	Domain pulumi.StringInput `pulumi:"domain"`
+	// The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
 	// The ID of the domain. It formats as `<instance_id>:<domain>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Configure listening information
@@ -3682,6 +5632,11 @@ func (o GetDomainsDomainOutput) Cname() pulumi.StringOutput {
 // The name of the domain name to query.
 func (o GetDomainsDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+func (o GetDomainsDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainId }).(pulumi.StringOutput)
 }
 
 // The ID of the domain. It formats as `<instance_id>:<domain>`.
@@ -4409,6 +6364,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectPtrInput)(nil)).Elem(), DomainRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectRequestHeaderInput)(nil)).Elem(), DomainRedirectRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectRequestHeaderArrayInput)(nil)).Elem(), DomainRedirectRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookArrayInput)(nil)).Elem(), GetAddressBooksBookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleInput)(nil)).Elem(), GetDefenseRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleArrayInput)(nil)).Elem(), GetDefenseRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigInput)(nil)).Elem(), GetDefenseRulesRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigAccountIdentifierInput)(nil)).Elem(), GetDefenseRulesRuleConfigAccountIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigAccountIdentifierArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigAccountIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigConditionInput)(nil)).Elem(), GetDefenseRulesRuleConfigConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigConditionArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigGrayConfigInput)(nil)).Elem(), GetDefenseRulesRuleConfigGrayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigGrayConfigArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigGrayConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimitInput)(nil)).Elem(), GetDefenseRulesRuleConfigRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimitArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigRateLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimitStatusInput)(nil)).Elem(), GetDefenseRulesRuleConfigRateLimitStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigRateLimitStatusArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigRateLimitStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigTimePeriodInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigTimePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfigInput)(nil)).Elem(), GetDefenseRulesRuleConfigWafBaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfigArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigWafBaseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfigRuleDetailInput)(nil)).Elem(), GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayInput)(nil)).Elem(), GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainListenInput)(nil)).Elem(), GetDomainsDomainListenArgs{})
@@ -4449,6 +6432,34 @@ func init() {
 	pulumi.RegisterOutputType(DomainRedirectPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectRequestHeaderOutput{})
 	pulumi.RegisterOutputType(DomainRedirectRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigAccountIdentifierOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigAccountIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigConditionOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigGrayConfigOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigGrayConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigRateLimitOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigRateLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigRateLimitStatusOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigRateLimitStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigTimePeriodOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigTimePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigWafBaseConfigOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigWafBaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigWafBaseConfigRuleDetailOutput{})
+	pulumi.RegisterOutputType(GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainListenOutput{})

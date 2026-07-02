@@ -9586,6 +9586,9 @@
             "alicloud_resource_manager_resource_directory": {
                 "current": "alicloud:resourcemanager/resourceDirectory:ResourceDirectory"
             },
+            "alicloud_resource_manager_resource_directory_sharing": {
+                "current": "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing"
+            },
             "alicloud_resource_manager_resource_group": {
                 "current": "alicloud:resourcemanager/resourceGroup:ResourceGroup",
                 "fields": {
@@ -10951,6 +10954,9 @@
                     }
                 }
             },
+            "alicloud_threat_detection_service_linked_role": {
+                "current": "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole"
+            },
             "alicloud_threat_detection_vul_whitelist": {
                 "current": "alicloud:threatdetection/vulWhitelist:VulWhitelist"
             },
@@ -11311,6 +11317,14 @@
             },
             "alicloud_waf_protection_module": {
                 "current": "alicloud:waf/protectionModule:ProtectionModule"
+            },
+            "alicloud_wafv3_address_book": {
+                "current": "alicloud:wafv3/addressBook:AddressBook",
+                "fields": {
+                    "address_list": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_wafv3_defense_resource_group": {
                 "current": "alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup",
@@ -24729,6 +24743,113 @@
                     },
                     "instances": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_wafv3_address_books": {
+                "current": "alicloud:wafv3/getAddressBooks:getAddressBooks",
+                "fields": {
+                    "books": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "address_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_wafv3_defense_rules": {
+                "current": "alicloud:wafv3/getDefenseRules:getDefenseRules",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "account_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "bypass_regular_rules": {
+                                                "maxItemsOne": false
+                                            },
+                                            "bypass_regular_types": {
+                                                "maxItemsOne": false
+                                            },
+                                            "bypass_tags": {
+                                                "maxItemsOne": false
+                                            },
+                                            "codec_list": {
+                                                "maxItemsOne": false
+                                            },
+                                            "conditions": {
+                                                "maxItemsOne": false
+                                            },
+                                            "gray_config": {
+                                                "maxItemsOne": false
+                                            },
+                                            "rate_limit": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "status": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "remote_addr": {
+                                                "maxItemsOne": false
+                                            },
+                                            "time_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "time_periods": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "week_time_periods": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "day_periods": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "waf_base_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "rule_detail": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

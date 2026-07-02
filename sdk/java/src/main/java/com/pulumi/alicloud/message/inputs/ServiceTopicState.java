@@ -104,8 +104,6 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the topic.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     @Import(name="topicName")
     private @Nullable Output<String> topicName;
@@ -113,11 +111,24 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the topic.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     public Optional<Output<String>> topicName() {
         return Optional.ofNullable(this.topicName);
+    }
+
+    /**
+     * The type of the topic. Default value: `normal`. Valid values:
+     * 
+     */
+    @Import(name="topicType")
+    private @Nullable Output<String> topicType;
+
+    /**
+     * @return The type of the topic. Default value: `normal`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> topicType() {
+        return Optional.ofNullable(this.topicType);
     }
 
     private ServiceTopicState() {}
@@ -129,6 +140,7 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
         this.maxMessageSize = $.maxMessageSize;
         this.tags = $.tags;
         this.topicName = $.topicName;
+        this.topicType = $.topicType;
     }
 
     public static Builder builder() {
@@ -265,8 +277,6 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param topicName The name of the topic.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
-         * 
          * @return builder
          * 
          */
@@ -278,13 +288,32 @@ public final class ServiceTopicState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param topicName The name of the topic.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
-         * 
          * @return builder
          * 
          */
         public Builder topicName(String topicName) {
             return topicName(Output.of(topicName));
+        }
+
+        /**
+         * @param topicType The type of the topic. Default value: `normal`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicType(@Nullable Output<String> topicType) {
+            $.topicType = topicType;
+            return this;
+        }
+
+        /**
+         * @param topicType The type of the topic. Default value: `normal`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder topicType(String topicType) {
+            return topicType(Output.of(topicType));
         }
 
         public ServiceTopicState build() {

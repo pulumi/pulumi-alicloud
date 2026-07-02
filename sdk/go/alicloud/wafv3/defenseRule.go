@@ -127,6 +127,8 @@ type DefenseRule struct {
 	DefenseScene pulumi.StringOutput `pulumi:"defenseScene"`
 	// The protection rule type. Value:
 	DefenseType pulumi.StringOutput `pulumi:"defenseType"`
+	// The modification time of the protection rule.
+	GmtModified pulumi.StringOutput `pulumi:"gmtModified"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The protection object corresponding to the rule to be queried.
@@ -198,6 +200,8 @@ type defenseRuleState struct {
 	DefenseScene *string `pulumi:"defenseScene"`
 	// The protection rule type. Value:
 	DefenseType *string `pulumi:"defenseType"`
+	// The modification time of the protection rule.
+	GmtModified *string `pulumi:"gmtModified"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// The protection object corresponding to the rule to be queried.
@@ -228,6 +232,8 @@ type DefenseRuleState struct {
 	DefenseScene pulumi.StringPtrInput
 	// The protection rule type. Value:
 	DefenseType pulumi.StringPtrInput
+	// The modification time of the protection rule.
+	GmtModified pulumi.StringPtrInput
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringPtrInput
 	// The protection object corresponding to the rule to be queried.
@@ -415,6 +421,11 @@ func (o DefenseRuleOutput) DefenseScene() pulumi.StringOutput {
 // The protection rule type. Value:
 func (o DefenseRuleOutput) DefenseType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseRule) pulumi.StringOutput { return v.DefenseType }).(pulumi.StringOutput)
+}
+
+// The modification time of the protection rule.
+func (o DefenseRuleOutput) GmtModified() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefenseRule) pulumi.StringOutput { return v.GmtModified }).(pulumi.StringOutput)
 }
 
 // The ID of the Web Application Firewall (WAF) instance.

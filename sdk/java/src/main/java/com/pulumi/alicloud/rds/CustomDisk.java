@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -115,6 +116,20 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenew);
     }
     /**
+     * Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="burstingEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> burstingEnabled;
+
+    /**
+     * @return Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Boolean> burstingEnabled() {
+        return this.burstingEnabled;
+    }
+    /**
      * Creation time.
      * 
      */
@@ -129,14 +144,32 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
+     * Specifies whether to release the disk together with the instance. Valid values:
+     * 
+     */
+    @Export(name="deleteWithInstance", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> deleteWithInstance;
+
+    /**
+     * @return Specifies whether to release the disk together with the instance. Valid values:
+     * 
+     */
+    public Output<Boolean> deleteWithInstance() {
+        return this.deleteWithInstance;
+    }
+    /**
+     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `description` can be modified.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
+     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `description` can be modified.
      * 
      */
     public Output<Optional<String>> description() {
@@ -157,18 +190,22 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return this.diskCategory;
     }
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `diskName` can be modified.
      * 
      */
     @Export(name="diskName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> diskName;
+    private Output<String> diskName;
 
     /**
-     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `diskName` can be modified.
      * 
      */
-    public Output<Optional<String>> diskName() {
-        return Codegen.optional(this.diskName);
+    public Output<String> diskName() {
+        return this.diskName;
     }
     /**
      * Whether to pre-check the instance creation operation. Valid values:
@@ -185,18 +222,36 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      * 
      */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceChargeType;
+    private Output<String> instanceChargeType;
 
     /**
-     * @return The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * @return The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      * 
      */
-    public Output<Optional<String>> instanceChargeType() {
-        return Codegen.optional(this.instanceChargeType);
+    public Output<String> instanceChargeType() {
+        return this.instanceChargeType;
+    }
+    /**
+     * The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     * 
+     */
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    private Output<String> instanceId;
+
+    /**
+     * @return The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     * 
+     */
+    public Output<String> instanceId() {
+        return this.instanceId;
     }
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -205,11 +260,13 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
      * 
+     * &gt; **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+     * 
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      * 
      */
     @Export(name="performanceLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> performanceLevel;
+    private Output<String> performanceLevel;
 
     /**
      * @return When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -218,35 +275,45 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
      * 
+     * &gt; **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+     * 
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      * 
      */
-    public Output<Optional<String>> performanceLevel() {
-        return Codegen.optional(this.performanceLevel);
+    public Output<String> performanceLevel() {
+        return this.performanceLevel;
     }
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `period` has been deprecated from provider version 1.283.0.
+     * 
+     * @deprecated
+     * Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
+    @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Reserved parameters, no need to fill in.
+     * @return Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     * 
+     * @deprecated
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
+    @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return Reserved parameters, no need to fill in.
+     * @return Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -315,18 +382,32 @@ public class CustomDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snapshotId);
     }
     /**
-     * Disk status. Value Description:_use: In use.
+     * Disk status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Disk status. Value Description:_use: In use.
+     * @return Disk status.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The list of tags.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The list of tags.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The method of expanding the disk. Value range:

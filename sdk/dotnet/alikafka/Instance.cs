@@ -361,6 +361,12 @@ namespace Pulumi.AliCloud.alikafka
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+        /// </summary>
+        [Output("vpcSaslDomainEndpoint")]
+        public Output<string> VpcSaslDomainEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of attaching vswitch to instance.
         /// </summary>
         [Output("vswitchId")]
@@ -905,6 +911,12 @@ namespace Pulumi.AliCloud.alikafka
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+        /// </summary>
+        [Input("vpcSaslDomainEndpoint")]
+        public Input<string>? VpcSaslDomainEndpoint { get; set; }
 
         /// <summary>
         /// The ID of attaching vswitch to instance.

@@ -110,7 +110,7 @@ import (
 //
 // 5. **Parameter Sensitivity**: The `parameterValue` field in `parameterOverrides` is marked as sensitive. Values will be masked in Terraform output and logs for security.
 //
-// 6. **ForceNew Parameters**: Most parameters (`stackGroupName`, `regionIds`, `accountIds`, `deploymentTargets`, `disableRollback`, `deploymentOptions`) require resource recreation if modified. Only `parameterOverrides`, `operationPreferences`, `timeoutInMinutes`, and `operationDescription` support in-place updates.
+// 6. **ForceNew Parameters**: Most parameters (`stackGroupName`, `regionIds`, `accountIds`, `disableRollback`, `deploymentOptions`) require resource recreation if modified. `parameterOverrides`, `operationPreferences`, `timeoutInMinutes`, `operationDescription`, and `deploymentTargets` support in-place updates.
 //
 // 7. **Empty Results**: If your deployment targets result in no stack instances being created (e.g., targeting an empty folder), the `stackInstances` attribute will be an empty list. This is expected behavior and does not indicate an error.
 //
@@ -124,7 +124,7 @@ type StackInstances struct {
 	AccountIds pulumi.StringArrayOutput `pulumi:"accountIds"`
 	// List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
 	DeploymentOptions pulumi.StringPtrOutput `pulumi:"deploymentOptions"`
-	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
 	//
 	// > **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
 	DeploymentTargets StackInstancesDeploymentTargetsPtrOutput `pulumi:"deploymentTargets"`
@@ -193,7 +193,7 @@ type stackInstancesState struct {
 	AccountIds []string `pulumi:"accountIds"`
 	// List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
 	DeploymentOptions *string `pulumi:"deploymentOptions"`
-	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
 	//
 	// > **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
 	DeploymentTargets *StackInstancesDeploymentTargets `pulumi:"deploymentTargets"`
@@ -220,7 +220,7 @@ type StackInstancesState struct {
 	AccountIds pulumi.StringArrayInput
 	// List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
 	DeploymentOptions pulumi.StringPtrInput
-	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
 	//
 	// > **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
 	DeploymentTargets StackInstancesDeploymentTargetsPtrInput
@@ -251,7 +251,7 @@ type stackInstancesArgs struct {
 	AccountIds []string `pulumi:"accountIds"`
 	// List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
 	DeploymentOptions *string `pulumi:"deploymentOptions"`
-	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
 	//
 	// > **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
 	DeploymentTargets *StackInstancesDeploymentTargets `pulumi:"deploymentTargets"`
@@ -277,7 +277,7 @@ type StackInstancesArgs struct {
 	AccountIds pulumi.StringArrayInput
 	// List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
 	DeploymentOptions pulumi.StringPtrInput
-	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+	// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
 	//
 	// > **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
 	DeploymentTargets StackInstancesDeploymentTargetsPtrInput
@@ -394,7 +394,7 @@ func (o StackInstancesOutput) DeploymentOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackInstances) pulumi.StringPtrOutput { return v.DeploymentOptions }).(pulumi.StringPtrOutput)
 }
 
-// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
 //
 // > **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
 func (o StackInstancesOutput) DeploymentTargets() StackInstancesDeploymentTargetsPtrOutput {

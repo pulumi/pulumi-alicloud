@@ -10,6 +10,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -323,6 +324,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable the Serverless elastic capability on the instance.
+     * 
+     */
+    @Import(name="serverlessSwitch")
+    private @Nullable Output<Boolean> serverlessSwitch;
+
+    /**
+     * @return Whether to enable the Serverless elastic capability on the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> serverlessSwitch() {
+        return Optional.ofNullable(this.serverlessSwitch);
+    }
+
+    /**
      * Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
      * 
      */
@@ -365,6 +381,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> supportTracing() {
         return Optional.ofNullable(this.supportTracing);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -434,9 +465,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.renewalStatus = $.renewalStatus;
         this.securityGroupId = $.securityGroupId;
         this.serverlessChargeType = $.serverlessChargeType;
+        this.serverlessSwitch = $.serverlessSwitch;
         this.storageSize = $.storageSize;
         this.supportEip = $.supportEip;
         this.supportTracing = $.supportTracing;
+        this.tags = $.tags;
         this.tracingStorageTime = $.tracingStorageTime;
         this.vpcId = $.vpcId;
         this.vswitchIds = $.vswitchIds;
@@ -878,6 +911,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param serverlessSwitch Whether to enable the Serverless elastic capability on the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessSwitch(@Nullable Output<Boolean> serverlessSwitch) {
+            $.serverlessSwitch = serverlessSwitch;
+            return this;
+        }
+
+        /**
+         * @param serverlessSwitch Whether to enable the Serverless elastic capability on the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessSwitch(Boolean serverlessSwitch) {
+            return serverlessSwitch(Output.of(serverlessSwitch));
+        }
+
+        /**
          * @param storageSize Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
          * 
          * @return builder
@@ -938,6 +992,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder supportTracing(Boolean supportTracing) {
             return supportTracing(Output.of(supportTracing));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

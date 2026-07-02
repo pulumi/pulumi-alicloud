@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -107,7 +106,7 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bypass", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> bypass;
+    private Output<String> bypass;
 
     /**
      * @return Bypass mode. Value range:
@@ -115,8 +114,8 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      * - off: off
      * 
      */
-    public Output<Optional<String>> bypass() {
-        return Codegen.optional(this.bypass);
+    public Output<String> bypass() {
+        return this.bypass;
     }
     /**
      * Config Id
@@ -153,7 +152,7 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="routeEnable", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routeEnable;
+    private Output<String> routeEnable;
 
     /**
      * @return Routing switch. Value range:
@@ -161,22 +160,22 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      * - off: off
      * 
      */
-    public Output<Optional<String>> routeEnable() {
-        return Codegen.optional(this.routeEnable);
+    public Output<String> routeEnable() {
+        return this.routeEnable;
     }
     /**
      * The route name.
      * 
      */
     @Export(name="routeName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routeName;
+    private Output<String> routeName;
 
     /**
      * @return The route name.
      * 
      */
-    public Output<Optional<String>> routeName() {
-        return Codegen.optional(this.routeName);
+    public Output<String> routeName() {
+        return this.routeName;
     }
     /**
      * The edge function Routine name.
@@ -197,28 +196,28 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> rule;
+    private Output<String> rule;
 
     /**
      * @return The rule content.
      * 
      */
-    public Output<Optional<String>> rule() {
-        return Codegen.optional(this.rule);
+    public Output<String> rule() {
+        return this.rule;
     }
     /**
      * Rule execution order.
      * 
      */
     @Export(name="sequence", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> sequence;
+    private Output<Integer> sequence;
 
     /**
      * @return Rule execution order.
      * 
      */
-    public Output<Optional<Integer>> sequence() {
-        return Codegen.optional(this.sequence);
+    public Output<Integer> sequence() {
+        return this.sequence;
     }
     /**
      * Site Id

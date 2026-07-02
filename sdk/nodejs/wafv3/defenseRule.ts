@@ -120,6 +120,10 @@ export class DefenseRule extends pulumi.CustomResource {
      */
     declare public readonly defenseType: pulumi.Output<string>;
     /**
+     * The modification time of the protection rule.
+     */
+    declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
+    /**
      * The ID of the Web Application Firewall (WAF) instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
@@ -163,6 +167,7 @@ export class DefenseRule extends pulumi.CustomResource {
             resourceInputs["defenseOrigin"] = state?.defenseOrigin;
             resourceInputs["defenseScene"] = state?.defenseScene;
             resourceInputs["defenseType"] = state?.defenseType;
+            resourceInputs["gmtModified"] = state?.gmtModified;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["resource"] = state?.resource;
             resourceInputs["ruleId"] = state?.ruleId;
@@ -192,6 +197,7 @@ export class DefenseRule extends pulumi.CustomResource {
             resourceInputs["ruleName"] = args?.ruleName;
             resourceInputs["ruleStatus"] = args?.ruleStatus;
             resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["gmtModified"] = undefined /*out*/;
             resourceInputs["ruleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -224,6 +230,10 @@ export interface DefenseRuleState {
      * The protection rule type. Value:
      */
     defenseType?: pulumi.Input<string | undefined>;
+    /**
+     * The modification time of the protection rule.
+     */
+    gmtModified?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Web Application Firewall (WAF) instance.
      */

@@ -209,7 +209,7 @@ class InstanceArgs:
                - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
                - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
                
-               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+               > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -901,7 +901,7 @@ class InstanceArgs:
         - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
         - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
 
-        > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         """
         return pulumi.get(self, "collect_stat_mode")
 
@@ -2070,7 +2070,7 @@ class _InstanceState:
                - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
                - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
                
-               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+               > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
@@ -2740,7 +2740,7 @@ class _InstanceState:
         - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
         - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
 
-        > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         """
         return pulumi.get(self, "collect_stat_mode")
 
@@ -4475,7 +4475,7 @@ class Instance(pulumi.CustomResource):
                - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
                - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
                
-               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+               > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -5537,7 +5537,7 @@ class Instance(pulumi.CustomResource):
                - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
                - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
                
-               > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+               > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         :param pulumi.Input[_builtins.str] connection_string: RDS database connection string.
         :param pulumi.Input[_builtins.str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
@@ -6048,7 +6048,7 @@ class Instance(pulumi.CustomResource):
         - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
         - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
 
-        > **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        > **NOTE:** This parameter is required when performing a major version upgrade (`engine_version` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         """
         return pulumi.get(self, "collect_stat_mode")
 

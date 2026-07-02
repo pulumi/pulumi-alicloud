@@ -33,6 +33,7 @@ class InstanceArgs:
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -124,6 +125,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -277,6 +281,8 @@ class InstanceArgs:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if enable_high_density_mode is not None:
+            pulumi.set(__self__, "enable_high_density_mode", enable_high_density_mode)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
         if force_delete is not None:
@@ -574,6 +580,20 @@ class InstanceArgs:
     @dry_run.setter
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableHighDensityMode")
+    def enable_high_density_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
+        """
+        return pulumi.get(self, "enable_high_density_mode")
+
+    @enable_high_density_mode.setter
+    def enable_high_density_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_high_density_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="enableJumboFrame")
@@ -1491,6 +1511,7 @@ class _InstanceState:
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  expired_time: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1594,6 +1615,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -1762,6 +1786,8 @@ class _InstanceState:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if enable_high_density_mode is not None:
+            pulumi.set(__self__, "enable_high_density_mode", enable_high_density_mode)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
         if expired_time is not None:
@@ -2113,6 +2139,20 @@ class _InstanceState:
     @dry_run.setter
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableHighDensityMode")
+    def enable_high_density_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
+        """
+        return pulumi.get(self, "enable_high_density_mode")
+
+    @enable_high_density_mode.setter
+    def enable_high_density_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_high_density_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="enableJumboFrame")
@@ -3138,6 +3178,7 @@ class Instance(pulumi.CustomResource):
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3310,6 +3351,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -3550,6 +3594,7 @@ class Instance(pulumi.CustomResource):
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3641,6 +3686,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["enable_high_density_mode"] = enable_high_density_mode
             __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
@@ -3750,6 +3796,7 @@ class Instance(pulumi.CustomResource):
             deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
             expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3857,6 +3904,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -4011,6 +4061,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["enable_high_density_mode"] = enable_high_density_mode
         __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
         __props__.__dict__["expired_time"] = expired_time
         __props__.__dict__["force_delete"] = force_delete
@@ -4218,6 +4269,16 @@ class Instance(pulumi.CustomResource):
         - false: A request is sent. If the validation succeeds, the instance is created.
         """
         return pulumi.get(self, "dry_run")
+
+    @_builtins.property
+    @pulumi.getter(name="enableHighDensityMode")
+    def enable_high_density_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
+        """
+        return pulumi.get(self, "enable_high_density_mode")
 
     @_builtins.property
     @pulumi.getter(name="enableJumboFrame")

@@ -12164,6 +12164,10 @@ export namespace esa {
          */
         header?: pulumi.Input<string | undefined>;
         /**
+         * The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         */
+        ipVersionPolicy?: pulumi.Input<string | undefined>;
+        /**
          * Origin Name.
          */
         name?: pulumi.Input<string | undefined>;
@@ -12172,10 +12176,7 @@ export namespace esa {
          */
         originId?: pulumi.Input<string | undefined>;
         /**
-         * Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * The type of the origin. Valid values:
          */
         type?: pulumi.Input<string | undefined>;
         /**
@@ -12535,7 +12536,7 @@ export namespace esa {
          */
         protocol: pulumi.Input<string>;
         /**
-         * Rule ID
+         * Rule ID.
          */
         ruleId?: pulumi.Input<number | undefined>;
         /**

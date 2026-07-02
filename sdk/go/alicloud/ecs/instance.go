@@ -178,6 +178,10 @@ type Instance struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode pulumi.BoolPtrOutput `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolOutput `pulumi:"enableJumboFrame"`
 	// (Available since v1.232.0) The expiration time of the instance.
@@ -472,6 +476,10 @@ type instanceState struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode *bool `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
 	// (Available since v1.232.0) The expiration time of the instance.
@@ -730,6 +738,10 @@ type InstanceState struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrInput
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
 	// (Available since v1.232.0) The expiration time of the instance.
@@ -986,6 +998,10 @@ type instanceArgs struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode *bool `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -1221,6 +1237,10 @@ type InstanceArgs struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrInput
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -1590,6 +1610,13 @@ func (o InstanceOutput) Description() pulumi.StringOutput {
 // - false: A request is sent. If the validation succeeds, the instance is created.
 func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+//
+// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+func (o InstanceOutput) EnableHighDensityMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableHighDensityMode }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.

@@ -282,6 +282,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly vpcId: pulumi.Output<string>;
     /**
+     * (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+     */
+    declare public /*out*/ readonly vpcSaslDomainEndpoint: pulumi.Output<string>;
+    /**
      * The ID of attaching vswitch to instance.
      */
     declare public readonly vswitchId: pulumi.Output<string>;
@@ -348,6 +352,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["topicQuota"] = state?.topicQuota;
             resourceInputs["topicUsed"] = state?.topicUsed;
             resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcSaslDomainEndpoint"] = state?.vpcSaslDomainEndpoint;
             resourceInputs["vswitchId"] = state?.vswitchId;
             resourceInputs["vswitchIds"] = state?.vswitchIds;
             resourceInputs["zoneId"] = state?.zoneId;
@@ -399,6 +404,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["topicLeft"] = undefined /*out*/;
             resourceInputs["topicNumOfBuy"] = undefined /*out*/;
             resourceInputs["topicUsed"] = undefined /*out*/;
+            resourceInputs["vpcSaslDomainEndpoint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -585,6 +591,10 @@ export interface InstanceState {
      * The VPC ID of the instance.
      */
     vpcId?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+     */
+    vpcSaslDomainEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The ID of attaching vswitch to instance.
      */

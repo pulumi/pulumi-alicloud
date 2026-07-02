@@ -28,6 +28,7 @@ class ServiceQueueArgs:
                  maximum_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -40,6 +41,7 @@ class ServiceQueueArgs:
         :param pulumi.Input[_builtins.int] maximum_message_size: The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
+        :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
@@ -56,6 +58,8 @@ class ServiceQueueArgs:
             pulumi.set(__self__, "message_retention_period", message_retention_period)
         if polling_wait_seconds is not None:
             pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
+        if queue_type is not None:
+            pulumi.set(__self__, "queue_type", queue_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if visibility_timeout is not None:
@@ -146,6 +150,18 @@ class ServiceQueueArgs:
         pulumi.set(self, "polling_wait_seconds", value)
 
     @_builtins.property
+    @pulumi.getter(name="queueType")
+    def queue_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the queue. Default value: `normal`. Valid values:
+        """
+        return pulumi.get(self, "queue_type")
+
+    @queue_type.setter
+    def queue_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "queue_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -181,6 +197,7 @@ class _ServiceQueueState:
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -194,6 +211,7 @@ class _ServiceQueueState:
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
+        :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
@@ -213,6 +231,8 @@ class _ServiceQueueState:
             pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
+        if queue_type is not None:
+            pulumi.set(__self__, "queue_type", queue_type)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if visibility_timeout is not None:
@@ -315,6 +335,18 @@ class _ServiceQueueState:
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="queueType")
+    def queue_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the queue. Default value: `normal`. Valid values:
+        """
+        return pulumi.get(self, "queue_type")
+
+    @queue_type.setter
+    def queue_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "queue_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -352,6 +384,7 @@ class ServiceQueue(pulumi.CustomResource):
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -403,6 +436,7 @@ class ServiceQueue(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
+        :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
@@ -473,6 +507,7 @@ class ServiceQueue(pulumi.CustomResource):
                  message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -493,6 +528,7 @@ class ServiceQueue(pulumi.CustomResource):
             if queue_name is None and not opts.urn:
                 raise TypeError("Missing required property 'queue_name'")
             __props__.__dict__["queue_name"] = queue_name
+            __props__.__dict__["queue_type"] = queue_type
             __props__.__dict__["tags"] = tags
             __props__.__dict__["visibility_timeout"] = visibility_timeout
             __props__.__dict__["create_time"] = None
@@ -514,6 +550,7 @@ class ServiceQueue(pulumi.CustomResource):
             message_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
             polling_wait_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_type: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             visibility_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'ServiceQueue':
         """
@@ -531,6 +568,7 @@ class ServiceQueue(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] message_retention_period: The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
         :param pulumi.Input[_builtins.int] polling_wait_seconds: The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
         :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
+        :param pulumi.Input[_builtins.str] queue_type: The type of the queue. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] visibility_timeout: The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
         """
@@ -546,6 +584,7 @@ class ServiceQueue(pulumi.CustomResource):
         __props__.__dict__["message_retention_period"] = message_retention_period
         __props__.__dict__["polling_wait_seconds"] = polling_wait_seconds
         __props__.__dict__["queue_name"] = queue_name
+        __props__.__dict__["queue_type"] = queue_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["visibility_timeout"] = visibility_timeout
         return ServiceQueue(resource_name, opts=opts, __props__=__props__)
@@ -613,6 +652,14 @@ class ServiceQueue(pulumi.CustomResource):
         The name of the queue.
         """
         return pulumi.get(self, "queue_name")
+
+    @_builtins.property
+    @pulumi.getter(name="queueType")
+    def queue_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the queue. Default value: `normal`. Valid values:
+        """
+        return pulumi.get(self, "queue_type")
 
     @_builtins.property
     @pulumi.getter

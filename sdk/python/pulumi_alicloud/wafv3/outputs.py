@@ -31,6 +31,20 @@ __all__ = [
     'DomainListen',
     'DomainRedirect',
     'DomainRedirectRequestHeader',
+    'GetAddressBooksBookResult',
+    'GetDefenseRulesRuleResult',
+    'GetDefenseRulesRuleConfigResult',
+    'GetDefenseRulesRuleConfigAccountIdentifierResult',
+    'GetDefenseRulesRuleConfigConditionResult',
+    'GetDefenseRulesRuleConfigGrayConfigResult',
+    'GetDefenseRulesRuleConfigRateLimitResult',
+    'GetDefenseRulesRuleConfigRateLimitStatusResult',
+    'GetDefenseRulesRuleConfigTimeConfigResult',
+    'GetDefenseRulesRuleConfigTimeConfigTimePeriodResult',
+    'GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodResult',
+    'GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodResult',
+    'GetDefenseRulesRuleConfigWafBaseConfigResult',
+    'GetDefenseRulesRuleConfigWafBaseConfigRuleDetailResult',
     'GetDomainsDomainResult',
     'GetDomainsDomainListenResult',
     'GetDomainsDomainRedirectResult',
@@ -1840,10 +1854,967 @@ class DomainRedirectRequestHeader(dict):
 
 
 @pulumi.output_type
+class GetAddressBooksBookResult(dict):
+    def __init__(__self__, *,
+                 address_book_id: _builtins.str,
+                 address_book_name: _builtins.str,
+                 address_book_type: _builtins.str,
+                 address_lists: Sequence[_builtins.str],
+                 description: _builtins.str,
+                 id: _builtins.str):
+        """
+        :param _builtins.str address_book_id: The ID of the Address Book.
+        :param _builtins.str address_book_name: The name of the Address Book.
+        :param _builtins.str address_book_type: The type of the Address Book. Valid values: `ip`.
+        :param Sequence[_builtins.str] address_lists: The address list of the Address Book. **NOTE:** This field is only available when `enable_details` is `true`.
+        :param _builtins.str description: The description of the Address Book.
+        :param _builtins.str id: The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+        """
+        pulumi.set(__self__, "address_book_id", address_book_id)
+        pulumi.set(__self__, "address_book_name", address_book_name)
+        pulumi.set(__self__, "address_book_type", address_book_type)
+        pulumi.set(__self__, "address_lists", address_lists)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="addressBookId")
+    def address_book_id(self) -> _builtins.str:
+        """
+        The ID of the Address Book.
+        """
+        return pulumi.get(self, "address_book_id")
+
+    @_builtins.property
+    @pulumi.getter(name="addressBookName")
+    def address_book_name(self) -> _builtins.str:
+        """
+        The name of the Address Book.
+        """
+        return pulumi.get(self, "address_book_name")
+
+    @_builtins.property
+    @pulumi.getter(name="addressBookType")
+    def address_book_type(self) -> _builtins.str:
+        """
+        The type of the Address Book. Valid values: `ip`.
+        """
+        return pulumi.get(self, "address_book_type")
+
+    @_builtins.property
+    @pulumi.getter(name="addressLists")
+    def address_lists(self) -> Sequence[_builtins.str]:
+        """
+        The address list of the Address Book. **NOTE:** This field is only available when `enable_details` is `true`.
+        """
+        return pulumi.get(self, "address_lists")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the Address Book.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence['outputs.GetDefenseRulesRuleConfigResult'],
+                 defense_origin: _builtins.str,
+                 defense_scene: _builtins.str,
+                 defense_type: _builtins.str,
+                 gmt_modified: _builtins.str,
+                 id: _builtins.str,
+                 resource: _builtins.str,
+                 rule_id: _builtins.int,
+                 rule_name: _builtins.str,
+                 rule_status: _builtins.int,
+                 template_id: _builtins.int):
+        """
+        :param Sequence['GetDefenseRulesRuleConfigArgs'] configs: Rule configuration content, in JSON format, constructed with a series of parameters.
+        :param _builtins.str defense_origin: Sources of protection.
+        :param _builtins.str defense_scene: The WAF protection scenario to be created.
+        :param _builtins.str defense_type: The protection rule type. Value:
+        :param _builtins.str gmt_modified: The modification time of the protection rule.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str resource: The protection object corresponding to the rule to be queried.
+        :param _builtins.int rule_id: The protection rule ID.
+        :param _builtins.str rule_name: The rule name.
+        :param _builtins.int rule_status: Protection rule status.
+        :param _builtins.int template_id: The protection template ID of the protection rule to be created.
+        """
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "defense_origin", defense_origin)
+        pulumi.set(__self__, "defense_scene", defense_scene)
+        pulumi.set(__self__, "defense_type", defense_type)
+        pulumi.set(__self__, "gmt_modified", gmt_modified)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "rule_status", rule_status)
+        pulumi.set(__self__, "template_id", template_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def configs(self) -> Sequence['outputs.GetDefenseRulesRuleConfigResult']:
+        """
+        Rule configuration content, in JSON format, constructed with a series of parameters.
+        """
+        return pulumi.get(self, "configs")
+
+    @_builtins.property
+    @pulumi.getter(name="defenseOrigin")
+    def defense_origin(self) -> _builtins.str:
+        """
+        Sources of protection.
+        """
+        return pulumi.get(self, "defense_origin")
+
+    @_builtins.property
+    @pulumi.getter(name="defenseScene")
+    def defense_scene(self) -> _builtins.str:
+        """
+        The WAF protection scenario to be created.
+        """
+        return pulumi.get(self, "defense_scene")
+
+    @_builtins.property
+    @pulumi.getter(name="defenseType")
+    def defense_type(self) -> _builtins.str:
+        """
+        The protection rule type. Value:
+        """
+        return pulumi.get(self, "defense_type")
+
+    @_builtins.property
+    @pulumi.getter(name="gmtModified")
+    def gmt_modified(self) -> _builtins.str:
+        """
+        The modification time of the protection rule.
+        """
+        return pulumi.get(self, "gmt_modified")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def resource(self) -> _builtins.str:
+        """
+        The protection object corresponding to the rule to be queried.
+        """
+        return pulumi.get(self, "resource")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.int:
+        """
+        The protection rule ID.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> _builtins.str:
+        """
+        The rule name.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleStatus")
+    def rule_status(self) -> _builtins.int:
+        """
+        Protection rule status.
+        """
+        return pulumi.get(self, "rule_status")
+
+    @_builtins.property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> _builtins.int:
+        """
+        The protection template ID of the protection rule to be created.
+        """
+        return pulumi.get(self, "template_id")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigResult(dict):
+    def __init__(__self__, *,
+                 abroad_regions: _builtins.str,
+                 account_identifiers: Sequence['outputs.GetDefenseRulesRuleConfigAccountIdentifierResult'],
+                 auto_update: _builtins.bool,
+                 bypass_regular_rules: Sequence[_builtins.str],
+                 bypass_regular_types: Sequence[_builtins.str],
+                 bypass_tags: Sequence[_builtins.str],
+                 cc_effect: _builtins.str,
+                 cc_status: _builtins.int,
+                 cn_regions: _builtins.str,
+                 codec_lists: Sequence[_builtins.str],
+                 conditions: Sequence['outputs.GetDefenseRulesRuleConfigConditionResult'],
+                 gray_configs: Sequence['outputs.GetDefenseRulesRuleConfigGrayConfigResult'],
+                 gray_status: _builtins.int,
+                 mode: _builtins.int,
+                 protocol: _builtins.str,
+                 rate_limits: Sequence['outputs.GetDefenseRulesRuleConfigRateLimitResult'],
+                 remote_addrs: Sequence[_builtins.str],
+                 rule_action: _builtins.str,
+                 throttle_threhold: _builtins.int,
+                 throttle_type: _builtins.str,
+                 time_configs: Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigResult'],
+                 ua: _builtins.str,
+                 url: _builtins.str,
+                 waf_base_configs: Sequence['outputs.GetDefenseRulesRuleConfigWafBaseConfigResult']):
+        """
+        :param _builtins.str abroad_regions: The regions outside China from which you want to block requests.
+        :param Sequence['GetDefenseRulesRuleConfigAccountIdentifierArgs'] account_identifiers: The policies for account extraction.
+        :param _builtins.bool auto_update: Whether the new Web core protection rules are automatically updated.
+        :param Sequence[_builtins.str] bypass_regular_rules: The list of regular rule IDs that are not detected.
+        :param Sequence[_builtins.str] bypass_regular_types: The regular rule type is not detected.
+        :param Sequence[_builtins.str] bypass_tags: The modules to which the whitelist applies.
+        :param _builtins.str cc_effect: Set the effective range of the speed limit.
+        :param _builtins.int cc_status: Whether to open the speed limit.
+        :param _builtins.str cn_regions: The regions in China from which you want to block requests.
+        :param Sequence[_builtins.str] codec_lists: The type to enable decoding.
+        :param Sequence['GetDefenseRulesRuleConfigConditionArgs'] conditions: The traffic characteristics of ACL, which are described in JSON format.
+        :param Sequence['GetDefenseRulesRuleConfigGrayConfigArgs'] gray_configs: The canary release configuration for the rule.
+        :param _builtins.int gray_status: Specifies whether to enable canary release for the rule.
+        :param _builtins.int mode: The HTTP flood protection mode.
+        :param _builtins.str protocol: The protocol type of the cached page address.
+        :param Sequence['GetDefenseRulesRuleConfigRateLimitArgs'] rate_limits: The detailed speed limit configuration, which is described in the JSON string format.
+        :param Sequence[_builtins.str] remote_addrs: The IP addresses that you want to add to the blacklist.
+        :param _builtins.str rule_action: Web core protection rule action.
+        :param _builtins.int throttle_threhold: The throttling threshold.
+        :param _builtins.str throttle_type: The throttling method.
+        :param Sequence['GetDefenseRulesRuleConfigTimeConfigArgs'] time_configs: The scheduled rule configuration.
+        :param _builtins.str ua: The User-Agent string that is allowed for access to the address.
+        :param _builtins.str url: The address of the cached page.
+        :param Sequence['GetDefenseRulesRuleConfigWafBaseConfigArgs'] waf_base_configs: The configuration of the Web core protection rules to be modified.
+        """
+        pulumi.set(__self__, "abroad_regions", abroad_regions)
+        pulumi.set(__self__, "account_identifiers", account_identifiers)
+        pulumi.set(__self__, "auto_update", auto_update)
+        pulumi.set(__self__, "bypass_regular_rules", bypass_regular_rules)
+        pulumi.set(__self__, "bypass_regular_types", bypass_regular_types)
+        pulumi.set(__self__, "bypass_tags", bypass_tags)
+        pulumi.set(__self__, "cc_effect", cc_effect)
+        pulumi.set(__self__, "cc_status", cc_status)
+        pulumi.set(__self__, "cn_regions", cn_regions)
+        pulumi.set(__self__, "codec_lists", codec_lists)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "gray_configs", gray_configs)
+        pulumi.set(__self__, "gray_status", gray_status)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "rate_limits", rate_limits)
+        pulumi.set(__self__, "remote_addrs", remote_addrs)
+        pulumi.set(__self__, "rule_action", rule_action)
+        pulumi.set(__self__, "throttle_threhold", throttle_threhold)
+        pulumi.set(__self__, "throttle_type", throttle_type)
+        pulumi.set(__self__, "time_configs", time_configs)
+        pulumi.set(__self__, "ua", ua)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "waf_base_configs", waf_base_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="abroadRegions")
+    def abroad_regions(self) -> _builtins.str:
+        """
+        The regions outside China from which you want to block requests.
+        """
+        return pulumi.get(self, "abroad_regions")
+
+    @_builtins.property
+    @pulumi.getter(name="accountIdentifiers")
+    def account_identifiers(self) -> Sequence['outputs.GetDefenseRulesRuleConfigAccountIdentifierResult']:
+        """
+        The policies for account extraction.
+        """
+        return pulumi.get(self, "account_identifiers")
+
+    @_builtins.property
+    @pulumi.getter(name="autoUpdate")
+    def auto_update(self) -> _builtins.bool:
+        """
+        Whether the new Web core protection rules are automatically updated.
+        """
+        return pulumi.get(self, "auto_update")
+
+    @_builtins.property
+    @pulumi.getter(name="bypassRegularRules")
+    def bypass_regular_rules(self) -> Sequence[_builtins.str]:
+        """
+        The list of regular rule IDs that are not detected.
+        """
+        return pulumi.get(self, "bypass_regular_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="bypassRegularTypes")
+    def bypass_regular_types(self) -> Sequence[_builtins.str]:
+        """
+        The regular rule type is not detected.
+        """
+        return pulumi.get(self, "bypass_regular_types")
+
+    @_builtins.property
+    @pulumi.getter(name="bypassTags")
+    def bypass_tags(self) -> Sequence[_builtins.str]:
+        """
+        The modules to which the whitelist applies.
+        """
+        return pulumi.get(self, "bypass_tags")
+
+    @_builtins.property
+    @pulumi.getter(name="ccEffect")
+    def cc_effect(self) -> _builtins.str:
+        """
+        Set the effective range of the speed limit.
+        """
+        return pulumi.get(self, "cc_effect")
+
+    @_builtins.property
+    @pulumi.getter(name="ccStatus")
+    def cc_status(self) -> _builtins.int:
+        """
+        Whether to open the speed limit.
+        """
+        return pulumi.get(self, "cc_status")
+
+    @_builtins.property
+    @pulumi.getter(name="cnRegions")
+    def cn_regions(self) -> _builtins.str:
+        """
+        The regions in China from which you want to block requests.
+        """
+        return pulumi.get(self, "cn_regions")
+
+    @_builtins.property
+    @pulumi.getter(name="codecLists")
+    def codec_lists(self) -> Sequence[_builtins.str]:
+        """
+        The type to enable decoding.
+        """
+        return pulumi.get(self, "codec_lists")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetDefenseRulesRuleConfigConditionResult']:
+        """
+        The traffic characteristics of ACL, which are described in JSON format.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter(name="grayConfigs")
+    def gray_configs(self) -> Sequence['outputs.GetDefenseRulesRuleConfigGrayConfigResult']:
+        """
+        The canary release configuration for the rule.
+        """
+        return pulumi.get(self, "gray_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="grayStatus")
+    def gray_status(self) -> _builtins.int:
+        """
+        Specifies whether to enable canary release for the rule.
+        """
+        return pulumi.get(self, "gray_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.int:
+        """
+        The HTTP flood protection mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The protocol type of the cached page address.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimits")
+    def rate_limits(self) -> Sequence['outputs.GetDefenseRulesRuleConfigRateLimitResult']:
+        """
+        The detailed speed limit configuration, which is described in the JSON string format.
+        """
+        return pulumi.get(self, "rate_limits")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddrs")
+    def remote_addrs(self) -> Sequence[_builtins.str]:
+        """
+        The IP addresses that you want to add to the blacklist.
+        """
+        return pulumi.get(self, "remote_addrs")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleAction")
+    def rule_action(self) -> _builtins.str:
+        """
+        Web core protection rule action.
+        """
+        return pulumi.get(self, "rule_action")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleThrehold")
+    def throttle_threhold(self) -> _builtins.int:
+        """
+        The throttling threshold.
+        """
+        return pulumi.get(self, "throttle_threhold")
+
+    @_builtins.property
+    @pulumi.getter(name="throttleType")
+    def throttle_type(self) -> _builtins.str:
+        """
+        The throttling method.
+        """
+        return pulumi.get(self, "throttle_type")
+
+    @_builtins.property
+    @pulumi.getter(name="timeConfigs")
+    def time_configs(self) -> Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigResult']:
+        """
+        The scheduled rule configuration.
+        """
+        return pulumi.get(self, "time_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def ua(self) -> _builtins.str:
+        """
+        The User-Agent string that is allowed for access to the address.
+        """
+        return pulumi.get(self, "ua")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        """
+        The address of the cached page.
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter(name="wafBaseConfigs")
+    def waf_base_configs(self) -> Sequence['outputs.GetDefenseRulesRuleConfigWafBaseConfigResult']:
+        """
+        The configuration of the Web core protection rules to be modified.
+        """
+        return pulumi.get(self, "waf_base_configs")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigAccountIdentifierResult(dict):
+    def __init__(__self__, *,
+                 decode_type: _builtins.str,
+                 key: _builtins.str,
+                 position: _builtins.str,
+                 priority: _builtins.int,
+                 sub_key: _builtins.str):
+        """
+        :param _builtins.str decode_type: The authentication mode.
+        :param _builtins.str key: Match field.
+        :param _builtins.str position: The field that stores the decoded account information.
+        :param _builtins.int priority: The priority of the current extraction configuration.
+        :param _builtins.str sub_key: The characteristics of the statistical object.
+        """
+        pulumi.set(__self__, "decode_type", decode_type)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "sub_key", sub_key)
+
+    @_builtins.property
+    @pulumi.getter(name="decodeType")
+    def decode_type(self) -> _builtins.str:
+        """
+        The authentication mode.
+        """
+        return pulumi.get(self, "decode_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Match field.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> _builtins.str:
+        """
+        The field that stores the decoded account information.
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> _builtins.int:
+        """
+        The priority of the current extraction configuration.
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> _builtins.str:
+        """
+        The characteristics of the statistical object.
+        """
+        return pulumi.get(self, "sub_key")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigConditionResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 op_value: _builtins.str,
+                 sub_key: _builtins.str,
+                 values: _builtins.str):
+        """
+        :param _builtins.str key: Match field.
+        :param _builtins.str op_value: Logical character.
+        :param _builtins.str sub_key: The characteristics of the statistical object.
+        :param _builtins.str values: Match the content and fill in the corresponding content as needed.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "op_value", op_value)
+        pulumi.set(__self__, "sub_key", sub_key)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Match field.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="opValue")
+    def op_value(self) -> _builtins.str:
+        """
+        Logical character.
+        """
+        return pulumi.get(self, "op_value")
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> _builtins.str:
+        """
+        The characteristics of the statistical object.
+        """
+        return pulumi.get(self, "sub_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> _builtins.str:
+        """
+        Match the content and fill in the corresponding content as needed.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigGrayConfigResult(dict):
+    def __init__(__self__, *,
+                 gray_rate: _builtins.int,
+                 gray_sub_key: _builtins.str,
+                 gray_target: _builtins.str):
+        """
+        :param _builtins.int gray_rate: The percentage of traffic for which the canary release takes effect.
+        :param _builtins.str gray_sub_key: The sub-feature of the statistical object.
+        :param _builtins.str gray_target: The type of the canary release object.
+        """
+        pulumi.set(__self__, "gray_rate", gray_rate)
+        pulumi.set(__self__, "gray_sub_key", gray_sub_key)
+        pulumi.set(__self__, "gray_target", gray_target)
+
+    @_builtins.property
+    @pulumi.getter(name="grayRate")
+    def gray_rate(self) -> _builtins.int:
+        """
+        The percentage of traffic for which the canary release takes effect.
+        """
+        return pulumi.get(self, "gray_rate")
+
+    @_builtins.property
+    @pulumi.getter(name="graySubKey")
+    def gray_sub_key(self) -> _builtins.str:
+        """
+        The sub-feature of the statistical object.
+        """
+        return pulumi.get(self, "gray_sub_key")
+
+    @_builtins.property
+    @pulumi.getter(name="grayTarget")
+    def gray_target(self) -> _builtins.str:
+        """
+        The type of the canary release object.
+        """
+        return pulumi.get(self, "gray_target")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigRateLimitResult(dict):
+    def __init__(__self__, *,
+                 interval: _builtins.int,
+                 statuses: Sequence['outputs.GetDefenseRulesRuleConfigRateLimitStatusResult'],
+                 sub_key: _builtins.str,
+                 target: _builtins.str,
+                 threshold: _builtins.int,
+                 ttl: _builtins.int):
+        """
+        :param _builtins.int interval: The statistical period, in seconds.
+        :param Sequence['GetDefenseRulesRuleConfigRateLimitStatusArgs'] statuses: Response code frequency setting.
+        :param _builtins.str sub_key: The characteristics of the statistical object.
+        :param _builtins.str target: The type of the statistical object.
+        :param _builtins.int threshold: The maximum number of requests that can be sent from a statistical object.
+        :param _builtins.int ttl: The period of time during which you want the specified action to be valid.
+        """
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "statuses", statuses)
+        pulumi.set(__self__, "sub_key", sub_key)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "threshold", threshold)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.int:
+        """
+        The statistical period, in seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def statuses(self) -> Sequence['outputs.GetDefenseRulesRuleConfigRateLimitStatusResult']:
+        """
+        Response code frequency setting.
+        """
+        return pulumi.get(self, "statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="subKey")
+    def sub_key(self) -> _builtins.str:
+        """
+        The characteristics of the statistical object.
+        """
+        return pulumi.get(self, "sub_key")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> _builtins.str:
+        """
+        The type of the statistical object.
+        """
+        return pulumi.get(self, "target")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> _builtins.int:
+        """
+        The maximum number of requests that can be sent from a statistical object.
+        """
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> _builtins.int:
+        """
+        The period of time during which you want the specified action to be valid.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigRateLimitStatusResult(dict):
+    def __init__(__self__, *,
+                 code: _builtins.int,
+                 count: _builtins.int,
+                 ratio: _builtins.int):
+        """
+        :param _builtins.int code: Required.
+        :param _builtins.int count: The threshold for the number of occurrences.
+        :param _builtins.int ratio: The threshold for the proportion of occurrences (percentage).
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "ratio", ratio)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> _builtins.int:
+        """
+        Required.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The threshold for the number of occurrences.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def ratio(self) -> _builtins.int:
+        """
+        The threshold for the proportion of occurrences (percentage).
+        """
+        return pulumi.get(self, "ratio")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigTimeConfigResult(dict):
+    def __init__(__self__, *,
+                 time_periods: Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigTimePeriodResult'],
+                 time_scope: _builtins.str,
+                 time_zone: _builtins.int,
+                 week_time_periods: Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodResult']):
+        """
+        :param Sequence['GetDefenseRulesRuleConfigTimeConfigTimePeriodArgs'] time_periods: The time period during which the rule is effective.
+        :param _builtins.str time_scope: The effective period of the rule.
+        :param _builtins.int time_zone: The time zone in which the rule is effective.
+        :param Sequence['GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodArgs'] week_time_periods: The periodic time period during which the rule is effective.
+        """
+        pulumi.set(__self__, "time_periods", time_periods)
+        pulumi.set(__self__, "time_scope", time_scope)
+        pulumi.set(__self__, "time_zone", time_zone)
+        pulumi.set(__self__, "week_time_periods", week_time_periods)
+
+    @_builtins.property
+    @pulumi.getter(name="timePeriods")
+    def time_periods(self) -> Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigTimePeriodResult']:
+        """
+        The time period during which the rule is effective.
+        """
+        return pulumi.get(self, "time_periods")
+
+    @_builtins.property
+    @pulumi.getter(name="timeScope")
+    def time_scope(self) -> _builtins.str:
+        """
+        The effective period of the rule.
+        """
+        return pulumi.get(self, "time_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.int:
+        """
+        The time zone in which the rule is effective.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="weekTimePeriods")
+    def week_time_periods(self) -> Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodResult']:
+        """
+        The periodic time period during which the rule is effective.
+        """
+        return pulumi.get(self, "week_time_periods")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigTimeConfigTimePeriodResult(dict):
+    def __init__(__self__, *,
+                 end: _builtins.int,
+                 start: _builtins.int):
+        """
+        :param _builtins.int end: The end time of each day when the rule is effective.
+        :param _builtins.int start: The start time of each day when the rule is effective.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.int:
+        """
+        The end time of each day when the rule is effective.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.int:
+        """
+        The start time of each day when the rule is effective.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodResult(dict):
+    def __init__(__self__, *,
+                 day: _builtins.str,
+                 day_periods: Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodResult']):
+        """
+        :param _builtins.str day: The time period of each day when the rule is effective.
+        :param Sequence['GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs'] day_periods: The time period of each day when the rule is effective.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "day_periods", day_periods)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> _builtins.str:
+        """
+        The time period of each day when the rule is effective.
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter(name="dayPeriods")
+    def day_periods(self) -> Sequence['outputs.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodResult']:
+        """
+        The time period of each day when the rule is effective.
+        """
+        return pulumi.get(self, "day_periods")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriodResult(dict):
+    def __init__(__self__, *,
+                 end: _builtins.int,
+                 start: _builtins.int):
+        """
+        :param _builtins.int end: The end time of each day when the rule is effective.
+        :param _builtins.int start: The start time of each day when the rule is effective.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.int:
+        """
+        The end time of each day when the rule is effective.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.int:
+        """
+        The start time of each day when the rule is effective.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigWafBaseConfigResult(dict):
+    def __init__(__self__, *,
+                 rule_batch_operation_config: _builtins.str,
+                 rule_details: Sequence['outputs.GetDefenseRulesRuleConfigWafBaseConfigRuleDetailResult'],
+                 rule_type: _builtins.str):
+        """
+        :param _builtins.str rule_batch_operation_config: The batch operation on rules.
+        :param Sequence['GetDefenseRulesRuleConfigWafBaseConfigRuleDetailArgs'] rule_details: The configuration of the Web core protection rules to be modified.
+        :param _builtins.str rule_type: The protection rule type. Value:
+        """
+        pulumi.set(__self__, "rule_batch_operation_config", rule_batch_operation_config)
+        pulumi.set(__self__, "rule_details", rule_details)
+        pulumi.set(__self__, "rule_type", rule_type)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleBatchOperationConfig")
+    def rule_batch_operation_config(self) -> _builtins.str:
+        """
+        The batch operation on rules.
+        """
+        return pulumi.get(self, "rule_batch_operation_config")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleDetails")
+    def rule_details(self) -> Sequence['outputs.GetDefenseRulesRuleConfigWafBaseConfigRuleDetailResult']:
+        """
+        The configuration of the Web core protection rules to be modified.
+        """
+        return pulumi.get(self, "rule_details")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleType")
+    def rule_type(self) -> _builtins.str:
+        """
+        The protection rule type. Value:
+        """
+        return pulumi.get(self, "rule_type")
+
+
+@pulumi.output_type
+class GetDefenseRulesRuleConfigWafBaseConfigRuleDetailResult(dict):
+    def __init__(__self__, *,
+                 rule_action: _builtins.str,
+                 rule_id: _builtins.str,
+                 rule_status: _builtins.int):
+        """
+        :param _builtins.str rule_action: Web core protection rule action.
+        :param _builtins.str rule_id: The protection rule ID.
+        :param _builtins.int rule_status: Protection rule status.
+        """
+        pulumi.set(__self__, "rule_action", rule_action)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "rule_status", rule_status)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleAction")
+    def rule_action(self) -> _builtins.str:
+        """
+        Web core protection rule action.
+        """
+        return pulumi.get(self, "rule_action")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> _builtins.str:
+        """
+        The protection rule ID.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleStatus")
+    def rule_status(self) -> _builtins.int:
+        """
+        Protection rule status.
+        """
+        return pulumi.get(self, "rule_status")
+
+
+@pulumi.output_type
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
                  cname: _builtins.str,
                  domain: _builtins.str,
+                 domain_id: _builtins.str,
                  id: _builtins.str,
                  listens: Sequence['outputs.GetDomainsDomainListenResult'],
                  redirects: Sequence['outputs.GetDomainsDomainRedirectResult'],
@@ -1852,6 +2823,7 @@ class GetDomainsDomainResult(dict):
         """
         :param _builtins.str cname: The CNAME assigned by WAF to the domain name.
         :param _builtins.str domain: The name of the domain name to query.
+        :param _builtins.str domain_id: The numeric domain ID assigned by WAF. Populated only when `enable_details` is `true`.
         :param _builtins.str id: The ID of the domain. It formats as `<instance_id>:<domain>`.
         :param Sequence['GetDomainsDomainListenArgs'] listens: Configure listening information
         :param Sequence['GetDomainsDomainRedirectArgs'] redirects: Configure forwarding information.
@@ -1860,6 +2832,7 @@ class GetDomainsDomainResult(dict):
         """
         pulumi.set(__self__, "cname", cname)
         pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "listens", listens)
         pulumi.set(__self__, "redirects", redirects)
@@ -1881,6 +2854,14 @@ class GetDomainsDomainResult(dict):
         The name of the domain name to query.
         """
         return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        The numeric domain ID assigned by WAF. Populated only when `enable_details` is `true`.
+        """
+        return pulumi.get(self, "domain_id")
 
     @_builtins.property
     @pulumi.getter

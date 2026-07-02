@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Esa.Inputs
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// Rule ID
+        /// Rule ID.
         /// </summary>
         [Input("ruleId")]
         public Input<int>? RuleId { get; set; }

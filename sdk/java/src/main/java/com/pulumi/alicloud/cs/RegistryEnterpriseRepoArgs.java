@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,6 +111,21 @@ public final class RegistryEnterpriseRepoArgs extends com.pulumi.resources.Resou
         return this.summary;
     }
 
+    /**
+     * Whether to enable image tag immutability. Valid values:
+     * 
+     */
+    @Import(name="tagImmutability")
+    private @Nullable Output<Boolean> tagImmutability;
+
+    /**
+     * @return Whether to enable image tag immutability. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> tagImmutability() {
+        return Optional.ofNullable(this.tagImmutability);
+    }
+
     private RegistryEnterpriseRepoArgs() {}
 
     private RegistryEnterpriseRepoArgs(RegistryEnterpriseRepoArgs $) {
@@ -119,6 +135,7 @@ public final class RegistryEnterpriseRepoArgs extends com.pulumi.resources.Resou
         this.namespace = $.namespace;
         this.repoType = $.repoType;
         this.summary = $.summary;
+        this.tagImmutability = $.tagImmutability;
     }
 
     public static Builder builder() {
@@ -267,6 +284,27 @@ public final class RegistryEnterpriseRepoArgs extends com.pulumi.resources.Resou
          */
         public Builder summary(String summary) {
             return summary(Output.of(summary));
+        }
+
+        /**
+         * @param tagImmutability Whether to enable image tag immutability. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagImmutability(@Nullable Output<Boolean> tagImmutability) {
+            $.tagImmutability = tagImmutability;
+            return this;
+        }
+
+        /**
+         * @param tagImmutability Whether to enable image tag immutability. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagImmutability(Boolean tagImmutability) {
+            return tagImmutability(Output.of(tagImmutability));
         }
 
         public RegistryEnterpriseRepoArgs build() {

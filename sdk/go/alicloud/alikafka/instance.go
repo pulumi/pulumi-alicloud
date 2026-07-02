@@ -228,6 +228,8 @@ type Instance struct {
 	TopicUsed pulumi.IntOutput `pulumi:"topicUsed"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+	VpcSaslDomainEndpoint pulumi.StringOutput `pulumi:"vpcSaslDomainEndpoint"`
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
@@ -366,6 +368,8 @@ type instanceState struct {
 	TopicUsed *int `pulumi:"topicUsed"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
+	// (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+	VpcSaslDomainEndpoint *string `pulumi:"vpcSaslDomainEndpoint"`
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The IDs of the vSwitches with which the instance is associated.
@@ -472,6 +476,8 @@ type InstanceState struct {
 	TopicUsed pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
+	// (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+	VpcSaslDomainEndpoint pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
 	// The IDs of the vSwitches with which the instance is associated.
@@ -943,6 +949,11 @@ func (o InstanceOutput) TopicUsed() pulumi.IntOutput {
 // The VPC ID of the instance.
 func (o InstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+func (o InstanceOutput) VpcSaslDomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VpcSaslDomainEndpoint }).(pulumi.StringOutput)
 }
 
 // The ID of attaching vswitch to instance.

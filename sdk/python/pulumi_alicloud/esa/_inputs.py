@@ -1094,6 +1094,10 @@ class OriginPoolOriginArgsDict(TypedDict):
     """
     The request header that is sent when returning to the source. Only Host is supported.
     """
+    ip_version_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP protocol version for back-to-origin requests. Default value: `round_robin`. Valid values:
+    """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Origin Name.
@@ -1104,10 +1108,7 @@ class OriginPoolOriginArgsDict(TypedDict):
     """
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Source station type:
-    ip_domain: ip or domain name type origin station;
-    - `OSS`:OSS address source station;
-    - `S3`:AWS S3 Source station.
+    The type of the origin. Valid values:
     """
     weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -1121,6 +1122,7 @@ class OriginPoolOriginArgs:
                  auth_conf: pulumi.Input[Optional['OriginPoolOriginAuthConfArgs']] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  header: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  origin_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1130,12 +1132,10 @@ class OriginPoolOriginArgs:
         :param pulumi.Input['OriginPoolOriginAuthConfArgs'] auth_conf: The authentication information. When the source Station is an OSS or S3 and other source stations need to be authenticated, the authentication-related configuration information needs to be transmitted. See `auth_conf` below.
         :param pulumi.Input[_builtins.bool] enabled: Whether the source station is enabled:
         :param pulumi.Input[_builtins.str] header: The request header that is sent when returning to the source. Only Host is supported.
+        :param pulumi.Input[_builtins.str] ip_version_policy: The IP protocol version for back-to-origin requests. Default value: `round_robin`. Valid values:
         :param pulumi.Input[_builtins.str] name: Origin Name.
         :param pulumi.Input[_builtins.str] origin_id: Origin ID.
-        :param pulumi.Input[_builtins.str] type: Source station type:
-               ip_domain: ip or domain name type origin station;
-               - `OSS`:OSS address source station;
-               - `S3`:AWS S3 Source station.
+        :param pulumi.Input[_builtins.str] type: The type of the origin. Valid values:
         :param pulumi.Input[_builtins.int] weight: Weight, 0-100.
         """
         if address is not None:
@@ -1146,6 +1146,8 @@ class OriginPoolOriginArgs:
             pulumi.set(__self__, "enabled", enabled)
         if header is not None:
             pulumi.set(__self__, "header", header)
+        if ip_version_policy is not None:
+            pulumi.set(__self__, "ip_version_policy", ip_version_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if origin_id is not None:
@@ -1204,6 +1206,18 @@ class OriginPoolOriginArgs:
         pulumi.set(self, "header", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipVersionPolicy")
+    def ip_version_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP protocol version for back-to-origin requests. Default value: `round_robin`. Valid values:
+        """
+        return pulumi.get(self, "ip_version_policy")
+
+    @ip_version_policy.setter
+    def ip_version_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_version_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1231,10 +1245,7 @@ class OriginPoolOriginArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Source station type:
-        ip_domain: ip or domain name type origin station;
-        - `OSS`:OSS address source station;
-        - `S3`:AWS S3 Source station.
+        The type of the origin. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -3057,7 +3068,7 @@ class TransportLayerApplicationRuleArgsDict(TypedDict):
     """
     rule_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Rule ID
+    Rule ID.
     """
 
 @pulumi.input_type
@@ -3086,7 +3097,7 @@ class TransportLayerApplicationRuleArgs:
         :param pulumi.Input[_builtins.str] source_port: Source Port
         :param pulumi.Input[_builtins.str] source_type: Origin type, supporting:
         :param pulumi.Input[_builtins.str] comment: Comment information for the rule (optional).
-        :param pulumi.Input[_builtins.int] rule_id: Rule ID
+        :param pulumi.Input[_builtins.int] rule_id: Rule ID.
         """
         pulumi.set(__self__, "client_ip_pass_through_mode", client_ip_pass_through_mode)
         pulumi.set(__self__, "edge_port", edge_port)
@@ -3194,7 +3205,7 @@ class TransportLayerApplicationRuleArgs:
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Rule ID
+        Rule ID.
         """
         return pulumi.get(self, "rule_id")
 

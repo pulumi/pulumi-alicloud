@@ -38,9 +38,11 @@ class InstanceArgs:
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_switch: pulumi.Input[Optional[_builtins.bool]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.str]] = None,
                  support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
                  support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -75,9 +77,11 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
@@ -119,12 +123,16 @@ class InstanceArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if serverless_charge_type is not None:
             pulumi.set(__self__, "serverless_charge_type", serverless_charge_type)
+        if serverless_switch is not None:
+            pulumi.set(__self__, "serverless_switch", serverless_switch)
         if storage_size is not None:
             pulumi.set(__self__, "storage_size", storage_size)
         if support_eip is not None:
             pulumi.set(__self__, "support_eip", support_eip)
         if support_tracing is not None:
             pulumi.set(__self__, "support_tracing", support_tracing)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tracing_storage_time is not None:
             pulumi.set(__self__, "tracing_storage_time", tracing_storage_time)
         if vpc_id is not None:
@@ -370,6 +378,18 @@ class InstanceArgs:
         pulumi.set(self, "serverless_charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverlessSwitch")
+    def serverless_switch(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable the Serverless elastic capability on the instance.
+        """
+        return pulumi.get(self, "serverless_switch")
+
+    @serverless_switch.setter
+    def serverless_switch(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "serverless_switch", value)
+
+    @_builtins.property
     @pulumi.getter(name="storageSize")
     def storage_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -404,6 +424,18 @@ class InstanceArgs:
     @support_tracing.setter
     def support_tracing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_tracing", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingStorageTime")
@@ -465,10 +497,12 @@ class _InstanceState:
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_switch: pulumi.Input[Optional[_builtins.bool]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.str]] = None,
                  support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
                  support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -504,10 +538,12 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
@@ -552,6 +588,8 @@ class _InstanceState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if serverless_charge_type is not None:
             pulumi.set(__self__, "serverless_charge_type", serverless_charge_type)
+        if serverless_switch is not None:
+            pulumi.set(__self__, "serverless_switch", serverless_switch)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if storage_size is not None:
@@ -560,6 +598,8 @@ class _InstanceState:
             pulumi.set(__self__, "support_eip", support_eip)
         if support_tracing is not None:
             pulumi.set(__self__, "support_tracing", support_tracing)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tracing_storage_time is not None:
             pulumi.set(__self__, "tracing_storage_time", tracing_storage_time)
         if vpc_id is not None:
@@ -817,6 +857,18 @@ class _InstanceState:
         pulumi.set(self, "serverless_charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverlessSwitch")
+    def serverless_switch(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable the Serverless elastic capability on the instance.
+        """
+        return pulumi.get(self, "serverless_switch")
+
+    @serverless_switch.setter
+    def serverless_switch(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "serverless_switch", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -863,6 +915,18 @@ class _InstanceState:
     @support_tracing.setter
     def support_tracing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_tracing", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingStorageTime")
@@ -926,9 +990,11 @@ class Instance(pulumi.CustomResource):
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_switch: pulumi.Input[Optional[_builtins.bool]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.str]] = None,
                  support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
                  support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1039,9 +1105,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
@@ -1162,9 +1230,11 @@ class Instance(pulumi.CustomResource):
                  renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_switch: pulumi.Input[Optional[_builtins.bool]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.str]] = None,
                  support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
                  support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1198,9 +1268,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renewal_status"] = renewal_status
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["serverless_charge_type"] = serverless_charge_type
+            __props__.__dict__["serverless_switch"] = serverless_switch
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["support_eip"] = support_eip
             __props__.__dict__["support_tracing"] = support_tracing
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tracing_storage_time"] = tracing_storage_time
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_ids"] = vswitch_ids
@@ -1236,10 +1308,12 @@ class Instance(pulumi.CustomResource):
             renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_switch: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             storage_size: pulumi.Input[Optional[_builtins.str]] = None,
             support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
             support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
@@ -1279,10 +1353,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
         :param pulumi.Input[_builtins.bool] support_tracing: Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.int] tracing_storage_time: Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
@@ -1311,10 +1387,12 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["serverless_charge_type"] = serverless_charge_type
+        __props__.__dict__["serverless_switch"] = serverless_switch
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
         __props__.__dict__["support_eip"] = support_eip
         __props__.__dict__["support_tracing"] = support_tracing
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tracing_storage_time"] = tracing_storage_time
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_ids"] = vswitch_ids
@@ -1490,6 +1568,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "serverless_charge_type")
 
     @_builtins.property
+    @pulumi.getter(name="serverlessSwitch")
+    def serverless_switch(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable the Serverless elastic capability on the instance.
+        """
+        return pulumi.get(self, "serverless_switch")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1520,6 +1606,14 @@ class Instance(pulumi.CustomResource):
         Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         """
         return pulumi.get(self, "support_tracing")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="tracingStorageTime")

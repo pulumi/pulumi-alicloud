@@ -103,6 +103,7 @@ namespace Pulumi.AliCloud.CR
         /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         /// - `ACR`: Uses the Trivy scan engine provided by default.
         /// - `SAS`: uses the enhanced cloud security scan engine.
+        /// - `DISABLE`: Disables the image security scan engine.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -126,6 +127,7 @@ namespace Pulumi.AliCloud.CR
         /// - `Basic`: Basic instance
         /// - `Standard`: Standard instance
         /// - `Advanced`: Advanced Edition Instance
+        /// - `Economy`: Economy instance
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -299,6 +301,7 @@ namespace Pulumi.AliCloud.CR
         /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         /// - `ACR`: Uses the Trivy scan engine provided by default.
         /// - `SAS`: uses the enhanced cloud security scan engine.
+        /// - `DISABLE`: Disables the image security scan engine.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -316,6 +319,7 @@ namespace Pulumi.AliCloud.CR
         /// - `Basic`: Basic instance
         /// - `Standard`: Standard instance
         /// - `Advanced`: Advanced Edition Instance
+        /// - `Economy`: Economy instance
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -469,6 +473,7 @@ namespace Pulumi.AliCloud.CR
         /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         /// - `ACR`: Uses the Trivy scan engine provided by default.
         /// - `SAS`: uses the enhanced cloud security scan engine.
+        /// - `DISABLE`: Disables the image security scan engine.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -498,6 +503,7 @@ namespace Pulumi.AliCloud.CR
         /// - `Basic`: Basic instance
         /// - `Standard`: Standard instance
         /// - `Advanced`: Advanced Edition Instance
+        /// - `Economy`: Economy instance
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>

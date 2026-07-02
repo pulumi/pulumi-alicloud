@@ -14,7 +14,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -122,42 +121,42 @@ public class TransportLayerApplication extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="crossBorderOptimization", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> crossBorderOptimization;
+    private Output<String> crossBorderOptimization;
 
     /**
      * @return Whether to enable China mainland network access optimization, default is disabled. Value range:
      * 
      */
-    public Output<Optional<String>> crossBorderOptimization() {
-        return Codegen.optional(this.crossBorderOptimization);
+    public Output<String> crossBorderOptimization() {
+        return this.crossBorderOptimization;
     }
     /**
      * IP access rule switch. When enabled, the WAF&#39;s IP access rules apply to the transport layer application.
      * 
      */
     @Export(name="ipAccessRule", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ipAccessRule;
+    private Output<String> ipAccessRule;
 
     /**
      * @return IP access rule switch. When enabled, the WAF&#39;s IP access rules apply to the transport layer application.
      * 
      */
-    public Output<Optional<String>> ipAccessRule() {
-        return Codegen.optional(this.ipAccessRule);
+    public Output<String> ipAccessRule() {
+        return this.ipAccessRule;
     }
     /**
      * IPv6 switch.
      * 
      */
     @Export(name="ipv6", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ipv6;
+    private Output<String> ipv6;
 
     /**
      * @return IPv6 switch.
      * 
      */
-    public Output<Optional<String>> ipv6() {
-        return Codegen.optional(this.ipv6);
+    public Output<String> ipv6() {
+        return this.ipv6;
     }
     /**
      * Domain name of the transport layer application

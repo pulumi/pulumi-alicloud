@@ -85,11 +85,15 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The name of the topic.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("topicName")]
         public Output<string> TopicName { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the topic. Default value: `Normal`. Valid values:
+        /// </summary>
+        [Output("topicType")]
+        public Output<string> TopicType { get; private set; } = null!;
 
 
         /// <summary>
@@ -169,11 +173,15 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The name of the topic.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
+
+        /// <summary>
+        /// The type of the topic. Default value: `Normal`. Valid values:
+        /// </summary>
+        [Input("topicType")]
+        public Input<string>? TopicType { get; set; }
 
         public ServiceTopicArgs()
         {
@@ -221,11 +229,15 @@ namespace Pulumi.AliCloud.Message
 
         /// <summary>
         /// The name of the topic.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("topicName")]
         public Input<string>? TopicName { get; set; }
+
+        /// <summary>
+        /// The type of the topic. Default value: `Normal`. Valid values:
+        /// </summary>
+        [Input("topicType")]
+        public Input<string>? TopicType { get; set; }
 
         public ServiceTopicState()
         {

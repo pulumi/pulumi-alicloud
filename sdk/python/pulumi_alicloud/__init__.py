@@ -8065,6 +8065,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "resourcemanager/resourceDirectorySharing",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing": "ResourceDirectorySharing"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "resourcemanager/resourceGroup",
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
@@ -9081,6 +9089,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "threatdetection/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "threatdetection/vulWhitelist",
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
@@ -9717,6 +9733,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/addressBook",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/addressBook:AddressBook": "AddressBook"
   }
  },
  {

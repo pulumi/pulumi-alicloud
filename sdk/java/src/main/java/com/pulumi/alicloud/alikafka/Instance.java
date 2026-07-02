@@ -729,6 +729,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
+     * (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+     * 
+     */
+    @Export(name="vpcSaslDomainEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> vpcSaslDomainEndpoint;
+
+    /**
+     * @return (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+     * 
+     */
+    public Output<String> vpcSaslDomainEndpoint() {
+        return this.vpcSaslDomainEndpoint;
+    }
+    /**
      * The ID of attaching vswitch to instance.
      * 
      */

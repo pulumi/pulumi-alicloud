@@ -184,6 +184,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     */
+    declare public readonly enableHighDensityMode: pulumi.Output<boolean | undefined>;
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
     declare public readonly enableJumboFrame: pulumi.Output<boolean>;
@@ -587,6 +593,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deploymentSetId"] = state?.deploymentSetId;
             resourceInputs["description"] = state?.description;
             resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enableHighDensityMode"] = state?.enableHighDensityMode;
             resourceInputs["enableJumboFrame"] = state?.enableJumboFrame;
             resourceInputs["expiredTime"] = state?.expiredTime;
             resourceInputs["forceDelete"] = state?.forceDelete;
@@ -680,6 +687,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deploymentSetId"] = args?.deploymentSetId;
             resourceInputs["description"] = args?.description;
             resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enableHighDensityMode"] = args?.enableHighDensityMode;
             resourceInputs["enableJumboFrame"] = args?.enableJumboFrame;
             resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["hostName"] = args?.hostName;
@@ -842,6 +850,12 @@ export interface InstanceState {
      * - false: A request is sent. If the validation succeeds, the instance is created.
      */
     dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     */
+    enableHighDensityMode?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
@@ -1279,6 +1293,12 @@ export interface InstanceArgs {
      * - false: A request is sent. If the validation succeeds, the instance is created.
      */
     dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     */
+    enableHighDensityMode?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */

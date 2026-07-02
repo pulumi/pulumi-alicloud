@@ -358,6 +358,8 @@ type GetInstancesInstance struct {
 	RenewalDurationUnit string `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
 	RenewalStatus string `pulumi:"renewalStatus"`
+	// (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+	ServerlessSwitch bool `pulumi:"serverlessSwitch"`
 	// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 	Status string `pulumi:"status"`
 	// Indicates whether the instance supports elastic IP addresses (EIPs).
@@ -400,6 +402,8 @@ type GetInstancesInstanceArgs struct {
 	RenewalDurationUnit pulumi.StringInput `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
 	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
+	// (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+	ServerlessSwitch pulumi.BoolInput `pulumi:"serverlessSwitch"`
 	// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// Indicates whether the instance supports elastic IP addresses (EIPs).
@@ -515,6 +519,11 @@ func (o GetInstancesInstanceOutput) RenewalDurationUnit() pulumi.StringOutput {
 // Whether to renew an instance automatically or not. **Note:** `renewalStatus` takes effect only if `enableDetails` is set to `true`.
 func (o GetInstancesInstanceOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RenewalStatus }).(pulumi.StringOutput)
+}
+
+// (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+func (o GetInstancesInstanceOutput) ServerlessSwitch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstancesInstance) bool { return v.ServerlessSwitch }).(pulumi.BoolOutput)
 }
 
 // The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.

@@ -38,7 +38,7 @@ class StackInstancesArgs:
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group to which the stack instances belong. This parameter cannot be modified after creation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deployment_targets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
         :param pulumi.Input[_builtins.str] deployment_options: List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
-        :param pulumi.Input['StackInstancesDeploymentTargetsArgs'] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        :param pulumi.Input['StackInstancesDeploymentTargetsArgs'] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
                
                > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable the rollback policy when creating stack instances fails. Valid values: `true`, `false`. Default value: `false`. This parameter cannot be modified after creation.
@@ -118,7 +118,7 @@ class StackInstancesArgs:
     @pulumi.getter(name="deploymentTargets")
     def deployment_targets(self) -> pulumi.Input[Optional['StackInstancesDeploymentTargetsArgs']]:
         """
-        Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
 
         > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         """
@@ -208,7 +208,7 @@ class _StackInstancesState:
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deployment_targets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
         :param pulumi.Input[_builtins.str] deployment_options: List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
-        :param pulumi.Input['StackInstancesDeploymentTargetsArgs'] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        :param pulumi.Input['StackInstancesDeploymentTargetsArgs'] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
                
                > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable the rollback policy when creating stack instances fails. Valid values: `true`, `false`. Default value: `false`. This parameter cannot be modified after creation.
@@ -271,7 +271,7 @@ class _StackInstancesState:
     @pulumi.getter(name="deploymentTargets")
     def deployment_targets(self) -> pulumi.Input[Optional['StackInstancesDeploymentTargetsArgs']]:
         """
-        Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
 
         > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         """
@@ -459,7 +459,7 @@ class StackInstances(pulumi.CustomResource):
 
         5. **Parameter Sensitivity**: The `parameter_value` field in `parameter_overrides` is marked as sensitive. Values will be masked in Terraform output and logs for security.
 
-        6. **ForceNew Parameters**: Most parameters (`stack_group_name`, `region_ids`, `account_ids`, `deployment_targets`, `disable_rollback`, `deployment_options`) require resource recreation if modified. Only `parameter_overrides`, `operation_preferences`, `timeout_in_minutes`, and `operation_description` support in-place updates.
+        6. **ForceNew Parameters**: Most parameters (`stack_group_name`, `region_ids`, `account_ids`, `disable_rollback`, `deployment_options`) require resource recreation if modified. `parameter_overrides`, `operation_preferences`, `timeout_in_minutes`, `operation_description`, and `deployment_targets` support in-place updates.
 
         7. **Empty Results**: If your deployment targets result in no stack instances being created (e.g., targeting an empty folder), the `stack_instances` attribute will be an empty list. This is expected behavior and does not indicate an error.
 
@@ -472,7 +472,7 @@ class StackInstances(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deployment_targets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
         :param pulumi.Input[_builtins.str] deployment_options: List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
-        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
                
                > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable the rollback policy when creating stack instances fails. Valid values: `true`, `false`. Default value: `false`. This parameter cannot be modified after creation.
@@ -553,7 +553,7 @@ class StackInstances(pulumi.CustomResource):
 
         5. **Parameter Sensitivity**: The `parameter_value` field in `parameter_overrides` is marked as sensitive. Values will be masked in Terraform output and logs for security.
 
-        6. **ForceNew Parameters**: Most parameters (`stack_group_name`, `region_ids`, `account_ids`, `deployment_targets`, `disable_rollback`, `deployment_options`) require resource recreation if modified. Only `parameter_overrides`, `operation_preferences`, `timeout_in_minutes`, and `operation_description` support in-place updates.
+        6. **ForceNew Parameters**: Most parameters (`stack_group_name`, `region_ids`, `account_ids`, `disable_rollback`, `deployment_options`) require resource recreation if modified. `parameter_overrides`, `operation_preferences`, `timeout_in_minutes`, `operation_description`, and `deployment_targets` support in-place updates.
 
         7. **Empty Results**: If your deployment targets result in no stack instances being created (e.g., targeting an empty folder), the `stack_instances` attribute will be an empty list. This is expected behavior and does not indicate an error.
 
@@ -643,7 +643,7 @@ class StackInstances(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_ids: List of target Alibaba Cloud account IDs for self-managed permissions model. You can specify 1 to 50 accounts. This parameter conflicts with `deployment_targets`. This parameter cannot be modified after creation. Example: `["123456789012****", "098765432109****"]`.
         :param pulumi.Input[_builtins.str] deployment_options: List of deployment options for service-managed permissions. Currently only supports `IgnoreExisting`, which skips existing stack instances during deployment. This parameter cannot be modified after creation. Example: `["IgnoreExisting"]`.
-        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        :param pulumi.Input[Union['StackInstancesDeploymentTargetsArgs', 'StackInstancesDeploymentTargetsArgsDict']] deployment_targets: Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
                
                > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         :param pulumi.Input[_builtins.bool] disable_rollback: Specifies whether to disable the rollback policy when creating stack instances fails. Valid values: `true`, `false`. Default value: `false`. This parameter cannot be modified after creation.
@@ -692,7 +692,7 @@ class StackInstances(pulumi.CustomResource):
     @pulumi.getter(name="deploymentTargets")
     def deployment_targets(self) -> pulumi.Output[Optional['outputs.StackInstancesDeploymentTargets']]:
         """
-        Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. This parameter cannot be modified after creation. See `deployment_targets` below.
+        Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `account_ids`. Changes to `rd_folder_ids` and `account_ids` within this block support in-place updates. See `deployment_targets` below.
 
         > **NOTE:** You must specify either `account_ids` (for self-managed permissions) or `deployment_targets` (for service-managed permissions), but not both.
         """

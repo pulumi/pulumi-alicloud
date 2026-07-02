@@ -35,6 +35,11 @@ public final class OriginPoolOrigin {
      */
     private @Nullable String header;
     /**
+     * @return The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+     * 
+     */
+    private @Nullable String ipVersionPolicy;
+    /**
      * @return Origin Name.
      * 
      */
@@ -45,10 +50,7 @@ public final class OriginPoolOrigin {
      */
     private @Nullable String originId;
     /**
-     * @return Source station type:
-     * ip_domain: ip or domain name type origin station;
-     * - `OSS`:OSS address source station;
-     * - `S3`:AWS S3 Source station.
+     * @return The type of the origin. Valid values:
      * 
      */
     private @Nullable String type;
@@ -88,6 +90,13 @@ public final class OriginPoolOrigin {
         return Optional.ofNullable(this.header);
     }
     /**
+     * @return The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+     * 
+     */
+    public Optional<String> ipVersionPolicy() {
+        return Optional.ofNullable(this.ipVersionPolicy);
+    }
+    /**
      * @return Origin Name.
      * 
      */
@@ -102,10 +111,7 @@ public final class OriginPoolOrigin {
         return Optional.ofNullable(this.originId);
     }
     /**
-     * @return Source station type:
-     * ip_domain: ip or domain name type origin station;
-     * - `OSS`:OSS address source station;
-     * - `S3`:AWS S3 Source station.
+     * @return The type of the origin. Valid values:
      * 
      */
     public Optional<String> type() {
@@ -132,6 +138,7 @@ public final class OriginPoolOrigin {
         private @Nullable OriginPoolOriginAuthConf authConf;
         private @Nullable Boolean enabled;
         private @Nullable String header;
+        private @Nullable String ipVersionPolicy;
         private @Nullable String name;
         private @Nullable String originId;
         private @Nullable String type;
@@ -143,6 +150,7 @@ public final class OriginPoolOrigin {
     	      this.authConf = defaults.authConf;
     	      this.enabled = defaults.enabled;
     	      this.header = defaults.header;
+    	      this.ipVersionPolicy = defaults.ipVersionPolicy;
     	      this.name = defaults.name;
     	      this.originId = defaults.originId;
     	      this.type = defaults.type;
@@ -171,6 +179,12 @@ public final class OriginPoolOrigin {
         public Builder header(@Nullable String header) {
 
             this.header = header;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersionPolicy(@Nullable String ipVersionPolicy) {
+
+            this.ipVersionPolicy = ipVersionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -203,6 +217,7 @@ public final class OriginPoolOrigin {
             _resultValue.authConf = authConf;
             _resultValue.enabled = enabled;
             _resultValue.header = header;
+            _resultValue.ipVersionPolicy = ipVersionPolicy;
             _resultValue.name = name;
             _resultValue.originId = originId;
             _resultValue.type = type;

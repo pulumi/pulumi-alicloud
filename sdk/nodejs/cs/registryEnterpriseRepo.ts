@@ -120,6 +120,10 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
      * The summary about the repository.
      */
     declare public readonly summary: pulumi.Output<string>;
+    /**
+     * Whether to enable image tag immutability. Valid values:
+     */
+    declare public readonly tagImmutability: pulumi.Output<boolean>;
 
     /**
      * Create a RegistryEnterpriseRepo resource with the given unique name, arguments, and options.
@@ -141,6 +145,7 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
             resourceInputs["repoId"] = state?.repoId;
             resourceInputs["repoType"] = state?.repoType;
             resourceInputs["summary"] = state?.summary;
+            resourceInputs["tagImmutability"] = state?.tagImmutability;
         } else {
             const args = argsOrState as RegistryEnterpriseRepoArgs | undefined;
             if (args?.instanceId === undefined && !opts.urn) {
@@ -161,6 +166,7 @@ export class RegistryEnterpriseRepo extends pulumi.CustomResource {
             resourceInputs["namespace"] = args?.namespace;
             resourceInputs["repoType"] = args?.repoType;
             resourceInputs["summary"] = args?.summary;
+            resourceInputs["tagImmutability"] = args?.tagImmutability;
             resourceInputs["repoId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -202,6 +208,10 @@ export interface RegistryEnterpriseRepoState {
      * The summary about the repository.
      */
     summary?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to enable image tag immutability. Valid values:
+     */
+    tagImmutability?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -234,4 +244,8 @@ export interface RegistryEnterpriseRepoArgs {
      * The summary about the repository.
      */
     summary: pulumi.Input<string>;
+    /**
+     * Whether to enable image tag immutability. Valid values:
+     */
+    tagImmutability?: pulumi.Input<boolean | undefined>;
 }

@@ -41,7 +41,7 @@ public final class TransportLayerApplicationRule {
      */
     private String protocol;
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     private @Nullable Integer ruleId;
@@ -98,7 +98,7 @@ public final class TransportLayerApplicationRule {
         return this.protocol;
     }
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     public Optional<Integer> ruleId() {
