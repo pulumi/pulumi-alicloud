@@ -90,12 +90,12 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata. Valid values:
                - enabled: Enabled.
                - disabled: Disabled.
-               **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+                 **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-               **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+                 **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         :param pulumi.Input[_builtins.str] image_id: The Image ID.
         :param pulumi.Input['EcsLaunchTemplateImageOptionsArgs'] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
@@ -387,7 +387,7 @@ class EcsLaunchTemplateArgs:
         Whether to enable access to instance metadata. Valid values:
         - enabled: Enabled.
         - disabled: Disabled.
-        **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+          **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         """
         return pulumi.get(self, "http_endpoint")
 
@@ -414,7 +414,7 @@ class EcsLaunchTemplateArgs:
         Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         - optional: Not mandatory.
         - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+          **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         """
         return pulumi.get(self, "http_tokens")
 
@@ -1012,12 +1012,12 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata. Valid values:
                - enabled: Enabled.
                - disabled: Disabled.
-               **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+                 **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-               **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+                 **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         :param pulumi.Input[_builtins.str] image_id: The Image ID.
         :param pulumi.Input['EcsLaunchTemplateImageOptionsArgs'] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
@@ -1312,7 +1312,7 @@ class _EcsLaunchTemplateState:
         Whether to enable access to instance metadata. Valid values:
         - enabled: Enabled.
         - disabled: Disabled.
-        **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+          **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         """
         return pulumi.get(self, "http_endpoint")
 
@@ -1339,7 +1339,7 @@ class _EcsLaunchTemplateState:
         Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         - optional: Not mandatory.
         - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+          **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         """
         return pulumi.get(self, "http_tokens")
 
@@ -2056,12 +2056,12 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata. Valid values:
                - enabled: Enabled.
                - disabled: Disabled.
-               **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+                 **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-               **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+                 **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         :param pulumi.Input[_builtins.str] image_id: The Image ID.
         :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
@@ -2439,12 +2439,12 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] http_endpoint: Whether to enable access to instance metadata. Valid values:
                - enabled: Enabled.
                - disabled: Disabled.
-               **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+                 **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-               **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+                 **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         :param pulumi.Input[_builtins.str] image_id: The Image ID.
         :param pulumi.Input[Union['EcsLaunchTemplateImageOptionsArgs', 'EcsLaunchTemplateImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
@@ -2635,7 +2635,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         Whether to enable access to instance metadata. Valid values:
         - enabled: Enabled.
         - disabled: Disabled.
-        **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
+          **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
         """
         return pulumi.get(self, "http_endpoint")
 
@@ -2654,7 +2654,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
         - optional: Not mandatory.
         - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-        **NOTE:** From version 1.260.0, `http_tokens` can be modified.
+          **NOTE:** From version 1.260.0, `http_tokens` can be modified.
         """
         return pulumi.get(self, "http_tokens")
 

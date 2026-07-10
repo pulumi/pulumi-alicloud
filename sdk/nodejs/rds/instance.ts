@@ -151,17 +151,17 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const exampleSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range}`, {
  *         vpcId: exampleNetwork.id,
  *         cidrBlock: std.format({
  *             input: "172.16.%d.0/24",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
- *         zoneId: example.then(example => example.zones[range.value].id),
+ *         zoneId: example.then(example => example.zones[range].id),
  *         vswitchName: std.format({
  *             input: "terraform_example_%d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *     }));
  * }
@@ -217,19 +217,19 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const exampleSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range}`, {
  *         vpcId: exampleNetwork.id,
  *         cidrBlock: std.format({
  *             input: "172.16.%d.0/24",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
- *         zoneId: example.then(example => example.zones[range.value].id),
+ *         zoneId: example.then(example => example.zones[range].id),
  *         vswitchName: std.format({
  *             input: "%s_%d",
  *             args: [
  *                 name,
- *                 range.value,
+ *                 range,
  *             ],
  *         }).then(invoke => invoke.result),
  *     }));
@@ -284,19 +284,19 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const exampleSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range}`, {
  *         vpcId: exampleNetwork.id,
  *         cidrBlock: std.format({
  *             input: "172.16.%d.0/24",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
- *         zoneId: example.then(example => example.zones[range.value].id),
+ *         zoneId: example.then(example => example.zones[range].id),
  *         vswitchName: std.format({
  *             input: "%s_%d",
  *             args: [
  *                 name,
- *                 range.value,
+ *                 range,
  *             ],
  *         }).then(invoke => invoke.result),
  *     }));
@@ -743,7 +743,7 @@ export class Instance extends pulumi.CustomResource {
      * - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
-     * **Serverless**
+     *   **Serverless**
      * - MySQL: [ 5.7、8.0 ]
      * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
      * - PostgreSQL: [ 14.0 ]
@@ -792,8 +792,8 @@ export class Instance extends pulumi.CustomResource {
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
-     * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     * Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
+     *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      */
     declare public readonly instanceStorage: pulumi.Output<number>;
     /**
@@ -945,7 +945,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly sqlCollectorStatus: pulumi.Output<string>;
     /**
-     * Actions performed on SSL functions. Valid values: 
+     * Actions performed on SSL functions. Valid values:
      * `Open`: turn on SSL encryption;
      * `Close`: turn off SSL encryption;
      * `Update`: update SSL certificate.
@@ -1094,7 +1094,6 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly upgradeTime: pulumi.Output<string | undefined>;
     /**
      * The VPC ID of the instance.
-     *
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
@@ -1574,7 +1573,7 @@ export interface InstanceState {
      * - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
-     * **Serverless**
+     *   **Serverless**
      * - MySQL: [ 5.7、8.0 ]
      * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
      * - PostgreSQL: [ 14.0 ]
@@ -1623,8 +1622,8 @@ export interface InstanceState {
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
-     * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     * Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
+     *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      */
     instanceStorage?: pulumi.Input<number | undefined>;
     /**
@@ -1776,7 +1775,7 @@ export interface InstanceState {
      */
     sqlCollectorStatus?: pulumi.Input<string | undefined>;
     /**
-     * Actions performed on SSL functions. Valid values: 
+     * Actions performed on SSL functions. Valid values:
      * `Open`: turn on SSL encryption;
      * `Close`: turn off SSL encryption;
      * `Update`: update SSL certificate.
@@ -1925,7 +1924,6 @@ export interface InstanceState {
     upgradeTime?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID of the instance.
-     *
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
@@ -2163,7 +2161,7 @@ export interface InstanceArgs {
      * - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
-     * **Serverless**
+     *   **Serverless**
      * - MySQL: [ 5.7、8.0 ]
      * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
      * - PostgreSQL: [ 14.0 ]
@@ -2212,8 +2210,8 @@ export interface InstanceArgs {
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
-     * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     * Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
+     *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      */
     instanceStorage: pulumi.Input<number>;
     /**
@@ -2365,7 +2363,7 @@ export interface InstanceArgs {
      */
     sqlCollectorStatus?: pulumi.Input<string | undefined>;
     /**
-     * Actions performed on SSL functions. Valid values: 
+     * Actions performed on SSL functions. Valid values:
      * `Open`: turn on SSL encryption;
      * `Close`: turn off SSL encryption;
      * `Update`: update SSL certificate.
@@ -2502,7 +2500,6 @@ export interface InstanceArgs {
     upgradeTime?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID of the instance.
-     *
      *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */

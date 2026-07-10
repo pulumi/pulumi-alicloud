@@ -36,7 +36,7 @@ class HostArgs:
         :param pulumi.Input[_builtins.str] host_name: Specify the new create a host name of the supports up to 128 characters.
         :param pulumi.Input[_builtins.str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[_builtins.str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
-        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values: 
+        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values:
                * `Local`: localhost
                * `Ecs`:ECS instance
                * `Rds`:RDS exclusive cluster host.
@@ -114,7 +114,7 @@ class HostArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input[_builtins.str]:
         """
-        Specify the new create a host of source. Valid values: 
+        Specify the new create a host of source. Valid values:
         * `Local`: localhost
         * `Ecs`:ECS instance
         * `Rds`:RDS exclusive cluster host.
@@ -212,7 +212,7 @@ class _HostState:
         :param pulumi.Input[_builtins.str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[_builtins.str] instance_region_id: The instance region id.
         :param pulumi.Input[_builtins.str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
-        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values: 
+        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values:
                * `Local`: localhost
                * `Ecs`:ECS instance
                * `Rds`:RDS exclusive cluster host.
@@ -353,7 +353,7 @@ class _HostState:
     @pulumi.getter
     def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specify the new create a host of source. Valid values: 
+        Specify the new create a host of source. Valid values:
         * `Local`: localhost
         * `Ecs`:ECS instance
         * `Rds`:RDS exclusive cluster host.
@@ -459,7 +459,7 @@ class Host(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[_builtins.str] instance_region_id: The instance region id.
         :param pulumi.Input[_builtins.str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
-        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values: 
+        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values:
                * `Local`: localhost
                * `Ecs`:ECS instance
                * `Rds`:RDS exclusive cluster host.
@@ -618,7 +618,7 @@ class Host(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: Specify the new create a host where the Bastion host ID of.
         :param pulumi.Input[_builtins.str] instance_region_id: The instance region id.
         :param pulumi.Input[_builtins.str] os_type: Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
-        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values: 
+        :param pulumi.Input[_builtins.str] source: Specify the new create a host of source. Valid values:
                * `Local`: localhost
                * `Ecs`:ECS instance
                * `Rds`:RDS exclusive cluster host.
@@ -717,7 +717,7 @@ class Host(pulumi.CustomResource):
     @pulumi.getter
     def source(self) -> pulumi.Output[_builtins.str]:
         """
-        Specify the new create a host of source. Valid values: 
+        Specify the new create a host of source. Valid values:
         * `Local`: localhost
         * `Ecs`:ECS instance
         * `Rds`:RDS exclusive cluster host.

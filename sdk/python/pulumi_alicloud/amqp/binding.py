@@ -31,10 +31,10 @@ class BindingArgs:
 
         :param pulumi.Input[_builtins.str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[_builtins.str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[_builtins.str] destination_name: The name of the object that you want to bind to the source exchange.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -60,10 +60,10 @@ class BindingArgs:
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        The binding key must be 1 to 255 characters in length.
+          The binding key must be 1 to 255 characters in length.
         * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        The binding key must be 1 to 255 characters in length.
+          If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+          The binding key must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "binding_key")
 
@@ -166,10 +166,10 @@ class _BindingState:
                - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
         :param pulumi.Input[_builtins.str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[_builtins.str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[_builtins.str] destination_name: The name of the object that you want to bind to the source exchange.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -212,10 +212,10 @@ class _BindingState:
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        The binding key must be 1 to 255 characters in length.
+          The binding key must be 1 to 255 characters in length.
         * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        The binding key must be 1 to 255 characters in length.
+          If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+          The binding key must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "binding_key")
 
@@ -365,10 +365,10 @@ class Binding(pulumi.CustomResource):
                - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
         :param pulumi.Input[_builtins.str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[_builtins.str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[_builtins.str] destination_name: The name of the object that you want to bind to the source exchange.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -520,10 +520,10 @@ class Binding(pulumi.CustomResource):
                - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
         :param pulumi.Input[_builtins.str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
                * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[_builtins.str] binding_type: The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[_builtins.str] destination_name: The name of the object that you want to bind to the source exchange.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
@@ -560,10 +560,10 @@ class Binding(pulumi.CustomResource):
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        The binding key must be 1 to 255 characters in length.
+          The binding key must be 1 to 255 characters in length.
         * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        The binding key must be 1 to 255 characters in length.
+          If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+          The binding key must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "binding_key")
 

@@ -873,7 +873,7 @@ class GetFileSystemsSystemResult(dict):
         :param _builtins.int capacity: (Optional, Available in v1.140.0+) The capacity of the file system.
         :param _builtins.str create_time: Time of creation.
         :param _builtins.str description: Description of the FileSystem.
-        :param _builtins.int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+        :param _builtins.int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted.
                * Valid values:
         :param _builtins.str file_system_type: The type of the file system.
                Valid values:
@@ -934,7 +934,7 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> _builtins.int:
         """
-        (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+        (Optional, Available in v1.121.2+) Whether the file system is encrypted.
         * Valid values:
         """
         return pulumi.get(self, "encrypt_type")

@@ -98,15 +98,12 @@ class RouterInterfaceArgs:
                
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
                - `Month` (default): monthly payment.
                - `Year`: Pay per Year.
                
-               
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
@@ -468,7 +465,6 @@ class RouterInterfaceArgs:
 
         > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
 
-
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
@@ -485,9 +481,7 @@ class RouterInterfaceArgs:
         - `Month` (default): monthly payment.
         - `Year`: Pay per Year.
 
-
         > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -648,15 +642,12 @@ class _RouterInterfaceState:
                
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
                - `Month` (default): monthly payment.
                - `Year`: Pay per Year.
                
-               
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] reservation_active_time: ReservationActiveTime
@@ -1165,7 +1156,6 @@ class _RouterInterfaceState:
 
         > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
 
-
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
@@ -1182,9 +1172,7 @@ class _RouterInterfaceState:
         - `Month` (default): monthly payment.
         - `Year`: Pay per Year.
 
-
         > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -1527,15 +1515,12 @@ class RouterInterface(pulumi.CustomResource):
                
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
                - `Month` (default): monthly payment.
                - `Year`: Pay per Year.
                
-               
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
@@ -1861,15 +1846,12 @@ class RouterInterface(pulumi.CustomResource):
                
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
                - `Month` (default): monthly payment.
                - `Year`: Pay per Year.
                
-               
                > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] reservation_active_time: ReservationActiveTime
@@ -2216,7 +2198,6 @@ class RouterInterface(pulumi.CustomResource):
 
         > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
 
-
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
@@ -2229,9 +2210,7 @@ class RouterInterface(pulumi.CustomResource):
         - `Month` (default): monthly payment.
         - `Year`: Pay per Year.
 
-
         > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """

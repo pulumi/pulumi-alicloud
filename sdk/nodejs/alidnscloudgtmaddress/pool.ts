@@ -102,7 +102,7 @@ export class Pool extends pulumi.CustomResource {
      */
     declare public readonly enableStatus: pulumi.Output<string>;
     /**
-     * Conditions for determining the health status of the address pool:  
+     * Conditions for determining the health status of the address pool:
      * - any_ok: At least one address in the address pool is available.
      * - p30_ok: At least 30% of the addresses in the address pool are available.
      * - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -115,7 +115,7 @@ export class Pool extends pulumi.CustomResource {
      */
     declare public readonly remark: pulumi.Output<string | undefined>;
     /**
-     * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+     * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
      */
@@ -204,7 +204,7 @@ export interface PoolState {
      */
     enableStatus?: pulumi.Input<string | undefined>;
     /**
-     * Conditions for determining the health status of the address pool:  
+     * Conditions for determining the health status of the address pool:
      * - any_ok: At least one address in the address pool is available.
      * - p30_ok: At least 30% of the addresses in the address pool are available.
      * - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -217,7 +217,7 @@ export interface PoolState {
      */
     remark?: pulumi.Input<string | undefined>;
     /**
-     * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+     * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
      */
@@ -254,7 +254,7 @@ export interface PoolArgs {
      */
     enableStatus: pulumi.Input<string>;
     /**
-     * Conditions for determining the health status of the address pool:  
+     * Conditions for determining the health status of the address pool:
      * - any_ok: At least one address in the address pool is available.
      * - p30_ok: At least 30% of the addresses in the address pool are available.
      * - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -267,7 +267,7 @@ export interface PoolArgs {
      */
     remark?: pulumi.Input<string | undefined>;
     /**
-     * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+     * Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
      */

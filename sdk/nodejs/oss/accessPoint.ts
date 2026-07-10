@@ -86,7 +86,7 @@ export class AccessPoint extends pulumi.CustomResource {
      */
     declare public readonly bucket: pulumi.Output<string>;
     /**
-     * Access point network source. The valid values are as follows: 
+     * Access point network source. The valid values are as follows:
      * - vpc: only the specified VPC ID can be used to access the access point.
      * - internet: the access point can be accessed through both external and internal Endpoint.
      */
@@ -159,7 +159,7 @@ export interface AccessPointState {
      */
     bucket?: pulumi.Input<string | undefined>;
     /**
-     * Access point network source. The valid values are as follows: 
+     * Access point network source. The valid values are as follows:
      * - vpc: only the specified VPC ID can be used to access the access point.
      * - internet: the access point can be accessed through both external and internal Endpoint.
      */
@@ -191,7 +191,7 @@ export interface AccessPointArgs {
      */
     bucket: pulumi.Input<string>;
     /**
-     * Access point network source. The valid values are as follows: 
+     * Access point network source. The valid values are as follows:
      * - vpc: only the specified VPC ID can be used to access the access point.
      * - internet: the access point can be accessed through both external and internal Endpoint.
      */

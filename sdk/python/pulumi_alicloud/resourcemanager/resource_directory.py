@@ -237,10 +237,10 @@ class ResourceDirectory(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.resourcemanager.get_resource_directories()
-        default_resource_directory: list[Any] = []
+        default_resource_directory: list[alicloud.resourcemanager.ResourceDirectory] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
+            for default_resource_directory_range in [{"value": i} for i in range(0, range_body)]:
+                default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{default_resource_directory_range['value']}", status="Enabled"))
 
         len(default.directories).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         ```
@@ -289,10 +289,10 @@ class ResourceDirectory(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.resourcemanager.get_resource_directories()
-        default_resource_directory: list[Any] = []
+        default_resource_directory: list[alicloud.resourcemanager.ResourceDirectory] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
+            for default_resource_directory_range in [{"value": i} for i in range(0, range_body)]:
+                default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{default_resource_directory_range['value']}", status="Enabled"))
 
         len(default.directories).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         ```

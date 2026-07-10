@@ -46,10 +46,9 @@ class CertArgs:
         The set of arguments for constructing a Cert resource.
 
         :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the subordinate CA certificate that issued this certificate.
-        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
@@ -69,10 +68,10 @@ class CertArgs:
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
         :param pulumi.Input[_builtins.str] common_name: Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
-        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
                For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         :param pulumi.Input[_builtins.str] custom_identifier: A user-defined unique identifier.
-        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.  
+        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.
                
                The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
                - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -91,7 +90,7 @@ class CertArgs:
         :param pulumi.Input[_builtins.str] organization_unit: Department name. Default: Aliyun CDN.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         :param pulumi.Input[_builtins.str] san_type: The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
-        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
@@ -167,10 +166,9 @@ class CertArgs:
     @pulumi.getter(name="afterTime")
     def after_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
 
         > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -245,7 +243,7 @@ class CertArgs:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
         For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         """
         return pulumi.get(self, "country_code")
@@ -270,7 +268,7 @@ class CertArgs:
     @pulumi.getter
     def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Validity period of the client certificate, in days.  
+        Validity period of the client certificate, in days.
 
         The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
         - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -388,7 +386,7 @@ class CertArgs:
     @pulumi.getter(name="sanValue")
     def san_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -493,10 +491,9 @@ class _CertState:
         """
         Input properties used for looking up and filtering Cert resources.
 
-        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
@@ -516,10 +513,10 @@ class _CertState:
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
         :param pulumi.Input[_builtins.str] common_name: Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
-        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
                For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         :param pulumi.Input[_builtins.str] custom_identifier: A user-defined unique identifier.
-        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.  
+        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.
                
                The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
                - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -539,7 +536,7 @@ class _CertState:
         :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         :param pulumi.Input[_builtins.str] san_type: The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
-        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
@@ -604,10 +601,9 @@ class _CertState:
     @pulumi.getter(name="afterTime")
     def after_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
 
         > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -682,7 +678,7 @@ class _CertState:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
         For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         """
         return pulumi.get(self, "country_code")
@@ -707,7 +703,7 @@ class _CertState:
     @pulumi.getter
     def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Validity period of the client certificate, in days.  
+        Validity period of the client certificate, in days.
 
         The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
         - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -837,7 +833,7 @@ class _CertState:
     @pulumi.getter(name="sanValue")
     def san_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -1013,10 +1009,9 @@ class Cert(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
@@ -1036,10 +1031,10 @@ class Cert(pulumi.CustomResource):
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
         :param pulumi.Input[_builtins.str] common_name: Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
-        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
                For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         :param pulumi.Input[_builtins.str] custom_identifier: A user-defined unique identifier.
-        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.  
+        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.
                
                The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
                - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -1059,7 +1054,7 @@ class Cert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         :param pulumi.Input[_builtins.str] san_type: The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
-        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
@@ -1259,10 +1254,9 @@ class Cert(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        :param pulumi.Input[_builtins.int] after_time: The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-               
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
@@ -1282,10 +1276,10 @@ class Cert(pulumi.CustomResource):
                
                > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
         :param pulumi.Input[_builtins.str] common_name: Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
-        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        :param pulumi.Input[_builtins.str] country_code: Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
                For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         :param pulumi.Input[_builtins.str] custom_identifier: A user-defined unique identifier.
-        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.  
+        :param pulumi.Input[_builtins.int] days: Validity period of the client certificate, in days.
                
                The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
                - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -1305,7 +1299,7 @@ class Cert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent_identifier: The unique identifier of the subordinate CA certificate that issued this certificate.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         :param pulumi.Input[_builtins.str] san_type: The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
-        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        :param pulumi.Input[_builtins.str] san_value: Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
@@ -1352,10 +1346,9 @@ class Cert(pulumi.CustomResource):
     @pulumi.getter(name="afterTime")
     def after_time(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+        The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
 
         > **NOTE:**  The `before_time` and `after_time` parameters must either both be empty or both be specified.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -1410,7 +1403,7 @@ class Cert(pulumi.CustomResource):
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+        Country code of the organization associated with the subordinate CA certificate that issued this certificate.\\
         For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
         """
         return pulumi.get(self, "country_code")
@@ -1427,7 +1420,7 @@ class Cert(pulumi.CustomResource):
     @pulumi.getter
     def days(self) -> pulumi.Output[_builtins.int]:
         """
-        Validity period of the client certificate, in days.  
+        Validity period of the client certificate, in days.
 
         The `days`, `before_time`, and `after_time` parameters cannot all be empty. Additionally, `before_time` and `after_time` must either both be set or both remain unset. The specific rules are as follows:
         - If you set the `days` parameter, you may optionally also set `before_time` and `after_time`.
@@ -1517,7 +1510,7 @@ class Cert(pulumi.CustomResource):
     @pulumi.getter(name="sanValue")
     def san_value(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+        Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """

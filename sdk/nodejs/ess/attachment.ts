@@ -83,8 +83,8 @@ import * as utilities from "../utilities";
  *     enable: true,
  * });
  * const defaultInstance: alicloud.ecs.Instance[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range}`, {
  *         imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *         securityGroups: [defaultSecurityGroup.id],

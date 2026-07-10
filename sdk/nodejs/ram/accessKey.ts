@@ -143,7 +143,7 @@ export class AccessKey extends pulumi.CustomResource {
      */
     declare public readonly pgpKey: pulumi.Output<string | undefined>;
     /**
-     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
+     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
@@ -224,7 +224,7 @@ export interface AccessKeyState {
      */
     pgpKey?: pulumi.Input<string | undefined>;
     /**
-     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
+     * (Available since v1.98.0) The secret access key. Note that this will be written to the state file.
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.

@@ -64,9 +64,9 @@ class GatewayVpnAttachmentArgs:
                > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: This parameter is supported if you create an vpn attachment in single-tunnel mode.
                Health check configuration information. See `health_check_config` below.
-        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: The configurations of Phase 1 negotiations. 
+        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: The configurations of Phase 1 negotiations.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
-        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. 
+        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         :param pulumi.Input[_builtins.str] network_type: network type
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
@@ -234,7 +234,7 @@ class GatewayVpnAttachmentArgs:
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> pulumi.Input[Optional['GatewayVpnAttachmentIkeConfigArgs']]:
         """
-        The configurations of Phase 1 negotiations. 
+        The configurations of Phase 1 negotiations.
         - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
@@ -247,7 +247,7 @@ class GatewayVpnAttachmentArgs:
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> pulumi.Input[Optional['GatewayVpnAttachmentIpsecConfigArgs']]:
         """
-        Configuration negotiated in the second stage. 
+        Configuration negotiated in the second stage.
         - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
@@ -362,9 +362,9 @@ class _GatewayVpnAttachmentState:
                > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         :param pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs'] health_check_config: This parameter is supported if you create an vpn attachment in single-tunnel mode.
                Health check configuration information. See `health_check_config` below.
-        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: The configurations of Phase 1 negotiations. 
+        :param pulumi.Input['GatewayVpnAttachmentIkeConfigArgs'] ike_config: The configurations of Phase 1 negotiations.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
-        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage. 
+        :param pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs'] ipsec_config: Configuration negotiated in the second stage.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         :param pulumi.Input[_builtins.str] local_subnet: The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
                - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
@@ -529,7 +529,7 @@ class _GatewayVpnAttachmentState:
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> pulumi.Input[Optional['GatewayVpnAttachmentIkeConfigArgs']]:
         """
-        The configurations of Phase 1 negotiations. 
+        The configurations of Phase 1 negotiations.
         - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
@@ -542,7 +542,7 @@ class _GatewayVpnAttachmentState:
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> pulumi.Input[Optional['GatewayVpnAttachmentIpsecConfigArgs']]:
         """
-        Configuration negotiated in the second stage. 
+        Configuration negotiated in the second stage.
         - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
@@ -875,9 +875,9 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         :param pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']] health_check_config: This parameter is supported if you create an vpn attachment in single-tunnel mode.
                Health check configuration information. See `health_check_config` below.
-        :param pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']] ike_config: The configurations of Phase 1 negotiations. 
+        :param pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']] ike_config: The configurations of Phase 1 negotiations.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
-        :param pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']] ipsec_config: Configuration negotiated in the second stage. 
+        :param pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']] ipsec_config: Configuration negotiated in the second stage.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         :param pulumi.Input[_builtins.str] local_subnet: The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
                - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
@@ -1193,9 +1193,9 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                > **NOTE:**  before adding BGP configuration, we recommend that you understand the working mechanism and usage restrictions of the BGP dynamic routing function.
         :param pulumi.Input[Union['GatewayVpnAttachmentHealthCheckConfigArgs', 'GatewayVpnAttachmentHealthCheckConfigArgsDict']] health_check_config: This parameter is supported if you create an vpn attachment in single-tunnel mode.
                Health check configuration information. See `health_check_config` below.
-        :param pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']] ike_config: The configurations of Phase 1 negotiations. 
+        :param pulumi.Input[Union['GatewayVpnAttachmentIkeConfigArgs', 'GatewayVpnAttachmentIkeConfigArgsDict']] ike_config: The configurations of Phase 1 negotiations.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
-        :param pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']] ipsec_config: Configuration negotiated in the second stage. 
+        :param pulumi.Input[Union['GatewayVpnAttachmentIpsecConfigArgs', 'GatewayVpnAttachmentIpsecConfigArgsDict']] ipsec_config: Configuration negotiated in the second stage.
                - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         :param pulumi.Input[_builtins.str] local_subnet: The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.The following routing modes are supported:
                - If you set LocalSubnet and RemoteSubnet to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
@@ -1315,7 +1315,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="ikeConfig")
     def ike_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentIkeConfig']:
         """
-        The configurations of Phase 1 negotiations. 
+        The configurations of Phase 1 negotiations.
         - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
@@ -1324,7 +1324,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
     @pulumi.getter(name="ipsecConfig")
     def ipsec_config(self) -> pulumi.Output['outputs.GatewayVpnAttachmentIpsecConfig']:
         """
-        Configuration negotiated in the second stage. 
+        Configuration negotiated in the second stage.
         - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")

@@ -61,8 +61,8 @@ import * as utilities from "../utilities";
  *     vpcId: main.id,
  * });
  * const msServerGroupInstance: alicloud.ecs.Instance[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     msServerGroupInstance.push(new alicloud.ecs.Instance(`ms_server_group-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     msServerGroupInstance.push(new alicloud.ecs.Instance(`ms_server_group-${range}`, {
  *         imageId: image.then(image => image.images?.[0]?.id),
  *         instanceType: msServerGroupGetInstanceTypes.then(msServerGroupGetInstanceTypes => msServerGroupGetInstanceTypes.instanceTypes?.[0]?.id),
  *         instanceName: slbMasterSlaveServerGroup,

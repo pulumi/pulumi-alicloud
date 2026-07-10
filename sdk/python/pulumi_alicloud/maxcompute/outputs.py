@@ -756,7 +756,7 @@ class QuotaScheduleScheduleList(dict):
                  condition: Optional['outputs.QuotaScheduleScheduleListCondition'] = None):
         """
         :param _builtins.str plan: The name of the quota plan.
-        :param _builtins.str type: The type of the quota plan. Valid values: daily 
+        :param _builtins.str type: The type of the quota plan. Valid values: daily
                
                > **NOTE:** Currently, only daily is supported.
         :param 'QuotaScheduleScheduleListConditionArgs' condition: The value of effective condition. See `condition` below.
@@ -778,7 +778,7 @@ class QuotaScheduleScheduleList(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of the quota plan. Valid values: daily 
+        The type of the quota plan. Valid values: daily
 
         > **NOTE:** Currently, only daily is supported.
         """

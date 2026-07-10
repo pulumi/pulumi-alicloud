@@ -188,7 +188,7 @@ export class Instance extends pulumi.CustomResource {
      * The duration unit for purchasing:
      * - Month
      * - Year
-     * This is only meaningful when PayType is set to PrePaid.
+     *   This is only meaningful when PayType is set to PrePaid.
      */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
@@ -394,7 +394,7 @@ export interface InstanceState {
      * The duration unit for purchasing:
      * - Month
      * - Year
-     * This is only meaningful when PayType is set to PrePaid.
+     *   This is only meaningful when PayType is set to PrePaid.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
     /**
@@ -502,7 +502,7 @@ export interface InstanceArgs {
      * The duration unit for purchasing:
      * - Month
      * - Year
-     * This is only meaningful when PayType is set to PrePaid.
+     *   This is only meaningful when PayType is set to PrePaid.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
     /**

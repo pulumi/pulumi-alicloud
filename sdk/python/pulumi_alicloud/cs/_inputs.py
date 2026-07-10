@@ -1558,7 +1558,7 @@ class ManagedKubernetesAddonArgsDict(TypedDict):
     """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    It specifies whether to disable automatic installation. 
+    It specifies whether to disable automatic installation.
 
     It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 
@@ -1765,7 +1765,7 @@ class ManagedKubernetesAddonArgs:
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] config: If this parameter is left empty, no configurations are required. For more config information, see cs_kubernetes_addon_metadata.
-        :param pulumi.Input[_builtins.bool] disabled: It specifies whether to disable automatic installation. 
+        :param pulumi.Input[_builtins.bool] disabled: It specifies whether to disable automatic installation.
                
                It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
                
@@ -1981,7 +1981,7 @@ class ManagedKubernetesAddonArgs:
     @pulumi.getter
     def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        It specifies whether to disable automatic installation. 
+        It specifies whether to disable automatic installation.
 
         It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
 

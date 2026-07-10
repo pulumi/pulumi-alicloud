@@ -155,10 +155,10 @@ def get_domains(accelerator_id: Optional[_builtins.str] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.ga.get_accelerators(status="active")
-    default_accelerator: list[Any] = []
+    default_accelerator: list[alicloud.ga.Accelerator] = []
     def create_default(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            default_accelerator.append(alicloud.ga.Accelerator(f"default-{range['value']}",
+        for default_accelerator_range in [{"value": i} for i in range(0, range_body)]:
+            default_accelerator.append(alicloud.ga.Accelerator(f"default-{default_accelerator_range['value']}",
                 duration=1,
                 auto_use_coupon=True,
                 spec="1"))
@@ -223,10 +223,10 @@ def get_domains_output(accelerator_id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi_alicloud as alicloud
 
     default = alicloud.ga.get_accelerators(status="active")
-    default_accelerator: list[Any] = []
+    default_accelerator: list[alicloud.ga.Accelerator] = []
     def create_default(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            default_accelerator.append(alicloud.ga.Accelerator(f"default-{range['value']}",
+        for default_accelerator_range in [{"value": i} for i in range(0, range_body)]:
+            default_accelerator.append(alicloud.ga.Accelerator(f"default-{default_accelerator_range['value']}",
                 duration=1,
                 auto_use_coupon=True,
                 spec="1"))

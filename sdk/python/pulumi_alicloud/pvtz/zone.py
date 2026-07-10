@@ -39,7 +39,7 @@ class ZoneArgs:
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
-               Default to "ZONE".
+                 Default to "ZONE".
         :param pulumi.Input[_builtins.str] remark: The remark of the Private Zone.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[_builtins.str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
@@ -104,7 +104,7 @@ class ZoneArgs:
         The recursive DNS proxy. Valid values:
         - ZONE: indicates that the recursive DNS proxy is disabled.
         - RECORD: indicates that the recursive DNS proxy is enabled.
-        Default to "ZONE".
+          Default to "ZONE".
         """
         return pulumi.get(self, "proxy_pattern")
 
@@ -221,7 +221,7 @@ class _ZoneState:
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
-               Default to "ZONE".
+                 Default to "ZONE".
         :param pulumi.Input[_builtins.int] record_count: The count of the Private Zone Record.
         :param pulumi.Input[_builtins.str] remark: The remark of the Private Zone.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Private Zone belongs.
@@ -303,7 +303,7 @@ class _ZoneState:
         The recursive DNS proxy. Valid values:
         - ZONE: indicates that the recursive DNS proxy is disabled.
         - RECORD: indicates that the recursive DNS proxy is enabled.
-        Default to "ZONE".
+          Default to "ZONE".
         """
         return pulumi.get(self, "proxy_pattern")
 
@@ -461,7 +461,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
-               Default to "ZONE".
+                 Default to "ZONE".
         :param pulumi.Input[_builtins.str] remark: The remark of the Private Zone.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Private Zone belongs.
         :param pulumi.Input[_builtins.str] sync_status: The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
@@ -586,7 +586,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive DNS proxy. Valid values:
                - ZONE: indicates that the recursive DNS proxy is disabled.
                - RECORD: indicates that the recursive DNS proxy is enabled.
-               Default to "ZONE".
+                 Default to "ZONE".
         :param pulumi.Input[_builtins.int] record_count: The count of the Private Zone Record.
         :param pulumi.Input[_builtins.str] remark: The remark of the Private Zone.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Private Zone belongs.
@@ -646,7 +646,7 @@ class Zone(pulumi.CustomResource):
         The recursive DNS proxy. Valid values:
         - ZONE: indicates that the recursive DNS proxy is disabled.
         - RECORD: indicates that the recursive DNS proxy is enabled.
-        Default to "ZONE".
+          Default to "ZONE".
         """
         return pulumi.get(self, "proxy_pattern")
 

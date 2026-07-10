@@ -229,16 +229,16 @@ class HostShareKey(pulumi.CustomResource):
         default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
             vpc_id=default_get_networks.ids[0],
             zone_id=default_get_zones.zones[0].id)
-        default_security_group: list[Any] = []
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}", vpc_id=default_get_networks.ids[0]))
+            for default_security_group_range in [{"value": i} for i in range(0, range_body)]:
+                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}", vpc_id=default_get_networks.ids[0]))
 
         len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_instance: list[Any] = []
+        default_instance: list[alicloud.bastionhost.Instance] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_instance.append(alicloud.bastionhost.Instance(f"default-{range['value']}",
+            for default_instance_range in [{"value": i} for i in range(0, range_body)]:
+                default_instance.append(alicloud.bastionhost.Instance(f"default-{default_instance_range['value']}",
                     description=name,
                     license_code="bhah_ent_50_asset",
                     plan_code="cloudbastion",
@@ -314,16 +314,16 @@ class HostShareKey(pulumi.CustomResource):
         default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
             vpc_id=default_get_networks.ids[0],
             zone_id=default_get_zones.zones[0].id)
-        default_security_group: list[Any] = []
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}", vpc_id=default_get_networks.ids[0]))
+            for default_security_group_range in [{"value": i} for i in range(0, range_body)]:
+                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}", vpc_id=default_get_networks.ids[0]))
 
         len(default.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_instance: list[Any] = []
+        default_instance: list[alicloud.bastionhost.Instance] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_instance.append(alicloud.bastionhost.Instance(f"default-{range['value']}",
+            for default_instance_range in [{"value": i} for i in range(0, range_body)]:
+                default_instance.append(alicloud.bastionhost.Instance(f"default-{default_instance_range['value']}",
                     description=name,
                     license_code="bhah_ent_50_asset",
                     plan_code="cloudbastion",

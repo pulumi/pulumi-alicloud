@@ -59,7 +59,7 @@ class RdsDbProxyArgs:
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
+                 Valid status values:
                - 1: enabled.
                - 0: disabled.
                
@@ -236,7 +236,7 @@ class RdsDbProxyArgs:
         - ReadWriteSpliting: read/write splitting.
         - ConnectionPersist: connection pooling.
         - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        Valid status values:
+          Valid status values:
         - 1: enabled.
         - 0: disabled.
 
@@ -432,7 +432,7 @@ class _RdsDbProxyState:
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
+                 Valid status values:
                - 1: enabled.
                - 0: disabled.
                
@@ -607,7 +607,7 @@ class _RdsDbProxyState:
         - ReadWriteSpliting: read/write splitting.
         - ConnectionPersist: connection pooling.
         - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        Valid status values:
+          Valid status values:
         - 1: enabled.
         - 0: disabled.
 
@@ -964,7 +964,7 @@ class RdsDbProxy(pulumi.CustomResource):
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
+                 Valid status values:
                - 1: enabled.
                - 0: disabled.
                
@@ -1224,7 +1224,7 @@ class RdsDbProxy(pulumi.CustomResource):
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
+                 Valid status values:
                - 1: enabled.
                - 0: disabled.
                
@@ -1356,7 +1356,7 @@ class RdsDbProxy(pulumi.CustomResource):
         - ReadWriteSpliting: read/write splitting.
         - ConnectionPersist: connection pooling.
         - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        Valid status values:
+          Valid status values:
         - 1: enabled.
         - 0: disabled.
 

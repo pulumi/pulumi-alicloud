@@ -39,7 +39,7 @@ class SmbAclAttachmentArgs:
         :param pulumi.Input[_builtins.bool] encrypt_data: Specifies whether to enable encryption in transit. Valid values:
                true: enables encryption in transit.
                false: disables encryption in transit. Default value: false.
-        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:\\
                Each segment starts with a forward slash (/) or a backslash (\\).
                Each segment does not contain the following special characters: <>":?*.
                Each segment is 0 to 255 characters in length.
@@ -135,7 +135,7 @@ class SmbAclAttachmentArgs:
     @pulumi.getter(name="homeDirPath")
     def home_dir_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        The home directory of each user. Each user-specific home directory must meet the following requirements:\\
         Each segment starts with a forward slash (/) or a backslash (\\).
         Each segment does not contain the following special characters: <>":?*.
         Each segment is 0 to 255 characters in length.
@@ -205,7 +205,7 @@ class _SmbAclAttachmentState:
                true: enables encryption in transit.
                false: disables encryption in transit. Default value: false.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:\\
                Each segment starts with a forward slash (/) or a backslash (\\).
                Each segment does not contain the following special characters: <>":?*.
                Each segment is 0 to 255 characters in length.
@@ -312,7 +312,7 @@ class _SmbAclAttachmentState:
     @pulumi.getter(name="homeDirPath")
     def home_dir_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        The home directory of each user. Each user-specific home directory must meet the following requirements:\\
         Each segment starts with a forward slash (/) or a backslash (\\).
         Each segment does not contain the following special characters: <>":?*.
         Each segment is 0 to 255 characters in length.
@@ -434,7 +434,7 @@ class SmbAclAttachment(pulumi.CustomResource):
                true: enables encryption in transit.
                false: disables encryption in transit. Default value: false.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:\\
                Each segment starts with a forward slash (/) or a backslash (\\).
                Each segment does not contain the following special characters: <>":?*.
                Each segment is 0 to 255 characters in length.
@@ -573,7 +573,7 @@ class SmbAclAttachment(pulumi.CustomResource):
                true: enables encryption in transit.
                false: disables encryption in transit. Default value: false.
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the file system.
-        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        :param pulumi.Input[_builtins.str] home_dir_path: The home directory of each user. Each user-specific home directory must meet the following requirements:\\
                Each segment starts with a forward slash (/) or a backslash (\\).
                Each segment does not contain the following special characters: <>":?*.
                Each segment is 0 to 255 characters in length.
@@ -655,7 +655,7 @@ class SmbAclAttachment(pulumi.CustomResource):
     @pulumi.getter(name="homeDirPath")
     def home_dir_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The home directory of each user. Each user-specific home directory must meet the following requirements:    
+        The home directory of each user. Each user-specific home directory must meet the following requirements:\\
         Each segment starts with a forward slash (/) or a backslash (\\).
         Each segment does not contain the following special characters: <>":?*.
         Each segment is 0 to 255 characters in length.

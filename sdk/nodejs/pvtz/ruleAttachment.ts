@@ -36,22 +36,22 @@ import * as utilities from "../utilities";
  *     current: true,
  * });
  * const defaultNetwork: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < 3; range.value++) {
- *     defaultNetwork.push(new alicloud.vpc.Network(`default-${range.value}`, {
+ * for (let range = 0; range < 3; range++) {
+ *     defaultNetwork.push(new alicloud.vpc.Network(`default-${range}`, {
  *         vpcName: name,
  *         cidrBlock: "172.16.0.0/12",
  *     }));
  * }
  * const defaultSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range}`, {
  *         vpcId: defaultNetwork[2].id,
  *         cidrBlock: std.cidrsubnetOutput({
  *             input: defaultNetwork[2].cidrBlock,
  *             newbits: 8,
- *             netnum: range.value,
+ *             netnum: range,
  *         }).apply(invoke => invoke.result),
- *         zoneId: _default.then(_default => _default.zones[range.value].zoneId),
+ *         zoneId: _default.then(_default => _default.zones[range].zoneId),
  *     }));
  * }
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {

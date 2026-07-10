@@ -60,11 +60,11 @@ class ListenerArgs:
                > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
                
                > **NOTE:**  Effective only for TCPSSL listener.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  Only one CA certificate is supported.
         :param pulumi.Input[_builtins.bool] ca_enabled: Specifies whether to enable mutual authentication. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         :param pulumi.Input[_builtins.int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
@@ -215,7 +215,7 @@ class ListenerArgs:
     @pulumi.getter(name="caCertificateIds")
     def ca_certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
 
         > **NOTE:**  Only one CA certificate is supported.
         """
@@ -241,7 +241,7 @@ class ListenerArgs:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
 
         > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         """
@@ -445,11 +445,11 @@ class _ListenerState:
                > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
                
                > **NOTE:**  Effective only for TCPSSL listener.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  Only one CA certificate is supported.
         :param pulumi.Input[_builtins.bool] ca_enabled: Specifies whether to enable mutual authentication. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         :param pulumi.Input[_builtins.int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
@@ -564,7 +564,7 @@ class _ListenerState:
     @pulumi.getter(name="caCertificateIds")
     def ca_certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
 
         > **NOTE:**  Only one CA certificate is supported.
         """
@@ -590,7 +590,7 @@ class _ListenerState:
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
 
         > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         """
@@ -968,11 +968,11 @@ class Listener(pulumi.CustomResource):
                > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
                
                > **NOTE:**  Effective only for TCPSSL listener.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  Only one CA certificate is supported.
         :param pulumi.Input[_builtins.bool] ca_enabled: Specifies whether to enable mutual authentication. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         :param pulumi.Input[_builtins.int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
@@ -1244,11 +1244,11 @@ class Listener(pulumi.CustomResource):
                > **NOTE:**  This parameter is required if AlpnEnabled is set to true.
                
                > **NOTE:**  Effective only for TCPSSL listener.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ca_certificate_ids: The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  Only one CA certificate is supported.
         :param pulumi.Input[_builtins.bool] ca_enabled: Specifies whether to enable mutual authentication. Valid values:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
                
                > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         :param pulumi.Input[_builtins.int] cps: The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
@@ -1338,7 +1338,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="caCertificateIds")
     def ca_certificate_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
 
         > **NOTE:**  Only one CA certificate is supported.
         """
@@ -1356,7 +1356,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="certificateIds")
     def certificate_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+        The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
 
         > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
         """

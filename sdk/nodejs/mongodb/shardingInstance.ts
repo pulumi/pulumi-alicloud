@@ -156,7 +156,7 @@ export class ShardingInstance extends pulumi.CustomResource {
     declare public readonly dbInstanceReleaseProtection: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - `1 `: The log backup feature is enabled.
+     * - ` 1  `: The log backup feature is enabled.
      */
     declare public readonly enableBackupLog: pulumi.Output<number>;
     /**
@@ -231,7 +231,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     declare public readonly orderType: pulumi.Output<string | undefined>;
     /**
@@ -286,7 +286,7 @@ export class ShardingInstance extends pulumi.CustomResource {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - `Flash `: Single-digit second backup.
+     * - ` Flash  `: Single-digit second backup.
      */
     declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
@@ -530,7 +530,7 @@ export interface ShardingInstanceState {
     dbInstanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - `1 `: The log backup feature is enabled.
+     * - ` 1  `: The log backup feature is enabled.
      */
     enableBackupLog?: pulumi.Input<number | undefined>;
     /**
@@ -605,7 +605,7 @@ export interface ShardingInstanceState {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string | undefined>;
     /**
@@ -660,7 +660,7 @@ export interface ShardingInstanceState {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - `Flash `: Single-digit second backup.
+     * - ` Flash  `: Single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**
@@ -765,7 +765,7 @@ export interface ShardingInstanceArgs {
     dbInstanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - `1 `: The log backup feature is enabled.
+     * - ` 1  `: The log backup feature is enabled.
      */
     enableBackupLog?: pulumi.Input<number | undefined>;
     /**
@@ -836,7 +836,7 @@ export interface ShardingInstanceArgs {
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
-     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
+     *   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string | undefined>;
     /**
@@ -887,7 +887,7 @@ export interface ShardingInstanceArgs {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - `Flash `: Single-digit second backup.
+     * - ` Flash  `: Single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**

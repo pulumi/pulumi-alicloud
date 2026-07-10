@@ -410,19 +410,19 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/12",
  * });
  * const vswitches: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (nodeVswitchIds.length > 0 ? 0 : nodeVswitchCidrs.length); range.value++) {
- *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range.value}`, {
+ * for (let range = 0; range < (nodeVswitchIds.length > 0 ? 0 : nodeVswitchCidrs.length); range++) {
+ *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range}`, {
  *         vpcId: _default.id,
- *         cidrBlock: nodeVswitchCidrs[range.value],
- *         zoneId: availabilityZone[range.value],
+ *         cidrBlock: nodeVswitchCidrs[range],
+ *         zoneId: availabilityZone[range],
  *     }));
  * }
  * const terwayVswitches: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range.value++) {
- *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range.value}`, {
+ * for (let range = 0; range < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range++) {
+ *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range}`, {
  *         vpcId: _default.id,
- *         cidrBlock: terwayVswitchCidrs[range.value],
- *         zoneId: availabilityZone[range.value],
+ *         cidrBlock: terwayVswitchCidrs[range],
+ *         zoneId: availabilityZone[range],
  *     }));
  * }
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {

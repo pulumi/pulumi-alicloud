@@ -344,9 +344,9 @@ class Attachment(pulumi.CustomResource):
             force_delete=True,
             active=True,
             enable=True)
-        default_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+        default_instance: list[alicloud.ecs.Instance] = []
+        for default_instance_range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"default-{default_instance_range['value']}",
                 image_id=default_get_images.images[0].id,
                 instance_type=default_get_instance_types.instance_types[0].id,
                 security_groups=[default_security_group.id],
@@ -468,9 +468,9 @@ class Attachment(pulumi.CustomResource):
             force_delete=True,
             active=True,
             enable=True)
-        default_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+        default_instance: list[alicloud.ecs.Instance] = []
+        for default_instance_range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"default-{default_instance_range['value']}",
                 image_id=default_get_images.images[0].id,
                 instance_type=default_get_instance_types.instance_types[0].id,
                 security_groups=[default_security_group.id],

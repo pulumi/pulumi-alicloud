@@ -50,11 +50,11 @@ import * as utilities from "../utilities";
  * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: vpcCidr});
  * // According to the vswitch cidr blocks to launch several vswitches
  * const defaultSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < vswitchCidrs.length; range.value++) {
- *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ * for (let range = 0; range < vswitchCidrs.length; range++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range}`, {
  *         vpcId: vpc.id,
- *         cidrBlock: vswitchCidrs[range.value],
- *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *         cidrBlock: vswitchCidrs[range],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range].zoneId),
  *     }));
  * }
  * // Create a new RAM cluster.

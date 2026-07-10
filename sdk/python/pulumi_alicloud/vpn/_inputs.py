@@ -60,7 +60,7 @@ class ConnectionBgpConfigArgsDict(TypedDict):
     """
     local_asn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    the autonomous system number (ASN) on the Alibaba Cloud side. 
+    the autonomous system number (ASN) on the Alibaba Cloud side.
     Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
     Each segment is 16 bits in length. Enter the number in each segment in decimal format.
     For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
@@ -88,7 +88,7 @@ class ConnectionBgpConfigArgs:
                  tunnel_cidr: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable: specifies whether to enable BGP. Valid values: true and false (default).
-        :param pulumi.Input[_builtins.str] local_asn: the autonomous system number (ASN) on the Alibaba Cloud side. 
+        :param pulumi.Input[_builtins.str] local_asn: the autonomous system number (ASN) on the Alibaba Cloud side.
                Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
                Each segment is 16 bits in length. Enter the number in each segment in decimal format.
                For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
@@ -123,7 +123,7 @@ class ConnectionBgpConfigArgs:
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        the autonomous system number (ASN) on the Alibaba Cloud side. 
+        the autonomous system number (ASN) on the Alibaba Cloud side.
         Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
         Each segment is 16 bits in length. Enter the number in each segment in decimal format.
         For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.

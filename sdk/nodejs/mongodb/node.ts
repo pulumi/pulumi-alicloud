@@ -140,7 +140,6 @@ export class Node extends pulumi.CustomResource {
      *
      * > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly accountPassword: pulumi.Output<string | undefined>;
@@ -309,7 +308,6 @@ export interface NodeState {
      *
      * > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     accountPassword?: pulumi.Input<string | undefined>;
@@ -416,7 +414,6 @@ export interface NodeArgs {
      * - Length is 8~32 characters.
      *
      * > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */

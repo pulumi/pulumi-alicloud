@@ -42,13 +42,13 @@ import * as utilities from "../utilities";
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
  * const defaultServiceCertificate: alicloud.cas.ServiceCertificate[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultServiceCertificate.push(new alicloud.cas.ServiceCertificate(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultServiceCertificate.push(new alicloud.cas.ServiceCertificate(`default-${range}`, {
  *         certificateName: std.join({
  *             separator: "-",
  *             input: [
  *                 name,
- *                 String(range.value),
+ *                 String(range),
  *             ],
  *         }).then(invoke => invoke.result),
  *         cert: `-----BEGIN CERTIFICATE-----

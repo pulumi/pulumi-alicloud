@@ -242,7 +242,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
     """
     operator: pulumi.Input[_builtins.str]
     """
-    The operator used in the dispatch rule. Valid values: 
+    The operator used in the dispatch rule. Valid values:
     * eq: equals to.
     * re: matches a regular expression.
     """
@@ -267,7 +267,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                * _aliyun_arms_alert_rule_id: alert rule ID
                * _aliyun_arms_alert_type: alert type
                * _aliyun_arms_alert_level: alert severity
-        :param pulumi.Input[_builtins.str] operator: The operator used in the dispatch rule. Valid values: 
+        :param pulumi.Input[_builtins.str] operator: The operator used in the dispatch rule. Valid values:
                * eq: equals to.
                * re: matches a regular expression.
         :param pulumi.Input[_builtins.str] value: The value of the tag.
@@ -300,7 +300,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
     @pulumi.getter
     def operator(self) -> pulumi.Input[_builtins.str]:
         """
-        The operator used in the dispatch rule. Valid values: 
+        The operator used in the dispatch rule. Valid values:
         * eq: equals to.
         * re: matches a regular expression.
         """
@@ -855,7 +855,7 @@ class SyntheticTaskCommonSettingArgsDict(TypedDict):
     """
     Whether the monitoring samples are evenly distributed:
     - 0: No
-    1: Yes.
+      1: Yes.
     """
     trace_client_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -884,7 +884,7 @@ class SyntheticTaskCommonSettingArgs:
         :param pulumi.Input[_builtins.bool] is_open_trace: Whether to enable link tracking.
         :param pulumi.Input[_builtins.int] monitor_samples: Whether the monitoring samples are evenly distributed:
                - 0: No
-               1: Yes.
+                 1: Yes.
         :param pulumi.Input[_builtins.int] trace_client_type: Link trace client type:
                - 0:ARMS Agent
                - 1:OpenTelemetry
@@ -946,7 +946,7 @@ class SyntheticTaskCommonSettingArgs:
         """
         Whether the monitoring samples are evenly distributed:
         - 0: No
-        1: Yes.
+          1: Yes.
         """
         return pulumi.get(self, "monitor_samples")
 
@@ -1553,7 +1553,7 @@ class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
     Download the kernel.
     - 1:curl
     - 0:WinInet
-    Default 1.
+      Default 1.
     """
     ignore_certificate_auth_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -1593,7 +1593,7 @@ class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
     - 1:http1
     - 2:http2
     - 3:http3
-    Default 1.
+      Default 1.
     """
     redirection: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -1647,7 +1647,7 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         :param pulumi.Input[_builtins.int] download_kernel: Download the kernel.
                - 1:curl
                - 0:WinInet
-               Default 1.
+                 Default 1.
         :param pulumi.Input[_builtins.int] ignore_certificate_auth_error: Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
         :param pulumi.Input[_builtins.int] ignore_certificate_canceled_error: Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
         :param pulumi.Input[_builtins.int] ignore_certificate_out_of_date_error: Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
@@ -1660,7 +1660,7 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
                - 1:http1
                - 2:http2
                - 3:http3
-               Default 1.
+                 Default 1.
         :param pulumi.Input[_builtins.int] redirection: When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
         :param pulumi.Input[_builtins.int] transmission_size: The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
         :param pulumi.Input[_builtins.str] validate_keywords: Verify keywords.
@@ -1749,7 +1749,7 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         Download the kernel.
         - 1:curl
         - 0:WinInet
-        Default 1.
+          Default 1.
         """
         return pulumi.get(self, "download_kernel")
 
@@ -1861,7 +1861,7 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         - 1:http1
         - 2:http2
         - 3:http3
-        Default 1.
+          Default 1.
         """
         return pulumi.get(self, "quick_protocol")
 
@@ -1943,7 +1943,7 @@ class SyntheticTaskMonitorConfNetDnsArgsDict(TypedDict):
     The IP address type of the DNS server.
     - 0 (default):ipv4
     - 1:ipv6
-    2: Automatic.
+      2: Automatic.
     """
     ns_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1973,7 +1973,7 @@ class SyntheticTaskMonitorConfNetDnsArgs:
         :param pulumi.Input[_builtins.int] dns_server_ip_type: The IP address type of the DNS server.
                - 0 (default):ipv4
                - 1:ipv6
-               2: Automatic.
+                 2: Automatic.
         :param pulumi.Input[_builtins.str] ns_server: The IP address of the NS server. The default value is 114.114.114.114.
         :param pulumi.Input[_builtins.int] query_method: DNS query method.
                - 0 (default): Recursive
@@ -2009,7 +2009,7 @@ class SyntheticTaskMonitorConfNetDnsArgs:
         The IP address type of the DNS server.
         - 0 (default):ipv4
         - 1:ipv6
-        2: Automatic.
+          2: Automatic.
         """
         return pulumi.get(self, "dns_server_ip_type")
 
@@ -2562,7 +2562,7 @@ class SyntheticTaskMonitorConfWebsiteArgsDict(TypedDict):
     """
     Whether to support automatic scrolling screen, loading page.
     - 0 (default): No
-    1: Yes.
+      1: Yes.
     """
     custom_header: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -2664,7 +2664,7 @@ class SyntheticTaskMonitorConfWebsiteArgs:
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] automatic_scrolling: Whether to support automatic scrolling screen, loading page.
                - 0 (default): No
-               1: Yes.
+                 1: Yes.
         :param pulumi.Input[_builtins.int] custom_header: Custom header.
                - 0 (default): Off
                - 1: Modify the first package
@@ -2744,7 +2744,7 @@ class SyntheticTaskMonitorConfWebsiteArgs:
         """
         Whether to support automatic scrolling screen, loading page.
         - 0 (default): No
-        1: Yes.
+          1: Yes.
         """
         return pulumi.get(self, "automatic_scrolling")
 

@@ -191,7 +191,7 @@ export class StarRocksInstance extends pulumi.CustomResource {
      * The duration unit for purchasing:
      * - Month
      * - Year
-     * This is only meaningful when PayType is set to PrePaid.
+     *   This is only meaningful when PayType is set to PrePaid.
      */
     declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
@@ -398,7 +398,7 @@ export interface StarRocksInstanceState {
      * The duration unit for purchasing:
      * - Month
      * - Year
-     * This is only meaningful when PayType is set to PrePaid.
+     *   This is only meaningful when PayType is set to PrePaid.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
     /**
@@ -506,7 +506,7 @@ export interface StarRocksInstanceArgs {
      * The duration unit for purchasing:
      * - Month
      * - Year
-     * This is only meaningful when PayType is set to PrePaid.
+     *   This is only meaningful when PayType is set to PrePaid.
      */
     pricingCycle?: pulumi.Input<string | undefined>;
     /**

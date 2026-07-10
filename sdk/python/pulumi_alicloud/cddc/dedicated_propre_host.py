@@ -56,7 +56,7 @@ class DedicatedPropreHostArgs:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
         :param pulumi.Input[_builtins.str] vpc_id: VPCID of the VPC.
@@ -72,7 +72,7 @@ class DedicatedPropreHostArgs:
         :param pulumi.Input[_builtins.str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -172,7 +172,7 @@ class DedicatedPropreHostArgs:
         - **alisql**
         - **tair**
         - **mssql**
-        Must be consistent with the parent resource cluster engine attributes.
+          Must be consistent with the parent resource cluster engine attributes.
         """
         return pulumi.get(self, "engine")
 
@@ -309,7 +309,7 @@ class DedicatedPropreHostArgs:
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
         - **false** (default): Do not add.
-        When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+          When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         """
         return pulumi.get(self, "ecs_unique_suffix")
 
@@ -516,13 +516,13 @@ class _DedicatedPropreHostState:
         :param pulumi.Input[_builtins.str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[_builtins.str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[_builtins.str] engine: Database type, value:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -708,7 +708,7 @@ class _DedicatedPropreHostState:
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
         - **false** (default): Do not add.
-        When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+          When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         """
         return pulumi.get(self, "ecs_unique_suffix")
 
@@ -736,7 +736,7 @@ class _DedicatedPropreHostState:
         - **alisql**
         - **tair**
         - **mssql**
-        Must be consistent with the parent resource cluster engine attributes.
+          Must be consistent with the parent resource cluster engine attributes.
         """
         return pulumi.get(self, "engine")
 
@@ -1012,19 +1012,19 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id="cn-hangzhou-i")
         default_get_security_groups = alicloud.ecs.get_security_groups(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_security_group: list[Any] = []
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+            for default_security_group_range in [{"value": i} for i in range(0, range_body)]:
+                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                     vpc_id=default_get_switches.vswitches[0].vpc_id,
                     name="tf-exampleacc-cddc-dedicated_propre_host"))
 
         len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_ecs_deployment_set: list[Any] = []
+        default_ecs_deployment_set: list[alicloud.ecs.EcsDeploymentSet] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{range['value']}",
+            for default_ecs_deployment_set_range in [{"value": i} for i in range(0, range_body)]:
+                default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{default_ecs_deployment_set_range['value']}",
                     strategy="Availability",
                     domain="Default",
                     granularity="Host",
@@ -1033,18 +1033,18 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_key_pair: list[Any] = []
+        default_key_pair: list[alicloud.ecs.KeyPair] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_key_pair.append(alicloud.ecs.KeyPair(f"default-{range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
+            for default_key_pair_range in [{"value": i} for i in range(0, range_body)]:
+                default_key_pair.append(alicloud.ecs.KeyPair(f"default-{default_key_pair_range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
 
         len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
             name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_dedicated_host_group: list[Any] = []
+        default_dedicated_host_group: list[alicloud.cddc.DedicatedHostGroup] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{range['value']}",
+            for default_dedicated_host_group_range in [{"value": i} for i in range(0, range_body)]:
+                default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{default_dedicated_host_group_range['value']}",
                     engine="MySQL",
                     vpc_id=default_get_networks.ids[0],
                     cpu_allocation_ratio=101,
@@ -1131,13 +1131,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[_builtins.str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[_builtins.str] engine: Database type, value:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -1203,19 +1203,19 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id="cn-hangzhou-i")
         default_get_security_groups = alicloud.ecs.get_security_groups(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_security_group: list[Any] = []
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+            for default_security_group_range in [{"value": i} for i in range(0, range_body)]:
+                default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                     vpc_id=default_get_switches.vswitches[0].vpc_id,
                     name="tf-exampleacc-cddc-dedicated_propre_host"))
 
         len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_ecs_deployment_set: list[Any] = []
+        default_ecs_deployment_set: list[alicloud.ecs.EcsDeploymentSet] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{range['value']}",
+            for default_ecs_deployment_set_range in [{"value": i} for i in range(0, range_body)]:
+                default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{default_ecs_deployment_set_range['value']}",
                     strategy="Availability",
                     domain="Default",
                     granularity="Host",
@@ -1224,18 +1224,18 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_key_pair: list[Any] = []
+        default_key_pair: list[alicloud.ecs.KeyPair] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_key_pair.append(alicloud.ecs.KeyPair(f"default-{range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
+            for default_key_pair_range in [{"value": i} for i in range(0, range_body)]:
+                default_key_pair.append(alicloud.ecs.KeyPair(f"default-{default_key_pair_range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
 
         len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
             name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_dedicated_host_group: list[Any] = []
+        default_dedicated_host_group: list[alicloud.cddc.DedicatedHostGroup] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{range['value']}",
+            for default_dedicated_host_group_range in [{"value": i} for i in range(0, range_body)]:
+                default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{default_dedicated_host_group_range['value']}",
                     engine="MySQL",
                     vpc_id=default_get_networks.ids[0],
                     cpu_allocation_ratio=101,
@@ -1456,13 +1456,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[_builtins.str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[_builtins.str] engine: Database type, value:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[_builtins.str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[_builtins.str] internet_charge_type: Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
@@ -1594,7 +1594,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
         - **false** (default): Do not add.
-        When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+          When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         """
         return pulumi.get(self, "ecs_unique_suffix")
 
@@ -1614,7 +1614,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         - **alisql**
         - **tair**
         - **mssql**
-        Must be consistent with the parent resource cluster engine attributes.
+          Must be consistent with the parent resource cluster engine attributes.
         """
         return pulumi.get(self, "engine")
 

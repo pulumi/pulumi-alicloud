@@ -35,7 +35,6 @@ class Ipv6CidrBlockArgs:
                
                > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
                
-               
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] ipv6_ipam_pool_id: The ID of the IPAM IPv6 address pool instance.
                
@@ -84,7 +83,6 @@ class Ipv6CidrBlockArgs:
 
         > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
 
-
         > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
         return pulumi.get(self, "ipv6_cidr_mask")
@@ -125,7 +123,6 @@ class _Ipv6CidrBlockState:
                
                > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
                
-               
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] ipv6_ipam_pool_id: The ID of the IPAM IPv6 address pool instance.
                
@@ -163,7 +160,6 @@ class _Ipv6CidrBlockState:
         The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
 
         > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
-
 
         > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """
@@ -270,7 +266,6 @@ class Ipv6CidrBlock(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ipv6_cidr_mask: The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
                
                > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
-               
                
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] ipv6_ipam_pool_id: The ID of the IPAM IPv6 address pool instance.
@@ -397,7 +392,6 @@ class Ipv6CidrBlock(pulumi.CustomResource):
                
                > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
                
-               
                > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         :param pulumi.Input[_builtins.str] ipv6_ipam_pool_id: The ID of the IPAM IPv6 address pool instance.
                
@@ -432,7 +426,6 @@ class Ipv6CidrBlock(pulumi.CustomResource):
         The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
 
         > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
-
 
         > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         """

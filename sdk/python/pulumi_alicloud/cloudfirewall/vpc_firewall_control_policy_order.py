@@ -26,10 +26,10 @@ class VpcFirewallControlPolicyOrderArgs:
         """
         The set of arguments for constructing a VpcFirewallControlPolicyOrder resource.
 
-        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.  
+        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.
                
                > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
-        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
                
                Valid values:
                - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -38,9 +38,9 @@ class VpcFirewallControlPolicyOrderArgs:
                - When the VPC border firewall protects Express Connect, the policy group ID is the VPC border firewall instance ID.
                
                Example: vfw-a42bbb7b887148c9*\\*\\*\\*.
-        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.  
+        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.\\
                When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
-        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.  
+        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.
                
                Valid values:
         """
@@ -55,7 +55,7 @@ class VpcFirewallControlPolicyOrderArgs:
     @pulumi.getter
     def order(self) -> pulumi.Input[_builtins.str]:
         """
-        The new priority of the access control policy after modification.  
+        The new priority of the access control policy after modification.
 
         > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
         """
@@ -69,7 +69,7 @@ class VpcFirewallControlPolicyOrderArgs:
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
 
         Valid values:
         - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -89,7 +89,7 @@ class VpcFirewallControlPolicyOrderArgs:
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique identifier ID of the access control policy.  
+        The unique identifier ID of the access control policy.\\
         When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
         """
         return pulumi.get(self, "acl_uuid")
@@ -102,7 +102,7 @@ class VpcFirewallControlPolicyOrderArgs:
     @pulumi.getter
     def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The language type used for requests and responses.  
+        The language type used for requests and responses.
 
         Valid values:
         """
@@ -123,15 +123,15 @@ class _VpcFirewallControlPolicyOrderState:
         """
         Input properties used for looking up and filtering VpcFirewallControlPolicyOrder resources.
 
-        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.  
+        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.\\
                When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
-        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.  
+        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.
                
                Valid values:
-        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.  
+        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.
                
                > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
-        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
                
                Valid values:
                - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -154,7 +154,7 @@ class _VpcFirewallControlPolicyOrderState:
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unique identifier ID of the access control policy.  
+        The unique identifier ID of the access control policy.\\
         When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
         """
         return pulumi.get(self, "acl_uuid")
@@ -167,7 +167,7 @@ class _VpcFirewallControlPolicyOrderState:
     @pulumi.getter
     def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The language type used for requests and responses.  
+        The language type used for requests and responses.
 
         Valid values:
         """
@@ -181,7 +181,7 @@ class _VpcFirewallControlPolicyOrderState:
     @pulumi.getter
     def order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The new priority of the access control policy after modification.  
+        The new priority of the access control policy after modification.
 
         > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
         """
@@ -195,7 +195,7 @@ class _VpcFirewallControlPolicyOrderState:
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
 
         Valid values:
         - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -268,15 +268,15 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.  
+        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.\\
                When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
-        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.  
+        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.
                
                Valid values:
-        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.  
+        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.
                
                > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
-        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
                
                Valid values:
                - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -392,15 +392,15 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.  
+        :param pulumi.Input[_builtins.str] acl_uuid: The unique identifier ID of the access control policy.\\
                When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
-        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.  
+        :param pulumi.Input[_builtins.str] lang: The language type used for requests and responses.
                
                Valid values:
-        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.  
+        :param pulumi.Input[_builtins.str] order: The new priority of the access control policy after modification.
                
                > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
-        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
                
                Valid values:
                - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.
@@ -424,7 +424,7 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     @pulumi.getter(name="aclUuid")
     def acl_uuid(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique identifier ID of the access control policy.  
+        The unique identifier ID of the access control policy.\\
         When modifying an access control policy, you must provide its unique identifier ID. You can obtain this ID by calling the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) API.
         """
         return pulumi.get(self, "acl_uuid")
@@ -433,7 +433,7 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The language type used for requests and responses.  
+        The language type used for requests and responses.
 
         Valid values:
         """
@@ -443,7 +443,7 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     @pulumi.getter
     def order(self) -> pulumi.Output[_builtins.str]:
         """
-        The new priority of the access control policy after modification.  
+        The new priority of the access control policy after modification.
 
         > **NOTE:**  For the valid range of the new priority, see the [API for querying the effective priority range](https://help.aliyun.com/document_detail/474145.html).
         """
@@ -453,7 +453,7 @@ class VpcFirewallControlPolicyOrder(pulumi.CustomResource):
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.  
+        The ID of the access control policy group for the VPC border firewall. You can obtain this ID by calling the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) API.
 
         Valid values:
         - When the VPC border firewall protects Cloud Enterprise Network (CEN), the policy group ID is the CEN instance ID.

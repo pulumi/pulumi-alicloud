@@ -49,7 +49,7 @@ class DomainArgs:
         :param pulumi.Input[_builtins.str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http_ports: List of the HTTP ports.
-        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
                By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] https_ports: List of the HTTPS ports.
         :param pulumi.Input[_builtins.str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
@@ -199,7 +199,7 @@ class DomainArgs:
     @pulumi.getter(name="httpToUserIp")
     def http_to_user_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
         By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "http_to_user_ip")
@@ -338,7 +338,7 @@ class _DomainState:
         :param pulumi.Input[_builtins.str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http_ports: List of the HTTP ports.
-        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
                By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] https_ports: List of the HTTPS ports.
         :param pulumi.Input[_builtins.str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
@@ -482,7 +482,7 @@ class _DomainState:
     @pulumi.getter(name="httpToUserIp")
     def http_to_user_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
         By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "http_to_user_ip")
@@ -690,7 +690,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http_ports: List of the HTTP ports.
-        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
                By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] https_ports: List of the HTTPS ports.
         :param pulumi.Input[_builtins.str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
@@ -860,7 +860,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain_name: The domain that you want to add to WAF. The `domain_name` is required when the value of the `domain`  is Empty.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http2_ports: List of the HTTP 2.0 ports.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] http_ports: List of the HTTP ports.
-        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        :param pulumi.Input[_builtins.str] http_to_user_ip: Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
                By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] https_ports: List of the HTTPS ports.
         :param pulumi.Input[_builtins.str] https_redirect: Specifies whether to redirect HTTP requests as HTTPS requests. Valid values: "On" and `Off`. Default to `Off`.
@@ -960,7 +960,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="httpToUserIp")
     def http_to_user_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server. 
+        Specifies whether to enable the HTTP back-to-origin feature. After this feature is enabled, the WAF instance can use HTTP to forward HTTPS requests to the origin server.
         By default, port 80 is used to forward the requests to the origin server. Valid values: `On` and `Off`. Default to `Off`.
         """
         return pulumi.get(self, "http_to_user_ip")

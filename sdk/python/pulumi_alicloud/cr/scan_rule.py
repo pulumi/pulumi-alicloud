@@ -34,16 +34,16 @@ class ScanRuleArgs:
         :param pulumi.Input[_builtins.str] repo_tag_filter_pattern: Regular expression for matching tags that trigger a scan
         :param pulumi.Input[_builtins.str] rule_name: Event rule name
         :param pulumi.Input[_builtins.str] scan_scope: Scan scope
-        :param pulumi.Input[_builtins.str] scan_type: Scan type:  
+        :param pulumi.Input[_builtins.str] scan_type: Scan type:
                - `VUL`: Artifact vulnerability scan
                - `SBOM`: Artifact content analysis
                
                The default value of this parameter is `VUL`.
         :param pulumi.Input[_builtins.str] trigger_type: Trigger type
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:
                - This parameter must not be empty when the scan scope is NAMESPACE.
                - This parameter must contain exactly one namespace when the scan scope is REPO.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:
                - This parameter must be empty when the scan scope is NAMESPACE.
                - This parameter must not be empty when the scan scope is REPO.
         """
@@ -110,7 +110,7 @@ class ScanRuleArgs:
     @pulumi.getter(name="scanType")
     def scan_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Scan type:  
+        Scan type:
         - `VUL`: Artifact vulnerability scan
         - `SBOM`: Artifact content analysis
 
@@ -138,7 +138,7 @@ class ScanRuleArgs:
     @pulumi.getter
     def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set of namespaces:  
+        Set of namespaces:
         - This parameter must not be empty when the scan scope is NAMESPACE.
         - This parameter must contain exactly one namespace when the scan scope is REPO.
         """
@@ -152,7 +152,7 @@ class ScanRuleArgs:
     @pulumi.getter(name="repoNames")
     def repo_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Repository list:  
+        Repository list:
         - This parameter must be empty when the scan scope is NAMESPACE.
         - This parameter must not be empty when the scan scope is REPO.
         """
@@ -181,17 +181,17 @@ class _ScanRuleState:
 
         :param pulumi.Input[_builtins.int] create_time: Creation time
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:
                - This parameter must not be empty when the scan scope is NAMESPACE.
                - This parameter must contain exactly one namespace when the scan scope is REPO.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:
                - This parameter must be empty when the scan scope is NAMESPACE.
                - This parameter must not be empty when the scan scope is REPO.
         :param pulumi.Input[_builtins.str] repo_tag_filter_pattern: Regular expression for matching tags that trigger a scan
         :param pulumi.Input[_builtins.str] rule_name: Event rule name
         :param pulumi.Input[_builtins.str] scan_rule_id: Rule ID
         :param pulumi.Input[_builtins.str] scan_scope: Scan scope
-        :param pulumi.Input[_builtins.str] scan_type: Scan type:  
+        :param pulumi.Input[_builtins.str] scan_type: Scan type:
                - `VUL`: Artifact vulnerability scan
                - `SBOM`: Artifact content analysis
                
@@ -247,7 +247,7 @@ class _ScanRuleState:
     @pulumi.getter
     def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set of namespaces:  
+        Set of namespaces:
         - This parameter must not be empty when the scan scope is NAMESPACE.
         - This parameter must contain exactly one namespace when the scan scope is REPO.
         """
@@ -261,7 +261,7 @@ class _ScanRuleState:
     @pulumi.getter(name="repoNames")
     def repo_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Repository list:  
+        Repository list:
         - This parameter must be empty when the scan scope is NAMESPACE.
         - This parameter must not be empty when the scan scope is REPO.
         """
@@ -323,7 +323,7 @@ class _ScanRuleState:
     @pulumi.getter(name="scanType")
     def scan_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Scan type:  
+        Scan type:
         - `VUL`: Artifact vulnerability scan
         - `SBOM`: Artifact content analysis
 
@@ -421,16 +421,16 @@ class ScanRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:
                - This parameter must not be empty when the scan scope is NAMESPACE.
                - This parameter must contain exactly one namespace when the scan scope is REPO.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:
                - This parameter must be empty when the scan scope is NAMESPACE.
                - This parameter must not be empty when the scan scope is REPO.
         :param pulumi.Input[_builtins.str] repo_tag_filter_pattern: Regular expression for matching tags that trigger a scan
         :param pulumi.Input[_builtins.str] rule_name: Event rule name
         :param pulumi.Input[_builtins.str] scan_scope: Scan scope
-        :param pulumi.Input[_builtins.str] scan_type: Scan type:  
+        :param pulumi.Input[_builtins.str] scan_type: Scan type:
                - `VUL`: Artifact vulnerability scan
                - `SBOM`: Artifact content analysis
                
@@ -581,17 +581,17 @@ class ScanRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] create_time: Creation time
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: Set of namespaces:
                - This parameter must not be empty when the scan scope is NAMESPACE.
                - This parameter must contain exactly one namespace when the scan scope is REPO.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] repo_names: Repository list:
                - This parameter must be empty when the scan scope is NAMESPACE.
                - This parameter must not be empty when the scan scope is REPO.
         :param pulumi.Input[_builtins.str] repo_tag_filter_pattern: Regular expression for matching tags that trigger a scan
         :param pulumi.Input[_builtins.str] rule_name: Event rule name
         :param pulumi.Input[_builtins.str] scan_rule_id: Rule ID
         :param pulumi.Input[_builtins.str] scan_scope: Scan scope
-        :param pulumi.Input[_builtins.str] scan_type: Scan type:  
+        :param pulumi.Input[_builtins.str] scan_type: Scan type:
                - `VUL`: Artifact vulnerability scan
                - `SBOM`: Artifact content analysis
                
@@ -634,7 +634,7 @@ class ScanRule(pulumi.CustomResource):
     @pulumi.getter
     def namespaces(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Set of namespaces:  
+        Set of namespaces:
         - This parameter must not be empty when the scan scope is NAMESPACE.
         - This parameter must contain exactly one namespace when the scan scope is REPO.
         """
@@ -644,7 +644,7 @@ class ScanRule(pulumi.CustomResource):
     @pulumi.getter(name="repoNames")
     def repo_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Repository list:  
+        Repository list:
         - This parameter must be empty when the scan scope is NAMESPACE.
         - This parameter must not be empty when the scan scope is REPO.
         """
@@ -686,7 +686,7 @@ class ScanRule(pulumi.CustomResource):
     @pulumi.getter(name="scanType")
     def scan_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Scan type:  
+        Scan type:
         - `VUL`: Artifact vulnerability scan
         - `SBOM`: Artifact content analysis
 

@@ -158,7 +158,7 @@ class RdsCloneDbInstanceArgs:
                * **VPC**: VPC.
         :param pulumi.Input[_builtins.str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
-        :param pulumi.Input[_builtins.str] password: The password of the certificate. 
+        :param pulumi.Input[_builtins.str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] period: The period. Valid values: `Month`, `Year`.
@@ -771,7 +771,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the certificate. 
+        The password of the certificate.
 
         > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
@@ -1300,7 +1300,7 @@ class _RdsCloneDbInstanceState:
                * **VPC**: VPC.
         :param pulumi.Input[_builtins.str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
-        :param pulumi.Input[_builtins.str] password: The password of the certificate. 
+        :param pulumi.Input[_builtins.str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
@@ -1908,7 +1908,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the certificate. 
+        The password of the certificate.
 
         > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """
@@ -2526,7 +2526,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **VPC**: VPC.
         :param pulumi.Input[_builtins.str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
-        :param pulumi.Input[_builtins.str] password: The password of the certificate. 
+        :param pulumi.Input[_builtins.str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
@@ -2967,7 +2967,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **VPC**: VPC.
         :param pulumi.Input[_builtins.str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RdsCloneDbInstanceParameterArgs', 'RdsCloneDbInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
-        :param pulumi.Input[_builtins.str] password: The password of the certificate. 
+        :param pulumi.Input[_builtins.str] password: The password of the certificate.
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
@@ -3393,7 +3393,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The password of the certificate. 
+        The password of the certificate.
 
         > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         """

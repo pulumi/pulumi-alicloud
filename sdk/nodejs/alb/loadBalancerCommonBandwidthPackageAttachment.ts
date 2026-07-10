@@ -29,17 +29,17 @@ import * as utilities from "../utilities";
  *     cidrBlock: "10.4.0.0/16",
  * });
  * const defaultSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range}`, {
  *         vpcId: defaultNetwork.id,
  *         cidrBlock: std.format({
  *             input: "10.4.%d.0/24",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
- *         zoneId: _default.then(_default => _default.zones[range.value].id),
+ *         zoneId: _default.then(_default => _default.zones[range].id),
  *         vswitchName: std.format({
  *             input: `${name}_%d`,
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *     }));
  * }

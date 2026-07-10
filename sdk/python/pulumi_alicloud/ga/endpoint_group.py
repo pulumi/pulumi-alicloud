@@ -749,9 +749,9 @@ class EndpointGroup(pulumi.CustomResource):
             client_affinity="SOURCE_IP",
             protocol="UDP",
             name="terraform-example")
-        default_eip_address: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_eip_address.append(alicloud.ecs.EipAddress(f"default-{range['value']}",
+        default_eip_address: list[alicloud.ecs.EipAddress] = []
+        for default_eip_address_range in [{"value": i} for i in range(0, 2)]:
+            default_eip_address.append(alicloud.ecs.EipAddress(f"default-{default_eip_address_range['value']}",
                 bandwidth="10",
                 internet_charge_type="PayByBandwidth",
                 address_name="terraform-example"))
@@ -871,9 +871,9 @@ class EndpointGroup(pulumi.CustomResource):
             client_affinity="SOURCE_IP",
             protocol="UDP",
             name="terraform-example")
-        default_eip_address: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_eip_address.append(alicloud.ecs.EipAddress(f"default-{range['value']}",
+        default_eip_address: list[alicloud.ecs.EipAddress] = []
+        for default_eip_address_range in [{"value": i} for i in range(0, 2)]:
+            default_eip_address.append(alicloud.ecs.EipAddress(f"default-{default_eip_address_range['value']}",
                 bandwidth="10",
                 internet_charge_type="PayByBandwidth",
                 address_name="terraform-example"))

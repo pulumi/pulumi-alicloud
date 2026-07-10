@@ -207,13 +207,13 @@ class AdditionalCertificate(pulumi.CustomResource):
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
             accelerator_id=default.ids[0],
             bandwidth_package_id=default_bandwidth_package.id)
-        default_service_certificate: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
+        default_service_certificate: list[alicloud.cas.ServiceCertificate] = []
+        for default_service_certificate_range in [{"value": i} for i in range(0, 2)]:
+            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{default_service_certificate_range['value']}",
                 certificate_name=std.join(separator="-",
                     input=[
                         name,
-                        range["value"],
+                        default_service_certificate_range["value"],
                     ]).result,
                 cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIID7zCCAtegAwIBAgIRAKi2/Fx1cUTyhV839x42ockwDQYJKoZIhvcNAQELBQAw
@@ -357,13 +357,13 @@ class AdditionalCertificate(pulumi.CustomResource):
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
             accelerator_id=default.ids[0],
             bandwidth_package_id=default_bandwidth_package.id)
-        default_service_certificate: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
+        default_service_certificate: list[alicloud.cas.ServiceCertificate] = []
+        for default_service_certificate_range in [{"value": i} for i in range(0, 2)]:
+            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{default_service_certificate_range['value']}",
                 certificate_name=std.join(separator="-",
                     input=[
                         name,
-                        range["value"],
+                        default_service_certificate_range["value"],
                     ]).result,
                 cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIID7zCCAtegAwIBAgIRAKi2/Fx1cUTyhV839x42ockwDQYJKoZIhvcNAQELBQAw

@@ -47,7 +47,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
-        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value: 
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value:
                - Subscription: Pre-paid.
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
@@ -136,7 +136,7 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The Payment type. Valid value: 
+        The Payment type. Valid value:
         - Subscription: Pre-paid.
         - PayAsYouGo: Post-paid, and for serverless Edition.
         """
@@ -492,7 +492,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value: 
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value:
                - Subscription: Pre-paid.
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
@@ -698,7 +698,7 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Payment type. Valid value: 
+        The Payment type. Valid value:
         - Subscription: Pre-paid.
         - PayAsYouGo: Post-paid, and for serverless Edition.
         """
@@ -1027,7 +1027,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value: 
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value:
                - Subscription: Pre-paid.
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
@@ -1267,7 +1267,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
-        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value: 
+        :param pulumi.Input[_builtins.str] payment_type: The Payment type. Valid value:
                - Subscription: Pre-paid.
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
@@ -1411,7 +1411,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The Payment type. Valid value: 
+        The Payment type. Valid value:
         - Subscription: Pre-paid.
         - PayAsYouGo: Post-paid, and for serverless Edition.
         """

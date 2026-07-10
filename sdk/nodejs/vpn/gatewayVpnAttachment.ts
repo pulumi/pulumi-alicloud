@@ -256,12 +256,12 @@ export class GatewayVpnAttachment extends pulumi.CustomResource {
      */
     declare public readonly healthCheckConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentHealthCheckConfig>;
     /**
-     * The configurations of Phase 1 negotiations. 
+     * The configurations of Phase 1 negotiations.
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
      */
     declare public readonly ikeConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIkeConfig>;
     /**
-     * Configuration negotiated in the second stage. 
+     * Configuration negotiated in the second stage.
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
      */
     declare public readonly ipsecConfig: pulumi.Output<outputs.vpn.GatewayVpnAttachmentIpsecConfig>;
@@ -415,12 +415,12 @@ export interface GatewayVpnAttachmentState {
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentHealthCheckConfig | undefined>;
     /**
-     * The configurations of Phase 1 negotiations. 
+     * The configurations of Phase 1 negotiations.
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIkeConfig | undefined>;
     /**
-     * Configuration negotiated in the second stage. 
+     * Configuration negotiated in the second stage.
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIpsecConfig | undefined>;
@@ -508,12 +508,12 @@ export interface GatewayVpnAttachmentArgs {
      */
     healthCheckConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentHealthCheckConfig | undefined>;
     /**
-     * The configurations of Phase 1 negotiations. 
+     * The configurations of Phase 1 negotiations.
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ikeConfig` below.
      */
     ikeConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIkeConfig | undefined>;
     /**
-     * Configuration negotiated in the second stage. 
+     * Configuration negotiated in the second stage.
      * - This parameter is supported if you create an vpn attachment in single-tunnel mode. See `ipsecConfig` below.
      */
     ipsecConfig?: pulumi.Input<inputs.vpn.GatewayVpnAttachmentIpsecConfig | undefined>;

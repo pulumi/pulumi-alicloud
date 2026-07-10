@@ -56,7 +56,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] period: Service time of Web Application Firewall.
         :param pulumi.Input[_builtins.str] region: The instance region ID.
         :param pulumi.Input[_builtins.int] renew_period: Renewal period of WAF service. Unit: month
-        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values: 
+        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values:
                * AutoRenewal: The service time of WAF is renewed automatically.
                * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -260,7 +260,7 @@ class InstanceArgs:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Renewal status of WAF service. Valid values: 
+        Renewal status of WAF service. Valid values:
         * AutoRenewal: The service time of WAF is renewed automatically.
         * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         """
@@ -322,7 +322,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
         :param pulumi.Input[_builtins.str] region: The instance region ID.
         :param pulumi.Input[_builtins.int] renew_period: Renewal period of WAF service. Unit: month
-        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values: 
+        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values:
                * AutoRenewal: The service time of WAF is renewed automatically.
                * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -517,7 +517,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Renewal status of WAF service. Valid values: 
+        Renewal status of WAF service. Valid values:
         * AutoRenewal: The service time of WAF is renewed automatically.
         * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         """
@@ -616,10 +616,10 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.waf.get_instances()
-        default_instance: list[Any] = []
+        default_instance: list[alicloud.waf.Instance] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
+            for default_instance_range in [{"value": i} for i in range(0, range_body)]:
+                default_instance.append(alicloud.waf.Instance(f"default-{default_instance_range['value']}",
                     big_screen="0",
                     exclusive_ip_package="1",
                     ext_bandwidth="50",
@@ -671,7 +671,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
         :param pulumi.Input[_builtins.str] region: The instance region ID.
         :param pulumi.Input[_builtins.int] renew_period: Renewal period of WAF service. Unit: month
-        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values: 
+        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values:
                * AutoRenewal: The service time of WAF is renewed automatically.
                * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -701,10 +701,10 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.waf.get_instances()
-        default_instance: list[Any] = []
+        default_instance: list[alicloud.waf.Instance] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
+            for default_instance_range in [{"value": i} for i in range(0, range_body)]:
+                default_instance.append(alicloud.waf.Instance(f"default-{default_instance_range['value']}",
                     big_screen="0",
                     exclusive_ip_package="1",
                     ext_bandwidth="50",
@@ -865,7 +865,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] prefessional_service: Specify whether professional service is supported. Valid values: ["true", "false"]
         :param pulumi.Input[_builtins.str] region: The instance region ID.
         :param pulumi.Input[_builtins.int] renew_period: Renewal period of WAF service. Unit: month
-        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values: 
+        :param pulumi.Input[_builtins.str] renewal_status: Renewal status of WAF service. Valid values:
                * AutoRenewal: The service time of WAF is renewed automatically.
                * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID.
@@ -1000,7 +1000,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Renewal status of WAF service. Valid values: 
+        Renewal status of WAF service. Valid values:
         * AutoRenewal: The service time of WAF is renewed automatically.
         * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
         """

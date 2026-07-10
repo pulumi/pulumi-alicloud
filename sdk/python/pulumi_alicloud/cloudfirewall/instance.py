@@ -59,7 +59,7 @@ class InstanceArgs:
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+                 **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[_builtins.str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         pulumi.set(__self__, "payment_type", payment_type)
@@ -289,7 +289,7 @@ class InstanceArgs:
         - `AutoRenewal`: Auto renewal.
         - `ManualRenewal`: Manual renewal.
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+          **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -361,7 +361,7 @@ class _InstanceState:
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+                 **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[_builtins.str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[_builtins.str] status: The status of Cloud Firewall Instance.
         :param pulumi.Input[_builtins.bool] user_status: (Available since v1.232.0) The user status of Cloud Firewall Instance.
@@ -640,7 +640,7 @@ class _InstanceState:
         - `AutoRenewal`: Auto renewal.
         - `ManualRenewal`: Manual renewal.
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+          **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -780,7 +780,7 @@ class Instance(pulumi.CustomResource):
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+                 **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[_builtins.str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         ...
@@ -965,7 +965,7 @@ class Instance(pulumi.CustomResource):
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+                 **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[_builtins.str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[_builtins.str] status: The status of Cloud Firewall Instance.
         :param pulumi.Input[_builtins.bool] user_status: (Available since v1.232.0) The user status of Cloud Firewall Instance.
@@ -1152,7 +1152,7 @@ class Instance(pulumi.CustomResource):
         - `AutoRenewal`: Auto renewal.
         - `ManualRenewal`: Manual renewal.
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-        **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
+          **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         """
         return pulumi.get(self, "renewal_status")
 

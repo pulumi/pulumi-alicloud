@@ -316,9 +316,9 @@ def get_instance_types(availability_zone: Optional[_builtins.str] = None,
         network_interface_name=name,
         vswitch_id=default_switch.id,
         security_group_ids=[default_security_group.id])
-    default_instance: list[Any] = []
-    for range in [{"value": i} for i in range(0, 14)]:
-        default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+    default_instance: list[alicloud.ecs.Instance] = []
+    for default_instance_range in [{"value": i} for i in range(0, 14)]:
+        default_instance.append(alicloud.ecs.Instance(f"default-{default_instance_range['value']}",
             image_id=default_get_images.images[0].id,
             instance_type=default_get_instance_types.instance_types[0].id,
             instance_name=name,
@@ -351,7 +351,7 @@ def get_instance_types(availability_zone: Optional[_builtins.str] = None,
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param _builtins.str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-    :param _builtins.str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
+    :param _builtins.str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
     __args__ = dict()
@@ -462,9 +462,9 @@ def get_instance_types_output(availability_zone: pulumi.Input[Optional[Optional[
         network_interface_name=name,
         vswitch_id=default_switch.id,
         security_group_ids=[default_security_group.id])
-    default_instance: list[Any] = []
-    for range in [{"value": i} for i in range(0, 14)]:
-        default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+    default_instance: list[alicloud.ecs.Instance] = []
+    for default_instance_range in [{"value": i} for i in range(0, 14)]:
+        default_instance.append(alicloud.ecs.Instance(f"default-{default_instance_range['value']}",
             image_id=default_get_images.images[0].id,
             instance_type=default_get_instance_types.instance_types[0].id,
             instance_name=name,
@@ -497,7 +497,7 @@ def get_instance_types_output(availability_zone: pulumi.Input[Optional[Optional[
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     :param _builtins.str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param _builtins.str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-    :param _builtins.str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
+    :param _builtins.str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
     __args__ = dict()

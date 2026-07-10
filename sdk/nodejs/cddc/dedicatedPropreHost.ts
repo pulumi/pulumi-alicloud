@@ -51,8 +51,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
  * defaultGetSecurityGroups.then(defaultGetSecurityGroups => defaultGetSecurityGroups.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {
  *             vpcId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.vpcId),
  *             name: "tf-exampleacc-cddc-dedicated_propre_host",
  *         }));
@@ -63,8 +63,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultEcsDeploymentSet: alicloud.ecs.EcsDeploymentSet[] = [];
  * defaultGetEcsDeploymentSets.then(defaultGetEcsDeploymentSets => defaultGetEcsDeploymentSets.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultEcsDeploymentSet.push(new alicloud.ecs.EcsDeploymentSet(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultEcsDeploymentSet.push(new alicloud.ecs.EcsDeploymentSet(`default-${range}`, {
  *             strategy: "Availability",
  *             domain: "Default",
  *             granularity: "Host",
@@ -78,8 +78,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultKeyPair: alicloud.ecs.KeyPair[] = [];
  * defaultGetKeyPairs.then(defaultGetKeyPairs => defaultGetKeyPairs.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultKeyPair.push(new alicloud.ecs.KeyPair(`default-${range.value}`, {keyPairName: "tf-exampleacc-cddc-dedicated_propre_host"}));
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultKeyPair.push(new alicloud.ecs.KeyPair(`default-${range}`, {keyPairName: "tf-exampleacc-cddc-dedicated_propre_host"}));
  *     }
  * });
  * const defaultGetDedicatedHostGroups = alicloud.cddc.getDedicatedHostGroups({
@@ -88,8 +88,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultDedicatedHostGroup: alicloud.cddc.DedicatedHostGroup[] = [];
  * defaultGetDedicatedHostGroups.then(defaultGetDedicatedHostGroups => defaultGetDedicatedHostGroups.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultDedicatedHostGroup.push(new alicloud.cddc.DedicatedHostGroup(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultDedicatedHostGroup.push(new alicloud.cddc.DedicatedHostGroup(`default-${range}`, {
  *             engine: "MySQL",
  *             vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *             cpuAllocationRatio: 101,
@@ -237,7 +237,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
     declare public readonly ecsUniqueSuffix: pulumi.Output<string | undefined>;
     /**
@@ -249,7 +249,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * - **alisql**
      * - **tair**
      * - **mssql**
-     * Must be consistent with the parent resource cluster engine attributes.
+     *   Must be consistent with the parent resource cluster engine attributes.
      */
     declare public readonly engine: pulumi.Output<string>;
     /**
@@ -463,7 +463,7 @@ export interface DedicatedPropreHostState {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
     ecsUniqueSuffix?: pulumi.Input<string | undefined>;
     /**
@@ -475,7 +475,7 @@ export interface DedicatedPropreHostState {
      * - **alisql**
      * - **tair**
      * - **mssql**
-     * Must be consistent with the parent resource cluster engine attributes.
+     *   Must be consistent with the parent resource cluster engine attributes.
      */
     engine?: pulumi.Input<string | undefined>;
     /**
@@ -590,7 +590,7 @@ export interface DedicatedPropreHostArgs {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
     ecsUniqueSuffix?: pulumi.Input<string | undefined>;
     /**
@@ -602,7 +602,7 @@ export interface DedicatedPropreHostArgs {
      * - **alisql**
      * - **tair**
      * - **mssql**
-     * Must be consistent with the parent resource cluster engine attributes.
+     *   Must be consistent with the parent resource cluster engine attributes.
      */
     engine: pulumi.Input<string>;
     /**

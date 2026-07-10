@@ -92,7 +92,7 @@ export class QuotaPlan extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to take effect immediately. “Valid values: true”  
+     * Whether to take effect immediately. “Valid values: true”\
      * .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      */
     declare public readonly isEffective: pulumi.Output<boolean | undefined>;
@@ -149,7 +149,7 @@ export class QuotaPlan extends pulumi.CustomResource {
  */
 export interface QuotaPlanState {
     /**
-     * Whether to take effect immediately. “Valid values: true”  
+     * Whether to take effect immediately. “Valid values: true”\
      * .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      */
     isEffective?: pulumi.Input<boolean | undefined>;
@@ -172,7 +172,7 @@ export interface QuotaPlanState {
  */
 export interface QuotaPlanArgs {
     /**
-     * Whether to take effect immediately. “Valid values: true”  
+     * Whether to take effect immediately. “Valid values: true”\
      * .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      */
     isEffective?: pulumi.Input<boolean | undefined>;

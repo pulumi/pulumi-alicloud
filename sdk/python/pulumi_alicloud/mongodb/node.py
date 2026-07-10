@@ -56,7 +56,6 @@ class NodeArgs:
                
                > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value description:
         :param pulumi.Input[_builtins.str] business_info: Additional parameters, business information.
@@ -182,7 +181,6 @@ class NodeArgs:
         - Length is 8~32 characters.
 
         > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -361,7 +359,6 @@ class _NodeState:
                
                > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value description:
         :param pulumi.Input[_builtins.str] business_info: Additional parameters, business information.
@@ -463,7 +460,6 @@ class _NodeState:
         - Length is 8~32 characters.
 
         > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -795,7 +791,6 @@ class Node(pulumi.CustomResource):
                
                > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value description:
         :param pulumi.Input[_builtins.str] business_info: Additional parameters, business information.
@@ -1039,7 +1034,6 @@ class Node(pulumi.CustomResource):
                
                > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value description:
         :param pulumi.Input[_builtins.str] business_info: Additional parameters, business information.
@@ -1126,7 +1120,6 @@ class Node(pulumi.CustomResource):
         - Length is 8~32 characters.
 
         > **NOTE:**  apsaradb for MongoDB does not support resetting the account and password of the Shard node.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """

@@ -94,7 +94,6 @@ export class Ipv6CidrBlock extends pulumi.CustomResource {
      *
      * > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
      *
-     *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     declare public readonly ipv6CidrMask: pulumi.Output<number | undefined>;
@@ -157,7 +156,6 @@ export interface Ipv6CidrBlockState {
      *
      * > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
      *
-     *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
     ipv6CidrMask?: pulumi.Input<number | undefined>;
@@ -188,7 +186,6 @@ export interface Ipv6CidrBlockArgs {
      * The IPv6 CIDR mask used to allocate an IPv6 CIDR block from the IPAM address pool to the VPC.
      *
      * > **NOTE:**  When assigning an additional IPv6 CIDR block from an IPAM address pool to a VPC, you must specify at least one of the `Ipv6CidrBlock` or `Ipv6CidrMask` properties.
-     *
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */

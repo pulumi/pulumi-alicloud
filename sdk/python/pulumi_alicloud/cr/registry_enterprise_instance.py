@@ -68,7 +68,6 @@ class RegistryEnterpriseInstanceArgs:
                
                > **NOTE:**  must be set when creating a prepaid instance.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -85,7 +84,6 @@ class RegistryEnterpriseInstanceArgs:
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -261,7 +259,6 @@ class RegistryEnterpriseInstanceArgs:
 
         > **NOTE:**  must be set when creating a prepaid instance.
 
-
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
@@ -334,7 +331,6 @@ class RegistryEnterpriseInstanceArgs:
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 
-
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_quota")
@@ -404,7 +400,6 @@ class _RegistryEnterpriseInstanceState:
                
                > **NOTE:**  must be set when creating a prepaid instance.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
@@ -423,7 +418,6 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -666,7 +660,6 @@ class _RegistryEnterpriseInstanceState:
 
         > **NOTE:**  must be set when creating a prepaid instance.
 
-
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
@@ -762,7 +755,6 @@ class _RegistryEnterpriseInstanceState:
         The number of VPC access controls.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -873,7 +865,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                
                > **NOTE:**  must be set when creating a prepaid instance.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -890,7 +881,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1088,7 +1078,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                
                > **NOTE:**  must be set when creating a prepaid instance.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
@@ -1107,7 +1096,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] vpc_quota: The number of VPC access controls.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1274,7 +1262,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
 
         > **NOTE:**  must be set when creating a prepaid instance.
 
-
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
@@ -1342,7 +1329,6 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         The number of VPC access controls.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

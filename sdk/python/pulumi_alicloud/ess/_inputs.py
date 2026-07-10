@@ -447,7 +447,7 @@ class EciScalingConfigurationContainerArgsDict(TypedDict):
     """
     volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgsDict']]]]]
     """
-    The structure of volumeMounts. 
+    The structure of volumeMounts.
     See `volume_mounts` below for details.
     """
     working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -536,7 +536,7 @@ class EciScalingConfigurationContainerArgs:
         :param pulumi.Input[_builtins.int] security_context_run_as_user: Specifies user ID  under which all processes run.
         :param pulumi.Input[_builtins.bool] stdin: Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
         :param pulumi.Input[_builtins.bool] tty: Specifies whether to enable the Interaction feature. Valid values: true, false.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. 
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts.
                See `volume_mounts` below for details.
         :param pulumi.Input[_builtins.str] working_dir: The working directory of the container.
         """
@@ -1056,7 +1056,7 @@ class EciScalingConfigurationContainerArgs:
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]:
         """
-        The structure of volumeMounts. 
+        The structure of volumeMounts.
         See `volume_mounts` below for details.
         """
         return pulumi.get(self, "volume_mounts")
@@ -1420,7 +1420,7 @@ class EciScalingConfigurationInitContainerArgsDict(TypedDict):
     """
     environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgsDict']]]]]
     """
-    The structure of environmentVars. 
+    The structure of environmentVars.
     See `environment_vars` below for details.
     """
     gpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -1492,7 +1492,7 @@ class EciScalingConfigurationInitContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: The arguments passed to the commands.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: The commands run by the init container.
         :param pulumi.Input[_builtins.float] cpu: The amount of CPU resources allocated to the container.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]] environment_vars: The structure of environmentVars. 
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]] environment_vars: The structure of environmentVars.
                See `environment_vars` below for details.
         :param pulumi.Input[_builtins.int] gpu: The number GPUs.
         :param pulumi.Input[_builtins.str] image: The image of the container.
@@ -1579,7 +1579,7 @@ class EciScalingConfigurationInitContainerArgs:
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]]:
         """
-        The structure of environmentVars. 
+        The structure of environmentVars.
         See `environment_vars` below for details.
         """
         return pulumi.get(self, "environment_vars")
@@ -3677,7 +3677,6 @@ class ScalingGroupLaunchTemplateOverrideArgsDict(TypedDict):
     """
     The maximum bid price of instance type in launchTemplateOverride.
 
-
     > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
 
     > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
@@ -3698,7 +3697,6 @@ class ScalingGroupLaunchTemplateOverrideArgs:
         """
         :param pulumi.Input[_builtins.str] instance_type: The instance type in launchTemplateOverride.
         :param pulumi.Input[_builtins.float] spot_price_limit: The maximum bid price of instance type in launchTemplateOverride.
-               
                
                > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
                
@@ -3731,7 +3729,6 @@ class ScalingGroupLaunchTemplateOverrideArgs:
     def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum bid price of instance type in launchTemplateOverride.
-
 
         > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
 

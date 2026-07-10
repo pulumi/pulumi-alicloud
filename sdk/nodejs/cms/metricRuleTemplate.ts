@@ -87,7 +87,7 @@ export class MetricRuleTemplate extends pulumi.CustomResource {
     /**
      * The mode in which the alert template is applied. Valid values:
      * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-     * - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      */
     declare public readonly applyMode: pulumi.Output<string | undefined>;
     /**
@@ -184,7 +184,7 @@ export interface MetricRuleTemplateState {
     /**
      * The mode in which the alert template is applied. Valid values:
      * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-     * - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      */
     applyMode?: pulumi.Input<string | undefined>;
     /**
@@ -236,7 +236,7 @@ export interface MetricRuleTemplateArgs {
     /**
      * The mode in which the alert template is applied. Valid values:
      * - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-     * - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+     * - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
      */
     applyMode?: pulumi.Input<string | undefined>;
     /**

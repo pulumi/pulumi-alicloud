@@ -64,7 +64,6 @@ class InstanceArgs:
                
                > **NOTE:**   This parameter is required if you create a subscription instance.
                
-               
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
@@ -268,7 +267,6 @@ class InstanceArgs:
 
         > **NOTE:**   This parameter is required if you create a subscription instance.
 
-
         > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "period")
@@ -433,7 +431,6 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] period: The subscription duration. Unit: month. The value must be an integral multiple of 12.
                
                > **NOTE:**   This parameter is required if you create a subscription instance.
-               
                
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
@@ -652,7 +649,6 @@ class _InstanceState:
         The subscription duration. Unit: month. The value must be an integral multiple of 12.
 
         > **NOTE:**   This parameter is required if you create a subscription instance.
-
 
         > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
@@ -1054,7 +1050,6 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:**   This parameter is required if you create a subscription instance.
                
-               
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
@@ -1410,7 +1405,6 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:**   This parameter is required if you create a subscription instance.
                
-               
                > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
         :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
@@ -1565,7 +1559,6 @@ class Instance(pulumi.CustomResource):
         The subscription duration. Unit: month. The value must be an integral multiple of 12.
 
         > **NOTE:**   This parameter is required if you create a subscription instance.
-
 
         > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """

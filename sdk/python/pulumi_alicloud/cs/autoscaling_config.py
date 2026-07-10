@@ -657,13 +657,13 @@ class AutoscalingConfig(pulumi.CustomResource):
                 newbits=4,
                 netnum=7).result,
             slb_internet_enabled=True)
-        default_node_pool: list[Any] = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            default_node_pool.append(alicloud.cs.NodePool(f"default-{range['value']}",
+        default_node_pool: list[alicloud.cs.NodePool] = []
+        for default_node_pool_range in [{"value": i} for i in range(0, 3)]:
+            default_node_pool.append(alicloud.cs.NodePool(f"default-{default_node_pool_range['value']}",
                 node_pool_name=std.format(input="%s-%d",
                     args=[
                         name,
-                        range["value"],
+                        default_node_pool_range["value"],
                     ]).result,
                 cluster_id=default_managed_kubernetes.id,
                 vswitch_ids=[default_switch.id],
@@ -787,13 +787,13 @@ class AutoscalingConfig(pulumi.CustomResource):
                 newbits=4,
                 netnum=7).result,
             slb_internet_enabled=True)
-        default_node_pool: list[Any] = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            default_node_pool.append(alicloud.cs.NodePool(f"default-{range['value']}",
+        default_node_pool: list[alicloud.cs.NodePool] = []
+        for default_node_pool_range in [{"value": i} for i in range(0, 3)]:
+            default_node_pool.append(alicloud.cs.NodePool(f"default-{default_node_pool_range['value']}",
                 node_pool_name=std.format(input="%s-%d",
                     args=[
                         name,
-                        range["value"],
+                        default_node_pool_range["value"],
                     ]).result,
                 cluster_id=default_managed_kubernetes.id,
                 vswitch_ids=[default_switch.id],

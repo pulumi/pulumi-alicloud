@@ -49,8 +49,8 @@ import * as utilities from "../utilities";
  *     owners: "system",
  * });
  * const defaultInstance: alicloud.ecs.Instance[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range}`, {
  *         availabilityZone: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *         instanceName: name,
  *         hostName: name,
@@ -62,18 +62,18 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const defaultEcsNetworkInterface: alicloud.ecs.EcsNetworkInterface[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultEcsNetworkInterface.push(new alicloud.ecs.EcsNetworkInterface(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultEcsNetworkInterface.push(new alicloud.ecs.EcsNetworkInterface(`default-${range}`, {
  *         networkInterfaceName: name,
  *         vswitchId: defaultSwitch.id,
  *         securityGroupIds: [defaultSecurityGroup.id],
  *     }));
  * }
  * const defaultEcsNetworkInterfaceAttachment: alicloud.ecs.EcsNetworkInterfaceAttachment[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultEcsNetworkInterfaceAttachment.push(new alicloud.ecs.EcsNetworkInterfaceAttachment(`default-${range.value}`, {
- *         instanceId: defaultInstance[range.value].id,
- *         networkInterfaceId: defaultEcsNetworkInterface[range.value].id,
+ * for (let range = 0; range < 2; range++) {
+ *     defaultEcsNetworkInterfaceAttachment.push(new alicloud.ecs.EcsNetworkInterfaceAttachment(`default-${range}`, {
+ *         instanceId: defaultInstance[range].id,
+ *         networkInterfaceId: defaultEcsNetworkInterface[range].id,
  *     }));
  * }
  * const defaultTrafficMirrorFilter = new alicloud.vpc.TrafficMirrorFilter("default", {

@@ -132,7 +132,6 @@ export class InstanceV2 extends pulumi.CustomResource {
      *
      * > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly autoRenewDuration: pulumi.Output<string | undefined>;
@@ -340,7 +339,6 @@ export interface InstanceV2State {
      *
      * > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     autoRenewDuration?: pulumi.Input<string | undefined>;
@@ -462,7 +460,6 @@ export interface InstanceV2Args {
      * Value range: `1` to `12`.
      *
      * > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */

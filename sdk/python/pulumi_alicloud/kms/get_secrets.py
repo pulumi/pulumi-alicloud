@@ -175,7 +175,7 @@ def get_secrets(enable_details: Optional[_builtins.bool] = None,
 
     :param _builtins.bool enable_details: Default to `false`. Set it to true can output more details.
     :param _builtins.bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
-    :param _builtins.str filters: The secret filter. The filter consists of one or more key-value pairs. 
+    :param _builtins.str filters: The secret filter. The filter consists of one or more key-value pairs.
            More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
     :param Sequence[_builtins.str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param _builtins.str name_regex: A regex string to filter the results by the KMS secret_name.
@@ -236,7 +236,7 @@ def get_secrets_output(enable_details: pulumi.Input[Optional[Optional[_builtins.
 
     :param _builtins.bool enable_details: Default to `false`. Set it to true can output more details.
     :param _builtins.bool fetch_tags: Whether to include the predetermined resource tag in the return value. Default to `false`.
-    :param _builtins.str filters: The secret filter. The filter consists of one or more key-value pairs. 
+    :param _builtins.str filters: The secret filter. The filter consists of one or more key-value pairs.
            More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
     :param Sequence[_builtins.str] ids: A list of KMS Secret ids. The value is same as KMS secret_name.
     :param _builtins.str name_regex: A regex string to filter the results by the KMS secret_name.

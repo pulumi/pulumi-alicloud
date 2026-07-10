@@ -73,15 +73,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "%s:%s",
+//				Args: pulumi.StringArray{
+//					defaultSharedResource.ResourceId,
+//					defaultSharedResource.ResourceType,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			ids, err := resourcemanager.GetSharedResources(ctx, &resourcemanager.GetSharedResourcesArgs{
 //				Ids: pulumi.StringArray{
-//					std.Format(ctx, &std.FormatArgs{
-//						Input: "%s:%s",
-//						Args: pulumi.StringArray{
-//							defaultSharedResource.ResourceId,
-//							defaultSharedResource.ResourceType,
-//						},
-//					}, nil).Result,
+//					invokeFormat.Result,
 //				},
 //			}, nil)
 //			if err != nil {

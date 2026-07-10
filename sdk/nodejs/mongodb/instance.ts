@@ -290,7 +290,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - `Flash `: single-digit second backup.
+     * - ` Flash  `: single-digit second backup.
      */
     declare public readonly snapshotBackupType: pulumi.Output<string>;
     /**
@@ -686,7 +686,7 @@ export interface InstanceState {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - `Flash `: single-digit second backup.
+     * - ` Flash  `: single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**
@@ -921,7 +921,7 @@ export interface InstanceArgs {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - `Flash `: single-digit second backup.
+     * - ` Flash  `: single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string | undefined>;
     /**

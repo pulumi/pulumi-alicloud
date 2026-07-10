@@ -122,7 +122,7 @@ export class CooWebCcRule extends pulumi.CustomResource {
     }
 
     /**
-     * The domain name of the website service.  
+     * The domain name of the website service.
      *
      * > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
@@ -174,7 +174,7 @@ export class CooWebCcRule extends pulumi.CustomResource {
  */
 export interface CooWebCcRuleState {
     /**
-     * The domain name of the website service.  
+     * The domain name of the website service.
      *
      * > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */
@@ -194,7 +194,7 @@ export interface CooWebCcRuleState {
  */
 export interface CooWebCcRuleArgs {
     /**
-     * The domain name of the website service.  
+     * The domain name of the website service.
      *
      * > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
      */

@@ -64,8 +64,8 @@ class RocketMQInstanceArgs:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                - serverless：Serverless instance
-               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-               When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+                 **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+                 When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input['RocketMQInstanceAclInfoArgs'] acl_info: The access control list for the instance. See `acl_info` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
@@ -203,8 +203,8 @@ class RocketMQInstanceArgs:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
         - serverless：Serverless instance
-        **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-        When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+          **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+          When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
 
@@ -484,8 +484,8 @@ class _RocketMQInstanceState:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                - serverless：Serverless instance
-               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-               When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+                 **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+                 When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The resource label.
         """
         if acl_info is not None:
@@ -813,8 +813,8 @@ class _RocketMQInstanceState:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
         - serverless：Serverless instance
-        **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-        When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+          **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+          When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
 
@@ -1004,8 +1004,8 @@ class RocketMQInstance(pulumi.CustomResource):
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                - serverless：Serverless instance
-               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-               When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+                 **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+                 When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The resource label.
         """
         ...
@@ -1272,8 +1272,8 @@ class RocketMQInstance(pulumi.CustomResource):
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
                - serverless：Serverless instance
-               **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-               When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+                 **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+                 When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The resource label.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1504,8 +1504,8 @@ class RocketMQInstance(pulumi.CustomResource):
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
         - serverless：Serverless instance
-        **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
-        When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+          **NOTE:** From version 1.245.0, `sub_series_code` can be set to `serverless`.
+          When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
 

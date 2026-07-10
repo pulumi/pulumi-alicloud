@@ -27,7 +27,7 @@ class CooWebCcRuleArgs:
         """
         The set of arguments for constructing a CooWebCcRule resource.
 
-        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
+        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input['CooWebCcRuleRuleDetailArgs'] rule_detail: Rule details.   See `rule_detail` below.
@@ -42,7 +42,7 @@ class CooWebCcRuleArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[_builtins.str]:
         """
-        The domain name of the website service.  
+        The domain name of the website service.
 
         > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         """
@@ -86,7 +86,7 @@ class _CooWebCcRuleState:
         """
         Input properties used for looking up and filtering CooWebCcRule resources.
 
-        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
+        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.str] name: Rule name.
@@ -103,7 +103,7 @@ class _CooWebCcRuleState:
     @pulumi.getter
     def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The domain name of the website service.  
+        The domain name of the website service.
 
         > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         """
@@ -240,7 +240,7 @@ class CooWebCcRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
+        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.str] name: Rule name.
@@ -396,7 +396,7 @@ class CooWebCcRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.  
+        :param pulumi.Input[_builtins.str] domain: The domain name of the website service.
                
                > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         :param pulumi.Input[_builtins.str] name: Rule name.
@@ -415,7 +415,7 @@ class CooWebCcRule(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:
         """
-        The domain name of the website service.  
+        The domain name of the website service.
 
         > **NOTE:**  The domain name must already have website service forwarding rules configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
         """

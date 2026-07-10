@@ -208,10 +208,10 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
     default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
         zone_id="me-east-1a")
-    vswitch: list[Any] = []
+    vswitch: list[alicloud.vpc.Switch] = []
     def create_vswitch(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        for vswitch_range in [{"value": i} for i in range(0, range_body)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 vpc_id=default_get_networks.ids[0],
                 cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                     newbits=8,
@@ -310,10 +310,10 @@ def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtin
     default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
         zone_id="me-east-1a")
-    vswitch: list[Any] = []
+    vswitch: list[alicloud.vpc.Switch] = []
     def create_vswitch(range_body):
-        for range in [{"value": i} for i in range(0, range_body)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        for vswitch_range in [{"value": i} for i in range(0, range_body)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 vpc_id=default_get_networks.ids[0],
                 cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                     newbits=8,

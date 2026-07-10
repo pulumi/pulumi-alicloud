@@ -101,7 +101,7 @@ export class Notification extends pulumi.CustomResource {
     }
 
     /**
-     * The encoding method of the notification content. Valid values: 
+     * The encoding method of the notification content. Valid values:
      * - `PlainText`: The content is not encoded and is transmitted in plaintext.
      * - `Base64`: The content is Base64 encoded.
      */
@@ -171,7 +171,7 @@ export class Notification extends pulumi.CustomResource {
  */
 export interface NotificationState {
     /**
-     * The encoding method of the notification content. Valid values: 
+     * The encoding method of the notification content. Valid values:
      * - `PlainText`: The content is not encoded and is transmitted in plaintext.
      * - `Base64`: The content is Base64 encoded.
      */
@@ -202,7 +202,7 @@ export interface NotificationState {
  */
 export interface NotificationArgs {
     /**
-     * The encoding method of the notification content. Valid values: 
+     * The encoding method of the notification content. Valid values:
      * - `PlainText`: The content is not encoded and is transmitted in plaintext.
      * - `Base64`: The content is Base64 encoded.
      */

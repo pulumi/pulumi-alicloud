@@ -103,10 +103,9 @@ export class Cert extends pulumi.CustomResource {
     }
 
     /**
-     * The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+     * The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
      *
      * > **NOTE:**  The `beforeTime` and `afterTime` parameters must either both be empty or both be specified.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -141,7 +140,7 @@ export class Cert extends pulumi.CustomResource {
      */
     declare public readonly commonName: pulumi.Output<string | undefined>;
     /**
-     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
     declare public readonly countryCode: pulumi.Output<string | undefined>;
@@ -150,7 +149,7 @@ export class Cert extends pulumi.CustomResource {
      */
     declare public readonly customIdentifier: pulumi.Output<string | undefined>;
     /**
-     * Validity period of the client certificate, in days.  
+     * Validity period of the client certificate, in days.
      *
      * The `days`, `beforeTime`, and `afterTime` parameters cannot all be empty. Additionally, `beforeTime` and `afterTime` must either both be set or both remain unset. The specific rules are as follows:
      * - If you set the `days` parameter, you may optionally also set `beforeTime` and `afterTime`.
@@ -200,7 +199,7 @@ export class Cert extends pulumi.CustomResource {
      */
     declare public readonly sanType: pulumi.Output<string | undefined>;
     /**
-     * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+     * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -306,10 +305,9 @@ export class Cert extends pulumi.CustomResource {
  */
 export interface CertState {
     /**
-     * The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+     * The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
      *
      * > **NOTE:**  The `beforeTime` and `afterTime` parameters must either both be empty or both be specified.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -344,7 +342,7 @@ export interface CertState {
      */
     commonName?: pulumi.Input<string | undefined>;
     /**
-     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
     countryCode?: pulumi.Input<string | undefined>;
@@ -353,7 +351,7 @@ export interface CertState {
      */
     customIdentifier?: pulumi.Input<string | undefined>;
     /**
-     * Validity period of the client certificate, in days.  
+     * Validity period of the client certificate, in days.
      *
      * The `days`, `beforeTime`, and `afterTime` parameters cannot all be empty. Additionally, `beforeTime` and `afterTime` must either both be set or both remain unset. The specific rules are as follows:
      * - If you set the `days` parameter, you may optionally also set `beforeTime` and `afterTime`.
@@ -403,7 +401,7 @@ export interface CertState {
      */
     sanType?: pulumi.Input<string | undefined>;
     /**
-     * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+     * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -440,10 +438,9 @@ export interface CertState {
  */
 export interface CertArgs {
     /**
-     * The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
+     * The service expiration time of the client certificate, specified as a Unix timestamp in seconds.
      *
      * > **NOTE:**  The `beforeTime` and `afterTime` parameters must either both be empty or both be specified.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -478,7 +475,7 @@ export interface CertArgs {
      */
     commonName?: pulumi.Input<string | undefined>;
     /**
-     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
+     * Country code of the organization associated with the subordinate CA certificate that issued this certificate.\
      * For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
      */
     countryCode?: pulumi.Input<string | undefined>;
@@ -487,7 +484,7 @@ export interface CertArgs {
      */
     customIdentifier?: pulumi.Input<string | undefined>;
     /**
-     * Validity period of the client certificate, in days.  
+     * Validity period of the client certificate, in days.
      *
      * The `days`, `beforeTime`, and `afterTime` parameters cannot all be empty. Additionally, `beforeTime` and `afterTime` must either both be set or both remain unset. The specific rules are as follows:
      * - If you set the `days` parameter, you may optionally also set `beforeTime` and `afterTime`.
@@ -537,7 +534,7 @@ export interface CertArgs {
      */
     sanType?: pulumi.Input<string | undefined>;
     /**
-     * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
+     * Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */

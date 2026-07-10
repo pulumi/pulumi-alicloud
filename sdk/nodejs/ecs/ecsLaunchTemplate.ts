@@ -188,7 +188,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     * **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      */
     declare public readonly httpEndpoint: pulumi.Output<string>;
     /**
@@ -199,7 +199,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     * **NOTE:** From version 1.260.0, `httpTokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      */
     declare public readonly httpTokens: pulumi.Output<string>;
     /**
@@ -568,7 +568,7 @@ export interface EcsLaunchTemplateState {
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     * **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      */
     httpEndpoint?: pulumi.Input<string | undefined>;
     /**
@@ -579,7 +579,7 @@ export interface EcsLaunchTemplateState {
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     * **NOTE:** From version 1.260.0, `httpTokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      */
     httpTokens?: pulumi.Input<string | undefined>;
     /**
@@ -818,7 +818,7 @@ export interface EcsLaunchTemplateArgs {
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
-     * **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      */
     httpEndpoint?: pulumi.Input<string | undefined>;
     /**
@@ -829,7 +829,7 @@ export interface EcsLaunchTemplateArgs {
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
-     * **NOTE:** From version 1.260.0, `httpTokens` can be modified.
+     *   **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      */
     httpTokens?: pulumi.Input<string | undefined>;
     /**

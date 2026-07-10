@@ -49,11 +49,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const defaultAddressPool: alicloud.dns.AddressPool[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultAddressPool.push(new alicloud.dns.AddressPool(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultAddressPool.push(new alicloud.dns.AddressPool(`default-${range}`, {
  *         addressPoolName: std.format({
  *             input: `${name}_%d`,
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         instanceId: defaultGtmInstance.id,
  *         lbaStrategy: "RATIO",

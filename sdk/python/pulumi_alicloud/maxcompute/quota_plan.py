@@ -30,7 +30,7 @@ class QuotaPlanArgs:
 
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
-        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
+        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”\\
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input['QuotaPlanQuotaArgs'] quota: Quota property See `quota` below.
         """
@@ -69,7 +69,7 @@ class QuotaPlanArgs:
     @pulumi.getter(name="isEffective")
     def is_effective(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to take effect immediately. “Valid values: true”  
+        Whether to take effect immediately. “Valid values: true”\\
         .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         """
         return pulumi.get(self, "is_effective")
@@ -101,7 +101,7 @@ class _QuotaPlanState:
         """
         Input properties used for looking up and filtering QuotaPlan resources.
 
-        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
+        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”\\
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
@@ -120,7 +120,7 @@ class _QuotaPlanState:
     @pulumi.getter(name="isEffective")
     def is_effective(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to take effect immediately. “Valid values: true”  
+        Whether to take effect immediately. “Valid values: true”\\
         .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         """
         return pulumi.get(self, "is_effective")
@@ -240,7 +240,7 @@ class QuotaPlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
+        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”\\
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
@@ -370,7 +370,7 @@ class QuotaPlan(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”  
+        :param pulumi.Input[_builtins.bool] is_effective: Whether to take effect immediately. “Valid values: true”\\
                .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         :param pulumi.Input[_builtins.str] nickname: Quota Name
         :param pulumi.Input[_builtins.str] plan_name: The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
@@ -390,7 +390,7 @@ class QuotaPlan(pulumi.CustomResource):
     @pulumi.getter(name="isEffective")
     def is_effective(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to take effect immediately. “Valid values: true”  
+        Whether to take effect immediately. “Valid values: true”\\
         .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
         """
         return pulumi.get(self, "is_effective")

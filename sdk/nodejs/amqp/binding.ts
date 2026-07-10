@@ -105,10 +105,10 @@ export class Binding extends pulumi.CustomResource {
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-     * The binding key must be 1 to 255 characters in length.
+     *   The binding key must be 1 to 255 characters in length.
      * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-     * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-     * The binding key must be 1 to 255 characters in length.
+     *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+     *   The binding key must be 1 to 255 characters in length.
      */
     declare public readonly bindingKey: pulumi.Output<string>;
     /**
@@ -199,10 +199,10 @@ export interface BindingState {
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-     * The binding key must be 1 to 255 characters in length.
+     *   The binding key must be 1 to 255 characters in length.
      * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-     * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-     * The binding key must be 1 to 255 characters in length.
+     *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+     *   The binding key must be 1 to 255 characters in length.
      */
     bindingKey?: pulumi.Input<string | undefined>;
     /**
@@ -241,10 +241,10 @@ export interface BindingArgs {
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-     * The binding key must be 1 to 255 characters in length.
+     *   The binding key must be 1 to 255 characters in length.
      * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-     * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-     * The binding key must be 1 to 255 characters in length.
+     *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
+     *   The binding key must be 1 to 255 characters in length.
      */
     bindingKey: pulumi.Input<string>;
     /**

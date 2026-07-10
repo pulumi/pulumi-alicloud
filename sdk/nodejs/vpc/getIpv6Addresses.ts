@@ -64,7 +64,7 @@ export interface GetIpv6AddressesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the IPv6 address. Valid values:`Pending` or `Available`. 
+     * The status of the IPv6 address. Valid values:`Pending` or `Available`.
      * - `Pending`: The IPv6 address is being configured.
      * - `Available`: The IPv6 address is available.
      */
@@ -154,7 +154,7 @@ export interface GetIpv6AddressesOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The status of the IPv6 address. Valid values:`Pending` or `Available`. 
+     * The status of the IPv6 address. Valid values:`Pending` or `Available`.
      * - `Pending`: The IPv6 address is being configured.
      * - `Available`: The IPv6 address is available.
      */

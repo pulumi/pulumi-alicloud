@@ -302,7 +302,6 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:**   This parameter is required if you create a subscription instance.
      *
-     *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
@@ -501,7 +500,6 @@ export interface InstanceState {
      *
      * > **NOTE:**   This parameter is required if you create a subscription instance.
      *
-     *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
     period?: pulumi.Input<number | undefined>;
@@ -610,7 +608,6 @@ export interface InstanceArgs {
      * The subscription duration. Unit: month. The value must be an integral multiple of 12.
      *
      * > **NOTE:**   This parameter is required if you create a subscription instance.
-     *
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */

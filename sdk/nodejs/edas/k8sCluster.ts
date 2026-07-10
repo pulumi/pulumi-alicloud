@@ -112,7 +112,7 @@ export class K8sCluster extends pulumi.CustomResource {
     }
 
     /**
-     * The import status of cluster: 
+     * The import status of cluster:
      * `1`: success.
      * `2`: failed.
      * `3`: importing.
@@ -187,7 +187,7 @@ export class K8sCluster extends pulumi.CustomResource {
  */
 export interface K8sClusterState {
     /**
-     * The import status of cluster: 
+     * The import status of cluster:
      * `1`: success.
      * `2`: failed.
      * `3`: importing.

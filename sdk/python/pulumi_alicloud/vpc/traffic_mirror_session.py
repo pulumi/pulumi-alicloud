@@ -527,9 +527,9 @@ class TrafficMirrorSession(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+        default_instance: list[alicloud.ecs.Instance] = []
+        for default_instance_range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"default-{default_instance_range['value']}",
                 availability_zone=default_get_zones.zones[0].id,
                 instance_name=name,
                 host_name=name,
@@ -538,17 +538,17 @@ class TrafficMirrorSession(pulumi.CustomResource):
                 security_groups=[default_security_group.id],
                 vswitch_id=default_switch.id,
                 system_disk_category="cloud_essd"))
-        default_ecs_network_interface: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"default-{range['value']}",
+        default_ecs_network_interface: list[alicloud.ecs.EcsNetworkInterface] = []
+        for default_ecs_network_interface_range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"default-{default_ecs_network_interface_range['value']}",
                 network_interface_name=name,
                 vswitch_id=default_switch.id,
                 security_group_ids=[default_security_group.id]))
-        default_ecs_network_interface_attachment: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"default-{range['value']}",
-                instance_id=default_instance[range["value"]].id,
-                network_interface_id=default_ecs_network_interface[range["value"]].id))
+        default_ecs_network_interface_attachment: list[alicloud.ecs.EcsNetworkInterfaceAttachment] = []
+        for default_ecs_network_interface_attachment_range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"default-{default_ecs_network_interface_attachment_range['value']}",
+                instance_id=default_instance[default_ecs_network_interface_attachment_range["value"]].id,
+                network_interface_id=default_ecs_network_interface[default_ecs_network_interface_attachment_range["value"]].id))
         default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("default",
             traffic_mirror_filter_name=name,
             traffic_mirror_filter_description=name)
@@ -636,9 +636,9 @@ class TrafficMirrorSession(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+        default_instance: list[alicloud.ecs.Instance] = []
+        for default_instance_range in [{"value": i} for i in range(0, 2)]:
+            default_instance.append(alicloud.ecs.Instance(f"default-{default_instance_range['value']}",
                 availability_zone=default_get_zones.zones[0].id,
                 instance_name=name,
                 host_name=name,
@@ -647,17 +647,17 @@ class TrafficMirrorSession(pulumi.CustomResource):
                 security_groups=[default_security_group.id],
                 vswitch_id=default_switch.id,
                 system_disk_category="cloud_essd"))
-        default_ecs_network_interface: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"default-{range['value']}",
+        default_ecs_network_interface: list[alicloud.ecs.EcsNetworkInterface] = []
+        for default_ecs_network_interface_range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"default-{default_ecs_network_interface_range['value']}",
                 network_interface_name=name,
                 vswitch_id=default_switch.id,
                 security_group_ids=[default_security_group.id]))
-        default_ecs_network_interface_attachment: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"default-{range['value']}",
-                instance_id=default_instance[range["value"]].id,
-                network_interface_id=default_ecs_network_interface[range["value"]].id))
+        default_ecs_network_interface_attachment: list[alicloud.ecs.EcsNetworkInterfaceAttachment] = []
+        for default_ecs_network_interface_attachment_range in [{"value": i} for i in range(0, 2)]:
+            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"default-{default_ecs_network_interface_attachment_range['value']}",
+                instance_id=default_instance[default_ecs_network_interface_attachment_range["value"]].id,
+                network_interface_id=default_ecs_network_interface[default_ecs_network_interface_attachment_range["value"]].id))
         default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("default",
             traffic_mirror_filter_name=name,
             traffic_mirror_filter_description=name)

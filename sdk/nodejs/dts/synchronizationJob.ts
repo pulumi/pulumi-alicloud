@@ -55,8 +55,8 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  * });
  * const exampleInstance: alicloud.rds.Instance[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleInstance.push(new alicloud.rds.Instance(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleInstance.push(new alicloud.rds.Instance(`example-${range}`, {
  *         engine: "MySQL",
  *         engineVersion: "8.0",
  *         instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *             input: "%s_%d",
  *             args: [
  *                 name,
- *                 range.value + 1,
+ *                 range + 1,
  *             ],
  *         }).then(invoke => invoke.result),
  *         vswitchId: exampleSwitch.id,
@@ -76,39 +76,39 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const exampleRdsAccount: alicloud.rds.RdsAccount[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleRdsAccount.push(new alicloud.rds.RdsAccount(`example-${range.value}`, {
- *         dbInstanceId: exampleInstance[range.value].id,
+ * for (let range = 0; range < 2; range++) {
+ *     exampleRdsAccount.push(new alicloud.rds.RdsAccount(`example-${range}`, {
+ *         dbInstanceId: exampleInstance[range].id,
  *         accountName: std.format({
  *             input: "example_name_%d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         accountPassword: std.format({
  *             input: "example_password_%d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *     }));
  * }
  * const exampleDatabase: alicloud.rds.Database[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleDatabase.push(new alicloud.rds.Database(`example-${range.value}`, {
- *         instanceId: exampleInstance[range.value].id,
+ * for (let range = 0; range < 2; range++) {
+ *     exampleDatabase.push(new alicloud.rds.Database(`example-${range}`, {
+ *         instanceId: exampleInstance[range].id,
  *         name: std.format({
  *             input: "%s_%d",
  *             args: [
  *                 name,
- *                 range.value + 1,
+ *                 range + 1,
  *             ],
  *         }).then(invoke => invoke.result),
  *     }));
  * }
  * const exampleAccountPrivilege: alicloud.rds.AccountPrivilege[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleAccountPrivilege.push(new alicloud.rds.AccountPrivilege(`example-${range.value}`, {
- *         instanceId: exampleInstance[range.value].id,
- *         accountName: exampleRdsAccount[range.value].accountName,
+ * for (let range = 0; range < 2; range++) {
+ *     exampleAccountPrivilege.push(new alicloud.rds.AccountPrivilege(`example-${range}`, {
+ *         instanceId: exampleInstance[range].id,
+ *         accountName: exampleRdsAccount[range].accountName,
  *         privilege: "ReadWrite",
- *         dbNames: [exampleDatabase[range.value].name],
+ *         dbNames: [exampleDatabase[range].name],
  *     }));
  * }
  * const exampleSynchronizationInstance = new alicloud.dts.SynchronizationInstance("example", {
@@ -236,7 +236,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     declare public readonly destinationEndpointDatabaseName: pulumi.Output<string | undefined>;
     /**
-     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
      */
     declare public readonly destinationEndpointEngineName: pulumi.Output<string>;
     /**
@@ -572,7 +572,7 @@ export interface SynchronizationJobState {
      */
     destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
      */
     destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
@@ -768,7 +768,7 @@ export interface SynchronizationJobArgs {
      */
     destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
-     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+     * The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
      */
     destinationEndpointEngineName: pulumi.Input<string>;
     /**

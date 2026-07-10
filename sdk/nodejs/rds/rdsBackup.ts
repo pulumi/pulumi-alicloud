@@ -75,7 +75,7 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
-     * The backup type. Valid values:  
+     * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)
      * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
      * * `Snapshot`: snapshot backup (supported for all database engines)
@@ -88,7 +88,7 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     declare public readonly backupMethod: pulumi.Output<string>;
     /**
-     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
@@ -98,7 +98,7 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     declare public readonly backupStrategy: pulumi.Output<string | undefined>;
     /**
-     * The backup type. Valid values:  
+     * The backup type. Valid values:
      * - FullBackup: full backup
      * - IncrementalBackup: incremental backup
      */
@@ -108,10 +108,9 @@ export class RdsBackup extends pulumi.CustomResource {
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
-     * A list of databases, separated by commas (,).  
+     * A list of databases, separated by commas (,).
      *
      * > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
-     *
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
@@ -182,7 +181,7 @@ export interface RdsBackupState {
      */
     backupId?: pulumi.Input<string | undefined>;
     /**
-     * The backup type. Valid values:  
+     * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)
      * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
      * * `Snapshot`: snapshot backup (supported for all database engines)
@@ -195,7 +194,7 @@ export interface RdsBackupState {
      */
     backupMethod?: pulumi.Input<string | undefined>;
     /**
-     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
@@ -205,7 +204,7 @@ export interface RdsBackupState {
      */
     backupStrategy?: pulumi.Input<string | undefined>;
     /**
-     * The backup type. Valid values:  
+     * The backup type. Valid values:
      * - FullBackup: full backup
      * - IncrementalBackup: incremental backup
      */
@@ -215,10 +214,9 @@ export interface RdsBackupState {
      */
     dbInstanceId?: pulumi.Input<string | undefined>;
     /**
-     * A list of databases, separated by commas (,).  
+     * A list of databases, separated by commas (,).
      *
      * > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
-     *
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
@@ -242,7 +240,7 @@ export interface RdsBackupState {
  */
 export interface RdsBackupArgs {
     /**
-     * The backup type. Valid values:  
+     * The backup type. Valid values:
      * * `Logical`: logical backup (supported only for MySQL)
      * * `Physical`: physical backup (supported for MySQL, SQL Server, and PostgreSQL)
      * * `Snapshot`: snapshot backup (supported for all database engines)
@@ -255,7 +253,7 @@ export interface RdsBackupArgs {
      */
     backupMethod?: pulumi.Input<string | undefined>;
     /**
-     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
+     * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
@@ -265,7 +263,7 @@ export interface RdsBackupArgs {
      */
     backupStrategy?: pulumi.Input<string | undefined>;
     /**
-     * The backup type. Valid values:  
+     * The backup type. Valid values:
      * - FullBackup: full backup
      * - IncrementalBackup: incremental backup
      */
@@ -275,10 +273,9 @@ export interface RdsBackupArgs {
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * A list of databases, separated by commas (,).  
+     * A list of databases, separated by commas (,).
      *
      * > **NOTE:**  This parameter takes effect only when the `BackupStrategy` parameter is specified and its value is `db`.
-     *
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */

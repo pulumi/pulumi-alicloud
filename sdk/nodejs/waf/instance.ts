@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * const _default = alicloud.waf.getInstances({});
  * const defaultInstance: alicloud.waf.Instance[] = [];
  * _default.then(_default => _default.instances).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultInstance.push(new alicloud.waf.Instance(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultInstance.push(new alicloud.waf.Instance(`default-${range}`, {
  *             bigScreen: "0",
  *             exclusiveIpPackage: "1",
  *             extBandwidth: "50",
@@ -138,7 +138,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
-     * Renewal status of WAF service. Valid values: 
+     * Renewal status of WAF service. Valid values:
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
@@ -302,7 +302,7 @@ export interface InstanceState {
      */
     renewPeriod?: pulumi.Input<number | undefined>;
     /**
-     * Renewal status of WAF service. Valid values: 
+     * Renewal status of WAF service. Valid values:
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
@@ -382,7 +382,7 @@ export interface InstanceArgs {
      */
     renewPeriod?: pulumi.Input<number | undefined>;
     /**
-     * Renewal status of WAF service. Valid values: 
+     * Renewal status of WAF service. Valid values:
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */

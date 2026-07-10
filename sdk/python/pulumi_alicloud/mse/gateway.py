@@ -422,15 +422,15 @@ class Gateway(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/21",
-                    args=[(range["value"] + 1) * 16]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[(example_switch_range["value"] + 1) * 16]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="terraform_example_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[example_switch_range["value"] + 1]).result))
         example_gateway = alicloud.mse.Gateway("example",
             gateway_name="terraform-example",
             replica=2,
@@ -491,15 +491,15 @@ class Gateway(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/21",
-                    args=[(range["value"] + 1) * 16]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[(example_switch_range["value"] + 1) * 16]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="terraform_example_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[example_switch_range["value"] + 1]).result))
         example_gateway = alicloud.mse.Gateway("example",
             gateway_name="terraform-example",
             replica=2,

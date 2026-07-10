@@ -175,10 +175,10 @@ class Backup(pulumi.CustomResource):
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(zone_id=zone_id,
             vpc_id=default.ids[0])
-        vswitch: list[Any] = []
+        vswitch: list[alicloud.vpc.Switch] = []
         def create_vswitch(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+            for vswitch_range in [{"value": i} for i in range(0, range_body)]:
+                vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                     vpc_id=default.ids[0],
                     cidr_block=std.cidrsubnet(input=default.vpcs[0].cidr_block,
                         newbits=8,
@@ -259,10 +259,10 @@ class Backup(pulumi.CustomResource):
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(zone_id=zone_id,
             vpc_id=default.ids[0])
-        vswitch: list[Any] = []
+        vswitch: list[alicloud.vpc.Switch] = []
         def create_vswitch(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+            for vswitch_range in [{"value": i} for i in range(0, range_body)]:
+                vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                     vpc_id=default.ids[0],
                     cidr_block=std.cidrsubnet(input=default.vpcs[0].cidr_block,
                         newbits=8,

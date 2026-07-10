@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  * const defaultGetResourceDirectories = alicloud.resourcemanager.getResourceDirectories({});
  * const defaultDirectory: alicloud.cloudsso.Directory[] = [];
  * _default.then(_default => _default.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range.value}`, {directoryName: name}));
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultDirectory.push(new alicloud.cloudsso.Directory(`default-${range}`, {directoryName: name}));
  *     }
  * });
  * const directoryId = pulumi.all([_default.then(_default => _default.ids).length, _default, std.concat({

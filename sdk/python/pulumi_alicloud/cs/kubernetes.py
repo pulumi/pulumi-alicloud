@@ -129,7 +129,7 @@ class KubernetesArgs:
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
                *Network params*
-        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
                
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
@@ -837,7 +837,7 @@ class KubernetesArgs:
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 
         > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
         If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
@@ -1025,7 +1025,7 @@ class _KubernetesState:
                *Network params*
         :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
-        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
                
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
@@ -1832,7 +1832,7 @@ class _KubernetesState:
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 
         > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
         If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
@@ -2113,25 +2113,25 @@ class Kubernetes(pulumi.CustomResource):
             ]
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         # If there is not specifying vpc_id, the module will launch a new vpc
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}", cidr_block=vpc_cidr))
         # According to the vswitch cidr blocks to launch several vswitches
-        vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
-            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+        vswitches: list[alicloud.vpc.Switch] = []
+        for vswitches_range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
-                cidr_block=vswitch_cidrs[range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+                cidr_block=vswitch_cidrs[vswitches_range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
         # According to the vswitch cidr blocks to launch several vswitches
-        terway_vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
-            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+        terway_vswitches: list[alicloud.vpc.Switch] = []
+        for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
-                cidr_block=terway_vswitch_cidrs[range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+                cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
         cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=len(enhanced.zones).apply(lambda length: enhanced.zones[__index if __index < length else 0]).apply(lambda obj: obj.zone_id),
             cpu_core_count=4,
@@ -2243,7 +2243,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] skip_set_certificate_authority: Configure whether to save certificate authority data for your cluster to attribute `certificate_authority`.For cluster security, recommended configuration as `true`. Will be removed with attribute certificate_authority removed.
                
                *Network params*
-        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
                
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
@@ -2384,25 +2384,25 @@ class Kubernetes(pulumi.CustomResource):
             ]
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         # If there is not specifying vpc_id, the module will launch a new vpc
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}", cidr_block=vpc_cidr))
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}", cidr_block=vpc_cidr))
         # According to the vswitch cidr blocks to launch several vswitches
-        vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
-            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+        vswitches: list[alicloud.vpc.Switch] = []
+        for vswitches_range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
-                cidr_block=vswitch_cidrs[range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+                cidr_block=vswitch_cidrs[vswitches_range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[vswitches_range["value"] if vswitches_range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
         # According to the vswitch cidr blocks to launch several vswitches
-        terway_vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
-            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+        terway_vswitches: list[alicloud.vpc.Switch] = []
+        for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
                     input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
-                cidr_block=terway_vswitch_cidrs[range["value"]],
-                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[range["value"] if range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
+                cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
+                zone_id=len(enhanced.zones).apply(lambda length: enhanced.zones[terway_vswitches_range["value"] if terway_vswitches_range["value"] < length else 0]).apply(lambda obj: obj.zone_id)))
         default = alicloud.resourcemanager.get_resource_groups(status="OK")
         cloud_essd = [alicloud.ecs.get_instance_types_output(availability_zone=len(enhanced.zones).apply(lambda length: enhanced.zones[__index if __index < length else 0]).apply(lambda obj: obj.zone_id),
             cpu_core_count=4,
@@ -2739,7 +2739,7 @@ class Kubernetes(pulumi.CustomResource):
                *Network params*
         :param pulumi.Input[_builtins.str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[_builtins.str] slb_internet: The public ip of load balancer.
-        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        :param pulumi.Input[_builtins.bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
                
                > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
                If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
@@ -3260,7 +3260,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="slbInternetEnabled")
     def slb_internet_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+        Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
 
         > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
         If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.

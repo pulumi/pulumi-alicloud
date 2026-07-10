@@ -1596,7 +1596,6 @@ class DomainRedirect(dict):
         :param _builtins.bool keepalive: Specifies whether to enable the persistent connection feature. Valid values:
         :param _builtins.int keepalive_requests: The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
                
-               
                > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         :param _builtins.int keepalive_timeout: Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
                
@@ -1723,7 +1722,6 @@ class DomainRedirect(dict):
     def keepalive_requests(self) -> Optional[_builtins.int]:
         """
         The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
-
 
         > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         """

@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultAccelerator: alicloud.ga.Accelerator[] = [];
  * _default.then(_default => _default.accelerators).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range}`, {
  *             duration: 1,
  *             autoUseCoupon: true,
  *             spec: "1",
@@ -125,8 +125,8 @@ export interface GetDomainsResult {
  * });
  * const defaultAccelerator: alicloud.ga.Accelerator[] = [];
  * _default.then(_default => _default.accelerators).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range}`, {
  *             duration: 1,
  *             autoUseCoupon: true,
  *             spec: "1",

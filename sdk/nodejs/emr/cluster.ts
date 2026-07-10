@@ -48,23 +48,23 @@ import * as utilities from "../utilities";
  *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {
  *         name: vpcName,
  *         cidrBlock: vpcCidr,
  *     }));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
- * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ * for (let range = 0; range < (securityGroupId == "" ? 1 : 0); range++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {
  *         name: securityGroupName,
  *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
  *     }));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
- *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ * for (let range = 0; range < (vswitchId == "" ? 1 : 0); range++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
  *         vswitchName: vswitchName,
  *         cidrBlock: vswitchCidr,
@@ -185,23 +185,23 @@ import * as utilities from "../utilities";
  *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {
  *         name: vpcName,
  *         cidrBlock: vpcCidr,
  *     }));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
- * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ * for (let range = 0; range < (securityGroupId == "" ? 1 : 0); range++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {
  *         name: securityGroupName,
  *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
  *     }));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
- *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ * for (let range = 0; range < (vswitchId == "" ? 1 : 0); range++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
  *         vswitchName: vswitchName,
  *         cidrBlock: vswitchCidr,
@@ -320,23 +320,23 @@ import * as utilities from "../utilities";
  *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {
  *         name: vpcName,
  *         cidrBlock: vpcCidr,
  *     }));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
- * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ * for (let range = 0; range < (securityGroupId == "" ? 1 : 0); range++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {
  *         name: securityGroupName,
  *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
  *     }));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
- *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ * for (let range = 0; range < (vswitchId == "" ? 1 : 0); range++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
  *         vswitchName: vswitchName,
  *         cidrBlock: vswitchCidr,
@@ -445,23 +445,23 @@ import * as utilities from "../utilities";
  *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {
+ * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {
  *         name: vpcName,
  *         cidrBlock: vpcCidr,
  *     }));
  * }
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
- * for (const range = {value: 0}; range.value < (securityGroupId == "" ? 1 : 0); range.value++) {
- *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {
+ * for (let range = 0; range < (securityGroupId == "" ? 1 : 0); range++) {
+ *     defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {
  *         name: securityGroupName,
  *         vpcId: vpcId == "" ? vpc[0].id : vpcId,
  *     }));
  * }
  * // VSwitch Resource for Module
  * const vswitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (vswitchId == "" ? 1 : 0); range.value++) {
- *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ * for (let range = 0; range < (vswitchId == "" ? 1 : 0); range++) {
+ *     vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *         availabilityZone: availabilityZone == "" ? defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId) : availabilityZone,
  *         vswitchName: vswitchName,
  *         cidrBlock: vswitchCidr,

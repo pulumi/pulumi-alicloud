@@ -159,12 +159,12 @@ class KubernetesPermission(pulumi.CustomResource):
         default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes")
         vpc = alicloud.vpc.Network("vpc", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=vpc.id,
-                cidr_block=vswitch_cidrs[range["value"]],
-                zone_id=enhanced.zones[range["value"]].zone_id))
+                cidr_block=vswitch_cidrs[default_switch_range["value"]],
+                zone_id=enhanced.zones[default_switch_range["value"]].zone_id))
         # Create a new RAM cluster.
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"{name}-{default_integer['result']}",
@@ -267,12 +267,12 @@ class KubernetesPermission(pulumi.CustomResource):
         default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes")
         vpc = alicloud.vpc.Network("vpc", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=vpc.id,
-                cidr_block=vswitch_cidrs[range["value"]],
-                zone_id=enhanced.zones[range["value"]].zone_id))
+                cidr_block=vswitch_cidrs[default_switch_range["value"]],
+                zone_id=enhanced.zones[default_switch_range["value"]].zone_id))
         # Create a new RAM cluster.
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"{name}-{default_integer['result']}",

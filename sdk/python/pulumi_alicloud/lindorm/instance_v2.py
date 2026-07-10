@@ -71,7 +71,6 @@ class InstanceV2Args:
                
                > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
         :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
@@ -260,7 +259,6 @@ class InstanceV2Args:
         Value range: `1` to `12`.
 
         > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -458,7 +456,6 @@ class _InstanceV2State:
                
                > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
         :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
@@ -591,7 +588,6 @@ class _InstanceV2State:
         Value range: `1` to `12`.
 
         > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -950,7 +946,6 @@ class InstanceV2(pulumi.CustomResource):
                
                > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
         :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
@@ -1198,7 +1193,6 @@ class InstanceV2(pulumi.CustomResource):
                
                > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
-               
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
         :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
@@ -1302,7 +1296,6 @@ class InstanceV2(pulumi.CustomResource):
         Value range: `1` to `12`.
 
         > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
-
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """

@@ -186,7 +186,7 @@ class _StackInstanceState:
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[_builtins.str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
                * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
                * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
                * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -305,7 +305,7 @@ class _StackInstanceState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
         * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
         * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -573,7 +573,7 @@ class StackInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] stack_group_name: The name of the stack group.
         :param pulumi.Input[_builtins.str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[_builtins.str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        :param pulumi.Input[_builtins.str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
                * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
                * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
                * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -660,7 +660,7 @@ class StackInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
         * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
         * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.

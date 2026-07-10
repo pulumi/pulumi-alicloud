@@ -919,7 +919,7 @@ class QuotaScheduleScheduleListArgsDict(TypedDict):
     """
     type: pulumi.Input[_builtins.str]
     """
-    The type of the quota plan. Valid values: daily 
+    The type of the quota plan. Valid values: daily
 
     > **NOTE:** Currently, only daily is supported.
     """
@@ -936,7 +936,7 @@ class QuotaScheduleScheduleListArgs:
                  condition: pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] plan: The name of the quota plan.
-        :param pulumi.Input[_builtins.str] type: The type of the quota plan. Valid values: daily 
+        :param pulumi.Input[_builtins.str] type: The type of the quota plan. Valid values: daily
                
                > **NOTE:** Currently, only daily is supported.
         :param pulumi.Input['QuotaScheduleScheduleListConditionArgs'] condition: The value of effective condition. See `condition` below.
@@ -962,7 +962,7 @@ class QuotaScheduleScheduleListArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the quota plan. Valid values: daily 
+        The type of the quota plan. Valid values: daily
 
         > **NOTE:** Currently, only daily is supported.
         """

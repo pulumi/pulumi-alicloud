@@ -44,7 +44,6 @@ class ServerGroupArgs:
                
                > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
                
-               
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] address_ip_version: The protocol version. Valid values:
         :param pulumi.Input[_builtins.bool] any_port_enabled: Specifies whether to enable all-port forwarding. Valid values:
@@ -123,7 +122,6 @@ class ServerGroupArgs:
         The ID of the virtual private cloud (VPC) to which the server group belongs.
 
         > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -348,7 +346,6 @@ class _ServerGroupState:
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) to which the server group belongs.
                
                > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -592,7 +589,6 @@ class _ServerGroupState:
 
         > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
 
-
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
@@ -721,7 +717,6 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) to which the server group belongs.
                
                > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -921,7 +916,6 @@ class ServerGroup(pulumi.CustomResource):
                
                > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
                
-               
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1089,7 +1083,6 @@ class ServerGroup(pulumi.CustomResource):
         The ID of the virtual private cloud (VPC) to which the server group belongs.
 
         > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

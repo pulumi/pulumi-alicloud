@@ -222,9 +222,9 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         group = alicloud.ecs.SecurityGroup("group",
             security_group_name=slb_master_slave_server_group,
             vpc_id=main.id)
-        ms_server_group_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            ms_server_group_instance.append(alicloud.ecs.Instance(f"ms_server_group-{range['value']}",
+        ms_server_group_instance: list[alicloud.ecs.Instance] = []
+        for ms_server_group_instance_range in [{"value": i} for i in range(0, 2)]:
+            ms_server_group_instance.append(alicloud.ecs.Instance(f"ms_server_group-{ms_server_group_instance_range['value']}",
                 image_id=image.images[0].id,
                 instance_type=ms_server_group_get_instance_types.instance_types[0].id,
                 instance_name=slb_master_slave_server_group,
@@ -353,9 +353,9 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         group = alicloud.ecs.SecurityGroup("group",
             security_group_name=slb_master_slave_server_group,
             vpc_id=main.id)
-        ms_server_group_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            ms_server_group_instance.append(alicloud.ecs.Instance(f"ms_server_group-{range['value']}",
+        ms_server_group_instance: list[alicloud.ecs.Instance] = []
+        for ms_server_group_instance_range in [{"value": i} for i in range(0, 2)]:
+            ms_server_group_instance.append(alicloud.ecs.Instance(f"ms_server_group-{ms_server_group_instance_range['value']}",
                 image_id=image.images[0].id,
                 instance_type=ms_server_group_get_instance_types.instance_types[0].id,
                 instance_name=slb_master_slave_server_group,

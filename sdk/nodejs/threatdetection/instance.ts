@@ -250,7 +250,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * 1: Yes.
+     *   1: Yes.
      */
     declare public readonly sasWebguardOrderNum: pulumi.Output<string | undefined>;
     /**
@@ -585,7 +585,7 @@ export interface InstanceState {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * 1: Yes.
+     *   1: Yes.
      */
     sasWebguardOrderNum?: pulumi.Input<string | undefined>;
     /**
@@ -817,7 +817,7 @@ export interface InstanceArgs {
     /**
      * Tamper-proof authorization number. Value:
      * - 0: No
-     * 1: Yes.
+     *   1: Yes.
      */
     sasWebguardOrderNum?: pulumi.Input<string | undefined>;
     /**

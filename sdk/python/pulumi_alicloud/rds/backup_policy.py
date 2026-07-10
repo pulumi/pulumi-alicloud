@@ -64,14 +64,14 @@ class BackupPolicyArgs:
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[_builtins.int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
                - 1: secondary instance preferred
                - 2: primary instance preferred
-               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+                 ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[_builtins.int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[_builtins.str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[_builtins.str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
@@ -81,7 +81,7 @@ class BackupPolicyArgs:
         :param pulumi.Input[_builtins.bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
                - false (default): disables the feature.
                - true: enables the feature.
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[_builtins.int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
@@ -241,7 +241,7 @@ class BackupPolicyArgs:
         The backup method of the instance. Valid values:
         - Physical: physical backup
         - Snapshot: snapshot backup
-        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+          ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
 
         > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
@@ -271,7 +271,7 @@ class BackupPolicyArgs:
         Specifies whether the backup settings of a secondary instance are configured. Valid values:
         - 1: secondary instance preferred
         - 2: primary instance preferred
-        ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+          ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         """
         return pulumi.get(self, "backup_priority")
 
@@ -348,7 +348,7 @@ class BackupPolicyArgs:
         Specifies whether to enable incremental backup. Valid values:
         - false (default): disables the feature.
         - true: enables the feature.
-        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+          ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         """
         return pulumi.get(self, "enable_increment_data_backup")
 
@@ -555,14 +555,14 @@ class _BackupPolicyState:
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[_builtins.int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
                - 1: secondary instance preferred
                - 2: primary instance preferred
-               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+                 ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[_builtins.int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[_builtins.str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[_builtins.str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
@@ -572,7 +572,7 @@ class _BackupPolicyState:
         :param pulumi.Input[_builtins.bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
                - false (default): disables the feature.
                - true: enables the feature.
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
@@ -722,7 +722,7 @@ class _BackupPolicyState:
         The backup method of the instance. Valid values:
         - Physical: physical backup
         - Snapshot: snapshot backup
-        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+          ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
 
         > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
@@ -752,7 +752,7 @@ class _BackupPolicyState:
         Specifies whether the backup settings of a secondary instance are configured. Valid values:
         - 1: secondary instance preferred
         - 2: primary instance preferred
-        ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+          ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         """
         return pulumi.get(self, "backup_priority")
 
@@ -829,7 +829,7 @@ class _BackupPolicyState:
         Specifies whether to enable incremental backup. Valid values:
         - false (default): disables the feature.
         - true: enables the feature.
-        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+          ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         """
         return pulumi.get(self, "enable_increment_data_backup")
 
@@ -1099,14 +1099,14 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[_builtins.int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
                - 1: secondary instance preferred
                - 2: primary instance preferred
-               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+                 ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[_builtins.int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[_builtins.str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[_builtins.str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
@@ -1116,7 +1116,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
                - false (default): disables the feature.
                - true: enables the feature.
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
@@ -1325,14 +1325,14 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[_builtins.int] backup_priority: Specifies whether the backup settings of a secondary instance are configured. Valid values:
                - 1: secondary instance preferred
                - 2: primary instance preferred
-               ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+                 ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         :param pulumi.Input[_builtins.int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
         :param pulumi.Input[_builtins.str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[_builtins.str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy.
@@ -1342,7 +1342,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_increment_data_backup: Specifies whether to enable incremental backup. Valid values:
                - false (default): disables the feature.
                - true: enables the feature.
-               ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+                 ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
@@ -1440,7 +1440,7 @@ class BackupPolicy(pulumi.CustomResource):
         The backup method of the instance. Valid values:
         - Physical: physical backup
         - Snapshot: snapshot backup
-        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+          ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
 
         > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
         """
@@ -1462,7 +1462,7 @@ class BackupPolicy(pulumi.CustomResource):
         Specifies whether the backup settings of a secondary instance are configured. Valid values:
         - 1: secondary instance preferred
         - 2: primary instance preferred
-        ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+          ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
         """
         return pulumi.get(self, "backup_priority")
 
@@ -1515,7 +1515,7 @@ class BackupPolicy(pulumi.CustomResource):
         Specifies whether to enable incremental backup. Valid values:
         - false (default): disables the feature.
         - true: enables the feature.
-        ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+          ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
         """
         return pulumi.get(self, "enable_increment_data_backup")
 

@@ -39,7 +39,7 @@ class EcsInvocationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
-        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance. 
+        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
                * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -139,7 +139,7 @@ class EcsInvocationArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The username that is used to run the command on the ECS instance. 
+        The username that is used to run the command on the ECS instance.
         * For Linux instances, the root username is used.
         * For Windows instances, the System username is used.
         * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -188,7 +188,7 @@ class _EcsInvocationState:
         :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
-        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance. 
+        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
                * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -304,7 +304,7 @@ class _EcsInvocationState:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The username that is used to run the command on the ECS instance. 
+        The username that is used to run the command on the ECS instance.
         * For Linux instances, the root username is used.
         * For Windows instances, the System username is used.
         * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -434,7 +434,7 @@ class EcsInvocation(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: The key-value pairs of custom parameters to be passed in when the custom parameter feature is enabled.  Number of custom parameters: 0 to 10.
         :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
-        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance. 
+        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
                * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -607,7 +607,7 @@ class EcsInvocation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repeat_mode: Specifies how to run the command. Valid values: `Once`, `Period`, `NextRebootOnly`, `EveryReboot`. Default value: When `timed` is set to false and Frequency is not specified, the default value of `repeat_mode` is `Once`. When `Timed` is set to true and Frequency is specified, `period` is used as the value of RepeatMode regardless of whether `repeat_mode` is specified.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.bool] timed: Specifies whether to periodically run the command. Default value: `false`.
-        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance. 
+        :param pulumi.Input[_builtins.str] username: The username that is used to run the command on the ECS instance.
                * For Linux instances, the root username is used.
                * For Windows instances, the System username is used.
                * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -691,7 +691,7 @@ class EcsInvocation(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        The username that is used to run the command on the ECS instance. 
+        The username that is used to run the command on the ECS instance.
         * For Linux instances, the root username is used.
         * For Windows instances, the System username is used.
         * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).

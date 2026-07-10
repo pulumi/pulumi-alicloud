@@ -164,15 +164,15 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=default_network.id,
                 cidr_block=std.format(input="10.4.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=default.zones[range["value"]].id,
+                    args=[default_switch_range["value"] + 1]).result,
+                zone_id=default.zones[default_switch_range["value"]].id,
                 vswitch_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[default_switch_range["value"] + 1]).result))
         default_load_balancer = alicloud.alb.LoadBalancer("default",
             vpc_id=default_network.id,
             address_type="Internet",
@@ -213,14 +213,14 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_service_certificate: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
+        default_service_certificate: list[alicloud.cas.ServiceCertificate] = []
+        for default_service_certificate_range in [{"value": i} for i in range(0, 2)]:
+            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{default_service_certificate_range['value']}",
                 certificate_name=std.join(separator="-",
                     input=[
                         name,
                         default_integer["result"],
-                        range["value"],
+                        default_service_certificate_range["value"],
                     ]).result,
                 cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
@@ -351,15 +351,15 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=default_network.id,
                 cidr_block=std.format(input="10.4.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=default.zones[range["value"]].id,
+                    args=[default_switch_range["value"] + 1]).result,
+                zone_id=default.zones[default_switch_range["value"]].id,
                 vswitch_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[default_switch_range["value"] + 1]).result))
         default_load_balancer = alicloud.alb.LoadBalancer("default",
             vpc_id=default_network.id,
             address_type="Internet",
@@ -400,14 +400,14 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_service_certificate: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{range['value']}",
+        default_service_certificate: list[alicloud.cas.ServiceCertificate] = []
+        for default_service_certificate_range in [{"value": i} for i in range(0, 2)]:
+            default_service_certificate.append(alicloud.cas.ServiceCertificate(f"default-{default_service_certificate_range['value']}",
                 certificate_name=std.join(separator="-",
                     input=[
                         name,
                         default_integer["result"],
-                        range["value"],
+                        default_service_certificate_range["value"],
                     ]).result,
                 cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD

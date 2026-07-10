@@ -73,8 +73,8 @@ import * as utilities from "../utilities";
  * });
  * const _default: alicloud.ram.Role[] = [];
  * roles.then(roles => roles.roles).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         _default.push(new alicloud.ram.Role(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         _default.push(new alicloud.ram.Role(`default-${range}`, {
  *             name: "AliyunRDSInstanceEncryptionDefaultRole",
  *             document: `    {
  *         \\"Statement\\": [
@@ -97,8 +97,8 @@ import * as utilities from "../utilities";
  * });
  * const defaultPolicyAttachment: alicloud.resourcemanager.PolicyAttachment[] = [];
  * roles.then(roles => roles.roles).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultPolicyAttachment.push(new alicloud.resourcemanager.PolicyAttachment(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultPolicyAttachment.push(new alicloud.resourcemanager.PolicyAttachment(`default-${range}`, {
  *             policyName: "AliyunRDSInstanceEncryptionRolePolicy",
  *             policyType: "System",
  *             principalName: pulumi.all([roles.then(roles => roles.roles).length, roles, current, _default[0].name, current]).apply(([length, roles, current, name, current1]) => length > 0 ? `${roles.roles?.[0]?.name}@role.${current.id}.onaliyunservice.com` : `${name}@role.${current1.id}.onaliyunservice.com`),
@@ -211,7 +211,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly dbNodeClass: pulumi.Output<string>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     declare public readonly dbNodeCount: pulumi.Output<number>;
@@ -256,7 +256,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly enableDynamodb: pulumi.Output<boolean>;
     /**
-     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     declare public readonly encryptNewTables: pulumi.Output<string | undefined>;
@@ -289,7 +289,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-     * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      */
     declare public readonly imciSwitch: pulumi.Output<string>;
     /**
@@ -460,7 +460,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Storage space charged by space (monthly package). Unit: GB.
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-     * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      */
     declare public readonly storageSpace: pulumi.Output<number>;
     /**
@@ -488,11 +488,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
-     * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      */
     declare public /*out*/ readonly tdeRegion: pulumi.Output<string>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     declare public readonly tdeStatus: pulumi.Output<string | undefined>;
@@ -768,7 +768,7 @@ export interface ClusterState {
      */
     dbNodeClass?: pulumi.Input<string | undefined>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     dbNodeCount?: pulumi.Input<number | undefined>;
@@ -813,7 +813,7 @@ export interface ClusterState {
      */
     enableDynamodb?: pulumi.Input<boolean | undefined>;
     /**
-     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     encryptNewTables?: pulumi.Input<string | undefined>;
@@ -846,7 +846,7 @@ export interface ClusterState {
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-     * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      */
     imciSwitch?: pulumi.Input<string | undefined>;
     /**
@@ -1017,7 +1017,7 @@ export interface ClusterState {
     /**
      * Storage space charged by space (monthly package). Unit: GB.
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-     * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      */
     storageSpace?: pulumi.Input<number | undefined>;
     /**
@@ -1045,11 +1045,11 @@ export interface ClusterState {
     /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
-     * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
+     * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      */
     tdeRegion?: pulumi.Input<string | undefined>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     tdeStatus?: pulumi.Input<string | undefined>;
@@ -1128,7 +1128,7 @@ export interface ClusterArgs {
      */
     dbNodeClass: pulumi.Input<string>;
     /**
-     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
+     * Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
      * > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      */
     dbNodeCount?: pulumi.Input<number | undefined>;
@@ -1169,7 +1169,7 @@ export interface ClusterArgs {
      */
     enableDynamodb?: pulumi.Input<boolean | undefined>;
     /**
-     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
+     * turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports.
      * > **NOTE:** `encryptNewTables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      */
     encryptNewTables?: pulumi.Input<string | undefined>;
@@ -1202,7 +1202,7 @@ export interface ClusterArgs {
     /**
      * Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
      * > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
-     * > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
+     * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      */
     imciSwitch?: pulumi.Input<string | undefined>;
     /**
@@ -1365,7 +1365,7 @@ export interface ClusterArgs {
     /**
      * Storage space charged by space (monthly package). Unit: GB.
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
-     * > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
+     * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when payType is `PrePaid`.
      */
     storageSpace?: pulumi.Input<number | undefined>;
     /**
@@ -1391,7 +1391,7 @@ export interface ClusterArgs {
      */
     targetDbRevisionVersionCode?: pulumi.Input<string | undefined>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
+     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      */
     tdeStatus?: pulumi.Input<string | undefined>;

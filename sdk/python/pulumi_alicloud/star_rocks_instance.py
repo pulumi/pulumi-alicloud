@@ -71,7 +71,7 @@ class StarRocksInstanceArgs:
         :param pulumi.Input[_builtins.str] pricing_cycle: The duration unit for purchasing:
                - Month
                - Year
-               This is only meaningful when PayType is set to PrePaid.
+                 This is only meaningful when PayType is set to PrePaid.
         :param pulumi.Input[_builtins.str] promotion_option_no: Promotion
         :param pulumi.Input[_builtins.str] resource_group_id: ResourceGroupId
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tag list of the instance.
@@ -318,7 +318,7 @@ class StarRocksInstanceArgs:
         The duration unit for purchasing:
         - Month
         - Year
-        This is only meaningful when PayType is set to PrePaid.
+          This is only meaningful when PayType is set to PrePaid.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -426,7 +426,7 @@ class _StarRocksInstanceState:
         :param pulumi.Input[_builtins.str] pricing_cycle: The duration unit for purchasing:
                - Month
                - Year
-               This is only meaningful when PayType is set to PrePaid.
+                 This is only meaningful when PayType is set to PrePaid.
         :param pulumi.Input[_builtins.str] promotion_option_no: Promotion
         :param pulumi.Input[_builtins.str] region_id: The region ID of the instance.
         :param pulumi.Input[_builtins.str] resource_group_id: ResourceGroupId
@@ -668,7 +668,7 @@ class _StarRocksInstanceState:
         The duration unit for purchasing:
         - Month
         - Year
-        This is only meaningful when PayType is set to PrePaid.
+          This is only meaningful when PayType is set to PrePaid.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -934,7 +934,7 @@ class StarRocksInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pricing_cycle: The duration unit for purchasing:
                - Month
                - Year
-               This is only meaningful when PayType is set to PrePaid.
+                 This is only meaningful when PayType is set to PrePaid.
         :param pulumi.Input[_builtins.str] promotion_option_no: Promotion
         :param pulumi.Input[_builtins.str] resource_group_id: ResourceGroupId
         :param pulumi.Input[_builtins.str] run_mode: The run mode of the instance:
@@ -1191,7 +1191,7 @@ class StarRocksInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] pricing_cycle: The duration unit for purchasing:
                - Month
                - Year
-               This is only meaningful when PayType is set to PrePaid.
+                 This is only meaningful when PayType is set to PrePaid.
         :param pulumi.Input[_builtins.str] promotion_option_no: Promotion
         :param pulumi.Input[_builtins.str] region_id: The region ID of the instance.
         :param pulumi.Input[_builtins.str] resource_group_id: ResourceGroupId
@@ -1358,7 +1358,7 @@ class StarRocksInstance(pulumi.CustomResource):
         The duration unit for purchasing:
         - Month
         - Year
-        This is only meaningful when PayType is set to PrePaid.
+          This is only meaningful when PayType is set to PrePaid.
         """
         return pulumi.get(self, "pricing_cycle")
 
