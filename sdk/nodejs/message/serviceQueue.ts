@@ -104,6 +104,10 @@ export class ServiceQueue extends pulumi.CustomResource {
      */
     declare public readonly queueName: pulumi.Output<string>;
     /**
+     * The type of the queue. Default value: `normal`. Valid values:
+     */
+    declare public readonly queueType: pulumi.Output<string>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
@@ -133,6 +137,7 @@ export class ServiceQueue extends pulumi.CustomResource {
             resourceInputs["messageRetentionPeriod"] = state?.messageRetentionPeriod;
             resourceInputs["pollingWaitSeconds"] = state?.pollingWaitSeconds;
             resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["queueType"] = state?.queueType;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["visibilityTimeout"] = state?.visibilityTimeout;
         } else {
@@ -147,6 +152,7 @@ export class ServiceQueue extends pulumi.CustomResource {
             resourceInputs["messageRetentionPeriod"] = args?.messageRetentionPeriod;
             resourceInputs["pollingWaitSeconds"] = args?.pollingWaitSeconds;
             resourceInputs["queueName"] = args?.queueName;
+            resourceInputs["queueType"] = args?.queueType;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["visibilityTimeout"] = args?.visibilityTimeout;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -193,6 +199,10 @@ export interface ServiceQueueState {
      */
     queueName?: pulumi.Input<string | undefined>;
     /**
+     * The type of the queue. Default value: `normal`. Valid values:
+     */
+    queueType?: pulumi.Input<string | undefined>;
+    /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -234,6 +244,10 @@ export interface ServiceQueueArgs {
      * The name of the queue.
      */
     queueName: pulumi.Input<string>;
+    /**
+     * The type of the queue. Default value: `normal`. Valid values:
+     */
+    queueType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */

@@ -1528,14 +1528,13 @@ type OriginPoolOrigin struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The request header that is sent when returning to the source. Only Host is supported.
 	Header *string `pulumi:"header"`
+	// The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+	IpVersionPolicy *string `pulumi:"ipVersionPolicy"`
 	// Origin Name.
 	Name *string `pulumi:"name"`
 	// Origin ID.
 	OriginId *string `pulumi:"originId"`
-	// Source station type:
-	// ip_domain: ip or domain name type origin station;
-	// - `OSS`:OSS address source station;
-	// - `S3`:AWS S3 Source station.
+	// The type of the origin. Valid values:
 	Type *string `pulumi:"type"`
 	// Weight, 0-100.
 	Weight *int `pulumi:"weight"`
@@ -1561,14 +1560,13 @@ type OriginPoolOriginArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The request header that is sent when returning to the source. Only Host is supported.
 	Header pulumi.StringPtrInput `pulumi:"header"`
+	// The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+	IpVersionPolicy pulumi.StringPtrInput `pulumi:"ipVersionPolicy"`
 	// Origin Name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Origin ID.
 	OriginId pulumi.StringPtrInput `pulumi:"originId"`
-	// Source station type:
-	// ip_domain: ip or domain name type origin station;
-	// - `OSS`:OSS address source station;
-	// - `S3`:AWS S3 Source station.
+	// The type of the origin. Valid values:
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Weight, 0-100.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
@@ -1645,6 +1643,11 @@ func (o OriginPoolOriginOutput) Header() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Header }).(pulumi.StringPtrOutput)
 }
 
+// The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+func (o OriginPoolOriginOutput) IpVersionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.IpVersionPolicy }).(pulumi.StringPtrOutput)
+}
+
 // Origin Name.
 func (o OriginPoolOriginOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1655,10 +1658,7 @@ func (o OriginPoolOriginOutput) OriginId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.OriginId }).(pulumi.StringPtrOutput)
 }
 
-// Source station type:
-// ip_domain: ip or domain name type origin station;
-// - `OSS`:OSS address source station;
-// - `S3`:AWS S3 Source station.
+// The type of the origin. Valid values:
 func (o OriginPoolOriginOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OriginPoolOrigin) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5800,7 +5800,7 @@ type TransportLayerApplicationRule struct {
 	// - `TCP`: TCP protocol.
 	// - `UDP`: UDP protocol.
 	Protocol string `pulumi:"protocol"`
-	// Rule ID
+	// Rule ID.
 	RuleId *int `pulumi:"ruleId"`
 	// Specific value of the origin, which needs to match the origin type.
 	Source string `pulumi:"source"`
@@ -5837,7 +5837,7 @@ type TransportLayerApplicationRuleArgs struct {
 	// - `TCP`: TCP protocol.
 	// - `UDP`: UDP protocol.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// Rule ID
+	// Rule ID.
 	RuleId pulumi.IntPtrInput `pulumi:"ruleId"`
 	// Specific value of the origin, which needs to match the origin type.
 	Source pulumi.StringInput `pulumi:"source"`
@@ -5925,7 +5925,7 @@ func (o TransportLayerApplicationRuleOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v TransportLayerApplicationRule) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// Rule ID
+// Rule ID.
 func (o TransportLayerApplicationRuleOutput) RuleId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TransportLayerApplicationRule) *int { return v.RuleId }).(pulumi.IntPtrOutput)
 }

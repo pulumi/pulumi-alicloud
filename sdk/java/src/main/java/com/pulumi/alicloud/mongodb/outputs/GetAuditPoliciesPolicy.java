@@ -5,6 +5,7 @@ package com.pulumi.alicloud.mongodb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,15 +17,30 @@ public final class GetAuditPoliciesPolicy {
      */
     private String auditStatus;
     /**
-     * @return The ID of the instance.
+     * @return The id of the db instance.
      * 
      */
     private String dbInstanceId;
+    /**
+     * @return (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+     * 
+     */
+    private Integer hotStoragePeriod;
     /**
      * @return The ID of the Audit Policy.
      * 
      */
     private String id;
+    /**
+     * @return (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+     * 
+     */
+    private String serviceType;
+    /**
+     * @return (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+     * 
+     */
+    private Integer storagePeriod;
 
     private GetAuditPoliciesPolicy() {}
     /**
@@ -35,11 +51,18 @@ public final class GetAuditPoliciesPolicy {
         return this.auditStatus;
     }
     /**
-     * @return The ID of the instance.
+     * @return The id of the db instance.
      * 
      */
     public String dbInstanceId() {
         return this.dbInstanceId;
+    }
+    /**
+     * @return (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+     * 
+     */
+    public Integer hotStoragePeriod() {
+        return this.hotStoragePeriod;
     }
     /**
      * @return The ID of the Audit Policy.
@@ -47,6 +70,20 @@ public final class GetAuditPoliciesPolicy {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+     * 
+     */
+    public String serviceType() {
+        return this.serviceType;
+    }
+    /**
+     * @return (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+     * 
+     */
+    public Integer storagePeriod() {
+        return this.storagePeriod;
     }
 
     public static Builder builder() {
@@ -60,13 +97,19 @@ public final class GetAuditPoliciesPolicy {
     public static final class Builder {
         private String auditStatus;
         private String dbInstanceId;
+        private Integer hotStoragePeriod;
         private String id;
+        private String serviceType;
+        private Integer storagePeriod;
         public Builder() {}
         public Builder(GetAuditPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditStatus = defaults.auditStatus;
     	      this.dbInstanceId = defaults.dbInstanceId;
+    	      this.hotStoragePeriod = defaults.hotStoragePeriod;
     	      this.id = defaults.id;
+    	      this.serviceType = defaults.serviceType;
+    	      this.storagePeriod = defaults.storagePeriod;
         }
 
         @CustomType.Setter
@@ -86,6 +129,14 @@ public final class GetAuditPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder hotStoragePeriod(Integer hotStoragePeriod) {
+            if (hotStoragePeriod == null) {
+              throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "hotStoragePeriod");
+            }
+            this.hotStoragePeriod = hotStoragePeriod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "id");
@@ -93,11 +144,30 @@ public final class GetAuditPoliciesPolicy {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceType(String serviceType) {
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "serviceType");
+            }
+            this.serviceType = serviceType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storagePeriod(Integer storagePeriod) {
+            if (storagePeriod == null) {
+              throw new MissingRequiredPropertyException("GetAuditPoliciesPolicy", "storagePeriod");
+            }
+            this.storagePeriod = storagePeriod;
+            return this;
+        }
         public GetAuditPoliciesPolicy build() {
             final var _resultValue = new GetAuditPoliciesPolicy();
             _resultValue.auditStatus = auditStatus;
             _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.hotStoragePeriod = hotStoragePeriod;
             _resultValue.id = id;
+            _resultValue.serviceType = serviceType;
+            _resultValue.storagePeriod = storagePeriod;
             return _resultValue;
         }
     }

@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketDataRedundancyTransition{}
 	case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
 		r = &BucketHttpsConfig{}
+	case "alicloud:oss/bucketInventory:BucketInventory":
+		r = &BucketInventory{}
 	case "alicloud:oss/bucketLogging:BucketLogging":
 		r = &BucketLogging{}
 	case "alicloud:oss/bucketMetaQuery:BucketMetaQuery":
@@ -145,6 +147,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketHttpsConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketInventory",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

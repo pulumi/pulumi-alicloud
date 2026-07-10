@@ -22,19 +22,29 @@ class AuditPolicyArgs:
                  audit_status: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_storage_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AuditPolicy resource.
 
-        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
         :param pulumi.Input[_builtins.str] filter: The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
-        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        :param pulumi.Input[_builtins.int] hot_storage_period: The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        :param pulumi.Input[_builtins.str] service_type: The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration, in days.
+               - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+               - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         pulumi.set(__self__, "audit_status", audit_status)
         pulumi.set(__self__, "db_instance_id", db_instance_id)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if hot_storage_period is not None:
+            pulumi.set(__self__, "hot_storage_period", hot_storage_period)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
         if storage_period is not None:
             pulumi.set(__self__, "storage_period", storage_period)
 
@@ -42,7 +52,7 @@ class AuditPolicyArgs:
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Input[_builtins.str]:
         """
-        Audit state, Valid values: `enable`, `disabled`.
+        Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         """
         return pulumi.get(self, "audit_status")
 
@@ -75,10 +85,36 @@ class AuditPolicyArgs:
         pulumi.set(self, "filter", value)
 
     @_builtins.property
+    @pulumi.getter(name="hotStoragePeriod")
+    def hot_storage_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        """
+        return pulumi.get(self, "hot_storage_period")
+
+    @hot_storage_period.setter
+    def hot_storage_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hot_storage_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="storagePeriod")
     def storage_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        Audit log retention duration, in days.
+        - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+        - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         return pulumi.get(self, "storage_period")
 
@@ -93,14 +129,20 @@ class _AuditPolicyState:
                  audit_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_storage_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AuditPolicy resources.
 
-        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
         :param pulumi.Input[_builtins.str] filter: The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
-        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        :param pulumi.Input[_builtins.int] hot_storage_period: The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        :param pulumi.Input[_builtins.str] service_type: The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration, in days.
+               - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+               - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         if audit_status is not None:
             pulumi.set(__self__, "audit_status", audit_status)
@@ -108,6 +150,10 @@ class _AuditPolicyState:
             pulumi.set(__self__, "db_instance_id", db_instance_id)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if hot_storage_period is not None:
+            pulumi.set(__self__, "hot_storage_period", hot_storage_period)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
         if storage_period is not None:
             pulumi.set(__self__, "storage_period", storage_period)
 
@@ -115,7 +161,7 @@ class _AuditPolicyState:
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Audit state, Valid values: `enable`, `disabled`.
+        Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         """
         return pulumi.get(self, "audit_status")
 
@@ -148,10 +194,36 @@ class _AuditPolicyState:
         pulumi.set(self, "filter", value)
 
     @_builtins.property
+    @pulumi.getter(name="hotStoragePeriod")
+    def hot_storage_period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        """
+        return pulumi.get(self, "hot_storage_period")
+
+    @hot_storage_period.setter
+    def hot_storage_period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "hot_storage_period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="storagePeriod")
     def storage_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        Audit log retention duration, in days.
+        - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+        - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         return pulumi.get(self, "storage_period")
 
@@ -169,6 +241,8 @@ class AuditPolicy(pulumi.CustomResource):
                  audit_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_storage_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -217,7 +291,7 @@ class AuditPolicy(pulumi.CustomResource):
             })
         default_audit_policy = alicloud.mongodb.AuditPolicy("default",
             db_instance_id=default_instance.id,
-            audit_status="disabled")
+            audit_status="enable")
         ```
 
         ### Deleting `mongodb.AuditPolicy` or removing it from your configuration
@@ -237,10 +311,14 @@ class AuditPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
         :param pulumi.Input[_builtins.str] filter: The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
-        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        :param pulumi.Input[_builtins.int] hot_storage_period: The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        :param pulumi.Input[_builtins.str] service_type: The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration, in days.
+               - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+               - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         ...
     @overload
@@ -294,7 +372,7 @@ class AuditPolicy(pulumi.CustomResource):
             })
         default_audit_policy = alicloud.mongodb.AuditPolicy("default",
             db_instance_id=default_instance.id,
-            audit_status="disabled")
+            audit_status="enable")
         ```
 
         ### Deleting `mongodb.AuditPolicy` or removing it from your configuration
@@ -330,6 +408,8 @@ class AuditPolicy(pulumi.CustomResource):
                  audit_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_storage_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -347,6 +427,8 @@ class AuditPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'db_instance_id'")
             __props__.__dict__["db_instance_id"] = db_instance_id
             __props__.__dict__["filter"] = filter
+            __props__.__dict__["hot_storage_period"] = hot_storage_period
+            __props__.__dict__["service_type"] = service_type
             __props__.__dict__["storage_period"] = storage_period
         super(AuditPolicy, __self__).__init__(
             'alicloud:mongodb/auditPolicy:AuditPolicy',
@@ -361,6 +443,8 @@ class AuditPolicy(pulumi.CustomResource):
             audit_status: pulumi.Input[Optional[_builtins.str]] = None,
             db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             filter: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_storage_period: pulumi.Input[Optional[_builtins.int]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
             storage_period: pulumi.Input[Optional[_builtins.int]] = None) -> 'AuditPolicy':
         """
         Get an existing AuditPolicy resource's state with the given name, id, and optional extra
@@ -369,10 +453,14 @@ class AuditPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
         :param pulumi.Input[_builtins.str] filter: The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
-        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        :param pulumi.Input[_builtins.int] hot_storage_period: The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        :param pulumi.Input[_builtins.str] service_type: The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration, in days.
+               - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+               - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -381,6 +469,8 @@ class AuditPolicy(pulumi.CustomResource):
         __props__.__dict__["audit_status"] = audit_status
         __props__.__dict__["db_instance_id"] = db_instance_id
         __props__.__dict__["filter"] = filter
+        __props__.__dict__["hot_storage_period"] = hot_storage_period
+        __props__.__dict__["service_type"] = service_type
         __props__.__dict__["storage_period"] = storage_period
         return AuditPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -388,7 +478,7 @@ class AuditPolicy(pulumi.CustomResource):
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Audit state, Valid values: `enable`, `disabled`.
+        Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
         """
         return pulumi.get(self, "audit_status")
 
@@ -409,10 +499,28 @@ class AuditPolicy(pulumi.CustomResource):
         return pulumi.get(self, "filter")
 
     @_builtins.property
+    @pulumi.getter(name="hotStoragePeriod")
+    def hot_storage_period(self) -> pulumi.Output[_builtins.int]:
+        """
+        The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `service_type` is `V2_Standard`.
+        """
+        return pulumi.get(self, "hot_storage_period")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `audit_status` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
     @pulumi.getter(name="storagePeriod")
     def storage_period(self) -> pulumi.Output[_builtins.int]:
         """
-        Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        Audit log retention duration, in days.
+        - When `service_type` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+        - When `service_type` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         """
         return pulumi.get(self, "storage_period")
 

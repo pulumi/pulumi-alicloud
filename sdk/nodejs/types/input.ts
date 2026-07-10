@@ -9640,6 +9640,10 @@ export namespace ecs {
          */
         securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
+         * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         */
+        sourceDestCheck?: pulumi.Input<boolean | undefined>;
+        /**
          * The ID of the vSwitch to which to connect Secondary ENI N.
          */
         vswitchId?: pulumi.Input<string | undefined>;
@@ -12164,6 +12168,10 @@ export namespace esa {
          */
         header?: pulumi.Input<string | undefined>;
         /**
+         * The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         */
+        ipVersionPolicy?: pulumi.Input<string | undefined>;
+        /**
          * Origin Name.
          */
         name?: pulumi.Input<string | undefined>;
@@ -12172,10 +12180,7 @@ export namespace esa {
          */
         originId?: pulumi.Input<string | undefined>;
         /**
-         * Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * The type of the origin. Valid values:
          */
         type?: pulumi.Input<string | undefined>;
         /**
@@ -12535,7 +12540,7 @@ export namespace esa {
          */
         protocol: pulumi.Input<string>;
         /**
-         * Rule ID
+         * Rule ID.
          */
         ruleId?: pulumi.Input<number | undefined>;
         /**
@@ -17910,6 +17915,125 @@ export namespace oss {
          * Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
          */
         tls13CustomCipherSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface BucketInventoryDestination {
+        /**
+         * The Bucket information stored after the list result is exported. See `ossBucketDestination` below.
+         */
+        ossBucketDestination?: pulumi.Input<inputs.oss.BucketInventoryDestinationOssBucketDestination | undefined>;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestination {
+        /**
+         * The account ID granted by the Bucket owner.
+         */
+        accountId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the bucket.
+         */
+        bucket?: pulumi.Input<string | undefined>;
+        /**
+         * The encryption method of the manifest file. Valid value: SSE-OSS: Use the OSS fully managed key for encryption and decryption. SSE-KMS: Use the default KMS-managed CMK(Customer Master Key) or a specified CMK for encryption and decryption. See `encryption` below.
+         */
+        encryption?: pulumi.Input<inputs.oss.BucketInventoryDestinationOssBucketDestinationEncryption | undefined>;
+        /**
+         * The file format of the manifest file.
+         */
+        format?: pulumi.Input<string | undefined>;
+        prefix?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket. The format is acs:ram::uid:role/rolename.
+         */
+        roleArn?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestinationEncryption {
+        /**
+         * The container that holds the SSE-KMS encryption key. See `ssekms` below.
+         */
+        ssekms?: pulumi.Input<inputs.oss.BucketInventoryDestinationOssBucketDestinationEncryptionSsekms | undefined>;
+        /**
+         * The container that holds the SSE-OSS encryption method. Set it to an empty string when OSS-managed keys are used.
+         */
+        sseoss?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestinationEncryptionSsekms {
+        /**
+         * KMS key ID.
+         */
+        keyId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketInventoryFilter {
+        /**
+         * The start timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+         */
+        lastModifyBeginTimeStamp?: pulumi.Input<number | undefined>;
+        /**
+         * The end timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+         */
+        lastModifyEndTimeStamp?: pulumi.Input<number | undefined>;
+        /**
+         * The minimum size of the filter file, in B. Value range: greater than or equal to 0 B, less than or equal to 48.8 TB.
+         */
+        lowerSizeBound?: pulumi.Input<number | undefined>;
+        /**
+         * The match prefix of the filter rule.
+         */
+        prefix?: pulumi.Input<string | undefined>;
+        /**
+         * The storage type of the filter file. Multiple storage types can be specified. Optional values: Standard: Standard storage IA: low-frequency access Archive: Archive storage ColdArchive: cold Archive storage All (default): All storage types
+         */
+        storageClass?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum size of the filter file, in B. Value range: greater than 0 B, less than or equal to 48.8 TB.
+         */
+        upperSizeBound?: pulumi.Input<number | undefined>;
+    }
+
+    export interface BucketInventoryIncrementalInventory {
+        /**
+         * Incremental inventory enabled
+         */
+        isEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Configuration container for incremental manifest file properties See `optionalFields` below.
+         */
+        optionalFields?: pulumi.Input<inputs.oss.BucketInventoryIncrementalInventoryOptionalFields | undefined>;
+        /**
+         * Incremental inventory export cycle container See `schedule` below.
+         */
+        schedule?: pulumi.Input<inputs.oss.BucketInventoryIncrementalInventorySchedule | undefined>;
+    }
+
+    export interface BucketInventoryIncrementalInventoryOptionalFields {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface BucketInventoryIncrementalInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency?: pulumi.Input<number | undefined>;
+    }
+
+    export interface BucketInventoryOptionalFields {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface BucketInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency?: pulumi.Input<string | undefined>;
     }
 
     export interface BucketLifecycleRule {
@@ -24153,6 +24277,8 @@ export namespace wafv3 {
          * - mpty: Indicates that the content is empty.
          * - exists: Indicates that the field exists.
          * - inl: indicates in the list.
+         * - in-list: Indicates that the value is in the list.
+         * - not-in-list: Indicates that the value is not in the list.
          *
          * > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
          */

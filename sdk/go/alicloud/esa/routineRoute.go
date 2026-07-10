@@ -95,7 +95,7 @@ type RoutineRoute struct {
 	// Bypass mode. Value range:
 	// - on: Open
 	// - off: off
-	Bypass pulumi.StringPtrOutput `pulumi:"bypass"`
+	Bypass pulumi.StringOutput `pulumi:"bypass"`
 	// Config Id
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// Spare
@@ -103,15 +103,15 @@ type RoutineRoute struct {
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
-	RouteEnable pulumi.StringPtrOutput `pulumi:"routeEnable"`
+	RouteEnable pulumi.StringOutput `pulumi:"routeEnable"`
 	// The route name.
-	RouteName pulumi.StringPtrOutput `pulumi:"routeName"`
+	RouteName pulumi.StringOutput `pulumi:"routeName"`
 	// The edge function Routine name.
 	RoutineName pulumi.StringOutput `pulumi:"routineName"`
 	// The rule content.
-	Rule pulumi.StringPtrOutput `pulumi:"rule"`
+	Rule pulumi.StringOutput `pulumi:"rule"`
 	// Rule execution order.
-	Sequence pulumi.IntPtrOutput `pulumi:"sequence"`
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// Site Id
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 }
@@ -123,8 +123,17 @@ func NewRoutineRoute(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.RouteEnable == nil {
+		return nil, errors.New("invalid value for required argument 'RouteEnable'")
+	}
+	if args.RouteName == nil {
+		return nil, errors.New("invalid value for required argument 'RouteName'")
+	}
 	if args.RoutineName == nil {
 		return nil, errors.New("invalid value for required argument 'RoutineName'")
+	}
+	if args.Rule == nil {
+		return nil, errors.New("invalid value for required argument 'Rule'")
 	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
@@ -215,13 +224,13 @@ type routineRouteArgs struct {
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
-	RouteEnable *string `pulumi:"routeEnable"`
+	RouteEnable string `pulumi:"routeEnable"`
 	// The route name.
-	RouteName *string `pulumi:"routeName"`
+	RouteName string `pulumi:"routeName"`
 	// The edge function Routine name.
 	RoutineName string `pulumi:"routineName"`
 	// The rule content.
-	Rule *string `pulumi:"rule"`
+	Rule string `pulumi:"rule"`
 	// Rule execution order.
 	Sequence *int `pulumi:"sequence"`
 	// Site Id
@@ -239,13 +248,13 @@ type RoutineRouteArgs struct {
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
-	RouteEnable pulumi.StringPtrInput
+	RouteEnable pulumi.StringInput
 	// The route name.
-	RouteName pulumi.StringPtrInput
+	RouteName pulumi.StringInput
 	// The edge function Routine name.
 	RoutineName pulumi.StringInput
 	// The rule content.
-	Rule pulumi.StringPtrInput
+	Rule pulumi.StringInput
 	// Rule execution order.
 	Sequence pulumi.IntPtrInput
 	// Site Id
@@ -342,8 +351,8 @@ func (o RoutineRouteOutput) ToRoutineRouteOutputWithContext(ctx context.Context)
 // Bypass mode. Value range:
 // - on: Open
 // - off: off
-func (o RoutineRouteOutput) Bypass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineRoute) pulumi.StringPtrOutput { return v.Bypass }).(pulumi.StringPtrOutput)
+func (o RoutineRouteOutput) Bypass() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.StringOutput { return v.Bypass }).(pulumi.StringOutput)
 }
 
 // Config Id
@@ -359,13 +368,13 @@ func (o RoutineRouteOutput) Fallback() pulumi.StringOutput {
 // Routing switch. Value range:
 // - on: Open
 // - off: off
-func (o RoutineRouteOutput) RouteEnable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineRoute) pulumi.StringPtrOutput { return v.RouteEnable }).(pulumi.StringPtrOutput)
+func (o RoutineRouteOutput) RouteEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.StringOutput { return v.RouteEnable }).(pulumi.StringOutput)
 }
 
 // The route name.
-func (o RoutineRouteOutput) RouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineRoute) pulumi.StringPtrOutput { return v.RouteName }).(pulumi.StringPtrOutput)
+func (o RoutineRouteOutput) RouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.StringOutput { return v.RouteName }).(pulumi.StringOutput)
 }
 
 // The edge function Routine name.
@@ -374,13 +383,13 @@ func (o RoutineRouteOutput) RoutineName() pulumi.StringOutput {
 }
 
 // The rule content.
-func (o RoutineRouteOutput) Rule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutineRoute) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
+func (o RoutineRouteOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.StringOutput { return v.Rule }).(pulumi.StringOutput)
 }
 
 // Rule execution order.
-func (o RoutineRouteOutput) Sequence() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RoutineRoute) pulumi.IntPtrOutput { return v.Sequence }).(pulumi.IntPtrOutput)
+func (o RoutineRouteOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // Site Id

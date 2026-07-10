@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.148.0+.
+// > **NOTE:** Available since v1.148.0.
 //
 // ## Example Usage
 //
@@ -63,11 +63,13 @@ type GetAuditPoliciesArgs struct {
 
 // A collection of values returned by getAuditPolicies.
 type GetAuditPoliciesResult struct {
+	// The ID of the instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                   `pulumi:"id"`
-	OutputFile *string                  `pulumi:"outputFile"`
-	Policies   []GetAuditPoliciesPolicy `pulumi:"policies"`
+	Id         string  `pulumi:"id"`
+	OutputFile *string `pulumi:"outputFile"`
+	// A list of Mongodb Audit Policies. Each element contains the following attributes:
+	Policies []GetAuditPoliciesPolicy `pulumi:"policies"`
 }
 
 func GetAuditPoliciesOutput(ctx *pulumi.Context, args GetAuditPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetAuditPoliciesResultOutput {
@@ -106,6 +108,7 @@ func (o GetAuditPoliciesResultOutput) ToGetAuditPoliciesResultOutputWithContext(
 	return o
 }
 
+// The ID of the instance.
 func (o GetAuditPoliciesResultOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuditPoliciesResult) string { return v.DbInstanceId }).(pulumi.StringOutput)
 }
@@ -119,6 +122,7 @@ func (o GetAuditPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAuditPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Mongodb Audit Policies. Each element contains the following attributes:
 func (o GetAuditPoliciesResultOutput) Policies() GetAuditPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetAuditPoliciesResult) []GetAuditPoliciesPolicy { return v.Policies }).(GetAuditPoliciesPolicyArrayOutput)
 }

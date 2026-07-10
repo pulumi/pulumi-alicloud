@@ -60,6 +60,8 @@ public final class DefenseRuleConfigConditionArgs extends com.pulumi.resources.R
      * - mpty: Indicates that the content is empty.
      * - exists: Indicates that the field exists.
      * - inl: indicates in the list.
+     * - in-list: Indicates that the value is in the list.
+     * - not-in-list: Indicates that the value is not in the list.
      * 
      * &gt; **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
      * 
@@ -93,6 +95,8 @@ public final class DefenseRuleConfigConditionArgs extends com.pulumi.resources.R
      * - mpty: Indicates that the content is empty.
      * - exists: Indicates that the field exists.
      * - inl: indicates in the list.
+     * - in-list: Indicates that the value is in the list.
+     * - not-in-list: Indicates that the value is not in the list.
      * 
      * &gt; **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
      * 
@@ -213,6 +217,8 @@ public final class DefenseRuleConfigConditionArgs extends com.pulumi.resources.R
          * - mpty: Indicates that the content is empty.
          * - exists: Indicates that the field exists.
          * - inl: indicates in the list.
+         * - in-list: Indicates that the value is in the list.
+         * - not-in-list: Indicates that the value is not in the list.
          * 
          * &gt; **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
          * 
@@ -250,6 +256,8 @@ public final class DefenseRuleConfigConditionArgs extends com.pulumi.resources.R
          * - mpty: Indicates that the content is empty.
          * - exists: Indicates that the field exists.
          * - inl: indicates in the list.
+         * - in-list: Indicates that the value is in the list.
+         * - not-in-list: Indicates that the value is not in the list.
          * 
          * &gt; **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
          * 

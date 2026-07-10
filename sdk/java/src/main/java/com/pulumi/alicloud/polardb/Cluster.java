@@ -1316,6 +1316,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetDbRevisionVersionCode);
     }
     /**
+     * The target minor version of the cluster. Used during creation.
+     * 
+     */
+    @Export(name="targetMinorVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> targetMinorVersion;
+
+    /**
+     * @return The target minor version of the cluster. Used during creation.
+     * 
+     */
+    public Output<Optional<String>> targetMinorVersion() {
+        return Codegen.optional(this.targetMinorVersion);
+    }
+    /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.

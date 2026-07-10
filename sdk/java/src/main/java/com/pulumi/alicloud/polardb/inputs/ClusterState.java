@@ -1209,6 +1209,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The target minor version of the cluster. Used during creation.
+     * 
+     */
+    @Import(name="targetMinorVersion")
+    private @Nullable Output<String> targetMinorVersion;
+
+    /**
+     * @return The target minor version of the cluster. Used during creation.
+     * 
+     */
+    public Optional<Output<String>> targetMinorVersion() {
+        return Optional.ofNullable(this.targetMinorVersion);
+    }
+
+    /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -1383,6 +1398,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.subCategory = $.subCategory;
         this.tags = $.tags;
         this.targetDbRevisionVersionCode = $.targetDbRevisionVersionCode;
+        this.targetMinorVersion = $.targetMinorVersion;
         this.tdeRegion = $.tdeRegion;
         this.tdeStatus = $.tdeStatus;
         this.upgradeType = $.upgradeType;
@@ -3099,6 +3115,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder targetDbRevisionVersionCode(String targetDbRevisionVersionCode) {
             return targetDbRevisionVersionCode(Output.of(targetDbRevisionVersionCode));
+        }
+
+        /**
+         * @param targetMinorVersion The target minor version of the cluster. Used during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetMinorVersion(@Nullable Output<String> targetMinorVersion) {
+            $.targetMinorVersion = targetMinorVersion;
+            return this;
+        }
+
+        /**
+         * @param targetMinorVersion The target minor version of the cluster. Used during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetMinorVersion(String targetMinorVersion) {
+            return targetMinorVersion(Output.of(targetMinorVersion));
         }
 
         /**

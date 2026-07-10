@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -49,14 +50,48 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
+     * Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="burstingEnabled")
+    private @Nullable Output<Boolean> burstingEnabled;
+
+    /**
+     * @return Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> burstingEnabled() {
+        return Optional.ofNullable(this.burstingEnabled);
+    }
+
+    /**
+     * Specifies whether to release the disk together with the instance. Valid values:
+     * 
+     */
+    @Import(name="deleteWithInstance")
+    private @Nullable Output<Boolean> deleteWithInstance;
+
+    /**
+     * @return Specifies whether to release the disk together with the instance. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> deleteWithInstance() {
+        return Optional.ofNullable(this.deleteWithInstance);
+    }
+
+    /**
+     * The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `description` can be modified.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
+     * @return The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `description` can be modified.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +114,18 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `diskName` can be modified.
      * 
      */
     @Import(name="diskName")
     private @Nullable Output<String> diskName;
 
     /**
-     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * @return The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     * 
+     * &gt; **NOTE:** From version 1.281.0, `diskName` can be modified.
      * 
      */
     public Optional<Output<String>> diskName() {
@@ -109,18 +148,37 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * @return The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
+    }
+
+    /**
+     * The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     * 
+     */
+    @Import(name="instanceId")
+    private @Nullable Output<String> instanceId;
+
+    /**
+     * @return The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     * 
+     */
+    public Optional<Output<String>> instanceId() {
+        return Optional.ofNullable(this.instanceId);
     }
 
     /**
@@ -129,6 +187,8 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
      * - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
+     * 
+     * &gt; **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
      * 
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      * 
@@ -143,6 +203,8 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
      * 
+     * &gt; **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+     * 
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      * 
      */
@@ -151,33 +213,64 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `period` has been deprecated from provider version 1.283.0.
+     * 
+     * @deprecated
+     * Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
+    @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Reserved parameters, no need to fill in.
+     * @return Field `period` has been deprecated from provider version 1.283.0.
+     * 
+     * @deprecated
+     * Field `period` has been deprecated from provider version 1.283.0.
      * 
      */
+    @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     * 
+     * @deprecated
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
+    @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return Reserved parameters, no need to fill in.
+     * @return Field `periodUnit` has been deprecated from provider version 1.283.0.
+     * 
+     * @deprecated
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
      * 
      */
+    @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
     public Optional<Output<String>> periodUnit() {
         return Optional.ofNullable(this.periodUnit);
+    }
+
+    /**
+     * The ID of the resource group to which the disk belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the disk belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
@@ -214,6 +307,21 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
+    }
+
+    /**
+     * The list of tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The list of tags.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -255,16 +363,21 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
     private CustomDiskArgs(CustomDiskArgs $) {
         this.autoPay = $.autoPay;
         this.autoRenew = $.autoRenew;
+        this.burstingEnabled = $.burstingEnabled;
+        this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
         this.diskCategory = $.diskCategory;
         this.diskName = $.diskName;
         this.dryRun = $.dryRun;
         this.instanceChargeType = $.instanceChargeType;
+        this.instanceId = $.instanceId;
         this.performanceLevel = $.performanceLevel;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
+        this.resourceGroupId = $.resourceGroupId;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
+        this.tags = $.tags;
         this.type = $.type;
         this.zoneId = $.zoneId;
     }
@@ -330,7 +443,51 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
+         * @param burstingEnabled Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(@Nullable Output<Boolean> burstingEnabled) {
+            $.burstingEnabled = burstingEnabled;
+            return this;
+        }
+
+        /**
+         * @param burstingEnabled Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder burstingEnabled(Boolean burstingEnabled) {
+            return burstingEnabled(Output.of(burstingEnabled));
+        }
+
+        /**
+         * @param deleteWithInstance Specifies whether to release the disk together with the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteWithInstance(@Nullable Output<Boolean> deleteWithInstance) {
+            $.deleteWithInstance = deleteWithInstance;
+            return this;
+        }
+
+        /**
+         * @param deleteWithInstance Specifies whether to release the disk together with the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteWithInstance(Boolean deleteWithInstance) {
+            return deleteWithInstance(Output.of(deleteWithInstance));
+        }
+
+        /**
+         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
+         * 
+         * &gt; **NOTE:** From version 1.281.0, `description` can be modified.
          * 
          * @return builder
          * 
@@ -341,7 +498,9 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https. From version 1.281.0, `description` can be modified.
+         * @param description The disk description. It must be 2 to 256 characters in length and cannot start with &#39;http:// &#39;or &#39;https.
+         * 
+         * &gt; **NOTE:** From version 1.281.0, `description` can be modified.
          * 
          * @return builder
          * 
@@ -372,7 +531,9 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+         * 
+         * &gt; **NOTE:** From version 1.281.0, `diskName` can be modified.
          * 
          * @return builder
          * 
@@ -383,7 +544,9 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+         * @param diskName The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+         * 
+         * &gt; **NOTE:** From version 1.281.0, `diskName` can be modified.
          * 
          * @return builder
          * 
@@ -414,7 +577,9 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+         * @param instanceChargeType The billing method. Valid values:
+         * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+         * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
          * 
          * @return builder
          * 
@@ -425,7 +590,9 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+         * @param instanceChargeType The billing method. Valid values:
+         * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+         * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
          * 
          * @return builder
          * 
@@ -435,11 +602,34 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param instanceId The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(@Nullable Output<String> instanceId) {
+            $.instanceId = instanceId;
+            return this;
+        }
+
+        /**
+         * @param instanceId The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(String instanceId) {
+            return instanceId(Output.of(instanceId));
+        }
+
+        /**
          * @param performanceLevel When creating an ESSD cloud disk, set the performance level of the disk. Value range:
          * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
          * - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
          * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
          * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
+         * 
+         * &gt; **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
          * 
          * For more information about how to select an ESSD performance level, see ESSD cloud disk.
          * 
@@ -458,6 +648,8 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
          * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
          * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
          * 
+         * &gt; **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+         * 
          * For more information about how to select an ESSD performance level, see ESSD cloud disk.
          * 
          * @return builder
@@ -468,45 +660,82 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Reserved parameters, no need to fill in.
+         * @param period Field `period` has been deprecated from provider version 1.283.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `period` has been deprecated from provider version 1.283.0.
+         * 
          */
+        @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
         /**
-         * @param period Reserved parameters, no need to fill in.
+         * @param period Field `period` has been deprecated from provider version 1.283.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `period` has been deprecated from provider version 1.283.0.
+         * 
          */
+        @Deprecated /* Field `period` has been deprecated from provider version 1.283.0. */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
 
         /**
-         * @param periodUnit Reserved parameters, no need to fill in.
+         * @param periodUnit Field `periodUnit` has been deprecated from provider version 1.283.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `periodUnit` has been deprecated from provider version 1.283.0.
+         * 
          */
+        @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
         public Builder periodUnit(@Nullable Output<String> periodUnit) {
             $.periodUnit = periodUnit;
             return this;
         }
 
         /**
-         * @param periodUnit Reserved parameters, no need to fill in.
+         * @param periodUnit Field `periodUnit` has been deprecated from provider version 1.283.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `periodUnit` has been deprecated from provider version 1.283.0.
+         * 
+         */
+        @Deprecated /* Field `periodUnit` has been deprecated from provider version 1.283.0. */
+        public Builder periodUnit(String periodUnit) {
+            return periodUnit(Output.of(periodUnit));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the disk belongs.
          * 
          * @return builder
          * 
          */
-        public Builder periodUnit(String periodUnit) {
-            return periodUnit(Output.of(periodUnit));
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the disk belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**
@@ -555,6 +784,27 @@ public final class CustomDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder snapshotId(String snapshotId) {
             return snapshotId(Output.of(snapshotId));
+        }
+
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

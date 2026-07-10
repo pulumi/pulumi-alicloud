@@ -363,7 +363,7 @@ type GetExecutionsExecution struct {
 	Mode string `pulumi:"mode"`
 	// The outputs of OOS Executions.
 	Outputs string `pulumi:"outputs"`
-	// The parameters required by the template
+	// The parameters required by the template.
 	Parameters string `pulumi:"parameters"`
 	// The id of parent OOS Execution.
 	ParentExecutionId string `pulumi:"parentExecutionId"`
@@ -377,6 +377,8 @@ type GetExecutionsExecution struct {
 	StatusMessage string `pulumi:"statusMessage"`
 	// The reason of status.
 	StatusReason string `pulumi:"statusReason"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The id of execution template.
 	TemplateId string `pulumi:"templateId"`
 	// The name of execution template.
@@ -419,7 +421,7 @@ type GetExecutionsExecutionArgs struct {
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The outputs of OOS Executions.
 	Outputs pulumi.StringInput `pulumi:"outputs"`
-	// The parameters required by the template
+	// The parameters required by the template.
 	Parameters pulumi.StringInput `pulumi:"parameters"`
 	// The id of parent OOS Execution.
 	ParentExecutionId pulumi.StringInput `pulumi:"parentExecutionId"`
@@ -433,6 +435,8 @@ type GetExecutionsExecutionArgs struct {
 	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
 	// The reason of status.
 	StatusReason pulumi.StringInput `pulumi:"statusReason"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The id of execution template.
 	TemplateId pulumi.StringInput `pulumi:"templateId"`
 	// The name of execution template.
@@ -544,7 +548,7 @@ func (o GetExecutionsExecutionOutput) Outputs() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Outputs }).(pulumi.StringOutput)
 }
 
-// The parameters required by the template
+// The parameters required by the template.
 func (o GetExecutionsExecutionOutput) Parameters() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExecutionsExecution) string { return v.Parameters }).(pulumi.StringOutput)
 }
@@ -577,6 +581,11 @@ func (o GetExecutionsExecutionOutput) StatusMessage() pulumi.StringOutput {
 // The reason of status.
 func (o GetExecutionsExecutionOutput) StatusReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExecutionsExecution) string { return v.StatusReason }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o GetExecutionsExecutionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetExecutionsExecution) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The id of execution template.

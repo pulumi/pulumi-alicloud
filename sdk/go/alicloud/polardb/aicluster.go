@@ -68,10 +68,14 @@ import (
 type Aicluster struct {
 	pulumi.CustomResourceState
 
+	// (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+	ApiKey pulumi.StringOutput `pulumi:"apiKey"`
 	// Whether to enable auto-renewal.
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
 	// Whether to use coupons automatically. Default value: `true`.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
+	// (Available since 1.284.0) The connection string of the AI cluster endpoint.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The description of the AI DB cluster.
 	DbClusterDescription pulumi.StringPtrOutput `pulumi:"dbClusterDescription"`
 	// The ID of the associated DB cluster.
@@ -132,6 +136,10 @@ func NewAicluster(ctx *pulumi.Context,
 	if args.VswitchId == nil {
 		return nil, errors.New("invalid value for required argument 'VswitchId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Aicluster
 	err := ctx.RegisterResource("alicloud:polardb/aicluster:Aicluster", name, args, &resource, opts...)
@@ -155,10 +163,14 @@ func GetAicluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Aicluster resources.
 type aiclusterState struct {
+	// (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+	ApiKey *string `pulumi:"apiKey"`
 	// Whether to enable auto-renewal.
 	AutoRenew *string `pulumi:"autoRenew"`
 	// Whether to use coupons automatically. Default value: `true`.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
+	// (Available since 1.284.0) The connection string of the AI cluster endpoint.
+	ConnectionString *string `pulumi:"connectionString"`
 	// The description of the AI DB cluster.
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
 	// The ID of the associated DB cluster.
@@ -198,10 +210,14 @@ type aiclusterState struct {
 }
 
 type AiclusterState struct {
+	// (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+	ApiKey pulumi.StringPtrInput
 	// Whether to enable auto-renewal.
 	AutoRenew pulumi.StringPtrInput
 	// Whether to use coupons automatically. Default value: `true`.
 	AutoUseCoupon pulumi.BoolPtrInput
+	// (Available since 1.284.0) The connection string of the AI cluster endpoint.
+	ConnectionString pulumi.StringPtrInput
 	// The description of the AI DB cluster.
 	DbClusterDescription pulumi.StringPtrInput
 	// The ID of the associated DB cluster.
@@ -410,6 +426,11 @@ func (o AiclusterOutput) ToAiclusterOutputWithContext(ctx context.Context) Aiclu
 	return o
 }
 
+// (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+func (o AiclusterOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Aicluster) pulumi.StringOutput { return v.ApiKey }).(pulumi.StringOutput)
+}
+
 // Whether to enable auto-renewal.
 func (o AiclusterOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Aicluster) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
@@ -418,6 +439,11 @@ func (o AiclusterOutput) AutoRenew() pulumi.StringPtrOutput {
 // Whether to use coupons automatically. Default value: `true`.
 func (o AiclusterOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Aicluster) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
+}
+
+// (Available since 1.284.0) The connection string of the AI cluster endpoint.
+func (o AiclusterOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *Aicluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
 // The description of the AI DB cluster.

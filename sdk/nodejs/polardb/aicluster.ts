@@ -73,6 +73,10 @@ export class Aicluster extends pulumi.CustomResource {
     }
 
     /**
+     * (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+     */
+    declare public /*out*/ readonly apiKey: pulumi.Output<string>;
+    /**
      * Whether to enable auto-renewal.
      */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
@@ -80,6 +84,10 @@ export class Aicluster extends pulumi.CustomResource {
      * Whether to use coupons automatically. Default value: `true`.
      */
     declare public readonly autoUseCoupon: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available since 1.284.0) The connection string of the AI cluster endpoint.
+     */
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
     /**
      * The description of the AI DB cluster.
      */
@@ -166,8 +174,10 @@ export class Aicluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AiclusterState | undefined;
+            resourceInputs["apiKey"] = state?.apiKey;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["autoUseCoupon"] = state?.autoUseCoupon;
+            resourceInputs["connectionString"] = state?.connectionString;
             resourceInputs["dbClusterDescription"] = state?.dbClusterDescription;
             resourceInputs["dbClusterId"] = state?.dbClusterId;
             resourceInputs["dbNodeClass"] = state?.dbNodeClass;
@@ -221,10 +231,14 @@ export class Aicluster extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["apiKey"] = undefined /*out*/;
+            resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["modelType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Aicluster.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -234,6 +248,10 @@ export class Aicluster extends pulumi.CustomResource {
  */
 export interface AiclusterState {
     /**
+     * (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+     */
+    apiKey?: pulumi.Input<string | undefined>;
+    /**
      * Whether to enable auto-renewal.
      */
     autoRenew?: pulumi.Input<string | undefined>;
@@ -241,6 +259,10 @@ export interface AiclusterState {
      * Whether to use coupons automatically. Default value: `true`.
      */
     autoUseCoupon?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Available since 1.284.0) The connection string of the AI cluster endpoint.
+     */
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The description of the AI DB cluster.
      */

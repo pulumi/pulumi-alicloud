@@ -486,6 +486,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly targetDbRevisionVersionCode: pulumi.Output<string | undefined>;
     /**
+     * The target minor version of the cluster. Used during creation.
+     */
+    declare public readonly targetMinorVersion: pulumi.Output<string | undefined>;
+    /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -601,6 +605,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subCategory"] = state?.subCategory;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["targetDbRevisionVersionCode"] = state?.targetDbRevisionVersionCode;
+            resourceInputs["targetMinorVersion"] = state?.targetMinorVersion;
             resourceInputs["tdeRegion"] = state?.tdeRegion;
             resourceInputs["tdeStatus"] = state?.tdeStatus;
             resourceInputs["upgradeType"] = state?.upgradeType;
@@ -687,6 +692,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subCategory"] = args?.subCategory;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["targetDbRevisionVersionCode"] = args?.targetDbRevisionVersionCode;
+            resourceInputs["targetMinorVersion"] = args?.targetMinorVersion;
             resourceInputs["tdeStatus"] = args?.tdeStatus;
             resourceInputs["upgradeType"] = args?.upgradeType;
             resourceInputs["vpcId"] = args?.vpcId;
@@ -1043,6 +1049,10 @@ export interface ClusterState {
      */
     targetDbRevisionVersionCode?: pulumi.Input<string | undefined>;
     /**
+     * The target minor version of the cluster. Used during creation.
+     */
+    targetMinorVersion?: pulumi.Input<string | undefined>;
+    /**
      * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -1390,6 +1400,10 @@ export interface ClusterArgs {
      * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
      */
     targetDbRevisionVersionCode?: pulumi.Input<string | undefined>;
+    /**
+     * The target minor version of the cluster. Used during creation.
+     */
+    targetMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
      * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.

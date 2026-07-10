@@ -832,7 +832,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
         /// - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
         /// 
-        /// &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        /// &gt; **NOTE:** This parameter is required when performing a major version upgrade (`EngineVersion` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         /// </summary>
         [Output("collectStatMode")]
         public Output<string?> CollectStatMode { get; private set; } = null!;
@@ -1691,7 +1691,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
         /// - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
         /// 
-        /// &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        /// &gt; **NOTE:** This parameter is required when performing a major version upgrade (`EngineVersion` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         /// </summary>
         [Input("collectStatMode")]
         public Input<string>? CollectStatMode { get; set; }
@@ -2568,7 +2568,7 @@ namespace Pulumi.AliCloud.Rds
         /// - Before: The system collects the statistics of the instance before the switchover to ensure service stability. If the instance contains a large amount of data, the upgrade may require a long period of time.
         /// - After: The system collects the statistics of the instance after the switchover to accelerate the upgrade. After the upgrade, if you access tables for which no statistics are generated, the query plans may be inaccurate, and your database service may be unavailable during peak hours.
         /// 
-        /// &gt; **NOTE:** If you set the SwitchOver parameter to false, the value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
+        /// &gt; **NOTE:** This parameter is required when performing a major version upgrade (`EngineVersion` changes), because RDS for PostgreSQL only supports local upgrade. The value Before specifies that the system collects the statistics of the instance before the instance starts to process read and write requests, and the value After specifies that the system collects the statistics of the instance after the instance starts to process read and write requests.
         /// </summary>
         [Input("collectStatMode")]
         public Input<string>? CollectStatMode { get; set; }

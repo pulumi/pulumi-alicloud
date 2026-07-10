@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultAuditPolicy = new AuditPolicy("defaultAuditPolicy", AuditPolicyArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
- *             .auditStatus("disabled")
+ *             .auditStatus("enable")
  *             .build());
  * 
  *     }
@@ -119,14 +119,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:mongodb/auditPolicy:AuditPolicy")
 public class AuditPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Audit state, Valid values: `enable`, `disabled`.
+     * Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      * 
      */
     @Export(name="auditStatus", refs={String.class}, tree="[0]")
     private Output<String> auditStatus;
 
     /**
-     * @return Audit state, Valid values: `enable`, `disabled`.
+     * @return Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      * 
      */
     public Output<String> auditStatus() {
@@ -161,14 +161,46 @@ public class AuditPolicy extends com.pulumi.resources.CustomResource {
         return this.filter;
     }
     /**
-     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     * 
+     */
+    @Export(name="hotStoragePeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> hotStoragePeriod;
+
+    /**
+     * @return The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     * 
+     */
+    public Output<Integer> hotStoragePeriod() {
+        return this.hotStoragePeriod;
+    }
+    /**
+     * The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     * 
+     */
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
+    private Output<String> serviceType;
+
+    /**
+     * @return The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     * 
+     */
+    public Output<String> serviceType() {
+        return this.serviceType;
+    }
+    /**
+     * Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      * 
      */
     @Export(name="storagePeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> storagePeriod;
 
     /**
-     * @return Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * @return Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      * 
      */
     public Output<Integer> storagePeriod() {

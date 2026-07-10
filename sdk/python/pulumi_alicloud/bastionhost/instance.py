@@ -42,9 +42,12 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[_builtins.str] license_code: The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
         :param pulumi.Input[_builtins.str] plan_code: The plan code of Cloud Bastionhost instance. Valid values:
@@ -52,7 +55,9 @@ class InstanceArgs:
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
         :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
@@ -111,9 +116,12 @@ class InstanceArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[_builtins.str]:
         """
-        The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-        If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-        If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        The bandwidth of Cloud Bastionhost instance.
+
+        > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+
+        - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -176,7 +184,9 @@ class InstanceArgs:
     @pulumi.getter
     def storage(self) -> pulumi.Input[_builtins.str]:
         """
-        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+
+        ->**NOTE:** From version 1.251.0, `storage` can be modified.
         """
         return pulumi.get(self, "storage")
 
@@ -365,9 +375,12 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
 
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceLdapAuthServerArgs']]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
@@ -395,7 +408,9 @@ class _InstanceState:
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
         :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
-        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -452,9 +467,12 @@ class _InstanceState:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-        If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-        If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        The bandwidth of Cloud Bastionhost instance.
+
+        > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+
+        - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -636,7 +654,9 @@ class _InstanceState:
     @pulumi.getter
     def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+
+        ->**NOTE:** From version 1.251.0, `storage` can be modified.
         """
         return pulumi.get(self, "storage")
 
@@ -811,9 +831,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdAuthServerArgs', 'InstanceAdAuthServerArgsDict']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLdapAuthServerArgs', 'InstanceLdapAuthServerArgsDict']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
@@ -841,7 +864,9 @@ class Instance(pulumi.CustomResource):
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
         :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
-        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -1075,9 +1100,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdAuthServerArgs', 'InstanceAdAuthServerArgsDict']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-               If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-               If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+               
+               > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+               
+               - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+               - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
         :param pulumi.Input[_builtins.bool] enable_public_access: Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLdapAuthServerArgs', 'InstanceLdapAuthServerArgsDict']]]] ldap_auth_servers: The LDAP auth server of the Instance. See `ldap_auth_server` below.
@@ -1105,7 +1133,9 @@ class Instance(pulumi.CustomResource):
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
         :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
-        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+               
+               ->**NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
         """
@@ -1145,9 +1175,12 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.str]:
         """
-        The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-        If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-        If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        The bandwidth of Cloud Bastionhost instance.
+
+        > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+
+        - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1273,7 +1306,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def storage(self) -> pulumi.Output[_builtins.str]:
         """
-        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+        The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+
+        ->**NOTE:** From version 1.251.0, `storage` can be modified.
         """
         return pulumi.get(self, "storage")
 

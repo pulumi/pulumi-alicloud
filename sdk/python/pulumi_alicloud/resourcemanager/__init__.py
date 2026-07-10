@@ -30,12 +30,14 @@ from .get_roles import *
 from .get_shared_resources import *
 from .get_shared_targets import *
 from .handshake import *
+from .handshake_acceptance import *
 from .message_contact import *
 from .multi_account_delivery_channel import *
 from .policy import *
 from .policy_attachment import *
 from .policy_version import *
 from .resource_directory import *
+from .resource_directory_sharing import *
 from .resource_group import *
 from .resource_share import *
 from .role import *

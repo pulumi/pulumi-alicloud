@@ -77,13 +77,27 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `True`, `False`.
+        /// </summary>
+        [Output("burstingEnabled")]
+        public Output<bool> BurstingEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `Description` can be modified.
+        /// Specifies whether to release the disk together with the instance. Valid values:
+        /// </summary>
+        [Output("deleteWithInstance")]
+        public Output<bool> DeleteWithInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+        /// 
+        /// &gt; **NOTE:** From version 1.281.0, `Description` can be modified.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -95,10 +109,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> DiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `DiskName` can be modified.
+        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+        /// 
+        /// &gt; **NOTE:** From version 1.281.0, `DiskName` can be modified.
         /// </summary>
         [Output("diskName")]
-        public Output<string?> DiskName { get; private set; } = null!;
+        public Output<string> DiskName { get; private set; } = null!;
 
         /// <summary>
         /// Whether to pre-check the instance creation operation. Valid values:
@@ -107,10 +123,18 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        /// The billing method. Valid values:
+        /// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+        /// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the instance to which the disk is attached. If `InstanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
         /// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -119,19 +143,21 @@ namespace Pulumi.AliCloud.Rds
         /// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
         /// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
         /// 
+        /// &gt; **NOTE:** From version 1.283.0, `PerformanceLevel` can be modified.
+        /// 
         /// For more information about how to select an ESSD performance level, see ESSD cloud disk.
         /// </summary>
         [Output("performanceLevel")]
-        public Output<string?> PerformanceLevel { get; private set; } = null!;
+        public Output<string> PerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved parameters, no need to fill in.
+        /// Field `Period` has been deprecated from provider version 1.283.0.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Reserved parameters, no need to fill in.
+        /// Field `PeriodUnit` has been deprecated from provider version 1.283.0.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -164,10 +190,16 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// Disk status. Value Description:_use: In use.
+        /// Disk status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of tags.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The method of expanding the disk. Value range:
@@ -242,7 +274,21 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `Description` can be modified.
+        /// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `True`, `False`.
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies whether to release the disk together with the instance. Valid values:
+        /// </summary>
+        [Input("deleteWithInstance")]
+        public Input<bool>? DeleteWithInstance { get; set; }
+
+        /// <summary>
+        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+        /// 
+        /// &gt; **NOTE:** From version 1.281.0, `Description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -254,7 +300,9 @@ namespace Pulumi.AliCloud.Rds
         public Input<string> DiskCategory { get; set; } = null!;
 
         /// <summary>
-        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `DiskName` can be modified.
+        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+        /// 
+        /// &gt; **NOTE:** From version 1.281.0, `DiskName` can be modified.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
@@ -266,10 +314,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        /// The billing method. Valid values:
+        /// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+        /// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// The ID of the instance to which the disk is attached. If `InstanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -278,22 +334,30 @@ namespace Pulumi.AliCloud.Rds
         /// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
         /// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
         /// 
+        /// &gt; **NOTE:** From version 1.283.0, `PerformanceLevel` can be modified.
+        /// 
         /// For more information about how to select an ESSD performance level, see ESSD cloud disk.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// Reserved parameters, no need to fill in.
+        /// Field `Period` has been deprecated from provider version 1.283.0.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Reserved parameters, no need to fill in.
+        /// Field `PeriodUnit` has been deprecated from provider version 1.283.0.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the disk belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
@@ -309,6 +373,18 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The list of tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The method of expanding the disk. Value range:
@@ -345,13 +421,27 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
+        /// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `True`, `False`.
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
         /// Creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `Description` can be modified.
+        /// Specifies whether to release the disk together with the instance. Valid values:
+        /// </summary>
+        [Input("deleteWithInstance")]
+        public Input<bool>? DeleteWithInstance { get; set; }
+
+        /// <summary>
+        /// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+        /// 
+        /// &gt; **NOTE:** From version 1.281.0, `Description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -363,7 +453,9 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? DiskCategory { get; set; }
 
         /// <summary>
-        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `DiskName` can be modified.
+        /// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+        /// 
+        /// &gt; **NOTE:** From version 1.281.0, `DiskName` can be modified.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
@@ -375,10 +467,18 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        /// The billing method. Valid values:
+        /// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+        /// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// The ID of the instance to which the disk is attached. If `InstanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -387,19 +487,21 @@ namespace Pulumi.AliCloud.Rds
         /// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
         /// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
         /// 
+        /// &gt; **NOTE:** From version 1.283.0, `PerformanceLevel` can be modified.
+        /// 
         /// For more information about how to select an ESSD performance level, see ESSD cloud disk.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// Reserved parameters, no need to fill in.
+        /// Field `Period` has been deprecated from provider version 1.283.0.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Reserved parameters, no need to fill in.
+        /// Field `PeriodUnit` has been deprecated from provider version 1.283.0.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -432,10 +534,22 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// Disk status. Value Description:_use: In use.
+        /// Disk status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The list of tags.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The method of expanding the disk. Value range:

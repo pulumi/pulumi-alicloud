@@ -13,8 +13,8 @@ namespace Pulumi.AliCloud.Oos
     {
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
-        ///  
-        /// &gt; **NOTE:** Available in v1.93.0+.
+        /// 
+        /// &gt; **NOTE:** Available since v1.93.0.
         /// 
         /// ## Example Usage
         /// 
@@ -49,8 +49,8 @@ namespace Pulumi.AliCloud.Oos
 
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
-        ///  
-        /// &gt; **NOTE:** Available in v1.93.0+.
+        /// 
+        /// &gt; **NOTE:** Available since v1.93.0.
         /// 
         /// ## Example Usage
         /// 
@@ -85,8 +85,8 @@ namespace Pulumi.AliCloud.Oos
 
         /// <summary>
         /// This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
-        ///  
-        /// &gt; **NOTE:** Available in v1.93.0+.
+        /// 
+        /// &gt; **NOTE:** Available since v1.93.0.
         /// 
         /// ## Example Usage
         /// 
@@ -369,9 +369,18 @@ namespace Pulumi.AliCloud.Oos
     [OutputType]
     public sealed class GetExecutionsResult
     {
+        /// <summary>
+        /// The category of OOS Execution.
+        /// </summary>
         public readonly string? Category;
+        /// <summary>
+        /// The time when the execution was ended.
+        /// </summary>
         public readonly string? EndDate;
         public readonly string? EndDateAfter;
+        /// <summary>
+        /// The user who execute the template.
+        /// </summary>
         public readonly string? ExecutedBy;
         /// <summary>
         /// A list of OOS Executions. Each element contains the following attributes:
@@ -386,16 +395,34 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly bool? IncludeChildExecution;
+        /// <summary>
+        /// The mode of OOS Execution.
+        /// </summary>
         public readonly string? Mode;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The id of parent OOS Execution.
+        /// </summary>
         public readonly string? ParentExecutionId;
+        /// <summary>
+        /// The role that executes the current template.
+        /// </summary>
         public readonly string? RamRole;
         public readonly string? SortField;
         public readonly string? SortOrder;
         public readonly string? StartDateAfter;
         public readonly string? StartDateBefore;
+        /// <summary>
+        /// The status of OOS Execution.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The name of execution template.
+        /// </summary>
         public readonly string? TemplateName;
 
         [OutputConstructor]

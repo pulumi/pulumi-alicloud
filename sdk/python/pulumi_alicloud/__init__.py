@@ -6945,6 +6945,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketInventory",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketInventory:BucketInventory": "BucketInventory"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketLogging",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -8017,6 +8025,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "resourcemanager/handshakeAcceptance",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/handshakeAcceptance:HandshakeAcceptance": "HandshakeAcceptance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "resourcemanager/messageContact",
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
@@ -8061,6 +8077,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
    "alicloud:resourcemanager/resourceDirectory:ResourceDirectory": "ResourceDirectory"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "resourcemanager/resourceDirectorySharing",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing": "ResourceDirectorySharing"
   }
  },
  {
@@ -9081,6 +9105,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "threatdetection/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "threatdetection/vulWhitelist",
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
@@ -9717,6 +9749,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/addressBook",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/addressBook:AddressBook": "AddressBook"
   }
  },
  {

@@ -90,6 +90,7 @@ class ClusterArgs:
                  sub_category: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tde_status: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -205,6 +206,7 @@ class ClusterArgs:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
         :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
@@ -348,6 +350,8 @@ class ClusterArgs:
             pulumi.set(__self__, "tags", tags)
         if target_db_revision_version_code is not None:
             pulumi.set(__self__, "target_db_revision_version_code", target_db_revision_version_code)
+        if target_minor_version is not None:
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
         if tde_status is not None:
             pulumi.set(__self__, "tde_status", tde_status)
         if upgrade_type is not None:
@@ -1226,6 +1230,18 @@ class ClusterArgs:
         pulumi.set(self, "target_db_revision_version_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The target minor version of the cluster. Used during creation.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @target_minor_version.setter
+    def target_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_minor_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1365,6 +1381,7 @@ class _ClusterState:
                  sub_category: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tde_region: pulumi.Input[Optional[_builtins.str]] = None,
                  tde_status: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1486,6 +1503,7 @@ class _ClusterState:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
         :param pulumi.Input[_builtins.str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -1645,6 +1663,8 @@ class _ClusterState:
             pulumi.set(__self__, "tags", tags)
         if target_db_revision_version_code is not None:
             pulumi.set(__self__, "target_db_revision_version_code", target_db_revision_version_code)
+        if target_minor_version is not None:
+            pulumi.set(__self__, "target_minor_version", target_minor_version)
         if tde_region is not None:
             pulumi.set(__self__, "tde_region", tde_region)
         if tde_status is not None:
@@ -2585,6 +2605,18 @@ class _ClusterState:
         pulumi.set(self, "target_db_revision_version_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The target minor version of the cluster. Used during creation.
+        """
+        return pulumi.get(self, "target_minor_version")
+
+    @target_minor_version.setter
+    def target_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_minor_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="tdeRegion")
     def tde_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -2736,6 +2768,7 @@ class Cluster(pulumi.CustomResource):
                  sub_category: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tde_status: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2965,6 +2998,7 @@ class Cluster(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
         :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
                > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
@@ -3177,6 +3211,7 @@ class Cluster(pulumi.CustomResource):
                  sub_category: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
                  tde_status: pulumi.Input[Optional[_builtins.str]] = None,
                  upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3266,6 +3301,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["sub_category"] = sub_category
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target_db_revision_version_code"] = target_db_revision_version_code
+            __props__.__dict__["target_minor_version"] = target_minor_version
             __props__.__dict__["tde_status"] = tde_status
             __props__.__dict__["upgrade_type"] = upgrade_type
             __props__.__dict__["vpc_id"] = vpc_id
@@ -3361,6 +3397,7 @@ class Cluster(pulumi.CustomResource):
             sub_category: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
             tde_region: pulumi.Input[Optional[_builtins.str]] = None,
             tde_status: pulumi.Input[Optional[_builtins.str]] = None,
             upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3486,6 +3523,7 @@ class Cluster(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
+        :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
         :param pulumi.Input[_builtins.str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -3575,6 +3613,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["sub_category"] = sub_category
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_db_revision_version_code"] = target_db_revision_version_code
+        __props__.__dict__["target_minor_version"] = target_minor_version
         __props__.__dict__["tde_region"] = tde_region
         __props__.__dict__["tde_status"] = tde_status
         __props__.__dict__["upgrade_type"] = upgrade_type
@@ -4212,6 +4251,14 @@ class Cluster(pulumi.CustomResource):
         The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         """
         return pulumi.get(self, "target_db_revision_version_code")
+
+    @_builtins.property
+    @pulumi.getter(name="targetMinorVersion")
+    def target_minor_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The target minor version of the cluster. Used during creation.
+        """
+        return pulumi.get(self, "target_minor_version")
 
     @_builtins.property
     @pulumi.getter(name="tdeRegion")

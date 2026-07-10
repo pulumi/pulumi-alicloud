@@ -17,6 +17,7 @@ from .bucket_cname_token import *
 from .bucket_cors import *
 from .bucket_data_redundancy_transition import *
 from .bucket_https_config import *
+from .bucket_inventory import *
 from .bucket_logging import *
 from .bucket_meta_query import *
 from .bucket_object import *
@@ -35,6 +36,7 @@ from .bucket_user_defined_log_fields import *
 from .bucket_versioning import *
 from .bucket_website import *
 from .bucket_worm import *
+from .get_bucket_inventories import *
 from .get_bucket_objects import *
 from .get_buckets import *
 from .get_instance_attachments import *

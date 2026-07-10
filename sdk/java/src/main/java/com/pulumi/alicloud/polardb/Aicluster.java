@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -81,6 +82,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:polardb/aicluster:Aicluster")
 public class Aicluster extends com.pulumi.resources.CustomResource {
     /**
+     * (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+     * 
+     */
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
+    private Output<String> apiKey;
+
+    /**
+     * @return (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+     * 
+     */
+    public Output<String> apiKey() {
+        return this.apiKey;
+    }
+    /**
      * Whether to enable auto-renewal.
      * 
      */
@@ -107,6 +122,20 @@ public class Aicluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoUseCoupon() {
         return Codegen.optional(this.autoUseCoupon);
+    }
+    /**
+     * (Available since 1.284.0) The connection string of the AI cluster endpoint.
+     * 
+     */
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
+    private Output<String> connectionString;
+
+    /**
+     * @return (Available since 1.284.0) The connection string of the AI cluster endpoint.
+     * 
+     */
+    public Output<String> connectionString() {
+        return this.connectionString;
     }
     /**
      * The description of the AI DB cluster.
@@ -400,6 +429,9 @@ public class Aicluster extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "apiKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

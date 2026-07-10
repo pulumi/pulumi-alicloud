@@ -37,18 +37,24 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+     * The bandwidth of Cloud Bastionhost instance.
+     * 
+     * &gt; **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     * 
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+     * @return The bandwidth of Cloud Bastionhost instance.
+     * 
+     * &gt; **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     * 
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -267,14 +273,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     * 
+     * -&gt;**NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
     @Import(name="storage")
     private @Nullable Output<String> storage;
 
     /**
-     * @return The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+     * @return The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     * 
+     * -&gt;**NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
     public Optional<Output<String>> storage() {
@@ -384,9 +394,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-         * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-         * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+         * @param bandwidth The bandwidth of Cloud Bastionhost instance.
+         * 
+         * &gt; **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+         * 
+         * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+         * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
          * 
          * @return builder
          * 
@@ -397,9 +410,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-         * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-         * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+         * @param bandwidth The bandwidth of Cloud Bastionhost instance.
+         * 
+         * &gt; **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+         * 
+         * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+         * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
          * 
          * @return builder
          * 
@@ -733,7 +749,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+         * @param storage The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+         * 
+         * -&gt;**NOTE:** From version 1.251.0, `storage` can be modified.
          * 
          * @return builder
          * 
@@ -744,7 +762,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storage The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+         * @param storage The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+         * 
+         * -&gt;**NOTE:** From version 1.251.0, `storage` can be modified.
          * 
          * @return builder
          * 

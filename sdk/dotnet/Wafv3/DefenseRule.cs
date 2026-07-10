@@ -129,6 +129,12 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<string> DefenseType { get; private set; } = null!;
 
         /// <summary>
+        /// The modification time of the protection rule.
+        /// </summary>
+        [Output("gmtModified")]
+        public Output<string> GmtModified { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the Web Application Firewall (WAF) instance.
         /// </summary>
         [Output("instanceId")]
@@ -309,6 +315,12 @@ namespace Pulumi.AliCloud.Wafv3
         /// </summary>
         [Input("defenseType")]
         public Input<string>? DefenseType { get; set; }
+
+        /// <summary>
+        /// The modification time of the protection rule.
+        /// </summary>
+        [Input("gmtModified")]
+        public Input<string>? GmtModified { get; set; }
 
         /// <summary>
         /// The ID of the Web Application Firewall (WAF) instance.

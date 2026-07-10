@@ -33,6 +33,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Internet asset protection switch. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="autoAssetProtection")
+    private @Nullable Output<String> autoAssetProtection;
+
+    /**
+     * @return Internet asset protection switch. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<String>> autoAssetProtection() {
+        return Optional.ofNullable(this.autoAssetProtection);
+    }
+
+    /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
@@ -168,14 +183,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The logistics.
+     * The logistics address of this order. The parameter is immutable after resource creation.
      * 
      */
     @Import(name="logistics")
     private @Nullable Output<String> logistics;
 
     /**
-     * @return The logistics.
+     * @return The logistics address of this order. The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> logistics() {
@@ -369,6 +384,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.accountNumber = $.accountNumber;
+        this.autoAssetProtection = $.autoAssetProtection;
         this.bandWidth = $.bandWidth;
         this.cfwAccount = $.cfwAccount;
         this.cfwLog = $.cfwLog;
@@ -429,6 +445,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountNumber(Integer accountNumber) {
             return accountNumber(Output.of(accountNumber));
+        }
+
+        /**
+         * @param autoAssetProtection Internet asset protection switch. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoAssetProtection(@Nullable Output<String> autoAssetProtection) {
+            $.autoAssetProtection = autoAssetProtection;
+            return this;
+        }
+
+        /**
+         * @param autoAssetProtection Internet asset protection switch. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoAssetProtection(String autoAssetProtection) {
+            return autoAssetProtection(Output.of(autoAssetProtection));
         }
 
         /**
@@ -621,7 +658,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logistics The logistics.
+         * @param logistics The logistics address of this order. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -632,7 +669,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logistics The logistics.
+         * @param logistics The logistics address of this order. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 

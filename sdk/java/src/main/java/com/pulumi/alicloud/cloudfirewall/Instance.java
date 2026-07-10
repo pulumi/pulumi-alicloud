@@ -23,8 +23,6 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.139.0.
  * 
- * &gt; **NOTE:** Deprecated since v1.269.0.
- * 
  * &gt; **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
  * 
  * ## Example Usage
@@ -127,6 +125,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> accountNumber() {
         return Codegen.optional(this.accountNumber);
+    }
+    /**
+     * Internet asset protection switch. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="autoAssetProtection", refs={String.class}, tree="[0]")
+    private Output<String> autoAssetProtection;
+
+    /**
+     * @return Internet asset protection switch. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<String> autoAssetProtection() {
+        return this.autoAssetProtection;
     }
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
@@ -255,14 +267,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipNumber;
     }
     /**
-     * The logistics.
+     * The logistics address of this order. The parameter is immutable after resource creation.
      * 
      */
     @Export(name="logistics", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logistics;
 
     /**
-     * @return The logistics.
+     * @return The logistics address of this order. The parameter is immutable after resource creation.
      * 
      */
     public Output<Optional<String>> logistics() {

@@ -85,6 +85,8 @@ type ServiceQueue struct {
 	PollingWaitSeconds pulumi.IntOutput `pulumi:"pollingWaitSeconds"`
 	// The name of the queue.
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
+	// The type of the queue. Default value: `normal`. Valid values:
+	QueueType pulumi.StringOutput `pulumi:"queueType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
@@ -140,6 +142,8 @@ type serviceQueueState struct {
 	PollingWaitSeconds *int `pulumi:"pollingWaitSeconds"`
 	// The name of the queue.
 	QueueName *string `pulumi:"queueName"`
+	// The type of the queue. Default value: `normal`. Valid values:
+	QueueType *string `pulumi:"queueType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
@@ -163,6 +167,8 @@ type ServiceQueueState struct {
 	PollingWaitSeconds pulumi.IntPtrInput
 	// The name of the queue.
 	QueueName pulumi.StringPtrInput
+	// The type of the queue. Default value: `normal`. Valid values:
+	QueueType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
@@ -188,6 +194,8 @@ type serviceQueueArgs struct {
 	PollingWaitSeconds *int `pulumi:"pollingWaitSeconds"`
 	// The name of the queue.
 	QueueName string `pulumi:"queueName"`
+	// The type of the queue. Default value: `normal`. Valid values:
+	QueueType *string `pulumi:"queueType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
@@ -210,6 +218,8 @@ type ServiceQueueArgs struct {
 	PollingWaitSeconds pulumi.IntPtrInput
 	// The name of the queue.
 	QueueName pulumi.StringInput
+	// The type of the queue. Default value: `normal`. Valid values:
+	QueueType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
@@ -341,6 +351,11 @@ func (o ServiceQueueOutput) PollingWaitSeconds() pulumi.IntOutput {
 // The name of the queue.
 func (o ServiceQueueOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
+}
+
+// The type of the queue. Default value: `normal`. Valid values:
+func (o ServiceQueueOutput) QueueType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceQueue) pulumi.StringOutput { return v.QueueType }).(pulumi.StringOutput)
 }
 
 // A mapping of tags to assign to the resource.

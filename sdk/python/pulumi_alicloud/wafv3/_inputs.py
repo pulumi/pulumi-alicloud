@@ -841,6 +841,8 @@ class DefenseRuleConfigConditionArgsDict(TypedDict):
     - mpty: Indicates that the content is empty.
     - exists: Indicates that the field exists.
     - inl: indicates in the list.
+    - in-list: Indicates that the value is in the list.
+    - not-in-list: Indicates that the value is not in the list.
 
     > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
     """
@@ -891,6 +893,8 @@ class DefenseRuleConfigConditionArgs:
                - mpty: Indicates that the content is empty.
                - exists: Indicates that the field exists.
                - inl: indicates in the list.
+               - in-list: Indicates that the value is in the list.
+               - not-in-list: Indicates that the value is not in the list.
                
                > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
         :param pulumi.Input[_builtins.str] sub_key: The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
@@ -950,6 +954,8 @@ class DefenseRuleConfigConditionArgs:
         - mpty: Indicates that the content is empty.
         - exists: Indicates that the field exists.
         - inl: indicates in the list.
+        - in-list: Indicates that the value is in the list.
+        - not-in-list: Indicates that the value is not in the list.
 
         > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
         """

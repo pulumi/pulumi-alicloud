@@ -190,9 +190,12 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<ImmutableArray<Outputs.InstanceAdAuthServer>> AdAuthServers { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
-        /// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-        /// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
+        /// 
+        /// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        /// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -290,7 +293,9 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string?> SlaveVswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `Storage` can be modified.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+        /// 
+        /// -&gt;**NOTE:** From version 1.251.0, `Storage` can be modified.
         /// </summary>
         [Output("storage")]
         public Output<string> Storage { get; private set; } = null!;
@@ -366,9 +371,12 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
-        /// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-        /// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
+        /// 
+        /// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        /// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         /// </summary>
         [Input("bandwidth", required: true)]
         public Input<string> Bandwidth { get; set; } = null!;
@@ -484,7 +492,9 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? SlaveVswitchId { get; set; }
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `Storage` can be modified.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+        /// 
+        /// -&gt;**NOTE:** From version 1.251.0, `Storage` can be modified.
         /// </summary>
         [Input("storage", required: true)]
         public Input<string> Storage { get; set; } = null!;
@@ -528,9 +538,12 @@ namespace Pulumi.AliCloud.BastionHost
         }
 
         /// <summary>
-        /// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
-        /// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-        /// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+        /// The bandwidth of Cloud Bastionhost instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.263.0, `Bandwidth` can be modified.
+        /// 
+        /// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+        /// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -646,7 +659,9 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? SlaveVswitchId { get; set; }
 
         /// <summary>
-        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `Storage` can be modified.
+        /// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+        /// 
+        /// -&gt;**NOTE:** From version 1.251.0, `Storage` can be modified.
         /// </summary>
         [Input("storage")]
         public Input<string>? Storage { get; set; }

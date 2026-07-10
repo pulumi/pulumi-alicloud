@@ -36,6 +36,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
+        /// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `True`, `False`.
+        /// </summary>
+        public readonly bool? SourceDestCheck;
+        /// <summary>
         /// The ID of the vSwitch to which to connect Secondary ENI N.
         /// </summary>
         public readonly string? VswitchId;
@@ -52,6 +56,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             ImmutableArray<string> securityGroupIds,
 
+            bool? sourceDestCheck,
+
             string? vswitchId)
         {
             NetworkCardIndex = networkCardIndex;
@@ -59,6 +65,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             NetworkInterfaceTrafficMode = networkInterfaceTrafficMode;
             QueuePairNumber = queuePairNumber;
             SecurityGroupIds = securityGroupIds;
+            SourceDestCheck = sourceDestCheck;
             VswitchId = vswitchId;
         }
     }

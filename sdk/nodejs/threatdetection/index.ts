@@ -185,6 +185,11 @@ export type SasTrail = import("./sasTrail").SasTrail;
 export const SasTrail: typeof import("./sasTrail").SasTrail = null as any;
 utilities.lazyLoad(exports, ["SasTrail"], () => require("./sasTrail"));
 
+export { ServiceLinkedRoleArgs, ServiceLinkedRoleState } from "./serviceLinkedRole";
+export type ServiceLinkedRole = import("./serviceLinkedRole").ServiceLinkedRole;
+export const ServiceLinkedRole: typeof import("./serviceLinkedRole").ServiceLinkedRole = null as any;
+utilities.lazyLoad(exports, ["ServiceLinkedRole"], () => require("./serviceLinkedRole"));
+
 export { VulWhitelistArgs, VulWhitelistState } from "./vulWhitelist";
 export type VulWhitelist = import("./vulWhitelist").VulWhitelist;
 export const VulWhitelist: typeof import("./vulWhitelist").VulWhitelist = null as any;
@@ -242,6 +247,8 @@ const _module = {
                 return new OssScanConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/sasTrail:SasTrail":
                 return new SasTrail(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole":
+                return new ServiceLinkedRole(name, <any>undefined, { urn })
             case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
                 return new VulWhitelist(name, <any>undefined, { urn })
             case "alicloud:threatdetection/webLockConfig:WebLockConfig":
@@ -272,5 +279,6 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/logMeta", _mo
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/maliciousFileWhitelistConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/ossScanConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/sasTrail", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/serviceLinkedRole", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/vulWhitelist", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/webLockConfig", _module)

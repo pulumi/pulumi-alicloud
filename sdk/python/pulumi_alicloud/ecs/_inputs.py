@@ -2080,6 +2080,10 @@ class InstanceNetworkInterfacesArgsDict(TypedDict):
     """
     The ID of security group N to which to assign Secondary ENI N.
     """
+    source_dest_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+    """
     vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the vSwitch to which to connect Secondary ENI N.
@@ -2093,6 +2097,7 @@ class InstanceNetworkInterfacesArgs:
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  queue_pair_number: pulumi.Input[Optional[_builtins.int]] = None,
                  security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Secondary ENI.
@@ -2102,6 +2107,7 @@ class InstanceNetworkInterfacesArgs:
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
         :param pulumi.Input[_builtins.int] queue_pair_number: The number of queues supported by the ERI.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The ID of security group N to which to assign Secondary ENI N.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vSwitch to which to connect Secondary ENI N.
         """
         if network_card_index is not None:
@@ -2114,6 +2120,8 @@ class InstanceNetworkInterfacesArgs:
             pulumi.set(__self__, "queue_pair_number", queue_pair_number)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if source_dest_check is not None:
+            pulumi.set(__self__, "source_dest_check", source_dest_check)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
 
@@ -2178,6 +2186,18 @@ class InstanceNetworkInterfacesArgs:
     @security_group_ids.setter
     def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
+
+    @source_dest_check.setter
+    def source_dest_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "source_dest_check", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")

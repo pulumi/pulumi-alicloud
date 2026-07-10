@@ -33,6 +33,7 @@ class InstanceArgs:
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -62,6 +63,7 @@ class InstanceArgs:
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional['InstanceMaintenanceTimeArgs']] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interfaces: pulumi.Input[Optional['InstanceNetworkInterfacesArgs']] = None,
                  operator_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -80,6 +82,7 @@ class InstanceArgs:
                  secondary_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  spot_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
@@ -124,6 +127,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -164,6 +170,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
+        :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
+               
+               > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -209,7 +218,10 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
@@ -277,6 +289,8 @@ class InstanceArgs:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if enable_high_density_mode is not None:
+            pulumi.set(__self__, "enable_high_density_mode", enable_high_density_mode)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
         if force_delete is not None:
@@ -338,6 +352,8 @@ class InstanceArgs:
             pulumi.set(__self__, "maintenance_time", maintenance_time)
         if network_card_index is not None:
             pulumi.set(__self__, "network_card_index", network_card_index)
+        if network_interface_id is not None:
+            pulumi.set(__self__, "network_interface_id", network_interface_id)
         if network_interface_traffic_mode is not None:
             pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
         if network_interfaces is not None:
@@ -377,6 +393,8 @@ class InstanceArgs:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if source_dest_check is not None:
+            pulumi.set(__self__, "source_dest_check", source_dest_check)
         if spot_duration is not None:
             pulumi.set(__self__, "spot_duration", spot_duration)
         if spot_interruption_behavior is not None:
@@ -574,6 +592,20 @@ class InstanceArgs:
     @dry_run.setter
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableHighDensityMode")
+    def enable_high_density_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
+        """
+        return pulumi.get(self, "enable_high_density_mode")
+
+    @enable_high_density_mode.setter
+    def enable_high_density_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_high_density_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="enableJumboFrame")
@@ -936,6 +968,20 @@ class InstanceArgs:
         pulumi.set(self, "network_card_index", value)
 
     @_builtins.property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Primary ENI.
+
+        > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @network_interface_id.setter
+    def network_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network_interface_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
     def network_interface_traffic_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1172,13 +1218,27 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        A list of security group ids to associate with.
+
+        > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
     def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
+
+    @source_dest_check.setter
+    def source_dest_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "source_dest_check", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDuration")
@@ -1491,6 +1551,7 @@ class _InstanceState:
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  expired_time: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1545,6 +1606,7 @@ class _InstanceState:
                  secondary_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  spot_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1594,6 +1656,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -1637,6 +1702,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] memory: The memory size of the instance. Unit: MiB.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
+               
+               > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -1686,7 +1753,10 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
@@ -1762,6 +1832,8 @@ class _InstanceState:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if enable_high_density_mode is not None:
+            pulumi.set(__self__, "enable_high_density_mode", enable_high_density_mode)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
         if expired_time is not None:
@@ -1876,6 +1948,8 @@ class _InstanceState:
             pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+        if source_dest_check is not None:
+            pulumi.set(__self__, "source_dest_check", source_dest_check)
         if spot_duration is not None:
             pulumi.set(__self__, "spot_duration", spot_duration)
         if spot_interruption_behavior is not None:
@@ -2113,6 +2187,20 @@ class _InstanceState:
     @dry_run.setter
     def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableHighDensityMode")
+    def enable_high_density_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
+        """
+        return pulumi.get(self, "enable_high_density_mode")
+
+    @enable_high_density_mode.setter
+    def enable_high_density_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_high_density_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="enableJumboFrame")
@@ -2503,6 +2591,8 @@ class _InstanceState:
     def network_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Primary ENI.
+
+        > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -2795,13 +2885,27 @@ class _InstanceState:
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        A list of security group ids to associate with.
+
+        > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
     def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
+
+    @source_dest_check.setter
+    def source_dest_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "source_dest_check", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDuration")
@@ -3138,6 +3242,7 @@ class Instance(pulumi.CustomResource):
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3167,6 +3272,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
                  operator_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3185,6 +3291,7 @@ class Instance(pulumi.CustomResource):
                  secondary_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  spot_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
@@ -3310,6 +3417,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -3350,6 +3460,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
+        :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
+               
+               > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -3395,7 +3508,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
@@ -3550,6 +3666,7 @@ class Instance(pulumi.CustomResource):
                  deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  host_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3579,6 +3696,7 @@ class Instance(pulumi.CustomResource):
                  maintenance_notify: pulumi.Input[Optional[_builtins.bool]] = None,
                  maintenance_time: pulumi.Input[Optional[Union['InstanceMaintenanceTimeArgs', 'InstanceMaintenanceTimeArgsDict']]] = None,
                  network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interfaces: pulumi.Input[Optional[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
                  operator_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3597,6 +3715,7 @@ class Instance(pulumi.CustomResource):
                  secondary_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  spot_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
@@ -3641,6 +3760,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["enable_high_density_mode"] = enable_high_density_mode
             __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
@@ -3670,6 +3790,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintenance_notify"] = maintenance_notify
             __props__.__dict__["maintenance_time"] = maintenance_time
             __props__.__dict__["network_card_index"] = network_card_index
+            __props__.__dict__["network_interface_id"] = network_interface_id
             __props__.__dict__["network_interface_traffic_mode"] = network_interface_traffic_mode
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["operator_type"] = operator_type
@@ -3688,6 +3809,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["secondary_private_ips"] = secondary_private_ips
             __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             __props__.__dict__["security_groups"] = security_groups
+            __props__.__dict__["source_dest_check"] = source_dest_check
             __props__.__dict__["spot_duration"] = spot_duration
             __props__.__dict__["spot_interruption_behavior"] = spot_interruption_behavior
             __props__.__dict__["spot_price_limit"] = spot_price_limit
@@ -3716,7 +3838,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["deployment_set_group_no"] = None
             __props__.__dict__["expired_time"] = None
             __props__.__dict__["memory"] = None
-            __props__.__dict__["network_interface_id"] = None
             __props__.__dict__["os_name"] = None
             __props__.__dict__["os_type"] = None
             __props__.__dict__["primary_ip_address"] = None
@@ -3750,6 +3871,7 @@ class Instance(pulumi.CustomResource):
             deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_high_density_mode: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
             expired_time: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3804,6 +3926,7 @@ class Instance(pulumi.CustomResource):
             secondary_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
             security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
             spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
             spot_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
             spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
@@ -3857,6 +3980,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
+        :param pulumi.Input[_builtins.bool] enable_high_density_mode: Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+               
+               > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
         :param pulumi.Input[_builtins.bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[_builtins.bool] force_delete: If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -3900,6 +4026,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] memory: The memory size of the instance. Unit: MiB.
         :param pulumi.Input[_builtins.int] network_card_index: The index of the network card for Primary ENI.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the Primary ENI.
+               
+               > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
         :param pulumi.Input[_builtins.str] network_interface_traffic_mode: The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
                - `Standard`: Uses the TCP communication mode.
                - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -3949,7 +4077,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
                - Active: Enable security enhancement strategy, it only works on system images.
                - Deactive: Disable security enhancement strategy, it works on all images.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: A list of security group ids to associate with.
+               
+               > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] spot_duration: The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
         :param pulumi.Input[_builtins.str] spot_interruption_behavior: The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
                - `Terminate`: The instance is released.
@@ -4011,6 +4142,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deployment_set_id"] = deployment_set_id
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["enable_high_density_mode"] = enable_high_density_mode
         __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
         __props__.__dict__["expired_time"] = expired_time
         __props__.__dict__["force_delete"] = force_delete
@@ -4065,6 +4197,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["secondary_private_ips"] = secondary_private_ips
         __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_groups"] = security_groups
+        __props__.__dict__["source_dest_check"] = source_dest_check
         __props__.__dict__["spot_duration"] = spot_duration
         __props__.__dict__["spot_interruption_behavior"] = spot_interruption_behavior
         __props__.__dict__["spot_price_limit"] = spot_price_limit
@@ -4218,6 +4351,16 @@ class Instance(pulumi.CustomResource):
         - false: A request is sent. If the validation succeeds, the instance is created.
         """
         return pulumi.get(self, "dry_run")
+
+    @_builtins.property
+    @pulumi.getter(name="enableHighDensityMode")
+    def enable_high_density_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+
+        > **NOTE:** Modifying `enable_high_density_mode` requires the instance to be stopped.
+        """
+        return pulumi.get(self, "enable_high_density_mode")
 
     @_builtins.property
     @pulumi.getter(name="enableJumboFrame")
@@ -4473,7 +4616,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
-    def network_card_index(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def network_card_index(self) -> pulumi.Output[_builtins.int]:
         """
         The index of the network card for Primary ENI.
         """
@@ -4484,6 +4627,8 @@ class Instance(pulumi.CustomResource):
     def network_interface_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the Primary ENI.
+
+        > **NOTE:** From version 1.284.0, `network_interface_id` can be set.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -4610,7 +4755,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="queuePairNumber")
-    def queue_pair_number(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def queue_pair_number(self) -> pulumi.Output[_builtins.int]:
         """
         The number of queues supported by the ERI.
         """
@@ -4688,9 +4833,19 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of security group ids to associate with. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
+        A list of security group ids to associate with.
+
+        > **NOTE:** If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `security_groups`.
         """
         return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceDestCheck")
+    def source_dest_check(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "source_dest_check")
 
     @_builtins.property
     @pulumi.getter(name="spotDuration")

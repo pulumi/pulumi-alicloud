@@ -30,6 +30,10 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string? Header;
         /// <summary>
+        /// The IP protocol version for back-to-origin requests. Default value: `RoundRobin`. Valid values:
+        /// </summary>
+        public readonly string? IpVersionPolicy;
+        /// <summary>
         /// Origin Name.
         /// </summary>
         public readonly string? Name;
@@ -38,10 +42,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string? OriginId;
         /// <summary>
-        /// Source station type:
-        /// ip_domain: ip or domain name type origin station;
-        /// - `OSS`:OSS address source station;
-        /// - `S3`:AWS S3 Source station.
+        /// The type of the origin. Valid values:
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -59,6 +60,8 @@ namespace Pulumi.AliCloud.Esa.Outputs
 
             string? header,
 
+            string? ipVersionPolicy,
+
             string? name,
 
             string? originId,
@@ -71,6 +74,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
             AuthConf = authConf;
             Enabled = enabled;
             Header = header;
+            IpVersionPolicy = ipVersionPolicy;
             Name = name;
             OriginId = originId;
             Type = type;

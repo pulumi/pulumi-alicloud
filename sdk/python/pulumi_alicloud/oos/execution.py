@@ -26,6 +26,7 @@ class ExecutionArgs:
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_content: pulumi.Input[Optional[_builtins.str]] = None,
                  template_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -38,6 +39,7 @@ class ExecutionArgs:
         :param pulumi.Input[_builtins.str] parameters: The parameters required by the template. Default to `{}`.
         :param pulumi.Input[_builtins.str] parent_execution_id: The id of parent execution.
         :param pulumi.Input[_builtins.str] safety_check: The mode of safety check.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[_builtins.str] template_version: The version of execution template.
         """
@@ -54,6 +56,8 @@ class ExecutionArgs:
             pulumi.set(__self__, "parent_execution_id", parent_execution_id)
         if safety_check is not None:
             pulumi.set(__self__, "safety_check", safety_check)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template_content is not None:
             pulumi.set(__self__, "template_content", template_content)
         if template_version is not None:
@@ -144,6 +148,18 @@ class ExecutionArgs:
         pulumi.set(self, "safety_check", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="templateContent")
     def template_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -187,6 +203,7 @@ class _ExecutionState:
                  start_date: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_content: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  template_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,6 +228,7 @@ class _ExecutionState:
         :param pulumi.Input[_builtins.str] start_date: The time when the execution was started.
         :param pulumi.Input[_builtins.str] status: The status of OOS Execution.
         :param pulumi.Input[_builtins.str] status_message: The message of status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[_builtins.str] template_id: The id of template.
         :param pulumi.Input[_builtins.str] template_name: The name of execution template.
@@ -249,6 +267,8 @@ class _ExecutionState:
             pulumi.set(__self__, "status", status)
         if status_message is not None:
             pulumi.set(__self__, "status_message", status_message)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template_content is not None:
             pulumi.set(__self__, "template_content", template_content)
         if template_id is not None:
@@ -453,6 +473,18 @@ class _ExecutionState:
         pulumi.set(self, "status_message", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="templateContent")
     def template_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -525,6 +557,7 @@ class Execution(pulumi.CustomResource):
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_content: pulumi.Input[Optional[_builtins.str]] = None,
                  template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  template_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,7 +610,11 @@ class Execution(pulumi.CustomResource):
         example = alicloud.oos.Execution("example",
             template_name=default_template.template_name,
             description="From TF Test",
-            parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n")
+            parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n",
+            tags={
+                "Created": "TF",
+                "For": "execution Test",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -599,6 +636,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parameters: The parameters required by the template. Default to `{}`.
         :param pulumi.Input[_builtins.str] parent_execution_id: The id of parent execution.
         :param pulumi.Input[_builtins.str] safety_check: The mode of safety check.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[_builtins.str] template_name: The name of execution template.
         :param pulumi.Input[_builtins.str] template_version: The version of execution template.
@@ -657,7 +695,11 @@ class Execution(pulumi.CustomResource):
         example = alicloud.oos.Execution("example",
             template_name=default_template.template_name,
             description="From TF Test",
-            parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n")
+            parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n",
+            tags={
+                "Created": "TF",
+                "For": "execution Test",
+            })
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -692,6 +734,7 @@ class Execution(pulumi.CustomResource):
                  parameters: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template_content: pulumi.Input[Optional[_builtins.str]] = None,
                  template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  template_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -710,6 +753,7 @@ class Execution(pulumi.CustomResource):
             __props__.__dict__["parameters"] = parameters
             __props__.__dict__["parent_execution_id"] = parent_execution_id
             __props__.__dict__["safety_check"] = safety_check
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["template_content"] = template_content
             if template_name is None and not opts.urn:
                 raise TypeError("Missing required property 'template_name'")
@@ -753,6 +797,7 @@ class Execution(pulumi.CustomResource):
             start_date: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             template_content: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
             template_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -781,6 +826,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] start_date: The time when the execution was started.
         :param pulumi.Input[_builtins.str] status: The status of OOS Execution.
         :param pulumi.Input[_builtins.str] status_message: The message of status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] template_content: The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         :param pulumi.Input[_builtins.str] template_id: The id of template.
         :param pulumi.Input[_builtins.str] template_name: The name of execution template.
@@ -807,6 +853,7 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["start_date"] = start_date
         __props__.__dict__["status"] = status
         __props__.__dict__["status_message"] = status_message
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template_content"] = template_content
         __props__.__dict__["template_id"] = template_id
         __props__.__dict__["template_name"] = template_name
@@ -941,6 +988,14 @@ class Execution(pulumi.CustomResource):
         The message of status.
         """
         return pulumi.get(self, "status_message")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="templateContent")

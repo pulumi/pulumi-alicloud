@@ -85,7 +85,7 @@ import (
 //			}
 //			_, err = mongodb.NewAuditPolicy(ctx, "default", &mongodb.AuditPolicyArgs{
 //				DbInstanceId: defaultInstance.ID(),
-//				AuditStatus:  pulumi.String("disabled"),
+//				AuditStatus:  pulumi.String("enable"),
 //			})
 //			if err != nil {
 //				return err
@@ -112,13 +112,19 @@ import (
 type AuditPolicy struct {
 	pulumi.CustomResourceState
 
-	// Audit state, Valid values: `enable`, `disabled`.
+	// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 	AuditStatus pulumi.StringOutput `pulumi:"auditStatus"`
 	// Database Instance Id
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
 	Filter pulumi.StringOutput `pulumi:"filter"`
-	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+	// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+	HotStoragePeriod pulumi.IntOutput `pulumi:"hotStoragePeriod"`
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
+	// Audit log retention duration, in days.
+	// - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+	// - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
 	StoragePeriod pulumi.IntOutput `pulumi:"storagePeriod"`
 }
 
@@ -158,24 +164,36 @@ func GetAuditPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuditPolicy resources.
 type auditPolicyState struct {
-	// Audit state, Valid values: `enable`, `disabled`.
+	// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 	AuditStatus *string `pulumi:"auditStatus"`
 	// Database Instance Id
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
 	Filter *string `pulumi:"filter"`
-	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+	// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+	HotStoragePeriod *int `pulumi:"hotStoragePeriod"`
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+	ServiceType *string `pulumi:"serviceType"`
+	// Audit log retention duration, in days.
+	// - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+	// - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
 	StoragePeriod *int `pulumi:"storagePeriod"`
 }
 
 type AuditPolicyState struct {
-	// Audit state, Valid values: `enable`, `disabled`.
+	// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 	AuditStatus pulumi.StringPtrInput
 	// Database Instance Id
 	DbInstanceId pulumi.StringPtrInput
 	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
 	Filter pulumi.StringPtrInput
-	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+	// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+	HotStoragePeriod pulumi.IntPtrInput
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+	ServiceType pulumi.StringPtrInput
+	// Audit log retention duration, in days.
+	// - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+	// - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
 	StoragePeriod pulumi.IntPtrInput
 }
 
@@ -184,25 +202,37 @@ func (AuditPolicyState) ElementType() reflect.Type {
 }
 
 type auditPolicyArgs struct {
-	// Audit state, Valid values: `enable`, `disabled`.
+	// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 	AuditStatus string `pulumi:"auditStatus"`
 	// Database Instance Id
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
 	Filter *string `pulumi:"filter"`
-	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+	// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+	HotStoragePeriod *int `pulumi:"hotStoragePeriod"`
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+	ServiceType *string `pulumi:"serviceType"`
+	// Audit log retention duration, in days.
+	// - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+	// - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
 	StoragePeriod *int `pulumi:"storagePeriod"`
 }
 
 // The set of arguments for constructing a AuditPolicy resource.
 type AuditPolicyArgs struct {
-	// Audit state, Valid values: `enable`, `disabled`.
+	// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 	AuditStatus pulumi.StringInput
 	// Database Instance Id
 	DbInstanceId pulumi.StringInput
 	// The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
 	Filter pulumi.StringPtrInput
-	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+	// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+	HotStoragePeriod pulumi.IntPtrInput
+	// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+	ServiceType pulumi.StringPtrInput
+	// Audit log retention duration, in days.
+	// - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+	// - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
 	StoragePeriod pulumi.IntPtrInput
 }
 
@@ -293,7 +323,7 @@ func (o AuditPolicyOutput) ToAuditPolicyOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// Audit state, Valid values: `enable`, `disabled`.
+// Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
 func (o AuditPolicyOutput) AuditStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.AuditStatus }).(pulumi.StringOutput)
 }
@@ -308,7 +338,19 @@ func (o AuditPolicyOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+func (o AuditPolicyOutput) HotStoragePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.IntOutput { return v.HotStoragePeriod }).(pulumi.IntOutput)
+}
+
+// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+func (o AuditPolicyOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// Audit log retention duration, in days.
+// - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+// - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
 func (o AuditPolicyOutput) StoragePeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *AuditPolicy) pulumi.IntOutput { return v.StoragePeriod }).(pulumi.IntOutput)
 }

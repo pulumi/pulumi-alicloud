@@ -190,6 +190,8 @@ type Instance struct {
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType pulumi.StringPtrOutput `pulumi:"serverlessChargeType"`
+	// Whether to enable the Serverless elastic capability on the instance.
+	ServerlessSwitch pulumi.BoolOutput `pulumi:"serverlessSwitch"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -198,6 +200,8 @@ type Instance struct {
 	SupportEip pulumi.BoolPtrOutput `pulumi:"supportEip"`
 	// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
 	SupportTracing pulumi.BoolPtrOutput `pulumi:"supportTracing"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntOutput `pulumi:"tracingStorageTime"`
 	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
@@ -288,6 +292,8 @@ type instanceState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType *string `pulumi:"serverlessChargeType"`
+	// Whether to enable the Serverless elastic capability on the instance.
+	ServerlessSwitch *bool `pulumi:"serverlessSwitch"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -296,6 +302,8 @@ type instanceState struct {
 	SupportEip *bool `pulumi:"supportEip"`
 	// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
 	SupportTracing *bool `pulumi:"supportTracing"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime *int `pulumi:"tracingStorageTime"`
 	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
@@ -354,6 +362,8 @@ type InstanceState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType pulumi.StringPtrInput
+	// Whether to enable the Serverless elastic capability on the instance.
+	ServerlessSwitch pulumi.BoolPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -362,6 +372,8 @@ type InstanceState struct {
 	SupportEip pulumi.BoolPtrInput
 	// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
 	SupportTracing pulumi.BoolPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntPtrInput
 	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
@@ -422,12 +434,16 @@ type instanceArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType *string `pulumi:"serverlessChargeType"`
+	// Whether to enable the Serverless elastic capability on the instance.
+	ServerlessSwitch *bool `pulumi:"serverlessSwitch"`
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
 	StorageSize *string `pulumi:"storageSize"`
 	// Whether to support public network.
 	SupportEip *bool `pulumi:"supportEip"`
 	// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
 	SupportTracing *bool `pulumi:"supportTracing"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime *int `pulumi:"tracingStorageTime"`
 	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
@@ -485,12 +501,16 @@ type InstanceArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// The billing type of the serverless instance. Value: onDemand.
 	ServerlessChargeType pulumi.StringPtrInput
+	// Whether to enable the Serverless elastic capability on the instance.
+	ServerlessSwitch pulumi.BoolPtrInput
 	// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
 	StorageSize pulumi.StringPtrInput
 	// Whether to support public network.
 	SupportEip pulumi.BoolPtrInput
 	// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
 	SupportTracing pulumi.BoolPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntPtrInput
 	// The ID of the VPC. **NOTE:** From version 1.274.0, `vpcId` is required.
@@ -695,6 +715,11 @@ func (o InstanceOutput) ServerlessChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ServerlessChargeType }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable the Serverless elastic capability on the instance.
+func (o InstanceOutput) ServerlessSwitch() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.ServerlessSwitch }).(pulumi.BoolOutput)
+}
+
 // The status of the resource.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
@@ -713,6 +738,11 @@ func (o InstanceOutput) SupportEip() pulumi.BoolPtrOutput {
 // Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
 func (o InstanceOutput) SupportTracing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SupportTracing }).(pulumi.BoolPtrOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
