@@ -180,15 +180,15 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=default_network.id,
                 cidr_block=std.format(input="10.4.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=default.zones[range["value"]].id,
+                    args=[default_switch_range["value"] + 1]).result,
+                zone_id=default.zones[default_switch_range["value"]].id,
                 vswitch_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[default_switch_range["value"] + 1]).result))
         default_load_balancer = alicloud.alb.LoadBalancer("default",
             vpc_id=default_network.id,
             address_type="Internet",
@@ -272,15 +272,15 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=default_network.id,
                 cidr_block=std.format(input="10.4.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=default.zones[range["value"]].id,
+                    args=[default_switch_range["value"] + 1]).result,
+                zone_id=default.zones[default_switch_range["value"]].id,
                 vswitch_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[default_switch_range["value"] + 1]).result))
         default_load_balancer = alicloud.alb.LoadBalancer("default",
             vpc_id=default_network.id,
             address_type="Internet",

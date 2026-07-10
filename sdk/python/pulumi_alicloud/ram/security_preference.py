@@ -54,7 +54,7 @@ class SecurityPreferenceArgs:
         :param pulumi.Input[_builtins.bool] enable_save_mfa_ticket: Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
                - true: Allow.
                - false (default): Not allowed.
-        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
                Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         :param pulumi.Input[_builtins.str] login_network_masks: The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
                - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -202,7 +202,7 @@ class SecurityPreferenceArgs:
     @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
     def enforce_mfa_for_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
         Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         """
         return pulumi.get(self, "enforce_mfa_for_login")
@@ -351,7 +351,7 @@ class _SecurityPreferenceState:
         :param pulumi.Input[_builtins.bool] enable_save_mfa_ticket: Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
                - true: Allow.
                - false (default): Not allowed.
-        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
                Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         :param pulumi.Input[_builtins.str] login_network_masks: The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
                - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -499,7 +499,7 @@ class _SecurityPreferenceState:
     @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
     def enforce_mfa_for_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
         Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         """
         return pulumi.get(self, "enforce_mfa_for_login")
@@ -686,7 +686,7 @@ class SecurityPreference(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_save_mfa_ticket: Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
                - true: Allow.
                - false (default): Not allowed.
-        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
                Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         :param pulumi.Input[_builtins.str] login_network_masks: The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
                - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -855,7 +855,7 @@ class SecurityPreference(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_save_mfa_ticket: Whether to save the verification status of a RAM user after logging in using multi-factor authentication. The validity period is 7 days. Value:
                - true: Allow.
                - false (default): Not allowed.
-        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        :param pulumi.Input[_builtins.bool] enforce_mfa_for_login: Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
                Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         :param pulumi.Input[_builtins.str] login_network_masks: The login mask. The logon mask determines which IP addresses are affected by the logon console, including password logon and single sign-on (SSO), but API calls made using the access key are not affected.
                - If the mask is specified, RAM users can only log on from the specified IP address.
@@ -967,7 +967,7 @@ class SecurityPreference(pulumi.CustomResource):
     @_utilities.deprecated("""This property has been deprecated as it is no longer supported by Aliyun.""")
     def enforce_mfa_for_login(self) -> pulumi.Output[_builtins.bool]:
         """
-        Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead. 
+        Field `enforce_mfa_for_login` has been deprecated from provider version 1.248.0. New field `mfa_operation_for_login` instead.
         Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
         """
         return pulumi.get(self, "enforce_mfa_for_login")

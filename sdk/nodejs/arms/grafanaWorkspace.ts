@@ -121,7 +121,7 @@ export class GrafanaWorkspace extends pulumi.CustomResource {
     declare public readonly grafanaVersion: pulumi.Output<string | undefined>;
     /**
      * The edition. **Valid values:**
-     * - standard: `Beta Edition(For internal testing only) `
+     * - standard: ` Beta Edition(For internal testing only)  `
      * - personal_edition: Developer Edition
      * - experts_edition: Pro Edition
      * - advanced_edition: Advanced Edition
@@ -264,7 +264,7 @@ export interface GrafanaWorkspaceState {
     grafanaVersion?: pulumi.Input<string | undefined>;
     /**
      * The edition. **Valid values:**
-     * - standard: `Beta Edition(For internal testing only) `
+     * - standard: ` Beta Edition(For internal testing only)  `
      * - personal_edition: Developer Edition
      * - experts_edition: Pro Edition
      * - advanced_edition: Advanced Edition
@@ -348,7 +348,7 @@ export interface GrafanaWorkspaceArgs {
     grafanaVersion?: pulumi.Input<string | undefined>;
     /**
      * The edition. **Valid values:**
-     * - standard: `Beta Edition(For internal testing only) `
+     * - standard: ` Beta Edition(For internal testing only)  `
      * - personal_edition: Developer Edition
      * - experts_edition: Pro Edition
      * - advanced_edition: Advanced Edition

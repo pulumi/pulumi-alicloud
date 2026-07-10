@@ -1215,7 +1215,7 @@ class GetStackInstancesInstanceResult(dict):
         :param _builtins.str stack_id: The ID of the stack corresponding to the stack instance.
         :param _builtins.str stack_instance_account_id: The account to which the stack instance belongs.
         :param _builtins.str stack_instance_region_id: The region of the stack instance.
-        :param _builtins.str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        :param _builtins.str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
                * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
                * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
                * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -1293,7 +1293,7 @@ class GetStackInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
         * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
         * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.

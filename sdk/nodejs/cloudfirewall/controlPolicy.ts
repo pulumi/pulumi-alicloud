@@ -143,7 +143,7 @@ export class ControlPolicy extends pulumi.CustomResource {
      */
     declare public readonly lang: pulumi.Output<string | undefined>;
     /**
-     * The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+     * The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      */
     declare public readonly proto: pulumi.Output<string>;
     /**
@@ -364,7 +364,7 @@ export interface ControlPolicyState {
      */
     lang?: pulumi.Input<string | undefined>;
     /**
-     * The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+     * The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      */
     proto?: pulumi.Input<string | undefined>;
     /**
@@ -481,7 +481,7 @@ export interface ControlPolicyArgs {
      */
     lang?: pulumi.Input<string | undefined>;
     /**
-     * The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+     * The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
      */
     proto: pulumi.Input<string>;
     /**

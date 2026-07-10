@@ -136,7 +136,7 @@ class InstanceArgs:
                - 1: Yes.
         :param pulumi.Input[_builtins.str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               1: Yes.
+                 1: Yes.
         :param pulumi.Input[_builtins.str] subscription_type: The subscription type. Value:
                - Subscription: Prepaid.
                - PayAsYouGo: Post-paid.
@@ -606,7 +606,7 @@ class InstanceArgs:
         """
         Tamper-proof authorization number. Value:
         - 0: No
-        1: Yes.
+          1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -879,7 +879,7 @@ class _InstanceState:
                - 1: Yes.
         :param pulumi.Input[_builtins.str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               1: Yes.
+                 1: Yes.
         :param pulumi.Input[_builtins.str] status: The resource attribute field representing the resource status.
         :param pulumi.Input[_builtins.str] subscription_type: The subscription type. Value:
                - Subscription: Prepaid.
@@ -1367,7 +1367,7 @@ class _InstanceState:
         """
         Tamper-proof authorization number. Value:
         - 0: No
-        1: Yes.
+          1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 
@@ -1710,7 +1710,7 @@ class Instance(pulumi.CustomResource):
                - 1: Yes.
         :param pulumi.Input[_builtins.str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               1: Yes.
+                 1: Yes.
         :param pulumi.Input[_builtins.str] subscription_type: The subscription type. Value:
                - Subscription: Prepaid.
                - PayAsYouGo: Post-paid.
@@ -2041,7 +2041,7 @@ class Instance(pulumi.CustomResource):
                - 1: Yes.
         :param pulumi.Input[_builtins.str] sas_webguard_order_num: Tamper-proof authorization number. Value:
                - 0: No
-               1: Yes.
+                 1: Yes.
         :param pulumi.Input[_builtins.str] status: The resource attribute field representing the resource status.
         :param pulumi.Input[_builtins.str] subscription_type: The subscription type. Value:
                - Subscription: Prepaid.
@@ -2386,7 +2386,7 @@ class Instance(pulumi.CustomResource):
         """
         Tamper-proof authorization number. Value:
         - 0: No
-        1: Yes.
+          1: Yes.
         """
         return pulumi.get(self, "sas_webguard_order_num")
 

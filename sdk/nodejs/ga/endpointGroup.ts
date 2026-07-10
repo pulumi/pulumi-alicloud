@@ -60,8 +60,8 @@ import * as utilities from "../utilities";
  *     name: "terraform-example",
  * });
  * const defaultEipAddress: alicloud.ecs.EipAddress[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultEipAddress.push(new alicloud.ecs.EipAddress(`default-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     defaultEipAddress.push(new alicloud.ecs.EipAddress(`default-${range}`, {
  *         bandwidth: "10",
  *         internetChargeType: "PayByBandwidth",
  *         addressName: "terraform-example",

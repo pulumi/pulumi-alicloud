@@ -63,8 +63,8 @@ class MilvusInstanceComponentArgsDict(TypedDict):
     The component type. Different types need to be configured according to different versions.
     - Starter version: Array including standalone
     - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-    2.5: proxy ,mix_coordinator,data,query,index
-    2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+      2.5: proxy ,mix_coordinator,data,query,index
+      2.6 need to configure: proxy,mix_coordinator,data,query,streaming
     """
     cu_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -91,8 +91,8 @@ class MilvusInstanceComponentArgs:
         :param pulumi.Input[_builtins.str] type: The component type. Different types need to be configured according to different versions.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-               2.5: proxy ,mix_coordinator,data,query,index
-               2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+                 2.5: proxy ,mix_coordinator,data,query,index
+                 2.6 need to configure: proxy,mix_coordinator,data,query,streaming
         :param pulumi.Input[_builtins.str] cu_type: The calculation type. The default value is general, and the ram type needs to be opened with a work order.
                - general: Generic
                - ram: Capacity
@@ -137,8 +137,8 @@ class MilvusInstanceComponentArgs:
         The component type. Different types need to be configured according to different versions.
         - Starter version: Array including standalone
         - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        2.5: proxy ,mix_coordinator,data,query,index
-        2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+          2.5: proxy ,mix_coordinator,data,query,index
+          2.6 need to configure: proxy,mix_coordinator,data,query,streaming
         """
         return pulumi.get(self, "type")
 
@@ -229,7 +229,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
     """
     api_override_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+    API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
 
     > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
     """
@@ -239,18 +239,18 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
     """
     const_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict']]]]]
     """
-    Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+    Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\\
     Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
     """
     enable_output_schema: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+    By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
 
     > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
     """
     execute_cli_command: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+    Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
     - SSE protocol: up to 30 minutes
     - Streamable HTTP protocol: up to 1 minute
 
@@ -275,16 +275,16 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
                  product: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api_name: The API name, such as ListApiMcpServers.
-        :param pulumi.Input[_builtins.str] api_override_json: API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+        :param pulumi.Input[_builtins.str] api_override_json: API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
                
                > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
         :param pulumi.Input[_builtins.str] api_version: API version information, typically in date format, such as 2014-05-26.
-        :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]] const_parameters: Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]] const_parameters: Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\\
                Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
-        :param pulumi.Input[_builtins.bool] enable_output_schema: By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+        :param pulumi.Input[_builtins.bool] enable_output_schema: By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
                
                > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
-        :param pulumi.Input[_builtins.bool] execute_cli_command: Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+        :param pulumi.Input[_builtins.bool] execute_cli_command: Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
                - SSE protocol: up to 30 minutes
                - Streamable HTTP protocol: up to 1 minute
                
@@ -324,7 +324,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
     @pulumi.getter(name="apiOverrideJson")
     def api_override_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+        API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
 
         > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
         """
@@ -350,7 +350,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
     @pulumi.getter(name="constParameters")
     def const_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]:
         """
-        Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+        Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\\
         Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
         """
         return pulumi.get(self, "const_parameters")
@@ -363,7 +363,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
     @pulumi.getter(name="enableOutputSchema")
     def enable_output_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+        By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
 
         > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
         """
@@ -377,7 +377,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
     @pulumi.getter(name="executeCliCommand")
     def execute_cli_command(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+        Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
         - SSE protocol: up to 30 minutes
         - Streamable HTTP protocol: up to 1 minute
 
@@ -407,7 +407,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
 class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(TypedDict):
     key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+    Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
 
     For RPC-style APIs, examples include:
     - Name: sets the Name parameter to a fixed value.
@@ -431,7 +431,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
                  key: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] key: Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+        :param pulumi.Input[_builtins.str] key: Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
                
                For RPC-style APIs, examples include:
                - Name: sets the Name parameter to a fixed value.
@@ -454,7 +454,7 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+        Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
 
         For RPC-style APIs, examples include:
         - Name: sets the Name parameter to a fixed value.

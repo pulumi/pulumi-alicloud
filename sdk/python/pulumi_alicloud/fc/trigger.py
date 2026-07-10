@@ -36,8 +36,8 @@ class TriggerArgs:
         :param pulumi.Input[_builtins.str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
                
                > **NOTE:** Config does not support modification when type is mns_topic.
-               > **NOTE:** type = cdn_events, available in 1.47.0+.
-               > **NOTE:** type = eventbridge, available in 1.173.0+.
+               **NOTE:** type = cdn_events, available in 1.47.0+.
+               **NOTE:** type = eventbridge, available in 1.173.0+.
         :param pulumi.Input[_builtins.str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         :param pulumi.Input[_builtins.str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         :param pulumi.Input[_builtins.str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
@@ -92,8 +92,8 @@ class TriggerArgs:
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
 
         > **NOTE:** Config does not support modification when type is mns_topic.
-        > **NOTE:** type = cdn_events, available in 1.47.0+.
-        > **NOTE:** type = eventbridge, available in 1.173.0+.
+        **NOTE:** type = cdn_events, available in 1.47.0+.
+        **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         return pulumi.get(self, "type")
 
@@ -204,8 +204,8 @@ class _TriggerState:
         :param pulumi.Input[_builtins.str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
                
                > **NOTE:** Config does not support modification when type is mns_topic.
-               > **NOTE:** type = cdn_events, available in 1.47.0+.
-               > **NOTE:** type = eventbridge, available in 1.173.0+.
+               **NOTE:** type = cdn_events, available in 1.47.0+.
+               **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -357,8 +357,8 @@ class _TriggerState:
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
 
         > **NOTE:** Config does not support modification when type is mns_topic.
-        > **NOTE:** type = cdn_events, available in 1.47.0+.
-        > **NOTE:** type = eventbridge, available in 1.173.0+.
+        **NOTE:** type = cdn_events, available in 1.47.0+.
+        **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         return pulumi.get(self, "type")
 
@@ -910,8 +910,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
                
                > **NOTE:** Config does not support modification when type is mns_topic.
-               > **NOTE:** type = cdn_events, available in 1.47.0+.
-               > **NOTE:** type = eventbridge, available in 1.173.0+.
+               **NOTE:** type = cdn_events, available in 1.47.0+.
+               **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         ...
     @overload
@@ -1524,8 +1524,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] type: The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
                
                > **NOTE:** Config does not support modification when type is mns_topic.
-               > **NOTE:** type = cdn_events, available in 1.47.0+.
-               > **NOTE:** type = eventbridge, available in 1.173.0+.
+               **NOTE:** type = cdn_events, available in 1.47.0+.
+               **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1631,8 +1631,8 @@ class Trigger(pulumi.CustomResource):
         The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
 
         > **NOTE:** Config does not support modification when type is mns_topic.
-        > **NOTE:** type = cdn_events, available in 1.47.0+.
-        > **NOTE:** type = eventbridge, available in 1.173.0+.
+        **NOTE:** type = cdn_events, available in 1.47.0+.
+        **NOTE:** type = eventbridge, available in 1.173.0+.
         """
         return pulumi.get(self, "type")
 

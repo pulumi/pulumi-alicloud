@@ -159,7 +159,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly modifyType: pulumi.Output<string | undefined>;
     /**
-     * The Payment type. Valid value: 
+     * The Payment type. Valid value:
      * - Subscription: Pre-paid.
      * - PayAsYouGo: Post-paid, and for serverless Edition.
      */
@@ -359,7 +359,7 @@ export interface InstanceState {
      */
     modifyType?: pulumi.Input<string | undefined>;
     /**
-     * The Payment type. Valid value: 
+     * The Payment type. Valid value:
      * - Subscription: Pre-paid.
      * - PayAsYouGo: Post-paid, and for serverless Edition.
      */
@@ -478,7 +478,7 @@ export interface InstanceArgs {
      */
     modifyType?: pulumi.Input<string | undefined>;
     /**
-     * The Payment type. Valid value: 
+     * The Payment type. Valid value:
      * - Subscription: Pre-paid.
      * - PayAsYouGo: Post-paid, and for serverless Edition.
      */

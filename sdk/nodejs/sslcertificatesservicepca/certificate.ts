@@ -116,7 +116,7 @@ export class Certificate extends pulumi.CustomResource {
      */
     declare public readonly enableCrl: pulumi.Output<boolean | undefined>;
     /**
-     * Extended attributes of the certificate, used to define extended key usages.  
+     * Extended attributes of the certificate, used to define extended key usages.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -294,7 +294,7 @@ export interface CertificateState {
      */
     enableCrl?: pulumi.Input<boolean | undefined>;
     /**
-     * Extended attributes of the certificate, used to define extended key usages.  
+     * Extended attributes of the certificate, used to define extended key usages.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -396,7 +396,7 @@ export interface CertificateArgs {
      */
     enableCrl?: pulumi.Input<boolean | undefined>;
     /**
-     * Extended attributes of the certificate, used to define extended key usages.  
+     * Extended attributes of the certificate, used to define extended key usages.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */

@@ -161,7 +161,7 @@ export class Instance extends pulumi.CustomResource {
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-     * **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
+     *   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      */
     declare public readonly renewalStatus: pulumi.Output<string>;
     /**
@@ -329,7 +329,7 @@ export interface InstanceState {
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-     * **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
+     *   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      */
     renewalStatus?: pulumi.Input<string | undefined>;
     /**
@@ -418,7 +418,7 @@ export interface InstanceArgs {
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
-     * **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
+     *   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
      */
     renewalStatus?: pulumi.Input<string | undefined>;
     /**

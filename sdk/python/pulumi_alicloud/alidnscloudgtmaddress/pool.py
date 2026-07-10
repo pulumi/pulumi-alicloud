@@ -37,7 +37,7 @@ class PoolArgs:
         :param pulumi.Input[_builtins.str] enable_status: Enable status of the address pool:
                - enable: Enabled. The address pool participates in DNS resolution when its health check is normal.
                - disable: Disabled. The address pool does not participate in DNS resolution regardless of its health check status.
-        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:  
+        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:
                - any_ok: At least one address in the address pool is available.
                - p30_ok: At least 30% of the addresses in the address pool are available.
                - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -49,7 +49,7 @@ class PoolArgs:
                - weight: Weighted. Each address can be assigned a different weight, allowing DNS responses to return addresses according to their weight ratios.
                - source_nearest: Source proximity. This intelligent resolution feature allows GTM to return different addresses based on the geographic location of the DNS query source, enabling users to access the nearest available endpoint.
         :param pulumi.Input[_builtins.str] remark: A remark for the address pool to help users distinguish its usage scenario.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """
@@ -109,7 +109,7 @@ class PoolArgs:
     @pulumi.getter(name="healthJudgement")
     def health_judgement(self) -> pulumi.Input[_builtins.str]:
         """
-        Conditions for determining the health status of the address pool:  
+        Conditions for determining the health status of the address pool:
         - any_ok: At least one address in the address pool is available.
         - p30_ok: At least 30% of the addresses in the address pool are available.
         - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -154,7 +154,7 @@ class PoolArgs:
     @pulumi.getter(name="sequenceLbStrategyMode")
     def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
         - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
         - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """
@@ -193,14 +193,14 @@ class _PoolState:
         :param pulumi.Input[_builtins.str] enable_status: Enable status of the address pool:
                - enable: Enabled. The address pool participates in DNS resolution when its health check is normal.
                - disable: Disabled. The address pool does not participate in DNS resolution regardless of its health check status.
-        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:  
+        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:
                - any_ok: At least one address in the address pool is available.
                - p30_ok: At least 30% of the addresses in the address pool are available.
                - p50_ok: At least 50% of the addresses in the address pool are available.
                - p70_ok: At least 70% of the addresses in the address pool are available.
                - all_ok: All addresses in the address pool are available.
         :param pulumi.Input[_builtins.str] remark: A remark for the address pool to help users distinguish its usage scenario.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """
@@ -294,7 +294,7 @@ class _PoolState:
     @pulumi.getter(name="healthJudgement")
     def health_judgement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Conditions for determining the health status of the address pool:  
+        Conditions for determining the health status of the address pool:
         - any_ok: At least one address in the address pool is available.
         - p30_ok: At least 30% of the addresses in the address pool are available.
         - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -323,7 +323,7 @@ class _PoolState:
     @pulumi.getter(name="sequenceLbStrategyMode")
     def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
         - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
         - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """
@@ -405,14 +405,14 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] enable_status: Enable status of the address pool:
                - enable: Enabled. The address pool participates in DNS resolution when its health check is normal.
                - disable: Disabled. The address pool does not participate in DNS resolution regardless of its health check status.
-        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:  
+        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:
                - any_ok: At least one address in the address pool is available.
                - p30_ok: At least 30% of the addresses in the address pool are available.
                - p50_ok: At least 50% of the addresses in the address pool are available.
                - p70_ok: At least 70% of the addresses in the address pool are available.
                - all_ok: All addresses in the address pool are available.
         :param pulumi.Input[_builtins.str] remark: A remark for the address pool to help users distinguish its usage scenario.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """
@@ -550,14 +550,14 @@ class Pool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] enable_status: Enable status of the address pool:
                - enable: Enabled. The address pool participates in DNS resolution when its health check is normal.
                - disable: Disabled. The address pool does not participate in DNS resolution regardless of its health check status.
-        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:  
+        :param pulumi.Input[_builtins.str] health_judgement: Conditions for determining the health status of the address pool:
                - any_ok: At least one address in the address pool is available.
                - p30_ok: At least 30% of the addresses in the address pool are available.
                - p50_ok: At least 50% of the addresses in the address pool are available.
                - p70_ok: At least 70% of the addresses in the address pool are available.
                - all_ok: All addresses in the address pool are available.
         :param pulumi.Input[_builtins.str] remark: A remark for the address pool to help users distinguish its usage scenario.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """
@@ -628,7 +628,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="healthJudgement")
     def health_judgement(self) -> pulumi.Output[_builtins.str]:
         """
-        Conditions for determining the health status of the address pool:  
+        Conditions for determining the health status of the address pool:
         - any_ok: At least one address in the address pool is available.
         - p30_ok: At least 30% of the addresses in the address pool are available.
         - p50_ok: At least 50% of the addresses in the address pool are available.
@@ -649,7 +649,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="sequenceLbStrategyMode")
     def sequence_lb_strategy_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
+        Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:
         - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
         - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address continues to be used.
         """

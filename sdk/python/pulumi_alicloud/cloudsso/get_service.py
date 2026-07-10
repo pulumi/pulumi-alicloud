@@ -93,7 +93,7 @@ def get_service(enable: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. 
+    :param _builtins.str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
            
            > **NOTE:** Setting `enable = "On"` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = "Off"` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
     """
@@ -129,7 +129,7 @@ def get_service_output(enable: pulumi.Input[Optional[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. 
+    :param _builtins.str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
            
            > **NOTE:** Setting `enable = "On"` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = "Off"` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
     """

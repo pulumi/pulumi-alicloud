@@ -55,8 +55,8 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  * });
  * const exampleInstance: alicloud.rds.Instance[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleInstance.push(new alicloud.rds.Instance(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleInstance.push(new alicloud.rds.Instance(`example-${range}`, {
  *         engine: "MySQL",
  *         engineVersion: "8.0",
  *         instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *         instanceChargeType: "Postpaid",
  *         instanceName: std.format({
  *             input: `${name}_%d`,
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         vswitchId: exampleSwitch.id,
  *         monitoringPeriod: 60,
@@ -73,36 +73,36 @@ import * as utilities from "../utilities";
  *     }));
  * }
  * const exampleRdsAccount: alicloud.rds.RdsAccount[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleRdsAccount.push(new alicloud.rds.RdsAccount(`example-${range.value}`, {
- *         dbInstanceId: exampleInstance[range.value].id,
+ * for (let range = 0; range < 2; range++) {
+ *     exampleRdsAccount.push(new alicloud.rds.RdsAccount(`example-${range}`, {
+ *         dbInstanceId: exampleInstance[range].id,
  *         accountName: std.format({
  *             input: "example_name_%d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *         accountPassword: std.format({
  *             input: "example_password_%d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *     }));
  * }
  * const exampleDatabase: alicloud.rds.Database[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleDatabase.push(new alicloud.rds.Database(`example-${range.value}`, {
- *         instanceId: exampleInstance[range.value].id,
+ * for (let range = 0; range < 2; range++) {
+ *     exampleDatabase.push(new alicloud.rds.Database(`example-${range}`, {
+ *         instanceId: exampleInstance[range].id,
  *         name: std.format({
  *             input: `${name}_%d`,
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *     }));
  * }
  * const exampleAccountPrivilege: alicloud.rds.AccountPrivilege[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleAccountPrivilege.push(new alicloud.rds.AccountPrivilege(`example-${range.value}`, {
- *         instanceId: exampleInstance[range.value].id,
- *         accountName: exampleRdsAccount[range.value].name,
+ * for (let range = 0; range < 2; range++) {
+ *     exampleAccountPrivilege.push(new alicloud.rds.AccountPrivilege(`example-${range}`, {
+ *         instanceId: exampleInstance[range].id,
+ *         accountName: exampleRdsAccount[range].name,
  *         privilege: "ReadWrite",
- *         dbNames: [exampleDatabase[range.value].name],
+ *         dbNames: [exampleDatabase[range].name],
  *     }));
  * }
  * const exampleMigrationInstance = new alicloud.dts.MigrationInstance("example", {

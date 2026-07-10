@@ -34,8 +34,8 @@ import * as utilities from "../utilities";
  * }));
  * const vswitch: alicloud.vpc.Switch[] = [];
  * defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         vswitch.push(new alicloud.vpc.Switch(`vswitch-${range}`, {
  *             vpcId: _default.then(_default => _default.ids?.[0]),
  *             cidrBlock: _default.then(_default => std.cidrsubnet({
  *                 input: _default.vpcs?.[0]?.cidrBlock,

@@ -124,7 +124,7 @@ class InstanceArgs:
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
-               **Serverless**
+                 **Serverless**
                - MySQL: [ 5.7、8.0 ]
                - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                - PostgreSQL: [ 14.0 ]
@@ -134,8 +134,8 @@ class InstanceArgs:
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
-               Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+                 Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+                 Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[_builtins.str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -320,7 +320,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
                > **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         :param pulumi.Input[_builtins.str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -392,7 +392,6 @@ class InstanceArgs:
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -618,7 +617,7 @@ class InstanceArgs:
         - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
         - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         - MariaDB: [ 10.3 ]
-        **Serverless**
+          **Serverless**
         - MySQL: [ 5.7、8.0 ]
         - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
         - PostgreSQL: [ 14.0 ]
@@ -639,8 +638,8 @@ class InstanceArgs:
         - [20,1000] for MySQL 5.7 basic single node edition;
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
-        Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+          Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+          Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -1519,7 +1518,7 @@ class InstanceArgs:
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Actions performed on SSL functions. Valid values: 
+        Actions performed on SSL functions. Valid values:
         `Open`: turn on SSL encryption;
         `Close`: turn off SSL encryption;
         `Update`: update SSL certificate.
@@ -1824,7 +1823,6 @@ class InstanceArgs:
         """
         The VPC ID of the instance.
 
-
         > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         """
         return pulumi.get(self, "vpc_id")
@@ -2123,7 +2121,7 @@ class _InstanceState:
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
-               **Serverless**
+                 **Serverless**
                - MySQL: [ 5.7、8.0 ]
                - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                - PostgreSQL: [ 14.0 ]
@@ -2148,8 +2146,8 @@ class _InstanceState:
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
-               Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+                 Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+                 Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[_builtins.str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -2212,7 +2210,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
                > **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         :param pulumi.Input[_builtins.str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -2287,7 +2285,6 @@ class _InstanceState:
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -2969,7 +2966,7 @@ class _InstanceState:
         - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
         - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         - MariaDB: [ 10.3 ]
-        **Serverless**
+          **Serverless**
         - MySQL: [ 5.7、8.0 ]
         - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
         - PostgreSQL: [ 14.0 ]
@@ -3082,8 +3079,8 @@ class _InstanceState:
         - [20,1000] for MySQL 5.7 basic single node edition;
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
-        Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+          Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+          Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -3466,7 +3463,7 @@ class _InstanceState:
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Actions performed on SSL functions. Valid values: 
+        Actions performed on SSL functions. Valid values:
         `Open`: turn on SSL encryption;
         `Close`: turn off SSL encryption;
         `Update`: update SSL certificate.
@@ -3807,7 +3804,6 @@ class _InstanceState:
         """
         The VPC ID of the instance.
 
-
         > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         """
         return pulumi.get(self, "vpc_id")
@@ -4107,15 +4103,15 @@ class Instance(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[example_switch_range["value"] + 1]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="terraform_example_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[example_switch_range["value"] + 1]).result))
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name="terraform-example",
             vpc_id=example_network.id)
@@ -4161,17 +4157,17 @@ class Instance(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[example_switch_range["value"] + 1]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="%s_%d",
                     args=[
                         name,
-                        range["value"],
+                        example_switch_range["value"],
                     ]).result))
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
@@ -4216,17 +4212,17 @@ class Instance(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[example_switch_range["value"] + 1]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="%s_%d",
                     args=[
                         name,
-                        range["value"],
+                        example_switch_range["value"],
                     ]).result))
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
@@ -4525,7 +4521,7 @@ class Instance(pulumi.CustomResource):
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
-               **Serverless**
+                 **Serverless**
                - MySQL: [ 5.7、8.0 ]
                - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                - PostgreSQL: [ 14.0 ]
@@ -4550,8 +4546,8 @@ class Instance(pulumi.CustomResource):
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
-               Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+                 Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+                 Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[_builtins.str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -4614,7 +4610,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
                > **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         :param pulumi.Input[_builtins.str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -4686,7 +4682,6 @@ class Instance(pulumi.CustomResource):
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -4832,15 +4827,15 @@ class Instance(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[example_switch_range["value"] + 1]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="terraform_example_%d",
-                    args=[range["value"] + 1]).result))
+                    args=[example_switch_range["value"] + 1]).result))
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name="terraform-example",
             vpc_id=example_network.id)
@@ -4886,17 +4881,17 @@ class Instance(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[example_switch_range["value"] + 1]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="%s_%d",
                     args=[
                         name,
-                        range["value"],
+                        example_switch_range["value"],
                     ]).result))
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
@@ -4941,17 +4936,17 @@ class Instance(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        example_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
+        example_switch: list[alicloud.vpc.Switch] = []
+        for example_switch_range in [{"value": i} for i in range(0, 2)]:
+            example_switch.append(alicloud.vpc.Switch(f"example-{example_switch_range['value']}",
                 vpc_id=example_network.id,
                 cidr_block=std.format(input="172.16.%d.0/24",
-                    args=[range["value"] + 1]).result,
-                zone_id=example.zones[range["value"]].id,
+                    args=[example_switch_range["value"] + 1]).result,
+                zone_id=example.zones[example_switch_range["value"]].id,
                 vswitch_name=std.format(input="%s_%d",
                     args=[
                         name,
-                        range["value"],
+                        example_switch_range["value"],
                     ]).result))
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
@@ -5590,7 +5585,7 @@ class Instance(pulumi.CustomResource):
                - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
                - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
                - MariaDB: [ 10.3 ]
-               **Serverless**
+                 **Serverless**
                - MySQL: [ 5.7、8.0 ]
                - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
                - PostgreSQL: [ 14.0 ]
@@ -5615,8 +5610,8 @@ class Instance(pulumi.CustomResource):
                - [20,1000] for MySQL 5.7 basic single node edition;
                - [10, 2000] for SQL Server 2008R2;
                - [20,2000] for SQL Server 2012 basic single node edition
-               Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-               Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+                 Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+                 Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         :param pulumi.Input[_builtins.str] instance_type: DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
                - To create a serverless instance, please pass the following values:
                - MySQL basic: mysql.n2.serverless.1c
@@ -5679,7 +5674,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
                > **NOTE:** This parameter takes effect when sql_collector_status is set to Enabled and does not take effect when sql_collector_status is set to Disabled.
         :param pulumi.Input[_builtins.str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
-        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values: 
+        :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                `Open`: turn on SSL encryption;
                `Close`: turn off SSL encryption;
                `Update`: update SSL certificate.
@@ -5754,7 +5749,6 @@ class Instance(pulumi.CustomResource):
                - MaintainTime: The minor engine version is updated during the maintenance window. For more information about how to change the maintenance window, see ModifyDBInstanceMaintainTime.
                - SpecifyTime: The minor engine version is updated at the point in time you specify.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
-               
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
@@ -6213,7 +6207,7 @@ class Instance(pulumi.CustomResource):
         - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
         - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
         - MariaDB: [ 10.3 ]
-        **Serverless**
+          **Serverless**
         - MySQL: [ 5.7、8.0 ]
         - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
         - PostgreSQL: [ 14.0 ]
@@ -6294,8 +6288,8 @@ class Instance(pulumi.CustomResource):
         - [20,1000] for MySQL 5.7 basic single node edition;
         - [10, 2000] for SQL Server 2008R2;
         - [20,2000] for SQL Server 2012 basic single node edition
-        Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-        Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
+          Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+          Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instance_storage`.
         """
         return pulumi.get(self, "instance_storage")
 
@@ -6562,7 +6556,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sslAction")
     def ssl_action(self) -> pulumi.Output[_builtins.str]:
         """
-        Actions performed on SSL functions. Valid values: 
+        Actions performed on SSL functions. Valid values:
         `Open`: turn on SSL encryption;
         `Close`: turn off SSL encryption;
         `Update`: update SSL certificate.
@@ -6806,7 +6800,6 @@ class Instance(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
         The VPC ID of the instance.
-
 
         > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
         """

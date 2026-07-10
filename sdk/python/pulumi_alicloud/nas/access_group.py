@@ -37,7 +37,6 @@ class AccessGroupArgs:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                
-               
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         :param pulumi.Input[_builtins.str] type: Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
@@ -107,7 +106,6 @@ class AccessGroupArgs:
         - standard (default): Universal NAS
         - extreme: extreme NAS
 
-
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "file_system_type")
@@ -166,7 +164,6 @@ class _AccessGroupState:
                Value:
                - standard (default): Universal NAS
                - extreme: extreme NAS
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
@@ -253,7 +250,6 @@ class _AccessGroupState:
         Value:
         - standard (default): Universal NAS
         - extreme: extreme NAS
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -364,7 +360,6 @@ class AccessGroup(pulumi.CustomResource):
                Value:
                - standard (default): Universal NAS
                - extreme: extreme NAS
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
@@ -488,7 +483,6 @@ class AccessGroup(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                
-               
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] name: Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         :param pulumi.Input[_builtins.str] region_id: (Available since v1.256.0) The region ID.
@@ -549,7 +543,6 @@ class AccessGroup(pulumi.CustomResource):
         Value:
         - standard (default): Universal NAS
         - extreme: extreme NAS
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

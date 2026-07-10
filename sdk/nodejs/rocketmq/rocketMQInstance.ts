@@ -243,8 +243,8 @@ export class RocketMQInstance extends pulumi.CustomResource {
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
      * - serverless：Serverless instance
-     * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+     *   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
     declare public readonly subSeriesCode: pulumi.Output<string>;
     /**
@@ -453,8 +453,8 @@ export interface RocketMQInstanceState {
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
      * - serverless：Serverless instance
-     * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+     *   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
     subSeriesCode?: pulumi.Input<string | undefined>;
     /**
@@ -572,8 +572,8 @@ export interface RocketMQInstanceArgs {
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
      * - serverless：Serverless instance
-     * **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
-     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
+     *   **NOTE:** From version 1.245.0, `subSeriesCode` can be set to `serverless`.
+     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as clusterHa (Cluster High Availability Edition).
      */
     subSeriesCode: pulumi.Input<string>;
     /**

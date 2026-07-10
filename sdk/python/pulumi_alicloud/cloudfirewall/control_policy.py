@@ -51,7 +51,7 @@ class ControlPolicyArgs:
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy.
         :param pulumi.Input[_builtins.str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`, `location`.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
-        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         :param pulumi.Input[_builtins.str] source: The source address in the access control policy.
         :param pulumi.Input[_builtins.str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`, `location`.
         :param pulumi.Input[_builtins.str] application_name: The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
@@ -191,7 +191,7 @@ class ControlPolicyArgs:
     @pulumi.getter
     def proto(self) -> pulumi.Input[_builtins.str]:
         """
-        The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -485,7 +485,7 @@ class _ControlPolicyState:
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
-        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         :param pulumi.Input[_builtins.str] release: The status of the access control policy. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
@@ -760,7 +760,7 @@ class _ControlPolicyState:
     @pulumi.getter
     def proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 
@@ -981,7 +981,7 @@ class ControlPolicy(pulumi.CustomResource):
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
-        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         :param pulumi.Input[_builtins.str] release: The status of the access control policy. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
@@ -1204,7 +1204,7 @@ class ControlPolicy(pulumi.CustomResource):
                > **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
         :param pulumi.Input[_builtins.str] ip_version: The IP version supported by the access control policy. Default value: `4`. Valid values:
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
-        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        :param pulumi.Input[_builtins.str] proto: The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         :param pulumi.Input[_builtins.str] release: The status of the access control policy. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of a week or of a month on which the access control policy takes effect. Valid values:
                - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
@@ -1394,7 +1394,7 @@ class ControlPolicy(pulumi.CustomResource):
     @pulumi.getter
     def proto(self) -> pulumi.Output[_builtins.str]:
         """
-        The protocol type supported by the access control policy. Valid values: `ANY`, ` TCP`, `UDP`, `ICMP`.
+        The protocol type supported by the access control policy. Valid values: `ANY`, `  TCP `, `UDP`, `ICMP`.
         """
         return pulumi.get(self, "proto")
 

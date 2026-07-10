@@ -104,7 +104,7 @@ export class SecurityPreference extends pulumi.CustomResource {
      */
     declare public readonly enableSaveMfaTicket: pulumi.Output<boolean>;
     /**
-     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead. 
+     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      *
      * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
@@ -246,7 +246,7 @@ export interface SecurityPreferenceState {
      */
     enableSaveMfaTicket?: pulumi.Input<boolean | undefined>;
     /**
-     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead. 
+     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      *
      * @deprecated This property has been deprecated as it is no longer supported by Aliyun.
@@ -340,7 +340,7 @@ export interface SecurityPreferenceArgs {
      */
     enableSaveMfaTicket?: pulumi.Input<boolean | undefined>;
     /**
-     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead. 
+     * Field `enforceMfaForLogin` has been deprecated from provider version 1.248.0. New field `mfaOperationForLogin` instead.
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      *
      * @deprecated This property has been deprecated as it is no longer supported by Aliyun.

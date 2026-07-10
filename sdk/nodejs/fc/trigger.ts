@@ -624,8 +624,8 @@ export class Trigger extends pulumi.CustomResource {
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      *
      * > **NOTE:** Config does not support modification when type is mns_topic.
-     * > **NOTE:** type = cdn_events, available in 1.47.0+.
-     * > **NOTE:** type = eventbridge, available in 1.173.0+.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -729,8 +729,8 @@ export interface TriggerState {
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      *
      * > **NOTE:** Config does not support modification when type is mns_topic.
-     * > **NOTE:** type = cdn_events, available in 1.47.0+.
-     * > **NOTE:** type = eventbridge, available in 1.173.0+.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -775,8 +775,8 @@ export interface TriggerArgs {
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      *
      * > **NOTE:** Config does not support modification when type is mns_topic.
-     * > **NOTE:** type = cdn_events, available in 1.47.0+.
-     * > **NOTE:** type = eventbridge, available in 1.173.0+.
+     * **NOTE:** type = cdn_events, available in 1.47.0+.
+     * **NOTE:** type = eventbridge, available in 1.173.0+.
      */
     type: pulumi.Input<string>;
 }

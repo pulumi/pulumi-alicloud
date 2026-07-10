@@ -241,7 +241,7 @@ def get_subnets(ids: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str status: The status of the resource.
     :param _builtins.str subnet_id: Primary key ID.
     :param _builtins.str subnet_name: The Subnet name.
-    :param _builtins.str type: Eflo subnet usage type, optional value: 
+    :param _builtins.str type: Eflo subnet usage type, optional value:
            - General type is not filled in
            - OOB:OOB type
            - LB: LB type
@@ -318,7 +318,7 @@ def get_subnets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.st
     :param _builtins.str status: The status of the resource.
     :param _builtins.str subnet_id: Primary key ID.
     :param _builtins.str subnet_name: The Subnet name.
-    :param _builtins.str type: Eflo subnet usage type, optional value: 
+    :param _builtins.str type: Eflo subnet usage type, optional value:
            - General type is not filled in
            - OOB:OOB type
            - LB: LB type

@@ -35,7 +35,6 @@ class IpamIpamScopeArgs:
         :param pulumi.Input[_builtins.str] ipam_scope_type: IPAM scope of action type:
                `private`.
                
-               
                > **NOTE:**  Currently, only the role scope of the private network is supported.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
@@ -96,7 +95,6 @@ class IpamIpamScopeArgs:
         IPAM scope of action type:
         `private`.
 
-
         > **NOTE:**  Currently, only the role scope of the private network is supported.
         """
         return pulumi.get(self, "ipam_scope_type")
@@ -152,7 +150,6 @@ class _IpamIpamScopeState:
         :param pulumi.Input[_builtins.str] ipam_scope_name: The name of the resource.
         :param pulumi.Input[_builtins.str] ipam_scope_type: IPAM scope of action type:
                `private`.
-               
                
                > **NOTE:**  Currently, only the role scope of the private network is supported.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource.
@@ -234,7 +231,6 @@ class _IpamIpamScopeState:
         """
         IPAM scope of action type:
         `private`.
-
 
         > **NOTE:**  Currently, only the role scope of the private network is supported.
         """
@@ -356,7 +352,6 @@ class IpamIpamScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipam_scope_name: The name of the resource.
         :param pulumi.Input[_builtins.str] ipam_scope_type: IPAM scope of action type:
                `private`.
-               
                
                > **NOTE:**  Currently, only the role scope of the private network is supported.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -485,7 +480,6 @@ class IpamIpamScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipam_scope_type: IPAM scope of action type:
                `private`.
                
-               
                > **NOTE:**  Currently, only the role scope of the private network is supported.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -546,7 +540,6 @@ class IpamIpamScope(pulumi.CustomResource):
         """
         IPAM scope of action type:
         `private`.
-
 
         > **NOTE:**  Currently, only the role scope of the private network is supported.
         """

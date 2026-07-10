@@ -1734,7 +1734,7 @@ class InstanceDataDiskArgsDict(TypedDict):
     - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
     - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
     - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-    Default to `PL1`.
+      Default to `PL1`.
     """
     provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -1782,7 +1782,7 @@ class InstanceDataDiskArgs:
                - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
                - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
                - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-               Default to `PL1`.
+                 Default to `PL1`.
         :param pulumi.Input[_builtins.int] provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
         :param pulumi.Input[_builtins.str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
@@ -1946,7 +1946,7 @@ class InstanceDataDiskArgs:
         - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
         - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
         - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        Default to `PL1`.
+          Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
 

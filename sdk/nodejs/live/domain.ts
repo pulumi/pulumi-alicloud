@@ -88,7 +88,7 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly domainName: pulumi.Output<string>;
     /**
-     * Domain business type. Valid values:  
+     * Domain business type. Valid values:
      * - `liveVideo`: Playback domain.
      * - `liveEdge`: Edge ingest domain.
      */
@@ -185,7 +185,7 @@ export interface DomainState {
      */
     domainName?: pulumi.Input<string | undefined>;
     /**
-     * Domain business type. Valid values:  
+     * Domain business type. Valid values:
      * - `liveVideo`: Playback domain.
      * - `liveEdge`: Edge ingest domain.
      */
@@ -231,7 +231,7 @@ export interface DomainArgs {
      */
     domainName: pulumi.Input<string>;
     /**
-     * Domain business type. Valid values:  
+     * Domain business type. Valid values:
      * - `liveVideo`: Playback domain.
      * - `liveEdge`: Edge ingest domain.
      */

@@ -125,9 +125,9 @@ class EciScalingConfigurationArgs:
                , `SpotWithPriceLimit`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-               be a null string.
+                 be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-               a null string.
+                 a null string.
         :param pulumi.Input[_builtins.int] termination_grace_period_seconds: The program's buffering time before closing.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes. See `volumes` below for details.
         """
@@ -719,9 +719,9 @@ class EciScalingConfigurationArgs:
         """
         A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-        be a null string.
+          be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-        a null string.
+          a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -861,9 +861,9 @@ class _EciScalingConfigurationState:
                , `SpotWithPriceLimit`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-               be a null string.
+                 be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-               a null string.
+                 a null string.
         :param pulumi.Input[_builtins.int] termination_grace_period_seconds: The program's buffering time before closing.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes. See `volumes` below for details.
         """
@@ -1456,9 +1456,9 @@ class _EciScalingConfigurationState:
         """
         A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-        be a null string.
+          be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-        a null string.
+          a null string.
         """
         return pulumi.get(self, "tags")
 
@@ -1673,9 +1673,9 @@ class EciScalingConfiguration(pulumi.CustomResource):
                , `SpotWithPriceLimit`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-               be a null string.
+                 be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-               a null string.
+                 a null string.
         :param pulumi.Input[_builtins.int] termination_grace_period_seconds: The program's buffering time before closing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below for details.
         """
@@ -1987,9 +1987,9 @@ class EciScalingConfiguration(pulumi.CustomResource):
                , `SpotWithPriceLimit`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-               be a null string.
+                 be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-               a null string.
+                 a null string.
         :param pulumi.Input[_builtins.int] termination_grace_period_seconds: The program's buffering time before closing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationVolumeArgs', 'EciScalingConfigurationVolumeArgsDict']]]] volumes: The list of volumes. See `volumes` below for details.
         """
@@ -2384,9 +2384,9 @@ class EciScalingConfiguration(pulumi.CustomResource):
         """
         A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-        be a null string.
+          be a null string.
         - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-        a null string.
+          a null string.
         """
         return pulumi.get(self, "tags")
 

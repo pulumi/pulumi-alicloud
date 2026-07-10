@@ -80,7 +80,7 @@ export class ParameterGroup extends pulumi.CustomResource {
      */
     declare public readonly dbType: pulumi.Output<string>;
     /**
-     * The version of the database engine. Valid values: 
+     * The version of the database engine. Valid values:
      * - **5.6**
      * - **5.7**
      * - **8.0**
@@ -108,7 +108,6 @@ export class ParameterGroup extends pulumi.CustomResource {
      * Details about the parameters. See `parameters` below.
      *
      * > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -171,7 +170,7 @@ export interface ParameterGroupState {
      */
     dbType?: pulumi.Input<string | undefined>;
     /**
-     * The version of the database engine. Valid values: 
+     * The version of the database engine. Valid values:
      * - **5.6**
      * - **5.7**
      * - **8.0**
@@ -200,7 +199,6 @@ export interface ParameterGroupState {
      *
      * > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
      *
-     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ParameterGroupParameter>[] | undefined>;
@@ -215,7 +213,7 @@ export interface ParameterGroupArgs {
      */
     dbType: pulumi.Input<string>;
     /**
-     * The version of the database engine. Valid values: 
+     * The version of the database engine. Valid values:
      * - **5.6**
      * - **5.7**
      * - **8.0**
@@ -243,7 +241,6 @@ export interface ParameterGroupArgs {
      * Details about the parameters. See `parameters` below.
      *
      * > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

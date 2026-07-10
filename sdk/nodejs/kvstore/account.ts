@@ -110,7 +110,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly accountPassword: pulumi.Output<string | undefined>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
@@ -118,7 +118,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
-     * Default to Normal.
+     *   Default to Normal.
      */
     declare public readonly accountType: pulumi.Output<string>;
     /**
@@ -205,7 +205,7 @@ export interface AccountState {
      */
     accountPassword?: pulumi.Input<string | undefined>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
@@ -213,7 +213,7 @@ export interface AccountState {
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
-     * Default to Normal.
+     *   Default to Normal.
      */
     accountType?: pulumi.Input<string | undefined>;
     /**
@@ -254,7 +254,7 @@ export interface AccountArgs {
      */
     accountPassword?: pulumi.Input<string | undefined>;
     /**
-     * The privilege of account access database. Default value: `RoleReadWrite` 
+     * The privilege of account access database. Default value: `RoleReadWrite`
      * - `RoleReadOnly`: This value is only for Redis and Memcache
      * - `RoleReadWrite`: This value is only for Redis and Memcache
      */
@@ -262,7 +262,7 @@ export interface AccountArgs {
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
-     * Default to Normal.
+     *   Default to Normal.
      */
     accountType?: pulumi.Input<string | undefined>;
     /**

@@ -95,7 +95,6 @@ export class AccessGroup extends pulumi.CustomResource {
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
      *
-     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly fileSystemType: pulumi.Output<string | undefined>;
@@ -180,7 +179,6 @@ export interface AccessGroupState {
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
      *
-     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     fileSystemType?: pulumi.Input<string | undefined>;
@@ -224,7 +222,6 @@ export interface AccessGroupArgs {
      * Value:
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

@@ -33,11 +33,11 @@ import * as utilities from "../utilities";
  * const createVPC = new alicloud.vpc.Network("CreateVPC", {cidrBlock: vpcCidr});
  * // According to the vswitch cidr blocks to launch several vswitches
  * const createVSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < vswitchCidrs.length; range.value++) {
- *     createVSwitch.push(new alicloud.vpc.Switch(`CreateVSwitch-${range.value}`, {
+ * for (let range = 0; range < vswitchCidrs.length; range++) {
+ *     createVSwitch.push(new alicloud.vpc.Switch(`CreateVSwitch-${range}`, {
  *         vpcId: createVPC.id,
- *         cidrBlock: vswitchCidrs[range.value],
- *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *         cidrBlock: vswitchCidrs[range],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range].zoneId),
  *     }));
  * }
  * const createCluster = new alicloud.cs.ManagedKubernetes("CreateCluster", {

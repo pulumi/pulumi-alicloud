@@ -116,7 +116,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-     * **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
     declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
     /**
@@ -215,7 +215,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-     * **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
@@ -249,7 +249,7 @@ export class EcsInstanceSet extends pulumi.CustomResource {
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-     * **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      */
     declare public readonly spotStrategy: pulumi.Output<string>;
     /**
@@ -435,7 +435,7 @@ export interface EcsInstanceSetState {
      * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-     * **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
     autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -534,7 +534,7 @@ export interface EcsInstanceSetState {
      * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-     * **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
     period?: pulumi.Input<number | undefined>;
     /**
@@ -568,7 +568,7 @@ export interface EcsInstanceSetState {
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-     * **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      */
     spotStrategy?: pulumi.Input<string | undefined>;
     /**
@@ -633,7 +633,7 @@ export interface EcsInstanceSetArgs {
      * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-     * **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
     autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -728,7 +728,7 @@ export interface EcsInstanceSetArgs {
      * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
-     * **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      */
     period?: pulumi.Input<number | undefined>;
     /**
@@ -762,7 +762,7 @@ export interface EcsInstanceSetArgs {
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
      * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-     * **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      */
     spotStrategy?: pulumi.Input<string | undefined>;
     /**

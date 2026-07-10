@@ -77,7 +77,7 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -101,7 +101,7 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
@@ -113,7 +113,7 @@ class EcsInstanceSetArgs:
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
                - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+                 **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -290,7 +290,7 @@ class EcsInstanceSetArgs:
         Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+          **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -545,7 +545,7 @@ class EcsInstanceSetArgs:
         The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+          **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period")
 
@@ -623,7 +623,7 @@ class EcsInstanceSetArgs:
         - `NoSpot`: A regular Pay-As-You-Go instance.
         - `SpotWithPriceLimit`: A price threshold for a spot instance.
         - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-        **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+          **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -809,7 +809,7 @@ class _EcsInstanceSetState:
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -836,7 +836,7 @@ class _EcsInstanceSetState:
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
@@ -849,7 +849,7 @@ class _EcsInstanceSetState:
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
                - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+                 **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -995,7 +995,7 @@ class _EcsInstanceSetState:
         Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+          **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -1286,7 +1286,7 @@ class _EcsInstanceSetState:
         The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+          **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period")
 
@@ -1376,7 +1376,7 @@ class _EcsInstanceSetState:
         - `NoSpot`: A regular Pay-As-You-Go instance.
         - `SpotWithPriceLimit`: A price threshold for a spot instance.
         - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-        **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+          **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1623,7 +1623,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -1649,7 +1649,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
@@ -1662,7 +1662,7 @@ class EcsInstanceSet(pulumi.CustomResource):
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
                - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+                 **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -1928,7 +1928,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
         :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
@@ -1955,7 +1955,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+                 **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
@@ -1968,7 +1968,7 @@ class EcsInstanceSet(pulumi.CustomResource):
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
                - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+                 **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -2062,7 +2062,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+          **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -2257,7 +2257,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+          **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period")
 
@@ -2319,7 +2319,7 @@ class EcsInstanceSet(pulumi.CustomResource):
         - `NoSpot`: A regular Pay-As-You-Go instance.
         - `SpotWithPriceLimit`: A price threshold for a spot instance.
         - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
-        **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
+          **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         """
         return pulumi.get(self, "spot_strategy")
 

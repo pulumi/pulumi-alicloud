@@ -2053,7 +2053,6 @@ class DomainRedirectArgsDict(TypedDict):
     """
     The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
 
-
     > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
     """
     keepalive_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -2134,7 +2133,6 @@ class DomainRedirectArgs:
         :param pulumi.Input[_builtins.int] http2_origin_max_concurrency: The maximum number of concurrent HTTP/2 back-to-origin requests. Valid values: `1` to `512`. Default value: `128`.
         :param pulumi.Input[_builtins.bool] keepalive: Specifies whether to enable the persistent connection feature. Valid values:
         :param pulumi.Input[_builtins.int] keepalive_requests: The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
-               
                
                > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         :param pulumi.Input[_builtins.int] keepalive_timeout: Idle long connection timeout, value range: 1~60, default 15, unit: seconds.
@@ -2294,7 +2292,6 @@ class DomainRedirectArgs:
     def keepalive_requests(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
-
 
         > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
         """

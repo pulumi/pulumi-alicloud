@@ -200,8 +200,8 @@ export interface MilvusInstanceComponent {
      * The component type. Different types need to be configured according to different versions.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-     * 2.5: proxy ,mix_coordinator,data,query,index
-     * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+     *   2.5: proxy ,mix_coordinator,data,query,index
+     *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming
      */
     type: string;
 }
@@ -223,7 +223,7 @@ export interface OpenApiExplorerApiMcpServerAdditionalApiDescription {
      */
     apiName?: string;
     /**
-     * API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+     * API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.
      *
      * > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
      */
@@ -233,18 +233,18 @@ export interface OpenApiExplorerApiMcpServerAdditionalApiDescription {
      */
     apiVersion?: string;
     /**
-     * Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+     * Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.\
      * Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
      */
     constParameters?: outputs.OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter[];
     /**
-     * By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+     * By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.
      *
      * > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
      */
     enableOutputSchema?: boolean;
     /**
-     * Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+     * Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:
      * - SSE protocol: up to 30 minutes
      * - Streamable HTTP protocol: up to 1 minute
      *
@@ -261,7 +261,7 @@ export interface OpenApiExplorerApiMcpServerAdditionalApiDescription {
 
 export interface OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
     /**
-     * Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+     * Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.
      *
      * For RPC-style APIs, examples include:
      * - Name: sets the Name parameter to a fixed value.
@@ -1587,7 +1587,7 @@ export namespace alb {
          */
         healthCheckCodes: string[];
         /**
-         * The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:` 0`. This default value indicates that the backend server is used for health checks.
+         * The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
          */
         healthCheckConnectPort: number;
         /**
@@ -1607,7 +1607,7 @@ export namespace alb {
          */
         healthCheckMethod: string;
         /**
-         * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+         * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
          */
         healthCheckPath: string;
         /**
@@ -3395,7 +3395,7 @@ export namespace alb {
          * The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
          *
          * > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-         * > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+         * **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
          */
         weight: number;
     }
@@ -4522,7 +4522,7 @@ export namespace arms {
          */
         key: string;
         /**
-         * The operator used in the dispatch rule. Valid values: 
+         * The operator used in the dispatch rule. Valid values:
          * * eq: equals to.
          * * re: matches a regular expression.
          */
@@ -5470,7 +5470,7 @@ export namespace arms {
         /**
          * Whether the monitoring samples are evenly distributed:
          * - 0: No
-         * 1: Yes.
+         *   1: Yes.
          */
         monitorSamples?: number;
         /**
@@ -5619,7 +5619,7 @@ export namespace arms {
          * Download the kernel.
          * - 1:curl
          * - 0:WinInet
-         * Default 1.
+         *   Default 1.
          */
         downloadKernel?: number;
         /**
@@ -5659,7 +5659,7 @@ export namespace arms {
          * - 1:http1
          * - 2:http2
          * - 3:http3
-         * Default 1.
+         *   Default 1.
          */
         quickProtocol?: number;
         /**
@@ -5696,7 +5696,7 @@ export namespace arms {
          * The IP address type of the DNS server.
          * - 0 (default):ipv4
          * - 1:ipv6
-         * 2: Automatic.
+         *   2: Automatic.
          */
         dnsServerIpType?: number;
         /**
@@ -5828,7 +5828,7 @@ export namespace arms {
         /**
          * Whether to support automatic scrolling screen, loading page.
          * - 0 (default): No
-         * 1: Yes.
+         *   1: Yes.
          */
         automaticScrolling?: number;
         /**
@@ -17887,7 +17887,7 @@ export namespace cs {
          */
         config?: string;
         /**
-         * It specifies whether to disable automatic installation. 
+         * It specifies whether to disable automatic installation.
          *
          * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          *
@@ -28054,7 +28054,7 @@ export namespace ecs {
         size: number;
         state: string;
         /**
-         * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+         * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
          * - `Creating`: The image is being created.
          * - `Waiting`: The image is waiting to be processed.
          * - `Available`: The image is available.
@@ -28876,7 +28876,7 @@ export namespace ecs {
          * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
          * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
          * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-         * Default to `PL1`.
+         *   Default to `PL1`.
          */
         performanceLevel: string;
         /**
@@ -30910,7 +30910,7 @@ export namespace eflo {
          */
         subnetName: string;
         /**
-         * Eflo subnet usage type, optional value: 
+         * Eflo subnet usage type, optional value:
          * - General type is not filled in
          * - OOB:OOB type
          * - LB: LB type
@@ -35198,7 +35198,7 @@ export namespace ess {
          */
         tty?: boolean;
         /**
-         * The structure of volumeMounts. 
+         * The structure of volumeMounts.
          * See `volumeMounts` below for details.
          */
         volumeMounts?: outputs.ess.EciScalingConfigurationContainerVolumeMount[];
@@ -35281,7 +35281,7 @@ export namespace ess {
          */
         cpu?: number;
         /**
-         * The structure of environmentVars. 
+         * The structure of environmentVars.
          * See `environmentVars` below for details.
          */
         environmentVars?: outputs.ess.EciScalingConfigurationInitContainerEnvironmentVar[];
@@ -36463,7 +36463,6 @@ export namespace ess {
         /**
          * The maximum bid price of instance type in launchTemplateOverride.
          *
-         *
          * > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
          *
          * > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
@@ -36913,7 +36912,7 @@ export namespace eventbridge {
          * - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
          * - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
          * - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
-         * Default value: `CONSUME_FROM_LAST_OFFSET`.
+         *   Default value: `CONSUME_FROM_LAST_OFFSET`.
          */
         offset?: string;
         /**
@@ -41363,7 +41362,7 @@ export namespace gpdb {
 
     export interface InstanceIpWhitelist {
         /**
-         * The value of this parameter is empty by default. The attribute of the whitelist group. 
+         * The value of this parameter is empty by default. The attribute of the whitelist group.
          * If the value contains `hidden`, this white list item will not output.
          */
         ipGroupAttribute: string;
@@ -45417,7 +45416,7 @@ export namespace maxcompute {
          */
         plan: string;
         /**
-         * The type of the quota plan. Valid values: daily 
+         * The type of the quota plan. Valid values: daily
          *
          * > **NOTE:** Currently, only daily is supported.
          */
@@ -47226,7 +47225,7 @@ export namespace nas {
          */
         description: string;
         /**
-         * (Optional, Available in v1.121.2+) Whether the file system is encrypted. 
+         * (Optional, Available in v1.121.2+) Whether the file system is encrypted.
          * * Valid values:
          */
         encryptType: number;
@@ -47895,7 +47894,6 @@ export namespace nlb {
         enabledTime: string;
         /**
          * The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
-         *
          *
          * > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
          */
@@ -48610,7 +48608,7 @@ export namespace opensearch {
          */
         qps?: number;
         /**
-         * Specification. Valid values: 
+         * Specification. Valid values:
          * * `opensearch.share.junior`: Entry-level.
          * * `opensearch.share.common`: Shared universal.
          * * `opensearch.share.compute`: Shared computing.
@@ -52224,7 +52222,7 @@ export namespace ram {
          */
         effect: string;
         /**
-         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone`s Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * (It has been deprecated since version 1.49.0, and use field `document` to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone` s Alicloud account id or you can use  `*`to replace, the`${relative_id}`is the resource description section which related to the`${service}`.
          */
         resources: string[];
     }
@@ -54948,7 +54946,7 @@ export namespace ros {
          */
         stackInstanceRegionId: string;
         /**
-         * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+         * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
          * * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
          * * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
          * * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
@@ -55681,7 +55679,7 @@ export namespace sae {
          * - SLB_RT: The average response time of public network SLB within 15 seconds.
          * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
          * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-         * **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+         *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          */
         metricType?: string;
         /**
@@ -56727,7 +56725,7 @@ export namespace scdn {
          */
         certName?: string;
         /**
-         * Certificate Type. Value Range: 
+         * Certificate Type. Value Range:
          * * upload: Certificate
          * * cas: Certificate Authority Certificate.
          * * free: Free Certificate.
@@ -56776,7 +56774,7 @@ export namespace scdn {
          */
         priority: string;
         /**
-         * The Origin Server Type. Valid Values: 
+         * The Origin Server Type. Valid Values:
          * * ipaddr: IP Source Station
          * * domain: the Domain Name
          * * oss: OSS Bucket as a Source Station.
@@ -60012,7 +60010,7 @@ export namespace slb {
          */
         slaveZoneId: string;
         /**
-         * (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone. 
+         * (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
          * It has been deprecated from v1.157.0 and use `slaveZoneId` instead.
          *
          * @deprecated the attribute slbSlaveZoneIds has been deprecated from version 1.157.0 and use slaveZoneId instead.
@@ -60467,7 +60465,7 @@ export namespace sls {
          */
         resourceMode: string;
         /**
-         * Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+         * Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\
          * If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
          * Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
          */
@@ -63706,7 +63704,7 @@ export namespace vpc {
          */
         natIpCidr: string;
         /**
-         * NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+         * NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
          */
         natIpCidrDescription: string;
         /**
@@ -64303,7 +64301,7 @@ export namespace vpc {
          */
         oppositeRouterType: string;
         /**
-         * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+         * Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
          * `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `routerType` is set to `VBR`.
          */
         role: string;
@@ -65079,7 +65077,7 @@ export namespace vpn {
          */
         enable: boolean;
         /**
-         * the autonomous system number (ASN) on the Alibaba Cloud side. 
+         * the autonomous system number (ASN) on the Alibaba Cloud side.
          * Valid values: 1 to 4294967295. Default value: 45104. You can enter a value in two segments separated by a period (.).
          * Each segment is 16 bits in length. Enter the number in each segment in decimal format.
          * For example, if you enter 123.456, the ASN is 8061384. The ASN is calculated by using the following formula: 123 × 65536 + 456 = 8061384.
@@ -67067,7 +67065,6 @@ export namespace wafv3 {
         keepalive?: boolean;
         /**
          * The number of reused persistent connections. Valid values: 60 to 1000. Default value: 1000
-         *
          *
          * > **NOTE:**   This parameter specifies the number of persistent connections that can be reused after you enable the persistent connection feature.
          */

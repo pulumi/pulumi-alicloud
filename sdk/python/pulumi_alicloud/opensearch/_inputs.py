@@ -101,7 +101,7 @@ class AppGroupQuotaArgsDict(TypedDict):
     """
     spec: pulumi.Input[_builtins.str]
     """
-    Specification. Valid values: 
+    Specification. Valid values:
     * `opensearch.share.junior`: Entry-level.
     * `opensearch.share.common`: Shared universal.
     * `opensearch.share.compute`: Shared computing.
@@ -125,7 +125,7 @@ class AppGroupQuotaArgs:
         """
         :param pulumi.Input[_builtins.int] compute_resource: Computing resources. Unit: LCU.
         :param pulumi.Input[_builtins.int] doc_size: Storage Size. Unit: GB.
-        :param pulumi.Input[_builtins.str] spec: Specification. Valid values: 
+        :param pulumi.Input[_builtins.str] spec: Specification. Valid values:
                * `opensearch.share.junior`: Entry-level.
                * `opensearch.share.common`: Shared universal.
                * `opensearch.share.compute`: Shared computing.
@@ -169,7 +169,7 @@ class AppGroupQuotaArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[_builtins.str]:
         """
-        Specification. Valid values: 
+        Specification. Valid values:
         * `opensearch.share.junior`: Entry-level.
         * `opensearch.share.common`: Shared universal.
         * `opensearch.share.compute`: Shared computing.

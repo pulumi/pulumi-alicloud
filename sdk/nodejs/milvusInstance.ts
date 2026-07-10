@@ -114,8 +114,8 @@ export class MilvusInstance extends pulumi.CustomResource {
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-     * 2.5: proxy ,mix_coordinator,data,query,index
-     * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+     *   2.5: proxy ,mix_coordinator,data,query,index
+     *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      */
     declare public readonly components: pulumi.Output<outputs.MilvusInstanceComponent[] | undefined>;
     /**
@@ -304,8 +304,8 @@ export interface MilvusInstanceState {
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-     * 2.5: proxy ,mix_coordinator,data,query,index
-     * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+     *   2.5: proxy ,mix_coordinator,data,query,index
+     *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      */
     components?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponent>[] | undefined>;
     /**
@@ -416,8 +416,8 @@ export interface MilvusInstanceArgs {
      * Instance component information. Includes Starter Edition/Standard Edition.
      * - Starter version: Array including standalone
      * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-     * 2.5: proxy ,mix_coordinator,data,query,index
-     * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+     *   2.5: proxy ,mix_coordinator,data,query,index
+     *   2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
      */
     components?: pulumi.Input<pulumi.Input<inputs.MilvusInstanceComponent>[] | undefined>;
     /**

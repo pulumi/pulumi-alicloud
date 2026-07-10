@@ -4485,7 +4485,7 @@ class GetNatIpCidrsCidrResult(dict):
         :param _builtins.bool is_default: Whether it is the default NAT IP ADDRESS. Valid values:`true` or `false`.`true`: is the default NAT IP ADDRESS. `false`: it is not the default NAT IP ADDRESS.
         :param _builtins.str nat_gateway_id: The ID of the VPC NAT gateway.
         :param _builtins.str nat_ip_cidr: The NAT CIDR block to be created. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
-        :param _builtins.str nat_ip_cidr_description: NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        :param _builtins.str nat_ip_cidr_description: NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
         :param _builtins.str nat_ip_cidr_id: NAT IP ADDRESS instance ID.
         :param _builtins.str nat_ip_cidr_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         :param _builtins.str status: The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
@@ -4544,7 +4544,7 @@ class GetNatIpCidrsCidrResult(dict):
     @pulumi.getter(name="natIpCidrDescription")
     def nat_ip_cidr_description(self) -> _builtins.str:
         """
-        NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the` http://` Or `https://` at the beginning.
+        NAT IP ADDRESS range to the description of. Length is from `2` to `256` characters, must start with a letter or the Chinese at the beginning, but not at the`  http:// ` Or `https://` at the beginning.
         """
         return pulumi.get(self, "nat_ip_cidr_description")
 
@@ -6047,7 +6047,7 @@ class GetRouterInterfacesInterfaceResult(dict):
         :param _builtins.str opposite_region_id: Peer router region ID.
         :param _builtins.str opposite_router_id: Peer router ID.
         :param _builtins.str opposite_router_type: Router type in the peer region. Possible values: `VRouter` and `VBR`.
-        :param _builtins.str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+        :param _builtins.str role: Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
                `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
         :param _builtins.str router_id: ID of the VRouter located in the local region.
         :param _builtins.str router_type: Router type in the local region. Valid values are `VRouter` and `VBR` (physical connection).
@@ -6174,7 +6174,7 @@ class GetRouterInterfacesInterfaceResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and 
+        Role of the router interface. Valid values are `InitiatingSide` (connection initiator) and
         `AcceptingSide` (connection receiver). The value of this parameter must be `InitiatingSide` if the `router_type` is set to `VBR`.
         """
         return pulumi.get(self, "role")

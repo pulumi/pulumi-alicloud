@@ -39,7 +39,7 @@ class RatePlanInstanceArgs:
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+        :param pulumi.Input[_builtins.str] plan_name: Package name.
                
                For China site accounts:
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
@@ -132,7 +132,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="planName")
     def plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Package name.  
+        Package name.
 
         For China site accounts:
         """
@@ -187,7 +187,7 @@ class _RatePlanInstanceState:
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+        :param pulumi.Input[_builtins.str] plan_name: Package name.
                
                For China site accounts:
         :param pulumi.Input[_builtins.str] status: The plan status.
@@ -311,7 +311,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="planName")
     def plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Package name.  
+        Package name.
 
         For China site accounts:
         """
@@ -416,7 +416,7 @@ class RatePlanInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+        :param pulumi.Input[_builtins.str] plan_name: Package name.
                
                For China site accounts:
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
@@ -551,7 +551,7 @@ class RatePlanInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+        :param pulumi.Input[_builtins.str] plan_name: Package name.
                
                For China site accounts:
         :param pulumi.Input[_builtins.str] status: The plan status.
@@ -642,7 +642,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="planName")
     def plan_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Package name.  
+        Package name.
 
         For China site accounts:
         """

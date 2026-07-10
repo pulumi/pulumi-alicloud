@@ -239,7 +239,6 @@ export class RouterInterface extends pulumi.CustomResource {
      *
      * > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
@@ -248,9 +247,7 @@ export class RouterInterface extends pulumi.CustomResource {
      * - `Month` (default): monthly payment.
      * - `Year`: Pay per Year.
      *
-     *
      * > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -603,7 +600,6 @@ export interface RouterInterfaceState {
      *
      * > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number | undefined>;
@@ -612,9 +608,7 @@ export interface RouterInterfaceState {
      * - `Month` (default): monthly payment.
      * - `Year`: Pay per Year.
      *
-     *
      * > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -794,7 +788,6 @@ export interface RouterInterfaceArgs {
      *
      * > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number | undefined>;
@@ -803,9 +796,7 @@ export interface RouterInterfaceArgs {
      * - `Month` (default): monthly payment.
      * - `Year`: Pay per Year.
      *
-     *
      * > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
-     *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */

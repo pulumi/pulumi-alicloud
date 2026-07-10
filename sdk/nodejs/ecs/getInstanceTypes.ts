@@ -56,8 +56,8 @@ import * as utilities from "../utilities";
  *     securityGroupIds: [defaultSecurityGroup.id],
  * });
  * const defaultInstance: alicloud.ecs.Instance[] = [];
- * for (const range = {value: 0}; range.value < 14; range.value++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ * for (let range = 0; range < 14; range++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range}`, {
  *         imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *         instanceName: name,
@@ -176,7 +176,7 @@ export interface GetInstanceTypesArgs {
      */
     spotStrategy?: string;
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`. 
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`.
      * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
     systemDiskCategory?: string;
@@ -277,8 +277,8 @@ export interface GetInstanceTypesResult {
  *     securityGroupIds: [defaultSecurityGroup.id],
  * });
  * const defaultInstance: alicloud.ecs.Instance[] = [];
- * for (const range = {value: 0}; range.value < 14; range.value++) {
- *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ * for (let range = 0; range < 14; range++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range}`, {
  *         imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *         instanceName: name,
@@ -397,7 +397,7 @@ export interface GetInstanceTypesOutputArgs {
      */
     spotStrategy?: pulumi.Input<string | undefined>;
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`. 
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`.
      * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
     systemDiskCategory?: pulumi.Input<string | undefined>;

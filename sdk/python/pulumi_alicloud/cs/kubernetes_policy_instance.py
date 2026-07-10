@@ -260,12 +260,12 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         create_vpc = alicloud.vpc.Network("CreateVPC", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
-        create_v_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
-            create_v_switch.append(alicloud.vpc.Switch(f"CreateVSwitch-{range['value']}",
+        create_v_switch: list[alicloud.vpc.Switch] = []
+        for create_v_switch_range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
+            create_v_switch.append(alicloud.vpc.Switch(f"CreateVSwitch-{create_v_switch_range['value']}",
                 vpc_id=create_vpc.id,
-                cidr_block=vswitch_cidrs[range["value"]],
-                zone_id=enhanced.zones[range["value"]].zone_id))
+                cidr_block=vswitch_cidrs[create_v_switch_range["value"]],
+                zone_id=enhanced.zones[create_v_switch_range["value"]].zone_id))
         create_cluster = alicloud.cs.ManagedKubernetes("CreateCluster",
             name_prefix=cluster_name,
             cluster_spec="ack.standard",
@@ -415,12 +415,12 @@ class KubernetesPolicyInstance(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         create_vpc = alicloud.vpc.Network("CreateVPC", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
-        create_v_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
-            create_v_switch.append(alicloud.vpc.Switch(f"CreateVSwitch-{range['value']}",
+        create_v_switch: list[alicloud.vpc.Switch] = []
+        for create_v_switch_range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
+            create_v_switch.append(alicloud.vpc.Switch(f"CreateVSwitch-{create_v_switch_range['value']}",
                 vpc_id=create_vpc.id,
-                cidr_block=vswitch_cidrs[range["value"]],
-                zone_id=enhanced.zones[range["value"]].zone_id))
+                cidr_block=vswitch_cidrs[create_v_switch_range["value"]],
+                zone_id=enhanced.zones[create_v_switch_range["value"]].zone_id))
         create_cluster = alicloud.cs.ManagedKubernetes("CreateCluster",
             name_prefix=cluster_name,
             cluster_spec="ack.standard",

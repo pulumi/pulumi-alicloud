@@ -124,7 +124,6 @@ class LoadBalancerDeletionProtectionConfig(dict):
         :param _builtins.str enabled_time: Opening time of the configuration read-only mode.
         :param _builtins.str reason: The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
                
-               
                > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         """
         if enabled is not None:
@@ -155,7 +154,6 @@ class LoadBalancerDeletionProtectionConfig(dict):
     def reason(self) -> Optional[_builtins.str]:
         """
         The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
-
 
         > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         """

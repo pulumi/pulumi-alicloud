@@ -59,7 +59,7 @@ class DomainCertInfo(dict):
                  ssl_pub: Optional[_builtins.str] = None):
         """
         :param _builtins.str cert_name: If You Enable HTTPS Here Certificate Name.
-        :param _builtins.str cert_type: Certificate Type. Value Range: 
+        :param _builtins.str cert_type: Certificate Type. Value Range:
                * upload: Certificate
                * cas: Certificate Authority Certificate.
                * free: Free Certificate.
@@ -90,7 +90,7 @@ class DomainCertInfo(dict):
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[_builtins.str]:
         """
-        Certificate Type. Value Range: 
+        Certificate Type. Value Range:
         * upload: Certificate
         * cas: Certificate Authority Certificate.
         * free: Free Certificate.
@@ -182,7 +182,7 @@ class DomainSource(dict):
         :param _builtins.str content: The Back-to-Source Address.
         :param _builtins.int port: Port.
         :param _builtins.str priority: Priority.
-        :param _builtins.str type: The Origin Server Type. Valid Values: 
+        :param _builtins.str type: The Origin Server Type. Valid Values:
                * ipaddr: IP Source Station
                * domain: the Domain Name
                * oss: OSS Bucket as a Source Station.
@@ -223,7 +223,7 @@ class DomainSource(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The Origin Server Type. Valid Values: 
+        The Origin Server Type. Valid Values:
         * ipaddr: IP Source Station
         * domain: the Domain Name
         * oss: OSS Bucket as a Source Station.

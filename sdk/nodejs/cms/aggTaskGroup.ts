@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     slsProject: defaultProject.projectName,
  * });
  * const defaultPrometheusInstance: alicloud.cms.PrometheusInstance[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultPrometheusInstance.push(new alicloud.cms.PrometheusInstance(`default-${range.value}`, {
- *         prometheusInstanceName: `${name}_${range.value}`,
+ * for (let range = 0; range < 2; range++) {
+ *     defaultPrometheusInstance.push(new alicloud.cms.PrometheusInstance(`default-${range}`, {
+ *         prometheusInstanceName: `${name}_${range}`,
  *         workspace: defaultWorkspace.id,
  *     }));
  * }

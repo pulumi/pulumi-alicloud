@@ -1302,7 +1302,7 @@ class EventSourceV2SourceRocketmqParameters(dict):
                - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
                - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
                - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
-               Default value: `CONSUME_FROM_LAST_OFFSET`.
+                 Default value: `CONSUME_FROM_LAST_OFFSET`.
         :param _builtins.str region_id: The region of the RocketMQ instance.
         :param _builtins.str tag: The filter label of the message.
         :param _builtins.float timestamp: The timestamp. This parameter is valid only when the value of the Offset parameter is CONSUME_FROM_TIMESTAMP.
@@ -1437,7 +1437,7 @@ class EventSourceV2SourceRocketmqParameters(dict):
         - `CONSUME_FROM_LAST_OFFSET`: starts consumption from the latest point.
         - `CONSUME_FROM_FIRST_OFFSET`: starts consumption from the earliest point.
         - `CONSUME_FROM_TIMESTAMP`: starts consumption from the specified time point.
-        Default value: `CONSUME_FROM_LAST_OFFSET`.
+          Default value: `CONSUME_FROM_LAST_OFFSET`.
         """
         return pulumi.get(self, "offset")
 

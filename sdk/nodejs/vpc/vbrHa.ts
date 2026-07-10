@@ -36,17 +36,17 @@ import * as utilities from "../utilities";
  *     min: 1,
  * });
  * const exampleVirtualBorderRouter: alicloud.expressconnect.VirtualBorderRouter[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleVirtualBorderRouter.push(new alicloud.expressconnect.VirtualBorderRouter(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleVirtualBorderRouter.push(new alicloud.expressconnect.VirtualBorderRouter(`example-${range}`, {
  *         localGatewayIp: "10.0.0.1",
  *         peerGatewayIp: "10.0.0.2",
  *         peeringSubnetMask: "255.255.255.252",
- *         physicalConnectionId: example.then(example => example.connections[range.value].id),
+ *         physicalConnectionId: example.then(example => example.connections[range].id),
  *         virtualBorderRouterName: std.format({
  *             input: `${name}-%d`,
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
- *         vlanId: Number(vlanId.id) + range.value,
+ *         vlanId: Number(vlanId.id) + range,
  *         minRxInterval: 1000,
  *         minTxInterval: 1000,
  *         detectMultiplier: 10,
@@ -58,10 +58,10 @@ import * as utilities from "../utilities";
  *     protectionLevel: "REDUCED",
  * });
  * const exampleInstanceAttachment: alicloud.cen.InstanceAttachment[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleInstanceAttachment.push(new alicloud.cen.InstanceAttachment(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleInstanceAttachment.push(new alicloud.cen.InstanceAttachment(`example-${range}`, {
  *         instanceId: exampleInstance.id,
- *         childInstanceId: exampleVirtualBorderRouter[range.value].id,
+ *         childInstanceId: exampleVirtualBorderRouter[range].id,
  *         childInstanceType: "VBR",
  *         childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  *     }));

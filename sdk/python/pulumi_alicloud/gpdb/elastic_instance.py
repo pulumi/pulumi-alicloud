@@ -42,7 +42,7 @@ class ElasticInstanceArgs:
 
         :param pulumi.Input[_builtins.str] engine: Database engine: `gpdb`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Valid value is `6.0`.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[_builtins.int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
@@ -54,9 +54,9 @@ class ElasticInstanceArgs:
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key. **Note:** If the `encryption_type` parameter is set to `CloudDisk`, you must specify this parameter to the encryption key that is in the same region as the disk that is specified by the EncryptionType parameter. Otherwise, leave this parameter empty.
         :param pulumi.Input[_builtins.str] encryption_type: The type of the encryption. Valid values: `CloudDisk`. **Note:** Disk encryption cannot be disabled after it is enabled.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
-        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -121,7 +121,7 @@ class ElasticInstanceArgs:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[_builtins.str]:
         """
-        The specification of segment nodes. 
+        The specification of segment nodes.
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
@@ -243,7 +243,7 @@ class ElasticInstanceArgs:
     @pulumi.getter(name="paymentDuration")
     def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
         **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         """
         return pulumi.get(self, "payment_duration")
@@ -256,7 +256,7 @@ class ElasticInstanceArgs:
     @pulumi.getter(name="paymentDurationUnit")
     def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
         **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         """
         return pulumi.get(self, "payment_duration_unit")
@@ -349,12 +349,12 @@ class _ElasticInstanceState:
         :param pulumi.Input[_builtins.str] engine: Database engine: `gpdb`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
-        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the instance.
@@ -510,7 +510,7 @@ class _ElasticInstanceState:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The specification of segment nodes. 
+        The specification of segment nodes.
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
@@ -524,7 +524,7 @@ class _ElasticInstanceState:
     @pulumi.getter(name="paymentDuration")
     def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
         **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         """
         return pulumi.get(self, "payment_duration")
@@ -537,7 +537,7 @@ class _ElasticInstanceState:
     @pulumi.getter(name="paymentDurationUnit")
     def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
         **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         """
         return pulumi.get(self, "payment_duration_unit")
@@ -750,12 +750,12 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] engine: Database engine: `gpdb`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
-        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -944,12 +944,12 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] engine: Database engine: `gpdb`.
         :param pulumi.Input[_builtins.str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[_builtins.str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[_builtins.str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
-        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        :param pulumi.Input[_builtins.str] payment_duration_unit: The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
                **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         :param pulumi.Input[_builtins.str] payment_type: Valid values are `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.str] port: (Available since v1.196.0) The connection port of the instance.
@@ -1057,7 +1057,7 @@ class ElasticInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Output[_builtins.str]:
         """
-        The specification of segment nodes. 
+        The specification of segment nodes.
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
@@ -1067,7 +1067,7 @@ class ElasticInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentDuration")
     def payment_duration(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
+        The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.\\
         **NOTE:** Will not take effect after modifying `payment_duration` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         """
         return pulumi.get(self, "payment_duration")
@@ -1076,7 +1076,7 @@ class ElasticInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentDurationUnit")
     def payment_duration_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.  
+        The unit of the subscription period. Valid values: `Month`, `Year`. It is valid when payment_type is `Subscription`.\\
         **NOTE:** Will not take effect after modifying `payment_duration_unit` for now, if you want to renew a PayAsYouGo instance, need to do in on aliyun console.
         """
         return pulumi.get(self, "payment_duration_unit")

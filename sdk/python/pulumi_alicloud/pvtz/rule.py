@@ -234,14 +234,14 @@ class Rule(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=default_network.id,
                 cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=range["value"]).apply(lambda invoke: invoke.result),
-                zone_id=default.zones[range["value"]].zone_id))
+                    netnum=default_switch_range["value"]).apply(lambda invoke: invoke.result),
+                zone_id=default.zones[default_switch_range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
             name=name)
@@ -328,14 +328,14 @@ class Rule(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+        default_switch: list[alicloud.vpc.Switch] = []
+        for default_switch_range in [{"value": i} for i in range(0, 2)]:
+            default_switch.append(alicloud.vpc.Switch(f"default-{default_switch_range['value']}",
                 vpc_id=default_network.id,
                 cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=range["value"]).apply(lambda invoke: invoke.result),
-                zone_id=default.zones[range["value"]].zone_id))
+                    netnum=default_switch_range["value"]).apply(lambda invoke: invoke.result),
+                zone_id=default.zones[default_switch_range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
             name=name)

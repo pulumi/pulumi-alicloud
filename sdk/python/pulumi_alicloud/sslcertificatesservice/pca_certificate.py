@@ -71,7 +71,7 @@ class PcaCertificateArgs:
         :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] parent_identifier: Parent node identifier.
@@ -278,7 +278,7 @@ class PcaCertificateArgs:
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Extended attributes of the certificate, used to define extended key usages.  
+        Extended attributes of the certificate, used to define extended key usages.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -388,7 +388,7 @@ class _PcaCertificateState:
         :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
@@ -549,7 +549,7 @@ class _PcaCertificateState:
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Extended attributes of the certificate, used to define extended key usages.  
+        Extended attributes of the certificate, used to define extended key usages.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -777,7 +777,7 @@ class PcaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
@@ -969,7 +969,7 @@ class PcaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enable_crl: Specifies whether to enable CRL.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.  
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] extended_key_usages: Extended attributes of the certificate, used to define extended key usages.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] locality: The name of the city where the organization is located.
@@ -1089,7 +1089,7 @@ class PcaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Extended attributes of the certificate, used to define extended key usages.  
+        Extended attributes of the certificate, used to define extended key usages.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """

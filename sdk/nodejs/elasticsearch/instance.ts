@@ -168,13 +168,13 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
-     * Indicates whether private network access to Kibana is enabled. Valid values:  
+     * Indicates whether private network access to Kibana is enabled. Valid values:
      * - true: Enabled
      * - false: Disabled
      */
     declare public readonly enableKibanaPrivateNetwork: pulumi.Output<boolean>;
     /**
-     * Specifies whether to enable public access to Kibana. Valid values:  
+     * Specifies whether to enable public access to Kibana. Valid values:
      * - true: Enables public access.
      * - false: Disables public access.
      */
@@ -194,7 +194,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
     /**
-     * Edition type:  
+     * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      */
@@ -317,7 +317,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly renewStatus: pulumi.Output<string>;
     /**
-     * The unit of the auto-renewal period. Valid values:  
+     * The unit of the auto-renewal period. Valid values:
      * - M: Month.
      * - Y: Year.
      *
@@ -402,7 +402,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly warmNodeSpec: pulumi.Output<string>;
     /**
-     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -638,13 +638,13 @@ export interface InstanceState {
      */
     domain?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether private network access to Kibana is enabled. Valid values:  
+     * Indicates whether private network access to Kibana is enabled. Valid values:
      * - true: Enabled
      * - false: Disabled
      */
     enableKibanaPrivateNetwork?: pulumi.Input<boolean | undefined>;
     /**
-     * Specifies whether to enable public access to Kibana. Valid values:  
+     * Specifies whether to enable public access to Kibana. Valid values:
      * - true: Enables public access.
      * - false: Disables public access.
      */
@@ -664,7 +664,7 @@ export interface InstanceState {
      */
     force?: pulumi.Input<boolean | undefined>;
     /**
-     * Edition type:  
+     * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      */
@@ -787,7 +787,7 @@ export interface InstanceState {
      */
     renewStatus?: pulumi.Input<string | undefined>;
     /**
-     * The unit of the auto-renewal period. Valid values:  
+     * The unit of the auto-renewal period. Valid values:
      * - M: Month.
      * - Y: Year.
      *
@@ -872,7 +872,7 @@ export interface InstanceState {
      */
     warmNodeSpec?: pulumi.Input<string | undefined>;
     /**
-     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -948,13 +948,13 @@ export interface InstanceArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Indicates whether private network access to Kibana is enabled. Valid values:  
+     * Indicates whether private network access to Kibana is enabled. Valid values:
      * - true: Enabled
      * - false: Disabled
      */
     enableKibanaPrivateNetwork?: pulumi.Input<boolean | undefined>;
     /**
-     * Specifies whether to enable public access to Kibana. Valid values:  
+     * Specifies whether to enable public access to Kibana. Valid values:
      * - true: Enables public access.
      * - false: Disables public access.
      */
@@ -974,7 +974,7 @@ export interface InstanceArgs {
      */
     force?: pulumi.Input<boolean | undefined>;
     /**
-     * Edition type:  
+     * Edition type:
      * - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
      * - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
      */
@@ -1073,7 +1073,7 @@ export interface InstanceArgs {
      */
     renewStatus?: pulumi.Input<string | undefined>;
     /**
-     * The unit of the auto-renewal period. Valid values:  
+     * The unit of the auto-renewal period. Valid values:
      * - M: Month.
      * - Y: Year.
      *
@@ -1154,7 +1154,7 @@ export interface InstanceArgs {
      */
     warmNodeSpec?: pulumi.Input<string | undefined>;
     /**
-     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+     * The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

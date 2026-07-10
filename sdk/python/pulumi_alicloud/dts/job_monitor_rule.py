@@ -249,41 +249,41 @@ class JobMonitorRule(pulumi.CustomResource):
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
             vpc_id=example_network.id)
-        example_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
+        example_instance: list[alicloud.rds.Instance] = []
+        for example_instance_range in [{"value": i} for i in range(0, 2)]:
+            example_instance.append(alicloud.rds.Instance(f"example-{example_instance_range['value']}",
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
                 instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result,
+                    args=[example_instance_range["value"] + 1]).result,
                 vswitch_id=example_switch.id,
                 monitoring_period=60,
                 db_instance_storage_type="cloud_essd",
                 security_group_ids=[example_security_group.id]))
-        example_rds_account: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
-                db_instance_id=example_instance[range["value"]].id,
+        example_rds_account: list[alicloud.rds.RdsAccount] = []
+        for example_rds_account_range in [{"value": i} for i in range(0, 2)]:
+            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{example_rds_account_range['value']}",
+                db_instance_id=example_instance[example_rds_account_range["value"]].id,
                 account_name=std.format(input="example_name_%d",
-                    args=[range["value"] + 1]).result,
+                    args=[example_rds_account_range["value"] + 1]).result,
                 account_password=std.format(input="example_password_%d",
-                    args=[range["value"] + 1]).result))
-        example_database: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_database.append(alicloud.rds.Database(f"example-{range['value']}",
-                instance_id=example_instance[range["value"]].id,
+                    args=[example_rds_account_range["value"] + 1]).result))
+        example_database: list[alicloud.rds.Database] = []
+        for example_database_range in [{"value": i} for i in range(0, 2)]:
+            example_database.append(alicloud.rds.Database(f"example-{example_database_range['value']}",
+                instance_id=example_instance[example_database_range["value"]].id,
                 name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result))
-        example_account_privilege: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
-                instance_id=example_instance[range["value"]].id,
-                account_name=example_rds_account[range["value"]].name,
+                    args=[example_database_range["value"] + 1]).result))
+        example_account_privilege: list[alicloud.rds.AccountPrivilege] = []
+        for example_account_privilege_range in [{"value": i} for i in range(0, 2)]:
+            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{example_account_privilege_range['value']}",
+                instance_id=example_instance[example_account_privilege_range["value"]].id,
+                account_name=example_rds_account[example_account_privilege_range["value"]].name,
                 privilege="ReadWrite",
-                db_names=[example_database[range["value"]].name]))
+                db_names=[example_database[example_account_privilege_range["value"]].name]))
         example_migration_instance = alicloud.dts.MigrationInstance("example",
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
@@ -396,41 +396,41 @@ class JobMonitorRule(pulumi.CustomResource):
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
             vpc_id=example_network.id)
-        example_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
+        example_instance: list[alicloud.rds.Instance] = []
+        for example_instance_range in [{"value": i} for i in range(0, 2)]:
+            example_instance.append(alicloud.rds.Instance(f"example-{example_instance_range['value']}",
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
                 instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result,
+                    args=[example_instance_range["value"] + 1]).result,
                 vswitch_id=example_switch.id,
                 monitoring_period=60,
                 db_instance_storage_type="cloud_essd",
                 security_group_ids=[example_security_group.id]))
-        example_rds_account: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
-                db_instance_id=example_instance[range["value"]].id,
+        example_rds_account: list[alicloud.rds.RdsAccount] = []
+        for example_rds_account_range in [{"value": i} for i in range(0, 2)]:
+            example_rds_account.append(alicloud.rds.RdsAccount(f"example-{example_rds_account_range['value']}",
+                db_instance_id=example_instance[example_rds_account_range["value"]].id,
                 account_name=std.format(input="example_name_%d",
-                    args=[range["value"] + 1]).result,
+                    args=[example_rds_account_range["value"] + 1]).result,
                 account_password=std.format(input="example_password_%d",
-                    args=[range["value"] + 1]).result))
-        example_database: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_database.append(alicloud.rds.Database(f"example-{range['value']}",
-                instance_id=example_instance[range["value"]].id,
+                    args=[example_rds_account_range["value"] + 1]).result))
+        example_database: list[alicloud.rds.Database] = []
+        for example_database_range in [{"value": i} for i in range(0, 2)]:
+            example_database.append(alicloud.rds.Database(f"example-{example_database_range['value']}",
+                instance_id=example_instance[example_database_range["value"]].id,
                 name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result))
-        example_account_privilege: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
-                instance_id=example_instance[range["value"]].id,
-                account_name=example_rds_account[range["value"]].name,
+                    args=[example_database_range["value"] + 1]).result))
+        example_account_privilege: list[alicloud.rds.AccountPrivilege] = []
+        for example_account_privilege_range in [{"value": i} for i in range(0, 2)]:
+            example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{example_account_privilege_range['value']}",
+                instance_id=example_instance[example_account_privilege_range["value"]].id,
+                account_name=example_rds_account[example_account_privilege_range["value"]].name,
                 privilege="ReadWrite",
-                db_names=[example_database[range["value"]].name]))
+                db_names=[example_database[example_account_privilege_range["value"]].name]))
         example_migration_instance = alicloud.dts.MigrationInstance("example",
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",

@@ -627,10 +627,10 @@ class AggTaskGroup(pulumi.CustomResource):
         default_workspace = alicloud.cms.Workspace("default",
             workspace_name=name,
             sls_project=default_project.project_name)
-        default_prometheus_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_prometheus_instance.append(alicloud.cms.PrometheusInstance(f"default-{range['value']}",
-                prometheus_instance_name=f"{name}_{range['value']}",
+        default_prometheus_instance: list[alicloud.cms.PrometheusInstance] = []
+        for default_prometheus_instance_range in [{"value": i} for i in range(0, 2)]:
+            default_prometheus_instance.append(alicloud.cms.PrometheusInstance(f"default-{default_prometheus_instance_range['value']}",
+                prometheus_instance_name=f"{name}_{default_prometheus_instance_range['value']}",
                 workspace=default_workspace.id))
         default_agg_task_group = alicloud.cms.AggTaskGroup("default",
             source_prometheus_id=default_prometheus_instance[0].id,
@@ -711,10 +711,10 @@ class AggTaskGroup(pulumi.CustomResource):
         default_workspace = alicloud.cms.Workspace("default",
             workspace_name=name,
             sls_project=default_project.project_name)
-        default_prometheus_instance: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_prometheus_instance.append(alicloud.cms.PrometheusInstance(f"default-{range['value']}",
-                prometheus_instance_name=f"{name}_{range['value']}",
+        default_prometheus_instance: list[alicloud.cms.PrometheusInstance] = []
+        for default_prometheus_instance_range in [{"value": i} for i in range(0, 2)]:
+            default_prometheus_instance.append(alicloud.cms.PrometheusInstance(f"default-{default_prometheus_instance_range['value']}",
+                prometheus_instance_name=f"{name}_{default_prometheus_instance_range['value']}",
                 workspace=default_workspace.id))
         default_agg_task_group = alicloud.cms.AggTaskGroup("default",
             source_prometheus_id=default_prometheus_instance[0].id,

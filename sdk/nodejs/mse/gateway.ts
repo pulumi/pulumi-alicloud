@@ -30,17 +30,17 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const exampleSwitch: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     exampleSwitch.push(new alicloud.vpc.Switch(`example-${range}`, {
  *         vpcId: exampleNetwork.id,
  *         cidrBlock: std.format({
  *             input: "172.16.%d.0/21",
- *             args: [(range.value + 1) * 16],
+ *             args: [(range + 1) * 16],
  *         }).then(invoke => invoke.result),
- *         zoneId: example.then(example => example.zones[range.value].id),
+ *         zoneId: example.then(example => example.zones[range].id),
  *         vswitchName: std.format({
  *             input: "terraform_example_%d",
- *             args: [range.value + 1],
+ *             args: [range + 1],
  *         }).then(invoke => invoke.result),
  *     }));
  * }

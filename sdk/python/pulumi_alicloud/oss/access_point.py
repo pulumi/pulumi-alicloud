@@ -31,7 +31,7 @@ class AccessPointArgs:
 
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
         :param pulumi.Input[_builtins.str] bucket: The Bucket to which the current access point belongs.
-        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows: 
+        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows:
                - vpc: only the specified VPC ID can be used to access the access point.
                - internet: the access point can be accessed through both external and internal Endpoint.
         :param pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs'] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
@@ -73,7 +73,7 @@ class AccessPointArgs:
     @pulumi.getter(name="networkOrigin")
     def network_origin(self) -> pulumi.Input[_builtins.str]:
         """
-        Access point network source. The valid values are as follows: 
+        Access point network source. The valid values are as follows:
         - vpc: only the specified VPC ID can be used to access the access point.
         - internet: the access point can be accessed through both external and internal Endpoint.
         """
@@ -122,7 +122,7 @@ class _AccessPointState:
 
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
         :param pulumi.Input[_builtins.str] bucket: The Bucket to which the current access point belongs.
-        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows: 
+        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows:
                - vpc: only the specified VPC ID can be used to access the access point.
                - internet: the access point can be accessed through both external and internal Endpoint.
         :param pulumi.Input['AccessPointPublicAccessBlockConfigurationArgs'] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
@@ -170,7 +170,7 @@ class _AccessPointState:
     @pulumi.getter(name="networkOrigin")
     def network_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Access point network source. The valid values are as follows: 
+        Access point network source. The valid values are as follows:
         - vpc: only the specified VPC ID can be used to access the access point.
         - internet: the access point can be accessed through both external and internal Endpoint.
         """
@@ -278,7 +278,7 @@ class AccessPoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
         :param pulumi.Input[_builtins.str] bucket: The Bucket to which the current access point belongs.
-        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows: 
+        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows:
                - vpc: only the specified VPC ID can be used to access the access point.
                - internet: the access point can be accessed through both external and internal Endpoint.
         :param pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
@@ -401,7 +401,7 @@ class AccessPoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_point_name: The name of the access point
         :param pulumi.Input[_builtins.str] bucket: The Bucket to which the current access point belongs.
-        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows: 
+        :param pulumi.Input[_builtins.str] network_origin: Access point network source. The valid values are as follows:
                - vpc: only the specified VPC ID can be used to access the access point.
                - internet: the access point can be accessed through both external and internal Endpoint.
         :param pulumi.Input[Union['AccessPointPublicAccessBlockConfigurationArgs', 'AccessPointPublicAccessBlockConfigurationArgsDict']] public_access_block_configuration: Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
@@ -440,7 +440,7 @@ class AccessPoint(pulumi.CustomResource):
     @pulumi.getter(name="networkOrigin")
     def network_origin(self) -> pulumi.Output[_builtins.str]:
         """
-        Access point network source. The valid values are as follows: 
+        Access point network source. The valid values are as follows:
         - vpc: only the specified VPC ID can be used to access the access point.
         - internet: the access point can be accessed through both external and internal Endpoint.
         """

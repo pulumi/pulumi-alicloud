@@ -56,8 +56,8 @@ class MilvusInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-               2.5: proxy ,mix_coordinator,data,query,index
-               2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+                 2.5: proxy ,mix_coordinator,data,query,index
+                 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         :param pulumi.Input[_builtins.str] configuration: User-defined configuration
         :param pulumi.Input[_builtins.str] db_admin_password: DB administrator password, which can be used to log in to attu.
                
@@ -199,8 +199,8 @@ class MilvusInstanceArgs:
         Instance component information. Includes Starter Edition/Standard Edition.
         - Starter version: Array including standalone
         - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        2.5: proxy ,mix_coordinator,data,query,index
-        2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+          2.5: proxy ,mix_coordinator,data,query,index
+          2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         """
         return pulumi.get(self, "components")
 
@@ -398,8 +398,8 @@ class _MilvusInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-               2.5: proxy ,mix_coordinator,data,query,index
-               2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+                 2.5: proxy ,mix_coordinator,data,query,index
+                 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         :param pulumi.Input[_builtins.str] configuration: User-defined configuration
         :param pulumi.Input[_builtins.str] create_time: Instance creation time.
         :param pulumi.Input[_builtins.str] db_admin_password: DB administrator password, which can be used to log in to attu.
@@ -510,8 +510,8 @@ class _MilvusInstanceState:
         Instance component information. Includes Starter Edition/Standard Edition.
         - Starter version: Array including standalone
         - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        2.5: proxy ,mix_coordinator,data,query,index
-        2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+          2.5: proxy ,mix_coordinator,data,query,index
+          2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         """
         return pulumi.get(self, "components")
 
@@ -866,8 +866,8 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-               2.5: proxy ,mix_coordinator,data,query,index
-               2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+                 2.5: proxy ,mix_coordinator,data,query,index
+                 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         :param pulumi.Input[_builtins.str] configuration: User-defined configuration
         :param pulumi.Input[_builtins.str] db_admin_password: DB administrator password, which can be used to log in to attu.
                
@@ -1095,8 +1095,8 @@ class MilvusInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]] components: Instance component information. Includes Starter Edition/Standard Edition.
                - Starter version: Array including standalone
                - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-               2.5: proxy ,mix_coordinator,data,query,index
-               2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+                 2.5: proxy ,mix_coordinator,data,query,index
+                 2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         :param pulumi.Input[_builtins.str] configuration: User-defined configuration
         :param pulumi.Input[_builtins.str] create_time: Instance creation time.
         :param pulumi.Input[_builtins.str] db_admin_password: DB administrator password, which can be used to log in to attu.
@@ -1182,8 +1182,8 @@ class MilvusInstance(pulumi.CustomResource):
         Instance component information. Includes Starter Edition/Standard Edition.
         - Starter version: Array including standalone
         - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
-        2.5: proxy ,mix_coordinator,data,query,index
-        2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
+          2.5: proxy ,mix_coordinator,data,query,index
+          2.6 need to configure: proxy,mix_coordinator,data,query,streaming See `components` below.
         """
         return pulumi.get(self, "components")
 

@@ -1447,7 +1447,7 @@ class InstanceDataDisk(dict):
                - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
                - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
                - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-               Default to `PL1`.
+                 Default to `PL1`.
         :param _builtins.int provisioned_iops: The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
         :param _builtins.str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
@@ -1571,7 +1571,7 @@ class InstanceDataDisk(dict):
         - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
         - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
         - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
-        Default to `PL1`.
+          Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -8838,7 +8838,7 @@ class GetImagesImageResult(dict):
         :param _builtins.str product_code: The product code of the image on the image market.
         :param _builtins.str progress: Progress of image creation, presented in percentages.
         :param _builtins.int size: The size of the created disk.
-        :param _builtins.str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        :param _builtins.str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
                - `Creating`: The image is being created.
                - `Waiting`: The image is waiting to be processed.
                - `Available`: The image is available.
@@ -9031,7 +9031,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
         - `Creating`: The image is being created.
         - `Waiting`: The image is waiting to be processed.
         - `Available`: The image is available.

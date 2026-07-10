@@ -98,10 +98,10 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:
                - true: Enabled
                - false: Disabled
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:
                - true: Enables public access.
                - false: Disables public access.
         :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
@@ -112,7 +112,7 @@ class InstanceArgs:
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
-        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
@@ -143,7 +143,7 @@ class InstanceArgs:
                - AutoRenewal: Auto-renewal.
                - ManualRenewal: Manual renewal.
                - NotRenewal: No renewal.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:
                - M: Month.
                - Y: Year.
                
@@ -163,7 +163,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -507,7 +507,7 @@ class InstanceArgs:
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether private network access to Kibana is enabled. Valid values:  
+        Indicates whether private network access to Kibana is enabled. Valid values:
         - true: Enabled
         - false: Disabled
         """
@@ -521,7 +521,7 @@ class InstanceArgs:
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable public access to Kibana. Valid values:  
+        Specifies whether to enable public access to Kibana. Valid values:
         - true: Enables public access.
         - false: Disables public access.
         """
@@ -565,7 +565,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Edition type:  
+        Edition type:
         - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         """
@@ -820,7 +820,7 @@ class InstanceArgs:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unit of the auto-renewal period. Valid values:  
+        The unit of the auto-renewal period. Valid values:
         - M: Month.
         - Y: Year.
 
@@ -966,7 +966,7 @@ class InstanceArgs:
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1058,10 +1058,10 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         :param pulumi.Input[_builtins.str] domain: The internal network address of the instance.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:
                - true: Enabled
                - false: Disabled
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:
                - true: Enables public access.
                - false: Disables public access.
         :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
@@ -1072,7 +1072,7 @@ class _InstanceState:
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
-        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
@@ -1109,7 +1109,7 @@ class _InstanceState:
                - AutoRenewal: Auto-renewal.
                - ManualRenewal: Manual renewal.
                - NotRenewal: No renewal.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:
                - M: Month.
                - Y: Year.
                
@@ -1142,7 +1142,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1510,7 +1510,7 @@ class _InstanceState:
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether private network access to Kibana is enabled. Valid values:  
+        Indicates whether private network access to Kibana is enabled. Valid values:
         - true: Enabled
         - false: Disabled
         """
@@ -1524,7 +1524,7 @@ class _InstanceState:
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable public access to Kibana. Valid values:  
+        Specifies whether to enable public access to Kibana. Valid values:
         - true: Enables public access.
         - false: Disables public access.
         """
@@ -1568,7 +1568,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Edition type:  
+        Edition type:
         - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         """
@@ -1895,7 +1895,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The unit of the auto-renewal period. Valid values:  
+        The unit of the auto-renewal period. Valid values:
         - M: Month.
         - Y: Year.
 
@@ -2087,7 +2087,7 @@ class _InstanceState:
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -2226,10 +2226,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:
                - true: Enabled
                - false: Disabled
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:
                - true: Enables public access.
                - false: Disables public access.
         :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
@@ -2240,7 +2240,7 @@ class Instance(pulumi.CustomResource):
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
-        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
@@ -2271,7 +2271,7 @@ class Instance(pulumi.CustomResource):
                - AutoRenewal: Auto-renewal.
                - ManualRenewal: Manual renewal.
                - NotRenewal: No renewal.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:
                - M: Month.
                - Y: Year.
                
@@ -2303,7 +2303,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -2602,10 +2602,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
         :param pulumi.Input[_builtins.str] description: Instance name, which supports fuzzy search. For example, searching for all instances containing `abc` may return instances named `abc`, `abcde`, `xyabc`, or `xabcy`.
         :param pulumi.Input[_builtins.str] domain: The internal network address of the instance.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Indicates whether private network access to Kibana is enabled. Valid values:
                - true: Enabled
                - false: Disabled
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:  
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Specifies whether to enable public access to Kibana. Valid values:
                - true: Enables public access.
                - false: Disables public access.
         :param pulumi.Input[_builtins.bool] enable_public: Specifies whether to enable a public endpoint for the instance. Valid values:
@@ -2616,7 +2616,7 @@ class Instance(pulumi.CustomResource):
                - false (default): No.
                
                > **NOTE:** This parameter only takes effect when other resource properties are also modified. Changing this parameter alone will not trigger a resource update.
-        :param pulumi.Input[_builtins.str] instance_category: Edition type:  
+        :param pulumi.Input[_builtins.str] instance_category: Edition type:
                - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
                - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. Use `payment_type` instead with values `PayAsYouGo` or `Subscription`.
@@ -2653,7 +2653,7 @@ class Instance(pulumi.CustomResource):
                - AutoRenewal: Auto-renewal.
                - ManualRenewal: Manual renewal.
                - NotRenewal: No renewal.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:  
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: The unit of the auto-renewal period. Valid values:
                - M: Month.
                - Y: Year.
                
@@ -2686,7 +2686,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -2888,7 +2888,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates whether private network access to Kibana is enabled. Valid values:  
+        Indicates whether private network access to Kibana is enabled. Valid values:
         - true: Enabled
         - false: Disabled
         """
@@ -2898,7 +2898,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether to enable public access to Kibana. Valid values:  
+        Specifies whether to enable public access to Kibana. Valid values:
         - true: Enables public access.
         - false: Disables public access.
         """
@@ -2930,7 +2930,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceCategory")
     def instance_category(self) -> pulumi.Output[_builtins.str]:
         """
-        Edition type:  
+        Edition type:
         - x-pack: Creates a commercial edition instance, or a kernel-enhanced edition instance without Indexing Service or OpenStore enabled.
         - IS: Creates a kernel-enhanced edition instance with Indexing Service or OpenStore enabled.
         """
@@ -3153,7 +3153,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> pulumi.Output[_builtins.str]:
         """
-        The unit of the auto-renewal period. Valid values:  
+        The unit of the auto-renewal period. Valid values:
         - M: Month.
         - Y: Year.
 
@@ -3289,7 +3289,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.  
+        The number of zones for the instance. Valid values: 1, 2, and 3. Default value: 1.
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

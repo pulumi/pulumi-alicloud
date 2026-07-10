@@ -677,11 +677,11 @@ class AccessStrategy(pulumi.CustomResource):
                 "email_notice": True,
                 "dingtalk_notice": True,
             }])
-        default_address_pool: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_address_pool.append(alicloud.dns.AddressPool(f"default-{range['value']}",
+        default_address_pool: list[alicloud.dns.AddressPool] = []
+        for default_address_pool_range in [{"value": i} for i in range(0, 2)]:
+            default_address_pool.append(alicloud.dns.AddressPool(f"default-{default_address_pool_range['value']}",
                 address_pool_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result,
+                    args=[default_address_pool_range["value"] + 1]).result,
                 instance_id=default_gtm_instance.id,
                 lba_strategy="RATIO",
                 type="IPV4",
@@ -799,11 +799,11 @@ class AccessStrategy(pulumi.CustomResource):
                 "email_notice": True,
                 "dingtalk_notice": True,
             }])
-        default_address_pool: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_address_pool.append(alicloud.dns.AddressPool(f"default-{range['value']}",
+        default_address_pool: list[alicloud.dns.AddressPool] = []
+        for default_address_pool_range in [{"value": i} for i in range(0, 2)]:
+            default_address_pool.append(alicloud.dns.AddressPool(f"default-{default_address_pool_range['value']}",
                 address_pool_name=std.format(input=f"{name}_%d",
-                    args=[range["value"] + 1]).result,
+                    args=[default_address_pool_range["value"] + 1]).result,
                 instance_id=default_gtm_instance.id,
                 lba_strategy="RATIO",
                 type="IPV4",

@@ -127,7 +127,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - `Flash `: single-digit second backup.
+               - ` Flash  `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -751,7 +751,7 @@ class InstanceArgs:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: standard backup.
-        - `Flash `: single-digit second backup.
+        - ` Flash  `: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -993,7 +993,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - `Flash `: single-digit second backup.
+               - ` Flash  `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -1682,7 +1682,7 @@ class _InstanceState:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: standard backup.
-        - `Flash `: single-digit second backup.
+        - ` Flash  `: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -2005,7 +2005,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - `Flash `: single-digit second backup.
+               - ` Flash  `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2362,7 +2362,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - `Flash `: single-digit second backup.
+               - ` Flash  `: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2819,7 +2819,7 @@ class Instance(pulumi.CustomResource):
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: standard backup.
-        - `Flash `: single-digit second backup.
+        - ` Flash  `: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 

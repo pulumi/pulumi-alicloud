@@ -1375,7 +1375,7 @@ class CollectionPolicyPolicyConfig(dict):
         :param _builtins.str resource_mode: Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
         :param Sequence[_builtins.str] instance_ids: The set of instance IDs. This parameter is valid only when resourceMode is set to instanceMode. Only instances whose IDs are included in this set are collected.
         :param Sequence[_builtins.str] regions: The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
-        :param Mapping[str, _builtins.str] resource_tags: Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+        :param Mapping[str, _builtins.str] resource_tags: Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\\
                If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
                Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
         """
@@ -1415,7 +1415,7 @@ class CollectionPolicyPolicyConfig(dict):
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        Resource tags. This parameter is valid only when resourceMode is set to attributeMode.  
+        Resource tags. This parameter is valid only when resourceMode is set to attributeMode.\\
         If the resource tag filter is empty, no filtering by resource tags is applied, and all instances satisfy the resource tag condition. Otherwise, only instances whose resource tag attributes fully match the specified resource tag configuration are collected.
         Resource tags and the region set of the instance work together. An instance is collected only if it satisfies both conditions.
         """

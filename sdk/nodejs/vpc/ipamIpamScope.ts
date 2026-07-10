@@ -94,7 +94,6 @@ export class IpamIpamScope extends pulumi.CustomResource {
      * IPAM scope of action type:
      * `private`.
      *
-     *
      * > **NOTE:**  Currently, only the role scope of the private network is supported.
      */
     declare public readonly ipamScopeType: pulumi.Output<string | undefined>;
@@ -182,7 +181,6 @@ export interface IpamIpamScopeState {
      * IPAM scope of action type:
      * `private`.
      *
-     *
      * > **NOTE:**  Currently, only the role scope of the private network is supported.
      */
     ipamScopeType?: pulumi.Input<string | undefined>;
@@ -224,7 +222,6 @@ export interface IpamIpamScopeArgs {
     /**
      * IPAM scope of action type:
      * `private`.
-     *
      *
      * > **NOTE:**  Currently, only the role scope of the private network is supported.
      */

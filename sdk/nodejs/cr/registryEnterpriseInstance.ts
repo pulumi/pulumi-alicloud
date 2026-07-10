@@ -157,7 +157,6 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
@@ -197,7 +196,6 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      * The number of VPC access controls.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -360,7 +358,6 @@ export interface RegistryEnterpriseInstanceState {
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number | undefined>;
@@ -400,7 +397,6 @@ export interface RegistryEnterpriseInstanceState {
      * The number of VPC access controls.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
@@ -470,7 +466,6 @@ export interface RegistryEnterpriseInstanceArgs {
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
      *
-     *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number | undefined>;
@@ -502,7 +497,6 @@ export interface RegistryEnterpriseInstanceArgs {
      * The number of VPC access controls.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

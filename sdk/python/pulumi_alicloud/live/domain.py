@@ -35,7 +35,7 @@ class DomainArgs:
                > **NOTE:** - If `domain_type` (live streaming domain business type) is set to `liveVideo`, and this parameter is not specified, the system queries information about the user's playback domains by default.
                
                > **NOTE:** - If `domain_type` is set to `liveEdge`, and this parameter is not specified, the system queries information about the user's ingest domains by default.
-        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:  
+        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:
                - `liveVideo`: Playback domain.
                - `liveEdge`: Edge ingest domain.
         :param pulumi.Input[_builtins.str] region: Region to which the domain belongs.
@@ -81,7 +81,7 @@ class DomainArgs:
     @pulumi.getter(name="domainType")
     def domain_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Domain business type. Valid values:  
+        Domain business type. Valid values:
         - `liveVideo`: Playback domain.
         - `liveEdge`: Edge ingest domain.
         """
@@ -190,7 +190,7 @@ class _DomainState:
                > **NOTE:** - If `domain_type` (live streaming domain business type) is set to `liveVideo`, and this parameter is not specified, the system queries information about the user's playback domains by default.
                
                > **NOTE:** - If `domain_type` is set to `liveEdge`, and this parameter is not specified, the system queries information about the user's ingest domains by default.
-        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:  
+        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:
                - `liveVideo`: Playback domain.
                - `liveEdge`: Edge ingest domain.
         :param pulumi.Input[_builtins.str] region: Region to which the domain belongs.
@@ -264,7 +264,7 @@ class _DomainState:
     @pulumi.getter(name="domainType")
     def domain_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Domain business type. Valid values:  
+        Domain business type. Valid values:
         - `liveVideo`: Playback domain.
         - `liveEdge`: Edge ingest domain.
         """
@@ -399,7 +399,7 @@ class Domain(pulumi.CustomResource):
                > **NOTE:** - If `domain_type` (live streaming domain business type) is set to `liveVideo`, and this parameter is not specified, the system queries information about the user's playback domains by default.
                
                > **NOTE:** - If `domain_type` is set to `liveEdge`, and this parameter is not specified, the system queries information about the user's ingest domains by default.
-        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:  
+        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:
                - `liveVideo`: Playback domain.
                - `liveEdge`: Edge ingest domain.
         :param pulumi.Input[_builtins.str] region: Region to which the domain belongs.
@@ -535,7 +535,7 @@ class Domain(pulumi.CustomResource):
                > **NOTE:** - If `domain_type` (live streaming domain business type) is set to `liveVideo`, and this parameter is not specified, the system queries information about the user's playback domains by default.
                
                > **NOTE:** - If `domain_type` is set to `liveEdge`, and this parameter is not specified, the system queries information about the user's ingest domains by default.
-        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:  
+        :param pulumi.Input[_builtins.str] domain_type: Domain business type. Valid values:
                - `liveVideo`: Playback domain.
                - `liveEdge`: Edge ingest domain.
         :param pulumi.Input[_builtins.str] region: Region to which the domain belongs.
@@ -593,7 +593,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="domainType")
     def domain_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Domain business type. Valid values:  
+        Domain business type. Valid values:
         - `liveVideo`: Playback domain.
         - `liveEdge`: Edge ingest domain.
         """

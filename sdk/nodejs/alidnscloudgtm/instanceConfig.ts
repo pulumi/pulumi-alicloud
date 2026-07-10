@@ -106,14 +106,14 @@ export class InstanceConfig extends pulumi.CustomResource {
      */
     declare public readonly scheduleHostName: pulumi.Output<string | undefined>;
     /**
-     * Record type for the access domain name:  
+     * Record type for the access domain name:
      * - A: IPv4 address
      * - AAAA: IPv6 address
      * - CNAME: domain name.
      */
     declare public readonly scheduleRrType: pulumi.Output<string>;
     /**
-     * Access domain name assignment mode:  
+     * Access domain name assignment mode:
      * - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
      * - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
      */
@@ -123,7 +123,7 @@ export class InstanceConfig extends pulumi.CustomResource {
      */
     declare public readonly scheduleZoneName: pulumi.Output<string | undefined>;
     /**
-     * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+     * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
      */
@@ -223,14 +223,14 @@ export interface InstanceConfigState {
      */
     scheduleHostName?: pulumi.Input<string | undefined>;
     /**
-     * Record type for the access domain name:  
+     * Record type for the access domain name:
      * - A: IPv4 address
      * - AAAA: IPv6 address
      * - CNAME: domain name.
      */
     scheduleRrType?: pulumi.Input<string | undefined>;
     /**
-     * Access domain name assignment mode:  
+     * Access domain name assignment mode:
      * - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
      * - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
      */
@@ -240,7 +240,7 @@ export interface InstanceConfigState {
      */
     scheduleZoneName?: pulumi.Input<string | undefined>;
     /**
-     * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+     * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
      */
@@ -278,14 +278,14 @@ export interface InstanceConfigArgs {
      */
     scheduleHostName?: pulumi.Input<string | undefined>;
     /**
-     * Record type for the access domain name:  
+     * Record type for the access domain name:
      * - A: IPv4 address
      * - AAAA: IPv6 address
      * - CNAME: domain name.
      */
     scheduleRrType: pulumi.Input<string>;
     /**
-     * Access domain name assignment mode:  
+     * Access domain name assignment mode:
      * - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
      * - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
      */
@@ -295,7 +295,7 @@ export interface InstanceConfigArgs {
      */
     scheduleZoneName?: pulumi.Input<string | undefined>;
     /**
-     * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+     * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
      */

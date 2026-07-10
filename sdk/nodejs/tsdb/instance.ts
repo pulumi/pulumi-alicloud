@@ -100,7 +100,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly instanceAlias: pulumi.Output<string | undefined>;
     /**
-     * The specification of the instance. 
+     * The specification of the instance.
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
      * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
      * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -226,7 +226,7 @@ export interface InstanceState {
      */
     instanceAlias?: pulumi.Input<string | undefined>;
     /**
-     * The specification of the instance. 
+     * The specification of the instance.
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
      * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
      * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
@@ -298,7 +298,7 @@ export interface InstanceArgs {
      */
     instanceAlias?: pulumi.Input<string | undefined>;
     /**
-     * The specification of the instance. 
+     * The specification of the instance.
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
      * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
      * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;

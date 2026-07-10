@@ -110,7 +110,7 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     declare public readonly htmlFileTransfer: pulumi.Output<string>;
     /**
-     * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
      */
     declare public readonly localDrive: pulumi.Output<string>;
     /**
@@ -256,7 +256,7 @@ export interface EcdPolicyGroupState {
      */
     htmlFileTransfer?: pulumi.Input<string | undefined>;
     /**
-     * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
      */
     localDrive?: pulumi.Input<string | undefined>;
     /**
@@ -342,7 +342,7 @@ export interface EcdPolicyGroupArgs {
      */
     htmlFileTransfer?: pulumi.Input<string | undefined>;
     /**
-     * Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+     * Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
      */
     localDrive?: pulumi.Input<string | undefined>;
     /**

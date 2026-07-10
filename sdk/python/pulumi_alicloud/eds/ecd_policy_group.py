@@ -50,7 +50,7 @@ class EcdPolicyGroupArgs:
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -190,7 +190,7 @@ class EcdPolicyGroupArgs:
     @pulumi.getter(name="localDrive")
     def local_drive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
@@ -364,7 +364,7 @@ class _EcdPolicyGroupState:
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -507,7 +507,7 @@ class _EcdPolicyGroupState:
     @pulumi.getter(name="localDrive")
     def local_drive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 
@@ -742,7 +742,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -915,7 +915,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] domain_list: The list of domain.
         :param pulumi.Input[_builtins.str] html_access: The access of html5. Valid values: `off`, `on`.
         :param pulumi.Input[_builtins.str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
-        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        :param pulumi.Input[_builtins.str] local_drive: Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         :param pulumi.Input[_builtins.str] policy_group_name: The name of policy group.
         :param pulumi.Input[_builtins.str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[_builtins.str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
@@ -1015,7 +1015,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
     @pulumi.getter(name="localDrive")
     def local_drive(self) -> pulumi.Output[_builtins.str]:
         """
-        Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
+        Local drive redirect policy. Valid values: `  readwrite `, `off`, `read`.
         """
         return pulumi.get(self, "local_drive")
 

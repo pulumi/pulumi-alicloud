@@ -124,7 +124,7 @@ export class ImageCopy extends pulumi.CustomResource {
      */
     declare public readonly encrypted: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates whether to force delete the custom image, Default is `false`. 
+     * Indicates whether to force delete the custom image, Default is `false`.
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
@@ -215,7 +215,7 @@ export interface ImageCopyState {
      */
     encrypted?: pulumi.Input<boolean | undefined>;
     /**
-     * Indicates whether to force delete the custom image, Default is `false`. 
+     * Indicates whether to force delete the custom image, Default is `false`.
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
@@ -260,7 +260,7 @@ export interface ImageCopyArgs {
      */
     encrypted?: pulumi.Input<boolean | undefined>;
     /**
-     * Indicates whether to force delete the custom image, Default is `false`. 
+     * Indicates whether to force delete the custom image, Default is `false`.
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */

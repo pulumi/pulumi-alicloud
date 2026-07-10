@@ -109,7 +109,6 @@ class LoadBalancerDeletionProtectionConfigArgsDict(TypedDict):
     """
     The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
 
-
     > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
     """
 
@@ -123,7 +122,6 @@ class LoadBalancerDeletionProtectionConfigArgs:
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable deletion protection. Valid values:
         :param pulumi.Input[_builtins.str] enabled_time: Opening time of the configuration read-only mode.
         :param pulumi.Input[_builtins.str] reason: The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
-               
                
                > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         """
@@ -163,7 +161,6 @@ class LoadBalancerDeletionProtectionConfigArgs:
     def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The reason must start with a letter.
-
 
         > **NOTE:**  This parameter takes effect only when `DeletionProtectionEnabled` is set to `true`.
         """

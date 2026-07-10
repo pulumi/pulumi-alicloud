@@ -3013,7 +3013,7 @@ class ServerGroupServer(dict):
         :param _builtins.int weight: The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
                
                > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-               > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+               **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -3119,7 +3119,7 @@ class ServerGroupServer(dict):
         The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
 
         > **NOTE:**   Default value: `0`. We strongly recommend specifying this parameter.
-        > **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
+        **NOTE:**   You do not need to set this parameter if you set `ServerType` to `Fc`.
         """
         return pulumi.get(self, "weight")
 
@@ -3621,12 +3621,12 @@ class GetHealthCheckTemplatesTemplateResult(dict):
                  unhealthy_threshold: _builtins.int):
         """
         :param Sequence[_builtins.str] health_check_codes: The HTTP status code that indicates a successful health check.
-        :param _builtins.int health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:` 0`. This default value indicates that the backend server is used for health checks.
+        :param _builtins.int health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
         :param _builtins.str health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.
         :param _builtins.str health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`.
         :param _builtins.int health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
         :param _builtins.str health_check_method: The health check method.  Valid values: `GET` and `HEAD`.  Default value: `HEAD`.
-        :param _builtins.str health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+        :param _builtins.str health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
         :param _builtins.str health_check_protocol: The protocol that is used for health checks.  Valid values: HTTP and TCP.  Default value: HTTP.
         :param _builtins.str health_check_template_id: The ID of the resource.
         :param _builtins.str health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
@@ -3662,7 +3662,7 @@ class GetHealthCheckTemplatesTemplateResult(dict):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> _builtins.int:
         """
-        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:` 0`. This default value indicates that the backend server is used for health checks.
+        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value:`  0 `. This default value indicates that the backend server is used for health checks.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -3702,7 +3702,7 @@ class GetHealthCheckTemplatesTemplateResult(dict):
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> _builtins.str:
         """
-        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: ` _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/)`.
+        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: `  _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/) `.
         """
         return pulumi.get(self, "health_check_path")
 

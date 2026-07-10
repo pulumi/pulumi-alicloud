@@ -84,14 +84,14 @@ import * as utilities from "../utilities";
  *     enableIpv6: true,
  * });
  * const vsw: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     vsw.push(new alicloud.vpc.Switch(`vsw-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     vsw.push(new alicloud.vpc.Switch(`vsw-${range}`, {
  *         enableIpv6: true,
- *         ipv6CidrBlockMask: Number(`1${range.value}`),
- *         vswitchName: `vsw-${range.value}-for-nlb`,
+ *         ipv6CidrBlockMask: Number(`1${range}`),
+ *         vswitchName: `vsw-${range}-for-nlb`,
  *         vpcId: vpc.id,
- *         cidrBlock: `10.2.1${range.value}.0/24`,
- *         zoneId: zone[range.value],
+ *         cidrBlock: `10.2.1${range}.0/24`,
+ *         zoneId: zone[range],
  *     }));
  * }
  * const _default = new alicloud.vpc.Ipv6Gateway("default", {

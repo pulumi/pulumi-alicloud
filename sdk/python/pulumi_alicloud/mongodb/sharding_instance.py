@@ -90,7 +90,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - `1 `: The log backup feature is enabled.
+               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -108,7 +108,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[_builtins.str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
-               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+                 **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -122,7 +122,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - `Flash `: Single-digit second backup.
+               - ` Flash  `: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -410,7 +410,7 @@ class ShardingInstanceArgs:
     def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the log backup feature. Valid values:
-        - `1 `: The log backup feature is enabled.
+        - ` 1  `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
@@ -593,7 +593,7 @@ class ShardingInstanceArgs:
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         - `UPGRADE`: The specifications are upgraded.
         - `DOWNGRADE`: The specifications are downgraded.
-        **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+          **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
 
@@ -728,7 +728,7 @@ class ShardingInstanceArgs:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
-        - `Flash `: Single-digit second backup.
+        - ` Flash  `: Single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -923,7 +923,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - `1 `: The log backup feature is enabled.
+               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -944,7 +944,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[_builtins.str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
-               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+                 **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -960,7 +960,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - `Flash `: Single-digit second backup.
+               - ` Flash  `: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -1225,7 +1225,7 @@ class _ShardingInstanceState:
     def enable_backup_log(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the log backup feature. Valid values:
-        - `1 `: The log backup feature is enabled.
+        - ` 1  `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
@@ -1444,7 +1444,7 @@ class _ShardingInstanceState:
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         - `UPGRADE`: The specifications are upgraded.
         - `DOWNGRADE`: The specifications are downgraded.
-        **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+          **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
 
@@ -1603,7 +1603,7 @@ class _ShardingInstanceState:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
-        - `Flash `: Single-digit second backup.
+        - ` Flash  `: Single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -1896,7 +1896,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - `1 `: The log backup feature is enabled.
+               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -1916,7 +1916,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
-               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+                 **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -1931,7 +1931,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - `Flash `: Single-digit second backup.
+               - ` Flash  `: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2248,7 +2248,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[_builtins.bool] db_instance_release_protection: Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] enable_backup_log: Specifies whether to enable the log backup feature. Valid values:
-               - `1 `: The log backup feature is enabled.
+               - ` 1  `: The log backup feature is enabled.
         :param pulumi.Input[_builtins.bool] encrypted: Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the custom key.
         :param pulumi.Input[_builtins.str] encryptor_name: The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
@@ -2269,7 +2269,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
                - `UPGRADE`: The specifications are upgraded.
                - `DOWNGRADE`: The specifications are downgraded.
-               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+                 **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceParameterArgs', 'ShardingInstanceParameterArgsDict']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[_builtins.str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
@@ -2285,7 +2285,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceShardListArgs', 'ShardingInstanceShardListArgsDict']]]] shard_lists: The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: Standard backup.
-               - `Flash `: Single-digit second backup.
+               - ` Flash  `: Single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2457,7 +2457,7 @@ class ShardingInstance(pulumi.CustomResource):
     def enable_backup_log(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies whether to enable the log backup feature. Valid values:
-        - `1 `: The log backup feature is enabled.
+        - ` 1  `: The log backup feature is enabled.
         """
         return pulumi.get(self, "enable_backup_log")
 
@@ -2604,7 +2604,7 @@ class ShardingInstance(pulumi.CustomResource):
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
         - `UPGRADE`: The specifications are upgraded.
         - `DOWNGRADE`: The specifications are downgraded.
-        **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
+          **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
 
@@ -2711,7 +2711,7 @@ class ShardingInstance(pulumi.CustomResource):
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: Standard backup.
-        - `Flash `: Single-digit second backup.
+        - ` Flash  `: Single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 

@@ -78,31 +78,31 @@ import * as utilities from "../utilities";
  * });
  * // If there is not specifying vpc_id, the module will launch a new vpc
  * const vpc: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: vpcCidr}));
+ * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {cidrBlock: vpcCidr}));
  * }
  * // According to the vswitch cidr blocks to launch several vswitches
  * const vswitches: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range.value++) {
- *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range.value}`, {
+ * for (let range = 0; range < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range++) {
+ *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range}`, {
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
  *         }).apply(invoke => invoke.result) : vpcId,
- *         cidrBlock: vswitchCidrs[range.value],
- *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *         cidrBlock: vswitchCidrs[range],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range].zoneId),
  *     }));
  * }
  * // According to the vswitch cidr blocks to launch several vswitches
  * const terwayVswitches: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range.value++) {
- *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range.value}`, {
+ * for (let range = 0; range < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range++) {
+ *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range}`, {
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
  *         }).apply(invoke => invoke.result) : vpcId,
- *         cidrBlock: terwayVswitchCidrs[range.value],
- *         zoneId: enhanced.then(enhanced => enhanced.zones[range.value].zoneId),
+ *         cidrBlock: terwayVswitchCidrs[range],
+ *         zoneId: enhanced.then(enhanced => enhanced.zones[range].zoneId),
  *     }));
  * }
  * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {

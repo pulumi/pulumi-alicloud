@@ -30,7 +30,7 @@ class DomainCertInfoArgsDict(TypedDict):
     """
     cert_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Certificate Type. Value Range: 
+    Certificate Type. Value Range:
     * upload: Certificate
     * cas: Certificate Authority Certificate.
     * free: Free Certificate.
@@ -58,7 +58,7 @@ class DomainCertInfoArgs:
                  ssl_pub: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert_name: If You Enable HTTPS Here Certificate Name.
-        :param pulumi.Input[_builtins.str] cert_type: Certificate Type. Value Range: 
+        :param pulumi.Input[_builtins.str] cert_type: Certificate Type. Value Range:
                * upload: Certificate
                * cas: Certificate Authority Certificate.
                * free: Free Certificate.
@@ -93,7 +93,7 @@ class DomainCertInfoArgs:
     @pulumi.getter(name="certType")
     def cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Certificate Type. Value Range: 
+        Certificate Type. Value Range:
         * upload: Certificate
         * cas: Certificate Authority Certificate.
         * free: Free Certificate.
@@ -203,7 +203,7 @@ class DomainSourceArgsDict(TypedDict):
     """
     type: pulumi.Input[_builtins.str]
     """
-    The Origin Server Type. Valid Values: 
+    The Origin Server Type. Valid Values:
     * ipaddr: IP Source Station
     * domain: the Domain Name
     * oss: OSS Bucket as a Source Station.
@@ -225,7 +225,7 @@ class DomainSourceArgs:
         :param pulumi.Input[_builtins.str] content: The Back-to-Source Address.
         :param pulumi.Input[_builtins.int] port: Port.
         :param pulumi.Input[_builtins.str] priority: Priority.
-        :param pulumi.Input[_builtins.str] type: The Origin Server Type. Valid Values: 
+        :param pulumi.Input[_builtins.str] type: The Origin Server Type. Valid Values:
                * ipaddr: IP Source Station
                * domain: the Domain Name
                * oss: OSS Bucket as a Source Station.
@@ -278,7 +278,7 @@ class DomainSourceArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The Origin Server Type. Valid Values: 
+        The Origin Server Type. Valid Values:
         * ipaddr: IP Source Station
         * domain: the Domain Name
         * oss: OSS Bucket as a Source Station.

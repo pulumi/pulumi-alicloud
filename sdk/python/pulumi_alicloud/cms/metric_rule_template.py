@@ -38,7 +38,7 @@ class MetricRuleTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-               - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+               - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         :param pulumi.Input[_builtins.str] description: The description of the alert template.
         :param pulumi.Input[_builtins.str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         :param pulumi.Input[_builtins.str] enable_start_time: The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
@@ -97,7 +97,7 @@ class MetricRuleTemplateArgs:
         """
         The mode in which the alert template is applied. Valid values:
         - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-        - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+        - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         """
         return pulumi.get(self, "apply_mode")
 
@@ -210,7 +210,7 @@ class _MetricRuleTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRuleTemplateAlertTemplateArgs']]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-               - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+               - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         :param pulumi.Input[_builtins.str] description: The description of the alert template.
         :param pulumi.Input[_builtins.str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         :param pulumi.Input[_builtins.str] enable_start_time: The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
@@ -262,7 +262,7 @@ class _MetricRuleTemplateState:
         """
         The mode in which the alert template is applied. Valid values:
         - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-        - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+        - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         """
         return pulumi.get(self, "apply_mode")
 
@@ -449,7 +449,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-               - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+               - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         :param pulumi.Input[_builtins.str] description: The description of the alert template.
         :param pulumi.Input[_builtins.str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         :param pulumi.Input[_builtins.str] enable_start_time: The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
@@ -591,7 +591,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleTemplateAlertTemplateArgs', 'MetricRuleTemplateAlertTemplateArgsDict']]]] alert_templates: The details of alert rules that are generated based on the alert template. See `alert_templates` below.
         :param pulumi.Input[_builtins.str] apply_mode: The mode in which the alert template is applied. Valid values:
                - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-               - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+               - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         :param pulumi.Input[_builtins.str] description: The description of the alert template.
         :param pulumi.Input[_builtins.str] enable_end_time: The end of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:59 and the value `23` indicates 23:59.
         :param pulumi.Input[_builtins.str] enable_start_time: The beginning of the time period during which the alert rule is effective. Valid values: `00` to `23`. The value `00` indicates 00:00 and the value `23` indicates 23:00.
@@ -633,7 +633,7 @@ class MetricRuleTemplate(pulumi.CustomResource):
         """
         The mode in which the alert template is applied. Valid values:
         - `GROUP_INSTANCE_FIRST`: The metrics in the application group take precedence.
-        - `ALARM_TEMPLATE_FIRST `: The metrics specified in the alert template take precedence.
+        - ` ALARM_TEMPLATE_FIRST  `: The metrics specified in the alert template take precedence.
         """
         return pulumi.get(self, "apply_mode")
 

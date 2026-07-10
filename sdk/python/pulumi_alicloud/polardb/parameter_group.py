@@ -31,14 +31,13 @@ class ParameterGroupArgs:
         The set of arguments for constructing a ParameterGroup resource.
 
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values:
                - **5.6**
                - **5.7**
                - **8.0**
         :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.str] description: The description of the parameter template.
@@ -78,7 +77,7 @@ class ParameterGroupArgs:
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Input[_builtins.str]:
         """
-        The version of the database engine. Valid values: 
+        The version of the database engine. Valid values:
         - **5.6**
         - **5.7**
         - **8.0**
@@ -96,7 +95,6 @@ class ParameterGroupArgs:
         Details about the parameters. See `parameters` below.
 
         > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -163,7 +161,7 @@ class _ParameterGroupState:
 
         :param pulumi.Input[_builtins.str] create_time: The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values:
                - **5.6**
                - **5.7**
                - **8.0**
@@ -177,7 +175,6 @@ class _ParameterGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -227,7 +224,7 @@ class _ParameterGroupState:
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The version of the database engine. Valid values: 
+        The version of the database engine. Valid values:
         - **5.6**
         - **5.7**
         - **8.0**
@@ -286,7 +283,6 @@ class _ParameterGroupState:
         Details about the parameters. See `parameters` below.
 
         > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -350,7 +346,7 @@ class ParameterGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values:
                - **5.6**
                - **5.7**
                - **8.0**
@@ -364,7 +360,6 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -480,7 +475,7 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values:
                - **5.6**
                - **5.7**
                - **8.0**
@@ -494,7 +489,6 @@ class ParameterGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: Details about the parameters. See `parameters` below.
                
                > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-               
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -531,7 +525,7 @@ class ParameterGroup(pulumi.CustomResource):
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Output[_builtins.str]:
         """
-        The version of the database engine. Valid values: 
+        The version of the database engine. Valid values:
         - **5.6**
         - **5.7**
         - **8.0**
@@ -574,7 +568,6 @@ class ParameterGroup(pulumi.CustomResource):
         Details about the parameters. See `parameters` below.
 
         > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
-
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

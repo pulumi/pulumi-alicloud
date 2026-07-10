@@ -36,14 +36,14 @@ import * as utilities from "../utilities";
  * }));
  * const defaultSecurityGroup: alicloud.ecs.SecurityGroup[] = [];
  * _default.then(_default => _default.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range.value}`, {vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0])}));
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultSecurityGroup.push(new alicloud.ecs.SecurityGroup(`default-${range}`, {vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0])}));
  *     }
  * });
  * const defaultInstance: alicloud.bastionhost.Instance[] = [];
  * _default.then(_default => _default.ids).length.apply(length => {
- *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
- *         defaultInstance.push(new alicloud.bastionhost.Instance(`default-${range.value}`, {
+ *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
+ *         defaultInstance.push(new alicloud.bastionhost.Instance(`default-${range}`, {
  *             description: name,
  *             licenseCode: "bhah_ent_50_asset",
  *             planCode: "cloudbastion",

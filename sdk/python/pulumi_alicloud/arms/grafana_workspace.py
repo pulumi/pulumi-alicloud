@@ -58,7 +58,7 @@ class GrafanaWorkspaceArgs:
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[_builtins.str] grafana_version: Grafana version
         :param pulumi.Input[_builtins.str] grafana_workspace_edition: The edition. **Valid values:**
-               - standard: `Beta Edition(For internal testing only) `
+               - standard: ` Beta Edition(For internal testing only)  `
                - personal_edition: Developer Edition
                - experts_edition: Pro Edition
                - advanced_edition: Advanced Edition
@@ -208,7 +208,7 @@ class GrafanaWorkspaceArgs:
     def grafana_workspace_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition. **Valid values:**
-        - standard: `Beta Edition(For internal testing only) `
+        - standard: ` Beta Edition(For internal testing only)  `
         - personal_edition: Developer Edition
         - experts_edition: Pro Edition
         - advanced_edition: Advanced Edition
@@ -313,7 +313,7 @@ class _GrafanaWorkspaceState:
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[_builtins.str] grafana_version: Grafana version
         :param pulumi.Input[_builtins.str] grafana_workspace_edition: The edition. **Valid values:**
-               - standard: `Beta Edition(For internal testing only) `
+               - standard: ` Beta Edition(For internal testing only)  `
                - personal_edition: Developer Edition
                - experts_edition: Pro Edition
                - advanced_edition: Advanced Edition
@@ -473,7 +473,7 @@ class _GrafanaWorkspaceState:
     def grafana_workspace_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition. **Valid values:**
-        - standard: `Beta Edition(For internal testing only) `
+        - standard: ` Beta Edition(For internal testing only)  `
         - personal_edition: Developer Edition
         - experts_edition: Pro Edition
         - advanced_edition: Advanced Edition
@@ -656,7 +656,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[_builtins.str] grafana_version: Grafana version
         :param pulumi.Input[_builtins.str] grafana_workspace_edition: The edition. **Valid values:**
-               - standard: `Beta Edition(For internal testing only) `
+               - standard: ` Beta Edition(For internal testing only)  `
                - personal_edition: Developer Edition
                - experts_edition: Pro Edition
                - advanced_edition: Advanced Edition
@@ -826,7 +826,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
                - PricingCycle is set to Year, indicating annual payment. The value range is 1 to 3. Default value: 1.
         :param pulumi.Input[_builtins.str] grafana_version: Grafana version
         :param pulumi.Input[_builtins.str] grafana_workspace_edition: The edition. **Valid values:**
-               - standard: `Beta Edition(For internal testing only) `
+               - standard: ` Beta Edition(For internal testing only)  `
                - personal_edition: Developer Edition
                - experts_edition: Pro Edition
                - advanced_edition: Advanced Edition
@@ -943,7 +943,7 @@ class GrafanaWorkspace(pulumi.CustomResource):
     def grafana_workspace_edition(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The edition. **Valid values:**
-        - standard: `Beta Edition(For internal testing only) `
+        - standard: ` Beta Edition(For internal testing only)  `
         - personal_edition: Developer Edition
         - experts_edition: Pro Edition
         - advanced_edition: Advanced Edition

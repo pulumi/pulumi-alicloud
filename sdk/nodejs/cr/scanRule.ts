@@ -95,13 +95,13 @@ export class ScanRule extends pulumi.CustomResource {
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Set of namespaces:  
+     * Set of namespaces:
      * - This parameter must not be empty when the scan scope is NAMESPACE.
      * - This parameter must contain exactly one namespace when the scan scope is REPO.
      */
     declare public readonly namespaces: pulumi.Output<string[] | undefined>;
     /**
-     * Repository list:  
+     * Repository list:
      * - This parameter must be empty when the scan scope is NAMESPACE.
      * - This parameter must not be empty when the scan scope is REPO.
      */
@@ -123,7 +123,7 @@ export class ScanRule extends pulumi.CustomResource {
      */
     declare public readonly scanScope: pulumi.Output<string>;
     /**
-     * Scan type:  
+     * Scan type:
      * - `VUL`: Artifact vulnerability scan
      * - `SBOM`: Artifact content analysis
      *
@@ -207,13 +207,13 @@ export interface ScanRuleState {
      */
     instanceId?: pulumi.Input<string | undefined>;
     /**
-     * Set of namespaces:  
+     * Set of namespaces:
      * - This parameter must not be empty when the scan scope is NAMESPACE.
      * - This parameter must contain exactly one namespace when the scan scope is REPO.
      */
     namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Repository list:  
+     * Repository list:
      * - This parameter must be empty when the scan scope is NAMESPACE.
      * - This parameter must not be empty when the scan scope is REPO.
      */
@@ -235,7 +235,7 @@ export interface ScanRuleState {
      */
     scanScope?: pulumi.Input<string | undefined>;
     /**
-     * Scan type:  
+     * Scan type:
      * - `VUL`: Artifact vulnerability scan
      * - `SBOM`: Artifact content analysis
      *
@@ -257,13 +257,13 @@ export interface ScanRuleArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Set of namespaces:  
+     * Set of namespaces:
      * - This parameter must not be empty when the scan scope is NAMESPACE.
      * - This parameter must contain exactly one namespace when the scan scope is REPO.
      */
     namespaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Repository list:  
+     * Repository list:
      * - This parameter must be empty when the scan scope is NAMESPACE.
      * - This parameter must not be empty when the scan scope is REPO.
      */
@@ -281,7 +281,7 @@ export interface ScanRuleArgs {
      */
     scanScope: pulumi.Input<string>;
     /**
-     * Scan type:  
+     * Scan type:
      * - `VUL`: Artifact vulnerability scan
      * - `SBOM`: Artifact content analysis
      *

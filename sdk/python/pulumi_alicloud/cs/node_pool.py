@@ -3319,18 +3319,18 @@ class NodePool(pulumi.CustomResource):
         default = alicloud.vpc.Network("default",
             vpc_name=new_vpc_name,
             cidr_block="172.16.0.0/12")
-        vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(node_vswitch_ids) > 0 else len(node_vswitch_cidrs))]:
-            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+        vswitches: list[alicloud.vpc.Switch] = []
+        for vswitches_range in [{"value": i} for i in range(0, 0 if len(node_vswitch_ids) > 0 else len(node_vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
                 vpc_id=default.id,
-                cidr_block=node_vswitch_cidrs[range["value"]],
-                zone_id=availability_zone[range["value"]]))
-        terway_vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
-            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                cidr_block=node_vswitch_cidrs[vswitches_range["value"]],
+                zone_id=availability_zone[vswitches_range["value"]]))
+        terway_vswitches: list[alicloud.vpc.Switch] = []
+        for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
                 vpc_id=default.id,
-                cidr_block=terway_vswitch_cidrs[range["value"]],
-                zone_id=availability_zone[range["value"]]))
+                cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
+                zone_id=availability_zone[terway_vswitches_range["value"]]))
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             addons=[{
                 "name": output(std.lookup(map=entry["value"],
@@ -4023,18 +4023,18 @@ class NodePool(pulumi.CustomResource):
         default = alicloud.vpc.Network("default",
             vpc_name=new_vpc_name,
             cidr_block="172.16.0.0/12")
-        vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(node_vswitch_ids) > 0 else len(node_vswitch_cidrs))]:
-            vswitches.append(alicloud.vpc.Switch(f"vswitches-{range['value']}",
+        vswitches: list[alicloud.vpc.Switch] = []
+        for vswitches_range in [{"value": i} for i in range(0, 0 if len(node_vswitch_ids) > 0 else len(node_vswitch_cidrs))]:
+            vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
                 vpc_id=default.id,
-                cidr_block=node_vswitch_cidrs[range["value"]],
-                zone_id=availability_zone[range["value"]]))
-        terway_vswitches: list[Any] = []
-        for range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
-            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{range['value']}",
+                cidr_block=node_vswitch_cidrs[vswitches_range["value"]],
+                zone_id=availability_zone[vswitches_range["value"]]))
+        terway_vswitches: list[alicloud.vpc.Switch] = []
+        for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
+            terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
                 vpc_id=default.id,
-                cidr_block=terway_vswitch_cidrs[range["value"]],
-                zone_id=availability_zone[range["value"]]))
+                cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
+                zone_id=availability_zone[terway_vswitches_range["value"]]))
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             addons=[{
                 "name": output(std.lookup(map=entry["value"],

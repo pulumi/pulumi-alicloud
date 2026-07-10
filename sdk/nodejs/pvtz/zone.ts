@@ -80,7 +80,7 @@ export class Zone extends pulumi.CustomResource {
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
-     * Default to "ZONE".
+     *   Default to "ZONE".
      */
     declare public readonly proxyPattern: pulumi.Output<string | undefined>;
     /**
@@ -183,7 +183,7 @@ export interface ZoneState {
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
-     * Default to "ZONE".
+     *   Default to "ZONE".
      */
     proxyPattern?: pulumi.Input<string | undefined>;
     /**
@@ -238,7 +238,7 @@ export interface ZoneArgs {
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
-     * Default to "ZONE".
+     *   Default to "ZONE".
      */
     proxyPattern?: pulumi.Input<string | undefined>;
     /**

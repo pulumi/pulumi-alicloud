@@ -165,7 +165,7 @@ export class Listener extends pulumi.CustomResource {
      */
     declare public readonly alpnPolicy: pulumi.Output<string | undefined>;
     /**
-     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
      *
      * > **NOTE:**  Only one CA certificate is supported.
      */
@@ -175,7 +175,7 @@ export class Listener extends pulumi.CustomResource {
      */
     declare public readonly caEnabled: pulumi.Output<boolean>;
     /**
-     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
      *
      * > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      */
@@ -360,7 +360,7 @@ export interface ListenerState {
      */
     alpnPolicy?: pulumi.Input<string | undefined>;
     /**
-     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
      *
      * > **NOTE:**  Only one CA certificate is supported.
      */
@@ -370,7 +370,7 @@ export interface ListenerState {
      */
     caEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
      *
      * > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      */
@@ -479,7 +479,7 @@ export interface ListenerArgs {
      */
     alpnPolicy?: pulumi.Input<string | undefined>;
     /**
-     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+     * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
      *
      * > **NOTE:**  Only one CA certificate is supported.
      */
@@ -489,7 +489,7 @@ export interface ListenerArgs {
      */
     caEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
+     * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP.
      *
      * > **NOTE:**  This parameter takes effect only for TCPSSL listeners.
      */

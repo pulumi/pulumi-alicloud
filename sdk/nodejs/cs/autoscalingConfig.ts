@@ -68,13 +68,13 @@ import * as utilities from "../utilities";
  *     slbInternetEnabled: true,
  * });
  * const defaultNodePool: alicloud.cs.NodePool[] = [];
- * for (const range = {value: 0}; range.value < 3; range.value++) {
- *     defaultNodePool.push(new alicloud.cs.NodePool(`default-${range.value}`, {
+ * for (let range = 0; range < 3; range++) {
+ *     defaultNodePool.push(new alicloud.cs.NodePool(`default-${range}`, {
  *         nodePoolName: std.format({
  *             input: "%s-%d",
  *             args: [
  *                 name,
- *                 range.value,
+ *                 range,
  *             ],
  *         }).then(invoke => invoke.result),
  *         clusterId: defaultManagedKubernetes.id,

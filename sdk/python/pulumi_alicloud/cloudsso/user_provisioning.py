@@ -393,10 +393,10 @@ class UserProvisioning(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory: list[Any] = []
+        default_directory: list[alicloud.cloudsso.Directory] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+            for default_directory_range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{default_directory_range['value']}", directory_name=name))
 
         len(default_get_directories.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         directory_id = len(default_get_directories.ids).apply(lambda length: default_get_directories.ids[0] if length > 0 else std.concat(input=[
@@ -478,10 +478,10 @@ class UserProvisioning(pulumi.CustomResource):
         default_integer = random.Integer("default",
             min=10000,
             max=99999)
-        default_directory: list[Any] = []
+        default_directory: list[alicloud.cloudsso.Directory] = []
         def create_default(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+            for default_directory_range in [{"value": i} for i in range(0, range_body)]:
+                default_directory.append(alicloud.cloudsso.Directory(f"default-{default_directory_range['value']}", directory_name=name))
 
         len(default_get_directories.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         directory_id = len(default_get_directories.ids).apply(lambda length: default_get_directories.ids[0] if length > 0 else std.concat(input=[

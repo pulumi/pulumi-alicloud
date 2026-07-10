@@ -919,15 +919,15 @@ class LoadBalancer(pulumi.CustomResource):
             vpc_name=name,
             cidr_block="10.2.0.0/16",
             enable_ipv6=True)
-        vsw: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
+        vsw: list[alicloud.vpc.Switch] = []
+        for vsw_range in [{"value": i} for i in range(0, 2)]:
+            vsw.append(alicloud.vpc.Switch(f"vsw-{vsw_range['value']}",
                 enable_ipv6=True,
-                ipv6_cidr_block_mask=int(f"1{range['value']}"),
-                vswitch_name=f"vsw-{range['value']}-for-nlb",
+                ipv6_cidr_block_mask=int(f"1{vsw_range['value']}"),
+                vswitch_name=f"vsw-{vsw_range['value']}-for-nlb",
                 vpc_id=vpc.id,
-                cidr_block=f"10.2.1{range['value']}.0/24",
-                zone_id=zone[range["value"]]))
+                cidr_block=f"10.2.1{vsw_range['value']}.0/24",
+                zone_id=zone[vsw_range["value"]]))
         default = alicloud.vpc.Ipv6Gateway("default",
             ipv6_gateway_name=name,
             vpc_id=vpc.id)
@@ -1090,15 +1090,15 @@ class LoadBalancer(pulumi.CustomResource):
             vpc_name=name,
             cidr_block="10.2.0.0/16",
             enable_ipv6=True)
-        vsw: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
+        vsw: list[alicloud.vpc.Switch] = []
+        for vsw_range in [{"value": i} for i in range(0, 2)]:
+            vsw.append(alicloud.vpc.Switch(f"vsw-{vsw_range['value']}",
                 enable_ipv6=True,
-                ipv6_cidr_block_mask=int(f"1{range['value']}"),
-                vswitch_name=f"vsw-{range['value']}-for-nlb",
+                ipv6_cidr_block_mask=int(f"1{vsw_range['value']}"),
+                vswitch_name=f"vsw-{vsw_range['value']}-for-nlb",
                 vpc_id=vpc.id,
-                cidr_block=f"10.2.1{range['value']}.0/24",
-                zone_id=zone[range["value"]]))
+                cidr_block=f"10.2.1{vsw_range['value']}.0/24",
+                zone_id=zone[vsw_range["value"]]))
         default = alicloud.vpc.Ipv6Gateway("default",
             ipv6_gateway_name=name,
             vpc_id=vpc.id)

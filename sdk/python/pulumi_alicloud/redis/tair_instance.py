@@ -88,12 +88,10 @@ class TairInstanceArgs:
                
                > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
                
-               
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] encryption_name: The encryption algorithm. The default value is AES-CTR-256.
                
                > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] engine_version: The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
@@ -135,7 +133,6 @@ class TairInstanceArgs:
                > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
                
                > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -397,7 +394,6 @@ class TairInstanceArgs:
 
         > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
 
-
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "encryption_key")
@@ -413,7 +409,6 @@ class TairInstanceArgs:
         The encryption algorithm. The default value is AES-CTR-256.
 
         > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-
 
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
@@ -675,7 +670,6 @@ class TairInstanceArgs:
         > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
 
         > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-
 
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
@@ -942,12 +936,10 @@ class _TairInstanceState:
                
                > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
                
-               
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] encryption_name: The encryption algorithm. The default value is AES-CTR-256.
                
                > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] engine_version: The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
@@ -994,7 +986,6 @@ class _TairInstanceState:
                > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
                
                > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -1258,7 +1249,6 @@ class _TairInstanceState:
 
         > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
 
-
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "encryption_key")
@@ -1274,7 +1264,6 @@ class _TairInstanceState:
         The encryption algorithm. The default value is AES-CTR-256.
 
         > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-
 
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
@@ -1596,7 +1585,6 @@ class _TairInstanceState:
         > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
 
         > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-
 
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
@@ -1972,12 +1960,10 @@ class TairInstance(pulumi.CustomResource):
                
                > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
                
-               
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] encryption_name: The encryption algorithm. The default value is AES-CTR-256.
                
                > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] engine_version: The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
@@ -2021,7 +2007,6 @@ class TairInstance(pulumi.CustomResource):
                > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
                
                > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -2342,12 +2327,10 @@ class TairInstance(pulumi.CustomResource):
                
                > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
                
-               
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] encryption_name: The encryption algorithm. The default value is AES-CTR-256.
                
                > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] engine_version: The database version. Default value: `1.0`. The valid values depend on the Tair instance series:
@@ -2394,7 +2377,6 @@ class TairInstance(pulumi.CustomResource):
                > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
                
                > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-               
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -2572,7 +2554,6 @@ class TairInstance(pulumi.CustomResource):
 
         > **NOTE:**  * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
 
-
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
         return pulumi.get(self, "encryption_key")
@@ -2584,7 +2565,6 @@ class TairInstance(pulumi.CustomResource):
         The encryption algorithm. The default value is AES-CTR-256.
 
         > **NOTE:**  This parameter is available only when the `TDEStatus` parameter is set to `Enabled`.
-
 
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """
@@ -2806,7 +2786,6 @@ class TairInstance(pulumi.CustomResource):
         > **NOTE:**  * `$accountID`: Your Alibaba Cloud account ID. To view it, log on to the Alibaba Cloud console, move the pointer over your profile picture in the upper-right corner, and click **Security Settings**.
 
         > **NOTE:**  * `$roleName`: The RAM role name. The value is fixed as `AliyunRdsInstanceEncryptionDefaultRole`.
-
 
         > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         """

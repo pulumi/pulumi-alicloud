@@ -34,11 +34,11 @@ class InstanceConfigArgs:
         :param pulumi.Input[_builtins.str] enable_status: The enable status of the domain instance:
                - enable: Enabled. The GTM instance's intelligent scheduling policy is active.
                - disable: Disabled. The GTM instance's intelligent scheduling policy is inactive.
-        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:  
+        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:
                - A: IPv4 address
                - AAAA: IPv6 address
                - CNAME: domain name.
-        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:  
+        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:
                - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
                - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         :param pulumi.Input[_builtins.int] ttl: Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
@@ -50,7 +50,7 @@ class InstanceConfigArgs:
         :param pulumi.Input[_builtins.str] remark: Remarks. The provided parameter value becomes the updated remark content.
         :param pulumi.Input[_builtins.str] schedule_host_name: The host record of the GTM access domain.
         :param pulumi.Input[_builtins.str] schedule_zone_name: Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         """
@@ -87,7 +87,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="scheduleRrType")
     def schedule_rr_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Record type for the access domain name:  
+        Record type for the access domain name:
         - A: IPv4 address
         - AAAA: IPv6 address
         - CNAME: domain name.
@@ -102,7 +102,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="scheduleZoneMode")
     def schedule_zone_mode(self) -> pulumi.Input[_builtins.str]:
         """
-        Access domain name assignment mode:  
+        Access domain name assignment mode:
         - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
         - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         """
@@ -180,7 +180,7 @@ class InstanceConfigArgs:
     @pulumi.getter(name="sequenceLbStrategyMode")
     def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
         - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
         - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         """
@@ -220,15 +220,15 @@ class _InstanceConfigState:
         :param pulumi.Input[_builtins.str] instance_id: The instance ID associated with the GTM 3.
         :param pulumi.Input[_builtins.str] remark: Remarks. The provided parameter value becomes the updated remark content.
         :param pulumi.Input[_builtins.str] schedule_host_name: The host record of the GTM access domain.
-        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:  
+        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:
                - A: IPv4 address
                - AAAA: IPv6 address
                - CNAME: domain name.
-        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:  
+        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:
                - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
                - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         :param pulumi.Input[_builtins.str] schedule_zone_name: Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         :param pulumi.Input[_builtins.int] ttl: Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
@@ -338,7 +338,7 @@ class _InstanceConfigState:
     @pulumi.getter(name="scheduleRrType")
     def schedule_rr_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Record type for the access domain name:  
+        Record type for the access domain name:
         - A: IPv4 address
         - AAAA: IPv6 address
         - CNAME: domain name.
@@ -353,7 +353,7 @@ class _InstanceConfigState:
     @pulumi.getter(name="scheduleZoneMode")
     def schedule_zone_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Access domain name assignment mode:  
+        Access domain name assignment mode:
         - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
         - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         """
@@ -379,7 +379,7 @@ class _InstanceConfigState:
     @pulumi.getter(name="sequenceLbStrategyMode")
     def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
         - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
         - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         """
@@ -475,15 +475,15 @@ class InstanceConfig(pulumi.CustomResource):
                - disable: Disabled. The GTM instance's intelligent scheduling policy is inactive.
         :param pulumi.Input[_builtins.str] remark: Remarks. The provided parameter value becomes the updated remark content.
         :param pulumi.Input[_builtins.str] schedule_host_name: The host record of the GTM access domain.
-        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:  
+        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:
                - A: IPv4 address
                - AAAA: IPv6 address
                - CNAME: domain name.
-        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:  
+        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:
                - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
                - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         :param pulumi.Input[_builtins.str] schedule_zone_name: Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         :param pulumi.Input[_builtins.int] ttl: Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
@@ -631,15 +631,15 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: The instance ID associated with the GTM 3.
         :param pulumi.Input[_builtins.str] remark: Remarks. The provided parameter value becomes the updated remark content.
         :param pulumi.Input[_builtins.str] schedule_host_name: The host record of the GTM access domain.
-        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:  
+        :param pulumi.Input[_builtins.str] schedule_rr_type: Record type for the access domain name:
                - A: IPv4 address
                - AAAA: IPv6 address
                - CNAME: domain name.
-        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:  
+        :param pulumi.Input[_builtins.str] schedule_zone_mode: Access domain name assignment mode:
                - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
                - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         :param pulumi.Input[_builtins.str] schedule_zone_name: Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
-        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        :param pulumi.Input[_builtins.str] sequence_lb_strategy_mode: When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
                - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
                - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         :param pulumi.Input[_builtins.int] ttl: Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
@@ -719,7 +719,7 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter(name="scheduleRrType")
     def schedule_rr_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Record type for the access domain name:  
+        Record type for the access domain name:
         - A: IPv4 address
         - AAAA: IPv6 address
         - CNAME: domain name.
@@ -730,7 +730,7 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter(name="scheduleZoneMode")
     def schedule_zone_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        Access domain name assignment mode:  
+        Access domain name assignment mode:
         - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
         - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
         """
@@ -748,7 +748,7 @@ class InstanceConfig(pulumi.CustomResource):
     @pulumi.getter(name="sequenceLbStrategyMode")
     def sequence_lb_strategy_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
+        When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:
         - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
         - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
         """

@@ -121,7 +121,7 @@ class EipAddressArgs:
                - When the return is empty, the basic DDoS protection is specified.
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -526,7 +526,7 @@ class EipAddressArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -646,7 +646,7 @@ class _EipAddressState:
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
         :param pulumi.Input[_builtins.str] status: The state of the EIP.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1079,7 +1079,7 @@ class _EipAddressState:
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1249,7 +1249,7 @@ class EipAddress(pulumi.CustomResource):
                - When the return is empty, the basic DDoS protection is specified.
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1506,7 +1506,7 @@ class EipAddress(pulumi.CustomResource):
                - When `antidos_enhanced` is returned, it indicates DDoS protection (enhanced version).
         :param pulumi.Input[_builtins.str] status: The state of the EIP.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        :param pulumi.Input[_builtins.str] zone: The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
@@ -1807,7 +1807,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html). 
+        The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
 
         The following arguments will be discarded. Please use new fields as soon as possible:
         """

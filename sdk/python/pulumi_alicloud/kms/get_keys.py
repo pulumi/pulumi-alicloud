@@ -151,7 +151,7 @@ def get_keys(description_regex: Optional[_builtins.str] = None,
 
     :param _builtins.str description_regex: A regex string to filter the results by the KMS key description.
     :param _builtins.bool enable_details: Default to `true`. Set it to `true` can output more details about resource attributes.
-    :param _builtins.str filters: The CMK filter. The filter consists of one or more key-value pairs. 
+    :param _builtins.str filters: The CMK filter. The filter consists of one or more key-value pairs.
            You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
     :param Sequence[_builtins.str] ids: A list of KMS key IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -205,7 +205,7 @@ def get_keys_output(description_regex: pulumi.Input[Optional[Optional[_builtins.
 
     :param _builtins.str description_regex: A regex string to filter the results by the KMS key description.
     :param _builtins.bool enable_details: Default to `true`. Set it to `true` can output more details about resource attributes.
-    :param _builtins.str filters: The CMK filter. The filter consists of one or more key-value pairs. 
+    :param _builtins.str filters: The CMK filter. The filter consists of one or more key-value pairs.
            You can specify a maximum of 10 key-value pairs. More details see API [ListKeys](https://www.alibabacloud.com/help/en/key-management-service/latest/listkeys).
     :param Sequence[_builtins.str] ids: A list of KMS key IDs.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

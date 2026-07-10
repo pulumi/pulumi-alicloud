@@ -104,7 +104,7 @@ export class RatePlanInstance extends pulumi.CustomResource {
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
-     * Package name.  
+     * Package name.
      *
      * For China site accounts:
      */
@@ -201,7 +201,7 @@ export interface RatePlanInstanceState {
      */
     period?: pulumi.Input<number | undefined>;
     /**
-     * Package name.  
+     * Package name.
      *
      * For China site accounts:
      */
@@ -250,7 +250,7 @@ export interface RatePlanInstanceArgs {
      */
     period?: pulumi.Input<number | undefined>;
     /**
-     * Package name.  
+     * Package name.
      *
      * For China site accounts:
      */

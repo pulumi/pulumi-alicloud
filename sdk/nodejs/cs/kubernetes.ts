@@ -113,31 +113,31 @@ import * as utilities from "../utilities";
  * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
  * // If there is not specifying vpc_id, the module will launch a new vpc
  * const vpc: alicloud.vpc.Network[] = [];
- * for (const range = {value: 0}; range.value < (vpcId == "" ? 1 : 0); range.value++) {
- *     vpc.push(new alicloud.vpc.Network(`vpc-${range.value}`, {cidrBlock: vpcCidr}));
+ * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
+ *     vpc.push(new alicloud.vpc.Network(`vpc-${range}`, {cidrBlock: vpcCidr}));
  * }
  * // According to the vswitch cidr blocks to launch several vswitches
  * const vswitches: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range.value++) {
- *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range.value}`, {
+ * for (let range = 0; range < (vswitchIds.length > 0 ? 0 : vswitchCidrs.length); range++) {
+ *     vswitches.push(new alicloud.vpc.Switch(`vswitches-${range}`, {
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
  *         }).apply(invoke => invoke.result) : vpcId,
- *         cidrBlock: vswitchCidrs[range.value],
- *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range.value < length ? range.value : 0].zoneId),
+ *         cidrBlock: vswitchCidrs[range],
+ *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
  *     }));
  * }
  * // According to the vswitch cidr blocks to launch several vswitches
  * const terwayVswitches: alicloud.vpc.Switch[] = [];
- * for (const range = {value: 0}; range.value < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range.value++) {
- *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range.value}`, {
+ * for (let range = 0; range < (terwayVswitchIds.length > 0 ? 0 : terwayVswitchCidrs.length); range++) {
+ *     terwayVswitches.push(new alicloud.vpc.Switch(`terway_vswitches-${range}`, {
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
  *         }).apply(invoke => invoke.result) : vpcId,
- *         cidrBlock: terwayVswitchCidrs[range.value],
- *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range.value < length ? range.value : 0].zoneId),
+ *         cidrBlock: terwayVswitchCidrs[range],
+ *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
  *     }));
  * }
  * const _default = alicloud.resourcemanager.getResourceGroups({
@@ -479,7 +479,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly slbInternet: pulumi.Output<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      *
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
@@ -902,7 +902,7 @@ export interface KubernetesState {
      */
     slbInternet?: pulumi.Input<string | undefined>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      *
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
@@ -1149,7 +1149,7 @@ export interface KubernetesArgs {
      */
     skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      *
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.

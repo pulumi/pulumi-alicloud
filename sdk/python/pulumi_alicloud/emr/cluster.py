@@ -967,20 +967,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1091,20 +1091,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1213,20 +1213,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1325,20 +1325,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1474,20 +1474,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1598,20 +1598,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1720,20 +1720,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,
@@ -1832,20 +1832,20 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
-            vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
+        vpc: list[alicloud.vpc.Network] = []
+        for vpc_range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
+            vpc.append(alicloud.vpc.Network(f"vpc-{vpc_range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
-            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
+        default_security_group: list[alicloud.ecs.SecurityGroup] = []
+        for default_security_group_range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
+            default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{default_security_group_range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch: list[Any] = []
-        for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
-            vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
+        vswitch: list[alicloud.vpc.Switch] = []
+        for vswitch_range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
+            vswitch.append(alicloud.vpc.Switch(f"vswitch-{vswitch_range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
                 vswitch_name=vswitch_name,
                 cidr_block=vswitch_cidr,

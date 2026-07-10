@@ -110,7 +110,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      * The backup method of the instance. Valid values:
      * - Physical: physical backup
      * - Snapshot: snapshot backup
-     * ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     *   ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      *
      * > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      */
@@ -125,7 +125,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      * Specifies whether the backup settings of a secondary instance are configured. Valid values:
      * - 1: secondary instance preferred
      * - 2: primary instance preferred
-     * ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+     *   ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
      */
     declare public readonly backupPriority: pulumi.Output<number | undefined>;
     /**
@@ -155,7 +155,7 @@ export class BackupPolicy extends pulumi.CustomResource {
      * Specifies whether to enable incremental backup. Valid values:
      * - false (default): disables the feature.
      * - true: enables the feature.
-     * ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     *   ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      */
     declare public readonly enableIncrementDataBackup: pulumi.Output<boolean>;
     /**
@@ -329,7 +329,7 @@ export interface BackupPolicyState {
      * The backup method of the instance. Valid values:
      * - Physical: physical backup
      * - Snapshot: snapshot backup
-     * ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     *   ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      *
      * > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      */
@@ -344,7 +344,7 @@ export interface BackupPolicyState {
      * Specifies whether the backup settings of a secondary instance are configured. Valid values:
      * - 1: secondary instance preferred
      * - 2: primary instance preferred
-     * ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+     *   ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
      */
     backupPriority?: pulumi.Input<number | undefined>;
     /**
@@ -374,7 +374,7 @@ export interface BackupPolicyState {
      * Specifies whether to enable incremental backup. Valid values:
      * - false (default): disables the feature.
      * - true: enables the feature.
-     * ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     *   ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      */
     enableIncrementDataBackup?: pulumi.Input<boolean | undefined>;
     /**
@@ -473,7 +473,7 @@ export interface BackupPolicyArgs {
      * The backup method of the instance. Valid values:
      * - Physical: physical backup
      * - Snapshot: snapshot backup
-     * ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     *   ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      *
      * > **NOTE:** Currently, the SQLServer instance does not support to modify `logBackupRetentionPeriod`.
      */
@@ -488,7 +488,7 @@ export interface BackupPolicyArgs {
      * Specifies whether the backup settings of a secondary instance are configured. Valid values:
      * - 1: secondary instance preferred
      * - 2: primary instance preferred
-     * ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
+     *   ->**NOTE:** This parameter is suitable only for instances that run SQL Server on RDS Cluster Edition. This parameter takes effect only when BackupMethod is set to Physical. If BackupMethod is set to Snapshot, backups are forcefully performed on the primary instance that runs SQL Server on RDS Cluster Edition.
      */
     backupPriority?: pulumi.Input<number | undefined>;
     /**
@@ -518,7 +518,7 @@ export interface BackupPolicyArgs {
      * Specifies whether to enable incremental backup. Valid values:
      * - false (default): disables the feature.
      * - true: enables the feature.
-     * ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+     *   ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
      */
     enableIncrementDataBackup?: pulumi.Input<boolean | undefined>;
     /**

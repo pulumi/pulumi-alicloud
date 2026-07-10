@@ -180,7 +180,6 @@ export class ServerGroup extends pulumi.CustomResource {
      *
      * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      *
-     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly vpcId: pulumi.Output<string>;
@@ -330,7 +329,6 @@ export interface ServerGroupState {
      *
      * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      *
-     *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpcId?: pulumi.Input<string | undefined>;
@@ -413,7 +411,6 @@ export interface ServerGroupArgs {
      * The ID of the virtual private cloud (VPC) to which the server group belongs.
      *
      * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
-     *
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */

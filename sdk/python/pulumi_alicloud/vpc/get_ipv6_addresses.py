@@ -155,7 +155,7 @@ def get_ipv6_addresses(associated_instance_id: Optional[_builtins.str] = None,
 
     :param _builtins.str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of the IPv6 address. Valid values:`Pending` or `Available`. 
+    :param _builtins.str status: The status of the IPv6 address. Valid values:`Pending` or `Available`.
            - `Pending`: The IPv6 address is being configured.
            - `Available`: The IPv6 address is available.
     :param _builtins.str vpc_id: The ID of the VPC to which the IPv6 address belongs.
@@ -214,7 +214,7 @@ def get_ipv6_addresses_output(associated_instance_id: pulumi.Input[Optional[Opti
 
     :param _builtins.str associated_instance_id: The ID of the instance that is assigned the IPv6 address.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str status: The status of the IPv6 address. Valid values:`Pending` or `Available`. 
+    :param _builtins.str status: The status of the IPv6 address. Valid values:`Pending` or `Available`.
            - `Pending`: The IPv6 address is being configured.
            - `Available`: The IPv6 address is available.
     :param _builtins.str vpc_id: The ID of the VPC to which the IPv6 address belongs.
