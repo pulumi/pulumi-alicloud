@@ -191,9 +191,290 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 	}).(GetInstancesInstanceOutput)
 }
 
+type GetPolardbxInstancesInstance struct {
+	// Compute node specifications of the instance.
+	CnClass string `pulumi:"cnClass"`
+	// The number of compute nodes.
+	CnNodeCount int `pulumi:"cnNodeCount"`
+	// The creation time of the instance.
+	CreateTime string `pulumi:"createTime"`
+	// Instance remarks.
+	Description string `pulumi:"description"`
+	// Storage node specifications of the instance.
+	DnClass string `pulumi:"dnClass"`
+	// The number of storage nodes.
+	DnNodeCount int `pulumi:"dnNodeCount"`
+	// Engine version of the instance.
+	EngineVersion string `pulumi:"engineVersion"`
+	// The ID of the PolarDB-X instance.
+	Id string `pulumi:"id"`
+	// The network type of the instance.
+	NetworkType string `pulumi:"networkType"`
+	// The billing method of the instance. Valid values: `Postpaid`, `Prepaid`.
+	PaymentType string `pulumi:"paymentType"`
+	// The ID of the PolarDB-X instance. Same as `id`.
+	PolardbxInstanceId string `pulumi:"polardbxInstanceId"`
+	// Primary availability zone.
+	PrimaryZone string `pulumi:"primaryZone"`
+	// Region ID of the instance.
+	RegionId string `pulumi:"regionId"`
+	// The ID of the resource group used to filter instances.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Secondary availability zone.
+	SecondaryZone string `pulumi:"secondaryZone"`
+	// Filter results by instance status. Valid values: `Creating`, `Running`, `MinorVersionUpgrading`, `ClassChanging`, `NodeCreating`, `NodeDeleting`, `Deleting`.
+	Status string `pulumi:"status"`
+	// Storage type of the instance. Valid values: `customLocalSsd`, `cloudAuto`.
+	StorageType string `pulumi:"storageType"`
+	// Third availability zone.
+	TertiaryZone string `pulumi:"tertiaryZone"`
+	// Topology type of the instance. Valid values: `1azone`, `3azones`.
+	TopologyType string `pulumi:"topologyType"`
+	// VPC ID of the instance.
+	VpcId string `pulumi:"vpcId"`
+	// Availability zone of the instance.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetPolardbxInstancesInstanceInput is an input type that accepts GetPolardbxInstancesInstanceArgs and GetPolardbxInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetPolardbxInstancesInstanceInput` via:
+//
+//	GetPolardbxInstancesInstanceArgs{...}
+type GetPolardbxInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetPolardbxInstancesInstanceOutput() GetPolardbxInstancesInstanceOutput
+	ToGetPolardbxInstancesInstanceOutputWithContext(context.Context) GetPolardbxInstancesInstanceOutput
+}
+
+type GetPolardbxInstancesInstanceArgs struct {
+	// Compute node specifications of the instance.
+	CnClass pulumi.StringInput `pulumi:"cnClass"`
+	// The number of compute nodes.
+	CnNodeCount pulumi.IntInput `pulumi:"cnNodeCount"`
+	// The creation time of the instance.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Instance remarks.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Storage node specifications of the instance.
+	DnClass pulumi.StringInput `pulumi:"dnClass"`
+	// The number of storage nodes.
+	DnNodeCount pulumi.IntInput `pulumi:"dnNodeCount"`
+	// Engine version of the instance.
+	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
+	// The ID of the PolarDB-X instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The network type of the instance.
+	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// The billing method of the instance. Valid values: `Postpaid`, `Prepaid`.
+	PaymentType pulumi.StringInput `pulumi:"paymentType"`
+	// The ID of the PolarDB-X instance. Same as `id`.
+	PolardbxInstanceId pulumi.StringInput `pulumi:"polardbxInstanceId"`
+	// Primary availability zone.
+	PrimaryZone pulumi.StringInput `pulumi:"primaryZone"`
+	// Region ID of the instance.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The ID of the resource group used to filter instances.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Secondary availability zone.
+	SecondaryZone pulumi.StringInput `pulumi:"secondaryZone"`
+	// Filter results by instance status. Valid values: `Creating`, `Running`, `MinorVersionUpgrading`, `ClassChanging`, `NodeCreating`, `NodeDeleting`, `Deleting`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Storage type of the instance. Valid values: `customLocalSsd`, `cloudAuto`.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
+	// Third availability zone.
+	TertiaryZone pulumi.StringInput `pulumi:"tertiaryZone"`
+	// Topology type of the instance. Valid values: `1azone`, `3azones`.
+	TopologyType pulumi.StringInput `pulumi:"topologyType"`
+	// VPC ID of the instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// Availability zone of the instance.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetPolardbxInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolardbxInstancesInstance)(nil)).Elem()
+}
+
+func (i GetPolardbxInstancesInstanceArgs) ToGetPolardbxInstancesInstanceOutput() GetPolardbxInstancesInstanceOutput {
+	return i.ToGetPolardbxInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetPolardbxInstancesInstanceArgs) ToGetPolardbxInstancesInstanceOutputWithContext(ctx context.Context) GetPolardbxInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolardbxInstancesInstanceOutput)
+}
+
+// GetPolardbxInstancesInstanceArrayInput is an input type that accepts GetPolardbxInstancesInstanceArray and GetPolardbxInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetPolardbxInstancesInstanceArrayInput` via:
+//
+//	GetPolardbxInstancesInstanceArray{ GetPolardbxInstancesInstanceArgs{...} }
+type GetPolardbxInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetPolardbxInstancesInstanceArrayOutput() GetPolardbxInstancesInstanceArrayOutput
+	ToGetPolardbxInstancesInstanceArrayOutputWithContext(context.Context) GetPolardbxInstancesInstanceArrayOutput
+}
+
+type GetPolardbxInstancesInstanceArray []GetPolardbxInstancesInstanceInput
+
+func (GetPolardbxInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolardbxInstancesInstance)(nil)).Elem()
+}
+
+func (i GetPolardbxInstancesInstanceArray) ToGetPolardbxInstancesInstanceArrayOutput() GetPolardbxInstancesInstanceArrayOutput {
+	return i.ToGetPolardbxInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolardbxInstancesInstanceArray) ToGetPolardbxInstancesInstanceArrayOutputWithContext(ctx context.Context) GetPolardbxInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolardbxInstancesInstanceArrayOutput)
+}
+
+type GetPolardbxInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetPolardbxInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolardbxInstancesInstance)(nil)).Elem()
+}
+
+func (o GetPolardbxInstancesInstanceOutput) ToGetPolardbxInstancesInstanceOutput() GetPolardbxInstancesInstanceOutput {
+	return o
+}
+
+func (o GetPolardbxInstancesInstanceOutput) ToGetPolardbxInstancesInstanceOutputWithContext(ctx context.Context) GetPolardbxInstancesInstanceOutput {
+	return o
+}
+
+// Compute node specifications of the instance.
+func (o GetPolardbxInstancesInstanceOutput) CnClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.CnClass }).(pulumi.StringOutput)
+}
+
+// The number of compute nodes.
+func (o GetPolardbxInstancesInstanceOutput) CnNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) int { return v.CnNodeCount }).(pulumi.IntOutput)
+}
+
+// The creation time of the instance.
+func (o GetPolardbxInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Instance remarks.
+func (o GetPolardbxInstancesInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Storage node specifications of the instance.
+func (o GetPolardbxInstancesInstanceOutput) DnClass() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.DnClass }).(pulumi.StringOutput)
+}
+
+// The number of storage nodes.
+func (o GetPolardbxInstancesInstanceOutput) DnNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) int { return v.DnNodeCount }).(pulumi.IntOutput)
+}
+
+// Engine version of the instance.
+func (o GetPolardbxInstancesInstanceOutput) EngineVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.EngineVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the PolarDB-X instance.
+func (o GetPolardbxInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The network type of the instance.
+func (o GetPolardbxInstancesInstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The billing method of the instance. Valid values: `Postpaid`, `Prepaid`.
+func (o GetPolardbxInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// The ID of the PolarDB-X instance. Same as `id`.
+func (o GetPolardbxInstancesInstanceOutput) PolardbxInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.PolardbxInstanceId }).(pulumi.StringOutput)
+}
+
+// Primary availability zone.
+func (o GetPolardbxInstancesInstanceOutput) PrimaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.PrimaryZone }).(pulumi.StringOutput)
+}
+
+// Region ID of the instance.
+func (o GetPolardbxInstancesInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource group used to filter instances.
+func (o GetPolardbxInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Secondary availability zone.
+func (o GetPolardbxInstancesInstanceOutput) SecondaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.SecondaryZone }).(pulumi.StringOutput)
+}
+
+// Filter results by instance status. Valid values: `Creating`, `Running`, `MinorVersionUpgrading`, `ClassChanging`, `NodeCreating`, `NodeDeleting`, `Deleting`.
+func (o GetPolardbxInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Storage type of the instance. Valid values: `customLocalSsd`, `cloudAuto`.
+func (o GetPolardbxInstancesInstanceOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Third availability zone.
+func (o GetPolardbxInstancesInstanceOutput) TertiaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.TertiaryZone }).(pulumi.StringOutput)
+}
+
+// Topology type of the instance. Valid values: `1azone`, `3azones`.
+func (o GetPolardbxInstancesInstanceOutput) TopologyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.TopologyType }).(pulumi.StringOutput)
+}
+
+// VPC ID of the instance.
+func (o GetPolardbxInstancesInstanceOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// Availability zone of the instance.
+func (o GetPolardbxInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolardbxInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetPolardbxInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolardbxInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolardbxInstancesInstance)(nil)).Elem()
+}
+
+func (o GetPolardbxInstancesInstanceArrayOutput) ToGetPolardbxInstancesInstanceArrayOutput() GetPolardbxInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetPolardbxInstancesInstanceArrayOutput) ToGetPolardbxInstancesInstanceArrayOutputWithContext(ctx context.Context) GetPolardbxInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetPolardbxInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetPolardbxInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolardbxInstancesInstance {
+		return vs[0].([]GetPolardbxInstancesInstance)[vs[1].(int)]
+	}).(GetPolardbxInstancesInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolardbxInstancesInstanceInput)(nil)).Elem(), GetPolardbxInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolardbxInstancesInstanceArrayInput)(nil)).Elem(), GetPolardbxInstancesInstanceArray{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetPolardbxInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetPolardbxInstancesInstanceArrayOutput{})
 }

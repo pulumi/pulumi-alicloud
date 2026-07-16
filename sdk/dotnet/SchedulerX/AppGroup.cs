@@ -44,13 +44,11 @@ namespace Pulumi.AliCloud.SchedulerX
     ///         {
     ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 ["userName"] = "name1",
-    ///                 ["userPhone"] = "89756******",
+    ///                 ["name"] = "contact-group-1",
     ///             },
     ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 ["userName"] = "name2",
-    ///                 ["ding"] = "http://www.example.com",
+    ///                 ["name"] = "contact-group-2",
     ///             },
     ///         }),
     ///         DeleteJobs = false,
@@ -62,6 +60,8 @@ namespace Pulumi.AliCloud.SchedulerX
     ///         MonitorConfigJson = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["sendChannel"] = "sms,ding",
+    ///             ["alarmType"] = "Contacts",
+    ///             ["webhookIsAtAll"] = "false",
     ///         }),
     ///         AppVersion = "1",
     ///         AppName = "example-appgroup-pop-autoexample",
@@ -145,13 +145,13 @@ namespace Pulumi.AliCloud.SchedulerX
         public Output<int> MaxJobs { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+        /// Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `MonitorContactsJson` is specified, `alarmType` must be explicitly included in `MonitorConfigJson` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
         /// </summary>
         [Output("monitorConfigJson")]
         public Output<string?> MonitorConfigJson { get; private set; } = null!;
 
         /// <summary>
-        /// Alarm contact JSON format.
+        /// Alarm contact JSON format. **Note:** This field only takes effect when `MonitorConfigJson` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"WebhookUrl"}]`; for `"Contacts"`, use `[{"name":"ContactGroupName"}]`.
         /// </summary>
         [Output("monitorContactsJson")]
         public Output<string?> MonitorContactsJson { get; private set; } = null!;
@@ -285,13 +285,13 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<int>? MaxJobs { get; set; }
 
         /// <summary>
-        /// Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+        /// Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `MonitorContactsJson` is specified, `alarmType` must be explicitly included in `MonitorConfigJson` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
         /// </summary>
         [Input("monitorConfigJson")]
         public Input<string>? MonitorConfigJson { get; set; }
 
         /// <summary>
-        /// Alarm contact JSON format.
+        /// Alarm contact JSON format. **Note:** This field only takes effect when `MonitorConfigJson` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"WebhookUrl"}]`; for `"Contacts"`, use `[{"name":"ContactGroupName"}]`.
         /// </summary>
         [Input("monitorContactsJson")]
         public Input<string>? MonitorContactsJson { get; set; }
@@ -387,13 +387,13 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<int>? MaxJobs { get; set; }
 
         /// <summary>
-        /// Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+        /// Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `MonitorContactsJson` is specified, `alarmType` must be explicitly included in `MonitorConfigJson` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
         /// </summary>
         [Input("monitorConfigJson")]
         public Input<string>? MonitorConfigJson { get; set; }
 
         /// <summary>
-        /// Alarm contact JSON format.
+        /// Alarm contact JSON format. **Note:** This field only takes effect when `MonitorConfigJson` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"WebhookUrl"}]`; for `"Contacts"`, use `[{"name":"ContactGroupName"}]`.
         /// </summary>
         [Input("monitorContactsJson")]
         public Input<string>? MonitorContactsJson { get; set; }

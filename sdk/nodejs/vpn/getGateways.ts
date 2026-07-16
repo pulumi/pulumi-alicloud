@@ -76,6 +76,7 @@ export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions)
     return pulumi.runtime.invoke("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
         "enableIpsec": args.enableIpsec,
+        "gatewayType": args.gatewayType,
         "ids": args.ids,
         "includeReservationData": args.includeReservationData,
         "nameRegex": args.nameRegex,
@@ -100,6 +101,10 @@ export interface GetGatewaysArgs {
      * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
     enableIpsec?: boolean;
+    /**
+     * Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+     */
+    gatewayType?: string;
     /**
      * IDs of the VPN.
      */
@@ -144,6 +149,7 @@ export interface GetGatewaysResult {
      * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
     readonly enableIpsec?: boolean;
+    readonly gatewayType?: string;
     /**
      * A list of VPN gateways. Each element contains the following attributes:
      */
@@ -246,6 +252,7 @@ export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.In
     return pulumi.runtime.invokeOutput("alicloud:vpn/getGateways:getGateways", {
         "businessStatus": args.businessStatus,
         "enableIpsec": args.enableIpsec,
+        "gatewayType": args.gatewayType,
         "ids": args.ids,
         "includeReservationData": args.includeReservationData,
         "nameRegex": args.nameRegex,
@@ -270,6 +277,10 @@ export interface GetGatewaysOutputArgs {
      * @deprecated Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
      */
     enableIpsec?: pulumi.Input<boolean | undefined>;
+    /**
+     * Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+     */
+    gatewayType?: pulumi.Input<string | undefined>;
     /**
      * IDs of the VPN.
      */

@@ -23,6 +23,9 @@ __all__ = [
     'GetPhysicalConnectionsConnectionResult',
     'GetRouterInterfacesFilterResult',
     'GetRouterInterfacesInterfaceResult',
+    'GetRouterTrAssociationsAssociationResult',
+    'GetRouterVbrChildInstancesInstanceResult',
+    'GetRouterVpcAssociationsAssociationResult',
     'GetVbrPconnAssociationsAssociationResult',
     'GetVirtualBorderRoutersFilterResult',
     'GetVirtualBorderRoutersRouterResult',
@@ -1009,6 +1012,390 @@ class GetRouterInterfacesInterfaceResult(dict):
         The vpc instance id of the resource.
         """
         return pulumi.get(self, "vpc_instance_id")
+
+
+@pulumi.output_type
+class GetRouterTrAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 allowed_prefixes: Sequence[_builtins.str],
+                 allowed_prefixes_mode: _builtins.str,
+                 association_id: _builtins.str,
+                 association_node_type: _builtins.str,
+                 cen_id: _builtins.str,
+                 create_time: _builtins.str,
+                 ecr_id: _builtins.str,
+                 id: _builtins.str,
+                 modify_time: _builtins.str,
+                 status: _builtins.str,
+                 transit_router_id: _builtins.str,
+                 transit_router_owner_id: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_prefixes: The prefix-based routing mode.
+        :param _builtins.str allowed_prefixes_mode: The prefix-based routing mode.
+        :param _builtins.str association_id: The ID of the association between the Express Connect Router and the TR.
+        :param _builtins.str association_node_type: The type of the associated resource.
+        :param _builtins.str cen_id: The ID of the Cloud Enterprise Network instance.
+        :param _builtins.str create_time: The time when the association was created.
+        :param _builtins.str ecr_id: The ID of the Express Connect Router instance.
+        :param _builtins.str id: The ID of the Tr Association.
+        :param _builtins.str modify_time: The time when the association was modified.
+        :param _builtins.str status: The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+        :param _builtins.str transit_router_id: The ID of the transit router instance.
+        :param _builtins.str transit_router_owner_id: The ID of the Alibaba Cloud account that owns the TR.
+        """
+        pulumi.set(__self__, "allowed_prefixes", allowed_prefixes)
+        pulumi.set(__self__, "allowed_prefixes_mode", allowed_prefixes_mode)
+        pulumi.set(__self__, "association_id", association_id)
+        pulumi.set(__self__, "association_node_type", association_node_type)
+        pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "ecr_id", ecr_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        pulumi.set(__self__, "transit_router_owner_id", transit_router_owner_id)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPrefixes")
+    def allowed_prefixes(self) -> Sequence[_builtins.str]:
+        """
+        The prefix-based routing mode.
+        """
+        return pulumi.get(self, "allowed_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPrefixesMode")
+    def allowed_prefixes_mode(self) -> _builtins.str:
+        """
+        The prefix-based routing mode.
+        """
+        return pulumi.get(self, "allowed_prefixes_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="associationId")
+    def association_id(self) -> _builtins.str:
+        """
+        The ID of the association between the Express Connect Router and the TR.
+        """
+        return pulumi.get(self, "association_id")
+
+    @_builtins.property
+    @pulumi.getter(name="associationNodeType")
+    def association_node_type(self) -> _builtins.str:
+        """
+        The type of the associated resource.
+        """
+        return pulumi.get(self, "association_node_type")
+
+    @_builtins.property
+    @pulumi.getter(name="cenId")
+    def cen_id(self) -> _builtins.str:
+        """
+        The ID of the Cloud Enterprise Network instance.
+        """
+        return pulumi.get(self, "cen_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the association was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ecrId")
+    def ecr_id(self) -> _builtins.str:
+        """
+        The ID of the Express Connect Router instance.
+        """
+        return pulumi.get(self, "ecr_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Tr Association.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The time when the association was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> _builtins.str:
+        """
+        The ID of the transit router instance.
+        """
+        return pulumi.get(self, "transit_router_id")
+
+    @_builtins.property
+    @pulumi.getter(name="transitRouterOwnerId")
+    def transit_router_owner_id(self) -> _builtins.str:
+        """
+        The ID of the Alibaba Cloud account that owns the TR.
+        """
+        return pulumi.get(self, "transit_router_owner_id")
+
+
+@pulumi.output_type
+class GetRouterVbrChildInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 child_instance_id: _builtins.str,
+                 child_instance_owner_id: _builtins.str,
+                 child_instance_region_id: _builtins.str,
+                 child_instance_type: _builtins.str,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 ecr_id: _builtins.str,
+                 id: _builtins.str,
+                 modify_time: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str child_instance_id: The ID of the network instance to detach.
+        :param _builtins.str child_instance_owner_id: The Alibaba Cloud account ID of the child instance owner.
+        :param _builtins.str child_instance_region_id: The region where the network instance is deployed.
+        :param _builtins.str child_instance_type: The type of the network instance. Valid values: `VBR`.
+        :param _builtins.str create_time: The time when the association was created.
+        :param _builtins.str description: The description of the child instance.
+        :param _builtins.str ecr_id: The ID of the Express Connect Router instance.
+        :param _builtins.str id: The ID of the Vbr Child Instance.
+        :param _builtins.str modify_time: The time when the association was modified.
+        :param _builtins.str status: The deployment status of the associated instance. Valid values: `CREATING`, `ACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+        """
+        pulumi.set(__self__, "child_instance_id", child_instance_id)
+        pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+        pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
+        pulumi.set(__self__, "child_instance_type", child_instance_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ecr_id", ecr_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="childInstanceId")
+    def child_instance_id(self) -> _builtins.str:
+        """
+        The ID of the network instance to detach.
+        """
+        return pulumi.get(self, "child_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="childInstanceOwnerId")
+    def child_instance_owner_id(self) -> _builtins.str:
+        """
+        The Alibaba Cloud account ID of the child instance owner.
+        """
+        return pulumi.get(self, "child_instance_owner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="childInstanceRegionId")
+    def child_instance_region_id(self) -> _builtins.str:
+        """
+        The region where the network instance is deployed.
+        """
+        return pulumi.get(self, "child_instance_region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="childInstanceType")
+    def child_instance_type(self) -> _builtins.str:
+        """
+        The type of the network instance. Valid values: `VBR`.
+        """
+        return pulumi.get(self, "child_instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the association was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the child instance.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="ecrId")
+    def ecr_id(self) -> _builtins.str:
+        """
+        The ID of the Express Connect Router instance.
+        """
+        return pulumi.get(self, "ecr_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Vbr Child Instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The time when the association was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The deployment status of the associated instance. Valid values: `CREATING`, `ACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetRouterVpcAssociationsAssociationResult(dict):
+    def __init__(__self__, *,
+                 allowed_prefixes: Sequence[_builtins.str],
+                 allowed_prefixes_mode: _builtins.str,
+                 association_id: _builtins.str,
+                 association_node_type: _builtins.str,
+                 create_time: _builtins.str,
+                 ecr_id: _builtins.str,
+                 id: _builtins.str,
+                 modify_time: _builtins.str,
+                 status: _builtins.str,
+                 vpc_id: _builtins.str,
+                 vpc_owner_id: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_prefixes: The prefix-based routing mode.
+        :param _builtins.str allowed_prefixes_mode: The prefix-based routing mode.
+        :param _builtins.str association_id: The ID of the association between the Express Connect Router and the VPC.
+        :param _builtins.str association_node_type: The type of the associated resource.
+        :param _builtins.str create_time: The time when the association was created.
+        :param _builtins.str ecr_id: The ID of the Express Connect Router instance.
+        :param _builtins.str id: The ID of the Vpc Association.
+        :param _builtins.str modify_time: The time when the association was modified.
+        :param _builtins.str status: The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+        :param _builtins.str vpc_id: The ID of the VPC instance.
+        :param _builtins.str vpc_owner_id: The ID of the Alibaba Cloud account that owns the VPC.
+        """
+        pulumi.set(__self__, "allowed_prefixes", allowed_prefixes)
+        pulumi.set(__self__, "allowed_prefixes_mode", allowed_prefixes_mode)
+        pulumi.set(__self__, "association_id", association_id)
+        pulumi.set(__self__, "association_node_type", association_node_type)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "ecr_id", ecr_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modify_time", modify_time)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPrefixes")
+    def allowed_prefixes(self) -> Sequence[_builtins.str]:
+        """
+        The prefix-based routing mode.
+        """
+        return pulumi.get(self, "allowed_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPrefixesMode")
+    def allowed_prefixes_mode(self) -> _builtins.str:
+        """
+        The prefix-based routing mode.
+        """
+        return pulumi.get(self, "allowed_prefixes_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="associationId")
+    def association_id(self) -> _builtins.str:
+        """
+        The ID of the association between the Express Connect Router and the VPC.
+        """
+        return pulumi.get(self, "association_id")
+
+    @_builtins.property
+    @pulumi.getter(name="associationNodeType")
+    def association_node_type(self) -> _builtins.str:
+        """
+        The type of the associated resource.
+        """
+        return pulumi.get(self, "association_node_type")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the association was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="ecrId")
+    def ecr_id(self) -> _builtins.str:
+        """
+        The ID of the Express Connect Router instance.
+        """
+        return pulumi.get(self, "ecr_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Vpc Association.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifyTime")
+    def modify_time(self) -> _builtins.str:
+        """
+        The time when the association was modified.
+        """
+        return pulumi.get(self, "modify_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        The ID of the VPC instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcOwnerId")
+    def vpc_owner_id(self) -> _builtins.str:
+        """
+        The ID of the Alibaba Cloud account that owns the VPC.
+        """
+        return pulumi.get(self, "vpc_owner_id")
 
 
 @pulumi.output_type

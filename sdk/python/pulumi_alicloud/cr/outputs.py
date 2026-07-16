@@ -27,6 +27,7 @@ __all__ = [
     'RegistryEnterpriseInstanceInstanceEndpointDomain',
     'RepoDomainList',
     'StorageDomainRoutingRuleRoute',
+    'GetArtifactLifecycleRulesRuleResult',
     'GetChainsChainResult',
     'GetChainsChainChainConfigResult',
     'GetChainsChainChainConfigNodeResult',
@@ -548,6 +549,167 @@ class StorageDomainRoutingRuleRoute(dict):
         Storage domain name.
         """
         return pulumi.get(self, "storage_domain")
+
+
+@pulumi.output_type
+class GetArtifactLifecycleRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 artifact_lifecycle_rule_id: _builtins.str,
+                 auto: _builtins.bool,
+                 create_time: _builtins.int,
+                 enable_delete_tag: _builtins.bool,
+                 enable_delete_untagged_manifest: _builtins.bool,
+                 id: _builtins.str,
+                 instance_id: _builtins.str,
+                 modified_time: _builtins.int,
+                 namespace_name: _builtins.str,
+                 repo_name: _builtins.str,
+                 retention_tag_count: _builtins.int,
+                 schedule_time: _builtins.str,
+                 scope: _builtins.str,
+                 tag_regexp: _builtins.str):
+        """
+        :param _builtins.str artifact_lifecycle_rule_id: The first ID of the resource.
+        :param _builtins.bool auto: Whether to execute automatically.
+        :param _builtins.int create_time: Creation time.
+        :param _builtins.bool enable_delete_tag: Activate the delete tag function.
+        :param _builtins.bool enable_delete_untagged_manifest: Open garbage collection.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str instance_id: Instance ID
+        :param _builtins.int modified_time: Change time.
+        :param _builtins.str namespace_name: Namespace name.
+        :param _builtins.str repo_name: Repository Name.
+        :param _builtins.int retention_tag_count: Number of Retention Tags.
+        :param _builtins.str schedule_time: Execution cycle.
+        :param _builtins.str scope: Scope of cleaning.
+        :param _builtins.str tag_regexp: Retain regular expressions for mirrored versions.
+        """
+        pulumi.set(__self__, "artifact_lifecycle_rule_id", artifact_lifecycle_rule_id)
+        pulumi.set(__self__, "auto", auto)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "enable_delete_tag", enable_delete_tag)
+        pulumi.set(__self__, "enable_delete_untagged_manifest", enable_delete_untagged_manifest)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "repo_name", repo_name)
+        pulumi.set(__self__, "retention_tag_count", retention_tag_count)
+        pulumi.set(__self__, "schedule_time", schedule_time)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "tag_regexp", tag_regexp)
+
+    @_builtins.property
+    @pulumi.getter(name="artifactLifecycleRuleId")
+    def artifact_lifecycle_rule_id(self) -> _builtins.str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "artifact_lifecycle_rule_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def auto(self) -> _builtins.bool:
+        """
+        Whether to execute automatically.
+        """
+        return pulumi.get(self, "auto")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.int:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeleteTag")
+    def enable_delete_tag(self) -> _builtins.bool:
+        """
+        Activate the delete tag function.
+        """
+        return pulumi.get(self, "enable_delete_tag")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeleteUntaggedManifest")
+    def enable_delete_untagged_manifest(self) -> _builtins.bool:
+        """
+        Open garbage collection.
+        """
+        return pulumi.get(self, "enable_delete_untagged_manifest")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        Instance ID
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> _builtins.int:
+        """
+        Change time.
+        """
+        return pulumi.get(self, "modified_time")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> _builtins.str:
+        """
+        Namespace name.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @_builtins.property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> _builtins.str:
+        """
+        Repository Name.
+        """
+        return pulumi.get(self, "repo_name")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionTagCount")
+    def retention_tag_count(self) -> _builtins.int:
+        """
+        Number of Retention Tags.
+        """
+        return pulumi.get(self, "retention_tag_count")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleTime")
+    def schedule_time(self) -> _builtins.str:
+        """
+        Execution cycle.
+        """
+        return pulumi.get(self, "schedule_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> _builtins.str:
+        """
+        Scope of cleaning.
+        """
+        return pulumi.get(self, "scope")
+
+    @_builtins.property
+    @pulumi.getter(name="tagRegexp")
+    def tag_regexp(self) -> _builtins.str:
+        """
+        Retain regular expressions for mirrored versions.
+        """
+        return pulumi.get(self, "tag_regexp")
 
 
 @pulumi.output_type

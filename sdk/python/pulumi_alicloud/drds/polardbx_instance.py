@@ -28,24 +28,31 @@ class PolardbxInstanceArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dn_storage_space: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 specified_dn_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specified_dn_spec_map_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolardbxInstance resource.
 
-        :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
+        :param pulumi.Input[_builtins.str] cn_class: Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
-        :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
+        :param pulumi.Input[_builtins.str] dn_class: Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
         :param pulumi.Input[_builtins.str] primary_zone: Primary Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
         :param pulumi.Input[_builtins.str] description: Instance remarks
+        :param pulumi.Input[_builtins.str] dn_storage_space: Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
         :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
         :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
         :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
@@ -53,6 +60,11 @@ class PolardbxInstanceArgs:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
+        :param pulumi.Input[_builtins.bool] specified_dn_scale: Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        :param pulumi.Input[_builtins.str] specified_dn_spec_map_json: JSON string describing the per-DN target specification during a class change.
+        :param pulumi.Input[_builtins.str] storage_type: Storage type of the instance. Valid values:
+        :param pulumi.Input[_builtins.str] switch_time: Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        :param pulumi.Input[_builtins.str] switch_time_mode: Effective time policy applied to a class change. Valid values:
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         """
         pulumi.set(__self__, "cn_class", cn_class)
@@ -65,6 +77,8 @@ class PolardbxInstanceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dn_storage_space is not None:
+            pulumi.set(__self__, "dn_storage_space", dn_storage_space)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if is_read_db_instance is not None:
@@ -75,6 +89,16 @@ class PolardbxInstanceArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone is not None:
             pulumi.set(__self__, "secondary_zone", secondary_zone)
+        if specified_dn_scale is not None:
+            pulumi.set(__self__, "specified_dn_scale", specified_dn_scale)
+        if specified_dn_spec_map_json is not None:
+            pulumi.set(__self__, "specified_dn_spec_map_json", specified_dn_spec_map_json)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
+        if switch_time is not None:
+            pulumi.set(__self__, "switch_time", switch_time)
+        if switch_time_mode is not None:
+            pulumi.set(__self__, "switch_time_mode", switch_time_mode)
         if tertiary_zone is not None:
             pulumi.set(__self__, "tertiary_zone", tertiary_zone)
 
@@ -82,7 +106,7 @@ class PolardbxInstanceArgs:
     @pulumi.getter(name="cnClass")
     def cn_class(self) -> pulumi.Input[_builtins.str]:
         """
-        Compute node specifications.
+        Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         """
         return pulumi.get(self, "cn_class")
 
@@ -106,7 +130,7 @@ class PolardbxInstanceArgs:
     @pulumi.getter(name="dnClass")
     def dn_class(self) -> pulumi.Input[_builtins.str]:
         """
-        Storage node specifications.
+        Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         """
         return pulumi.get(self, "dn_class")
 
@@ -187,6 +211,18 @@ class PolardbxInstanceArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="dnStorageSpace")
+    def dn_storage_space(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+        """
+        return pulumi.get(self, "dn_storage_space")
+
+    @dn_storage_space.setter
+    def dn_storage_space(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dn_storage_space", value)
+
+    @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -249,6 +285,66 @@ class PolardbxInstanceArgs:
         pulumi.set(self, "secondary_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="specifiedDnScale")
+    def specified_dn_scale(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        """
+        return pulumi.get(self, "specified_dn_scale")
+
+    @specified_dn_scale.setter
+    def specified_dn_scale(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "specified_dn_scale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specifiedDnSpecMapJson")
+    def specified_dn_spec_map_json(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        JSON string describing the per-DN target specification during a class change.
+        """
+        return pulumi.get(self, "specified_dn_spec_map_json")
+
+    @specified_dn_spec_map_json.setter
+    def specified_dn_spec_map_json(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "specified_dn_spec_map_json", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage type of the instance. Valid values:
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @switch_time.setter
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "switch_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="switchTimeMode")
+    def switch_time_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Effective time policy applied to a class change. Valid values:
+        """
+        return pulumi.get(self, "switch_time_mode")
+
+    @switch_time_mode.setter
+    def switch_time_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "switch_time_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="tertiaryZone")
     def tertiary_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -270,6 +366,7 @@ class _PolardbxInstanceState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dn_class: pulumi.Input[Optional[_builtins.str]] = None,
                  dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 dn_storage_space: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -277,7 +374,12 @@ class _PolardbxInstanceState:
                  region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 specified_dn_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specified_dn_spec_map_json: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  topology_type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -285,12 +387,13 @@ class _PolardbxInstanceState:
         """
         Input properties used for looking up and filtering PolardbxInstance resources.
 
-        :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
+        :param pulumi.Input[_builtins.str] cn_class: Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] description: Instance remarks
-        :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
+        :param pulumi.Input[_builtins.str] dn_class: Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
+        :param pulumi.Input[_builtins.str] dn_storage_space: Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
         :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
         :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
         :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
@@ -300,7 +403,12 @@ class _PolardbxInstanceState:
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
+        :param pulumi.Input[_builtins.bool] specified_dn_scale: Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        :param pulumi.Input[_builtins.str] specified_dn_spec_map_json: JSON string describing the per-DN target specification during a class change.
         :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] storage_type: Storage type of the instance. Valid values:
+        :param pulumi.Input[_builtins.str] switch_time: Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        :param pulumi.Input[_builtins.str] switch_time_mode: Effective time policy applied to a class change. Valid values:
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
@@ -318,6 +426,8 @@ class _PolardbxInstanceState:
             pulumi.set(__self__, "dn_class", dn_class)
         if dn_node_count is not None:
             pulumi.set(__self__, "dn_node_count", dn_node_count)
+        if dn_storage_space is not None:
+            pulumi.set(__self__, "dn_storage_space", dn_storage_space)
         if engine_version is not None:
             pulumi.set(__self__, "engine_version", engine_version)
         if is_read_db_instance is not None:
@@ -332,8 +442,18 @@ class _PolardbxInstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone is not None:
             pulumi.set(__self__, "secondary_zone", secondary_zone)
+        if specified_dn_scale is not None:
+            pulumi.set(__self__, "specified_dn_scale", specified_dn_scale)
+        if specified_dn_spec_map_json is not None:
+            pulumi.set(__self__, "specified_dn_spec_map_json", specified_dn_spec_map_json)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
+        if switch_time is not None:
+            pulumi.set(__self__, "switch_time", switch_time)
+        if switch_time_mode is not None:
+            pulumi.set(__self__, "switch_time_mode", switch_time_mode)
         if tertiary_zone is not None:
             pulumi.set(__self__, "tertiary_zone", tertiary_zone)
         if topology_type is not None:
@@ -347,7 +467,7 @@ class _PolardbxInstanceState:
     @pulumi.getter(name="cnClass")
     def cn_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Compute node specifications.
+        Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         """
         return pulumi.get(self, "cn_class")
 
@@ -395,7 +515,7 @@ class _PolardbxInstanceState:
     @pulumi.getter(name="dnClass")
     def dn_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Storage node specifications.
+        Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         """
         return pulumi.get(self, "dn_class")
 
@@ -414,6 +534,18 @@ class _PolardbxInstanceState:
     @dn_node_count.setter
     def dn_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dn_node_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnStorageSpace")
+    def dn_storage_space(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+        """
+        return pulumi.get(self, "dn_storage_space")
+
+    @dn_storage_space.setter
+    def dn_storage_space(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dn_storage_space", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
@@ -502,6 +634,30 @@ class _PolardbxInstanceState:
         pulumi.set(self, "secondary_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="specifiedDnScale")
+    def specified_dn_scale(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        """
+        return pulumi.get(self, "specified_dn_scale")
+
+    @specified_dn_scale.setter
+    def specified_dn_scale(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "specified_dn_scale", value)
+
+    @_builtins.property
+    @pulumi.getter(name="specifiedDnSpecMapJson")
+    def specified_dn_spec_map_json(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        JSON string describing the per-DN target specification during a class change.
+        """
+        return pulumi.get(self, "specified_dn_spec_map_json")
+
+    @specified_dn_spec_map_json.setter
+    def specified_dn_spec_map_json(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "specified_dn_spec_map_json", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -512,6 +668,42 @@ class _PolardbxInstanceState:
     @status.setter
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Storage type of the instance. Valid values:
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @switch_time.setter
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "switch_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="switchTimeMode")
+    def switch_time_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Effective time policy applied to a class change. Valid values:
+        """
+        return pulumi.get(self, "switch_time_mode")
+
+    @switch_time_mode.setter
+    def switch_time_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "switch_time_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="tertiaryZone")
@@ -573,12 +765,18 @@ class PolardbxInstance(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dn_class: pulumi.Input[Optional[_builtins.str]] = None,
                  dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 dn_storage_space: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 specified_dn_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specified_dn_spec_map_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  topology_type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,11 +836,12 @@ class PolardbxInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
+        :param pulumi.Input[_builtins.str] cn_class: Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
         :param pulumi.Input[_builtins.str] description: Instance remarks
-        :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
+        :param pulumi.Input[_builtins.str] dn_class: Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
+        :param pulumi.Input[_builtins.str] dn_storage_space: Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
         :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
         :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
         :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
@@ -651,6 +850,11 @@ class PolardbxInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] primary_zone: Primary Availability Zone.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
+        :param pulumi.Input[_builtins.bool] specified_dn_scale: Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        :param pulumi.Input[_builtins.str] specified_dn_spec_map_json: JSON string describing the per-DN target specification during a class change.
+        :param pulumi.Input[_builtins.str] storage_type: Storage type of the instance. Valid values:
+        :param pulumi.Input[_builtins.str] switch_time: Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        :param pulumi.Input[_builtins.str] switch_time_mode: Effective time policy applied to a class change. Valid values:
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
@@ -734,12 +938,18 @@ class PolardbxInstance(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dn_class: pulumi.Input[Optional[_builtins.str]] = None,
                  dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 dn_storage_space: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 specified_dn_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+                 specified_dn_spec_map_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  topology_type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,6 +976,7 @@ class PolardbxInstance(pulumi.CustomResource):
             if dn_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'dn_node_count'")
             __props__.__dict__["dn_node_count"] = dn_node_count
+            __props__.__dict__["dn_storage_space"] = dn_storage_space
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["is_read_db_instance"] = is_read_db_instance
             __props__.__dict__["primary_db_instance_name"] = primary_db_instance_name
@@ -774,6 +985,11 @@ class PolardbxInstance(pulumi.CustomResource):
             __props__.__dict__["primary_zone"] = primary_zone
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["secondary_zone"] = secondary_zone
+            __props__.__dict__["specified_dn_scale"] = specified_dn_scale
+            __props__.__dict__["specified_dn_spec_map_json"] = specified_dn_spec_map_json
+            __props__.__dict__["storage_type"] = storage_type
+            __props__.__dict__["switch_time"] = switch_time
+            __props__.__dict__["switch_time_mode"] = switch_time_mode
             __props__.__dict__["tertiary_zone"] = tertiary_zone
             if topology_type is None and not opts.urn:
                 raise TypeError("Missing required property 'topology_type'")
@@ -803,6 +1019,7 @@ class PolardbxInstance(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dn_class: pulumi.Input[Optional[_builtins.str]] = None,
             dn_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            dn_storage_space: pulumi.Input[Optional[_builtins.str]] = None,
             engine_version: pulumi.Input[Optional[_builtins.str]] = None,
             is_read_db_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             primary_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,7 +1027,12 @@ class PolardbxInstance(pulumi.CustomResource):
             region_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            specified_dn_scale: pulumi.Input[Optional[_builtins.bool]] = None,
+            specified_dn_spec_map_json: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time_mode: pulumi.Input[Optional[_builtins.str]] = None,
             tertiary_zone: pulumi.Input[Optional[_builtins.str]] = None,
             topology_type: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -822,12 +1044,13 @@ class PolardbxInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cn_class: Compute node specifications.
+        :param pulumi.Input[_builtins.str] cn_class: Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] cn_node_count: Number of computing nodes.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] description: Instance remarks
-        :param pulumi.Input[_builtins.str] dn_class: Storage node specifications.
+        :param pulumi.Input[_builtins.str] dn_class: Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         :param pulumi.Input[_builtins.int] dn_node_count: The number of storage nodes.
+        :param pulumi.Input[_builtins.str] dn_storage_space: Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
         :param pulumi.Input[_builtins.str] engine_version: Engine version, default 5.7
         :param pulumi.Input[_builtins.bool] is_read_db_instance: Whether the instance is read-only.
         :param pulumi.Input[_builtins.str] primary_db_instance_name: If the instance is a read-only instance, you must specify the primary instance.
@@ -837,7 +1060,12 @@ class PolardbxInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group ID can be empty. This parameter is not supported for the time being.
         :param pulumi.Input[_builtins.str] secondary_zone: Secondary availability zone.
+        :param pulumi.Input[_builtins.bool] specified_dn_scale: Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        :param pulumi.Input[_builtins.str] specified_dn_spec_map_json: JSON string describing the per-DN target specification during a class change.
         :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] storage_type: Storage type of the instance. Valid values:
+        :param pulumi.Input[_builtins.str] switch_time: Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        :param pulumi.Input[_builtins.str] switch_time_mode: Effective time policy applied to a class change. Valid values:
         :param pulumi.Input[_builtins.str] tertiary_zone: Third Availability Zone.
         :param pulumi.Input[_builtins.str] topology_type: Topology type:
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
@@ -853,6 +1081,7 @@ class PolardbxInstance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["dn_class"] = dn_class
         __props__.__dict__["dn_node_count"] = dn_node_count
+        __props__.__dict__["dn_storage_space"] = dn_storage_space
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["is_read_db_instance"] = is_read_db_instance
         __props__.__dict__["primary_db_instance_name"] = primary_db_instance_name
@@ -860,7 +1089,12 @@ class PolardbxInstance(pulumi.CustomResource):
         __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["secondary_zone"] = secondary_zone
+        __props__.__dict__["specified_dn_scale"] = specified_dn_scale
+        __props__.__dict__["specified_dn_spec_map_json"] = specified_dn_spec_map_json
         __props__.__dict__["status"] = status
+        __props__.__dict__["storage_type"] = storage_type
+        __props__.__dict__["switch_time"] = switch_time
+        __props__.__dict__["switch_time_mode"] = switch_time_mode
         __props__.__dict__["tertiary_zone"] = tertiary_zone
         __props__.__dict__["topology_type"] = topology_type
         __props__.__dict__["vpc_id"] = vpc_id
@@ -871,7 +1105,7 @@ class PolardbxInstance(pulumi.CustomResource):
     @pulumi.getter(name="cnClass")
     def cn_class(self) -> pulumi.Output[_builtins.str]:
         """
-        Compute node specifications.
+        Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         """
         return pulumi.get(self, "cn_class")
 
@@ -903,7 +1137,7 @@ class PolardbxInstance(pulumi.CustomResource):
     @pulumi.getter(name="dnClass")
     def dn_class(self) -> pulumi.Output[_builtins.str]:
         """
-        Storage node specifications.
+        Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         """
         return pulumi.get(self, "dn_class")
 
@@ -914,6 +1148,14 @@ class PolardbxInstance(pulumi.CustomResource):
         The number of storage nodes.
         """
         return pulumi.get(self, "dn_node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="dnStorageSpace")
+    def dn_storage_space(self) -> pulumi.Output[_builtins.str]:
+        """
+        Storage space per storage node, in GB. Only applicable when `storage_type` is `cloud_auto`; leave unset for `custom_local_ssd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+        """
+        return pulumi.get(self, "dn_storage_space")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
@@ -974,12 +1216,52 @@ class PolardbxInstance(pulumi.CustomResource):
         return pulumi.get(self, "secondary_zone")
 
     @_builtins.property
+    @pulumi.getter(name="specifiedDnScale")
+    def specified_dn_scale(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the storage node specification is customized per DN during a class change. Used together with `specified_dn_spec_map_json`.
+        """
+        return pulumi.get(self, "specified_dn_scale")
+
+    @_builtins.property
+    @pulumi.getter(name="specifiedDnSpecMapJson")
+    def specified_dn_spec_map_json(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        JSON string describing the per-DN target specification during a class change.
+        """
+        return pulumi.get(self, "specified_dn_spec_map_json")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Storage type of the instance. Valid values:
+        """
+        return pulumi.get(self, "storage_type")
+
+    @_builtins.property
+    @pulumi.getter(name="switchTime")
+    def switch_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        """
+        return pulumi.get(self, "switch_time")
+
+    @_builtins.property
+    @pulumi.getter(name="switchTimeMode")
+    def switch_time_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Effective time policy applied to a class change. Valid values:
+        """
+        return pulumi.get(self, "switch_time_mode")
 
     @_builtins.property
     @pulumi.getter(name="tertiaryZone")

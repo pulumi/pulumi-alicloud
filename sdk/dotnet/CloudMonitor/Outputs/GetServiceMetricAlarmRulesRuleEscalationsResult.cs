@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRuleEscalationsResult
     {
         /// <summary>
-        /// The conditions for triggering Critical-level alerts.
+        /// The trigger condition for Critical-level alerts.
         /// </summary>
         public readonly Outputs.GetServiceMetricAlarmRulesRuleEscalationsCriticalResult Critical;
         /// <summary>
-        /// The conditions for triggering Info-level alerts.
+        /// Trigger conditions for Info-level alerts.
         /// </summary>
         public readonly Outputs.GetServiceMetricAlarmRulesRuleEscalationsInfoResult Info;
         /// <summary>
-        /// The conditions for triggering Warn-level alerts.
+        /// Trigger condition for Warn-level alerts.
         /// </summary>
         public readonly Outputs.GetServiceMetricAlarmRulesRuleEscalationsWarnResult Warn;
 

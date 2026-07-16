@@ -230,7 +230,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
      * 
      */
     @Import(name="endTime")
@@ -239,7 +239,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * @return The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -353,7 +353,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
      * 
      */
     @Import(name="repeatEndTime")
@@ -362,7 +362,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * @return The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
      * 
      */
     public Optional<Output<String>> repeatEndTime() {
@@ -372,7 +372,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
      * 
      */
     @Import(name="repeatStartTime")
@@ -381,7 +381,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * @return The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
      * 
      */
     public Optional<Output<String>> repeatStartTime() {
@@ -390,7 +390,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
 
     /**
      * The type of repetition for the policy validity period of the access control policy. Value:
-     * - `Permit` (default): Always
+     * - `Permanent` (default): Always
      * - `None`: Specify a single time
      * - `Daily`: Daily
      * - `Weekly`: Weekly
@@ -402,7 +402,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
 
     /**
      * @return The type of repetition for the policy validity period of the access control policy. Value:
-     * - `Permit` (default): Always
+     * - `Permanent` (default): Always
      * - `None`: Specify a single time
      * - `Daily`: Daily
      * - `Weekly`: Weekly
@@ -450,7 +450,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
      * 
      */
     @Import(name="startTime")
@@ -459,7 +459,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
     /**
      * @return The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
      * 
-     * &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+     * &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -809,7 +809,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param endTime The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
          * 
          * @return builder
          * 
@@ -822,7 +822,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param endTime The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
          * 
          * @return builder
          * 
@@ -987,7 +987,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param repeatEndTime The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
          * 
          * @return builder
          * 
@@ -1000,7 +1000,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param repeatEndTime The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
          * 
          * @return builder
          * 
@@ -1012,7 +1012,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param repeatStartTime The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
          * 
          * @return builder
          * 
@@ -1025,7 +1025,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param repeatStartTime The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
          * 
          * @return builder
          * 
@@ -1036,7 +1036,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
 
         /**
          * @param repeatType The type of repetition for the policy validity period of the access control policy. Value:
-         * - `Permit` (default): Always
+         * - `Permanent` (default): Always
          * - `None`: Specify a single time
          * - `Daily`: Daily
          * - `Weekly`: Weekly
@@ -1052,7 +1052,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
 
         /**
          * @param repeatType The type of repetition for the policy validity period of the access control policy. Value:
-         * - `Permit` (default): Always
+         * - `Permanent` (default): Always
          * - `None`: Specify a single time
          * - `Daily`: Daily
          * - `Weekly`: Weekly
@@ -1114,7 +1114,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param startTime The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
          * 
          * @return builder
          * 
@@ -1127,7 +1127,7 @@ public final class NatFirewallControlPolicyState extends com.pulumi.resources.Re
         /**
          * @param startTime The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
          * 
-         * &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+         * &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
          * 
          * @return builder
          * 

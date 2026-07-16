@@ -311,8 +311,10 @@ class AiclusterArgs:
 @pulumi.input_type
 class _AiclusterState:
     def __init__(__self__, *,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
@@ -334,8 +336,10 @@ class _AiclusterState:
         """
         Input properties used for looking up and filtering Aicluster resources.
 
+        :param pulumi.Input[_builtins.str] api_key: (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
         :param pulumi.Input[_builtins.str] auto_renew: Whether to enable auto-renewal.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Whether to use coupons automatically. Default value: `true`.
+        :param pulumi.Input[_builtins.str] connection_string: (Available since 1.284.0) The connection string of the AI cluster endpoint.
         :param pulumi.Input[_builtins.str] db_cluster_description: The description of the AI DB cluster.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the associated DB cluster.
         :param pulumi.Input[_builtins.str] db_node_class: The DB node class of the AI cluster.
@@ -355,10 +359,14 @@ class _AiclusterState:
         :param pulumi.Input[_builtins.str] vswitch_id: The vSwitch ID.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID of the AI cluster.
         """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
         if db_cluster_description is not None:
             pulumi.set(__self__, "db_cluster_description", db_cluster_description)
         if db_cluster_id is not None:
@@ -397,6 +405,18 @@ class _AiclusterState:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -419,6 +439,18 @@ class _AiclusterState:
     @auto_use_coupon.setter
     def auto_use_coupon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_use_coupon", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since 1.284.0) The connection string of the AI cluster endpoint.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @connection_string.setter
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterDescription")
@@ -839,8 +871,12 @@ class Aicluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["api_key"] = None
+            __props__.__dict__["connection_string"] = None
             __props__.__dict__["model_type"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Aicluster, __self__).__init__(
             'alicloud:polardb/aicluster:Aicluster',
             resource_name,
@@ -851,8 +887,10 @@ class Aicluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
             auto_use_coupon: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
@@ -878,8 +916,10 @@ class Aicluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api_key: (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
         :param pulumi.Input[_builtins.str] auto_renew: Whether to enable auto-renewal.
         :param pulumi.Input[_builtins.bool] auto_use_coupon: Whether to use coupons automatically. Default value: `true`.
+        :param pulumi.Input[_builtins.str] connection_string: (Available since 1.284.0) The connection string of the AI cluster endpoint.
         :param pulumi.Input[_builtins.str] db_cluster_description: The description of the AI DB cluster.
         :param pulumi.Input[_builtins.str] db_cluster_id: The ID of the associated DB cluster.
         :param pulumi.Input[_builtins.str] db_node_class: The DB node class of the AI cluster.
@@ -903,8 +943,10 @@ class Aicluster(pulumi.CustomResource):
 
         __props__ = _AiclusterState.__new__(_AiclusterState)
 
+        __props__.__dict__["api_key"] = api_key
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+        __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["db_cluster_description"] = db_cluster_description
         __props__.__dict__["db_cluster_id"] = db_cluster_id
         __props__.__dict__["db_node_class"] = db_node_class
@@ -926,6 +968,14 @@ class Aicluster(pulumi.CustomResource):
         return Aicluster(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+        """
+        return pulumi.get(self, "api_key")
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -940,6 +990,14 @@ class Aicluster(pulumi.CustomResource):
         Whether to use coupons automatically. Default value: `true`.
         """
         return pulumi.get(self, "auto_use_coupon")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since 1.284.0) The connection string of the AI cluster endpoint.
+        """
+        return pulumi.get(self, "connection_string")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterDescription")

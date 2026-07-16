@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRuleCompositeExpressionResult
     {
         /// <summary>
-        /// The relationship between the trigger conditions for multiple metrics.
+        /// The logical relationship between multiple metric-based alert conditions.
         /// </summary>
         public readonly string ExpressionListJoin;
         /// <summary>
-        /// The trigger conditions that are created in standard mode.
+        /// A list of alert conditions created using standard expressions.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult> ExpressionLists;
         /// <summary>
-        /// The trigger conditions that are created by using expressions.
+        /// The alert condition created by an expression.
         /// </summary>
         public readonly string ExpressionRaw;
         /// <summary>
-        /// The alert level.
+        /// Alert severity level.
         /// </summary>
         public readonly string Level;
         /// <summary>
-        /// The number of consecutive triggers.
+        /// The number of times the alert condition must be met before an alert notification is sent.
         /// </summary>
         public readonly int Times;
 

@@ -27,13 +27,16 @@ class GetGatewaysResult:
     """
     A collection of values returned by getGateways.
     """
-    def __init__(__self__, business_status=None, enable_ipsec=None, gateways=None, id=None, ids=None, include_reservation_data=None, name_regex=None, names=None, output_file=None, ssl_vpn=None, status=None, vpc_id=None):
+    def __init__(__self__, business_status=None, enable_ipsec=None, gateway_type=None, gateways=None, id=None, ids=None, include_reservation_data=None, name_regex=None, names=None, output_file=None, ssl_vpn=None, status=None, vpc_id=None):
         if business_status and not isinstance(business_status, str):
             raise TypeError("Expected argument 'business_status' to be a str")
         pulumi.set(__self__, "business_status", business_status)
         if enable_ipsec and not isinstance(enable_ipsec, bool):
             raise TypeError("Expected argument 'enable_ipsec' to be a bool")
         pulumi.set(__self__, "enable_ipsec", enable_ipsec)
+        if gateway_type and not isinstance(gateway_type, str):
+            raise TypeError("Expected argument 'gateway_type' to be a str")
+        pulumi.set(__self__, "gateway_type", gateway_type)
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
         pulumi.set(__self__, "gateways", gateways)
@@ -81,6 +84,11 @@ class GetGatewaysResult:
         Whether the ipsec function is enabled.
         """
         return pulumi.get(self, "enable_ipsec")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayType")
+    def gateway_type(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "gateway_type")
 
     @_builtins.property
     @pulumi.getter
@@ -162,6 +170,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
         return GetGatewaysResult(
             business_status=self.business_status,
             enable_ipsec=self.enable_ipsec,
+            gateway_type=self.gateway_type,
             gateways=self.gateways,
             id=self.id,
             ids=self.ids,
@@ -176,6 +185,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
 
 def get_gateways(business_status: Optional[_builtins.str] = None,
                  enable_ipsec: Optional[_builtins.bool] = None,
+                 gateway_type: Optional[_builtins.str] = None,
                  ids: Optional[Sequence[_builtins.str]] = None,
                  include_reservation_data: Optional[_builtins.bool] = None,
                  name_regex: Optional[_builtins.str] = None,
@@ -242,6 +252,7 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
 
     :param _builtins.str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param _builtins.bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
+    :param _builtins.str gateway_type: Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
     :param Sequence[_builtins.str] ids: IDs of the VPN.
     :param _builtins.bool include_reservation_data: Include ineffective ordering data.
     :param _builtins.str name_regex: A regex string of VPN name.
@@ -253,6 +264,7 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['businessStatus'] = business_status
     __args__['enableIpsec'] = enable_ipsec
+    __args__['gatewayType'] = gateway_type
     __args__['ids'] = ids
     __args__['includeReservationData'] = include_reservation_data
     __args__['nameRegex'] = name_regex
@@ -266,6 +278,7 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
     return AwaitableGetGatewaysResult(
         business_status=pulumi.get(__ret__, 'business_status'),
         enable_ipsec=pulumi.get(__ret__, 'enable_ipsec'),
+        gateway_type=pulumi.get(__ret__, 'gateway_type'),
         gateways=pulumi.get(__ret__, 'gateways'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
@@ -278,6 +291,7 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         enable_ipsec: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        gateway_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                         include_reservation_data: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -344,6 +358,7 @@ def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtin
 
     :param _builtins.str business_status: Limit search to specific business status - valid value is "Normal", "FinancialLocked".
     :param _builtins.bool enable_ipsec: Indicates whether the IPsec-VPN feature is enabled.
+    :param _builtins.str gateway_type: Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
     :param Sequence[_builtins.str] ids: IDs of the VPN.
     :param _builtins.bool include_reservation_data: Include ineffective ordering data.
     :param _builtins.str name_regex: A regex string of VPN name.
@@ -355,6 +370,7 @@ def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtin
     __args__ = dict()
     __args__['businessStatus'] = business_status
     __args__['enableIpsec'] = enable_ipsec
+    __args__['gatewayType'] = gateway_type
     __args__['ids'] = ids
     __args__['includeReservationData'] = include_reservation_data
     __args__['nameRegex'] = name_regex
@@ -367,6 +383,7 @@ def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtin
     return __ret__.apply(lambda __response__: GetGatewaysResult(
         business_status=pulumi.get(__response__, 'business_status'),
         enable_ipsec=pulumi.get(__response__, 'enable_ipsec'),
+        gateway_type=pulumi.get(__response__, 'gateway_type'),
         gateways=pulumi.get(__response__, 'gateways'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),

@@ -773,6 +773,10 @@ export namespace actiontrail {
          */
         host: string;
         /**
+         * (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `<instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>`.
+         */
+        id: string;
+        /**
          * Get results for the specified username.
          */
         username: string;
@@ -3705,6 +3709,10 @@ export namespace amqp {
          */
         renewalStatus: string;
         /**
+         * (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+         */
+        serverlessSwitch: boolean;
+        /**
          * The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
          */
         status: string;
@@ -3919,6 +3927,49 @@ export namespace apig {
          * Availability Zone Options
          */
         selectOption: string;
+    }
+
+    export interface GetPluginClassesClass {
+        /**
+         * The alias of the plugin class.
+         */
+        alias: string;
+        /**
+         * The description of the plugin class, which introduces the main functions of the plugin.
+         */
+        description: string;
+        /**
+         * The document of the plugin class, which describes the functions and usage of the plugin in detail. It is available when `enableDetails` is set to `true`.
+         */
+        document: string;
+        /**
+         * The ID of the Plugin Class. It is the same as `pluginClassId`.
+         */
+        id: string;
+        /**
+         * The ID of the plugin class.
+         */
+        pluginClassId: string;
+        /**
+         * The name of the plugin class.
+         */
+        pluginClassName: string;
+        /**
+         * The publish status of the plugin class. Valid values: `Success` (published successfully), `Failed` (failed to be published), `Publishing` (being published). Only a plugin class in the `Success` status can be installed.
+         */
+        status: string;
+        /**
+         * The type of the plugin class used to filter results. Valid values: `Auth`, `FlowControl`, `FlowObservation`, `Security`, `TransportProtocol`, `Other`.
+         */
+        type: string;
+        /**
+         * The version of the plugin class.
+         */
+        version: string;
+        /**
+         * The programming language of the wasm plugin. It is available when `enableDetails` is set to `true`.
+         */
+        wasmLanguage: string;
     }
 
 }
@@ -11256,220 +11307,245 @@ export namespace cloudmonitor {
 
     export interface GetServiceMetricAlarmRulesRule {
         /**
-         * The trigger conditions for multiple metrics.
+         * Alert condition for multiple metrics.
          */
         compositeExpression: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleCompositeExpression;
         /**
-         * The alert contact group.
+         * Alarm contact groups.
          */
         contactGroups: string;
         /**
-         * The monitoring dimensions of the specified resource.
+         * The monitoring dimensions for the specified resource.
+         * Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
          */
         dimensions: string;
         /**
-         * The time period during which the alert rule is effective.
+         * The time range during which the alert rule is effective.
          */
         effectiveInterval: string;
         /**
-         * The subject of the alert notification email.
+         * Subject of alert emails.
          */
         emailSubject: string;
         /**
-         * The conditions for triggering different levels of alerts.
+         * The trigger conditions for alert levels.
          */
         escalations: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalations;
         /**
-         * The ID of the alert rule.
+         * The ID of the resource supplied above.
          */
         id: string;
         /**
-         * The tags of the alert rule.
+         * When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
          */
         labels: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleLabel[];
         /**
-         * The name of the metric.
+         * The ID of the alarm rule.
+         *
+         * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+         *
+         * > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+         */
+        metricAlarmRuleId: string;
+        /**
+         * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         *
+         * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
          */
         metricName: string;
         /**
-         * The namespace of the cloud service.
+         * The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         *
+         * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
          */
         namespace: string;
         /**
-         * The method that is used to handle alerts when no monitoring data is found.
+         * The policy to apply when no monitoring data is available.
          */
         noDataPolicy: string;
         /**
-         * The time period during which the alert rule is ineffective.
+         * The time range during which the alarm rule is inactive.
          */
         noEffectiveInterval: string;
         /**
-         * The aggregation period of the metric.
+         * The statistical period of the metric.
          */
         period: string;
         /**
-         * The Prometheus alerts.
+         * Prometheus alert.
          */
         prometheus: outputs.cloudmonitor.GetServiceMetricAlarmRulesRulePrometheus;
         /**
-         * The resources that are associated with the alert rule.
+         * Resource information, for example: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]`, `[{"userId":"100931896542****"}]`.
          */
         resources: string;
         /**
-         * The name of the alert rule.
+         * Alert rule name.
+         *
+         * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+         *
+         * > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
          */
         ruleName: string;
         /**
-         * The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+         * Specifies whether to send recovery notifications.
+         */
+        sendOk: boolean;
+        /**
+         * Channel silence period.
          */
         silenceTime: string;
         /**
-         * The type of the alert rule.
+         * The type of the alarm rule.
          */
         sourceType: string;
         /**
-         * Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+         * The enabled status of the alarm rule. Valid values:
+         * - true: enabled.
+         * - false: disabled.
          */
         status: boolean;
         /**
-         * The callback URL.
+         * The URL address specified for callback when an alert is triggered.
          */
         webhook: string;
     }
 
     export interface GetServiceMetricAlarmRulesRuleCompositeExpression {
         /**
-         * The relationship between the trigger conditions for multiple metrics.
+         * The logical relationship between multiple metric-based alert conditions.
          */
         expressionListJoin: string;
         /**
-         * The trigger conditions that are created in standard mode.
+         * A list of alert conditions created using standard expressions.
          */
         expressionLists: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList[];
         /**
-         * The trigger conditions that are created by using expressions.
+         * The alert condition created by an expression.
          */
         expressionRaw: string;
         /**
-         * The alert level.
+         * Alert severity level.
          */
         level: string;
         /**
-         * The number of consecutive triggers.
+         * The number of times the alert condition must be met before an alert notification is sent.
          */
         times: number;
     }
 
     export interface GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
         /**
-         * The comparison operator that is used to compare the metric value with the threshold.
+         * Comparison operator for the Warn-level threshold.
          */
         comparisonOperator: string;
         /**
-         * The name of the metric.
+         * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         *
+         * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
          */
         metricName: string;
         /**
-         * The aggregation period of the metric.
+         * The statistical period of the metric.
          */
         period: number;
         /**
-         * The statistical methods for Warn-level alerts.
+         * Statistical method for Warn-level alerts.
          */
         statistics: string;
         /**
-         * The threshold for Warn-level alerts.
+         * Threshold for Warn-level alerts.
          */
         threshold: string;
     }
 
     export interface GetServiceMetricAlarmRulesRuleEscalations {
         /**
-         * The conditions for triggering Critical-level alerts.
+         * The trigger condition for Critical-level alerts.
          */
         critical: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalationsCritical;
         /**
-         * The conditions for triggering Info-level alerts.
+         * Trigger conditions for Info-level alerts.
          */
         info: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalationsInfo;
         /**
-         * The conditions for triggering Warn-level alerts.
+         * Trigger condition for Warn-level alerts.
          */
         warn: outputs.cloudmonitor.GetServiceMetricAlarmRulesRuleEscalationsWarn;
     }
 
     export interface GetServiceMetricAlarmRulesRuleEscalationsCritical {
         /**
-         * The comparison operator that is used to compare the metric value with the threshold.
+         * Comparison operator for the Warn-level threshold.
          */
         comparisonOperator: string;
         /**
-         * The additional conditions for triggering Warn-level alerts.
+         * Precondition for triggering a Warn-level alert.
          */
         preCondition: string;
         /**
-         * The statistical methods for Warn-level alerts.
+         * Statistical method for Warn-level alerts.
          */
         statistics: string;
         /**
-         * The threshold for Warn-level alerts.
+         * Threshold for Warn-level alerts.
          */
         threshold: string;
         /**
-         * The number of consecutive triggers.
+         * The number of times the alert condition must be met before an alert notification is sent.
          */
         times: number;
     }
 
     export interface GetServiceMetricAlarmRulesRuleEscalationsInfo {
         /**
-         * The comparison operator that is used to compare the metric value with the threshold.
+         * Comparison operator for the Warn-level threshold.
          */
         comparisonOperator: string;
         /**
-         * The additional conditions for triggering Warn-level alerts.
+         * Precondition for triggering a Warn-level alert.
          */
         preCondition: string;
         /**
-         * The statistical methods for Warn-level alerts.
+         * Statistical method for Warn-level alerts.
          */
         statistics: string;
         /**
-         * The threshold for Warn-level alerts.
+         * Threshold for Warn-level alerts.
          */
         threshold: string;
         /**
-         * The number of consecutive triggers.
+         * The number of times the alert condition must be met before an alert notification is sent.
          */
         times: number;
     }
 
     export interface GetServiceMetricAlarmRulesRuleEscalationsWarn {
         /**
-         * The comparison operator that is used to compare the metric value with the threshold.
+         * Comparison operator for the Warn-level threshold.
          */
         comparisonOperator: string;
         /**
-         * The additional conditions for triggering Warn-level alerts.
+         * Precondition for triggering a Warn-level alert.
          */
         preCondition: string;
         /**
-         * The statistical methods for Warn-level alerts.
+         * Statistical method for Warn-level alerts.
          */
         statistics: string;
         /**
-         * The threshold for Warn-level alerts.
+         * Threshold for Warn-level alerts.
          */
         threshold: string;
         /**
-         * The number of consecutive triggers.
+         * The number of times the alert condition must be met before an alert notification is sent.
          */
         times: number;
     }
 
     export interface GetServiceMetricAlarmRulesRuleLabel {
         /**
-         * The subject of the alert notificaThe key of the annotation.
+         * The key of the annotation.
          */
         key: string;
         /**
@@ -11480,11 +11556,11 @@ export namespace cloudmonitor {
 
     export interface GetServiceMetricAlarmRulesRulePrometheus {
         /**
-         * The annotations of the Prometheus alert rule.
+         * When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
          */
         annotations: outputs.cloudmonitor.GetServiceMetricAlarmRulesRulePrometheusAnnotation[];
         /**
-         * The alert level.
+         * Alert severity level.
          */
         level: string;
         /**
@@ -11492,14 +11568,14 @@ export namespace cloudmonitor {
          */
         promQl: string;
         /**
-         * The number of consecutive triggers.
+         * The number of times the alert condition must be met before an alert notification is sent.
          */
         times: number;
     }
 
     export interface GetServiceMetricAlarmRulesRulePrometheusAnnotation {
         /**
-         * The subject of the alert notificaThe key of the annotation.
+         * The key of the annotation.
          */
         key: string;
         /**
@@ -11579,6 +11655,148 @@ export namespace cloudmonitor {
          * The keyword used to match the instance name.
          */
         value: string;
+    }
+
+    export interface ServiceMetricAlarmRuleCompositeExpression {
+        /**
+         * The logical relationship between multiple metric-based alert conditions. Valid values:
+         * - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+         * - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+         */
+        expressionListJoin?: string;
+        /**
+         * A list of alert conditions created using standard expressions. See `expressionList` below.
+         */
+        expressionLists?: outputs.cloudmonitor.ServiceMetricAlarmRuleCompositeExpressionExpressionList[];
+        /**
+         * The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+         * - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+         * - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+         * - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+         */
+        expressionRaw?: string;
+        /**
+         * The alert severity level. Valid values:
+         * - CRITICAL: Critical.
+         * - WARN: Warning.
+         * - INFO: Information.
+         */
+        level?: string;
+        /**
+         * Number of consecutive times the alert condition must be met before an alert notification is sent.
+         */
+        times?: number;
+    }
+
+    export interface ServiceMetricAlarmRuleCompositeExpressionExpressionList {
+        comparisonOperator?: string;
+        /**
+         * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         *
+         * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+         */
+        metricName?: string;
+        /**
+         * The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+         *
+         * > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         */
+        period?: number;
+        statistics?: string;
+        threshold?: string;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalations {
+        /**
+         * The trigger condition for Critical-level alerts. See `critical` below.
+         */
+        critical?: outputs.cloudmonitor.ServiceMetricAlarmRuleEscalationsCritical;
+        /**
+         * Trigger conditions for Info-level alerts. See `info` below.
+         */
+        info?: outputs.cloudmonitor.ServiceMetricAlarmRuleEscalationsInfo;
+        /**
+         * Trigger condition for Warn-level alerts.   See `warn` below.
+         */
+        warn?: outputs.cloudmonitor.ServiceMetricAlarmRuleEscalationsWarn;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalationsCritical {
+        comparisonOperator?: string;
+        /**
+         * Precondition for triggering a Warn-level alert.
+         */
+        preCondition: string;
+        statistics?: string;
+        threshold?: string;
+        times?: number;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalationsInfo {
+        comparisonOperator?: string;
+        /**
+         * Precondition for triggering a Warn-level alert.
+         */
+        preCondition: string;
+        statistics?: string;
+        threshold?: string;
+        times?: number;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalationsWarn {
+        comparisonOperator?: string;
+        /**
+         * Precondition for triggering a Warn-level alert.
+         */
+        preCondition: string;
+        statistics?: string;
+        threshold?: string;
+        times?: number;
+    }
+
+    export interface ServiceMetricAlarmRuleLabel {
+        /**
+         * The tag key.
+         */
+        key?: string;
+        /**
+         * Label value.
+         *
+         * > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+         */
+        value?: string;
+    }
+
+    export interface ServiceMetricAlarmRulePrometheus {
+        /**
+         * When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+         *
+         * > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+         * See `annotations` below.
+         */
+        annotations?: outputs.cloudmonitor.ServiceMetricAlarmRulePrometheusAnnotation[];
+        /**
+         * Alert severity level. Valid values:
+         * - CRITICAL: Critical
+         * - WARN: Warning
+         * - INFO: Information
+         */
+        level?: string;
+        /**
+         * The PromQL query statement.
+         *
+         * > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+         */
+        promQl?: string;
+        /**
+         * The number of times the alert condition must be met before an alert notification is sent.
+         */
+        times?: number;
+    }
+
+    export interface ServiceMetricAlarmRulePrometheusAnnotation {
+        key?: string;
+        value?: string;
     }
 
 }
@@ -12972,6 +13190,475 @@ export namespace cms {
         targetId?: string;
     }
 
+    export interface AlertRuleV2ActionIntegrationConfig {
+        /**
+         * List of actions
+         */
+        actions: string[];
+        /**
+         * Indicates whether action integration is enabled
+         */
+        enabled: boolean;
+    }
+
+    export interface AlertRuleV2ArmsIntegrationConfig {
+        /**
+         * Specifies whether to enable ARMS integration.
+         */
+        enabled: boolean;
+    }
+
+    export interface AlertRuleV2ConditionConfig {
+        /**
+         * Aggregation Function
+         */
+        aggregate: string;
+        /**
+         * Multiple comparison list (used when type=APM_COMPOSITE) See `compareList` below.
+         */
+        compareLists: outputs.cms.AlertRuleV2ConditionConfigCompareList[];
+        /**
+         * The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `compositeEscalation` below.
+         */
+        compositeEscalations: outputs.cms.AlertRuleV2ConditionConfigCompositeEscalation[];
+        /**
+         * Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+         */
+        durationSecs: number;
+        /**
+         * The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+         */
+        escalationType: string;
+        /**
+         * Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `expressEscalation` below.
+         */
+        expressEscalations: outputs.cms.AlertRuleV2ConditionConfigExpressEscalation[];
+        /**
+         * The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+         */
+        legacyRaw: string;
+        /**
+         * Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+         */
+        legacyType: string;
+        /**
+         * No-data processing policy (type=CLOUD_MONITORING)
+         */
+        noDataPolicy: string;
+        /**
+         * Comparison Operator
+         */
+        operator: string;
+        /**
+         * The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+         */
+        prometheuses: outputs.cms.AlertRuleV2ConditionConfigPrometheus[];
+        /**
+         * The logical relationship between multiple metrics
+         */
+        relation: string;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity: string;
+        /**
+         * Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simpleEscalation` below.
+         */
+        simpleEscalations: outputs.cms.AlertRuleV2ConditionConfigSimpleEscalation[];
+        /**
+         * Threshold
+         */
+        threshold: number;
+        /**
+         * Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `thresholdList` below.
+         */
+        thresholdLists: outputs.cms.AlertRuleV2ConditionConfigThresholdList[];
+        /**
+         * The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+         */
+        type: string;
+        /**
+         * Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeUnit: string;
+        /**
+         * Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeValue: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigCompareList {
+        /**
+         * Aggregation Function
+         */
+        aggregate: string;
+        operator: string;
+        /**
+         * Threshold
+         */
+        threshold: number;
+        /**
+         * Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeUnit: string;
+        /**
+         * Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeValue: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigCompositeEscalation {
+        /**
+         * Trigger Condition List See `escalations` below.
+         */
+        escalations: outputs.cms.AlertRuleV2ConditionConfigCompositeEscalationEscalation[];
+        /**
+         * The logical relationship between multiple metrics
+         */
+        relation: string;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity: string;
+        /**
+         * Consecutive Trigger Count
+         */
+        times: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigCompositeEscalationEscalation {
+        /**
+         * Comparison operator
+         */
+        comparisonOperator: string;
+        /**
+         * Metric name
+         */
+        metricName: string;
+        /**
+         * Collection period (s)
+         */
+        period: number;
+        /**
+         * Precondition
+         */
+        preCondition: string;
+        /**
+         * Statistical Method
+         */
+        statistics: string;
+        /**
+         * Threshold
+         */
+        threshold: string;
+    }
+
+    export interface AlertRuleV2ConditionConfigExpressEscalation {
+        /**
+         * Raw Expression
+         */
+        rawExpression: string;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity: string;
+        /**
+         * Consecutive Trigger Count
+         */
+        times: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigPrometheus {
+        promQl: string;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity: string;
+        /**
+         * Consecutive Trigger Count
+         */
+        times: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigSimpleEscalation {
+        /**
+         * Trigger Condition List See `escalations` below.
+         */
+        escalations: outputs.cms.AlertRuleV2ConditionConfigSimpleEscalationEscalation[];
+        /**
+         * Metric name
+         */
+        metricName: string;
+        /**
+         * Collection period (s)
+         */
+        period: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigSimpleEscalationEscalation {
+        /**
+         * Comparison operator
+         */
+        comparisonOperator: string;
+        /**
+         * Precondition
+         */
+        preCondition: string;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity: string;
+        /**
+         * Statistical Method
+         */
+        statistics: string;
+        /**
+         * Threshold
+         */
+        threshold: string;
+        /**
+         * Consecutive Trigger Count
+         */
+        times: number;
+    }
+
+    export interface AlertRuleV2ConditionConfigThresholdList {
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity: string;
+        /**
+         * Threshold
+         */
+        threshold: number;
+    }
+
+    export interface AlertRuleV2DatasourceConfig {
+        /**
+         * The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+         */
+        instanceId: string;
+        /**
+         * The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+         */
+        legacyRaw: string;
+        /**
+         * Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+         */
+        legacyType: string;
+        /**
+         * The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+         */
+        productCategory: string;
+        /**
+         * The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+         */
+        regionId: string;
+        /**
+         * The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+         */
+        type: string;
+    }
+
+    export interface AlertRuleV2NotifyConfig {
+        /**
+         * The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+         */
+        activeDays: number[];
+        /**
+         * The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+         */
+        activeEndTime: string;
+        /**
+         * The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+         */
+        activeStartTime: string;
+        /**
+         * The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+         */
+        channels: outputs.cms.AlertRuleV2NotifyConfigChannel[];
+        /**
+         * List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+         */
+        notifyStrategies: string[];
+        /**
+         * The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+         */
+        silenceTimeSecs: number;
+        /**
+         * Notification Channel Type
+         */
+        type: string;
+        /**
+         * UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+         */
+        utcOffset: string;
+    }
+
+    export interface AlertRuleV2NotifyConfigChannel {
+        /**
+         * List of channel identifiers
+         */
+        identifiers: string[];
+        type: string;
+    }
+
+    export interface AlertRuleV2QueryConfig {
+        /**
+         * The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+         */
+        dimensions: {[key: string]: string}[];
+        /**
+         * Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+         */
+        enableDataCompleteCheck: boolean;
+        /**
+         * Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+         */
+        entityDomain: string;
+        /**
+         * List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entityFields` below.
+         */
+        entityFields: outputs.cms.AlertRuleV2QueryConfigEntityField[];
+        /**
+         * The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entityFilters` below.
+         */
+        entityFilters: outputs.cms.AlertRuleV2QueryConfigEntityFilter[];
+        /**
+         * Entity type (type=UMODEL_METRICSET_QUERY)
+         */
+        entityType: string;
+        /**
+         * Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+         */
+        expr: string;
+        /**
+         * The APM filter condition list (type=APM_MULTI_QUERY). See `filterList` below.
+         */
+        filterLists: outputs.cms.AlertRuleV2QueryConfigFilterList[];
+        /**
+         * Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+         */
+        groupId: string;
+        /**
+         * List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `labelFilters` below.
+         */
+        labelFilters: outputs.cms.AlertRuleV2QueryConfigLabelFilter[];
+        /**
+         * The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+         */
+        legacyRaw: string;
+        /**
+         * Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+         */
+        legacyType: string;
+        /**
+         * APM measure configuration list (type=APM_MULTI_QUERY) See `measureList` below.
+         */
+        measureLists: outputs.cms.AlertRuleV2QueryConfigMeasureList[];
+        /**
+         * Metric name (type=UMODEL_METRICSET_QUERY)
+         */
+        metric: string;
+        /**
+         * Metric set name (type=UMODEL_METRICSET_QUERY)
+         */
+        metricSet: string;
+        /**
+         * CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+         */
+        namespace: string;
+        /**
+         * [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+         */
+        promQl: string;
+        /**
+         * Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+         */
+        relationType: string;
+        /**
+         * Application Service ID List (type=APM_MULTI_QUERY)
+         */
+        serviceIdLists: string[];
+        /**
+         * The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+         */
+        type: string;
+    }
+
+    export interface AlertRuleV2QueryConfigEntityField {
+        /**
+         * The entity filter field name.
+         */
+        field: string;
+        /**
+         * Label value
+         */
+        value: string;
+    }
+
+    export interface AlertRuleV2QueryConfigEntityFilter {
+        /**
+         * The entity filter field name.
+         */
+        field: string;
+        operator: string;
+        /**
+         * Label value
+         */
+        value: string;
+    }
+
+    export interface AlertRuleV2QueryConfigFilterList {
+        /**
+         * APM filter dimension key
+         */
+        key: string;
+        type: string;
+        /**
+         * Label value
+         */
+        value: string;
+    }
+
+    export interface AlertRuleV2QueryConfigLabelFilter {
+        /**
+         * Label name
+         */
+        name: string;
+        operator: string;
+        /**
+         * Label value
+         */
+        value: string;
+    }
+
+    export interface AlertRuleV2QueryConfigMeasureList {
+        /**
+         * Grouping dimension list
+         */
+        groupBies: string[];
+        /**
+         * APM metric code
+         */
+        measureCode: string;
+        /**
+         * Query Time Window (Seconds)
+         */
+        windowSecs: number;
+    }
+
+    export interface AlertRuleV2ScheduleConfig {
+        /**
+         * The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+         */
+        intervalSecs: number;
+        /**
+         * The scheduling type. Valid values: FIXED and CRON.
+         */
+        type: string;
+    }
+
     export interface DynamicTagGroupMatchExpress {
         /**
          * The tag values of the cloud resources.
@@ -13222,6 +13909,592 @@ export namespace cms {
          */
         id: string;
         lang: string;
+    }
+
+    export interface GetAlertRulesV2Rule {
+        /**
+         * Action integration configuration.
+         */
+        actionIntegrationConfigs: outputs.cms.GetAlertRulesV2RuleActionIntegrationConfig[];
+        /**
+         * The unique identifier of the alert rule, mapped to a UUID (system-generated).
+         */
+        alertRuleV2Id: string;
+        /**
+         * Annotations.
+         */
+        annotations: {[key: string]: string};
+        /**
+         * ARMS integration configuration.
+         */
+        armsIntegrationConfigs: outputs.cms.GetAlertRulesV2RuleArmsIntegrationConfig[];
+        /**
+         * Unified alert condition configuration.
+         */
+        conditionConfigs: outputs.cms.GetAlertRulesV2RuleConditionConfig[];
+        /**
+         * The alert content template.
+         */
+        contentTemplate: string;
+        /**
+         * Creation time (read-only), in ISO 8601 format.
+         */
+        createdAt: string;
+        /**
+         * Unified data source configuration.
+         */
+        datasourceConfigs: outputs.cms.GetAlertRulesV2RuleDatasourceConfig[];
+        /**
+         * Data source type (read-only, derived).
+         */
+        datasourceType: string;
+        /**
+         * The display name of the alert rule.
+         */
+        displayName: string;
+        /**
+         * Specifies whether the alert rule is enabled.
+         */
+        enabled: boolean;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Labels.
+         */
+        labels: {[key: string]: string};
+        /**
+         * Unified notification configuration.
+         */
+        notifyConfigs: outputs.cms.GetAlertRulesV2RuleNotifyConfig[];
+        /**
+         * Notification policy ID (read-only, derived).
+         */
+        notifyStrategyId: string;
+        /**
+         * Indicates whether the rule applies to all resources of this resource type (read-only, derived).
+         */
+        observeResourceGlobalScope: boolean;
+        /**
+         * Observable resource type (read-only, derived).
+         */
+        observeResourceType: string;
+        /**
+         * The partition key.
+         */
+        partitionKey: string;
+        /**
+         * Unified query configuration.
+         */
+        queryConfigs: outputs.cms.GetAlertRulesV2RuleQueryConfig[];
+        /**
+         * Unified scheduling configuration.
+         */
+        scheduleConfigs: outputs.cms.GetAlertRulesV2RuleScheduleConfig[];
+        /**
+         * The severity levels covered by this rule, separated by commas (read-only derived).
+         */
+        severityLevels: string;
+        /**
+         * Alert status (read-only).
+         */
+        status: string;
+        /**
+         * The update time (read-only), in ISO 8601 format.
+         */
+        updatedAt: string;
+        /**
+         * Workspace.
+         */
+        workspace: string;
+    }
+
+    export interface GetAlertRulesV2RuleActionIntegrationConfig {
+        /**
+         * List of actions.
+         */
+        actions: string[];
+        /**
+         * Specifies whether the alert rule is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetAlertRulesV2RuleArmsIntegrationConfig {
+        /**
+         * Specifies whether the alert rule is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfig {
+        /**
+         * Aggregation Function.
+         */
+        aggregate: string;
+        /**
+         * Comparison condition list (type=APM_COMPOSITE).
+         */
+        compareLists: outputs.cms.GetAlertRulesV2RuleConditionConfigCompareList[];
+        /**
+         * The multi-metric composite trigger configuration.
+         */
+        compositeEscalations: outputs.cms.GetAlertRulesV2RuleConditionConfigCompositeEscalation[];
+        /**
+         * Duration (seconds).
+         */
+        durationSecs: number;
+        /**
+         * The escalation policy type (type=CLOUD_MONITORING).
+         */
+        escalationType: string;
+        /**
+         * Expression trigger configuration.
+         */
+        expressEscalations: outputs.cms.GetAlertRulesV2RuleConditionConfigExpressEscalation[];
+        /**
+         * The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+         */
+        legacyRaw: string;
+        /**
+         * Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+         */
+        legacyType: string;
+        /**
+         * No-data processing policy (type=CLOUD_MONITORING).
+         */
+        noDataPolicy: string;
+        /**
+         * Label filter operator.
+         */
+        operator: string;
+        /**
+         * The PromQL trigger configuration.
+         */
+        prometheuses: outputs.cms.GetAlertRulesV2RuleConditionConfigPrometheus[];
+        /**
+         * The logical relationship between conditions (type=APM_COMPOSITE).
+         */
+        relation: string;
+        /**
+         * Severity Level.
+         */
+        severity: string;
+        /**
+         * Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple).
+         */
+        simpleEscalations: outputs.cms.GetAlertRulesV2RuleConditionConfigSimpleEscalation[];
+        /**
+         * Threshold.
+         */
+        threshold: number;
+        /**
+         * Multi-severity threshold list (used when UMODEL_METRICSET is specified).
+         */
+        thresholdLists: outputs.cms.GetAlertRulesV2RuleConditionConfigThresholdList[];
+        /**
+         * The scheduling type.
+         */
+        type: string;
+        /**
+         * Year-over-year time unit.
+         */
+        yoyTimeUnit: string;
+        /**
+         * Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+         */
+        yoyTimeValue: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigCompareList {
+        /**
+         * Aggregation Function.
+         */
+        aggregate: string;
+        /**
+         * Label filter operator.
+         */
+        operator: string;
+        /**
+         * Threshold.
+         */
+        threshold: number;
+        /**
+         * Year-over-year time unit.
+         */
+        yoyTimeUnit: string;
+        /**
+         * Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+         */
+        yoyTimeValue: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigCompositeEscalation {
+        /**
+         * Trigger Condition List.
+         */
+        escalations: outputs.cms.GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation[];
+        /**
+         * The logical relationship between conditions (type=APM_COMPOSITE).
+         */
+        relation: string;
+        /**
+         * Severity Level.
+         */
+        severity: string;
+        /**
+         * Consecutive Trigger Count.
+         */
+        times: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation {
+        /**
+         * Comparison Operator.
+         */
+        comparisonOperator: string;
+        /**
+         * Metric Name.
+         */
+        metricName: string;
+        /**
+         * Collection Period (Seconds).
+         */
+        period: number;
+        /**
+         * Precondition.
+         */
+        preCondition: string;
+        /**
+         * Statistical Method.
+         */
+        statistics: string;
+        /**
+         * Threshold.
+         */
+        threshold: string;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigExpressEscalation {
+        /**
+         * Raw Expression.
+         */
+        rawExpression: string;
+        /**
+         * Severity Level.
+         */
+        severity: string;
+        /**
+         * Consecutive Trigger Count.
+         */
+        times: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigPrometheus {
+        /**
+         * [Deprecated] Legacy PromQL field.
+         */
+        promQl: string;
+        /**
+         * Severity Level.
+         */
+        severity: string;
+        /**
+         * Consecutive Trigger Count.
+         */
+        times: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigSimpleEscalation {
+        /**
+         * Trigger Condition List.
+         */
+        escalations: outputs.cms.GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation[];
+        /**
+         * Metric Name.
+         */
+        metricName: string;
+        /**
+         * Collection Period (Seconds).
+         */
+        period: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation {
+        /**
+         * Comparison Operator.
+         */
+        comparisonOperator: string;
+        /**
+         * Precondition.
+         */
+        preCondition: string;
+        /**
+         * Severity Level.
+         */
+        severity: string;
+        /**
+         * Statistical Method.
+         */
+        statistics: string;
+        /**
+         * Threshold.
+         */
+        threshold: string;
+        /**
+         * Consecutive Trigger Count.
+         */
+        times: number;
+    }
+
+    export interface GetAlertRulesV2RuleConditionConfigThresholdList {
+        /**
+         * Severity Level.
+         */
+        severity: string;
+        /**
+         * Threshold.
+         */
+        threshold: number;
+    }
+
+    export interface GetAlertRulesV2RuleDatasourceConfig {
+        /**
+         * The Prometheus instance ID.
+         */
+        instanceId: string;
+        /**
+         * The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+         */
+        legacyRaw: string;
+        /**
+         * Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+         */
+        legacyType: string;
+        /**
+         * The cloud service category.
+         */
+        productCategory: string;
+        /**
+         * The region ID.
+         */
+        regionId: string;
+        /**
+         * The scheduling type.
+         */
+        type: string;
+    }
+
+    export interface GetAlertRulesV2RuleNotifyConfig {
+        /**
+         * The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY).
+         */
+        activeDays: number[];
+        /**
+         * The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+         */
+        activeEndTime: string;
+        /**
+         * The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+         */
+        activeStartTime: string;
+        /**
+         * List of notification channels (type=DIRECT_NOTIFY).
+         */
+        channels: outputs.cms.GetAlertRulesV2RuleNotifyConfigChannel[];
+        /**
+         * List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business).
+         */
+        notifyStrategies: string[];
+        /**
+         * The channel silence period in seconds (type=DIRECT_NOTIFY).
+         */
+        silenceTimeSecs: number;
+        /**
+         * The scheduling type.
+         */
+        type: string;
+        /**
+         * UTC time zone offset (type=DIRECT_NOTIFY).
+         */
+        utcOffset: string;
+    }
+
+    export interface GetAlertRulesV2RuleNotifyConfigChannel {
+        /**
+         * List of channel identifiers.
+         */
+        identifiers: string[];
+        /**
+         * The scheduling type.
+         */
+        type: string;
+    }
+
+    export interface GetAlertRulesV2RuleQueryConfig {
+        /**
+         * The dimension list (type=CLOUD_MONITORING_QUERY).
+         */
+        dimensions: {[key: string]: string}[];
+        /**
+         * Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY).
+         */
+        enableDataCompleteCheck: boolean;
+        /**
+         * Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY).
+         */
+        entityDomain: string;
+        /**
+         * List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY).
+         */
+        entityFields: outputs.cms.GetAlertRulesV2RuleQueryConfigEntityField[];
+        /**
+         * The list of entity filter conditions (type=UMODEL_METRICSET_QUERY).
+         */
+        entityFilters: outputs.cms.GetAlertRulesV2RuleQueryConfigEntityFilter[];
+        /**
+         * Entity type (type=UMODEL_METRICSET_QUERY).
+         */
+        entityType: string;
+        /**
+         * Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field).
+         */
+        expr: string;
+        /**
+         * The APM filter condition list (type=APM_MULTI_QUERY).
+         */
+        filterLists: outputs.cms.GetAlertRulesV2RuleQueryConfigFilterList[];
+        /**
+         * Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP).
+         */
+        groupId: string;
+        /**
+         * List of label filter conditions (type=UMODEL_METRICSET_QUERY).
+         */
+        labelFilters: outputs.cms.GetAlertRulesV2RuleQueryConfigLabelFilter[];
+        /**
+         * The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+         */
+        legacyRaw: string;
+        /**
+         * Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+         */
+        legacyType: string;
+        /**
+         * APM measure configuration list (type=APM_MULTI_QUERY).
+         */
+        measureLists: outputs.cms.GetAlertRulesV2RuleQueryConfigMeasureList[];
+        /**
+         * Metric name (type=UMODEL_METRICSET_QUERY).
+         */
+        metric: string;
+        /**
+         * Metric set name (type=UMODEL_METRICSET_QUERY).
+         */
+        metricSet: string;
+        /**
+         * CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY).
+         */
+        namespace: string;
+        /**
+         * [Deprecated] Legacy PromQL field.
+         */
+        promQl: string;
+        /**
+         * Resource association type (type=CLOUD_MONITORING_QUERY).
+         */
+        relationType: string;
+        /**
+         * Application Service ID List (type=APM_MULTI_QUERY).
+         */
+        serviceIdLists: string[];
+        /**
+         * The scheduling type.
+         */
+        type: string;
+    }
+
+    export interface GetAlertRulesV2RuleQueryConfigEntityField {
+        /**
+         * The entity filter field name.
+         */
+        field: string;
+        /**
+         * Label value.
+         */
+        value: string;
+    }
+
+    export interface GetAlertRulesV2RuleQueryConfigEntityFilter {
+        /**
+         * The entity filter field name.
+         */
+        field: string;
+        /**
+         * Label filter operator.
+         */
+        operator: string;
+        /**
+         * Label value.
+         */
+        value: string;
+    }
+
+    export interface GetAlertRulesV2RuleQueryConfigFilterList {
+        /**
+         * APM filter dimension key.
+         */
+        key: string;
+        /**
+         * The scheduling type.
+         */
+        type: string;
+        /**
+         * Label value.
+         */
+        value: string;
+    }
+
+    export interface GetAlertRulesV2RuleQueryConfigLabelFilter {
+        /**
+         * Label name.
+         */
+        name: string;
+        /**
+         * Label filter operator.
+         */
+        operator: string;
+        /**
+         * Label value.
+         */
+        value: string;
+    }
+
+    export interface GetAlertRulesV2RuleQueryConfigMeasureList {
+        /**
+         * Grouping dimension list.
+         */
+        groupBies: string[];
+        /**
+         * APM metric code.
+         */
+        measureCode: string;
+        /**
+         * Query Time Window (Seconds).
+         */
+        windowSecs: number;
+    }
+
+    export interface GetAlertRulesV2RuleScheduleConfig {
+        /**
+         * The scheduling interval in seconds.
+         */
+        intervalSecs: number;
+        /**
+         * The scheduling type.
+         */
+        type: string;
     }
 
     export interface GetDynamicTagGroupsGroup {
@@ -15608,6 +16881,65 @@ export namespace cr {
          * The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
          */
         nodeName?: string;
+    }
+
+    export interface GetArtifactLifecycleRulesRule {
+        /**
+         * The first ID of the resource.
+         */
+        artifactLifecycleRuleId: string;
+        /**
+         * Whether to execute automatically.
+         */
+        auto: boolean;
+        /**
+         * Creation time.
+         */
+        createTime: number;
+        /**
+         * Activate the delete tag function.
+         */
+        enableDeleteTag: boolean;
+        /**
+         * Open garbage collection.
+         */
+        enableDeleteUntaggedManifest: boolean;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Instance ID
+         */
+        instanceId: string;
+        /**
+         * Change time.
+         */
+        modifiedTime: number;
+        /**
+         * Namespace name.
+         */
+        namespaceName: string;
+        /**
+         * Repository Name.
+         */
+        repoName: string;
+        /**
+         * Number of Retention Tags.
+         */
+        retentionTagCount: number;
+        /**
+         * Execution cycle.
+         */
+        scheduleTime: string;
+        /**
+         * Scope of cleaning.
+         */
+        scope: string;
+        /**
+         * Retain regular expressions for mirrored versions.
+         */
+        tagRegexp: string;
     }
 
     export interface GetChainsChain {
@@ -18959,6 +20291,48 @@ export namespace cs {
          * The issuer URL of RRSA OIDC Token.
          */
         rrsaOidcIssuerUrl: string;
+    }
+
+}
+
+export namespace das {
+    export interface GetSqlLogConfigsConfig {
+        /**
+         * The retention period of cold SQL audit logs. Calculated as `retention - hotRetention`.
+         */
+        coldRetention: number;
+        /**
+         * Specifies whether SQL Explorer is enabled.
+         */
+        enable: boolean;
+        /**
+         * The retention period of hot SQL audit logs. Unit: days.
+         */
+        hotRetention: number;
+        /**
+         * The ID of the database instance to query the SQL log configuration for.
+         */
+        instanceId: string;
+        /**
+         * The configuration of log filters.
+         */
+        logFilter: string;
+        /**
+         * The requested state of SQL Explorer.
+         */
+        requestEnable: boolean;
+        /**
+         * The retention period of SQL audit logs. Unit: days.
+         */
+        retention: number;
+        /**
+         * The visible start time of SQL audit logs.
+         */
+        sqlLogVisibleTime: number;
+        /**
+         * The current version of SQL audit logs.
+         */
+        version: string;
     }
 
 }
@@ -23379,6 +24753,93 @@ export namespace drds {
         version: number;
         /**
          * Zone ID the instance belongs to.
+         */
+        zoneId: string;
+    }
+
+    export interface GetPolardbxInstancesInstance {
+        /**
+         * Compute node specifications of the instance.
+         */
+        cnClass: string;
+        /**
+         * The number of compute nodes.
+         */
+        cnNodeCount: number;
+        /**
+         * The creation time of the instance.
+         */
+        createTime: string;
+        /**
+         * Instance remarks.
+         */
+        description: string;
+        /**
+         * Storage node specifications of the instance.
+         */
+        dnClass: string;
+        /**
+         * The number of storage nodes.
+         */
+        dnNodeCount: number;
+        /**
+         * Engine version of the instance.
+         */
+        engineVersion: string;
+        /**
+         * The ID of the PolarDB-X instance.
+         */
+        id: string;
+        /**
+         * The network type of the instance.
+         */
+        networkType: string;
+        /**
+         * The billing method of the instance. Valid values: `Postpaid`, `Prepaid`.
+         */
+        paymentType: string;
+        /**
+         * The ID of the PolarDB-X instance. Same as `id`.
+         */
+        polardbxInstanceId: string;
+        /**
+         * Primary availability zone.
+         */
+        primaryZone: string;
+        /**
+         * Region ID of the instance.
+         */
+        regionId: string;
+        /**
+         * The ID of the resource group used to filter instances.
+         */
+        resourceGroupId: string;
+        /**
+         * Secondary availability zone.
+         */
+        secondaryZone: string;
+        /**
+         * Filter results by instance status. Valid values: `Creating`, `Running`, `MinorVersionUpgrading`, `ClassChanging`, `NodeCreating`, `NodeDeleting`, `Deleting`.
+         */
+        status: string;
+        /**
+         * Storage type of the instance. Valid values: `customLocalSsd`, `cloudAuto`.
+         */
+        storageType: string;
+        /**
+         * Third availability zone.
+         */
+        tertiaryZone: string;
+        /**
+         * Topology type of the instance. Valid values: `1azone`, `3azones`.
+         */
+        topologyType: string;
+        /**
+         * VPC ID of the instance.
+         */
+        vpcId: string;
+        /**
+         * Availability zone of the instance.
          */
         zoneId: string;
     }
@@ -28940,6 +30401,10 @@ export namespace ecs {
          */
         securityGroupIds: string[];
         /**
+         * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         */
+        sourceDestCheck: boolean;
+        /**
          * The ID of the vSwitch to which to connect Secondary ENI N.
          */
         vswitchId: string;
@@ -34195,6 +35660,10 @@ export namespace esa {
          */
         header?: string;
         /**
+         * The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         */
+        ipVersionPolicy: string;
+        /**
          * Origin Name.
          */
         name?: string;
@@ -34203,10 +35672,7 @@ export namespace esa {
          */
         originId: string;
         /**
-         * Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * The type of the origin. Valid values:
          */
         type?: string;
         /**
@@ -34566,7 +36032,7 @@ export namespace esa {
          */
         protocol: string;
         /**
-         * Rule ID
+         * Rule ID.
          */
         ruleId: number;
         /**
@@ -37468,6 +38934,147 @@ export namespace expressconnect {
          * The vpc instance id of the resource.
          */
         vpcInstanceId: string;
+    }
+
+    export interface GetRouterTrAssociationsAssociation {
+        /**
+         * The prefix-based routing mode.
+         */
+        allowedPrefixes: string[];
+        /**
+         * The prefix-based routing mode.
+         */
+        allowedPrefixesMode: string;
+        /**
+         * The ID of the association between the Express Connect Router and the TR.
+         */
+        associationId: string;
+        /**
+         * The type of the associated resource.
+         */
+        associationNodeType: string;
+        /**
+         * The ID of the Cloud Enterprise Network instance.
+         */
+        cenId: string;
+        /**
+         * The time when the association was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the Express Connect Router instance.
+         */
+        ecrId: string;
+        /**
+         * The ID of the Tr Association.
+         */
+        id: string;
+        /**
+         * The time when the association was modified.
+         */
+        modifyTime: string;
+        /**
+         * The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+         */
+        status: string;
+        /**
+         * The ID of the transit router instance.
+         */
+        transitRouterId: string;
+        /**
+         * The ID of the Alibaba Cloud account that owns the TR.
+         */
+        transitRouterOwnerId: string;
+    }
+
+    export interface GetRouterVbrChildInstancesInstance {
+        /**
+         * The ID of the network instance to detach.
+         */
+        childInstanceId: string;
+        /**
+         * The Alibaba Cloud account ID of the child instance owner.
+         */
+        childInstanceOwnerId: string;
+        /**
+         * The region where the network instance is deployed.
+         */
+        childInstanceRegionId: string;
+        /**
+         * The type of the network instance. Valid values: `VBR`.
+         */
+        childInstanceType: string;
+        /**
+         * The time when the association was created.
+         */
+        createTime: string;
+        /**
+         * The description of the child instance.
+         */
+        description: string;
+        /**
+         * The ID of the Express Connect Router instance.
+         */
+        ecrId: string;
+        /**
+         * The ID of the Vbr Child Instance.
+         */
+        id: string;
+        /**
+         * The time when the association was modified.
+         */
+        modifyTime: string;
+        /**
+         * The deployment status of the associated instance. Valid values: `CREATING`, `ACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+         */
+        status: string;
+    }
+
+    export interface GetRouterVpcAssociationsAssociation {
+        /**
+         * The prefix-based routing mode.
+         */
+        allowedPrefixes: string[];
+        /**
+         * The prefix-based routing mode.
+         */
+        allowedPrefixesMode: string;
+        /**
+         * The ID of the association between the Express Connect Router and the VPC.
+         */
+        associationId: string;
+        /**
+         * The type of the associated resource.
+         */
+        associationNodeType: string;
+        /**
+         * The time when the association was created.
+         */
+        createTime: string;
+        /**
+         * The ID of the Express Connect Router instance.
+         */
+        ecrId: string;
+        /**
+         * The ID of the Vpc Association.
+         */
+        id: string;
+        /**
+         * The time when the association was modified.
+         */
+        modifyTime: string;
+        /**
+         * The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+         */
+        status: string;
+        /**
+         * The ID of the VPC instance.
+         */
+        vpcId: string;
+        /**
+         * The ID of the Alibaba Cloud account that owns the VPC.
+         */
+        vpcOwnerId: string;
     }
 
     export interface GetVbrPconnAssociationsAssociation {
@@ -45900,13 +47507,25 @@ export namespace mongodb {
          */
         auditStatus: string;
         /**
-         * The ID of the instance.
+         * The id of the db instance.
          */
         dbInstanceId: string;
+        /**
+         * (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+         */
+        hotStoragePeriod: number;
         /**
          * The ID of the Audit Policy.
          */
         id: string;
+        /**
+         * (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+         */
+        serviceType: string;
+        /**
+         * (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+         */
+        storagePeriod: number;
     }
 
     export interface GetInstancesInstance {
@@ -48224,7 +49843,7 @@ export namespace oos {
          */
         outputs: string;
         /**
-         * The parameters required by the template
+         * The parameters required by the template.
          */
         parameters: string;
         /**
@@ -48251,6 +49870,10 @@ export namespace oos {
          * The reason of status.
          */
         statusReason: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: string};
         /**
          * The id of execution template.
          */
@@ -48879,6 +50502,125 @@ export namespace oss {
          * Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
          */
         tls13CustomCipherSuites?: string[];
+    }
+
+    export interface BucketInventoryDestination {
+        /**
+         * The Bucket information stored after the list result is exported. See `ossBucketDestination` below.
+         */
+        ossBucketDestination?: outputs.oss.BucketInventoryDestinationOssBucketDestination;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestination {
+        /**
+         * The account ID granted by the Bucket owner.
+         */
+        accountId?: string;
+        /**
+         * The name of the bucket.
+         */
+        bucket?: string;
+        /**
+         * The encryption method of the manifest file. Valid value: SSE-OSS: Use the OSS fully managed key for encryption and decryption. SSE-KMS: Use the default KMS-managed CMK(Customer Master Key) or a specified CMK for encryption and decryption. See `encryption` below.
+         */
+        encryption?: outputs.oss.BucketInventoryDestinationOssBucketDestinationEncryption;
+        /**
+         * The file format of the manifest file.
+         */
+        format?: string;
+        prefix?: string;
+        /**
+         * The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket. The format is acs:ram::uid:role/rolename.
+         */
+        roleArn?: string;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestinationEncryption {
+        /**
+         * The container that holds the SSE-KMS encryption key. See `ssekms` below.
+         */
+        ssekms?: outputs.oss.BucketInventoryDestinationOssBucketDestinationEncryptionSsekms;
+        /**
+         * The container that holds the SSE-OSS encryption method. Set it to an empty string when OSS-managed keys are used.
+         */
+        sseoss?: string;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestinationEncryptionSsekms {
+        /**
+         * KMS key ID.
+         */
+        keyId?: string;
+    }
+
+    export interface BucketInventoryFilter {
+        /**
+         * The start timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+         */
+        lastModifyBeginTimeStamp?: number;
+        /**
+         * The end timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+         */
+        lastModifyEndTimeStamp?: number;
+        /**
+         * The minimum size of the filter file, in B. Value range: greater than or equal to 0 B, less than or equal to 48.8 TB.
+         */
+        lowerSizeBound?: number;
+        /**
+         * The match prefix of the filter rule.
+         */
+        prefix?: string;
+        /**
+         * The storage type of the filter file. Multiple storage types can be specified. Optional values: Standard: Standard storage IA: low-frequency access Archive: Archive storage ColdArchive: cold Archive storage All (default): All storage types
+         */
+        storageClass?: string;
+        /**
+         * The maximum size of the filter file, in B. Value range: greater than 0 B, less than or equal to 48.8 TB.
+         */
+        upperSizeBound?: number;
+    }
+
+    export interface BucketInventoryIncrementalInventory {
+        /**
+         * Incremental inventory enabled
+         */
+        isEnabled?: boolean;
+        /**
+         * Configuration container for incremental manifest file properties See `optionalFields` below.
+         */
+        optionalFields?: outputs.oss.BucketInventoryIncrementalInventoryOptionalFields;
+        /**
+         * Incremental inventory export cycle container See `schedule` below.
+         */
+        schedule?: outputs.oss.BucketInventoryIncrementalInventorySchedule;
+    }
+
+    export interface BucketInventoryIncrementalInventoryOptionalFields {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields?: string[];
+    }
+
+    export interface BucketInventoryIncrementalInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency?: number;
+    }
+
+    export interface BucketInventoryOptionalFields {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields?: string[];
+    }
+
+    export interface BucketInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency?: string;
     }
 
     export interface BucketLifecycleRule {
@@ -49603,6 +51345,167 @@ export namespace oss {
          * Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
          */
         value?: string;
+    }
+
+    export interface GetBucketInventoriesInventory {
+        /**
+         * Holds the container that holds the location of the inventory results.
+         */
+        destinations: outputs.oss.GetBucketInventoriesInventoryDestination[];
+        /**
+         * Container for inventory filtering rules.
+         */
+        filters: outputs.oss.GetBucketInventoriesInventoryFilter[];
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Whether the Object version information is included in the list.
+         */
+        includedObjectVersions: string;
+        /**
+         * Configuration container for incremental inventory.
+         */
+        incrementalInventories: outputs.oss.GetBucketInventoriesInventoryIncrementalInventory[];
+        /**
+         * The ID of the inventory rule.
+         */
+        inventoryId: string;
+        /**
+         * Identification of whether the manifest feature is enabled.
+         */
+        isEnabled: boolean;
+        /**
+         * Sets the configuration items included in the manifest results.
+         */
+        optionalFields: outputs.oss.GetBucketInventoriesInventoryOptionalField[];
+        /**
+         * Container for storing inventory export cycle information.
+         */
+        schedules: outputs.oss.GetBucketInventoriesInventorySchedule[];
+    }
+
+    export interface GetBucketInventoriesInventoryDestination {
+        /**
+         * The Bucket information stored after the list result is exported.
+         */
+        ossBucketDestinations: outputs.oss.GetBucketInventoriesInventoryDestinationOssBucketDestination[];
+    }
+
+    export interface GetBucketInventoriesInventoryDestinationOssBucketDestination {
+        /**
+         * The account ID granted by the Bucket owner.
+         */
+        accountId: string;
+        /**
+         * The name of the bucket.
+         */
+        bucket: string;
+        /**
+         * The encryption method of the manifest file.
+         */
+        encryptions: outputs.oss.GetBucketInventoriesInventoryDestinationOssBucketDestinationEncryption[];
+        /**
+         * The file format of the manifest file.
+         */
+        format: string;
+        /**
+         * The match prefix of the filter rule.
+         */
+        prefix: string;
+        /**
+         * The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket.
+         */
+        roleArn: string;
+    }
+
+    export interface GetBucketInventoriesInventoryDestinationOssBucketDestinationEncryption {
+        /**
+         * The container that holds the SSE-KMS encryption key.
+         */
+        ssekms: outputs.oss.GetBucketInventoriesInventoryDestinationOssBucketDestinationEncryptionSsekm[];
+        /**
+         * The container that holds the SSE-OSS encryption method.
+         */
+        sseoss: string;
+    }
+
+    export interface GetBucketInventoriesInventoryDestinationOssBucketDestinationEncryptionSsekm {
+        /**
+         * KMS key ID.
+         */
+        keyId: string;
+    }
+
+    export interface GetBucketInventoriesInventoryFilter {
+        /**
+         * The start timestamp of the last modification time of the filter file, in seconds.
+         */
+        lastModifyBeginTimeStamp: number;
+        /**
+         * The end timestamp of the last modification time of the filter file, in seconds.
+         */
+        lastModifyEndTimeStamp: number;
+        /**
+         * The minimum size of the filter file, in B.
+         */
+        lowerSizeBound: number;
+        /**
+         * The match prefix of the filter rule.
+         */
+        prefix: string;
+        /**
+         * The storage type of the filter file.
+         */
+        storageClass: string;
+        /**
+         * The maximum size of the filter file, in B.
+         */
+        upperSizeBound: number;
+    }
+
+    export interface GetBucketInventoriesInventoryIncrementalInventory {
+        /**
+         * Identification of whether the manifest feature is enabled.
+         */
+        isEnabled: boolean;
+        /**
+         * Sets the configuration items included in the manifest results.
+         */
+        optionalFields: outputs.oss.GetBucketInventoriesInventoryIncrementalInventoryOptionalField[];
+        /**
+         * Container for storing inventory export cycle information.
+         */
+        schedules: outputs.oss.GetBucketInventoriesInventoryIncrementalInventorySchedule[];
+    }
+
+    export interface GetBucketInventoriesInventoryIncrementalInventoryOptionalField {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields: string[];
+    }
+
+    export interface GetBucketInventoriesInventoryIncrementalInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency: number;
+    }
+
+    export interface GetBucketInventoriesInventoryOptionalField {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields: string[];
+    }
+
+    export interface GetBucketInventoriesInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency: string;
     }
 
     export interface GetBucketObjectsObject {
@@ -52301,7 +54204,7 @@ export namespace rds {
         /**
          * The system disk category. Valid values:
          */
-        category?: string;
+        category: string;
         /**
          * The size of the system disk, in GiB. The value must be greater than or equal to the size of the image specified by the `ImageId` parameter.
          */
@@ -66792,6 +68695,8 @@ export namespace wafv3 {
          * - mpty: Indicates that the content is empty.
          * - exists: Indicates that the field exists.
          * - inl: indicates in the list.
+         * - in-list: Indicates that the value is in the list.
+         * - not-in-list: Indicates that the value is not in the list.
          *
          * > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
          */
@@ -67128,6 +69033,360 @@ export namespace wafv3 {
         value?: string;
     }
 
+    export interface GetAddressBooksBook {
+        /**
+         * The ID of the Address Book.
+         */
+        addressBookId: string;
+        /**
+         * The name of the Address Book.
+         */
+        addressBookName: string;
+        /**
+         * The type of the Address Book. Valid values: `ip`.
+         */
+        addressBookType: string;
+        /**
+         * The address list of the Address Book. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        addressLists: string[];
+        /**
+         * The description of the Address Book.
+         */
+        description: string;
+        /**
+         * The resource ID. It is formatted as `<instance_id>:<address_book_id>`.
+         */
+        id: string;
+    }
+
+    export interface GetDefenseRulesRule {
+        /**
+         * Rule configuration content, in JSON format, constructed with a series of parameters.
+         */
+        configs: outputs.wafv3.GetDefenseRulesRuleConfig[];
+        /**
+         * Sources of protection.
+         */
+        defenseOrigin: string;
+        /**
+         * The WAF protection scenario to be created.
+         */
+        defenseScene: string;
+        /**
+         * The protection rule type. Value:
+         */
+        defenseType: string;
+        /**
+         * The modification time of the protection rule.
+         */
+        gmtModified: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The protection object corresponding to the rule to be queried.
+         */
+        resource: string;
+        /**
+         * The protection rule ID.
+         */
+        ruleId: number;
+        /**
+         * The rule name.
+         */
+        ruleName: string;
+        /**
+         * Protection rule status.
+         */
+        ruleStatus: number;
+        /**
+         * The protection template ID of the protection rule to be created.
+         */
+        templateId: number;
+    }
+
+    export interface GetDefenseRulesRuleConfig {
+        /**
+         * The regions outside China from which you want to block requests.
+         */
+        abroadRegions: string;
+        /**
+         * The policies for account extraction.
+         */
+        accountIdentifiers: outputs.wafv3.GetDefenseRulesRuleConfigAccountIdentifier[];
+        /**
+         * Whether the new Web core protection rules are automatically updated.
+         */
+        autoUpdate: boolean;
+        /**
+         * The list of regular rule IDs that are not detected.
+         */
+        bypassRegularRules: string[];
+        /**
+         * The regular rule type is not detected.
+         */
+        bypassRegularTypes: string[];
+        /**
+         * The modules to which the whitelist applies.
+         */
+        bypassTags: string[];
+        /**
+         * Set the effective range of the speed limit.
+         */
+        ccEffect: string;
+        /**
+         * Whether to open the speed limit.
+         */
+        ccStatus: number;
+        /**
+         * The regions in China from which you want to block requests.
+         */
+        cnRegions: string;
+        /**
+         * The type to enable decoding.
+         */
+        codecLists: string[];
+        /**
+         * The traffic characteristics of ACL, which are described in JSON format.
+         */
+        conditions: outputs.wafv3.GetDefenseRulesRuleConfigCondition[];
+        /**
+         * The canary release configuration for the rule.
+         */
+        grayConfigs: outputs.wafv3.GetDefenseRulesRuleConfigGrayConfig[];
+        /**
+         * Specifies whether to enable canary release for the rule.
+         */
+        grayStatus: number;
+        /**
+         * The HTTP flood protection mode.
+         */
+        mode: number;
+        /**
+         * The protocol type of the cached page address.
+         */
+        protocol: string;
+        /**
+         * The detailed speed limit configuration, which is described in the JSON string format.
+         */
+        rateLimits: outputs.wafv3.GetDefenseRulesRuleConfigRateLimit[];
+        /**
+         * The IP addresses that you want to add to the blacklist.
+         */
+        remoteAddrs: string[];
+        /**
+         * Web core protection rule action.
+         */
+        ruleAction: string;
+        /**
+         * The throttling threshold.
+         */
+        throttleThrehold: number;
+        /**
+         * The throttling method.
+         */
+        throttleType: string;
+        /**
+         * The scheduled rule configuration.
+         */
+        timeConfigs: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfig[];
+        /**
+         * The User-Agent string that is allowed for access to the address.
+         */
+        ua: string;
+        /**
+         * The address of the cached page.
+         */
+        url: string;
+        /**
+         * The configuration of the Web core protection rules to be modified.
+         */
+        wafBaseConfigs: outputs.wafv3.GetDefenseRulesRuleConfigWafBaseConfig[];
+    }
+
+    export interface GetDefenseRulesRuleConfigAccountIdentifier {
+        /**
+         * The authentication mode.
+         */
+        decodeType: string;
+        /**
+         * Match field.
+         */
+        key: string;
+        /**
+         * The field that stores the decoded account information.
+         */
+        position: string;
+        /**
+         * The priority of the current extraction configuration.
+         */
+        priority: number;
+        /**
+         * The characteristics of the statistical object.
+         */
+        subKey: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigCondition {
+        /**
+         * Match field.
+         */
+        key: string;
+        /**
+         * Logical character.
+         */
+        opValue: string;
+        /**
+         * The characteristics of the statistical object.
+         */
+        subKey: string;
+        /**
+         * Match the content and fill in the corresponding content as needed.
+         */
+        values: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigGrayConfig {
+        /**
+         * The percentage of traffic for which the canary release takes effect.
+         */
+        grayRate: number;
+        /**
+         * The sub-feature of the statistical object.
+         */
+        graySubKey: string;
+        /**
+         * The type of the canary release object.
+         */
+        grayTarget: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigRateLimit {
+        /**
+         * The statistical period, in seconds.
+         */
+        interval: number;
+        /**
+         * Response code frequency setting.
+         */
+        statuses: outputs.wafv3.GetDefenseRulesRuleConfigRateLimitStatus[];
+        /**
+         * The characteristics of the statistical object.
+         */
+        subKey: string;
+        /**
+         * The type of the statistical object.
+         */
+        target: string;
+        /**
+         * The maximum number of requests that can be sent from a statistical object.
+         */
+        threshold: number;
+        /**
+         * The period of time during which you want the specified action to be valid.
+         */
+        ttl: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigRateLimitStatus {
+        /**
+         * Required.
+         */
+        code: number;
+        /**
+         * The threshold for the number of occurrences.
+         */
+        count: number;
+        /**
+         * The threshold for the proportion of occurrences (percentage).
+         */
+        ratio: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfig {
+        /**
+         * The time period during which the rule is effective.
+         */
+        timePeriods: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfigTimePeriod[];
+        /**
+         * The effective period of the rule.
+         */
+        timeScope: string;
+        /**
+         * The time zone in which the rule is effective.
+         */
+        timeZone: number;
+        /**
+         * The periodic time period during which the rule is effective.
+         */
+        weekTimePeriods: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod[];
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfigTimePeriod {
+        /**
+         * The end time of each day when the rule is effective.
+         */
+        end: number;
+        /**
+         * The start time of each day when the rule is effective.
+         */
+        start: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfigWeekTimePeriod {
+        /**
+         * The time period of each day when the rule is effective.
+         */
+        day: string;
+        /**
+         * The time period of each day when the rule is effective.
+         */
+        dayPeriods: outputs.wafv3.GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod[];
+    }
+
+    export interface GetDefenseRulesRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+        /**
+         * The end time of each day when the rule is effective.
+         */
+        end: number;
+        /**
+         * The start time of each day when the rule is effective.
+         */
+        start: number;
+    }
+
+    export interface GetDefenseRulesRuleConfigWafBaseConfig {
+        /**
+         * The batch operation on rules.
+         */
+        ruleBatchOperationConfig: string;
+        /**
+         * The configuration of the Web core protection rules to be modified.
+         */
+        ruleDetails: outputs.wafv3.GetDefenseRulesRuleConfigWafBaseConfigRuleDetail[];
+        /**
+         * The protection rule type. Value:
+         */
+        ruleType: string;
+    }
+
+    export interface GetDefenseRulesRuleConfigWafBaseConfigRuleDetail {
+        /**
+         * Web core protection rule action.
+         */
+        ruleAction: string;
+        /**
+         * The protection rule ID.
+         */
+        ruleId: string;
+        /**
+         * Protection rule status.
+         */
+        ruleStatus: number;
+    }
+
     export interface GetDomainsDomain {
         /**
          * The CNAME assigned by WAF to the domain name.
@@ -67137,6 +69396,10 @@ export namespace wafv3 {
          * The name of the domain name to query.
          */
         domain: string;
+        /**
+         * The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+         */
+        domainId: string;
         /**
          * The ID of the domain. It formats as `<instance_id>:<domain>`.
          */

@@ -301,7 +301,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         /// </summary>
         [Output("repeatEndTime")]
         public Output<string?> RepeatEndTime { get; private set; } = null!;
@@ -360,14 +360,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         /// </summary>
         [Output("repeatStartTime")]
         public Output<string?> RepeatStartTime { get; private set; } = null!;
 
         /// <summary>
         /// The type of repetition for the policy validity period of the access control policy. Value:
-        /// - `Permit` (default): Always
+        /// - `Permanent` (default): Always
         /// - `None`: Specify a single time
         /// - `Daily`: Daily
         /// - `Weekly`: Weekly
@@ -393,7 +393,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -528,7 +528,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -585,7 +585,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         /// </summary>
         [Input("repeatEndTime")]
         public Input<string>? RepeatEndTime { get; set; }
@@ -593,14 +593,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         /// </summary>
         [Input("repeatStartTime")]
         public Input<string>? RepeatStartTime { get; set; }
 
         /// <summary>
         /// The type of repetition for the policy validity period of the access control policy. Value:
-        /// - `Permit` (default): Always
+        /// - `Permanent` (default): Always
         /// - `None`: Specify a single time
         /// - `Daily`: Daily
         /// - `Weekly`: Weekly
@@ -626,7 +626,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -735,7 +735,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -792,7 +792,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
         /// </summary>
         [Input("repeatEndTime")]
         public Input<string>? RepeatEndTime { get; set; }
@@ -800,14 +800,14 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
         /// </summary>
         [Input("repeatStartTime")]
         public Input<string>? RepeatStartTime { get; set; }
 
         /// <summary>
         /// The type of repetition for the policy validity period of the access control policy. Value:
-        /// - `Permit` (default): Always
+        /// - `Permanent` (default): Always
         /// - `None`: Specify a single time
         /// - `Daily`: Daily
         /// - `Weekly`: Weekly
@@ -833,7 +833,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
         /// 
-        /// &gt; **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
+        /// &gt; **NOTE:**  When RepeatType is set to Permanent, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }

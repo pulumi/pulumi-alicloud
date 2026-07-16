@@ -214,6 +214,14 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the high density mode for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Modifying `EnableHighDensityMode` requires the instance to be stopped.
+        /// </summary>
+        [Output("enableHighDensityMode")]
+        public Output<bool?> EnableHighDensityMode { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Output("enableJumboFrame")]
@@ -408,10 +416,12 @@ namespace Pulumi.AliCloud.Ecs
         /// The index of the network card for Primary ENI.
         /// </summary>
         [Output("networkCardIndex")]
-        public Output<int?> NetworkCardIndex { get; private set; } = null!;
+        public Output<int> NetworkCardIndex { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the Primary ENI.
+        /// 
+        /// &gt; **NOTE:** From version 1.284.0, `NetworkInterfaceId` can be set.
         /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
@@ -513,7 +523,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The number of queues supported by the ERI.
         /// </summary>
         [Output("queuePairNumber")]
-        public Output<int?> QueuePairNumber { get; private set; } = null!;
+        public Output<int> QueuePairNumber { get; private set; } = null!;
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `InstanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
@@ -571,10 +581,18 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// A list of security group ids to associate with. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
+        /// A list of security group ids to associate with.
+        /// 
+        /// &gt; **NOTE:** If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `True`, `False`.
+        /// </summary>
+        [Output("sourceDestCheck")]
+        public Output<bool> SourceDestCheck { get; private set; } = null!;
 
         /// <summary>
         /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
@@ -877,6 +895,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the high density mode for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Modifying `EnableHighDensityMode` requires the instance to be stopped.
+        /// </summary>
+        [Input("enableHighDensityMode")]
+        public Input<bool>? EnableHighDensityMode { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableJumboFrame")]
@@ -1074,6 +1100,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? NetworkCardIndex { get; set; }
 
         /// <summary>
+        /// The ID of the Primary ENI.
+        /// 
+        /// &gt; **NOTE:** From version 1.284.0, `NetworkInterfaceId` can be set.
+        /// </summary>
+        [Input("networkInterfaceId")]
+        public Input<string>? NetworkInterfaceId { get; set; }
+
+        /// <summary>
         /// The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
         /// - `Standard`: Uses the TCP communication mode.
         /// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -1223,13 +1257,21 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
+        /// A list of security group ids to associate with.
+        /// 
+        /// &gt; **NOTE:** If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
         /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
+
+        /// <summary>
+        /// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
 
         /// <summary>
         /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
@@ -1508,6 +1550,14 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the high density mode for the instance. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Modifying `EnableHighDensityMode` requires the instance to be stopped.
+        /// </summary>
+        [Input("enableHighDensityMode")]
+        public Input<bool>? EnableHighDensityMode { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `True`, `False`.
         /// </summary>
         [Input("enableJumboFrame")]
@@ -1718,6 +1768,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The ID of the Primary ENI.
+        /// 
+        /// &gt; **NOTE:** From version 1.284.0, `NetworkInterfaceId` can be set.
         /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
@@ -1896,13 +1948,21 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with. If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
+        /// A list of security group ids to associate with.
+        /// 
+        /// &gt; **NOTE:** If you do not use `LaunchTemplateId` or `LaunchTemplateName` to specify a launch template, you must specify `SecurityGroups`.
         /// </summary>
         public InputList<string> SecurityGroups
         {
             get => _securityGroups ?? (_securityGroups = new InputList<string>());
             set => _securityGroups = value;
         }
+
+        /// <summary>
+        /// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
 
         /// <summary>
         /// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.

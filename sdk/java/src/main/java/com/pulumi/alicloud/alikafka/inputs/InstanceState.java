@@ -658,6 +658,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+     * 
+     */
+    @Import(name="vpcSaslDomainEndpoint")
+    private @Nullable Output<String> vpcSaslDomainEndpoint;
+
+    /**
+     * @return (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcSaslDomainEndpoint() {
+        return Optional.ofNullable(this.vpcSaslDomainEndpoint);
+    }
+
+    /**
      * The ID of attaching vswitch to instance.
      * 
      */
@@ -747,6 +762,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.topicQuota = $.topicQuota;
         this.topicUsed = $.topicUsed;
         this.vpcId = $.vpcId;
+        this.vpcSaslDomainEndpoint = $.vpcSaslDomainEndpoint;
         this.vswitchId = $.vswitchId;
         this.vswitchIds = $.vswitchIds;
         this.zoneId = $.zoneId;
@@ -1654,6 +1670,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vpcSaslDomainEndpoint (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcSaslDomainEndpoint(@Nullable Output<String> vpcSaslDomainEndpoint) {
+            $.vpcSaslDomainEndpoint = vpcSaslDomainEndpoint;
+            return this;
+        }
+
+        /**
+         * @param vpcSaslDomainEndpoint (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcSaslDomainEndpoint(String vpcSaslDomainEndpoint) {
+            return vpcSaslDomainEndpoint(Output.of(vpcSaslDomainEndpoint));
         }
 
         /**

@@ -29,12 +29,10 @@ import * as utilities from "../utilities";
  *     maxJobs: 100,
  *     monitorContactsJson: JSON.stringify([
  *         {
- *             userName: "name1",
- *             userPhone: "89756******",
+ *             name: "contact-group-1",
  *         },
  *         {
- *             userName: "name2",
- *             ding: "http://www.example.com",
+ *             name: "contact-group-2",
  *         },
  *     ]),
  *     deleteJobs: false,
@@ -45,6 +43,8 @@ import * as utilities from "../utilities";
  *     description: name,
  *     monitorConfigJson: JSON.stringify({
  *         sendChannel: "sms,ding",
+ *         alarmType: "Contacts",
+ *         webhookIsAtAll: "false",
  *     }),
  *     appVersion: "1",
  *     appName: "example-appgroup-pop-autoexample",
@@ -133,11 +133,11 @@ export class AppGroup extends pulumi.CustomResource {
      */
     declare public readonly maxJobs: pulumi.Output<number>;
     /**
-     * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+     * Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitorContactsJson` is specified, `alarmType` must be explicitly included in `monitorConfigJson` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
      */
     declare public readonly monitorConfigJson: pulumi.Output<string | undefined>;
     /**
-     * Alarm contact JSON format.
+     * Alarm contact JSON format. **Note:** This field only takes effect when `monitorConfigJson` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhookUrl"}]`; for `"Contacts"`, use `[{"name":"contactGroupName"}]`.
      */
     declare public readonly monitorContactsJson: pulumi.Output<string | undefined>;
     /**
@@ -265,11 +265,11 @@ export interface AppGroupState {
      */
     maxJobs?: pulumi.Input<number | undefined>;
     /**
-     * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+     * Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitorContactsJson` is specified, `alarmType` must be explicitly included in `monitorConfigJson` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
      */
     monitorConfigJson?: pulumi.Input<string | undefined>;
     /**
-     * Alarm contact JSON format.
+     * Alarm contact JSON format. **Note:** This field only takes effect when `monitorConfigJson` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhookUrl"}]`; for `"Contacts"`, use `[{"name":"contactGroupName"}]`.
      */
     monitorContactsJson?: pulumi.Input<string | undefined>;
     /**
@@ -335,11 +335,11 @@ export interface AppGroupArgs {
      */
     maxJobs?: pulumi.Input<number | undefined>;
     /**
-     * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+     * Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitorContactsJson` is specified, `alarmType` must be explicitly included in `monitorConfigJson` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
      */
     monitorConfigJson?: pulumi.Input<string | undefined>;
     /**
-     * Alarm contact JSON format.
+     * Alarm contact JSON format. **Note:** This field only takes effect when `monitorConfigJson` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhookUrl"}]`; for `"Contacts"`, use `[{"name":"contactGroupName"}]`.
      */
     monitorContactsJson?: pulumi.Input<string | undefined>;
     /**

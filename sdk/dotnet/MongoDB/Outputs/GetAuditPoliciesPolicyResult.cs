@@ -18,13 +18,25 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string AuditStatus;
         /// <summary>
-        /// The ID of the instance.
+        /// The id of the db instance.
         /// </summary>
         public readonly string DbInstanceId;
+        /// <summary>
+        /// (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+        /// </summary>
+        public readonly int HotStoragePeriod;
         /// <summary>
         /// The ID of the Audit Policy.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+        /// </summary>
+        public readonly string ServiceType;
+        /// <summary>
+        /// (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+        /// </summary>
+        public readonly int StoragePeriod;
 
         [OutputConstructor]
         private GetAuditPoliciesPolicyResult(
@@ -32,11 +44,20 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
 
             string dbInstanceId,
 
-            string id)
+            int hotStoragePeriod,
+
+            string id,
+
+            string serviceType,
+
+            int storagePeriod)
         {
             AuditStatus = auditStatus;
             DbInstanceId = dbInstanceId;
+            HotStoragePeriod = hotStoragePeriod;
             Id = id;
+            ServiceType = serviceType;
+            StoragePeriod = storagePeriod;
         }
     }
 }

@@ -218,9 +218,12 @@ type Instance struct {
 
 	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers InstanceAdAuthServerArrayOutput `pulumi:"adAuthServers"`
-	// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+	// The bandwidth of Cloud Bastionhost instance.
+	//
+	// > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+	//
+	// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+	// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -256,7 +259,9 @@ type Instance struct {
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// Slave VSwitch ID configured to Bastionhost.
 	SlaveVswitchId pulumi.StringPtrOutput `pulumi:"slaveVswitchId"`
-	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+	//
+	// ->**NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage pulumi.StringOutput `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -317,9 +322,12 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
-	// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+	// The bandwidth of Cloud Bastionhost instance.
+	//
+	// > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+	//
+	// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+	// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description *string `pulumi:"description"`
@@ -355,7 +363,9 @@ type instanceState struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Slave VSwitch ID configured to Bastionhost.
 	SlaveVswitchId *string `pulumi:"slaveVswitchId"`
-	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+	//
+	// ->**NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage *string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -366,9 +376,12 @@ type instanceState struct {
 type InstanceState struct {
 	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers InstanceAdAuthServerArrayInput
-	// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+	// The bandwidth of Cloud Bastionhost instance.
+	//
+	// > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+	//
+	// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+	// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth pulumi.StringPtrInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringPtrInput
@@ -404,7 +417,9 @@ type InstanceState struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// Slave VSwitch ID configured to Bastionhost.
 	SlaveVswitchId pulumi.StringPtrInput
-	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+	//
+	// ->**NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -419,9 +434,12 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers []InstanceAdAuthServer `pulumi:"adAuthServers"`
-	// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+	// The bandwidth of Cloud Bastionhost instance.
+	//
+	// > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+	//
+	// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+	// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth string `pulumi:"bandwidth"`
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description string `pulumi:"description"`
@@ -457,7 +475,9 @@ type instanceArgs struct {
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Slave VSwitch ID configured to Bastionhost.
 	SlaveVswitchId *string `pulumi:"slaveVswitchId"`
-	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+	//
+	// ->**NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage string `pulumi:"storage"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -469,9 +489,12 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The AD auth server of the Instance. See `adAuthServer` below.
 	AdAuthServers InstanceAdAuthServerArrayInput
-	// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-	// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-	// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+	// The bandwidth of Cloud Bastionhost instance.
+	//
+	// > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+	//
+	// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+	// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
 	Bandwidth pulumi.StringInput
 	// Description of the instance. This name can have a string of 1 to 63 characters.
 	Description pulumi.StringInput
@@ -507,7 +530,9 @@ type InstanceArgs struct {
 	SecurityGroupIds pulumi.StringArrayInput
 	// Slave VSwitch ID configured to Bastionhost.
 	SlaveVswitchId pulumi.StringPtrInput
-	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+	// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+	//
+	// ->**NOTE:** From version 1.251.0, `storage` can be modified.
 	Storage pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -607,9 +632,12 @@ func (o InstanceOutput) AdAuthServers() InstanceAdAuthServerArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceAdAuthServerArrayOutput { return v.AdAuthServers }).(InstanceAdAuthServerArrayOutput)
 }
 
-// The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-// If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-// If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+// The bandwidth of Cloud Bastionhost instance.
+//
+// > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+//
+// - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+// - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
 func (o InstanceOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
@@ -687,7 +715,9 @@ func (o InstanceOutput) SlaveVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SlaveVswitchId }).(pulumi.StringPtrOutput)
 }
 
-// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+// The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+//
+// ->**NOTE:** From version 1.251.0, `storage` can be modified.
 func (o InstanceOutput) Storage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Storage }).(pulumi.StringOutput)
 }

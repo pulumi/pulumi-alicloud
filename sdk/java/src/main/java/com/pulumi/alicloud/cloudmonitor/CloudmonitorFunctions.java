@@ -488,13 +488,11 @@ public final class CloudmonitorFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", TypeShape.of(GetServiceHybridDoubleWritesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -590,13 +588,11 @@ public final class CloudmonitorFunctions {
         return getServiceMetricAlarmRules(GetServiceMetricAlarmRulesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -692,13 +688,11 @@ public final class CloudmonitorFunctions {
         return getServiceMetricAlarmRulesPlain(GetServiceMetricAlarmRulesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -794,13 +788,11 @@ public final class CloudmonitorFunctions {
         return getServiceMetricAlarmRules(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -896,13 +888,11 @@ public final class CloudmonitorFunctions {
         return getServiceMetricAlarmRulesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -998,13 +988,11 @@ public final class CloudmonitorFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", TypeShape.of(GetServiceMetricAlarmRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1100,13 +1088,11 @@ public final class CloudmonitorFunctions {
         return Deployment.getInstance().invoke("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", TypeShape.of(GetServiceMetricAlarmRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+     * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
      * 
      * &gt; **NOTE:** Available since v1.256.0.
      * 
      * ## Example Usage
-     * 
-     * Basic Usage
      * 
      * <pre>
      * {@code

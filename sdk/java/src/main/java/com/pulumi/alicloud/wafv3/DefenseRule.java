@@ -183,6 +183,20 @@ public class DefenseRule extends com.pulumi.resources.CustomResource {
         return this.defenseType;
     }
     /**
+     * The modification time of the protection rule.
+     * 
+     */
+    @Export(name="gmtModified", refs={String.class}, tree="[0]")
+    private Output<String> gmtModified;
+
+    /**
+     * @return The modification time of the protection rule.
+     * 
+     */
+    public Output<String> gmtModified() {
+        return this.gmtModified;
+    }
+    /**
      * The ID of the Web Application Firewall (WAF) instance.
      * 
      */

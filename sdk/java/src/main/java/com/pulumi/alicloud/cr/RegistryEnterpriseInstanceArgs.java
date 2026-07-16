@@ -56,6 +56,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
+     * - `DISABLE`: Disables the image security scan engine.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -67,6 +68,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
      * @return The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
+     * - `DISABLE`: Disables the image security scan engine.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -95,6 +97,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
+     * - `Economy`: Economy instance
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -107,6 +110,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
+     * - `Economy`: Economy instance
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -407,6 +411,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
          * @param imageScanner The security scan engine used by the Enterprise Edition of Container Image Service. Value:
          * - `ACR`: Uses the Trivy scan engine provided by default.
          * - `SAS`: uses the enhanced cloud security scan engine.
+         * - `DISABLE`: Disables the image security scan engine.
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -422,6 +427,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
          * @param imageScanner The security scan engine used by the Enterprise Edition of Container Image Service. Value:
          * - `ACR`: Uses the Trivy scan engine provided by default.
          * - `SAS`: uses the enhanced cloud security scan engine.
+         * - `DISABLE`: Disables the image security scan engine.
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -458,6 +464,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
          * - `Basic`: Basic instance
          * - `Standard`: Standard instance
          * - `Advanced`: Advanced Edition Instance
+         * - `Economy`: Economy instance
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -474,6 +481,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
          * - `Basic`: Basic instance
          * - `Standard`: Standard instance
          * - `Advanced`: Advanced Edition Instance
+         * - `Economy`: Economy instance
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 

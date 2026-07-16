@@ -14,12 +14,12 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRulePrometheus {
     /**
-     * @return The annotations of the Prometheus alert rule.
+     * @return When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
      * 
      */
     private List<GetServiceMetricAlarmRulesRulePrometheusAnnotation> annotations;
     /**
-     * @return The alert level.
+     * @return Alert severity level.
      * 
      */
     private String level;
@@ -29,21 +29,21 @@ public final class GetServiceMetricAlarmRulesRulePrometheus {
      */
     private String promQl;
     /**
-     * @return The number of consecutive triggers.
+     * @return The number of times the alert condition must be met before an alert notification is sent.
      * 
      */
     private Integer times;
 
     private GetServiceMetricAlarmRulesRulePrometheus() {}
     /**
-     * @return The annotations of the Prometheus alert rule.
+     * @return When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
      * 
      */
     public List<GetServiceMetricAlarmRulesRulePrometheusAnnotation> annotations() {
         return this.annotations;
     }
     /**
-     * @return The alert level.
+     * @return Alert severity level.
      * 
      */
     public String level() {
@@ -57,7 +57,7 @@ public final class GetServiceMetricAlarmRulesRulePrometheus {
         return this.promQl;
     }
     /**
-     * @return The number of consecutive triggers.
+     * @return The number of times the alert condition must be met before an alert notification is sent.
      * 
      */
     public Integer times() {

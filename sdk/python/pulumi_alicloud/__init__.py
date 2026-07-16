@@ -937,6 +937,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apig/pluginClass",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/pluginClass:PluginClass": "PluginClass"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apigateway/accessControlList",
   "fqn": "pulumi_alicloud.apigateway",
   "classes": {
@@ -2177,6 +2185,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudmonitor/serviceMetricAlarmRule",
+  "fqn": "pulumi_alicloud.cloudmonitor",
+  "classes": {
+   "alicloud:cloudmonitor/serviceMetricAlarmRule:ServiceMetricAlarmRule": "ServiceMetricAlarmRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudmonitor/serviceMonitoringAgentProcess",
   "fqn": "pulumi_alicloud.cloudmonitor",
   "classes": {
@@ -2417,6 +2433,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cms/alertRuleV2",
+  "fqn": "pulumi_alicloud.cms",
+  "classes": {
+   "alicloud:cms/alertRuleV2:AlertRuleV2": "AlertRuleV2"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cms/dynamicTagGroup",
   "fqn": "pulumi_alicloud.cms",
   "classes": {
@@ -2565,6 +2589,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.configaggregate",
   "classes": {
    "alicloud:configaggregate/remediation:Remediation": "Remediation"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cr/artifactLifecycleRule",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule": "ArtifactLifecycleRule"
   }
  },
  {
@@ -2749,6 +2781,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cs",
   "classes": {
    "alicloud:cs/serverlessKubernetes:ServerlessKubernetes": "ServerlessKubernetes"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "das/sqlLogConfig",
+  "fqn": "pulumi_alicloud.das",
+  "classes": {
+   "alicloud:das/sqlLogConfig:SqlLogConfig": "SqlLogConfig"
   }
  },
  {
@@ -6945,6 +6985,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketInventory",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketInventory:BucketInventory": "BucketInventory"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketLogging",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -8017,6 +8065,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "resourcemanager/handshakeAcceptance",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/handshakeAcceptance:HandshakeAcceptance": "HandshakeAcceptance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "resourcemanager/messageContact",
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
@@ -8061,6 +8117,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
    "alicloud:resourcemanager/resourceDirectory:ResourceDirectory": "ResourceDirectory"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "resourcemanager/resourceDirectorySharing",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing": "ResourceDirectorySharing"
   }
  },
  {
@@ -9081,6 +9145,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "threatdetection/serviceLinkedRole",
+  "fqn": "pulumi_alicloud.threatdetection",
+  "classes": {
+   "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole": "ServiceLinkedRole"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "threatdetection/vulWhitelist",
   "fqn": "pulumi_alicloud.threatdetection",
   "classes": {
@@ -9717,6 +9789,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/addressBook",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/addressBook:AddressBook": "AddressBook"
   }
  },
  {

@@ -57,9 +57,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewRouteEntry(ctx, "default", &vpc.RouteEntryArgs{
+//			_, err = vpc.NewVPCRouteEntry(ctx, "default", &vpc.VPCRouteEntryArgs{
 //				RouteTableId:         _default.RouteTableId,
-//				DestinationCidrblock: pulumi.String("172.11.1.1/32"),
+//				DestinationCidrBlock: pulumi.String("172.11.1.1/32"),
 //				NexthopType:          pulumi.String("Ipv4Gateway"),
 //				NexthopId:            defaultIpv4Gateway.ID(),
 //			})

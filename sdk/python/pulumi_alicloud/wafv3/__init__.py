@@ -6,10 +6,13 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .address_book import *
 from .defense_resource_group import *
 from .defense_rule import *
 from .defense_template import *
 from .domain import *
+from .get_address_books import *
+from .get_defense_rules import *
 from .get_domains import *
 from .get_instances import *
 from .instance import *

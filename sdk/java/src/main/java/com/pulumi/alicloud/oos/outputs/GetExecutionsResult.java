@@ -16,9 +16,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExecutionsResult {
+    /**
+     * @return The category of OOS Execution.
+     * 
+     */
     private @Nullable String category;
+    /**
+     * @return The time when the execution was ended.
+     * 
+     */
     private @Nullable String endDate;
     private @Nullable String endDateAfter;
+    /**
+     * @return The user who execute the template.
+     * 
+     */
     private @Nullable String executedBy;
     /**
      * @return A list of OOS Executions. Each element contains the following attributes:
@@ -36,28 +48,64 @@ public final class GetExecutionsResult {
      */
     private List<String> ids;
     private @Nullable Boolean includeChildExecution;
+    /**
+     * @return The mode of OOS Execution.
+     * 
+     */
     private @Nullable String mode;
     private @Nullable String outputFile;
+    /**
+     * @return The id of parent OOS Execution.
+     * 
+     */
     private @Nullable String parentExecutionId;
+    /**
+     * @return The role that executes the current template.
+     * 
+     */
     private @Nullable String ramRole;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
     private @Nullable String startDateAfter;
     private @Nullable String startDateBefore;
+    /**
+     * @return The status of OOS Execution.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    /**
+     * @return The name of execution template.
+     * 
+     */
     private @Nullable String templateName;
 
     private GetExecutionsResult() {}
+    /**
+     * @return The category of OOS Execution.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return The time when the execution was ended.
+     * 
+     */
     public Optional<String> endDate() {
         return Optional.ofNullable(this.endDate);
     }
     public Optional<String> endDateAfter() {
         return Optional.ofNullable(this.endDateAfter);
     }
+    /**
+     * @return The user who execute the template.
+     * 
+     */
     public Optional<String> executedBy() {
         return Optional.ofNullable(this.executedBy);
     }
@@ -85,15 +133,27 @@ public final class GetExecutionsResult {
     public Optional<Boolean> includeChildExecution() {
         return Optional.ofNullable(this.includeChildExecution);
     }
+    /**
+     * @return The mode of OOS Execution.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The id of parent OOS Execution.
+     * 
+     */
     public Optional<String> parentExecutionId() {
         return Optional.ofNullable(this.parentExecutionId);
     }
+    /**
+     * @return The role that executes the current template.
+     * 
+     */
     public Optional<String> ramRole() {
         return Optional.ofNullable(this.ramRole);
     }
@@ -109,12 +169,24 @@ public final class GetExecutionsResult {
     public Optional<String> startDateBefore() {
         return Optional.ofNullable(this.startDateBefore);
     }
+    /**
+     * @return The status of OOS Execution.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The name of execution template.
+     * 
+     */
     public Optional<String> templateName() {
         return Optional.ofNullable(this.templateName);
     }

@@ -13,38 +13,38 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRuleEscalations {
     /**
-     * @return The conditions for triggering Critical-level alerts.
+     * @return The trigger condition for Critical-level alerts.
      * 
      */
     private GetServiceMetricAlarmRulesRuleEscalationsCritical critical;
     /**
-     * @return The conditions for triggering Info-level alerts.
+     * @return Trigger conditions for Info-level alerts.
      * 
      */
     private GetServiceMetricAlarmRulesRuleEscalationsInfo info;
     /**
-     * @return The conditions for triggering Warn-level alerts.
+     * @return Trigger condition for Warn-level alerts.
      * 
      */
     private GetServiceMetricAlarmRulesRuleEscalationsWarn warn;
 
     private GetServiceMetricAlarmRulesRuleEscalations() {}
     /**
-     * @return The conditions for triggering Critical-level alerts.
+     * @return The trigger condition for Critical-level alerts.
      * 
      */
     public GetServiceMetricAlarmRulesRuleEscalationsCritical critical() {
         return this.critical;
     }
     /**
-     * @return The conditions for triggering Info-level alerts.
+     * @return Trigger conditions for Info-level alerts.
      * 
      */
     public GetServiceMetricAlarmRulesRuleEscalationsInfo info() {
         return this.info;
     }
     /**
-     * @return The conditions for triggering Warn-level alerts.
+     * @return Trigger condition for Warn-level alerts.
      * 
      */
     public GetServiceMetricAlarmRulesRuleEscalationsWarn warn() {

@@ -348,7 +348,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Security group id
+        /// Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
@@ -748,7 +748,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// Security group id
+        /// Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -1136,7 +1136,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// Security group id
+        /// Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

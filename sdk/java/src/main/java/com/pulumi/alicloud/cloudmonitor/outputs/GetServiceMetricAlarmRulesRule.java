@@ -17,242 +17,296 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRule {
     /**
-     * @return The trigger conditions for multiple metrics.
+     * @return Alert condition for multiple metrics.
      * 
      */
     private GetServiceMetricAlarmRulesRuleCompositeExpression compositeExpression;
     /**
-     * @return The alert contact group.
+     * @return Alarm contact groups.
      * 
      */
     private String contactGroups;
     /**
-     * @return The monitoring dimensions of the specified resource.
+     * @return The monitoring dimensions for the specified resource.
+     * Format: a set of key:value pairs, for example: `{&#34;userId&#34;:&#34;120886317861****&#34;}` and `{&#34;instanceId&#34;:&#34;i-2ze2d6j5uhg20x47****&#34;}`.
      * 
      */
     private String dimensions;
     /**
-     * @return The time period during which the alert rule is effective.
+     * @return The time range during which the alert rule is effective.
      * 
      */
     private String effectiveInterval;
     /**
-     * @return The subject of the alert notification email.
+     * @return Subject of alert emails.
      * 
      */
     private String emailSubject;
     /**
-     * @return The conditions for triggering different levels of alerts.
+     * @return The trigger conditions for alert levels.
      * 
      */
     private GetServiceMetricAlarmRulesRuleEscalations escalations;
     /**
-     * @return The ID of the alert rule.
+     * @return The ID of the resource supplied above.
      * 
      */
     private String id;
     /**
-     * @return The tags of the alert rule.
+     * @return When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
      * 
      */
     private List<GetServiceMetricAlarmRulesRuleLabel> labels;
     /**
-     * @return The name of the metric.
+     * @return The ID of the alarm rule.
+     * 
+     * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+     * 
+     */
+    private String metricAlarmRuleId;
+    /**
+     * @return The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      * 
      */
     private String metricName;
     /**
-     * @return The namespace of the cloud service.
+     * @return The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
      * 
      */
     private String namespace;
     /**
-     * @return The method that is used to handle alerts when no monitoring data is found.
+     * @return The policy to apply when no monitoring data is available.
      * 
      */
     private String noDataPolicy;
     /**
-     * @return The time period during which the alert rule is ineffective.
+     * @return The time range during which the alarm rule is inactive.
      * 
      */
     private String noEffectiveInterval;
     /**
-     * @return The aggregation period of the metric.
+     * @return The statistical period of the metric.
      * 
      */
     private String period;
     /**
-     * @return The Prometheus alerts.
+     * @return Prometheus alert.
      * 
      */
     private GetServiceMetricAlarmRulesRulePrometheus prometheus;
     /**
-     * @return The resources that are associated with the alert rule.
+     * @return Resource information, for example: `[{&#34;instanceId&#34;:&#34;i-uf6j91r34rnwawoo****&#34;}]`, `[{&#34;userId&#34;:&#34;100931896542****&#34;}]`.
      * 
      */
     private String resources;
     /**
-     * @return The name of the alert rule.
+     * @return Alert rule name.
+     * 
+     * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
      * 
      */
     private String ruleName;
     /**
-     * @return The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+     * @return Specifies whether to send recovery notifications.
+     * 
+     */
+    private Boolean sendOk;
+    /**
+     * @return Channel silence period.
      * 
      */
     private String silenceTime;
     /**
-     * @return The type of the alert rule.
+     * @return The type of the alarm rule.
      * 
      */
     private String sourceType;
     /**
-     * @return Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+     * @return The enabled status of the alarm rule. Valid values:
+     * - true: enabled.
+     * - false: disabled.
      * 
      */
     private Boolean status;
     /**
-     * @return The callback URL.
+     * @return The URL address specified for callback when an alert is triggered.
      * 
      */
     private String webhook;
 
     private GetServiceMetricAlarmRulesRule() {}
     /**
-     * @return The trigger conditions for multiple metrics.
+     * @return Alert condition for multiple metrics.
      * 
      */
     public GetServiceMetricAlarmRulesRuleCompositeExpression compositeExpression() {
         return this.compositeExpression;
     }
     /**
-     * @return The alert contact group.
+     * @return Alarm contact groups.
      * 
      */
     public String contactGroups() {
         return this.contactGroups;
     }
     /**
-     * @return The monitoring dimensions of the specified resource.
+     * @return The monitoring dimensions for the specified resource.
+     * Format: a set of key:value pairs, for example: `{&#34;userId&#34;:&#34;120886317861****&#34;}` and `{&#34;instanceId&#34;:&#34;i-2ze2d6j5uhg20x47****&#34;}`.
      * 
      */
     public String dimensions() {
         return this.dimensions;
     }
     /**
-     * @return The time period during which the alert rule is effective.
+     * @return The time range during which the alert rule is effective.
      * 
      */
     public String effectiveInterval() {
         return this.effectiveInterval;
     }
     /**
-     * @return The subject of the alert notification email.
+     * @return Subject of alert emails.
      * 
      */
     public String emailSubject() {
         return this.emailSubject;
     }
     /**
-     * @return The conditions for triggering different levels of alerts.
+     * @return The trigger conditions for alert levels.
      * 
      */
     public GetServiceMetricAlarmRulesRuleEscalations escalations() {
         return this.escalations;
     }
     /**
-     * @return The ID of the alert rule.
+     * @return The ID of the resource supplied above.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The tags of the alert rule.
+     * @return When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
      * 
      */
     public List<GetServiceMetricAlarmRulesRuleLabel> labels() {
         return this.labels;
     }
     /**
-     * @return The name of the metric.
+     * @return The ID of the alarm rule.
+     * 
+     * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+     * 
+     */
+    public String metricAlarmRuleId() {
+        return this.metricAlarmRuleId;
+    }
+    /**
+     * @return The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      * 
      */
     public String metricName() {
         return this.metricName;
     }
     /**
-     * @return The namespace of the cloud service.
+     * @return The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
      * 
      */
     public String namespace() {
         return this.namespace;
     }
     /**
-     * @return The method that is used to handle alerts when no monitoring data is found.
+     * @return The policy to apply when no monitoring data is available.
      * 
      */
     public String noDataPolicy() {
         return this.noDataPolicy;
     }
     /**
-     * @return The time period during which the alert rule is ineffective.
+     * @return The time range during which the alarm rule is inactive.
      * 
      */
     public String noEffectiveInterval() {
         return this.noEffectiveInterval;
     }
     /**
-     * @return The aggregation period of the metric.
+     * @return The statistical period of the metric.
      * 
      */
     public String period() {
         return this.period;
     }
     /**
-     * @return The Prometheus alerts.
+     * @return Prometheus alert.
      * 
      */
     public GetServiceMetricAlarmRulesRulePrometheus prometheus() {
         return this.prometheus;
     }
     /**
-     * @return The resources that are associated with the alert rule.
+     * @return Resource information, for example: `[{&#34;instanceId&#34;:&#34;i-uf6j91r34rnwawoo****&#34;}]`, `[{&#34;userId&#34;:&#34;100931896542****&#34;}]`.
      * 
      */
     public String resources() {
         return this.resources;
     }
     /**
-     * @return The name of the alert rule.
+     * @return Alert rule name.
+     * 
+     * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
      * 
      */
     public String ruleName() {
         return this.ruleName;
     }
     /**
-     * @return The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+     * @return Specifies whether to send recovery notifications.
+     * 
+     */
+    public Boolean sendOk() {
+        return this.sendOk;
+    }
+    /**
+     * @return Channel silence period.
      * 
      */
     public String silenceTime() {
         return this.silenceTime;
     }
     /**
-     * @return The type of the alert rule.
+     * @return The type of the alarm rule.
      * 
      */
     public String sourceType() {
         return this.sourceType;
     }
     /**
-     * @return Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+     * @return The enabled status of the alarm rule. Valid values:
+     * - true: enabled.
+     * - false: disabled.
      * 
      */
     public Boolean status() {
         return this.status;
     }
     /**
-     * @return The callback URL.
+     * @return The URL address specified for callback when an alert is triggered.
      * 
      */
     public String webhook() {
@@ -276,6 +330,7 @@ public final class GetServiceMetricAlarmRulesRule {
         private GetServiceMetricAlarmRulesRuleEscalations escalations;
         private String id;
         private List<GetServiceMetricAlarmRulesRuleLabel> labels;
+        private String metricAlarmRuleId;
         private String metricName;
         private String namespace;
         private String noDataPolicy;
@@ -284,6 +339,7 @@ public final class GetServiceMetricAlarmRulesRule {
         private GetServiceMetricAlarmRulesRulePrometheus prometheus;
         private String resources;
         private String ruleName;
+        private Boolean sendOk;
         private String silenceTime;
         private String sourceType;
         private Boolean status;
@@ -299,6 +355,7 @@ public final class GetServiceMetricAlarmRulesRule {
     	      this.escalations = defaults.escalations;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
+    	      this.metricAlarmRuleId = defaults.metricAlarmRuleId;
     	      this.metricName = defaults.metricName;
     	      this.namespace = defaults.namespace;
     	      this.noDataPolicy = defaults.noDataPolicy;
@@ -307,6 +364,7 @@ public final class GetServiceMetricAlarmRulesRule {
     	      this.prometheus = defaults.prometheus;
     	      this.resources = defaults.resources;
     	      this.ruleName = defaults.ruleName;
+    	      this.sendOk = defaults.sendOk;
     	      this.silenceTime = defaults.silenceTime;
     	      this.sourceType = defaults.sourceType;
     	      this.status = defaults.status;
@@ -381,6 +439,14 @@ public final class GetServiceMetricAlarmRulesRule {
             return labels(List.of(labels));
         }
         @CustomType.Setter
+        public Builder metricAlarmRuleId(String metricAlarmRuleId) {
+            if (metricAlarmRuleId == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetricAlarmRulesRule", "metricAlarmRuleId");
+            }
+            this.metricAlarmRuleId = metricAlarmRuleId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metricName(String metricName) {
             if (metricName == null) {
               throw new MissingRequiredPropertyException("GetServiceMetricAlarmRulesRule", "metricName");
@@ -445,6 +511,14 @@ public final class GetServiceMetricAlarmRulesRule {
             return this;
         }
         @CustomType.Setter
+        public Builder sendOk(Boolean sendOk) {
+            if (sendOk == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetricAlarmRulesRule", "sendOk");
+            }
+            this.sendOk = sendOk;
+            return this;
+        }
+        @CustomType.Setter
         public Builder silenceTime(String silenceTime) {
             if (silenceTime == null) {
               throw new MissingRequiredPropertyException("GetServiceMetricAlarmRulesRule", "silenceTime");
@@ -486,6 +560,7 @@ public final class GetServiceMetricAlarmRulesRule {
             _resultValue.escalations = escalations;
             _resultValue.id = id;
             _resultValue.labels = labels;
+            _resultValue.metricAlarmRuleId = metricAlarmRuleId;
             _resultValue.metricName = metricName;
             _resultValue.namespace = namespace;
             _resultValue.noDataPolicy = noDataPolicy;
@@ -494,6 +569,7 @@ public final class GetServiceMetricAlarmRulesRule {
             _resultValue.prometheus = prometheus;
             _resultValue.resources = resources;
             _resultValue.ruleName = ruleName;
+            _resultValue.sendOk = sendOk;
             _resultValue.silenceTime = silenceTime;
             _resultValue.sourceType = sourceType;
             _resultValue.status = status;

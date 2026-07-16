@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///     var defaultAuditPolicy = new AliCloud.MongoDB.AuditPolicy("default", new()
     ///     {
     ///         DbInstanceId = defaultInstance.Id,
-    ///         AuditStatus = "disabled",
+    ///         AuditStatus = "enable",
     ///     });
     /// 
     /// });
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.MongoDB
     public partial class AuditPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Audit state, Valid values: `Enable`, `Disabled`.
+        /// Audit state. Valid values: `Enable`, `Disabled`. The audit policy cannot be created with `Disabled` — the underlying API rejects it. Create the resource with `Enable` and switch to `Disabled` in a later apply.
         /// </summary>
         [Output("auditStatus")]
         public Output<string> AuditStatus { get; private set; } = null!;
@@ -114,7 +114,21 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        /// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `ServiceType` is `V2_Standard`.
+        /// </summary>
+        [Output("hotStoragePeriod")]
+        public Output<int> HotStoragePeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `AuditStatus` is `Disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        /// </summary>
+        [Output("serviceType")]
+        public Output<string> ServiceType { get; private set; } = null!;
+
+        /// <summary>
+        /// Audit log retention duration, in days.
+        /// - When `ServiceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+        /// - When `ServiceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         /// </summary>
         [Output("storagePeriod")]
         public Output<int> StoragePeriod { get; private set; } = null!;
@@ -166,7 +180,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AuditPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Audit state, Valid values: `Enable`, `Disabled`.
+        /// Audit state. Valid values: `Enable`, `Disabled`. The audit policy cannot be created with `Disabled` — the underlying API rejects it. Create the resource with `Enable` and switch to `Disabled` in a later apply.
         /// </summary>
         [Input("auditStatus", required: true)]
         public Input<string> AuditStatus { get; set; } = null!;
@@ -184,7 +198,21 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        /// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `ServiceType` is `V2_Standard`.
+        /// </summary>
+        [Input("hotStoragePeriod")]
+        public Input<int>? HotStoragePeriod { get; set; }
+
+        /// <summary>
+        /// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `AuditStatus` is `Disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        /// </summary>
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        /// <summary>
+        /// Audit log retention duration, in days.
+        /// - When `ServiceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+        /// - When `ServiceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         /// </summary>
         [Input("storagePeriod")]
         public Input<int>? StoragePeriod { get; set; }
@@ -198,7 +226,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AuditPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Audit state, Valid values: `Enable`, `Disabled`.
+        /// Audit state. Valid values: `Enable`, `Disabled`. The audit policy cannot be created with `Disabled` — the underlying API rejects it. Create the resource with `Enable` and switch to `Disabled` in a later apply.
         /// </summary>
         [Input("auditStatus")]
         public Input<string>? AuditStatus { get; set; }
@@ -216,7 +244,21 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+        /// The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `ServiceType` is `V2_Standard`.
+        /// </summary>
+        [Input("hotStoragePeriod")]
+        public Input<int>? HotStoragePeriod { get; set; }
+
+        /// <summary>
+        /// The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `AuditStatus` is `Disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+        /// </summary>
+        [Input("serviceType")]
+        public Input<string>? ServiceType { get; set; }
+
+        /// <summary>
+        /// Audit log retention duration, in days.
+        /// - When `ServiceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+        /// - When `ServiceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
         /// </summary>
         [Input("storagePeriod")]
         public Input<int>? StoragePeriod { get; set; }

@@ -113,6 +113,12 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The authentication mode of the instance. Default value: `Ram`. Valid values:
+        /// </summary>
+        [Output("authModel")]
+        public Output<string?> AuthModel { get; private set; } = null!;
+
+        /// <summary>
         /// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         /// </summary>
         [Output("autoRenew")]
@@ -242,6 +248,12 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string?> ServerlessChargeType { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable the Serverless elastic capability on the instance.
+        /// </summary>
+        [Output("serverlessSwitch")]
+        public Output<bool> ServerlessSwitch { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource.
         /// </summary>
         [Output("status")]
@@ -264,6 +276,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Output("supportTracing")]
         public Output<bool?> SupportTracing { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
@@ -329,6 +347,12 @@ namespace Pulumi.AliCloud.Amqp
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The authentication mode of the instance. Default value: `Ram`. Valid values:
+        /// </summary>
+        [Input("authModel")]
+        public Input<string>? AuthModel { get; set; }
+
         /// <summary>
         /// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         /// </summary>
@@ -453,6 +477,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? ServerlessChargeType { get; set; }
 
         /// <summary>
+        /// Whether to enable the Serverless elastic capability on the instance.
+        /// </summary>
+        [Input("serverlessSwitch")]
+        public Input<bool>? ServerlessSwitch { get; set; }
+
+        /// <summary>
         /// Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         /// </summary>
         [Input("storageSize")]
@@ -469,6 +499,18 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("supportTracing")]
         public Input<bool>? SupportTracing { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
@@ -502,6 +544,12 @@ namespace Pulumi.AliCloud.Amqp
 
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The authentication mode of the instance. Default value: `Ram`. Valid values:
+        /// </summary>
+        [Input("authModel")]
+        public Input<string>? AuthModel { get; set; }
+
         /// <summary>
         /// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         /// </summary>
@@ -632,6 +680,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? ServerlessChargeType { get; set; }
 
         /// <summary>
+        /// Whether to enable the Serverless elastic capability on the instance.
+        /// </summary>
+        [Input("serverlessSwitch")]
+        public Input<bool>? ServerlessSwitch { get; set; }
+
+        /// <summary>
         /// The status of the resource.
         /// </summary>
         [Input("status")]
@@ -654,6 +708,18 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("supportTracing")]
         public Input<bool>? SupportTracing { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.

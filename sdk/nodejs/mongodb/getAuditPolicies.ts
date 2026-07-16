@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *
@@ -51,18 +51,24 @@ export interface GetAuditPoliciesArgs {
  * A collection of values returned by getAuditPolicies.
  */
 export interface GetAuditPoliciesResult {
+    /**
+     * The ID of the instance.
+     */
     readonly dbInstanceId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly outputFile?: string;
+    /**
+     * A list of Mongodb Audit Policies. Each element contains the following attributes:
+     */
     readonly policies: outputs.mongodb.GetAuditPoliciesPolicy[];
 }
 /**
  * This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.148.0+.
+ * > **NOTE:** Available since v1.148.0.
  *
  * ## Example Usage
  *

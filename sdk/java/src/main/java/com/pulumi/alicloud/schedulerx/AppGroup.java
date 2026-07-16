@@ -64,12 +64,10 @@ import javax.annotation.Nullable;
  *             .monitorContactsJson(serializeJson(
  *                 jsonArray(
  *                     jsonObject(
- *                         jsonProperty("userName", "name1"),
- *                         jsonProperty("userPhone", "89756******")
+ *                         jsonProperty("name", "contact-group-1")
  *                     ), 
  *                     jsonObject(
- *                         jsonProperty("userName", "name2"),
- *                         jsonProperty("ding", "http://www.example.com")
+ *                         jsonProperty("name", "contact-group-2")
  *                     )
  *                 )))
  *             .deleteJobs(false)
@@ -80,7 +78,9 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .monitorConfigJson(serializeJson(
  *                 jsonObject(
- *                     jsonProperty("sendChannel", "sms,ding")
+ *                     jsonProperty("sendChannel", "sms,ding"),
+ *                     jsonProperty("alarmType", "Contacts"),
+ *                     jsonProperty("webhookIsAtAll", "false")
  *                 )))
  *             .appVersion("1")
  *             .appName("example-appgroup-pop-autoexample")
@@ -242,28 +242,28 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
         return this.maxJobs;
     }
     /**
-     * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+     * Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `&#34;sms,ding&#34;`), `alarmType` (alarm type, e.g. `&#34;Contacts&#34;` or `&#34;CustomContacts&#34;`), and `webhookIsAtAll` (whether webhook {@literal @}all). **Note:** When `monitorContactsJson` is specified, `alarmType` must be explicitly included in `monitorConfigJson` (typically `&#34;CustomContacts&#34;` for custom contacts or `&#34;Contacts&#34;` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
      * 
      */
     @Export(name="monitorConfigJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> monitorConfigJson;
 
     /**
-     * @return Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+     * @return Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `&#34;sms,ding&#34;`), `alarmType` (alarm type, e.g. `&#34;Contacts&#34;` or `&#34;CustomContacts&#34;`), and `webhookIsAtAll` (whether webhook {@literal @}all). **Note:** When `monitorContactsJson` is specified, `alarmType` must be explicitly included in `monitorConfigJson` (typically `&#34;CustomContacts&#34;` for custom contacts or `&#34;Contacts&#34;` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
      * 
      */
     public Output<Optional<String>> monitorConfigJson() {
         return Codegen.optional(this.monitorConfigJson);
     }
     /**
-     * Alarm contact JSON format.
+     * Alarm contact JSON format. **Note:** This field only takes effect when `monitorConfigJson` contains an `alarmType` value (e.g. `&#34;CustomContacts&#34;` or `&#34;Contacts&#34;`). The format depends on `alarmType`: for `&#34;CustomContacts&#34;`, use `[{&#34;userName&#34;:&#34;name&#34;,&#34;userPhone&#34;:&#34;phone&#34;,&#34;ding&#34;:&#34;webhookUrl&#34;}]`; for `&#34;Contacts&#34;`, use `[{&#34;name&#34;:&#34;contactGroupName&#34;}]`.
      * 
      */
     @Export(name="monitorContactsJson", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> monitorContactsJson;
 
     /**
-     * @return Alarm contact JSON format.
+     * @return Alarm contact JSON format. **Note:** This field only takes effect when `monitorConfigJson` contains an `alarmType` value (e.g. `&#34;CustomContacts&#34;` or `&#34;Contacts&#34;`). The format depends on `alarmType`: for `&#34;CustomContacts&#34;`, use `[{&#34;userName&#34;:&#34;name&#34;,&#34;userPhone&#34;:&#34;phone&#34;,&#34;ding&#34;:&#34;webhookUrl&#34;}]`; for `&#34;Contacts&#34;`, use `[{&#34;name&#34;:&#34;contactGroupName&#34;}]`.
      * 
      */
     public Output<Optional<String>> monitorContactsJson() {

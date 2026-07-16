@@ -24,14 +24,19 @@ class CustomDiskArgs:
                  zone_id: pulumi.Input[_builtins.str],
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDisk resource.
@@ -41,23 +46,36 @@ class CustomDiskArgs:
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk together with the instance. Valid values:
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+               
+               > **NOTE:** From version 1.281.0, `description` can be modified.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+               
+               > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+               - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
                - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
                - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
                - `PL2`: maximum random read/write IOPS 100000 for a single disk.
                - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
                
+               > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+               
                For more information about how to select an ESSD performance level, see ESSD cloud disk.
-        :param pulumi.Input[_builtins.int] period: Reserved parameters, no need to fill in.
-        :param pulumi.Input[_builtins.str] period_unit: Reserved parameters, no need to fill in.
+        :param pulumi.Input[_builtins.int] period: Field `period` has been deprecated from provider version 1.283.0.
+        :param pulumi.Input[_builtins.str] period_unit: Field `period_unit` has been deprecated from provider version 1.283.0.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the disk belongs.
         :param pulumi.Input[_builtins.str] snapshot_id: The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
                - Snapshots are not supported for creating elastic temporary disks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] type: The method of expanding the disk. Value range:
                offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
                online: online expansion, which can be completed without restarting the instance.
@@ -69,6 +87,10 @@ class CustomDiskArgs:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_name is not None:
@@ -77,14 +99,26 @@ class CustomDiskArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
         if period is not None:
+            warnings.warn("""Field `period` has been deprecated from provider version 1.283.0.""", DeprecationWarning)
+            pulumi.log.warn("""period is deprecated: Field `period` has been deprecated from provider version 1.283.0.""")
+        if period is not None:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
+            warnings.warn("""Field `period_unit` has been deprecated from provider version 1.283.0.""", DeprecationWarning)
+            pulumi.log.warn("""period_unit is deprecated: Field `period_unit` has been deprecated from provider version 1.283.0.""")
+        if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -149,10 +183,36 @@ class CustomDiskArgs:
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bursting_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to release the disk together with the instance. Valid values:
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+
+        > **NOTE:** From version 1.281.0, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -164,7 +224,9 @@ class CustomDiskArgs:
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+
+        > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         """
         return pulumi.get(self, "disk_name")
 
@@ -188,13 +250,27 @@ class CustomDiskArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        The billing method. Valid values:
+        - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+        - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
     def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
@@ -206,6 +282,8 @@ class CustomDiskArgs:
         - `PL2`: maximum random read/write IOPS 100000 for a single disk.
         - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 
+        > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+
         For more information about how to select an ESSD performance level, see ESSD cloud disk.
         """
         return pulumi.get(self, "performance_level")
@@ -216,9 +294,10 @@ class CustomDiskArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `period` has been deprecated from provider version 1.283.0.""")
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Reserved parameters, no need to fill in.
+        Field `period` has been deprecated from provider version 1.283.0.
         """
         return pulumi.get(self, "period")
 
@@ -228,15 +307,28 @@ class CustomDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
+    @_utilities.deprecated("""Field `period_unit` has been deprecated from provider version 1.283.0.""")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters, no need to fill in.
+        Field `period_unit` has been deprecated from provider version 1.283.0.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
     def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the resource group to which the disk belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
@@ -252,6 +344,18 @@ class CustomDiskArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
@@ -273,12 +377,15 @@ class _CustomDiskState:
     def __init__(__self__, *,
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_category: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -287,6 +394,7 @@ class _CustomDiskState:
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -294,21 +402,32 @@ class _CustomDiskState:
 
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk together with the instance. Valid values:
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+               
+               > **NOTE:** From version 1.281.0, `description` can be modified.
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+               
+               > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+               - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
                - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
                - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
                - `PL2`: maximum random read/write IOPS 100000 for a single disk.
                - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
                
+               > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+               
                For more information about how to select an ESSD performance level, see ESSD cloud disk.
-        :param pulumi.Input[_builtins.int] period: Reserved parameters, no need to fill in.
-        :param pulumi.Input[_builtins.str] period_unit: Reserved parameters, no need to fill in.
+        :param pulumi.Input[_builtins.int] period: Field `period` has been deprecated from provider version 1.283.0.
+        :param pulumi.Input[_builtins.str] period_unit: Field `period_unit` has been deprecated from provider version 1.283.0.
         :param pulumi.Input[_builtins.str] region_id: The region ID. You can view the region ID through the DescribeRegions interface.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the disk belongs.
         :param pulumi.Input[_builtins.int] size: Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
@@ -316,7 +435,8 @@ class _CustomDiskState:
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
                - Snapshots are not supported for creating elastic temporary disks.
-        :param pulumi.Input[_builtins.str] status: Disk status. Value Description:_use: In use.
+        :param pulumi.Input[_builtins.str] status: Disk status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] type: The method of expanding the disk. Value range:
                offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
                online: online expansion, which can be completed without restarting the instance.
@@ -326,8 +446,12 @@ class _CustomDiskState:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delete_with_instance is not None:
+            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_category is not None:
@@ -338,10 +462,18 @@ class _CustomDiskState:
             pulumi.set(__self__, "dry_run", dry_run)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
         if period is not None:
+            warnings.warn("""Field `period` has been deprecated from provider version 1.283.0.""", DeprecationWarning)
+            pulumi.log.warn("""period is deprecated: Field `period` has been deprecated from provider version 1.283.0.""")
+        if period is not None:
             pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            warnings.warn("""Field `period_unit` has been deprecated from provider version 1.283.0.""", DeprecationWarning)
+            pulumi.log.warn("""period_unit is deprecated: Field `period_unit` has been deprecated from provider version 1.283.0.""")
         if period_unit is not None:
             pulumi.set(__self__, "period_unit", period_unit)
         if region_id is not None:
@@ -354,6 +486,8 @@ class _CustomDiskState:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
@@ -384,6 +518,18 @@ class _CustomDiskState:
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bursting_enabled", value)
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -396,10 +542,24 @@ class _CustomDiskState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to release the disk together with the instance. Valid values:
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @delete_with_instance.setter
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "delete_with_instance", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+
+        > **NOTE:** From version 1.281.0, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -423,7 +583,9 @@ class _CustomDiskState:
     @pulumi.getter(name="diskName")
     def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+
+        > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         """
         return pulumi.get(self, "disk_name")
 
@@ -447,13 +609,27 @@ class _CustomDiskState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        The billing method. Valid values:
+        - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+        - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
     def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
@@ -465,6 +641,8 @@ class _CustomDiskState:
         - `PL2`: maximum random read/write IOPS 100000 for a single disk.
         - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 
+        > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+
         For more information about how to select an ESSD performance level, see ESSD cloud disk.
         """
         return pulumi.get(self, "performance_level")
@@ -475,9 +653,10 @@ class _CustomDiskState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `period` has been deprecated from provider version 1.283.0.""")
     def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Reserved parameters, no need to fill in.
+        Field `period` has been deprecated from provider version 1.283.0.
         """
         return pulumi.get(self, "period")
 
@@ -487,9 +666,10 @@ class _CustomDiskState:
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
+    @_utilities.deprecated("""Field `period_unit` has been deprecated from provider version 1.283.0.""")
     def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reserved parameters, no need to fill in.
+        Field `period_unit` has been deprecated from provider version 1.283.0.
         """
         return pulumi.get(self, "period_unit")
 
@@ -552,13 +732,25 @@ class _CustomDiskState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Disk status. Value Description:_use: In use.
+        Disk status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
@@ -595,16 +787,21 @@ class CustomDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_category: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -661,25 +858,38 @@ class CustomDisk(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk together with the instance. Valid values:
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+               
+               > **NOTE:** From version 1.281.0, `description` can be modified.
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+               
+               > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+               - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
                - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
                - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
                - `PL2`: maximum random read/write IOPS 100000 for a single disk.
                - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
                
+               > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+               
                For more information about how to select an ESSD performance level, see ESSD cloud disk.
-        :param pulumi.Input[_builtins.int] period: Reserved parameters, no need to fill in.
-        :param pulumi.Input[_builtins.str] period_unit: Reserved parameters, no need to fill in.
+        :param pulumi.Input[_builtins.int] period: Field `period` has been deprecated from provider version 1.283.0.
+        :param pulumi.Input[_builtins.str] period_unit: Field `period_unit` has been deprecated from provider version 1.283.0.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the disk belongs.
         :param pulumi.Input[_builtins.int] size: Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
         :param pulumi.Input[_builtins.str] snapshot_id: The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
                - Snapshots are not supported for creating elastic temporary disks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] type: The method of expanding the disk. Value range:
                offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
                online: online expansion, which can be completed without restarting the instance.
@@ -757,16 +967,21 @@ class CustomDisk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_category: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  period: pulumi.Input[Optional[_builtins.int]] = None,
                  period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -780,6 +995,8 @@ class CustomDisk(pulumi.CustomResource):
 
             __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["bursting_enabled"] = bursting_enabled
+            __props__.__dict__["delete_with_instance"] = delete_with_instance
             __props__.__dict__["description"] = description
             if disk_category is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_category'")
@@ -787,20 +1004,22 @@ class CustomDisk(pulumi.CustomResource):
             __props__.__dict__["disk_name"] = disk_name
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["performance_level"] = performance_level
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["type"] = type
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
-            __props__.__dict__["resource_group_id"] = None
             __props__.__dict__["status"] = None
         super(CustomDisk, __self__).__init__(
             'alicloud:rds/customDisk:CustomDisk',
@@ -814,12 +1033,15 @@ class CustomDisk(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disk_category: pulumi.Input[Optional[_builtins.str]] = None,
             disk_name: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             performance_level: pulumi.Input[Optional[_builtins.str]] = None,
             period: pulumi.Input[Optional[_builtins.int]] = None,
             period_unit: pulumi.Input[Optional[_builtins.str]] = None,
@@ -828,6 +1050,7 @@ class CustomDisk(pulumi.CustomResource):
             size: pulumi.Input[Optional[_builtins.int]] = None,
             snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDisk':
         """
@@ -839,21 +1062,32 @@ class CustomDisk(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically. Value range:
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        :param pulumi.Input[_builtins.bool] delete_with_instance: Specifies whether to release the disk together with the instance. Valid values:
+        :param pulumi.Input[_builtins.str] description: The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+               
+               > **NOTE:** From version 1.281.0, `description` can be modified.
         :param pulumi.Input[_builtins.str] disk_category: The type of the data disk. Value range:
-        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        :param pulumi.Input[_builtins.str] disk_name: The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+               
+               > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to pre-check the instance creation operation. Valid values:
-        :param pulumi.Input[_builtins.str] instance_charge_type: The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        :param pulumi.Input[_builtins.str] instance_charge_type: The billing method. Valid values:
+               - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+               - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
         :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk, set the performance level of the disk. Value range:
                - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
                - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
                - `PL2`: maximum random read/write IOPS 100000 for a single disk.
                - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
                
+               > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+               
                For more information about how to select an ESSD performance level, see ESSD cloud disk.
-        :param pulumi.Input[_builtins.int] period: Reserved parameters, no need to fill in.
-        :param pulumi.Input[_builtins.str] period_unit: Reserved parameters, no need to fill in.
+        :param pulumi.Input[_builtins.int] period: Field `period` has been deprecated from provider version 1.283.0.
+        :param pulumi.Input[_builtins.str] period_unit: Field `period_unit` has been deprecated from provider version 1.283.0.
         :param pulumi.Input[_builtins.str] region_id: The region ID. You can view the region ID through the DescribeRegions interface.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the disk belongs.
         :param pulumi.Input[_builtins.int] size: Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
@@ -861,7 +1095,8 @@ class CustomDisk(pulumi.CustomResource):
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
                - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
                - Snapshots are not supported for creating elastic temporary disks.
-        :param pulumi.Input[_builtins.str] status: Disk status. Value Description:_use: In use.
+        :param pulumi.Input[_builtins.str] status: Disk status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The list of tags.
         :param pulumi.Input[_builtins.str] type: The method of expanding the disk. Value range:
                offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
                online: online expansion, which can be completed without restarting the instance.
@@ -873,12 +1108,15 @@ class CustomDisk(pulumi.CustomResource):
 
         __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["auto_renew"] = auto_renew
+        __props__.__dict__["bursting_enabled"] = bursting_enabled
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_with_instance"] = delete_with_instance
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_category"] = disk_category
         __props__.__dict__["disk_name"] = disk_name
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["performance_level"] = performance_level
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
@@ -887,6 +1125,7 @@ class CustomDisk(pulumi.CustomResource):
         __props__.__dict__["size"] = size
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
         return CustomDisk(resource_name, opts=opts, __props__=__props__)
@@ -908,6 +1147,14 @@ class CustomDisk(pulumi.CustomResource):
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
@@ -916,10 +1163,20 @@ class CustomDisk(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="deleteWithInstance")
+    def delete_with_instance(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to release the disk together with the instance. Valid values:
+        """
+        return pulumi.get(self, "delete_with_instance")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+        The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+
+        > **NOTE:** From version 1.281.0, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -933,9 +1190,11 @@ class CustomDisk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="diskName")
-    def disk_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def disk_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `disk_name` can be modified.
+        The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+
+        > **NOTE:** From version 1.281.0, `disk_name` can be modified.
         """
         return pulumi.get(self, "disk_name")
 
@@ -949,15 +1208,25 @@ class CustomDisk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+        The billing method. Valid values:
+        - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+        - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
         """
         return pulumi.get(self, "instance_charge_type")
 
     @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the instance to which the disk is attached. If `instance_charge_type` is `Prepaid`, you must specify the ID of a prepaid instance.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def performance_level(self) -> pulumi.Output[_builtins.str]:
         """
         When creating an ESSD cloud disk, set the performance level of the disk. Value range:
         - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -965,23 +1234,27 @@ class CustomDisk(pulumi.CustomResource):
         - `PL2`: maximum random read/write IOPS 100000 for a single disk.
         - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 
+        > **NOTE:** From version 1.283.0, `performance_level` can be modified.
+
         For more information about how to select an ESSD performance level, see ESSD cloud disk.
         """
         return pulumi.get(self, "performance_level")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field `period` has been deprecated from provider version 1.283.0.""")
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Reserved parameters, no need to fill in.
+        Field `period` has been deprecated from provider version 1.283.0.
         """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
+    @_utilities.deprecated("""Field `period_unit` has been deprecated from provider version 1.283.0.""")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Reserved parameters, no need to fill in.
+        Field `period_unit` has been deprecated from provider version 1.283.0.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1024,9 +1297,17 @@ class CustomDisk(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Disk status. Value Description:_use: In use.
+        Disk status.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

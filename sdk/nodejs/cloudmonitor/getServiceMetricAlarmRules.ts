@@ -7,13 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+ * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
  *
  * > **NOTE:** Available since v1.256.0.
  *
  * ## Example Usage
- *
- * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -72,7 +70,9 @@ export function getServiceMetricAlarmRules(args?: GetServiceMetricAlarmRulesArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", {
         "dimensions": args.dimensions,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "metricAlarmRuleId": args.metricAlarmRuleId,
         "metricName": args.metricName,
         "namespace": args.namespace,
         "outputFile": args.outputFile,
@@ -86,19 +86,36 @@ export function getServiceMetricAlarmRules(args?: GetServiceMetricAlarmRulesArgs
  */
 export interface GetServiceMetricAlarmRulesArgs {
     /**
-     * The monitoring dimensions of the specified resource.
+     * The monitoring dimensions for the specified resource.
+     * Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
      */
     dimensions?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: boolean;
     /**
      * A list of Metric Alarm Rule IDs.
      */
     ids?: string[];
     /**
-     * The name of the metric.
+     * The ID of the alarm rule.
+     *
+     * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     *
+     * > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+     */
+    metricAlarmRuleId?: string;
+    /**
+     * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     *
+     * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      */
     metricName?: string;
     /**
-     * The namespace of the cloud service.
+     * The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     *
+     * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
      */
     namespace?: string;
     /**
@@ -106,11 +123,17 @@ export interface GetServiceMetricAlarmRulesArgs {
      */
     outputFile?: string;
     /**
-     * The name of the alert rule.
+     * Alert rule name.
+     *
+     * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     *
+     * > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
      */
     ruleName?: string;
     /**
-     * Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+     * The enabled status of the alarm rule. Valid values:
+     * - true: enabled.
+     * - false: disabled.
      */
     status?: boolean;
 }
@@ -120,44 +143,50 @@ export interface GetServiceMetricAlarmRulesArgs {
  */
 export interface GetServiceMetricAlarmRulesResult {
     /**
-     * The dimensions of the alert rule.
+     * The monitoring dimensions for the specified resource.
      */
     readonly dimensions?: string;
+    readonly enableDetails?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A list of Metric Alarm Rule IDs.
+     */
     readonly ids: string[];
     /**
-     * The metric that is used to monitor the cloud service.
+     * The ID of the alarm rule.
+     */
+    readonly metricAlarmRuleId?: string;
+    /**
+     * The name of the metric.
      */
     readonly metricName?: string;
     /**
-     * The namespace of the cloud service.
+     * The namespace of the cloud service metric data.
      */
     readonly namespace?: string;
     readonly outputFile?: string;
     /**
-     * The name of the alert rule.
+     * Alert rule name.
      */
     readonly ruleName?: string;
     /**
-     * A list of Hybrid Double Writes. Each element contains the following attributes:
+     * A list of Metric Alarm Rule Entries. Each element contains the following attributes:
      */
     readonly rules: outputs.cloudmonitor.GetServiceMetricAlarmRulesRule[];
     /**
-     * Indicates whether the alert rule is enabled.
+     * The enabled status of the alarm rule.
      */
     readonly status?: boolean;
 }
 /**
- * This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+ * This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
  *
  * > **NOTE:** Available since v1.256.0.
  *
  * ## Example Usage
- *
- * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -216,7 +245,9 @@ export function getServiceMetricAlarmRulesOutput(args?: GetServiceMetricAlarmRul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", {
         "dimensions": args.dimensions,
+        "enableDetails": args.enableDetails,
         "ids": args.ids,
+        "metricAlarmRuleId": args.metricAlarmRuleId,
         "metricName": args.metricName,
         "namespace": args.namespace,
         "outputFile": args.outputFile,
@@ -230,19 +261,36 @@ export function getServiceMetricAlarmRulesOutput(args?: GetServiceMetricAlarmRul
  */
 export interface GetServiceMetricAlarmRulesOutputArgs {
     /**
-     * The monitoring dimensions of the specified resource.
+     * The monitoring dimensions for the specified resource.
+     * Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
      */
     dimensions?: pulumi.Input<string | undefined>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Metric Alarm Rule IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The name of the metric.
+     * The ID of the alarm rule.
+     *
+     * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     *
+     * > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+     */
+    metricAlarmRuleId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     *
+     * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      */
     metricName?: pulumi.Input<string | undefined>;
     /**
-     * The namespace of the cloud service.
+     * The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     *
+     * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
      */
     namespace?: pulumi.Input<string | undefined>;
     /**
@@ -250,11 +298,17 @@ export interface GetServiceMetricAlarmRulesOutputArgs {
      */
     outputFile?: pulumi.Input<string | undefined>;
     /**
-     * The name of the alert rule.
+     * Alert rule name.
+     *
+     * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     *
+     * > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
      */
     ruleName?: pulumi.Input<string | undefined>;
     /**
-     * Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+     * The enabled status of the alarm rule. Valid values:
+     * - true: enabled.
+     * - false: disabled.
      */
     status?: pulumi.Input<boolean | undefined>;
 }

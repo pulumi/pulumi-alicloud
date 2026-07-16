@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetSqlLogConfigsArgs, GetSqlLogConfigsResult, GetSqlLogConfigsOutputArgs } from "./getSqlLogConfigs";
+export const getSqlLogConfigs: typeof import("./getSqlLogConfigs").getSqlLogConfigs = null as any;
+export const getSqlLogConfigsOutput: typeof import("./getSqlLogConfigs").getSqlLogConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getSqlLogConfigs","getSqlLogConfigsOutput"], () => require("./getSqlLogConfigs"));
+
+export { SqlLogConfigArgs, SqlLogConfigState } from "./sqlLogConfig";
+export type SqlLogConfig = import("./sqlLogConfig").SqlLogConfig;
+export const SqlLogConfig: typeof import("./sqlLogConfig").SqlLogConfig = null as any;
+utilities.lazyLoad(exports, ["SqlLogConfig"], () => require("./sqlLogConfig"));
+
 export { SwitchDasProArgs, SwitchDasProState } from "./switchDasPro";
 export type SwitchDasPro = import("./switchDasPro").SwitchDasPro;
 export const SwitchDasPro: typeof import("./switchDasPro").SwitchDasPro = null as any;
@@ -15,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:das/sqlLogConfig:SqlLogConfig":
+                return new SqlLogConfig(name, <any>undefined, { urn })
             case "alicloud:das/switchDasPro:SwitchDasPro":
                 return new SwitchDasPro(name, <any>undefined, { urn })
             default:
@@ -22,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "das/sqlLogConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "das/switchDasPro", _module)

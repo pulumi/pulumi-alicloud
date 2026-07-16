@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -92,6 +93,10 @@ import javax.annotation.Nullable;
  *             .parameters("""
  * \t\t\t\t{\"Status\":\"Running\"}
  *             """)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "execution Test")
+ *             ))
  *             .build());
  * 
  *     }
@@ -335,6 +340,20 @@ public class Execution extends com.pulumi.resources.CustomResource {
      */
     public Output<String> statusMessage() {
         return this.statusMessage;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.

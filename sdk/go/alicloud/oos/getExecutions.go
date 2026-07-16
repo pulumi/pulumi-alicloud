@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in v1.93.0+.
+// > **NOTE:** Available since v1.93.0.
 //
 // ## Example Usage
 //
@@ -96,28 +96,37 @@ type GetExecutionsArgs struct {
 
 // A collection of values returned by getExecutions.
 type GetExecutionsResult struct {
-	Category     *string `pulumi:"category"`
+	// The category of OOS Execution.
+	Category *string `pulumi:"category"`
+	// The time when the execution was ended.
 	EndDate      *string `pulumi:"endDate"`
 	EndDateAfter *string `pulumi:"endDateAfter"`
-	ExecutedBy   *string `pulumi:"executedBy"`
+	// The user who execute the template.
+	ExecutedBy *string `pulumi:"executedBy"`
 	// A list of OOS Executions. Each element contains the following attributes:
 	Executions []GetExecutionsExecution `pulumi:"executions"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of OOS Execution ids.
-	Ids                   []string          `pulumi:"ids"`
-	IncludeChildExecution *bool             `pulumi:"includeChildExecution"`
-	Mode                  *string           `pulumi:"mode"`
-	OutputFile            *string           `pulumi:"outputFile"`
-	ParentExecutionId     *string           `pulumi:"parentExecutionId"`
-	RamRole               *string           `pulumi:"ramRole"`
-	SortField             *string           `pulumi:"sortField"`
-	SortOrder             *string           `pulumi:"sortOrder"`
-	StartDateAfter        *string           `pulumi:"startDateAfter"`
-	StartDateBefore       *string           `pulumi:"startDateBefore"`
-	Status                *string           `pulumi:"status"`
-	Tags                  map[string]string `pulumi:"tags"`
-	TemplateName          *string           `pulumi:"templateName"`
+	Ids                   []string `pulumi:"ids"`
+	IncludeChildExecution *bool    `pulumi:"includeChildExecution"`
+	// The mode of OOS Execution.
+	Mode       *string `pulumi:"mode"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The id of parent OOS Execution.
+	ParentExecutionId *string `pulumi:"parentExecutionId"`
+	// The role that executes the current template.
+	RamRole         *string `pulumi:"ramRole"`
+	SortField       *string `pulumi:"sortField"`
+	SortOrder       *string `pulumi:"sortOrder"`
+	StartDateAfter  *string `pulumi:"startDateAfter"`
+	StartDateBefore *string `pulumi:"startDateBefore"`
+	// The status of OOS Execution.
+	Status *string `pulumi:"status"`
+	// (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of execution template.
+	TemplateName *string `pulumi:"templateName"`
 }
 
 func GetExecutionsOutput(ctx *pulumi.Context, args GetExecutionsOutputArgs, opts ...pulumi.InvokeOption) GetExecutionsResultOutput {
@@ -186,10 +195,12 @@ func (o GetExecutionsResultOutput) ToGetExecutionsResultOutputWithContext(ctx co
 	return o
 }
 
+// The category of OOS Execution.
 func (o GetExecutionsResultOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The time when the execution was ended.
 func (o GetExecutionsResultOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.EndDate }).(pulumi.StringPtrOutput)
 }
@@ -198,6 +209,7 @@ func (o GetExecutionsResultOutput) EndDateAfter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.EndDateAfter }).(pulumi.StringPtrOutput)
 }
 
+// The user who execute the template.
 func (o GetExecutionsResultOutput) ExecutedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.ExecutedBy }).(pulumi.StringPtrOutput)
 }
@@ -221,6 +233,7 @@ func (o GetExecutionsResultOutput) IncludeChildExecution() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GetExecutionsResult) *bool { return v.IncludeChildExecution }).(pulumi.BoolPtrOutput)
 }
 
+// The mode of OOS Execution.
 func (o GetExecutionsResultOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -229,10 +242,12 @@ func (o GetExecutionsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The id of parent OOS Execution.
 func (o GetExecutionsResultOutput) ParentExecutionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.ParentExecutionId }).(pulumi.StringPtrOutput)
 }
 
+// The role that executes the current template.
 func (o GetExecutionsResultOutput) RamRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.RamRole }).(pulumi.StringPtrOutput)
 }
@@ -253,14 +268,17 @@ func (o GetExecutionsResultOutput) StartDateBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.StartDateBefore }).(pulumi.StringPtrOutput)
 }
 
+// The status of OOS Execution.
 func (o GetExecutionsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
 func (o GetExecutionsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetExecutionsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The name of execution template.
 func (o GetExecutionsResultOutput) TemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetExecutionsResult) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
 }

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -40,6 +41,11 @@ public final class InstanceNetworkInterfaces {
      * 
      */
     private @Nullable List<String> securityGroupIds;
+    /**
+     * @return Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    private @Nullable Boolean sourceDestCheck;
     /**
      * @return The ID of the vSwitch to which to connect Secondary ENI N.
      * 
@@ -85,6 +91,13 @@ public final class InstanceNetworkInterfaces {
         return this.securityGroupIds == null ? List.of() : this.securityGroupIds;
     }
     /**
+     * @return Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Boolean> sourceDestCheck() {
+        return Optional.ofNullable(this.sourceDestCheck);
+    }
+    /**
      * @return The ID of the vSwitch to which to connect Secondary ENI N.
      * 
      */
@@ -106,6 +119,7 @@ public final class InstanceNetworkInterfaces {
         private @Nullable String networkInterfaceTrafficMode;
         private @Nullable Integer queuePairNumber;
         private @Nullable List<String> securityGroupIds;
+        private @Nullable Boolean sourceDestCheck;
         private @Nullable String vswitchId;
         public Builder() {}
         public Builder(InstanceNetworkInterfaces defaults) {
@@ -115,6 +129,7 @@ public final class InstanceNetworkInterfaces {
     	      this.networkInterfaceTrafficMode = defaults.networkInterfaceTrafficMode;
     	      this.queuePairNumber = defaults.queuePairNumber;
     	      this.securityGroupIds = defaults.securityGroupIds;
+    	      this.sourceDestCheck = defaults.sourceDestCheck;
     	      this.vswitchId = defaults.vswitchId;
         }
 
@@ -152,6 +167,12 @@ public final class InstanceNetworkInterfaces {
             return securityGroupIds(List.of(securityGroupIds));
         }
         @CustomType.Setter
+        public Builder sourceDestCheck(@Nullable Boolean sourceDestCheck) {
+
+            this.sourceDestCheck = sourceDestCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
 
             this.vswitchId = vswitchId;
@@ -164,6 +185,7 @@ public final class InstanceNetworkInterfaces {
             _resultValue.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
             _resultValue.queuePairNumber = queuePairNumber;
             _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.sourceDestCheck = sourceDestCheck;
             _resultValue.vswitchId = vswitchId;
             return _resultValue;
         }

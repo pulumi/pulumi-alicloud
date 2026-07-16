@@ -1134,6 +1134,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The target minor version of the cluster. Used during creation.
+     * 
+     */
+    @Import(name="targetMinorVersion")
+    private @Nullable Output<String> targetMinorVersion;
+
+    /**
+     * @return The target minor version of the cluster. Used during creation.
+     * 
+     */
+    public Optional<Output<String>> targetMinorVersion() {
+        return Optional.ofNullable(this.targetMinorVersion);
+    }
+
+    /**
      * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
      * &gt; **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
      * 
@@ -1284,6 +1299,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.subCategory = $.subCategory;
         this.tags = $.tags;
         this.targetDbRevisionVersionCode = $.targetDbRevisionVersionCode;
+        this.targetMinorVersion = $.targetMinorVersion;
         this.tdeStatus = $.tdeStatus;
         this.upgradeType = $.upgradeType;
         this.vpcId = $.vpcId;
@@ -2884,6 +2900,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder targetDbRevisionVersionCode(String targetDbRevisionVersionCode) {
             return targetDbRevisionVersionCode(Output.of(targetDbRevisionVersionCode));
+        }
+
+        /**
+         * @param targetMinorVersion The target minor version of the cluster. Used during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetMinorVersion(@Nullable Output<String> targetMinorVersion) {
+            $.targetMinorVersion = targetMinorVersion;
+            return this;
+        }
+
+        /**
+         * @param targetMinorVersion The target minor version of the cluster. Used during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetMinorVersion(String targetMinorVersion) {
+            return targetMinorVersion(Output.of(targetMinorVersion));
         }
 
         /**

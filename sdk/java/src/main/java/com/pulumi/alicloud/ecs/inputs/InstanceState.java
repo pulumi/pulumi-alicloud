@@ -271,6 +271,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    @Import(name="enableHighDensityMode")
+    private @Nullable Output<Boolean> enableHighDensityMode;
+
+    /**
+     * @return Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    public Optional<Output<Boolean>> enableHighDensityMode() {
+        return Optional.ofNullable(this.enableHighDensityMode);
+    }
+
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      * 
      */
@@ -768,12 +787,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the Primary ENI.
      * 
+     * &gt; **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
+     * 
      */
     @Import(name="networkInterfaceId")
     private @Nullable Output<String> networkInterfaceId;
 
     /**
      * @return The ID of the Primary ENI.
+     * 
+     * &gt; **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
      * 
      */
     public Optional<Output<String>> networkInterfaceId() {
@@ -1160,18 +1183,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * A list of security group ids to associate with.
+     * 
+     * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     @Import(name="securityGroups")
     private @Nullable Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * @return A list of security group ids to associate with.
+     * 
+     * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     public Optional<Output<List<String>>> securityGroups() {
         return Optional.ofNullable(this.securityGroups);
+    }
+
+    /**
+     * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="sourceDestCheck")
+    private @Nullable Output<Boolean> sourceDestCheck;
+
+    /**
+     * @return Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> sourceDestCheck() {
+        return Optional.ofNullable(this.sourceDestCheck);
     }
 
     /**
@@ -1599,6 +1641,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.deploymentSetId = $.deploymentSetId;
         this.description = $.description;
         this.dryRun = $.dryRun;
+        this.enableHighDensityMode = $.enableHighDensityMode;
         this.enableJumboFrame = $.enableJumboFrame;
         this.expiredTime = $.expiredTime;
         this.forceDelete = $.forceDelete;
@@ -1653,6 +1696,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.secondaryPrivateIps = $.secondaryPrivateIps;
         this.securityEnhancementStrategy = $.securityEnhancementStrategy;
         this.securityGroups = $.securityGroups;
+        this.sourceDestCheck = $.sourceDestCheck;
         this.spotDuration = $.spotDuration;
         this.spotInterruptionBehavior = $.spotInterruptionBehavior;
         this.spotPriceLimit = $.spotPriceLimit;
@@ -2041,6 +2085,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dryRun(Boolean dryRun) {
             return dryRun(Output.of(dryRun));
+        }
+
+        /**
+         * @param enableHighDensityMode Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHighDensityMode(@Nullable Output<Boolean> enableHighDensityMode) {
+            $.enableHighDensityMode = enableHighDensityMode;
+            return this;
+        }
+
+        /**
+         * @param enableHighDensityMode Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHighDensityMode(Boolean enableHighDensityMode) {
+            return enableHighDensityMode(Output.of(enableHighDensityMode));
         }
 
         /**
@@ -2737,6 +2806,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param networkInterfaceId The ID of the Primary ENI.
          * 
+         * &gt; **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
+         * 
          * @return builder
          * 
          */
@@ -2747,6 +2818,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkInterfaceId The ID of the Primary ENI.
+         * 
+         * &gt; **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
          * 
          * @return builder
          * 
@@ -3271,7 +3344,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+         * @param securityGroups A list of security group ids to associate with.
+         * 
+         * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
          * 
          * @return builder
          * 
@@ -3282,7 +3357,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+         * @param securityGroups A list of security group ids to associate with.
+         * 
+         * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
          * 
          * @return builder
          * 
@@ -3292,13 +3369,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroups A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+         * @param securityGroups A list of security group ids to associate with.
+         * 
+         * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
          * 
          * @return builder
          * 
          */
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
+        }
+
+        /**
+         * @param sourceDestCheck Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDestCheck(@Nullable Output<Boolean> sourceDestCheck) {
+            $.sourceDestCheck = sourceDestCheck;
+            return this;
+        }
+
+        /**
+         * @param sourceDestCheck Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDestCheck(Boolean sourceDestCheck) {
+            return sourceDestCheck(Output.of(sourceDestCheck));
         }
 
         /**

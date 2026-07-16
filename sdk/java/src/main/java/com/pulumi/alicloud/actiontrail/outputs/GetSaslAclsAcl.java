@@ -36,6 +36,11 @@ public final class GetSaslAclsAcl {
      */
     private String host;
     /**
+     * @return (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `&lt;instance_id&gt;:&lt;username&gt;:&lt;acl_resource_type&gt;:&lt;acl_resource_name&gt;:&lt;acl_resource_pattern_type&gt;:&lt;acl_operation_type&gt;`.
+     * 
+     */
+    private String id;
+    /**
      * @return Get results for the specified username.
      * 
      */
@@ -78,6 +83,13 @@ public final class GetSaslAclsAcl {
         return this.host;
     }
     /**
+     * @return (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `&lt;instance_id&gt;:&lt;username&gt;:&lt;acl_resource_type&gt;:&lt;acl_resource_name&gt;:&lt;acl_resource_pattern_type&gt;:&lt;acl_operation_type&gt;`.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
      * @return Get results for the specified username.
      * 
      */
@@ -99,6 +111,7 @@ public final class GetSaslAclsAcl {
         private String aclResourcePatternType;
         private String aclResourceType;
         private String host;
+        private String id;
         private String username;
         public Builder() {}
         public Builder(GetSaslAclsAcl defaults) {
@@ -108,6 +121,7 @@ public final class GetSaslAclsAcl {
     	      this.aclResourcePatternType = defaults.aclResourcePatternType;
     	      this.aclResourceType = defaults.aclResourceType;
     	      this.host = defaults.host;
+    	      this.id = defaults.id;
     	      this.username = defaults.username;
         }
 
@@ -152,6 +166,14 @@ public final class GetSaslAclsAcl {
             return this;
         }
         @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSaslAclsAcl", "id");
+            }
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetSaslAclsAcl", "username");
@@ -166,6 +188,7 @@ public final class GetSaslAclsAcl {
             _resultValue.aclResourcePatternType = aclResourcePatternType;
             _resultValue.aclResourceType = aclResourceType;
             _resultValue.host = host;
+            _resultValue.id = id;
             _resultValue.username = username;
             return _resultValue;
         }

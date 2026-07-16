@@ -14,6 +14,12 @@ import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetRouterInterfacesPlainArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsPlainArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesPlainArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsArgs;
+import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetVbrPconnAssociationsPlainArgs;
 import com.pulumi.alicloud.expressconnect.inputs.GetVirtualBorderRoutersArgs;
@@ -25,6 +31,9 @@ import com.pulumi.alicloud.expressconnect.outputs.GetGrantRuleToCensResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetPhysicalConnectionServiceResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetPhysicalConnectionsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetRouterInterfacesResult;
+import com.pulumi.alicloud.expressconnect.outputs.GetRouterTrAssociationsResult;
+import com.pulumi.alicloud.expressconnect.outputs.GetRouterVbrChildInstancesResult;
+import com.pulumi.alicloud.expressconnect.outputs.GetRouterVpcAssociationsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetVbrPconnAssociationsResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualBorderRoutersResult;
 import com.pulumi.alicloud.expressconnect.outputs.GetVirtualPhysicalConnectionsResult;
@@ -1581,6 +1590,1291 @@ public final class ExpressconnectFunctions {
      */
     public static CompletableFuture<GetRouterInterfacesResult> getRouterInterfacesPlain(GetRouterInterfacesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the  Express Connect Router Tr Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultRouterTrAssociation = new RouterTrAssociation("defaultRouterTrAssociation", RouterTrAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterOwnerId(default_.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .allowedPrefixes(            
+     *                 "10.0.0.0/24",
+     *                 "10.0.1.0/24",
+     *                 "10.0.2.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterTrAssociations(GetRouterTrAssociationsArgs.builder()
+     *             .ids(defaultRouterTrAssociation.id())
+     *             .ecrId(defaultRouterTrAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterTrAssociationsResult> getRouterTrAssociations(GetRouterTrAssociationsArgs args) {
+        return getRouterTrAssociations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the  Express Connect Router Tr Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultRouterTrAssociation = new RouterTrAssociation("defaultRouterTrAssociation", RouterTrAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterOwnerId(default_.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .allowedPrefixes(            
+     *                 "10.0.0.0/24",
+     *                 "10.0.1.0/24",
+     *                 "10.0.2.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterTrAssociations(GetRouterTrAssociationsArgs.builder()
+     *             .ids(defaultRouterTrAssociation.id())
+     *             .ecrId(defaultRouterTrAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterTrAssociationsResult> getRouterTrAssociationsPlain(GetRouterTrAssociationsPlainArgs args) {
+        return getRouterTrAssociationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the  Express Connect Router Tr Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultRouterTrAssociation = new RouterTrAssociation("defaultRouterTrAssociation", RouterTrAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterOwnerId(default_.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .allowedPrefixes(            
+     *                 "10.0.0.0/24",
+     *                 "10.0.1.0/24",
+     *                 "10.0.2.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterTrAssociations(GetRouterTrAssociationsArgs.builder()
+     *             .ids(defaultRouterTrAssociation.id())
+     *             .ecrId(defaultRouterTrAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterTrAssociationsResult> getRouterTrAssociations(GetRouterTrAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterTrAssociations:getRouterTrAssociations", TypeShape.of(GetRouterTrAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the  Express Connect Router Tr Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultRouterTrAssociation = new RouterTrAssociation("defaultRouterTrAssociation", RouterTrAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterOwnerId(default_.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .allowedPrefixes(            
+     *                 "10.0.0.0/24",
+     *                 "10.0.1.0/24",
+     *                 "10.0.2.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterTrAssociations(GetRouterTrAssociationsArgs.builder()
+     *             .ids(defaultRouterTrAssociation.id())
+     *             .ecrId(defaultRouterTrAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterTrAssociationsResult> getRouterTrAssociations(GetRouterTrAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterTrAssociations:getRouterTrAssociations", TypeShape.of(GetRouterTrAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the  Express Connect Router Tr Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterTrAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterTrAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
+     *             .cenId(defaultInstance.id())
+     *             .build());
+     * 
+     *         var defaultRouterTrAssociation = new RouterTrAssociation("defaultRouterTrAssociation", RouterTrAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .transitRouterId(defaultTransitRouter.transitRouterId())
+     *             .cenId(defaultTransitRouter.cenId())
+     *             .transitRouterOwnerId(default_.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .allowedPrefixes(            
+     *                 "10.0.0.0/24",
+     *                 "10.0.1.0/24",
+     *                 "10.0.2.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterTrAssociations(GetRouterTrAssociationsArgs.builder()
+     *             .ids(defaultRouterTrAssociation.id())
+     *             .ecrId(defaultRouterTrAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterTrAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterTrAssociationsResult> getRouterTrAssociationsPlain(GetRouterTrAssociationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterTrAssociations:getRouterTrAssociations", TypeShape.of(GetRouterTrAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Vbr Child Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstance;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstanceArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .nameRegex("^preserved-NODELETING")
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+     *             .physicalConnectionId(defaultGetPhysicalConnections.connections()[0].id())
+     *             .vlanId(1000)
+     *             .peerGatewayIp("192.168.254.2")
+     *             .peeringSubnetMask("255.255.255.0")
+     *             .localGatewayIp("192.168.254.1")
+     *             .build());
+     * 
+     *         var defaultRouterVbrChildInstance = new RouterVbrChildInstance("defaultRouterVbrChildInstance", RouterVbrChildInstanceArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .childInstanceId(defaultVirtualBorderRouter.id())
+     *             .childInstanceType("VBR")
+     *             .childInstanceOwnerId(default_.id())
+     *             .childInstanceRegionId(defaultGetRegions.regions()[0].id())
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs.builder()
+     *             .ids(defaultRouterVbrChildInstance.id())
+     *             .ecrId(defaultRouterVbrChildInstance.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterVbrChildInstancesResult> getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs args) {
+        return getRouterVbrChildInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Vbr Child Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstance;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstanceArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .nameRegex("^preserved-NODELETING")
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+     *             .physicalConnectionId(defaultGetPhysicalConnections.connections()[0].id())
+     *             .vlanId(1000)
+     *             .peerGatewayIp("192.168.254.2")
+     *             .peeringSubnetMask("255.255.255.0")
+     *             .localGatewayIp("192.168.254.1")
+     *             .build());
+     * 
+     *         var defaultRouterVbrChildInstance = new RouterVbrChildInstance("defaultRouterVbrChildInstance", RouterVbrChildInstanceArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .childInstanceId(defaultVirtualBorderRouter.id())
+     *             .childInstanceType("VBR")
+     *             .childInstanceOwnerId(default_.id())
+     *             .childInstanceRegionId(defaultGetRegions.regions()[0].id())
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs.builder()
+     *             .ids(defaultRouterVbrChildInstance.id())
+     *             .ecrId(defaultRouterVbrChildInstance.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterVbrChildInstancesResult> getRouterVbrChildInstancesPlain(GetRouterVbrChildInstancesPlainArgs args) {
+        return getRouterVbrChildInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Express Connect Router Vbr Child Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstance;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstanceArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .nameRegex("^preserved-NODELETING")
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+     *             .physicalConnectionId(defaultGetPhysicalConnections.connections()[0].id())
+     *             .vlanId(1000)
+     *             .peerGatewayIp("192.168.254.2")
+     *             .peeringSubnetMask("255.255.255.0")
+     *             .localGatewayIp("192.168.254.1")
+     *             .build());
+     * 
+     *         var defaultRouterVbrChildInstance = new RouterVbrChildInstance("defaultRouterVbrChildInstance", RouterVbrChildInstanceArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .childInstanceId(defaultVirtualBorderRouter.id())
+     *             .childInstanceType("VBR")
+     *             .childInstanceOwnerId(default_.id())
+     *             .childInstanceRegionId(defaultGetRegions.regions()[0].id())
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs.builder()
+     *             .ids(defaultRouterVbrChildInstance.id())
+     *             .ecrId(defaultRouterVbrChildInstance.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterVbrChildInstancesResult> getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterVbrChildInstances:getRouterVbrChildInstances", TypeShape.of(GetRouterVbrChildInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Vbr Child Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstance;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstanceArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .nameRegex("^preserved-NODELETING")
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+     *             .physicalConnectionId(defaultGetPhysicalConnections.connections()[0].id())
+     *             .vlanId(1000)
+     *             .peerGatewayIp("192.168.254.2")
+     *             .peeringSubnetMask("255.255.255.0")
+     *             .localGatewayIp("192.168.254.1")
+     *             .build());
+     * 
+     *         var defaultRouterVbrChildInstance = new RouterVbrChildInstance("defaultRouterVbrChildInstance", RouterVbrChildInstanceArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .childInstanceId(defaultVirtualBorderRouter.id())
+     *             .childInstanceType("VBR")
+     *             .childInstanceOwnerId(default_.id())
+     *             .childInstanceRegionId(defaultGetRegions.regions()[0].id())
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs.builder()
+     *             .ids(defaultRouterVbrChildInstance.id())
+     *             .ecrId(defaultRouterVbrChildInstance.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterVbrChildInstancesResult> getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterVbrChildInstances:getRouterVbrChildInstances", TypeShape.of(GetRouterVbrChildInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Express Connect Router Vbr Child Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+     * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstance;
+     * import com.pulumi.alicloud.expressconnect.RouterVbrChildInstanceArgs;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVbrChildInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+     *             .nameRegex("^preserved-NODELETING")
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+     *             .physicalConnectionId(defaultGetPhysicalConnections.connections()[0].id())
+     *             .vlanId(1000)
+     *             .peerGatewayIp("192.168.254.2")
+     *             .peeringSubnetMask("255.255.255.0")
+     *             .localGatewayIp("192.168.254.1")
+     *             .build());
+     * 
+     *         var defaultRouterVbrChildInstance = new RouterVbrChildInstance("defaultRouterVbrChildInstance", RouterVbrChildInstanceArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .childInstanceId(defaultVirtualBorderRouter.id())
+     *             .childInstanceType("VBR")
+     *             .childInstanceOwnerId(default_.id())
+     *             .childInstanceRegionId(defaultGetRegions.regions()[0].id())
+     *             .description(name)
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVbrChildInstances(GetRouterVbrChildInstancesArgs.builder()
+     *             .ids(defaultRouterVbrChildInstance.id())
+     *             .ecrId(defaultRouterVbrChildInstance.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVbrChildInstancesId0", ids.applyValue(_ids -> _ids.instances()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterVbrChildInstancesResult> getRouterVbrChildInstancesPlain(GetRouterVbrChildInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterVbrChildInstances:getRouterVbrChildInstances", TypeShape.of(GetRouterVbrChildInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the  Express Connect Router Vpc Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultRouterVpcAssociation = new RouterVpcAssociation("defaultRouterVpcAssociation", RouterVpcAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .vpcOwnerId(default_.id())
+     *             .allowedPrefixes(            
+     *                 "172.16.1.0/24",
+     *                 "172.16.2.0/24",
+     *                 "172.16.3.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVpcAssociations(GetRouterVpcAssociationsArgs.builder()
+     *             .ids(defaultRouterVpcAssociation.id())
+     *             .ecrId(defaultRouterVpcAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterVpcAssociationsResult> getRouterVpcAssociations(GetRouterVpcAssociationsArgs args) {
+        return getRouterVpcAssociations(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the  Express Connect Router Vpc Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultRouterVpcAssociation = new RouterVpcAssociation("defaultRouterVpcAssociation", RouterVpcAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .vpcOwnerId(default_.id())
+     *             .allowedPrefixes(            
+     *                 "172.16.1.0/24",
+     *                 "172.16.2.0/24",
+     *                 "172.16.3.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVpcAssociations(GetRouterVpcAssociationsArgs.builder()
+     *             .ids(defaultRouterVpcAssociation.id())
+     *             .ecrId(defaultRouterVpcAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterVpcAssociationsResult> getRouterVpcAssociationsPlain(GetRouterVpcAssociationsPlainArgs args) {
+        return getRouterVpcAssociationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the  Express Connect Router Vpc Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultRouterVpcAssociation = new RouterVpcAssociation("defaultRouterVpcAssociation", RouterVpcAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .vpcOwnerId(default_.id())
+     *             .allowedPrefixes(            
+     *                 "172.16.1.0/24",
+     *                 "172.16.2.0/24",
+     *                 "172.16.3.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVpcAssociations(GetRouterVpcAssociationsArgs.builder()
+     *             .ids(defaultRouterVpcAssociation.id())
+     *             .ecrId(defaultRouterVpcAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterVpcAssociationsResult> getRouterVpcAssociations(GetRouterVpcAssociationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterVpcAssociations:getRouterVpcAssociations", TypeShape.of(GetRouterVpcAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the  Express Connect Router Vpc Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultRouterVpcAssociation = new RouterVpcAssociation("defaultRouterVpcAssociation", RouterVpcAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .vpcOwnerId(default_.id())
+     *             .allowedPrefixes(            
+     *                 "172.16.1.0/24",
+     *                 "172.16.2.0/24",
+     *                 "172.16.3.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVpcAssociations(GetRouterVpcAssociationsArgs.builder()
+     *             .ids(defaultRouterVpcAssociation.id())
+     *             .ecrId(defaultRouterVpcAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRouterVpcAssociationsResult> getRouterVpcAssociations(GetRouterVpcAssociationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterVpcAssociations:getRouterVpcAssociations", TypeShape.of(GetRouterVpcAssociationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the  Express Connect Router Vpc Association of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouter;
+     * import com.pulumi.alicloud.expressconnect.RouterExpressConnectRouterArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociation;
+     * import com.pulumi.alicloud.expressconnect.RouterVpcAssociationArgs;
+     * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+     * import com.pulumi.alicloud.expressconnect.inputs.GetRouterVpcAssociationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultRouterExpressConnectRouter = new RouterExpressConnectRouter("defaultRouterExpressConnectRouter", RouterExpressConnectRouterArgs.builder()
+     *             .alibabaSideAsn(65532)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/16")
+     *             .build());
+     * 
+     *         var defaultRouterVpcAssociation = new RouterVpcAssociation("defaultRouterVpcAssociation", RouterVpcAssociationArgs.builder()
+     *             .ecrId(defaultRouterExpressConnectRouter.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .associationRegionId(defaultGetRegions.regions()[0].id())
+     *             .vpcOwnerId(default_.id())
+     *             .allowedPrefixes(            
+     *                 "172.16.1.0/24",
+     *                 "172.16.2.0/24",
+     *                 "172.16.3.0/24")
+     *             .build());
+     * 
+     *         final var ids = ExpressconnectFunctions.getRouterVpcAssociations(GetRouterVpcAssociationsArgs.builder()
+     *             .ids(defaultRouterVpcAssociation.id())
+     *             .ecrId(defaultRouterVpcAssociation.ecrId())
+     *             .build());
+     * 
+     *         ctx.export("expressConnectRouterVpcAssociationsId0", ids.applyValue(_ids -> _ids.associations()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRouterVpcAssociationsResult> getRouterVpcAssociationsPlain(GetRouterVpcAssociationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getRouterVpcAssociations:getRouterVpcAssociations", TypeShape.of(GetRouterVpcAssociationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Express Connect Vbr Pconn Association available to the user.

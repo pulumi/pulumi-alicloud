@@ -35,6 +35,21 @@ export const getRouterInterfaces: typeof import("./getRouterInterfaces").getRout
 export const getRouterInterfacesOutput: typeof import("./getRouterInterfaces").getRouterInterfacesOutput = null as any;
 utilities.lazyLoad(exports, ["getRouterInterfaces","getRouterInterfacesOutput"], () => require("./getRouterInterfaces"));
 
+export { GetRouterTrAssociationsArgs, GetRouterTrAssociationsResult, GetRouterTrAssociationsOutputArgs } from "./getRouterTrAssociations";
+export const getRouterTrAssociations: typeof import("./getRouterTrAssociations").getRouterTrAssociations = null as any;
+export const getRouterTrAssociationsOutput: typeof import("./getRouterTrAssociations").getRouterTrAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterTrAssociations","getRouterTrAssociationsOutput"], () => require("./getRouterTrAssociations"));
+
+export { GetRouterVbrChildInstancesArgs, GetRouterVbrChildInstancesResult, GetRouterVbrChildInstancesOutputArgs } from "./getRouterVbrChildInstances";
+export const getRouterVbrChildInstances: typeof import("./getRouterVbrChildInstances").getRouterVbrChildInstances = null as any;
+export const getRouterVbrChildInstancesOutput: typeof import("./getRouterVbrChildInstances").getRouterVbrChildInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterVbrChildInstances","getRouterVbrChildInstancesOutput"], () => require("./getRouterVbrChildInstances"));
+
+export { GetRouterVpcAssociationsArgs, GetRouterVpcAssociationsResult, GetRouterVpcAssociationsOutputArgs } from "./getRouterVpcAssociations";
+export const getRouterVpcAssociations: typeof import("./getRouterVpcAssociations").getRouterVpcAssociations = null as any;
+export const getRouterVpcAssociationsOutput: typeof import("./getRouterVpcAssociations").getRouterVpcAssociationsOutput = null as any;
+utilities.lazyLoad(exports, ["getRouterVpcAssociations","getRouterVpcAssociationsOutput"], () => require("./getRouterVpcAssociations"));
+
 export { GetVbrPconnAssociationsArgs, GetVbrPconnAssociationsResult, GetVbrPconnAssociationsOutputArgs } from "./getVbrPconnAssociations";
 export const getVbrPconnAssociations: typeof import("./getVbrPconnAssociations").getVbrPconnAssociations = null as any;
 export const getVbrPconnAssociationsOutput: typeof import("./getVbrPconnAssociations").getVbrPconnAssociationsOutput = null as any;

@@ -246,6 +246,7 @@ class GetExecutionsExecutionResult(dict):
                  status: _builtins.str,
                  status_message: _builtins.str,
                  status_reason: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
                  template_id: _builtins.str,
                  template_name: _builtins.str,
                  template_version: _builtins.str,
@@ -261,13 +262,14 @@ class GetExecutionsExecutionResult(dict):
         :param _builtins.bool is_parent: Whether to include subtasks.
         :param _builtins.str mode: The mode of OOS Execution. Valid: `Automatic`, `Debug`.
         :param _builtins.str outputs: The outputs of OOS Executions.
-        :param _builtins.str parameters: The parameters required by the template
+        :param _builtins.str parameters: The parameters required by the template.
         :param _builtins.str parent_execution_id: The id of parent OOS Execution.
         :param _builtins.str ram_role: The role that executes the current template.
         :param _builtins.str start_date: The time when the template was started.
         :param _builtins.str status: The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
         :param _builtins.str status_message: The message of status.
         :param _builtins.str status_reason: The reason of status.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
         :param _builtins.str template_id: The id of execution template.
         :param _builtins.str template_name: The name of execution template.
         :param _builtins.str template_version: The version of execution template.
@@ -290,6 +292,7 @@ class GetExecutionsExecutionResult(dict):
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "status_message", status_message)
         pulumi.set(__self__, "status_reason", status_reason)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "template_id", template_id)
         pulumi.set(__self__, "template_name", template_name)
         pulumi.set(__self__, "template_version", template_version)
@@ -379,7 +382,7 @@ class GetExecutionsExecutionResult(dict):
     @pulumi.getter
     def parameters(self) -> _builtins.str:
         """
-        The parameters required by the template
+        The parameters required by the template.
         """
         return pulumi.get(self, "parameters")
 
@@ -430,6 +433,14 @@ class GetExecutionsExecutionResult(dict):
         The reason of status.
         """
         return pulumi.get(self, "status_reason")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="templateId")

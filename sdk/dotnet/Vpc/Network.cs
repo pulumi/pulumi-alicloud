@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The status of VPC DNS Hostname
+        /// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         /// </summary>
         [Output("dnsHostnameStatus")]
         public Output<string> DnsHostnameStatus { get; private set; } = null!;
@@ -327,7 +327,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The status of VPC DNS Hostname
+        /// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("dnsHostnameStatus")]
         public Input<string>? DnsHostnameStatus { get; set; }
@@ -513,7 +513,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The status of VPC DNS Hostname
+        /// The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("dnsHostnameStatus")]
         public Input<string>? DnsHostnameStatus { get; set; }

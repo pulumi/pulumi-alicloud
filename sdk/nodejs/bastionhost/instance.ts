@@ -162,9 +162,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly adAuthServers: pulumi.Output<outputs.bastionhost.InstanceAdAuthServer[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+     * The bandwidth of Cloud Bastionhost instance.
+     *
+     * > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     *
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
      */
     declare public readonly bandwidth: pulumi.Output<string>;
     /**
@@ -234,7 +237,9 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly slaveVswitchId: pulumi.Output<string | undefined>;
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     *
+     * ->**NOTE:** From version 1.251.0, `storage` can be modified.
      */
     declare public readonly storage: pulumi.Output<string>;
     /**
@@ -333,9 +338,12 @@ export interface InstanceState {
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[] | undefined>;
     /**
-     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+     * The bandwidth of Cloud Bastionhost instance.
+     *
+     * > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     *
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
      */
     bandwidth?: pulumi.Input<string | undefined>;
     /**
@@ -405,7 +413,9 @@ export interface InstanceState {
      */
     slaveVswitchId?: pulumi.Input<string | undefined>;
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     *
+     * ->**NOTE:** From version 1.251.0, `storage` can be modified.
      */
     storage?: pulumi.Input<string | undefined>;
     /**
@@ -427,9 +437,12 @@ export interface InstanceArgs {
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[] | undefined>;
     /**
-     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
-     * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
-     * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
+     * The bandwidth of Cloud Bastionhost instance.
+     *
+     * > **NOTE:** From version 1.263.0, `bandwidth` can be modified.
+     *
+     * - If China-Site Account, its valid values: `0` to `150`. Unit: Mbit/s. The value must be a multiple of 5.
+     * - If International-Site Account, its valid values: `0` to `200`. Unit: Mbit/s. The value must be a multiple of 10.
      */
     bandwidth: pulumi.Input<string>;
     /**
@@ -499,7 +512,9 @@ export interface InstanceArgs {
      */
     slaveVswitchId?: pulumi.Input<string | undefined>;
     /**
-     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
+     * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB.
+     *
+     * ->**NOTE:** From version 1.251.0, `storage` can be modified.
      */
     storage: pulumi.Input<string>;
     /**

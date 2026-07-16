@@ -153,14 +153,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The status of VPC DNS Hostname
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      * 
      */
     @Export(name="dnsHostnameStatus", refs={String.class}, tree="[0]")
     private Output<String> dnsHostnameStatus;
 
     /**
-     * @return The status of VPC DNS Hostname
+     * @return The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      * 
      */
     public Output<String> dnsHostnameStatus() {

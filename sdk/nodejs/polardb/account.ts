@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.67.0.
  *
+ * > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -127,6 +129,10 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly dbClusterId: pulumi.Output<string>;
     /**
+     * (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+     */
+    declare public /*out*/ readonly dynamodbAuthPassword: pulumi.Output<string>;
+    /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
     declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
@@ -159,6 +165,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountPasswordValidTime"] = state?.accountPasswordValidTime;
             resourceInputs["accountType"] = state?.accountType;
             resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["dynamodbAuthPassword"] = state?.dynamodbAuthPassword;
             resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = state?.kmsEncryptionContext;
             resourceInputs["status"] = state?.status;
@@ -179,10 +186,11 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["dbClusterId"] = args?.dbClusterId;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword;
             resourceInputs["kmsEncryptionContext"] = args?.kmsEncryptionContext;
+            resourceInputs["dynamodbAuthPassword"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accountPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["accountPassword", "dynamodbAuthPassword"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
@@ -229,6 +237,10 @@ export interface AccountState {
      * The cluster ID.
      */
     dbClusterId?: pulumi.Input<string | undefined>;
+    /**
+     * (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+     */
+    dynamodbAuthPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */

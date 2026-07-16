@@ -18,8 +18,6 @@ import (
 //
 // > **NOTE:** Available since v1.139.0.
 //
-// > **NOTE:** Deprecated since v1.269.0.
-//
 // > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
 //
 // ## Example Usage
@@ -96,6 +94,8 @@ type Instance struct {
 
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber pulumi.IntPtrOutput `pulumi:"accountNumber"`
+	// Internet asset protection switch. Valid values: `true`, `false`.
+	AutoAssetProtection pulumi.StringOutput `pulumi:"autoAssetProtection"`
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
 	BandWidth pulumi.IntPtrOutput `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
@@ -114,7 +114,7 @@ type Instance struct {
 	InstanceCount pulumi.IntPtrOutput `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
 	IpNumber pulumi.IntOutput `pulumi:"ipNumber"`
-	// The logistics.
+	// The logistics address of this order. The parameter is immutable after resource creation.
 	Logistics pulumi.StringPtrOutput `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
@@ -182,6 +182,8 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber *int `pulumi:"accountNumber"`
+	// Internet asset protection switch. Valid values: `true`, `false`.
+	AutoAssetProtection *string `pulumi:"autoAssetProtection"`
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
 	BandWidth *int `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
@@ -200,7 +202,7 @@ type instanceState struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
 	IpNumber *int `pulumi:"ipNumber"`
-	// The logistics.
+	// The logistics address of this order. The parameter is immutable after resource creation.
 	Logistics *string `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType *string `pulumi:"modifyType"`
@@ -236,6 +238,8 @@ type instanceState struct {
 type InstanceState struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber pulumi.IntPtrInput
+	// Internet asset protection switch. Valid values: `true`, `false`.
+	AutoAssetProtection pulumi.StringPtrInput
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
 	BandWidth pulumi.IntPtrInput
 	// Whether to use multi-account. Valid values: `true`, `false`.
@@ -254,7 +258,7 @@ type InstanceState struct {
 	InstanceCount pulumi.IntPtrInput
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
 	IpNumber pulumi.IntPtrInput
-	// The logistics.
+	// The logistics address of this order. The parameter is immutable after resource creation.
 	Logistics pulumi.StringPtrInput
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrInput
@@ -294,6 +298,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber *int `pulumi:"accountNumber"`
+	// Internet asset protection switch. Valid values: `true`, `false`.
+	AutoAssetProtection *string `pulumi:"autoAssetProtection"`
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
 	BandWidth *int `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
@@ -308,7 +314,7 @@ type instanceArgs struct {
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
 	IpNumber *int `pulumi:"ipNumber"`
-	// The logistics.
+	// The logistics address of this order. The parameter is immutable after resource creation.
 	Logistics *string `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType *string `pulumi:"modifyType"`
@@ -339,6 +345,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber pulumi.IntPtrInput
+	// Internet asset protection switch. Valid values: `true`, `false`.
+	AutoAssetProtection pulumi.StringPtrInput
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
 	BandWidth pulumi.IntPtrInput
 	// Whether to use multi-account. Valid values: `true`, `false`.
@@ -353,7 +361,7 @@ type InstanceArgs struct {
 	InstanceCount pulumi.IntPtrInput
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
 	IpNumber pulumi.IntPtrInput
-	// The logistics.
+	// The logistics address of this order. The parameter is immutable after resource creation.
 	Logistics pulumi.StringPtrInput
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrInput
@@ -472,6 +480,11 @@ func (o InstanceOutput) AccountNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.AccountNumber }).(pulumi.IntPtrOutput)
 }
 
+// Internet asset protection switch. Valid values: `true`, `false`.
+func (o InstanceOutput) AutoAssetProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AutoAssetProtection }).(pulumi.StringOutput)
+}
+
 // Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
 func (o InstanceOutput) BandWidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.BandWidth }).(pulumi.IntPtrOutput)
@@ -517,7 +530,7 @@ func (o InstanceOutput) IpNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IpNumber }).(pulumi.IntOutput)
 }
 
-// The logistics.
+// The logistics address of this order. The parameter is immutable after resource creation.
 func (o InstanceOutput) Logistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Logistics }).(pulumi.StringPtrOutput)
 }

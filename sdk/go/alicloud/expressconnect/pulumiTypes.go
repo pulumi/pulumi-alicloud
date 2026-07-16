@@ -1378,6 +1378,567 @@ func (o GetRouterInterfacesInterfaceArrayOutput) Index(i pulumi.IntInput) GetRou
 	}).(GetRouterInterfacesInterfaceOutput)
 }
 
+type GetRouterTrAssociationsAssociation struct {
+	// The prefix-based routing mode.
+	AllowedPrefixes []string `pulumi:"allowedPrefixes"`
+	// The prefix-based routing mode.
+	AllowedPrefixesMode string `pulumi:"allowedPrefixesMode"`
+	// The ID of the association between the Express Connect Router and the TR.
+	AssociationId string `pulumi:"associationId"`
+	// The type of the associated resource.
+	AssociationNodeType string `pulumi:"associationNodeType"`
+	// The ID of the Cloud Enterprise Network instance.
+	CenId string `pulumi:"cenId"`
+	// The time when the association was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Express Connect Router instance.
+	EcrId string `pulumi:"ecrId"`
+	// The ID of the Tr Association.
+	Id string `pulumi:"id"`
+	// The time when the association was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+	Status string `pulumi:"status"`
+	// The ID of the transit router instance.
+	TransitRouterId string `pulumi:"transitRouterId"`
+	// The ID of the Alibaba Cloud account that owns the TR.
+	TransitRouterOwnerId string `pulumi:"transitRouterOwnerId"`
+}
+
+// GetRouterTrAssociationsAssociationInput is an input type that accepts GetRouterTrAssociationsAssociationArgs and GetRouterTrAssociationsAssociationOutput values.
+// You can construct a concrete instance of `GetRouterTrAssociationsAssociationInput` via:
+//
+//	GetRouterTrAssociationsAssociationArgs{...}
+type GetRouterTrAssociationsAssociationInput interface {
+	pulumi.Input
+
+	ToGetRouterTrAssociationsAssociationOutput() GetRouterTrAssociationsAssociationOutput
+	ToGetRouterTrAssociationsAssociationOutputWithContext(context.Context) GetRouterTrAssociationsAssociationOutput
+}
+
+type GetRouterTrAssociationsAssociationArgs struct {
+	// The prefix-based routing mode.
+	AllowedPrefixes pulumi.StringArrayInput `pulumi:"allowedPrefixes"`
+	// The prefix-based routing mode.
+	AllowedPrefixesMode pulumi.StringInput `pulumi:"allowedPrefixesMode"`
+	// The ID of the association between the Express Connect Router and the TR.
+	AssociationId pulumi.StringInput `pulumi:"associationId"`
+	// The type of the associated resource.
+	AssociationNodeType pulumi.StringInput `pulumi:"associationNodeType"`
+	// The ID of the Cloud Enterprise Network instance.
+	CenId pulumi.StringInput `pulumi:"cenId"`
+	// The time when the association was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Express Connect Router instance.
+	EcrId pulumi.StringInput `pulumi:"ecrId"`
+	// The ID of the Tr Association.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The time when the association was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the transit router instance.
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
+	// The ID of the Alibaba Cloud account that owns the TR.
+	TransitRouterOwnerId pulumi.StringInput `pulumi:"transitRouterOwnerId"`
+}
+
+func (GetRouterTrAssociationsAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterTrAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetRouterTrAssociationsAssociationArgs) ToGetRouterTrAssociationsAssociationOutput() GetRouterTrAssociationsAssociationOutput {
+	return i.ToGetRouterTrAssociationsAssociationOutputWithContext(context.Background())
+}
+
+func (i GetRouterTrAssociationsAssociationArgs) ToGetRouterTrAssociationsAssociationOutputWithContext(ctx context.Context) GetRouterTrAssociationsAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterTrAssociationsAssociationOutput)
+}
+
+// GetRouterTrAssociationsAssociationArrayInput is an input type that accepts GetRouterTrAssociationsAssociationArray and GetRouterTrAssociationsAssociationArrayOutput values.
+// You can construct a concrete instance of `GetRouterTrAssociationsAssociationArrayInput` via:
+//
+//	GetRouterTrAssociationsAssociationArray{ GetRouterTrAssociationsAssociationArgs{...} }
+type GetRouterTrAssociationsAssociationArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterTrAssociationsAssociationArrayOutput() GetRouterTrAssociationsAssociationArrayOutput
+	ToGetRouterTrAssociationsAssociationArrayOutputWithContext(context.Context) GetRouterTrAssociationsAssociationArrayOutput
+}
+
+type GetRouterTrAssociationsAssociationArray []GetRouterTrAssociationsAssociationInput
+
+func (GetRouterTrAssociationsAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterTrAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetRouterTrAssociationsAssociationArray) ToGetRouterTrAssociationsAssociationArrayOutput() GetRouterTrAssociationsAssociationArrayOutput {
+	return i.ToGetRouterTrAssociationsAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterTrAssociationsAssociationArray) ToGetRouterTrAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetRouterTrAssociationsAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterTrAssociationsAssociationArrayOutput)
+}
+
+type GetRouterTrAssociationsAssociationOutput struct{ *pulumi.OutputState }
+
+func (GetRouterTrAssociationsAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterTrAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetRouterTrAssociationsAssociationOutput) ToGetRouterTrAssociationsAssociationOutput() GetRouterTrAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetRouterTrAssociationsAssociationOutput) ToGetRouterTrAssociationsAssociationOutputWithContext(ctx context.Context) GetRouterTrAssociationsAssociationOutput {
+	return o
+}
+
+// The prefix-based routing mode.
+func (o GetRouterTrAssociationsAssociationOutput) AllowedPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) []string { return v.AllowedPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The prefix-based routing mode.
+func (o GetRouterTrAssociationsAssociationOutput) AllowedPrefixesMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.AllowedPrefixesMode }).(pulumi.StringOutput)
+}
+
+// The ID of the association between the Express Connect Router and the TR.
+func (o GetRouterTrAssociationsAssociationOutput) AssociationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.AssociationId }).(pulumi.StringOutput)
+}
+
+// The type of the associated resource.
+func (o GetRouterTrAssociationsAssociationOutput) AssociationNodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.AssociationNodeType }).(pulumi.StringOutput)
+}
+
+// The ID of the Cloud Enterprise Network instance.
+func (o GetRouterTrAssociationsAssociationOutput) CenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.CenId }).(pulumi.StringOutput)
+}
+
+// The time when the association was created.
+func (o GetRouterTrAssociationsAssociationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Express Connect Router instance.
+func (o GetRouterTrAssociationsAssociationOutput) EcrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.EcrId }).(pulumi.StringOutput)
+}
+
+// The ID of the Tr Association.
+func (o GetRouterTrAssociationsAssociationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The time when the association was modified.
+func (o GetRouterTrAssociationsAssociationOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+func (o GetRouterTrAssociationsAssociationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the transit router instance.
+func (o GetRouterTrAssociationsAssociationOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.TransitRouterId }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account that owns the TR.
+func (o GetRouterTrAssociationsAssociationOutput) TransitRouterOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterTrAssociationsAssociation) string { return v.TransitRouterOwnerId }).(pulumi.StringOutput)
+}
+
+type GetRouterTrAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterTrAssociationsAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterTrAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetRouterTrAssociationsAssociationArrayOutput) ToGetRouterTrAssociationsAssociationArrayOutput() GetRouterTrAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetRouterTrAssociationsAssociationArrayOutput) ToGetRouterTrAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetRouterTrAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetRouterTrAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetRouterTrAssociationsAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterTrAssociationsAssociation {
+		return vs[0].([]GetRouterTrAssociationsAssociation)[vs[1].(int)]
+	}).(GetRouterTrAssociationsAssociationOutput)
+}
+
+type GetRouterVbrChildInstancesInstance struct {
+	// The ID of the network instance to detach.
+	ChildInstanceId string `pulumi:"childInstanceId"`
+	// The Alibaba Cloud account ID of the child instance owner.
+	ChildInstanceOwnerId string `pulumi:"childInstanceOwnerId"`
+	// The region where the network instance is deployed.
+	ChildInstanceRegionId string `pulumi:"childInstanceRegionId"`
+	// The type of the network instance. Valid values: `VBR`.
+	ChildInstanceType string `pulumi:"childInstanceType"`
+	// The time when the association was created.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the child instance.
+	Description string `pulumi:"description"`
+	// The ID of the Express Connect Router instance.
+	EcrId string `pulumi:"ecrId"`
+	// The ID of the Vbr Child Instance.
+	Id string `pulumi:"id"`
+	// The time when the association was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The deployment status of the associated instance. Valid values: `CREATING`, `ACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+	Status string `pulumi:"status"`
+}
+
+// GetRouterVbrChildInstancesInstanceInput is an input type that accepts GetRouterVbrChildInstancesInstanceArgs and GetRouterVbrChildInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetRouterVbrChildInstancesInstanceInput` via:
+//
+//	GetRouterVbrChildInstancesInstanceArgs{...}
+type GetRouterVbrChildInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetRouterVbrChildInstancesInstanceOutput() GetRouterVbrChildInstancesInstanceOutput
+	ToGetRouterVbrChildInstancesInstanceOutputWithContext(context.Context) GetRouterVbrChildInstancesInstanceOutput
+}
+
+type GetRouterVbrChildInstancesInstanceArgs struct {
+	// The ID of the network instance to detach.
+	ChildInstanceId pulumi.StringInput `pulumi:"childInstanceId"`
+	// The Alibaba Cloud account ID of the child instance owner.
+	ChildInstanceOwnerId pulumi.StringInput `pulumi:"childInstanceOwnerId"`
+	// The region where the network instance is deployed.
+	ChildInstanceRegionId pulumi.StringInput `pulumi:"childInstanceRegionId"`
+	// The type of the network instance. Valid values: `VBR`.
+	ChildInstanceType pulumi.StringInput `pulumi:"childInstanceType"`
+	// The time when the association was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the child instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the Express Connect Router instance.
+	EcrId pulumi.StringInput `pulumi:"ecrId"`
+	// The ID of the Vbr Child Instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The time when the association was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The deployment status of the associated instance. Valid values: `CREATING`, `ACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetRouterVbrChildInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterVbrChildInstancesInstance)(nil)).Elem()
+}
+
+func (i GetRouterVbrChildInstancesInstanceArgs) ToGetRouterVbrChildInstancesInstanceOutput() GetRouterVbrChildInstancesInstanceOutput {
+	return i.ToGetRouterVbrChildInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetRouterVbrChildInstancesInstanceArgs) ToGetRouterVbrChildInstancesInstanceOutputWithContext(ctx context.Context) GetRouterVbrChildInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterVbrChildInstancesInstanceOutput)
+}
+
+// GetRouterVbrChildInstancesInstanceArrayInput is an input type that accepts GetRouterVbrChildInstancesInstanceArray and GetRouterVbrChildInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetRouterVbrChildInstancesInstanceArrayInput` via:
+//
+//	GetRouterVbrChildInstancesInstanceArray{ GetRouterVbrChildInstancesInstanceArgs{...} }
+type GetRouterVbrChildInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterVbrChildInstancesInstanceArrayOutput() GetRouterVbrChildInstancesInstanceArrayOutput
+	ToGetRouterVbrChildInstancesInstanceArrayOutputWithContext(context.Context) GetRouterVbrChildInstancesInstanceArrayOutput
+}
+
+type GetRouterVbrChildInstancesInstanceArray []GetRouterVbrChildInstancesInstanceInput
+
+func (GetRouterVbrChildInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterVbrChildInstancesInstance)(nil)).Elem()
+}
+
+func (i GetRouterVbrChildInstancesInstanceArray) ToGetRouterVbrChildInstancesInstanceArrayOutput() GetRouterVbrChildInstancesInstanceArrayOutput {
+	return i.ToGetRouterVbrChildInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterVbrChildInstancesInstanceArray) ToGetRouterVbrChildInstancesInstanceArrayOutputWithContext(ctx context.Context) GetRouterVbrChildInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterVbrChildInstancesInstanceArrayOutput)
+}
+
+type GetRouterVbrChildInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetRouterVbrChildInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterVbrChildInstancesInstance)(nil)).Elem()
+}
+
+func (o GetRouterVbrChildInstancesInstanceOutput) ToGetRouterVbrChildInstancesInstanceOutput() GetRouterVbrChildInstancesInstanceOutput {
+	return o
+}
+
+func (o GetRouterVbrChildInstancesInstanceOutput) ToGetRouterVbrChildInstancesInstanceOutputWithContext(ctx context.Context) GetRouterVbrChildInstancesInstanceOutput {
+	return o
+}
+
+// The ID of the network instance to detach.
+func (o GetRouterVbrChildInstancesInstanceOutput) ChildInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.ChildInstanceId }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud account ID of the child instance owner.
+func (o GetRouterVbrChildInstancesInstanceOutput) ChildInstanceOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.ChildInstanceOwnerId }).(pulumi.StringOutput)
+}
+
+// The region where the network instance is deployed.
+func (o GetRouterVbrChildInstancesInstanceOutput) ChildInstanceRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.ChildInstanceRegionId }).(pulumi.StringOutput)
+}
+
+// The type of the network instance. Valid values: `VBR`.
+func (o GetRouterVbrChildInstancesInstanceOutput) ChildInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.ChildInstanceType }).(pulumi.StringOutput)
+}
+
+// The time when the association was created.
+func (o GetRouterVbrChildInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the child instance.
+func (o GetRouterVbrChildInstancesInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the Express Connect Router instance.
+func (o GetRouterVbrChildInstancesInstanceOutput) EcrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.EcrId }).(pulumi.StringOutput)
+}
+
+// The ID of the Vbr Child Instance.
+func (o GetRouterVbrChildInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The time when the association was modified.
+func (o GetRouterVbrChildInstancesInstanceOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The deployment status of the associated instance. Valid values: `CREATING`, `ACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+func (o GetRouterVbrChildInstancesInstanceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVbrChildInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetRouterVbrChildInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterVbrChildInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterVbrChildInstancesInstance)(nil)).Elem()
+}
+
+func (o GetRouterVbrChildInstancesInstanceArrayOutput) ToGetRouterVbrChildInstancesInstanceArrayOutput() GetRouterVbrChildInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetRouterVbrChildInstancesInstanceArrayOutput) ToGetRouterVbrChildInstancesInstanceArrayOutputWithContext(ctx context.Context) GetRouterVbrChildInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetRouterVbrChildInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetRouterVbrChildInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterVbrChildInstancesInstance {
+		return vs[0].([]GetRouterVbrChildInstancesInstance)[vs[1].(int)]
+	}).(GetRouterVbrChildInstancesInstanceOutput)
+}
+
+type GetRouterVpcAssociationsAssociation struct {
+	// The prefix-based routing mode.
+	AllowedPrefixes []string `pulumi:"allowedPrefixes"`
+	// The prefix-based routing mode.
+	AllowedPrefixesMode string `pulumi:"allowedPrefixesMode"`
+	// The ID of the association between the Express Connect Router and the VPC.
+	AssociationId string `pulumi:"associationId"`
+	// The type of the associated resource.
+	AssociationNodeType string `pulumi:"associationNodeType"`
+	// The time when the association was created.
+	CreateTime string `pulumi:"createTime"`
+	// The ID of the Express Connect Router instance.
+	EcrId string `pulumi:"ecrId"`
+	// The ID of the Vpc Association.
+	Id string `pulumi:"id"`
+	// The time when the association was modified.
+	ModifyTime string `pulumi:"modifyTime"`
+	// The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+	Status string `pulumi:"status"`
+	// The ID of the VPC instance.
+	VpcId string `pulumi:"vpcId"`
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	VpcOwnerId string `pulumi:"vpcOwnerId"`
+}
+
+// GetRouterVpcAssociationsAssociationInput is an input type that accepts GetRouterVpcAssociationsAssociationArgs and GetRouterVpcAssociationsAssociationOutput values.
+// You can construct a concrete instance of `GetRouterVpcAssociationsAssociationInput` via:
+//
+//	GetRouterVpcAssociationsAssociationArgs{...}
+type GetRouterVpcAssociationsAssociationInput interface {
+	pulumi.Input
+
+	ToGetRouterVpcAssociationsAssociationOutput() GetRouterVpcAssociationsAssociationOutput
+	ToGetRouterVpcAssociationsAssociationOutputWithContext(context.Context) GetRouterVpcAssociationsAssociationOutput
+}
+
+type GetRouterVpcAssociationsAssociationArgs struct {
+	// The prefix-based routing mode.
+	AllowedPrefixes pulumi.StringArrayInput `pulumi:"allowedPrefixes"`
+	// The prefix-based routing mode.
+	AllowedPrefixesMode pulumi.StringInput `pulumi:"allowedPrefixesMode"`
+	// The ID of the association between the Express Connect Router and the VPC.
+	AssociationId pulumi.StringInput `pulumi:"associationId"`
+	// The type of the associated resource.
+	AssociationNodeType pulumi.StringInput `pulumi:"associationNodeType"`
+	// The time when the association was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The ID of the Express Connect Router instance.
+	EcrId pulumi.StringInput `pulumi:"ecrId"`
+	// The ID of the Vpc Association.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The time when the association was modified.
+	ModifyTime pulumi.StringInput `pulumi:"modifyTime"`
+	// The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC instance.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The ID of the Alibaba Cloud account that owns the VPC.
+	VpcOwnerId pulumi.StringInput `pulumi:"vpcOwnerId"`
+}
+
+func (GetRouterVpcAssociationsAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterVpcAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetRouterVpcAssociationsAssociationArgs) ToGetRouterVpcAssociationsAssociationOutput() GetRouterVpcAssociationsAssociationOutput {
+	return i.ToGetRouterVpcAssociationsAssociationOutputWithContext(context.Background())
+}
+
+func (i GetRouterVpcAssociationsAssociationArgs) ToGetRouterVpcAssociationsAssociationOutputWithContext(ctx context.Context) GetRouterVpcAssociationsAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterVpcAssociationsAssociationOutput)
+}
+
+// GetRouterVpcAssociationsAssociationArrayInput is an input type that accepts GetRouterVpcAssociationsAssociationArray and GetRouterVpcAssociationsAssociationArrayOutput values.
+// You can construct a concrete instance of `GetRouterVpcAssociationsAssociationArrayInput` via:
+//
+//	GetRouterVpcAssociationsAssociationArray{ GetRouterVpcAssociationsAssociationArgs{...} }
+type GetRouterVpcAssociationsAssociationArrayInput interface {
+	pulumi.Input
+
+	ToGetRouterVpcAssociationsAssociationArrayOutput() GetRouterVpcAssociationsAssociationArrayOutput
+	ToGetRouterVpcAssociationsAssociationArrayOutputWithContext(context.Context) GetRouterVpcAssociationsAssociationArrayOutput
+}
+
+type GetRouterVpcAssociationsAssociationArray []GetRouterVpcAssociationsAssociationInput
+
+func (GetRouterVpcAssociationsAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterVpcAssociationsAssociation)(nil)).Elem()
+}
+
+func (i GetRouterVpcAssociationsAssociationArray) ToGetRouterVpcAssociationsAssociationArrayOutput() GetRouterVpcAssociationsAssociationArrayOutput {
+	return i.ToGetRouterVpcAssociationsAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRouterVpcAssociationsAssociationArray) ToGetRouterVpcAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetRouterVpcAssociationsAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRouterVpcAssociationsAssociationArrayOutput)
+}
+
+type GetRouterVpcAssociationsAssociationOutput struct{ *pulumi.OutputState }
+
+func (GetRouterVpcAssociationsAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRouterVpcAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetRouterVpcAssociationsAssociationOutput) ToGetRouterVpcAssociationsAssociationOutput() GetRouterVpcAssociationsAssociationOutput {
+	return o
+}
+
+func (o GetRouterVpcAssociationsAssociationOutput) ToGetRouterVpcAssociationsAssociationOutputWithContext(ctx context.Context) GetRouterVpcAssociationsAssociationOutput {
+	return o
+}
+
+// The prefix-based routing mode.
+func (o GetRouterVpcAssociationsAssociationOutput) AllowedPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) []string { return v.AllowedPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The prefix-based routing mode.
+func (o GetRouterVpcAssociationsAssociationOutput) AllowedPrefixesMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.AllowedPrefixesMode }).(pulumi.StringOutput)
+}
+
+// The ID of the association between the Express Connect Router and the VPC.
+func (o GetRouterVpcAssociationsAssociationOutput) AssociationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.AssociationId }).(pulumi.StringOutput)
+}
+
+// The type of the associated resource.
+func (o GetRouterVpcAssociationsAssociationOutput) AssociationNodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.AssociationNodeType }).(pulumi.StringOutput)
+}
+
+// The time when the association was created.
+func (o GetRouterVpcAssociationsAssociationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the Express Connect Router instance.
+func (o GetRouterVpcAssociationsAssociationOutput) EcrId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.EcrId }).(pulumi.StringOutput)
+}
+
+// The ID of the Vpc Association.
+func (o GetRouterVpcAssociationsAssociationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The time when the association was modified.
+func (o GetRouterVpcAssociationsAssociationOutput) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The status of the association. Valid values: `CREATING`, `ACTIVE`, `INACTIVE`, `ASSOCIATING`, `DISSOCIATING`, `UPDATING`, `DELETING`.
+func (o GetRouterVpcAssociationsAssociationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC instance.
+func (o GetRouterVpcAssociationsAssociationOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The ID of the Alibaba Cloud account that owns the VPC.
+func (o GetRouterVpcAssociationsAssociationOutput) VpcOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterVpcAssociationsAssociation) string { return v.VpcOwnerId }).(pulumi.StringOutput)
+}
+
+type GetRouterVpcAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRouterVpcAssociationsAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRouterVpcAssociationsAssociation)(nil)).Elem()
+}
+
+func (o GetRouterVpcAssociationsAssociationArrayOutput) ToGetRouterVpcAssociationsAssociationArrayOutput() GetRouterVpcAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetRouterVpcAssociationsAssociationArrayOutput) ToGetRouterVpcAssociationsAssociationArrayOutputWithContext(ctx context.Context) GetRouterVpcAssociationsAssociationArrayOutput {
+	return o
+}
+
+func (o GetRouterVpcAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) GetRouterVpcAssociationsAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRouterVpcAssociationsAssociation {
+		return vs[0].([]GetRouterVpcAssociationsAssociation)[vs[1].(int)]
+	}).(GetRouterVpcAssociationsAssociationOutput)
+}
+
 type GetVbrPconnAssociationsAssociation struct {
 	// The circuit code provided by the operator for the physical connection.
 	CircuitCode string `pulumi:"circuitCode"`
@@ -2441,6 +3002,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesFilterArrayInput)(nil)).Elem(), GetRouterInterfacesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceInput)(nil)).Elem(), GetRouterInterfacesInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterInterfacesInterfaceArrayInput)(nil)).Elem(), GetRouterInterfacesInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterTrAssociationsAssociationInput)(nil)).Elem(), GetRouterTrAssociationsAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterTrAssociationsAssociationArrayInput)(nil)).Elem(), GetRouterTrAssociationsAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterVbrChildInstancesInstanceInput)(nil)).Elem(), GetRouterVbrChildInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterVbrChildInstancesInstanceArrayInput)(nil)).Elem(), GetRouterVbrChildInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterVpcAssociationsAssociationInput)(nil)).Elem(), GetRouterVpcAssociationsAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRouterVpcAssociationsAssociationArrayInput)(nil)).Elem(), GetRouterVpcAssociationsAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrPconnAssociationsAssociationInput)(nil)).Elem(), GetVbrPconnAssociationsAssociationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVbrPconnAssociationsAssociationArrayInput)(nil)).Elem(), GetVbrPconnAssociationsAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualBorderRoutersFilterInput)(nil)).Elem(), GetVirtualBorderRoutersFilterArgs{})
@@ -2463,6 +3030,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRouterInterfacesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceOutput{})
 	pulumi.RegisterOutputType(GetRouterInterfacesInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterTrAssociationsAssociationOutput{})
+	pulumi.RegisterOutputType(GetRouterTrAssociationsAssociationArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterVbrChildInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetRouterVbrChildInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetRouterVpcAssociationsAssociationOutput{})
+	pulumi.RegisterOutputType(GetRouterVpcAssociationsAssociationArrayOutput{})
 	pulumi.RegisterOutputType(GetVbrPconnAssociationsAssociationOutput{})
 	pulumi.RegisterOutputType(GetVbrPconnAssociationsAssociationArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualBorderRoutersFilterOutput{})

@@ -60,6 +60,12 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class Aicluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+        /// </summary>
+        [Output("apiKey")]
+        public Output<string> ApiKey { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable auto-renewal.
         /// </summary>
         [Output("autoRenew")]
@@ -70,6 +76,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("autoUseCoupon")]
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since 1.284.0) The connection string of the AI cluster endpoint.
+        /// </summary>
+        [Output("connectionString")]
+        public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
         /// The description of the AI DB cluster.
@@ -202,6 +214,10 @@ namespace Pulumi.AliCloud.PolarDB
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "apiKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -341,6 +357,22 @@ namespace Pulumi.AliCloud.PolarDB
 
     public sealed class AiclusterState : global::Pulumi.ResourceArgs
     {
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
+
+        /// <summary>
+        /// (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+        /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// Whether to enable auto-renewal.
         /// </summary>
@@ -352,6 +384,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
+
+        /// <summary>
+        /// (Available since 1.284.0) The connection string of the AI cluster endpoint.
+        /// </summary>
+        [Input("connectionString")]
+        public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
         /// The description of the AI DB cluster.

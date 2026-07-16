@@ -29,6 +29,26 @@ __all__ = [
     'BucketCorsRuleArgsDict',
     'BucketHttpsConfigCipherSuitArgs',
     'BucketHttpsConfigCipherSuitArgsDict',
+    'BucketInventoryDestinationArgs',
+    'BucketInventoryDestinationArgsDict',
+    'BucketInventoryDestinationOssBucketDestinationArgs',
+    'BucketInventoryDestinationOssBucketDestinationArgsDict',
+    'BucketInventoryDestinationOssBucketDestinationEncryptionArgs',
+    'BucketInventoryDestinationOssBucketDestinationEncryptionArgsDict',
+    'BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgs',
+    'BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgsDict',
+    'BucketInventoryFilterArgs',
+    'BucketInventoryFilterArgsDict',
+    'BucketInventoryIncrementalInventoryArgs',
+    'BucketInventoryIncrementalInventoryArgsDict',
+    'BucketInventoryIncrementalInventoryOptionalFieldsArgs',
+    'BucketInventoryIncrementalInventoryOptionalFieldsArgsDict',
+    'BucketInventoryIncrementalInventoryScheduleArgs',
+    'BucketInventoryIncrementalInventoryScheduleArgsDict',
+    'BucketInventoryOptionalFieldsArgs',
+    'BucketInventoryOptionalFieldsArgsDict',
+    'BucketInventoryScheduleArgs',
+    'BucketInventoryScheduleArgsDict',
     'BucketLifecycleRuleArgs',
     'BucketLifecycleRuleArgsDict',
     'BucketLifecycleRuleAbortMultipartUploadArgs',
@@ -713,6 +733,549 @@ class BucketHttpsConfigCipherSuitArgs:
     @tls13_custom_cipher_suites.setter
     def tls13_custom_cipher_suites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls13_custom_cipher_suites", value)
+
+
+class BucketInventoryDestinationArgsDict(TypedDict):
+    oss_bucket_destination: NotRequired[pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationArgsDict']]]
+    """
+    The Bucket information stored after the list result is exported. See `oss_bucket_destination` below.
+    """
+
+@pulumi.input_type
+class BucketInventoryDestinationArgs:
+    def __init__(__self__, *,
+                 oss_bucket_destination: pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationArgs']] = None):
+        """
+        :param pulumi.Input['BucketInventoryDestinationOssBucketDestinationArgs'] oss_bucket_destination: The Bucket information stored after the list result is exported. See `oss_bucket_destination` below.
+        """
+        if oss_bucket_destination is not None:
+            pulumi.set(__self__, "oss_bucket_destination", oss_bucket_destination)
+
+    @_builtins.property
+    @pulumi.getter(name="ossBucketDestination")
+    def oss_bucket_destination(self) -> pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationArgs']]:
+        """
+        The Bucket information stored after the list result is exported. See `oss_bucket_destination` below.
+        """
+        return pulumi.get(self, "oss_bucket_destination")
+
+    @oss_bucket_destination.setter
+    def oss_bucket_destination(self, value: pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationArgs']]):
+        pulumi.set(self, "oss_bucket_destination", value)
+
+
+class BucketInventoryDestinationOssBucketDestinationArgsDict(TypedDict):
+    account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The account ID granted by the Bucket owner.
+    """
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the bucket.
+    """
+    encryption: NotRequired[pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionArgsDict']]]
+    """
+    The encryption method of the manifest file. Valid value: SSE-OSS: Use the OSS fully managed key for encryption and decryption. SSE-KMS: Use the default KMS-managed CMK(Customer Master Key) or a specified CMK for encryption and decryption. See `encryption` below.
+    """
+    format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The file format of the manifest file.
+    """
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket. The format is acs:ram::uid:role/rolename.
+    """
+
+@pulumi.input_type
+class BucketInventoryDestinationOssBucketDestinationArgs:
+    def __init__(__self__, *,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionArgs']] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] account_id: The account ID granted by the Bucket owner.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input['BucketInventoryDestinationOssBucketDestinationEncryptionArgs'] encryption: The encryption method of the manifest file. Valid value: SSE-OSS: Use the OSS fully managed key for encryption and decryption. SSE-KMS: Use the default KMS-managed CMK(Customer Master Key) or a specified CMK for encryption and decryption. See `encryption` below.
+        :param pulumi.Input[_builtins.str] format: The file format of the manifest file.
+        :param pulumi.Input[_builtins.str] role_arn: The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket. The format is acs:ram::uid:role/rolename.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The account ID granted by the Bucket owner.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the bucket.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionArgs']]:
+        """
+        The encryption method of the manifest file. Valid value: SSE-OSS: Use the OSS fully managed key for encryption and decryption. SSE-KMS: Use the default KMS-managed CMK(Customer Master Key) or a specified CMK for encryption and decryption. See `encryption` below.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The file format of the manifest file.
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket. The format is acs:ram::uid:role/rolename.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "role_arn", value)
+
+
+class BucketInventoryDestinationOssBucketDestinationEncryptionArgsDict(TypedDict):
+    ssekms: NotRequired[pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgsDict']]]
+    """
+    The container that holds the SSE-KMS encryption key. See `ssekms` below.
+    """
+    sseoss: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The container that holds the SSE-OSS encryption method. Set it to an empty string when OSS-managed keys are used.
+    """
+
+@pulumi.input_type
+class BucketInventoryDestinationOssBucketDestinationEncryptionArgs:
+    def __init__(__self__, *,
+                 ssekms: pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgs']] = None,
+                 sseoss: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgs'] ssekms: The container that holds the SSE-KMS encryption key. See `ssekms` below.
+        :param pulumi.Input[_builtins.str] sseoss: The container that holds the SSE-OSS encryption method. Set it to an empty string when OSS-managed keys are used.
+        """
+        if ssekms is not None:
+            pulumi.set(__self__, "ssekms", ssekms)
+        if sseoss is not None:
+            pulumi.set(__self__, "sseoss", sseoss)
+
+    @_builtins.property
+    @pulumi.getter
+    def ssekms(self) -> pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgs']]:
+        """
+        The container that holds the SSE-KMS encryption key. See `ssekms` below.
+        """
+        return pulumi.get(self, "ssekms")
+
+    @ssekms.setter
+    def ssekms(self, value: pulumi.Input[Optional['BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgs']]):
+        pulumi.set(self, "ssekms", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sseoss(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The container that holds the SSE-OSS encryption method. Set it to an empty string when OSS-managed keys are used.
+        """
+        return pulumi.get(self, "sseoss")
+
+    @sseoss.setter
+    def sseoss(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sseoss", value)
+
+
+class BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgsDict(TypedDict):
+    key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    KMS key ID.
+    """
+
+@pulumi.input_type
+class BucketInventoryDestinationOssBucketDestinationEncryptionSsekmsArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key_id: KMS key ID.
+        """
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        KMS key ID.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_id", value)
+
+
+class BucketInventoryFilterArgsDict(TypedDict):
+    last_modify_begin_time_stamp: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The start timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+    """
+    last_modify_end_time_stamp: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The end timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+    """
+    lower_size_bound: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum size of the filter file, in B. Value range: greater than or equal to 0 B, less than or equal to 48.8 TB.
+    """
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The match prefix of the filter rule.
+    """
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The storage type of the filter file. Multiple storage types can be specified. Optional values: Standard: Standard storage IA: low-frequency access Archive: Archive storage ColdArchive: cold Archive storage All (default): All storage types
+    """
+    upper_size_bound: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum size of the filter file, in B. Value range: greater than 0 B, less than or equal to 48.8 TB.
+    """
+
+@pulumi.input_type
+class BucketInventoryFilterArgs:
+    def __init__(__self__, *,
+                 last_modify_begin_time_stamp: pulumi.Input[Optional[_builtins.int]] = None,
+                 last_modify_end_time_stamp: pulumi.Input[Optional[_builtins.int]] = None,
+                 lower_size_bound: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 upper_size_bound: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] last_modify_begin_time_stamp: The start timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+        :param pulumi.Input[_builtins.int] last_modify_end_time_stamp: The end timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+        :param pulumi.Input[_builtins.int] lower_size_bound: The minimum size of the filter file, in B. Value range: greater than or equal to 0 B, less than or equal to 48.8 TB.
+        :param pulumi.Input[_builtins.str] prefix: The match prefix of the filter rule.
+        :param pulumi.Input[_builtins.str] storage_class: The storage type of the filter file. Multiple storage types can be specified. Optional values: Standard: Standard storage IA: low-frequency access Archive: Archive storage ColdArchive: cold Archive storage All (default): All storage types
+        :param pulumi.Input[_builtins.int] upper_size_bound: The maximum size of the filter file, in B. Value range: greater than 0 B, less than or equal to 48.8 TB.
+        """
+        if last_modify_begin_time_stamp is not None:
+            pulumi.set(__self__, "last_modify_begin_time_stamp", last_modify_begin_time_stamp)
+        if last_modify_end_time_stamp is not None:
+            pulumi.set(__self__, "last_modify_end_time_stamp", last_modify_end_time_stamp)
+        if lower_size_bound is not None:
+            pulumi.set(__self__, "lower_size_bound", lower_size_bound)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if storage_class is not None:
+            pulumi.set(__self__, "storage_class", storage_class)
+        if upper_size_bound is not None:
+            pulumi.set(__self__, "upper_size_bound", upper_size_bound)
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifyBeginTimeStamp")
+    def last_modify_begin_time_stamp(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The start timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+        """
+        return pulumi.get(self, "last_modify_begin_time_stamp")
+
+    @last_modify_begin_time_stamp.setter
+    def last_modify_begin_time_stamp(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "last_modify_begin_time_stamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifyEndTimeStamp")
+    def last_modify_end_time_stamp(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The end timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+        """
+        return pulumi.get(self, "last_modify_end_time_stamp")
+
+    @last_modify_end_time_stamp.setter
+    def last_modify_end_time_stamp(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "last_modify_end_time_stamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lowerSizeBound")
+    def lower_size_bound(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum size of the filter file, in B. Value range: greater than or equal to 0 B, less than or equal to 48.8 TB.
+        """
+        return pulumi.get(self, "lower_size_bound")
+
+    @lower_size_bound.setter
+    def lower_size_bound(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "lower_size_bound", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The match prefix of the filter rule.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The storage type of the filter file. Multiple storage types can be specified. Optional values: Standard: Standard storage IA: low-frequency access Archive: Archive storage ColdArchive: cold Archive storage All (default): All storage types
+        """
+        return pulumi.get(self, "storage_class")
+
+    @storage_class.setter
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="upperSizeBound")
+    def upper_size_bound(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum size of the filter file, in B. Value range: greater than 0 B, less than or equal to 48.8 TB.
+        """
+        return pulumi.get(self, "upper_size_bound")
+
+    @upper_size_bound.setter
+    def upper_size_bound(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "upper_size_bound", value)
+
+
+class BucketInventoryIncrementalInventoryArgsDict(TypedDict):
+    is_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Incremental inventory enabled
+    """
+    optional_fields: NotRequired[pulumi.Input[Optional['BucketInventoryIncrementalInventoryOptionalFieldsArgsDict']]]
+    """
+    Configuration container for incremental manifest file properties See `optional_fields` below.
+    """
+    schedule: NotRequired[pulumi.Input[Optional['BucketInventoryIncrementalInventoryScheduleArgsDict']]]
+    """
+    Incremental inventory export cycle container See `schedule` below.
+    """
+
+@pulumi.input_type
+class BucketInventoryIncrementalInventoryArgs:
+    def __init__(__self__, *,
+                 is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 optional_fields: pulumi.Input[Optional['BucketInventoryIncrementalInventoryOptionalFieldsArgs']] = None,
+                 schedule: pulumi.Input[Optional['BucketInventoryIncrementalInventoryScheduleArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] is_enabled: Incremental inventory enabled
+        :param pulumi.Input['BucketInventoryIncrementalInventoryOptionalFieldsArgs'] optional_fields: Configuration container for incremental manifest file properties See `optional_fields` below.
+        :param pulumi.Input['BucketInventoryIncrementalInventoryScheduleArgs'] schedule: Incremental inventory export cycle container See `schedule` below.
+        """
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if optional_fields is not None:
+            pulumi.set(__self__, "optional_fields", optional_fields)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @_builtins.property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Incremental inventory enabled
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="optionalFields")
+    def optional_fields(self) -> pulumi.Input[Optional['BucketInventoryIncrementalInventoryOptionalFieldsArgs']]:
+        """
+        Configuration container for incremental manifest file properties See `optional_fields` below.
+        """
+        return pulumi.get(self, "optional_fields")
+
+    @optional_fields.setter
+    def optional_fields(self, value: pulumi.Input[Optional['BucketInventoryIncrementalInventoryOptionalFieldsArgs']]):
+        pulumi.set(self, "optional_fields", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[Optional['BucketInventoryIncrementalInventoryScheduleArgs']]:
+        """
+        Incremental inventory export cycle container See `schedule` below.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[Optional['BucketInventoryIncrementalInventoryScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+
+class BucketInventoryIncrementalInventoryOptionalFieldsArgsDict(TypedDict):
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The configuration items contained in the manifest results.
+    """
+
+@pulumi.input_type
+class BucketInventoryIncrementalInventoryOptionalFieldsArgs:
+    def __init__(__self__, *,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: The configuration items contained in the manifest results.
+        """
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The configuration items contained in the manifest results.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "fields", value)
+
+
+class BucketInventoryIncrementalInventoryScheduleArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Period for manifest file export.
+    """
+
+@pulumi.input_type
+class BucketInventoryIncrementalInventoryScheduleArgs:
+    def __init__(__self__, *,
+                 frequency: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] frequency: Period for manifest file export.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+
+    @_builtins.property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Period for manifest file export.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "frequency", value)
+
+
+class BucketInventoryOptionalFieldsArgsDict(TypedDict):
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The configuration items contained in the manifest results.
+    """
+
+@pulumi.input_type
+class BucketInventoryOptionalFieldsArgs:
+    def __init__(__self__, *,
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fields: The configuration items contained in the manifest results.
+        """
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @_builtins.property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The configuration items contained in the manifest results.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "fields", value)
+
+
+class BucketInventoryScheduleArgsDict(TypedDict):
+    frequency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Period for manifest file export.
+    """
+
+@pulumi.input_type
+class BucketInventoryScheduleArgs:
+    def __init__(__self__, *,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] frequency: Period for manifest file export.
+        """
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+
+    @_builtins.property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Period for manifest file export.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "frequency", value)
 
 
 class BucketLifecycleRuleArgsDict(TypedDict):

@@ -27,16 +27,22 @@ class GetServiceMetricAlarmRulesResult:
     """
     A collection of values returned by getServiceMetricAlarmRules.
     """
-    def __init__(__self__, dimensions=None, id=None, ids=None, metric_name=None, namespace=None, output_file=None, rule_name=None, rules=None, status=None):
+    def __init__(__self__, dimensions=None, enable_details=None, id=None, ids=None, metric_alarm_rule_id=None, metric_name=None, namespace=None, output_file=None, rule_name=None, rules=None, status=None):
         if dimensions and not isinstance(dimensions, str):
             raise TypeError("Expected argument 'dimensions' to be a str")
         pulumi.set(__self__, "dimensions", dimensions)
+        if enable_details and not isinstance(enable_details, bool):
+            raise TypeError("Expected argument 'enable_details' to be a bool")
+        pulumi.set(__self__, "enable_details", enable_details)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if metric_alarm_rule_id and not isinstance(metric_alarm_rule_id, str):
+            raise TypeError("Expected argument 'metric_alarm_rule_id' to be a str")
+        pulumi.set(__self__, "metric_alarm_rule_id", metric_alarm_rule_id)
         if metric_name and not isinstance(metric_name, str):
             raise TypeError("Expected argument 'metric_name' to be a str")
         pulumi.set(__self__, "metric_name", metric_name)
@@ -60,9 +66,14 @@ class GetServiceMetricAlarmRulesResult:
     @pulumi.getter
     def dimensions(self) -> Optional[_builtins.str]:
         """
-        The dimensions of the alert rule.
+        The monitoring dimensions for the specified resource.
         """
         return pulumi.get(self, "dimensions")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDetails")
+    def enable_details(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "enable_details")
 
     @_builtins.property
     @pulumi.getter
@@ -75,13 +86,24 @@ class GetServiceMetricAlarmRulesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
+        """
+        A list of Metric Alarm Rule IDs.
+        """
         return pulumi.get(self, "ids")
+
+    @_builtins.property
+    @pulumi.getter(name="metricAlarmRuleId")
+    def metric_alarm_rule_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the alarm rule.
+        """
+        return pulumi.get(self, "metric_alarm_rule_id")
 
     @_builtins.property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> Optional[_builtins.str]:
         """
-        The metric that is used to monitor the cloud service.
+        The name of the metric.
         """
         return pulumi.get(self, "metric_name")
 
@@ -89,7 +111,7 @@ class GetServiceMetricAlarmRulesResult:
     @pulumi.getter
     def namespace(self) -> Optional[_builtins.str]:
         """
-        The namespace of the cloud service.
+        The namespace of the cloud service metric data.
         """
         return pulumi.get(self, "namespace")
 
@@ -102,7 +124,7 @@ class GetServiceMetricAlarmRulesResult:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[_builtins.str]:
         """
-        The name of the alert rule.
+        Alert rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -110,7 +132,7 @@ class GetServiceMetricAlarmRulesResult:
     @pulumi.getter
     def rules(self) -> Sequence['outputs.GetServiceMetricAlarmRulesRuleResult']:
         """
-        A list of Hybrid Double Writes. Each element contains the following attributes:
+        A list of Metric Alarm Rule Entries. Each element contains the following attributes:
         """
         return pulumi.get(self, "rules")
 
@@ -118,7 +140,7 @@ class GetServiceMetricAlarmRulesResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether the alert rule is enabled.
+        The enabled status of the alarm rule.
         """
         return pulumi.get(self, "status")
 
@@ -130,8 +152,10 @@ class AwaitableGetServiceMetricAlarmRulesResult(GetServiceMetricAlarmRulesResult
             yield self
         return GetServiceMetricAlarmRulesResult(
             dimensions=self.dimensions,
+            enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            metric_alarm_rule_id=self.metric_alarm_rule_id,
             metric_name=self.metric_name,
             namespace=self.namespace,
             output_file=self.output_file,
@@ -141,7 +165,9 @@ class AwaitableGetServiceMetricAlarmRulesResult(GetServiceMetricAlarmRulesResult
 
 
 def get_service_metric_alarm_rules(dimensions: Optional[_builtins.str] = None,
+                                   enable_details: Optional[_builtins.bool] = None,
                                    ids: Optional[Sequence[_builtins.str]] = None,
+                                   metric_alarm_rule_id: Optional[_builtins.str] = None,
                                    metric_name: Optional[_builtins.str] = None,
                                    namespace: Optional[_builtins.str] = None,
                                    output_file: Optional[_builtins.str] = None,
@@ -149,13 +175,11 @@ def get_service_metric_alarm_rules(dimensions: Optional[_builtins.str] = None,
                                    status: Optional[_builtins.bool] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceMetricAlarmRulesResult:
     """
-    This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+    This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
 
     > **NOTE:** Available since v1.256.0.
 
     ## Example Usage
-
-    Basic Usage
 
     ```python
     import pulumi
@@ -207,17 +231,36 @@ def get_service_metric_alarm_rules(dimensions: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str dimensions: The monitoring dimensions of the specified resource.
+    :param _builtins.str dimensions: The monitoring dimensions for the specified resource.
+           Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Metric Alarm Rule IDs.
-    :param _builtins.str metric_name: The name of the metric.
-    :param _builtins.str namespace: The namespace of the cloud service.
+    :param _builtins.str metric_alarm_rule_id: The ID of the alarm rule.
+           
+           You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+           
+           > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+    :param _builtins.str metric_name: The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+           
+           > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+    :param _builtins.str namespace: The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+           
+           > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acs_prometheus`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str rule_name: The name of the alert rule.
-    :param _builtins.bool status: Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+    :param _builtins.str rule_name: Alert rule name.
+           
+           You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+           
+           > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
+    :param _builtins.bool status: The enabled status of the alarm rule. Valid values:
+           - true: enabled.
+           - false: disabled.
     """
     __args__ = dict()
     __args__['dimensions'] = dimensions
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['metricAlarmRuleId'] = metric_alarm_rule_id
     __args__['metricName'] = metric_name
     __args__['namespace'] = namespace
     __args__['outputFile'] = output_file
@@ -228,8 +271,10 @@ def get_service_metric_alarm_rules(dimensions: Optional[_builtins.str] = None,
 
     return AwaitableGetServiceMetricAlarmRulesResult(
         dimensions=pulumi.get(__ret__, 'dimensions'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        metric_alarm_rule_id=pulumi.get(__ret__, 'metric_alarm_rule_id'),
         metric_name=pulumi.get(__ret__, 'metric_name'),
         namespace=pulumi.get(__ret__, 'namespace'),
         output_file=pulumi.get(__ret__, 'output_file'),
@@ -237,7 +282,9 @@ def get_service_metric_alarm_rules(dimensions: Optional[_builtins.str] = None,
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
 def get_service_metric_alarm_rules_output(dimensions: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                           ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                          metric_alarm_rule_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           metric_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -245,13 +292,11 @@ def get_service_metric_alarm_rules_output(dimensions: pulumi.Input[Optional[Opti
                                           status: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceMetricAlarmRulesResult]:
     """
-    This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+    This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
 
     > **NOTE:** Available since v1.256.0.
 
     ## Example Usage
-
-    Basic Usage
 
     ```python
     import pulumi
@@ -303,17 +348,36 @@ def get_service_metric_alarm_rules_output(dimensions: pulumi.Input[Optional[Opti
     ```
 
 
-    :param _builtins.str dimensions: The monitoring dimensions of the specified resource.
+    :param _builtins.str dimensions: The monitoring dimensions for the specified resource.
+           Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
+    :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Metric Alarm Rule IDs.
-    :param _builtins.str metric_name: The name of the metric.
-    :param _builtins.str namespace: The namespace of the cloud service.
+    :param _builtins.str metric_alarm_rule_id: The ID of the alarm rule.
+           
+           You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+           
+           > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+    :param _builtins.str metric_name: The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+           
+           > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+    :param _builtins.str namespace: The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+           
+           > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acs_prometheus`.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str rule_name: The name of the alert rule.
-    :param _builtins.bool status: Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+    :param _builtins.str rule_name: Alert rule name.
+           
+           You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+           
+           > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
+    :param _builtins.bool status: The enabled status of the alarm rule. Valid values:
+           - true: enabled.
+           - false: disabled.
     """
     __args__ = dict()
     __args__['dimensions'] = dimensions
+    __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['metricAlarmRuleId'] = metric_alarm_rule_id
     __args__['metricName'] = metric_name
     __args__['namespace'] = namespace
     __args__['outputFile'] = output_file
@@ -323,8 +387,10 @@ def get_service_metric_alarm_rules_output(dimensions: pulumi.Input[Optional[Opti
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules', __args__, opts=opts, typ=GetServiceMetricAlarmRulesResult)
     return __ret__.apply(lambda __response__: GetServiceMetricAlarmRulesResult(
         dimensions=pulumi.get(__response__, 'dimensions'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
+        metric_alarm_rule_id=pulumi.get(__response__, 'metric_alarm_rule_id'),
         metric_name=pulumi.get(__response__, 'metric_name'),
         namespace=pulumi.get(__response__, 'namespace'),
         output_file=pulumi.get(__response__, 'output_file'),

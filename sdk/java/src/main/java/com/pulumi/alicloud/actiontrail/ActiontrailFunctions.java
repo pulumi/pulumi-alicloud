@@ -1463,7 +1463,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
      * 
@@ -1493,7 +1493,7 @@ public final class ActiontrailFunctions {
      *             .instanceId("xxx")
      *             .username("username")
      *             .aclResourceType("Topic")
-     *             .aclResourceName("testTopic")
+     *             .aclResourceName("yourTopic")
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
@@ -1510,7 +1510,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
      * 
@@ -1540,7 +1540,7 @@ public final class ActiontrailFunctions {
      *             .instanceId("xxx")
      *             .username("username")
      *             .aclResourceType("Topic")
-     *             .aclResourceName("testTopic")
+     *             .aclResourceName("yourTopic")
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
@@ -1557,7 +1557,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
      * 
@@ -1587,7 +1587,7 @@ public final class ActiontrailFunctions {
      *             .instanceId("xxx")
      *             .username("username")
      *             .aclResourceType("Topic")
-     *             .aclResourceName("testTopic")
+     *             .aclResourceName("yourTopic")
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
@@ -1604,7 +1604,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
      * 
@@ -1634,7 +1634,7 @@ public final class ActiontrailFunctions {
      *             .instanceId("xxx")
      *             .username("username")
      *             .aclResourceType("Topic")
-     *             .aclResourceName("testTopic")
+     *             .aclResourceName("yourTopic")
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 
@@ -1651,7 +1651,7 @@ public final class ActiontrailFunctions {
     /**
      * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in 1.66.0+
+     * &gt; **NOTE:** Available since v1.66.0.
      * 
      * ## Example Usage
      * 
@@ -1681,7 +1681,7 @@ public final class ActiontrailFunctions {
      *             .instanceId("xxx")
      *             .username("username")
      *             .aclResourceType("Topic")
-     *             .aclResourceName("testTopic")
+     *             .aclResourceName("yourTopic")
      *             .outputFile("saslAcls.txt")
      *             .build());
      * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRulePrometheusAnnotationResult
     {
         /// <summary>
-        /// The subject of the alert notificaThe key of the annotation.
+        /// The key of the annotation.
         /// </summary>
         public readonly string Key;
         /// <summary>

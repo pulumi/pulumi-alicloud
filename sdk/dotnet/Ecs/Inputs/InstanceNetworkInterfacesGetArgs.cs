@@ -51,6 +51,12 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         }
 
         /// <summary>
+        /// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("sourceDestCheck")]
+        public Input<bool>? SourceDestCheck { get; set; }
+
+        /// <summary>
         /// The ID of the vSwitch to which to connect Secondary ENI N.
         /// </summary>
         [Input("vswitchId")]

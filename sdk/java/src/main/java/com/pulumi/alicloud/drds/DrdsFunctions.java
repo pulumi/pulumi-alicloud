@@ -6,7 +6,10 @@ package com.pulumi.alicloud.drds;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.drds.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.drds.inputs.GetInstancesPlainArgs;
+import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesPlainArgs;
 import com.pulumi.alicloud.drds.outputs.GetInstancesResult;
+import com.pulumi.alicloud.drds.outputs.GetPolardbxInstancesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -329,5 +332,320 @@ public final class DrdsFunctions {
      */
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:drds/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolardbxInstancesResult> getPolardbxInstances() {
+        return getPolardbxInstances(GetPolardbxInstancesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolardbxInstancesResult> getPolardbxInstancesPlain() {
+        return getPolardbxInstancesPlain(GetPolardbxInstancesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolardbxInstancesResult> getPolardbxInstances(GetPolardbxInstancesArgs args) {
+        return getPolardbxInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolardbxInstancesResult> getPolardbxInstancesPlain(GetPolardbxInstancesPlainArgs args) {
+        return getPolardbxInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolardbxInstancesResult> getPolardbxInstances(GetPolardbxInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:drds/getPolardbxInstances:getPolardbxInstances", TypeShape.of(GetPolardbxInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPolardbxInstancesResult> getPolardbxInstances(GetPolardbxInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:drds/getPolardbxInstances:getPolardbxInstances", TypeShape.of(GetPolardbxInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Distributed Relational Database Service (DRDS) PolarDB-X Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.drds.DrdsFunctions;
+     * import com.pulumi.alicloud.drds.inputs.GetPolardbxInstancesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ids = DrdsFunctions.getPolardbxInstances(GetPolardbxInstancesArgs.builder()
+     *             .ids("pxc-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("firstPolardbxInstanceId", ids.instances()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPolardbxInstancesResult> getPolardbxInstancesPlain(GetPolardbxInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:drds/getPolardbxInstances:getPolardbxInstances", TypeShape.of(GetPolardbxInstancesResult.class), args, Utilities.withVersion(options));
     }
 }

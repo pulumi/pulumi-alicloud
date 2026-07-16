@@ -16,50 +16,63 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceMetricAlarmRulesResult {
     /**
-     * @return The dimensions of the alert rule.
+     * @return The monitoring dimensions for the specified resource.
      * 
      */
     private @Nullable String dimensions;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return A list of Metric Alarm Rule IDs.
+     * 
+     */
     private List<String> ids;
     /**
-     * @return The metric that is used to monitor the cloud service.
+     * @return The ID of the alarm rule.
+     * 
+     */
+    private @Nullable String metricAlarmRuleId;
+    /**
+     * @return The name of the metric.
      * 
      */
     private @Nullable String metricName;
     /**
-     * @return The namespace of the cloud service.
+     * @return The namespace of the cloud service metric data.
      * 
      */
     private @Nullable String namespace;
     private @Nullable String outputFile;
     /**
-     * @return The name of the alert rule.
+     * @return Alert rule name.
      * 
      */
     private @Nullable String ruleName;
     /**
-     * @return A list of Hybrid Double Writes. Each element contains the following attributes:
+     * @return A list of Metric Alarm Rule Entries. Each element contains the following attributes:
      * 
      */
     private List<GetServiceMetricAlarmRulesRule> rules;
     /**
-     * @return Indicates whether the alert rule is enabled.
+     * @return The enabled status of the alarm rule.
      * 
      */
     private @Nullable Boolean status;
 
     private GetServiceMetricAlarmRulesResult() {}
     /**
-     * @return The dimensions of the alert rule.
+     * @return The monitoring dimensions for the specified resource.
      * 
      */
     public Optional<String> dimensions() {
         return Optional.ofNullable(this.dimensions);
+    }
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -68,18 +81,29 @@ public final class GetServiceMetricAlarmRulesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of Metric Alarm Rule IDs.
+     * 
+     */
     public List<String> ids() {
         return this.ids;
     }
     /**
-     * @return The metric that is used to monitor the cloud service.
+     * @return The ID of the alarm rule.
+     * 
+     */
+    public Optional<String> metricAlarmRuleId() {
+        return Optional.ofNullable(this.metricAlarmRuleId);
+    }
+    /**
+     * @return The name of the metric.
      * 
      */
     public Optional<String> metricName() {
         return Optional.ofNullable(this.metricName);
     }
     /**
-     * @return The namespace of the cloud service.
+     * @return The namespace of the cloud service metric data.
      * 
      */
     public Optional<String> namespace() {
@@ -89,21 +113,21 @@ public final class GetServiceMetricAlarmRulesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The name of the alert rule.
+     * @return Alert rule name.
      * 
      */
     public Optional<String> ruleName() {
         return Optional.ofNullable(this.ruleName);
     }
     /**
-     * @return A list of Hybrid Double Writes. Each element contains the following attributes:
+     * @return A list of Metric Alarm Rule Entries. Each element contains the following attributes:
      * 
      */
     public List<GetServiceMetricAlarmRulesRule> rules() {
         return this.rules;
     }
     /**
-     * @return Indicates whether the alert rule is enabled.
+     * @return The enabled status of the alarm rule.
      * 
      */
     public Optional<Boolean> status() {
@@ -120,8 +144,10 @@ public final class GetServiceMetricAlarmRulesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String dimensions;
+        private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
+        private @Nullable String metricAlarmRuleId;
         private @Nullable String metricName;
         private @Nullable String namespace;
         private @Nullable String outputFile;
@@ -132,8 +158,10 @@ public final class GetServiceMetricAlarmRulesResult {
         public Builder(GetServiceMetricAlarmRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dimensions = defaults.dimensions;
+    	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.metricAlarmRuleId = defaults.metricAlarmRuleId;
     	      this.metricName = defaults.metricName;
     	      this.namespace = defaults.namespace;
     	      this.outputFile = defaults.outputFile;
@@ -146,6 +174,12 @@ public final class GetServiceMetricAlarmRulesResult {
         public Builder dimensions(@Nullable String dimensions) {
 
             this.dimensions = dimensions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+
+            this.enableDetails = enableDetails;
             return this;
         }
         @CustomType.Setter
@@ -166,6 +200,12 @@ public final class GetServiceMetricAlarmRulesResult {
         }
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+        @CustomType.Setter
+        public Builder metricAlarmRuleId(@Nullable String metricAlarmRuleId) {
+
+            this.metricAlarmRuleId = metricAlarmRuleId;
+            return this;
         }
         @CustomType.Setter
         public Builder metricName(@Nullable String metricName) {
@@ -211,8 +251,10 @@ public final class GetServiceMetricAlarmRulesResult {
         public GetServiceMetricAlarmRulesResult build() {
             final var _resultValue = new GetServiceMetricAlarmRulesResult();
             _resultValue.dimensions = dimensions;
+            _resultValue.enableDetails = enableDetails;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.metricAlarmRuleId = metricAlarmRuleId;
             _resultValue.metricName = metricName;
             _resultValue.namespace = namespace;
             _resultValue.outputFile = outputFile;

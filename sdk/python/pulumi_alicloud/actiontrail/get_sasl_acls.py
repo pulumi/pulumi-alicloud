@@ -125,7 +125,7 @@ def get_sasl_acls(acl_resource_name: Optional[_builtins.str] = None,
     """
     This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.66.0+
+    > **NOTE:** Available since v1.66.0.
 
     ## Example Usage
 
@@ -136,7 +136,7 @@ def get_sasl_acls(acl_resource_name: Optional[_builtins.str] = None,
     sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(instance_id="xxx",
         username="username",
         acl_resource_type="Topic",
-        acl_resource_name="testTopic",
+        acl_resource_name="yourTopic",
         output_file="saslAcls.txt")
     pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
     ```
@@ -174,7 +174,7 @@ def get_sasl_acls_output(acl_resource_name: pulumi.Input[Optional[_builtins.str]
     """
     This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in 1.66.0+
+    > **NOTE:** Available since v1.66.0.
 
     ## Example Usage
 
@@ -185,7 +185,7 @@ def get_sasl_acls_output(acl_resource_name: pulumi.Input[Optional[_builtins.str]
     sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(instance_id="xxx",
         username="username",
         acl_resource_type="Topic",
-        acl_resource_name="testTopic",
+        acl_resource_name="yourTopic",
         output_file="saslAcls.txt")
     pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
     ```

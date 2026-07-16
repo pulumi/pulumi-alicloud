@@ -1218,6 +1218,8 @@ type GetSaslAclsAcl struct {
 	AclResourceType string `pulumi:"aclResourceType"`
 	// The host of the sasl acl.
 	Host string `pulumi:"host"`
+	// (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `<instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>`.
+	Id string `pulumi:"id"`
 	// Get results for the specified username.
 	Username string `pulumi:"username"`
 }
@@ -1244,6 +1246,8 @@ type GetSaslAclsAclArgs struct {
 	AclResourceType pulumi.StringInput `pulumi:"aclResourceType"`
 	// The host of the sasl acl.
 	Host pulumi.StringInput `pulumi:"host"`
+	// (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `<instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>`.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Get results for the specified username.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -1322,6 +1326,11 @@ func (o GetSaslAclsAclOutput) AclResourceType() pulumi.StringOutput {
 // The host of the sasl acl.
 func (o GetSaslAclsAclOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `<instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>`.
+func (o GetSaslAclsAclOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSaslAclsAcl) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Get results for the specified username.

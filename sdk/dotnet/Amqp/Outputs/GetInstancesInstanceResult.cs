@@ -62,6 +62,10 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// </summary>
         public readonly string RenewalStatus;
         /// <summary>
+        /// (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+        /// </summary>
+        public readonly bool ServerlessSwitch;
+        /// <summary>
         /// The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
         /// </summary>
         public readonly string Status;
@@ -96,6 +100,8 @@ namespace Pulumi.AliCloud.Amqp.Outputs
 
             string renewalStatus,
 
+            bool serverlessSwitch,
+
             string status,
 
             bool supportEip)
@@ -112,6 +118,7 @@ namespace Pulumi.AliCloud.Amqp.Outputs
             RenewalDuration = renewalDuration;
             RenewalDurationUnit = renewalDurationUnit;
             RenewalStatus = renewalStatus;
+            ServerlessSwitch = serverlessSwitch;
             Status = status;
             SupportEip = supportEip;
         }

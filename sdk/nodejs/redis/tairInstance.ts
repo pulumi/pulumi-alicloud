@@ -275,7 +275,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly secondaryZoneId: pulumi.Output<string | undefined>;
     /**
-     * Security group id
+     * Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      */
     declare public readonly securityGroupId: pulumi.Output<string | undefined>;
     /**
@@ -691,7 +691,7 @@ export interface TairInstanceState {
      */
     secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
-     * Security group id
+     * Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**
@@ -936,7 +936,7 @@ export interface TairInstanceArgs {
      */
     secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
-     * Security group id
+     * Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**

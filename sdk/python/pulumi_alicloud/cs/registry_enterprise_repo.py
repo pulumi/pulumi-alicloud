@@ -24,7 +24,8 @@ class RegistryEnterpriseRepoArgs:
                  repo_type: pulumi.Input[_builtins.str],
                  summary: pulumi.Input[_builtins.str],
                  detail: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_immutability: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseRepo resource.
 
@@ -36,6 +37,7 @@ class RegistryEnterpriseRepoArgs:
         :param pulumi.Input[_builtins.str] summary: The summary about the repository.
         :param pulumi.Input[_builtins.str] detail: The description of the repository.
         :param pulumi.Input[_builtins.str] name: The name of the image repository.
+        :param pulumi.Input[_builtins.bool] tag_immutability: Whether to enable image tag immutability. Valid values:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "namespace", namespace)
@@ -45,6 +47,8 @@ class RegistryEnterpriseRepoArgs:
             pulumi.set(__self__, "detail", detail)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tag_immutability is not None:
+            pulumi.set(__self__, "tag_immutability", tag_immutability)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -120,6 +124,18 @@ class RegistryEnterpriseRepoArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tagImmutability")
+    def tag_immutability(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable image tag immutability. Valid values:
+        """
+        return pulumi.get(self, "tag_immutability")
+
+    @tag_immutability.setter
+    def tag_immutability(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tag_immutability", value)
+
 
 @pulumi.input_type
 class _RegistryEnterpriseRepoState:
@@ -130,7 +146,8 @@ class _RegistryEnterpriseRepoState:
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_id: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 summary: pulumi.Input[Optional[_builtins.str]] = None):
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_immutability: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseRepo resources.
 
@@ -143,6 +160,7 @@ class _RegistryEnterpriseRepoState:
                - `PUBLIC`: The repository is a public repository.
                - `PRIVATE`: The repository is a private repository.
         :param pulumi.Input[_builtins.str] summary: The summary about the repository.
+        :param pulumi.Input[_builtins.bool] tag_immutability: Whether to enable image tag immutability. Valid values:
         """
         if detail is not None:
             pulumi.set(__self__, "detail", detail)
@@ -158,6 +176,8 @@ class _RegistryEnterpriseRepoState:
             pulumi.set(__self__, "repo_type", repo_type)
         if summary is not None:
             pulumi.set(__self__, "summary", summary)
+        if tag_immutability is not None:
+            pulumi.set(__self__, "tag_immutability", tag_immutability)
 
     @_builtins.property
     @pulumi.getter
@@ -245,6 +265,18 @@ class _RegistryEnterpriseRepoState:
     def summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summary", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tagImmutability")
+    def tag_immutability(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable image tag immutability. Valid values:
+        """
+        return pulumi.get(self, "tag_immutability")
+
+    @tag_immutability.setter
+    def tag_immutability(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "tag_immutability", value)
+
 
 @pulumi.type_token("alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo")
 class RegistryEnterpriseRepo(pulumi.CustomResource):
@@ -258,6 +290,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_type: pulumi.Input[Optional[_builtins.str]] = None,
                  summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_immutability: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Container Registry Enterprise Edition Repository resource.
@@ -326,6 +359,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
                - `PUBLIC`: The repository is a public repository.
                - `PRIVATE`: The repository is a private repository.
         :param pulumi.Input[_builtins.str] summary: The summary about the repository.
+        :param pulumi.Input[_builtins.bool] tag_immutability: Whether to enable image tag immutability. Valid values:
         """
         ...
     @overload
@@ -411,6 +445,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_type: pulumi.Input[Optional[_builtins.str]] = None,
                  summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_immutability: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -434,6 +469,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
             if summary is None and not opts.urn:
                 raise TypeError("Missing required property 'summary'")
             __props__.__dict__["summary"] = summary
+            __props__.__dict__["tag_immutability"] = tag_immutability
             __props__.__dict__["repo_id"] = None
         super(RegistryEnterpriseRepo, __self__).__init__(
             'alicloud:cs/registryEnterpriseRepo:RegistryEnterpriseRepo',
@@ -451,7 +487,8 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             repo_id: pulumi.Input[Optional[_builtins.str]] = None,
             repo_type: pulumi.Input[Optional[_builtins.str]] = None,
-            summary: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegistryEnterpriseRepo':
+            summary: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_immutability: pulumi.Input[Optional[_builtins.bool]] = None) -> 'RegistryEnterpriseRepo':
         """
         Get an existing RegistryEnterpriseRepo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -468,6 +505,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
                - `PUBLIC`: The repository is a public repository.
                - `PRIVATE`: The repository is a private repository.
         :param pulumi.Input[_builtins.str] summary: The summary about the repository.
+        :param pulumi.Input[_builtins.bool] tag_immutability: Whether to enable image tag immutability. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -480,6 +518,7 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         __props__.__dict__["repo_id"] = repo_id
         __props__.__dict__["repo_type"] = repo_type
         __props__.__dict__["summary"] = summary
+        __props__.__dict__["tag_immutability"] = tag_immutability
         return RegistryEnterpriseRepo(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -539,4 +578,12 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
         The summary about the repository.
         """
         return pulumi.get(self, "summary")
+
+    @_builtins.property
+    @pulumi.getter(name="tagImmutability")
+    def tag_immutability(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable image tag immutability. Valid values:
+        """
+        return pulumi.get(self, "tag_immutability")
 

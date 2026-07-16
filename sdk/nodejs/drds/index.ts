@@ -10,6 +10,11 @@ export const getInstances: typeof import("./getInstances").getInstances = null a
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
 
+export { GetPolardbxInstancesArgs, GetPolardbxInstancesResult, GetPolardbxInstancesOutputArgs } from "./getPolardbxInstances";
+export const getPolardbxInstances: typeof import("./getPolardbxInstances").getPolardbxInstances = null as any;
+export const getPolardbxInstancesOutput: typeof import("./getPolardbxInstances").getPolardbxInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getPolardbxInstances","getPolardbxInstancesOutput"], () => require("./getPolardbxInstances"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;

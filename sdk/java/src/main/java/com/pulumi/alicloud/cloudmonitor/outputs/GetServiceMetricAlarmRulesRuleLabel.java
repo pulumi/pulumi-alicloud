@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRuleLabel {
     /**
-     * @return The subject of the alert notificaThe key of the annotation.
+     * @return The key of the annotation.
      * 
      */
     private String key;
@@ -23,7 +23,7 @@ public final class GetServiceMetricAlarmRulesRuleLabel {
 
     private GetServiceMetricAlarmRulesRuleLabel() {}
     /**
-     * @return The subject of the alert notificaThe key of the annotation.
+     * @return The key of the annotation.
      * 
      */
     public String key() {

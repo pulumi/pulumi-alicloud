@@ -988,6 +988,184 @@ func (o GatewayZoneConfigPtrOutput) SelectOption() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetPluginClassesClass struct {
+	// The alias of the plugin class.
+	Alias string `pulumi:"alias"`
+	// The description of the plugin class, which introduces the main functions of the plugin.
+	Description string `pulumi:"description"`
+	// The document of the plugin class, which describes the functions and usage of the plugin in detail. It is available when `enableDetails` is set to `true`.
+	Document string `pulumi:"document"`
+	// The ID of the Plugin Class. It is the same as `pluginClassId`.
+	Id string `pulumi:"id"`
+	// The ID of the plugin class.
+	PluginClassId string `pulumi:"pluginClassId"`
+	// The name of the plugin class.
+	PluginClassName string `pulumi:"pluginClassName"`
+	// The publish status of the plugin class. Valid values: `Success` (published successfully), `Failed` (failed to be published), `Publishing` (being published). Only a plugin class in the `Success` status can be installed.
+	Status string `pulumi:"status"`
+	// The type of the plugin class used to filter results. Valid values: `Auth`, `FlowControl`, `FlowObservation`, `Security`, `TransportProtocol`, `Other`.
+	Type string `pulumi:"type"`
+	// The version of the plugin class.
+	Version string `pulumi:"version"`
+	// The programming language of the wasm plugin. It is available when `enableDetails` is set to `true`.
+	WasmLanguage string `pulumi:"wasmLanguage"`
+}
+
+// GetPluginClassesClassInput is an input type that accepts GetPluginClassesClassArgs and GetPluginClassesClassOutput values.
+// You can construct a concrete instance of `GetPluginClassesClassInput` via:
+//
+//	GetPluginClassesClassArgs{...}
+type GetPluginClassesClassInput interface {
+	pulumi.Input
+
+	ToGetPluginClassesClassOutput() GetPluginClassesClassOutput
+	ToGetPluginClassesClassOutputWithContext(context.Context) GetPluginClassesClassOutput
+}
+
+type GetPluginClassesClassArgs struct {
+	// The alias of the plugin class.
+	Alias pulumi.StringInput `pulumi:"alias"`
+	// The description of the plugin class, which introduces the main functions of the plugin.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The document of the plugin class, which describes the functions and usage of the plugin in detail. It is available when `enableDetails` is set to `true`.
+	Document pulumi.StringInput `pulumi:"document"`
+	// The ID of the Plugin Class. It is the same as `pluginClassId`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of the plugin class.
+	PluginClassId pulumi.StringInput `pulumi:"pluginClassId"`
+	// The name of the plugin class.
+	PluginClassName pulumi.StringInput `pulumi:"pluginClassName"`
+	// The publish status of the plugin class. Valid values: `Success` (published successfully), `Failed` (failed to be published), `Publishing` (being published). Only a plugin class in the `Success` status can be installed.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of the plugin class used to filter results. Valid values: `Auth`, `FlowControl`, `FlowObservation`, `Security`, `TransportProtocol`, `Other`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The version of the plugin class.
+	Version pulumi.StringInput `pulumi:"version"`
+	// The programming language of the wasm plugin. It is available when `enableDetails` is set to `true`.
+	WasmLanguage pulumi.StringInput `pulumi:"wasmLanguage"`
+}
+
+func (GetPluginClassesClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginClassesClass)(nil)).Elem()
+}
+
+func (i GetPluginClassesClassArgs) ToGetPluginClassesClassOutput() GetPluginClassesClassOutput {
+	return i.ToGetPluginClassesClassOutputWithContext(context.Background())
+}
+
+func (i GetPluginClassesClassArgs) ToGetPluginClassesClassOutputWithContext(ctx context.Context) GetPluginClassesClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginClassesClassOutput)
+}
+
+// GetPluginClassesClassArrayInput is an input type that accepts GetPluginClassesClassArray and GetPluginClassesClassArrayOutput values.
+// You can construct a concrete instance of `GetPluginClassesClassArrayInput` via:
+//
+//	GetPluginClassesClassArray{ GetPluginClassesClassArgs{...} }
+type GetPluginClassesClassArrayInput interface {
+	pulumi.Input
+
+	ToGetPluginClassesClassArrayOutput() GetPluginClassesClassArrayOutput
+	ToGetPluginClassesClassArrayOutputWithContext(context.Context) GetPluginClassesClassArrayOutput
+}
+
+type GetPluginClassesClassArray []GetPluginClassesClassInput
+
+func (GetPluginClassesClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginClassesClass)(nil)).Elem()
+}
+
+func (i GetPluginClassesClassArray) ToGetPluginClassesClassArrayOutput() GetPluginClassesClassArrayOutput {
+	return i.ToGetPluginClassesClassArrayOutputWithContext(context.Background())
+}
+
+func (i GetPluginClassesClassArray) ToGetPluginClassesClassArrayOutputWithContext(ctx context.Context) GetPluginClassesClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginClassesClassArrayOutput)
+}
+
+type GetPluginClassesClassOutput struct{ *pulumi.OutputState }
+
+func (GetPluginClassesClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginClassesClass)(nil)).Elem()
+}
+
+func (o GetPluginClassesClassOutput) ToGetPluginClassesClassOutput() GetPluginClassesClassOutput {
+	return o
+}
+
+func (o GetPluginClassesClassOutput) ToGetPluginClassesClassOutputWithContext(ctx context.Context) GetPluginClassesClassOutput {
+	return o
+}
+
+// The alias of the plugin class.
+func (o GetPluginClassesClassOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The description of the plugin class, which introduces the main functions of the plugin.
+func (o GetPluginClassesClassOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The document of the plugin class, which describes the functions and usage of the plugin in detail. It is available when `enableDetails` is set to `true`.
+func (o GetPluginClassesClassOutput) Document() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Document }).(pulumi.StringOutput)
+}
+
+// The ID of the Plugin Class. It is the same as `pluginClassId`.
+func (o GetPluginClassesClassOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the plugin class.
+func (o GetPluginClassesClassOutput) PluginClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.PluginClassId }).(pulumi.StringOutput)
+}
+
+// The name of the plugin class.
+func (o GetPluginClassesClassOutput) PluginClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.PluginClassName }).(pulumi.StringOutput)
+}
+
+// The publish status of the plugin class. Valid values: `Success` (published successfully), `Failed` (failed to be published), `Publishing` (being published). Only a plugin class in the `Success` status can be installed.
+func (o GetPluginClassesClassOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the plugin class used to filter results. Valid values: `Auth`, `FlowControl`, `FlowObservation`, `Security`, `TransportProtocol`, `Other`.
+func (o GetPluginClassesClassOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The version of the plugin class.
+func (o GetPluginClassesClassOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The programming language of the wasm plugin. It is available when `enableDetails` is set to `true`.
+func (o GetPluginClassesClassOutput) WasmLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginClassesClass) string { return v.WasmLanguage }).(pulumi.StringOutput)
+}
+
+type GetPluginClassesClassArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPluginClassesClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginClassesClass)(nil)).Elem()
+}
+
+func (o GetPluginClassesClassArrayOutput) ToGetPluginClassesClassArrayOutput() GetPluginClassesClassArrayOutput {
+	return o
+}
+
+func (o GetPluginClassesClassArrayOutput) ToGetPluginClassesClassArrayOutputWithContext(ctx context.Context) GetPluginClassesClassArrayOutput {
+	return o
+}
+
+func (o GetPluginClassesClassArrayOutput) Index(i pulumi.IntInput) GetPluginClassesClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPluginClassesClass {
+		return vs[0].([]GetPluginClassesClass)[vs[1].(int)]
+	}).(GetPluginClassesClassOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLogConfigInput)(nil)).Elem(), GatewayLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayLogConfigPtrInput)(nil)).Elem(), GatewayLogConfigArgs{})
@@ -1003,6 +1181,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneArrayInput)(nil)).Elem(), GatewayZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneConfigInput)(nil)).Elem(), GatewayZoneConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayZoneConfigPtrInput)(nil)).Elem(), GatewayZoneConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginClassesClassInput)(nil)).Elem(), GetPluginClassesClassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginClassesClassArrayInput)(nil)).Elem(), GetPluginClassesClassArray{})
 	pulumi.RegisterOutputType(GatewayLogConfigOutput{})
 	pulumi.RegisterOutputType(GatewayLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(GatewayLogConfigSlsOutput{})
@@ -1017,4 +1197,6 @@ func init() {
 	pulumi.RegisterOutputType(GatewayZoneArrayOutput{})
 	pulumi.RegisterOutputType(GatewayZoneConfigOutput{})
 	pulumi.RegisterOutputType(GatewayZoneConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPluginClassesClassOutput{})
+	pulumi.RegisterOutputType(GetPluginClassesClassArrayOutput{})
 }

@@ -23,6 +23,7 @@ __all__ = [
     'GatewayVswitch',
     'GatewayZone',
     'GatewayZoneConfig',
+    'GetPluginClassesClassResult',
 ]
 
 @pulumi.output_type
@@ -272,5 +273,122 @@ class GatewayZoneConfig(dict):
         Availability Zone Options
         """
         return pulumi.get(self, "select_option")
+
+
+@pulumi.output_type
+class GetPluginClassesClassResult(dict):
+    def __init__(__self__, *,
+                 alias: _builtins.str,
+                 description: _builtins.str,
+                 document: _builtins.str,
+                 id: _builtins.str,
+                 plugin_class_id: _builtins.str,
+                 plugin_class_name: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str,
+                 version: _builtins.str,
+                 wasm_language: _builtins.str):
+        """
+        :param _builtins.str alias: The alias of the plugin class.
+        :param _builtins.str description: The description of the plugin class, which introduces the main functions of the plugin.
+        :param _builtins.str document: The document of the plugin class, which describes the functions and usage of the plugin in detail. It is available when `enable_details` is set to `true`.
+        :param _builtins.str id: The ID of the Plugin Class. It is the same as `plugin_class_id`.
+        :param _builtins.str plugin_class_id: The ID of the plugin class.
+        :param _builtins.str plugin_class_name: The name of the plugin class.
+        :param _builtins.str status: The publish status of the plugin class. Valid values: `Success` (published successfully), `Failed` (failed to be published), `Publishing` (being published). Only a plugin class in the `Success` status can be installed.
+        :param _builtins.str type: The type of the plugin class used to filter results. Valid values: `Auth`, `FlowControl`, `FlowObservation`, `Security`, `TransportProtocol`, `Other`.
+        :param _builtins.str version: The version of the plugin class.
+        :param _builtins.str wasm_language: The programming language of the wasm plugin. It is available when `enable_details` is set to `true`.
+        """
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "document", document)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "plugin_class_id", plugin_class_id)
+        pulumi.set(__self__, "plugin_class_name", plugin_class_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "wasm_language", wasm_language)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> _builtins.str:
+        """
+        The alias of the plugin class.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the plugin class, which introduces the main functions of the plugin.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def document(self) -> _builtins.str:
+        """
+        The document of the plugin class, which describes the functions and usage of the plugin in detail. It is available when `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "document")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Plugin Class. It is the same as `plugin_class_id`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="pluginClassId")
+    def plugin_class_id(self) -> _builtins.str:
+        """
+        The ID of the plugin class.
+        """
+        return pulumi.get(self, "plugin_class_id")
+
+    @_builtins.property
+    @pulumi.getter(name="pluginClassName")
+    def plugin_class_name(self) -> _builtins.str:
+        """
+        The name of the plugin class.
+        """
+        return pulumi.get(self, "plugin_class_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The publish status of the plugin class. Valid values: `Success` (published successfully), `Failed` (failed to be published), `Publishing` (being published). Only a plugin class in the `Success` status can be installed.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the plugin class used to filter results. Valid values: `Auth`, `FlowControl`, `FlowObservation`, `Security`, `TransportProtocol`, `Other`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        The version of the plugin class.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="wasmLanguage")
+    def wasm_language(self) -> _builtins.str:
+        """
+        The programming language of the wasm plugin. It is available when `enable_details` is set to `true`.
+        """
+        return pulumi.get(self, "wasm_language")
 
 

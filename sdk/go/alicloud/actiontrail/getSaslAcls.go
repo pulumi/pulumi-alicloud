@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in 1.66.0+
+// > **NOTE:** Available since v1.66.0.
 //
 // ## Example Usage
 //
@@ -33,7 +33,7 @@ import (
 //				InstanceId:      "xxx",
 //				Username:        "username",
 //				AclResourceType: "Topic",
-//				AclResourceName: "testTopic",
+//				AclResourceName: "yourTopic",
 //				OutputFile:      pulumi.StringRef("saslAcls.txt"),
 //			}, nil)
 //			if err != nil {

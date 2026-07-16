@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultAuditPolicy = new alicloud.mongodb.AuditPolicy("default", {
  *     dbInstanceId: defaultInstance.id,
- *     auditStatus: "disabled",
+ *     auditStatus: "enable",
  * });
  * ```
  *
@@ -98,7 +98,7 @@ export class AuditPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Audit state, Valid values: `enable`, `disabled`.
+     * Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      */
     declare public readonly auditStatus: pulumi.Output<string>;
     /**
@@ -110,7 +110,17 @@ export class AuditPolicy extends pulumi.CustomResource {
      */
     declare public readonly filter: pulumi.Output<string>;
     /**
-     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     */
+    declare public readonly hotStoragePeriod: pulumi.Output<number>;
+    /**
+     * The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     */
+    declare public readonly serviceType: pulumi.Output<string>;
+    /**
+     * Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      */
     declare public readonly storagePeriod: pulumi.Output<number>;
 
@@ -130,6 +140,8 @@ export class AuditPolicy extends pulumi.CustomResource {
             resourceInputs["auditStatus"] = state?.auditStatus;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
             resourceInputs["filter"] = state?.filter;
+            resourceInputs["hotStoragePeriod"] = state?.hotStoragePeriod;
+            resourceInputs["serviceType"] = state?.serviceType;
             resourceInputs["storagePeriod"] = state?.storagePeriod;
         } else {
             const args = argsOrState as AuditPolicyArgs | undefined;
@@ -142,6 +154,8 @@ export class AuditPolicy extends pulumi.CustomResource {
             resourceInputs["auditStatus"] = args?.auditStatus;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["filter"] = args?.filter;
+            resourceInputs["hotStoragePeriod"] = args?.hotStoragePeriod;
+            resourceInputs["serviceType"] = args?.serviceType;
             resourceInputs["storagePeriod"] = args?.storagePeriod;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -154,7 +168,7 @@ export class AuditPolicy extends pulumi.CustomResource {
  */
 export interface AuditPolicyState {
     /**
-     * Audit state, Valid values: `enable`, `disabled`.
+     * Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      */
     auditStatus?: pulumi.Input<string | undefined>;
     /**
@@ -166,7 +180,17 @@ export interface AuditPolicyState {
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     */
+    hotStoragePeriod?: pulumi.Input<number | undefined>;
+    /**
+     * The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     */
+    serviceType?: pulumi.Input<string | undefined>;
+    /**
+     * Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      */
     storagePeriod?: pulumi.Input<number | undefined>;
 }
@@ -176,7 +200,7 @@ export interface AuditPolicyState {
  */
 export interface AuditPolicyArgs {
     /**
-     * Audit state, Valid values: `enable`, `disabled`.
+     * Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      */
     auditStatus: pulumi.Input<string>;
     /**
@@ -188,7 +212,17 @@ export interface AuditPolicyArgs {
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     */
+    hotStoragePeriod?: pulumi.Input<number | undefined>;
+    /**
+     * The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     */
+    serviceType?: pulumi.Input<string | undefined>;
+    /**
+     * Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      */
     storagePeriod?: pulumi.Input<number | undefined>;
 }

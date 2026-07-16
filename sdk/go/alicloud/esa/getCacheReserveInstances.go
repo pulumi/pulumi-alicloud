@@ -40,7 +40,6 @@ import (
 //			_default, err := esa.NewCacheReserveInstance(ctx, "default", &esa.CacheReserveInstanceArgs{
 //				QuotaGb:     pulumi.Int(10240),
 //				CrRegion:    pulumi.String("CN-beijing"),
-//				AutoRenew:   pulumi.Bool(true),
 //				Period:      pulumi.Int(1),
 //				PaymentType: pulumi.String("Subscription"),
 //				AutoPay:     pulumi.Bool(true),

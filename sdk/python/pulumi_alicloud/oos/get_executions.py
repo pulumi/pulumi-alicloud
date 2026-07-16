@@ -89,11 +89,17 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
+        """
+        The category of OOS Execution.
+        """
         return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter(name="endDate")
     def end_date(self) -> Optional[_builtins.str]:
+        """
+        The time when the execution was ended.
+        """
         return pulumi.get(self, "end_date")
 
     @_builtins.property
@@ -104,6 +110,9 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter(name="executedBy")
     def executed_by(self) -> Optional[_builtins.str]:
+        """
+        The user who execute the template.
+        """
         return pulumi.get(self, "executed_by")
 
     @_builtins.property
@@ -138,6 +147,9 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
+        """
+        The mode of OOS Execution.
+        """
         return pulumi.get(self, "mode")
 
     @_builtins.property
@@ -148,11 +160,17 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter(name="parentExecutionId")
     def parent_execution_id(self) -> Optional[_builtins.str]:
+        """
+        The id of parent OOS Execution.
+        """
         return pulumi.get(self, "parent_execution_id")
 
     @_builtins.property
     @pulumi.getter(name="ramRole")
     def ram_role(self) -> Optional[_builtins.str]:
+        """
+        The role that executes the current template.
+        """
         return pulumi.get(self, "ram_role")
 
     @_builtins.property
@@ -178,16 +196,25 @@ class GetExecutionsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
+        """
+        The status of OOS Execution.
+        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
+        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="templateName")
     def template_name(self) -> Optional[_builtins.str]:
+        """
+        The name of execution template.
+        """
         return pulumi.get(self, "template_name")
 
 
@@ -239,7 +266,7 @@ def get_executions(category: Optional[_builtins.str] = None,
     """
     This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.93.0+.
+    > **NOTE:** Available since v1.93.0.
 
     ## Example Usage
 
@@ -335,7 +362,7 @@ def get_executions_output(category: pulumi.Input[Optional[Optional[_builtins.str
     """
     This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.93.0+.
+    > **NOTE:** Available since v1.93.0.
 
     ## Example Usage
 

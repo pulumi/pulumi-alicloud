@@ -53,7 +53,7 @@ public final class StackInstancesArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+     * Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
      * 
      * &gt; **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
      * 
@@ -62,7 +62,7 @@ public final class StackInstancesArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<StackInstancesDeploymentTargetsArgs> deploymentTargets;
 
     /**
-     * @return Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+     * @return Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
      * 
      * &gt; **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
      * 
@@ -262,7 +262,7 @@ public final class StackInstancesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deploymentTargets Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+         * @param deploymentTargets Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
          * 
          * &gt; **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
          * 
@@ -275,7 +275,7 @@ public final class StackInstancesArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param deploymentTargets Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+         * @param deploymentTargets Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
          * 
          * &gt; **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
          * 

@@ -153,8 +153,6 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
     /**
      * The name of the topic.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
@@ -162,11 +160,23 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the topic.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     public Output<String> topicName() {
         return this.topicName;
+    }
+    /**
+     * The type of the topic. Default value: `normal`. Valid values:
+     * 
+     */
+    @Export(name="topicType", refs={String.class}, tree="[0]")
+    private Output<String> topicType;
+
+    /**
+     * @return The type of the topic. Default value: `normal`. Valid values:
+     * 
+     */
+    public Output<String> topicType() {
+        return this.topicType;
     }
 
     /**

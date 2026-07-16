@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.67.0.
  * 
+ * &gt; **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -227,6 +229,20 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.dbClusterId;
     }
     /**
+     * (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+     * 
+     */
+    @Export(name="dynamodbAuthPassword", refs={String.class}, tree="[0]")
+    private Output<String> dynamodbAuthPassword;
+
+    /**
+     * @return (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+     * 
+     */
+    public Output<String> dynamodbAuthPassword() {
+        return this.dynamodbAuthPassword;
+    }
+    /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
@@ -309,7 +325,8 @@ public class Account extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "accountPassword"
+                "accountPassword",
+                "dynamodbAuthPassword"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

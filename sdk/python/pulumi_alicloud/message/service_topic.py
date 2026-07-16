@@ -23,17 +23,17 @@ class ServiceTopicArgs:
                  enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceTopic resource.
 
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[_builtins.bool] enable_logging: Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.bool] logging_enabled: . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
         """
         pulumi.set(__self__, "topic_name", topic_name)
         if enable_logging is not None:
@@ -47,14 +47,14 @@ class ServiceTopicArgs:
             pulumi.set(__self__, "max_message_size", max_message_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if topic_type is not None:
+            pulumi.set(__self__, "topic_type", topic_type)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Input[_builtins.str]:
         """
         The name of the topic.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "topic_name")
 
@@ -111,6 +111,18 @@ class ServiceTopicArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="topicType")
+    def topic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the topic. Default value: `normal`. Valid values:
+        """
+        return pulumi.get(self, "topic_type")
+
+    @topic_type.setter
+    def topic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "topic_type", value)
+
 
 @pulumi.input_type
 class _ServiceTopicState:
@@ -120,7 +132,8 @@ class _ServiceTopicState:
                  logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceTopic resources.
 
@@ -130,8 +143,7 @@ class _ServiceTopicState:
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -148,6 +160,8 @@ class _ServiceTopicState:
             pulumi.set(__self__, "tags", tags)
         if topic_name is not None:
             pulumi.set(__self__, "topic_name", topic_name)
+        if topic_type is not None:
+            pulumi.set(__self__, "topic_type", topic_type)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -215,14 +229,24 @@ class _ServiceTopicState:
     def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the topic.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
     def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topicType")
+    def topic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the topic. Default value: `normal`. Valid values:
+        """
+        return pulumi.get(self, "topic_type")
+
+    @topic_type.setter
+    def topic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "topic_type", value)
 
 
 @pulumi.type_token("alicloud:message/serviceTopic:ServiceTopic")
@@ -236,6 +260,7 @@ class ServiceTopic(pulumi.CustomResource):
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Message Service Topic resource.
@@ -280,8 +305,7 @@ class ServiceTopic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
         """
         ...
     @overload
@@ -345,6 +369,7 @@ class ServiceTopic(pulumi.CustomResource):
                  max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -361,6 +386,7 @@ class ServiceTopic(pulumi.CustomResource):
             if topic_name is None and not opts.urn:
                 raise TypeError("Missing required property 'topic_name'")
             __props__.__dict__["topic_name"] = topic_name
+            __props__.__dict__["topic_type"] = topic_type
             __props__.__dict__["create_time"] = None
         super(ServiceTopic, __self__).__init__(
             'alicloud:message/serviceTopic:ServiceTopic',
@@ -377,7 +403,8 @@ class ServiceTopic(pulumi.CustomResource):
             logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceTopic':
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceTopic':
         """
         Get an existing ServiceTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -391,8 +418,7 @@ class ServiceTopic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_message_size: The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] topic_name: The name of the topic.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] topic_type: The type of the topic. Default value: `normal`. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,6 +430,7 @@ class ServiceTopic(pulumi.CustomResource):
         __props__.__dict__["max_message_size"] = max_message_size
         __props__.__dict__["tags"] = tags
         __props__.__dict__["topic_name"] = topic_name
+        __props__.__dict__["topic_type"] = topic_type
         return ServiceTopic(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -452,8 +479,14 @@ class ServiceTopic(pulumi.CustomResource):
     def topic_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the topic.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "topic_name")
+
+    @_builtins.property
+    @pulumi.getter(name="topicType")
+    def topic_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the topic. Default value: `normal`. Valid values:
+        """
+        return pulumi.get(self, "topic_type")
 
