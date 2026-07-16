@@ -2853,8 +2853,8 @@ github.com/aliyun/credentials-go v1.4.12 h1:7D8eXGotNwthZuUEgAMgBoqxmIHwfaPVwW+/
 github.com/aliyun/credentials-go v1.4.12/go.mod h1:Jm6d+xIgwJVLVWT561vy67ZRP4lPTQxMbEYRuT2Ti1U=
 github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 h1:E4jdnYzB1G/DiTVHychdLOnak4w/TlKd4ZHM8wZDs58=
 github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050/go.mod h1:rYnxfOnoHRZ2QGKREUOESel1hmRe0frzF2RLpcDVtTU=
-github.com/aliyun/terraform-provider-alicloud v1.282.0 h1:/s00abDZS0ENCen8VmioIbCOqlLzuY6uc25xsh7mOKo=
-github.com/aliyun/terraform-provider-alicloud v1.282.0/go.mod h1:tZHQGtjjxeenKUFtlDB0jbtZEzHONlYy3Zyz1P/vKjQ=
+github.com/aliyun/terraform-provider-alicloud v1.285.0 h1:fbhyq8ql5foAoTUd4Sf/2U2LHZKVbYtwRNz3JfMIWrM=
+github.com/aliyun/terraform-provider-alicloud v1.285.0/go.mod h1:NGpd+UqQ0h3jIX11z6huaEU26K4oMDNUl/LfQyHDjwI=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.1.0 h1:eLKJA0d02Lf0mVpIDgYnqXcUn0GqVmEFny3VuID1U3M=
