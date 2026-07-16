@@ -195,6 +195,7 @@ class _AccountState:
                  account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
                  account_type: pulumi.Input[Optional[_builtins.str]] = None,
                  db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamodb_auth_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
@@ -217,6 +218,7 @@ class _AccountState:
         :param pulumi.Input[_builtins.str] account_password_valid_time: The time when the password for the database account expires.
         :param pulumi.Input[_builtins.str] account_type: The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID.
+        :param pulumi.Input[_builtins.str] dynamodb_auth_password: (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] status: (Available since v1.265.0) The status of the database account.
@@ -235,6 +237,8 @@ class _AccountState:
             pulumi.set(__self__, "account_type", account_type)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+        if dynamodb_auth_password is not None:
+            pulumi.set(__self__, "dynamodb_auth_password", dynamodb_auth_password)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
@@ -336,6 +340,18 @@ class _AccountState:
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="dynamodbAuthPassword")
+    def dynamodb_auth_password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+        """
+        return pulumi.get(self, "dynamodb_auth_password")
+
+    @dynamodb_auth_password.setter
+    def dynamodb_auth_password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dynamodb_auth_password", value)
+
+    @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -396,6 +412,8 @@ class Account(pulumi.CustomResource):
         For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
 
         > **NOTE:** Available since v1.67.0.
+
+        > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
 
         ## Example Usage
 
@@ -475,6 +493,8 @@ class Account(pulumi.CustomResource):
         For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
 
         > **NOTE:** Available since v1.67.0.
+
+        > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
 
         ## Example Usage
 
@@ -565,8 +585,9 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["db_cluster_id"] = db_cluster_id
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["dynamodb_auth_password"] = None
             __props__.__dict__["status"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "dynamodbAuthPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'alicloud:polardb/account:Account',
@@ -585,6 +606,7 @@ class Account(pulumi.CustomResource):
             account_password_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
             account_type: pulumi.Input[Optional[_builtins.str]] = None,
             db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamodb_auth_password: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
             kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
@@ -611,6 +633,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_password_valid_time: The time when the password for the database account expires.
         :param pulumi.Input[_builtins.str] account_type: The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
         :param pulumi.Input[_builtins.str] db_cluster_id: The cluster ID.
+        :param pulumi.Input[_builtins.str] dynamodb_auth_password: (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] status: (Available since v1.265.0) The status of the database account.
@@ -626,6 +649,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_password_valid_time"] = account_password_valid_time
         __props__.__dict__["account_type"] = account_type
         __props__.__dict__["db_cluster_id"] = db_cluster_id
+        __props__.__dict__["dynamodb_auth_password"] = dynamodb_auth_password
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
         __props__.__dict__["status"] = status
@@ -695,6 +719,14 @@ class Account(pulumi.CustomResource):
         The cluster ID.
         """
         return pulumi.get(self, "db_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamodbAuthPassword")
+    def dynamodb_auth_password(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+        """
+        return pulumi.get(self, "dynamodb_auth_password")
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")

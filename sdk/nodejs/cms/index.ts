@@ -30,6 +30,11 @@ export type AlarmContactGroup = import("./alarmContactGroup").AlarmContactGroup;
 export const AlarmContactGroup: typeof import("./alarmContactGroup").AlarmContactGroup = null as any;
 utilities.lazyLoad(exports, ["AlarmContactGroup"], () => require("./alarmContactGroup"));
 
+export { AlertRuleV2Args, AlertRuleV2State } from "./alertRuleV2";
+export type AlertRuleV2 = import("./alertRuleV2").AlertRuleV2;
+export const AlertRuleV2: typeof import("./alertRuleV2").AlertRuleV2 = null as any;
+utilities.lazyLoad(exports, ["AlertRuleV2"], () => require("./alertRuleV2"));
+
 export { DynamicTagGroupArgs, DynamicTagGroupState } from "./dynamicTagGroup";
 export type DynamicTagGroup = import("./dynamicTagGroup").DynamicTagGroup;
 export const DynamicTagGroup: typeof import("./dynamicTagGroup").DynamicTagGroup = null as any;
@@ -49,6 +54,11 @@ export { GetAlarmContactsArgs, GetAlarmContactsResult, GetAlarmContactsOutputArg
 export const getAlarmContacts: typeof import("./getAlarmContacts").getAlarmContacts = null as any;
 export const getAlarmContactsOutput: typeof import("./getAlarmContacts").getAlarmContactsOutput = null as any;
 utilities.lazyLoad(exports, ["getAlarmContacts","getAlarmContactsOutput"], () => require("./getAlarmContacts"));
+
+export { GetAlertRulesV2Args, GetAlertRulesV2Result, GetAlertRulesV2OutputArgs } from "./getAlertRulesV2";
+export const getAlertRulesV2: typeof import("./getAlertRulesV2").getAlertRulesV2 = null as any;
+export const getAlertRulesV2Output: typeof import("./getAlertRulesV2").getAlertRulesV2Output = null as any;
+utilities.lazyLoad(exports, ["getAlertRulesV2","getAlertRulesV2Output"], () => require("./getAlertRulesV2"));
 
 export { GetDynamicTagGroupsArgs, GetDynamicTagGroupsResult, GetDynamicTagGroupsOutputArgs } from "./getDynamicTagGroups";
 export const getDynamicTagGroups: typeof import("./getDynamicTagGroups").getDynamicTagGroups = null as any;
@@ -205,6 +215,8 @@ const _module = {
                 return new AlarmContact(name, <any>undefined, { urn })
             case "alicloud:cms/alarmContactGroup:AlarmContactGroup":
                 return new AlarmContactGroup(name, <any>undefined, { urn })
+            case "alicloud:cms/alertRuleV2:AlertRuleV2":
+                return new AlertRuleV2(name, <any>undefined, { urn })
             case "alicloud:cms/dynamicTagGroup:DynamicTagGroup":
                 return new DynamicTagGroup(name, <any>undefined, { urn })
             case "alicloud:cms/eventRule:EventRule":
@@ -247,6 +259,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/aggTaskGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/alertRuleV2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/dynamicTagGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/eventRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)

@@ -97,11 +97,11 @@ type TransportLayerApplication struct {
 	// Layer 4 application ID.
 	ApplicationId pulumi.IntOutput `pulumi:"applicationId"`
 	// Whether to enable China mainland network access optimization, default is disabled. Value range:
-	CrossBorderOptimization pulumi.StringPtrOutput `pulumi:"crossBorderOptimization"`
+	CrossBorderOptimization pulumi.StringOutput `pulumi:"crossBorderOptimization"`
 	// IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
-	IpAccessRule pulumi.StringPtrOutput `pulumi:"ipAccessRule"`
+	IpAccessRule pulumi.StringOutput `pulumi:"ipAccessRule"`
 	// IPv6 switch.
-	Ipv6 pulumi.StringPtrOutput `pulumi:"ipv6"`
+	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// Domain name of the transport layer application
 	RecordName pulumi.StringOutput `pulumi:"recordName"`
 	// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
@@ -316,18 +316,18 @@ func (o TransportLayerApplicationOutput) ApplicationId() pulumi.IntOutput {
 }
 
 // Whether to enable China mainland network access optimization, default is disabled. Value range:
-func (o TransportLayerApplicationOutput) CrossBorderOptimization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringPtrOutput { return v.CrossBorderOptimization }).(pulumi.StringPtrOutput)
+func (o TransportLayerApplicationOutput) CrossBorderOptimization() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringOutput { return v.CrossBorderOptimization }).(pulumi.StringOutput)
 }
 
 // IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
-func (o TransportLayerApplicationOutput) IpAccessRule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringPtrOutput { return v.IpAccessRule }).(pulumi.StringPtrOutput)
+func (o TransportLayerApplicationOutput) IpAccessRule() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringOutput { return v.IpAccessRule }).(pulumi.StringOutput)
 }
 
 // IPv6 switch.
-func (o TransportLayerApplicationOutput) Ipv6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringPtrOutput { return v.Ipv6 }).(pulumi.StringPtrOutput)
+func (o TransportLayerApplicationOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
 // Domain name of the transport layer application

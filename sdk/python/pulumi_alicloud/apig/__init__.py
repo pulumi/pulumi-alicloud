@@ -8,6 +8,8 @@ import typing
 # Export this package's modules as members:
 from .environment import *
 from .gateway import *
+from .get_plugin_classes import *
 from .http_api import *
+from .plugin_class import *
 from ._inputs import *
 from . import outputs

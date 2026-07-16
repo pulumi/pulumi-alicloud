@@ -98,15 +98,15 @@ export class TransportLayerApplication extends pulumi.CustomResource {
     /**
      * Whether to enable China mainland network access optimization, default is disabled. Value range:
      */
-    declare public readonly crossBorderOptimization: pulumi.Output<string | undefined>;
+    declare public readonly crossBorderOptimization: pulumi.Output<string>;
     /**
      * IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
      */
-    declare public readonly ipAccessRule: pulumi.Output<string | undefined>;
+    declare public readonly ipAccessRule: pulumi.Output<string>;
     /**
      * IPv6 switch.
      */
-    declare public readonly ipv6: pulumi.Output<string | undefined>;
+    declare public readonly ipv6: pulumi.Output<string>;
     /**
      * Domain name of the transport layer application
      */

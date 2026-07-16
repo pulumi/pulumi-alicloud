@@ -12,13 +12,11 @@ namespace Pulumi.AliCloud.CloudMonitor
     public static class GetServiceMetricAlarmRules
     {
         /// <summary>
-        /// This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+        /// This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
         /// 
         /// &gt; **NOTE:** Available since v1.256.0.
         /// 
         /// ## Example Usage
-        /// 
-        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -103,13 +101,11 @@ namespace Pulumi.AliCloud.CloudMonitor
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceMetricAlarmRulesResult>("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", args ?? new GetServiceMetricAlarmRulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+        /// This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
         /// 
         /// &gt; **NOTE:** Available since v1.256.0.
         /// 
         /// ## Example Usage
-        /// 
-        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -194,13 +190,11 @@ namespace Pulumi.AliCloud.CloudMonitor
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceMetricAlarmRulesResult>("alicloud:cloudmonitor/getServiceMetricAlarmRules:getServiceMetricAlarmRules", args ?? new GetServiceMetricAlarmRulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+        /// This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
         /// 
         /// &gt; **NOTE:** Available since v1.256.0.
         /// 
         /// ## Example Usage
-        /// 
-        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -289,10 +283,17 @@ namespace Pulumi.AliCloud.CloudMonitor
     public sealed class GetServiceMetricAlarmRulesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The monitoring dimensions of the specified resource.
+        /// The monitoring dimensions for the specified resource.
+        /// Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         /// </summary>
         [Input("dimensions")]
         public string? Dimensions { get; set; }
+
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public bool? EnableDetails { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
@@ -307,13 +308,27 @@ namespace Pulumi.AliCloud.CloudMonitor
         }
 
         /// <summary>
-        /// The name of the metric.
+        /// The ID of the alarm rule.
+        /// 
+        /// You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        /// 
+        /// &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+        /// </summary>
+        [Input("metricAlarmRuleId")]
+        public string? MetricAlarmRuleId { get; set; }
+
+        /// <summary>
+        /// The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         /// </summary>
         [Input("metricName")]
         public string? MetricName { get; set; }
 
         /// <summary>
-        /// The namespace of the cloud service.
+        /// The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `AcsPrometheus`.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
@@ -325,13 +340,19 @@ namespace Pulumi.AliCloud.CloudMonitor
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The name of the alert rule.
+        /// Alert rule name.
+        /// 
+        /// You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        /// 
+        /// &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
         /// </summary>
         [Input("ruleName")]
         public string? RuleName { get; set; }
 
         /// <summary>
-        /// Specifies whether to query enabled or disabled alert rules. Valid values: `True`, `False`.
+        /// The enabled status of the alarm rule. Valid values:
+        /// - true: enabled.
+        /// - false: disabled.
         /// </summary>
         [Input("status")]
         public bool? Status { get; set; }
@@ -345,10 +366,17 @@ namespace Pulumi.AliCloud.CloudMonitor
     public sealed class GetServiceMetricAlarmRulesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The monitoring dimensions of the specified resource.
+        /// The monitoring dimensions for the specified resource.
+        /// Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         /// </summary>
         [Input("dimensions")]
         public Input<string>? Dimensions { get; set; }
+
+        /// <summary>
+        /// Default to `False`. Set it to `True` can output more details about resource attributes.
+        /// </summary>
+        [Input("enableDetails")]
+        public Input<bool>? EnableDetails { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
@@ -363,13 +391,27 @@ namespace Pulumi.AliCloud.CloudMonitor
         }
 
         /// <summary>
-        /// The name of the metric.
+        /// The ID of the alarm rule.
+        /// 
+        /// You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        /// 
+        /// &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+        /// </summary>
+        [Input("metricAlarmRuleId")]
+        public Input<string>? MetricAlarmRuleId { get; set; }
+
+        /// <summary>
+        /// The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
 
         /// <summary>
-        /// The namespace of the cloud service.
+        /// The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `AcsPrometheus`.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -381,13 +423,19 @@ namespace Pulumi.AliCloud.CloudMonitor
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The name of the alert rule.
+        /// Alert rule name.
+        /// 
+        /// You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        /// 
+        /// &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Specifies whether to query enabled or disabled alert rules. Valid values: `True`, `False`.
+        /// The enabled status of the alarm rule. Valid values:
+        /// - true: enabled.
+        /// - false: disabled.
         /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }
@@ -403,33 +451,41 @@ namespace Pulumi.AliCloud.CloudMonitor
     public sealed class GetServiceMetricAlarmRulesResult
     {
         /// <summary>
-        /// The dimensions of the alert rule.
+        /// The monitoring dimensions for the specified resource.
         /// </summary>
         public readonly string? Dimensions;
+        public readonly bool? EnableDetails;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of Metric Alarm Rule IDs.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// The metric that is used to monitor the cloud service.
+        /// The ID of the alarm rule.
+        /// </summary>
+        public readonly string? MetricAlarmRuleId;
+        /// <summary>
+        /// The name of the metric.
         /// </summary>
         public readonly string? MetricName;
         /// <summary>
-        /// The namespace of the cloud service.
+        /// The namespace of the cloud service metric data.
         /// </summary>
         public readonly string? Namespace;
         public readonly string? OutputFile;
         /// <summary>
-        /// The name of the alert rule.
+        /// Alert rule name.
         /// </summary>
         public readonly string? RuleName;
         /// <summary>
-        /// A list of Hybrid Double Writes. Each element contains the following attributes:
+        /// A list of Metric Alarm Rule Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMetricAlarmRulesRuleResult> Rules;
         /// <summary>
-        /// Indicates whether the alert rule is enabled.
+        /// The enabled status of the alarm rule.
         /// </summary>
         public readonly bool? Status;
 
@@ -437,9 +493,13 @@ namespace Pulumi.AliCloud.CloudMonitor
         private GetServiceMetricAlarmRulesResult(
             string? dimensions,
 
+            bool? enableDetails,
+
             string id,
 
             ImmutableArray<string> ids,
+
+            string? metricAlarmRuleId,
 
             string? metricName,
 
@@ -454,8 +514,10 @@ namespace Pulumi.AliCloud.CloudMonitor
             bool? status)
         {
             Dimensions = dimensions;
+            EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
+            MetricAlarmRuleId = metricAlarmRuleId;
             MetricName = metricName;
             Namespace = @namespace;
             OutputFile = outputFile;

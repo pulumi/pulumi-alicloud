@@ -86,11 +86,21 @@ export class CustomDisk extends pulumi.CustomResource {
      */
     declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     */
+    declare public readonly burstingEnabled: pulumi.Output<boolean>;
+    /**
      * Creation time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+     * Specifies whether to release the disk together with the instance. Valid values:
+     */
+    declare public readonly deleteWithInstance: pulumi.Output<boolean>;
+    /**
+     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+     *
+     * > **NOTE:** From version 1.281.0, `description` can be modified.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -98,17 +108,25 @@ export class CustomDisk extends pulumi.CustomResource {
      */
     declare public readonly diskCategory: pulumi.Output<string>;
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     *
+     * > **NOTE:** From version 1.281.0, `diskName` can be modified.
      */
-    declare public readonly diskName: pulumi.Output<string | undefined>;
+    declare public readonly diskName: pulumi.Output<string>;
     /**
      * Whether to pre-check the instance creation operation. Valid values:
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
-     * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      */
-    declare public readonly instanceChargeType: pulumi.Output<string | undefined>;
+    declare public readonly instanceChargeType: pulumi.Output<string>;
+    /**
+     * The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     */
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
      * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -116,15 +134,21 @@ export class CustomDisk extends pulumi.CustomResource {
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
      *
+     * > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+     *
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      */
-    declare public readonly performanceLevel: pulumi.Output<string | undefined>;
+    declare public readonly performanceLevel: pulumi.Output<string>;
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `period` has been deprecated from provider version 1.283.0.
+     *
+     * @deprecated Field `period` has been deprecated from provider version 1.283.0.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     *
+     * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
      */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
@@ -134,7 +158,7 @@ export class CustomDisk extends pulumi.CustomResource {
     /**
      * The ID of the resource group to which the disk belongs.
      */
-    declare public /*out*/ readonly resourceGroupId: pulumi.Output<string>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
      */
@@ -147,9 +171,13 @@ export class CustomDisk extends pulumi.CustomResource {
      */
     declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
-     * Disk status. Value Description:_use: In use.
+     * Disk status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The list of tags.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The method of expanding the disk. Value range:
      * offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
@@ -176,12 +204,15 @@ export class CustomDisk extends pulumi.CustomResource {
             const state = argsOrState as CustomDiskState | undefined;
             resourceInputs["autoPay"] = state?.autoPay;
             resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["burstingEnabled"] = state?.burstingEnabled;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deleteWithInstance"] = state?.deleteWithInstance;
             resourceInputs["description"] = state?.description;
             resourceInputs["diskCategory"] = state?.diskCategory;
             resourceInputs["diskName"] = state?.diskName;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["performanceLevel"] = state?.performanceLevel;
             resourceInputs["period"] = state?.period;
             resourceInputs["periodUnit"] = state?.periodUnit;
@@ -190,6 +221,7 @@ export class CustomDisk extends pulumi.CustomResource {
             resourceInputs["size"] = state?.size;
             resourceInputs["snapshotId"] = state?.snapshotId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
@@ -205,21 +237,25 @@ export class CustomDisk extends pulumi.CustomResource {
             }
             resourceInputs["autoPay"] = args?.autoPay;
             resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["burstingEnabled"] = args?.burstingEnabled;
+            resourceInputs["deleteWithInstance"] = args?.deleteWithInstance;
             resourceInputs["description"] = args?.description;
             resourceInputs["diskCategory"] = args?.diskCategory;
             resourceInputs["diskName"] = args?.diskName;
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["performanceLevel"] = args?.performanceLevel;
             resourceInputs["period"] = args?.period;
             resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["size"] = args?.size;
             resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["type"] = args?.type;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
-            resourceInputs["resourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -240,11 +276,21 @@ export interface CustomDiskState {
      */
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     */
+    burstingEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Creation time.
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+     * Specifies whether to release the disk together with the instance. Valid values:
+     */
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
+    /**
+     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+     *
+     * > **NOTE:** From version 1.281.0, `description` can be modified.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -252,7 +298,9 @@ export interface CustomDiskState {
      */
     diskCategory?: pulumi.Input<string | undefined>;
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     *
+     * > **NOTE:** From version 1.281.0, `diskName` can be modified.
      */
     diskName?: pulumi.Input<string | undefined>;
     /**
@@ -260,9 +308,15 @@ export interface CustomDiskState {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      */
     instanceChargeType?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     */
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
      * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -270,15 +324,21 @@ export interface CustomDiskState {
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
      *
+     * > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+     *
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      */
     performanceLevel?: pulumi.Input<string | undefined>;
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `period` has been deprecated from provider version 1.283.0.
+     *
+     * @deprecated Field `period` has been deprecated from provider version 1.283.0.
      */
     period?: pulumi.Input<number | undefined>;
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     *
+     * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
      */
     periodUnit?: pulumi.Input<string | undefined>;
     /**
@@ -301,9 +361,13 @@ export interface CustomDiskState {
      */
     snapshotId?: pulumi.Input<string | undefined>;
     /**
-     * Disk status. Value Description:_use: In use.
+     * Disk status.
      */
     status?: pulumi.Input<string | undefined>;
+    /**
+     * The list of tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The method of expanding the disk. Value range:
      * offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
@@ -329,7 +393,17 @@ export interface CustomDiskArgs {
      */
     autoRenew?: pulumi.Input<boolean | undefined>;
     /**
-     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+     * Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+     */
+    burstingEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to release the disk together with the instance. Valid values:
+     */
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
+    /**
+     * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+     *
+     * > **NOTE:** From version 1.281.0, `description` can be modified.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -337,7 +411,9 @@ export interface CustomDiskArgs {
      */
     diskCategory: pulumi.Input<string>;
     /**
-     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+     * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+     *
+     * > **NOTE:** From version 1.281.0, `diskName` can be modified.
      */
     diskName?: pulumi.Input<string | undefined>;
     /**
@@ -345,9 +421,15 @@ export interface CustomDiskArgs {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+     * The billing method. Valid values:
+     * - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+     * - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
      */
     instanceChargeType?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+     */
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
      * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -355,17 +437,27 @@ export interface CustomDiskArgs {
      * - `PL2`: maximum random read/write IOPS 100000 for a single disk.
      * - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
      *
+     * > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+     *
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      */
     performanceLevel?: pulumi.Input<string | undefined>;
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `period` has been deprecated from provider version 1.283.0.
+     *
+     * @deprecated Field `period` has been deprecated from provider version 1.283.0.
      */
     period?: pulumi.Input<number | undefined>;
     /**
-     * Reserved parameters, no need to fill in.
+     * Field `periodUnit` has been deprecated from provider version 1.283.0.
+     *
+     * @deprecated Field `periodUnit` has been deprecated from provider version 1.283.0.
      */
     periodUnit?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the resource group to which the disk belongs.
+     */
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
      */
@@ -377,6 +469,10 @@ export interface CustomDiskArgs {
      * - Snapshots are not supported for creating elastic temporary disks.
      */
     snapshotId?: pulumi.Input<string | undefined>;
+    /**
+     * The list of tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The method of expanding the disk. Value range:
      * offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.

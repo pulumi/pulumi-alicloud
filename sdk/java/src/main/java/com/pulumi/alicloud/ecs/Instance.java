@@ -373,6 +373,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dryRun);
     }
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    @Export(name="enableHighDensityMode", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableHighDensityMode;
+
+    /**
+     * @return Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     * 
+     */
+    public Output<Optional<Boolean>> enableHighDensityMode() {
+        return Codegen.optional(this.enableHighDensityMode);
+    }
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      * 
      */
@@ -823,17 +841,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networkCardIndex", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> networkCardIndex;
+    private Output<Integer> networkCardIndex;
 
     /**
      * @return The index of the network card for Primary ENI.
      * 
      */
-    public Output<Optional<Integer>> networkCardIndex() {
-        return Codegen.optional(this.networkCardIndex);
+    public Output<Integer> networkCardIndex() {
+        return this.networkCardIndex;
     }
     /**
      * The ID of the Primary ENI.
+     * 
+     * &gt; **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
      * 
      */
     @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
@@ -841,6 +861,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the Primary ENI.
+     * 
+     * &gt; **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
      * 
      */
     public Output<String> networkInterfaceId() {
@@ -1065,14 +1087,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="queuePairNumber", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> queuePairNumber;
+    private Output<Integer> queuePairNumber;
 
     /**
      * @return The number of queues supported by the ERI.
      * 
      */
-    public Output<Optional<Integer>> queuePairNumber() {
-        return Codegen.optional(this.queuePairNumber);
+    public Output<Integer> queuePairNumber() {
+        return this.queuePairNumber;
     }
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
@@ -1201,18 +1223,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityEnhancementStrategy;
     }
     /**
-     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * A list of security group ids to associate with.
+     * 
+     * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * @return A list of security group ids to associate with.
+     * 
+     * &gt; **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      * 
      */
     public Output<List<String>> securityGroups() {
         return this.securityGroups;
+    }
+    /**
+     * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="sourceDestCheck", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> sourceDestCheck;
+
+    /**
+     * @return Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Boolean> sourceDestCheck() {
+        return this.sourceDestCheck;
     }
     /**
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.

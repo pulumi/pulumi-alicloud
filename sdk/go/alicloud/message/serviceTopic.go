@@ -79,9 +79,9 @@ type ServiceTopic struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The name of the topic.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
+	// The type of the topic. Default value: `normal`. Valid values:
+	TopicType pulumi.StringOutput `pulumi:"topicType"`
 }
 
 // NewServiceTopic registers a new resource with the given unique name, arguments, and options.
@@ -130,9 +130,9 @@ type serviceTopicState struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the topic.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName *string `pulumi:"topicName"`
+	// The type of the topic. Default value: `normal`. Valid values:
+	TopicType *string `pulumi:"topicType"`
 }
 
 type ServiceTopicState struct {
@@ -149,9 +149,9 @@ type ServiceTopicState struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The name of the topic.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName pulumi.StringPtrInput
+	// The type of the topic. Default value: `normal`. Valid values:
+	TopicType pulumi.StringPtrInput
 }
 
 func (ServiceTopicState) ElementType() reflect.Type {
@@ -170,9 +170,9 @@ type serviceTopicArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the topic.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName string `pulumi:"topicName"`
+	// The type of the topic. Default value: `normal`. Valid values:
+	TopicType *string `pulumi:"topicType"`
 }
 
 // The set of arguments for constructing a ServiceTopic resource.
@@ -188,9 +188,9 @@ type ServiceTopicArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The name of the topic.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TopicName pulumi.StringInput
+	// The type of the topic. Default value: `normal`. Valid values:
+	TopicType pulumi.StringPtrInput
 }
 
 func (ServiceTopicArgs) ElementType() reflect.Type {
@@ -308,10 +308,13 @@ func (o ServiceTopicOutput) Tags() pulumi.StringMapOutput {
 }
 
 // The name of the topic.
-//
-// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ServiceTopicOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceTopic) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
+}
+
+// The type of the topic. Default value: `normal`. Valid values:
+func (o ServiceTopicOutput) TopicType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceTopic) pulumi.StringOutput { return v.TopicType }).(pulumi.StringOutput)
 }
 
 type ServiceTopicArrayOutput struct{ *pulumi.OutputState }

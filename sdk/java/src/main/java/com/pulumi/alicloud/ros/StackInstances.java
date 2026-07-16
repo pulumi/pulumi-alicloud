@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  * 
  * 5. **Parameter Sensitivity**: The `parameterValue` field in `parameterOverrides` is marked as sensitive. Values will be masked in Terraform output and logs for security.
  * 
- * 6. **ForceNew Parameters**: Most parameters (`stackGroupName`, `regionIds`, `accountIds`, `deploymentTargets`, `disableRollback`, `deploymentOptions`) require resource recreation if modified. Only `parameterOverrides`, `operationPreferences`, `timeoutInMinutes`, and `operationDescription` support in-place updates.
+ * 6. **ForceNew Parameters**: Most parameters (`stackGroupName`, `regionIds`, `accountIds`, `disableRollback`, `deploymentOptions`) require resource recreation if modified. `parameterOverrides`, `operationPreferences`, `timeoutInMinutes`, `operationDescription`, and `deploymentTargets` support in-place updates.
  * 
  * 7. **Empty Results**: If your deployment targets result in no stack instances being created (e.g., targeting an empty folder), the `stackInstances` attribute will be an empty list. This is expected behavior and does not indicate an error.
  * 
@@ -157,7 +157,7 @@ public class StackInstances extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deploymentOptions);
     }
     /**
-     * Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+     * Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
      * 
      * &gt; **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
      * 
@@ -166,7 +166,7 @@ public class StackInstances extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ StackInstancesDeploymentTargets> deploymentTargets;
 
     /**
-     * @return Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. This parameter cannot be modified after creation. See `deploymentTargets` below.
+     * @return Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `accountIds`. Changes to `rdFolderIds` and `accountIds` within this block support in-place updates. See `deploymentTargets` below.
      * 
      * &gt; **NOTE:** You must specify either `accountIds` (for self-managed permissions) or `deploymentTargets` (for service-managed permissions), but not both.
      * 

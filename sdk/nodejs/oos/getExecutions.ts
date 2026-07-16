@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.93.0+.
+ * > **NOTE:** Available since v1.93.0.
  *
  * ## Example Usage
  *
@@ -128,9 +128,18 @@ export interface GetExecutionsArgs {
  * A collection of values returned by getExecutions.
  */
 export interface GetExecutionsResult {
+    /**
+     * The category of OOS Execution.
+     */
     readonly category?: string;
+    /**
+     * The time when the execution was ended.
+     */
     readonly endDate?: string;
     readonly endDateAfter?: string;
+    /**
+     * The user who execute the template.
+     */
     readonly executedBy?: string;
     /**
      * A list of OOS Executions. Each element contains the following attributes:
@@ -145,22 +154,40 @@ export interface GetExecutionsResult {
      */
     readonly ids: string[];
     readonly includeChildExecution?: boolean;
+    /**
+     * The mode of OOS Execution.
+     */
     readonly mode?: string;
     readonly outputFile?: string;
+    /**
+     * The id of parent OOS Execution.
+     */
     readonly parentExecutionId?: string;
+    /**
+     * The role that executes the current template.
+     */
     readonly ramRole?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
     readonly startDateAfter?: string;
     readonly startDateBefore?: string;
+    /**
+     * The status of OOS Execution.
+     */
     readonly status?: string;
+    /**
+     * (Available since v1.284.0) A mapping of tags assigned to the OOS Execution.
+     */
     readonly tags?: {[key: string]: string};
+    /**
+     * The name of execution template.
+     */
     readonly templateName?: string;
 }
 /**
  * This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.93.0+.
+ * > **NOTE:** Available since v1.93.0.
  *
  * ## Example Usage
  *

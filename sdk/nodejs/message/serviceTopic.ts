@@ -90,10 +90,12 @@ export class ServiceTopic extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the topic.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly topicName: pulumi.Output<string>;
+    /**
+     * The type of the topic. Default value: `normal`. Valid values:
+     */
+    declare public readonly topicType: pulumi.Output<string>;
 
     /**
      * Create a ServiceTopic resource with the given unique name, arguments, and options.
@@ -114,6 +116,7 @@ export class ServiceTopic extends pulumi.CustomResource {
             resourceInputs["maxMessageSize"] = state?.maxMessageSize;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["topicName"] = state?.topicName;
+            resourceInputs["topicType"] = state?.topicType;
         } else {
             const args = argsOrState as ServiceTopicArgs | undefined;
             if (args?.topicName === undefined && !opts.urn) {
@@ -124,6 +127,7 @@ export class ServiceTopic extends pulumi.CustomResource {
             resourceInputs["maxMessageSize"] = args?.maxMessageSize;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["topicName"] = args?.topicName;
+            resourceInputs["topicType"] = args?.topicType;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -159,10 +163,12 @@ export interface ServiceTopicState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the topic.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     topicName?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the topic. Default value: `normal`. Valid values:
+     */
+    topicType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,8 +195,10 @@ export interface ServiceTopicArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the topic.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     topicName: pulumi.Input<string>;
+    /**
+     * The type of the topic. Default value: `normal`. Valid values:
+     */
+    topicType?: pulumi.Input<string | undefined>;
 }

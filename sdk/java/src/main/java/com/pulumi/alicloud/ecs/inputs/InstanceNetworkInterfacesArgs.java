@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -97,6 +98,21 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="sourceDestCheck")
+    private @Nullable Output<Boolean> sourceDestCheck;
+
+    /**
+     * @return Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> sourceDestCheck() {
+        return Optional.ofNullable(this.sourceDestCheck);
+    }
+
+    /**
      * The ID of the vSwitch to which to connect Secondary ENI N.
      * 
      */
@@ -119,6 +135,7 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         this.networkInterfaceTrafficMode = $.networkInterfaceTrafficMode;
         this.queuePairNumber = $.queuePairNumber;
         this.securityGroupIds = $.securityGroupIds;
+        this.sourceDestCheck = $.sourceDestCheck;
         this.vswitchId = $.vswitchId;
     }
 
@@ -257,6 +274,27 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
          */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param sourceDestCheck Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDestCheck(@Nullable Output<Boolean> sourceDestCheck) {
+            $.sourceDestCheck = sourceDestCheck;
+            return this;
+        }
+
+        /**
+         * @param sourceDestCheck Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceDestCheck(Boolean sourceDestCheck) {
+            return sourceDestCheck(Output.of(sourceDestCheck));
         }
 
         /**

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -62,7 +63,7 @@ public final class GetExecutionsExecution {
      */
     private String outputs;
     /**
-     * @return The parameters required by the template
+     * @return The parameters required by the template.
      * 
      */
     private String parameters;
@@ -96,6 +97,11 @@ public final class GetExecutionsExecution {
      * 
      */
     private String statusReason;
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return The id of execution template.
      * 
@@ -189,7 +195,7 @@ public final class GetExecutionsExecution {
         return this.outputs;
     }
     /**
-     * @return The parameters required by the template
+     * @return The parameters required by the template.
      * 
      */
     public String parameters() {
@@ -236,6 +242,13 @@ public final class GetExecutionsExecution {
      */
     public String statusReason() {
         return this.statusReason;
+    }
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
     }
     /**
      * @return The id of execution template.
@@ -292,6 +305,7 @@ public final class GetExecutionsExecution {
         private String status;
         private String statusMessage;
         private String statusReason;
+        private Map<String,String> tags;
         private String templateId;
         private String templateName;
         private String templateVersion;
@@ -316,6 +330,7 @@ public final class GetExecutionsExecution {
     	      this.status = defaults.status;
     	      this.statusMessage = defaults.statusMessage;
     	      this.statusReason = defaults.statusReason;
+    	      this.tags = defaults.tags;
     	      this.templateId = defaults.templateId;
     	      this.templateName = defaults.templateName;
     	      this.templateVersion = defaults.templateVersion;
@@ -459,6 +474,14 @@ public final class GetExecutionsExecution {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetExecutionsExecution", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder templateId(String templateId) {
             if (templateId == null) {
               throw new MissingRequiredPropertyException("GetExecutionsExecution", "templateId");
@@ -509,6 +532,7 @@ public final class GetExecutionsExecution {
             _resultValue.status = status;
             _resultValue.statusMessage = statusMessage;
             _resultValue.statusReason = statusReason;
+            _resultValue.tags = tags;
             _resultValue.templateId = templateId;
             _resultValue.templateName = templateName;
             _resultValue.templateVersion = templateVersion;

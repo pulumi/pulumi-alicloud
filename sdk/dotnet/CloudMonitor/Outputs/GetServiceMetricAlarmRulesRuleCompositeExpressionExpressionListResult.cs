@@ -14,23 +14,25 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult
     {
         /// <summary>
-        /// The comparison operator that is used to compare the metric value with the threshold.
+        /// Comparison operator for the Warn-level threshold.
         /// </summary>
         public readonly string ComparisonOperator;
         /// <summary>
-        /// The name of the metric.
+        /// The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// The aggregation period of the metric.
+        /// The statistical period of the metric.
         /// </summary>
         public readonly int Period;
         /// <summary>
-        /// The statistical methods for Warn-level alerts.
+        /// Statistical method for Warn-level alerts.
         /// </summary>
         public readonly string Statistics;
         /// <summary>
-        /// The threshold for Warn-level alerts.
+        /// Threshold for Warn-level alerts.
         /// </summary>
         public readonly string Threshold;
 

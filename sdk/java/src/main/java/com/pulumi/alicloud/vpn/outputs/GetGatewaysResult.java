@@ -29,6 +29,7 @@ public final class GetGatewaysResult {
      */
     @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
     private @Nullable Boolean enableIpsec;
+    private @Nullable String gatewayType;
     /**
      * @return A list of VPN gateways. Each element contains the following attributes:
      * 
@@ -86,6 +87,9 @@ public final class GetGatewaysResult {
     @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
     public Optional<Boolean> enableIpsec() {
         return Optional.ofNullable(this.enableIpsec);
+    }
+    public Optional<String> gatewayType() {
+        return Optional.ofNullable(this.gatewayType);
     }
     /**
      * @return A list of VPN gateways. Each element contains the following attributes:
@@ -157,6 +161,7 @@ public final class GetGatewaysResult {
     public static final class Builder {
         private @Nullable String businessStatus;
         private @Nullable Boolean enableIpsec;
+        private @Nullable String gatewayType;
         private List<GetGatewaysGateway> gateways;
         private String id;
         private List<String> ids;
@@ -172,6 +177,7 @@ public final class GetGatewaysResult {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
     	      this.enableIpsec = defaults.enableIpsec;
+    	      this.gatewayType = defaults.gatewayType;
     	      this.gateways = defaults.gateways;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
@@ -194,6 +200,12 @@ public final class GetGatewaysResult {
         public Builder enableIpsec(@Nullable Boolean enableIpsec) {
 
             this.enableIpsec = enableIpsec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gatewayType(@Nullable String gatewayType) {
+
+            this.gatewayType = gatewayType;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +289,7 @@ public final class GetGatewaysResult {
             final var _resultValue = new GetGatewaysResult();
             _resultValue.businessStatus = businessStatus;
             _resultValue.enableIpsec = enableIpsec;
+            _resultValue.gatewayType = gatewayType;
             _resultValue.gateways = gateways;
             _resultValue.id = id;
             _resultValue.ids = ids;

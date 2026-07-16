@@ -501,7 +501,7 @@ class TransportLayerApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="crossBorderOptimization")
-    def cross_border_optimization(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def cross_border_optimization(self) -> pulumi.Output[_builtins.str]:
         """
         Whether to enable China mainland network access optimization, default is disabled. Value range:
         """
@@ -509,7 +509,7 @@ class TransportLayerApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipAccessRule")
-    def ip_access_rule(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ip_access_rule(self) -> pulumi.Output[_builtins.str]:
         """
         IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
         """
@@ -517,7 +517,7 @@ class TransportLayerApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ipv6(self) -> pulumi.Output[_builtins.str]:
         """
         IPv6 switch.
         """

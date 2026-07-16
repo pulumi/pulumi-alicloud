@@ -12,62 +12,66 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
     /**
-     * @return The comparison operator that is used to compare the metric value with the threshold.
+     * @return Comparison operator for the Warn-level threshold.
      * 
      */
     private String comparisonOperator;
     /**
-     * @return The name of the metric.
+     * @return The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      * 
      */
     private String metricName;
     /**
-     * @return The aggregation period of the metric.
+     * @return The statistical period of the metric.
      * 
      */
     private Integer period;
     /**
-     * @return The statistical methods for Warn-level alerts.
+     * @return Statistical method for Warn-level alerts.
      * 
      */
     private String statistics;
     /**
-     * @return The threshold for Warn-level alerts.
+     * @return Threshold for Warn-level alerts.
      * 
      */
     private String threshold;
 
     private GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList() {}
     /**
-     * @return The comparison operator that is used to compare the metric value with the threshold.
+     * @return Comparison operator for the Warn-level threshold.
      * 
      */
     public String comparisonOperator() {
         return this.comparisonOperator;
     }
     /**
-     * @return The name of the metric.
+     * @return The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      * 
      */
     public String metricName() {
         return this.metricName;
     }
     /**
-     * @return The aggregation period of the metric.
+     * @return The statistical period of the metric.
      * 
      */
     public Integer period() {
         return this.period;
     }
     /**
-     * @return The statistical methods for Warn-level alerts.
+     * @return Statistical method for Warn-level alerts.
      * 
      */
     public String statistics() {
         return this.statistics;
     }
     /**
-     * @return The threshold for Warn-level alerts.
+     * @return Threshold for Warn-level alerts.
      * 
      */
     public String threshold() {

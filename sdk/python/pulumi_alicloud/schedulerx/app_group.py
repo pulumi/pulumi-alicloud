@@ -52,8 +52,8 @@ class AppGroupArgs:
                - false: Close
         :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         :param pulumi.Input[_builtins.int] max_jobs: Application Grouping Configurable Maximum Number of Tasks
-        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
-        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format.
+        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
+        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         :param pulumi.Input[_builtins.str] namespace_source: Not supported for the time being, no need to fill in.
         :param pulumi.Input[_builtins.bool] schedule_busy_workers: Whether to schedule a busy machine.
         """
@@ -224,7 +224,7 @@ class AppGroupArgs:
     @pulumi.getter(name="monitorConfigJson")
     def monitor_config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+        Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
         """
         return pulumi.get(self, "monitor_config_json")
 
@@ -236,7 +236,7 @@ class AppGroupArgs:
     @pulumi.getter(name="monitorContactsJson")
     def monitor_contacts_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Alarm contact JSON format.
+        Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         """
         return pulumi.get(self, "monitor_contacts_json")
 
@@ -303,8 +303,8 @@ class _AppGroupState:
         :param pulumi.Input[_builtins.str] group_id: Application ID
         :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         :param pulumi.Input[_builtins.int] max_jobs: Application Grouping Configurable Maximum Number of Tasks
-        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
-        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format.
+        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
+        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         :param pulumi.Input[_builtins.str] namespace: The namespace ID, which is obtained on the namespace page of the console.
         :param pulumi.Input[_builtins.str] namespace_name: The namespace name.
         :param pulumi.Input[_builtins.str] namespace_source: Not supported for the time being, no need to fill in.
@@ -457,7 +457,7 @@ class _AppGroupState:
     @pulumi.getter(name="monitorConfigJson")
     def monitor_config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+        Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
         """
         return pulumi.get(self, "monitor_config_json")
 
@@ -469,7 +469,7 @@ class _AppGroupState:
     @pulumi.getter(name="monitorContactsJson")
     def monitor_contacts_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Alarm contact JSON format.
+        Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         """
         return pulumi.get(self, "monitor_contacts_json")
 
@@ -575,12 +575,10 @@ class AppGroup(pulumi.CustomResource):
             max_jobs=100,
             monitor_contacts_json=json.dumps([
                 {
-                    "userName": "name1",
-                    "userPhone": "89756******",
+                    "name": "contact-group-1",
                 },
                 {
-                    "userName": "name2",
-                    "ding": "http://www.example.com",
+                    "name": "contact-group-2",
                 },
             ]),
             delete_jobs=False,
@@ -591,6 +589,8 @@ class AppGroup(pulumi.CustomResource):
             description=name,
             monitor_config_json=json.dumps({
                 "sendChannel": "sms,ding",
+                "alarmType": "Contacts",
+                "webhookIsAtAll": "false",
             }),
             app_version="1",
             app_name="example-appgroup-pop-autoexample",
@@ -625,8 +625,8 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group_id: Application ID
         :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         :param pulumi.Input[_builtins.int] max_jobs: Application Grouping Configurable Maximum Number of Tasks
-        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
-        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format.
+        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
+        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         :param pulumi.Input[_builtins.str] namespace: The namespace ID, which is obtained on the namespace page of the console.
         :param pulumi.Input[_builtins.str] namespace_name: The namespace name.
         :param pulumi.Input[_builtins.str] namespace_source: Not supported for the time being, no need to fill in.
@@ -665,12 +665,10 @@ class AppGroup(pulumi.CustomResource):
             max_jobs=100,
             monitor_contacts_json=json.dumps([
                 {
-                    "userName": "name1",
-                    "userPhone": "89756******",
+                    "name": "contact-group-1",
                 },
                 {
-                    "userName": "name2",
-                    "ding": "http://www.example.com",
+                    "name": "contact-group-2",
                 },
             ]),
             delete_jobs=False,
@@ -681,6 +679,8 @@ class AppGroup(pulumi.CustomResource):
             description=name,
             monitor_config_json=json.dumps({
                 "sendChannel": "sms,ding",
+                "alarmType": "Contacts",
+                "webhookIsAtAll": "false",
             }),
             app_version="1",
             app_name="example-appgroup-pop-autoexample",
@@ -807,8 +807,8 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group_id: Application ID
         :param pulumi.Input[_builtins.int] max_concurrency: The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         :param pulumi.Input[_builtins.int] max_jobs: Application Grouping Configurable Maximum Number of Tasks
-        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
-        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format.
+        :param pulumi.Input[_builtins.str] monitor_config_json: Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
+        :param pulumi.Input[_builtins.str] monitor_contacts_json: Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         :param pulumi.Input[_builtins.str] namespace: The namespace ID, which is obtained on the namespace page of the console.
         :param pulumi.Input[_builtins.str] namespace_name: The namespace name.
         :param pulumi.Input[_builtins.str] namespace_source: Not supported for the time being, no need to fill in.
@@ -915,7 +915,7 @@ class AppGroup(pulumi.CustomResource):
     @pulumi.getter(name="monitorConfigJson")
     def monitor_config_json(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
+        Alarm configuration JSON field. Supported keys include `sendChannel` (alarm channels, e.g. `"sms,ding"`), `alarmType` (alarm type, e.g. `"Contacts"` or `"CustomContacts"`), and `webhookIsAtAll` (whether webhook @all). **Note:** When `monitor_contacts_json` is specified, `alarmType` must be explicitly included in `monitor_config_json` (typically `"CustomContacts"` for custom contacts or `"Contacts"` for contact groups); otherwise the API will automatically append `alarmType` which causes configuration drift on subsequent plans.
         """
         return pulumi.get(self, "monitor_config_json")
 
@@ -923,7 +923,7 @@ class AppGroup(pulumi.CustomResource):
     @pulumi.getter(name="monitorContactsJson")
     def monitor_contacts_json(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Alarm contact JSON format.
+        Alarm contact JSON format. **Note:** This field only takes effect when `monitor_config_json` contains an `alarmType` value (e.g. `"CustomContacts"` or `"Contacts"`). The format depends on `alarmType`: for `"CustomContacts"`, use `[{"userName":"name","userPhone":"phone","ding":"webhook_url"}]`; for `"Contacts"`, use `[{"name":"contact_group_name"}]`.
         """
         return pulumi.get(self, "monitor_contacts_json")
 

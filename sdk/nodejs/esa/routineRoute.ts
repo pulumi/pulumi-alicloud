@@ -88,7 +88,7 @@ export class RoutineRoute extends pulumi.CustomResource {
      * - on: Open
      * - off: off
      */
-    declare public readonly bypass: pulumi.Output<string | undefined>;
+    declare public readonly bypass: pulumi.Output<string>;
     /**
      * Config Id
      */
@@ -102,11 +102,11 @@ export class RoutineRoute extends pulumi.CustomResource {
      * - on: Open
      * - off: off
      */
-    declare public readonly routeEnable: pulumi.Output<string | undefined>;
+    declare public readonly routeEnable: pulumi.Output<string>;
     /**
      * The route name.
      */
-    declare public readonly routeName: pulumi.Output<string | undefined>;
+    declare public readonly routeName: pulumi.Output<string>;
     /**
      * The edge function Routine name.
      */
@@ -114,11 +114,11 @@ export class RoutineRoute extends pulumi.CustomResource {
     /**
      * The rule content.
      */
-    declare public readonly rule: pulumi.Output<string | undefined>;
+    declare public readonly rule: pulumi.Output<string>;
     /**
      * Rule execution order.
      */
-    declare public readonly sequence: pulumi.Output<number | undefined>;
+    declare public readonly sequence: pulumi.Output<number>;
     /**
      * Site Id
      */
@@ -148,8 +148,17 @@ export class RoutineRoute extends pulumi.CustomResource {
             resourceInputs["siteId"] = state?.siteId;
         } else {
             const args = argsOrState as RoutineRouteArgs | undefined;
+            if (args?.routeEnable === undefined && !opts.urn) {
+                throw new Error("Missing required property 'routeEnable'");
+            }
+            if (args?.routeName === undefined && !opts.urn) {
+                throw new Error("Missing required property 'routeName'");
+            }
             if (args?.routineName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routineName'");
+            }
+            if (args?.rule === undefined && !opts.urn) {
+                throw new Error("Missing required property 'rule'");
             }
             if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
@@ -234,11 +243,11 @@ export interface RoutineRouteArgs {
      * - on: Open
      * - off: off
      */
-    routeEnable?: pulumi.Input<string | undefined>;
+    routeEnable: pulumi.Input<string>;
     /**
      * The route name.
      */
-    routeName?: pulumi.Input<string | undefined>;
+    routeName: pulumi.Input<string>;
     /**
      * The edge function Routine name.
      */
@@ -246,7 +255,7 @@ export interface RoutineRouteArgs {
     /**
      * The rule content.
      */
-    rule?: pulumi.Input<string | undefined>;
+    rule: pulumi.Input<string>;
     /**
      * Rule execution order.
      */

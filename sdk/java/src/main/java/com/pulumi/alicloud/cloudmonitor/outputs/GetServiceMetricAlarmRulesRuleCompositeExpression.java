@@ -14,62 +14,62 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRuleCompositeExpression {
     /**
-     * @return The relationship between the trigger conditions for multiple metrics.
+     * @return The logical relationship between multiple metric-based alert conditions.
      * 
      */
     private String expressionListJoin;
     /**
-     * @return The trigger conditions that are created in standard mode.
+     * @return A list of alert conditions created using standard expressions.
      * 
      */
     private List<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList> expressionLists;
     /**
-     * @return The trigger conditions that are created by using expressions.
+     * @return The alert condition created by an expression.
      * 
      */
     private String expressionRaw;
     /**
-     * @return The alert level.
+     * @return Alert severity level.
      * 
      */
     private String level;
     /**
-     * @return The number of consecutive triggers.
+     * @return The number of times the alert condition must be met before an alert notification is sent.
      * 
      */
     private Integer times;
 
     private GetServiceMetricAlarmRulesRuleCompositeExpression() {}
     /**
-     * @return The relationship between the trigger conditions for multiple metrics.
+     * @return The logical relationship between multiple metric-based alert conditions.
      * 
      */
     public String expressionListJoin() {
         return this.expressionListJoin;
     }
     /**
-     * @return The trigger conditions that are created in standard mode.
+     * @return A list of alert conditions created using standard expressions.
      * 
      */
     public List<GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList> expressionLists() {
         return this.expressionLists;
     }
     /**
-     * @return The trigger conditions that are created by using expressions.
+     * @return The alert condition created by an expression.
      * 
      */
     public String expressionRaw() {
         return this.expressionRaw;
     }
     /**
-     * @return The alert level.
+     * @return Alert severity level.
      * 
      */
     public String level() {
         return this.level;
     }
     /**
-     * @return The number of consecutive triggers.
+     * @return The number of times the alert condition must be met before an alert notification is sent.
      * 
      */
     public Integer times() {

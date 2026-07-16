@@ -14,83 +14,106 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRuleResult
     {
         /// <summary>
-        /// The trigger conditions for multiple metrics.
+        /// Alert condition for multiple metrics.
         /// </summary>
         public readonly Outputs.GetServiceMetricAlarmRulesRuleCompositeExpressionResult CompositeExpression;
         /// <summary>
-        /// The alert contact group.
+        /// Alarm contact groups.
         /// </summary>
         public readonly string ContactGroups;
         /// <summary>
-        /// The monitoring dimensions of the specified resource.
+        /// The monitoring dimensions for the specified resource.
+        /// Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         /// </summary>
         public readonly string Dimensions;
         /// <summary>
-        /// The time period during which the alert rule is effective.
+        /// The time range during which the alert rule is effective.
         /// </summary>
         public readonly string EffectiveInterval;
         /// <summary>
-        /// The subject of the alert notification email.
+        /// Subject of alert emails.
         /// </summary>
         public readonly string EmailSubject;
         /// <summary>
-        /// The conditions for triggering different levels of alerts.
+        /// The trigger conditions for alert levels.
         /// </summary>
         public readonly Outputs.GetServiceMetricAlarmRulesRuleEscalationsResult Escalations;
         /// <summary>
-        /// The ID of the alert rule.
+        /// The ID of the resource supplied above.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The tags of the alert rule.
+        /// When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMetricAlarmRulesRuleLabelResult> Labels;
         /// <summary>
-        /// The name of the metric.
+        /// The ID of the alarm rule.
+        /// 
+        /// You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        /// 
+        /// &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+        /// </summary>
+        public readonly string MetricAlarmRuleId;
+        /// <summary>
+        /// The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         /// </summary>
         public readonly string MetricName;
         /// <summary>
-        /// The namespace of the cloud service.
+        /// The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        /// 
+        /// &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `AcsPrometheus`.
         /// </summary>
         public readonly string Namespace;
         /// <summary>
-        /// The method that is used to handle alerts when no monitoring data is found.
+        /// The policy to apply when no monitoring data is available.
         /// </summary>
         public readonly string NoDataPolicy;
         /// <summary>
-        /// The time period during which the alert rule is ineffective.
+        /// The time range during which the alarm rule is inactive.
         /// </summary>
         public readonly string NoEffectiveInterval;
         /// <summary>
-        /// The aggregation period of the metric.
+        /// The statistical period of the metric.
         /// </summary>
         public readonly string Period;
         /// <summary>
-        /// The Prometheus alerts.
+        /// Prometheus alert.
         /// </summary>
         public readonly Outputs.GetServiceMetricAlarmRulesRulePrometheusResult Prometheus;
         /// <summary>
-        /// The resources that are associated with the alert rule.
+        /// Resource information, for example: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]`, `[{"userId":"100931896542****"}]`.
         /// </summary>
         public readonly string Resources;
         /// <summary>
-        /// The name of the alert rule.
+        /// Alert rule name.
+        /// 
+        /// You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        /// 
+        /// &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
         /// </summary>
         public readonly string RuleName;
         /// <summary>
-        /// The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+        /// Specifies whether to send recovery notifications.
+        /// </summary>
+        public readonly bool SendOk;
+        /// <summary>
+        /// Channel silence period.
         /// </summary>
         public readonly string SilenceTime;
         /// <summary>
-        /// The type of the alert rule.
+        /// The type of the alarm rule.
         /// </summary>
         public readonly string SourceType;
         /// <summary>
-        /// Specifies whether to query enabled or disabled alert rules. Valid values: `True`, `False`.
+        /// The enabled status of the alarm rule. Valid values:
+        /// - true: enabled.
+        /// - false: disabled.
         /// </summary>
         public readonly bool Status;
         /// <summary>
-        /// The callback URL.
+        /// The URL address specified for callback when an alert is triggered.
         /// </summary>
         public readonly string Webhook;
 
@@ -112,6 +135,8 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
 
             ImmutableArray<Outputs.GetServiceMetricAlarmRulesRuleLabelResult> labels,
 
+            string metricAlarmRuleId,
+
             string metricName,
 
             string @namespace,
@@ -127,6 +152,8 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
             string resources,
 
             string ruleName,
+
+            bool sendOk,
 
             string silenceTime,
 
@@ -144,6 +171,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
             Escalations = escalations;
             Id = id;
             Labels = labels;
+            MetricAlarmRuleId = metricAlarmRuleId;
             MetricName = metricName;
             Namespace = @namespace;
             NoDataPolicy = noDataPolicy;
@@ -152,6 +180,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
             Prometheus = prometheus;
             Resources = resources;
             RuleName = ruleName;
+            SendOk = sendOk;
             SilenceTime = silenceTime;
             SourceType = sourceType;
             Status = status;

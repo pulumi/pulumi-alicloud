@@ -45,10 +45,10 @@ namespace Pulumi.AliCloud.Vpc
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var defaultRouteEntry = new AliCloud.Vpc.RouteEntry("default", new()
+    ///     var defaultVPCRouteEntry = new AliCloud.Vpc.VPCRouteEntry("default", new()
     ///     {
     ///         RouteTableId = @default.RouteTableId,
-    ///         DestinationCidrblock = "172.11.1.1/32",
+    ///         DestinationCidrBlock = "172.11.1.1/32",
     ///         NexthopType = "Ipv4Gateway",
     ///         NexthopId = defaultIpv4Gateway.Id,
     ///     });

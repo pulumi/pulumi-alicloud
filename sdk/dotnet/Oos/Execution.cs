@@ -71,6 +71,11 @@ namespace Pulumi.AliCloud.Oos
     ///         Description = "From TF Test",
     ///         Parameters = @"\t\t\t\t{\""Status\"":\""Running\""}
     /// ",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "execution Test" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -186,6 +191,12 @@ namespace Pulumi.AliCloud.Oos
         public Output<string> StatusMessage { get; private set; } = null!;
 
         /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         /// </summary>
         [Output("templateContent")]
@@ -296,6 +307,18 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("safetyCheck")]
         public Input<string>? SafetyCheck { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
@@ -418,6 +441,18 @@ namespace Pulumi.AliCloud.Oos
         /// </summary>
         [Input("statusMessage")]
         public Input<string>? StatusMessage { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.

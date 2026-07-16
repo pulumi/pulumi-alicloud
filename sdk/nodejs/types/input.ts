@@ -2119,6 +2119,7 @@ export namespace apig {
          */
         selectOption: pulumi.Input<string>;
     }
+
 }
 
 export namespace apigateway {
@@ -4072,6 +4073,148 @@ export namespace cloudmonitor {
          */
         value?: pulumi.Input<string | undefined>;
     }
+
+    export interface ServiceMetricAlarmRuleCompositeExpression {
+        /**
+         * The logical relationship between multiple metric-based alert conditions. Valid values:
+         * - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+         * - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+         */
+        expressionListJoin?: pulumi.Input<string | undefined>;
+        /**
+         * A list of alert conditions created using standard expressions. See `expressionList` below.
+         */
+        expressionLists?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRuleCompositeExpressionExpressionList>[] | undefined>;
+        /**
+         * The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+         * - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+         * - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+         * - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+         */
+        expressionRaw?: pulumi.Input<string | undefined>;
+        /**
+         * The alert severity level. Valid values:
+         * - CRITICAL: Critical.
+         * - WARN: Warning.
+         * - INFO: Information.
+         */
+        level?: pulumi.Input<string | undefined>;
+        /**
+         * Number of consecutive times the alert condition must be met before an alert notification is sent.
+         */
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRuleCompositeExpressionExpressionList {
+        comparisonOperator?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         *
+         * > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+         */
+        metricName?: pulumi.Input<string | undefined>;
+        /**
+         * The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+         *
+         * > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         */
+        period?: pulumi.Input<number | undefined>;
+        statistics?: pulumi.Input<string | undefined>;
+        threshold?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalations {
+        /**
+         * The trigger condition for Critical-level alerts. See `critical` below.
+         */
+        critical?: pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRuleEscalationsCritical | undefined>;
+        /**
+         * Trigger conditions for Info-level alerts. See `info` below.
+         */
+        info?: pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRuleEscalationsInfo | undefined>;
+        /**
+         * Trigger condition for Warn-level alerts.   See `warn` below.
+         */
+        warn?: pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRuleEscalationsWarn | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalationsCritical {
+        comparisonOperator?: pulumi.Input<string | undefined>;
+        /**
+         * Precondition for triggering a Warn-level alert.
+         */
+        preCondition?: pulumi.Input<string | undefined>;
+        statistics?: pulumi.Input<string | undefined>;
+        threshold?: pulumi.Input<string | undefined>;
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalationsInfo {
+        comparisonOperator?: pulumi.Input<string | undefined>;
+        /**
+         * Precondition for triggering a Warn-level alert.
+         */
+        preCondition?: pulumi.Input<string | undefined>;
+        statistics?: pulumi.Input<string | undefined>;
+        threshold?: pulumi.Input<string | undefined>;
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRuleEscalationsWarn {
+        comparisonOperator?: pulumi.Input<string | undefined>;
+        /**
+         * Precondition for triggering a Warn-level alert.
+         */
+        preCondition?: pulumi.Input<string | undefined>;
+        statistics?: pulumi.Input<string | undefined>;
+        threshold?: pulumi.Input<string | undefined>;
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRuleLabel {
+        /**
+         * The tag key.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * Label value.
+         *
+         * > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRulePrometheus {
+        /**
+         * When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+         *
+         * > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+         * See `annotations` below.
+         */
+        annotations?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceMetricAlarmRulePrometheusAnnotation>[] | undefined>;
+        /**
+         * Alert severity level. Valid values:
+         * - CRITICAL: Critical
+         * - WARN: Warning
+         * - INFO: Information
+         */
+        level?: pulumi.Input<string | undefined>;
+        /**
+         * The PromQL query statement.
+         *
+         * > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+         */
+        promQl?: pulumi.Input<string | undefined>;
+        /**
+         * The number of times the alert condition must be met before an alert notification is sent.
+         */
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceMetricAlarmRulePrometheusAnnotation {
+        key?: pulumi.Input<string | undefined>;
+        value?: pulumi.Input<string | undefined>;
+    }
 }
 
 export namespace cloudphone {
@@ -4429,6 +4572,475 @@ export namespace cms {
          * The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
          */
         targetId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2ActionIntegrationConfig {
+        /**
+         * List of actions
+         */
+        actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Indicates whether action integration is enabled
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AlertRuleV2ArmsIntegrationConfig {
+        /**
+         * Specifies whether to enable ARMS integration.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfig {
+        /**
+         * Aggregation Function
+         */
+        aggregate?: pulumi.Input<string | undefined>;
+        /**
+         * Multiple comparison list (used when type=APM_COMPOSITE) See `compareList` below.
+         */
+        compareLists?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigCompareList>[] | undefined>;
+        /**
+         * The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `compositeEscalation` below.
+         */
+        compositeEscalations?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigCompositeEscalation>[] | undefined>;
+        /**
+         * Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+         */
+        durationSecs?: pulumi.Input<number | undefined>;
+        /**
+         * The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+         */
+        escalationType?: pulumi.Input<string | undefined>;
+        /**
+         * Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `expressEscalation` below.
+         */
+        expressEscalations?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigExpressEscalation>[] | undefined>;
+        /**
+         * The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+         */
+        legacyRaw?: pulumi.Input<string | undefined>;
+        /**
+         * Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+         */
+        legacyType?: pulumi.Input<string | undefined>;
+        /**
+         * No-data processing policy (type=CLOUD_MONITORING)
+         */
+        noDataPolicy?: pulumi.Input<string | undefined>;
+        /**
+         * Comparison Operator
+         */
+        operator?: pulumi.Input<string | undefined>;
+        /**
+         * The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+         */
+        prometheuses?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigPrometheus>[] | undefined>;
+        /**
+         * The logical relationship between multiple metrics
+         */
+        relation?: pulumi.Input<string | undefined>;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity?: pulumi.Input<string | undefined>;
+        /**
+         * Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simpleEscalation` below.
+         */
+        simpleEscalations?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigSimpleEscalation>[] | undefined>;
+        /**
+         * Threshold
+         */
+        threshold?: pulumi.Input<number | undefined>;
+        /**
+         * Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `thresholdList` below.
+         */
+        thresholdLists?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigThresholdList>[] | undefined>;
+        /**
+         * The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeUnit?: pulumi.Input<string | undefined>;
+        /**
+         * Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeValue?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigCompareList {
+        /**
+         * Aggregation Function
+         */
+        aggregate?: pulumi.Input<string | undefined>;
+        operator?: pulumi.Input<string | undefined>;
+        /**
+         * Threshold
+         */
+        threshold?: pulumi.Input<number | undefined>;
+        /**
+         * Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeUnit?: pulumi.Input<string | undefined>;
+        /**
+         * Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+         */
+        yoyTimeValue?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigCompositeEscalation {
+        /**
+         * Trigger Condition List See `escalations` below.
+         */
+        escalations?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigCompositeEscalationEscalation>[] | undefined>;
+        /**
+         * The logical relationship between multiple metrics
+         */
+        relation?: pulumi.Input<string | undefined>;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity?: pulumi.Input<string | undefined>;
+        /**
+         * Consecutive Trigger Count
+         */
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigCompositeEscalationEscalation {
+        /**
+         * Comparison operator
+         */
+        comparisonOperator?: pulumi.Input<string | undefined>;
+        /**
+         * Metric name
+         */
+        metricName?: pulumi.Input<string | undefined>;
+        /**
+         * Collection period (s)
+         */
+        period?: pulumi.Input<number | undefined>;
+        /**
+         * Precondition
+         */
+        preCondition?: pulumi.Input<string | undefined>;
+        /**
+         * Statistical Method
+         */
+        statistics?: pulumi.Input<string | undefined>;
+        /**
+         * Threshold
+         */
+        threshold?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigExpressEscalation {
+        /**
+         * Raw Expression
+         */
+        rawExpression?: pulumi.Input<string | undefined>;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity?: pulumi.Input<string | undefined>;
+        /**
+         * Consecutive Trigger Count
+         */
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigPrometheus {
+        promQl?: pulumi.Input<string | undefined>;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity?: pulumi.Input<string | undefined>;
+        /**
+         * Consecutive Trigger Count
+         */
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigSimpleEscalation {
+        /**
+         * Trigger Condition List See `escalations` below.
+         */
+        escalations?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2ConditionConfigSimpleEscalationEscalation>[] | undefined>;
+        /**
+         * Metric name
+         */
+        metricName?: pulumi.Input<string | undefined>;
+        /**
+         * Collection period (s)
+         */
+        period?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigSimpleEscalationEscalation {
+        /**
+         * Comparison operator
+         */
+        comparisonOperator?: pulumi.Input<string | undefined>;
+        /**
+         * Precondition
+         */
+        preCondition?: pulumi.Input<string | undefined>;
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity?: pulumi.Input<string | undefined>;
+        /**
+         * Statistical Method
+         */
+        statistics?: pulumi.Input<string | undefined>;
+        /**
+         * Threshold
+         */
+        threshold?: pulumi.Input<string | undefined>;
+        /**
+         * Consecutive Trigger Count
+         */
+        times?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ConditionConfigThresholdList {
+        /**
+         * Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+         */
+        severity?: pulumi.Input<string | undefined>;
+        /**
+         * Threshold
+         */
+        threshold?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2DatasourceConfig {
+        /**
+         * The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+         */
+        instanceId?: pulumi.Input<string | undefined>;
+        /**
+         * The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+         */
+        legacyRaw?: pulumi.Input<string | undefined>;
+        /**
+         * Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+         */
+        legacyType?: pulumi.Input<string | undefined>;
+        /**
+         * The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+         */
+        productCategory?: pulumi.Input<string | undefined>;
+        /**
+         * The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+         */
+        regionId?: pulumi.Input<string | undefined>;
+        /**
+         * The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertRuleV2NotifyConfig {
+        /**
+         * The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+         */
+        activeDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+        /**
+         * The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+         */
+        activeEndTime?: pulumi.Input<string | undefined>;
+        /**
+         * The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+         */
+        activeStartTime?: pulumi.Input<string | undefined>;
+        /**
+         * The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+         */
+        channels?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2NotifyConfigChannel>[] | undefined>;
+        /**
+         * List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+         */
+        notifyStrategies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+         */
+        silenceTimeSecs?: pulumi.Input<number | undefined>;
+        /**
+         * Notification Channel Type
+         */
+        type: pulumi.Input<string>;
+        /**
+         * UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+         */
+        utcOffset?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2NotifyConfigChannel {
+        /**
+         * List of channel identifiers
+         */
+        identifiers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2QueryConfig {
+        /**
+         * The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+         */
+        dimensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[] | undefined>;
+        /**
+         * Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+         */
+        enableDataCompleteCheck?: pulumi.Input<boolean | undefined>;
+        /**
+         * Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+         */
+        entityDomain?: pulumi.Input<string | undefined>;
+        /**
+         * List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entityFields` below.
+         */
+        entityFields?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2QueryConfigEntityField>[] | undefined>;
+        /**
+         * The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entityFilters` below.
+         */
+        entityFilters?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2QueryConfigEntityFilter>[] | undefined>;
+        /**
+         * Entity type (type=UMODEL_METRICSET_QUERY)
+         */
+        entityType?: pulumi.Input<string | undefined>;
+        /**
+         * Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+         */
+        expr?: pulumi.Input<string | undefined>;
+        /**
+         * The APM filter condition list (type=APM_MULTI_QUERY). See `filterList` below.
+         */
+        filterLists?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2QueryConfigFilterList>[] | undefined>;
+        /**
+         * Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+         */
+        groupId?: pulumi.Input<string | undefined>;
+        /**
+         * List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `labelFilters` below.
+         */
+        labelFilters?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2QueryConfigLabelFilter>[] | undefined>;
+        /**
+         * The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+         */
+        legacyRaw?: pulumi.Input<string | undefined>;
+        /**
+         * Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+         */
+        legacyType?: pulumi.Input<string | undefined>;
+        /**
+         * APM measure configuration list (type=APM_MULTI_QUERY) See `measureList` below.
+         */
+        measureLists?: pulumi.Input<pulumi.Input<inputs.cms.AlertRuleV2QueryConfigMeasureList>[] | undefined>;
+        /**
+         * Metric name (type=UMODEL_METRICSET_QUERY)
+         */
+        metric?: pulumi.Input<string | undefined>;
+        /**
+         * Metric set name (type=UMODEL_METRICSET_QUERY)
+         */
+        metricSet?: pulumi.Input<string | undefined>;
+        /**
+         * CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
+         * [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+         */
+        promQl?: pulumi.Input<string | undefined>;
+        /**
+         * Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+         */
+        relationType?: pulumi.Input<string | undefined>;
+        /**
+         * Application Service ID List (type=APM_MULTI_QUERY)
+         */
+        serviceIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface AlertRuleV2QueryConfigEntityField {
+        /**
+         * The entity filter field name.
+         */
+        field?: pulumi.Input<string | undefined>;
+        /**
+         * Label value
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2QueryConfigEntityFilter {
+        /**
+         * The entity filter field name.
+         */
+        field?: pulumi.Input<string | undefined>;
+        operator?: pulumi.Input<string | undefined>;
+        /**
+         * Label value
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2QueryConfigFilterList {
+        /**
+         * APM filter dimension key
+         */
+        key?: pulumi.Input<string | undefined>;
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * Label value
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2QueryConfigLabelFilter {
+        /**
+         * Label name
+         */
+        name?: pulumi.Input<string | undefined>;
+        operator?: pulumi.Input<string | undefined>;
+        /**
+         * Label value
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AlertRuleV2QueryConfigMeasureList {
+        /**
+         * Grouping dimension list
+         */
+        groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * APM metric code
+         */
+        measureCode?: pulumi.Input<string | undefined>;
+        /**
+         * Query Time Window (Seconds)
+         */
+        windowSecs?: pulumi.Input<number | undefined>;
+    }
+
+    export interface AlertRuleV2ScheduleConfig {
+        /**
+         * The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+         */
+        intervalSecs?: pulumi.Input<number | undefined>;
+        /**
+         * The scheduling type. Valid values: FIXED and CRON.
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface DynamicTagGroupMatchExpress {
@@ -6801,6 +7413,9 @@ export namespace cs {
          */
         rrsaOidcIssuerUrl?: pulumi.Input<string | undefined>;
     }
+}
+
+export namespace das {
 }
 
 export namespace databasefilesystem {
@@ -9640,6 +10255,10 @@ export namespace ecs {
          */
         securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
+         * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+         */
+        sourceDestCheck?: pulumi.Input<boolean | undefined>;
+        /**
          * The ID of the vSwitch to which to connect Secondary ENI N.
          */
         vswitchId?: pulumi.Input<string | undefined>;
@@ -12164,6 +12783,10 @@ export namespace esa {
          */
         header?: pulumi.Input<string | undefined>;
         /**
+         * The IP protocol version for back-to-origin requests. Default value: `roundRobin`. Valid values:
+         */
+        ipVersionPolicy?: pulumi.Input<string | undefined>;
+        /**
          * Origin Name.
          */
         name?: pulumi.Input<string | undefined>;
@@ -12172,10 +12795,7 @@ export namespace esa {
          */
         originId?: pulumi.Input<string | undefined>;
         /**
-         * Source station type:
-         * ip_domain: ip or domain name type origin station;
-         * - `OSS`:OSS address source station;
-         * - `S3`:AWS S3 Source station.
+         * The type of the origin. Valid values:
          */
         type?: pulumi.Input<string | undefined>;
         /**
@@ -12535,7 +13155,7 @@ export namespace esa {
          */
         protocol: pulumi.Input<string>;
         /**
-         * Rule ID
+         * Rule ID.
          */
         ruleId?: pulumi.Input<number | undefined>;
         /**
@@ -17908,6 +18528,125 @@ export namespace oss {
          * Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
          */
         tls13CustomCipherSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface BucketInventoryDestination {
+        /**
+         * The Bucket information stored after the list result is exported. See `ossBucketDestination` below.
+         */
+        ossBucketDestination?: pulumi.Input<inputs.oss.BucketInventoryDestinationOssBucketDestination | undefined>;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestination {
+        /**
+         * The account ID granted by the Bucket owner.
+         */
+        accountId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the bucket.
+         */
+        bucket?: pulumi.Input<string | undefined>;
+        /**
+         * The encryption method of the manifest file. Valid value: SSE-OSS: Use the OSS fully managed key for encryption and decryption. SSE-KMS: Use the default KMS-managed CMK(Customer Master Key) or a specified CMK for encryption and decryption. See `encryption` below.
+         */
+        encryption?: pulumi.Input<inputs.oss.BucketInventoryDestinationOssBucketDestinationEncryption | undefined>;
+        /**
+         * The file format of the manifest file.
+         */
+        format?: pulumi.Input<string | undefined>;
+        prefix?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the role that has the permission to read all files in the source Bucket and write files to the target Bucket. The format is acs:ram::uid:role/rolename.
+         */
+        roleArn?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestinationEncryption {
+        /**
+         * The container that holds the SSE-KMS encryption key. See `ssekms` below.
+         */
+        ssekms?: pulumi.Input<inputs.oss.BucketInventoryDestinationOssBucketDestinationEncryptionSsekms | undefined>;
+        /**
+         * The container that holds the SSE-OSS encryption method. Set it to an empty string when OSS-managed keys are used.
+         */
+        sseoss?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketInventoryDestinationOssBucketDestinationEncryptionSsekms {
+        /**
+         * KMS key ID.
+         */
+        keyId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface BucketInventoryFilter {
+        /**
+         * The start timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+         */
+        lastModifyBeginTimeStamp?: pulumi.Input<number | undefined>;
+        /**
+         * The end timestamp of the last modification time of the filter file, in seconds. Value range:[1262275200, 253402271999]
+         */
+        lastModifyEndTimeStamp?: pulumi.Input<number | undefined>;
+        /**
+         * The minimum size of the filter file, in B. Value range: greater than or equal to 0 B, less than or equal to 48.8 TB.
+         */
+        lowerSizeBound?: pulumi.Input<number | undefined>;
+        /**
+         * The match prefix of the filter rule.
+         */
+        prefix?: pulumi.Input<string | undefined>;
+        /**
+         * The storage type of the filter file. Multiple storage types can be specified. Optional values: Standard: Standard storage IA: low-frequency access Archive: Archive storage ColdArchive: cold Archive storage All (default): All storage types
+         */
+        storageClass?: pulumi.Input<string | undefined>;
+        /**
+         * The maximum size of the filter file, in B. Value range: greater than 0 B, less than or equal to 48.8 TB.
+         */
+        upperSizeBound?: pulumi.Input<number | undefined>;
+    }
+
+    export interface BucketInventoryIncrementalInventory {
+        /**
+         * Incremental inventory enabled
+         */
+        isEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Configuration container for incremental manifest file properties See `optionalFields` below.
+         */
+        optionalFields?: pulumi.Input<inputs.oss.BucketInventoryIncrementalInventoryOptionalFields | undefined>;
+        /**
+         * Incremental inventory export cycle container See `schedule` below.
+         */
+        schedule?: pulumi.Input<inputs.oss.BucketInventoryIncrementalInventorySchedule | undefined>;
+    }
+
+    export interface BucketInventoryIncrementalInventoryOptionalFields {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface BucketInventoryIncrementalInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency?: pulumi.Input<number | undefined>;
+    }
+
+    export interface BucketInventoryOptionalFields {
+        /**
+         * The configuration items contained in the manifest results.
+         */
+        fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface BucketInventorySchedule {
+        /**
+         * Period for manifest file export.
+         */
+        frequency?: pulumi.Input<string | undefined>;
     }
 
     export interface BucketLifecycleRule {
@@ -24151,6 +24890,8 @@ export namespace wafv3 {
          * - mpty: Indicates that the content is empty.
          * - exists: Indicates that the field exists.
          * - inl: indicates in the list.
+         * - in-list: Indicates that the value is in the list.
+         * - not-in-list: Indicates that the value is not in the list.
          *
          * > **NOTE:**  Not all logical characters (opvalues) can be configured for the match field (key) of each custom rule. For the logical characters supported by different matching fields, please refer to the association relationship between the matching fields and the logical characters in the custom rules of the WAF console.
          */

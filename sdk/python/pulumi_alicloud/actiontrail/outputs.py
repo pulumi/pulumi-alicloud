@@ -693,6 +693,7 @@ class GetSaslAclsAclResult(dict):
                  acl_resource_pattern_type: _builtins.str,
                  acl_resource_type: _builtins.str,
                  host: _builtins.str,
+                 id: _builtins.str,
                  username: _builtins.str):
         """
         :param _builtins.str acl_operation_type: The operation type of the sasl acl.
@@ -700,6 +701,7 @@ class GetSaslAclsAclResult(dict):
         :param _builtins.str acl_resource_pattern_type: The resource pattern type of the sasl acl.
         :param _builtins.str acl_resource_type: Get results for the specified resource type.
         :param _builtins.str host: The host of the sasl acl.
+        :param _builtins.str id: (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `<instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>`.
         :param _builtins.str username: Get results for the specified username.
         """
         pulumi.set(__self__, "acl_operation_type", acl_operation_type)
@@ -707,6 +709,7 @@ class GetSaslAclsAclResult(dict):
         pulumi.set(__self__, "acl_resource_pattern_type", acl_resource_pattern_type)
         pulumi.set(__self__, "acl_resource_type", acl_resource_type)
         pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "username", username)
 
     @_builtins.property
@@ -748,6 +751,14 @@ class GetSaslAclsAclResult(dict):
         The host of the sasl acl.
         """
         return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `<instance_id>:<username>:<acl_resource_type>:<acl_resource_name>:<acl_resource_pattern_type>:<acl_operation_type>`.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter

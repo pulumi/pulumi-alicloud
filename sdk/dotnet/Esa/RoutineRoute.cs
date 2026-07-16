@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Esa
         /// - off: off
         /// </summary>
         [Output("bypass")]
-        public Output<string?> Bypass { get; private set; } = null!;
+        public Output<string> Bypass { get; private set; } = null!;
 
         /// <summary>
         /// Config Id
@@ -102,13 +102,13 @@ namespace Pulumi.AliCloud.Esa
         /// - off: off
         /// </summary>
         [Output("routeEnable")]
-        public Output<string?> RouteEnable { get; private set; } = null!;
+        public Output<string> RouteEnable { get; private set; } = null!;
 
         /// <summary>
         /// The route name.
         /// </summary>
         [Output("routeName")]
-        public Output<string?> RouteName { get; private set; } = null!;
+        public Output<string> RouteName { get; private set; } = null!;
 
         /// <summary>
         /// The edge function Routine name.
@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.Esa
         /// The rule content.
         /// </summary>
         [Output("rule")]
-        public Output<string?> Rule { get; private set; } = null!;
+        public Output<string> Rule { get; private set; } = null!;
 
         /// <summary>
         /// Rule execution order.
         /// </summary>
         [Output("sequence")]
-        public Output<int?> Sequence { get; private set; } = null!;
+        public Output<int> Sequence { get; private set; } = null!;
 
         /// <summary>
         /// Site Id
@@ -199,14 +199,14 @@ namespace Pulumi.AliCloud.Esa
         /// - on: Open
         /// - off: off
         /// </summary>
-        [Input("routeEnable")]
-        public Input<string>? RouteEnable { get; set; }
+        [Input("routeEnable", required: true)]
+        public Input<string> RouteEnable { get; set; } = null!;
 
         /// <summary>
         /// The route name.
         /// </summary>
-        [Input("routeName")]
-        public Input<string>? RouteName { get; set; }
+        [Input("routeName", required: true)]
+        public Input<string> RouteName { get; set; } = null!;
 
         /// <summary>
         /// The edge function Routine name.
@@ -217,8 +217,8 @@ namespace Pulumi.AliCloud.Esa
         /// <summary>
         /// The rule content.
         /// </summary>
-        [Input("rule")]
-        public Input<string>? Rule { get; set; }
+        [Input("rule", required: true)]
+        public Input<string> Rule { get; set; } = null!;
 
         /// <summary>
         /// Rule execution order.

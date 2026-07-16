@@ -401,9 +401,9 @@ class VPCRouteEntry(pulumi.CustomResource):
             ipv4_gateway_name=name,
             vpc_id=default.id,
             enabled=True)
-        default_route_entry = alicloud.vpc.RouteEntry("default",
+        default_vpc_route_entry = alicloud.vpc.VPCRouteEntry("default",
             route_table_id=default.route_table_id,
-            destination_cidrblock="172.11.1.1/32",
+            destination_cidr_block="172.11.1.1/32",
             nexthop_type="Ipv4Gateway",
             nexthop_id=default_ipv4_gateway.id)
         ```
@@ -477,9 +477,9 @@ class VPCRouteEntry(pulumi.CustomResource):
             ipv4_gateway_name=name,
             vpc_id=default.id,
             enabled=True)
-        default_route_entry = alicloud.vpc.RouteEntry("default",
+        default_vpc_route_entry = alicloud.vpc.VPCRouteEntry("default",
             route_table_id=default.route_table_id,
-            destination_cidrblock="172.11.1.1/32",
+            destination_cidr_block="172.11.1.1/32",
             nexthop_type="Ipv4Gateway",
             nexthop_id=default_ipv4_gateway.id)
         ```

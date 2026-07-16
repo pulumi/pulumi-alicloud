@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.66.0+
+ * > **NOTE:** Available since v1.66.0.
  *
  * ## Example Usage
  *
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     instanceId: "xxx",
  *     username: "username",
  *     aclResourceType: "Topic",
- *     aclResourceName: "testTopic",
+ *     aclResourceName: "yourTopic",
  *     outputFile: "saslAcls.txt",
  * });
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
@@ -94,7 +94,7 @@ export interface GetSaslAclsResult {
 /**
  * This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.66.0+
+ * > **NOTE:** Available since v1.66.0.
  *
  * ## Example Usage
  *
@@ -106,7 +106,7 @@ export interface GetSaslAclsResult {
  *     instanceId: "xxx",
  *     username: "username",
  *     aclResourceType: "Topic",
- *     aclResourceName: "testTopic",
+ *     aclResourceName: "yourTopic",
  *     outputFile: "saslAcls.txt",
  * });
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);

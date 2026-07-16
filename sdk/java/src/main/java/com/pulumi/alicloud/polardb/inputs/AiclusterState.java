@@ -17,6 +17,21 @@ public final class AiclusterState extends com.pulumi.resources.ResourceArgs {
     public static final AiclusterState Empty = new AiclusterState();
 
     /**
+     * (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+     * 
+     */
+    @Import(name="apiKey")
+    private @Nullable Output<String> apiKey;
+
+    /**
+     * @return (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+     * 
+     */
+    public Optional<Output<String>> apiKey() {
+        return Optional.ofNullable(this.apiKey);
+    }
+
+    /**
      * Whether to enable auto-renewal.
      * 
      */
@@ -44,6 +59,21 @@ public final class AiclusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> autoUseCoupon() {
         return Optional.ofNullable(this.autoUseCoupon);
+    }
+
+    /**
+     * (Available since 1.284.0) The connection string of the AI cluster endpoint.
+     * 
+     */
+    @Import(name="connectionString")
+    private @Nullable Output<String> connectionString;
+
+    /**
+     * @return (Available since 1.284.0) The connection string of the AI cluster endpoint.
+     * 
+     */
+    public Optional<Output<String>> connectionString() {
+        return Optional.ofNullable(this.connectionString);
     }
 
     /**
@@ -319,8 +349,10 @@ public final class AiclusterState extends com.pulumi.resources.ResourceArgs {
     private AiclusterState() {}
 
     private AiclusterState(AiclusterState $) {
+        this.apiKey = $.apiKey;
         this.autoRenew = $.autoRenew;
         this.autoUseCoupon = $.autoUseCoupon;
+        this.connectionString = $.connectionString;
         this.dbClusterDescription = $.dbClusterDescription;
         this.dbClusterId = $.dbClusterId;
         this.dbNodeClass = $.dbNodeClass;
@@ -357,6 +389,27 @@ public final class AiclusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AiclusterState defaults) {
             $ = new AiclusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKey (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(@Nullable Output<String> apiKey) {
+            $.apiKey = apiKey;
+            return this;
+        }
+
+        /**
+         * @param apiKey (Sensitive, Available since 1.284.0) The API key for accessing the AI cluster. This field is marked as sensitive and will be hidden in pulumi preview/apply output. To retrieve its value, use `terraform output` with `-json` flag or read from state file directly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(String apiKey) {
+            return apiKey(Output.of(apiKey));
         }
 
         /**
@@ -399,6 +452,27 @@ public final class AiclusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoUseCoupon(Boolean autoUseCoupon) {
             return autoUseCoupon(Output.of(autoUseCoupon));
+        }
+
+        /**
+         * @param connectionString (Available since 1.284.0) The connection string of the AI cluster endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(@Nullable Output<String> connectionString) {
+            $.connectionString = connectionString;
+            return this;
+        }
+
+        /**
+         * @param connectionString (Available since 1.284.0) The connection string of the AI cluster endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionString(String connectionString) {
+            return connectionString(Output.of(connectionString));
         }
 
         /**

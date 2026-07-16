@@ -1198,6 +1198,3590 @@ func (o AlarmTargetArrayOutput) Index(i pulumi.IntInput) AlarmTargetOutput {
 	}).(AlarmTargetOutput)
 }
 
+type AlertRuleV2ActionIntegrationConfig struct {
+	// List of actions
+	Actions []string `pulumi:"actions"`
+	// Indicates whether action integration is enabled
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AlertRuleV2ActionIntegrationConfigInput is an input type that accepts AlertRuleV2ActionIntegrationConfigArgs and AlertRuleV2ActionIntegrationConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2ActionIntegrationConfigInput` via:
+//
+//	AlertRuleV2ActionIntegrationConfigArgs{...}
+type AlertRuleV2ActionIntegrationConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ActionIntegrationConfigOutput() AlertRuleV2ActionIntegrationConfigOutput
+	ToAlertRuleV2ActionIntegrationConfigOutputWithContext(context.Context) AlertRuleV2ActionIntegrationConfigOutput
+}
+
+type AlertRuleV2ActionIntegrationConfigArgs struct {
+	// List of actions
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Indicates whether action integration is enabled
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AlertRuleV2ActionIntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ActionIntegrationConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2ActionIntegrationConfigArgs) ToAlertRuleV2ActionIntegrationConfigOutput() AlertRuleV2ActionIntegrationConfigOutput {
+	return i.ToAlertRuleV2ActionIntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ActionIntegrationConfigArgs) ToAlertRuleV2ActionIntegrationConfigOutputWithContext(ctx context.Context) AlertRuleV2ActionIntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ActionIntegrationConfigOutput)
+}
+
+func (i AlertRuleV2ActionIntegrationConfigArgs) ToAlertRuleV2ActionIntegrationConfigPtrOutput() AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return i.ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ActionIntegrationConfigArgs) ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ActionIntegrationConfigOutput).ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2ActionIntegrationConfigPtrInput is an input type that accepts AlertRuleV2ActionIntegrationConfigArgs, AlertRuleV2ActionIntegrationConfigPtr and AlertRuleV2ActionIntegrationConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2ActionIntegrationConfigPtrInput` via:
+//
+//	        AlertRuleV2ActionIntegrationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2ActionIntegrationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ActionIntegrationConfigPtrOutput() AlertRuleV2ActionIntegrationConfigPtrOutput
+	ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(context.Context) AlertRuleV2ActionIntegrationConfigPtrOutput
+}
+
+type alertRuleV2ActionIntegrationConfigPtrType AlertRuleV2ActionIntegrationConfigArgs
+
+func AlertRuleV2ActionIntegrationConfigPtr(v *AlertRuleV2ActionIntegrationConfigArgs) AlertRuleV2ActionIntegrationConfigPtrInput {
+	return (*alertRuleV2ActionIntegrationConfigPtrType)(v)
+}
+
+func (*alertRuleV2ActionIntegrationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ActionIntegrationConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2ActionIntegrationConfigPtrType) ToAlertRuleV2ActionIntegrationConfigPtrOutput() AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return i.ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2ActionIntegrationConfigPtrType) ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ActionIntegrationConfigPtrOutput)
+}
+
+type AlertRuleV2ActionIntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ActionIntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ActionIntegrationConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ActionIntegrationConfigOutput) ToAlertRuleV2ActionIntegrationConfigOutput() AlertRuleV2ActionIntegrationConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ActionIntegrationConfigOutput) ToAlertRuleV2ActionIntegrationConfigOutputWithContext(ctx context.Context) AlertRuleV2ActionIntegrationConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ActionIntegrationConfigOutput) ToAlertRuleV2ActionIntegrationConfigPtrOutput() AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return o.ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2ActionIntegrationConfigOutput) ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2ActionIntegrationConfig) *AlertRuleV2ActionIntegrationConfig {
+		return &v
+	}).(AlertRuleV2ActionIntegrationConfigPtrOutput)
+}
+
+// List of actions
+func (o AlertRuleV2ActionIntegrationConfigOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ActionIntegrationConfig) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether action integration is enabled
+func (o AlertRuleV2ActionIntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ActionIntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AlertRuleV2ActionIntegrationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ActionIntegrationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ActionIntegrationConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ActionIntegrationConfigPtrOutput) ToAlertRuleV2ActionIntegrationConfigPtrOutput() AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ActionIntegrationConfigPtrOutput) ToAlertRuleV2ActionIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ActionIntegrationConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ActionIntegrationConfigPtrOutput) Elem() AlertRuleV2ActionIntegrationConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2ActionIntegrationConfig) AlertRuleV2ActionIntegrationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2ActionIntegrationConfig
+		return ret
+	}).(AlertRuleV2ActionIntegrationConfigOutput)
+}
+
+// List of actions
+func (o AlertRuleV2ActionIntegrationConfigPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ActionIntegrationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether action integration is enabled
+func (o AlertRuleV2ActionIntegrationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ActionIntegrationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AlertRuleV2ArmsIntegrationConfig struct {
+	// Specifies whether to enable ARMS integration.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AlertRuleV2ArmsIntegrationConfigInput is an input type that accepts AlertRuleV2ArmsIntegrationConfigArgs and AlertRuleV2ArmsIntegrationConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2ArmsIntegrationConfigInput` via:
+//
+//	AlertRuleV2ArmsIntegrationConfigArgs{...}
+type AlertRuleV2ArmsIntegrationConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ArmsIntegrationConfigOutput() AlertRuleV2ArmsIntegrationConfigOutput
+	ToAlertRuleV2ArmsIntegrationConfigOutputWithContext(context.Context) AlertRuleV2ArmsIntegrationConfigOutput
+}
+
+type AlertRuleV2ArmsIntegrationConfigArgs struct {
+	// Specifies whether to enable ARMS integration.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AlertRuleV2ArmsIntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2ArmsIntegrationConfigArgs) ToAlertRuleV2ArmsIntegrationConfigOutput() AlertRuleV2ArmsIntegrationConfigOutput {
+	return i.ToAlertRuleV2ArmsIntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ArmsIntegrationConfigArgs) ToAlertRuleV2ArmsIntegrationConfigOutputWithContext(ctx context.Context) AlertRuleV2ArmsIntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ArmsIntegrationConfigOutput)
+}
+
+func (i AlertRuleV2ArmsIntegrationConfigArgs) ToAlertRuleV2ArmsIntegrationConfigPtrOutput() AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return i.ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ArmsIntegrationConfigArgs) ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ArmsIntegrationConfigOutput).ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2ArmsIntegrationConfigPtrInput is an input type that accepts AlertRuleV2ArmsIntegrationConfigArgs, AlertRuleV2ArmsIntegrationConfigPtr and AlertRuleV2ArmsIntegrationConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2ArmsIntegrationConfigPtrInput` via:
+//
+//	        AlertRuleV2ArmsIntegrationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2ArmsIntegrationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ArmsIntegrationConfigPtrOutput() AlertRuleV2ArmsIntegrationConfigPtrOutput
+	ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(context.Context) AlertRuleV2ArmsIntegrationConfigPtrOutput
+}
+
+type alertRuleV2ArmsIntegrationConfigPtrType AlertRuleV2ArmsIntegrationConfigArgs
+
+func AlertRuleV2ArmsIntegrationConfigPtr(v *AlertRuleV2ArmsIntegrationConfigArgs) AlertRuleV2ArmsIntegrationConfigPtrInput {
+	return (*alertRuleV2ArmsIntegrationConfigPtrType)(v)
+}
+
+func (*alertRuleV2ArmsIntegrationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2ArmsIntegrationConfigPtrType) ToAlertRuleV2ArmsIntegrationConfigPtrOutput() AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return i.ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2ArmsIntegrationConfigPtrType) ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ArmsIntegrationConfigPtrOutput)
+}
+
+type AlertRuleV2ArmsIntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ArmsIntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigOutput) ToAlertRuleV2ArmsIntegrationConfigOutput() AlertRuleV2ArmsIntegrationConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigOutput) ToAlertRuleV2ArmsIntegrationConfigOutputWithContext(ctx context.Context) AlertRuleV2ArmsIntegrationConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigOutput) ToAlertRuleV2ArmsIntegrationConfigPtrOutput() AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return o.ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigOutput) ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2ArmsIntegrationConfig) *AlertRuleV2ArmsIntegrationConfig {
+		return &v
+	}).(AlertRuleV2ArmsIntegrationConfigPtrOutput)
+}
+
+// Specifies whether to enable ARMS integration.
+func (o AlertRuleV2ArmsIntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ArmsIntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AlertRuleV2ArmsIntegrationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ArmsIntegrationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigPtrOutput) ToAlertRuleV2ArmsIntegrationConfigPtrOutput() AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigPtrOutput) ToAlertRuleV2ArmsIntegrationConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ArmsIntegrationConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ArmsIntegrationConfigPtrOutput) Elem() AlertRuleV2ArmsIntegrationConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2ArmsIntegrationConfig) AlertRuleV2ArmsIntegrationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2ArmsIntegrationConfig
+		return ret
+	}).(AlertRuleV2ArmsIntegrationConfigOutput)
+}
+
+// Specifies whether to enable ARMS integration.
+func (o AlertRuleV2ArmsIntegrationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ArmsIntegrationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AlertRuleV2ConditionConfig struct {
+	// Aggregation Function
+	Aggregate *string `pulumi:"aggregate"`
+	// Multiple comparison list (used when type=APM_COMPOSITE) See `compareList` below.
+	CompareLists []AlertRuleV2ConditionConfigCompareList `pulumi:"compareLists"`
+	// The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `compositeEscalation` below.
+	CompositeEscalations []AlertRuleV2ConditionConfigCompositeEscalation `pulumi:"compositeEscalations"`
+	// Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+	DurationSecs *int `pulumi:"durationSecs"`
+	// The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+	EscalationType *string `pulumi:"escalationType"`
+	// Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `expressEscalation` below.
+	ExpressEscalations []AlertRuleV2ConditionConfigExpressEscalation `pulumi:"expressEscalations"`
+	// The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+	LegacyRaw *string `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+	LegacyType *string `pulumi:"legacyType"`
+	// No-data processing policy (type=CLOUD_MONITORING)
+	NoDataPolicy *string `pulumi:"noDataPolicy"`
+	// Comparison Operator
+	Operator *string `pulumi:"operator"`
+	// The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+	Prometheuses []AlertRuleV2ConditionConfigPrometheus `pulumi:"prometheuses"`
+	// The logical relationship between multiple metrics
+	Relation *string `pulumi:"relation"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity *string `pulumi:"severity"`
+	// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simpleEscalation` below.
+	SimpleEscalations []AlertRuleV2ConditionConfigSimpleEscalation `pulumi:"simpleEscalations"`
+	// Threshold
+	Threshold *float64 `pulumi:"threshold"`
+	// Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `thresholdList` below.
+	ThresholdLists []AlertRuleV2ConditionConfigThresholdList `pulumi:"thresholdLists"`
+	// The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+	Type string `pulumi:"type"`
+	// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeUnit *string `pulumi:"yoyTimeUnit"`
+	// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeValue *int `pulumi:"yoyTimeValue"`
+}
+
+// AlertRuleV2ConditionConfigInput is an input type that accepts AlertRuleV2ConditionConfigArgs and AlertRuleV2ConditionConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigInput` via:
+//
+//	AlertRuleV2ConditionConfigArgs{...}
+type AlertRuleV2ConditionConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigOutput() AlertRuleV2ConditionConfigOutput
+	ToAlertRuleV2ConditionConfigOutputWithContext(context.Context) AlertRuleV2ConditionConfigOutput
+}
+
+type AlertRuleV2ConditionConfigArgs struct {
+	// Aggregation Function
+	Aggregate pulumi.StringPtrInput `pulumi:"aggregate"`
+	// Multiple comparison list (used when type=APM_COMPOSITE) See `compareList` below.
+	CompareLists AlertRuleV2ConditionConfigCompareListArrayInput `pulumi:"compareLists"`
+	// The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `compositeEscalation` below.
+	CompositeEscalations AlertRuleV2ConditionConfigCompositeEscalationArrayInput `pulumi:"compositeEscalations"`
+	// Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+	DurationSecs pulumi.IntPtrInput `pulumi:"durationSecs"`
+	// The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+	EscalationType pulumi.StringPtrInput `pulumi:"escalationType"`
+	// Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `expressEscalation` below.
+	ExpressEscalations AlertRuleV2ConditionConfigExpressEscalationArrayInput `pulumi:"expressEscalations"`
+	// The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+	LegacyRaw pulumi.StringPtrInput `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+	LegacyType pulumi.StringPtrInput `pulumi:"legacyType"`
+	// No-data processing policy (type=CLOUD_MONITORING)
+	NoDataPolicy pulumi.StringPtrInput `pulumi:"noDataPolicy"`
+	// Comparison Operator
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+	Prometheuses AlertRuleV2ConditionConfigPrometheusArrayInput `pulumi:"prometheuses"`
+	// The logical relationship between multiple metrics
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simpleEscalation` below.
+	SimpleEscalations AlertRuleV2ConditionConfigSimpleEscalationArrayInput `pulumi:"simpleEscalations"`
+	// Threshold
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+	// Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `thresholdList` below.
+	ThresholdLists AlertRuleV2ConditionConfigThresholdListArrayInput `pulumi:"thresholdLists"`
+	// The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeUnit pulumi.StringPtrInput `pulumi:"yoyTimeUnit"`
+	// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeValue pulumi.IntPtrInput `pulumi:"yoyTimeValue"`
+}
+
+func (AlertRuleV2ConditionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigArgs) ToAlertRuleV2ConditionConfigOutput() AlertRuleV2ConditionConfigOutput {
+	return i.ToAlertRuleV2ConditionConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigArgs) ToAlertRuleV2ConditionConfigOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigOutput)
+}
+
+func (i AlertRuleV2ConditionConfigArgs) ToAlertRuleV2ConditionConfigPtrOutput() AlertRuleV2ConditionConfigPtrOutput {
+	return i.ToAlertRuleV2ConditionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigArgs) ToAlertRuleV2ConditionConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigOutput).ToAlertRuleV2ConditionConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2ConditionConfigPtrInput is an input type that accepts AlertRuleV2ConditionConfigArgs, AlertRuleV2ConditionConfigPtr and AlertRuleV2ConditionConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigPtrInput` via:
+//
+//	        AlertRuleV2ConditionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2ConditionConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigPtrOutput() AlertRuleV2ConditionConfigPtrOutput
+	ToAlertRuleV2ConditionConfigPtrOutputWithContext(context.Context) AlertRuleV2ConditionConfigPtrOutput
+}
+
+type alertRuleV2ConditionConfigPtrType AlertRuleV2ConditionConfigArgs
+
+func AlertRuleV2ConditionConfigPtr(v *AlertRuleV2ConditionConfigArgs) AlertRuleV2ConditionConfigPtrInput {
+	return (*alertRuleV2ConditionConfigPtrType)(v)
+}
+
+func (*alertRuleV2ConditionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ConditionConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2ConditionConfigPtrType) ToAlertRuleV2ConditionConfigPtrOutput() AlertRuleV2ConditionConfigPtrOutput {
+	return i.ToAlertRuleV2ConditionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2ConditionConfigPtrType) ToAlertRuleV2ConditionConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigOutput) ToAlertRuleV2ConditionConfigOutput() AlertRuleV2ConditionConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigOutput) ToAlertRuleV2ConditionConfigOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigOutput) ToAlertRuleV2ConditionConfigPtrOutput() AlertRuleV2ConditionConfigPtrOutput {
+	return o.ToAlertRuleV2ConditionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2ConditionConfigOutput) ToAlertRuleV2ConditionConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2ConditionConfig) *AlertRuleV2ConditionConfig {
+		return &v
+	}).(AlertRuleV2ConditionConfigPtrOutput)
+}
+
+// Aggregation Function
+func (o AlertRuleV2ConditionConfigOutput) Aggregate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.Aggregate }).(pulumi.StringPtrOutput)
+}
+
+// Multiple comparison list (used when type=APM_COMPOSITE) See `compareList` below.
+func (o AlertRuleV2ConditionConfigOutput) CompareLists() AlertRuleV2ConditionConfigCompareListArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigCompareList { return v.CompareLists }).(AlertRuleV2ConditionConfigCompareListArrayOutput)
+}
+
+// The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `compositeEscalation` below.
+func (o AlertRuleV2ConditionConfigOutput) CompositeEscalations() AlertRuleV2ConditionConfigCompositeEscalationArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigCompositeEscalation {
+		return v.CompositeEscalations
+	}).(AlertRuleV2ConditionConfigCompositeEscalationArrayOutput)
+}
+
+// Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+func (o AlertRuleV2ConditionConfigOutput) DurationSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *int { return v.DurationSecs }).(pulumi.IntPtrOutput)
+}
+
+// The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+func (o AlertRuleV2ConditionConfigOutput) EscalationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.EscalationType }).(pulumi.StringPtrOutput)
+}
+
+// Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `expressEscalation` below.
+func (o AlertRuleV2ConditionConfigOutput) ExpressEscalations() AlertRuleV2ConditionConfigExpressEscalationArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigExpressEscalation {
+		return v.ExpressEscalations
+	}).(AlertRuleV2ConditionConfigExpressEscalationArrayOutput)
+}
+
+// The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+func (o AlertRuleV2ConditionConfigOutput) LegacyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.LegacyRaw }).(pulumi.StringPtrOutput)
+}
+
+// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+func (o AlertRuleV2ConditionConfigOutput) LegacyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.LegacyType }).(pulumi.StringPtrOutput)
+}
+
+// No-data processing policy (type=CLOUD_MONITORING)
+func (o AlertRuleV2ConditionConfigOutput) NoDataPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.NoDataPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Comparison Operator
+func (o AlertRuleV2ConditionConfigOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+func (o AlertRuleV2ConditionConfigOutput) Prometheuses() AlertRuleV2ConditionConfigPrometheusArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigPrometheus { return v.Prometheuses }).(AlertRuleV2ConditionConfigPrometheusArrayOutput)
+}
+
+// The logical relationship between multiple metrics
+func (o AlertRuleV2ConditionConfigOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simpleEscalation` below.
+func (o AlertRuleV2ConditionConfigOutput) SimpleEscalations() AlertRuleV2ConditionConfigSimpleEscalationArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigSimpleEscalation {
+		return v.SimpleEscalations
+	}).(AlertRuleV2ConditionConfigSimpleEscalationArrayOutput)
+}
+
+// Threshold
+func (o AlertRuleV2ConditionConfigOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `thresholdList` below.
+func (o AlertRuleV2ConditionConfigOutput) ThresholdLists() AlertRuleV2ConditionConfigThresholdListArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigThresholdList { return v.ThresholdLists }).(AlertRuleV2ConditionConfigThresholdListArrayOutput)
+}
+
+// The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+func (o AlertRuleV2ConditionConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+func (o AlertRuleV2ConditionConfigOutput) YoyTimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *string { return v.YoyTimeUnit }).(pulumi.StringPtrOutput)
+}
+
+// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+func (o AlertRuleV2ConditionConfigOutput) YoyTimeValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfig) *int { return v.YoyTimeValue }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ConditionConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigPtrOutput) ToAlertRuleV2ConditionConfigPtrOutput() AlertRuleV2ConditionConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigPtrOutput) ToAlertRuleV2ConditionConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigPtrOutput) Elem() AlertRuleV2ConditionConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) AlertRuleV2ConditionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2ConditionConfig
+		return ret
+	}).(AlertRuleV2ConditionConfigOutput)
+}
+
+// Aggregation Function
+func (o AlertRuleV2ConditionConfigPtrOutput) Aggregate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Aggregate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Multiple comparison list (used when type=APM_COMPOSITE) See `compareList` below.
+func (o AlertRuleV2ConditionConfigPtrOutput) CompareLists() AlertRuleV2ConditionConfigCompareListArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigCompareList {
+		if v == nil {
+			return nil
+		}
+		return v.CompareLists
+	}).(AlertRuleV2ConditionConfigCompareListArrayOutput)
+}
+
+// The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `compositeEscalation` below.
+func (o AlertRuleV2ConditionConfigPtrOutput) CompositeEscalations() AlertRuleV2ConditionConfigCompositeEscalationArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigCompositeEscalation {
+		if v == nil {
+			return nil
+		}
+		return v.CompositeEscalations
+	}).(AlertRuleV2ConditionConfigCompositeEscalationArrayOutput)
+}
+
+// Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+func (o AlertRuleV2ConditionConfigPtrOutput) DurationSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationSecs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+func (o AlertRuleV2ConditionConfigPtrOutput) EscalationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EscalationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `expressEscalation` below.
+func (o AlertRuleV2ConditionConfigPtrOutput) ExpressEscalations() AlertRuleV2ConditionConfigExpressEscalationArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigExpressEscalation {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressEscalations
+	}).(AlertRuleV2ConditionConfigExpressEscalationArrayOutput)
+}
+
+// The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+func (o AlertRuleV2ConditionConfigPtrOutput) LegacyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyRaw
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+func (o AlertRuleV2ConditionConfigPtrOutput) LegacyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// No-data processing policy (type=CLOUD_MONITORING)
+func (o AlertRuleV2ConditionConfigPtrOutput) NoDataPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoDataPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comparison Operator
+func (o AlertRuleV2ConditionConfigPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+func (o AlertRuleV2ConditionConfigPtrOutput) Prometheuses() AlertRuleV2ConditionConfigPrometheusArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigPrometheus {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheuses
+	}).(AlertRuleV2ConditionConfigPrometheusArrayOutput)
+}
+
+// The logical relationship between multiple metrics
+func (o AlertRuleV2ConditionConfigPtrOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Relation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigPtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simpleEscalation` below.
+func (o AlertRuleV2ConditionConfigPtrOutput) SimpleEscalations() AlertRuleV2ConditionConfigSimpleEscalationArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigSimpleEscalation {
+		if v == nil {
+			return nil
+		}
+		return v.SimpleEscalations
+	}).(AlertRuleV2ConditionConfigSimpleEscalationArrayOutput)
+}
+
+// Threshold
+func (o AlertRuleV2ConditionConfigPtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `thresholdList` below.
+func (o AlertRuleV2ConditionConfigPtrOutput) ThresholdLists() AlertRuleV2ConditionConfigThresholdListArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) []AlertRuleV2ConditionConfigThresholdList {
+		if v == nil {
+			return nil
+		}
+		return v.ThresholdLists
+	}).(AlertRuleV2ConditionConfigThresholdListArrayOutput)
+}
+
+// The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+func (o AlertRuleV2ConditionConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+func (o AlertRuleV2ConditionConfigPtrOutput) YoyTimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.YoyTimeUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+func (o AlertRuleV2ConditionConfigPtrOutput) YoyTimeValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ConditionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.YoyTimeValue
+	}).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigCompareList struct {
+	// Aggregation Function
+	Aggregate *string `pulumi:"aggregate"`
+	Operator  *string `pulumi:"operator"`
+	// Threshold
+	Threshold *float64 `pulumi:"threshold"`
+	// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeUnit *string `pulumi:"yoyTimeUnit"`
+	// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeValue *int `pulumi:"yoyTimeValue"`
+}
+
+// AlertRuleV2ConditionConfigCompareListInput is an input type that accepts AlertRuleV2ConditionConfigCompareListArgs and AlertRuleV2ConditionConfigCompareListOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigCompareListInput` via:
+//
+//	AlertRuleV2ConditionConfigCompareListArgs{...}
+type AlertRuleV2ConditionConfigCompareListInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigCompareListOutput() AlertRuleV2ConditionConfigCompareListOutput
+	ToAlertRuleV2ConditionConfigCompareListOutputWithContext(context.Context) AlertRuleV2ConditionConfigCompareListOutput
+}
+
+type AlertRuleV2ConditionConfigCompareListArgs struct {
+	// Aggregation Function
+	Aggregate pulumi.StringPtrInput `pulumi:"aggregate"`
+	Operator  pulumi.StringPtrInput `pulumi:"operator"`
+	// Threshold
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+	// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeUnit pulumi.StringPtrInput `pulumi:"yoyTimeUnit"`
+	// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+	YoyTimeValue pulumi.IntPtrInput `pulumi:"yoyTimeValue"`
+}
+
+func (AlertRuleV2ConditionConfigCompareListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigCompareList)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigCompareListArgs) ToAlertRuleV2ConditionConfigCompareListOutput() AlertRuleV2ConditionConfigCompareListOutput {
+	return i.ToAlertRuleV2ConditionConfigCompareListOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigCompareListArgs) ToAlertRuleV2ConditionConfigCompareListOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompareListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigCompareListOutput)
+}
+
+// AlertRuleV2ConditionConfigCompareListArrayInput is an input type that accepts AlertRuleV2ConditionConfigCompareListArray and AlertRuleV2ConditionConfigCompareListArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigCompareListArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigCompareListArray{ AlertRuleV2ConditionConfigCompareListArgs{...} }
+type AlertRuleV2ConditionConfigCompareListArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigCompareListArrayOutput() AlertRuleV2ConditionConfigCompareListArrayOutput
+	ToAlertRuleV2ConditionConfigCompareListArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigCompareListArrayOutput
+}
+
+type AlertRuleV2ConditionConfigCompareListArray []AlertRuleV2ConditionConfigCompareListInput
+
+func (AlertRuleV2ConditionConfigCompareListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigCompareList)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigCompareListArray) ToAlertRuleV2ConditionConfigCompareListArrayOutput() AlertRuleV2ConditionConfigCompareListArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigCompareListArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigCompareListArray) ToAlertRuleV2ConditionConfigCompareListArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompareListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigCompareListArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigCompareListOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigCompareListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigCompareList)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigCompareListOutput) ToAlertRuleV2ConditionConfigCompareListOutput() AlertRuleV2ConditionConfigCompareListOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompareListOutput) ToAlertRuleV2ConditionConfigCompareListOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompareListOutput {
+	return o
+}
+
+// Aggregation Function
+func (o AlertRuleV2ConditionConfigCompareListOutput) Aggregate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompareList) *string { return v.Aggregate }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertRuleV2ConditionConfigCompareListOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompareList) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Threshold
+func (o AlertRuleV2ConditionConfigCompareListOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompareList) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+func (o AlertRuleV2ConditionConfigCompareListOutput) YoyTimeUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompareList) *string { return v.YoyTimeUnit }).(pulumi.StringPtrOutput)
+}
+
+// Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+func (o AlertRuleV2ConditionConfigCompareListOutput) YoyTimeValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompareList) *int { return v.YoyTimeValue }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigCompareListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigCompareListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigCompareList)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigCompareListArrayOutput) ToAlertRuleV2ConditionConfigCompareListArrayOutput() AlertRuleV2ConditionConfigCompareListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompareListArrayOutput) ToAlertRuleV2ConditionConfigCompareListArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompareListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompareListArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigCompareListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigCompareList {
+		return vs[0].([]AlertRuleV2ConditionConfigCompareList)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigCompareListOutput)
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalation struct {
+	// Trigger Condition List See `escalations` below.
+	Escalations []AlertRuleV2ConditionConfigCompositeEscalationEscalation `pulumi:"escalations"`
+	// The logical relationship between multiple metrics
+	Relation *string `pulumi:"relation"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity *string `pulumi:"severity"`
+	// Consecutive Trigger Count
+	Times *int `pulumi:"times"`
+}
+
+// AlertRuleV2ConditionConfigCompositeEscalationInput is an input type that accepts AlertRuleV2ConditionConfigCompositeEscalationArgs and AlertRuleV2ConditionConfigCompositeEscalationOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigCompositeEscalationInput` via:
+//
+//	AlertRuleV2ConditionConfigCompositeEscalationArgs{...}
+type AlertRuleV2ConditionConfigCompositeEscalationInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigCompositeEscalationOutput() AlertRuleV2ConditionConfigCompositeEscalationOutput
+	ToAlertRuleV2ConditionConfigCompositeEscalationOutputWithContext(context.Context) AlertRuleV2ConditionConfigCompositeEscalationOutput
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationArgs struct {
+	// Trigger Condition List See `escalations` below.
+	Escalations AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayInput `pulumi:"escalations"`
+	// The logical relationship between multiple metrics
+	Relation pulumi.StringPtrInput `pulumi:"relation"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Consecutive Trigger Count
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlertRuleV2ConditionConfigCompositeEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationArgs) ToAlertRuleV2ConditionConfigCompositeEscalationOutput() AlertRuleV2ConditionConfigCompositeEscalationOutput {
+	return i.ToAlertRuleV2ConditionConfigCompositeEscalationOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationArgs) ToAlertRuleV2ConditionConfigCompositeEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigCompositeEscalationOutput)
+}
+
+// AlertRuleV2ConditionConfigCompositeEscalationArrayInput is an input type that accepts AlertRuleV2ConditionConfigCompositeEscalationArray and AlertRuleV2ConditionConfigCompositeEscalationArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigCompositeEscalationArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigCompositeEscalationArray{ AlertRuleV2ConditionConfigCompositeEscalationArgs{...} }
+type AlertRuleV2ConditionConfigCompositeEscalationArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutput() AlertRuleV2ConditionConfigCompositeEscalationArrayOutput
+	ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigCompositeEscalationArrayOutput
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationArray []AlertRuleV2ConditionConfigCompositeEscalationInput
+
+func (AlertRuleV2ConditionConfigCompositeEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationArray) ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutput() AlertRuleV2ConditionConfigCompositeEscalationArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationArray) ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigCompositeEscalationArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigCompositeEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationOutput) ToAlertRuleV2ConditionConfigCompositeEscalationOutput() AlertRuleV2ConditionConfigCompositeEscalationOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationOutput) ToAlertRuleV2ConditionConfigCompositeEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationOutput {
+	return o
+}
+
+// Trigger Condition List See `escalations` below.
+func (o AlertRuleV2ConditionConfigCompositeEscalationOutput) Escalations() AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalation) []AlertRuleV2ConditionConfigCompositeEscalationEscalation {
+		return v.Escalations
+	}).(AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput)
+}
+
+// The logical relationship between multiple metrics
+func (o AlertRuleV2ConditionConfigCompositeEscalationOutput) Relation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalation) *string { return v.Relation }).(pulumi.StringPtrOutput)
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigCompositeEscalationOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalation) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Consecutive Trigger Count
+func (o AlertRuleV2ConditionConfigCompositeEscalationOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalation) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigCompositeEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationArrayOutput) ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutput() AlertRuleV2ConditionConfigCompositeEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationArrayOutput) ToAlertRuleV2ConditionConfigCompositeEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigCompositeEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigCompositeEscalation {
+		return vs[0].([]AlertRuleV2ConditionConfigCompositeEscalation)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigCompositeEscalationOutput)
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationEscalation struct {
+	// Comparison operator
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// Metric name
+	MetricName *string `pulumi:"metricName"`
+	// Collection period (s)
+	Period *int `pulumi:"period"`
+	// Precondition
+	PreCondition *string `pulumi:"preCondition"`
+	// Statistical Method
+	Statistics *string `pulumi:"statistics"`
+	// Threshold
+	Threshold *string `pulumi:"threshold"`
+}
+
+// AlertRuleV2ConditionConfigCompositeEscalationEscalationInput is an input type that accepts AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs and AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigCompositeEscalationEscalationInput` via:
+//
+//	AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs{...}
+type AlertRuleV2ConditionConfigCompositeEscalationEscalationInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutput() AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput
+	ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutputWithContext(context.Context) AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs struct {
+	// Comparison operator
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// Metric name
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// Collection period (s)
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// Precondition
+	PreCondition pulumi.StringPtrInput `pulumi:"preCondition"`
+	// Statistical Method
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// Threshold
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+}
+
+func (AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutput() AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput {
+	return i.ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput)
+}
+
+// AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayInput is an input type that accepts AlertRuleV2ConditionConfigCompositeEscalationEscalationArray and AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigCompositeEscalationEscalationArray{ AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs{...} }
+type AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput() AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput
+	ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationEscalationArray []AlertRuleV2ConditionConfigCompositeEscalationEscalationInput
+
+func (AlertRuleV2ConditionConfigCompositeEscalationEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationEscalationArray) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput() AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigCompositeEscalationEscalationArray) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutput() AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput {
+	return o
+}
+
+// Comparison operator
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalationEscalation) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// Metric name
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalationEscalation) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// Collection period (s)
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalationEscalation) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// Precondition
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) PreCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalationEscalation) *string { return v.PreCondition }).(pulumi.StringPtrOutput)
+}
+
+// Statistical Method
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalationEscalation) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// Threshold
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigCompositeEscalationEscalation) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput() AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput) ToAlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigCompositeEscalationEscalation {
+		return vs[0].([]AlertRuleV2ConditionConfigCompositeEscalationEscalation)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput)
+}
+
+type AlertRuleV2ConditionConfigExpressEscalation struct {
+	// Raw Expression
+	RawExpression *string `pulumi:"rawExpression"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity *string `pulumi:"severity"`
+	// Consecutive Trigger Count
+	Times *int `pulumi:"times"`
+}
+
+// AlertRuleV2ConditionConfigExpressEscalationInput is an input type that accepts AlertRuleV2ConditionConfigExpressEscalationArgs and AlertRuleV2ConditionConfigExpressEscalationOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigExpressEscalationInput` via:
+//
+//	AlertRuleV2ConditionConfigExpressEscalationArgs{...}
+type AlertRuleV2ConditionConfigExpressEscalationInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigExpressEscalationOutput() AlertRuleV2ConditionConfigExpressEscalationOutput
+	ToAlertRuleV2ConditionConfigExpressEscalationOutputWithContext(context.Context) AlertRuleV2ConditionConfigExpressEscalationOutput
+}
+
+type AlertRuleV2ConditionConfigExpressEscalationArgs struct {
+	// Raw Expression
+	RawExpression pulumi.StringPtrInput `pulumi:"rawExpression"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Consecutive Trigger Count
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlertRuleV2ConditionConfigExpressEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigExpressEscalationArgs) ToAlertRuleV2ConditionConfigExpressEscalationOutput() AlertRuleV2ConditionConfigExpressEscalationOutput {
+	return i.ToAlertRuleV2ConditionConfigExpressEscalationOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigExpressEscalationArgs) ToAlertRuleV2ConditionConfigExpressEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigExpressEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigExpressEscalationOutput)
+}
+
+// AlertRuleV2ConditionConfigExpressEscalationArrayInput is an input type that accepts AlertRuleV2ConditionConfigExpressEscalationArray and AlertRuleV2ConditionConfigExpressEscalationArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigExpressEscalationArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigExpressEscalationArray{ AlertRuleV2ConditionConfigExpressEscalationArgs{...} }
+type AlertRuleV2ConditionConfigExpressEscalationArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigExpressEscalationArrayOutput() AlertRuleV2ConditionConfigExpressEscalationArrayOutput
+	ToAlertRuleV2ConditionConfigExpressEscalationArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigExpressEscalationArrayOutput
+}
+
+type AlertRuleV2ConditionConfigExpressEscalationArray []AlertRuleV2ConditionConfigExpressEscalationInput
+
+func (AlertRuleV2ConditionConfigExpressEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigExpressEscalationArray) ToAlertRuleV2ConditionConfigExpressEscalationArrayOutput() AlertRuleV2ConditionConfigExpressEscalationArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigExpressEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigExpressEscalationArray) ToAlertRuleV2ConditionConfigExpressEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigExpressEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigExpressEscalationArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigExpressEscalationOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigExpressEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigExpressEscalationOutput) ToAlertRuleV2ConditionConfigExpressEscalationOutput() AlertRuleV2ConditionConfigExpressEscalationOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigExpressEscalationOutput) ToAlertRuleV2ConditionConfigExpressEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigExpressEscalationOutput {
+	return o
+}
+
+// Raw Expression
+func (o AlertRuleV2ConditionConfigExpressEscalationOutput) RawExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigExpressEscalation) *string { return v.RawExpression }).(pulumi.StringPtrOutput)
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigExpressEscalationOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigExpressEscalation) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Consecutive Trigger Count
+func (o AlertRuleV2ConditionConfigExpressEscalationOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigExpressEscalation) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigExpressEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigExpressEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigExpressEscalationArrayOutput) ToAlertRuleV2ConditionConfigExpressEscalationArrayOutput() AlertRuleV2ConditionConfigExpressEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigExpressEscalationArrayOutput) ToAlertRuleV2ConditionConfigExpressEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigExpressEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigExpressEscalationArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigExpressEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigExpressEscalation {
+		return vs[0].([]AlertRuleV2ConditionConfigExpressEscalation)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigExpressEscalationOutput)
+}
+
+type AlertRuleV2ConditionConfigPrometheus struct {
+	PromQl *string `pulumi:"promQl"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity *string `pulumi:"severity"`
+	// Consecutive Trigger Count
+	Times *int `pulumi:"times"`
+}
+
+// AlertRuleV2ConditionConfigPrometheusInput is an input type that accepts AlertRuleV2ConditionConfigPrometheusArgs and AlertRuleV2ConditionConfigPrometheusOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigPrometheusInput` via:
+//
+//	AlertRuleV2ConditionConfigPrometheusArgs{...}
+type AlertRuleV2ConditionConfigPrometheusInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigPrometheusOutput() AlertRuleV2ConditionConfigPrometheusOutput
+	ToAlertRuleV2ConditionConfigPrometheusOutputWithContext(context.Context) AlertRuleV2ConditionConfigPrometheusOutput
+}
+
+type AlertRuleV2ConditionConfigPrometheusArgs struct {
+	PromQl pulumi.StringPtrInput `pulumi:"promQl"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Consecutive Trigger Count
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlertRuleV2ConditionConfigPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigPrometheusArgs) ToAlertRuleV2ConditionConfigPrometheusOutput() AlertRuleV2ConditionConfigPrometheusOutput {
+	return i.ToAlertRuleV2ConditionConfigPrometheusOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigPrometheusArgs) ToAlertRuleV2ConditionConfigPrometheusOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigPrometheusOutput)
+}
+
+// AlertRuleV2ConditionConfigPrometheusArrayInput is an input type that accepts AlertRuleV2ConditionConfigPrometheusArray and AlertRuleV2ConditionConfigPrometheusArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigPrometheusArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigPrometheusArray{ AlertRuleV2ConditionConfigPrometheusArgs{...} }
+type AlertRuleV2ConditionConfigPrometheusArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigPrometheusArrayOutput() AlertRuleV2ConditionConfigPrometheusArrayOutput
+	ToAlertRuleV2ConditionConfigPrometheusArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigPrometheusArrayOutput
+}
+
+type AlertRuleV2ConditionConfigPrometheusArray []AlertRuleV2ConditionConfigPrometheusInput
+
+func (AlertRuleV2ConditionConfigPrometheusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigPrometheusArray) ToAlertRuleV2ConditionConfigPrometheusArrayOutput() AlertRuleV2ConditionConfigPrometheusArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigPrometheusArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigPrometheusArray) ToAlertRuleV2ConditionConfigPrometheusArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPrometheusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigPrometheusArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigPrometheusOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigPrometheusOutput) ToAlertRuleV2ConditionConfigPrometheusOutput() AlertRuleV2ConditionConfigPrometheusOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigPrometheusOutput) ToAlertRuleV2ConditionConfigPrometheusOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPrometheusOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigPrometheusOutput) PromQl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigPrometheus) *string { return v.PromQl }).(pulumi.StringPtrOutput)
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigPrometheusOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigPrometheus) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Consecutive Trigger Count
+func (o AlertRuleV2ConditionConfigPrometheusOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigPrometheus) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigPrometheusArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigPrometheusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigPrometheusArrayOutput) ToAlertRuleV2ConditionConfigPrometheusArrayOutput() AlertRuleV2ConditionConfigPrometheusArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigPrometheusArrayOutput) ToAlertRuleV2ConditionConfigPrometheusArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigPrometheusArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigPrometheusArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigPrometheusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigPrometheus {
+		return vs[0].([]AlertRuleV2ConditionConfigPrometheus)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigPrometheusOutput)
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalation struct {
+	// Trigger Condition List See `escalations` below.
+	Escalations []AlertRuleV2ConditionConfigSimpleEscalationEscalation `pulumi:"escalations"`
+	// Metric name
+	MetricName *string `pulumi:"metricName"`
+	// Collection period (s)
+	Period *int `pulumi:"period"`
+}
+
+// AlertRuleV2ConditionConfigSimpleEscalationInput is an input type that accepts AlertRuleV2ConditionConfigSimpleEscalationArgs and AlertRuleV2ConditionConfigSimpleEscalationOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigSimpleEscalationInput` via:
+//
+//	AlertRuleV2ConditionConfigSimpleEscalationArgs{...}
+type AlertRuleV2ConditionConfigSimpleEscalationInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigSimpleEscalationOutput() AlertRuleV2ConditionConfigSimpleEscalationOutput
+	ToAlertRuleV2ConditionConfigSimpleEscalationOutputWithContext(context.Context) AlertRuleV2ConditionConfigSimpleEscalationOutput
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationArgs struct {
+	// Trigger Condition List See `escalations` below.
+	Escalations AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayInput `pulumi:"escalations"`
+	// Metric name
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// Collection period (s)
+	Period pulumi.IntPtrInput `pulumi:"period"`
+}
+
+func (AlertRuleV2ConditionConfigSimpleEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationArgs) ToAlertRuleV2ConditionConfigSimpleEscalationOutput() AlertRuleV2ConditionConfigSimpleEscalationOutput {
+	return i.ToAlertRuleV2ConditionConfigSimpleEscalationOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationArgs) ToAlertRuleV2ConditionConfigSimpleEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigSimpleEscalationOutput)
+}
+
+// AlertRuleV2ConditionConfigSimpleEscalationArrayInput is an input type that accepts AlertRuleV2ConditionConfigSimpleEscalationArray and AlertRuleV2ConditionConfigSimpleEscalationArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigSimpleEscalationArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigSimpleEscalationArray{ AlertRuleV2ConditionConfigSimpleEscalationArgs{...} }
+type AlertRuleV2ConditionConfigSimpleEscalationArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutput() AlertRuleV2ConditionConfigSimpleEscalationArrayOutput
+	ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigSimpleEscalationArrayOutput
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationArray []AlertRuleV2ConditionConfigSimpleEscalationInput
+
+func (AlertRuleV2ConditionConfigSimpleEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationArray) ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutput() AlertRuleV2ConditionConfigSimpleEscalationArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationArray) ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigSimpleEscalationArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigSimpleEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationOutput) ToAlertRuleV2ConditionConfigSimpleEscalationOutput() AlertRuleV2ConditionConfigSimpleEscalationOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationOutput) ToAlertRuleV2ConditionConfigSimpleEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationOutput {
+	return o
+}
+
+// Trigger Condition List See `escalations` below.
+func (o AlertRuleV2ConditionConfigSimpleEscalationOutput) Escalations() AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalation) []AlertRuleV2ConditionConfigSimpleEscalationEscalation {
+		return v.Escalations
+	}).(AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput)
+}
+
+// Metric name
+func (o AlertRuleV2ConditionConfigSimpleEscalationOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalation) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// Collection period (s)
+func (o AlertRuleV2ConditionConfigSimpleEscalationOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalation) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigSimpleEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationArrayOutput) ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutput() AlertRuleV2ConditionConfigSimpleEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationArrayOutput) ToAlertRuleV2ConditionConfigSimpleEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigSimpleEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigSimpleEscalation {
+		return vs[0].([]AlertRuleV2ConditionConfigSimpleEscalation)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigSimpleEscalationOutput)
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationEscalation struct {
+	// Comparison operator
+	ComparisonOperator *string `pulumi:"comparisonOperator"`
+	// Precondition
+	PreCondition *string `pulumi:"preCondition"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity *string `pulumi:"severity"`
+	// Statistical Method
+	Statistics *string `pulumi:"statistics"`
+	// Threshold
+	Threshold *string `pulumi:"threshold"`
+	// Consecutive Trigger Count
+	Times *int `pulumi:"times"`
+}
+
+// AlertRuleV2ConditionConfigSimpleEscalationEscalationInput is an input type that accepts AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs and AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigSimpleEscalationEscalationInput` via:
+//
+//	AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs{...}
+type AlertRuleV2ConditionConfigSimpleEscalationEscalationInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutput() AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput
+	ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutputWithContext(context.Context) AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs struct {
+	// Comparison operator
+	ComparisonOperator pulumi.StringPtrInput `pulumi:"comparisonOperator"`
+	// Precondition
+	PreCondition pulumi.StringPtrInput `pulumi:"preCondition"`
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Statistical Method
+	Statistics pulumi.StringPtrInput `pulumi:"statistics"`
+	// Threshold
+	Threshold pulumi.StringPtrInput `pulumi:"threshold"`
+	// Consecutive Trigger Count
+	Times pulumi.IntPtrInput `pulumi:"times"`
+}
+
+func (AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutput() AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput {
+	return i.ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput)
+}
+
+// AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayInput is an input type that accepts AlertRuleV2ConditionConfigSimpleEscalationEscalationArray and AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigSimpleEscalationEscalationArray{ AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs{...} }
+type AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput() AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput
+	ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationEscalationArray []AlertRuleV2ConditionConfigSimpleEscalationEscalationInput
+
+func (AlertRuleV2ConditionConfigSimpleEscalationEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationEscalationArray) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput() AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigSimpleEscalationEscalationArray) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutput() AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput {
+	return o
+}
+
+// Comparison operator
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) ComparisonOperator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalationEscalation) *string { return v.ComparisonOperator }).(pulumi.StringPtrOutput)
+}
+
+// Precondition
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) PreCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalationEscalation) *string { return v.PreCondition }).(pulumi.StringPtrOutput)
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalationEscalation) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Statistical Method
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) Statistics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalationEscalation) *string { return v.Statistics }).(pulumi.StringPtrOutput)
+}
+
+// Threshold
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) Threshold() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalationEscalation) *string { return v.Threshold }).(pulumi.StringPtrOutput)
+}
+
+// Consecutive Trigger Count
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput) Times() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigSimpleEscalationEscalation) *int { return v.Times }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput() AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput) ToAlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigSimpleEscalationEscalation {
+		return vs[0].([]AlertRuleV2ConditionConfigSimpleEscalationEscalation)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput)
+}
+
+type AlertRuleV2ConditionConfigThresholdList struct {
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity *string `pulumi:"severity"`
+	// Threshold
+	Threshold *float64 `pulumi:"threshold"`
+}
+
+// AlertRuleV2ConditionConfigThresholdListInput is an input type that accepts AlertRuleV2ConditionConfigThresholdListArgs and AlertRuleV2ConditionConfigThresholdListOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigThresholdListInput` via:
+//
+//	AlertRuleV2ConditionConfigThresholdListArgs{...}
+type AlertRuleV2ConditionConfigThresholdListInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigThresholdListOutput() AlertRuleV2ConditionConfigThresholdListOutput
+	ToAlertRuleV2ConditionConfigThresholdListOutputWithContext(context.Context) AlertRuleV2ConditionConfigThresholdListOutput
+}
+
+type AlertRuleV2ConditionConfigThresholdListArgs struct {
+	// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// Threshold
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+}
+
+func (AlertRuleV2ConditionConfigThresholdListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigThresholdListArgs) ToAlertRuleV2ConditionConfigThresholdListOutput() AlertRuleV2ConditionConfigThresholdListOutput {
+	return i.ToAlertRuleV2ConditionConfigThresholdListOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigThresholdListArgs) ToAlertRuleV2ConditionConfigThresholdListOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigThresholdListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigThresholdListOutput)
+}
+
+// AlertRuleV2ConditionConfigThresholdListArrayInput is an input type that accepts AlertRuleV2ConditionConfigThresholdListArray and AlertRuleV2ConditionConfigThresholdListArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2ConditionConfigThresholdListArrayInput` via:
+//
+//	AlertRuleV2ConditionConfigThresholdListArray{ AlertRuleV2ConditionConfigThresholdListArgs{...} }
+type AlertRuleV2ConditionConfigThresholdListArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ConditionConfigThresholdListArrayOutput() AlertRuleV2ConditionConfigThresholdListArrayOutput
+	ToAlertRuleV2ConditionConfigThresholdListArrayOutputWithContext(context.Context) AlertRuleV2ConditionConfigThresholdListArrayOutput
+}
+
+type AlertRuleV2ConditionConfigThresholdListArray []AlertRuleV2ConditionConfigThresholdListInput
+
+func (AlertRuleV2ConditionConfigThresholdListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (i AlertRuleV2ConditionConfigThresholdListArray) ToAlertRuleV2ConditionConfigThresholdListArrayOutput() AlertRuleV2ConditionConfigThresholdListArrayOutput {
+	return i.ToAlertRuleV2ConditionConfigThresholdListArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ConditionConfigThresholdListArray) ToAlertRuleV2ConditionConfigThresholdListArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigThresholdListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ConditionConfigThresholdListArrayOutput)
+}
+
+type AlertRuleV2ConditionConfigThresholdListOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigThresholdListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigThresholdListOutput) ToAlertRuleV2ConditionConfigThresholdListOutput() AlertRuleV2ConditionConfigThresholdListOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigThresholdListOutput) ToAlertRuleV2ConditionConfigThresholdListOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigThresholdListOutput {
+	return o
+}
+
+// Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+func (o AlertRuleV2ConditionConfigThresholdListOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigThresholdList) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// Threshold
+func (o AlertRuleV2ConditionConfigThresholdListOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ConditionConfigThresholdList) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+type AlertRuleV2ConditionConfigThresholdListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ConditionConfigThresholdListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2ConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (o AlertRuleV2ConditionConfigThresholdListArrayOutput) ToAlertRuleV2ConditionConfigThresholdListArrayOutput() AlertRuleV2ConditionConfigThresholdListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigThresholdListArrayOutput) ToAlertRuleV2ConditionConfigThresholdListArrayOutputWithContext(ctx context.Context) AlertRuleV2ConditionConfigThresholdListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2ConditionConfigThresholdListArrayOutput) Index(i pulumi.IntInput) AlertRuleV2ConditionConfigThresholdListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2ConditionConfigThresholdList {
+		return vs[0].([]AlertRuleV2ConditionConfigThresholdList)[vs[1].(int)]
+	}).(AlertRuleV2ConditionConfigThresholdListOutput)
+}
+
+type AlertRuleV2DatasourceConfig struct {
+	// The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+	InstanceId *string `pulumi:"instanceId"`
+	// The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+	LegacyRaw *string `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+	LegacyType *string `pulumi:"legacyType"`
+	// The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+	ProductCategory *string `pulumi:"productCategory"`
+	// The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+	RegionId *string `pulumi:"regionId"`
+	// The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+	Type string `pulumi:"type"`
+}
+
+// AlertRuleV2DatasourceConfigInput is an input type that accepts AlertRuleV2DatasourceConfigArgs and AlertRuleV2DatasourceConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2DatasourceConfigInput` via:
+//
+//	AlertRuleV2DatasourceConfigArgs{...}
+type AlertRuleV2DatasourceConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2DatasourceConfigOutput() AlertRuleV2DatasourceConfigOutput
+	ToAlertRuleV2DatasourceConfigOutputWithContext(context.Context) AlertRuleV2DatasourceConfigOutput
+}
+
+type AlertRuleV2DatasourceConfigArgs struct {
+	// The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+	LegacyRaw pulumi.StringPtrInput `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+	LegacyType pulumi.StringPtrInput `pulumi:"legacyType"`
+	// The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+	ProductCategory pulumi.StringPtrInput `pulumi:"productCategory"`
+	// The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertRuleV2DatasourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2DatasourceConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2DatasourceConfigArgs) ToAlertRuleV2DatasourceConfigOutput() AlertRuleV2DatasourceConfigOutput {
+	return i.ToAlertRuleV2DatasourceConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2DatasourceConfigArgs) ToAlertRuleV2DatasourceConfigOutputWithContext(ctx context.Context) AlertRuleV2DatasourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2DatasourceConfigOutput)
+}
+
+func (i AlertRuleV2DatasourceConfigArgs) ToAlertRuleV2DatasourceConfigPtrOutput() AlertRuleV2DatasourceConfigPtrOutput {
+	return i.ToAlertRuleV2DatasourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2DatasourceConfigArgs) ToAlertRuleV2DatasourceConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2DatasourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2DatasourceConfigOutput).ToAlertRuleV2DatasourceConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2DatasourceConfigPtrInput is an input type that accepts AlertRuleV2DatasourceConfigArgs, AlertRuleV2DatasourceConfigPtr and AlertRuleV2DatasourceConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2DatasourceConfigPtrInput` via:
+//
+//	        AlertRuleV2DatasourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2DatasourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2DatasourceConfigPtrOutput() AlertRuleV2DatasourceConfigPtrOutput
+	ToAlertRuleV2DatasourceConfigPtrOutputWithContext(context.Context) AlertRuleV2DatasourceConfigPtrOutput
+}
+
+type alertRuleV2DatasourceConfigPtrType AlertRuleV2DatasourceConfigArgs
+
+func AlertRuleV2DatasourceConfigPtr(v *AlertRuleV2DatasourceConfigArgs) AlertRuleV2DatasourceConfigPtrInput {
+	return (*alertRuleV2DatasourceConfigPtrType)(v)
+}
+
+func (*alertRuleV2DatasourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2DatasourceConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2DatasourceConfigPtrType) ToAlertRuleV2DatasourceConfigPtrOutput() AlertRuleV2DatasourceConfigPtrOutput {
+	return i.ToAlertRuleV2DatasourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2DatasourceConfigPtrType) ToAlertRuleV2DatasourceConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2DatasourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2DatasourceConfigPtrOutput)
+}
+
+type AlertRuleV2DatasourceConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2DatasourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2DatasourceConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2DatasourceConfigOutput) ToAlertRuleV2DatasourceConfigOutput() AlertRuleV2DatasourceConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2DatasourceConfigOutput) ToAlertRuleV2DatasourceConfigOutputWithContext(ctx context.Context) AlertRuleV2DatasourceConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2DatasourceConfigOutput) ToAlertRuleV2DatasourceConfigPtrOutput() AlertRuleV2DatasourceConfigPtrOutput {
+	return o.ToAlertRuleV2DatasourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2DatasourceConfigOutput) ToAlertRuleV2DatasourceConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2DatasourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2DatasourceConfig) *AlertRuleV2DatasourceConfig {
+		return &v
+	}).(AlertRuleV2DatasourceConfigPtrOutput)
+}
+
+// The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+func (o AlertRuleV2DatasourceConfigOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2DatasourceConfig) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+func (o AlertRuleV2DatasourceConfigOutput) LegacyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2DatasourceConfig) *string { return v.LegacyRaw }).(pulumi.StringPtrOutput)
+}
+
+// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+func (o AlertRuleV2DatasourceConfigOutput) LegacyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2DatasourceConfig) *string { return v.LegacyType }).(pulumi.StringPtrOutput)
+}
+
+// The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+func (o AlertRuleV2DatasourceConfigOutput) ProductCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2DatasourceConfig) *string { return v.ProductCategory }).(pulumi.StringPtrOutput)
+}
+
+// The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+func (o AlertRuleV2DatasourceConfigOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2DatasourceConfig) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+func (o AlertRuleV2DatasourceConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRuleV2DatasourceConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertRuleV2DatasourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2DatasourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2DatasourceConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2DatasourceConfigPtrOutput) ToAlertRuleV2DatasourceConfigPtrOutput() AlertRuleV2DatasourceConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2DatasourceConfigPtrOutput) ToAlertRuleV2DatasourceConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2DatasourceConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2DatasourceConfigPtrOutput) Elem() AlertRuleV2DatasourceConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) AlertRuleV2DatasourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2DatasourceConfig
+		return ret
+	}).(AlertRuleV2DatasourceConfigOutput)
+}
+
+// The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+func (o AlertRuleV2DatasourceConfigPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+func (o AlertRuleV2DatasourceConfigPtrOutput) LegacyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyRaw
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+func (o AlertRuleV2DatasourceConfigPtrOutput) LegacyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+func (o AlertRuleV2DatasourceConfigPtrOutput) ProductCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductCategory
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+func (o AlertRuleV2DatasourceConfigPtrOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+func (o AlertRuleV2DatasourceConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2DatasourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2NotifyConfig struct {
+	// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+	ActiveDays []int `pulumi:"activeDays"`
+	// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+	ActiveEndTime *string `pulumi:"activeEndTime"`
+	// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+	ActiveStartTime *string `pulumi:"activeStartTime"`
+	// The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+	Channels []AlertRuleV2NotifyConfigChannel `pulumi:"channels"`
+	// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+	NotifyStrategies []string `pulumi:"notifyStrategies"`
+	// The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+	SilenceTimeSecs *int `pulumi:"silenceTimeSecs"`
+	// Notification Channel Type
+	Type string `pulumi:"type"`
+	// UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+	UtcOffset *string `pulumi:"utcOffset"`
+}
+
+// AlertRuleV2NotifyConfigInput is an input type that accepts AlertRuleV2NotifyConfigArgs and AlertRuleV2NotifyConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2NotifyConfigInput` via:
+//
+//	AlertRuleV2NotifyConfigArgs{...}
+type AlertRuleV2NotifyConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2NotifyConfigOutput() AlertRuleV2NotifyConfigOutput
+	ToAlertRuleV2NotifyConfigOutputWithContext(context.Context) AlertRuleV2NotifyConfigOutput
+}
+
+type AlertRuleV2NotifyConfigArgs struct {
+	// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+	ActiveDays pulumi.IntArrayInput `pulumi:"activeDays"`
+	// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+	ActiveEndTime pulumi.StringPtrInput `pulumi:"activeEndTime"`
+	// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+	ActiveStartTime pulumi.StringPtrInput `pulumi:"activeStartTime"`
+	// The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+	Channels AlertRuleV2NotifyConfigChannelArrayInput `pulumi:"channels"`
+	// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+	NotifyStrategies pulumi.StringArrayInput `pulumi:"notifyStrategies"`
+	// The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+	SilenceTimeSecs pulumi.IntPtrInput `pulumi:"silenceTimeSecs"`
+	// Notification Channel Type
+	Type pulumi.StringInput `pulumi:"type"`
+	// UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+	UtcOffset pulumi.StringPtrInput `pulumi:"utcOffset"`
+}
+
+func (AlertRuleV2NotifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2NotifyConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2NotifyConfigArgs) ToAlertRuleV2NotifyConfigOutput() AlertRuleV2NotifyConfigOutput {
+	return i.ToAlertRuleV2NotifyConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2NotifyConfigArgs) ToAlertRuleV2NotifyConfigOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2NotifyConfigOutput)
+}
+
+func (i AlertRuleV2NotifyConfigArgs) ToAlertRuleV2NotifyConfigPtrOutput() AlertRuleV2NotifyConfigPtrOutput {
+	return i.ToAlertRuleV2NotifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2NotifyConfigArgs) ToAlertRuleV2NotifyConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2NotifyConfigOutput).ToAlertRuleV2NotifyConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2NotifyConfigPtrInput is an input type that accepts AlertRuleV2NotifyConfigArgs, AlertRuleV2NotifyConfigPtr and AlertRuleV2NotifyConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2NotifyConfigPtrInput` via:
+//
+//	        AlertRuleV2NotifyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2NotifyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2NotifyConfigPtrOutput() AlertRuleV2NotifyConfigPtrOutput
+	ToAlertRuleV2NotifyConfigPtrOutputWithContext(context.Context) AlertRuleV2NotifyConfigPtrOutput
+}
+
+type alertRuleV2NotifyConfigPtrType AlertRuleV2NotifyConfigArgs
+
+func AlertRuleV2NotifyConfigPtr(v *AlertRuleV2NotifyConfigArgs) AlertRuleV2NotifyConfigPtrInput {
+	return (*alertRuleV2NotifyConfigPtrType)(v)
+}
+
+func (*alertRuleV2NotifyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2NotifyConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2NotifyConfigPtrType) ToAlertRuleV2NotifyConfigPtrOutput() AlertRuleV2NotifyConfigPtrOutput {
+	return i.ToAlertRuleV2NotifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2NotifyConfigPtrType) ToAlertRuleV2NotifyConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2NotifyConfigPtrOutput)
+}
+
+type AlertRuleV2NotifyConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2NotifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2NotifyConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2NotifyConfigOutput) ToAlertRuleV2NotifyConfigOutput() AlertRuleV2NotifyConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigOutput) ToAlertRuleV2NotifyConfigOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigOutput) ToAlertRuleV2NotifyConfigPtrOutput() AlertRuleV2NotifyConfigPtrOutput {
+	return o.ToAlertRuleV2NotifyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2NotifyConfigOutput) ToAlertRuleV2NotifyConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2NotifyConfig) *AlertRuleV2NotifyConfig {
+		return &v
+	}).(AlertRuleV2NotifyConfigPtrOutput)
+}
+
+// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+func (o AlertRuleV2NotifyConfigOutput) ActiveDays() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) []int { return v.ActiveDays }).(pulumi.IntArrayOutput)
+}
+
+// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+func (o AlertRuleV2NotifyConfigOutput) ActiveEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) *string { return v.ActiveEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+func (o AlertRuleV2NotifyConfigOutput) ActiveStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) *string { return v.ActiveStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+func (o AlertRuleV2NotifyConfigOutput) Channels() AlertRuleV2NotifyConfigChannelArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) []AlertRuleV2NotifyConfigChannel { return v.Channels }).(AlertRuleV2NotifyConfigChannelArrayOutput)
+}
+
+// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+func (o AlertRuleV2NotifyConfigOutput) NotifyStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) []string { return v.NotifyStrategies }).(pulumi.StringArrayOutput)
+}
+
+// The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+func (o AlertRuleV2NotifyConfigOutput) SilenceTimeSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) *int { return v.SilenceTimeSecs }).(pulumi.IntPtrOutput)
+}
+
+// Notification Channel Type
+func (o AlertRuleV2NotifyConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+func (o AlertRuleV2NotifyConfigOutput) UtcOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfig) *string { return v.UtcOffset }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2NotifyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2NotifyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2NotifyConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2NotifyConfigPtrOutput) ToAlertRuleV2NotifyConfigPtrOutput() AlertRuleV2NotifyConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigPtrOutput) ToAlertRuleV2NotifyConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigPtrOutput) Elem() AlertRuleV2NotifyConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) AlertRuleV2NotifyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2NotifyConfig
+		return ret
+	}).(AlertRuleV2NotifyConfigOutput)
+}
+
+// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+func (o AlertRuleV2NotifyConfigPtrOutput) ActiveDays() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) []int {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveDays
+	}).(pulumi.IntArrayOutput)
+}
+
+// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+func (o AlertRuleV2NotifyConfigPtrOutput) ActiveEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveEndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+func (o AlertRuleV2NotifyConfigPtrOutput) ActiveStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+func (o AlertRuleV2NotifyConfigPtrOutput) Channels() AlertRuleV2NotifyConfigChannelArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) []AlertRuleV2NotifyConfigChannel {
+		if v == nil {
+			return nil
+		}
+		return v.Channels
+	}).(AlertRuleV2NotifyConfigChannelArrayOutput)
+}
+
+// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+func (o AlertRuleV2NotifyConfigPtrOutput) NotifyStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyStrategies
+	}).(pulumi.StringArrayOutput)
+}
+
+// The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+func (o AlertRuleV2NotifyConfigPtrOutput) SilenceTimeSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SilenceTimeSecs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Notification Channel Type
+func (o AlertRuleV2NotifyConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+func (o AlertRuleV2NotifyConfigPtrOutput) UtcOffset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2NotifyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UtcOffset
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2NotifyConfigChannel struct {
+	// List of channel identifiers
+	Identifiers []string `pulumi:"identifiers"`
+	Type        *string  `pulumi:"type"`
+}
+
+// AlertRuleV2NotifyConfigChannelInput is an input type that accepts AlertRuleV2NotifyConfigChannelArgs and AlertRuleV2NotifyConfigChannelOutput values.
+// You can construct a concrete instance of `AlertRuleV2NotifyConfigChannelInput` via:
+//
+//	AlertRuleV2NotifyConfigChannelArgs{...}
+type AlertRuleV2NotifyConfigChannelInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2NotifyConfigChannelOutput() AlertRuleV2NotifyConfigChannelOutput
+	ToAlertRuleV2NotifyConfigChannelOutputWithContext(context.Context) AlertRuleV2NotifyConfigChannelOutput
+}
+
+type AlertRuleV2NotifyConfigChannelArgs struct {
+	// List of channel identifiers
+	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
+	Type        pulumi.StringPtrInput   `pulumi:"type"`
+}
+
+func (AlertRuleV2NotifyConfigChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2NotifyConfigChannel)(nil)).Elem()
+}
+
+func (i AlertRuleV2NotifyConfigChannelArgs) ToAlertRuleV2NotifyConfigChannelOutput() AlertRuleV2NotifyConfigChannelOutput {
+	return i.ToAlertRuleV2NotifyConfigChannelOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2NotifyConfigChannelArgs) ToAlertRuleV2NotifyConfigChannelOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2NotifyConfigChannelOutput)
+}
+
+// AlertRuleV2NotifyConfigChannelArrayInput is an input type that accepts AlertRuleV2NotifyConfigChannelArray and AlertRuleV2NotifyConfigChannelArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2NotifyConfigChannelArrayInput` via:
+//
+//	AlertRuleV2NotifyConfigChannelArray{ AlertRuleV2NotifyConfigChannelArgs{...} }
+type AlertRuleV2NotifyConfigChannelArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2NotifyConfigChannelArrayOutput() AlertRuleV2NotifyConfigChannelArrayOutput
+	ToAlertRuleV2NotifyConfigChannelArrayOutputWithContext(context.Context) AlertRuleV2NotifyConfigChannelArrayOutput
+}
+
+type AlertRuleV2NotifyConfigChannelArray []AlertRuleV2NotifyConfigChannelInput
+
+func (AlertRuleV2NotifyConfigChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2NotifyConfigChannel)(nil)).Elem()
+}
+
+func (i AlertRuleV2NotifyConfigChannelArray) ToAlertRuleV2NotifyConfigChannelArrayOutput() AlertRuleV2NotifyConfigChannelArrayOutput {
+	return i.ToAlertRuleV2NotifyConfigChannelArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2NotifyConfigChannelArray) ToAlertRuleV2NotifyConfigChannelArrayOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2NotifyConfigChannelArrayOutput)
+}
+
+type AlertRuleV2NotifyConfigChannelOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2NotifyConfigChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2NotifyConfigChannel)(nil)).Elem()
+}
+
+func (o AlertRuleV2NotifyConfigChannelOutput) ToAlertRuleV2NotifyConfigChannelOutput() AlertRuleV2NotifyConfigChannelOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigChannelOutput) ToAlertRuleV2NotifyConfigChannelOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigChannelOutput {
+	return o
+}
+
+// List of channel identifiers
+func (o AlertRuleV2NotifyConfigChannelOutput) Identifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfigChannel) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
+}
+
+func (o AlertRuleV2NotifyConfigChannelOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2NotifyConfigChannel) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2NotifyConfigChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2NotifyConfigChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2NotifyConfigChannel)(nil)).Elem()
+}
+
+func (o AlertRuleV2NotifyConfigChannelArrayOutput) ToAlertRuleV2NotifyConfigChannelArrayOutput() AlertRuleV2NotifyConfigChannelArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigChannelArrayOutput) ToAlertRuleV2NotifyConfigChannelArrayOutputWithContext(ctx context.Context) AlertRuleV2NotifyConfigChannelArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2NotifyConfigChannelArrayOutput) Index(i pulumi.IntInput) AlertRuleV2NotifyConfigChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2NotifyConfigChannel {
+		return vs[0].([]AlertRuleV2NotifyConfigChannel)[vs[1].(int)]
+	}).(AlertRuleV2NotifyConfigChannelOutput)
+}
+
+type AlertRuleV2QueryConfig struct {
+	// The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+	Dimensions []map[string]string `pulumi:"dimensions"`
+	// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+	EnableDataCompleteCheck *bool `pulumi:"enableDataCompleteCheck"`
+	// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+	EntityDomain *string `pulumi:"entityDomain"`
+	// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entityFields` below.
+	EntityFields []AlertRuleV2QueryConfigEntityField `pulumi:"entityFields"`
+	// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entityFilters` below.
+	EntityFilters []AlertRuleV2QueryConfigEntityFilter `pulumi:"entityFilters"`
+	// Entity type (type=UMODEL_METRICSET_QUERY)
+	EntityType *string `pulumi:"entityType"`
+	// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+	Expr *string `pulumi:"expr"`
+	// The APM filter condition list (type=APM_MULTI_QUERY). See `filterList` below.
+	FilterLists []AlertRuleV2QueryConfigFilterList `pulumi:"filterLists"`
+	// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+	GroupId *string `pulumi:"groupId"`
+	// List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `labelFilters` below.
+	LabelFilters []AlertRuleV2QueryConfigLabelFilter `pulumi:"labelFilters"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+	LegacyRaw *string `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType *string `pulumi:"legacyType"`
+	// APM measure configuration list (type=APM_MULTI_QUERY) See `measureList` below.
+	MeasureLists []AlertRuleV2QueryConfigMeasureList `pulumi:"measureLists"`
+	// Metric name (type=UMODEL_METRICSET_QUERY)
+	Metric *string `pulumi:"metric"`
+	// Metric set name (type=UMODEL_METRICSET_QUERY)
+	MetricSet *string `pulumi:"metricSet"`
+	// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+	Namespace *string `pulumi:"namespace"`
+	// [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+	PromQl *string `pulumi:"promQl"`
+	// Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+	RelationType *string `pulumi:"relationType"`
+	// Application Service ID List (type=APM_MULTI_QUERY)
+	ServiceIdLists []string `pulumi:"serviceIdLists"`
+	// The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+	Type string `pulumi:"type"`
+}
+
+// AlertRuleV2QueryConfigInput is an input type that accepts AlertRuleV2QueryConfigArgs and AlertRuleV2QueryConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigInput` via:
+//
+//	AlertRuleV2QueryConfigArgs{...}
+type AlertRuleV2QueryConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigOutput() AlertRuleV2QueryConfigOutput
+	ToAlertRuleV2QueryConfigOutputWithContext(context.Context) AlertRuleV2QueryConfigOutput
+}
+
+type AlertRuleV2QueryConfigArgs struct {
+	// The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+	Dimensions pulumi.StringMapArrayInput `pulumi:"dimensions"`
+	// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+	EnableDataCompleteCheck pulumi.BoolPtrInput `pulumi:"enableDataCompleteCheck"`
+	// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+	EntityDomain pulumi.StringPtrInput `pulumi:"entityDomain"`
+	// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entityFields` below.
+	EntityFields AlertRuleV2QueryConfigEntityFieldArrayInput `pulumi:"entityFields"`
+	// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entityFilters` below.
+	EntityFilters AlertRuleV2QueryConfigEntityFilterArrayInput `pulumi:"entityFilters"`
+	// Entity type (type=UMODEL_METRICSET_QUERY)
+	EntityType pulumi.StringPtrInput `pulumi:"entityType"`
+	// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+	Expr pulumi.StringPtrInput `pulumi:"expr"`
+	// The APM filter condition list (type=APM_MULTI_QUERY). See `filterList` below.
+	FilterLists AlertRuleV2QueryConfigFilterListArrayInput `pulumi:"filterLists"`
+	// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `labelFilters` below.
+	LabelFilters AlertRuleV2QueryConfigLabelFilterArrayInput `pulumi:"labelFilters"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+	LegacyRaw pulumi.StringPtrInput `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType pulumi.StringPtrInput `pulumi:"legacyType"`
+	// APM measure configuration list (type=APM_MULTI_QUERY) See `measureList` below.
+	MeasureLists AlertRuleV2QueryConfigMeasureListArrayInput `pulumi:"measureLists"`
+	// Metric name (type=UMODEL_METRICSET_QUERY)
+	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// Metric set name (type=UMODEL_METRICSET_QUERY)
+	MetricSet pulumi.StringPtrInput `pulumi:"metricSet"`
+	// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+	PromQl pulumi.StringPtrInput `pulumi:"promQl"`
+	// Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+	RelationType pulumi.StringPtrInput `pulumi:"relationType"`
+	// Application Service ID List (type=APM_MULTI_QUERY)
+	ServiceIdLists pulumi.StringArrayInput `pulumi:"serviceIdLists"`
+	// The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertRuleV2QueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigArgs) ToAlertRuleV2QueryConfigOutput() AlertRuleV2QueryConfigOutput {
+	return i.ToAlertRuleV2QueryConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigArgs) ToAlertRuleV2QueryConfigOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigOutput)
+}
+
+func (i AlertRuleV2QueryConfigArgs) ToAlertRuleV2QueryConfigPtrOutput() AlertRuleV2QueryConfigPtrOutput {
+	return i.ToAlertRuleV2QueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigArgs) ToAlertRuleV2QueryConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigOutput).ToAlertRuleV2QueryConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2QueryConfigPtrInput is an input type that accepts AlertRuleV2QueryConfigArgs, AlertRuleV2QueryConfigPtr and AlertRuleV2QueryConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigPtrInput` via:
+//
+//	        AlertRuleV2QueryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2QueryConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigPtrOutput() AlertRuleV2QueryConfigPtrOutput
+	ToAlertRuleV2QueryConfigPtrOutputWithContext(context.Context) AlertRuleV2QueryConfigPtrOutput
+}
+
+type alertRuleV2QueryConfigPtrType AlertRuleV2QueryConfigArgs
+
+func AlertRuleV2QueryConfigPtr(v *AlertRuleV2QueryConfigArgs) AlertRuleV2QueryConfigPtrInput {
+	return (*alertRuleV2QueryConfigPtrType)(v)
+}
+
+func (*alertRuleV2QueryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2QueryConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2QueryConfigPtrType) ToAlertRuleV2QueryConfigPtrOutput() AlertRuleV2QueryConfigPtrOutput {
+	return i.ToAlertRuleV2QueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2QueryConfigPtrType) ToAlertRuleV2QueryConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigPtrOutput)
+}
+
+type AlertRuleV2QueryConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigOutput) ToAlertRuleV2QueryConfigOutput() AlertRuleV2QueryConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigOutput) ToAlertRuleV2QueryConfigOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigOutput) ToAlertRuleV2QueryConfigPtrOutput() AlertRuleV2QueryConfigPtrOutput {
+	return o.ToAlertRuleV2QueryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2QueryConfigOutput) ToAlertRuleV2QueryConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2QueryConfig) *AlertRuleV2QueryConfig {
+		return &v
+	}).(AlertRuleV2QueryConfigPtrOutput)
+}
+
+// The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+func (o AlertRuleV2QueryConfigOutput) Dimensions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []map[string]string { return v.Dimensions }).(pulumi.StringMapArrayOutput)
+}
+
+// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+func (o AlertRuleV2QueryConfigOutput) EnableDataCompleteCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *bool { return v.EnableDataCompleteCheck }).(pulumi.BoolPtrOutput)
+}
+
+// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigOutput) EntityDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.EntityDomain }).(pulumi.StringPtrOutput)
+}
+
+// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entityFields` below.
+func (o AlertRuleV2QueryConfigOutput) EntityFields() AlertRuleV2QueryConfigEntityFieldArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigEntityField { return v.EntityFields }).(AlertRuleV2QueryConfigEntityFieldArrayOutput)
+}
+
+// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entityFilters` below.
+func (o AlertRuleV2QueryConfigOutput) EntityFilters() AlertRuleV2QueryConfigEntityFilterArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigEntityFilter { return v.EntityFilters }).(AlertRuleV2QueryConfigEntityFilterArrayOutput)
+}
+
+// Entity type (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.EntityType }).(pulumi.StringPtrOutput)
+}
+
+// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+func (o AlertRuleV2QueryConfigOutput) Expr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.Expr }).(pulumi.StringPtrOutput)
+}
+
+// The APM filter condition list (type=APM_MULTI_QUERY). See `filterList` below.
+func (o AlertRuleV2QueryConfigOutput) FilterLists() AlertRuleV2QueryConfigFilterListArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigFilterList { return v.FilterLists }).(AlertRuleV2QueryConfigFilterListArrayOutput)
+}
+
+// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+func (o AlertRuleV2QueryConfigOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `labelFilters` below.
+func (o AlertRuleV2QueryConfigOutput) LabelFilters() AlertRuleV2QueryConfigLabelFilterArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigLabelFilter { return v.LabelFilters }).(AlertRuleV2QueryConfigLabelFilterArrayOutput)
+}
+
+// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+func (o AlertRuleV2QueryConfigOutput) LegacyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.LegacyRaw }).(pulumi.StringPtrOutput)
+}
+
+// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+func (o AlertRuleV2QueryConfigOutput) LegacyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.LegacyType }).(pulumi.StringPtrOutput)
+}
+
+// APM measure configuration list (type=APM_MULTI_QUERY) See `measureList` below.
+func (o AlertRuleV2QueryConfigOutput) MeasureLists() AlertRuleV2QueryConfigMeasureListArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigMeasureList { return v.MeasureLists }).(AlertRuleV2QueryConfigMeasureListArrayOutput)
+}
+
+// Metric name (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.Metric }).(pulumi.StringPtrOutput)
+}
+
+// Metric set name (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigOutput) MetricSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.MetricSet }).(pulumi.StringPtrOutput)
+}
+
+// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+func (o AlertRuleV2QueryConfigOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+func (o AlertRuleV2QueryConfigOutput) PromQl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.PromQl }).(pulumi.StringPtrOutput)
+}
+
+// Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+func (o AlertRuleV2QueryConfigOutput) RelationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) *string { return v.RelationType }).(pulumi.StringPtrOutput)
+}
+
+// Application Service ID List (type=APM_MULTI_QUERY)
+func (o AlertRuleV2QueryConfigOutput) ServiceIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) []string { return v.ServiceIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+func (o AlertRuleV2QueryConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertRuleV2QueryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2QueryConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigPtrOutput) ToAlertRuleV2QueryConfigPtrOutput() AlertRuleV2QueryConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigPtrOutput) ToAlertRuleV2QueryConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigPtrOutput) Elem() AlertRuleV2QueryConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) AlertRuleV2QueryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2QueryConfig
+		return ret
+	}).(AlertRuleV2QueryConfigOutput)
+}
+
+// The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+func (o AlertRuleV2QueryConfigPtrOutput) Dimensions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Dimensions
+	}).(pulumi.StringMapArrayOutput)
+}
+
+// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) EnableDataCompleteCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDataCompleteCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) EntityDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entityFields` below.
+func (o AlertRuleV2QueryConfigPtrOutput) EntityFields() AlertRuleV2QueryConfigEntityFieldArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigEntityField {
+		if v == nil {
+			return nil
+		}
+		return v.EntityFields
+	}).(AlertRuleV2QueryConfigEntityFieldArrayOutput)
+}
+
+// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entityFilters` below.
+func (o AlertRuleV2QueryConfigPtrOutput) EntityFilters() AlertRuleV2QueryConfigEntityFilterArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigEntityFilter {
+		if v == nil {
+			return nil
+		}
+		return v.EntityFilters
+	}).(AlertRuleV2QueryConfigEntityFilterArrayOutput)
+}
+
+// Entity type (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+func (o AlertRuleV2QueryConfigPtrOutput) Expr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expr
+	}).(pulumi.StringPtrOutput)
+}
+
+// The APM filter condition list (type=APM_MULTI_QUERY). See `filterList` below.
+func (o AlertRuleV2QueryConfigPtrOutput) FilterLists() AlertRuleV2QueryConfigFilterListArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigFilterList {
+		if v == nil {
+			return nil
+		}
+		return v.FilterLists
+	}).(AlertRuleV2QueryConfigFilterListArrayOutput)
+}
+
+// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+func (o AlertRuleV2QueryConfigPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `labelFilters` below.
+func (o AlertRuleV2QueryConfigPtrOutput) LabelFilters() AlertRuleV2QueryConfigLabelFilterArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigLabelFilter {
+		if v == nil {
+			return nil
+		}
+		return v.LabelFilters
+	}).(AlertRuleV2QueryConfigLabelFilterArrayOutput)
+}
+
+// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+func (o AlertRuleV2QueryConfigPtrOutput) LegacyRaw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyRaw
+	}).(pulumi.StringPtrOutput)
+}
+
+// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+func (o AlertRuleV2QueryConfigPtrOutput) LegacyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// APM measure configuration list (type=APM_MULTI_QUERY) See `measureList` below.
+func (o AlertRuleV2QueryConfigPtrOutput) MeasureLists() AlertRuleV2QueryConfigMeasureListArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []AlertRuleV2QueryConfigMeasureList {
+		if v == nil {
+			return nil
+		}
+		return v.MeasureLists
+	}).(AlertRuleV2QueryConfigMeasureListArrayOutput)
+}
+
+// Metric name (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metric
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metric set name (type=UMODEL_METRICSET_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) MetricSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricSet
+	}).(pulumi.StringPtrOutput)
+}
+
+// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+func (o AlertRuleV2QueryConfigPtrOutput) PromQl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromQl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+func (o AlertRuleV2QueryConfigPtrOutput) RelationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application Service ID List (type=APM_MULTI_QUERY)
+func (o AlertRuleV2QueryConfigPtrOutput) ServiceIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceIdLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+func (o AlertRuleV2QueryConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2QueryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2QueryConfigEntityField struct {
+	// The entity filter field name.
+	Field *string `pulumi:"field"`
+	// Label value
+	Value *string `pulumi:"value"`
+}
+
+// AlertRuleV2QueryConfigEntityFieldInput is an input type that accepts AlertRuleV2QueryConfigEntityFieldArgs and AlertRuleV2QueryConfigEntityFieldOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigEntityFieldInput` via:
+//
+//	AlertRuleV2QueryConfigEntityFieldArgs{...}
+type AlertRuleV2QueryConfigEntityFieldInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigEntityFieldOutput() AlertRuleV2QueryConfigEntityFieldOutput
+	ToAlertRuleV2QueryConfigEntityFieldOutputWithContext(context.Context) AlertRuleV2QueryConfigEntityFieldOutput
+}
+
+type AlertRuleV2QueryConfigEntityFieldArgs struct {
+	// The entity filter field name.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// Label value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlertRuleV2QueryConfigEntityFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigEntityField)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigEntityFieldArgs) ToAlertRuleV2QueryConfigEntityFieldOutput() AlertRuleV2QueryConfigEntityFieldOutput {
+	return i.ToAlertRuleV2QueryConfigEntityFieldOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigEntityFieldArgs) ToAlertRuleV2QueryConfigEntityFieldOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigEntityFieldOutput)
+}
+
+// AlertRuleV2QueryConfigEntityFieldArrayInput is an input type that accepts AlertRuleV2QueryConfigEntityFieldArray and AlertRuleV2QueryConfigEntityFieldArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigEntityFieldArrayInput` via:
+//
+//	AlertRuleV2QueryConfigEntityFieldArray{ AlertRuleV2QueryConfigEntityFieldArgs{...} }
+type AlertRuleV2QueryConfigEntityFieldArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigEntityFieldArrayOutput() AlertRuleV2QueryConfigEntityFieldArrayOutput
+	ToAlertRuleV2QueryConfigEntityFieldArrayOutputWithContext(context.Context) AlertRuleV2QueryConfigEntityFieldArrayOutput
+}
+
+type AlertRuleV2QueryConfigEntityFieldArray []AlertRuleV2QueryConfigEntityFieldInput
+
+func (AlertRuleV2QueryConfigEntityFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigEntityField)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigEntityFieldArray) ToAlertRuleV2QueryConfigEntityFieldArrayOutput() AlertRuleV2QueryConfigEntityFieldArrayOutput {
+	return i.ToAlertRuleV2QueryConfigEntityFieldArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigEntityFieldArray) ToAlertRuleV2QueryConfigEntityFieldArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigEntityFieldArrayOutput)
+}
+
+type AlertRuleV2QueryConfigEntityFieldOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigEntityFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigEntityField)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigEntityFieldOutput) ToAlertRuleV2QueryConfigEntityFieldOutput() AlertRuleV2QueryConfigEntityFieldOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigEntityFieldOutput) ToAlertRuleV2QueryConfigEntityFieldOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFieldOutput {
+	return o
+}
+
+// The entity filter field name.
+func (o AlertRuleV2QueryConfigEntityFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigEntityField) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Label value
+func (o AlertRuleV2QueryConfigEntityFieldOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigEntityField) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2QueryConfigEntityFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigEntityFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigEntityField)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigEntityFieldArrayOutput) ToAlertRuleV2QueryConfigEntityFieldArrayOutput() AlertRuleV2QueryConfigEntityFieldArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigEntityFieldArrayOutput) ToAlertRuleV2QueryConfigEntityFieldArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFieldArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigEntityFieldArrayOutput) Index(i pulumi.IntInput) AlertRuleV2QueryConfigEntityFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2QueryConfigEntityField {
+		return vs[0].([]AlertRuleV2QueryConfigEntityField)[vs[1].(int)]
+	}).(AlertRuleV2QueryConfigEntityFieldOutput)
+}
+
+type AlertRuleV2QueryConfigEntityFilter struct {
+	// The entity filter field name.
+	Field    *string `pulumi:"field"`
+	Operator *string `pulumi:"operator"`
+	// Label value
+	Value *string `pulumi:"value"`
+}
+
+// AlertRuleV2QueryConfigEntityFilterInput is an input type that accepts AlertRuleV2QueryConfigEntityFilterArgs and AlertRuleV2QueryConfigEntityFilterOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigEntityFilterInput` via:
+//
+//	AlertRuleV2QueryConfigEntityFilterArgs{...}
+type AlertRuleV2QueryConfigEntityFilterInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigEntityFilterOutput() AlertRuleV2QueryConfigEntityFilterOutput
+	ToAlertRuleV2QueryConfigEntityFilterOutputWithContext(context.Context) AlertRuleV2QueryConfigEntityFilterOutput
+}
+
+type AlertRuleV2QueryConfigEntityFilterArgs struct {
+	// The entity filter field name.
+	Field    pulumi.StringPtrInput `pulumi:"field"`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Label value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlertRuleV2QueryConfigEntityFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigEntityFilterArgs) ToAlertRuleV2QueryConfigEntityFilterOutput() AlertRuleV2QueryConfigEntityFilterOutput {
+	return i.ToAlertRuleV2QueryConfigEntityFilterOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigEntityFilterArgs) ToAlertRuleV2QueryConfigEntityFilterOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigEntityFilterOutput)
+}
+
+// AlertRuleV2QueryConfigEntityFilterArrayInput is an input type that accepts AlertRuleV2QueryConfigEntityFilterArray and AlertRuleV2QueryConfigEntityFilterArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigEntityFilterArrayInput` via:
+//
+//	AlertRuleV2QueryConfigEntityFilterArray{ AlertRuleV2QueryConfigEntityFilterArgs{...} }
+type AlertRuleV2QueryConfigEntityFilterArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigEntityFilterArrayOutput() AlertRuleV2QueryConfigEntityFilterArrayOutput
+	ToAlertRuleV2QueryConfigEntityFilterArrayOutputWithContext(context.Context) AlertRuleV2QueryConfigEntityFilterArrayOutput
+}
+
+type AlertRuleV2QueryConfigEntityFilterArray []AlertRuleV2QueryConfigEntityFilterInput
+
+func (AlertRuleV2QueryConfigEntityFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigEntityFilterArray) ToAlertRuleV2QueryConfigEntityFilterArrayOutput() AlertRuleV2QueryConfigEntityFilterArrayOutput {
+	return i.ToAlertRuleV2QueryConfigEntityFilterArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigEntityFilterArray) ToAlertRuleV2QueryConfigEntityFilterArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigEntityFilterArrayOutput)
+}
+
+type AlertRuleV2QueryConfigEntityFilterOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigEntityFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigEntityFilterOutput) ToAlertRuleV2QueryConfigEntityFilterOutput() AlertRuleV2QueryConfigEntityFilterOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigEntityFilterOutput) ToAlertRuleV2QueryConfigEntityFilterOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFilterOutput {
+	return o
+}
+
+// The entity filter field name.
+func (o AlertRuleV2QueryConfigEntityFilterOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigEntityFilter) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertRuleV2QueryConfigEntityFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigEntityFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Label value
+func (o AlertRuleV2QueryConfigEntityFilterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigEntityFilter) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2QueryConfigEntityFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigEntityFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigEntityFilterArrayOutput) ToAlertRuleV2QueryConfigEntityFilterArrayOutput() AlertRuleV2QueryConfigEntityFilterArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigEntityFilterArrayOutput) ToAlertRuleV2QueryConfigEntityFilterArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigEntityFilterArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigEntityFilterArrayOutput) Index(i pulumi.IntInput) AlertRuleV2QueryConfigEntityFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2QueryConfigEntityFilter {
+		return vs[0].([]AlertRuleV2QueryConfigEntityFilter)[vs[1].(int)]
+	}).(AlertRuleV2QueryConfigEntityFilterOutput)
+}
+
+type AlertRuleV2QueryConfigFilterList struct {
+	// APM filter dimension key
+	Key  *string `pulumi:"key"`
+	Type *string `pulumi:"type"`
+	// Label value
+	Value *string `pulumi:"value"`
+}
+
+// AlertRuleV2QueryConfigFilterListInput is an input type that accepts AlertRuleV2QueryConfigFilterListArgs and AlertRuleV2QueryConfigFilterListOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigFilterListInput` via:
+//
+//	AlertRuleV2QueryConfigFilterListArgs{...}
+type AlertRuleV2QueryConfigFilterListInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigFilterListOutput() AlertRuleV2QueryConfigFilterListOutput
+	ToAlertRuleV2QueryConfigFilterListOutputWithContext(context.Context) AlertRuleV2QueryConfigFilterListOutput
+}
+
+type AlertRuleV2QueryConfigFilterListArgs struct {
+	// APM filter dimension key
+	Key  pulumi.StringPtrInput `pulumi:"key"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Label value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlertRuleV2QueryConfigFilterListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigFilterList)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigFilterListArgs) ToAlertRuleV2QueryConfigFilterListOutput() AlertRuleV2QueryConfigFilterListOutput {
+	return i.ToAlertRuleV2QueryConfigFilterListOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigFilterListArgs) ToAlertRuleV2QueryConfigFilterListOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigFilterListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigFilterListOutput)
+}
+
+// AlertRuleV2QueryConfigFilterListArrayInput is an input type that accepts AlertRuleV2QueryConfigFilterListArray and AlertRuleV2QueryConfigFilterListArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigFilterListArrayInput` via:
+//
+//	AlertRuleV2QueryConfigFilterListArray{ AlertRuleV2QueryConfigFilterListArgs{...} }
+type AlertRuleV2QueryConfigFilterListArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigFilterListArrayOutput() AlertRuleV2QueryConfigFilterListArrayOutput
+	ToAlertRuleV2QueryConfigFilterListArrayOutputWithContext(context.Context) AlertRuleV2QueryConfigFilterListArrayOutput
+}
+
+type AlertRuleV2QueryConfigFilterListArray []AlertRuleV2QueryConfigFilterListInput
+
+func (AlertRuleV2QueryConfigFilterListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigFilterList)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigFilterListArray) ToAlertRuleV2QueryConfigFilterListArrayOutput() AlertRuleV2QueryConfigFilterListArrayOutput {
+	return i.ToAlertRuleV2QueryConfigFilterListArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigFilterListArray) ToAlertRuleV2QueryConfigFilterListArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigFilterListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigFilterListArrayOutput)
+}
+
+type AlertRuleV2QueryConfigFilterListOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigFilterListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigFilterList)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigFilterListOutput) ToAlertRuleV2QueryConfigFilterListOutput() AlertRuleV2QueryConfigFilterListOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigFilterListOutput) ToAlertRuleV2QueryConfigFilterListOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigFilterListOutput {
+	return o
+}
+
+// APM filter dimension key
+func (o AlertRuleV2QueryConfigFilterListOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigFilterList) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertRuleV2QueryConfigFilterListOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigFilterList) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Label value
+func (o AlertRuleV2QueryConfigFilterListOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigFilterList) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2QueryConfigFilterListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigFilterListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigFilterList)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigFilterListArrayOutput) ToAlertRuleV2QueryConfigFilterListArrayOutput() AlertRuleV2QueryConfigFilterListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigFilterListArrayOutput) ToAlertRuleV2QueryConfigFilterListArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigFilterListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigFilterListArrayOutput) Index(i pulumi.IntInput) AlertRuleV2QueryConfigFilterListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2QueryConfigFilterList {
+		return vs[0].([]AlertRuleV2QueryConfigFilterList)[vs[1].(int)]
+	}).(AlertRuleV2QueryConfigFilterListOutput)
+}
+
+type AlertRuleV2QueryConfigLabelFilter struct {
+	// Label name
+	Name     *string `pulumi:"name"`
+	Operator *string `pulumi:"operator"`
+	// Label value
+	Value *string `pulumi:"value"`
+}
+
+// AlertRuleV2QueryConfigLabelFilterInput is an input type that accepts AlertRuleV2QueryConfigLabelFilterArgs and AlertRuleV2QueryConfigLabelFilterOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigLabelFilterInput` via:
+//
+//	AlertRuleV2QueryConfigLabelFilterArgs{...}
+type AlertRuleV2QueryConfigLabelFilterInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigLabelFilterOutput() AlertRuleV2QueryConfigLabelFilterOutput
+	ToAlertRuleV2QueryConfigLabelFilterOutputWithContext(context.Context) AlertRuleV2QueryConfigLabelFilterOutput
+}
+
+type AlertRuleV2QueryConfigLabelFilterArgs struct {
+	// Label name
+	Name     pulumi.StringPtrInput `pulumi:"name"`
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Label value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlertRuleV2QueryConfigLabelFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigLabelFilterArgs) ToAlertRuleV2QueryConfigLabelFilterOutput() AlertRuleV2QueryConfigLabelFilterOutput {
+	return i.ToAlertRuleV2QueryConfigLabelFilterOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigLabelFilterArgs) ToAlertRuleV2QueryConfigLabelFilterOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigLabelFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigLabelFilterOutput)
+}
+
+// AlertRuleV2QueryConfigLabelFilterArrayInput is an input type that accepts AlertRuleV2QueryConfigLabelFilterArray and AlertRuleV2QueryConfigLabelFilterArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigLabelFilterArrayInput` via:
+//
+//	AlertRuleV2QueryConfigLabelFilterArray{ AlertRuleV2QueryConfigLabelFilterArgs{...} }
+type AlertRuleV2QueryConfigLabelFilterArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigLabelFilterArrayOutput() AlertRuleV2QueryConfigLabelFilterArrayOutput
+	ToAlertRuleV2QueryConfigLabelFilterArrayOutputWithContext(context.Context) AlertRuleV2QueryConfigLabelFilterArrayOutput
+}
+
+type AlertRuleV2QueryConfigLabelFilterArray []AlertRuleV2QueryConfigLabelFilterInput
+
+func (AlertRuleV2QueryConfigLabelFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigLabelFilterArray) ToAlertRuleV2QueryConfigLabelFilterArrayOutput() AlertRuleV2QueryConfigLabelFilterArrayOutput {
+	return i.ToAlertRuleV2QueryConfigLabelFilterArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigLabelFilterArray) ToAlertRuleV2QueryConfigLabelFilterArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigLabelFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigLabelFilterArrayOutput)
+}
+
+type AlertRuleV2QueryConfigLabelFilterOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigLabelFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigLabelFilterOutput) ToAlertRuleV2QueryConfigLabelFilterOutput() AlertRuleV2QueryConfigLabelFilterOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigLabelFilterOutput) ToAlertRuleV2QueryConfigLabelFilterOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigLabelFilterOutput {
+	return o
+}
+
+// Label name
+func (o AlertRuleV2QueryConfigLabelFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigLabelFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertRuleV2QueryConfigLabelFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigLabelFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Label value
+func (o AlertRuleV2QueryConfigLabelFilterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigLabelFilter) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleV2QueryConfigLabelFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigLabelFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigLabelFilterArrayOutput) ToAlertRuleV2QueryConfigLabelFilterArrayOutput() AlertRuleV2QueryConfigLabelFilterArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigLabelFilterArrayOutput) ToAlertRuleV2QueryConfigLabelFilterArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigLabelFilterArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigLabelFilterArrayOutput) Index(i pulumi.IntInput) AlertRuleV2QueryConfigLabelFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2QueryConfigLabelFilter {
+		return vs[0].([]AlertRuleV2QueryConfigLabelFilter)[vs[1].(int)]
+	}).(AlertRuleV2QueryConfigLabelFilterOutput)
+}
+
+type AlertRuleV2QueryConfigMeasureList struct {
+	// Grouping dimension list
+	GroupBies []string `pulumi:"groupBies"`
+	// APM metric code
+	MeasureCode *string `pulumi:"measureCode"`
+	// Query Time Window (Seconds)
+	WindowSecs *int `pulumi:"windowSecs"`
+}
+
+// AlertRuleV2QueryConfigMeasureListInput is an input type that accepts AlertRuleV2QueryConfigMeasureListArgs and AlertRuleV2QueryConfigMeasureListOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigMeasureListInput` via:
+//
+//	AlertRuleV2QueryConfigMeasureListArgs{...}
+type AlertRuleV2QueryConfigMeasureListInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigMeasureListOutput() AlertRuleV2QueryConfigMeasureListOutput
+	ToAlertRuleV2QueryConfigMeasureListOutputWithContext(context.Context) AlertRuleV2QueryConfigMeasureListOutput
+}
+
+type AlertRuleV2QueryConfigMeasureListArgs struct {
+	// Grouping dimension list
+	GroupBies pulumi.StringArrayInput `pulumi:"groupBies"`
+	// APM metric code
+	MeasureCode pulumi.StringPtrInput `pulumi:"measureCode"`
+	// Query Time Window (Seconds)
+	WindowSecs pulumi.IntPtrInput `pulumi:"windowSecs"`
+}
+
+func (AlertRuleV2QueryConfigMeasureListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigMeasureList)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigMeasureListArgs) ToAlertRuleV2QueryConfigMeasureListOutput() AlertRuleV2QueryConfigMeasureListOutput {
+	return i.ToAlertRuleV2QueryConfigMeasureListOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigMeasureListArgs) ToAlertRuleV2QueryConfigMeasureListOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigMeasureListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigMeasureListOutput)
+}
+
+// AlertRuleV2QueryConfigMeasureListArrayInput is an input type that accepts AlertRuleV2QueryConfigMeasureListArray and AlertRuleV2QueryConfigMeasureListArrayOutput values.
+// You can construct a concrete instance of `AlertRuleV2QueryConfigMeasureListArrayInput` via:
+//
+//	AlertRuleV2QueryConfigMeasureListArray{ AlertRuleV2QueryConfigMeasureListArgs{...} }
+type AlertRuleV2QueryConfigMeasureListArrayInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2QueryConfigMeasureListArrayOutput() AlertRuleV2QueryConfigMeasureListArrayOutput
+	ToAlertRuleV2QueryConfigMeasureListArrayOutputWithContext(context.Context) AlertRuleV2QueryConfigMeasureListArrayOutput
+}
+
+type AlertRuleV2QueryConfigMeasureListArray []AlertRuleV2QueryConfigMeasureListInput
+
+func (AlertRuleV2QueryConfigMeasureListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigMeasureList)(nil)).Elem()
+}
+
+func (i AlertRuleV2QueryConfigMeasureListArray) ToAlertRuleV2QueryConfigMeasureListArrayOutput() AlertRuleV2QueryConfigMeasureListArrayOutput {
+	return i.ToAlertRuleV2QueryConfigMeasureListArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2QueryConfigMeasureListArray) ToAlertRuleV2QueryConfigMeasureListArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigMeasureListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2QueryConfigMeasureListArrayOutput)
+}
+
+type AlertRuleV2QueryConfigMeasureListOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigMeasureListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2QueryConfigMeasureList)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigMeasureListOutput) ToAlertRuleV2QueryConfigMeasureListOutput() AlertRuleV2QueryConfigMeasureListOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigMeasureListOutput) ToAlertRuleV2QueryConfigMeasureListOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigMeasureListOutput {
+	return o
+}
+
+// Grouping dimension list
+func (o AlertRuleV2QueryConfigMeasureListOutput) GroupBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigMeasureList) []string { return v.GroupBies }).(pulumi.StringArrayOutput)
+}
+
+// APM metric code
+func (o AlertRuleV2QueryConfigMeasureListOutput) MeasureCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigMeasureList) *string { return v.MeasureCode }).(pulumi.StringPtrOutput)
+}
+
+// Query Time Window (Seconds)
+func (o AlertRuleV2QueryConfigMeasureListOutput) WindowSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2QueryConfigMeasureList) *int { return v.WindowSecs }).(pulumi.IntPtrOutput)
+}
+
+type AlertRuleV2QueryConfigMeasureListArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2QueryConfigMeasureListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRuleV2QueryConfigMeasureList)(nil)).Elem()
+}
+
+func (o AlertRuleV2QueryConfigMeasureListArrayOutput) ToAlertRuleV2QueryConfigMeasureListArrayOutput() AlertRuleV2QueryConfigMeasureListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigMeasureListArrayOutput) ToAlertRuleV2QueryConfigMeasureListArrayOutputWithContext(ctx context.Context) AlertRuleV2QueryConfigMeasureListArrayOutput {
+	return o
+}
+
+func (o AlertRuleV2QueryConfigMeasureListArrayOutput) Index(i pulumi.IntInput) AlertRuleV2QueryConfigMeasureListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRuleV2QueryConfigMeasureList {
+		return vs[0].([]AlertRuleV2QueryConfigMeasureList)[vs[1].(int)]
+	}).(AlertRuleV2QueryConfigMeasureListOutput)
+}
+
+type AlertRuleV2ScheduleConfig struct {
+	// The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+	IntervalSecs *int `pulumi:"intervalSecs"`
+	// The scheduling type. Valid values: FIXED and CRON.
+	Type string `pulumi:"type"`
+}
+
+// AlertRuleV2ScheduleConfigInput is an input type that accepts AlertRuleV2ScheduleConfigArgs and AlertRuleV2ScheduleConfigOutput values.
+// You can construct a concrete instance of `AlertRuleV2ScheduleConfigInput` via:
+//
+//	AlertRuleV2ScheduleConfigArgs{...}
+type AlertRuleV2ScheduleConfigInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ScheduleConfigOutput() AlertRuleV2ScheduleConfigOutput
+	ToAlertRuleV2ScheduleConfigOutputWithContext(context.Context) AlertRuleV2ScheduleConfigOutput
+}
+
+type AlertRuleV2ScheduleConfigArgs struct {
+	// The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+	IntervalSecs pulumi.IntPtrInput `pulumi:"intervalSecs"`
+	// The scheduling type. Valid values: FIXED and CRON.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AlertRuleV2ScheduleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ScheduleConfig)(nil)).Elem()
+}
+
+func (i AlertRuleV2ScheduleConfigArgs) ToAlertRuleV2ScheduleConfigOutput() AlertRuleV2ScheduleConfigOutput {
+	return i.ToAlertRuleV2ScheduleConfigOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ScheduleConfigArgs) ToAlertRuleV2ScheduleConfigOutputWithContext(ctx context.Context) AlertRuleV2ScheduleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ScheduleConfigOutput)
+}
+
+func (i AlertRuleV2ScheduleConfigArgs) ToAlertRuleV2ScheduleConfigPtrOutput() AlertRuleV2ScheduleConfigPtrOutput {
+	return i.ToAlertRuleV2ScheduleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRuleV2ScheduleConfigArgs) ToAlertRuleV2ScheduleConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ScheduleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ScheduleConfigOutput).ToAlertRuleV2ScheduleConfigPtrOutputWithContext(ctx)
+}
+
+// AlertRuleV2ScheduleConfigPtrInput is an input type that accepts AlertRuleV2ScheduleConfigArgs, AlertRuleV2ScheduleConfigPtr and AlertRuleV2ScheduleConfigPtrOutput values.
+// You can construct a concrete instance of `AlertRuleV2ScheduleConfigPtrInput` via:
+//
+//	        AlertRuleV2ScheduleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRuleV2ScheduleConfigPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleV2ScheduleConfigPtrOutput() AlertRuleV2ScheduleConfigPtrOutput
+	ToAlertRuleV2ScheduleConfigPtrOutputWithContext(context.Context) AlertRuleV2ScheduleConfigPtrOutput
+}
+
+type alertRuleV2ScheduleConfigPtrType AlertRuleV2ScheduleConfigArgs
+
+func AlertRuleV2ScheduleConfigPtr(v *AlertRuleV2ScheduleConfigArgs) AlertRuleV2ScheduleConfigPtrInput {
+	return (*alertRuleV2ScheduleConfigPtrType)(v)
+}
+
+func (*alertRuleV2ScheduleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ScheduleConfig)(nil)).Elem()
+}
+
+func (i *alertRuleV2ScheduleConfigPtrType) ToAlertRuleV2ScheduleConfigPtrOutput() AlertRuleV2ScheduleConfigPtrOutput {
+	return i.ToAlertRuleV2ScheduleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRuleV2ScheduleConfigPtrType) ToAlertRuleV2ScheduleConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ScheduleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRuleV2ScheduleConfigPtrOutput)
+}
+
+type AlertRuleV2ScheduleConfigOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ScheduleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleV2ScheduleConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ScheduleConfigOutput) ToAlertRuleV2ScheduleConfigOutput() AlertRuleV2ScheduleConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ScheduleConfigOutput) ToAlertRuleV2ScheduleConfigOutputWithContext(ctx context.Context) AlertRuleV2ScheduleConfigOutput {
+	return o
+}
+
+func (o AlertRuleV2ScheduleConfigOutput) ToAlertRuleV2ScheduleConfigPtrOutput() AlertRuleV2ScheduleConfigPtrOutput {
+	return o.ToAlertRuleV2ScheduleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleV2ScheduleConfigOutput) ToAlertRuleV2ScheduleConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ScheduleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleV2ScheduleConfig) *AlertRuleV2ScheduleConfig {
+		return &v
+	}).(AlertRuleV2ScheduleConfigPtrOutput)
+}
+
+// The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+func (o AlertRuleV2ScheduleConfigOutput) IntervalSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRuleV2ScheduleConfig) *int { return v.IntervalSecs }).(pulumi.IntPtrOutput)
+}
+
+// The scheduling type. Valid values: FIXED and CRON.
+func (o AlertRuleV2ScheduleConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRuleV2ScheduleConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AlertRuleV2ScheduleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleV2ScheduleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleV2ScheduleConfig)(nil)).Elem()
+}
+
+func (o AlertRuleV2ScheduleConfigPtrOutput) ToAlertRuleV2ScheduleConfigPtrOutput() AlertRuleV2ScheduleConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ScheduleConfigPtrOutput) ToAlertRuleV2ScheduleConfigPtrOutputWithContext(ctx context.Context) AlertRuleV2ScheduleConfigPtrOutput {
+	return o
+}
+
+func (o AlertRuleV2ScheduleConfigPtrOutput) Elem() AlertRuleV2ScheduleConfigOutput {
+	return o.ApplyT(func(v *AlertRuleV2ScheduleConfig) AlertRuleV2ScheduleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleV2ScheduleConfig
+		return ret
+	}).(AlertRuleV2ScheduleConfigOutput)
+}
+
+// The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+func (o AlertRuleV2ScheduleConfigPtrOutput) IntervalSecs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ScheduleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalSecs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The scheduling type. Valid values: FIXED and CRON.
+func (o AlertRuleV2ScheduleConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRuleV2ScheduleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type DynamicTagGroupMatchExpress struct {
 	// The tag values of the cloud resources.
 	TagValue string `pulumi:"tagValue"`
@@ -7238,6 +10822,3146 @@ func (o GetAlarmContactsContactArrayOutput) Index(i pulumi.IntInput) GetAlarmCon
 	}).(GetAlarmContactsContactOutput)
 }
 
+type GetAlertRulesV2Rule struct {
+	// Action integration configuration.
+	ActionIntegrationConfigs []GetAlertRulesV2RuleActionIntegrationConfig `pulumi:"actionIntegrationConfigs"`
+	// The unique identifier of the alert rule, mapped to a UUID (system-generated).
+	AlertRuleV2Id string `pulumi:"alertRuleV2Id"`
+	// Annotations.
+	Annotations map[string]string `pulumi:"annotations"`
+	// ARMS integration configuration.
+	ArmsIntegrationConfigs []GetAlertRulesV2RuleArmsIntegrationConfig `pulumi:"armsIntegrationConfigs"`
+	// Unified alert condition configuration.
+	ConditionConfigs []GetAlertRulesV2RuleConditionConfig `pulumi:"conditionConfigs"`
+	// The alert content template.
+	ContentTemplate string `pulumi:"contentTemplate"`
+	// Creation time (read-only), in ISO 8601 format.
+	CreatedAt string `pulumi:"createdAt"`
+	// Unified data source configuration.
+	DatasourceConfigs []GetAlertRulesV2RuleDatasourceConfig `pulumi:"datasourceConfigs"`
+	// Data source type (read-only, derived).
+	DatasourceType string `pulumi:"datasourceType"`
+	// The display name of the alert rule.
+	DisplayName string `pulumi:"displayName"`
+	// Specifies whether the alert rule is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Labels.
+	Labels map[string]string `pulumi:"labels"`
+	// Unified notification configuration.
+	NotifyConfigs []GetAlertRulesV2RuleNotifyConfig `pulumi:"notifyConfigs"`
+	// Notification policy ID (read-only, derived).
+	NotifyStrategyId string `pulumi:"notifyStrategyId"`
+	// Indicates whether the rule applies to all resources of this resource type (read-only, derived).
+	ObserveResourceGlobalScope bool `pulumi:"observeResourceGlobalScope"`
+	// Observable resource type (read-only, derived).
+	ObserveResourceType string `pulumi:"observeResourceType"`
+	// The partition key.
+	PartitionKey string `pulumi:"partitionKey"`
+	// Unified query configuration.
+	QueryConfigs []GetAlertRulesV2RuleQueryConfig `pulumi:"queryConfigs"`
+	// Unified scheduling configuration.
+	ScheduleConfigs []GetAlertRulesV2RuleScheduleConfig `pulumi:"scheduleConfigs"`
+	// The severity levels covered by this rule, separated by commas (read-only derived).
+	SeverityLevels string `pulumi:"severityLevels"`
+	// Alert status (read-only).
+	Status string `pulumi:"status"`
+	// The update time (read-only), in ISO 8601 format.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Workspace.
+	Workspace string `pulumi:"workspace"`
+}
+
+// GetAlertRulesV2RuleInput is an input type that accepts GetAlertRulesV2RuleArgs and GetAlertRulesV2RuleOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleInput` via:
+//
+//	GetAlertRulesV2RuleArgs{...}
+type GetAlertRulesV2RuleInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleOutput() GetAlertRulesV2RuleOutput
+	ToGetAlertRulesV2RuleOutputWithContext(context.Context) GetAlertRulesV2RuleOutput
+}
+
+type GetAlertRulesV2RuleArgs struct {
+	// Action integration configuration.
+	ActionIntegrationConfigs GetAlertRulesV2RuleActionIntegrationConfigArrayInput `pulumi:"actionIntegrationConfigs"`
+	// The unique identifier of the alert rule, mapped to a UUID (system-generated).
+	AlertRuleV2Id pulumi.StringInput `pulumi:"alertRuleV2Id"`
+	// Annotations.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// ARMS integration configuration.
+	ArmsIntegrationConfigs GetAlertRulesV2RuleArmsIntegrationConfigArrayInput `pulumi:"armsIntegrationConfigs"`
+	// Unified alert condition configuration.
+	ConditionConfigs GetAlertRulesV2RuleConditionConfigArrayInput `pulumi:"conditionConfigs"`
+	// The alert content template.
+	ContentTemplate pulumi.StringInput `pulumi:"contentTemplate"`
+	// Creation time (read-only), in ISO 8601 format.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Unified data source configuration.
+	DatasourceConfigs GetAlertRulesV2RuleDatasourceConfigArrayInput `pulumi:"datasourceConfigs"`
+	// Data source type (read-only, derived).
+	DatasourceType pulumi.StringInput `pulumi:"datasourceType"`
+	// The display name of the alert rule.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Specifies whether the alert rule is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Unified notification configuration.
+	NotifyConfigs GetAlertRulesV2RuleNotifyConfigArrayInput `pulumi:"notifyConfigs"`
+	// Notification policy ID (read-only, derived).
+	NotifyStrategyId pulumi.StringInput `pulumi:"notifyStrategyId"`
+	// Indicates whether the rule applies to all resources of this resource type (read-only, derived).
+	ObserveResourceGlobalScope pulumi.BoolInput `pulumi:"observeResourceGlobalScope"`
+	// Observable resource type (read-only, derived).
+	ObserveResourceType pulumi.StringInput `pulumi:"observeResourceType"`
+	// The partition key.
+	PartitionKey pulumi.StringInput `pulumi:"partitionKey"`
+	// Unified query configuration.
+	QueryConfigs GetAlertRulesV2RuleQueryConfigArrayInput `pulumi:"queryConfigs"`
+	// Unified scheduling configuration.
+	ScheduleConfigs GetAlertRulesV2RuleScheduleConfigArrayInput `pulumi:"scheduleConfigs"`
+	// The severity levels covered by this rule, separated by commas (read-only derived).
+	SeverityLevels pulumi.StringInput `pulumi:"severityLevels"`
+	// Alert status (read-only).
+	Status pulumi.StringInput `pulumi:"status"`
+	// The update time (read-only), in ISO 8601 format.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Workspace.
+	Workspace pulumi.StringInput `pulumi:"workspace"`
+}
+
+func (GetAlertRulesV2RuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2Rule)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleArgs) ToGetAlertRulesV2RuleOutput() GetAlertRulesV2RuleOutput {
+	return i.ToGetAlertRulesV2RuleOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleArgs) ToGetAlertRulesV2RuleOutputWithContext(ctx context.Context) GetAlertRulesV2RuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleOutput)
+}
+
+// GetAlertRulesV2RuleArrayInput is an input type that accepts GetAlertRulesV2RuleArray and GetAlertRulesV2RuleArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleArrayInput` via:
+//
+//	GetAlertRulesV2RuleArray{ GetAlertRulesV2RuleArgs{...} }
+type GetAlertRulesV2RuleArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleArrayOutput() GetAlertRulesV2RuleArrayOutput
+	ToGetAlertRulesV2RuleArrayOutputWithContext(context.Context) GetAlertRulesV2RuleArrayOutput
+}
+
+type GetAlertRulesV2RuleArray []GetAlertRulesV2RuleInput
+
+func (GetAlertRulesV2RuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2Rule)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleArray) ToGetAlertRulesV2RuleArrayOutput() GetAlertRulesV2RuleArrayOutput {
+	return i.ToGetAlertRulesV2RuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleArray) ToGetAlertRulesV2RuleArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleArrayOutput)
+}
+
+type GetAlertRulesV2RuleOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2Rule)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleOutput) ToGetAlertRulesV2RuleOutput() GetAlertRulesV2RuleOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleOutput) ToGetAlertRulesV2RuleOutputWithContext(ctx context.Context) GetAlertRulesV2RuleOutput {
+	return o
+}
+
+// Action integration configuration.
+func (o GetAlertRulesV2RuleOutput) ActionIntegrationConfigs() GetAlertRulesV2RuleActionIntegrationConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleActionIntegrationConfig {
+		return v.ActionIntegrationConfigs
+	}).(GetAlertRulesV2RuleActionIntegrationConfigArrayOutput)
+}
+
+// The unique identifier of the alert rule, mapped to a UUID (system-generated).
+func (o GetAlertRulesV2RuleOutput) AlertRuleV2Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.AlertRuleV2Id }).(pulumi.StringOutput)
+}
+
+// Annotations.
+func (o GetAlertRulesV2RuleOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// ARMS integration configuration.
+func (o GetAlertRulesV2RuleOutput) ArmsIntegrationConfigs() GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleArmsIntegrationConfig {
+		return v.ArmsIntegrationConfigs
+	}).(GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput)
+}
+
+// Unified alert condition configuration.
+func (o GetAlertRulesV2RuleOutput) ConditionConfigs() GetAlertRulesV2RuleConditionConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleConditionConfig { return v.ConditionConfigs }).(GetAlertRulesV2RuleConditionConfigArrayOutput)
+}
+
+// The alert content template.
+func (o GetAlertRulesV2RuleOutput) ContentTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.ContentTemplate }).(pulumi.StringOutput)
+}
+
+// Creation time (read-only), in ISO 8601 format.
+func (o GetAlertRulesV2RuleOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Unified data source configuration.
+func (o GetAlertRulesV2RuleOutput) DatasourceConfigs() GetAlertRulesV2RuleDatasourceConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleDatasourceConfig { return v.DatasourceConfigs }).(GetAlertRulesV2RuleDatasourceConfigArrayOutput)
+}
+
+// Data source type (read-only, derived).
+func (o GetAlertRulesV2RuleOutput) DatasourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.DatasourceType }).(pulumi.StringOutput)
+}
+
+// The display name of the alert rule.
+func (o GetAlertRulesV2RuleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specifies whether the alert rule is enabled.
+func (o GetAlertRulesV2RuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetAlertRulesV2RuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels.
+func (o GetAlertRulesV2RuleOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Unified notification configuration.
+func (o GetAlertRulesV2RuleOutput) NotifyConfigs() GetAlertRulesV2RuleNotifyConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleNotifyConfig { return v.NotifyConfigs }).(GetAlertRulesV2RuleNotifyConfigArrayOutput)
+}
+
+// Notification policy ID (read-only, derived).
+func (o GetAlertRulesV2RuleOutput) NotifyStrategyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.NotifyStrategyId }).(pulumi.StringOutput)
+}
+
+// Indicates whether the rule applies to all resources of this resource type (read-only, derived).
+func (o GetAlertRulesV2RuleOutput) ObserveResourceGlobalScope() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) bool { return v.ObserveResourceGlobalScope }).(pulumi.BoolOutput)
+}
+
+// Observable resource type (read-only, derived).
+func (o GetAlertRulesV2RuleOutput) ObserveResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.ObserveResourceType }).(pulumi.StringOutput)
+}
+
+// The partition key.
+func (o GetAlertRulesV2RuleOutput) PartitionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.PartitionKey }).(pulumi.StringOutput)
+}
+
+// Unified query configuration.
+func (o GetAlertRulesV2RuleOutput) QueryConfigs() GetAlertRulesV2RuleQueryConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleQueryConfig { return v.QueryConfigs }).(GetAlertRulesV2RuleQueryConfigArrayOutput)
+}
+
+// Unified scheduling configuration.
+func (o GetAlertRulesV2RuleOutput) ScheduleConfigs() GetAlertRulesV2RuleScheduleConfigArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) []GetAlertRulesV2RuleScheduleConfig { return v.ScheduleConfigs }).(GetAlertRulesV2RuleScheduleConfigArrayOutput)
+}
+
+// The severity levels covered by this rule, separated by commas (read-only derived).
+func (o GetAlertRulesV2RuleOutput) SeverityLevels() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.SeverityLevels }).(pulumi.StringOutput)
+}
+
+// Alert status (read-only).
+func (o GetAlertRulesV2RuleOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The update time (read-only), in ISO 8601 format.
+func (o GetAlertRulesV2RuleOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Workspace.
+func (o GetAlertRulesV2RuleOutput) Workspace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2Rule) string { return v.Workspace }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2Rule)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleArrayOutput) ToGetAlertRulesV2RuleArrayOutput() GetAlertRulesV2RuleArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleArrayOutput) ToGetAlertRulesV2RuleArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2Rule {
+		return vs[0].([]GetAlertRulesV2Rule)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleOutput)
+}
+
+type GetAlertRulesV2RuleActionIntegrationConfig struct {
+	// List of actions.
+	Actions []string `pulumi:"actions"`
+	// Specifies whether the alert rule is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetAlertRulesV2RuleActionIntegrationConfigInput is an input type that accepts GetAlertRulesV2RuleActionIntegrationConfigArgs and GetAlertRulesV2RuleActionIntegrationConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleActionIntegrationConfigInput` via:
+//
+//	GetAlertRulesV2RuleActionIntegrationConfigArgs{...}
+type GetAlertRulesV2RuleActionIntegrationConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleActionIntegrationConfigOutput() GetAlertRulesV2RuleActionIntegrationConfigOutput
+	ToGetAlertRulesV2RuleActionIntegrationConfigOutputWithContext(context.Context) GetAlertRulesV2RuleActionIntegrationConfigOutput
+}
+
+type GetAlertRulesV2RuleActionIntegrationConfigArgs struct {
+	// List of actions.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Specifies whether the alert rule is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetAlertRulesV2RuleActionIntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleActionIntegrationConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleActionIntegrationConfigArgs) ToGetAlertRulesV2RuleActionIntegrationConfigOutput() GetAlertRulesV2RuleActionIntegrationConfigOutput {
+	return i.ToGetAlertRulesV2RuleActionIntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleActionIntegrationConfigArgs) ToGetAlertRulesV2RuleActionIntegrationConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleActionIntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleActionIntegrationConfigOutput)
+}
+
+// GetAlertRulesV2RuleActionIntegrationConfigArrayInput is an input type that accepts GetAlertRulesV2RuleActionIntegrationConfigArray and GetAlertRulesV2RuleActionIntegrationConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleActionIntegrationConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleActionIntegrationConfigArray{ GetAlertRulesV2RuleActionIntegrationConfigArgs{...} }
+type GetAlertRulesV2RuleActionIntegrationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutput() GetAlertRulesV2RuleActionIntegrationConfigArrayOutput
+	ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleActionIntegrationConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleActionIntegrationConfigArray []GetAlertRulesV2RuleActionIntegrationConfigInput
+
+func (GetAlertRulesV2RuleActionIntegrationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleActionIntegrationConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleActionIntegrationConfigArray) ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutput() GetAlertRulesV2RuleActionIntegrationConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleActionIntegrationConfigArray) ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleActionIntegrationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleActionIntegrationConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleActionIntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleActionIntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleActionIntegrationConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleActionIntegrationConfigOutput) ToGetAlertRulesV2RuleActionIntegrationConfigOutput() GetAlertRulesV2RuleActionIntegrationConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleActionIntegrationConfigOutput) ToGetAlertRulesV2RuleActionIntegrationConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleActionIntegrationConfigOutput {
+	return o
+}
+
+// List of actions.
+func (o GetAlertRulesV2RuleActionIntegrationConfigOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleActionIntegrationConfig) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether the alert rule is enabled.
+func (o GetAlertRulesV2RuleActionIntegrationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleActionIntegrationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetAlertRulesV2RuleActionIntegrationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleActionIntegrationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleActionIntegrationConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleActionIntegrationConfigArrayOutput) ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutput() GetAlertRulesV2RuleActionIntegrationConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleActionIntegrationConfigArrayOutput) ToGetAlertRulesV2RuleActionIntegrationConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleActionIntegrationConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleActionIntegrationConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleActionIntegrationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleActionIntegrationConfig {
+		return vs[0].([]GetAlertRulesV2RuleActionIntegrationConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleActionIntegrationConfigOutput)
+}
+
+type GetAlertRulesV2RuleArmsIntegrationConfig struct {
+	// Specifies whether the alert rule is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetAlertRulesV2RuleArmsIntegrationConfigInput is an input type that accepts GetAlertRulesV2RuleArmsIntegrationConfigArgs and GetAlertRulesV2RuleArmsIntegrationConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleArmsIntegrationConfigInput` via:
+//
+//	GetAlertRulesV2RuleArmsIntegrationConfigArgs{...}
+type GetAlertRulesV2RuleArmsIntegrationConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleArmsIntegrationConfigOutput() GetAlertRulesV2RuleArmsIntegrationConfigOutput
+	ToGetAlertRulesV2RuleArmsIntegrationConfigOutputWithContext(context.Context) GetAlertRulesV2RuleArmsIntegrationConfigOutput
+}
+
+type GetAlertRulesV2RuleArmsIntegrationConfigArgs struct {
+	// Specifies whether the alert rule is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetAlertRulesV2RuleArmsIntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleArmsIntegrationConfigArgs) ToGetAlertRulesV2RuleArmsIntegrationConfigOutput() GetAlertRulesV2RuleArmsIntegrationConfigOutput {
+	return i.ToGetAlertRulesV2RuleArmsIntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleArmsIntegrationConfigArgs) ToGetAlertRulesV2RuleArmsIntegrationConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleArmsIntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleArmsIntegrationConfigOutput)
+}
+
+// GetAlertRulesV2RuleArmsIntegrationConfigArrayInput is an input type that accepts GetAlertRulesV2RuleArmsIntegrationConfigArray and GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleArmsIntegrationConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleArmsIntegrationConfigArray{ GetAlertRulesV2RuleArmsIntegrationConfigArgs{...} }
+type GetAlertRulesV2RuleArmsIntegrationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutput() GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput
+	ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleArmsIntegrationConfigArray []GetAlertRulesV2RuleArmsIntegrationConfigInput
+
+func (GetAlertRulesV2RuleArmsIntegrationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleArmsIntegrationConfigArray) ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutput() GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleArmsIntegrationConfigArray) ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleArmsIntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleArmsIntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleArmsIntegrationConfigOutput) ToGetAlertRulesV2RuleArmsIntegrationConfigOutput() GetAlertRulesV2RuleArmsIntegrationConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleArmsIntegrationConfigOutput) ToGetAlertRulesV2RuleArmsIntegrationConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleArmsIntegrationConfigOutput {
+	return o
+}
+
+// Specifies whether the alert rule is enabled.
+func (o GetAlertRulesV2RuleArmsIntegrationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleArmsIntegrationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleArmsIntegrationConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput) ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutput() GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput) ToGetAlertRulesV2RuleArmsIntegrationConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleArmsIntegrationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleArmsIntegrationConfig {
+		return vs[0].([]GetAlertRulesV2RuleArmsIntegrationConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleArmsIntegrationConfigOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfig struct {
+	// Aggregation Function.
+	Aggregate string `pulumi:"aggregate"`
+	// Comparison condition list (type=APM_COMPOSITE).
+	CompareLists []GetAlertRulesV2RuleConditionConfigCompareList `pulumi:"compareLists"`
+	// The multi-metric composite trigger configuration.
+	CompositeEscalations []GetAlertRulesV2RuleConditionConfigCompositeEscalation `pulumi:"compositeEscalations"`
+	// Duration (seconds).
+	DurationSecs int `pulumi:"durationSecs"`
+	// The escalation policy type (type=CLOUD_MONITORING).
+	EscalationType string `pulumi:"escalationType"`
+	// Expression trigger configuration.
+	ExpressEscalations []GetAlertRulesV2RuleConditionConfigExpressEscalation `pulumi:"expressEscalations"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+	LegacyRaw string `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType string `pulumi:"legacyType"`
+	// No-data processing policy (type=CLOUD_MONITORING).
+	NoDataPolicy string `pulumi:"noDataPolicy"`
+	// Label filter operator.
+	Operator string `pulumi:"operator"`
+	// The PromQL trigger configuration.
+	Prometheuses []GetAlertRulesV2RuleConditionConfigPrometheus `pulumi:"prometheuses"`
+	// The logical relationship between conditions (type=APM_COMPOSITE).
+	Relation string `pulumi:"relation"`
+	// Severity Level.
+	Severity string `pulumi:"severity"`
+	// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple).
+	SimpleEscalations []GetAlertRulesV2RuleConditionConfigSimpleEscalation `pulumi:"simpleEscalations"`
+	// Threshold.
+	Threshold float64 `pulumi:"threshold"`
+	// Multi-severity threshold list (used when UMODEL_METRICSET is specified).
+	ThresholdLists []GetAlertRulesV2RuleConditionConfigThresholdList `pulumi:"thresholdLists"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+	// Year-over-year time unit.
+	YoyTimeUnit string `pulumi:"yoyTimeUnit"`
+	// Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+	YoyTimeValue int `pulumi:"yoyTimeValue"`
+}
+
+// GetAlertRulesV2RuleConditionConfigInput is an input type that accepts GetAlertRulesV2RuleConditionConfigArgs and GetAlertRulesV2RuleConditionConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigArgs{...}
+type GetAlertRulesV2RuleConditionConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigOutput() GetAlertRulesV2RuleConditionConfigOutput
+	ToGetAlertRulesV2RuleConditionConfigOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigArgs struct {
+	// Aggregation Function.
+	Aggregate pulumi.StringInput `pulumi:"aggregate"`
+	// Comparison condition list (type=APM_COMPOSITE).
+	CompareLists GetAlertRulesV2RuleConditionConfigCompareListArrayInput `pulumi:"compareLists"`
+	// The multi-metric composite trigger configuration.
+	CompositeEscalations GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayInput `pulumi:"compositeEscalations"`
+	// Duration (seconds).
+	DurationSecs pulumi.IntInput `pulumi:"durationSecs"`
+	// The escalation policy type (type=CLOUD_MONITORING).
+	EscalationType pulumi.StringInput `pulumi:"escalationType"`
+	// Expression trigger configuration.
+	ExpressEscalations GetAlertRulesV2RuleConditionConfigExpressEscalationArrayInput `pulumi:"expressEscalations"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+	LegacyRaw pulumi.StringInput `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType pulumi.StringInput `pulumi:"legacyType"`
+	// No-data processing policy (type=CLOUD_MONITORING).
+	NoDataPolicy pulumi.StringInput `pulumi:"noDataPolicy"`
+	// Label filter operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The PromQL trigger configuration.
+	Prometheuses GetAlertRulesV2RuleConditionConfigPrometheusArrayInput `pulumi:"prometheuses"`
+	// The logical relationship between conditions (type=APM_COMPOSITE).
+	Relation pulumi.StringInput `pulumi:"relation"`
+	// Severity Level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple).
+	SimpleEscalations GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayInput `pulumi:"simpleEscalations"`
+	// Threshold.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// Multi-severity threshold list (used when UMODEL_METRICSET is specified).
+	ThresholdLists GetAlertRulesV2RuleConditionConfigThresholdListArrayInput `pulumi:"thresholdLists"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Year-over-year time unit.
+	YoyTimeUnit pulumi.StringInput `pulumi:"yoyTimeUnit"`
+	// Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+	YoyTimeValue pulumi.IntInput `pulumi:"yoyTimeValue"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigArgs) ToGetAlertRulesV2RuleConditionConfigOutput() GetAlertRulesV2RuleConditionConfigOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigArgs) ToGetAlertRulesV2RuleConditionConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigArray and GetAlertRulesV2RuleConditionConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigArray{ GetAlertRulesV2RuleConditionConfigArgs{...} }
+type GetAlertRulesV2RuleConditionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigArrayOutput() GetAlertRulesV2RuleConditionConfigArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigArray []GetAlertRulesV2RuleConditionConfigInput
+
+func (GetAlertRulesV2RuleConditionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigArray) ToGetAlertRulesV2RuleConditionConfigArrayOutput() GetAlertRulesV2RuleConditionConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigArray) ToGetAlertRulesV2RuleConditionConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigOutput) ToGetAlertRulesV2RuleConditionConfigOutput() GetAlertRulesV2RuleConditionConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigOutput) ToGetAlertRulesV2RuleConditionConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigOutput {
+	return o
+}
+
+// Aggregation Function.
+func (o GetAlertRulesV2RuleConditionConfigOutput) Aggregate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.Aggregate }).(pulumi.StringOutput)
+}
+
+// Comparison condition list (type=APM_COMPOSITE).
+func (o GetAlertRulesV2RuleConditionConfigOutput) CompareLists() GetAlertRulesV2RuleConditionConfigCompareListArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) []GetAlertRulesV2RuleConditionConfigCompareList {
+		return v.CompareLists
+	}).(GetAlertRulesV2RuleConditionConfigCompareListArrayOutput)
+}
+
+// The multi-metric composite trigger configuration.
+func (o GetAlertRulesV2RuleConditionConfigOutput) CompositeEscalations() GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) []GetAlertRulesV2RuleConditionConfigCompositeEscalation {
+		return v.CompositeEscalations
+	}).(GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput)
+}
+
+// Duration (seconds).
+func (o GetAlertRulesV2RuleConditionConfigOutput) DurationSecs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) int { return v.DurationSecs }).(pulumi.IntOutput)
+}
+
+// The escalation policy type (type=CLOUD_MONITORING).
+func (o GetAlertRulesV2RuleConditionConfigOutput) EscalationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.EscalationType }).(pulumi.StringOutput)
+}
+
+// Expression trigger configuration.
+func (o GetAlertRulesV2RuleConditionConfigOutput) ExpressEscalations() GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) []GetAlertRulesV2RuleConditionConfigExpressEscalation {
+		return v.ExpressEscalations
+	}).(GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput)
+}
+
+// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+func (o GetAlertRulesV2RuleConditionConfigOutput) LegacyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.LegacyRaw }).(pulumi.StringOutput)
+}
+
+// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+func (o GetAlertRulesV2RuleConditionConfigOutput) LegacyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.LegacyType }).(pulumi.StringOutput)
+}
+
+// No-data processing policy (type=CLOUD_MONITORING).
+func (o GetAlertRulesV2RuleConditionConfigOutput) NoDataPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.NoDataPolicy }).(pulumi.StringOutput)
+}
+
+// Label filter operator.
+func (o GetAlertRulesV2RuleConditionConfigOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The PromQL trigger configuration.
+func (o GetAlertRulesV2RuleConditionConfigOutput) Prometheuses() GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) []GetAlertRulesV2RuleConditionConfigPrometheus {
+		return v.Prometheuses
+	}).(GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput)
+}
+
+// The logical relationship between conditions (type=APM_COMPOSITE).
+func (o GetAlertRulesV2RuleConditionConfigOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.Relation }).(pulumi.StringOutput)
+}
+
+// Severity Level.
+func (o GetAlertRulesV2RuleConditionConfigOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple).
+func (o GetAlertRulesV2RuleConditionConfigOutput) SimpleEscalations() GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) []GetAlertRulesV2RuleConditionConfigSimpleEscalation {
+		return v.SimpleEscalations
+	}).(GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput)
+}
+
+// Threshold.
+func (o GetAlertRulesV2RuleConditionConfigOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// Multi-severity threshold list (used when UMODEL_METRICSET is specified).
+func (o GetAlertRulesV2RuleConditionConfigOutput) ThresholdLists() GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) []GetAlertRulesV2RuleConditionConfigThresholdList {
+		return v.ThresholdLists
+	}).(GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleConditionConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Year-over-year time unit.
+func (o GetAlertRulesV2RuleConditionConfigOutput) YoyTimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) string { return v.YoyTimeUnit }).(pulumi.StringOutput)
+}
+
+// Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+func (o GetAlertRulesV2RuleConditionConfigOutput) YoyTimeValue() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfig) int { return v.YoyTimeValue }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigArrayOutput) ToGetAlertRulesV2RuleConditionConfigArrayOutput() GetAlertRulesV2RuleConditionConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigArrayOutput) ToGetAlertRulesV2RuleConditionConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfig {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompareList struct {
+	// Aggregation Function.
+	Aggregate string `pulumi:"aggregate"`
+	// Label filter operator.
+	Operator string `pulumi:"operator"`
+	// Threshold.
+	Threshold float64 `pulumi:"threshold"`
+	// Year-over-year time unit.
+	YoyTimeUnit string `pulumi:"yoyTimeUnit"`
+	// Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+	YoyTimeValue int `pulumi:"yoyTimeValue"`
+}
+
+// GetAlertRulesV2RuleConditionConfigCompareListInput is an input type that accepts GetAlertRulesV2RuleConditionConfigCompareListArgs and GetAlertRulesV2RuleConditionConfigCompareListOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigCompareListInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigCompareListArgs{...}
+type GetAlertRulesV2RuleConditionConfigCompareListInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigCompareListOutput() GetAlertRulesV2RuleConditionConfigCompareListOutput
+	ToGetAlertRulesV2RuleConditionConfigCompareListOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigCompareListOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigCompareListArgs struct {
+	// Aggregation Function.
+	Aggregate pulumi.StringInput `pulumi:"aggregate"`
+	// Label filter operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Threshold.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// Year-over-year time unit.
+	YoyTimeUnit pulumi.StringInput `pulumi:"yoyTimeUnit"`
+	// Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+	YoyTimeValue pulumi.IntInput `pulumi:"yoyTimeValue"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigCompareListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompareList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompareListArgs) ToGetAlertRulesV2RuleConditionConfigCompareListOutput() GetAlertRulesV2RuleConditionConfigCompareListOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigCompareListOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompareListArgs) ToGetAlertRulesV2RuleConditionConfigCompareListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompareListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigCompareListOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigCompareListArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigCompareListArray and GetAlertRulesV2RuleConditionConfigCompareListArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigCompareListArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigCompareListArray{ GetAlertRulesV2RuleConditionConfigCompareListArgs{...} }
+type GetAlertRulesV2RuleConditionConfigCompareListArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutput() GetAlertRulesV2RuleConditionConfigCompareListArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigCompareListArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigCompareListArray []GetAlertRulesV2RuleConditionConfigCompareListInput
+
+func (GetAlertRulesV2RuleConditionConfigCompareListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigCompareList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompareListArray) ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutput() GetAlertRulesV2RuleConditionConfigCompareListArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompareListArray) ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompareListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigCompareListArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompareListOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigCompareListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompareList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) ToGetAlertRulesV2RuleConditionConfigCompareListOutput() GetAlertRulesV2RuleConditionConfigCompareListOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) ToGetAlertRulesV2RuleConditionConfigCompareListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompareListOutput {
+	return o
+}
+
+// Aggregation Function.
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) Aggregate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompareList) string { return v.Aggregate }).(pulumi.StringOutput)
+}
+
+// Label filter operator.
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompareList) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Threshold.
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompareList) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// Year-over-year time unit.
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) YoyTimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompareList) string { return v.YoyTimeUnit }).(pulumi.StringOutput)
+}
+
+// Year-over-Year Time Value (Effective only when type=APM_SIMPLE and operator=YOY_UP or YOY_DOWN).
+func (o GetAlertRulesV2RuleConditionConfigCompareListOutput) YoyTimeValue() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompareList) int { return v.YoyTimeValue }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompareListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigCompareListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigCompareList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompareListArrayOutput) ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutput() GetAlertRulesV2RuleConditionConfigCompareListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompareListArrayOutput) ToGetAlertRulesV2RuleConditionConfigCompareListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompareListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompareListArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigCompareListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigCompareList {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigCompareList)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigCompareListOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalation struct {
+	// Trigger Condition List.
+	Escalations []GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation `pulumi:"escalations"`
+	// The logical relationship between conditions (type=APM_COMPOSITE).
+	Relation string `pulumi:"relation"`
+	// Severity Level.
+	Severity string `pulumi:"severity"`
+	// Consecutive Trigger Count.
+	Times int `pulumi:"times"`
+}
+
+// GetAlertRulesV2RuleConditionConfigCompositeEscalationInput is an input type that accepts GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs and GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigCompositeEscalationInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs{...}
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs struct {
+	// Trigger Condition List.
+	Escalations GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayInput `pulumi:"escalations"`
+	// The logical relationship between conditions (type=APM_COMPOSITE).
+	Relation pulumi.StringInput `pulumi:"relation"`
+	// Severity Level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Consecutive Trigger Count.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigCompositeEscalationArray and GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigCompositeEscalationArray{ GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs{...} }
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationArray []GetAlertRulesV2RuleConditionConfigCompositeEscalationInput
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationArray) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationArray) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput {
+	return o
+}
+
+// Trigger Condition List.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) Escalations() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalation) []GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation {
+		return v.Escalations
+	}).(GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput)
+}
+
+// The logical relationship between conditions (type=APM_COMPOSITE).
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) Relation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalation) string { return v.Relation }).(pulumi.StringOutput)
+}
+
+// Severity Level.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalation) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Consecutive Trigger Count.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalation) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigCompositeEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigCompositeEscalation {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigCompositeEscalation)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation struct {
+	// Comparison Operator.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// Metric Name.
+	MetricName string `pulumi:"metricName"`
+	// Collection Period (Seconds).
+	Period int `pulumi:"period"`
+	// Precondition.
+	PreCondition string `pulumi:"preCondition"`
+	// Statistical Method.
+	Statistics string `pulumi:"statistics"`
+	// Threshold.
+	Threshold string `pulumi:"threshold"`
+}
+
+// GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationInput is an input type that accepts GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs and GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs{...}
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs struct {
+	// Comparison Operator.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// Metric Name.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Collection Period (Seconds).
+	Period pulumi.IntInput `pulumi:"period"`
+	// Precondition.
+	PreCondition pulumi.StringInput `pulumi:"preCondition"`
+	// Statistical Method.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// Threshold.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray and GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray{ GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs{...} }
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray []GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationInput
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput {
+	return o
+}
+
+// Comparison Operator.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// Metric Name.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Collection Period (Seconds).
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// Precondition.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) PreCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation) string { return v.PreCondition }).(pulumi.StringOutput)
+}
+
+// Statistical Method.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// Threshold.
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalation)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigExpressEscalation struct {
+	// Raw Expression.
+	RawExpression string `pulumi:"rawExpression"`
+	// Severity Level.
+	Severity string `pulumi:"severity"`
+	// Consecutive Trigger Count.
+	Times int `pulumi:"times"`
+}
+
+// GetAlertRulesV2RuleConditionConfigExpressEscalationInput is an input type that accepts GetAlertRulesV2RuleConditionConfigExpressEscalationArgs and GetAlertRulesV2RuleConditionConfigExpressEscalationOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigExpressEscalationInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigExpressEscalationArgs{...}
+type GetAlertRulesV2RuleConditionConfigExpressEscalationInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutput() GetAlertRulesV2RuleConditionConfigExpressEscalationOutput
+	ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigExpressEscalationOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigExpressEscalationArgs struct {
+	// Raw Expression.
+	RawExpression pulumi.StringInput `pulumi:"rawExpression"`
+	// Severity Level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Consecutive Trigger Count.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigExpressEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigExpressEscalationArgs) ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutput() GetAlertRulesV2RuleConditionConfigExpressEscalationOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigExpressEscalationArgs) ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigExpressEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigExpressEscalationOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigExpressEscalationArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigExpressEscalationArray and GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigExpressEscalationArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigExpressEscalationArray{ GetAlertRulesV2RuleConditionConfigExpressEscalationArgs{...} }
+type GetAlertRulesV2RuleConditionConfigExpressEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigExpressEscalationArray []GetAlertRulesV2RuleConditionConfigExpressEscalationInput
+
+func (GetAlertRulesV2RuleConditionConfigExpressEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigExpressEscalationArray) ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigExpressEscalationArray) ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigExpressEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigExpressEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationOutput) ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutput() GetAlertRulesV2RuleConditionConfigExpressEscalationOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationOutput) ToGetAlertRulesV2RuleConditionConfigExpressEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigExpressEscalationOutput {
+	return o
+}
+
+// Raw Expression.
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationOutput) RawExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigExpressEscalation) string { return v.RawExpression }).(pulumi.StringOutput)
+}
+
+// Severity Level.
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigExpressEscalation) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Consecutive Trigger Count.
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigExpressEscalation) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigExpressEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigExpressEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigExpressEscalation {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigExpressEscalation)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigExpressEscalationOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigPrometheus struct {
+	// [Deprecated] Legacy PromQL field.
+	PromQl string `pulumi:"promQl"`
+	// Severity Level.
+	Severity string `pulumi:"severity"`
+	// Consecutive Trigger Count.
+	Times int `pulumi:"times"`
+}
+
+// GetAlertRulesV2RuleConditionConfigPrometheusInput is an input type that accepts GetAlertRulesV2RuleConditionConfigPrometheusArgs and GetAlertRulesV2RuleConditionConfigPrometheusOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigPrometheusInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigPrometheusArgs{...}
+type GetAlertRulesV2RuleConditionConfigPrometheusInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigPrometheusOutput() GetAlertRulesV2RuleConditionConfigPrometheusOutput
+	ToGetAlertRulesV2RuleConditionConfigPrometheusOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigPrometheusOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigPrometheusArgs struct {
+	// [Deprecated] Legacy PromQL field.
+	PromQl pulumi.StringInput `pulumi:"promQl"`
+	// Severity Level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Consecutive Trigger Count.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigPrometheusArgs) ToGetAlertRulesV2RuleConditionConfigPrometheusOutput() GetAlertRulesV2RuleConditionConfigPrometheusOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigPrometheusOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigPrometheusArgs) ToGetAlertRulesV2RuleConditionConfigPrometheusOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigPrometheusOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigPrometheusArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigPrometheusArray and GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigPrometheusArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigPrometheusArray{ GetAlertRulesV2RuleConditionConfigPrometheusArgs{...} }
+type GetAlertRulesV2RuleConditionConfigPrometheusArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutput() GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigPrometheusArray []GetAlertRulesV2RuleConditionConfigPrometheusInput
+
+func (GetAlertRulesV2RuleConditionConfigPrometheusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigPrometheusArray) ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutput() GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigPrometheusArray) ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigPrometheusOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigPrometheusOutput) ToGetAlertRulesV2RuleConditionConfigPrometheusOutput() GetAlertRulesV2RuleConditionConfigPrometheusOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigPrometheusOutput) ToGetAlertRulesV2RuleConditionConfigPrometheusOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigPrometheusOutput {
+	return o
+}
+
+// [Deprecated] Legacy PromQL field.
+func (o GetAlertRulesV2RuleConditionConfigPrometheusOutput) PromQl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigPrometheus) string { return v.PromQl }).(pulumi.StringOutput)
+}
+
+// Severity Level.
+func (o GetAlertRulesV2RuleConditionConfigPrometheusOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigPrometheus) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Consecutive Trigger Count.
+func (o GetAlertRulesV2RuleConditionConfigPrometheusOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigPrometheus) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigPrometheus)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput) ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutput() GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput) ToGetAlertRulesV2RuleConditionConfigPrometheusArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigPrometheusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigPrometheus {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigPrometheus)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigPrometheusOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalation struct {
+	// Trigger Condition List.
+	Escalations []GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation `pulumi:"escalations"`
+	// Metric Name.
+	MetricName string `pulumi:"metricName"`
+	// Collection Period (Seconds).
+	Period int `pulumi:"period"`
+}
+
+// GetAlertRulesV2RuleConditionConfigSimpleEscalationInput is an input type that accepts GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs and GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigSimpleEscalationInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs{...}
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs struct {
+	// Trigger Condition List.
+	Escalations GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayInput `pulumi:"escalations"`
+	// Metric Name.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Collection Period (Seconds).
+	Period pulumi.IntInput `pulumi:"period"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigSimpleEscalationArray and GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigSimpleEscalationArray{ GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs{...} }
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationArray []GetAlertRulesV2RuleConditionConfigSimpleEscalationInput
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationArray) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationArray) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput {
+	return o
+}
+
+// Trigger Condition List.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput) Escalations() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalation) []GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation {
+		return v.Escalations
+	}).(GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput)
+}
+
+// Metric Name.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalation) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Collection Period (Seconds).
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalation) int { return v.Period }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigSimpleEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigSimpleEscalation {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigSimpleEscalation)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation struct {
+	// Comparison Operator.
+	ComparisonOperator string `pulumi:"comparisonOperator"`
+	// Precondition.
+	PreCondition string `pulumi:"preCondition"`
+	// Severity Level.
+	Severity string `pulumi:"severity"`
+	// Statistical Method.
+	Statistics string `pulumi:"statistics"`
+	// Threshold.
+	Threshold string `pulumi:"threshold"`
+	// Consecutive Trigger Count.
+	Times int `pulumi:"times"`
+}
+
+// GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationInput is an input type that accepts GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs and GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs{...}
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs struct {
+	// Comparison Operator.
+	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
+	// Precondition.
+	PreCondition pulumi.StringInput `pulumi:"preCondition"`
+	// Severity Level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Statistical Method.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// Threshold.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// Consecutive Trigger Count.
+	Times pulumi.IntInput `pulumi:"times"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray and GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray{ GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs{...} }
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray []GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationInput
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput {
+	return o
+}
+
+// Comparison Operator.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) ComparisonOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation) string {
+		return v.ComparisonOperator
+	}).(pulumi.StringOutput)
+}
+
+// Precondition.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) PreCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation) string { return v.PreCondition }).(pulumi.StringOutput)
+}
+
+// Severity Level.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Statistical Method.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) Statistics() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation) string { return v.Statistics }).(pulumi.StringOutput)
+}
+
+// Threshold.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) Threshold() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation) string { return v.Threshold }).(pulumi.StringOutput)
+}
+
+// Consecutive Trigger Count.
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput) Times() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation) int { return v.Times }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput() GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput) ToGetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalation)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigThresholdList struct {
+	// Severity Level.
+	Severity string `pulumi:"severity"`
+	// Threshold.
+	Threshold float64 `pulumi:"threshold"`
+}
+
+// GetAlertRulesV2RuleConditionConfigThresholdListInput is an input type that accepts GetAlertRulesV2RuleConditionConfigThresholdListArgs and GetAlertRulesV2RuleConditionConfigThresholdListOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigThresholdListInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigThresholdListArgs{...}
+type GetAlertRulesV2RuleConditionConfigThresholdListInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigThresholdListOutput() GetAlertRulesV2RuleConditionConfigThresholdListOutput
+	ToGetAlertRulesV2RuleConditionConfigThresholdListOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigThresholdListOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigThresholdListArgs struct {
+	// Severity Level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Threshold.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+}
+
+func (GetAlertRulesV2RuleConditionConfigThresholdListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigThresholdListArgs) ToGetAlertRulesV2RuleConditionConfigThresholdListOutput() GetAlertRulesV2RuleConditionConfigThresholdListOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigThresholdListOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigThresholdListArgs) ToGetAlertRulesV2RuleConditionConfigThresholdListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigThresholdListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigThresholdListOutput)
+}
+
+// GetAlertRulesV2RuleConditionConfigThresholdListArrayInput is an input type that accepts GetAlertRulesV2RuleConditionConfigThresholdListArray and GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleConditionConfigThresholdListArrayInput` via:
+//
+//	GetAlertRulesV2RuleConditionConfigThresholdListArray{ GetAlertRulesV2RuleConditionConfigThresholdListArgs{...} }
+type GetAlertRulesV2RuleConditionConfigThresholdListArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutput() GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput
+	ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutputWithContext(context.Context) GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput
+}
+
+type GetAlertRulesV2RuleConditionConfigThresholdListArray []GetAlertRulesV2RuleConditionConfigThresholdListInput
+
+func (GetAlertRulesV2RuleConditionConfigThresholdListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleConditionConfigThresholdListArray) ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutput() GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput {
+	return i.ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleConditionConfigThresholdListArray) ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput)
+}
+
+type GetAlertRulesV2RuleConditionConfigThresholdListOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigThresholdListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigThresholdListOutput) ToGetAlertRulesV2RuleConditionConfigThresholdListOutput() GetAlertRulesV2RuleConditionConfigThresholdListOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigThresholdListOutput) ToGetAlertRulesV2RuleConditionConfigThresholdListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigThresholdListOutput {
+	return o
+}
+
+// Severity Level.
+func (o GetAlertRulesV2RuleConditionConfigThresholdListOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigThresholdList) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Threshold.
+func (o GetAlertRulesV2RuleConditionConfigThresholdListOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetAlertRulesV2RuleConditionConfigThresholdList) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+type GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleConditionConfigThresholdList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput) ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutput() GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput) ToGetAlertRulesV2RuleConditionConfigThresholdListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleConditionConfigThresholdListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleConditionConfigThresholdList {
+		return vs[0].([]GetAlertRulesV2RuleConditionConfigThresholdList)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleConditionConfigThresholdListOutput)
+}
+
+type GetAlertRulesV2RuleDatasourceConfig struct {
+	// The Prometheus instance ID.
+	InstanceId string `pulumi:"instanceId"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+	LegacyRaw string `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType string `pulumi:"legacyType"`
+	// The cloud service category.
+	ProductCategory string `pulumi:"productCategory"`
+	// The region ID.
+	RegionId string `pulumi:"regionId"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertRulesV2RuleDatasourceConfigInput is an input type that accepts GetAlertRulesV2RuleDatasourceConfigArgs and GetAlertRulesV2RuleDatasourceConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleDatasourceConfigInput` via:
+//
+//	GetAlertRulesV2RuleDatasourceConfigArgs{...}
+type GetAlertRulesV2RuleDatasourceConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleDatasourceConfigOutput() GetAlertRulesV2RuleDatasourceConfigOutput
+	ToGetAlertRulesV2RuleDatasourceConfigOutputWithContext(context.Context) GetAlertRulesV2RuleDatasourceConfigOutput
+}
+
+type GetAlertRulesV2RuleDatasourceConfigArgs struct {
+	// The Prometheus instance ID.
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+	LegacyRaw pulumi.StringInput `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType pulumi.StringInput `pulumi:"legacyType"`
+	// The cloud service category.
+	ProductCategory pulumi.StringInput `pulumi:"productCategory"`
+	// The region ID.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertRulesV2RuleDatasourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleDatasourceConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleDatasourceConfigArgs) ToGetAlertRulesV2RuleDatasourceConfigOutput() GetAlertRulesV2RuleDatasourceConfigOutput {
+	return i.ToGetAlertRulesV2RuleDatasourceConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleDatasourceConfigArgs) ToGetAlertRulesV2RuleDatasourceConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleDatasourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleDatasourceConfigOutput)
+}
+
+// GetAlertRulesV2RuleDatasourceConfigArrayInput is an input type that accepts GetAlertRulesV2RuleDatasourceConfigArray and GetAlertRulesV2RuleDatasourceConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleDatasourceConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleDatasourceConfigArray{ GetAlertRulesV2RuleDatasourceConfigArgs{...} }
+type GetAlertRulesV2RuleDatasourceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleDatasourceConfigArrayOutput() GetAlertRulesV2RuleDatasourceConfigArrayOutput
+	ToGetAlertRulesV2RuleDatasourceConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleDatasourceConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleDatasourceConfigArray []GetAlertRulesV2RuleDatasourceConfigInput
+
+func (GetAlertRulesV2RuleDatasourceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleDatasourceConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleDatasourceConfigArray) ToGetAlertRulesV2RuleDatasourceConfigArrayOutput() GetAlertRulesV2RuleDatasourceConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleDatasourceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleDatasourceConfigArray) ToGetAlertRulesV2RuleDatasourceConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleDatasourceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleDatasourceConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleDatasourceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleDatasourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleDatasourceConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) ToGetAlertRulesV2RuleDatasourceConfigOutput() GetAlertRulesV2RuleDatasourceConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) ToGetAlertRulesV2RuleDatasourceConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleDatasourceConfigOutput {
+	return o
+}
+
+// The Prometheus instance ID.
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleDatasourceConfig) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) LegacyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleDatasourceConfig) string { return v.LegacyRaw }).(pulumi.StringOutput)
+}
+
+// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) LegacyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleDatasourceConfig) string { return v.LegacyType }).(pulumi.StringOutput)
+}
+
+// The cloud service category.
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) ProductCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleDatasourceConfig) string { return v.ProductCategory }).(pulumi.StringOutput)
+}
+
+// The region ID.
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleDatasourceConfig) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleDatasourceConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleDatasourceConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleDatasourceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleDatasourceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleDatasourceConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleDatasourceConfigArrayOutput) ToGetAlertRulesV2RuleDatasourceConfigArrayOutput() GetAlertRulesV2RuleDatasourceConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleDatasourceConfigArrayOutput) ToGetAlertRulesV2RuleDatasourceConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleDatasourceConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleDatasourceConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleDatasourceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleDatasourceConfig {
+		return vs[0].([]GetAlertRulesV2RuleDatasourceConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleDatasourceConfigOutput)
+}
+
+type GetAlertRulesV2RuleNotifyConfig struct {
+	// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY).
+	ActiveDays []int `pulumi:"activeDays"`
+	// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+	ActiveEndTime string `pulumi:"activeEndTime"`
+	// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+	ActiveStartTime string `pulumi:"activeStartTime"`
+	// List of notification channels (type=DIRECT_NOTIFY).
+	Channels []GetAlertRulesV2RuleNotifyConfigChannel `pulumi:"channels"`
+	// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business).
+	NotifyStrategies []string `pulumi:"notifyStrategies"`
+	// The channel silence period in seconds (type=DIRECT_NOTIFY).
+	SilenceTimeSecs int `pulumi:"silenceTimeSecs"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+	// UTC time zone offset (type=DIRECT_NOTIFY).
+	UtcOffset string `pulumi:"utcOffset"`
+}
+
+// GetAlertRulesV2RuleNotifyConfigInput is an input type that accepts GetAlertRulesV2RuleNotifyConfigArgs and GetAlertRulesV2RuleNotifyConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleNotifyConfigInput` via:
+//
+//	GetAlertRulesV2RuleNotifyConfigArgs{...}
+type GetAlertRulesV2RuleNotifyConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleNotifyConfigOutput() GetAlertRulesV2RuleNotifyConfigOutput
+	ToGetAlertRulesV2RuleNotifyConfigOutputWithContext(context.Context) GetAlertRulesV2RuleNotifyConfigOutput
+}
+
+type GetAlertRulesV2RuleNotifyConfigArgs struct {
+	// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY).
+	ActiveDays pulumi.IntArrayInput `pulumi:"activeDays"`
+	// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+	ActiveEndTime pulumi.StringInput `pulumi:"activeEndTime"`
+	// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+	ActiveStartTime pulumi.StringInput `pulumi:"activeStartTime"`
+	// List of notification channels (type=DIRECT_NOTIFY).
+	Channels GetAlertRulesV2RuleNotifyConfigChannelArrayInput `pulumi:"channels"`
+	// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business).
+	NotifyStrategies pulumi.StringArrayInput `pulumi:"notifyStrategies"`
+	// The channel silence period in seconds (type=DIRECT_NOTIFY).
+	SilenceTimeSecs pulumi.IntInput `pulumi:"silenceTimeSecs"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// UTC time zone offset (type=DIRECT_NOTIFY).
+	UtcOffset pulumi.StringInput `pulumi:"utcOffset"`
+}
+
+func (GetAlertRulesV2RuleNotifyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigArgs) ToGetAlertRulesV2RuleNotifyConfigOutput() GetAlertRulesV2RuleNotifyConfigOutput {
+	return i.ToGetAlertRulesV2RuleNotifyConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigArgs) ToGetAlertRulesV2RuleNotifyConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleNotifyConfigOutput)
+}
+
+// GetAlertRulesV2RuleNotifyConfigArrayInput is an input type that accepts GetAlertRulesV2RuleNotifyConfigArray and GetAlertRulesV2RuleNotifyConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleNotifyConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleNotifyConfigArray{ GetAlertRulesV2RuleNotifyConfigArgs{...} }
+type GetAlertRulesV2RuleNotifyConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleNotifyConfigArrayOutput() GetAlertRulesV2RuleNotifyConfigArrayOutput
+	ToGetAlertRulesV2RuleNotifyConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleNotifyConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleNotifyConfigArray []GetAlertRulesV2RuleNotifyConfigInput
+
+func (GetAlertRulesV2RuleNotifyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleNotifyConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigArray) ToGetAlertRulesV2RuleNotifyConfigArrayOutput() GetAlertRulesV2RuleNotifyConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleNotifyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigArray) ToGetAlertRulesV2RuleNotifyConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleNotifyConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleNotifyConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleNotifyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigOutput) ToGetAlertRulesV2RuleNotifyConfigOutput() GetAlertRulesV2RuleNotifyConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigOutput) ToGetAlertRulesV2RuleNotifyConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigOutput {
+	return o
+}
+
+// The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) ActiveDays() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) []int { return v.ActiveDays }).(pulumi.IntArrayOutput)
+}
+
+// The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) ActiveEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) string { return v.ActiveEndTime }).(pulumi.StringOutput)
+}
+
+// The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) ActiveStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) string { return v.ActiveStartTime }).(pulumi.StringOutput)
+}
+
+// List of notification channels (type=DIRECT_NOTIFY).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) Channels() GetAlertRulesV2RuleNotifyConfigChannelArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) []GetAlertRulesV2RuleNotifyConfigChannel { return v.Channels }).(GetAlertRulesV2RuleNotifyConfigChannelArrayOutput)
+}
+
+// List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) NotifyStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) []string { return v.NotifyStrategies }).(pulumi.StringArrayOutput)
+}
+
+// The channel silence period in seconds (type=DIRECT_NOTIFY).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) SilenceTimeSecs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) int { return v.SilenceTimeSecs }).(pulumi.IntOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleNotifyConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// UTC time zone offset (type=DIRECT_NOTIFY).
+func (o GetAlertRulesV2RuleNotifyConfigOutput) UtcOffset() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfig) string { return v.UtcOffset }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleNotifyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleNotifyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleNotifyConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigArrayOutput) ToGetAlertRulesV2RuleNotifyConfigArrayOutput() GetAlertRulesV2RuleNotifyConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigArrayOutput) ToGetAlertRulesV2RuleNotifyConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleNotifyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleNotifyConfig {
+		return vs[0].([]GetAlertRulesV2RuleNotifyConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleNotifyConfigOutput)
+}
+
+type GetAlertRulesV2RuleNotifyConfigChannel struct {
+	// List of channel identifiers.
+	Identifiers []string `pulumi:"identifiers"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertRulesV2RuleNotifyConfigChannelInput is an input type that accepts GetAlertRulesV2RuleNotifyConfigChannelArgs and GetAlertRulesV2RuleNotifyConfigChannelOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleNotifyConfigChannelInput` via:
+//
+//	GetAlertRulesV2RuleNotifyConfigChannelArgs{...}
+type GetAlertRulesV2RuleNotifyConfigChannelInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleNotifyConfigChannelOutput() GetAlertRulesV2RuleNotifyConfigChannelOutput
+	ToGetAlertRulesV2RuleNotifyConfigChannelOutputWithContext(context.Context) GetAlertRulesV2RuleNotifyConfigChannelOutput
+}
+
+type GetAlertRulesV2RuleNotifyConfigChannelArgs struct {
+	// List of channel identifiers.
+	Identifiers pulumi.StringArrayInput `pulumi:"identifiers"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertRulesV2RuleNotifyConfigChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfigChannel)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigChannelArgs) ToGetAlertRulesV2RuleNotifyConfigChannelOutput() GetAlertRulesV2RuleNotifyConfigChannelOutput {
+	return i.ToGetAlertRulesV2RuleNotifyConfigChannelOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigChannelArgs) ToGetAlertRulesV2RuleNotifyConfigChannelOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleNotifyConfigChannelOutput)
+}
+
+// GetAlertRulesV2RuleNotifyConfigChannelArrayInput is an input type that accepts GetAlertRulesV2RuleNotifyConfigChannelArray and GetAlertRulesV2RuleNotifyConfigChannelArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleNotifyConfigChannelArrayInput` via:
+//
+//	GetAlertRulesV2RuleNotifyConfigChannelArray{ GetAlertRulesV2RuleNotifyConfigChannelArgs{...} }
+type GetAlertRulesV2RuleNotifyConfigChannelArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutput() GetAlertRulesV2RuleNotifyConfigChannelArrayOutput
+	ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutputWithContext(context.Context) GetAlertRulesV2RuleNotifyConfigChannelArrayOutput
+}
+
+type GetAlertRulesV2RuleNotifyConfigChannelArray []GetAlertRulesV2RuleNotifyConfigChannelInput
+
+func (GetAlertRulesV2RuleNotifyConfigChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleNotifyConfigChannel)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigChannelArray) ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutput() GetAlertRulesV2RuleNotifyConfigChannelArrayOutput {
+	return i.ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleNotifyConfigChannelArray) ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleNotifyConfigChannelArrayOutput)
+}
+
+type GetAlertRulesV2RuleNotifyConfigChannelOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleNotifyConfigChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfigChannel)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigChannelOutput) ToGetAlertRulesV2RuleNotifyConfigChannelOutput() GetAlertRulesV2RuleNotifyConfigChannelOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigChannelOutput) ToGetAlertRulesV2RuleNotifyConfigChannelOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigChannelOutput {
+	return o
+}
+
+// List of channel identifiers.
+func (o GetAlertRulesV2RuleNotifyConfigChannelOutput) Identifiers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfigChannel) []string { return v.Identifiers }).(pulumi.StringArrayOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleNotifyConfigChannelOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleNotifyConfigChannel) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleNotifyConfigChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleNotifyConfigChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleNotifyConfigChannel)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigChannelArrayOutput) ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutput() GetAlertRulesV2RuleNotifyConfigChannelArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigChannelArrayOutput) ToGetAlertRulesV2RuleNotifyConfigChannelArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleNotifyConfigChannelArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleNotifyConfigChannelArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleNotifyConfigChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleNotifyConfigChannel {
+		return vs[0].([]GetAlertRulesV2RuleNotifyConfigChannel)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleNotifyConfigChannelOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfig struct {
+	// The dimension list (type=CLOUD_MONITORING_QUERY).
+	Dimensions []map[string]string `pulumi:"dimensions"`
+	// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY).
+	EnableDataCompleteCheck bool `pulumi:"enableDataCompleteCheck"`
+	// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY).
+	EntityDomain string `pulumi:"entityDomain"`
+	// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY).
+	EntityFields []GetAlertRulesV2RuleQueryConfigEntityField `pulumi:"entityFields"`
+	// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY).
+	EntityFilters []GetAlertRulesV2RuleQueryConfigEntityFilter `pulumi:"entityFilters"`
+	// Entity type (type=UMODEL_METRICSET_QUERY).
+	EntityType string `pulumi:"entityType"`
+	// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field).
+	Expr string `pulumi:"expr"`
+	// The APM filter condition list (type=APM_MULTI_QUERY).
+	FilterLists []GetAlertRulesV2RuleQueryConfigFilterList `pulumi:"filterLists"`
+	// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP).
+	GroupId string `pulumi:"groupId"`
+	// List of label filter conditions (type=UMODEL_METRICSET_QUERY).
+	LabelFilters []GetAlertRulesV2RuleQueryConfigLabelFilter `pulumi:"labelFilters"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+	LegacyRaw string `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType string `pulumi:"legacyType"`
+	// APM measure configuration list (type=APM_MULTI_QUERY).
+	MeasureLists []GetAlertRulesV2RuleQueryConfigMeasureList `pulumi:"measureLists"`
+	// Metric name (type=UMODEL_METRICSET_QUERY).
+	Metric string `pulumi:"metric"`
+	// Metric set name (type=UMODEL_METRICSET_QUERY).
+	MetricSet string `pulumi:"metricSet"`
+	// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY).
+	Namespace string `pulumi:"namespace"`
+	// [Deprecated] Legacy PromQL field.
+	PromQl string `pulumi:"promQl"`
+	// Resource association type (type=CLOUD_MONITORING_QUERY).
+	RelationType string `pulumi:"relationType"`
+	// Application Service ID List (type=APM_MULTI_QUERY).
+	ServiceIdLists []string `pulumi:"serviceIdLists"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertRulesV2RuleQueryConfigInput is an input type that accepts GetAlertRulesV2RuleQueryConfigArgs and GetAlertRulesV2RuleQueryConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigArgs{...}
+type GetAlertRulesV2RuleQueryConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigOutput() GetAlertRulesV2RuleQueryConfigOutput
+	ToGetAlertRulesV2RuleQueryConfigOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigArgs struct {
+	// The dimension list (type=CLOUD_MONITORING_QUERY).
+	Dimensions pulumi.StringMapArrayInput `pulumi:"dimensions"`
+	// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY).
+	EnableDataCompleteCheck pulumi.BoolInput `pulumi:"enableDataCompleteCheck"`
+	// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY).
+	EntityDomain pulumi.StringInput `pulumi:"entityDomain"`
+	// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY).
+	EntityFields GetAlertRulesV2RuleQueryConfigEntityFieldArrayInput `pulumi:"entityFields"`
+	// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY).
+	EntityFilters GetAlertRulesV2RuleQueryConfigEntityFilterArrayInput `pulumi:"entityFilters"`
+	// Entity type (type=UMODEL_METRICSET_QUERY).
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field).
+	Expr pulumi.StringInput `pulumi:"expr"`
+	// The APM filter condition list (type=APM_MULTI_QUERY).
+	FilterLists GetAlertRulesV2RuleQueryConfigFilterListArrayInput `pulumi:"filterLists"`
+	// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP).
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// List of label filter conditions (type=UMODEL_METRICSET_QUERY).
+	LabelFilters GetAlertRulesV2RuleQueryConfigLabelFilterArrayInput `pulumi:"labelFilters"`
+	// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+	LegacyRaw pulumi.StringInput `pulumi:"legacyRaw"`
+	// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+	LegacyType pulumi.StringInput `pulumi:"legacyType"`
+	// APM measure configuration list (type=APM_MULTI_QUERY).
+	MeasureLists GetAlertRulesV2RuleQueryConfigMeasureListArrayInput `pulumi:"measureLists"`
+	// Metric name (type=UMODEL_METRICSET_QUERY).
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// Metric set name (type=UMODEL_METRICSET_QUERY).
+	MetricSet pulumi.StringInput `pulumi:"metricSet"`
+	// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY).
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// [Deprecated] Legacy PromQL field.
+	PromQl pulumi.StringInput `pulumi:"promQl"`
+	// Resource association type (type=CLOUD_MONITORING_QUERY).
+	RelationType pulumi.StringInput `pulumi:"relationType"`
+	// Application Service ID List (type=APM_MULTI_QUERY).
+	ServiceIdLists pulumi.StringArrayInput `pulumi:"serviceIdLists"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertRulesV2RuleQueryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigArgs) ToGetAlertRulesV2RuleQueryConfigOutput() GetAlertRulesV2RuleQueryConfigOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigArgs) ToGetAlertRulesV2RuleQueryConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigOutput)
+}
+
+// GetAlertRulesV2RuleQueryConfigArrayInput is an input type that accepts GetAlertRulesV2RuleQueryConfigArray and GetAlertRulesV2RuleQueryConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigArray{ GetAlertRulesV2RuleQueryConfigArgs{...} }
+type GetAlertRulesV2RuleQueryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigArrayOutput() GetAlertRulesV2RuleQueryConfigArrayOutput
+	ToGetAlertRulesV2RuleQueryConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigArray []GetAlertRulesV2RuleQueryConfigInput
+
+func (GetAlertRulesV2RuleQueryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigArray) ToGetAlertRulesV2RuleQueryConfigArrayOutput() GetAlertRulesV2RuleQueryConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigArray) ToGetAlertRulesV2RuleQueryConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigOutput) ToGetAlertRulesV2RuleQueryConfigOutput() GetAlertRulesV2RuleQueryConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigOutput) ToGetAlertRulesV2RuleQueryConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigOutput {
+	return o
+}
+
+// The dimension list (type=CLOUD_MONITORING_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) Dimensions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []map[string]string { return v.Dimensions }).(pulumi.StringMapArrayOutput)
+}
+
+// Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) EnableDataCompleteCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) bool { return v.EnableDataCompleteCheck }).(pulumi.BoolOutput)
+}
+
+// Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) EntityDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.EntityDomain }).(pulumi.StringOutput)
+}
+
+// List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) EntityFields() GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []GetAlertRulesV2RuleQueryConfigEntityField {
+		return v.EntityFields
+	}).(GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput)
+}
+
+// The list of entity filter conditions (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) EntityFilters() GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []GetAlertRulesV2RuleQueryConfigEntityFilter {
+		return v.EntityFilters
+	}).(GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput)
+}
+
+// Entity type (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field).
+func (o GetAlertRulesV2RuleQueryConfigOutput) Expr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.Expr }).(pulumi.StringOutput)
+}
+
+// The APM filter condition list (type=APM_MULTI_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) FilterLists() GetAlertRulesV2RuleQueryConfigFilterListArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []GetAlertRulesV2RuleQueryConfigFilterList {
+		return v.FilterLists
+	}).(GetAlertRulesV2RuleQueryConfigFilterListArrayOutput)
+}
+
+// Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP).
+func (o GetAlertRulesV2RuleQueryConfigOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// List of label filter conditions (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) LabelFilters() GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []GetAlertRulesV2RuleQueryConfigLabelFilter {
+		return v.LabelFilters
+	}).(GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput)
+}
+
+// The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails.
+func (o GetAlertRulesV2RuleQueryConfigOutput) LegacyRaw() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.LegacyRaw }).(pulumi.StringOutput)
+}
+
+// Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+func (o GetAlertRulesV2RuleQueryConfigOutput) LegacyType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.LegacyType }).(pulumi.StringOutput)
+}
+
+// APM measure configuration list (type=APM_MULTI_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) MeasureLists() GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []GetAlertRulesV2RuleQueryConfigMeasureList {
+		return v.MeasureLists
+	}).(GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput)
+}
+
+// Metric name (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// Metric set name (type=UMODEL_METRICSET_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) MetricSet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.MetricSet }).(pulumi.StringOutput)
+}
+
+// CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// [Deprecated] Legacy PromQL field.
+func (o GetAlertRulesV2RuleQueryConfigOutput) PromQl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.PromQl }).(pulumi.StringOutput)
+}
+
+// Resource association type (type=CLOUD_MONITORING_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) RelationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.RelationType }).(pulumi.StringOutput)
+}
+
+// Application Service ID List (type=APM_MULTI_QUERY).
+func (o GetAlertRulesV2RuleQueryConfigOutput) ServiceIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) []string { return v.ServiceIdLists }).(pulumi.StringArrayOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleQueryConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigArrayOutput) ToGetAlertRulesV2RuleQueryConfigArrayOutput() GetAlertRulesV2RuleQueryConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigArrayOutput) ToGetAlertRulesV2RuleQueryConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleQueryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleQueryConfig {
+		return vs[0].([]GetAlertRulesV2RuleQueryConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleQueryConfigOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityField struct {
+	// The entity filter field name.
+	Field string `pulumi:"field"`
+	// Label value.
+	Value string `pulumi:"value"`
+}
+
+// GetAlertRulesV2RuleQueryConfigEntityFieldInput is an input type that accepts GetAlertRulesV2RuleQueryConfigEntityFieldArgs and GetAlertRulesV2RuleQueryConfigEntityFieldOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigEntityFieldInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigEntityFieldArgs{...}
+type GetAlertRulesV2RuleQueryConfigEntityFieldInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigEntityFieldOutput() GetAlertRulesV2RuleQueryConfigEntityFieldOutput
+	ToGetAlertRulesV2RuleQueryConfigEntityFieldOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigEntityFieldOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFieldArgs struct {
+	// The entity filter field name.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlertRulesV2RuleQueryConfigEntityFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityField)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFieldArgs) ToGetAlertRulesV2RuleQueryConfigEntityFieldOutput() GetAlertRulesV2RuleQueryConfigEntityFieldOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigEntityFieldOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFieldArgs) ToGetAlertRulesV2RuleQueryConfigEntityFieldOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigEntityFieldOutput)
+}
+
+// GetAlertRulesV2RuleQueryConfigEntityFieldArrayInput is an input type that accepts GetAlertRulesV2RuleQueryConfigEntityFieldArray and GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigEntityFieldArrayInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigEntityFieldArray{ GetAlertRulesV2RuleQueryConfigEntityFieldArgs{...} }
+type GetAlertRulesV2RuleQueryConfigEntityFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput() GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput
+	ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFieldArray []GetAlertRulesV2RuleQueryConfigEntityFieldInput
+
+func (GetAlertRulesV2RuleQueryConfigEntityFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigEntityField)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFieldArray) ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput() GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFieldArray) ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFieldOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigEntityFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityField)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldOutput) ToGetAlertRulesV2RuleQueryConfigEntityFieldOutput() GetAlertRulesV2RuleQueryConfigEntityFieldOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldOutput) ToGetAlertRulesV2RuleQueryConfigEntityFieldOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFieldOutput {
+	return o
+}
+
+// The entity filter field name.
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigEntityField) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigEntityField) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigEntityField)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput) ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput() GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput) ToGetAlertRulesV2RuleQueryConfigEntityFieldArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleQueryConfigEntityFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleQueryConfigEntityField {
+		return vs[0].([]GetAlertRulesV2RuleQueryConfigEntityField)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleQueryConfigEntityFieldOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFilter struct {
+	// The entity filter field name.
+	Field string `pulumi:"field"`
+	// Label filter operator.
+	Operator string `pulumi:"operator"`
+	// Label value.
+	Value string `pulumi:"value"`
+}
+
+// GetAlertRulesV2RuleQueryConfigEntityFilterInput is an input type that accepts GetAlertRulesV2RuleQueryConfigEntityFilterArgs and GetAlertRulesV2RuleQueryConfigEntityFilterOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigEntityFilterInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigEntityFilterArgs{...}
+type GetAlertRulesV2RuleQueryConfigEntityFilterInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigEntityFilterOutput() GetAlertRulesV2RuleQueryConfigEntityFilterOutput
+	ToGetAlertRulesV2RuleQueryConfigEntityFilterOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigEntityFilterOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFilterArgs struct {
+	// The entity filter field name.
+	Field pulumi.StringInput `pulumi:"field"`
+	// Label filter operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlertRulesV2RuleQueryConfigEntityFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFilterArgs) ToGetAlertRulesV2RuleQueryConfigEntityFilterOutput() GetAlertRulesV2RuleQueryConfigEntityFilterOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigEntityFilterOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFilterArgs) ToGetAlertRulesV2RuleQueryConfigEntityFilterOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigEntityFilterOutput)
+}
+
+// GetAlertRulesV2RuleQueryConfigEntityFilterArrayInput is an input type that accepts GetAlertRulesV2RuleQueryConfigEntityFilterArray and GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigEntityFilterArrayInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigEntityFilterArray{ GetAlertRulesV2RuleQueryConfigEntityFilterArgs{...} }
+type GetAlertRulesV2RuleQueryConfigEntityFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput() GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput
+	ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFilterArray []GetAlertRulesV2RuleQueryConfigEntityFilterInput
+
+func (GetAlertRulesV2RuleQueryConfigEntityFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFilterArray) ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput() GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigEntityFilterArray) ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFilterOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigEntityFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterOutput) ToGetAlertRulesV2RuleQueryConfigEntityFilterOutput() GetAlertRulesV2RuleQueryConfigEntityFilterOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterOutput) ToGetAlertRulesV2RuleQueryConfigEntityFilterOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFilterOutput {
+	return o
+}
+
+// The entity filter field name.
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigEntityFilter) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Label filter operator.
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigEntityFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigEntityFilter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigEntityFilter)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput) ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput() GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput) ToGetAlertRulesV2RuleQueryConfigEntityFilterArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleQueryConfigEntityFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleQueryConfigEntityFilter {
+		return vs[0].([]GetAlertRulesV2RuleQueryConfigEntityFilter)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleQueryConfigEntityFilterOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigFilterList struct {
+	// APM filter dimension key.
+	Key string `pulumi:"key"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+	// Label value.
+	Value string `pulumi:"value"`
+}
+
+// GetAlertRulesV2RuleQueryConfigFilterListInput is an input type that accepts GetAlertRulesV2RuleQueryConfigFilterListArgs and GetAlertRulesV2RuleQueryConfigFilterListOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigFilterListInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigFilterListArgs{...}
+type GetAlertRulesV2RuleQueryConfigFilterListInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigFilterListOutput() GetAlertRulesV2RuleQueryConfigFilterListOutput
+	ToGetAlertRulesV2RuleQueryConfigFilterListOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigFilterListOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigFilterListArgs struct {
+	// APM filter dimension key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlertRulesV2RuleQueryConfigFilterListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigFilterList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigFilterListArgs) ToGetAlertRulesV2RuleQueryConfigFilterListOutput() GetAlertRulesV2RuleQueryConfigFilterListOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigFilterListOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigFilterListArgs) ToGetAlertRulesV2RuleQueryConfigFilterListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigFilterListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigFilterListOutput)
+}
+
+// GetAlertRulesV2RuleQueryConfigFilterListArrayInput is an input type that accepts GetAlertRulesV2RuleQueryConfigFilterListArray and GetAlertRulesV2RuleQueryConfigFilterListArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigFilterListArrayInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigFilterListArray{ GetAlertRulesV2RuleQueryConfigFilterListArgs{...} }
+type GetAlertRulesV2RuleQueryConfigFilterListArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutput() GetAlertRulesV2RuleQueryConfigFilterListArrayOutput
+	ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigFilterListArrayOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigFilterListArray []GetAlertRulesV2RuleQueryConfigFilterListInput
+
+func (GetAlertRulesV2RuleQueryConfigFilterListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigFilterList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigFilterListArray) ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutput() GetAlertRulesV2RuleQueryConfigFilterListArrayOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigFilterListArray) ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigFilterListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigFilterListArrayOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigFilterListOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigFilterListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigFilterList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigFilterListOutput) ToGetAlertRulesV2RuleQueryConfigFilterListOutput() GetAlertRulesV2RuleQueryConfigFilterListOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigFilterListOutput) ToGetAlertRulesV2RuleQueryConfigFilterListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigFilterListOutput {
+	return o
+}
+
+// APM filter dimension key.
+func (o GetAlertRulesV2RuleQueryConfigFilterListOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigFilterList) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleQueryConfigFilterListOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigFilterList) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetAlertRulesV2RuleQueryConfigFilterListOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigFilterList) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigFilterListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigFilterListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigFilterList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigFilterListArrayOutput) ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutput() GetAlertRulesV2RuleQueryConfigFilterListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigFilterListArrayOutput) ToGetAlertRulesV2RuleQueryConfigFilterListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigFilterListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigFilterListArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleQueryConfigFilterListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleQueryConfigFilterList {
+		return vs[0].([]GetAlertRulesV2RuleQueryConfigFilterList)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleQueryConfigFilterListOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigLabelFilter struct {
+	// Label name.
+	Name string `pulumi:"name"`
+	// Label filter operator.
+	Operator string `pulumi:"operator"`
+	// Label value.
+	Value string `pulumi:"value"`
+}
+
+// GetAlertRulesV2RuleQueryConfigLabelFilterInput is an input type that accepts GetAlertRulesV2RuleQueryConfigLabelFilterArgs and GetAlertRulesV2RuleQueryConfigLabelFilterOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigLabelFilterInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigLabelFilterArgs{...}
+type GetAlertRulesV2RuleQueryConfigLabelFilterInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigLabelFilterOutput() GetAlertRulesV2RuleQueryConfigLabelFilterOutput
+	ToGetAlertRulesV2RuleQueryConfigLabelFilterOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigLabelFilterOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigLabelFilterArgs struct {
+	// Label name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Label filter operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Label value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlertRulesV2RuleQueryConfigLabelFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigLabelFilterArgs) ToGetAlertRulesV2RuleQueryConfigLabelFilterOutput() GetAlertRulesV2RuleQueryConfigLabelFilterOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigLabelFilterOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigLabelFilterArgs) ToGetAlertRulesV2RuleQueryConfigLabelFilterOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigLabelFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigLabelFilterOutput)
+}
+
+// GetAlertRulesV2RuleQueryConfigLabelFilterArrayInput is an input type that accepts GetAlertRulesV2RuleQueryConfigLabelFilterArray and GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigLabelFilterArrayInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigLabelFilterArray{ GetAlertRulesV2RuleQueryConfigLabelFilterArgs{...} }
+type GetAlertRulesV2RuleQueryConfigLabelFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput() GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput
+	ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigLabelFilterArray []GetAlertRulesV2RuleQueryConfigLabelFilterInput
+
+func (GetAlertRulesV2RuleQueryConfigLabelFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigLabelFilterArray) ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput() GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigLabelFilterArray) ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigLabelFilterOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigLabelFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterOutput) ToGetAlertRulesV2RuleQueryConfigLabelFilterOutput() GetAlertRulesV2RuleQueryConfigLabelFilterOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterOutput) ToGetAlertRulesV2RuleQueryConfigLabelFilterOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigLabelFilterOutput {
+	return o
+}
+
+// Label name.
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigLabelFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Label filter operator.
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigLabelFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Label value.
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigLabelFilter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigLabelFilter)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput) ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput() GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput) ToGetAlertRulesV2RuleQueryConfigLabelFilterArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleQueryConfigLabelFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleQueryConfigLabelFilter {
+		return vs[0].([]GetAlertRulesV2RuleQueryConfigLabelFilter)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleQueryConfigLabelFilterOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigMeasureList struct {
+	// Grouping dimension list.
+	GroupBies []string `pulumi:"groupBies"`
+	// APM metric code.
+	MeasureCode string `pulumi:"measureCode"`
+	// Query Time Window (Seconds).
+	WindowSecs int `pulumi:"windowSecs"`
+}
+
+// GetAlertRulesV2RuleQueryConfigMeasureListInput is an input type that accepts GetAlertRulesV2RuleQueryConfigMeasureListArgs and GetAlertRulesV2RuleQueryConfigMeasureListOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigMeasureListInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigMeasureListArgs{...}
+type GetAlertRulesV2RuleQueryConfigMeasureListInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigMeasureListOutput() GetAlertRulesV2RuleQueryConfigMeasureListOutput
+	ToGetAlertRulesV2RuleQueryConfigMeasureListOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigMeasureListOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigMeasureListArgs struct {
+	// Grouping dimension list.
+	GroupBies pulumi.StringArrayInput `pulumi:"groupBies"`
+	// APM metric code.
+	MeasureCode pulumi.StringInput `pulumi:"measureCode"`
+	// Query Time Window (Seconds).
+	WindowSecs pulumi.IntInput `pulumi:"windowSecs"`
+}
+
+func (GetAlertRulesV2RuleQueryConfigMeasureListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigMeasureList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigMeasureListArgs) ToGetAlertRulesV2RuleQueryConfigMeasureListOutput() GetAlertRulesV2RuleQueryConfigMeasureListOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigMeasureListOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigMeasureListArgs) ToGetAlertRulesV2RuleQueryConfigMeasureListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigMeasureListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigMeasureListOutput)
+}
+
+// GetAlertRulesV2RuleQueryConfigMeasureListArrayInput is an input type that accepts GetAlertRulesV2RuleQueryConfigMeasureListArray and GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleQueryConfigMeasureListArrayInput` via:
+//
+//	GetAlertRulesV2RuleQueryConfigMeasureListArray{ GetAlertRulesV2RuleQueryConfigMeasureListArgs{...} }
+type GetAlertRulesV2RuleQueryConfigMeasureListArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutput() GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput
+	ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutputWithContext(context.Context) GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput
+}
+
+type GetAlertRulesV2RuleQueryConfigMeasureListArray []GetAlertRulesV2RuleQueryConfigMeasureListInput
+
+func (GetAlertRulesV2RuleQueryConfigMeasureListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigMeasureList)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleQueryConfigMeasureListArray) ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutput() GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput {
+	return i.ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleQueryConfigMeasureListArray) ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigMeasureListOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigMeasureListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigMeasureList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigMeasureListOutput) ToGetAlertRulesV2RuleQueryConfigMeasureListOutput() GetAlertRulesV2RuleQueryConfigMeasureListOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigMeasureListOutput) ToGetAlertRulesV2RuleQueryConfigMeasureListOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigMeasureListOutput {
+	return o
+}
+
+// Grouping dimension list.
+func (o GetAlertRulesV2RuleQueryConfigMeasureListOutput) GroupBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigMeasureList) []string { return v.GroupBies }).(pulumi.StringArrayOutput)
+}
+
+// APM metric code.
+func (o GetAlertRulesV2RuleQueryConfigMeasureListOutput) MeasureCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigMeasureList) string { return v.MeasureCode }).(pulumi.StringOutput)
+}
+
+// Query Time Window (Seconds).
+func (o GetAlertRulesV2RuleQueryConfigMeasureListOutput) WindowSecs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleQueryConfigMeasureList) int { return v.WindowSecs }).(pulumi.IntOutput)
+}
+
+type GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleQueryConfigMeasureList)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput) ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutput() GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput) ToGetAlertRulesV2RuleQueryConfigMeasureListArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleQueryConfigMeasureListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleQueryConfigMeasureList {
+		return vs[0].([]GetAlertRulesV2RuleQueryConfigMeasureList)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleQueryConfigMeasureListOutput)
+}
+
+type GetAlertRulesV2RuleScheduleConfig struct {
+	// The scheduling interval in seconds.
+	IntervalSecs int `pulumi:"intervalSecs"`
+	// The scheduling type.
+	Type string `pulumi:"type"`
+}
+
+// GetAlertRulesV2RuleScheduleConfigInput is an input type that accepts GetAlertRulesV2RuleScheduleConfigArgs and GetAlertRulesV2RuleScheduleConfigOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleScheduleConfigInput` via:
+//
+//	GetAlertRulesV2RuleScheduleConfigArgs{...}
+type GetAlertRulesV2RuleScheduleConfigInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleScheduleConfigOutput() GetAlertRulesV2RuleScheduleConfigOutput
+	ToGetAlertRulesV2RuleScheduleConfigOutputWithContext(context.Context) GetAlertRulesV2RuleScheduleConfigOutput
+}
+
+type GetAlertRulesV2RuleScheduleConfigArgs struct {
+	// The scheduling interval in seconds.
+	IntervalSecs pulumi.IntInput `pulumi:"intervalSecs"`
+	// The scheduling type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAlertRulesV2RuleScheduleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleScheduleConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleScheduleConfigArgs) ToGetAlertRulesV2RuleScheduleConfigOutput() GetAlertRulesV2RuleScheduleConfigOutput {
+	return i.ToGetAlertRulesV2RuleScheduleConfigOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleScheduleConfigArgs) ToGetAlertRulesV2RuleScheduleConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleScheduleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleScheduleConfigOutput)
+}
+
+// GetAlertRulesV2RuleScheduleConfigArrayInput is an input type that accepts GetAlertRulesV2RuleScheduleConfigArray and GetAlertRulesV2RuleScheduleConfigArrayOutput values.
+// You can construct a concrete instance of `GetAlertRulesV2RuleScheduleConfigArrayInput` via:
+//
+//	GetAlertRulesV2RuleScheduleConfigArray{ GetAlertRulesV2RuleScheduleConfigArgs{...} }
+type GetAlertRulesV2RuleScheduleConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAlertRulesV2RuleScheduleConfigArrayOutput() GetAlertRulesV2RuleScheduleConfigArrayOutput
+	ToGetAlertRulesV2RuleScheduleConfigArrayOutputWithContext(context.Context) GetAlertRulesV2RuleScheduleConfigArrayOutput
+}
+
+type GetAlertRulesV2RuleScheduleConfigArray []GetAlertRulesV2RuleScheduleConfigInput
+
+func (GetAlertRulesV2RuleScheduleConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleScheduleConfig)(nil)).Elem()
+}
+
+func (i GetAlertRulesV2RuleScheduleConfigArray) ToGetAlertRulesV2RuleScheduleConfigArrayOutput() GetAlertRulesV2RuleScheduleConfigArrayOutput {
+	return i.ToGetAlertRulesV2RuleScheduleConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlertRulesV2RuleScheduleConfigArray) ToGetAlertRulesV2RuleScheduleConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleScheduleConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlertRulesV2RuleScheduleConfigArrayOutput)
+}
+
+type GetAlertRulesV2RuleScheduleConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleScheduleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlertRulesV2RuleScheduleConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleScheduleConfigOutput) ToGetAlertRulesV2RuleScheduleConfigOutput() GetAlertRulesV2RuleScheduleConfigOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleScheduleConfigOutput) ToGetAlertRulesV2RuleScheduleConfigOutputWithContext(ctx context.Context) GetAlertRulesV2RuleScheduleConfigOutput {
+	return o
+}
+
+// The scheduling interval in seconds.
+func (o GetAlertRulesV2RuleScheduleConfigOutput) IntervalSecs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleScheduleConfig) int { return v.IntervalSecs }).(pulumi.IntOutput)
+}
+
+// The scheduling type.
+func (o GetAlertRulesV2RuleScheduleConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlertRulesV2RuleScheduleConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAlertRulesV2RuleScheduleConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlertRulesV2RuleScheduleConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlertRulesV2RuleScheduleConfig)(nil)).Elem()
+}
+
+func (o GetAlertRulesV2RuleScheduleConfigArrayOutput) ToGetAlertRulesV2RuleScheduleConfigArrayOutput() GetAlertRulesV2RuleScheduleConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleScheduleConfigArrayOutput) ToGetAlertRulesV2RuleScheduleConfigArrayOutputWithContext(ctx context.Context) GetAlertRulesV2RuleScheduleConfigArrayOutput {
+	return o
+}
+
+func (o GetAlertRulesV2RuleScheduleConfigArrayOutput) Index(i pulumi.IntInput) GetAlertRulesV2RuleScheduleConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlertRulesV2RuleScheduleConfig {
+		return vs[0].([]GetAlertRulesV2RuleScheduleConfig)[vs[1].(int)]
+	}).(GetAlertRulesV2RuleScheduleConfigOutput)
+}
+
 type GetDynamicTagGroupsGroup struct {
 	// The ID of the tag rule.
 	DynamicTagRuleId string `pulumi:"dynamicTagRuleId"`
@@ -12435,6 +19159,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusArrayInput)(nil)).Elem(), AlarmPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmTargetInput)(nil)).Elem(), AlarmTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmTargetArrayInput)(nil)).Elem(), AlarmTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ActionIntegrationConfigInput)(nil)).Elem(), AlertRuleV2ActionIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ActionIntegrationConfigPtrInput)(nil)).Elem(), AlertRuleV2ActionIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ArmsIntegrationConfigInput)(nil)).Elem(), AlertRuleV2ArmsIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ArmsIntegrationConfigPtrInput)(nil)).Elem(), AlertRuleV2ArmsIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigInput)(nil)).Elem(), AlertRuleV2ConditionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigPtrInput)(nil)).Elem(), AlertRuleV2ConditionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigCompareListInput)(nil)).Elem(), AlertRuleV2ConditionConfigCompareListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigCompareListArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigCompareListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalationInput)(nil)).Elem(), AlertRuleV2ConditionConfigCompositeEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalationArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigCompositeEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalationEscalationInput)(nil)).Elem(), AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigCompositeEscalationEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigExpressEscalationInput)(nil)).Elem(), AlertRuleV2ConditionConfigExpressEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigExpressEscalationArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigExpressEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigPrometheusInput)(nil)).Elem(), AlertRuleV2ConditionConfigPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigPrometheusArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigPrometheusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalationInput)(nil)).Elem(), AlertRuleV2ConditionConfigSimpleEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalationArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigSimpleEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalationEscalationInput)(nil)).Elem(), AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigSimpleEscalationEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigThresholdListInput)(nil)).Elem(), AlertRuleV2ConditionConfigThresholdListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ConditionConfigThresholdListArrayInput)(nil)).Elem(), AlertRuleV2ConditionConfigThresholdListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2DatasourceConfigInput)(nil)).Elem(), AlertRuleV2DatasourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2DatasourceConfigPtrInput)(nil)).Elem(), AlertRuleV2DatasourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2NotifyConfigInput)(nil)).Elem(), AlertRuleV2NotifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2NotifyConfigPtrInput)(nil)).Elem(), AlertRuleV2NotifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2NotifyConfigChannelInput)(nil)).Elem(), AlertRuleV2NotifyConfigChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2NotifyConfigChannelArrayInput)(nil)).Elem(), AlertRuleV2NotifyConfigChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigInput)(nil)).Elem(), AlertRuleV2QueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigPtrInput)(nil)).Elem(), AlertRuleV2QueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigEntityFieldInput)(nil)).Elem(), AlertRuleV2QueryConfigEntityFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigEntityFieldArrayInput)(nil)).Elem(), AlertRuleV2QueryConfigEntityFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigEntityFilterInput)(nil)).Elem(), AlertRuleV2QueryConfigEntityFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigEntityFilterArrayInput)(nil)).Elem(), AlertRuleV2QueryConfigEntityFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigFilterListInput)(nil)).Elem(), AlertRuleV2QueryConfigFilterListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigFilterListArrayInput)(nil)).Elem(), AlertRuleV2QueryConfigFilterListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigLabelFilterInput)(nil)).Elem(), AlertRuleV2QueryConfigLabelFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigLabelFilterArrayInput)(nil)).Elem(), AlertRuleV2QueryConfigLabelFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigMeasureListInput)(nil)).Elem(), AlertRuleV2QueryConfigMeasureListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2QueryConfigMeasureListArrayInput)(nil)).Elem(), AlertRuleV2QueryConfigMeasureListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ScheduleConfigInput)(nil)).Elem(), AlertRuleV2ScheduleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRuleV2ScheduleConfigPtrInput)(nil)).Elem(), AlertRuleV2ScheduleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleContactParameterInput)(nil)).Elem(), EventRuleContactParameterArgs{})
@@ -12507,6 +19273,50 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupArrayInput)(nil)).Elem(), GetAlarmContactGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactInput)(nil)).Elem(), GetAlarmContactsContactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactsContactArrayInput)(nil)).Elem(), GetAlarmContactsContactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleInput)(nil)).Elem(), GetAlertRulesV2RuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleArrayInput)(nil)).Elem(), GetAlertRulesV2RuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleActionIntegrationConfigInput)(nil)).Elem(), GetAlertRulesV2RuleActionIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleActionIntegrationConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleActionIntegrationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleArmsIntegrationConfigInput)(nil)).Elem(), GetAlertRulesV2RuleArmsIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleArmsIntegrationConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleArmsIntegrationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompareListInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigCompareListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompareListArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigCompareListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalationInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigCompositeEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigCompositeEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigExpressEscalationInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigExpressEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigExpressEscalationArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigExpressEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigPrometheusInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigPrometheusArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigPrometheusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalationInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigSimpleEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigSimpleEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigThresholdListInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigThresholdListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleConditionConfigThresholdListArrayInput)(nil)).Elem(), GetAlertRulesV2RuleConditionConfigThresholdListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleDatasourceConfigInput)(nil)).Elem(), GetAlertRulesV2RuleDatasourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleDatasourceConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleDatasourceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfigInput)(nil)).Elem(), GetAlertRulesV2RuleNotifyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleNotifyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfigChannelInput)(nil)).Elem(), GetAlertRulesV2RuleNotifyConfigChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleNotifyConfigChannelArrayInput)(nil)).Elem(), GetAlertRulesV2RuleNotifyConfigChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityFieldInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigEntityFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityFieldArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigEntityFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityFilterInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigEntityFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigEntityFilterArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigEntityFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigFilterListInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigFilterListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigFilterListArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigFilterListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigLabelFilterInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigLabelFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigLabelFilterArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigLabelFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigMeasureListInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigMeasureListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleQueryConfigMeasureListArrayInput)(nil)).Elem(), GetAlertRulesV2RuleQueryConfigMeasureListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleScheduleConfigInput)(nil)).Elem(), GetAlertRulesV2RuleScheduleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlertRulesV2RuleScheduleConfigArrayInput)(nil)).Elem(), GetAlertRulesV2RuleScheduleConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupInput)(nil)).Elem(), GetDynamicTagGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupArrayInput)(nil)).Elem(), GetDynamicTagGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDynamicTagGroupsGroupMatchExpressInput)(nil)).Elem(), GetDynamicTagGroupsGroupMatchExpressArgs{})
@@ -12597,6 +19407,48 @@ func init() {
 	pulumi.RegisterOutputType(AlarmPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(AlarmTargetOutput{})
 	pulumi.RegisterOutputType(AlarmTargetArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ActionIntegrationConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ActionIntegrationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ArmsIntegrationConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ArmsIntegrationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigCompareListOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigCompareListArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigCompositeEscalationOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigCompositeEscalationArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigCompositeEscalationEscalationOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigCompositeEscalationEscalationArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigExpressEscalationOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigExpressEscalationArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigPrometheusOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigPrometheusArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigSimpleEscalationOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigSimpleEscalationArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigSimpleEscalationEscalationOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigSimpleEscalationEscalationArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigThresholdListOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ConditionConfigThresholdListArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2DatasourceConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2DatasourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2NotifyConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2NotifyConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2NotifyConfigChannelOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2NotifyConfigChannelArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigEntityFieldOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigEntityFieldArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigEntityFilterOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigEntityFilterArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigFilterListOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigFilterListArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigLabelFilterOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigLabelFilterArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigMeasureListOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2QueryConfigMeasureListArrayOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ScheduleConfigOutput{})
+	pulumi.RegisterOutputType(AlertRuleV2ScheduleConfigPtrOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
 	pulumi.RegisterOutputType(EventRuleContactParameterOutput{})
@@ -12669,6 +19521,50 @@ func init() {
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactsContactArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleActionIntegrationConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleActionIntegrationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleArmsIntegrationConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleArmsIntegrationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigCompareListOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigCompareListArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigCompositeEscalationOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigCompositeEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigCompositeEscalationEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigExpressEscalationOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigExpressEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigPrometheusOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigPrometheusArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigSimpleEscalationOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigSimpleEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigSimpleEscalationEscalationArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigThresholdListOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleConditionConfigThresholdListArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleDatasourceConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleDatasourceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleNotifyConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleNotifyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleNotifyConfigChannelOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleNotifyConfigChannelArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigEntityFieldOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigEntityFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigEntityFilterOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigEntityFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigFilterListOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigFilterListArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigLabelFilterOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigLabelFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigMeasureListOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleQueryConfigMeasureListArrayOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleScheduleConfigOutput{})
+	pulumi.RegisterOutputType(GetAlertRulesV2RuleScheduleConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetDynamicTagGroupsGroupMatchExpressOutput{})

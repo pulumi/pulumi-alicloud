@@ -324,6 +324,12 @@ namespace Pulumi.AliCloud.Vpn
         [Input("enableIpsec")]
         public bool? EnableIpsec { get; set; }
 
+        /// <summary>
+        /// Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+        /// </summary>
+        [Input("gatewayType")]
+        public string? GatewayType { get; set; }
+
         [Input("ids")]
         private List<string>? _ids;
 
@@ -392,6 +398,12 @@ namespace Pulumi.AliCloud.Vpn
         [Input("enableIpsec")]
         public Input<bool>? EnableIpsec { get; set; }
 
+        /// <summary>
+        /// Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+        /// </summary>
+        [Input("gatewayType")]
+        public Input<string>? GatewayType { get; set; }
+
         [Input("ids")]
         private InputList<string>? _ids;
 
@@ -458,6 +470,7 @@ namespace Pulumi.AliCloud.Vpn
         /// Whether the ipsec function is enabled.
         /// </summary>
         public readonly bool? EnableIpsec;
+        public readonly string? GatewayType;
         /// <summary>
         /// A list of VPN gateways. Each element contains the following attributes:
         /// </summary>
@@ -496,6 +509,8 @@ namespace Pulumi.AliCloud.Vpn
 
             bool? enableIpsec,
 
+            string? gatewayType,
+
             ImmutableArray<Outputs.GetGatewaysGatewayResult> gateways,
 
             string id,
@@ -518,6 +533,7 @@ namespace Pulumi.AliCloud.Vpn
         {
             BusinessStatus = businessStatus;
             EnableIpsec = enableIpsec;
+            GatewayType = gatewayType;
             Gateways = gateways;
             Id = id;
             Ids = ids;

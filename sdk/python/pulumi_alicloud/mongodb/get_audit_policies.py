@@ -44,6 +44,9 @@ class GetAuditPoliciesResult:
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> _builtins.str:
+        """
+        The ID of the instance.
+        """
         return pulumi.get(self, "db_instance_id")
 
     @_builtins.property
@@ -62,6 +65,9 @@ class GetAuditPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetAuditPoliciesPolicyResult']:
+        """
+        A list of Mongodb Audit Policies. Each element contains the following attributes:
+        """
         return pulumi.get(self, "policies")
 
 
@@ -83,7 +89,7 @@ def get_audit_policies(db_instance_id: Optional[_builtins.str] = None,
     """
     This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 
@@ -118,7 +124,7 @@ def get_audit_policies_output(db_instance_id: pulumi.Input[Optional[_builtins.st
     """
     This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.148.0+.
+    > **NOTE:** Available since v1.148.0.
 
     ## Example Usage
 

@@ -53,7 +53,7 @@ class NetworkArgs:
         :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname
+        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to enable the IPv6 network segment. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Force delete vpc or not.
@@ -194,7 +194,7 @@ class NetworkArgs:
     @pulumi.getter(name="dnsHostnameStatus")
     def dns_hostname_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of VPC DNS Hostname
+        The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "dns_hostname_status")
 
@@ -484,7 +484,7 @@ class _NetworkState:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VPC.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname
+        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to enable the IPv6 network segment. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Force delete vpc or not.
@@ -660,7 +660,7 @@ class _NetworkState:
     @pulumi.getter(name="dnsHostnameStatus")
     def dns_hostname_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of VPC DNS Hostname
+        The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "dns_hostname_status")
 
@@ -1064,7 +1064,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] classic_link_enabled: The status of ClassicLink function.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname
+        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to enable the IPv6 network segment. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Force delete vpc or not.
@@ -1282,7 +1282,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the VPC.
         :param pulumi.Input[_builtins.str] description: The new description of the VPC.
                The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname
+        :param pulumi.Input[_builtins.str] dns_hostname_status: The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value:
         :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to enable the IPv6 network segment. Value:
         :param pulumi.Input[_builtins.bool] force_delete: Force delete vpc or not.
@@ -1400,7 +1400,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="dnsHostnameStatus")
     def dns_hostname_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of VPC DNS Hostname
+        The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "dns_hostname_status")
 

@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.esa.CacheReserveInstance("default", {
  *     quotaGb: 10240,
  *     crRegion: "CN-beijing",
- *     autoRenew: true,
  *     period: 1,
  *     paymentType: "Subscription",
  *     autoPay: true,

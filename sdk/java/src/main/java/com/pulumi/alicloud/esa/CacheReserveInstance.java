@@ -54,7 +54,6 @@ import javax.annotation.Nullable;
  *         var default_ = new CacheReserveInstance("default", CacheReserveInstanceArgs.builder()
  *             .quotaGb(10240)
  *             .crRegion("CN-beijing")
- *             .autoRenew(true)
  *             .period(1)
  *             .paymentType("Subscription")
  *             .autoPay(true)

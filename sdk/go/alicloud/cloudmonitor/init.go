@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceGroupMonitoringAgentProcess{}
 	case "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite":
 		r = &ServiceHybridDoubleWrite{}
+	case "alicloud:cloudmonitor/serviceMetricAlarmRule:ServiceMetricAlarmRule":
+		r = &ServiceMetricAlarmRule{}
 	case "alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess":
 		r = &ServiceMonitoringAgentProcess{}
 	default:
@@ -69,6 +71,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudmonitor/serviceHybridDoubleWrite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudmonitor/serviceMetricAlarmRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -55,6 +55,10 @@ import * as utilities from "../utilities";
  *     templateName: defaultTemplate.templateName,
  *     description: "From TF Test",
  *     parameters: "\\t\\t\\t\\t{\\\"Status\\\":\\\"Running\\\"}\n",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "execution Test",
+ *     },
  * });
  * ```
  *
@@ -161,6 +165,10 @@ export class Execution extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly statusMessage: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
     declare public readonly templateContent: pulumi.Output<string | undefined>;
@@ -210,6 +218,7 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["startDate"] = state?.startDate;
             resourceInputs["status"] = state?.status;
             resourceInputs["statusMessage"] = state?.statusMessage;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["templateContent"] = state?.templateContent;
             resourceInputs["templateId"] = state?.templateId;
             resourceInputs["templateName"] = state?.templateName;
@@ -226,6 +235,7 @@ export class Execution extends pulumi.CustomResource {
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["parentExecutionId"] = args?.parentExecutionId;
             resourceInputs["safetyCheck"] = args?.safetyCheck;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["templateContent"] = args?.templateContent;
             resourceInputs["templateName"] = args?.templateName;
             resourceInputs["templateVersion"] = args?.templateVersion;
@@ -316,6 +326,10 @@ export interface ExecutionState {
      */
     statusMessage?: pulumi.Input<string | undefined>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */
     templateContent?: pulumi.Input<string | undefined>;
@@ -365,6 +379,10 @@ export interface ExecutionArgs {
      * The mode of safety check.
      */
     safetyCheck?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
      */

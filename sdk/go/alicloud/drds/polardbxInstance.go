@@ -98,7 +98,7 @@ import (
 type PolardbxInstance struct {
 	pulumi.CustomResourceState
 
-	// Compute node specifications.
+	// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	CnClass pulumi.StringOutput `pulumi:"cnClass"`
 	// Number of computing nodes.
 	CnNodeCount pulumi.IntOutput `pulumi:"cnNodeCount"`
@@ -106,10 +106,12 @@ type PolardbxInstance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Instance remarks
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Storage node specifications.
+	// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	DnClass pulumi.StringOutput `pulumi:"dnClass"`
 	// The number of storage nodes.
 	DnNodeCount pulumi.IntOutput `pulumi:"dnNodeCount"`
+	// Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+	DnStorageSpace pulumi.StringOutput `pulumi:"dnStorageSpace"`
 	// Engine version, default 5.7
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Whether the instance is read-only.
@@ -126,8 +128,18 @@ type PolardbxInstance struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Secondary availability zone.
 	SecondaryZone pulumi.StringPtrOutput `pulumi:"secondaryZone"`
+	// Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+	SpecifiedDnScale pulumi.BoolPtrOutput `pulumi:"specifiedDnScale"`
+	// JSON string describing the per-DN target specification during a class change.
+	SpecifiedDnSpecMapJson pulumi.StringPtrOutput `pulumi:"specifiedDnSpecMapJson"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Storage type of the instance. Valid values:
+	StorageType pulumi.StringOutput `pulumi:"storageType"`
+	// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
+	// Effective time policy applied to a class change. Valid values:
+	SwitchTimeMode pulumi.StringPtrOutput `pulumi:"switchTimeMode"`
 	// Third Availability Zone.
 	TertiaryZone pulumi.StringPtrOutput `pulumi:"tertiaryZone"`
 	// Topology type:
@@ -192,7 +204,7 @@ func GetPolardbxInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PolardbxInstance resources.
 type polardbxInstanceState struct {
-	// Compute node specifications.
+	// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	CnClass *string `pulumi:"cnClass"`
 	// Number of computing nodes.
 	CnNodeCount *int `pulumi:"cnNodeCount"`
@@ -200,10 +212,12 @@ type polardbxInstanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Instance remarks
 	Description *string `pulumi:"description"`
-	// Storage node specifications.
+	// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	DnClass *string `pulumi:"dnClass"`
 	// The number of storage nodes.
 	DnNodeCount *int `pulumi:"dnNodeCount"`
+	// Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+	DnStorageSpace *string `pulumi:"dnStorageSpace"`
 	// Engine version, default 5.7
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Whether the instance is read-only.
@@ -220,8 +234,18 @@ type polardbxInstanceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Secondary availability zone.
 	SecondaryZone *string `pulumi:"secondaryZone"`
+	// Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+	SpecifiedDnScale *bool `pulumi:"specifiedDnScale"`
+	// JSON string describing the per-DN target specification during a class change.
+	SpecifiedDnSpecMapJson *string `pulumi:"specifiedDnSpecMapJson"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
+	// Storage type of the instance. Valid values:
+	StorageType *string `pulumi:"storageType"`
+	// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+	SwitchTime *string `pulumi:"switchTime"`
+	// Effective time policy applied to a class change. Valid values:
+	SwitchTimeMode *string `pulumi:"switchTimeMode"`
 	// Third Availability Zone.
 	TertiaryZone *string `pulumi:"tertiaryZone"`
 	// Topology type:
@@ -233,7 +257,7 @@ type polardbxInstanceState struct {
 }
 
 type PolardbxInstanceState struct {
-	// Compute node specifications.
+	// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	CnClass pulumi.StringPtrInput
 	// Number of computing nodes.
 	CnNodeCount pulumi.IntPtrInput
@@ -241,10 +265,12 @@ type PolardbxInstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Instance remarks
 	Description pulumi.StringPtrInput
-	// Storage node specifications.
+	// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	DnClass pulumi.StringPtrInput
 	// The number of storage nodes.
 	DnNodeCount pulumi.IntPtrInput
+	// Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+	DnStorageSpace pulumi.StringPtrInput
 	// Engine version, default 5.7
 	EngineVersion pulumi.StringPtrInput
 	// Whether the instance is read-only.
@@ -261,8 +287,18 @@ type PolardbxInstanceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Secondary availability zone.
 	SecondaryZone pulumi.StringPtrInput
+	// Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+	SpecifiedDnScale pulumi.BoolPtrInput
+	// JSON string describing the per-DN target specification during a class change.
+	SpecifiedDnSpecMapJson pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
+	// Storage type of the instance. Valid values:
+	StorageType pulumi.StringPtrInput
+	// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+	SwitchTime pulumi.StringPtrInput
+	// Effective time policy applied to a class change. Valid values:
+	SwitchTimeMode pulumi.StringPtrInput
 	// Third Availability Zone.
 	TertiaryZone pulumi.StringPtrInput
 	// Topology type:
@@ -278,16 +314,18 @@ func (PolardbxInstanceState) ElementType() reflect.Type {
 }
 
 type polardbxInstanceArgs struct {
-	// Compute node specifications.
+	// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	CnClass string `pulumi:"cnClass"`
 	// Number of computing nodes.
 	CnNodeCount int `pulumi:"cnNodeCount"`
 	// Instance remarks
 	Description *string `pulumi:"description"`
-	// Storage node specifications.
+	// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	DnClass string `pulumi:"dnClass"`
 	// The number of storage nodes.
 	DnNodeCount int `pulumi:"dnNodeCount"`
+	// Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+	DnStorageSpace *string `pulumi:"dnStorageSpace"`
 	// Engine version, default 5.7
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Whether the instance is read-only.
@@ -302,6 +340,16 @@ type polardbxInstanceArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Secondary availability zone.
 	SecondaryZone *string `pulumi:"secondaryZone"`
+	// Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+	SpecifiedDnScale *bool `pulumi:"specifiedDnScale"`
+	// JSON string describing the per-DN target specification during a class change.
+	SpecifiedDnSpecMapJson *string `pulumi:"specifiedDnSpecMapJson"`
+	// Storage type of the instance. Valid values:
+	StorageType *string `pulumi:"storageType"`
+	// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+	SwitchTime *string `pulumi:"switchTime"`
+	// Effective time policy applied to a class change. Valid values:
+	SwitchTimeMode *string `pulumi:"switchTimeMode"`
 	// Third Availability Zone.
 	TertiaryZone *string `pulumi:"tertiaryZone"`
 	// Topology type:
@@ -314,16 +362,18 @@ type polardbxInstanceArgs struct {
 
 // The set of arguments for constructing a PolardbxInstance resource.
 type PolardbxInstanceArgs struct {
-	// Compute node specifications.
+	// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	CnClass pulumi.StringInput
 	// Number of computing nodes.
 	CnNodeCount pulumi.IntInput
 	// Instance remarks
 	Description pulumi.StringPtrInput
-	// Storage node specifications.
+	// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 	DnClass pulumi.StringInput
 	// The number of storage nodes.
 	DnNodeCount pulumi.IntInput
+	// Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+	DnStorageSpace pulumi.StringPtrInput
 	// Engine version, default 5.7
 	EngineVersion pulumi.StringPtrInput
 	// Whether the instance is read-only.
@@ -338,6 +388,16 @@ type PolardbxInstanceArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Secondary availability zone.
 	SecondaryZone pulumi.StringPtrInput
+	// Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+	SpecifiedDnScale pulumi.BoolPtrInput
+	// JSON string describing the per-DN target specification during a class change.
+	SpecifiedDnSpecMapJson pulumi.StringPtrInput
+	// Storage type of the instance. Valid values:
+	StorageType pulumi.StringPtrInput
+	// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+	SwitchTime pulumi.StringPtrInput
+	// Effective time policy applied to a class change. Valid values:
+	SwitchTimeMode pulumi.StringPtrInput
 	// Third Availability Zone.
 	TertiaryZone pulumi.StringPtrInput
 	// Topology type:
@@ -435,7 +495,7 @@ func (o PolardbxInstanceOutput) ToPolardbxInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// Compute node specifications.
+// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 func (o PolardbxInstanceOutput) CnClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.CnClass }).(pulumi.StringOutput)
 }
@@ -455,7 +515,7 @@ func (o PolardbxInstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Storage node specifications.
+// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
 func (o PolardbxInstanceOutput) DnClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.DnClass }).(pulumi.StringOutput)
 }
@@ -463,6 +523,11 @@ func (o PolardbxInstanceOutput) DnClass() pulumi.StringOutput {
 // The number of storage nodes.
 func (o PolardbxInstanceOutput) DnNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.IntOutput { return v.DnNodeCount }).(pulumi.IntOutput)
+}
+
+// Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+func (o PolardbxInstanceOutput) DnStorageSpace() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.DnStorageSpace }).(pulumi.StringOutput)
 }
 
 // Engine version, default 5.7
@@ -502,9 +567,34 @@ func (o PolardbxInstanceOutput) SecondaryZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
 
+// Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+func (o PolardbxInstanceOutput) SpecifiedDnScale() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.BoolPtrOutput { return v.SpecifiedDnScale }).(pulumi.BoolPtrOutput)
+}
+
+// JSON string describing the per-DN target specification during a class change.
+func (o PolardbxInstanceOutput) SpecifiedDnSpecMapJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.SpecifiedDnSpecMapJson }).(pulumi.StringPtrOutput)
+}
+
 // The status of the resource
 func (o PolardbxInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Storage type of the instance. Valid values:
+func (o PolardbxInstanceOutput) StorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+func (o PolardbxInstanceOutput) SwitchTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.SwitchTime }).(pulumi.StringPtrOutput)
+}
+
+// Effective time policy applied to a class change. Valid values:
+func (o PolardbxInstanceOutput) SwitchTimeMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolardbxInstance) pulumi.StringPtrOutput { return v.SwitchTimeMode }).(pulumi.StringPtrOutput)
 }
 
 // Third Availability Zone.

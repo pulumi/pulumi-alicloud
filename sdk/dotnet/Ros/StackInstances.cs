@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.Ros
     /// 
     /// 5. **Parameter Sensitivity**: The `ParameterValue` field in `ParameterOverrides` is marked as sensitive. Values will be masked in Terraform output and logs for security.
     /// 
-    /// 6. **ForceNew Parameters**: Most parameters (`StackGroupName`, `RegionIds`, `AccountIds`, `DeploymentTargets`, `DisableRollback`, `DeploymentOptions`) require resource recreation if modified. Only `ParameterOverrides`, `OperationPreferences`, `TimeoutInMinutes`, and `OperationDescription` support in-place updates.
+    /// 6. **ForceNew Parameters**: Most parameters (`StackGroupName`, `RegionIds`, `AccountIds`, `DisableRollback`, `DeploymentOptions`) require resource recreation if modified. `ParameterOverrides`, `OperationPreferences`, `TimeoutInMinutes`, `OperationDescription`, and `DeploymentTargets` support in-place updates.
     /// 
     /// 7. **Empty Results**: If your deployment targets result in no stack instances being created (e.g., targeting an empty folder), the `StackInstances` attribute will be an empty list. This is expected behavior and does not indicate an error.
     /// 
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Ros
         public Output<string?> DeploymentOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `AccountIds`. This parameter cannot be modified after creation. See `DeploymentTargets` below.
+        /// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `AccountIds`. Changes to `RdFolderIds` and `AccountIds` within this block support in-place updates. See `DeploymentTargets` below.
         /// 
         /// &gt; **NOTE:** You must specify either `AccountIds` (for self-managed permissions) or `DeploymentTargets` (for service-managed permissions), but not both.
         /// </summary>
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? DeploymentOptions { get; set; }
 
         /// <summary>
-        /// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `AccountIds`. This parameter cannot be modified after creation. See `DeploymentTargets` below.
+        /// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `AccountIds`. Changes to `RdFolderIds` and `AccountIds` within this block support in-place updates. See `DeploymentTargets` below.
         /// 
         /// &gt; **NOTE:** You must specify either `AccountIds` (for self-managed permissions) or `DeploymentTargets` (for service-managed permissions), but not both.
         /// </summary>
@@ -337,7 +337,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? DeploymentOptions { get; set; }
 
         /// <summary>
-        /// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `AccountIds`. This parameter cannot be modified after creation. See `DeploymentTargets` below.
+        /// Configuration block defining deployment targets for service-managed permissions model. This parameter conflicts with `AccountIds`. Changes to `RdFolderIds` and `AccountIds` within this block support in-place updates. See `DeploymentTargets` below.
         /// 
         /// &gt; **NOTE:** You must specify either `AccountIds` (for self-managed permissions) or `DeploymentTargets` (for service-managed permissions), but not both.
         /// </summary>

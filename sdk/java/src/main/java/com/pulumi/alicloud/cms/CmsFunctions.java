@@ -8,6 +8,8 @@ import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetAlarmContactGroupsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetAlarmContactsArgs;
 import com.pulumi.alicloud.cms.inputs.GetAlarmContactsPlainArgs;
+import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2PlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetDynamicTagGroupsPlainArgs;
 import com.pulumi.alicloud.cms.inputs.GetEventRulesArgs;
@@ -38,6 +40,7 @@ import com.pulumi.alicloud.cms.inputs.GetSlsGroupsArgs;
 import com.pulumi.alicloud.cms.inputs.GetSlsGroupsPlainArgs;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetAlarmContactsResult;
+import com.pulumi.alicloud.cms.outputs.GetAlertRulesV2Result;
 import com.pulumi.alicloud.cms.outputs.GetDynamicTagGroupsResult;
 import com.pulumi.alicloud.cms.outputs.GetEventRulesResult;
 import com.pulumi.alicloud.cms.outputs.GetGroupMetricRulesResult;
@@ -682,6 +685,755 @@ public final class CmsFunctions {
      */
     public static CompletableFuture<GetAlarmContactsResult> getAlarmContactsPlain(GetAlarmContactsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cms/getAlarmContacts:getAlarmContacts", TypeShape.of(GetAlarmContactsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlertRulesV2Result> getAlertRulesV2() {
+        return getAlertRulesV2(GetAlertRulesV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAlertRulesV2Result> getAlertRulesV2Plain() {
+        return getAlertRulesV2Plain(GetAlertRulesV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlertRulesV2Result> getAlertRulesV2(GetAlertRulesV2Args args) {
+        return getAlertRulesV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAlertRulesV2Result> getAlertRulesV2Plain(GetAlertRulesV2PlainArgs args) {
+        return getAlertRulesV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlertRulesV2Result> getAlertRulesV2(GetAlertRulesV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getAlertRulesV2:getAlertRulesV2", TypeShape.of(GetAlertRulesV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAlertRulesV2Result> getAlertRulesV2(GetAlertRulesV2Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cms/getAlertRulesV2:getAlertRulesV2", TypeShape.of(GetAlertRulesV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cms Alert Rule V2 available to the user.[What is Alert Rule V2](https://next.api.alibabacloud.com/document/Cms/2024-03-30/ManageAlertRules)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cms.AlertRuleV2;
+     * import com.pulumi.alicloud.cms.AlertRuleV2Args;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ScheduleConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2DatasourceConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ActionIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ArmsIntegrationConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2QueryConfigLabelFilterArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2NotifyConfigChannelArgs;
+     * import com.pulumi.alicloud.cms.inputs.AlertRuleV2ConditionConfigArgs;
+     * import com.pulumi.alicloud.cms.CmsFunctions;
+     * import com.pulumi.alicloud.cms.inputs.GetAlertRulesV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultAlertRuleV2 = new AlertRuleV2("defaultAlertRuleV2", AlertRuleV2Args.builder()
+     *             .contentTemplate("umodel test alert on ${metric}")
+     *             .scheduleConfig(AlertRuleV2ScheduleConfigArgs.builder()
+     *                 .type("FIXED")
+     *                 .intervalSecs(60)
+     *                 .build())
+     *             .datasourceConfig(AlertRuleV2DatasourceConfigArgs.builder()
+     *                 .type("UMODEL")
+     *                 .build())
+     *             .actionIntegrationConfig(AlertRuleV2ActionIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .armsIntegrationConfig(AlertRuleV2ArmsIntegrationConfigArgs.builder()
+     *                 .enabled(false)
+     *                 .build())
+     *             .queryConfig(AlertRuleV2QueryConfigArgs.builder()
+     *                 .entityType("instance")
+     *                 .type("UMODEL_METRICSET_QUERY")
+     *                 .entityDomain("ecs")
+     *                 .metric("CPUUtilization")
+     *                 .labelFilters(                
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("web-server")
+     *                         .name("app")
+     *                         .build(),
+     *                     AlertRuleV2QueryConfigLabelFilterArgs.builder()
+     *                         .operator("=")
+     *                         .value("production")
+     *                         .name("env")
+     *                         .build())
+     *                 .metricSet("acs_ecs_dashboard")
+     *                 .build())
+     *             .displayName("regression-umodel-10")
+     *             .enabled(true)
+     *             .notifyConfig(AlertRuleV2NotifyConfigArgs.builder()
+     *                 .type("DIRECT_NOTIFY")
+     *                 .channels(AlertRuleV2NotifyConfigChannelArgs.builder()
+     *                     .type("GROUP")
+     *                     .identifiers("regression-test")
+     *                     .build())
+     *                 .build())
+     *             .conditionConfig(AlertRuleV2ConditionConfigArgs.builder()
+     *                 .operator("GT")
+     *                 .type("UMODEL_METRICSET_CONDITION")
+     *                 .severity("CRITICAL")
+     *                 .durationSecs(60)
+     *                 .threshold(90.0)
+     *                 .build())
+     *             .build());
+     * 
+     *         final var default = CmsFunctions.getAlertRulesV2(GetAlertRulesV2Args.builder()
+     *             .ids(defaultAlertRuleV2.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCmsAlertRuleV2ExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAlertRulesV2Result> getAlertRulesV2Plain(GetAlertRulesV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cms/getAlertRulesV2:getAlertRulesV2", TypeShape.of(GetAlertRulesV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cms Dynamic Tag Groups of the current Alibaba Cloud user.

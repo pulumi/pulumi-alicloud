@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ArtifactLifecycleRuleArgs, ArtifactLifecycleRuleState } from "./artifactLifecycleRule";
+export type ArtifactLifecycleRule = import("./artifactLifecycleRule").ArtifactLifecycleRule;
+export const ArtifactLifecycleRule: typeof import("./artifactLifecycleRule").ArtifactLifecycleRule = null as any;
+utilities.lazyLoad(exports, ["ArtifactLifecycleRule"], () => require("./artifactLifecycleRule"));
+
 export { ChainArgs, ChainState } from "./chain";
 export type Chain = import("./chain").Chain;
 export const Chain: typeof import("./chain").Chain = null as any;
@@ -24,6 +29,11 @@ export { EndpointAclPolicyArgs, EndpointAclPolicyState } from "./endpointAclPoli
 export type EndpointAclPolicy = import("./endpointAclPolicy").EndpointAclPolicy;
 export const EndpointAclPolicy: typeof import("./endpointAclPolicy").EndpointAclPolicy = null as any;
 utilities.lazyLoad(exports, ["EndpointAclPolicy"], () => require("./endpointAclPolicy"));
+
+export { GetArtifactLifecycleRulesArgs, GetArtifactLifecycleRulesResult, GetArtifactLifecycleRulesOutputArgs } from "./getArtifactLifecycleRules";
+export const getArtifactLifecycleRules: typeof import("./getArtifactLifecycleRules").getArtifactLifecycleRules = null as any;
+export const getArtifactLifecycleRulesOutput: typeof import("./getArtifactLifecycleRules").getArtifactLifecycleRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getArtifactLifecycleRules","getArtifactLifecycleRulesOutput"], () => require("./getArtifactLifecycleRules"));
 
 export { GetChainsArgs, GetChainsResult, GetChainsOutputArgs } from "./getChains";
 export const getChains: typeof import("./getChains").getChains = null as any;
@@ -105,6 +115,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:cr/artifactLifecycleRule:ArtifactLifecycleRule":
+                return new ArtifactLifecycleRule(name, <any>undefined, { urn })
             case "alicloud:cr/chain:Chain":
                 return new Chain(name, <any>undefined, { urn })
             case "alicloud:cr/chartNamespace:ChartNamespace":
@@ -130,6 +142,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "cr/artifactLifecycleRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chartNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/chartRepository", _module)

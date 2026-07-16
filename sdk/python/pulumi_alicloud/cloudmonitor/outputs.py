@@ -19,6 +19,15 @@ __all__ = [
     'ServiceGroupMonitoringAgentProcessAlertConfig',
     'ServiceGroupMonitoringAgentProcessAlertConfigTargetList',
     'ServiceGroupMonitoringAgentProcessMatchExpress',
+    'ServiceMetricAlarmRuleCompositeExpression',
+    'ServiceMetricAlarmRuleCompositeExpressionExpressionList',
+    'ServiceMetricAlarmRuleEscalations',
+    'ServiceMetricAlarmRuleEscalationsCritical',
+    'ServiceMetricAlarmRuleEscalationsInfo',
+    'ServiceMetricAlarmRuleEscalationsWarn',
+    'ServiceMetricAlarmRuleLabel',
+    'ServiceMetricAlarmRulePrometheus',
+    'ServiceMetricAlarmRulePrometheusAnnotation',
     'GetServiceHybridDoubleWritesHybridDoubleWriteResult',
     'GetServiceMetricAlarmRulesRuleResult',
     'GetServiceMetricAlarmRulesRuleCompositeExpressionResult',
@@ -285,6 +294,589 @@ class ServiceGroupMonitoringAgentProcessMatchExpress(dict):
 
 
 @pulumi.output_type
+class ServiceMetricAlarmRuleCompositeExpression(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expressionListJoin":
+            suggest = "expression_list_join"
+        elif key == "expressionLists":
+            suggest = "expression_lists"
+        elif key == "expressionRaw":
+            suggest = "expression_raw"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRuleCompositeExpression. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRuleCompositeExpression.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRuleCompositeExpression.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expression_list_join: Optional[_builtins.str] = None,
+                 expression_lists: Optional[Sequence['outputs.ServiceMetricAlarmRuleCompositeExpressionExpressionList']] = None,
+                 expression_raw: Optional[_builtins.str] = None,
+                 level: Optional[_builtins.str] = None,
+                 times: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str expression_list_join: The logical relationship between multiple metric-based alert conditions. Valid values:
+               - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+               - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+        :param Sequence['ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs'] expression_lists: A list of alert conditions created using standard expressions. See `expression_list` below.
+        :param _builtins.str expression_raw: The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+               - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+               - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+               - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+        :param _builtins.str level: The alert severity level. Valid values:
+               - CRITICAL: Critical.
+               - WARN: Warning.
+               - INFO: Information.
+        :param _builtins.int times: Number of consecutive times the alert condition must be met before an alert notification is sent.
+        """
+        if expression_list_join is not None:
+            pulumi.set(__self__, "expression_list_join", expression_list_join)
+        if expression_lists is not None:
+            pulumi.set(__self__, "expression_lists", expression_lists)
+        if expression_raw is not None:
+            pulumi.set(__self__, "expression_raw", expression_raw)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionListJoin")
+    def expression_list_join(self) -> Optional[_builtins.str]:
+        """
+        The logical relationship between multiple metric-based alert conditions. Valid values:
+        - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+        - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+        """
+        return pulumi.get(self, "expression_list_join")
+
+    @_builtins.property
+    @pulumi.getter(name="expressionLists")
+    def expression_lists(self) -> Optional[Sequence['outputs.ServiceMetricAlarmRuleCompositeExpressionExpressionList']]:
+        """
+        A list of alert conditions created using standard expressions. See `expression_list` below.
+        """
+        return pulumi.get(self, "expression_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="expressionRaw")
+    def expression_raw(self) -> Optional[_builtins.str]:
+        """
+        The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+        - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+        - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+        - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+        """
+        return pulumi.get(self, "expression_raw")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> Optional[_builtins.str]:
+        """
+        The alert severity level. Valid values:
+        - CRITICAL: Critical.
+        - WARN: Warning.
+        - INFO: Information.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> Optional[_builtins.int]:
+        """
+        Number of consecutive times the alert condition must be met before an alert notification is sent.
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleCompositeExpressionExpressionList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+        elif key == "metricName":
+            suggest = "metric_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRuleCompositeExpressionExpressionList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRuleCompositeExpressionExpressionList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRuleCompositeExpressionExpressionList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: Optional[_builtins.str] = None,
+                 metric_name: Optional[_builtins.str] = None,
+                 period: Optional[_builtins.int] = None,
+                 statistics: Optional[_builtins.str] = None,
+                 threshold: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str metric_name: The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+               
+               > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        :param _builtins.int period: The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+               
+               > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+
+        > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        """
+        return pulumi.get(self, "metric_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.int]:
+        """
+        The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+
+        > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "threshold")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleEscalations(dict):
+    def __init__(__self__, *,
+                 critical: Optional['outputs.ServiceMetricAlarmRuleEscalationsCritical'] = None,
+                 info: Optional['outputs.ServiceMetricAlarmRuleEscalationsInfo'] = None,
+                 warn: Optional['outputs.ServiceMetricAlarmRuleEscalationsWarn'] = None):
+        """
+        :param 'ServiceMetricAlarmRuleEscalationsCriticalArgs' critical: The trigger condition for Critical-level alerts. See `critical` below.
+        :param 'ServiceMetricAlarmRuleEscalationsInfoArgs' info: Trigger conditions for Info-level alerts. See `info` below.
+        :param 'ServiceMetricAlarmRuleEscalationsWarnArgs' warn: Trigger condition for Warn-level alerts.   See `warn` below.
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if info is not None:
+            pulumi.set(__self__, "info", info)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+
+    @_builtins.property
+    @pulumi.getter
+    def critical(self) -> Optional['outputs.ServiceMetricAlarmRuleEscalationsCritical']:
+        """
+        The trigger condition for Critical-level alerts. See `critical` below.
+        """
+        return pulumi.get(self, "critical")
+
+    @_builtins.property
+    @pulumi.getter
+    def info(self) -> Optional['outputs.ServiceMetricAlarmRuleEscalationsInfo']:
+        """
+        Trigger conditions for Info-level alerts. See `info` below.
+        """
+        return pulumi.get(self, "info")
+
+    @_builtins.property
+    @pulumi.getter
+    def warn(self) -> Optional['outputs.ServiceMetricAlarmRuleEscalationsWarn']:
+        """
+        Trigger condition for Warn-level alerts.   See `warn` below.
+        """
+        return pulumi.get(self, "warn")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleEscalationsCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+        elif key == "preCondition":
+            suggest = "pre_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRuleEscalationsCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRuleEscalationsCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRuleEscalationsCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: Optional[_builtins.str] = None,
+                 pre_condition: Optional[_builtins.str] = None,
+                 statistics: Optional[_builtins.str] = None,
+                 threshold: Optional[_builtins.str] = None,
+                 times: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str pre_condition: Precondition for triggering a Warn-level alert.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> Optional[_builtins.str]:
+        """
+        Precondition for triggering a Warn-level alert.
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleEscalationsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+        elif key == "preCondition":
+            suggest = "pre_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRuleEscalationsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRuleEscalationsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRuleEscalationsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: Optional[_builtins.str] = None,
+                 pre_condition: Optional[_builtins.str] = None,
+                 statistics: Optional[_builtins.str] = None,
+                 threshold: Optional[_builtins.str] = None,
+                 times: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str pre_condition: Precondition for triggering a Warn-level alert.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> Optional[_builtins.str]:
+        """
+        Precondition for triggering a Warn-level alert.
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleEscalationsWarn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "comparisonOperator":
+            suggest = "comparison_operator"
+        elif key == "preCondition":
+            suggest = "pre_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRuleEscalationsWarn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRuleEscalationsWarn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRuleEscalationsWarn.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 comparison_operator: Optional[_builtins.str] = None,
+                 pre_condition: Optional[_builtins.str] = None,
+                 statistics: Optional[_builtins.str] = None,
+                 threshold: Optional[_builtins.str] = None,
+                 times: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str pre_condition: Precondition for triggering a Warn-level alert.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "comparison_operator")
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> Optional[_builtins.str]:
+        """
+        Precondition for triggering a Warn-level alert.
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "statistics")
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleLabel(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The tag key.
+        :param _builtins.str value: Label value.
+               
+               > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Label value.
+
+        > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRulePrometheus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "promQl":
+            suggest = "prom_ql"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRulePrometheus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRulePrometheus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRulePrometheus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: Optional[Sequence['outputs.ServiceMetricAlarmRulePrometheusAnnotation']] = None,
+                 level: Optional[_builtins.str] = None,
+                 prom_ql: Optional[_builtins.str] = None,
+                 times: Optional[_builtins.int] = None):
+        """
+        :param Sequence['ServiceMetricAlarmRulePrometheusAnnotationArgs'] annotations: When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+               
+               > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+               See `annotations` below.
+        :param _builtins.str level: Alert severity level. Valid values:
+               - CRITICAL: Critical
+               - WARN: Warning
+               - INFO: Information
+        :param _builtins.str prom_ql: The PromQL query statement.
+               
+               > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+        :param _builtins.int times: The number of times the alert condition must be met before an alert notification is sent.
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if prom_ql is not None:
+            pulumi.set(__self__, "prom_ql", prom_ql)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> Optional[Sequence['outputs.ServiceMetricAlarmRulePrometheusAnnotation']]:
+        """
+        When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+
+        > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+        See `annotations` below.
+        """
+        return pulumi.get(self, "annotations")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> Optional[_builtins.str]:
+        """
+        Alert severity level. Valid values:
+        - CRITICAL: Critical
+        - WARN: Warning
+        - INFO: Information
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter(name="promQl")
+    def prom_ql(self) -> Optional[_builtins.str]:
+        """
+        The PromQL query statement.
+
+        > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+        """
+        return pulumi.get(self, "prom_ql")
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> Optional[_builtins.int]:
+        """
+        The number of times the alert condition must be met before an alert notification is sent.
+        """
+        return pulumi.get(self, "times")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRulePrometheusAnnotation(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetServiceHybridDoubleWritesHybridDoubleWriteResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
@@ -357,6 +949,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
                  escalations: 'outputs.GetServiceMetricAlarmRulesRuleEscalationsResult',
                  id: _builtins.str,
                  labels: Sequence['outputs.GetServiceMetricAlarmRulesRuleLabelResult'],
+                 metric_alarm_rule_id: _builtins.str,
                  metric_name: _builtins.str,
                  namespace: _builtins.str,
                  no_data_policy: _builtins.str,
@@ -365,31 +958,49 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
                  prometheus: 'outputs.GetServiceMetricAlarmRulesRulePrometheusResult',
                  resources: _builtins.str,
                  rule_name: _builtins.str,
+                 send_ok: _builtins.bool,
                  silence_time: _builtins.str,
                  source_type: _builtins.str,
                  status: _builtins.bool,
                  webhook: _builtins.str):
         """
-        :param 'GetServiceMetricAlarmRulesRuleCompositeExpressionArgs' composite_expression: The trigger conditions for multiple metrics.
-        :param _builtins.str contact_groups: The alert contact group.
-        :param _builtins.str dimensions: The monitoring dimensions of the specified resource.
-        :param _builtins.str effective_interval: The time period during which the alert rule is effective.
-        :param _builtins.str email_subject: The subject of the alert notification email.
-        :param 'GetServiceMetricAlarmRulesRuleEscalationsArgs' escalations: The conditions for triggering different levels of alerts.
-        :param _builtins.str id: The ID of the alert rule.
-        :param Sequence['GetServiceMetricAlarmRulesRuleLabelArgs'] labels: The tags of the alert rule.
-        :param _builtins.str metric_name: The name of the metric.
-        :param _builtins.str namespace: The namespace of the cloud service.
-        :param _builtins.str no_data_policy: The method that is used to handle alerts when no monitoring data is found.
-        :param _builtins.str no_effective_interval: The time period during which the alert rule is ineffective.
-        :param _builtins.str period: The aggregation period of the metric.
-        :param 'GetServiceMetricAlarmRulesRulePrometheusArgs' prometheus: The Prometheus alerts.
-        :param _builtins.str resources: The resources that are associated with the alert rule.
-        :param _builtins.str rule_name: The name of the alert rule.
-        :param _builtins.str silence_time: The mute period during which new alert notifications are not sent even if the trigger conditions are met.
-        :param _builtins.str source_type: The type of the alert rule.
-        :param _builtins.bool status: Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
-        :param _builtins.str webhook: The callback URL.
+        :param 'GetServiceMetricAlarmRulesRuleCompositeExpressionArgs' composite_expression: Alert condition for multiple metrics.
+        :param _builtins.str contact_groups: Alarm contact groups.
+        :param _builtins.str dimensions: The monitoring dimensions for the specified resource.
+               Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
+        :param _builtins.str effective_interval: The time range during which the alert rule is effective.
+        :param _builtins.str email_subject: Subject of alert emails.
+        :param 'GetServiceMetricAlarmRulesRuleEscalationsArgs' escalations: The trigger conditions for alert levels.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param Sequence['GetServiceMetricAlarmRulesRuleLabelArgs'] labels: When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
+        :param _builtins.str metric_alarm_rule_id: The ID of the alarm rule.
+               
+               You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+               
+               > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+        :param _builtins.str metric_name: The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+               
+               > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        :param _builtins.str namespace: The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+               
+               > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acs_prometheus`.
+        :param _builtins.str no_data_policy: The policy to apply when no monitoring data is available.
+        :param _builtins.str no_effective_interval: The time range during which the alarm rule is inactive.
+        :param _builtins.str period: The statistical period of the metric.
+        :param 'GetServiceMetricAlarmRulesRulePrometheusArgs' prometheus: Prometheus alert.
+        :param _builtins.str resources: Resource information, for example: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]`, `[{"userId":"100931896542****"}]`.
+        :param _builtins.str rule_name: Alert rule name.
+               
+               You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+               
+               > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
+        :param _builtins.bool send_ok: Specifies whether to send recovery notifications.
+        :param _builtins.str silence_time: Channel silence period.
+        :param _builtins.str source_type: The type of the alarm rule.
+        :param _builtins.bool status: The enabled status of the alarm rule. Valid values:
+               - true: enabled.
+               - false: disabled.
+        :param _builtins.str webhook: The URL address specified for callback when an alert is triggered.
         """
         pulumi.set(__self__, "composite_expression", composite_expression)
         pulumi.set(__self__, "contact_groups", contact_groups)
@@ -399,6 +1010,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
         pulumi.set(__self__, "escalations", escalations)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metric_alarm_rule_id", metric_alarm_rule_id)
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "no_data_policy", no_data_policy)
@@ -407,6 +1019,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
         pulumi.set(__self__, "prometheus", prometheus)
         pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "rule_name", rule_name)
+        pulumi.set(__self__, "send_ok", send_ok)
         pulumi.set(__self__, "silence_time", silence_time)
         pulumi.set(__self__, "source_type", source_type)
         pulumi.set(__self__, "status", status)
@@ -416,7 +1029,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="compositeExpression")
     def composite_expression(self) -> 'outputs.GetServiceMetricAlarmRulesRuleCompositeExpressionResult':
         """
-        The trigger conditions for multiple metrics.
+        Alert condition for multiple metrics.
         """
         return pulumi.get(self, "composite_expression")
 
@@ -424,7 +1037,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="contactGroups")
     def contact_groups(self) -> _builtins.str:
         """
-        The alert contact group.
+        Alarm contact groups.
         """
         return pulumi.get(self, "contact_groups")
 
@@ -432,7 +1045,8 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def dimensions(self) -> _builtins.str:
         """
-        The monitoring dimensions of the specified resource.
+        The monitoring dimensions for the specified resource.
+        Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         """
         return pulumi.get(self, "dimensions")
 
@@ -440,7 +1054,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="effectiveInterval")
     def effective_interval(self) -> _builtins.str:
         """
-        The time period during which the alert rule is effective.
+        The time range during which the alert rule is effective.
         """
         return pulumi.get(self, "effective_interval")
 
@@ -448,7 +1062,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="emailSubject")
     def email_subject(self) -> _builtins.str:
         """
-        The subject of the alert notification email.
+        Subject of alert emails.
         """
         return pulumi.get(self, "email_subject")
 
@@ -456,7 +1070,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def escalations(self) -> 'outputs.GetServiceMetricAlarmRulesRuleEscalationsResult':
         """
-        The conditions for triggering different levels of alerts.
+        The trigger conditions for alert levels.
         """
         return pulumi.get(self, "escalations")
 
@@ -464,7 +1078,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The ID of the alert rule.
+        The ID of the resource supplied above.
         """
         return pulumi.get(self, "id")
 
@@ -472,15 +1086,29 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def labels(self) -> Sequence['outputs.GetServiceMetricAlarmRulesRuleLabelResult']:
         """
-        The tags of the alert rule.
+        When a metric meets the alert condition and an alert is triggered, the labels are written to the metric and displayed in the alert notification.
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter(name="metricAlarmRuleId")
+    def metric_alarm_rule_id(self) -> _builtins.str:
+        """
+        The ID of the alarm rule.
+
+        You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+
+        > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+        """
+        return pulumi.get(self, "metric_alarm_rule_id")
 
     @_builtins.property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> _builtins.str:
         """
-        The name of the metric.
+        The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+
+        > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         """
         return pulumi.get(self, "metric_name")
 
@@ -488,7 +1116,9 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def namespace(self) -> _builtins.str:
         """
-        The namespace of the cloud service.
+        The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+
+        > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acs_prometheus`.
         """
         return pulumi.get(self, "namespace")
 
@@ -496,7 +1126,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="noDataPolicy")
     def no_data_policy(self) -> _builtins.str:
         """
-        The method that is used to handle alerts when no monitoring data is found.
+        The policy to apply when no monitoring data is available.
         """
         return pulumi.get(self, "no_data_policy")
 
@@ -504,7 +1134,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="noEffectiveInterval")
     def no_effective_interval(self) -> _builtins.str:
         """
-        The time period during which the alert rule is ineffective.
+        The time range during which the alarm rule is inactive.
         """
         return pulumi.get(self, "no_effective_interval")
 
@@ -512,7 +1142,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def period(self) -> _builtins.str:
         """
-        The aggregation period of the metric.
+        The statistical period of the metric.
         """
         return pulumi.get(self, "period")
 
@@ -520,7 +1150,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def prometheus(self) -> 'outputs.GetServiceMetricAlarmRulesRulePrometheusResult':
         """
-        The Prometheus alerts.
+        Prometheus alert.
         """
         return pulumi.get(self, "prometheus")
 
@@ -528,7 +1158,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def resources(self) -> _builtins.str:
         """
-        The resources that are associated with the alert rule.
+        Resource information, for example: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]`, `[{"userId":"100931896542****"}]`.
         """
         return pulumi.get(self, "resources")
 
@@ -536,15 +1166,27 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> _builtins.str:
         """
-        The name of the alert rule.
+        Alert rule name.
+
+        You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+
+        > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sendOk")
+    def send_ok(self) -> _builtins.bool:
+        """
+        Specifies whether to send recovery notifications.
+        """
+        return pulumi.get(self, "send_ok")
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
     def silence_time(self) -> _builtins.str:
         """
-        The mute period during which new alert notifications are not sent even if the trigger conditions are met.
+        Channel silence period.
         """
         return pulumi.get(self, "silence_time")
 
@@ -552,7 +1194,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
         """
-        The type of the alert rule.
+        The type of the alarm rule.
         """
         return pulumi.get(self, "source_type")
 
@@ -560,7 +1202,9 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.bool:
         """
-        Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+        The enabled status of the alarm rule. Valid values:
+        - true: enabled.
+        - false: disabled.
         """
         return pulumi.get(self, "status")
 
@@ -568,7 +1212,7 @@ class GetServiceMetricAlarmRulesRuleResult(dict):
     @pulumi.getter
     def webhook(self) -> _builtins.str:
         """
-        The callback URL.
+        The URL address specified for callback when an alert is triggered.
         """
         return pulumi.get(self, "webhook")
 
@@ -582,11 +1226,11 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionResult(dict):
                  level: _builtins.str,
                  times: _builtins.int):
         """
-        :param _builtins.str expression_list_join: The relationship between the trigger conditions for multiple metrics.
-        :param Sequence['GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs'] expression_lists: The trigger conditions that are created in standard mode.
-        :param _builtins.str expression_raw: The trigger conditions that are created by using expressions.
-        :param _builtins.str level: The alert level.
-        :param _builtins.int times: The number of consecutive triggers.
+        :param _builtins.str expression_list_join: The logical relationship between multiple metric-based alert conditions.
+        :param Sequence['GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListArgs'] expression_lists: A list of alert conditions created using standard expressions.
+        :param _builtins.str expression_raw: The alert condition created by an expression.
+        :param _builtins.str level: Alert severity level.
+        :param _builtins.int times: The number of times the alert condition must be met before an alert notification is sent.
         """
         pulumi.set(__self__, "expression_list_join", expression_list_join)
         pulumi.set(__self__, "expression_lists", expression_lists)
@@ -598,7 +1242,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionResult(dict):
     @pulumi.getter(name="expressionListJoin")
     def expression_list_join(self) -> _builtins.str:
         """
-        The relationship between the trigger conditions for multiple metrics.
+        The logical relationship between multiple metric-based alert conditions.
         """
         return pulumi.get(self, "expression_list_join")
 
@@ -606,7 +1250,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionResult(dict):
     @pulumi.getter(name="expressionLists")
     def expression_lists(self) -> Sequence['outputs.GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult']:
         """
-        The trigger conditions that are created in standard mode.
+        A list of alert conditions created using standard expressions.
         """
         return pulumi.get(self, "expression_lists")
 
@@ -614,7 +1258,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionResult(dict):
     @pulumi.getter(name="expressionRaw")
     def expression_raw(self) -> _builtins.str:
         """
-        The trigger conditions that are created by using expressions.
+        The alert condition created by an expression.
         """
         return pulumi.get(self, "expression_raw")
 
@@ -622,7 +1266,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionResult(dict):
     @pulumi.getter
     def level(self) -> _builtins.str:
         """
-        The alert level.
+        Alert severity level.
         """
         return pulumi.get(self, "level")
 
@@ -630,7 +1274,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The number of consecutive triggers.
+        The number of times the alert condition must be met before an alert notification is sent.
         """
         return pulumi.get(self, "times")
 
@@ -644,11 +1288,13 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult(dict
                  statistics: _builtins.str,
                  threshold: _builtins.str):
         """
-        :param _builtins.str comparison_operator: The comparison operator that is used to compare the metric value with the threshold.
-        :param _builtins.str metric_name: The name of the metric.
-        :param _builtins.int period: The aggregation period of the metric.
-        :param _builtins.str statistics: The statistical methods for Warn-level alerts.
-        :param _builtins.str threshold: The threshold for Warn-level alerts.
+        :param _builtins.str comparison_operator: Comparison operator for the Warn-level threshold.
+        :param _builtins.str metric_name: The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+               
+               > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        :param _builtins.int period: The statistical period of the metric.
+        :param _builtins.str statistics: Statistical method for Warn-level alerts.
+        :param _builtins.str threshold: Threshold for Warn-level alerts.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "metric_name", metric_name)
@@ -660,7 +1306,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult(dict
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
         """
-        The comparison operator that is used to compare the metric value with the threshold.
+        Comparison operator for the Warn-level threshold.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -668,7 +1314,9 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult(dict
     @pulumi.getter(name="metricName")
     def metric_name(self) -> _builtins.str:
         """
-        The name of the metric.
+        The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+
+        > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         """
         return pulumi.get(self, "metric_name")
 
@@ -676,7 +1324,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult(dict
     @pulumi.getter
     def period(self) -> _builtins.int:
         """
-        The aggregation period of the metric.
+        The statistical period of the metric.
         """
         return pulumi.get(self, "period")
 
@@ -684,7 +1332,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult(dict
     @pulumi.getter
     def statistics(self) -> _builtins.str:
         """
-        The statistical methods for Warn-level alerts.
+        Statistical method for Warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -692,7 +1340,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionListResult(dict
     @pulumi.getter
     def threshold(self) -> _builtins.str:
         """
-        The threshold for Warn-level alerts.
+        Threshold for Warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -704,9 +1352,9 @@ class GetServiceMetricAlarmRulesRuleEscalationsResult(dict):
                  info: 'outputs.GetServiceMetricAlarmRulesRuleEscalationsInfoResult',
                  warn: 'outputs.GetServiceMetricAlarmRulesRuleEscalationsWarnResult'):
         """
-        :param 'GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs' critical: The conditions for triggering Critical-level alerts.
-        :param 'GetServiceMetricAlarmRulesRuleEscalationsInfoArgs' info: The conditions for triggering Info-level alerts.
-        :param 'GetServiceMetricAlarmRulesRuleEscalationsWarnArgs' warn: The conditions for triggering Warn-level alerts.
+        :param 'GetServiceMetricAlarmRulesRuleEscalationsCriticalArgs' critical: The trigger condition for Critical-level alerts.
+        :param 'GetServiceMetricAlarmRulesRuleEscalationsInfoArgs' info: Trigger conditions for Info-level alerts.
+        :param 'GetServiceMetricAlarmRulesRuleEscalationsWarnArgs' warn: Trigger condition for Warn-level alerts.
         """
         pulumi.set(__self__, "critical", critical)
         pulumi.set(__self__, "info", info)
@@ -716,7 +1364,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsResult(dict):
     @pulumi.getter
     def critical(self) -> 'outputs.GetServiceMetricAlarmRulesRuleEscalationsCriticalResult':
         """
-        The conditions for triggering Critical-level alerts.
+        The trigger condition for Critical-level alerts.
         """
         return pulumi.get(self, "critical")
 
@@ -724,7 +1372,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsResult(dict):
     @pulumi.getter
     def info(self) -> 'outputs.GetServiceMetricAlarmRulesRuleEscalationsInfoResult':
         """
-        The conditions for triggering Info-level alerts.
+        Trigger conditions for Info-level alerts.
         """
         return pulumi.get(self, "info")
 
@@ -732,7 +1380,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsResult(dict):
     @pulumi.getter
     def warn(self) -> 'outputs.GetServiceMetricAlarmRulesRuleEscalationsWarnResult':
         """
-        The conditions for triggering Warn-level alerts.
+        Trigger condition for Warn-level alerts.
         """
         return pulumi.get(self, "warn")
 
@@ -746,11 +1394,11 @@ class GetServiceMetricAlarmRulesRuleEscalationsCriticalResult(dict):
                  threshold: _builtins.str,
                  times: _builtins.int):
         """
-        :param _builtins.str comparison_operator: The comparison operator that is used to compare the metric value with the threshold.
-        :param _builtins.str pre_condition: The additional conditions for triggering Warn-level alerts.
-        :param _builtins.str statistics: The statistical methods for Warn-level alerts.
-        :param _builtins.str threshold: The threshold for Warn-level alerts.
-        :param _builtins.int times: The number of consecutive triggers.
+        :param _builtins.str comparison_operator: Comparison operator for the Warn-level threshold.
+        :param _builtins.str pre_condition: Precondition for triggering a Warn-level alert.
+        :param _builtins.str statistics: Statistical method for Warn-level alerts.
+        :param _builtins.str threshold: Threshold for Warn-level alerts.
+        :param _builtins.int times: The number of times the alert condition must be met before an alert notification is sent.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "pre_condition", pre_condition)
@@ -762,7 +1410,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsCriticalResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
         """
-        The comparison operator that is used to compare the metric value with the threshold.
+        Comparison operator for the Warn-level threshold.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -770,7 +1418,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsCriticalResult(dict):
     @pulumi.getter(name="preCondition")
     def pre_condition(self) -> _builtins.str:
         """
-        The additional conditions for triggering Warn-level alerts.
+        Precondition for triggering a Warn-level alert.
         """
         return pulumi.get(self, "pre_condition")
 
@@ -778,7 +1426,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsCriticalResult(dict):
     @pulumi.getter
     def statistics(self) -> _builtins.str:
         """
-        The statistical methods for Warn-level alerts.
+        Statistical method for Warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -786,7 +1434,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsCriticalResult(dict):
     @pulumi.getter
     def threshold(self) -> _builtins.str:
         """
-        The threshold for Warn-level alerts.
+        Threshold for Warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -794,7 +1442,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsCriticalResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The number of consecutive triggers.
+        The number of times the alert condition must be met before an alert notification is sent.
         """
         return pulumi.get(self, "times")
 
@@ -808,11 +1456,11 @@ class GetServiceMetricAlarmRulesRuleEscalationsInfoResult(dict):
                  threshold: _builtins.str,
                  times: _builtins.int):
         """
-        :param _builtins.str comparison_operator: The comparison operator that is used to compare the metric value with the threshold.
-        :param _builtins.str pre_condition: The additional conditions for triggering Warn-level alerts.
-        :param _builtins.str statistics: The statistical methods for Warn-level alerts.
-        :param _builtins.str threshold: The threshold for Warn-level alerts.
-        :param _builtins.int times: The number of consecutive triggers.
+        :param _builtins.str comparison_operator: Comparison operator for the Warn-level threshold.
+        :param _builtins.str pre_condition: Precondition for triggering a Warn-level alert.
+        :param _builtins.str statistics: Statistical method for Warn-level alerts.
+        :param _builtins.str threshold: Threshold for Warn-level alerts.
+        :param _builtins.int times: The number of times the alert condition must be met before an alert notification is sent.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "pre_condition", pre_condition)
@@ -824,7 +1472,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsInfoResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
         """
-        The comparison operator that is used to compare the metric value with the threshold.
+        Comparison operator for the Warn-level threshold.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -832,7 +1480,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsInfoResult(dict):
     @pulumi.getter(name="preCondition")
     def pre_condition(self) -> _builtins.str:
         """
-        The additional conditions for triggering Warn-level alerts.
+        Precondition for triggering a Warn-level alert.
         """
         return pulumi.get(self, "pre_condition")
 
@@ -840,7 +1488,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsInfoResult(dict):
     @pulumi.getter
     def statistics(self) -> _builtins.str:
         """
-        The statistical methods for Warn-level alerts.
+        Statistical method for Warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -848,7 +1496,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsInfoResult(dict):
     @pulumi.getter
     def threshold(self) -> _builtins.str:
         """
-        The threshold for Warn-level alerts.
+        Threshold for Warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -856,7 +1504,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsInfoResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The number of consecutive triggers.
+        The number of times the alert condition must be met before an alert notification is sent.
         """
         return pulumi.get(self, "times")
 
@@ -870,11 +1518,11 @@ class GetServiceMetricAlarmRulesRuleEscalationsWarnResult(dict):
                  threshold: _builtins.str,
                  times: _builtins.int):
         """
-        :param _builtins.str comparison_operator: The comparison operator that is used to compare the metric value with the threshold.
-        :param _builtins.str pre_condition: The additional conditions for triggering Warn-level alerts.
-        :param _builtins.str statistics: The statistical methods for Warn-level alerts.
-        :param _builtins.str threshold: The threshold for Warn-level alerts.
-        :param _builtins.int times: The number of consecutive triggers.
+        :param _builtins.str comparison_operator: Comparison operator for the Warn-level threshold.
+        :param _builtins.str pre_condition: Precondition for triggering a Warn-level alert.
+        :param _builtins.str statistics: Statistical method for Warn-level alerts.
+        :param _builtins.str threshold: Threshold for Warn-level alerts.
+        :param _builtins.int times: The number of times the alert condition must be met before an alert notification is sent.
         """
         pulumi.set(__self__, "comparison_operator", comparison_operator)
         pulumi.set(__self__, "pre_condition", pre_condition)
@@ -886,7 +1534,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsWarnResult(dict):
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> _builtins.str:
         """
-        The comparison operator that is used to compare the metric value with the threshold.
+        Comparison operator for the Warn-level threshold.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -894,7 +1542,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsWarnResult(dict):
     @pulumi.getter(name="preCondition")
     def pre_condition(self) -> _builtins.str:
         """
-        The additional conditions for triggering Warn-level alerts.
+        Precondition for triggering a Warn-level alert.
         """
         return pulumi.get(self, "pre_condition")
 
@@ -902,7 +1550,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsWarnResult(dict):
     @pulumi.getter
     def statistics(self) -> _builtins.str:
         """
-        The statistical methods for Warn-level alerts.
+        Statistical method for Warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -910,7 +1558,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsWarnResult(dict):
     @pulumi.getter
     def threshold(self) -> _builtins.str:
         """
-        The threshold for Warn-level alerts.
+        Threshold for Warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -918,7 +1566,7 @@ class GetServiceMetricAlarmRulesRuleEscalationsWarnResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The number of consecutive triggers.
+        The number of times the alert condition must be met before an alert notification is sent.
         """
         return pulumi.get(self, "times")
 
@@ -929,7 +1577,7 @@ class GetServiceMetricAlarmRulesRuleLabelResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The subject of the alert notificaThe key of the annotation.
+        :param _builtins.str key: The key of the annotation.
         :param _builtins.str value: The value of the annotation.
         """
         pulumi.set(__self__, "key", key)
@@ -939,7 +1587,7 @@ class GetServiceMetricAlarmRulesRuleLabelResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The subject of the alert notificaThe key of the annotation.
+        The key of the annotation.
         """
         return pulumi.get(self, "key")
 
@@ -960,10 +1608,10 @@ class GetServiceMetricAlarmRulesRulePrometheusResult(dict):
                  prom_ql: _builtins.str,
                  times: _builtins.int):
         """
-        :param Sequence['GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs'] annotations: The annotations of the Prometheus alert rule.
-        :param _builtins.str level: The alert level.
+        :param Sequence['GetServiceMetricAlarmRulesRulePrometheusAnnotationArgs'] annotations: When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+        :param _builtins.str level: Alert severity level.
         :param _builtins.str prom_ql: The PromQL query statement.
-        :param _builtins.int times: The number of consecutive triggers.
+        :param _builtins.int times: The number of times the alert condition must be met before an alert notification is sent.
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "level", level)
@@ -974,7 +1622,7 @@ class GetServiceMetricAlarmRulesRulePrometheusResult(dict):
     @pulumi.getter
     def annotations(self) -> Sequence['outputs.GetServiceMetricAlarmRulesRulePrometheusAnnotationResult']:
         """
-        The annotations of the Prometheus alert rule.
+        When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
         """
         return pulumi.get(self, "annotations")
 
@@ -982,7 +1630,7 @@ class GetServiceMetricAlarmRulesRulePrometheusResult(dict):
     @pulumi.getter
     def level(self) -> _builtins.str:
         """
-        The alert level.
+        Alert severity level.
         """
         return pulumi.get(self, "level")
 
@@ -998,7 +1646,7 @@ class GetServiceMetricAlarmRulesRulePrometheusResult(dict):
     @pulumi.getter
     def times(self) -> _builtins.int:
         """
-        The number of consecutive triggers.
+        The number of times the alert condition must be met before an alert notification is sent.
         """
         return pulumi.get(self, "times")
 
@@ -1009,7 +1657,7 @@ class GetServiceMetricAlarmRulesRulePrometheusAnnotationResult(dict):
                  key: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str key: The subject of the alert notificaThe key of the annotation.
+        :param _builtins.str key: The key of the annotation.
         :param _builtins.str value: The value of the annotation.
         """
         pulumi.set(__self__, "key", key)
@@ -1019,7 +1667,7 @@ class GetServiceMetricAlarmRulesRulePrometheusAnnotationResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        The subject of the alert notificaThe key of the annotation.
+        The key of the annotation.
         """
         return pulumi.get(self, "key")
 

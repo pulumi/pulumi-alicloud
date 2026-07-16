@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a Resource Manager Handshake resource.
  * 
+ * &gt; **NOTE:** If the invitation has been accepted and `targetType` is `Account`, destroying this resource removes the invited cloud account from the resource directory.
+ * 
  * For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
  * 
  * &gt; **NOTE:** Available since v1.82.0.

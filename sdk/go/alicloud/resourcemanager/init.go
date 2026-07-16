@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Folder{}
 	case "alicloud:resourcemanager/handshake:Handshake":
 		r = &Handshake{}
+	case "alicloud:resourcemanager/handshakeAcceptance:HandshakeAcceptance":
+		r = &HandshakeAcceptance{}
 	case "alicloud:resourcemanager/messageContact:MessageContact":
 		r = &MessageContact{}
 	case "alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel":
@@ -49,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PolicyVersion{}
 	case "alicloud:resourcemanager/resourceDirectory:ResourceDirectory":
 		r = &ResourceDirectory{}
+	case "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing":
+		r = &ResourceDirectorySharing{}
 	case "alicloud:resourcemanager/resourceGroup:ResourceGroup":
 		r = &ResourceGroup{}
 	case "alicloud:resourcemanager/resourceShare:ResourceShare":
@@ -118,6 +122,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"resourcemanager/handshakeAcceptance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"resourcemanager/messageContact",
 		&module{version},
 	)
@@ -144,6 +153,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/resourceDirectory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/resourceDirectorySharing",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

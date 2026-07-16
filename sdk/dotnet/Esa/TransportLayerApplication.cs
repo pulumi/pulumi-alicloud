@@ -92,19 +92,19 @@ namespace Pulumi.AliCloud.Esa
         /// Whether to enable China mainland network access optimization, default is disabled. Value range:
         /// </summary>
         [Output("crossBorderOptimization")]
-        public Output<string?> CrossBorderOptimization { get; private set; } = null!;
+        public Output<string> CrossBorderOptimization { get; private set; } = null!;
 
         /// <summary>
         /// IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
         /// </summary>
         [Output("ipAccessRule")]
-        public Output<string?> IpAccessRule { get; private set; } = null!;
+        public Output<string> IpAccessRule { get; private set; } = null!;
 
         /// <summary>
         /// IPv6 switch.
         /// </summary>
         [Output("ipv6")]
-        public Output<string?> Ipv6 { get; private set; } = null!;
+        public Output<string> Ipv6 { get; private set; } = null!;
 
         /// <summary>
         /// Domain name of the transport layer application

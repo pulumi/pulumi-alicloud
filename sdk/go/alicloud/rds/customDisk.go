@@ -84,29 +84,47 @@ type CustomDisk struct {
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+	BurstingEnabled pulumi.BoolOutput `pulumi:"burstingEnabled"`
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+	// Specifies whether to release the disk together with the instance. Valid values:
+	DeleteWithInstance pulumi.BoolOutput `pulumi:"deleteWithInstance"`
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+	//
+	// > **NOTE:** From version 1.281.0, `description` can be modified.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The type of the data disk. Value range:
 	DiskCategory pulumi.StringOutput `pulumi:"diskCategory"`
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
-	DiskName pulumi.StringPtrOutput `pulumi:"diskName"`
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+	//
+	// > **NOTE:** From version 1.281.0, `diskName` can be modified.
+	DiskName pulumi.StringOutput `pulumi:"diskName"`
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
-	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
+	// The billing method. Valid values:
+	// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+	// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
+	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	// The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
 	// - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
 	// - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
 	// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
 	// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 	//
+	// > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+	//
 	// For more information about how to select an ESSD performance level, see ESSD cloud disk.
-	PerformanceLevel pulumi.StringPtrOutput `pulumi:"performanceLevel"`
-	// Reserved parameters, no need to fill in.
+	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
+	// Field `period` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `period` has been deprecated from provider version 1.283.0.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Reserved parameters, no need to fill in.
+	// Field `periodUnit` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `periodUnit` has been deprecated from provider version 1.283.0.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The region ID. You can view the region ID through the DescribeRegions interface.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
@@ -119,8 +137,10 @@ type CustomDisk struct {
 	// - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
 	// - Snapshots are not supported for creating elastic temporary disks.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
-	// Disk status. Value Description:_use: In use.
+	// Disk status.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The list of tags.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The method of expanding the disk. Value range:
 	// offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
 	// online: online expansion, which can be completed without restarting the instance.
@@ -172,29 +192,47 @@ type customDiskState struct {
 	AutoPay *bool `pulumi:"autoPay"`
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+	// Specifies whether to release the disk together with the instance. Valid values:
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+	//
+	// > **NOTE:** From version 1.281.0, `description` can be modified.
 	Description *string `pulumi:"description"`
 	// The type of the data disk. Value range:
 	DiskCategory *string `pulumi:"diskCategory"`
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+	//
+	// > **NOTE:** From version 1.281.0, `diskName` can be modified.
 	DiskName *string `pulumi:"diskName"`
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+	// The billing method. Valid values:
+	// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+	// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+	InstanceId *string `pulumi:"instanceId"`
 	// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
 	// - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
 	// - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
 	// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
 	// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 	//
+	// > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+	//
 	// For more information about how to select an ESSD performance level, see ESSD cloud disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// Reserved parameters, no need to fill in.
+	// Field `period` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `period` has been deprecated from provider version 1.283.0.
 	Period *int `pulumi:"period"`
-	// Reserved parameters, no need to fill in.
+	// Field `periodUnit` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `periodUnit` has been deprecated from provider version 1.283.0.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The region ID. You can view the region ID through the DescribeRegions interface.
 	RegionId *string `pulumi:"regionId"`
@@ -207,8 +245,10 @@ type customDiskState struct {
 	// - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
 	// - Snapshots are not supported for creating elastic temporary disks.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// Disk status. Value Description:_use: In use.
+	// Disk status.
 	Status *string `pulumi:"status"`
+	// The list of tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The method of expanding the disk. Value range:
 	// offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
 	// online: online expansion, which can be completed without restarting the instance.
@@ -222,29 +262,47 @@ type CustomDiskState struct {
 	AutoPay pulumi.BoolPtrInput
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew pulumi.BoolPtrInput
+	// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+	BurstingEnabled pulumi.BoolPtrInput
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+	// Specifies whether to release the disk together with the instance. Valid values:
+	DeleteWithInstance pulumi.BoolPtrInput
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+	//
+	// > **NOTE:** From version 1.281.0, `description` can be modified.
 	Description pulumi.StringPtrInput
 	// The type of the data disk. Value range:
 	DiskCategory pulumi.StringPtrInput
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+	//
+	// > **NOTE:** From version 1.281.0, `diskName` can be modified.
 	DiskName pulumi.StringPtrInput
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+	// The billing method. Valid values:
+	// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+	// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
 	InstanceChargeType pulumi.StringPtrInput
+	// The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+	InstanceId pulumi.StringPtrInput
 	// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
 	// - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
 	// - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
 	// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
 	// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 	//
+	// > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+	//
 	// For more information about how to select an ESSD performance level, see ESSD cloud disk.
 	PerformanceLevel pulumi.StringPtrInput
-	// Reserved parameters, no need to fill in.
+	// Field `period` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `period` has been deprecated from provider version 1.283.0.
 	Period pulumi.IntPtrInput
-	// Reserved parameters, no need to fill in.
+	// Field `periodUnit` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `periodUnit` has been deprecated from provider version 1.283.0.
 	PeriodUnit pulumi.StringPtrInput
 	// The region ID. You can view the region ID through the DescribeRegions interface.
 	RegionId pulumi.StringPtrInput
@@ -257,8 +315,10 @@ type CustomDiskState struct {
 	// - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
 	// - Snapshots are not supported for creating elastic temporary disks.
 	SnapshotId pulumi.StringPtrInput
-	// Disk status. Value Description:_use: In use.
+	// Disk status.
 	Status pulumi.StringPtrInput
+	// The list of tags.
+	Tags pulumi.StringMapInput
 	// The method of expanding the disk. Value range:
 	// offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
 	// online: online expansion, which can be completed without restarting the instance.
@@ -276,28 +336,48 @@ type customDiskArgs struct {
 	AutoPay *bool `pulumi:"autoPay"`
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+	// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
+	// Specifies whether to release the disk together with the instance. Valid values:
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+	//
+	// > **NOTE:** From version 1.281.0, `description` can be modified.
 	Description *string `pulumi:"description"`
 	// The type of the data disk. Value range:
 	DiskCategory string `pulumi:"diskCategory"`
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+	//
+	// > **NOTE:** From version 1.281.0, `diskName` can be modified.
 	DiskName *string `pulumi:"diskName"`
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+	// The billing method. Valid values:
+	// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+	// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+	InstanceId *string `pulumi:"instanceId"`
 	// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
 	// - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
 	// - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
 	// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
 	// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 	//
+	// > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+	//
 	// For more information about how to select an ESSD performance level, see ESSD cloud disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// Reserved parameters, no need to fill in.
+	// Field `period` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `period` has been deprecated from provider version 1.283.0.
 	Period *int `pulumi:"period"`
-	// Reserved parameters, no need to fill in.
+	// Field `periodUnit` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `periodUnit` has been deprecated from provider version 1.283.0.
 	PeriodUnit *string `pulumi:"periodUnit"`
+	// The ID of the resource group to which the disk belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
 	Size int `pulumi:"size"`
 	// The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
@@ -305,6 +385,8 @@ type customDiskArgs struct {
 	// - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
 	// - Snapshots are not supported for creating elastic temporary disks.
 	SnapshotId *string `pulumi:"snapshotId"`
+	// The list of tags.
+	Tags map[string]string `pulumi:"tags"`
 	// The method of expanding the disk. Value range:
 	// offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
 	// online: online expansion, which can be completed without restarting the instance.
@@ -319,28 +401,48 @@ type CustomDiskArgs struct {
 	AutoPay pulumi.BoolPtrInput
 	// Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
 	AutoRenew pulumi.BoolPtrInput
-	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+	// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+	BurstingEnabled pulumi.BoolPtrInput
+	// Specifies whether to release the disk together with the instance. Valid values:
+	DeleteWithInstance pulumi.BoolPtrInput
+	// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+	//
+	// > **NOTE:** From version 1.281.0, `description` can be modified.
 	Description pulumi.StringPtrInput
 	// The type of the data disk. Value range:
 	DiskCategory pulumi.StringInput
-	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
+	// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+	//
+	// > **NOTE:** From version 1.281.0, `diskName` can be modified.
 	DiskName pulumi.StringPtrInput
 	// Whether to pre-check the instance creation operation. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
+	// The billing method. Valid values:
+	// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+	// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
 	InstanceChargeType pulumi.StringPtrInput
+	// The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+	InstanceId pulumi.StringPtrInput
 	// When creating an ESSD cloud disk, set the performance level of the disk. Value range:
 	// - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
 	// - `PL1` (default): The maximum number of random read/write IOPS 50000 for a single disk.
 	// - `PL2`: maximum random read/write IOPS 100000 for a single disk.
 	// - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 	//
+	// > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+	//
 	// For more information about how to select an ESSD performance level, see ESSD cloud disk.
 	PerformanceLevel pulumi.StringPtrInput
-	// Reserved parameters, no need to fill in.
+	// Field `period` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `period` has been deprecated from provider version 1.283.0.
 	Period pulumi.IntPtrInput
-	// Reserved parameters, no need to fill in.
+	// Field `periodUnit` has been deprecated from provider version 1.283.0.
+	//
+	// Deprecated: Field `periodUnit` has been deprecated from provider version 1.283.0.
 	PeriodUnit pulumi.StringPtrInput
+	// The ID of the resource group to which the disk belongs.
+	ResourceGroupId pulumi.StringPtrInput
 	// Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
 	Size pulumi.IntInput
 	// The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
@@ -348,6 +450,8 @@ type CustomDiskArgs struct {
 	// - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
 	// - Snapshots are not supported for creating elastic temporary disks.
 	SnapshotId pulumi.StringPtrInput
+	// The list of tags.
+	Tags pulumi.StringMapInput
 	// The method of expanding the disk. Value range:
 	// offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
 	// online: online expansion, which can be completed without restarting the instance.
@@ -453,12 +557,24 @@ func (o CustomDiskOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable this function for disks that support Burst (performance Burst). Valid values: `true`, `false`.
+func (o CustomDiskOutput) BurstingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.BoolOutput { return v.BurstingEnabled }).(pulumi.BoolOutput)
+}
+
 // Creation time.
 func (o CustomDiskOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https. From version 1.281.0, `description` can be modified.
+// Specifies whether to release the disk together with the instance. Valid values:
+func (o CustomDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.BoolOutput { return v.DeleteWithInstance }).(pulumi.BoolOutput)
+}
+
+// The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
+//
+// > **NOTE:** From version 1.281.0, `description` can be modified.
 func (o CustomDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -468,9 +584,11 @@ func (o CustomDiskOutput) DiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.DiskCategory }).(pulumi.StringOutput)
 }
 
-// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-). From version 1.281.0, `diskName` can be modified.
-func (o CustomDiskOutput) DiskName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.DiskName }).(pulumi.StringPtrOutput)
+// The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
+//
+// > **NOTE:** From version 1.281.0, `diskName` can be modified.
+func (o CustomDiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.DiskName }).(pulumi.StringOutput)
 }
 
 // Whether to pre-check the instance creation operation. Valid values:
@@ -478,9 +596,16 @@ func (o CustomDiskOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
-func (o CustomDiskOutput) InstanceChargeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+// The billing method. Valid values:
+// - `Postpaid`: Pay-as-you-go. Disks with this billing method do not need to be attached to an instance. You can optionally attach them during creation to any instance regardless of its billing method.
+// - `Prepaid`: Subscription. Disks with this billing method must be attached to a subscription instance. Therefore, you must specify a subscription `InstanceId` (instance ID).
+func (o CustomDiskOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// The ID of the instance to which the disk is attached. If `instanceChargeType` is `Prepaid`, you must specify the ID of a prepaid instance.
+func (o CustomDiskOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // When creating an ESSD cloud disk, set the performance level of the disk. Value range:
@@ -489,17 +614,23 @@ func (o CustomDiskOutput) InstanceChargeType() pulumi.StringPtrOutput {
 // - `PL2`: maximum random read/write IOPS 100000 for a single disk.
 // - `PL3`: The maximum random read/write IOPS 1 million for a single disk.
 //
+// > **NOTE:** From version 1.283.0, `performanceLevel` can be modified.
+//
 // For more information about how to select an ESSD performance level, see ESSD cloud disk.
-func (o CustomDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+func (o CustomDiskOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
-// Reserved parameters, no need to fill in.
+// Field `period` has been deprecated from provider version 1.283.0.
+//
+// Deprecated: Field `period` has been deprecated from provider version 1.283.0.
 func (o CustomDiskOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Reserved parameters, no need to fill in.
+// Field `periodUnit` has been deprecated from provider version 1.283.0.
+//
+// Deprecated: Field `periodUnit` has been deprecated from provider version 1.283.0.
 func (o CustomDiskOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
@@ -527,9 +658,14 @@ func (o CustomDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
 
-// Disk status. Value Description:_use: In use.
+// Disk status.
 func (o CustomDiskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDisk) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The list of tags.
+func (o CustomDiskOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomDisk) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The method of expanding the disk. Value range:

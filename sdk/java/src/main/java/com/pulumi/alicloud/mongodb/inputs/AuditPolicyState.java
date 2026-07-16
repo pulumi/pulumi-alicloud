@@ -17,14 +17,14 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
     public static final AuditPolicyState Empty = new AuditPolicyState();
 
     /**
-     * Audit state, Valid values: `enable`, `disabled`.
+     * Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      * 
      */
     @Import(name="auditStatus")
     private @Nullable Output<String> auditStatus;
 
     /**
-     * @return Audit state, Valid values: `enable`, `disabled`.
+     * @return Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
      * 
      */
     public Optional<Output<String>> auditStatus() {
@@ -62,14 +62,48 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     * 
+     */
+    @Import(name="hotStoragePeriod")
+    private @Nullable Output<Integer> hotStoragePeriod;
+
+    /**
+     * @return The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+     * 
+     */
+    public Optional<Output<Integer>> hotStoragePeriod() {
+        return Optional.ofNullable(this.hotStoragePeriod);
+    }
+
+    /**
+     * The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     * 
+     */
+    @Import(name="serviceType")
+    private @Nullable Output<String> serviceType;
+
+    /**
+     * @return The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+     * 
+     */
+    public Optional<Output<String>> serviceType() {
+        return Optional.ofNullable(this.serviceType);
+    }
+
+    /**
+     * Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      * 
      */
     @Import(name="storagePeriod")
     private @Nullable Output<Integer> storagePeriod;
 
     /**
-     * @return Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+     * @return Audit log retention duration, in days.
+     * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+     * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
      * 
      */
     public Optional<Output<Integer>> storagePeriod() {
@@ -82,6 +116,8 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         this.auditStatus = $.auditStatus;
         this.dbInstanceId = $.dbInstanceId;
         this.filter = $.filter;
+        this.hotStoragePeriod = $.hotStoragePeriod;
+        this.serviceType = $.serviceType;
         this.storagePeriod = $.storagePeriod;
     }
 
@@ -104,7 +140,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditStatus Audit state, Valid values: `enable`, `disabled`.
+         * @param auditStatus Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
          * 
          * @return builder
          * 
@@ -115,7 +151,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditStatus Audit state, Valid values: `enable`, `disabled`.
+         * @param auditStatus Audit state. Valid values: `enable`, `disabled`. The audit policy cannot be created with `disabled` — the underlying API rejects it. Create the resource with `enable` and switch to `disabled` in a later apply.
          * 
          * @return builder
          * 
@@ -167,7 +203,51 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePeriod Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+         * @param hotStoragePeriod The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotStoragePeriod(@Nullable Output<Integer> hotStoragePeriod) {
+            $.hotStoragePeriod = hotStoragePeriod;
+            return this;
+        }
+
+        /**
+         * @param hotStoragePeriod The hot storage duration of the audit log, in days. The value range is 0 to 7. Only takes effect when `serviceType` is `V2_Standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotStoragePeriod(Integer hotStoragePeriod) {
+            return hotStoragePeriod(Output.of(hotStoragePeriod));
+        }
+
+        /**
+         * @param serviceType The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceType(@Nullable Output<String> serviceType) {
+            $.serviceType = serviceType;
+            return this;
+        }
+
+        /**
+         * @param serviceType The edition of the audit log. Valid values: `Standard`, `V2_Standard`. If omitted, the Provider sends `Standard`. In regions where only the V2 audit log is available, set this to `V2_Standard`. Changes to this field are ignored while `auditStatus` is `disabled` — the server switches the edition internally when audit is off and restores the declared value on re-enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceType(String serviceType) {
+            return serviceType(Output.of(serviceType));
+        }
+
+        /**
+         * @param storagePeriod Audit log retention duration, in days.
+         * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+         * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
          * 
          * @return builder
          * 
@@ -178,7 +258,9 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePeriod Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+         * @param storagePeriod Audit log retention duration, in days.
+         * - When `serviceType` is `Standard`, the value range is 1 to 365 days. The default value is 30 days.
+         * - When `serviceType` is `V2_Standard`, this is the cold storage duration and is required. Valid values: `30`, `180`, `365`, `1095`, `1825`.
          * 
          * @return builder
          * 

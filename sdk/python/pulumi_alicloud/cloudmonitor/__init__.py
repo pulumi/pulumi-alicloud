@@ -13,6 +13,7 @@ from .service_basic_public import *
 from .service_enterprise_public import *
 from .service_group_monitoring_agent_process import *
 from .service_hybrid_double_write import *
+from .service_metric_alarm_rule import *
 from .service_monitoring_agent_process import *
 from ._inputs import *
 from . import outputs

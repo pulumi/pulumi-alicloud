@@ -21,6 +21,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
                  account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_asset_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  band_width: pulumi.Input[Optional[_builtins.int]] = None,
                  cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
                  cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -41,6 +42,7 @@ class InstanceArgs:
 
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
+        :param pulumi.Input[_builtins.str] auto_asset_protection: Internet asset protection switch. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[_builtins.bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
@@ -48,7 +50,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[_builtins.int] instance_count: The number of assets.
         :param pulumi.Input[_builtins.int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
-        :param pulumi.Input[_builtins.str] logistics: The logistics.
+        :param pulumi.Input[_builtins.str] logistics: The logistics address of this order. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[_builtins.int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
@@ -65,6 +67,8 @@ class InstanceArgs:
         pulumi.set(__self__, "payment_type", payment_type)
         if account_number is not None:
             pulumi.set(__self__, "account_number", account_number)
+        if auto_asset_protection is not None:
+            pulumi.set(__self__, "auto_asset_protection", auto_asset_protection)
         if band_width is not None:
             pulumi.set(__self__, "band_width", band_width)
         if cfw_account is not None:
@@ -122,6 +126,18 @@ class InstanceArgs:
     @account_number.setter
     def account_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoAssetProtection")
+    def auto_asset_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Internet asset protection switch. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_asset_protection")
+
+    @auto_asset_protection.setter
+    def auto_asset_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_asset_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="bandWidth")
@@ -211,7 +227,7 @@ class InstanceArgs:
     @pulumi.getter
     def logistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The logistics.
+        The logistics address of this order. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "logistics")
 
@@ -314,6 +330,7 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_asset_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  band_width: pulumi.Input[Optional[_builtins.int]] = None,
                  cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
                  cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -339,6 +356,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
 
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
+        :param pulumi.Input[_builtins.str] auto_asset_protection: Internet asset protection switch. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[_builtins.bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
@@ -348,7 +366,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[_builtins.int] instance_count: The number of assets.
         :param pulumi.Input[_builtins.int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
-        :param pulumi.Input[_builtins.str] logistics: The logistics.
+        :param pulumi.Input[_builtins.str] logistics: The logistics address of this order. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
@@ -368,6 +386,8 @@ class _InstanceState:
         """
         if account_number is not None:
             pulumi.set(__self__, "account_number", account_number)
+        if auto_asset_protection is not None:
+            pulumi.set(__self__, "auto_asset_protection", auto_asset_protection)
         if band_width is not None:
             pulumi.set(__self__, "band_width", band_width)
         if cfw_account is not None:
@@ -425,6 +445,18 @@ class _InstanceState:
     @account_number.setter
     def account_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_number", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoAssetProtection")
+    def auto_asset_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Internet asset protection switch. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_asset_protection")
+
+    @auto_asset_protection.setter
+    def auto_asset_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "auto_asset_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="bandWidth")
@@ -538,7 +570,7 @@ class _InstanceState:
     @pulumi.getter
     def logistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The logistics.
+        The logistics address of this order. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "logistics")
 
@@ -692,6 +724,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_asset_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  band_width: pulumi.Input[Optional[_builtins.int]] = None,
                  cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
                  cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -715,8 +748,6 @@ class Instance(pulumi.CustomResource):
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
         > **NOTE:** Available since v1.139.0.
-
-        > **NOTE:** Deprecated since v1.269.0.
 
         > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
 
@@ -761,6 +792,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
+        :param pulumi.Input[_builtins.str] auto_asset_protection: Internet asset protection switch. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[_builtins.bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
@@ -768,7 +800,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[_builtins.int] instance_count: The number of assets.
         :param pulumi.Input[_builtins.int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
-        :param pulumi.Input[_builtins.str] logistics: The logistics.
+        :param pulumi.Input[_builtins.str] logistics: The logistics address of this order. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
@@ -795,8 +827,6 @@ class Instance(pulumi.CustomResource):
         For information about Cloud Firewall Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/product/90174.htm).
 
         > **NOTE:** Available since v1.139.0.
-
-        > **NOTE:** Deprecated since v1.269.0.
 
         > **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
 
@@ -854,6 +884,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_asset_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  band_width: pulumi.Input[Optional[_builtins.int]] = None,
                  cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
                  cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -880,6 +911,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["account_number"] = account_number
+            __props__.__dict__["auto_asset_protection"] = auto_asset_protection
             __props__.__dict__["band_width"] = band_width
             __props__.__dict__["cfw_account"] = cfw_account
             __props__.__dict__["cfw_log"] = cfw_log
@@ -914,6 +946,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_number: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_asset_protection: pulumi.Input[Optional[_builtins.str]] = None,
             band_width: pulumi.Input[Optional[_builtins.int]] = None,
             cfw_account: pulumi.Input[Optional[_builtins.bool]] = None,
             cfw_log: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -943,6 +976,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
+        :param pulumi.Input[_builtins.str] auto_asset_protection: Internet asset protection switch. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[_builtins.bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
@@ -952,7 +986,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[_builtins.int] instance_count: The number of assets.
         :param pulumi.Input[_builtins.int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
-        :param pulumi.Input[_builtins.str] logistics: The logistics.
+        :param pulumi.Input[_builtins.str] logistics: The logistics address of this order. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
@@ -975,6 +1009,7 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["account_number"] = account_number
+        __props__.__dict__["auto_asset_protection"] = auto_asset_protection
         __props__.__dict__["band_width"] = band_width
         __props__.__dict__["cfw_account"] = cfw_account
         __props__.__dict__["cfw_log"] = cfw_log
@@ -1005,6 +1040,14 @@ class Instance(pulumi.CustomResource):
         The number of multi account. It will be ignored when `cfw_account = false`.
         """
         return pulumi.get(self, "account_number")
+
+    @_builtins.property
+    @pulumi.getter(name="autoAssetProtection")
+    def auto_asset_protection(self) -> pulumi.Output[_builtins.str]:
+        """
+        Internet asset protection switch. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "auto_asset_protection")
 
     @_builtins.property
     @pulumi.getter(name="bandWidth")
@@ -1082,7 +1125,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def logistics(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The logistics.
+        The logistics address of this order. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "logistics")
 

@@ -551,14 +551,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security group id
+     * Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return Security group id
+     * @return Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -1598,7 +1598,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId Security group id
+         * @param securityGroupId Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
          * 
          * @return builder
          * 
@@ -1609,7 +1609,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId Security group id
+         * @param securityGroupId Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
          * 
          * @return builder
          * 

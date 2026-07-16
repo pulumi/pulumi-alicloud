@@ -15,10 +15,20 @@ export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
+export { GetPluginClassesArgs, GetPluginClassesResult, GetPluginClassesOutputArgs } from "./getPluginClasses";
+export const getPluginClasses: typeof import("./getPluginClasses").getPluginClasses = null as any;
+export const getPluginClassesOutput: typeof import("./getPluginClasses").getPluginClassesOutput = null as any;
+utilities.lazyLoad(exports, ["getPluginClasses","getPluginClassesOutput"], () => require("./getPluginClasses"));
+
 export { HttpApiArgs, HttpApiState } from "./httpApi";
 export type HttpApi = import("./httpApi").HttpApi;
 export const HttpApi: typeof import("./httpApi").HttpApi = null as any;
 utilities.lazyLoad(exports, ["HttpApi"], () => require("./httpApi"));
+
+export { PluginClassArgs, PluginClassState } from "./pluginClass";
+export type PluginClass = import("./pluginClass").PluginClass;
+export const PluginClass: typeof import("./pluginClass").PluginClass = null as any;
+utilities.lazyLoad(exports, ["PluginClass"], () => require("./pluginClass"));
 
 
 const _module = {
@@ -31,6 +41,8 @@ const _module = {
                 return new Gateway(name, <any>undefined, { urn })
             case "alicloud:apig/httpApi:HttpApi":
                 return new HttpApi(name, <any>undefined, { urn })
+            case "alicloud:apig/pluginClass:PluginClass":
+                return new PluginClass(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -39,3 +51,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "apig/environment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/httpApi", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/pluginClass", _module)

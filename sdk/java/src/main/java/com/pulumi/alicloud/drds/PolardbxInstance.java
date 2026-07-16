@@ -106,14 +106,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:drds/polardbxInstance:PolardbxInstance")
 public class PolardbxInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Compute node specifications.
+     * Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     @Export(name="cnClass", refs={String.class}, tree="[0]")
     private Output<String> cnClass;
 
     /**
-     * @return Compute node specifications.
+     * @return Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     public Output<String> cnClass() {
@@ -162,14 +162,14 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Storage node specifications.
+     * Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     @Export(name="dnClass", refs={String.class}, tree="[0]")
     private Output<String> dnClass;
 
     /**
-     * @return Storage node specifications.
+     * @return Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     public Output<String> dnClass() {
@@ -188,6 +188,20 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> dnNodeCount() {
         return this.dnNodeCount;
+    }
+    /**
+     * Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+     * 
+     */
+    @Export(name="dnStorageSpace", refs={String.class}, tree="[0]")
+    private Output<String> dnStorageSpace;
+
+    /**
+     * @return Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+     * 
+     */
+    public Output<String> dnStorageSpace() {
+        return this.dnStorageSpace;
     }
     /**
      * Engine version, default 5.7
@@ -292,6 +306,34 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryZone);
     }
     /**
+     * Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+     * 
+     */
+    @Export(name="specifiedDnScale", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> specifiedDnScale;
+
+    /**
+     * @return Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+     * 
+     */
+    public Output<Optional<Boolean>> specifiedDnScale() {
+        return Codegen.optional(this.specifiedDnScale);
+    }
+    /**
+     * JSON string describing the per-DN target specification during a class change.
+     * 
+     */
+    @Export(name="specifiedDnSpecMapJson", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> specifiedDnSpecMapJson;
+
+    /**
+     * @return JSON string describing the per-DN target specification during a class change.
+     * 
+     */
+    public Output<Optional<String>> specifiedDnSpecMapJson() {
+        return Codegen.optional(this.specifiedDnSpecMapJson);
+    }
+    /**
      * The status of the resource
      * 
      */
@@ -304,6 +346,48 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Storage type of the instance. Valid values:
+     * 
+     */
+    @Export(name="storageType", refs={String.class}, tree="[0]")
+    private Output<String> storageType;
+
+    /**
+     * @return Storage type of the instance. Valid values:
+     * 
+     */
+    public Output<String> storageType() {
+        return this.storageType;
+    }
+    /**
+     * Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+     * 
+     */
+    @Export(name="switchTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> switchTime;
+
+    /**
+     * @return Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+     * 
+     */
+    public Output<Optional<String>> switchTime() {
+        return Codegen.optional(this.switchTime);
+    }
+    /**
+     * Effective time policy applied to a class change. Valid values:
+     * 
+     */
+    @Export(name="switchTimeMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> switchTimeMode;
+
+    /**
+     * @return Effective time policy applied to a class change. Valid values:
+     * 
+     */
+    public Output<Optional<String>> switchTimeMode() {
+        return Codegen.optional(this.switchTimeMode);
     }
     /**
      * Third Availability Zone.

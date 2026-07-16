@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Drds
     public partial class PolardbxInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Compute node specifications.
+        /// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         /// </summary>
         [Output("cnClass")]
         public Output<string> CnClass { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.Drds
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Storage node specifications.
+        /// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         /// </summary>
         [Output("dnClass")]
         public Output<string> DnClass { get; private set; } = null!;
@@ -115,6 +115,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Output("dnNodeCount")]
         public Output<int> DnNodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Storage space per storage node, in GB. Only applicable when `StorageType` is `CloudAuto`; leave unset for `CustomLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+        /// </summary>
+        [Output("dnStorageSpace")]
+        public Output<string> DnStorageSpace { get; private set; } = null!;
 
         /// <summary>
         /// Engine version, default 5.7
@@ -161,10 +167,40 @@ namespace Pulumi.AliCloud.Drds
         public Output<string?> SecondaryZone { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the storage node specification is customized per DN during a class change. Used together with `SpecifiedDnSpecMapJson`.
+        /// </summary>
+        [Output("specifiedDnScale")]
+        public Output<bool?> SpecifiedDnScale { get; private set; } = null!;
+
+        /// <summary>
+        /// JSON string describing the per-DN target specification during a class change.
+        /// </summary>
+        [Output("specifiedDnSpecMapJson")]
+        public Output<string?> SpecifiedDnSpecMapJson { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Storage type of the instance. Valid values:
+        /// </summary>
+        [Output("storageType")]
+        public Output<string> StorageType { get; private set; } = null!;
+
+        /// <summary>
+        /// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        /// </summary>
+        [Output("switchTime")]
+        public Output<string?> SwitchTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Effective time policy applied to a class change. Valid values:
+        /// </summary>
+        [Output("switchTimeMode")]
+        public Output<string?> SwitchTimeMode { get; private set; } = null!;
 
         /// <summary>
         /// Third Availability Zone.
@@ -237,7 +273,7 @@ namespace Pulumi.AliCloud.Drds
     public sealed class PolardbxInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Compute node specifications.
+        /// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         /// </summary>
         [Input("cnClass", required: true)]
         public Input<string> CnClass { get; set; } = null!;
@@ -255,7 +291,7 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Storage node specifications.
+        /// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         /// </summary>
         [Input("dnClass", required: true)]
         public Input<string> DnClass { get; set; } = null!;
@@ -265,6 +301,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Input("dnNodeCount", required: true)]
         public Input<int> DnNodeCount { get; set; } = null!;
+
+        /// <summary>
+        /// Storage space per storage node, in GB. Only applicable when `StorageType` is `CloudAuto`; leave unset for `CustomLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+        /// </summary>
+        [Input("dnStorageSpace")]
+        public Input<string>? DnStorageSpace { get; set; }
 
         /// <summary>
         /// Engine version, default 5.7
@@ -305,6 +347,36 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
+        /// Whether the storage node specification is customized per DN during a class change. Used together with `SpecifiedDnSpecMapJson`.
+        /// </summary>
+        [Input("specifiedDnScale")]
+        public Input<bool>? SpecifiedDnScale { get; set; }
+
+        /// <summary>
+        /// JSON string describing the per-DN target specification during a class change.
+        /// </summary>
+        [Input("specifiedDnSpecMapJson")]
+        public Input<string>? SpecifiedDnSpecMapJson { get; set; }
+
+        /// <summary>
+        /// Storage type of the instance. Valid values:
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        /// </summary>
+        [Input("switchTime")]
+        public Input<string>? SwitchTime { get; set; }
+
+        /// <summary>
+        /// Effective time policy applied to a class change. Valid values:
+        /// </summary>
+        [Input("switchTimeMode")]
+        public Input<string>? SwitchTimeMode { get; set; }
+
+        /// <summary>
         /// Third Availability Zone.
         /// </summary>
         [Input("tertiaryZone")]
@@ -337,7 +409,7 @@ namespace Pulumi.AliCloud.Drds
     public sealed class PolardbxInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Compute node specifications.
+        /// Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         /// </summary>
         [Input("cnClass")]
         public Input<string>? CnClass { get; set; }
@@ -361,7 +433,7 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Storage node specifications.
+        /// Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
         /// </summary>
         [Input("dnClass")]
         public Input<string>? DnClass { get; set; }
@@ -371,6 +443,12 @@ namespace Pulumi.AliCloud.Drds
         /// </summary>
         [Input("dnNodeCount")]
         public Input<int>? DnNodeCount { get; set; }
+
+        /// <summary>
+        /// Storage space per storage node, in GB. Only applicable when `StorageType` is `CloudAuto`; leave unset for `CustomLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+        /// </summary>
+        [Input("dnStorageSpace")]
+        public Input<string>? DnStorageSpace { get; set; }
 
         /// <summary>
         /// Engine version, default 5.7
@@ -417,10 +495,40 @@ namespace Pulumi.AliCloud.Drds
         public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
+        /// Whether the storage node specification is customized per DN during a class change. Used together with `SpecifiedDnSpecMapJson`.
+        /// </summary>
+        [Input("specifiedDnScale")]
+        public Input<bool>? SpecifiedDnScale { get; set; }
+
+        /// <summary>
+        /// JSON string describing the per-DN target specification during a class change.
+        /// </summary>
+        [Input("specifiedDnSpecMapJson")]
+        public Input<string>? SpecifiedDnSpecMapJson { get; set; }
+
+        /// <summary>
         /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Storage type of the instance. Valid values:
+        /// </summary>
+        [Input("storageType")]
+        public Input<string>? StorageType { get; set; }
+
+        /// <summary>
+        /// Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+        /// </summary>
+        [Input("switchTime")]
+        public Input<string>? SwitchTime { get; set; }
+
+        /// <summary>
+        /// Effective time policy applied to a class change. Valid values:
+        /// </summary>
+        [Input("switchTimeMode")]
+        public Input<string>? SwitchTimeMode { get; set; }
 
         /// <summary>
         /// Third Availability Zone.

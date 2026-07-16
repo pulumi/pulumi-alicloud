@@ -567,6 +567,7 @@ class _InstanceState:
                  topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
                  topic_used: pulumi.Input[Optional[_builtins.int]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -627,6 +628,7 @@ class _InstanceState:
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[_builtins.int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
+        :param pulumi.Input[_builtins.str] vpc_sasl_domain_endpoint: (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
                > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
@@ -715,6 +717,8 @@ class _InstanceState:
             pulumi.set(__self__, "topic_used", topic_used)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_sasl_domain_endpoint is not None:
+            pulumi.set(__self__, "vpc_sasl_domain_endpoint", vpc_sasl_domain_endpoint)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if vswitch_ids is not None:
@@ -1218,6 +1222,18 @@ class _InstanceState:
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="vpcSaslDomainEndpoint")
+    def vpc_sasl_domain_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+        """
+        return pulumi.get(self, "vpc_sasl_domain_endpoint")
+
+    @vpc_sasl_domain_endpoint.setter
+    def vpc_sasl_domain_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_sasl_domain_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1582,6 +1598,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["topic_left"] = None
             __props__.__dict__["topic_num_of_buy"] = None
             __props__.__dict__["topic_used"] = None
+            __props__.__dict__["vpc_sasl_domain_endpoint"] = None
         super(Instance, __self__).__init__(
             'alicloud:alikafka/instance:Instance',
             resource_name,
@@ -1632,6 +1649,7 @@ class Instance(pulumi.CustomResource):
             topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
             topic_used: pulumi.Input[Optional[_builtins.int]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
             vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
@@ -1696,6 +1714,7 @@ class Instance(pulumi.CustomResource):
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[_builtins.int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID of the instance.
+        :param pulumi.Input[_builtins.str] vpc_sasl_domain_endpoint: (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The IDs of the vSwitches with which the instance is associated.
                > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
@@ -1745,6 +1764,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["topic_quota"] = topic_quota
         __props__.__dict__["topic_used"] = topic_used
         __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vpc_sasl_domain_endpoint"] = vpc_sasl_domain_endpoint
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         __props__.__dict__["zone_id"] = zone_id
@@ -2084,6 +2104,14 @@ class Instance(pulumi.CustomResource):
         The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcSaslDomainEndpoint")
+    def vpc_sasl_domain_endpoint(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.283.0) The IP-based endpoint for SASL access over a VPC.
+        """
+        return pulumi.get(self, "vpc_sasl_domain_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")

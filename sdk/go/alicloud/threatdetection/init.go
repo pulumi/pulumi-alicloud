@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OssScanConfig{}
 	case "alicloud:threatdetection/sasTrail:SasTrail":
 		r = &SasTrail{}
+	case "alicloud:threatdetection/serviceLinkedRole:ServiceLinkedRole":
+		r = &ServiceLinkedRole{}
 	case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
 		r = &VulWhitelist{}
 	case "alicloud:threatdetection/webLockConfig:WebLockConfig":
@@ -183,6 +185,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/sasTrail",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/serviceLinkedRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

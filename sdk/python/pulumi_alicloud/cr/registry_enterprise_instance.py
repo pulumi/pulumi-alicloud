@@ -45,6 +45,7 @@ class RegistryEnterpriseInstanceArgs:
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               - `Economy`: Economy instance
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] payment_type: Payment type, value:
@@ -56,6 +57,7 @@ class RegistryEnterpriseInstanceArgs:
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               - `DISABLE`: Disables the image security scan engine.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
@@ -137,6 +139,7 @@ class RegistryEnterpriseInstanceArgs:
         - `Basic`: Basic instance
         - `Standard`: Standard instance
         - `Advanced`: Advanced Edition Instance
+        - `Economy`: Economy instance
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -192,6 +195,7 @@ class RegistryEnterpriseInstanceArgs:
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
         - `SAS`: uses the enhanced cloud security scan engine.
+        - `DISABLE`: Disables the image security scan engine.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -378,6 +382,7 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               - `DISABLE`: Disables the image security scan engine.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
@@ -386,6 +391,7 @@ class _RegistryEnterpriseInstanceState:
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               - `Economy`: Economy instance
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
@@ -539,6 +545,7 @@ class _RegistryEnterpriseInstanceState:
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
         - `SAS`: uses the enhanced cloud security scan engine.
+        - `DISABLE`: Disables the image security scan engine.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -580,6 +587,7 @@ class _RegistryEnterpriseInstanceState:
         - `Basic`: Basic instance
         - `Standard`: Standard instance
         - `Advanced`: Advanced Edition Instance
+        - `Economy`: Economy instance
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -844,6 +852,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               - `DISABLE`: Disables the image security scan engine.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
@@ -851,6 +860,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               - `Economy`: Economy instance
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
@@ -1056,6 +1066,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               - `DISABLE`: Disables the image security scan engine.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
@@ -1064,6 +1075,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               - `Economy`: Economy instance
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
@@ -1177,6 +1189,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
         - `SAS`: uses the enhanced cloud security scan engine.
+        - `DISABLE`: Disables the image security scan engine.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -1206,6 +1219,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         - `Basic`: Basic instance
         - `Standard`: Standard instance
         - `Advanced`: Advanced Edition Instance
+        - `Economy`: Economy instance
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """

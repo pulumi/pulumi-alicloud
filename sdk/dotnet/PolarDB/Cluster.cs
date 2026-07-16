@@ -650,6 +650,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> TargetDbRevisionVersionCode { get; private set; } = null!;
 
         /// <summary>
+        /// The target minor version of the cluster. Used during creation.
+        /// </summary>
+        [Output("targetMinorVersion")]
+        public Output<string?> TargetMinorVersion { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since 1.200.0) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
@@ -1224,6 +1230,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? TargetDbRevisionVersionCode { get; set; }
 
         /// <summary>
+        /// The target minor version of the cluster. Used during creation.
+        /// </summary>
+        [Input("targetMinorVersion")]
+        public Input<string>? TargetMinorVersion { get; set; }
+
+        /// <summary>
         /// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
         /// &gt; **NOTE:** `TdeStatus` Cannot modify after created when `DbType` is `PostgreSQL` or `Oracle`.`TdeStatus` only support modification from `Disabled` to `Enabled` when `DbType` is `MySQL`.
         /// </summary>
@@ -1786,6 +1798,12 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("targetDbRevisionVersionCode")]
         public Input<string>? TargetDbRevisionVersionCode { get; set; }
+
+        /// <summary>
+        /// The target minor version of the cluster. Used during creation.
+        /// </summary>
+        [Input("targetMinorVersion")]
+        public Input<string>? TargetMinorVersion { get; set; }
 
         /// <summary>
         /// (Available since 1.200.0) The region where the TDE key resides.

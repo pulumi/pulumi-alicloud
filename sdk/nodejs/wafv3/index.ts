@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AddressBookArgs, AddressBookState } from "./addressBook";
+export type AddressBook = import("./addressBook").AddressBook;
+export const AddressBook: typeof import("./addressBook").AddressBook = null as any;
+utilities.lazyLoad(exports, ["AddressBook"], () => require("./addressBook"));
+
 export { DefenseResourceGroupArgs, DefenseResourceGroupState } from "./defenseResourceGroup";
 export type DefenseResourceGroup = import("./defenseResourceGroup").DefenseResourceGroup;
 export const DefenseResourceGroup: typeof import("./defenseResourceGroup").DefenseResourceGroup = null as any;
@@ -24,6 +29,16 @@ export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
 utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { GetAddressBooksArgs, GetAddressBooksResult, GetAddressBooksOutputArgs } from "./getAddressBooks";
+export const getAddressBooks: typeof import("./getAddressBooks").getAddressBooks = null as any;
+export const getAddressBooksOutput: typeof import("./getAddressBooks").getAddressBooksOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressBooks","getAddressBooksOutput"], () => require("./getAddressBooks"));
+
+export { GetDefenseRulesArgs, GetDefenseRulesResult, GetDefenseRulesOutputArgs } from "./getDefenseRules";
+export const getDefenseRules: typeof import("./getDefenseRules").getDefenseRules = null as any;
+export const getDefenseRulesOutput: typeof import("./getDefenseRules").getDefenseRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getDefenseRules","getDefenseRulesOutput"], () => require("./getDefenseRules"));
 
 export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
 export const getDomains: typeof import("./getDomains").getDomains = null as any;
@@ -45,6 +60,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:wafv3/addressBook:AddressBook":
+                return new AddressBook(name, <any>undefined, { urn })
             case "alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup":
                 return new DefenseResourceGroup(name, <any>undefined, { urn })
             case "alicloud:wafv3/defenseRule:DefenseRule":
@@ -60,6 +77,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "wafv3/addressBook", _module)
 pulumi.runtime.registerResourceModule("alicloud", "wafv3/defenseResourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "wafv3/defenseRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "wafv3/defenseTemplate", _module)

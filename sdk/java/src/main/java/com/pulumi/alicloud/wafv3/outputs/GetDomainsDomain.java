@@ -24,6 +24,11 @@ public final class GetDomainsDomain {
      */
     private String domain;
     /**
+     * @return The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+     * 
+     */
+    private String domainId;
+    /**
      * @return The ID of the domain. It formats as `&lt;instance_id&gt;:&lt;domain&gt;`.
      * 
      */
@@ -63,6 +68,13 @@ public final class GetDomainsDomain {
      */
     public String domain() {
         return this.domain;
+    }
+    /**
+     * @return The numeric domain ID assigned by WAF. Populated only when `enableDetails` is `true`.
+     * 
+     */
+    public String domainId() {
+        return this.domainId;
     }
     /**
      * @return The ID of the domain. It formats as `&lt;instance_id&gt;:&lt;domain&gt;`.
@@ -111,6 +123,7 @@ public final class GetDomainsDomain {
     public static final class Builder {
         private String cname;
         private String domain;
+        private String domainId;
         private String id;
         private List<GetDomainsDomainListen> listens;
         private List<GetDomainsDomainRedirect> redirects;
@@ -121,6 +134,7 @@ public final class GetDomainsDomain {
     	      Objects.requireNonNull(defaults);
     	      this.cname = defaults.cname;
     	      this.domain = defaults.domain;
+    	      this.domainId = defaults.domainId;
     	      this.id = defaults.id;
     	      this.listens = defaults.listens;
     	      this.redirects = defaults.redirects;
@@ -142,6 +156,14 @@ public final class GetDomainsDomain {
               throw new MissingRequiredPropertyException("GetDomainsDomain", "domain");
             }
             this.domain = domain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder domainId(String domainId) {
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
@@ -194,6 +216,7 @@ public final class GetDomainsDomain {
             final var _resultValue = new GetDomainsDomain();
             _resultValue.cname = cname;
             _resultValue.domain = domain;
+            _resultValue.domainId = domainId;
             _resultValue.id = id;
             _resultValue.listens = listens;
             _resultValue.redirects = redirects;

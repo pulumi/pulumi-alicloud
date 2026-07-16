@@ -34,9 +34,9 @@ import * as utilities from "../utilities";
  *     vpcId: _default.id,
  *     enabled: true,
  * });
- * const defaultRouteEntry = new alicloud.vpc.RouteEntry("default", {
+ * const defaultVPCRouteEntry = new alicloud.vpc.VPCRouteEntry("default", {
  *     routeTableId: _default.routeTableId,
- *     destinationCidrblock: "172.11.1.1/32",
+ *     destinationCidrBlock: "172.11.1.1/32",
  *     nexthopType: "Ipv4Gateway",
  *     nexthopId: defaultIpv4Gateway.id,
  * });

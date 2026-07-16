@@ -34,7 +34,6 @@ namespace Pulumi.AliCloud.Esa
         ///     {
         ///         QuotaGb = 10240,
         ///         CrRegion = "CN-beijing",
-        ///         AutoRenew = true,
         ///         Period = 1,
         ///         PaymentType = "Subscription",
         ///         AutoPay = true,
@@ -81,7 +80,6 @@ namespace Pulumi.AliCloud.Esa
         ///     {
         ///         QuotaGb = 10240,
         ///         CrRegion = "CN-beijing",
-        ///         AutoRenew = true,
         ///         Period = 1,
         ///         PaymentType = "Subscription",
         ///         AutoPay = true,
@@ -128,7 +126,6 @@ namespace Pulumi.AliCloud.Esa
         ///     {
         ///         QuotaGb = 10240,
         ///         CrRegion = "CN-beijing",
-        ///         AutoRenew = true,
         ///         Period = 1,
         ///         PaymentType = "Subscription",
         ///         AutoPay = true,

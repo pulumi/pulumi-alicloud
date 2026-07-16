@@ -184,6 +184,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     */
+    declare public readonly enableHighDensityMode: pulumi.Output<boolean | undefined>;
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
     declare public readonly enableJumboFrame: pulumi.Output<boolean>;
@@ -319,11 +325,13 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The index of the network card for Primary ENI.
      */
-    declare public readonly networkCardIndex: pulumi.Output<number | undefined>;
+    declare public readonly networkCardIndex: pulumi.Output<number>;
     /**
      * The ID of the Primary ENI.
+     *
+     * > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
      */
-    declare public /*out*/ readonly networkInterfaceId: pulumi.Output<string>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
      * - `Standard`: Uses the TCP communication mode.
@@ -392,7 +400,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of queues supported by the ERI.
      */
-    declare public readonly queuePairNumber: pulumi.Output<number | undefined>;
+    declare public readonly queuePairNumber: pulumi.Output<number>;
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
      * - `AutoRenewal`: Enable auto renewal.
@@ -439,9 +447,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly securityEnhancementStrategy: pulumi.Output<string>;
     /**
-     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * A list of security group ids to associate with.
+     *
+     * > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      */
     declare public readonly securityGroups: pulumi.Output<string[]>;
+    /**
+     * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     */
+    declare public readonly sourceDestCheck: pulumi.Output<boolean>;
     /**
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      */
@@ -587,6 +601,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deploymentSetId"] = state?.deploymentSetId;
             resourceInputs["description"] = state?.description;
             resourceInputs["dryRun"] = state?.dryRun;
+            resourceInputs["enableHighDensityMode"] = state?.enableHighDensityMode;
             resourceInputs["enableJumboFrame"] = state?.enableJumboFrame;
             resourceInputs["expiredTime"] = state?.expiredTime;
             resourceInputs["forceDelete"] = state?.forceDelete;
@@ -641,6 +656,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIps"] = state?.secondaryPrivateIps;
             resourceInputs["securityEnhancementStrategy"] = state?.securityEnhancementStrategy;
             resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["sourceDestCheck"] = state?.sourceDestCheck;
             resourceInputs["spotDuration"] = state?.spotDuration;
             resourceInputs["spotInterruptionBehavior"] = state?.spotInterruptionBehavior;
             resourceInputs["spotPriceLimit"] = state?.spotPriceLimit;
@@ -680,6 +696,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deploymentSetId"] = args?.deploymentSetId;
             resourceInputs["description"] = args?.description;
             resourceInputs["dryRun"] = args?.dryRun;
+            resourceInputs["enableHighDensityMode"] = args?.enableHighDensityMode;
             resourceInputs["enableJumboFrame"] = args?.enableJumboFrame;
             resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["hostName"] = args?.hostName;
@@ -709,6 +726,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenanceNotify"] = args?.maintenanceNotify;
             resourceInputs["maintenanceTime"] = args?.maintenanceTime;
             resourceInputs["networkCardIndex"] = args?.networkCardIndex;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
             resourceInputs["networkInterfaceTrafficMode"] = args?.networkInterfaceTrafficMode;
             resourceInputs["networkInterfaces"] = args?.networkInterfaces;
             resourceInputs["operatorType"] = args?.operatorType;
@@ -727,6 +745,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["secondaryPrivateIps"] = args?.secondaryPrivateIps;
             resourceInputs["securityEnhancementStrategy"] = args?.securityEnhancementStrategy;
             resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["sourceDestCheck"] = args?.sourceDestCheck;
             resourceInputs["spotDuration"] = args?.spotDuration;
             resourceInputs["spotInterruptionBehavior"] = args?.spotInterruptionBehavior;
             resourceInputs["spotPriceLimit"] = args?.spotPriceLimit;
@@ -755,7 +774,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deploymentSetGroupNo"] = undefined /*out*/;
             resourceInputs["expiredTime"] = undefined /*out*/;
             resourceInputs["memory"] = undefined /*out*/;
-            resourceInputs["networkInterfaceId"] = undefined /*out*/;
             resourceInputs["osName"] = undefined /*out*/;
             resourceInputs["osType"] = undefined /*out*/;
             resourceInputs["primaryIpAddress"] = undefined /*out*/;
@@ -842,6 +860,12 @@ export interface InstanceState {
      * - false: A request is sent. If the validation succeeds, the instance is created.
      */
     dryRun?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     */
+    enableHighDensityMode?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
@@ -981,6 +1005,8 @@ export interface InstanceState {
     networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Primary ENI.
+     *
+     * > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
      */
     networkInterfaceId?: pulumi.Input<string | undefined>;
     /**
@@ -1098,9 +1124,15 @@ export interface InstanceState {
      */
     securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
-     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * A list of security group ids to associate with.
+     *
+     * > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     */
+    sourceDestCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      */
@@ -1280,6 +1312,12 @@ export interface InstanceArgs {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+     *
+     * > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+     */
+    enableHighDensityMode?: pulumi.Input<boolean | undefined>;
+    /**
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
     enableJumboFrame?: pulumi.Input<boolean | undefined>;
@@ -1409,6 +1447,12 @@ export interface InstanceArgs {
      */
     networkCardIndex?: pulumi.Input<number | undefined>;
     /**
+     * The ID of the Primary ENI.
+     *
+     * > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
+     */
+    networkInterfaceId?: pulumi.Input<string | undefined>;
+    /**
      * The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
      * - `Standard`: Uses the TCP communication mode.
      * - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -1507,9 +1551,15 @@ export interface InstanceArgs {
      */
     securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
-     * A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+     * A list of security group ids to associate with.
+     *
+     * > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+     */
+    sourceDestCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
      */

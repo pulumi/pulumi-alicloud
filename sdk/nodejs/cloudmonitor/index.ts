@@ -40,6 +40,11 @@ export type ServiceHybridDoubleWrite = import("./serviceHybridDoubleWrite").Serv
 export const ServiceHybridDoubleWrite: typeof import("./serviceHybridDoubleWrite").ServiceHybridDoubleWrite = null as any;
 utilities.lazyLoad(exports, ["ServiceHybridDoubleWrite"], () => require("./serviceHybridDoubleWrite"));
 
+export { ServiceMetricAlarmRuleArgs, ServiceMetricAlarmRuleState } from "./serviceMetricAlarmRule";
+export type ServiceMetricAlarmRule = import("./serviceMetricAlarmRule").ServiceMetricAlarmRule;
+export const ServiceMetricAlarmRule: typeof import("./serviceMetricAlarmRule").ServiceMetricAlarmRule = null as any;
+utilities.lazyLoad(exports, ["ServiceMetricAlarmRule"], () => require("./serviceMetricAlarmRule"));
+
 export { ServiceMonitoringAgentProcessArgs, ServiceMonitoringAgentProcessState } from "./serviceMonitoringAgentProcess";
 export type ServiceMonitoringAgentProcess = import("./serviceMonitoringAgentProcess").ServiceMonitoringAgentProcess;
 export const ServiceMonitoringAgentProcess: typeof import("./serviceMonitoringAgentProcess").ServiceMonitoringAgentProcess = null as any;
@@ -60,6 +65,8 @@ const _module = {
                 return new ServiceGroupMonitoringAgentProcess(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite":
                 return new ServiceHybridDoubleWrite(name, <any>undefined, { urn })
+            case "alicloud:cloudmonitor/serviceMetricAlarmRule:ServiceMetricAlarmRule":
+                return new ServiceMetricAlarmRule(name, <any>undefined, { urn })
             case "alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess":
                 return new ServiceMonitoringAgentProcess(name, <any>undefined, { urn })
             default:
@@ -72,4 +79,5 @@ pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceBasicPubl
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceEnterprisePublic", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceGroupMonitoringAgentProcess", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceHybridDoubleWrite", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceMetricAlarmRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudmonitor/serviceMonitoringAgentProcess", _module)

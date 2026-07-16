@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// &gt; **NOTE:** Available since v1.139.0.
     /// 
-    /// &gt; **NOTE:** Deprecated since v1.269.0.
-    /// 
     /// &gt; **DEPRECATED:** This resource has been deprecated from version `1.269.0`. Please use new resource alicloud_cloud_firewall_instance_v2.
     /// 
     /// ## Example Usage
@@ -84,6 +82,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<int?> AccountNumber { get; private set; } = null!;
 
         /// <summary>
+        /// Internet asset protection switch. Valid values: `True`, `False`.
+        /// </summary>
+        [Output("autoAssetProtection")]
+        public Output<string> AutoAssetProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Output("bandWidth")]
@@ -138,7 +142,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<int> IpNumber { get; private set; } = null!;
 
         /// <summary>
-        /// The logistics.
+        /// The logistics address of this order. The parameter is immutable after resource creation.
         /// </summary>
         [Output("logistics")]
         public Output<string?> Logistics { get; private set; } = null!;
@@ -267,6 +271,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? AccountNumber { get; set; }
 
         /// <summary>
+        /// Internet asset protection switch. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("autoAssetProtection")]
+        public Input<string>? AutoAssetProtection { get; set; }
+
+        /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Input("bandWidth")]
@@ -309,7 +319,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? IpNumber { get; set; }
 
         /// <summary>
-        /// The logistics.
+        /// The logistics address of this order. The parameter is immutable after resource creation.
         /// </summary>
         [Input("logistics")]
         public Input<string>? Logistics { get; set; }
@@ -382,6 +392,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? AccountNumber { get; set; }
 
         /// <summary>
+        /// Internet asset protection switch. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("autoAssetProtection")]
+        public Input<string>? AutoAssetProtection { get; set; }
+
+        /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Input("bandWidth")]
@@ -436,7 +452,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? IpNumber { get; set; }
 
         /// <summary>
-        /// The logistics.
+        /// The logistics address of this order. The parameter is immutable after resource creation.
         /// </summary>
         [Input("logistics")]
         public Input<string>? Logistics { get; set; }

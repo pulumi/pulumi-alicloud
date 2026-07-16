@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAuditPoliciesResult {
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     private String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,9 +25,17 @@ public final class GetAuditPoliciesResult {
      */
     private String id;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Mongodb Audit Policies. Each element contains the following attributes:
+     * 
+     */
     private List<GetAuditPoliciesPolicy> policies;
 
     private GetAuditPoliciesResult() {}
+    /**
+     * @return The ID of the instance.
+     * 
+     */
     public String dbInstanceId() {
         return this.dbInstanceId;
     }
@@ -37,6 +49,10 @@ public final class GetAuditPoliciesResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Mongodb Audit Policies. Each element contains the following attributes:
+     * 
+     */
     public List<GetAuditPoliciesPolicy> policies() {
         return this.policies;
     }

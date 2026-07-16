@@ -11,13 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the Cloud Monitor Service Metric Alarm Rules of the current Alibaba Cloud user.
+// This data source provides Cloud Monitor Service Metric Alarm Rule available to the user.[What is Metric Alarm Rule](https://next.api.alibabacloud.com/document/Cms/2019-01-01/PutResourceMetricRule)
 //
 // > **NOTE:** Available since v1.256.0.
 //
 // ## Example Usage
-//
-// # Basic Usage
 //
 // ```go
 // package main
@@ -119,39 +117,62 @@ func GetServiceMetricAlarmRules(ctx *pulumi.Context, args *GetServiceMetricAlarm
 
 // A collection of arguments for invoking getServiceMetricAlarmRules.
 type GetServiceMetricAlarmRulesArgs struct {
-	// The monitoring dimensions of the specified resource.
+	// The monitoring dimensions for the specified resource.
+	// Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
 	Dimensions *string `pulumi:"dimensions"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Metric Alarm Rule IDs.
 	Ids []string `pulumi:"ids"`
-	// The name of the metric.
+	// The ID of the alarm rule.
+	//
+	// You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	//
+	// > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+	MetricAlarmRuleId *string `pulumi:"metricAlarmRuleId"`
+	// The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+	//
+	// > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
 	MetricName *string `pulumi:"metricName"`
-	// The namespace of the cloud service.
+	// The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+	//
+	// > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
 	Namespace *string `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The name of the alert rule.
+	// Alert rule name.
+	//
+	// You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	//
+	// > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
 	RuleName *string `pulumi:"ruleName"`
-	// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+	// The enabled status of the alarm rule. Valid values:
+	// - true: enabled.
+	// - false: disabled.
 	Status *bool `pulumi:"status"`
 }
 
 // A collection of values returned by getServiceMetricAlarmRules.
 type GetServiceMetricAlarmRulesResult struct {
-	// The dimensions of the alert rule.
-	Dimensions *string `pulumi:"dimensions"`
+	// The monitoring dimensions for the specified resource.
+	Dimensions    *string `pulumi:"dimensions"`
+	EnableDetails *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id  string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A list of Metric Alarm Rule IDs.
 	Ids []string `pulumi:"ids"`
-	// The metric that is used to monitor the cloud service.
+	// The ID of the alarm rule.
+	MetricAlarmRuleId *string `pulumi:"metricAlarmRuleId"`
+	// The name of the metric.
 	MetricName *string `pulumi:"metricName"`
-	// The namespace of the cloud service.
+	// The namespace of the cloud service metric data.
 	Namespace  *string `pulumi:"namespace"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The name of the alert rule.
+	// Alert rule name.
 	RuleName *string `pulumi:"ruleName"`
-	// A list of Hybrid Double Writes. Each element contains the following attributes:
+	// A list of Metric Alarm Rule Entries. Each element contains the following attributes:
 	Rules []GetServiceMetricAlarmRulesRule `pulumi:"rules"`
-	// Indicates whether the alert rule is enabled.
+	// The enabled status of the alarm rule.
 	Status *bool `pulumi:"status"`
 }
 
@@ -166,19 +187,38 @@ func GetServiceMetricAlarmRulesOutput(ctx *pulumi.Context, args GetServiceMetric
 
 // A collection of arguments for invoking getServiceMetricAlarmRules.
 type GetServiceMetricAlarmRulesOutputArgs struct {
-	// The monitoring dimensions of the specified resource.
+	// The monitoring dimensions for the specified resource.
+	// Format: a set of key:value pairs, for example: `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
 	Dimensions pulumi.StringPtrInput `pulumi:"dimensions"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Metric Alarm Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The name of the metric.
+	// The ID of the alarm rule.
+	//
+	// You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	//
+	// > **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+	MetricAlarmRuleId pulumi.StringPtrInput `pulumi:"metricAlarmRuleId"`
+	// The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+	//
+	// > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
 	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
-	// The namespace of the cloud service.
+	// The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+	//
+	// > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The name of the alert rule.
+	// Alert rule name.
+	//
+	// You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+	//
+	// > **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
 	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
-	// Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+	// The enabled status of the alarm rule. Valid values:
+	// - true: enabled.
+	// - false: disabled.
 	Status pulumi.BoolPtrInput `pulumi:"status"`
 }
 
@@ -201,9 +241,13 @@ func (o GetServiceMetricAlarmRulesResultOutput) ToGetServiceMetricAlarmRulesResu
 	return o
 }
 
-// The dimensions of the alert rule.
+// The monitoring dimensions for the specified resource.
 func (o GetServiceMetricAlarmRulesResultOutput) Dimensions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *string { return v.Dimensions }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceMetricAlarmRulesResultOutput) EnableDetails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -211,16 +255,22 @@ func (o GetServiceMetricAlarmRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of Metric Alarm Rule IDs.
 func (o GetServiceMetricAlarmRulesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// The metric that is used to monitor the cloud service.
+// The ID of the alarm rule.
+func (o GetServiceMetricAlarmRulesResultOutput) MetricAlarmRuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *string { return v.MetricAlarmRuleId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the metric.
 func (o GetServiceMetricAlarmRulesResultOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *string { return v.MetricName }).(pulumi.StringPtrOutput)
 }
 
-// The namespace of the cloud service.
+// The namespace of the cloud service metric data.
 func (o GetServiceMetricAlarmRulesResultOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -229,17 +279,17 @@ func (o GetServiceMetricAlarmRulesResultOutput) OutputFile() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The name of the alert rule.
+// Alert rule name.
 func (o GetServiceMetricAlarmRulesResultOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// A list of Hybrid Double Writes. Each element contains the following attributes:
+// A list of Metric Alarm Rule Entries. Each element contains the following attributes:
 func (o GetServiceMetricAlarmRulesResultOutput) Rules() GetServiceMetricAlarmRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) []GetServiceMetricAlarmRulesRule { return v.Rules }).(GetServiceMetricAlarmRulesRuleArrayOutput)
 }
 
-// Indicates whether the alert rule is enabled.
+// The enabled status of the alarm rule.
 func (o GetServiceMetricAlarmRulesResultOutput) Status() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceMetricAlarmRulesResult) *bool { return v.Status }).(pulumi.BoolPtrOutput)
 }

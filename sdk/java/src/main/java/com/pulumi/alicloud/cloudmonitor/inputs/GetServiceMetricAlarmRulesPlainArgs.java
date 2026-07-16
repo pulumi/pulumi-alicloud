@@ -17,18 +17,35 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
     public static final GetServiceMetricAlarmRulesPlainArgs Empty = new GetServiceMetricAlarmRulesPlainArgs();
 
     /**
-     * The monitoring dimensions of the specified resource.
+     * The monitoring dimensions for the specified resource.
+     * Format: a set of key:value pairs, for example: `{&#34;userId&#34;:&#34;120886317861****&#34;}` and `{&#34;instanceId&#34;:&#34;i-2ze2d6j5uhg20x47****&#34;}`.
      * 
      */
     @Import(name="dimensions")
     private @Nullable String dimensions;
 
     /**
-     * @return The monitoring dimensions of the specified resource.
+     * @return The monitoring dimensions for the specified resource.
+     * Format: a set of key:value pairs, for example: `{&#34;userId&#34;:&#34;120886317861****&#34;}` and `{&#34;instanceId&#34;:&#34;i-2ze2d6j5uhg20x47****&#34;}`.
      * 
      */
     public Optional<String> dimensions() {
         return Optional.ofNullable(this.dimensions);
+    }
+
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
+    @Import(name="enableDetails")
+    private @Nullable Boolean enableDetails;
+
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
+    public Optional<Boolean> enableDetails() {
+        return Optional.ofNullable(this.enableDetails);
     }
 
     /**
@@ -47,14 +64,41 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * The name of the metric.
+     * The ID of the alarm rule.
+     * 
+     * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+     * 
+     */
+    @Import(name="metricAlarmRuleId")
+    private @Nullable String metricAlarmRuleId;
+
+    /**
+     * @return The ID of the alarm rule.
+     * 
+     * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+     * 
+     */
+    public Optional<String> metricAlarmRuleId() {
+        return Optional.ofNullable(this.metricAlarmRuleId);
+    }
+
+    /**
+     * The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      * 
      */
     @Import(name="metricName")
     private @Nullable String metricName;
 
     /**
-     * @return The name of the metric.
+     * @return The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
      * 
      */
     public Optional<String> metricName() {
@@ -62,14 +106,18 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * The namespace of the cloud service.
+     * The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
      * 
      */
     @Import(name="namespace")
     private @Nullable String namespace;
 
     /**
-     * @return The namespace of the cloud service.
+     * @return The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+     * 
+     * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
      * 
      */
     public Optional<String> namespace() {
@@ -92,14 +140,22 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * The name of the alert rule.
+     * Alert rule name.
+     * 
+     * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
      * 
      */
     @Import(name="ruleName")
     private @Nullable String ruleName;
 
     /**
-     * @return The name of the alert rule.
+     * @return Alert rule name.
+     * 
+     * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+     * 
+     * &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
      * 
      */
     public Optional<String> ruleName() {
@@ -107,14 +163,18 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+     * The enabled status of the alarm rule. Valid values:
+     * - true: enabled.
+     * - false: disabled.
      * 
      */
     @Import(name="status")
     private @Nullable Boolean status;
 
     /**
-     * @return Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+     * @return The enabled status of the alarm rule. Valid values:
+     * - true: enabled.
+     * - false: disabled.
      * 
      */
     public Optional<Boolean> status() {
@@ -125,7 +185,9 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
 
     private GetServiceMetricAlarmRulesPlainArgs(GetServiceMetricAlarmRulesPlainArgs $) {
         this.dimensions = $.dimensions;
+        this.enableDetails = $.enableDetails;
         this.ids = $.ids;
+        this.metricAlarmRuleId = $.metricAlarmRuleId;
         this.metricName = $.metricName;
         this.namespace = $.namespace;
         this.outputFile = $.outputFile;
@@ -152,13 +214,25 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param dimensions The monitoring dimensions of the specified resource.
+         * @param dimensions The monitoring dimensions for the specified resource.
+         * Format: a set of key:value pairs, for example: `{&#34;userId&#34;:&#34;120886317861****&#34;}` and `{&#34;instanceId&#34;:&#34;i-2ze2d6j5uhg20x47****&#34;}`.
          * 
          * @return builder
          * 
          */
         public Builder dimensions(@Nullable String dimensions) {
             $.dimensions = dimensions;
+            return this;
+        }
+
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDetails(@Nullable Boolean enableDetails) {
+            $.enableDetails = enableDetails;
             return this;
         }
 
@@ -184,7 +258,24 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param metricName The name of the metric.
+         * @param metricAlarmRuleId The ID of the alarm rule.
+         * 
+         * You can specify a new alarm rule ID or use an existing alarm rule ID from CloudMonitor. For information about how to query alarm rule IDs, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+         * 
+         * &gt; **NOTE:**  Specifying a new alarm rule ID creates a threshold-based alarm rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricAlarmRuleId(@Nullable String metricAlarmRuleId) {
+            $.metricAlarmRuleId = metricAlarmRuleId;
+            return this;
+        }
+
+        /**
+         * @param metricName The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         * 
+         * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
          * 
          * @return builder
          * 
@@ -195,7 +286,9 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param namespace The namespace of the cloud service.
+         * @param namespace The namespace of the cloud service metric data. For information about how to query the namespace of a cloud service, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+         * 
+         * &gt; **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter must be set to `acsPrometheus`.
          * 
          * @return builder
          * 
@@ -217,7 +310,11 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ruleName The name of the alert rule.
+         * @param ruleName Alert rule name.
+         * 
+         * You can enter a new alert rule name or use an existing alert rule name in CloudMonitor. For information about how to query alert rule names, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+         * 
+         * &gt; **NOTE:**  Entering a new alert rule name creates a threshold-based alert rule.
          * 
          * @return builder
          * 
@@ -228,7 +325,9 @@ public final class GetServiceMetricAlarmRulesPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param status Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
+         * @param status The enabled status of the alarm rule. Valid values:
+         * - true: enabled.
+         * - false: disabled.
          * 
          * @return builder
          * 

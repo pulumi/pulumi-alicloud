@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.67.0.
 //
+// > **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
+//
 // ## Example Usage
 //
 // ```go
@@ -121,6 +123,8 @@ type Account struct {
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// The cluster ID.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
+	// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+	DynamodbAuthPassword pulumi.StringOutput `pulumi:"dynamodbAuthPassword"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -147,6 +151,7 @@ func NewAccount(ctx *pulumi.Context,
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountPassword",
+		"dynamodbAuthPassword",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -195,6 +200,8 @@ type accountState struct {
 	AccountType *string `pulumi:"accountType"`
 	// The cluster ID.
 	DbClusterId *string `pulumi:"dbClusterId"`
+	// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+	DynamodbAuthPassword *string `pulumi:"dynamodbAuthPassword"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -227,6 +234,8 @@ type AccountState struct {
 	AccountType pulumi.StringPtrInput
 	// The cluster ID.
 	DbClusterId pulumi.StringPtrInput
+	// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+	DynamodbAuthPassword pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
@@ -429,6 +438,11 @@ func (o AccountOutput) AccountType() pulumi.StringOutput {
 // The cluster ID.
 func (o AccountOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+func (o AccountOutput) DynamodbAuthPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DynamodbAuthPassword }).(pulumi.StringOutput)
 }
 
 // An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.

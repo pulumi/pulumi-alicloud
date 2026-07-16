@@ -1276,6 +1276,220 @@ func (o StorageDomainRoutingRuleRouteArrayOutput) Index(i pulumi.IntInput) Stora
 	}).(StorageDomainRoutingRuleRouteOutput)
 }
 
+type GetArtifactLifecycleRulesRule struct {
+	// The first ID of the resource.
+	ArtifactLifecycleRuleId string `pulumi:"artifactLifecycleRuleId"`
+	// Whether to execute automatically.
+	Auto bool `pulumi:"auto"`
+	// Creation time.
+	CreateTime int `pulumi:"createTime"`
+	// Activate the delete tag function.
+	EnableDeleteTag bool `pulumi:"enableDeleteTag"`
+	// Open garbage collection.
+	EnableDeleteUntaggedManifest bool `pulumi:"enableDeleteUntaggedManifest"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Instance ID
+	InstanceId string `pulumi:"instanceId"`
+	// Change time.
+	ModifiedTime int `pulumi:"modifiedTime"`
+	// Namespace name.
+	NamespaceName string `pulumi:"namespaceName"`
+	// Repository Name.
+	RepoName string `pulumi:"repoName"`
+	// Number of Retention Tags.
+	RetentionTagCount int `pulumi:"retentionTagCount"`
+	// Execution cycle.
+	ScheduleTime string `pulumi:"scheduleTime"`
+	// Scope of cleaning.
+	Scope string `pulumi:"scope"`
+	// Retain regular expressions for mirrored versions.
+	TagRegexp string `pulumi:"tagRegexp"`
+}
+
+// GetArtifactLifecycleRulesRuleInput is an input type that accepts GetArtifactLifecycleRulesRuleArgs and GetArtifactLifecycleRulesRuleOutput values.
+// You can construct a concrete instance of `GetArtifactLifecycleRulesRuleInput` via:
+//
+//	GetArtifactLifecycleRulesRuleArgs{...}
+type GetArtifactLifecycleRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetArtifactLifecycleRulesRuleOutput() GetArtifactLifecycleRulesRuleOutput
+	ToGetArtifactLifecycleRulesRuleOutputWithContext(context.Context) GetArtifactLifecycleRulesRuleOutput
+}
+
+type GetArtifactLifecycleRulesRuleArgs struct {
+	// The first ID of the resource.
+	ArtifactLifecycleRuleId pulumi.StringInput `pulumi:"artifactLifecycleRuleId"`
+	// Whether to execute automatically.
+	Auto pulumi.BoolInput `pulumi:"auto"`
+	// Creation time.
+	CreateTime pulumi.IntInput `pulumi:"createTime"`
+	// Activate the delete tag function.
+	EnableDeleteTag pulumi.BoolInput `pulumi:"enableDeleteTag"`
+	// Open garbage collection.
+	EnableDeleteUntaggedManifest pulumi.BoolInput `pulumi:"enableDeleteUntaggedManifest"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instance ID
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// Change time.
+	ModifiedTime pulumi.IntInput `pulumi:"modifiedTime"`
+	// Namespace name.
+	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
+	// Repository Name.
+	RepoName pulumi.StringInput `pulumi:"repoName"`
+	// Number of Retention Tags.
+	RetentionTagCount pulumi.IntInput `pulumi:"retentionTagCount"`
+	// Execution cycle.
+	ScheduleTime pulumi.StringInput `pulumi:"scheduleTime"`
+	// Scope of cleaning.
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Retain regular expressions for mirrored versions.
+	TagRegexp pulumi.StringInput `pulumi:"tagRegexp"`
+}
+
+func (GetArtifactLifecycleRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetArtifactLifecycleRulesRule)(nil)).Elem()
+}
+
+func (i GetArtifactLifecycleRulesRuleArgs) ToGetArtifactLifecycleRulesRuleOutput() GetArtifactLifecycleRulesRuleOutput {
+	return i.ToGetArtifactLifecycleRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetArtifactLifecycleRulesRuleArgs) ToGetArtifactLifecycleRulesRuleOutputWithContext(ctx context.Context) GetArtifactLifecycleRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetArtifactLifecycleRulesRuleOutput)
+}
+
+// GetArtifactLifecycleRulesRuleArrayInput is an input type that accepts GetArtifactLifecycleRulesRuleArray and GetArtifactLifecycleRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetArtifactLifecycleRulesRuleArrayInput` via:
+//
+//	GetArtifactLifecycleRulesRuleArray{ GetArtifactLifecycleRulesRuleArgs{...} }
+type GetArtifactLifecycleRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetArtifactLifecycleRulesRuleArrayOutput() GetArtifactLifecycleRulesRuleArrayOutput
+	ToGetArtifactLifecycleRulesRuleArrayOutputWithContext(context.Context) GetArtifactLifecycleRulesRuleArrayOutput
+}
+
+type GetArtifactLifecycleRulesRuleArray []GetArtifactLifecycleRulesRuleInput
+
+func (GetArtifactLifecycleRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetArtifactLifecycleRulesRule)(nil)).Elem()
+}
+
+func (i GetArtifactLifecycleRulesRuleArray) ToGetArtifactLifecycleRulesRuleArrayOutput() GetArtifactLifecycleRulesRuleArrayOutput {
+	return i.ToGetArtifactLifecycleRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetArtifactLifecycleRulesRuleArray) ToGetArtifactLifecycleRulesRuleArrayOutputWithContext(ctx context.Context) GetArtifactLifecycleRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetArtifactLifecycleRulesRuleArrayOutput)
+}
+
+type GetArtifactLifecycleRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetArtifactLifecycleRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetArtifactLifecycleRulesRule)(nil)).Elem()
+}
+
+func (o GetArtifactLifecycleRulesRuleOutput) ToGetArtifactLifecycleRulesRuleOutput() GetArtifactLifecycleRulesRuleOutput {
+	return o
+}
+
+func (o GetArtifactLifecycleRulesRuleOutput) ToGetArtifactLifecycleRulesRuleOutputWithContext(ctx context.Context) GetArtifactLifecycleRulesRuleOutput {
+	return o
+}
+
+// The first ID of the resource.
+func (o GetArtifactLifecycleRulesRuleOutput) ArtifactLifecycleRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.ArtifactLifecycleRuleId }).(pulumi.StringOutput)
+}
+
+// Whether to execute automatically.
+func (o GetArtifactLifecycleRulesRuleOutput) Auto() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) bool { return v.Auto }).(pulumi.BoolOutput)
+}
+
+// Creation time.
+func (o GetArtifactLifecycleRulesRuleOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) int { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// Activate the delete tag function.
+func (o GetArtifactLifecycleRulesRuleOutput) EnableDeleteTag() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) bool { return v.EnableDeleteTag }).(pulumi.BoolOutput)
+}
+
+// Open garbage collection.
+func (o GetArtifactLifecycleRulesRuleOutput) EnableDeleteUntaggedManifest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) bool { return v.EnableDeleteUntaggedManifest }).(pulumi.BoolOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetArtifactLifecycleRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instance ID
+func (o GetArtifactLifecycleRulesRuleOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Change time.
+func (o GetArtifactLifecycleRulesRuleOutput) ModifiedTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) int { return v.ModifiedTime }).(pulumi.IntOutput)
+}
+
+// Namespace name.
+func (o GetArtifactLifecycleRulesRuleOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// Repository Name.
+func (o GetArtifactLifecycleRulesRuleOutput) RepoName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Number of Retention Tags.
+func (o GetArtifactLifecycleRulesRuleOutput) RetentionTagCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) int { return v.RetentionTagCount }).(pulumi.IntOutput)
+}
+
+// Execution cycle.
+func (o GetArtifactLifecycleRulesRuleOutput) ScheduleTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.ScheduleTime }).(pulumi.StringOutput)
+}
+
+// Scope of cleaning.
+func (o GetArtifactLifecycleRulesRuleOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Retain regular expressions for mirrored versions.
+func (o GetArtifactLifecycleRulesRuleOutput) TagRegexp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetArtifactLifecycleRulesRule) string { return v.TagRegexp }).(pulumi.StringOutput)
+}
+
+type GetArtifactLifecycleRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetArtifactLifecycleRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetArtifactLifecycleRulesRule)(nil)).Elem()
+}
+
+func (o GetArtifactLifecycleRulesRuleArrayOutput) ToGetArtifactLifecycleRulesRuleArrayOutput() GetArtifactLifecycleRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetArtifactLifecycleRulesRuleArrayOutput) ToGetArtifactLifecycleRulesRuleArrayOutputWithContext(ctx context.Context) GetArtifactLifecycleRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetArtifactLifecycleRulesRuleArrayOutput) Index(i pulumi.IntInput) GetArtifactLifecycleRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetArtifactLifecycleRulesRule {
+		return vs[0].([]GetArtifactLifecycleRulesRule)[vs[1].(int)]
+	}).(GetArtifactLifecycleRulesRuleOutput)
+}
+
 type GetChainsChain struct {
 	// The configuration of delivery chain.
 	ChainConfigs []GetChainsChainChainConfig `pulumi:"chainConfigs"`
@@ -3300,6 +3514,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteArrayInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactLifecycleRulesRuleInput)(nil)).Elem(), GetArtifactLifecycleRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetArtifactLifecycleRulesRuleArrayInput)(nil)).Elem(), GetArtifactLifecycleRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainInput)(nil)).Elem(), GetChainsChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainArrayInput)(nil)).Elem(), GetChainsChainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigInput)(nil)).Elem(), GetChainsChainChainConfigArgs{})
@@ -3353,6 +3569,8 @@ func init() {
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
 	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteOutput{})
 	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetArtifactLifecycleRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetArtifactLifecycleRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetChainsChainOutput{})
 	pulumi.RegisterOutputType(GetChainsChainArrayOutput{})
 	pulumi.RegisterOutputType(GetChainsChainChainConfigOutput{})

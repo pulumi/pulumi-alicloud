@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.oss;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesArgs;
+import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesPlainArgs;
 import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
 import com.pulumi.alicloud.oss.inputs.GetBucketObjectsPlainArgs;
 import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
@@ -16,6 +18,7 @@ import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
 import com.pulumi.alicloud.oss.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.oss.inputs.GetTablesArgs;
 import com.pulumi.alicloud.oss.inputs.GetTablesPlainArgs;
+import com.pulumi.alicloud.oss.outputs.GetBucketInventoriesResult;
 import com.pulumi.alicloud.oss.outputs.GetBucketObjectsResult;
 import com.pulumi.alicloud.oss.outputs.GetBucketsResult;
 import com.pulumi.alicloud.oss.outputs.GetInstanceAttachmentsResult;
@@ -30,6 +33,416 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class OssFunctions {
+    /**
+     * This data source provides Oss Bucket Inventory available to the user.[What is Bucket Inventory](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketInventory)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
+     * import com.pulumi.alicloud.oss.BucketInventory;
+     * import com.pulumi.alicloud.oss.BucketInventoryArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryDestinationArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryOptionalFieldsArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryFilterArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryScheduleArgs;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+     *             .storageClass("Standard")
+     *             .build());
+     * 
+     *         var defaultBucketInventory = new BucketInventory("defaultBucketInventory", BucketInventoryArgs.builder()
+     *             .destination(BucketInventoryDestinationArgs.builder()
+     *                 .build())
+     *             .optionalFields(BucketInventoryOptionalFieldsArgs.builder()
+     *                 .fields(                
+     *                     "Size",
+     *                     "LastModifiedDate",
+     *                     "ETag")
+     *                 .build())
+     *             .bucket(createBucket.id())
+     *             .filter(BucketInventoryFilterArgs.builder()
+     *                 .prefix("Pics/")
+     *                 .lowerSizeBound(256)
+     *                 .upperSizeBound(999999)
+     *                 .storageClass("Standard")
+     *                 .build())
+     *             .includedObjectVersions("Current")
+     *             .schedule(BucketInventoryScheduleArgs.builder()
+     *                 .frequency("Daily")
+     *                 .build())
+     *             .inventoryId("report01")
+     *             .isEnabled(false)
+     *             .build());
+     * 
+     *         final var default = OssFunctions.getBucketInventories(GetBucketInventoriesArgs.builder()
+     *             .ids(defaultBucketInventory.id())
+     *             .bucket(createBucket.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketInventoriesResult> getBucketInventories(GetBucketInventoriesArgs args) {
+        return getBucketInventories(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Oss Bucket Inventory available to the user.[What is Bucket Inventory](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketInventory)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
+     * import com.pulumi.alicloud.oss.BucketInventory;
+     * import com.pulumi.alicloud.oss.BucketInventoryArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryDestinationArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryOptionalFieldsArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryFilterArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryScheduleArgs;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+     *             .storageClass("Standard")
+     *             .build());
+     * 
+     *         var defaultBucketInventory = new BucketInventory("defaultBucketInventory", BucketInventoryArgs.builder()
+     *             .destination(BucketInventoryDestinationArgs.builder()
+     *                 .build())
+     *             .optionalFields(BucketInventoryOptionalFieldsArgs.builder()
+     *                 .fields(                
+     *                     "Size",
+     *                     "LastModifiedDate",
+     *                     "ETag")
+     *                 .build())
+     *             .bucket(createBucket.id())
+     *             .filter(BucketInventoryFilterArgs.builder()
+     *                 .prefix("Pics/")
+     *                 .lowerSizeBound(256)
+     *                 .upperSizeBound(999999)
+     *                 .storageClass("Standard")
+     *                 .build())
+     *             .includedObjectVersions("Current")
+     *             .schedule(BucketInventoryScheduleArgs.builder()
+     *                 .frequency("Daily")
+     *                 .build())
+     *             .inventoryId("report01")
+     *             .isEnabled(false)
+     *             .build());
+     * 
+     *         final var default = OssFunctions.getBucketInventories(GetBucketInventoriesArgs.builder()
+     *             .ids(defaultBucketInventory.id())
+     *             .bucket(createBucket.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBucketInventoriesResult> getBucketInventoriesPlain(GetBucketInventoriesPlainArgs args) {
+        return getBucketInventoriesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Oss Bucket Inventory available to the user.[What is Bucket Inventory](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketInventory)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
+     * import com.pulumi.alicloud.oss.BucketInventory;
+     * import com.pulumi.alicloud.oss.BucketInventoryArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryDestinationArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryOptionalFieldsArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryFilterArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryScheduleArgs;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+     *             .storageClass("Standard")
+     *             .build());
+     * 
+     *         var defaultBucketInventory = new BucketInventory("defaultBucketInventory", BucketInventoryArgs.builder()
+     *             .destination(BucketInventoryDestinationArgs.builder()
+     *                 .build())
+     *             .optionalFields(BucketInventoryOptionalFieldsArgs.builder()
+     *                 .fields(                
+     *                     "Size",
+     *                     "LastModifiedDate",
+     *                     "ETag")
+     *                 .build())
+     *             .bucket(createBucket.id())
+     *             .filter(BucketInventoryFilterArgs.builder()
+     *                 .prefix("Pics/")
+     *                 .lowerSizeBound(256)
+     *                 .upperSizeBound(999999)
+     *                 .storageClass("Standard")
+     *                 .build())
+     *             .includedObjectVersions("Current")
+     *             .schedule(BucketInventoryScheduleArgs.builder()
+     *                 .frequency("Daily")
+     *                 .build())
+     *             .inventoryId("report01")
+     *             .isEnabled(false)
+     *             .build());
+     * 
+     *         final var default = OssFunctions.getBucketInventories(GetBucketInventoriesArgs.builder()
+     *             .ids(defaultBucketInventory.id())
+     *             .bucket(createBucket.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketInventoriesResult> getBucketInventories(GetBucketInventoriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getBucketInventories:getBucketInventories", TypeShape.of(GetBucketInventoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Oss Bucket Inventory available to the user.[What is Bucket Inventory](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketInventory)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
+     * import com.pulumi.alicloud.oss.BucketInventory;
+     * import com.pulumi.alicloud.oss.BucketInventoryArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryDestinationArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryOptionalFieldsArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryFilterArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryScheduleArgs;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+     *             .storageClass("Standard")
+     *             .build());
+     * 
+     *         var defaultBucketInventory = new BucketInventory("defaultBucketInventory", BucketInventoryArgs.builder()
+     *             .destination(BucketInventoryDestinationArgs.builder()
+     *                 .build())
+     *             .optionalFields(BucketInventoryOptionalFieldsArgs.builder()
+     *                 .fields(                
+     *                     "Size",
+     *                     "LastModifiedDate",
+     *                     "ETag")
+     *                 .build())
+     *             .bucket(createBucket.id())
+     *             .filter(BucketInventoryFilterArgs.builder()
+     *                 .prefix("Pics/")
+     *                 .lowerSizeBound(256)
+     *                 .upperSizeBound(999999)
+     *                 .storageClass("Standard")
+     *                 .build())
+     *             .includedObjectVersions("Current")
+     *             .schedule(BucketInventoryScheduleArgs.builder()
+     *                 .frequency("Daily")
+     *                 .build())
+     *             .inventoryId("report01")
+     *             .isEnabled(false)
+     *             .build());
+     * 
+     *         final var default = OssFunctions.getBucketInventories(GetBucketInventoriesArgs.builder()
+     *             .ids(defaultBucketInventory.id())
+     *             .bucket(createBucket.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBucketInventoriesResult> getBucketInventories(GetBucketInventoriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:oss/getBucketInventories:getBucketInventories", TypeShape.of(GetBucketInventoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Oss Bucket Inventory available to the user.[What is Bucket Inventory](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketInventory)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oss.Bucket;
+     * import com.pulumi.alicloud.oss.BucketArgs;
+     * import com.pulumi.alicloud.oss.BucketInventory;
+     * import com.pulumi.alicloud.oss.BucketInventoryArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryDestinationArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryOptionalFieldsArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryFilterArgs;
+     * import com.pulumi.alicloud.oss.inputs.BucketInventoryScheduleArgs;
+     * import com.pulumi.alicloud.oss.OssFunctions;
+     * import com.pulumi.alicloud.oss.inputs.GetBucketInventoriesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
+     *             .storageClass("Standard")
+     *             .build());
+     * 
+     *         var defaultBucketInventory = new BucketInventory("defaultBucketInventory", BucketInventoryArgs.builder()
+     *             .destination(BucketInventoryDestinationArgs.builder()
+     *                 .build())
+     *             .optionalFields(BucketInventoryOptionalFieldsArgs.builder()
+     *                 .fields(                
+     *                     "Size",
+     *                     "LastModifiedDate",
+     *                     "ETag")
+     *                 .build())
+     *             .bucket(createBucket.id())
+     *             .filter(BucketInventoryFilterArgs.builder()
+     *                 .prefix("Pics/")
+     *                 .lowerSizeBound(256)
+     *                 .upperSizeBound(999999)
+     *                 .storageClass("Standard")
+     *                 .build())
+     *             .includedObjectVersions("Current")
+     *             .schedule(BucketInventoryScheduleArgs.builder()
+     *                 .frequency("Daily")
+     *                 .build())
+     *             .inventoryId("report01")
+     *             .isEnabled(false)
+     *             .build());
+     * 
+     *         final var default = OssFunctions.getBucketInventories(GetBucketInventoriesArgs.builder()
+     *             .ids(defaultBucketInventory.id())
+     *             .bucket(createBucket.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudOssBucketInventoryExampleId", default_.applyValue(_default_ -> _default_.inventories()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBucketInventoriesResult> getBucketInventoriesPlain(GetBucketInventoriesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:oss/getBucketInventories:getBucketInventories", TypeShape.of(GetBucketInventoriesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the objects of an OSS bucket.
      * 

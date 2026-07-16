@@ -4,10 +4,16 @@
 package com.pulumi.alicloud.wafv3;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksArgs;
+import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksPlainArgs;
+import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesArgs;
+import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesPlainArgs;
 import com.pulumi.alicloud.wafv3.inputs.GetDomainsArgs;
 import com.pulumi.alicloud.wafv3.inputs.GetDomainsPlainArgs;
 import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.wafv3.inputs.GetInstancesPlainArgs;
+import com.pulumi.alicloud.wafv3.outputs.GetAddressBooksResult;
+import com.pulumi.alicloud.wafv3.outputs.GetDefenseRulesResult;
 import com.pulumi.alicloud.wafv3.outputs.GetDomainsResult;
 import com.pulumi.alicloud.wafv3.outputs.GetInstancesResult;
 import com.pulumi.core.Output;
@@ -18,6 +24,1191 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class Wafv3Functions {
+    /**
+     * This data source provides Wafv3 Address Book available to the user.[What is Address Book](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultAddressBook = new AddressBook("defaultAddressBook", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(default_.ids()[0])
+     *             .addressBookName(name)
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         final var defaultGetAddressBooks = Wafv3Functions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(defaultAddressBook.id())
+     *             .nameRegex(defaultAddressBook.addressBookName())
+     *             .instanceId(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args) {
+        return getAddressBooks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Wafv3 Address Book available to the user.[What is Address Book](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultAddressBook = new AddressBook("defaultAddressBook", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(default_.ids()[0])
+     *             .addressBookName(name)
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         final var defaultGetAddressBooks = Wafv3Functions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(defaultAddressBook.id())
+     *             .nameRegex(defaultAddressBook.addressBookName())
+     *             .instanceId(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args) {
+        return getAddressBooksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Wafv3 Address Book available to the user.[What is Address Book](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultAddressBook = new AddressBook("defaultAddressBook", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(default_.ids()[0])
+     *             .addressBookName(name)
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         final var defaultGetAddressBooks = Wafv3Functions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(defaultAddressBook.id())
+     *             .nameRegex(defaultAddressBook.addressBookName())
+     *             .instanceId(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:wafv3/getAddressBooks:getAddressBooks", TypeShape.of(GetAddressBooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Wafv3 Address Book available to the user.[What is Address Book](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultAddressBook = new AddressBook("defaultAddressBook", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(default_.ids()[0])
+     *             .addressBookName(name)
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         final var defaultGetAddressBooks = Wafv3Functions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(defaultAddressBook.id())
+     *             .nameRegex(defaultAddressBook.addressBookName())
+     *             .instanceId(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAddressBooksResult> getAddressBooks(GetAddressBooksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:wafv3/getAddressBooks:getAddressBooks", TypeShape.of(GetAddressBooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Wafv3 Address Book available to the user.[What is Address Book](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.GetAddressBooksArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
+     *             .build());
+     * 
+     *         var defaultAddressBook = new AddressBook("defaultAddressBook", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(default_.ids()[0])
+     *             .addressBookName(name)
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         final var defaultGetAddressBooks = Wafv3Functions.getAddressBooks(GetAddressBooksArgs.builder()
+     *             .ids(defaultAddressBook.id())
+     *             .nameRegex(defaultAddressBook.addressBookName())
+     *             .instanceId(default_.ids()[0])
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3AddressBookExampleId", defaultGetAddressBooks.applyValue(_defaultGetAddressBooks -> _defaultGetAddressBooks.books()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAddressBooksResult> getAddressBooksPlain(GetAddressBooksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:wafv3/getAddressBooks:getAddressBooks", TypeShape.of(GetAddressBooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Wafv3 Defense Rule available to the user.[What is Defense Rule](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Instance;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplate;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplateArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.DefenseRule;
+     * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitStatusArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigTimePeriodArgs;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+     *         var defaultnxb04D = new Instance("defaultnxb04D");
+     * 
+     *         var defaultfIoHt5 = new DefenseTemplate("defaultfIoHt5", DefenseTemplateArgs.builder()
+     *             .status("1")
+     *             .description("testCreate")
+     *             .instanceId(defaultnxb04D.id())
+     *             .defenseTemplateName("1782219650")
+     *             .templateOrigin("custom")
+     *             .defenseScene("custom_acl")
+     *             .templateType("user_custom")
+     *             .build());
+     * 
+     *         var default9dtEmt = new AddressBook("default9dtEmt", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultSB0uHV = new AddressBook("defaultSB0uHV", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultDefenseRule = new DefenseRule("defaultDefenseRule", DefenseRuleArgs.builder()
+     *             .defenseOrigin("custom")
+     *             .instanceId(defaultnxb04D.id())
+     *             .config(DefenseRuleConfigArgs.builder()
+     *                 .ruleAction("block")
+     *                 .conditions(                
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URL")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URLPath")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("1.1.1.2")
+     *                         .key("IP")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .key("IP")
+     *                         .opValue("in-list")
+     *                         .values(default9dtEmt.addressBookId())
+     *                         .build())
+     *                 .ccStatus(0)
+     *                 .ccEffect("service")
+     *                 .rateLimit(DefenseRuleConfigRateLimitArgs.builder()
+     *                     .target("remote_addr")
+     *                     .interval(16)
+     *                     .threshold(204)
+     *                     .ttl(68)
+     *                     .status(DefenseRuleConfigRateLimitStatusArgs.builder()
+     *                         .code(414)
+     *                         .count(333)
+     *                         .build())
+     *                     .subKey("testky1")
+     *                     .build())
+     *                 .grayStatus(1)
+     *                 .grayConfig(DefenseRuleConfigGrayConfigArgs.builder()
+     *                     .grayTarget("remote_addr")
+     *                     .grayRate(80)
+     *                     .build())
+     *                 .timeConfig(DefenseRuleConfigTimeConfigArgs.builder()
+     *                     .timeScope("period")
+     *                     .timeZone(8)
+     *                     .timePeriods(                    
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760174804000)
+     *                             .end(1760175804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760171804000)
+     *                             .end(1760172804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760176804000)
+     *                             .end(1760177804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760178804000)
+     *                             .end(1760179804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760170804000)
+     *                             .end(1760171804000)
+     *                             .build())
+     *                     .build())
+     *                 .build())
+     *             .defenseScene("custom_acl")
+     *             .ruleStatus(1)
+     *             .defenseType("template")
+     *             .templateId(defaultfIoHt5.defenseTemplateId())
+     *             .ruleName("custom_acl-create")
+     *             .build());
+     * 
+     *         final var default = Wafv3Functions.getDefenseRules(GetDefenseRulesArgs.builder()
+     *             .ids(defaultDefenseRule.id())
+     *             .defenseType("template")
+     *             .instanceId(defaultnxb04D.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDefenseRulesResult> getDefenseRules(GetDefenseRulesArgs args) {
+        return getDefenseRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Wafv3 Defense Rule available to the user.[What is Defense Rule](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Instance;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplate;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplateArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.DefenseRule;
+     * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitStatusArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigTimePeriodArgs;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+     *         var defaultnxb04D = new Instance("defaultnxb04D");
+     * 
+     *         var defaultfIoHt5 = new DefenseTemplate("defaultfIoHt5", DefenseTemplateArgs.builder()
+     *             .status("1")
+     *             .description("testCreate")
+     *             .instanceId(defaultnxb04D.id())
+     *             .defenseTemplateName("1782219650")
+     *             .templateOrigin("custom")
+     *             .defenseScene("custom_acl")
+     *             .templateType("user_custom")
+     *             .build());
+     * 
+     *         var default9dtEmt = new AddressBook("default9dtEmt", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultSB0uHV = new AddressBook("defaultSB0uHV", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultDefenseRule = new DefenseRule("defaultDefenseRule", DefenseRuleArgs.builder()
+     *             .defenseOrigin("custom")
+     *             .instanceId(defaultnxb04D.id())
+     *             .config(DefenseRuleConfigArgs.builder()
+     *                 .ruleAction("block")
+     *                 .conditions(                
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URL")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URLPath")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("1.1.1.2")
+     *                         .key("IP")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .key("IP")
+     *                         .opValue("in-list")
+     *                         .values(default9dtEmt.addressBookId())
+     *                         .build())
+     *                 .ccStatus(0)
+     *                 .ccEffect("service")
+     *                 .rateLimit(DefenseRuleConfigRateLimitArgs.builder()
+     *                     .target("remote_addr")
+     *                     .interval(16)
+     *                     .threshold(204)
+     *                     .ttl(68)
+     *                     .status(DefenseRuleConfigRateLimitStatusArgs.builder()
+     *                         .code(414)
+     *                         .count(333)
+     *                         .build())
+     *                     .subKey("testky1")
+     *                     .build())
+     *                 .grayStatus(1)
+     *                 .grayConfig(DefenseRuleConfigGrayConfigArgs.builder()
+     *                     .grayTarget("remote_addr")
+     *                     .grayRate(80)
+     *                     .build())
+     *                 .timeConfig(DefenseRuleConfigTimeConfigArgs.builder()
+     *                     .timeScope("period")
+     *                     .timeZone(8)
+     *                     .timePeriods(                    
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760174804000)
+     *                             .end(1760175804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760171804000)
+     *                             .end(1760172804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760176804000)
+     *                             .end(1760177804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760178804000)
+     *                             .end(1760179804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760170804000)
+     *                             .end(1760171804000)
+     *                             .build())
+     *                     .build())
+     *                 .build())
+     *             .defenseScene("custom_acl")
+     *             .ruleStatus(1)
+     *             .defenseType("template")
+     *             .templateId(defaultfIoHt5.defenseTemplateId())
+     *             .ruleName("custom_acl-create")
+     *             .build());
+     * 
+     *         final var default = Wafv3Functions.getDefenseRules(GetDefenseRulesArgs.builder()
+     *             .ids(defaultDefenseRule.id())
+     *             .defenseType("template")
+     *             .instanceId(defaultnxb04D.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDefenseRulesResult> getDefenseRulesPlain(GetDefenseRulesPlainArgs args) {
+        return getDefenseRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Wafv3 Defense Rule available to the user.[What is Defense Rule](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Instance;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplate;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplateArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.DefenseRule;
+     * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitStatusArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigTimePeriodArgs;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+     *         var defaultnxb04D = new Instance("defaultnxb04D");
+     * 
+     *         var defaultfIoHt5 = new DefenseTemplate("defaultfIoHt5", DefenseTemplateArgs.builder()
+     *             .status("1")
+     *             .description("testCreate")
+     *             .instanceId(defaultnxb04D.id())
+     *             .defenseTemplateName("1782219650")
+     *             .templateOrigin("custom")
+     *             .defenseScene("custom_acl")
+     *             .templateType("user_custom")
+     *             .build());
+     * 
+     *         var default9dtEmt = new AddressBook("default9dtEmt", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultSB0uHV = new AddressBook("defaultSB0uHV", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultDefenseRule = new DefenseRule("defaultDefenseRule", DefenseRuleArgs.builder()
+     *             .defenseOrigin("custom")
+     *             .instanceId(defaultnxb04D.id())
+     *             .config(DefenseRuleConfigArgs.builder()
+     *                 .ruleAction("block")
+     *                 .conditions(                
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URL")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URLPath")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("1.1.1.2")
+     *                         .key("IP")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .key("IP")
+     *                         .opValue("in-list")
+     *                         .values(default9dtEmt.addressBookId())
+     *                         .build())
+     *                 .ccStatus(0)
+     *                 .ccEffect("service")
+     *                 .rateLimit(DefenseRuleConfigRateLimitArgs.builder()
+     *                     .target("remote_addr")
+     *                     .interval(16)
+     *                     .threshold(204)
+     *                     .ttl(68)
+     *                     .status(DefenseRuleConfigRateLimitStatusArgs.builder()
+     *                         .code(414)
+     *                         .count(333)
+     *                         .build())
+     *                     .subKey("testky1")
+     *                     .build())
+     *                 .grayStatus(1)
+     *                 .grayConfig(DefenseRuleConfigGrayConfigArgs.builder()
+     *                     .grayTarget("remote_addr")
+     *                     .grayRate(80)
+     *                     .build())
+     *                 .timeConfig(DefenseRuleConfigTimeConfigArgs.builder()
+     *                     .timeScope("period")
+     *                     .timeZone(8)
+     *                     .timePeriods(                    
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760174804000)
+     *                             .end(1760175804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760171804000)
+     *                             .end(1760172804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760176804000)
+     *                             .end(1760177804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760178804000)
+     *                             .end(1760179804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760170804000)
+     *                             .end(1760171804000)
+     *                             .build())
+     *                     .build())
+     *                 .build())
+     *             .defenseScene("custom_acl")
+     *             .ruleStatus(1)
+     *             .defenseType("template")
+     *             .templateId(defaultfIoHt5.defenseTemplateId())
+     *             .ruleName("custom_acl-create")
+     *             .build());
+     * 
+     *         final var default = Wafv3Functions.getDefenseRules(GetDefenseRulesArgs.builder()
+     *             .ids(defaultDefenseRule.id())
+     *             .defenseType("template")
+     *             .instanceId(defaultnxb04D.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDefenseRulesResult> getDefenseRules(GetDefenseRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:wafv3/getDefenseRules:getDefenseRules", TypeShape.of(GetDefenseRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Wafv3 Defense Rule available to the user.[What is Defense Rule](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Instance;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplate;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplateArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.DefenseRule;
+     * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitStatusArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigTimePeriodArgs;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+     *         var defaultnxb04D = new Instance("defaultnxb04D");
+     * 
+     *         var defaultfIoHt5 = new DefenseTemplate("defaultfIoHt5", DefenseTemplateArgs.builder()
+     *             .status("1")
+     *             .description("testCreate")
+     *             .instanceId(defaultnxb04D.id())
+     *             .defenseTemplateName("1782219650")
+     *             .templateOrigin("custom")
+     *             .defenseScene("custom_acl")
+     *             .templateType("user_custom")
+     *             .build());
+     * 
+     *         var default9dtEmt = new AddressBook("default9dtEmt", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultSB0uHV = new AddressBook("defaultSB0uHV", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultDefenseRule = new DefenseRule("defaultDefenseRule", DefenseRuleArgs.builder()
+     *             .defenseOrigin("custom")
+     *             .instanceId(defaultnxb04D.id())
+     *             .config(DefenseRuleConfigArgs.builder()
+     *                 .ruleAction("block")
+     *                 .conditions(                
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URL")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URLPath")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("1.1.1.2")
+     *                         .key("IP")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .key("IP")
+     *                         .opValue("in-list")
+     *                         .values(default9dtEmt.addressBookId())
+     *                         .build())
+     *                 .ccStatus(0)
+     *                 .ccEffect("service")
+     *                 .rateLimit(DefenseRuleConfigRateLimitArgs.builder()
+     *                     .target("remote_addr")
+     *                     .interval(16)
+     *                     .threshold(204)
+     *                     .ttl(68)
+     *                     .status(DefenseRuleConfigRateLimitStatusArgs.builder()
+     *                         .code(414)
+     *                         .count(333)
+     *                         .build())
+     *                     .subKey("testky1")
+     *                     .build())
+     *                 .grayStatus(1)
+     *                 .grayConfig(DefenseRuleConfigGrayConfigArgs.builder()
+     *                     .grayTarget("remote_addr")
+     *                     .grayRate(80)
+     *                     .build())
+     *                 .timeConfig(DefenseRuleConfigTimeConfigArgs.builder()
+     *                     .timeScope("period")
+     *                     .timeZone(8)
+     *                     .timePeriods(                    
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760174804000)
+     *                             .end(1760175804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760171804000)
+     *                             .end(1760172804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760176804000)
+     *                             .end(1760177804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760178804000)
+     *                             .end(1760179804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760170804000)
+     *                             .end(1760171804000)
+     *                             .build())
+     *                     .build())
+     *                 .build())
+     *             .defenseScene("custom_acl")
+     *             .ruleStatus(1)
+     *             .defenseType("template")
+     *             .templateId(defaultfIoHt5.defenseTemplateId())
+     *             .ruleName("custom_acl-create")
+     *             .build());
+     * 
+     *         final var default = Wafv3Functions.getDefenseRules(GetDefenseRulesArgs.builder()
+     *             .ids(defaultDefenseRule.id())
+     *             .defenseType("template")
+     *             .instanceId(defaultnxb04D.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDefenseRulesResult> getDefenseRules(GetDefenseRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:wafv3/getDefenseRules:getDefenseRules", TypeShape.of(GetDefenseRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Wafv3 Defense Rule available to the user.[What is Defense Rule](https://next.api.alibabacloud.com/document/waf-openapi/2021-10-01/CreateDefenseRule)
+     * 
+     * &gt; **NOTE:** Available since v1.283.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.wafv3.Instance;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplate;
+     * import com.pulumi.alicloud.wafv3.DefenseTemplateArgs;
+     * import com.pulumi.alicloud.wafv3.AddressBook;
+     * import com.pulumi.alicloud.wafv3.AddressBookArgs;
+     * import com.pulumi.alicloud.wafv3.DefenseRule;
+     * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitStatusArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
+     * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigTimePeriodArgs;
+     * import com.pulumi.alicloud.wafv3.Wafv3Functions;
+     * import com.pulumi.alicloud.wafv3.inputs.GetDefenseRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+     *         var defaultnxb04D = new Instance("defaultnxb04D");
+     * 
+     *         var defaultfIoHt5 = new DefenseTemplate("defaultfIoHt5", DefenseTemplateArgs.builder()
+     *             .status("1")
+     *             .description("testCreate")
+     *             .instanceId(defaultnxb04D.id())
+     *             .defenseTemplateName("1782219650")
+     *             .templateOrigin("custom")
+     *             .defenseScene("custom_acl")
+     *             .templateType("user_custom")
+     *             .build());
+     * 
+     *         var default9dtEmt = new AddressBook("default9dtEmt", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultSB0uHV = new AddressBook("defaultSB0uHV", AddressBookArgs.builder()
+     *             .description("test")
+     *             .instanceId(defaultnxb04D.id())
+     *             .addressBookName("1782219650")
+     *             .addressLists(            
+     *                 "100.100.100.100/32",
+     *                 "101.101.101.101/32",
+     *                 "102.102.102.102/32")
+     *             .addressBookType("ip")
+     *             .build());
+     * 
+     *         var defaultDefenseRule = new DefenseRule("defaultDefenseRule", DefenseRuleArgs.builder()
+     *             .defenseOrigin("custom")
+     *             .instanceId(defaultnxb04D.id())
+     *             .config(DefenseRuleConfigArgs.builder()
+     *                 .ruleAction("block")
+     *                 .conditions(                
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URL")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("abc")
+     *                         .key("URLPath")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .opValue("contain")
+     *                         .values("1.1.1.2")
+     *                         .key("IP")
+     *                         .build(),
+     *                     DefenseRuleConfigConditionArgs.builder()
+     *                         .key("IP")
+     *                         .opValue("in-list")
+     *                         .values(default9dtEmt.addressBookId())
+     *                         .build())
+     *                 .ccStatus(0)
+     *                 .ccEffect("service")
+     *                 .rateLimit(DefenseRuleConfigRateLimitArgs.builder()
+     *                     .target("remote_addr")
+     *                     .interval(16)
+     *                     .threshold(204)
+     *                     .ttl(68)
+     *                     .status(DefenseRuleConfigRateLimitStatusArgs.builder()
+     *                         .code(414)
+     *                         .count(333)
+     *                         .build())
+     *                     .subKey("testky1")
+     *                     .build())
+     *                 .grayStatus(1)
+     *                 .grayConfig(DefenseRuleConfigGrayConfigArgs.builder()
+     *                     .grayTarget("remote_addr")
+     *                     .grayRate(80)
+     *                     .build())
+     *                 .timeConfig(DefenseRuleConfigTimeConfigArgs.builder()
+     *                     .timeScope("period")
+     *                     .timeZone(8)
+     *                     .timePeriods(                    
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760174804000)
+     *                             .end(1760175804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760171804000)
+     *                             .end(1760172804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760176804000)
+     *                             .end(1760177804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760178804000)
+     *                             .end(1760179804000)
+     *                             .build(),
+     *                         DefenseRuleConfigTimeConfigTimePeriodArgs.builder()
+     *                             .start(1760170804000)
+     *                             .end(1760171804000)
+     *                             .build())
+     *                     .build())
+     *                 .build())
+     *             .defenseScene("custom_acl")
+     *             .ruleStatus(1)
+     *             .defenseType("template")
+     *             .templateId(defaultfIoHt5.defenseTemplateId())
+     *             .ruleName("custom_acl-create")
+     *             .build());
+     * 
+     *         final var default = Wafv3Functions.getDefenseRules(GetDefenseRulesArgs.builder()
+     *             .ids(defaultDefenseRule.id())
+     *             .defenseType("template")
+     *             .instanceId(defaultnxb04D.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudWafv3DefenseRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDefenseRulesResult> getDefenseRulesPlain(GetDefenseRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:wafv3/getDefenseRules:getDefenseRules", TypeShape.of(GetDefenseRulesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Wafv3 Domains of the current Alibaba Cloud user.
      * 

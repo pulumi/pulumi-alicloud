@@ -16,6 +16,7 @@ from .. import _utilities
 
 __all__ = [
     'GetInstancesInstanceResult',
+    'GetPolardbxInstancesInstanceResult',
 ]
 
 @pulumi.output_type
@@ -131,6 +132,244 @@ class GetInstancesInstanceResult(dict):
     def zone_id(self) -> _builtins.str:
         """
         Zone ID the instance belongs to.
+        """
+        return pulumi.get(self, "zone_id")
+
+
+@pulumi.output_type
+class GetPolardbxInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 cn_class: _builtins.str,
+                 cn_node_count: _builtins.int,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 dn_class: _builtins.str,
+                 dn_node_count: _builtins.int,
+                 engine_version: _builtins.str,
+                 id: _builtins.str,
+                 network_type: _builtins.str,
+                 payment_type: _builtins.str,
+                 polardbx_instance_id: _builtins.str,
+                 primary_zone: _builtins.str,
+                 region_id: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 secondary_zone: _builtins.str,
+                 status: _builtins.str,
+                 storage_type: _builtins.str,
+                 tertiary_zone: _builtins.str,
+                 topology_type: _builtins.str,
+                 vpc_id: _builtins.str,
+                 zone_id: _builtins.str):
+        """
+        :param _builtins.str cn_class: Compute node specifications of the instance.
+        :param _builtins.int cn_node_count: The number of compute nodes.
+        :param _builtins.str create_time: The creation time of the instance.
+        :param _builtins.str description: Instance remarks.
+        :param _builtins.str dn_class: Storage node specifications of the instance.
+        :param _builtins.int dn_node_count: The number of storage nodes.
+        :param _builtins.str engine_version: Engine version of the instance.
+        :param _builtins.str id: The ID of the PolarDB-X instance.
+        :param _builtins.str network_type: The network type of the instance.
+        :param _builtins.str payment_type: The billing method of the instance. Valid values: `Postpaid`, `Prepaid`.
+        :param _builtins.str polardbx_instance_id: The ID of the PolarDB-X instance. Same as `id`.
+        :param _builtins.str primary_zone: Primary availability zone.
+        :param _builtins.str region_id: Region ID of the instance.
+        :param _builtins.str resource_group_id: The ID of the resource group used to filter instances.
+        :param _builtins.str secondary_zone: Secondary availability zone.
+        :param _builtins.str status: Filter results by instance status. Valid values: `Creating`, `Running`, `MinorVersionUpgrading`, `ClassChanging`, `NodeCreating`, `NodeDeleting`, `Deleting`.
+        :param _builtins.str storage_type: Storage type of the instance. Valid values: `custom_local_ssd`, `cloud_auto`.
+        :param _builtins.str tertiary_zone: Third availability zone.
+        :param _builtins.str topology_type: Topology type of the instance. Valid values: `1azone`, `3azones`.
+        :param _builtins.str vpc_id: VPC ID of the instance.
+        :param _builtins.str zone_id: Availability zone of the instance.
+        """
+        pulumi.set(__self__, "cn_class", cn_class)
+        pulumi.set(__self__, "cn_node_count", cn_node_count)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dn_class", dn_class)
+        pulumi.set(__self__, "dn_node_count", dn_node_count)
+        pulumi.set(__self__, "engine_version", engine_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "polardbx_instance_id", polardbx_instance_id)
+        pulumi.set(__self__, "primary_zone", primary_zone)
+        pulumi.set(__self__, "region_id", region_id)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "secondary_zone", secondary_zone)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "tertiary_zone", tertiary_zone)
+        pulumi.set(__self__, "topology_type", topology_type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="cnClass")
+    def cn_class(self) -> _builtins.str:
+        """
+        Compute node specifications of the instance.
+        """
+        return pulumi.get(self, "cn_class")
+
+    @_builtins.property
+    @pulumi.getter(name="cnNodeCount")
+    def cn_node_count(self) -> _builtins.int:
+        """
+        The number of compute nodes.
+        """
+        return pulumi.get(self, "cn_node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the instance.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Instance remarks.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dnClass")
+    def dn_class(self) -> _builtins.str:
+        """
+        Storage node specifications of the instance.
+        """
+        return pulumi.get(self, "dn_class")
+
+    @_builtins.property
+    @pulumi.getter(name="dnNodeCount")
+    def dn_node_count(self) -> _builtins.int:
+        """
+        The number of storage nodes.
+        """
+        return pulumi.get(self, "dn_node_count")
+
+    @_builtins.property
+    @pulumi.getter(name="engineVersion")
+    def engine_version(self) -> _builtins.str:
+        """
+        Engine version of the instance.
+        """
+        return pulumi.get(self, "engine_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the PolarDB-X instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        The network type of the instance.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> _builtins.str:
+        """
+        The billing method of the instance. Valid values: `Postpaid`, `Prepaid`.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="polardbxInstanceId")
+    def polardbx_instance_id(self) -> _builtins.str:
+        """
+        The ID of the PolarDB-X instance. Same as `id`.
+        """
+        return pulumi.get(self, "polardbx_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryZone")
+    def primary_zone(self) -> _builtins.str:
+        """
+        Primary availability zone.
+        """
+        return pulumi.get(self, "primary_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> _builtins.str:
+        """
+        Region ID of the instance.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group used to filter instances.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryZone")
+    def secondary_zone(self) -> _builtins.str:
+        """
+        Secondary availability zone.
+        """
+        return pulumi.get(self, "secondary_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Filter results by instance status. Valid values: `Creating`, `Running`, `MinorVersionUpgrading`, `ClassChanging`, `NodeCreating`, `NodeDeleting`, `Deleting`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> _builtins.str:
+        """
+        Storage type of the instance. Valid values: `custom_local_ssd`, `cloud_auto`.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tertiaryZone")
+    def tertiary_zone(self) -> _builtins.str:
+        """
+        Third availability zone.
+        """
+        return pulumi.get(self, "tertiary_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="topologyType")
+    def topology_type(self) -> _builtins.str:
+        """
+        Topology type of the instance. Valid values: `1azone`, `3azones`.
+        """
+        return pulumi.get(self, "topology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        VPC ID of the instance.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> _builtins.str:
+        """
+        Availability zone of the instance.
         """
         return pulumi.get(self, "zone_id")
 

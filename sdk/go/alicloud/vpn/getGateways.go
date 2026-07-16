@@ -154,6 +154,8 @@ type GetGatewaysArgs struct {
 	//
 	// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 	EnableIpsec *bool `pulumi:"enableIpsec"`
+	// Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+	GatewayType *string `pulumi:"gatewayType"`
 	// IDs of the VPN.
 	Ids []string `pulumi:"ids"`
 	// Include ineffective ordering data.
@@ -177,7 +179,8 @@ type GetGatewaysResult struct {
 	// Whether the ipsec function is enabled.
 	//
 	// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
-	EnableIpsec *bool `pulumi:"enableIpsec"`
+	EnableIpsec *bool   `pulumi:"enableIpsec"`
+	GatewayType *string `pulumi:"gatewayType"`
 	// A list of VPN gateways. Each element contains the following attributes:
 	Gateways []GetGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
@@ -214,6 +217,8 @@ type GetGatewaysOutputArgs struct {
 	//
 	// Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 	EnableIpsec pulumi.BoolPtrInput `pulumi:"enableIpsec"`
+	// Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
 	// IDs of the VPN.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// Include ineffective ordering data.
@@ -259,6 +264,10 @@ func (o GetGatewaysResultOutput) BusinessStatus() pulumi.StringPtrOutput {
 // Deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.
 func (o GetGatewaysResultOutput) EnableIpsec() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGatewaysResult) *bool { return v.EnableIpsec }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGatewaysResultOutput) GatewayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGatewaysResult) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
 }
 
 // A list of VPN gateways. Each element contains the following attributes:

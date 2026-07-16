@@ -12,62 +12,62 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceMetricAlarmRulesRuleEscalationsWarn {
     /**
-     * @return The comparison operator that is used to compare the metric value with the threshold.
+     * @return Comparison operator for the Warn-level threshold.
      * 
      */
     private String comparisonOperator;
     /**
-     * @return The additional conditions for triggering Warn-level alerts.
+     * @return Precondition for triggering a Warn-level alert.
      * 
      */
     private String preCondition;
     /**
-     * @return The statistical methods for Warn-level alerts.
+     * @return Statistical method for Warn-level alerts.
      * 
      */
     private String statistics;
     /**
-     * @return The threshold for Warn-level alerts.
+     * @return Threshold for Warn-level alerts.
      * 
      */
     private String threshold;
     /**
-     * @return The number of consecutive triggers.
+     * @return The number of times the alert condition must be met before an alert notification is sent.
      * 
      */
     private Integer times;
 
     private GetServiceMetricAlarmRulesRuleEscalationsWarn() {}
     /**
-     * @return The comparison operator that is used to compare the metric value with the threshold.
+     * @return Comparison operator for the Warn-level threshold.
      * 
      */
     public String comparisonOperator() {
         return this.comparisonOperator;
     }
     /**
-     * @return The additional conditions for triggering Warn-level alerts.
+     * @return Precondition for triggering a Warn-level alert.
      * 
      */
     public String preCondition() {
         return this.preCondition;
     }
     /**
-     * @return The statistical methods for Warn-level alerts.
+     * @return Statistical method for Warn-level alerts.
      * 
      */
     public String statistics() {
         return this.statistics;
     }
     /**
-     * @return The threshold for Warn-level alerts.
+     * @return Threshold for Warn-level alerts.
      * 
      */
     public String threshold() {
         return this.threshold;
     }
     /**
-     * @return The number of consecutive triggers.
+     * @return The number of times the alert condition must be met before an alert notification is sent.
      * 
      */
     public Integer times() {

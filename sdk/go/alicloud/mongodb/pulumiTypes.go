@@ -1835,10 +1835,16 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 type GetAuditPoliciesPolicy struct {
 	// The status of the log audit feature.
 	AuditStatus string `pulumi:"auditStatus"`
-	// The ID of the instance.
+	// The id of the db instance.
 	DbInstanceId string `pulumi:"dbInstanceId"`
+	// (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+	HotStoragePeriod int `pulumi:"hotStoragePeriod"`
 	// The ID of the Audit Policy.
 	Id string `pulumi:"id"`
+	// (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+	ServiceType string `pulumi:"serviceType"`
+	// (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+	StoragePeriod int `pulumi:"storagePeriod"`
 }
 
 // GetAuditPoliciesPolicyInput is an input type that accepts GetAuditPoliciesPolicyArgs and GetAuditPoliciesPolicyOutput values.
@@ -1855,10 +1861,16 @@ type GetAuditPoliciesPolicyInput interface {
 type GetAuditPoliciesPolicyArgs struct {
 	// The status of the log audit feature.
 	AuditStatus pulumi.StringInput `pulumi:"auditStatus"`
-	// The ID of the instance.
+	// The id of the db instance.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+	HotStoragePeriod pulumi.IntInput `pulumi:"hotStoragePeriod"`
 	// The ID of the Audit Policy.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+	// (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+	StoragePeriod pulumi.IntInput `pulumi:"storagePeriod"`
 }
 
 func (GetAuditPoliciesPolicyArgs) ElementType() reflect.Type {
@@ -1917,14 +1929,29 @@ func (o GetAuditPoliciesPolicyOutput) AuditStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.AuditStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the instance.
+// The id of the db instance.
 func (o GetAuditPoliciesPolicyOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+func (o GetAuditPoliciesPolicyOutput) HotStoragePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAuditPoliciesPolicy) int { return v.HotStoragePeriod }).(pulumi.IntOutput)
 }
 
 // The ID of the Audit Policy.
 func (o GetAuditPoliciesPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+func (o GetAuditPoliciesPolicyOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuditPoliciesPolicy) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+func (o GetAuditPoliciesPolicyOutput) StoragePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAuditPoliciesPolicy) int { return v.StoragePeriod }).(pulumi.IntOutput)
 }
 
 type GetAuditPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }

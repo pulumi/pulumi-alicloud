@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRuleEscalationsWarnResult
     {
         /// <summary>
-        /// The comparison operator that is used to compare the metric value with the threshold.
+        /// Comparison operator for the Warn-level threshold.
         /// </summary>
         public readonly string ComparisonOperator;
         /// <summary>
-        /// The additional conditions for triggering Warn-level alerts.
+        /// Precondition for triggering a Warn-level alert.
         /// </summary>
         public readonly string PreCondition;
         /// <summary>
-        /// The statistical methods for Warn-level alerts.
+        /// Statistical method for Warn-level alerts.
         /// </summary>
         public readonly string Statistics;
         /// <summary>
-        /// The threshold for Warn-level alerts.
+        /// Threshold for Warn-level alerts.
         /// </summary>
         public readonly string Threshold;
         /// <summary>
-        /// The number of consecutive triggers.
+        /// The number of times the alert condition must be met before an alert notification is sent.
         /// </summary>
         public readonly int Times;
 

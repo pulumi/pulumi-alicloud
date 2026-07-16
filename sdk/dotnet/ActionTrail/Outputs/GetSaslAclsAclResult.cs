@@ -34,6 +34,10 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
+        /// (Available since v1.285.0) The resource ID in terraform of Sasl Acl. It formats as `&lt;instance_id&gt;:&lt;username&gt;:&lt;acl_resource_type&gt;:&lt;acl_resource_name&gt;:&lt;acl_resource_pattern_type&gt;:&lt;acl_operation_type&gt;`.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
         /// Get results for the specified username.
         /// </summary>
         public readonly string Username;
@@ -50,6 +54,8 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
 
             string host,
 
+            string id,
+
             string username)
         {
             AclOperationType = aclOperationType;
@@ -57,6 +63,7 @@ namespace Pulumi.AliCloud.ActionTrail.Outputs
             AclResourcePatternType = aclResourcePatternType;
             AclResourceType = aclResourceType;
             Host = host;
+            Id = id;
             Username = username;
         }
     }

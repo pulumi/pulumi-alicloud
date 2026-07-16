@@ -125,6 +125,11 @@ export type Handshake = import("./handshake").Handshake;
 export const Handshake: typeof import("./handshake").Handshake = null as any;
 utilities.lazyLoad(exports, ["Handshake"], () => require("./handshake"));
 
+export { HandshakeAcceptanceArgs, HandshakeAcceptanceState } from "./handshakeAcceptance";
+export type HandshakeAcceptance = import("./handshakeAcceptance").HandshakeAcceptance;
+export const HandshakeAcceptance: typeof import("./handshakeAcceptance").HandshakeAcceptance = null as any;
+utilities.lazyLoad(exports, ["HandshakeAcceptance"], () => require("./handshakeAcceptance"));
+
 export { MessageContactArgs, MessageContactState } from "./messageContact";
 export type MessageContact = import("./messageContact").MessageContact;
 export const MessageContact: typeof import("./messageContact").MessageContact = null as any;
@@ -154,6 +159,11 @@ export { ResourceDirectoryArgs, ResourceDirectoryState } from "./resourceDirecto
 export type ResourceDirectory = import("./resourceDirectory").ResourceDirectory;
 export const ResourceDirectory: typeof import("./resourceDirectory").ResourceDirectory = null as any;
 utilities.lazyLoad(exports, ["ResourceDirectory"], () => require("./resourceDirectory"));
+
+export { ResourceDirectorySharingArgs, ResourceDirectorySharingState } from "./resourceDirectorySharing";
+export type ResourceDirectorySharing = import("./resourceDirectorySharing").ResourceDirectorySharing;
+export const ResourceDirectorySharing: typeof import("./resourceDirectorySharing").ResourceDirectorySharing = null as any;
+utilities.lazyLoad(exports, ["ResourceDirectorySharing"], () => require("./resourceDirectorySharing"));
 
 export { ResourceGroupArgs, ResourceGroupState } from "./resourceGroup";
 export type ResourceGroup = import("./resourceGroup").ResourceGroup;
@@ -211,6 +221,8 @@ const _module = {
                 return new Folder(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/handshake:Handshake":
                 return new Handshake(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/handshakeAcceptance:HandshakeAcceptance":
+                return new HandshakeAcceptance(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/messageContact:MessageContact":
                 return new MessageContact(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel":
@@ -223,6 +235,8 @@ const _module = {
                 return new PolicyVersion(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/resourceDirectory:ResourceDirectory":
                 return new ResourceDirectory(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/resourceDirectorySharing:ResourceDirectorySharing":
+                return new ResourceDirectorySharing(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/resourceGroup:ResourceGroup":
                 return new ResourceGroup(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/resourceShare:ResourceShare":
@@ -250,12 +264,14 @@ pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/delegatedAdmi
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/deliveryChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/folder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/handshake", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/handshakeAcceptance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/messageContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/multiAccountDeliveryChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceDirectory", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceDirectorySharing", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/resourceShare", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/role", _module)

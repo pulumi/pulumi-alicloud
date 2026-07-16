@@ -42,6 +42,7 @@ from .log_meta import *
 from .malicious_file_whitelist_config import *
 from .oss_scan_config import *
 from .sas_trail import *
+from .service_linked_role import *
 from .vul_whitelist import *
 from .web_lock_config import *
 from ._inputs import *

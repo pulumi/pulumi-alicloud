@@ -140,6 +140,21 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+     * 
+     */
+    @Import(name="dynamodbAuthPassword")
+    private @Nullable Output<String> dynamodbAuthPassword;
+
+    /**
+     * @return (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+     * 
+     */
+    public Optional<Output<String>> dynamodbAuthPassword() {
+        return Optional.ofNullable(this.dynamodbAuthPassword);
+    }
+
+    /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      * 
      */
@@ -194,6 +209,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.accountPasswordValidTime = $.accountPasswordValidTime;
         this.accountType = $.accountType;
         this.dbClusterId = $.dbClusterId;
+        this.dynamodbAuthPassword = $.dynamodbAuthPassword;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
         this.status = $.status;
@@ -380,6 +396,27 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
+        }
+
+        /**
+         * @param dynamodbAuthPassword (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamodbAuthPassword(@Nullable Output<String> dynamodbAuthPassword) {
+            $.dynamodbAuthPassword = dynamodbAuthPassword;
+            return this;
+        }
+
+        /**
+         * @param dynamodbAuthPassword (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamodbAuthPassword(String dynamodbAuthPassword) {
+            return dynamodbAuthPassword(Output.of(dynamodbAuthPassword));
         }
 
         /**

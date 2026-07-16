@@ -269,6 +269,8 @@ class Handshake(pulumi.CustomResource):
         """
         Provides a Resource Manager Handshake resource.
 
+        > **NOTE:** If the invitation has been accepted and `target_type` is `Account`, destroying this resource removes the invited cloud account from the resource directory.
+
         For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
 
         > **NOTE:** Available since v1.82.0.
@@ -317,6 +319,8 @@ class Handshake(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Resource Manager Handshake resource.
+
+        > **NOTE:** If the invitation has been accepted and `target_type` is `Account`, destroying this resource removes the invited cloud account from the resource directory.
 
         For information about Resource Manager Handshake and how to use it, see [What is Handshake](https://www.alibabacloud.com/help/en/doc-detail/135287.htm).
 

@@ -1276,15 +1276,24 @@ class GetAuditPoliciesPolicyResult(dict):
     def __init__(__self__, *,
                  audit_status: _builtins.str,
                  db_instance_id: _builtins.str,
-                 id: _builtins.str):
+                 hot_storage_period: _builtins.int,
+                 id: _builtins.str,
+                 service_type: _builtins.str,
+                 storage_period: _builtins.int):
         """
         :param _builtins.str audit_status: The status of the log audit feature.
-        :param _builtins.str db_instance_id: The ID of the instance.
+        :param _builtins.str db_instance_id: The id of the db instance.
+        :param _builtins.int hot_storage_period: (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
         :param _builtins.str id: The ID of the Audit Policy.
+        :param _builtins.str service_type: (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+        :param _builtins.int storage_period: (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
         """
         pulumi.set(__self__, "audit_status", audit_status)
         pulumi.set(__self__, "db_instance_id", db_instance_id)
+        pulumi.set(__self__, "hot_storage_period", hot_storage_period)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "service_type", service_type)
+        pulumi.set(__self__, "storage_period", storage_period)
 
     @_builtins.property
     @pulumi.getter(name="auditStatus")
@@ -1298,9 +1307,17 @@ class GetAuditPoliciesPolicyResult(dict):
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> _builtins.str:
         """
-        The ID of the instance.
+        The id of the db instance.
         """
         return pulumi.get(self, "db_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="hotStoragePeriod")
+    def hot_storage_period(self) -> _builtins.int:
+        """
+        (Available since v1.284.0) The hot storage duration (days) of the V2 audit log.
+        """
+        return pulumi.get(self, "hot_storage_period")
 
     @_builtins.property
     @pulumi.getter
@@ -1309,6 +1326,22 @@ class GetAuditPoliciesPolicyResult(dict):
         The ID of the Audit Policy.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        (Available since v1.284.0) The edition of the audit log, e.g. `Standard` or `V2_Standard`.
+        """
+        return pulumi.get(self, "service_type")
+
+    @_builtins.property
+    @pulumi.getter(name="storagePeriod")
+    def storage_period(self) -> _builtins.int:
+        """
+        (Available since v1.284.0) The audit log retention duration, in days. For `V2_Standard` this is the cold storage duration.
+        """
+        return pulumi.get(self, "storage_period")
 
 
 @pulumi.output_type

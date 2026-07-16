@@ -89,14 +89,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of VPC DNS Hostname
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      * 
      */
     @Import(name="dnsHostnameStatus")
     private @Nullable Output<String> dnsHostnameStatus;
 
     /**
-     * @return The status of VPC DNS Hostname
+     * @return The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      * 
      */
     public Optional<Output<String>> dnsHostnameStatus() {
@@ -690,7 +690,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsHostnameStatus The status of VPC DNS Hostname
+         * @param dnsHostnameStatus The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsHostnameStatus The status of VPC DNS Hostname
+         * @param dnsHostnameStatus The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 

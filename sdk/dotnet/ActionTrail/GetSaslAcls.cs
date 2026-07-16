@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
+        /// &gt; **NOTE:** Available since v1.66.0.
         /// 
         /// ## Example Usage
         /// 
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         InstanceId = "xxx",
         ///         Username = "username",
         ///         AclResourceType = "Topic",
-        ///         AclResourceName = "testTopic",
+        ///         AclResourceName = "yourTopic",
         ///         OutputFile = "saslAcls.txt",
         ///     });
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
+        /// &gt; **NOTE:** Available since v1.66.0.
         /// 
         /// ## Example Usage
         /// 
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         InstanceId = "xxx",
         ///         Username = "username",
         ///         AclResourceType = "Topic",
-        ///         AclResourceName = "testTopic",
+        ///         AclResourceName = "yourTopic",
         ///         OutputFile = "saslAcls.txt",
         ///     });
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// <summary>
         /// This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
         /// 
-        /// &gt; **NOTE:** Available in 1.66.0+
+        /// &gt; **NOTE:** Available since v1.66.0.
         /// 
         /// ## Example Usage
         /// 
@@ -99,7 +99,7 @@ namespace Pulumi.AliCloud.ActionTrail
         ///         InstanceId = "xxx",
         ///         Username = "username",
         ///         AclResourceType = "Topic",
-        ///         AclResourceName = "testTopic",
+        ///         AclResourceName = "yourTopic",
         ///         OutputFile = "saslAcls.txt",
         ///     });
         /// 

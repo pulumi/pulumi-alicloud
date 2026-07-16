@@ -3025,6 +3025,8 @@ type InstanceNetworkInterfaces struct {
 	QueuePairNumber *int `pulumi:"queuePairNumber"`
 	// The ID of security group N to which to assign Secondary ENI N.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
 	// The ID of the vSwitch to which to connect Secondary ENI N.
 	VswitchId *string `pulumi:"vswitchId"`
 }
@@ -3053,6 +3055,8 @@ type InstanceNetworkInterfacesArgs struct {
 	QueuePairNumber pulumi.IntPtrInput `pulumi:"queuePairNumber"`
 	// The ID of security group N to which to assign Secondary ENI N.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolPtrInput `pulumi:"sourceDestCheck"`
 	// The ID of the vSwitch to which to connect Secondary ENI N.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
@@ -3161,6 +3165,11 @@ func (o InstanceNetworkInterfacesOutput) SecurityGroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v InstanceNetworkInterfaces) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+func (o InstanceNetworkInterfacesOutput) SourceDestCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) *bool { return v.SourceDestCheck }).(pulumi.BoolPtrOutput)
+}
+
 // The ID of the vSwitch to which to connect Secondary ENI N.
 func (o InstanceNetworkInterfacesOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
@@ -3240,6 +3249,16 @@ func (o InstanceNetworkInterfacesPtrOutput) SecurityGroupIds() pulumi.StringArra
 		}
 		return v.SecurityGroupIds
 	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+func (o InstanceNetworkInterfacesPtrOutput) SourceDestCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SourceDestCheck
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the vSwitch to which to connect Secondary ENI N.

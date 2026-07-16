@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Gateway{}
 	case "alicloud:apig/httpApi:HttpApi":
 		r = &HttpApi{}
+	case "alicloud:apig/pluginClass:PluginClass":
+		r = &PluginClass{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apig/httpApi",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apig/pluginClass",
 		&module{version},
 	)
 }

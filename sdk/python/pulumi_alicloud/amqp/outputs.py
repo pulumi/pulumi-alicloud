@@ -230,6 +230,7 @@ class GetInstancesInstanceResult(dict):
                  renewal_duration: _builtins.int,
                  renewal_duration_unit: _builtins.str,
                  renewal_status: _builtins.str,
+                 serverless_switch: _builtins.bool,
                  status: _builtins.str,
                  support_eip: _builtins.bool):
         """
@@ -245,6 +246,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.int renewal_duration: Auto renewal period of an instance. **Note:** `renewal_duration` takes effect only if `enable_details` is set to `true`.
         :param _builtins.str renewal_duration_unit: Automatic renewal period unit. **Note:** `renewal_duration_unit` takes effect only if `enable_details` is set to `true`.
         :param _builtins.str renewal_status: Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.bool serverless_switch: (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
         :param _builtins.str status: The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
         :param _builtins.bool support_eip: Indicates whether the instance supports elastic IP addresses (EIPs).
         """
@@ -260,6 +262,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "renewal_duration", renewal_duration)
         pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         pulumi.set(__self__, "renewal_status", renewal_status)
+        pulumi.set(__self__, "serverless_switch", serverless_switch)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "support_eip", support_eip)
 
@@ -358,6 +361,14 @@ class GetInstancesInstanceResult(dict):
         Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "renewal_status")
+
+    @_builtins.property
+    @pulumi.getter(name="serverlessSwitch")
+    def serverless_switch(self) -> _builtins.bool:
+        """
+        (Available since v1.283.0) Whether the Serverless elastic capability is enabled on the instance.
+        """
+        return pulumi.get(self, "serverless_switch")
 
     @_builtins.property
     @pulumi.getter

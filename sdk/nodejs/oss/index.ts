@@ -60,6 +60,11 @@ export type BucketHttpsConfig = import("./bucketHttpsConfig").BucketHttpsConfig;
 export const BucketHttpsConfig: typeof import("./bucketHttpsConfig").BucketHttpsConfig = null as any;
 utilities.lazyLoad(exports, ["BucketHttpsConfig"], () => require("./bucketHttpsConfig"));
 
+export { BucketInventoryArgs, BucketInventoryState } from "./bucketInventory";
+export type BucketInventory = import("./bucketInventory").BucketInventory;
+export const BucketInventory: typeof import("./bucketInventory").BucketInventory = null as any;
+utilities.lazyLoad(exports, ["BucketInventory"], () => require("./bucketInventory"));
+
 export { BucketLoggingArgs, BucketLoggingState } from "./bucketLogging";
 export type BucketLogging = import("./bucketLogging").BucketLogging;
 export const BucketLogging: typeof import("./bucketLogging").BucketLogging = null as any;
@@ -150,6 +155,11 @@ export type BucketWorm = import("./bucketWorm").BucketWorm;
 export const BucketWorm: typeof import("./bucketWorm").BucketWorm = null as any;
 utilities.lazyLoad(exports, ["BucketWorm"], () => require("./bucketWorm"));
 
+export { GetBucketInventoriesArgs, GetBucketInventoriesResult, GetBucketInventoriesOutputArgs } from "./getBucketInventories";
+export const getBucketInventories: typeof import("./getBucketInventories").getBucketInventories = null as any;
+export const getBucketInventoriesOutput: typeof import("./getBucketInventories").getBucketInventoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketInventories","getBucketInventoriesOutput"], () => require("./getBucketInventories"));
+
 export { GetBucketObjectsArgs, GetBucketObjectsResult, GetBucketObjectsOutputArgs } from "./getBucketObjects";
 export const getBucketObjects: typeof import("./getBucketObjects").getBucketObjects = null as any;
 export const getBucketObjectsOutput: typeof import("./getBucketObjects").getBucketObjectsOutput = null as any;
@@ -207,6 +217,8 @@ const _module = {
                 return new BucketDataRedundancyTransition(name, <any>undefined, { urn })
             case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
                 return new BucketHttpsConfig(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketInventory:BucketInventory":
+                return new BucketInventory(name, <any>undefined, { urn })
             case "alicloud:oss/bucketLogging:BucketLogging":
                 return new BucketLogging(name, <any>undefined, { urn })
             case "alicloud:oss/bucketMetaQuery:BucketMetaQuery":
@@ -259,6 +271,7 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCnameToken", _modul
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCors", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketDataRedundancyTransition", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketInventory", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketLogging", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketMetaQuery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)

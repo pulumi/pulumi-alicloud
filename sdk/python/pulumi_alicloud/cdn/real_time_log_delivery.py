@@ -280,10 +280,10 @@ class RealTimeLogDelivery(pulumi.CustomResource):
 
         ## Import
 
-        CDN Real Time Log Delivery can be imported using the id, e.g.
+        CDN Real Time Log Delivery can be imported using the id (the accelerated `domain`), e.g.
 
         ```sh
-        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
+        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
         ```
 
 
@@ -361,10 +361,10 @@ class RealTimeLogDelivery(pulumi.CustomResource):
 
         ## Import
 
-        CDN Real Time Log Delivery can be imported using the id, e.g.
+        CDN Real Time Log Delivery can be imported using the id (the accelerated `domain`), e.g.
 
         ```sh
-        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
+        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
         ```
 
 

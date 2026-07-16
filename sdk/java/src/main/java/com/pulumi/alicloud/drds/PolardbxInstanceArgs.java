@@ -19,14 +19,14 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
     public static final PolardbxInstanceArgs Empty = new PolardbxInstanceArgs();
 
     /**
-     * Compute node specifications.
+     * Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     @Import(name="cnClass", required=true)
     private Output<String> cnClass;
 
     /**
-     * @return Compute node specifications.
+     * @return Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     public Output<String> cnClass() {
@@ -64,14 +64,14 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Storage node specifications.
+     * Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     @Import(name="dnClass", required=true)
     private Output<String> dnClass;
 
     /**
-     * @return Storage node specifications.
+     * @return Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
      * 
      */
     public Output<String> dnClass() {
@@ -91,6 +91,21 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<Integer> dnNodeCount() {
         return this.dnNodeCount;
+    }
+
+    /**
+     * Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+     * 
+     */
+    @Import(name="dnStorageSpace")
+    private @Nullable Output<String> dnStorageSpace;
+
+    /**
+     * @return Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+     * 
+     */
+    public Optional<Output<String>> dnStorageSpace() {
+        return Optional.ofNullable(this.dnStorageSpace);
     }
 
     /**
@@ -188,6 +203,81 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+     * 
+     */
+    @Import(name="specifiedDnScale")
+    private @Nullable Output<Boolean> specifiedDnScale;
+
+    /**
+     * @return Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+     * 
+     */
+    public Optional<Output<Boolean>> specifiedDnScale() {
+        return Optional.ofNullable(this.specifiedDnScale);
+    }
+
+    /**
+     * JSON string describing the per-DN target specification during a class change.
+     * 
+     */
+    @Import(name="specifiedDnSpecMapJson")
+    private @Nullable Output<String> specifiedDnSpecMapJson;
+
+    /**
+     * @return JSON string describing the per-DN target specification during a class change.
+     * 
+     */
+    public Optional<Output<String>> specifiedDnSpecMapJson() {
+        return Optional.ofNullable(this.specifiedDnSpecMapJson);
+    }
+
+    /**
+     * Storage type of the instance. Valid values:
+     * 
+     */
+    @Import(name="storageType")
+    private @Nullable Output<String> storageType;
+
+    /**
+     * @return Storage type of the instance. Valid values:
+     * 
+     */
+    public Optional<Output<String>> storageType() {
+        return Optional.ofNullable(this.storageType);
+    }
+
+    /**
+     * Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+     * 
+     */
+    @Import(name="switchTime")
+    private @Nullable Output<String> switchTime;
+
+    /**
+     * @return Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+     * 
+     */
+    public Optional<Output<String>> switchTime() {
+        return Optional.ofNullable(this.switchTime);
+    }
+
+    /**
+     * Effective time policy applied to a class change. Valid values:
+     * 
+     */
+    @Import(name="switchTimeMode")
+    private @Nullable Output<String> switchTimeMode;
+
+    /**
+     * @return Effective time policy applied to a class change. Valid values:
+     * 
+     */
+    public Optional<Output<String>> switchTimeMode() {
+        return Optional.ofNullable(this.switchTimeMode);
+    }
+
+    /**
      * Third Availability Zone.
      * 
      */
@@ -255,12 +345,18 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.dnClass = $.dnClass;
         this.dnNodeCount = $.dnNodeCount;
+        this.dnStorageSpace = $.dnStorageSpace;
         this.engineVersion = $.engineVersion;
         this.isReadDbInstance = $.isReadDbInstance;
         this.primaryDbInstanceName = $.primaryDbInstanceName;
         this.primaryZone = $.primaryZone;
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryZone = $.secondaryZone;
+        this.specifiedDnScale = $.specifiedDnScale;
+        this.specifiedDnSpecMapJson = $.specifiedDnSpecMapJson;
+        this.storageType = $.storageType;
+        this.switchTime = $.switchTime;
+        this.switchTimeMode = $.switchTimeMode;
         this.tertiaryZone = $.tertiaryZone;
         this.topologyType = $.topologyType;
         this.vpcId = $.vpcId;
@@ -286,7 +382,7 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cnClass Compute node specifications.
+         * @param cnClass Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
          * 
          * @return builder
          * 
@@ -297,7 +393,7 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param cnClass Compute node specifications.
+         * @param cnClass Compute node (CN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `CnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
          * 
          * @return builder
          * 
@@ -349,7 +445,7 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnClass Storage node specifications.
+         * @param dnClass Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
          * 
          * @return builder
          * 
@@ -360,7 +456,7 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dnClass Storage node specifications.
+         * @param dnClass Storage node (DN) specifications. Since v1.285.0 the field is mutable and supports in-place class change. Refer to the `DnClass` parameter in the [CreateDBInstance API reference](https://www.alibabacloud.com/help/en/polardb/polardb-for-xscale/api-createdbinstance-1) for the list of valid values.
          * 
          * @return builder
          * 
@@ -388,6 +484,27 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder dnNodeCount(Integer dnNodeCount) {
             return dnNodeCount(Output.of(dnNodeCount));
+        }
+
+        /**
+         * @param dnStorageSpace Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnStorageSpace(@Nullable Output<String> dnStorageSpace) {
+            $.dnStorageSpace = dnStorageSpace;
+            return this;
+        }
+
+        /**
+         * @param dnStorageSpace Storage space per storage node, in GB. Only applicable when `storageType` is `cloudAuto`; leave unset for `customLocalSsd` instances. Since v1.285.0 the field is mutable and supports in-place resize.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnStorageSpace(String dnStorageSpace) {
+            return dnStorageSpace(Output.of(dnStorageSpace));
         }
 
         /**
@@ -518,6 +635,111 @@ public final class PolardbxInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder secondaryZone(String secondaryZone) {
             return secondaryZone(Output.of(secondaryZone));
+        }
+
+        /**
+         * @param specifiedDnScale Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder specifiedDnScale(@Nullable Output<Boolean> specifiedDnScale) {
+            $.specifiedDnScale = specifiedDnScale;
+            return this;
+        }
+
+        /**
+         * @param specifiedDnScale Whether the storage node specification is customized per DN during a class change. Used together with `specifiedDnSpecMapJson`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder specifiedDnScale(Boolean specifiedDnScale) {
+            return specifiedDnScale(Output.of(specifiedDnScale));
+        }
+
+        /**
+         * @param specifiedDnSpecMapJson JSON string describing the per-DN target specification during a class change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder specifiedDnSpecMapJson(@Nullable Output<String> specifiedDnSpecMapJson) {
+            $.specifiedDnSpecMapJson = specifiedDnSpecMapJson;
+            return this;
+        }
+
+        /**
+         * @param specifiedDnSpecMapJson JSON string describing the per-DN target specification during a class change.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder specifiedDnSpecMapJson(String specifiedDnSpecMapJson) {
+            return specifiedDnSpecMapJson(Output.of(specifiedDnSpecMapJson));
+        }
+
+        /**
+         * @param storageType Storage type of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(@Nullable Output<String> storageType) {
+            $.storageType = storageType;
+            return this;
+        }
+
+        /**
+         * @param storageType Storage type of the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageType(String storageType) {
+            return storageType(Output.of(storageType));
+        }
+
+        /**
+         * @param switchTime Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchTime(@Nullable Output<String> switchTime) {
+            $.switchTime = switchTime;
+            return this;
+        }
+
+        /**
+         * @param switchTime Scheduled switch start time in `yyyy-MM-ddTHH:mm:ssZ` (UTC); the actual switch runs during `[T, T + 30m]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchTime(String switchTime) {
+            return switchTime(Output.of(switchTime));
+        }
+
+        /**
+         * @param switchTimeMode Effective time policy applied to a class change. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchTimeMode(@Nullable Output<String> switchTimeMode) {
+            $.switchTimeMode = switchTimeMode;
+            return this;
+        }
+
+        /**
+         * @param switchTimeMode Effective time policy applied to a class change. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchTimeMode(String switchTimeMode) {
+            return switchTimeMode(Output.of(switchTimeMode));
         }
 
         /**

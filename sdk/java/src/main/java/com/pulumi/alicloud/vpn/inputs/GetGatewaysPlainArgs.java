@@ -55,6 +55,21 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+     * 
+     */
+    @Import(name="gatewayType")
+    private @Nullable String gatewayType;
+
+    /**
+     * @return Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+     * 
+     */
+    public Optional<String> gatewayType() {
+        return Optional.ofNullable(this.gatewayType);
+    }
+
+    /**
      * IDs of the VPN.
      * 
      */
@@ -164,6 +179,7 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetGatewaysPlainArgs(GetGatewaysPlainArgs $) {
         this.businessStatus = $.businessStatus;
         this.enableIpsec = $.enableIpsec;
+        this.gatewayType = $.gatewayType;
         this.ids = $.ids;
         this.includeReservationData = $.includeReservationData;
         this.nameRegex = $.nameRegex;
@@ -214,6 +230,17 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
         @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
         public Builder enableIpsec(@Nullable Boolean enableIpsec) {
             $.enableIpsec = enableIpsec;
+            return this;
+        }
+
+        /**
+         * @param gatewayType Limit search to specific gateway type. Valid values: `Traditional`, `Enhanced.SiteToSite`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayType(@Nullable String gatewayType) {
+            $.gatewayType = gatewayType;
             return this;
         }
 

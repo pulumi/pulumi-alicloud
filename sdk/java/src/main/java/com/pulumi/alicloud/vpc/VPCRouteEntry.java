@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Ipv4Gateway;
  * import com.pulumi.alicloud.vpc.Ipv4GatewayArgs;
- * import com.pulumi.alicloud.vpc.RouteEntry;
- * import com.pulumi.alicloud.vpc.RouteEntryArgs;
+ * import com.pulumi.alicloud.vpc.VPCRouteEntry;
+ * import com.pulumi.alicloud.vpc.VPCRouteEntryArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -69,9 +69,9 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .build());
  * 
- *         var defaultRouteEntry = new RouteEntry("defaultRouteEntry", RouteEntryArgs.builder()
+ *         var defaultVPCRouteEntry = new VPCRouteEntry("defaultVPCRouteEntry", VPCRouteEntryArgs.builder()
  *             .routeTableId(default_.routeTableId())
- *             .destinationCidrblock("172.11.1.1/32")
+ *             .destinationCidrBlock("172.11.1.1/32")
  *             .nexthopType("Ipv4Gateway")
  *             .nexthopId(defaultIpv4Gateway.id())
  *             .build());

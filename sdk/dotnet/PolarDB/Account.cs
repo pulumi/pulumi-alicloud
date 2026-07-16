@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// &gt; **NOTE:** Available since v1.67.0.
     /// 
+    /// &gt; **NOTE:** The DynamoDB type account does not support deletion. When destroying the Terraform resource, the DynamoDB account will be removed from state but not deleted from the cloud.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -136,6 +138,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+        /// </summary>
+        [Output("dynamodbAuthPassword")]
+        public Output<string> DynamodbAuthPassword { get; private set; } = null!;
+
+        /// <summary>
         /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.
         /// </summary>
         [Output("kmsEncryptedPassword")]
@@ -179,6 +187,7 @@ namespace Pulumi.AliCloud.PolarDB
                 AdditionalSecretOutputs =
                 {
                     "accountPassword",
+                    "dynamodbAuthPassword",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -350,6 +359,22 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
+
+        [Input("dynamodbAuthPassword")]
+        private Input<string>? _dynamodbAuthPassword;
+
+        /// <summary>
+        /// (Sensitive, Available since v1.285.0) The DynamoDB authentication password. Only available for DynamoDB account type.
+        /// </summary>
+        public Input<string>? DynamodbAuthPassword
+        {
+            get => _dynamodbAuthPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _dynamodbAuthPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// An KMS encrypts password used to a db account. If the `AccountPassword` is filled in, this field will be ignored.

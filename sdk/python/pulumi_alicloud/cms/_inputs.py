@@ -29,6 +29,48 @@ __all__ = [
     'AlarmPrometheusArgsDict',
     'AlarmTargetArgs',
     'AlarmTargetArgsDict',
+    'AlertRuleV2ActionIntegrationConfigArgs',
+    'AlertRuleV2ActionIntegrationConfigArgsDict',
+    'AlertRuleV2ArmsIntegrationConfigArgs',
+    'AlertRuleV2ArmsIntegrationConfigArgsDict',
+    'AlertRuleV2ConditionConfigArgs',
+    'AlertRuleV2ConditionConfigArgsDict',
+    'AlertRuleV2ConditionConfigCompareListArgs',
+    'AlertRuleV2ConditionConfigCompareListArgsDict',
+    'AlertRuleV2ConditionConfigCompositeEscalationArgs',
+    'AlertRuleV2ConditionConfigCompositeEscalationArgsDict',
+    'AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs',
+    'AlertRuleV2ConditionConfigCompositeEscalationEscalationArgsDict',
+    'AlertRuleV2ConditionConfigExpressEscalationArgs',
+    'AlertRuleV2ConditionConfigExpressEscalationArgsDict',
+    'AlertRuleV2ConditionConfigPrometheusArgs',
+    'AlertRuleV2ConditionConfigPrometheusArgsDict',
+    'AlertRuleV2ConditionConfigSimpleEscalationArgs',
+    'AlertRuleV2ConditionConfigSimpleEscalationArgsDict',
+    'AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs',
+    'AlertRuleV2ConditionConfigSimpleEscalationEscalationArgsDict',
+    'AlertRuleV2ConditionConfigThresholdListArgs',
+    'AlertRuleV2ConditionConfigThresholdListArgsDict',
+    'AlertRuleV2DatasourceConfigArgs',
+    'AlertRuleV2DatasourceConfigArgsDict',
+    'AlertRuleV2NotifyConfigArgs',
+    'AlertRuleV2NotifyConfigArgsDict',
+    'AlertRuleV2NotifyConfigChannelArgs',
+    'AlertRuleV2NotifyConfigChannelArgsDict',
+    'AlertRuleV2QueryConfigArgs',
+    'AlertRuleV2QueryConfigArgsDict',
+    'AlertRuleV2QueryConfigEntityFieldArgs',
+    'AlertRuleV2QueryConfigEntityFieldArgsDict',
+    'AlertRuleV2QueryConfigEntityFilterArgs',
+    'AlertRuleV2QueryConfigEntityFilterArgsDict',
+    'AlertRuleV2QueryConfigFilterListArgs',
+    'AlertRuleV2QueryConfigFilterListArgsDict',
+    'AlertRuleV2QueryConfigLabelFilterArgs',
+    'AlertRuleV2QueryConfigLabelFilterArgsDict',
+    'AlertRuleV2QueryConfigMeasureListArgs',
+    'AlertRuleV2QueryConfigMeasureListArgsDict',
+    'AlertRuleV2ScheduleConfigArgs',
+    'AlertRuleV2ScheduleConfigArgsDict',
     'DynamicTagGroupMatchExpressArgs',
     'DynamicTagGroupMatchExpressArgsDict',
     'EventRuleContactParameterArgs',
@@ -765,6 +807,2268 @@ class AlarmTargetArgs:
     @target_id.setter
     def target_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_id", value)
+
+
+class AlertRuleV2ActionIntegrationConfigArgsDict(TypedDict):
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of actions
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether action integration is enabled
+    """
+
+@pulumi.input_type
+class AlertRuleV2ActionIntegrationConfigArgs:
+    def __init__(__self__, *,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] actions: List of actions
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether action integration is enabled
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of actions
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether action integration is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+class AlertRuleV2ArmsIntegrationConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Specifies whether to enable ARMS integration.
+    """
+
+@pulumi.input_type
+class AlertRuleV2ArmsIntegrationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable ARMS integration.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable ARMS integration.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+class AlertRuleV2ConditionConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+    """
+    aggregate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Aggregation Function
+    """
+    compare_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompareListArgsDict']]]]]
+    """
+    Multiple comparison list (used when type=APM_COMPOSITE) See `compare_list` below.
+    """
+    composite_escalations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationArgsDict']]]]]
+    """
+    The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `composite_escalation` below.
+    """
+    duration_secs: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+    """
+    escalation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+    """
+    express_escalations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigExpressEscalationArgsDict']]]]]
+    """
+    Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `express_escalation` below.
+    """
+    legacy_raw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+    """
+    legacy_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+    """
+    no_data_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    No-data processing policy (type=CLOUD_MONITORING)
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comparison Operator
+    """
+    prometheuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigPrometheusArgsDict']]]]]
+    """
+    The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+    """
+    relation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The logical relationship between multiple metrics
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+    """
+    simple_escalations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationArgsDict']]]]]
+    """
+    Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simple_escalation` below.
+    """
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Threshold
+    """
+    threshold_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigThresholdListArgsDict']]]]]
+    """
+    Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `threshold_list` below.
+    """
+    yoy_time_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+    """
+    yoy_time_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 aggregate: pulumi.Input[Optional[_builtins.str]] = None,
+                 compare_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompareListArgs']]]] = None,
+                 composite_escalations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationArgs']]]] = None,
+                 duration_secs: pulumi.Input[Optional[_builtins.int]] = None,
+                 escalation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_escalations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigExpressEscalationArgs']]]] = None,
+                 legacy_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_data_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigPrometheusArgs']]]] = None,
+                 relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 simple_escalations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationArgs']]]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 threshold_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigThresholdListArgs']]]] = None,
+                 yoy_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 yoy_time_value: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+        :param pulumi.Input[_builtins.str] aggregate: Aggregation Function
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompareListArgs']]] compare_lists: Multiple comparison list (used when type=APM_COMPOSITE) See `compare_list` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationArgs']]] composite_escalations: The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `composite_escalation` below.
+        :param pulumi.Input[_builtins.int] duration_secs: Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+        :param pulumi.Input[_builtins.str] escalation_type: The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigExpressEscalationArgs']]] express_escalations: Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `express_escalation` below.
+        :param pulumi.Input[_builtins.str] legacy_raw: The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+        :param pulumi.Input[_builtins.str] legacy_type: Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+        :param pulumi.Input[_builtins.str] no_data_policy: No-data processing policy (type=CLOUD_MONITORING)
+        :param pulumi.Input[_builtins.str] operator: Comparison Operator
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigPrometheusArgs']]] prometheuses: The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+        :param pulumi.Input[_builtins.str] relation: The logical relationship between multiple metrics
+        :param pulumi.Input[_builtins.str] severity: Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationArgs']]] simple_escalations: Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simple_escalation` below.
+        :param pulumi.Input[_builtins.float] threshold: Threshold
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigThresholdListArgs']]] threshold_lists: Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `threshold_list` below.
+        :param pulumi.Input[_builtins.str] yoy_time_unit: Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        :param pulumi.Input[_builtins.int] yoy_time_value: Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        """
+        pulumi.set(__self__, "type", type)
+        if aggregate is not None:
+            pulumi.set(__self__, "aggregate", aggregate)
+        if compare_lists is not None:
+            pulumi.set(__self__, "compare_lists", compare_lists)
+        if composite_escalations is not None:
+            pulumi.set(__self__, "composite_escalations", composite_escalations)
+        if duration_secs is not None:
+            pulumi.set(__self__, "duration_secs", duration_secs)
+        if escalation_type is not None:
+            pulumi.set(__self__, "escalation_type", escalation_type)
+        if express_escalations is not None:
+            pulumi.set(__self__, "express_escalations", express_escalations)
+        if legacy_raw is not None:
+            pulumi.set(__self__, "legacy_raw", legacy_raw)
+        if legacy_type is not None:
+            pulumi.set(__self__, "legacy_type", legacy_type)
+        if no_data_policy is not None:
+            pulumi.set(__self__, "no_data_policy", no_data_policy)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if prometheuses is not None:
+            pulumi.set(__self__, "prometheuses", prometheuses)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if simple_escalations is not None:
+            pulumi.set(__self__, "simple_escalations", simple_escalations)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if threshold_lists is not None:
+            pulumi.set(__self__, "threshold_lists", threshold_lists)
+        if yoy_time_unit is not None:
+            pulumi.set(__self__, "yoy_time_unit", yoy_time_unit)
+        if yoy_time_value is not None:
+            pulumi.set(__self__, "yoy_time_value", yoy_time_value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The detection condition type. Valid values: PROMETHEUS_SIMPLE, UMODEL_METRICSET, APM_SIMPLE, APM_COMPOSITE, CLOUD_MONITORING, and UNKNOWN.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def aggregate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Aggregation Function
+        """
+        return pulumi.get(self, "aggregate")
+
+    @aggregate.setter
+    def aggregate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aggregate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareLists")
+    def compare_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompareListArgs']]]]:
+        """
+        Multiple comparison list (used when type=APM_COMPOSITE) See `compare_list` below.
+        """
+        return pulumi.get(self, "compare_lists")
+
+    @compare_lists.setter
+    def compare_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompareListArgs']]]]):
+        pulumi.set(self, "compare_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compositeEscalations")
+    def composite_escalations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationArgs']]]]:
+        """
+        The multi-metric composite trigger configuration. This parameter is required when type is set to CLOUD_MONITORING and escalationType is set to composite. See `composite_escalation` below.
+        """
+        return pulumi.get(self, "composite_escalations")
+
+    @composite_escalations.setter
+    def composite_escalations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationArgs']]]]):
+        pulumi.set(self, "composite_escalations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="durationSecs")
+    def duration_secs(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Duration (seconds). Used when type=PROMETHEUS_SIMPLE or UMODEL_METRICSET.
+        """
+        return pulumi.get(self, "duration_secs")
+
+    @duration_secs.setter
+    def duration_secs(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "duration_secs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="escalationType")
+    def escalation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The escalation policy type (type=CLOUD_MONITORING). Valid values: SIMPLE, COMPOSITE, EXPRESS, and PROMETHEUS.
+        """
+        return pulumi.get(self, "escalation_type")
+
+    @escalation_type.setter
+    def escalation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "escalation_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressEscalations")
+    def express_escalations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigExpressEscalationArgs']]]]:
+        """
+        Expression trigger configuration. This parameter is required when type=CLOUD_MONITORING and escalationType=express. See `express_escalation` below.
+        """
+        return pulumi.get(self, "express_escalations")
+
+    @express_escalations.setter
+    def express_escalations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigExpressEscalationArgs']]]]):
+        pulumi.set(self, "express_escalations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="legacyRaw")
+    def legacy_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The original V1 condition JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this field as read-only.
+        """
+        return pulumi.get(self, "legacy_raw")
+
+    @legacy_raw.setter
+    def legacy_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "legacy_raw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="legacyType")
+    def legacy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+        """
+        return pulumi.get(self, "legacy_type")
+
+    @legacy_type.setter
+    def legacy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "legacy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noDataPolicy")
+    def no_data_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        No-data processing policy (type=CLOUD_MONITORING)
+        """
+        return pulumi.get(self, "no_data_policy")
+
+    @no_data_policy.setter
+    def no_data_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "no_data_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comparison Operator
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prometheuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigPrometheusArgs']]]]:
+        """
+        The PromQL trigger configuration. This field is not empty when type=CLOUD_MONITORING and escalationType=prometheus. See `prometheus` below.
+        """
+        return pulumi.get(self, "prometheuses")
+
+    @prometheuses.setter
+    def prometheuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigPrometheusArgs']]]]):
+        pulumi.set(self, "prometheuses", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The logical relationship between multiple metrics
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "relation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="simpleEscalations")
+    def simple_escalations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationArgs']]]]:
+        """
+        Single-metric trigger configuration (Required when type=CLOUD_MONITORING and escalationType=simple) See `simple_escalation` below.
+        """
+        return pulumi.get(self, "simple_escalations")
+
+    @simple_escalations.setter
+    def simple_escalations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationArgs']]]]):
+        pulumi.set(self, "simple_escalations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Threshold
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thresholdLists")
+    def threshold_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigThresholdListArgs']]]]:
+        """
+        Multi-Threshold List (Used for APM_SIMPLE or UMODEL_METRICSET_MULTI_SEVERITY) See `threshold_list` below.
+        """
+        return pulumi.get(self, "threshold_lists")
+
+    @threshold_lists.setter
+    def threshold_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigThresholdListArgs']]]]):
+        pulumi.set(self, "threshold_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="yoyTimeUnit")
+    def yoy_time_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        """
+        return pulumi.get(self, "yoy_time_unit")
+
+    @yoy_time_unit.setter
+    def yoy_time_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "yoy_time_unit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="yoyTimeValue")
+    def yoy_time_value(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        """
+        return pulumi.get(self, "yoy_time_value")
+
+    @yoy_time_value.setter
+    def yoy_time_value(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "yoy_time_value", value)
+
+
+class AlertRuleV2ConditionConfigCompareListArgsDict(TypedDict):
+    aggregate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Aggregation Function
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Threshold
+    """
+    yoy_time_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+    """
+    yoy_time_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigCompareListArgs:
+    def __init__(__self__, *,
+                 aggregate: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 yoy_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 yoy_time_value: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] aggregate: Aggregation Function
+        :param pulumi.Input[_builtins.float] threshold: Threshold
+        :param pulumi.Input[_builtins.str] yoy_time_unit: Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        :param pulumi.Input[_builtins.int] yoy_time_value: Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        """
+        if aggregate is not None:
+            pulumi.set(__self__, "aggregate", aggregate)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if yoy_time_unit is not None:
+            pulumi.set(__self__, "yoy_time_unit", yoy_time_unit)
+        if yoy_time_value is not None:
+            pulumi.set(__self__, "yoy_time_value", yoy_time_value)
+
+    @_builtins.property
+    @pulumi.getter
+    def aggregate(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Aggregation Function
+        """
+        return pulumi.get(self, "aggregate")
+
+    @aggregate.setter
+    def aggregate(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aggregate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Threshold
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="yoyTimeUnit")
+    def yoy_time_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Year-over-year time unit. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        """
+        return pulumi.get(self, "yoy_time_unit")
+
+    @yoy_time_unit.setter
+    def yoy_time_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "yoy_time_unit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="yoyTimeValue")
+    def yoy_time_value(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Year-over-year time value. This parameter takes effect only when operator=YOY_UP or YOY_DOWN.
+        """
+        return pulumi.get(self, "yoy_time_value")
+
+    @yoy_time_value.setter
+    def yoy_time_value(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "yoy_time_value", value)
+
+
+class AlertRuleV2ConditionConfigCompositeEscalationArgsDict(TypedDict):
+    escalations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationEscalationArgsDict']]]]]
+    """
+    Trigger Condition List See `escalations` below.
+    """
+    relation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The logical relationship between multiple metrics
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Consecutive Trigger Count
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigCompositeEscalationArgs:
+    def __init__(__self__, *,
+                 escalations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs']]]] = None,
+                 relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs']]] escalations: Trigger Condition List See `escalations` below.
+        :param pulumi.Input[_builtins.str] relation: The logical relationship between multiple metrics
+        :param pulumi.Input[_builtins.str] severity: Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        :param pulumi.Input[_builtins.int] times: Consecutive Trigger Count
+        """
+        if escalations is not None:
+            pulumi.set(__self__, "escalations", escalations)
+        if relation is not None:
+            pulumi.set(__self__, "relation", relation)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter
+    def escalations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs']]]]:
+        """
+        Trigger Condition List See `escalations` below.
+        """
+        return pulumi.get(self, "escalations")
+
+    @escalations.setter
+    def escalations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs']]]]):
+        pulumi.set(self, "escalations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relation(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The logical relationship between multiple metrics
+        """
+        return pulumi.get(self, "relation")
+
+    @relation.setter
+    def relation(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "relation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Consecutive Trigger Count
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class AlertRuleV2ConditionConfigCompositeEscalationEscalationArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comparison operator
+    """
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Metric name
+    """
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Collection period (s)
+    """
+    pre_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition
+    """
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Statistical Method
+    """
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Threshold
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigCompositeEscalationEscalationArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pre_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: Comparison operator
+        :param pulumi.Input[_builtins.str] metric_name: Metric name
+        :param pulumi.Input[_builtins.int] period: Collection period (s)
+        :param pulumi.Input[_builtins.str] pre_condition: Precondition
+        :param pulumi.Input[_builtins.str] statistics: Statistical Method
+        :param pulumi.Input[_builtins.str] threshold: Threshold
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comparison operator
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Metric name
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Collection period (s)
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @pre_condition.setter
+    def pre_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pre_condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Statistical Method
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Threshold
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "threshold", value)
+
+
+class AlertRuleV2ConditionConfigExpressEscalationArgsDict(TypedDict):
+    raw_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Raw Expression
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Consecutive Trigger Count
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigExpressEscalationArgs:
+    def __init__(__self__, *,
+                 raw_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] raw_expression: Raw Expression
+        :param pulumi.Input[_builtins.str] severity: Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        :param pulumi.Input[_builtins.int] times: Consecutive Trigger Count
+        """
+        if raw_expression is not None:
+            pulumi.set(__self__, "raw_expression", raw_expression)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="rawExpression")
+    def raw_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Raw Expression
+        """
+        return pulumi.get(self, "raw_expression")
+
+    @raw_expression.setter
+    def raw_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "raw_expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Consecutive Trigger Count
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class AlertRuleV2ConditionConfigPrometheusArgsDict(TypedDict):
+    prom_ql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Consecutive Trigger Count
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigPrometheusArgs:
+    def __init__(__self__, *,
+                 prom_ql: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] severity: Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        :param pulumi.Input[_builtins.int] times: Consecutive Trigger Count
+        """
+        if prom_ql is not None:
+            pulumi.set(__self__, "prom_ql", prom_ql)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="promQl")
+    def prom_ql(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "prom_ql")
+
+    @prom_ql.setter
+    def prom_ql(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "prom_ql", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Consecutive Trigger Count
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class AlertRuleV2ConditionConfigSimpleEscalationArgsDict(TypedDict):
+    escalations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationEscalationArgsDict']]]]]
+    """
+    Trigger Condition List See `escalations` below.
+    """
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Metric name
+    """
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Collection period (s)
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigSimpleEscalationArgs:
+    def __init__(__self__, *,
+                 escalations: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs']]]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs']]] escalations: Trigger Condition List See `escalations` below.
+        :param pulumi.Input[_builtins.str] metric_name: Metric name
+        :param pulumi.Input[_builtins.int] period: Collection period (s)
+        """
+        if escalations is not None:
+            pulumi.set(__self__, "escalations", escalations)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @_builtins.property
+    @pulumi.getter
+    def escalations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs']]]]:
+        """
+        Trigger Condition List See `escalations` below.
+        """
+        return pulumi.get(self, "escalations")
+
+    @escalations.setter
+    def escalations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs']]]]):
+        pulumi.set(self, "escalations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Metric name
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Collection period (s)
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period", value)
+
+
+class AlertRuleV2ConditionConfigSimpleEscalationEscalationArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comparison operator
+    """
+    pre_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+    """
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Statistical Method
+    """
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Threshold
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Consecutive Trigger Count
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigSimpleEscalationEscalationArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] comparison_operator: Comparison operator
+        :param pulumi.Input[_builtins.str] pre_condition: Precondition
+        :param pulumi.Input[_builtins.str] severity: Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        :param pulumi.Input[_builtins.str] statistics: Statistical Method
+        :param pulumi.Input[_builtins.str] threshold: Threshold
+        :param pulumi.Input[_builtins.int] times: Consecutive Trigger Count
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comparison operator
+        """
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @pre_condition.setter
+    def pre_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pre_condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Statistical Method
+        """
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Threshold
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Consecutive Trigger Count
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class AlertRuleV2ConditionConfigThresholdListArgsDict(TypedDict):
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+    """
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Threshold
+    """
+
+@pulumi.input_type
+class AlertRuleV2ConditionConfigThresholdListArgs:
+    def __init__(__self__, *,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] severity: Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        :param pulumi.Input[_builtins.float] threshold: Threshold
+        """
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity level. Valid values: CRITICAL, ERROR, WARNING, and INFO
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Threshold
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "threshold", value)
+
+
+class AlertRuleV2DatasourceConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+    """
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+    """
+    legacy_raw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+    """
+    legacy_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+    """
+    product_category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+    """
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+    """
+
+@pulumi.input_type
+class AlertRuleV2DatasourceConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+        :param pulumi.Input[_builtins.str] instance_id: The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+        :param pulumi.Input[_builtins.str] legacy_raw: The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+        :param pulumi.Input[_builtins.str] legacy_type: Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+        :param pulumi.Input[_builtins.str] product_category: The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+        :param pulumi.Input[_builtins.str] region_id: The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+        """
+        pulumi.set(__self__, "type", type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if legacy_raw is not None:
+            pulumi.set(__self__, "legacy_raw", legacy_raw)
+        if legacy_type is not None:
+            pulumi.set(__self__, "legacy_type", legacy_type)
+        if product_category is not None:
+            pulumi.set(__self__, "product_category", product_category)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The data source type. Valid values: PROMETHEUS, UMODEL, APM, CLOUD_MONITORING, and UNKNOWN.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Prometheus instance ID. This parameter is used when type=PROMETHEUS.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="legacyRaw")
+    def legacy_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The original V1 datasource JSON string returned when type=UNKNOWN and parsing fails. The frontend displays this string in read-only mode.
+        """
+        return pulumi.get(self, "legacy_raw")
+
+    @legacy_raw.setter
+    def legacy_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "legacy_raw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="legacyType")
+    def legacy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Returned when type=UNKNOWN, indicating that this rule cannot be edited by using the new API.
+        """
+        return pulumi.get(self, "legacy_type")
+
+    @legacy_type.setter
+    def legacy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "legacy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="productCategory")
+    def product_category(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The cloud service category. This parameter is used when type=CLOUD_MONITORING. If this parameter is not specified, unknown is returned.
+        """
+        return pulumi.get(self, "product_category")
+
+    @product_category.setter
+    def product_category(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "product_category", value)
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID. This parameter is available for all types. By default, the value is the same as the region where the rule resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+
+class AlertRuleV2NotifyConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Notification Channel Type
+    """
+    active_days: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+    """
+    active_end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+    """
+    active_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+    """
+    channels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2NotifyConfigChannelArgsDict']]]]]
+    """
+    The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+    """
+    notify_strategies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+    """
+    silence_time_secs: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+    """
+    utc_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+    """
+
+@pulumi.input_type
+class AlertRuleV2NotifyConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 active_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 active_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 active_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 channels: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2NotifyConfigChannelArgs']]]] = None,
+                 notify_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 silence_time_secs: pulumi.Input[Optional[_builtins.int]] = None,
+                 utc_offset: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Notification Channel Type
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] active_days: The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+        :param pulumi.Input[_builtins.str] active_end_time: The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+        :param pulumi.Input[_builtins.str] active_start_time: The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2NotifyConfigChannelArgs']]] channels: The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notify_strategies: List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+        :param pulumi.Input[_builtins.int] silence_time_secs: The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+        :param pulumi.Input[_builtins.str] utc_offset: UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+        """
+        pulumi.set(__self__, "type", type)
+        if active_days is not None:
+            pulumi.set(__self__, "active_days", active_days)
+        if active_end_time is not None:
+            pulumi.set(__self__, "active_end_time", active_end_time)
+        if active_start_time is not None:
+            pulumi.set(__self__, "active_start_time", active_start_time)
+        if channels is not None:
+            pulumi.set(__self__, "channels", channels)
+        if notify_strategies is not None:
+            pulumi.set(__self__, "notify_strategies", notify_strategies)
+        if silence_time_secs is not None:
+            pulumi.set(__self__, "silence_time_secs", silence_time_secs)
+        if utc_offset is not None:
+            pulumi.set(__self__, "utc_offset", utc_offset)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Notification Channel Type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="activeDays")
+    def active_days(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The days of the week on which notifications are sent, 1-7 (type=DIRECT_NOTIFY). Default: [1,2,3,4,5,6,7]
+        """
+        return pulumi.get(self, "active_days")
+
+    @active_days.setter
+    def active_days(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "active_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="activeEndTime")
+    def active_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The daily end time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 23:59
+        """
+        return pulumi.get(self, "active_end_time")
+
+    @active_end_time.setter
+    def active_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "active_end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="activeStartTime")
+    def active_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The daily start time of the effective notification period (HH:mm, type=DIRECT_NOTIFY). Default: 00:00
+        """
+        return pulumi.get(self, "active_start_time")
+
+    @active_start_time.setter
+    def active_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "active_start_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2NotifyConfigChannelArgs']]]]:
+        """
+        The list of notification channels (type=DIRECT_NOTIFY) See `channels` below.
+        """
+        return pulumi.get(self, "channels")
+
+    @channels.setter
+    def channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2NotifyConfigChannelArgs']]]]):
+        pulumi.set(self, "channels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyStrategies")
+    def notify_strategies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of notification policy IDs (type=NOTIFY_POLICY, up to 1 for the current business)
+        """
+        return pulumi.get(self, "notify_strategies")
+
+    @notify_strategies.setter
+    def notify_strategies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "notify_strategies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="silenceTimeSecs")
+    def silence_time_secs(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The channel silence period in seconds (type=DIRECT_NOTIFY). Default: 86400
+        """
+        return pulumi.get(self, "silence_time_secs")
+
+    @silence_time_secs.setter
+    def silence_time_secs(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "silence_time_secs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="utcOffset")
+    def utc_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UTC time zone offset (type=DIRECT_NOTIFY). Default: +08:00
+        """
+        return pulumi.get(self, "utc_offset")
+
+    @utc_offset.setter
+    def utc_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "utc_offset", value)
+
+
+class AlertRuleV2NotifyConfigChannelArgsDict(TypedDict):
+    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of channel identifiers
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class AlertRuleV2NotifyConfigChannelArgs:
+    def __init__(__self__, *,
+                 identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identifiers: List of channel identifiers
+        """
+        if identifiers is not None:
+            pulumi.set(__self__, "identifiers", identifiers)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of channel identifiers
+        """
+        return pulumi.get(self, "identifiers")
+
+    @identifiers.setter
+    def identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "identifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class AlertRuleV2QueryConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+    """
+    dimensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
+    """
+    The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+    """
+    enable_data_complete_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+    """
+    entity_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+    """
+    entity_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFieldArgsDict']]]]]
+    """
+    List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entity_fields` below.
+    """
+    entity_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFilterArgsDict']]]]]
+    """
+    The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entity_filters` below.
+    """
+    entity_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Entity type (type=UMODEL_METRICSET_QUERY)
+    """
+    expr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+    """
+    filter_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigFilterListArgsDict']]]]]
+    """
+    The APM filter condition list (type=APM_MULTI_QUERY). See `filter_list` below.
+    """
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+    """
+    label_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigLabelFilterArgsDict']]]]]
+    """
+    List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `label_filters` below.
+    """
+    legacy_raw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+    """
+    legacy_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+    """
+    measure_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigMeasureListArgsDict']]]]]
+    """
+    APM measure configuration list (type=APM_MULTI_QUERY) See `measure_list` below.
+    """
+    metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Metric name (type=UMODEL_METRICSET_QUERY)
+    """
+    metric_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Metric set name (type=UMODEL_METRICSET_QUERY)
+    """
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+    """
+    prom_ql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+    """
+    relation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+    """
+    service_id_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Application Service ID List (type=APM_MULTI_QUERY)
+    """
+
+@pulumi.input_type
+class AlertRuleV2QueryConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 dimensions: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 enable_data_complete_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_fields: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFieldArgs']]]] = None,
+                 entity_filters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFilterArgs']]]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 expr: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigFilterListArgs']]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_filters: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigLabelFilterArgs']]]] = None,
+                 legacy_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 legacy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 measure_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigMeasureListArgs']]]] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 prom_ql: pulumi.Input[Optional[_builtins.str]] = None,
+                 relation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] dimensions: The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+        :param pulumi.Input[_builtins.bool] enable_data_complete_check: Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+        :param pulumi.Input[_builtins.str] entity_domain: Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFieldArgs']]] entity_fields: List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entity_fields` below.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFilterArgs']]] entity_filters: The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entity_filters` below.
+        :param pulumi.Input[_builtins.str] entity_type: Entity type (type=UMODEL_METRICSET_QUERY)
+        :param pulumi.Input[_builtins.str] expr: Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2QueryConfigFilterListArgs']]] filter_lists: The APM filter condition list (type=APM_MULTI_QUERY). See `filter_list` below.
+        :param pulumi.Input[_builtins.str] group_id: Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2QueryConfigLabelFilterArgs']]] label_filters: List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `label_filters` below.
+        :param pulumi.Input[_builtins.str] legacy_raw: The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+        :param pulumi.Input[_builtins.str] legacy_type: Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertRuleV2QueryConfigMeasureListArgs']]] measure_lists: APM measure configuration list (type=APM_MULTI_QUERY) See `measure_list` below.
+        :param pulumi.Input[_builtins.str] metric: Metric name (type=UMODEL_METRICSET_QUERY)
+        :param pulumi.Input[_builtins.str] metric_set: Metric set name (type=UMODEL_METRICSET_QUERY)
+        :param pulumi.Input[_builtins.str] namespace: CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+        :param pulumi.Input[_builtins.str] prom_ql: [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+        :param pulumi.Input[_builtins.str] relation_type: Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_id_lists: Application Service ID List (type=APM_MULTI_QUERY)
+        """
+        pulumi.set(__self__, "type", type)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if enable_data_complete_check is not None:
+            pulumi.set(__self__, "enable_data_complete_check", enable_data_complete_check)
+        if entity_domain is not None:
+            pulumi.set(__self__, "entity_domain", entity_domain)
+        if entity_fields is not None:
+            pulumi.set(__self__, "entity_fields", entity_fields)
+        if entity_filters is not None:
+            pulumi.set(__self__, "entity_filters", entity_filters)
+        if entity_type is not None:
+            pulumi.set(__self__, "entity_type", entity_type)
+        if expr is not None:
+            pulumi.set(__self__, "expr", expr)
+        if filter_lists is not None:
+            pulumi.set(__self__, "filter_lists", filter_lists)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if label_filters is not None:
+            pulumi.set(__self__, "label_filters", label_filters)
+        if legacy_raw is not None:
+            pulumi.set(__self__, "legacy_raw", legacy_raw)
+        if legacy_type is not None:
+            pulumi.set(__self__, "legacy_type", legacy_type)
+        if measure_lists is not None:
+            pulumi.set(__self__, "measure_lists", measure_lists)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if metric_set is not None:
+            pulumi.set(__self__, "metric_set", metric_set)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if prom_ql is not None:
+            pulumi.set(__self__, "prom_ql", prom_ql)
+        if relation_type is not None:
+            pulumi.set(__self__, "relation_type", relation_type)
+        if service_id_lists is not None:
+            pulumi.set(__self__, "service_id_lists", service_id_lists)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The APM filter type. Valid values: ALL, EQ, NE, and DISABLED.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dimensions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+        """
+        The dimension list (type=CLOUD_MONITORING_QUERY). Each dimension is a key-value string mapping. See `dimensions` below.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDataCompleteCheck")
+    def enable_data_complete_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to Enable Data Completeness Check (type=PROMETHEUS_SINGLE_QUERY)
+        """
+        return pulumi.get(self, "enable_data_complete_check")
+
+    @enable_data_complete_check.setter
+    def enable_data_complete_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_data_complete_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityDomain")
+    def entity_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Domain to which the entity belongs (type=UMODEL_METRICSET_QUERY)
+        """
+        return pulumi.get(self, "entity_domain")
+
+    @entity_domain.setter
+    def entity_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "entity_domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityFields")
+    def entity_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFieldArgs']]]]:
+        """
+        List of Entity Fields to Return (type=UMODEL_METRICSET_QUERY) See `entity_fields` below.
+        """
+        return pulumi.get(self, "entity_fields")
+
+    @entity_fields.setter
+    def entity_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFieldArgs']]]]):
+        pulumi.set(self, "entity_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityFilters")
+    def entity_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFilterArgs']]]]:
+        """
+        The list of entity filter conditions (type=UMODEL_METRICSET_QUERY). See `entity_filters` below.
+        """
+        return pulumi.get(self, "entity_filters")
+
+    @entity_filters.setter
+    def entity_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigEntityFilterArgs']]]]):
+        pulumi.set(self, "entity_filters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Entity type (type=UMODEL_METRICSET_QUERY)
+        """
+        return pulumi.get(self, "entity_type")
+
+    @entity_type.setter
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "entity_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expr(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Prometheus query statement (type=PROMETHEUS_SINGLE_QUERY, recommended field)
+        """
+        return pulumi.get(self, "expr")
+
+    @expr.setter
+    def expr(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="filterLists")
+    def filter_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigFilterListArgs']]]]:
+        """
+        The APM filter condition list (type=APM_MULTI_QUERY). See `filter_list` below.
+        """
+        return pulumi.get(self, "filter_lists")
+
+    @filter_lists.setter
+    def filter_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigFilterListArgs']]]]):
+        pulumi.set(self, "filter_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource group ID (used when type=CLOUD_MONITORING_QUERY and relationType=GROUP)
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="labelFilters")
+    def label_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigLabelFilterArgs']]]]:
+        """
+        List of label filter conditions (type=UMODEL_METRICSET_QUERY) See `label_filters` below.
+        """
+        return pulumi.get(self, "label_filters")
+
+    @label_filters.setter
+    def label_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigLabelFilterArgs']]]]):
+        pulumi.set(self, "label_filters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="legacyRaw")
+    def legacy_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The raw V1 query JSON string returned when type=UNKNOWN_QUERY and parsing fails. The frontend displays this field as read-only only.
+        """
+        return pulumi.get(self, "legacy_raw")
+
+    @legacy_raw.setter
+    def legacy_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "legacy_raw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="legacyType")
+    def legacy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Returned when type=UNKNOWN_QUERY, indicating that this rule cannot be edited through the new API.
+        """
+        return pulumi.get(self, "legacy_type")
+
+    @legacy_type.setter
+    def legacy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "legacy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="measureLists")
+    def measure_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigMeasureListArgs']]]]:
+        """
+        APM measure configuration list (type=APM_MULTI_QUERY) See `measure_list` below.
+        """
+        return pulumi.get(self, "measure_lists")
+
+    @measure_lists.setter
+    def measure_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertRuleV2QueryConfigMeasureListArgs']]]]):
+        pulumi.set(self, "measure_lists", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Metric name (type=UMODEL_METRICSET_QUERY)
+        """
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricSet")
+    def metric_set(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Metric set name (type=UMODEL_METRICSET_QUERY)
+        """
+        return pulumi.get(self, "metric_set")
+
+    @metric_set.setter
+    def metric_set(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric_set", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        CloudMonitor namespace (cloud service name, type=CLOUD_MONITORING_QUERY)
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter(name="promQl")
+    def prom_ql(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        [Deprecated] Legacy PromQL field. Use Expr instead. The backend automatically normalizes this field to Expr.
+        """
+        return pulumi.get(self, "prom_ql")
+
+    @prom_ql.setter
+    def prom_ql(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "prom_ql", value)
+
+    @_builtins.property
+    @pulumi.getter(name="relationType")
+    def relation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource association type (type=CLOUD_MONITORING_QUERY). Valid values: INSTANCE, GROUP, and USER.
+        """
+        return pulumi.get(self, "relation_type")
+
+    @relation_type.setter
+    def relation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "relation_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceIdLists")
+    def service_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Application Service ID List (type=APM_MULTI_QUERY)
+        """
+        return pulumi.get(self, "service_id_lists")
+
+    @service_id_lists.setter
+    def service_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "service_id_lists", value)
+
+
+class AlertRuleV2QueryConfigEntityFieldArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The entity filter field name.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label value
+    """
+
+@pulumi.input_type
+class AlertRuleV2QueryConfigEntityFieldArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: The entity filter field name.
+        :param pulumi.Input[_builtins.str] value: Label value
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The entity filter field name.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AlertRuleV2QueryConfigEntityFilterArgsDict(TypedDict):
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The entity filter field name.
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label value
+    """
+
+@pulumi.input_type
+class AlertRuleV2QueryConfigEntityFilterArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field: The entity filter field name.
+        :param pulumi.Input[_builtins.str] value: Label value
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The entity filter field name.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AlertRuleV2QueryConfigFilterListArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    APM filter dimension key
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label value
+    """
+
+@pulumi.input_type
+class AlertRuleV2QueryConfigFilterListArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: APM filter dimension key
+        :param pulumi.Input[_builtins.str] value: Label value
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        APM filter dimension key
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AlertRuleV2QueryConfigLabelFilterArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label name
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label value
+    """
+
+@pulumi.input_type
+class AlertRuleV2QueryConfigLabelFilterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Label name
+        :param pulumi.Input[_builtins.str] value: Label value
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AlertRuleV2QueryConfigMeasureListArgsDict(TypedDict):
+    group_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Grouping dimension list
+    """
+    measure_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    APM metric code
+    """
+    window_secs: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Query Time Window (Seconds)
+    """
+
+@pulumi.input_type
+class AlertRuleV2QueryConfigMeasureListArgs:
+    def __init__(__self__, *,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 measure_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 window_secs: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_bies: Grouping dimension list
+        :param pulumi.Input[_builtins.str] measure_code: APM metric code
+        :param pulumi.Input[_builtins.int] window_secs: Query Time Window (Seconds)
+        """
+        if group_bies is not None:
+            pulumi.set(__self__, "group_bies", group_bies)
+        if measure_code is not None:
+            pulumi.set(__self__, "measure_code", measure_code)
+        if window_secs is not None:
+            pulumi.set(__self__, "window_secs", window_secs)
+
+    @_builtins.property
+    @pulumi.getter(name="groupBies")
+    def group_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Grouping dimension list
+        """
+        return pulumi.get(self, "group_bies")
+
+    @group_bies.setter
+    def group_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "group_bies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="measureCode")
+    def measure_code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        APM metric code
+        """
+        return pulumi.get(self, "measure_code")
+
+    @measure_code.setter
+    def measure_code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "measure_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="windowSecs")
+    def window_secs(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Query Time Window (Seconds)
+        """
+        return pulumi.get(self, "window_secs")
+
+    @window_secs.setter
+    def window_secs(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "window_secs", value)
+
+
+class AlertRuleV2ScheduleConfigArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The scheduling type. Valid values: FIXED and CRON.
+    """
+    interval_secs: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+    """
+
+@pulumi.input_type
+class AlertRuleV2ScheduleConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 interval_secs: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The scheduling type. Valid values: FIXED and CRON.
+        :param pulumi.Input[_builtins.int] interval_secs: The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+        """
+        pulumi.set(__self__, "type", type)
+        if interval_secs is not None:
+            pulumi.set(__self__, "interval_secs", interval_secs)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The scheduling type. Valid values: FIXED and CRON.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="intervalSecs")
+    def interval_secs(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The scheduling interval in seconds. This parameter is used when the type is set to FIXED.
+        """
+        return pulumi.get(self, "interval_secs")
+
+    @interval_secs.setter
+    def interval_secs(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "interval_secs", value)
 
 
 class DynamicTagGroupMatchExpressArgsDict(TypedDict):

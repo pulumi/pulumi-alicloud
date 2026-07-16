@@ -4,6 +4,8 @@
 package com.pulumi.alicloud.cr;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
+import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
 import com.pulumi.alicloud.cr.inputs.GetChainsPlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetChartNamespacesArgs;
@@ -22,6 +24,7 @@ import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
 import com.pulumi.alicloud.cr.inputs.GetServicePlainArgs;
 import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
 import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsPlainArgs;
+import com.pulumi.alicloud.cr.outputs.GetArtifactLifecycleRulesResult;
 import com.pulumi.alicloud.cr.outputs.GetChainsResult;
 import com.pulumi.alicloud.cr.outputs.GetChartNamespacesResult;
 import com.pulumi.alicloud.cr.outputs.GetChartRepositoriesResult;
@@ -39,6 +42,456 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CrFunctions {
+    /**
+     * This data source provides Cr Artifact Lifecycle Rule available to the user.[What is Artifact Lifecycle Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactLifecycleRule)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRule;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRuleArgs;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
+     *             .defaultOssBucket("true")
+     *             .instanceName(name)
+     *             .renewalStatus("ManualRenewal")
+     *             .imageScanner("DISABLE")
+     *             .period(1)
+     *             .paymentType("Subscription")
+     *             .instanceType("Economy")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .name(name)
+     *             .autoCreate(false)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary("example repository for lifecycle rule")
+     *             .build());
+     * 
+     *         var defaultArtifactLifecycleRule = new ArtifactLifecycleRule("defaultArtifactLifecycleRule", ArtifactLifecycleRuleArgs.builder()
+     *             .auto(true)
+     *             .namespaceName(defaultRegistryEnterpriseNamespace.name())
+     *             .retentionTagCount(30)
+     *             .scheduleTime("WEEK")
+     *             .scope("REPO")
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .tagRegexp(".*")
+     *             .repoName(defaultRegistryEnterpriseRepo.name())
+     *             .build());
+     * 
+     *         final var default = CrFunctions.getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs.builder()
+     *             .ids(defaultArtifactLifecycleRule.id())
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactLifecycleRulesResult> getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs args) {
+        return getArtifactLifecycleRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cr Artifact Lifecycle Rule available to the user.[What is Artifact Lifecycle Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactLifecycleRule)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRule;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRuleArgs;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
+     *             .defaultOssBucket("true")
+     *             .instanceName(name)
+     *             .renewalStatus("ManualRenewal")
+     *             .imageScanner("DISABLE")
+     *             .period(1)
+     *             .paymentType("Subscription")
+     *             .instanceType("Economy")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .name(name)
+     *             .autoCreate(false)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary("example repository for lifecycle rule")
+     *             .build());
+     * 
+     *         var defaultArtifactLifecycleRule = new ArtifactLifecycleRule("defaultArtifactLifecycleRule", ArtifactLifecycleRuleArgs.builder()
+     *             .auto(true)
+     *             .namespaceName(defaultRegistryEnterpriseNamespace.name())
+     *             .retentionTagCount(30)
+     *             .scheduleTime("WEEK")
+     *             .scope("REPO")
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .tagRegexp(".*")
+     *             .repoName(defaultRegistryEnterpriseRepo.name())
+     *             .build());
+     * 
+     *         final var default = CrFunctions.getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs.builder()
+     *             .ids(defaultArtifactLifecycleRule.id())
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetArtifactLifecycleRulesResult> getArtifactLifecycleRulesPlain(GetArtifactLifecycleRulesPlainArgs args) {
+        return getArtifactLifecycleRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cr Artifact Lifecycle Rule available to the user.[What is Artifact Lifecycle Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactLifecycleRule)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRule;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRuleArgs;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
+     *             .defaultOssBucket("true")
+     *             .instanceName(name)
+     *             .renewalStatus("ManualRenewal")
+     *             .imageScanner("DISABLE")
+     *             .period(1)
+     *             .paymentType("Subscription")
+     *             .instanceType("Economy")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .name(name)
+     *             .autoCreate(false)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary("example repository for lifecycle rule")
+     *             .build());
+     * 
+     *         var defaultArtifactLifecycleRule = new ArtifactLifecycleRule("defaultArtifactLifecycleRule", ArtifactLifecycleRuleArgs.builder()
+     *             .auto(true)
+     *             .namespaceName(defaultRegistryEnterpriseNamespace.name())
+     *             .retentionTagCount(30)
+     *             .scheduleTime("WEEK")
+     *             .scope("REPO")
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .tagRegexp(".*")
+     *             .repoName(defaultRegistryEnterpriseRepo.name())
+     *             .build());
+     * 
+     *         final var default = CrFunctions.getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs.builder()
+     *             .ids(defaultArtifactLifecycleRule.id())
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactLifecycleRulesResult> getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getArtifactLifecycleRules:getArtifactLifecycleRules", TypeShape.of(GetArtifactLifecycleRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cr Artifact Lifecycle Rule available to the user.[What is Artifact Lifecycle Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactLifecycleRule)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRule;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRuleArgs;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
+     *             .defaultOssBucket("true")
+     *             .instanceName(name)
+     *             .renewalStatus("ManualRenewal")
+     *             .imageScanner("DISABLE")
+     *             .period(1)
+     *             .paymentType("Subscription")
+     *             .instanceType("Economy")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .name(name)
+     *             .autoCreate(false)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary("example repository for lifecycle rule")
+     *             .build());
+     * 
+     *         var defaultArtifactLifecycleRule = new ArtifactLifecycleRule("defaultArtifactLifecycleRule", ArtifactLifecycleRuleArgs.builder()
+     *             .auto(true)
+     *             .namespaceName(defaultRegistryEnterpriseNamespace.name())
+     *             .retentionTagCount(30)
+     *             .scheduleTime("WEEK")
+     *             .scope("REPO")
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .tagRegexp(".*")
+     *             .repoName(defaultRegistryEnterpriseRepo.name())
+     *             .build());
+     * 
+     *         final var default = CrFunctions.getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs.builder()
+     *             .ids(defaultArtifactLifecycleRule.id())
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetArtifactLifecycleRulesResult> getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cr/getArtifactLifecycleRules:getArtifactLifecycleRules", TypeShape.of(GetArtifactLifecycleRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cr Artifact Lifecycle Rule available to the user.[What is Artifact Lifecycle Rule](https://next.api.alibabacloud.com/document/cr/2018-12-01/CreateArtifactLifecycleRule)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+     * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespaceArgs;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
+     * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRule;
+     * import com.pulumi.alicloud.cr.ArtifactLifecycleRuleArgs;
+     * import com.pulumi.alicloud.cr.CrFunctions;
+     * import com.pulumi.alicloud.cr.inputs.GetArtifactLifecycleRulesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
+     *             .defaultOssBucket("true")
+     *             .instanceName(name)
+     *             .renewalStatus("ManualRenewal")
+     *             .imageScanner("DISABLE")
+     *             .period(1)
+     *             .paymentType("Subscription")
+     *             .instanceType("Economy")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .name(name)
+     *             .autoCreate(false)
+     *             .defaultVisibility("PRIVATE")
+     *             .build());
+     * 
+     *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .namespace(defaultRegistryEnterpriseNamespace.name())
+     *             .name(name)
+     *             .repoType("PRIVATE")
+     *             .summary("example repository for lifecycle rule")
+     *             .build());
+     * 
+     *         var defaultArtifactLifecycleRule = new ArtifactLifecycleRule("defaultArtifactLifecycleRule", ArtifactLifecycleRuleArgs.builder()
+     *             .auto(true)
+     *             .namespaceName(defaultRegistryEnterpriseNamespace.name())
+     *             .retentionTagCount(30)
+     *             .scheduleTime("WEEK")
+     *             .scope("REPO")
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .tagRegexp(".*")
+     *             .repoName(defaultRegistryEnterpriseRepo.name())
+     *             .build());
+     * 
+     *         final var default = CrFunctions.getArtifactLifecycleRules(GetArtifactLifecycleRulesArgs.builder()
+     *             .ids(defaultArtifactLifecycleRule.id())
+     *             .instanceId(defaultRegistryEnterpriseInstance.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCrArtifactLifecycleRuleExampleId", default_.applyValue(_default_ -> _default_.rules()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetArtifactLifecycleRulesResult> getArtifactLifecycleRulesPlain(GetArtifactLifecycleRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cr/getArtifactLifecycleRules:getArtifactLifecycleRules", TypeShape.of(GetArtifactLifecycleRulesResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the Cr Chains of the current Alibaba Cloud user.
      * 

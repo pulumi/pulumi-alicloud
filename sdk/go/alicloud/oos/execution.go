@@ -78,6 +78,10 @@ import (
 //				TemplateName: defaultTemplate.TemplateName,
 //				Description:  pulumi.String("From TF Test"),
 //				Parameters:   pulumi.String("\\t\\t\\t\\t{\\\"Status\\\":\\\"Running\\\"}\n"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("execution Test"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -132,6 +136,8 @@ type Execution struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The message of status.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
 	TemplateContent pulumi.StringPtrOutput `pulumi:"templateContent"`
 	// The id of template.
@@ -209,6 +215,8 @@ type executionState struct {
 	Status *string `pulumi:"status"`
 	// The message of status.
 	StatusMessage *string `pulumi:"statusMessage"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
 	TemplateContent *string `pulumi:"templateContent"`
 	// The id of template.
@@ -254,6 +262,8 @@ type ExecutionState struct {
 	Status pulumi.StringPtrInput
 	// The message of status.
 	StatusMessage pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
 	TemplateContent pulumi.StringPtrInput
 	// The id of template.
@@ -283,6 +293,8 @@ type executionArgs struct {
 	ParentExecutionId *string `pulumi:"parentExecutionId"`
 	// The mode of safety check.
 	SafetyCheck *string `pulumi:"safetyCheck"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
 	TemplateContent *string `pulumi:"templateContent"`
 	// The name of execution template.
@@ -305,6 +317,8 @@ type ExecutionArgs struct {
 	ParentExecutionId pulumi.StringPtrInput
 	// The mode of safety check.
 	SafetyCheck pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
 	TemplateContent pulumi.StringPtrInput
 	// The name of execution template.
@@ -478,6 +492,11 @@ func (o ExecutionOutput) Status() pulumi.StringOutput {
 // The message of status.
 func (o ExecutionOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ExecutionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.

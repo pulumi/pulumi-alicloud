@@ -178,6 +178,10 @@ type Instance struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode pulumi.BoolPtrOutput `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolOutput `pulumi:"enableJumboFrame"`
 	// (Available since v1.232.0) The expiration time of the instance.
@@ -252,8 +256,10 @@ type Instance struct {
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntOutput `pulumi:"memory"`
 	// The index of the network card for Primary ENI.
-	NetworkCardIndex pulumi.IntPtrOutput `pulumi:"networkCardIndex"`
+	NetworkCardIndex pulumi.IntOutput `pulumi:"networkCardIndex"`
 	// The ID of the Primary ENI.
+	//
+	// > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
 	// The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
@@ -293,7 +299,7 @@ type Instance struct {
 	// The instance public ip.
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The number of queues supported by the ERI.
-	QueuePairNumber pulumi.IntPtrOutput `pulumi:"queuePairNumber"`
+	QueuePairNumber pulumi.IntOutput `pulumi:"queuePairNumber"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
 	// - `Normal`: Disable auto renewal.
@@ -327,8 +333,12 @@ type Instance struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringOutput `pulumi:"securityEnhancementStrategy"`
-	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolOutput `pulumi:"sourceDestCheck"`
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration pulumi.IntOutput `pulumi:"spotDuration"`
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
@@ -472,6 +482,10 @@ type instanceState struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode *bool `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
 	// (Available since v1.232.0) The expiration time of the instance.
@@ -548,6 +562,8 @@ type instanceState struct {
 	// The index of the network card for Primary ENI.
 	NetworkCardIndex *int `pulumi:"networkCardIndex"`
 	// The ID of the Primary ENI.
+	//
+	// > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
@@ -621,8 +637,12 @@ type instanceState struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups []string `pulumi:"securityGroups"`
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration *int `pulumi:"spotDuration"`
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
@@ -730,6 +750,10 @@ type InstanceState struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrInput
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
 	// (Available since v1.232.0) The expiration time of the instance.
@@ -806,6 +830,8 @@ type InstanceState struct {
 	// The index of the network card for Primary ENI.
 	NetworkCardIndex pulumi.IntPtrInput
 	// The ID of the Primary ENI.
+	//
+	// > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
 	NetworkInterfaceId pulumi.StringPtrInput
 	// The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
@@ -879,8 +905,12 @@ type InstanceState struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups pulumi.StringArrayInput
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolPtrInput
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration pulumi.IntPtrInput
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
@@ -986,6 +1016,10 @@ type instanceArgs struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun *bool `pulumi:"dryRun"`
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode *bool `pulumi:"enableHighDensityMode"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -1057,6 +1091,10 @@ type instanceArgs struct {
 	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
 	// The index of the network card for Primary ENI.
 	NetworkCardIndex *int `pulumi:"networkCardIndex"`
+	// The ID of the Primary ENI.
+	//
+	// > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
+	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -1121,8 +1159,12 @@ type instanceArgs struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups []string `pulumi:"securityGroups"`
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration *int `pulumi:"spotDuration"`
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
@@ -1221,6 +1263,10 @@ type InstanceArgs struct {
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
 	// - false: A request is sent. If the validation succeeds, the instance is created.
 	DryRun pulumi.BoolPtrInput
+	// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+	EnableHighDensityMode pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
 	// If it is true, the `PrePaid` instance will be change to `PostPaid` and then deleted forcibly.
@@ -1292,6 +1338,10 @@ type InstanceArgs struct {
 	MaintenanceTime InstanceMaintenanceTimePtrInput
 	// The index of the network card for Primary ENI.
 	NetworkCardIndex pulumi.IntPtrInput
+	// The ID of the Primary ENI.
+	//
+	// > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
+	NetworkInterfaceId pulumi.StringPtrInput
 	// The communication mode of the Primary ENI. Default value: `Standard`. Valid values:
 	// - `Standard`: Uses the TCP communication mode.
 	// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
@@ -1356,8 +1406,12 @@ type InstanceArgs struct {
 	// - Active: Enable security enhancement strategy, it only works on system images.
 	// - Deactive: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+	// A list of security group ids to associate with.
+	//
+	// > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 	SecurityGroups pulumi.StringArrayInput
+	// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+	SourceDestCheck pulumi.BoolPtrInput
 	// The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.
 	SpotDuration pulumi.IntPtrInput
 	// The interruption mode of the spot instance. Default value: `Terminate`. Valid values:
@@ -1592,6 +1646,13 @@ func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether to enable the high density mode for the instance. Valid values: `true`, `false`.
+//
+// > **NOTE:** Modifying `enableHighDensityMode` requires the instance to be stopped.
+func (o InstanceOutput) EnableHighDensityMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableHighDensityMode }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 func (o InstanceOutput) EnableJumboFrame() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnableJumboFrame }).(pulumi.BoolOutput)
@@ -1756,11 +1817,13 @@ func (o InstanceOutput) Memory() pulumi.IntOutput {
 }
 
 // The index of the network card for Primary ENI.
-func (o InstanceOutput) NetworkCardIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.NetworkCardIndex }).(pulumi.IntPtrOutput)
+func (o InstanceOutput) NetworkCardIndex() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.NetworkCardIndex }).(pulumi.IntOutput)
 }
 
 // The ID of the Primary ENI.
+//
+// > **NOTE:** From version 1.284.0, `networkInterfaceId` can be set.
 func (o InstanceOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
@@ -1845,8 +1908,8 @@ func (o InstanceOutput) PublicIp() pulumi.StringOutput {
 }
 
 // The number of queues supported by the ERI.
-func (o InstanceOutput) QueuePairNumber() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.QueuePairNumber }).(pulumi.IntPtrOutput)
+func (o InstanceOutput) QueuePairNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.QueuePairNumber }).(pulumi.IntOutput)
 }
 
 // Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
@@ -1900,9 +1963,16 @@ func (o InstanceOutput) SecurityEnhancementStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringOutput)
 }
 
-// A list of security group ids to associate with. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
+// A list of security group ids to associate with.
+//
+// > **NOTE:** If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `securityGroups`.
 func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// Specifies whether to enable the source and destination IP address check feature. We recommend that you enable the feature to improve network security. Valid values: `true`, `false`.
+func (o InstanceOutput) SourceDestCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SourceDestCheck }).(pulumi.BoolOutput)
 }
 
 // The retention time of the preemptive instance in hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, `6`. Retention duration 2~6 is under invitation test, please submit a work order if you need to open. If the value is `0`, the mode is no protection period. Default value is `1`.

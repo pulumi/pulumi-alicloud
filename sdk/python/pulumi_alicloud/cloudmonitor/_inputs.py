@@ -21,6 +21,24 @@ __all__ = [
     'ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict',
     'ServiceGroupMonitoringAgentProcessMatchExpressArgs',
     'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict',
+    'ServiceMetricAlarmRuleCompositeExpressionArgs',
+    'ServiceMetricAlarmRuleCompositeExpressionArgsDict',
+    'ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs',
+    'ServiceMetricAlarmRuleCompositeExpressionExpressionListArgsDict',
+    'ServiceMetricAlarmRuleEscalationsArgs',
+    'ServiceMetricAlarmRuleEscalationsArgsDict',
+    'ServiceMetricAlarmRuleEscalationsCriticalArgs',
+    'ServiceMetricAlarmRuleEscalationsCriticalArgsDict',
+    'ServiceMetricAlarmRuleEscalationsInfoArgs',
+    'ServiceMetricAlarmRuleEscalationsInfoArgsDict',
+    'ServiceMetricAlarmRuleEscalationsWarnArgs',
+    'ServiceMetricAlarmRuleEscalationsWarnArgsDict',
+    'ServiceMetricAlarmRuleLabelArgs',
+    'ServiceMetricAlarmRuleLabelArgsDict',
+    'ServiceMetricAlarmRulePrometheusArgs',
+    'ServiceMetricAlarmRulePrometheusArgsDict',
+    'ServiceMetricAlarmRulePrometheusAnnotationArgs',
+    'ServiceMetricAlarmRulePrometheusAnnotationArgsDict',
 ]
 
 class ServiceGroupMonitoringAgentProcessAlertConfigArgsDict(TypedDict):
@@ -358,6 +376,752 @@ class ServiceGroupMonitoringAgentProcessMatchExpressArgs:
         """
         The keyword used to match the instance name.
         """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class ServiceMetricAlarmRuleCompositeExpressionArgsDict(TypedDict):
+    expression_list_join: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The logical relationship between multiple metric-based alert conditions. Valid values:
+    - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+    - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+    """
+    expression_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleCompositeExpressionExpressionListArgsDict']]]]]
+    """
+    A list of alert conditions created using standard expressions. See `expression_list` below.
+    """
+    expression_raw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+    - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+    - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+    - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+    """
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The alert severity level. Valid values:
+    - CRITICAL: Critical.
+    - WARN: Warning.
+    - INFO: Information.
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of consecutive times the alert condition must be met before an alert notification is sent.
+    """
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleCompositeExpressionArgs:
+    def __init__(__self__, *,
+                 expression_list_join: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs']]]] = None,
+                 expression_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression_list_join: The logical relationship between multiple metric-based alert conditions. Valid values:
+               - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+               - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs']]] expression_lists: A list of alert conditions created using standard expressions. See `expression_list` below.
+        :param pulumi.Input[_builtins.str] expression_raw: The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+               - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+               - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+               - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+        :param pulumi.Input[_builtins.str] level: The alert severity level. Valid values:
+               - CRITICAL: Critical.
+               - WARN: Warning.
+               - INFO: Information.
+        :param pulumi.Input[_builtins.int] times: Number of consecutive times the alert condition must be met before an alert notification is sent.
+        """
+        if expression_list_join is not None:
+            pulumi.set(__self__, "expression_list_join", expression_list_join)
+        if expression_lists is not None:
+            pulumi.set(__self__, "expression_lists", expression_lists)
+        if expression_raw is not None:
+            pulumi.set(__self__, "expression_raw", expression_raw)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionListJoin")
+    def expression_list_join(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The logical relationship between multiple metric-based alert conditions. Valid values:
+        - `&&`: An alert is triggered only when all metrics meet their respective alert conditions. That is, an alert is triggered only when every expression in ExpressionList evaluates to `true`.
+        - `||`: An alert is triggered as soon as any one metric meets its alert condition.
+        """
+        return pulumi.get(self, "expression_list_join")
+
+    @expression_list_join.setter
+    def expression_list_join(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression_list_join", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionLists")
+    def expression_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs']]]]:
+        """
+        A list of alert conditions created using standard expressions. See `expression_list` below.
+        """
+        return pulumi.get(self, "expression_lists")
+
+    @expression_lists.setter
+    def expression_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs']]]]):
+        pulumi.set(self, "expression_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expressionRaw")
+    def expression_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The alert condition created by an expression. This includes, but is not limited to, the following scenarios:
+        - Configure an alert blacklist for specific resources. For example: `$instanceId != 'i-io8kfvcpp7x5****' && $Average > 50` means that even if the `Average` metric of instance `i-io8kfvcpp7x5****` in the alert rule exceeds 50, no alert will be triggered.
+        - Set a special alert threshold for a specified instance in the rule. For example: `$Average > ($instanceId == 'i-io8kfvcpp7x5****' ? 80 : 50)` means that an alert is triggered only when the `Average` metric of instance `i-io8kfvcpp7x5****` exceeds 80, while for other instances, an alert is triggered when their `Average` exceeds 50.
+        - Limit the number of instances exceeding the threshold in the rule. For example: `count($Average > 20) > 3` means that an alert is triggered only when more than three instances in the alert rule have an `Average` metric greater than 20.
+        """
+        return pulumi.get(self, "expression_raw")
+
+    @expression_raw.setter
+    def expression_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expression_raw", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The alert severity level. Valid values:
+        - CRITICAL: Critical.
+        - WARN: Warning.
+        - INFO: Information.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of consecutive times the alert condition must be met before an alert notification is sent.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class ServiceMetricAlarmRuleCompositeExpressionExpressionListArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+
+    > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+    """
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+
+    > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+    """
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleCompositeExpressionExpressionListArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] metric_name: The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+               
+               > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        :param pulumi.Input[_builtins.int] period: The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+               
+               > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the metric. For information about how to query metric names, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+
+        > **NOTE:**  When you create a Prometheus alert rule for Enterprise Cloud Monitoring, this parameter specifies the metric store name. For information about how to obtain the metric store name, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The statistical period of the metric. Unit: seconds. By default, this is the original reporting period of the metric.
+
+        > **NOTE:**  For information about how to query the statistical period of a metric, see [Cloud Service Metrics](https://help.aliyun.com/document_detail/163515.html).
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "period", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "threshold", value)
+
+
+class ServiceMetricAlarmRuleEscalationsArgsDict(TypedDict):
+    critical: NotRequired[pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsCriticalArgsDict']]]
+    """
+    The trigger condition for Critical-level alerts. See `critical` below.
+    """
+    info: NotRequired[pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsInfoArgsDict']]]
+    """
+    Trigger conditions for Info-level alerts. See `info` below.
+    """
+    warn: NotRequired[pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsWarnArgsDict']]]
+    """
+    Trigger condition for Warn-level alerts.   See `warn` below.
+    """
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleEscalationsArgs:
+    def __init__(__self__, *,
+                 critical: pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsCriticalArgs']] = None,
+                 info: pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsInfoArgs']] = None,
+                 warn: pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsWarnArgs']] = None):
+        """
+        :param pulumi.Input['ServiceMetricAlarmRuleEscalationsCriticalArgs'] critical: The trigger condition for Critical-level alerts. See `critical` below.
+        :param pulumi.Input['ServiceMetricAlarmRuleEscalationsInfoArgs'] info: Trigger conditions for Info-level alerts. See `info` below.
+        :param pulumi.Input['ServiceMetricAlarmRuleEscalationsWarnArgs'] warn: Trigger condition for Warn-level alerts.   See `warn` below.
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if info is not None:
+            pulumi.set(__self__, "info", info)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+
+    @_builtins.property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsCriticalArgs']]:
+        """
+        The trigger condition for Critical-level alerts. See `critical` below.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsCriticalArgs']]):
+        pulumi.set(self, "critical", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def info(self) -> pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsInfoArgs']]:
+        """
+        Trigger conditions for Info-level alerts. See `info` below.
+        """
+        return pulumi.get(self, "info")
+
+    @info.setter
+    def info(self, value: pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsInfoArgs']]):
+        pulumi.set(self, "info", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def warn(self) -> pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsWarnArgs']]:
+        """
+        Trigger condition for Warn-level alerts.   See `warn` below.
+        """
+        return pulumi.get(self, "warn")
+
+    @warn.setter
+    def warn(self, value: pulumi.Input[Optional['ServiceMetricAlarmRuleEscalationsWarnArgs']]):
+        pulumi.set(self, "warn", value)
+
+
+class ServiceMetricAlarmRuleEscalationsCriticalArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    pre_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition for triggering a Warn-level alert.
+    """
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleEscalationsCriticalArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pre_condition: Precondition for triggering a Warn-level alert.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition for triggering a Warn-level alert.
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @pre_condition.setter
+    def pre_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pre_condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class ServiceMetricAlarmRuleEscalationsInfoArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    pre_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition for triggering a Warn-level alert.
+    """
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleEscalationsInfoArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pre_condition: Precondition for triggering a Warn-level alert.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition for triggering a Warn-level alert.
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @pre_condition.setter
+    def pre_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pre_condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class ServiceMetricAlarmRuleEscalationsWarnArgsDict(TypedDict):
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    pre_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Precondition for triggering a Warn-level alert.
+    """
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleEscalationsWarnArgs:
+    def __init__(__self__, *,
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pre_condition: Precondition for triggering a Warn-level alert.
+        """
+        if comparison_operator is not None:
+            pulumi.set(__self__, "comparison_operator", comparison_operator)
+        if pre_condition is not None:
+            pulumi.set(__self__, "pre_condition", pre_condition)
+        if statistics is not None:
+            pulumi.set(__self__, "statistics", statistics)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter(name="comparisonOperator")
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "comparison_operator")
+
+    @comparison_operator.setter
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comparison_operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preCondition")
+    def pre_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Precondition for triggering a Warn-level alert.
+        """
+        return pulumi.get(self, "pre_condition")
+
+    @pre_condition.setter
+    def pre_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pre_condition", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "statistics")
+
+    @statistics.setter
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "statistics", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class ServiceMetricAlarmRuleLabelArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The tag key.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label value.
+
+    > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+    """
+
+@pulumi.input_type
+class ServiceMetricAlarmRuleLabelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The tag key.
+        :param pulumi.Input[_builtins.str] value: Label value.
+               
+               > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label value.
+
+        > **NOTE:**  The label value supports template parameters, which are replaced with actual label values.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class ServiceMetricAlarmRulePrometheusArgsDict(TypedDict):
+    annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRulePrometheusAnnotationArgsDict']]]]]
+    """
+    When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+
+    > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+    See `annotations` below.
+    """
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Alert severity level. Valid values:
+    - CRITICAL: Critical
+    - WARN: Warning
+    - INFO: Information
+    """
+    prom_ql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The PromQL query statement.
+
+    > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+    """
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of times the alert condition must be met before an alert notification is sent.
+    """
+
+@pulumi.input_type
+class ServiceMetricAlarmRulePrometheusArgs:
+    def __init__(__self__, *,
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRulePrometheusAnnotationArgs']]]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 prom_ql: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceMetricAlarmRulePrometheusAnnotationArgs']]] annotations: When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+               
+               > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+               See `annotations` below.
+        :param pulumi.Input[_builtins.str] level: Alert severity level. Valid values:
+               - CRITICAL: Critical
+               - WARN: Warning
+               - INFO: Information
+        :param pulumi.Input[_builtins.str] prom_ql: The PromQL query statement.
+               
+               > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+        :param pulumi.Input[_builtins.int] times: The number of times the alert condition must be met before an alert notification is sent.
+        """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if prom_ql is not None:
+            pulumi.set(__self__, "prom_ql", prom_ql)
+        if times is not None:
+            pulumi.set(__self__, "times", times)
+
+    @_builtins.property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRulePrometheusAnnotationArgs']]]]:
+        """
+        When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
+
+        > **NOTE:**  This feature is equivalent to Annotations in Prometheus.
+        See `annotations` below.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRulePrometheusAnnotationArgs']]]]):
+        pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Alert severity level. Valid values:
+        - CRITICAL: Critical
+        - WARN: Warning
+        - INFO: Information
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="promQl")
+    def prom_ql(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The PromQL query statement.
+
+        > **NOTE:**  The data retrieved by the PromQL query statement is used as alert data. Include the alert threshold in this statement.
+        """
+        return pulumi.get(self, "prom_ql")
+
+    @prom_ql.setter
+    def prom_ql(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "prom_ql", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of times the alert condition must be met before an alert notification is sent.
+        """
+        return pulumi.get(self, "times")
+
+    @times.setter
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "times", value)
+
+
+class ServiceMetricAlarmRulePrometheusAnnotationArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class ServiceMetricAlarmRulePrometheusAnnotationArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter

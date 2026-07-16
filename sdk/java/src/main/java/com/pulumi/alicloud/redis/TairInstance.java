@@ -703,14 +703,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secondaryZoneId);
     }
     /**
-     * Security group id
+     * Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return Security group id
+     * @return Security group id. Multiple security group IDs can be bound at once by separating them with a comma (`,`); the order of the IDs is not significant and does not trigger a diff.
      * 
      */
     public Output<Optional<String>> securityGroupId() {

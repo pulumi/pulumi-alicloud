@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string Outputs;
         /// <summary>
-        /// The parameters required by the template
+        /// The parameters required by the template.
         /// </summary>
         public readonly string Parameters;
         /// <summary>
@@ -81,6 +81,10 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// The reason of status.
         /// </summary>
         public readonly string StatusReason;
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The id of execution template.
         /// </summary>
@@ -134,6 +138,8 @@ namespace Pulumi.AliCloud.Oos.Outputs
 
             string statusReason,
 
+            ImmutableDictionary<string, string> tags,
+
             string templateId,
 
             string templateName,
@@ -159,6 +165,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
             Status = status;
             StatusMessage = statusMessage;
             StatusReason = statusReason;
+            Tags = tags;
             TemplateId = templateId;
             TemplateName = templateName;
             TemplateVersion = templateVersion;

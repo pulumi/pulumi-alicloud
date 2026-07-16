@@ -193,6 +193,20 @@ public class ServiceQueue extends com.pulumi.resources.CustomResource {
         return this.queueName;
     }
     /**
+     * The type of the queue. Default value: `normal`. Valid values:
+     * 
+     */
+    @Export(name="queueType", refs={String.class}, tree="[0]")
+    private Output<String> queueType;
+
+    /**
+     * @return The type of the queue. Default value: `normal`. Valid values:
+     * 
+     */
+    public Output<String> queueType() {
+        return this.queueType;
+    }
+    /**
      * A mapping of tags to assign to the resource.
      * 
      */

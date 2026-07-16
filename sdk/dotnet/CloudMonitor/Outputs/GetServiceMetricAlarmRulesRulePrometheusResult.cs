@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     public sealed class GetServiceMetricAlarmRulesRulePrometheusResult
     {
         /// <summary>
-        /// The annotations of the Prometheus alert rule.
+        /// When a Prometheus alert is triggered, the key-value pairs of annotations are rendered to help you better understand the metric or alert rule.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMetricAlarmRulesRulePrometheusAnnotationResult> Annotations;
         /// <summary>
-        /// The alert level.
+        /// Alert severity level.
         /// </summary>
         public readonly string Level;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
         /// </summary>
         public readonly string PromQl;
         /// <summary>
-        /// The number of consecutive triggers.
+        /// The number of times the alert condition must be met before an alert notification is sent.
         /// </summary>
         public readonly int Times;
 

@@ -6,4 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_sql_log_configs import *
+from .sql_log_config import *
 from .switch_das_pro import *
+from . import outputs

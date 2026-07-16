@@ -99,7 +99,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The status of VPC DNS Hostname
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      */
     declare public readonly dnsHostnameStatus: pulumi.Output<string>;
     /**
@@ -332,7 +332,7 @@ export interface NetworkState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The status of VPC DNS Hostname
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      */
     dnsHostnameStatus?: pulumi.Input<string | undefined>;
     /**
@@ -483,7 +483,7 @@ export interface NetworkArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The status of VPC DNS Hostname
+     * The status of VPC DNS Hostname. Valid values: `ENABLED`, `DISABLED`.
      */
     dnsHostnameStatus?: pulumi.Input<string | undefined>;
     /**
