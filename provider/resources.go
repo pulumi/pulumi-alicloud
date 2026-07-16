@@ -1430,6 +1430,17 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_threat_detection_baseline_strategy":     {Tok: resource(threatDetectionMod, "BaselineStrategy")},
 			"alicloud_threat_detection_backup_policy":         {Tok: resource(threatDetectionMod, "BackupPolicy")},
 			"alicloud_threat_detection_anti_brute_force_rule": {Tok: resource(threatDetectionMod, "AntiBruteForceRule")},
+			// The "service_linked_role" field name collides with the generated .NET class name
+			// "ServiceLinkedRole", which is not allowed in C# (CS0542). Rename just the C# property
+			// to avoid the collision, matching the precedent set for alicloud_vpc_nat_ip_cidr above.
+			"alicloud_threat_detection_service_linked_role": {
+				Tok: resource(threatDetectionMod, "ServiceLinkedRole"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"service_linked_role": {
+						CSharpName: "RoleName",
+					},
+				},
+			},
 
 			// Tsdb
 			"alicloud_tsdb_instance": {Tok: resource(tsdbMod, "Instance")},

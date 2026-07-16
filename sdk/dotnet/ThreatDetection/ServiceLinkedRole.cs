@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// {
     ///     var @default = new AliCloud.ThreatDetection.ServiceLinkedRole("default", new()
     ///     {
-    ///         ServiceLinkedRole = "AliyunServiceRoleForSas",
+    ///         RoleName = "AliyunServiceRoleForSas",
     ///     });
     /// 
     /// });
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// The name of the service linked role.
         /// </summary>
         [Output("serviceLinkedRole")]
-        public Output<string> ServiceLinkedRole { get; private set; } = null!;
+        public Output<string> RoleName { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// The name of the service linked role.
         /// </summary>
         [Input("serviceLinkedRole")]
-        public Input<string>? ServiceLinkedRole { get; set; }
+        public Input<string>? RoleName { get; set; }
 
         public ServiceLinkedRoleArgs()
         {
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// The name of the service linked role.
         /// </summary>
         [Input("serviceLinkedRole")]
-        public Input<string>? ServiceLinkedRole { get; set; }
+        public Input<string>? RoleName { get; set; }
 
         public ServiceLinkedRoleState()
         {
