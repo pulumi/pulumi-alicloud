@@ -133,20 +133,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "2",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "1",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
     ///             {
@@ -155,20 +145,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "3",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "4",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
     ///             {
@@ -177,20 +157,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "2",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "4",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///         },
     ///         HighAvailabilityEnable = true,
@@ -330,20 +300,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "2",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "1",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
     ///             {
@@ -352,20 +312,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "3",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "4",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
     ///             {
@@ -374,20 +324,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "4",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "4",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///         },
     ///         HighAvailabilityEnable = true,
@@ -525,20 +465,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "2",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "1",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
     ///             {
@@ -547,20 +477,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "3",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "4",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///             new AliCloud.Emr.Inputs.ClusterHostGroupArgs
     ///             {
@@ -569,20 +489,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "2",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "4",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///         },
     ///         HighAvailabilityEnable = true,
@@ -712,20 +622,10 @@ namespace Pulumi.AliCloud.Emr
     ///                 NodeCount = "1",
     ///                 InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id),
     ///                 DiskType = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 DiskCapacity = Output.Tuple(dataDisk, dataDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var dataDisk = values.Item1;
-    ///                     var dataDisk1 = values.Item2;
-    ///                     return dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 DiskCapacity = dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? dataDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///                 DiskCount = "1",
     ///                 SysDiskType = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Value),
-    ///                 SysDiskCapacity = Output.Tuple(systemDisk, systemDisk).Apply(values =&gt;
-    ///                 {
-    ///                     var systemDisk = values.Item1;
-    ///                     var systemDisk1 = values.Item2;
-    ///                     return systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk1.Types[0]?.Min : 160;
-    ///                 }),
+    ///                 SysDiskCapacity = systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) &gt; 160 ? systemDisk.Apply(getDiskTypesResult =&gt; getDiskTypesResult.Types[0]?.Min) : 160,
     ///             },
     ///         },
     ///         HighAvailabilityEnable = true,

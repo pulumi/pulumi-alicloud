@@ -134,14 +134,13 @@ namespace Pulumi.AliCloud.PolarDB
     ///         {
     ///             PolicyName = "AliyunRDSInstanceEncryptionRolePolicy",
     ///             PolicyType = "System",
-    ///             PrincipalName = Output.Tuple(roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length(), roles, current, @default[0].Name, current).Apply(values =&gt;
+    ///             PrincipalName = Output.Tuple(roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length(), roles, current, @default[0].Name).Apply(values =&gt;
     ///             {
     ///                 var length = values.Item1;
     ///                 var roles = values.Item2;
     ///                 var current = values.Item3;
     ///                 var name = values.Item4;
-    ///                 var current1 = values.Item5;
-    ///                 return length &gt; 0 ? $"{roles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Name)}@role.{current.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyunservice.com" : $"{name}@role.{current1.Id}.onaliyunservice.com";
+    ///                 return length &gt; 0 ? $"{roles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Name)}@role.{current.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyunservice.com" : $"{name}@role.{current.Apply(getAccountResult =&gt; getAccountResult.Id)}.onaliyunservice.com";
     ///             }),
     ///             PrincipalType = "ServiceRole",
     ///             ResourceGroupId = current.Apply(getAccountResult =&gt; getAccountResult.Id),

@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * const _default = alicloud.gpdb.getInstances({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultGetLogBackups = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.gpdb.getLogBackups({
+ * const defaultGetLogBackups = _default.then(_default => alicloud.gpdb.getLogBackups({
  *     startTime: "2022-12-12T02:00Z",
  *     endTime: "2024-12-12T02:00Z",
  *     dbInstanceId: _default.ids?.[0],
- *     ids: [_default1.ids?.[0]],
+ *     ids: [_default.ids?.[0]],
  * }));
  * export const alicloudGpdbLogbackupExampleId = defaultGetLogBackups.then(defaultGetLogBackups => defaultGetLogBackups.logbackups?.[0]?.dbInstanceId);
  * ```
@@ -116,11 +116,11 @@ export interface GetLogBackupsResult {
  * const _default = alicloud.gpdb.getInstances({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultGetLogBackups = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.gpdb.getLogBackups({
+ * const defaultGetLogBackups = _default.then(_default => alicloud.gpdb.getLogBackups({
  *     startTime: "2022-12-12T02:00Z",
  *     endTime: "2024-12-12T02:00Z",
  *     dbInstanceId: _default.ids?.[0],
- *     ids: [_default1.ids?.[0]],
+ *     ids: [_default.ids?.[0]],
  * }));
  * export const alicloudGpdbLogbackupExampleId = defaultGetLogBackups.then(defaultGetLogBackups => defaultGetLogBackups.logbackups?.[0]?.dbInstanceId);
  * ```

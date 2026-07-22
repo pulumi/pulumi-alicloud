@@ -148,11 +148,7 @@ import javax.annotation.Nullable;
  *             .sourceEndpointDatabaseName(exampleDatabase.name())
  *             .sourceEndpointUserName(exampleRdsAccount.accountName())
  *             .sourceEndpointPassword(exampleRdsAccount.accountPassword())
- *             .dbList(Output.tuple(exampleDatabase.name(), exampleDatabase.name()).applyValue(values -> {
- *                 var exampleDatabaseName = values.t1;
- *                 var exampleDatabaseName1 = values.t2;
- *                 return String.format("{{\"%s\":{{\"name\":\"%s\",\"all\":true}}}}", exampleDatabaseName,exampleDatabaseName1);
- *             }))
+ *             .dbList(exampleDatabase.name().applyValue(_name -> String.format("{{\"%s\":{{\"name\":\"%s\",\"all\":true}}}}", _name,_name)))
  *             .subscriptionInstanceNetworkType("vpc")
  *             .subscriptionInstanceVpcId(exampleNetwork.id())
  *             .subscriptionInstanceVswitchId(exampleSwitch.id())

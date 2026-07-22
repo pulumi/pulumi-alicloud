@@ -101,7 +101,7 @@ import * as utilities from "../utilities";
  *         defaultPolicyAttachment.push(new alicloud.resourcemanager.PolicyAttachment(`default-${range}`, {
  *             policyName: "AliyunRDSInstanceEncryptionRolePolicy",
  *             policyType: "System",
- *             principalName: pulumi.all([roles.then(roles => roles.roles).length, roles, current, _default[0].name, current]).apply(([length, roles, current, name, current1]) => length > 0 ? `${roles.roles?.[0]?.name}@role.${current.id}.onaliyunservice.com` : `${name}@role.${current1.id}.onaliyunservice.com`),
+ *             principalName: pulumi.all([roles.then(roles => roles.roles).length, roles, current, _default[0].name]).apply(([length, roles, current, name]) => length > 0 ? `${roles.roles?.[0]?.name}@role.${current.id}.onaliyunservice.com` : `${name}@role.${current.id}.onaliyunservice.com`),
  *             principalType: "ServiceRole",
  *             resourceGroupId: current.then(current => current.id),
  *         }));

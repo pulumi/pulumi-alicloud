@@ -149,13 +149,11 @@ import (
 //				SourceEndpointDatabaseName: exampleDatabase.Name,
 //				SourceEndpointUserName:     exampleRdsAccount.AccountName,
 //				SourceEndpointPassword:     exampleRdsAccount.AccountPassword,
-//				DbList: pulumi.All(exampleDatabase.Name, exampleDatabase.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					exampleDatabaseName := _args[0].(string)
-//					exampleDatabaseName1 := _args[1].(string)
-//					var _zero string
+//				DbList: exampleDatabase.Name.ApplyT(func(name string) (pulumi.String, error) {
+//					var _zero pulumi.String
 //					tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
-//						exampleDatabaseName: map[string]interface{}{
-//							"name": exampleDatabaseName1,
+//						name: map[string]interface{}{
+//							"name": name,
 //							"all":  true,
 //						},
 //					})
@@ -163,7 +161,7 @@ import (
 //						return _zero, err
 //					}
 //					json0 := string(tmpJSON0)
-//					return json0, nil
+//					return pulumi.String(json0), nil
 //				}).(pulumi.StringOutput),
 //				SubscriptionInstanceNetworkType: pulumi.String("vpc"),
 //				SubscriptionInstanceVpcId:       exampleNetwork.ID(),

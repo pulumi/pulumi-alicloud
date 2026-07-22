@@ -33,19 +33,19 @@ import * as utilities from "../utilities";
  *         "TASK",
  *     ],
  * }));
- * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
- * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "SystemDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
  * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
@@ -104,10 +104,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "2",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "1",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *         {
  *             hostGroupName: "core_group",
@@ -115,10 +115,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "3",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "4",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *         {
  *             hostGroupName: "task_group",
@@ -126,10 +126,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "2",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "4",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *     ],
  *     highAvailabilityEnable: true,
@@ -170,19 +170,19 @@ import * as utilities from "../utilities";
  *         "TASK",
  *     ],
  * }));
- * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
- * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "SystemDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
  * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
@@ -241,10 +241,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "2",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "1",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *         {
  *             hostGroupName: "core_group",
@@ -252,10 +252,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "3",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "4",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *         {
  *             hostGroupName: "task_group",
@@ -263,10 +263,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "4",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "4",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *     ],
  *     highAvailabilityEnable: true,
@@ -305,19 +305,19 @@ import * as utilities from "../utilities";
  *         "TASK",
  *     ],
  * }));
- * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
- * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "SystemDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
  * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
@@ -376,10 +376,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "2",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "1",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *         {
  *             hostGroupName: "core_group",
@@ -387,10 +387,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "3",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "4",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *         {
  *             hostGroupName: "task_group",
@@ -398,10 +398,10 @@ import * as utilities from "../utilities";
  *             nodeCount: "2",
  *             instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *             diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *             diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *             diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *             diskCount: "4",
  *             sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *             sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *             sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *         },
  *     ],
  *     highAvailabilityEnable: true,
@@ -430,19 +430,19 @@ import * as utilities from "../utilities";
  *     instanceChargeType: "PostPaid",
  *     supportNodeTypes: ["GATEWAY"],
  * }));
- * const dataDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const dataDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "DataDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
- * const systemDisk = Promise.all([_default, defaultGetInstanceTypes, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes, defaultGetInstanceTypes1]) => alicloud.emr.getDiskTypes({
+ * const systemDisk = Promise.all([_default, defaultGetInstanceTypes]).then(([_default, defaultGetInstanceTypes]) => alicloud.emr.getDiskTypes({
  *     destinationResource: "SystemDisk",
  *     clusterType: _default.mainVersions?.[0]?.clusterTypes?.[0],
  *     instanceChargeType: "PostPaid",
  *     instanceType: defaultGetInstanceTypes.types?.[0]?.id,
- *     zoneId: defaultGetInstanceTypes1.types?.[0]?.zoneId,
+ *     zoneId: defaultGetInstanceTypes.types?.[0]?.zoneId,
  * }));
  * const vpc: alicloud.vpc.Network[] = [];
  * for (let range = 0; range < (vpcId == "" ? 1 : 0); range++) {
@@ -500,10 +500,10 @@ import * as utilities from "../utilities";
  *         nodeCount: "1",
  *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.id),
  *         diskType: dataDisk.then(dataDisk => dataDisk.types?.[0]?.value),
- *         diskCapacity: Promise.all([dataDisk, dataDisk]).then(([dataDisk, dataDisk1]) => dataDisk.types?.[0]?.min > 160 ? dataDisk1.types?.[0]?.min : 160),
+ *         diskCapacity: dataDisk.then(dataDisk => dataDisk.types?.[0]?.min > 160 ? dataDisk.types?.[0]?.min : 160),
  *         diskCount: "1",
  *         sysDiskType: systemDisk.then(systemDisk => systemDisk.types?.[0]?.value),
- *         sysDiskCapacity: Promise.all([systemDisk, systemDisk]).then(([systemDisk, systemDisk1]) => systemDisk.types?.[0]?.min > 160 ? systemDisk1.types?.[0]?.min : 160),
+ *         sysDiskCapacity: systemDisk.then(systemDisk => systemDisk.types?.[0]?.min > 160 ? systemDisk.types?.[0]?.min : 160),
  *     }],
  *     highAvailabilityEnable: true,
  *     zoneId: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.types?.[0]?.zoneId),

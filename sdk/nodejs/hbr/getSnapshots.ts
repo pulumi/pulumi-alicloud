@@ -28,23 +28,23 @@ import * as utilities from "../utilities";
  * const defaultGetNasBackupPlans = alicloud.hbr.getNasBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
- * const ecsSnapshots = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getSnapshots({
+ * const ecsSnapshots = _default.then(_default => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
  *     vaultId: _default.plans?.[0]?.vaultId,
- *     instanceId: _default1.plans?.[0]?.instanceId,
+ *     instanceId: _default.plans?.[0]?.instanceId,
  * }));
- * const ossSnapshots = Promise.all([defaultGetOssBackupPlans, defaultGetOssBackupPlans]).then(([defaultGetOssBackupPlans, defaultGetOssBackupPlans1]) => alicloud.hbr.getSnapshots({
+ * const ossSnapshots = defaultGetOssBackupPlans.then(defaultGetOssBackupPlans => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
  *     vaultId: defaultGetOssBackupPlans.plans?.[0]?.vaultId,
- *     bucket: defaultGetOssBackupPlans1.plans?.[0]?.bucket,
+ *     bucket: defaultGetOssBackupPlans.plans?.[0]?.bucket,
  *     completeTime: "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
  *     completeTimeChecker: "BETWEEN",
  * }));
- * const nasSnapshots = Promise.all([defaultGetNasBackupPlans, defaultGetNasBackupPlans, defaultGetNasBackupPlans]).then(([defaultGetNasBackupPlans, defaultGetNasBackupPlans1, defaultGetNasBackupPlans2]) => alicloud.hbr.getSnapshots({
+ * const nasSnapshots = defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
  *     vaultId: defaultGetNasBackupPlans.plans?.[0]?.vaultId,
- *     fileSystemId: defaultGetNasBackupPlans1.plans?.[0]?.fileSystemId,
- *     createTime: defaultGetNasBackupPlans2.plans?.[0]?.createTime,
+ *     fileSystemId: defaultGetNasBackupPlans.plans?.[0]?.fileSystemId,
+ *     createTime: defaultGetNasBackupPlans.plans?.[0]?.createTime,
  *     completeTime: "2021-08-23T14:17:15CST",
  *     completeTimeChecker: "GREATER_THAN_OR_EQUAL",
  * }));
@@ -167,23 +167,23 @@ export interface GetSnapshotsResult {
  * const defaultGetNasBackupPlans = alicloud.hbr.getNasBackupPlans({
  *     nameRegex: "plan-tf-used-dont-delete",
  * });
- * const ecsSnapshots = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getSnapshots({
+ * const ecsSnapshots = _default.then(_default => alicloud.hbr.getSnapshots({
  *     sourceType: "ECS_FILE",
  *     vaultId: _default.plans?.[0]?.vaultId,
- *     instanceId: _default1.plans?.[0]?.instanceId,
+ *     instanceId: _default.plans?.[0]?.instanceId,
  * }));
- * const ossSnapshots = Promise.all([defaultGetOssBackupPlans, defaultGetOssBackupPlans]).then(([defaultGetOssBackupPlans, defaultGetOssBackupPlans1]) => alicloud.hbr.getSnapshots({
+ * const ossSnapshots = defaultGetOssBackupPlans.then(defaultGetOssBackupPlans => alicloud.hbr.getSnapshots({
  *     sourceType: "OSS",
  *     vaultId: defaultGetOssBackupPlans.plans?.[0]?.vaultId,
- *     bucket: defaultGetOssBackupPlans1.plans?.[0]?.bucket,
+ *     bucket: defaultGetOssBackupPlans.plans?.[0]?.bucket,
  *     completeTime: "2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
  *     completeTimeChecker: "BETWEEN",
  * }));
- * const nasSnapshots = Promise.all([defaultGetNasBackupPlans, defaultGetNasBackupPlans, defaultGetNasBackupPlans]).then(([defaultGetNasBackupPlans, defaultGetNasBackupPlans1, defaultGetNasBackupPlans2]) => alicloud.hbr.getSnapshots({
+ * const nasSnapshots = defaultGetNasBackupPlans.then(defaultGetNasBackupPlans => alicloud.hbr.getSnapshots({
  *     sourceType: "NAS",
  *     vaultId: defaultGetNasBackupPlans.plans?.[0]?.vaultId,
- *     fileSystemId: defaultGetNasBackupPlans1.plans?.[0]?.fileSystemId,
- *     createTime: defaultGetNasBackupPlans2.plans?.[0]?.createTime,
+ *     fileSystemId: defaultGetNasBackupPlans.plans?.[0]?.fileSystemId,
+ *     createTime: defaultGetNasBackupPlans.plans?.[0]?.createTime,
  *     completeTime: "2021-08-23T14:17:15CST",
  *     completeTimeChecker: "GREATER_THAN_OR_EQUAL",
  * }));

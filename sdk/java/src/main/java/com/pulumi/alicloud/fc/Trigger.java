@@ -437,10 +437,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.result()))
- *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -> }{{@code
- *                 var defaultServiceName = values.t1;
- *                 var defaultServiceName1 = values.t2;
- *                 return """
+ *             .policyDocument(defaultService.name().applyValue(_name -> """
  *     }{{@code
  *         \"Version\": \"1\",
  *         \"Statement\": [
@@ -456,8 +453,7 @@ import javax.annotation.Nullable;
  *         }}{@code
  *         ]
  *     }}{@code
- * ", defaultServiceName,defaultServiceName1);
- *             }}{@code ))
+ * ", _name,_name)))
  *             .description("this is a example")
  *             .force(true)
  *             .build());
