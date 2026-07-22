@@ -427,9 +427,7 @@ import (
 //			}
 //			defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
 //				PolicyName: pulumi.Sprintf("fcservicepolicy-%v", defaultInteger.Result),
-//				PolicyDocument: pulumi.All(defaultService.Name, defaultService.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					defaultServiceName := _args[0].(string)
-//					defaultServiceName1 := _args[1].(string)
+//				PolicyDocument: defaultService.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf(`    {
 //	        \"Version\": \"1\",
 //	        \"Statement\": [
@@ -446,7 +444,7 @@ import (
 //	        ]
 //	    }
 //
-// `, defaultServiceName, defaultServiceName1), nil
+// `, name, name), nil
 //
 //				}).(pulumi.StringOutput),
 //				Description: pulumi.String("this is a example"),

@@ -127,18 +127,13 @@ namespace Pulumi.AliCloud.Dts
     ///         SourceEndpointDatabaseName = exampleDatabase.Name,
     ///         SourceEndpointUserName = exampleRdsAccount.AccountName,
     ///         SourceEndpointPassword = exampleRdsAccount.AccountPassword,
-    ///         DbList = Output.JsonSerialize(Output.Create(Output.Tuple(exampleDatabase.Name, exampleDatabase.Name).Apply(values =&gt;
+    ///         DbList = Output.JsonSerialize(Output.Create(exampleDatabase.Name.Apply(name =&gt; 
     ///         {
-    ///             var exampleDatabaseName = values.Item1;
-    ///             var exampleDatabaseName1 = values.Item2;
-    ///             return 
+    ///             { name, 
     ///             {
-    ///                 { exampleDatabaseName, 
-    ///                 {
-    ///                     { "name", exampleDatabaseName1 },
-    ///                     { "all", true },
-    ///                 } },
-    ///             };
+    ///                 { "name", name },
+    ///                 { "all", true },
+    ///             } },
     ///         }))),
     ///         SubscriptionInstanceNetworkType = "vpc",
     ///         SubscriptionInstanceVpcId = exampleNetwork.Id,

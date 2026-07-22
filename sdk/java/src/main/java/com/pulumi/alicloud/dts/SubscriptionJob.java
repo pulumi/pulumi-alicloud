@@ -151,17 +151,13 @@ import javax.annotation.Nullable;
  *             .sourceEndpointDatabaseName(exampleDatabase.name())
  *             .sourceEndpointUserName(exampleRdsAccount.accountName())
  *             .sourceEndpointPassword(exampleRdsAccount.accountPassword())
- *             .dbList(Output.tuple(exampleDatabase.name(), exampleDatabase.name()).applyValue(values -> {
- *                 var exampleDatabaseName = values.t1;
- *                 var exampleDatabaseName1 = values.t2;
- *                 return serializeJson(
- *                     jsonObject(
- *                         jsonProperty(exampleDatabaseName, jsonObject(
- *                             jsonProperty("name", exampleDatabaseName1),
- *                             jsonProperty("all", true)
- *                         ))
- *                     ));
- *             }))
+ *             .dbList(exampleDatabase.name().applyValue(_name -> serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty(_name, jsonObject(
+ *                         jsonProperty("name", _name),
+ *                         jsonProperty("all", true)
+ *                     ))
+ *                 ))))
  *             .subscriptionInstanceNetworkType("vpc")
  *             .subscriptionInstanceVpcId(exampleNetwork.id())
  *             .subscriptionInstanceVswitchId(exampleSwitch.id())

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultGetBackupJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
+ * const defaultGetBackupJobs = _default.then(_default => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     filters: [
  *         {
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [_default1.plans?.[0]?.instanceId],
+ *             values: [_default.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * }));
- * const example = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
+ * const example = _default.then(_default => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     status: "COMPLETE",
  *     filters: [
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [_default1.plans?.[0]?.instanceId],
+ *             values: [_default.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -141,7 +141,7 @@ export interface GetBackupJobsResult {
  * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultGetBackupJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
+ * const defaultGetBackupJobs = _default.then(_default => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     filters: [
  *         {
@@ -152,7 +152,7 @@ export interface GetBackupJobsResult {
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [_default1.plans?.[0]?.instanceId],
+ *             values: [_default.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",
@@ -164,7 +164,7 @@ export interface GetBackupJobsResult {
  *         },
  *     ],
  * }));
- * const example = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getBackupJobs({
+ * const example = _default.then(_default => alicloud.hbr.getBackupJobs({
  *     sourceType: "ECS_FILE",
  *     status: "COMPLETE",
  *     filters: [
@@ -176,7 +176,7 @@ export interface GetBackupJobsResult {
  *         {
  *             key: "InstanceId",
  *             operator: "IN",
- *             values: [_default1.plans?.[0]?.instanceId],
+ *             values: [_default.plans?.[0]?.instanceId],
  *         },
  *         {
  *             key: "CompleteTime",

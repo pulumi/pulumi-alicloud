@@ -622,10 +622,7 @@ class Trigger(pulumi.CustomResource):
             force=True)
         default_policy = alicloud.ram.Policy("default",
             policy_name=f"fcservicepolicy-{default_integer['result']}",
-            policy_document=pulumi.Output.all(
-                defaultServiceName=default_service.name,
-                defaultServiceName1=default_service.name
-        ).apply(lambda resolved_outputs: f\"\"\"    {{
+            policy_document=default_service.name.apply(lambda name: f\"\"\"    {{
                 \\"Version\\": \\"1\\",
                 \\"Statement\\": [
                 {{
@@ -633,15 +630,14 @@ class Trigger(pulumi.CustomResource):
                     \\"fc:InvokeFunction\\"
                     ],
                 \\"Resource\\": [
-                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*\\",
-                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*\\"
+                    \\"acs:fc:*:*:services/{name}/functions/*\\",
+                    \\"acs:fc:*:*:services/{name}.*/functions/*\\"
                 ],
                 \\"Effect\\": \\"Allow\\"
                 }}
                 ]
             }}
-        \"\"\")
-        ,
+        \"\"\"),
             description="this is a example",
             force=True)
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
@@ -1158,10 +1154,7 @@ class Trigger(pulumi.CustomResource):
             force=True)
         default_policy = alicloud.ram.Policy("default",
             policy_name=f"fcservicepolicy-{default_integer['result']}",
-            policy_document=pulumi.Output.all(
-                defaultServiceName=default_service.name,
-                defaultServiceName1=default_service.name
-        ).apply(lambda resolved_outputs: f\"\"\"    {{
+            policy_document=default_service.name.apply(lambda name: f\"\"\"    {{
                 \\"Version\\": \\"1\\",
                 \\"Statement\\": [
                 {{
@@ -1169,15 +1162,14 @@ class Trigger(pulumi.CustomResource):
                     \\"fc:InvokeFunction\\"
                     ],
                 \\"Resource\\": [
-                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName']}/functions/*\\",
-                    \\"acs:fc:*:*:services/{resolved_outputs['defaultServiceName1']}.*/functions/*\\"
+                    \\"acs:fc:*:*:services/{name}/functions/*\\",
+                    \\"acs:fc:*:*:services/{name}.*/functions/*\\"
                 ],
                 \\"Effect\\": \\"Allow\\"
                 }}
                 ]
             }}
-        \"\"\")
-        ,
+        \"\"\"),
             description="this is a example",
             force=True)
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",

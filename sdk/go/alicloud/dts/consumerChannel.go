@@ -149,10 +149,8 @@ import (
 //				SourceEndpointDatabaseName: exampleDatabase.Name,
 //				SourceEndpointUserName:     exampleRdsAccount.AccountName,
 //				SourceEndpointPassword:     exampleRdsAccount.AccountPassword,
-//				DbList: pulumi.All(exampleDatabase.Name, exampleDatabase.Name).ApplyT(func(_args []interface{}) (string, error) {
-//					exampleDatabaseName := _args[0].(string)
-//					exampleDatabaseName1 := _args[1].(string)
-//					return fmt.Sprintf("{\"%v\":{\"name\":\"%v\",\"all\":true}}", exampleDatabaseName, exampleDatabaseName1), nil
+//				DbList: exampleDatabase.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("{\"%v\":{\"name\":\"%v\",\"all\":true}}", name, name), nil
 //				}).(pulumi.StringOutput),
 //				SubscriptionInstanceNetworkType: pulumi.String("vpc"),
 //				SubscriptionInstanceVpcId:       exampleNetwork.ID(),

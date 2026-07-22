@@ -368,11 +368,7 @@ namespace Pulumi.AliCloud.FC
     ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
     ///     {
     ///         PolicyName = $"fcservicepolicy-{defaultInteger.Result}",
-    ///         PolicyDocument = Output.Tuple(defaultService.Name, defaultService.Name).Apply(values =&gt;
-    ///         {
-    ///             var defaultServiceName = values.Item1;
-    ///             var defaultServiceName1 = values.Item2;
-    ///             return @$"    {{
+    ///         PolicyDocument = defaultService.Name.Apply(name =&gt; @$"    {{
     ///         \""Version\"": \""1\"",
     ///         \""Statement\"": [
     ///         {{
@@ -380,15 +376,14 @@ namespace Pulumi.AliCloud.FC
     ///             \""fc:InvokeFunction\""
     ///             ],
     ///         \""Resource\"": [
-    ///             \""acs:fc:*:*:services/{defaultServiceName}/functions/*\"",
-    ///             \""acs:fc:*:*:services/{defaultServiceName1}.*/functions/*\""
+    ///             \""acs:fc:*:*:services/{name}/functions/*\"",
+    ///             \""acs:fc:*:*:services/{name}.*/functions/*\""
     ///         ],
     ///         \""Effect\"": \""Allow\""
     ///         }}
     ///         ]
     ///     }}
-    /// ";
-    ///         }),
+    /// "),
     ///         Description = "this is a example",
     ///         Force = true,
     ///     });

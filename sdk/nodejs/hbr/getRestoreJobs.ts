@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultGetRestoreJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getRestoreJobs({
+ * const defaultGetRestoreJobs = _default.then(_default => alicloud.hbr.getRestoreJobs({
  *     restoreType: "ECS_FILE",
  *     vaultIds: [_default.plans?.[0]?.vaultId],
- *     targetInstanceIds: [_default1.plans?.[0]?.instanceId],
+ *     targetInstanceIds: [_default.plans?.[0]?.instanceId],
  * }));
  * ```
  */
@@ -122,10 +122,10 @@ export interface GetRestoreJobsResult {
  * const _default = alicloud.hbr.getEcsBackupPlans({
  *     nameRegex: "plan-name",
  * });
- * const defaultGetRestoreJobs = Promise.all([_default, _default]).then(([_default, _default1]) => alicloud.hbr.getRestoreJobs({
+ * const defaultGetRestoreJobs = _default.then(_default => alicloud.hbr.getRestoreJobs({
  *     restoreType: "ECS_FILE",
  *     vaultIds: [_default.plans?.[0]?.vaultId],
- *     targetInstanceIds: [_default1.plans?.[0]?.instanceId],
+ *     targetInstanceIds: [_default.plans?.[0]?.instanceId],
  * }));
  * ```
  */
