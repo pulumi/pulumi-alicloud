@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
+        /// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of VSwitch.
+        /// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> VpcIpv6CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VSwitch.
+        /// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("vswitchName")]
         public Output<string> VswitchName { get; private set; } = null!;
@@ -293,13 +293,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
+        /// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// The description of VSwitch.
+        /// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? VpcIpv6CidrBlock { get; set; }
 
         /// <summary>
-        /// The name of the VSwitch.
+        /// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
+        /// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `IsDefault`, or set `IsDefault` to `False`, `CidrBlock` is required.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of VSwitch.
+        /// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -467,7 +467,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? VpcIpv6CidrBlock { get; set; }
 
         /// <summary>
-        /// The name of the VSwitch.
+        /// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }

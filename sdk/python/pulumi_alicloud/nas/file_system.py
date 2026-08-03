@@ -58,15 +58,15 @@ class FileSystemArgs:
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
                
                For optional values, please refer to the actual specifications on the purchase page:
-               -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-               -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-               -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-               -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+               - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+               - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+               - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+               - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         :param pulumi.Input[_builtins.str] description: File system description.
                
                Restrictions:
                - 2~128 English or Chinese characters in length.
-               - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+               - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
@@ -74,7 +74,7 @@ class FileSystemArgs:
                
                Value:
                - 0 (default): not encrypted.
-               - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+               - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
                - 2: User management key. You can manage keys only when FileSystemType = extreme.
         :param pulumi.Input[_builtins.str] file_system_type: File system type.
                
@@ -82,6 +82,9 @@ class FileSystemArgs:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+               - cpfsse: file storage CPFS Smart Edition
+               
+               > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -89,11 +92,12 @@ class FileSystemArgs:
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
+               
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: NFS ACL See `nfs_acl` below.
         :param pulumi.Input['FileSystemOptionsArgs'] options: Option. See `options` below.
         :param pulumi.Input['FileSystemRecycleBinArgs'] recycle_bin: Recycle Bin See `recycle_bin` below.
-        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input['FileSystemSmbAclArgs'] smb_acl: SMB ACL See `smb_acl` below.
@@ -104,20 +108,26 @@ class FileSystemArgs:
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
                
                When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
                
-               > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+               > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
                
-               > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+               > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "storage_type", storage_type)
@@ -199,10 +209,10 @@ class FileSystemArgs:
         Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
 
         For optional values, please refer to the actual specifications on the purchase page:
-        -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-        -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-        -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-        -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+        - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+        - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         """
         return pulumi.get(self, "capacity")
 
@@ -218,7 +228,7 @@ class FileSystemArgs:
 
         Restrictions:
         - 2~128 English or Chinese characters in length.
-        - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+        - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         - Can contain numbers, colons (:), underscores (_), or dashes (-).
         """
         return pulumi.get(self, "description")
@@ -237,7 +247,7 @@ class FileSystemArgs:
 
         Value:
         - 0 (default): not encrypted.
-        - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+        - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
         - 2: User management key. You can manage keys only when FileSystemType = extreme.
         """
         return pulumi.get(self, "encrypt_type")
@@ -256,6 +266,9 @@ class FileSystemArgs:
         - standard (default): Universal NAS
         - extreme: extreme NAS
         - cpfs: file storage CPFS
+        - cpfsse: file storage CPFS Smart Edition
+
+        > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         """
         return pulumi.get(self, "file_system_type")
 
@@ -296,6 +309,7 @@ class FileSystemArgs:
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key.
+
         This parameter is required only when EncryptType = 2.
         """
         return pulumi.get(self, "kms_key_id")
@@ -344,7 +358,7 @@ class FileSystemArgs:
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -421,8 +435,10 @@ class FileSystemArgs:
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC network.
-        This parameter must be configured when FileSystemType = cpfs.
-        When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -435,8 +451,12 @@ class FileSystemArgs:
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the switch.
-        This parameter must be configured when FileSystemType = cpfs.
-        When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+
+        > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -454,9 +474,9 @@ class FileSystemArgs:
 
         When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
 
-        > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+        > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
 
-        > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+        > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         return pulumi.get(self, "zone_id")
 
@@ -500,16 +520,16 @@ class _FileSystemState:
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
                
                For optional values, please refer to the actual specifications on the purchase page:
-               -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-               -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-               -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-               -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+               - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+               - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+               - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+               - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         :param pulumi.Input[_builtins.str] create_time: CreateTime
         :param pulumi.Input[_builtins.str] description: File system description.
                
                Restrictions:
                - 2~128 English or Chinese characters in length.
-               - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+               - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
@@ -517,7 +537,7 @@ class _FileSystemState:
                
                Value:
                - 0 (default): not encrypted.
-               - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+               - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
                - 2: User management key. You can manage keys only when FileSystemType = extreme.
         :param pulumi.Input[_builtins.str] file_system_type: File system type.
                
@@ -525,6 +545,9 @@ class _FileSystemState:
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+               - cpfsse: file storage CPFS Smart Edition
+               
+               > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -532,6 +555,7 @@ class _FileSystemState:
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
+               
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: NFS ACL See `nfs_acl` below.
         :param pulumi.Input['FileSystemOptionsArgs'] options: Option. See `options` below.
@@ -540,7 +564,7 @@ class _FileSystemState:
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input['FileSystemRecycleBinArgs'] recycle_bin: Recycle Bin See `recycle_bin` below.
-        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -557,20 +581,26 @@ class _FileSystemState:
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
                
                When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
                
-               > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+               > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
                
-               > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+               > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
@@ -630,10 +660,10 @@ class _FileSystemState:
         Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
 
         For optional values, please refer to the actual specifications on the purchase page:
-        -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-        -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-        -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-        -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+        - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+        - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         """
         return pulumi.get(self, "capacity")
 
@@ -661,7 +691,7 @@ class _FileSystemState:
 
         Restrictions:
         - 2~128 English or Chinese characters in length.
-        - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+        - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         - Can contain numbers, colons (:), underscores (_), or dashes (-).
         """
         return pulumi.get(self, "description")
@@ -680,7 +710,7 @@ class _FileSystemState:
 
         Value:
         - 0 (default): not encrypted.
-        - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+        - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
         - 2: User management key. You can manage keys only when FileSystemType = extreme.
         """
         return pulumi.get(self, "encrypt_type")
@@ -699,6 +729,9 @@ class _FileSystemState:
         - standard (default): Universal NAS
         - extreme: extreme NAS
         - cpfs: file storage CPFS
+        - cpfsse: file storage CPFS Smart Edition
+
+        > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         """
         return pulumi.get(self, "file_system_type")
 
@@ -739,6 +772,7 @@ class _FileSystemState:
     def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key.
+
         This parameter is required only when EncryptType = 2.
         """
         return pulumi.get(self, "kms_key_id")
@@ -802,7 +836,7 @@ class _FileSystemState:
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -918,8 +952,10 @@ class _FileSystemState:
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC network.
-        This parameter must be configured when FileSystemType = cpfs.
-        When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -932,8 +968,12 @@ class _FileSystemState:
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the switch.
-        This parameter must be configured when FileSystemType = cpfs.
-        When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+
+        > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -951,9 +991,9 @@ class _FileSystemState:
 
         When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
 
-        > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+        > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
 
-        > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+        > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1028,6 +1068,24 @@ class FileSystem(pulumi.CustomResource):
             zone_id=default.zones[0].zone_id)
         ```
 
+        CPFS Usage
+
+        A CPFS file system is created inside a VPC, so `vpc_id` and `vswitch_id` are required. `capacity` and `zone_id` are also required for CPFS.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        cpfs = alicloud.nas.FileSystem("cpfs",
+            protocol_type="cpfs",
+            storage_type="advance_100",
+            file_system_type="cpfs",
+            capacity=3600,
+            zone_id="cn-hangzhou-i",
+            vpc_id="vpc-xxxxxxxxxxxxxxxxxxxxx",
+            vswitch_id="vsw-xxxxxxxxxxxxxxxxxxxxx")
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -1046,15 +1104,15 @@ class FileSystem(pulumi.CustomResource):
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
                
                For optional values, please refer to the actual specifications on the purchase page:
-               -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-               -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-               -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-               -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+               - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+               - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+               - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+               - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         :param pulumi.Input[_builtins.str] description: File system description.
                
                Restrictions:
                - 2~128 English or Chinese characters in length.
-               - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+               - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
@@ -1062,7 +1120,7 @@ class FileSystem(pulumi.CustomResource):
                
                Value:
                - 0 (default): not encrypted.
-               - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+               - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
                - 2: User management key. You can manage keys only when FileSystemType = extreme.
         :param pulumi.Input[_builtins.str] file_system_type: File system type.
                
@@ -1070,6 +1128,9 @@ class FileSystem(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+               - cpfsse: file storage CPFS Smart Edition
+               
+               > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -1077,6 +1138,7 @@ class FileSystem(pulumi.CustomResource):
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
+               
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
         :param pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']] options: Option. See `options` below.
@@ -1085,7 +1147,7 @@ class FileSystem(pulumi.CustomResource):
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: Recycle Bin See `recycle_bin` below.
-        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Union['FileSystemSmbAclArgs', 'FileSystemSmbAclArgsDict']] smb_acl: SMB ACL See `smb_acl` below.
@@ -1100,20 +1162,26 @@ class FileSystem(pulumi.CustomResource):
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
                
                When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
                
-               > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+               > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
                
-               > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+               > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         ...
     @overload
@@ -1157,6 +1225,24 @@ class FileSystem(pulumi.CustomResource):
                 "enabled": True,
             },
             zone_id=default.zones[0].zone_id)
+        ```
+
+        CPFS Usage
+
+        A CPFS file system is created inside a VPC, so `vpc_id` and `vswitch_id` are required. `capacity` and `zone_id` are also required for CPFS.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        cpfs = alicloud.nas.FileSystem("cpfs",
+            protocol_type="cpfs",
+            storage_type="advance_100",
+            file_system_type="cpfs",
+            capacity=3600,
+            zone_id="cn-hangzhou-i",
+            vpc_id="vpc-xxxxxxxxxxxxxxxxxxxxx",
+            vswitch_id="vsw-xxxxxxxxxxxxxxxxxxxxx")
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -1289,16 +1375,16 @@ class FileSystem(pulumi.CustomResource):
                Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
                
                For optional values, please refer to the actual specifications on the purchase page:
-               -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-               -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-               -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-               -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+               - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+               - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+               - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+               - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         :param pulumi.Input[_builtins.str] create_time: CreateTime
         :param pulumi.Input[_builtins.str] description: File system description.
                
                Restrictions:
                - 2~128 English or Chinese characters in length.
-               - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+               - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
                - Can contain numbers, colons (:), underscores (_), or dashes (-).
         :param pulumi.Input[_builtins.int] encrypt_type: Whether the file system is encrypted.
                
@@ -1306,7 +1392,7 @@ class FileSystem(pulumi.CustomResource):
                
                Value:
                - 0 (default): not encrypted.
-               - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+               - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
                - 2: User management key. You can manage keys only when FileSystemType = extreme.
         :param pulumi.Input[_builtins.str] file_system_type: File system type.
                
@@ -1314,6 +1400,9 @@ class FileSystem(pulumi.CustomResource):
                - standard (default): Universal NAS
                - extreme: extreme NAS
                - cpfs: file storage CPFS
+               - cpfsse: file storage CPFS Smart Edition
+               
+               > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         :param pulumi.Input[_builtins.str] keytab: String of keytab file content encrypted by base64
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
@@ -1321,6 +1410,7 @@ class FileSystem(pulumi.CustomResource):
                
                > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
         :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key.
+               
                This parameter is required only when EncryptType = 2.
         :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: NFS ACL See `nfs_acl` below.
         :param pulumi.Input[Union['FileSystemOptionsArgs', 'FileSystemOptionsArgsDict']] options: Option. See `options` below.
@@ -1329,7 +1419,7 @@ class FileSystem(pulumi.CustomResource):
                - When FileSystemType = extreme, the value is NFS.
                - When FileSystemType = cpfs, the value is cpfs.
         :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: Recycle Bin See `recycle_bin` below.
-        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        :param pulumi.Input[_builtins.str] redundancy_type: Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redundancy_vswitch_ids: Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
@@ -1346,20 +1436,26 @@ class FileSystem(pulumi.CustomResource):
                - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Label information collection.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the switch.
-               This parameter must be configured when FileSystemType = cpfs.
-               When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+               
+               > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+               
+               > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
                
                The usable area refers to the physical area where power and network are independent of each other in the same area.
                
                When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
                
-               > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+               > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
                
-               > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+               > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1400,10 +1496,10 @@ class FileSystem(pulumi.CustomResource):
         Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
 
         For optional values, please refer to the actual specifications on the purchase page:
-        -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-        -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-        -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-        -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+        - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+        - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+        - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+        - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
         """
         return pulumi.get(self, "capacity")
 
@@ -1423,7 +1519,7 @@ class FileSystem(pulumi.CustomResource):
 
         Restrictions:
         - 2~128 English or Chinese characters in length.
-        - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
+        - Must start with upper and lower case letters or Chinese, and cannot start with 'http://' and 'https'.
         - Can contain numbers, colons (:), underscores (_), or dashes (-).
         """
         return pulumi.get(self, "description")
@@ -1438,7 +1534,7 @@ class FileSystem(pulumi.CustomResource):
 
         Value:
         - 0 (default): not encrypted.
-        - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+        - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
         - 2: User management key. You can manage keys only when FileSystemType = extreme.
         """
         return pulumi.get(self, "encrypt_type")
@@ -1453,6 +1549,9 @@ class FileSystem(pulumi.CustomResource):
         - standard (default): Universal NAS
         - extreme: extreme NAS
         - cpfs: file storage CPFS
+        - cpfsse: file storage CPFS Smart Edition
+
+        > **NOTE:** Whether the network fields `vpc_id` and `vswitch_id` must be configured depends on `file_system_type`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `file_system_type` is as follows:
         """
         return pulumi.get(self, "file_system_type")
 
@@ -1481,6 +1580,7 @@ class FileSystem(pulumi.CustomResource):
     def kms_key_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the KMS key.
+
         This parameter is required only when EncryptType = 2.
         """
         return pulumi.get(self, "kms_key_id")
@@ -1524,7 +1624,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="redundancyType")
     def redundancy_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+        Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -1604,8 +1704,10 @@ class FileSystem(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the VPC network.
-        This parameter must be configured when FileSystemType = cpfs.
-        When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        > **NOTE:** For `standard` or `extreme` file systems, do not set `vpc_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpc_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1614,8 +1716,12 @@ class FileSystem(pulumi.CustomResource):
     def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the switch.
-        This parameter must be configured when FileSystemType = cpfs.
-        When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+
+        > **NOTE:** This `vswitch_id` configures the network of the CPFS file system itself and is different from `vswitch_id` in `nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitch_id` regardless of `file_system_type`.
+
+        > **NOTE:** For `standard` or `extreme` file systems, do not set `vswitch_id`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitch_id` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1629,9 +1735,9 @@ class FileSystem(pulumi.CustomResource):
 
         When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
 
-        > **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+        > **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
 
-        > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+        > **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
         """
         return pulumi.get(self, "zone_id")
 

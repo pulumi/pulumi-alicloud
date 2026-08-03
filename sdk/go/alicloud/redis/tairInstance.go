@@ -163,6 +163,10 @@ type TairInstance struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Instance intranet bandwidth
 	IntranetBandwidth pulumi.IntOutput `pulumi:"intranetBandwidth"`
+	// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// The maximum number of connections supported by the instance.
 	MaxConnections pulumi.IntOutput `pulumi:"maxConnections"`
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
@@ -370,6 +374,10 @@ type tairInstanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// Instance intranet bandwidth
 	IntranetBandwidth *int `pulumi:"intranetBandwidth"`
+	// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+	MaintainEndTime *string `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The maximum number of connections supported by the instance.
 	MaxConnections *int `pulumi:"maxConnections"`
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
@@ -526,6 +534,10 @@ type TairInstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// Instance intranet bandwidth
 	IntranetBandwidth pulumi.IntPtrInput
+	// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+	MaintainEndTime pulumi.StringPtrInput
+	// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+	MaintainStartTime pulumi.StringPtrInput
 	// The maximum number of connections supported by the instance.
 	MaxConnections pulumi.IntPtrInput
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
@@ -680,6 +692,10 @@ type tairInstanceArgs struct {
 	InstanceType string `pulumi:"instanceType"`
 	// Instance intranet bandwidth
 	IntranetBandwidth *int `pulumi:"intranetBandwidth"`
+	// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+	MaintainEndTime *string `pulumi:"maintainEndTime"`
+	// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
@@ -821,6 +837,10 @@ type TairInstanceArgs struct {
 	InstanceType pulumi.StringInput
 	// Instance intranet bandwidth
 	IntranetBandwidth pulumi.IntPtrInput
+	// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+	MaintainEndTime pulumi.StringPtrInput
+	// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+	MaintainStartTime pulumi.StringPtrInput
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
 	ModifyMode pulumi.StringPtrInput
 	// The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
@@ -1102,6 +1122,16 @@ func (o TairInstanceOutput) InstanceType() pulumi.StringOutput {
 // Instance intranet bandwidth
 func (o TairInstanceOutput) IntranetBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.IntranetBandwidth }).(pulumi.IntOutput)
+}
+
+// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+func (o TairInstanceOutput) MaintainEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.MaintainEndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+func (o TairInstanceOutput) MaintainStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.MaintainStartTime }).(pulumi.StringOutput)
 }
 
 // The maximum number of connections supported by the instance.

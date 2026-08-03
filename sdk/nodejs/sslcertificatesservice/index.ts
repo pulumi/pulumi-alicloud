@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CompaniesArgs, CompaniesResult, CompaniesOutputArgs } from "./companies";
+export const companies: typeof import("./companies").companies = null as any;
+export const companiesOutput: typeof import("./companies").companiesOutput = null as any;
+utilities.lazyLoad(exports, ["companies","companiesOutput"], () => require("./companies"));
+
+export { CompanyArgs, CompanyState } from "./company";
+export type Company = import("./company").Company;
+export const Company: typeof import("./company").Company = null as any;
+utilities.lazyLoad(exports, ["Company"], () => require("./company"));
+
 export { PcaCertificateArgs, PcaCertificateState } from "./pcaCertificate";
 export type PcaCertificate = import("./pcaCertificate").PcaCertificate;
 export const PcaCertificate: typeof import("./pcaCertificate").PcaCertificate = null as any;
@@ -15,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:sslcertificatesservice/company:Company":
+                return new Company(name, <any>undefined, { urn })
             case "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate":
                 return new PcaCertificate(name, <any>undefined, { urn })
             default:
@@ -22,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "sslcertificatesservice/company", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sslcertificatesservice/pcaCertificate", _module)

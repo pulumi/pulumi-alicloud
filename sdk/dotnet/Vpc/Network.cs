@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A list of user CIDRs.
+        /// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         /// </summary>
         [Output("userCidrs")]
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
@@ -459,7 +459,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// A list of user CIDRs.
+        /// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         /// </summary>
         public InputList<string> UserCidrs
         {
@@ -687,7 +687,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// A list of user CIDRs.
+        /// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         /// </summary>
         public InputList<string> UserCidrs
         {

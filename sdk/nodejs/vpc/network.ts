@@ -217,7 +217,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      */
     declare public readonly userCidrs: pulumi.Output<string[]>;
     /**
@@ -450,7 +450,7 @@ export interface NetworkState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -575,7 +575,7 @@ export interface NetworkArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

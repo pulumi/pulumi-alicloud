@@ -34,7 +34,7 @@ class RoleArgs:
         The set of arguments for constructing a Role resource.
 
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
-        :param pulumi.Input[_builtins.str] description: The description of the RAM role.
+        :param pulumi.Input[_builtins.str] description: The description of the RAM role. The description must be `1` to `1024` characters in length.
         :param pulumi.Input[_builtins.str] document: Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Role. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] max_session_duration: The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
@@ -99,7 +99,7 @@ class RoleArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the RAM role.
+        The description of the RAM role. The description must be `1` to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -244,7 +244,7 @@ class _RoleState:
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.252.0) The time when the RAM role was created.
-        :param pulumi.Input[_builtins.str] description: The description of the RAM role.
+        :param pulumi.Input[_builtins.str] description: The description of the RAM role. The description must be `1` to `1024` characters in length.
         :param pulumi.Input[_builtins.str] document: Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Role. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] max_session_duration: The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
@@ -340,7 +340,7 @@ class _RoleState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the RAM role.
+        The description of the RAM role. The description must be `1` to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -548,7 +548,7 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
-        :param pulumi.Input[_builtins.str] description: The description of the RAM role.
+        :param pulumi.Input[_builtins.str] description: The description of the RAM role. The description must be `1` to `1024` characters in length.
         :param pulumi.Input[_builtins.str] document: Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Role. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] max_session_duration: The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
@@ -701,7 +701,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
         :param pulumi.Input[_builtins.str] assume_role_policy_document: The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.252.0) The time when the RAM role was created.
-        :param pulumi.Input[_builtins.str] description: The description of the RAM role.
+        :param pulumi.Input[_builtins.str] description: The description of the RAM role. The description must be `1` to `1024` characters in length.
         :param pulumi.Input[_builtins.str] document: Field `document` has been deprecated from provider version 1.252.0. New field `assume_role_policy_document` instead.
         :param pulumi.Input[_builtins.bool] force: Specifies whether to force delete the Role. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] max_session_duration: The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
@@ -761,7 +761,7 @@ class Role(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the RAM role.
+        The description of the RAM role. The description must be `1` to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 

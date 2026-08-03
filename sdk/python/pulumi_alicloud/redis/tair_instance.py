@@ -36,6 +36,8 @@ class TairInstanceArgs:
                  force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  global_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  intranet_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type: pulumi.Input[Optional[_builtins.str]] = None,
                  param_no_loose_sentinel_enabled: pulumi.Input[Optional[_builtins.str]] = None,
@@ -107,6 +109,8 @@ class TairInstanceArgs:
                
                3. Not as a distributed instance, you do not need to enter any values.
         :param pulumi.Input[_builtins.int] intranet_bandwidth: Instance intranet bandwidth
+        :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
         :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
@@ -189,6 +193,10 @@ class TairInstanceArgs:
             pulumi.set(__self__, "global_instance_id", global_instance_id)
         if intranet_bandwidth is not None:
             pulumi.set(__self__, "intranet_bandwidth", intranet_bandwidth)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if modify_mode is not None:
             pulumi.set(__self__, "modify_mode", modify_mode)
         if node_type is not None:
@@ -474,6 +482,30 @@ class TairInstanceArgs:
     @intranet_bandwidth.setter
     def intranet_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "intranet_bandwidth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyMode")
@@ -878,6 +910,8 @@ class _TairInstanceState:
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  intranet_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  max_connections: pulumi.Input[Optional[_builtins.int]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  network_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -957,6 +991,8 @@ class _TairInstanceState:
         :param pulumi.Input[_builtins.str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[_builtins.str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
         :param pulumi.Input[_builtins.int] intranet_bandwidth: Instance intranet bandwidth
+        :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections supported by the instance.
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] network_type: The network type of the instance.  CLASSIC(classic network), VPC.
@@ -1052,6 +1088,10 @@ class _TairInstanceState:
             pulumi.set(__self__, "instance_type", instance_type)
         if intranet_bandwidth is not None:
             pulumi.set(__self__, "intranet_bandwidth", intranet_bandwidth)
+        if maintain_end_time is not None:
+            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+        if maintain_start_time is not None:
+            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
         if max_connections is not None:
             pulumi.set(__self__, "max_connections", max_connections)
         if modify_mode is not None:
@@ -1353,6 +1393,30 @@ class _TairInstanceState:
     @intranet_bandwidth.setter
     def intranet_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "intranet_bandwidth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @maintain_end_time.setter
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "maintain_end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        """
+        return pulumi.get(self, "maintain_start_time")
+
+    @maintain_start_time.setter
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
@@ -1853,6 +1917,8 @@ class TairInstance(pulumi.CustomResource):
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  intranet_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type: pulumi.Input[Optional[_builtins.str]] = None,
                  param_no_loose_sentinel_enabled: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1981,6 +2047,8 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[_builtins.str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
         :param pulumi.Input[_builtins.int] intranet_bandwidth: Instance intranet bandwidth
+        :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] node_type: The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
         :param pulumi.Input[_builtins.str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
@@ -2129,6 +2197,8 @@ class TairInstance(pulumi.CustomResource):
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  intranet_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type: pulumi.Input[Optional[_builtins.str]] = None,
                  param_no_loose_sentinel_enabled: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2189,6 +2259,8 @@ class TairInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["intranet_bandwidth"] = intranet_bandwidth
+            __props__.__dict__["maintain_end_time"] = maintain_end_time
+            __props__.__dict__["maintain_start_time"] = maintain_start_time
             __props__.__dict__["modify_mode"] = modify_mode
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["param_no_loose_sentinel_enabled"] = param_no_loose_sentinel_enabled
@@ -2265,6 +2337,8 @@ class TairInstance(pulumi.CustomResource):
             instance_class: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             intranet_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
             max_connections: pulumi.Input[Optional[_builtins.int]] = None,
             modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
             network_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2348,6 +2422,8 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_class: The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
         :param pulumi.Input[_builtins.str] instance_type: The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
         :param pulumi.Input[_builtins.int] intranet_bandwidth: Instance intranet bandwidth
+        :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        :param pulumi.Input[_builtins.str] maintain_start_time: The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections supported by the instance.
         :param pulumi.Input[_builtins.str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[_builtins.str] network_type: The network type of the instance.  CLASSIC(classic network), VPC.
@@ -2430,6 +2506,8 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["instance_class"] = instance_class
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["intranet_bandwidth"] = intranet_bandwidth
+        __props__.__dict__["maintain_end_time"] = maintain_end_time
+        __props__.__dict__["maintain_start_time"] = maintain_start_time
         __props__.__dict__["max_connections"] = max_connections
         __props__.__dict__["modify_mode"] = modify_mode
         __props__.__dict__["network_type"] = network_type
@@ -2626,6 +2704,22 @@ class TairInstance(pulumi.CustomResource):
         Instance intranet bandwidth
         """
         return pulumi.get(self, "intranet_bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="maintainEndTime")
+    def maintain_end_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        """
+        return pulumi.get(self, "maintain_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="maintainStartTime")
+    def maintain_start_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        """
+        return pulumi.get(self, "maintain_start_time")
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")

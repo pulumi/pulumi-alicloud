@@ -23,6 +23,7 @@ class GatewayArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
                  zone_config: pulumi.Input['GatewayZoneConfigArgs'],
+                 gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
                  log_config: pulumi.Input[Optional['GatewayLogConfigArgs']] = None,
@@ -36,23 +37,32 @@ class GatewayArgs:
         """
         The set of arguments for constructing a Gateway resource.
 
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
-        :param pulumi.Input['GatewayZoneConfigArgs'] zone_config: Availability Zone Configuration See `zone_config` below.
-        :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_type: Describes the gateway type, which is categorized into the following two types:
-               - API: indicates an API gateway
-               - AI: Indicates an AI gateway
-        :param pulumi.Input['GatewayLogConfigArgs'] log_config: Log Configuration See `log_config` below.
-        :param pulumi.Input['GatewayNetworkAccessConfigArgs'] network_access_config: Network Access Configuration See `network_access_config` below.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] spec: Gateway instance specifications
+        :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values:
+               - PayAsYouGo: Pay-as-you-go.
+               - Subscription: Subscription.
+        :param pulumi.Input['GatewayZoneConfigArgs'] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[_builtins.str] gateway_edition: Gateway instance edition. Valid values:
+               - Professional: Standard instance.
+               - Serverless: Serverless instance.
+               - MultiTenantServerless: Multi-tenant Serverless instance.
+        :param pulumi.Input[_builtins.str] gateway_name: Query by exact match of the gateway name.
+        :param pulumi.Input[_builtins.str] gateway_type: The gateway type. Valid values:
+               - API: API Gateway
+               - AI: AI Gateway
+        :param pulumi.Input['GatewayLogConfigArgs'] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input['GatewayNetworkAccessConfigArgs'] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the destination resource group.
+        :param pulumi.Input[_builtins.str] spec: Gateway specification:
+               - apigw.small.x1: Small specification.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input['GatewayVpcArgs'] vpc: The VPC associated with the Gateway. See `vpc` below.
-        :param pulumi.Input['GatewayVswitchArgs'] vswitch: The virtual switch associated with the Gateway. See `vswitch` below.
-        :param pulumi.Input[Sequence[pulumi.Input['GatewayZoneArgs']]] zones: The List of zones associated with the Gateway. See `zones` below.
+        :param pulumi.Input['GatewayVpcArgs'] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
+        :param pulumi.Input['GatewayVswitchArgs'] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayZoneArgs']]] zones: The list of zones associated with the gateway. See `zones` below.
         """
         pulumi.set(__self__, "payment_type", payment_type)
         pulumi.set(__self__, "zone_config", zone_config)
+        if gateway_edition is not None:
+            pulumi.set(__self__, "gateway_edition", gateway_edition)
         if gateway_name is not None:
             pulumi.set(__self__, "gateway_name", gateway_name)
         if gateway_type is not None:
@@ -78,7 +88,9 @@ class GatewayArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The payment type of the resource
+        Payment type. Valid values:
+        - PayAsYouGo: Pay-as-you-go.
+        - Subscription: Subscription.
         """
         return pulumi.get(self, "payment_type")
 
@@ -90,7 +102,7 @@ class GatewayArgs:
     @pulumi.getter(name="zoneConfig")
     def zone_config(self) -> pulumi.Input['GatewayZoneConfigArgs']:
         """
-        Availability Zone Configuration See `zone_config` below.
+        The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "zone_config")
 
@@ -99,10 +111,25 @@ class GatewayArgs:
         pulumi.set(self, "zone_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Gateway instance edition. Valid values:
+        - Professional: Standard instance.
+        - Serverless: Serverless instance.
+        - MultiTenantServerless: Multi-tenant Serverless instance.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @gateway_edition.setter
+    def gateway_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway_edition", value)
+
+    @_builtins.property
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the resource
+        Query by exact match of the gateway name.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -114,9 +141,9 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayType")
     def gateway_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Describes the gateway type, which is categorized into the following two types:
-        - API: indicates an API gateway
-        - AI: Indicates an AI gateway
+        The gateway type. Valid values:
+        - API: API Gateway
+        - AI: AI Gateway
         """
         return pulumi.get(self, "gateway_type")
 
@@ -128,7 +155,7 @@ class GatewayArgs:
     @pulumi.getter(name="logConfig")
     def log_config(self) -> pulumi.Input[Optional['GatewayLogConfigArgs']]:
         """
-        Log Configuration See `log_config` below.
+        The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "log_config")
 
@@ -140,7 +167,7 @@ class GatewayArgs:
     @pulumi.getter(name="networkAccessConfig")
     def network_access_config(self) -> pulumi.Input[Optional['GatewayNetworkAccessConfigArgs']]:
         """
-        Network Access Configuration See `network_access_config` below.
+        The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "network_access_config")
 
@@ -152,7 +179,7 @@ class GatewayArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group
+        The ID of the destination resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -164,7 +191,8 @@ class GatewayArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Gateway instance specifications
+        Gateway specification:
+        - apigw.small.x1: Small specification.
         """
         return pulumi.get(self, "spec")
 
@@ -188,7 +216,7 @@ class GatewayArgs:
     @pulumi.getter
     def vpc(self) -> pulumi.Input[Optional['GatewayVpcArgs']]:
         """
-        The VPC associated with the Gateway. See `vpc` below.
+        The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
         """
         return pulumi.get(self, "vpc")
 
@@ -200,7 +228,7 @@ class GatewayArgs:
     @pulumi.getter
     def vswitch(self) -> pulumi.Input[Optional['GatewayVswitchArgs']]:
         """
-        The virtual switch associated with the Gateway. See `vswitch` below.
+        The vSwitch associated with the gateway. See `vswitch` below.
         """
         return pulumi.get(self, "vswitch")
 
@@ -212,7 +240,7 @@ class GatewayArgs:
     @pulumi.getter
     def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayZoneArgs']]]]:
         """
-        The List of zones associated with the Gateway. See `zones` below.
+        The list of zones associated with the gateway. See `zones` below.
         """
         return pulumi.get(self, "zones")
 
@@ -224,16 +252,25 @@ class GatewayArgs:
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
+                 create_from: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayEnvironmentArgs']]]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerArgs']]]] = None,
                  log_config: pulumi.Input[Optional['GatewayLogConfigArgs']] = None,
                  network_access_config: pulumi.Input[Optional['GatewayNetworkAccessConfigArgs']] = None,
                  payment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySecurityGroupArgs']]]] = None,
                  spec: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc: pulumi.Input[Optional['GatewayVpcArgs']] = None,
                  vswitch: pulumi.Input[Optional['GatewayVswitchArgs']] = None,
                  zone_config: pulumi.Input[Optional['GatewayZoneConfigArgs']] = None,
@@ -241,29 +278,54 @@ class _GatewayState:
         """
         Input properties used for looking up and filtering Gateway resources.
 
+        :param pulumi.Input[_builtins.str] create_from: The source from which the gateway was created.
         :param pulumi.Input[_builtins.int] create_time: The creation timestamp. Unit: milliseconds.
-        :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_type: Describes the gateway type, which is categorized into the following two types:
-               - API: indicates an API gateway
-               - AI: Indicates an AI gateway
-        :param pulumi.Input['GatewayLogConfigArgs'] log_config: Log Configuration See `log_config` below.
-        :param pulumi.Input['GatewayNetworkAccessConfigArgs'] network_access_config: Network Access Configuration See `network_access_config` below.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] spec: Gateway instance specifications
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayEnvironmentArgs']]] environments: The list of environments associated with the gateway.
+        :param pulumi.Input[_builtins.int] expire_time: Timestamp indicating when the subscription expires. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] gateway_edition: Gateway instance edition. Valid values:
+               - Professional: Standard instance.
+               - Serverless: Serverless instance.
+               - MultiTenantServerless: Multi-tenant Serverless instance.
+        :param pulumi.Input[_builtins.str] gateway_name: Query by exact match of the gateway name.
+        :param pulumi.Input[_builtins.str] gateway_type: The gateway type. Valid values:
+               - API: API Gateway
+               - AI: AI Gateway
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayLoadBalancerArgs']]] load_balancers: The list of Gateway ingress addresses.
+        :param pulumi.Input['GatewayLogConfigArgs'] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input['GatewayNetworkAccessConfigArgs'] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values:
+               - PayAsYouGo: Pay-as-you-go.
+               - Subscription: Subscription.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the destination resource group.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewaySecurityGroupArgs']]] security_groups: The security group of the gateway.
+        :param pulumi.Input[_builtins.str] spec: Gateway specification:
+               - apigw.small.x1: Small specification.
+        :param pulumi.Input[_builtins.str] status: The status of the gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input['GatewayVpcArgs'] vpc: The VPC associated with the Gateway. See `vpc` below.
-        :param pulumi.Input['GatewayVswitchArgs'] vswitch: The virtual switch associated with the Gateway. See `vswitch` below.
-        :param pulumi.Input['GatewayZoneConfigArgs'] zone_config: Availability Zone Configuration See `zone_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input['GatewayZoneArgs']]] zones: The List of zones associated with the Gateway. See `zones` below.
+        :param pulumi.Input[_builtins.str] target_version: The target version of the gateway instance.
+        :param pulumi.Input[_builtins.int] update_time: The timestamp when the gateway was last updated. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] version: The current running version of the gateway instance.
+        :param pulumi.Input['GatewayVpcArgs'] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
+        :param pulumi.Input['GatewayVswitchArgs'] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
+        :param pulumi.Input['GatewayZoneConfigArgs'] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayZoneArgs']]] zones: The list of zones associated with the gateway. See `zones` below.
         """
+        if create_from is not None:
+            pulumi.set(__self__, "create_from", create_from)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+        if gateway_edition is not None:
+            pulumi.set(__self__, "gateway_edition", gateway_edition)
         if gateway_name is not None:
             pulumi.set(__self__, "gateway_name", gateway_name)
         if gateway_type is not None:
             pulumi.set(__self__, "gateway_type", gateway_type)
+        if load_balancers is not None:
+            pulumi.set(__self__, "load_balancers", load_balancers)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if network_access_config is not None:
@@ -272,12 +334,20 @@ class _GatewayState:
             pulumi.set(__self__, "payment_type", payment_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if target_version is not None:
+            pulumi.set(__self__, "target_version", target_version)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
         if vswitch is not None:
@@ -286,6 +356,18 @@ class _GatewayState:
             pulumi.set(__self__, "zone_config", zone_config)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="createFrom")
+    def create_from(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source from which the gateway was created.
+        """
+        return pulumi.get(self, "create_from")
+
+    @create_from.setter
+    def create_from(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_from", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -300,10 +382,49 @@ class _GatewayState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayEnvironmentArgs']]]]:
+        """
+        The list of environments associated with the gateway.
+        """
+        return pulumi.get(self, "environments")
+
+    @environments.setter
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayEnvironmentArgs']]]]):
+        pulumi.set(self, "environments", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Timestamp indicating when the subscription expires. Unit: milliseconds.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "expire_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Gateway instance edition. Valid values:
+        - Professional: Standard instance.
+        - Serverless: Serverless instance.
+        - MultiTenantServerless: Multi-tenant Serverless instance.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @gateway_edition.setter
+    def gateway_edition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "gateway_edition", value)
+
+    @_builtins.property
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the resource
+        Query by exact match of the gateway name.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -315,9 +436,9 @@ class _GatewayState:
     @pulumi.getter(name="gatewayType")
     def gateway_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Describes the gateway type, which is categorized into the following two types:
-        - API: indicates an API gateway
-        - AI: Indicates an AI gateway
+        The gateway type. Valid values:
+        - API: API Gateway
+        - AI: AI Gateway
         """
         return pulumi.get(self, "gateway_type")
 
@@ -326,10 +447,22 @@ class _GatewayState:
         pulumi.set(self, "gateway_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerArgs']]]]:
+        """
+        The list of Gateway ingress addresses.
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @load_balancers.setter
+    def load_balancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerArgs']]]]):
+        pulumi.set(self, "load_balancers", value)
+
+    @_builtins.property
     @pulumi.getter(name="logConfig")
     def log_config(self) -> pulumi.Input[Optional['GatewayLogConfigArgs']]:
         """
-        Log Configuration See `log_config` below.
+        The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "log_config")
 
@@ -341,7 +474,7 @@ class _GatewayState:
     @pulumi.getter(name="networkAccessConfig")
     def network_access_config(self) -> pulumi.Input[Optional['GatewayNetworkAccessConfigArgs']]:
         """
-        Network Access Configuration See `network_access_config` below.
+        The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "network_access_config")
 
@@ -353,7 +486,9 @@ class _GatewayState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The payment type of the resource
+        Payment type. Valid values:
+        - PayAsYouGo: Pay-as-you-go.
+        - Subscription: Subscription.
         """
         return pulumi.get(self, "payment_type")
 
@@ -365,7 +500,7 @@ class _GatewayState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the resource group
+        The ID of the destination resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -374,10 +509,23 @@ class _GatewayState:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySecurityGroupArgs']]]]:
+        """
+        The security group of the gateway.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySecurityGroupArgs']]]]):
+        pulumi.set(self, "security_groups", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Gateway instance specifications
+        Gateway specification:
+        - apigw.small.x1: Small specification.
         """
         return pulumi.get(self, "spec")
 
@@ -389,7 +537,7 @@ class _GatewayState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource
+        The status of the gateway.
         """
         return pulumi.get(self, "status")
 
@@ -410,10 +558,46 @@ class _GatewayState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The target version of the gateway instance.
+        """
+        return pulumi.get(self, "target_version")
+
+    @target_version.setter
+    def target_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The timestamp when the gateway was last updated. Unit: milliseconds.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "update_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current running version of the gateway instance.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
+    @_builtins.property
     @pulumi.getter
     def vpc(self) -> pulumi.Input[Optional['GatewayVpcArgs']]:
         """
-        The VPC associated with the Gateway. See `vpc` below.
+        The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
         """
         return pulumi.get(self, "vpc")
 
@@ -425,7 +609,7 @@ class _GatewayState:
     @pulumi.getter
     def vswitch(self) -> pulumi.Input[Optional['GatewayVswitchArgs']]:
         """
-        The virtual switch associated with the Gateway. See `vswitch` below.
+        The vSwitch associated with the gateway. See `vswitch` below.
         """
         return pulumi.get(self, "vswitch")
 
@@ -437,7 +621,7 @@ class _GatewayState:
     @pulumi.getter(name="zoneConfig")
     def zone_config(self) -> pulumi.Input[Optional['GatewayZoneConfigArgs']]:
         """
-        Availability Zone Configuration See `zone_config` below.
+        The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "zone_config")
 
@@ -449,7 +633,7 @@ class _GatewayState:
     @pulumi.getter
     def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayZoneArgs']]]]:
         """
-        The List of zones associated with the Gateway. See `zones` below.
+        The list of zones associated with the gateway. See `zones` below.
         """
         return pulumi.get(self, "zones")
 
@@ -464,6 +648,7 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
                  log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']]] = None,
@@ -480,7 +665,9 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a APIG Gateway resource.
 
-        For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+        Gateway instance  .
+
+        For information about APIG Gateway and how to use it, see [What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway).
 
         > **NOTE:** Available since v1.240.0.
 
@@ -536,26 +723,33 @@ class Gateway(pulumi.CustomResource):
         APIG Gateway can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:apig/gateway:Gateway example <id>
+        $ pulumi import alicloud:apig/gateway:Gateway example <gateway_id>
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_type: Describes the gateway type, which is categorized into the following two types:
-               - API: indicates an API gateway
-               - AI: Indicates an AI gateway
-        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']] log_config: Log Configuration See `log_config` below.
-        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']] network_access_config: Network Access Configuration See `network_access_config` below.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] spec: Gateway instance specifications
+        :param pulumi.Input[_builtins.str] gateway_edition: Gateway instance edition. Valid values:
+               - Professional: Standard instance.
+               - Serverless: Serverless instance.
+               - MultiTenantServerless: Multi-tenant Serverless instance.
+        :param pulumi.Input[_builtins.str] gateway_name: Query by exact match of the gateway name.
+        :param pulumi.Input[_builtins.str] gateway_type: The gateway type. Valid values:
+               - API: API Gateway
+               - AI: AI Gateway
+        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values:
+               - PayAsYouGo: Pay-as-you-go.
+               - Subscription: Subscription.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the destination resource group.
+        :param pulumi.Input[_builtins.str] spec: Gateway specification:
+               - apigw.small.x1: Small specification.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']] vpc: The VPC associated with the Gateway. See `vpc` below.
-        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']] vswitch: The virtual switch associated with the Gateway. See `vswitch` below.
-        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']] zone_config: Availability Zone Configuration See `zone_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]] zones: The List of zones associated with the Gateway. See `zones` below.
+        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
+        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
+        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]] zones: The list of zones associated with the gateway. See `zones` below.
         """
         ...
     @overload
@@ -566,7 +760,9 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a APIG Gateway resource.
 
-        For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+        Gateway instance  .
+
+        For information about APIG Gateway and how to use it, see [What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway).
 
         > **NOTE:** Available since v1.240.0.
 
@@ -622,7 +818,7 @@ class Gateway(pulumi.CustomResource):
         APIG Gateway can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:apig/gateway:Gateway example <id>
+        $ pulumi import alicloud:apig/gateway:Gateway example <gateway_id>
         ```
 
 
@@ -641,6 +837,7 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
                  log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']]] = None,
@@ -662,6 +859,7 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GatewayArgs.__new__(GatewayArgs)
 
+            __props__.__dict__["gateway_edition"] = gateway_edition
             __props__.__dict__["gateway_name"] = gateway_name
             __props__.__dict__["gateway_type"] = gateway_type
             __props__.__dict__["log_config"] = log_config
@@ -678,8 +876,16 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_config'")
             __props__.__dict__["zone_config"] = zone_config
             __props__.__dict__["zones"] = zones
+            __props__.__dict__["create_from"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["environments"] = None
+            __props__.__dict__["expire_time"] = None
+            __props__.__dict__["load_balancers"] = None
+            __props__.__dict__["security_groups"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["target_version"] = None
+            __props__.__dict__["update_time"] = None
+            __props__.__dict__["version"] = None
         super(Gateway, __self__).__init__(
             'alicloud:apig/gateway:Gateway',
             resource_name,
@@ -690,16 +896,25 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_from: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict']]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            gateway_edition: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_type: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict']]]]] = None,
             log_config: pulumi.Input[Optional[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']]] = None,
             network_access_config: pulumi.Input[Optional[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']]] = None,
             payment_type: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict']]]]] = None,
             spec: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_version: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
             vpc: pulumi.Input[Optional[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']]] = None,
             vswitch: pulumi.Input[Optional[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']]] = None,
             zone_config: pulumi.Input[Optional[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']]] = None,
@@ -711,42 +926,74 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] create_from: The source from which the gateway was created.
         :param pulumi.Input[_builtins.int] create_time: The creation timestamp. Unit: milliseconds.
-        :param pulumi.Input[_builtins.str] gateway_name: The name of the resource
-        :param pulumi.Input[_builtins.str] gateway_type: Describes the gateway type, which is categorized into the following two types:
-               - API: indicates an API gateway
-               - AI: Indicates an AI gateway
-        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']] log_config: Log Configuration See `log_config` below.
-        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']] network_access_config: Network Access Configuration See `network_access_config` below.
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] spec: Gateway instance specifications
-        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayEnvironmentArgs', 'GatewayEnvironmentArgsDict']]]] environments: The list of environments associated with the gateway.
+        :param pulumi.Input[_builtins.int] expire_time: Timestamp indicating when the subscription expires. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] gateway_edition: Gateway instance edition. Valid values:
+               - Professional: Standard instance.
+               - Serverless: Serverless instance.
+               - MultiTenantServerless: Multi-tenant Serverless instance.
+        :param pulumi.Input[_builtins.str] gateway_name: Query by exact match of the gateway name.
+        :param pulumi.Input[_builtins.str] gateway_type: The gateway type. Valid values:
+               - API: API Gateway
+               - AI: AI Gateway
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayLoadBalancerArgs', 'GatewayLoadBalancerArgsDict']]]] load_balancers: The list of Gateway ingress addresses.
+        :param pulumi.Input[Union['GatewayLogConfigArgs', 'GatewayLogConfigArgsDict']] log_config: The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Union['GatewayNetworkAccessConfigArgs', 'GatewayNetworkAccessConfigArgsDict']] network_access_config: The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[_builtins.str] payment_type: Payment type. Valid values:
+               - PayAsYouGo: Pay-as-you-go.
+               - Subscription: Subscription.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the destination resource group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewaySecurityGroupArgs', 'GatewaySecurityGroupArgsDict']]]] security_groups: The security group of the gateway.
+        :param pulumi.Input[_builtins.str] spec: Gateway specification:
+               - apigw.small.x1: Small specification.
+        :param pulumi.Input[_builtins.str] status: The status of the gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']] vpc: The VPC associated with the Gateway. See `vpc` below.
-        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']] vswitch: The virtual switch associated with the Gateway. See `vswitch` below.
-        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']] zone_config: Availability Zone Configuration See `zone_config` below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]] zones: The List of zones associated with the Gateway. See `zones` below.
+        :param pulumi.Input[_builtins.str] target_version: The target version of the gateway instance.
+        :param pulumi.Input[_builtins.int] update_time: The timestamp when the gateway was last updated. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] version: The current running version of the gateway instance.
+        :param pulumi.Input[Union['GatewayVpcArgs', 'GatewayVpcArgsDict']] vpc: The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
+        :param pulumi.Input[Union['GatewayVswitchArgs', 'GatewayVswitchArgsDict']] vswitch: The vSwitch associated with the gateway. See `vswitch` below.
+        :param pulumi.Input[Union['GatewayZoneConfigArgs', 'GatewayZoneConfigArgsDict']] zone_config: The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayZoneArgs', 'GatewayZoneArgsDict']]]] zones: The list of zones associated with the gateway. See `zones` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GatewayState.__new__(_GatewayState)
 
+        __props__.__dict__["create_from"] = create_from
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["environments"] = environments
+        __props__.__dict__["expire_time"] = expire_time
+        __props__.__dict__["gateway_edition"] = gateway_edition
         __props__.__dict__["gateway_name"] = gateway_name
         __props__.__dict__["gateway_type"] = gateway_type
+        __props__.__dict__["load_balancers"] = load_balancers
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["network_access_config"] = network_access_config
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["target_version"] = target_version
+        __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["version"] = version
         __props__.__dict__["vpc"] = vpc
         __props__.__dict__["vswitch"] = vswitch
         __props__.__dict__["zone_config"] = zone_config
         __props__.__dict__["zones"] = zones
         return Gateway(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createFrom")
+    def create_from(self) -> pulumi.Output[_builtins.str]:
+        """
+        The source from which the gateway was created.
+        """
+        return pulumi.get(self, "create_from")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -757,10 +1004,37 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter
+    def environments(self) -> pulumi.Output[Sequence['outputs.GatewayEnvironment']]:
+        """
+        The list of environments associated with the gateway.
+        """
+        return pulumi.get(self, "environments")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        Timestamp indicating when the subscription expires. Unit: milliseconds.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> pulumi.Output[_builtins.str]:
+        """
+        Gateway instance edition. Valid values:
+        - Professional: Standard instance.
+        - Serverless: Serverless instance.
+        - MultiTenantServerless: Multi-tenant Serverless instance.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @_builtins.property
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the resource
+        Query by exact match of the gateway name.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -768,17 +1042,25 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayType")
     def gateway_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Describes the gateway type, which is categorized into the following two types:
-        - API: indicates an API gateway
-        - AI: Indicates an AI gateway
+        The gateway type. Valid values:
+        - API: API Gateway
+        - AI: AI Gateway
         """
         return pulumi.get(self, "gateway_type")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> pulumi.Output[Sequence['outputs.GatewayLoadBalancer']]:
+        """
+        The list of Gateway ingress addresses.
+        """
+        return pulumi.get(self, "load_balancers")
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
     def log_config(self) -> pulumi.Output[Optional['outputs.GatewayLogConfig']]:
         """
-        Log Configuration See `log_config` below.
+        The log configuration for the gateway instance. See `log_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "log_config")
 
@@ -786,7 +1068,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="networkAccessConfig")
     def network_access_config(self) -> pulumi.Output[Optional['outputs.GatewayNetworkAccessConfig']]:
         """
-        Network Access Configuration See `network_access_config` below.
+        The network access type of the gateway instance. See `network_access_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "network_access_config")
 
@@ -794,7 +1076,9 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment type of the resource
+        Payment type. Valid values:
+        - PayAsYouGo: Pay-as-you-go.
+        - Subscription: Subscription.
         """
         return pulumi.get(self, "payment_type")
 
@@ -802,15 +1086,24 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the resource group
+        The ID of the destination resource group.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> pulumi.Output[Sequence['outputs.GatewaySecurityGroup']]:
+        """
+        The security group of the gateway.
+        """
+        return pulumi.get(self, "security_groups")
 
     @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Gateway instance specifications
+        Gateway specification:
+        - apigw.small.x1: Small specification.
         """
         return pulumi.get(self, "spec")
 
@@ -818,7 +1111,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource
+        The status of the gateway.
         """
         return pulumi.get(self, "status")
 
@@ -831,10 +1124,34 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The target version of the gateway instance.
+        """
+        return pulumi.get(self, "target_version")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        The timestamp when the gateway was last updated. Unit: milliseconds.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The current running version of the gateway instance.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
     @pulumi.getter
     def vpc(self) -> pulumi.Output[Optional['outputs.GatewayVpc']]:
         """
-        The VPC associated with the Gateway. See `vpc` below.
+        The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
         """
         return pulumi.get(self, "vpc")
 
@@ -842,7 +1159,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def vswitch(self) -> pulumi.Output[Optional['outputs.GatewayVswitch']]:
         """
-        The virtual switch associated with the Gateway. See `vswitch` below.
+        The vSwitch associated with the gateway. See `vswitch` below.
         """
         return pulumi.get(self, "vswitch")
 
@@ -850,7 +1167,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="zoneConfig")
     def zone_config(self) -> pulumi.Output['outputs.GatewayZoneConfig']:
         """
-        Availability Zone Configuration See `zone_config` below.
+        The availability zone selection option for the gateway. See `zone_config` below. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "zone_config")
 
@@ -858,7 +1175,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def zones(self) -> pulumi.Output[Sequence['outputs.GatewayZone']]:
         """
-        The List of zones associated with the Gateway. See `zones` below.
+        The list of zones associated with the gateway. See `zones` below.
         """
         return pulumi.get(self, "zones")
 

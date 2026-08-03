@@ -510,14 +510,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     @Import(name="userCidrs")
     private @Nullable Output<List<String>> userCidrs;
 
     /**
-     * @return A list of user CIDRs.
+     * @return A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     public Optional<Output<List<String>>> userCidrs() {
@@ -1273,7 +1273,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs A list of user CIDRs.
+         * @param userCidrs A list of user CIDRs. Up to `3` CIDR blocks can be specified.
          * 
          * @return builder
          * 
@@ -1284,7 +1284,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs A list of user CIDRs.
+         * @param userCidrs A list of user CIDRs. Up to `3` CIDR blocks can be specified.
          * 
          * @return builder
          * 
@@ -1294,7 +1294,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs A list of user CIDRs.
+         * @param userCidrs A list of user CIDRs. Up to `3` CIDR blocks can be specified.
          * 
          * @return builder
          * 

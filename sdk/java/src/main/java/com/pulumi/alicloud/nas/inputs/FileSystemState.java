@@ -28,10 +28,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
      * 
      * For optional values, please refer to the actual specifications on the purchase page:
-     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+     * - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+     * - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+     * - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+     * - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
      * 
      */
     @Import(name="capacity")
@@ -43,10 +43,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
      * 
      * For optional values, please refer to the actual specifications on the purchase page:
-     * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-     * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-     * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-     * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+     * - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+     * - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+     * - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+     * - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
      * 
      */
     public Optional<Output<Integer>> capacity() {
@@ -73,7 +73,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * Restrictions:
      * - 2~128 English or Chinese characters in length.
-     * - Must start with upper and lower case letters or Chinese, and cannot start with&#39;http: // &#39;and&#39;https.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
@@ -85,7 +85,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * Restrictions:
      * - 2~128 English or Chinese characters in length.
-     * - Must start with upper and lower case letters or Chinese, and cannot start with&#39;http: // &#39;and&#39;https.
+     * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      * 
      */
@@ -100,7 +100,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * Value:
      * - 0 (default): not encrypted.
-     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
      * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      * 
      */
@@ -114,7 +114,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * Value:
      * - 0 (default): not encrypted.
-     * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+     * - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
      * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      * 
      */
@@ -129,6 +129,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
      * - cpfs: file storage CPFS
+     * - cpfsse: file storage CPFS Smart Edition
+     * 
+     * &gt; **NOTE:** Whether the network fields `vpcId` and `vswitchId` must be configured depends on `fileSystemType`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `fileSystemType` is as follows:
      * 
      */
     @Import(name="fileSystemType")
@@ -141,6 +144,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * - standard (default): Universal NAS
      * - extreme: extreme NAS
      * - cpfs: file storage CPFS
+     * - cpfsse: file storage CPFS Smart Edition
+     * 
+     * &gt; **NOTE:** Whether the network fields `vpcId` and `vswitchId` must be configured depends on `fileSystemType`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `fileSystemType` is as follows:
      * 
      */
     public Optional<Output<String>> fileSystemType() {
@@ -187,6 +193,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the KMS key.
+     * 
      * This parameter is required only when EncryptType = 2.
      * 
      */
@@ -195,6 +202,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the KMS key.
+     * 
      * This parameter is required only when EncryptType = 2.
      * 
      */
@@ -269,14 +277,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     * Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
      * 
      */
     @Import(name="redundancyType")
     private @Nullable Output<String> redundancyType;
 
     /**
-     * @return Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     * @return Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
      * 
      */
     public Optional<Output<String>> redundancyType() {
@@ -419,8 +427,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the VPC network.
-     * This parameter must be configured when FileSystemType = cpfs.
-     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpcId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
      * 
      */
     @Import(name="vpcId")
@@ -428,8 +438,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the VPC network.
-     * This parameter must be configured when FileSystemType = cpfs.
-     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpcId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -438,8 +450,12 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The ID of the switch.
-     * This parameter must be configured when FileSystemType = cpfs.
-     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * &gt; **NOTE:** This `vswitchId` configures the network of the CPFS file system itself and is different from `vswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitchId` regardless of `fileSystemType`.
+     * 
+     * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitchId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
      * 
      */
     @Import(name="vswitchId")
@@ -447,8 +463,12 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The ID of the switch.
-     * This parameter must be configured when FileSystemType = cpfs.
-     * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+     * 
+     * &gt; **NOTE:** This `vswitchId` configures the network of the CPFS file system itself and is different from `vswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitchId` regardless of `fileSystemType`.
+     * 
+     * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitchId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -462,9 +482,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
      * 
-     * &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     * &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
      * 
-     * &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+     * &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      * 
      */
     @Import(name="zoneId")
@@ -477,9 +497,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
      * 
-     * &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+     * &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
      * 
-     * &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+     * &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -539,10 +559,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
          * 
          * For optional values, please refer to the actual specifications on the purchase page:
-         * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-         * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-         * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-         * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+         * - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+         * - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+         * - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+         * - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
          * 
          * @return builder
          * 
@@ -558,10 +578,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * Unit: GiB, required and valid when FileSystemType = extreme or cpfs.
          * 
          * For optional values, please refer to the actual specifications on the purchase page:
-         * -[Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme_post#/buy)
-         * -[Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_extreme#/buy)
-         * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
-         * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
+         * - [Fast NAS Pay-As-You-Go Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme_post#/buy)
+         * - [Fast NAS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_extreme#/buy)
+         * - [Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/?commodityCode=nas_cpfs_post#/buy)
+         * - [Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/?commodityCode=cpfs#/buy)
          * 
          * @return builder
          * 
@@ -596,7 +616,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * Restrictions:
          * - 2~128 English or Chinese characters in length.
-         * - Must start with upper and lower case letters or Chinese, and cannot start with&#39;http: // &#39;and&#39;https.
+         * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
          * - Can contain numbers, colons (:), underscores (_), or dashes (-).
          * 
          * @return builder
@@ -612,7 +632,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * Restrictions:
          * - 2~128 English or Chinese characters in length.
-         * - Must start with upper and lower case letters or Chinese, and cannot start with&#39;http: // &#39;and&#39;https.
+         * - Must start with upper and lower case letters or Chinese, and cannot start with &#39;http://&#39; and &#39;https&#39;.
          * - Can contain numbers, colons (:), underscores (_), or dashes (-).
          * 
          * @return builder
@@ -629,7 +649,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * Value:
          * - 0 (default): not encrypted.
-         * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+         * - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
          * - 2: User management key. You can manage keys only when FileSystemType = extreme.
          * 
          * @return builder
@@ -647,7 +667,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * Value:
          * - 0 (default): not encrypted.
-         * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
+         * - 1: NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
          * - 2: User management key. You can manage keys only when FileSystemType = extreme.
          * 
          * @return builder
@@ -664,6 +684,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * - standard (default): Universal NAS
          * - extreme: extreme NAS
          * - cpfs: file storage CPFS
+         * - cpfsse: file storage CPFS Smart Edition
+         * 
+         * &gt; **NOTE:** Whether the network fields `vpcId` and `vswitchId` must be configured depends on `fileSystemType`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `fileSystemType` is as follows:
          * 
          * @return builder
          * 
@@ -680,6 +703,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * - standard (default): Universal NAS
          * - extreme: extreme NAS
          * - cpfs: file storage CPFS
+         * - cpfsse: file storage CPFS Smart Edition
+         * 
+         * &gt; **NOTE:** Whether the network fields `vpcId` and `vswitchId` must be configured depends on `fileSystemType`. Only CPFS file systems create a resource inside a VPC; for `standard` and `extreme` these fields are reserved by the interface and have not taken effect, so they should be left unset. The configuration rule for each `fileSystemType` is as follows:
          * 
          * @return builder
          * 
@@ -740,6 +766,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyId The ID of the KMS key.
+         * 
          * This parameter is required only when EncryptType = 2.
          * 
          * @return builder
@@ -752,6 +779,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param kmsKeyId The ID of the KMS key.
+         * 
          * This parameter is required only when EncryptType = 2.
          * 
          * @return builder
@@ -852,7 +880,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancyType Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+         * @param redundancyType Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
          * 
          * @return builder
          * 
@@ -863,7 +891,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redundancyType Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+         * @param redundancyType Storage redundancy type. Only effective for General CPFS. Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS). Default value: LRS.
          * 
          * @return builder
          * 
@@ -1066,8 +1094,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcId The ID of the VPC network.
-         * This parameter must be configured when FileSystemType = cpfs.
-         * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpcId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
          * 
          * @return builder
          * 
@@ -1079,8 +1109,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcId The ID of the VPC network.
-         * This parameter must be configured when FileSystemType = cpfs.
-         * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vpcId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vpcId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
          * 
          * @return builder
          * 
@@ -1091,8 +1123,12 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The ID of the switch.
-         * This parameter must be configured when FileSystemType = cpfs.
-         * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * &gt; **NOTE:** This `vswitchId` configures the network of the CPFS file system itself and is different from `vswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitchId` regardless of `fileSystemType`.
+         * 
+         * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitchId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
          * 
          * @return builder
          * 
@@ -1104,8 +1140,12 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vswitchId The ID of the switch.
-         * This parameter must be configured when FileSystemType = cpfs.
-         * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * This parameter must be configured when FileSystemType = cpfs. When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
+         * 
+         * &gt; **NOTE:** This `vswitchId` configures the network of the CPFS file system itself and is different from `vswitchId` in `alicloud.nas.MountTarget`, which specifies the vSwitch of the mount target used by clients to access a NAS file system. A mount target still requires its own `vswitchId` regardless of `fileSystemType`.
+         * 
+         * &gt; **NOTE:** For `standard` or `extreme` file systems, do not set `vswitchId`. Since this field is not `Computed`, a value configured on these file system types cannot be read back from the API, which produces a permanent diff on every plan and, because the field is `ForceNew`, forces the file system to be destroyed and recreated. If you previously configured `vswitchId` on a `standard` or `extreme` file system, remove it from the configuration before upgrading.
          * 
          * @return builder
          * 
@@ -1121,9 +1161,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
          * 
-         * &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+         * &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
          * 
-         * &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+         * &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
          * 
          * @return builder
          * 
@@ -1140,9 +1180,9 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * When the FileSystemType is set to standard, this parameter is optional. By default, a zone that meets the conditions is randomly selected based on the ProtocolType and StorageType configurations. This parameter is required when FileSystemType = extreme or FileSystemType = cpfs.
          * 
-         * &gt; **NOTE:** - file systems in different zones in the same region communicate with ECS cloud servers.
+         * &gt; **NOTE:** file systems in different zones in the same region communicate with ECS cloud servers.
          * 
-         * &gt; **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
+         * &gt; **NOTE:** We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
          * 
          * @return builder
          * 

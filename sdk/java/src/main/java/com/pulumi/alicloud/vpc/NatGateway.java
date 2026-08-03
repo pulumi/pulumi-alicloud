@@ -186,6 +186,24 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.accessMode;
     }
     /**
+     * The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     * 
+     */
+    @Export(name="availabilityMode", refs={String.class}, tree="[0]")
+    private Output<String> availabilityMode;
+
+    /**
+     * @return The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     * 
+     */
+    public Output<String> availabilityMode() {
+        return this.availabilityMode;
+    }
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -356,28 +374,28 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.natGatewayName;
     }
     /**
-     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      * 
      */
     @Export(name="natType", refs={String.class}, tree="[0]")
     private Output<String> natType;
 
     /**
-     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      * 
      */
     public Output<String> natType() {
         return this.natType;
     }
     /**
-     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      * 
      */
     @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
-     * @return Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * @return Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      * 
      */
     public Output<String> networkType() {
@@ -498,14 +516,14 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The id of VSwitch.
+     * The id of VSwitch. The parameter is immutable after resource creation.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The id of VSwitch.
+     * @return The id of VSwitch. The parameter is immutable after resource creation.
      * 
      */
     public Output<Optional<String>> vswitchId() {

@@ -215,6 +215,18 @@ namespace Pulumi.AliCloud.Redis
         public Output<int> IntranetBandwidth { get; private set; } = null!;
 
         /// <summary>
+        /// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        /// </summary>
+        [Output("maintainEndTime")]
+        public Output<string> MaintainEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        /// </summary>
+        [Output("maintainStartTime")]
+        public Output<string> MaintainStartTime { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum number of connections supported by the instance.
         /// </summary>
         [Output("maxConnections")]
@@ -623,6 +635,18 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? IntranetBandwidth { get; set; }
 
         /// <summary>
+        /// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        /// </summary>
+        [Input("maintainEndTime")]
+        public Input<string>? MaintainEndTime { get; set; }
+
+        /// <summary>
+        /// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        /// </summary>
+        [Input("maintainStartTime")]
+        public Input<string>? MaintainStartTime { get; set; }
+
+        /// <summary>
         /// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         /// </summary>
         [Input("modifyMode")]
@@ -991,6 +1015,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("intranetBandwidth")]
         public Input<int>? IntranetBandwidth { get; set; }
+
+        /// <summary>
+        /// The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+        /// </summary>
+        [Input("maintainEndTime")]
+        public Input<string>? MaintainEndTime { get; set; }
+
+        /// <summary>
+        /// The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+        /// </summary>
+        [Input("maintainStartTime")]
+        public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
         /// The maximum number of connections supported by the instance.

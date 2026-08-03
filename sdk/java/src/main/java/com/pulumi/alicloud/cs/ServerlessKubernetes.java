@@ -23,7 +23,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
+ * &gt; **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `alicloud.cs.ManagedKubernetes` instead.
  * 
  * This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
  * 
@@ -132,14 +132,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cs/serverlessKubernetes:ServerlessKubernetes")
 public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Export(name="addons", refs={List.class,ServerlessKubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerlessKubernetesAddon>> addons;
 
     /**
-     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Output<Optional<List<ServerlessKubernetesAddon>>> addons() {
@@ -266,6 +266,22 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
+     * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     * 
+     */
+    @Export(name="disableEncryption", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> disableEncryption;
+
+    /**
+     * @return Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     * 
+     */
+    public Output<Boolean> disableEncryption() {
+        return this.disableEncryption;
+    }
+    /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
@@ -278,6 +294,22 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableRrsa() {
         return Codegen.optional(this.enableRrsa);
+    }
+    /**
+     * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     * 
+     */
+    @Export(name="encryptionProviderKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> encryptionProviderKey;
+
+    /**
+     * @return The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     * 
+     */
+    public Output<Optional<String>> encryptionProviderKey() {
+        return Codegen.optional(this.encryptionProviderKey);
     }
     /**
      * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.

@@ -316,6 +316,36 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     * 
+     */
+    @Import(name="maintainEndTime")
+    private @Nullable Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     * 
+     */
+    public Optional<Output<String>> maintainEndTime() {
+        return Optional.ofNullable(this.maintainEndTime);
+    }
+
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     * 
+     */
+    @Import(name="maintainStartTime")
+    private @Nullable Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     * 
+     */
+    public Optional<Output<String>> maintainStartTime() {
+        return Optional.ofNullable(this.maintainStartTime);
+    }
+
+    /**
      * The maximum number of connections supported by the instance.
      * 
      */
@@ -949,6 +979,8 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         this.instanceClass = $.instanceClass;
         this.instanceType = $.instanceType;
         this.intranetBandwidth = $.intranetBandwidth;
+        this.maintainEndTime = $.maintainEndTime;
+        this.maintainStartTime = $.maintainStartTime;
         this.maxConnections = $.maxConnections;
         this.modifyMode = $.modifyMode;
         this.networkType = $.networkType;
@@ -1404,6 +1436,48 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder intranetBandwidth(Integer intranetBandwidth) {
             return intranetBandwidth(Output.of(intranetBandwidth));
+        }
+
+        /**
+         * @param maintainEndTime The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainEndTime(@Nullable Output<String> maintainEndTime) {
+            $.maintainEndTime = maintainEndTime;
+            return this;
+        }
+
+        /**
+         * @param maintainEndTime The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainEndTime(String maintainEndTime) {
+            return maintainEndTime(Output.of(maintainEndTime));
+        }
+
+        /**
+         * @param maintainStartTime The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainStartTime(@Nullable Output<String> maintainStartTime) {
+            $.maintainStartTime = maintainStartTime;
+            return this;
+        }
+
+        /**
+         * @param maintainStartTime The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintainStartTime(String maintainStartTime) {
+            return maintainStartTime(Output.of(maintainStartTime));
         }
 
         /**

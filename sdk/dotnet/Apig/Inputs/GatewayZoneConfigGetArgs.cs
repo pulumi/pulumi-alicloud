@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Apig.Inputs
     public sealed class GatewayZoneConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Availability Zone Options
+        /// Zone selection option.
         /// </summary>
         [Input("selectOption", required: true)]
         public Input<string> SelectOption { get; set; } = null!;

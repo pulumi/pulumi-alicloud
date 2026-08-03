@@ -26,6 +26,7 @@ __all__ = [
     'InstanceIpWhitelist',
     'InstanceParameter',
     'GetAccountsAccountResult',
+    'GetApiKeysKeyResult',
     'GetDataBackupsBackupResult',
     'GetDbInstancePlansPlanResult',
     'GetDbInstancePlansPlanPlanConfigResult',
@@ -821,6 +822,79 @@ class GetAccountsAccountResult(dict):
         The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetApiKeysKeyResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 key_id: _builtins.str,
+                 key_name: _builtins.str,
+                 key_prefix: _builtins.str):
+        """
+        :param _builtins.str create_time: The creation time of the resource.
+        :param _builtins.str description: The description of the API key.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str key_id: The ID of the API key.
+        :param _builtins.str key_name: The name of the API key.
+        :param _builtins.str key_prefix: The prefix of the API key.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_name", key_name)
+        pulumi.set(__self__, "key_prefix", key_prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the API key.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> _builtins.str:
+        """
+        The ID of the API key.
+        """
+        return pulumi.get(self, "key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> _builtins.str:
+        """
+        The name of the API key.
+        """
+        return pulumi.get(self, "key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="keyPrefix")
+    def key_prefix(self) -> _builtins.str:
+        """
+        The prefix of the API key.
+        """
+        return pulumi.get(self, "key_prefix")
 
 
 @pulumi.output_type

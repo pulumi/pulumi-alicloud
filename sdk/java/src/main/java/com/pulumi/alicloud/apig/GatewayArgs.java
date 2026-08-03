@@ -25,14 +25,35 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     public static final GatewayArgs Empty = new GatewayArgs();
 
     /**
-     * The name of the resource
+     * Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     * 
+     */
+    @Import(name="gatewayEdition")
+    private @Nullable Output<String> gatewayEdition;
+
+    /**
+     * @return Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     * 
+     */
+    public Optional<Output<String>> gatewayEdition() {
+        return Optional.ofNullable(this.gatewayEdition);
+    }
+
+    /**
+     * Query by exact match of the gateway name.
      * 
      */
     @Import(name="gatewayName")
     private @Nullable Output<String> gatewayName;
 
     /**
-     * @return The name of the resource
+     * @return Query by exact match of the gateway name.
      * 
      */
     public Optional<Output<String>> gatewayName() {
@@ -40,18 +61,18 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      * 
      */
     @Import(name="gatewayType")
     private @Nullable Output<String> gatewayType;
 
     /**
-     * @return Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * @return The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      * 
      */
     public Optional<Output<String>> gatewayType() {
@@ -59,14 +80,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Log Configuration See `logConfig` below.
+     * The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Import(name="logConfig")
     private @Nullable Output<GatewayLogConfigArgs> logConfig;
 
     /**
-     * @return Log Configuration See `logConfig` below.
+     * @return The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Optional<Output<GatewayLogConfigArgs>> logConfig() {
@@ -74,14 +95,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network Access Configuration See `networkAccessConfig` below.
+     * The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Import(name="networkAccessConfig")
     private @Nullable Output<GatewayNetworkAccessConfigArgs> networkAccessConfig;
 
     /**
-     * @return Network Access Configuration See `networkAccessConfig` below.
+     * @return The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Optional<Output<GatewayNetworkAccessConfigArgs>> networkAccessConfig() {
@@ -89,14 +110,18 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource
+     * Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      * 
      */
     public Output<String> paymentType() {
@@ -104,14 +129,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group
+     * The ID of the destination resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the destination resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -119,14 +144,16 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Gateway instance specifications
+     * Gateway specification:
+     * - apigw.small.x1: Small specification.
      * 
      */
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
-     * @return Gateway instance specifications
+     * @return Gateway specification:
+     * - apigw.small.x1: Small specification.
      * 
      */
     public Optional<Output<String>> spec() {
@@ -149,14 +176,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC associated with the Gateway. See `vpc` below.
+     * The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      * 
      */
     @Import(name="vpc")
     private @Nullable Output<GatewayVpcArgs> vpc;
 
     /**
-     * @return The VPC associated with the Gateway. See `vpc` below.
+     * @return The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      * 
      */
     public Optional<Output<GatewayVpcArgs>> vpc() {
@@ -164,14 +191,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The virtual switch associated with the Gateway. See `vswitch` below.
+     * The vSwitch associated with the gateway. See `vswitch` below.
      * 
      */
     @Import(name="vswitch")
     private @Nullable Output<GatewayVswitchArgs> vswitch;
 
     /**
-     * @return The virtual switch associated with the Gateway. See `vswitch` below.
+     * @return The vSwitch associated with the gateway. See `vswitch` below.
      * 
      */
     public Optional<Output<GatewayVswitchArgs>> vswitch() {
@@ -179,14 +206,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Availability Zone Configuration See `zoneConfig` below.
+     * The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Import(name="zoneConfig", required=true)
     private Output<GatewayZoneConfigArgs> zoneConfig;
 
     /**
-     * @return Availability Zone Configuration See `zoneConfig` below.
+     * @return The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Output<GatewayZoneConfigArgs> zoneConfig() {
@@ -194,14 +221,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The List of zones associated with the Gateway. See `zones` below.
+     * The list of zones associated with the gateway. See `zones` below.
      * 
      */
     @Import(name="zones")
     private @Nullable Output<List<GatewayZoneArgs>> zones;
 
     /**
-     * @return The List of zones associated with the Gateway. See `zones` below.
+     * @return The list of zones associated with the gateway. See `zones` below.
      * 
      */
     public Optional<Output<List<GatewayZoneArgs>>> zones() {
@@ -211,6 +238,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     private GatewayArgs() {}
 
     private GatewayArgs(GatewayArgs $) {
+        this.gatewayEdition = $.gatewayEdition;
         this.gatewayName = $.gatewayName;
         this.gatewayType = $.gatewayType;
         this.logConfig = $.logConfig;
@@ -244,7 +272,34 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayName The name of the resource
+         * @param gatewayEdition Gateway instance edition. Valid values:
+         * - Professional: Standard instance.
+         * - Serverless: Serverless instance.
+         * - MultiTenantServerless: Multi-tenant Serverless instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayEdition(@Nullable Output<String> gatewayEdition) {
+            $.gatewayEdition = gatewayEdition;
+            return this;
+        }
+
+        /**
+         * @param gatewayEdition Gateway instance edition. Valid values:
+         * - Professional: Standard instance.
+         * - Serverless: Serverless instance.
+         * - MultiTenantServerless: Multi-tenant Serverless instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayEdition(String gatewayEdition) {
+            return gatewayEdition(Output.of(gatewayEdition));
+        }
+
+        /**
+         * @param gatewayName Query by exact match of the gateway name.
          * 
          * @return builder
          * 
@@ -255,7 +310,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayName The name of the resource
+         * @param gatewayName Query by exact match of the gateway name.
          * 
          * @return builder
          * 
@@ -265,9 +320,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayType Describes the gateway type, which is categorized into the following two types:
-         * - API: indicates an API gateway
-         * - AI: Indicates an AI gateway
+         * @param gatewayType The gateway type. Valid values:
+         * - API: API Gateway
+         * - AI: AI Gateway
          * 
          * @return builder
          * 
@@ -278,9 +333,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayType Describes the gateway type, which is categorized into the following two types:
-         * - API: indicates an API gateway
-         * - AI: Indicates an AI gateway
+         * @param gatewayType The gateway type. Valid values:
+         * - API: API Gateway
+         * - AI: AI Gateway
          * 
          * @return builder
          * 
@@ -290,7 +345,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logConfig Log Configuration See `logConfig` below.
+         * @param logConfig The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -301,7 +356,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logConfig Log Configuration See `logConfig` below.
+         * @param logConfig The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -311,7 +366,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAccessConfig Network Access Configuration See `networkAccessConfig` below.
+         * @param networkAccessConfig The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -322,7 +377,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAccessConfig Network Access Configuration See `networkAccessConfig` below.
+         * @param networkAccessConfig The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -332,7 +387,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType Payment type. Valid values:
+         * - PayAsYouGo: Pay-as-you-go.
+         * - Subscription: Subscription.
          * 
          * @return builder
          * 
@@ -343,7 +400,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType Payment type. Valid values:
+         * - PayAsYouGo: Pay-as-you-go.
+         * - Subscription: Subscription.
          * 
          * @return builder
          * 
@@ -353,7 +412,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the destination resource group.
          * 
          * @return builder
          * 
@@ -364,7 +423,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the destination resource group.
          * 
          * @return builder
          * 
@@ -374,7 +433,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec Gateway instance specifications
+         * @param spec Gateway specification:
+         * - apigw.small.x1: Small specification.
          * 
          * @return builder
          * 
@@ -385,7 +445,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec Gateway instance specifications
+         * @param spec Gateway specification:
+         * - apigw.small.x1: Small specification.
          * 
          * @return builder
          * 
@@ -416,7 +477,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpc The VPC associated with the Gateway. See `vpc` below.
+         * @param vpc The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
          * 
          * @return builder
          * 
@@ -427,7 +488,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpc The VPC associated with the Gateway. See `vpc` below.
+         * @param vpc The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
          * 
          * @return builder
          * 
@@ -437,7 +498,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitch The virtual switch associated with the Gateway. See `vswitch` below.
+         * @param vswitch The vSwitch associated with the gateway. See `vswitch` below.
          * 
          * @return builder
          * 
@@ -448,7 +509,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitch The virtual switch associated with the Gateway. See `vswitch` below.
+         * @param vswitch The vSwitch associated with the gateway. See `vswitch` below.
          * 
          * @return builder
          * 
@@ -458,7 +519,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneConfig Availability Zone Configuration See `zoneConfig` below.
+         * @param zoneConfig The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -469,7 +530,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneConfig Availability Zone Configuration See `zoneConfig` below.
+         * @param zoneConfig The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -479,7 +540,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zones The List of zones associated with the Gateway. See `zones` below.
+         * @param zones The list of zones associated with the gateway. See `zones` below.
          * 
          * @return builder
          * 
@@ -490,7 +551,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zones The List of zones associated with the Gateway. See `zones` below.
+         * @param zones The list of zones associated with the gateway. See `zones` below.
          * 
          * @return builder
          * 
@@ -500,7 +561,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zones The List of zones associated with the Gateway. See `zones` below.
+         * @param zones The list of zones associated with the gateway. See `zones` below.
          * 
          * @return builder
          * 

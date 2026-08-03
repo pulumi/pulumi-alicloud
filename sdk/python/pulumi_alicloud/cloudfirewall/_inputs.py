@@ -15,6 +15,14 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AddressBookAssetRegionResourceTypeArgs',
+    'AddressBookAssetRegionResourceTypeArgsDict',
+    'AddressBookAssetRegionResourceTypeResourceTypeArgs',
+    'AddressBookAssetRegionResourceTypeResourceTypeArgsDict',
+    'AddressBookAssetRegionResourceTypeResourceTypeIpv4Args',
+    'AddressBookAssetRegionResourceTypeResourceTypeIpv4ArgsDict',
+    'AddressBookAssetRegionResourceTypeResourceTypeIpv6Args',
+    'AddressBookAssetRegionResourceTypeResourceTypeIpv6ArgsDict',
     'AddressBookEcsTagArgs',
     'AddressBookEcsTagArgsDict',
     'FirewallVpcFirewallCenLocalVpcArgs',
@@ -46,6 +54,622 @@ __all__ = [
     'UserAlarmConfigNotifyConfigArgs',
     'UserAlarmConfigNotifyConfigArgsDict',
 ]
+
+class AddressBookAssetRegionResourceTypeArgsDict(TypedDict):
+    asset_region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `asset_region_id` cannot be modified after the Address Book is created.
+    """
+    resource_type: NotRequired[pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeArgsDict']]]
+    """
+    The types of the assets. See `resource_type` below.
+    """
+
+@pulumi.input_type
+class AddressBookAssetRegionResourceTypeArgs:
+    def __init__(__self__, *,
+                 asset_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] asset_region_id: The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `asset_region_id` cannot be modified after the Address Book is created.
+        :param pulumi.Input['AddressBookAssetRegionResourceTypeResourceTypeArgs'] resource_type: The types of the assets. See `resource_type` below.
+        """
+        if asset_region_id is not None:
+            pulumi.set(__self__, "asset_region_id", asset_region_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter(name="assetRegionId")
+    def asset_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `asset_region_id` cannot be modified after the Address Book is created.
+        """
+        return pulumi.get(self, "asset_region_id")
+
+    @asset_region_id.setter
+    def asset_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "asset_region_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeArgs']]:
+        """
+        The types of the assets. See `resource_type` below.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeArgs']]):
+        pulumi.set(self, "resource_type", value)
+
+
+class AddressBookAssetRegionResourceTypeResourceTypeArgsDict(TypedDict):
+    ipv4: NotRequired[pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv4ArgsDict']]]
+    """
+    The IPv4 asset types. See `ipv4` below.
+    """
+    ipv6: NotRequired[pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv6ArgsDict']]]
+    """
+    The IPv6 asset types. See `ipv6` below.
+    """
+
+@pulumi.input_type
+class AddressBookAssetRegionResourceTypeResourceTypeArgs:
+    def __init__(__self__, *,
+                 ipv4: pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv4Args']] = None,
+                 ipv6: pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv6Args']] = None):
+        """
+        :param pulumi.Input['AddressBookAssetRegionResourceTypeResourceTypeIpv4Args'] ipv4: The IPv4 asset types. See `ipv4` below.
+        :param pulumi.Input['AddressBookAssetRegionResourceTypeResourceTypeIpv6Args'] ipv6: The IPv6 asset types. See `ipv6` below.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv4Args']]:
+        """
+        The IPv4 asset types. See `ipv4` below.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv4Args']]):
+        pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv6Args']]:
+        """
+        The IPv6 asset types. See `ipv6` below.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: pulumi.Input[Optional['AddressBookAssetRegionResourceTypeResourceTypeIpv6Args']]):
+        pulumi.set(self, "ipv6", value)
+
+
+class AddressBookAssetRegionResourceTypeResourceTypeIpv4ArgsDict(TypedDict):
+    ai_gateway_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type AiGatewayEIP.
+    """
+    alb_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type AlbEIP.
+    """
+    api_gateway_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type ApiGatewayEIP.
+    """
+    bastion_host_egress_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type BastionHostEgressIP.
+    """
+    bastion_host_ingress_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type BastionHostIngressIP.
+    """
+    bastion_host_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type BastionHostIP.
+    """
+    ecs_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type EcsEIP.
+    """
+    ecs_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type EcsPublicIP.
+    """
+    eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type EIP.
+    """
+    eni_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type EniEIP.
+    """
+    ga_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type GaEIP.
+    """
+    havip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type HAVIP.
+    """
+    nat_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type NatEIP.
+    """
+    nat_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type NatPublicIP.
+    """
+    nlb_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type NlbEIP.
+    """
+    slb_eip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type SlbEIP.
+    """
+    slb_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type SlbPublicIP.
+    """
+
+@pulumi.input_type
+class AddressBookAssetRegionResourceTypeResourceTypeIpv4Args:
+    def __init__(__self__, *,
+                 ai_gateway_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alb_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_gateway_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bastion_host_egress_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bastion_host_ingress_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bastion_host_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eni_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ga_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 havip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nlb_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_public_ip: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ai_gateway_eip: Whether to include the assets of the type AiGatewayEIP.
+        :param pulumi.Input[_builtins.bool] alb_eip: Whether to include the assets of the type AlbEIP.
+        :param pulumi.Input[_builtins.bool] api_gateway_eip: Whether to include the assets of the type ApiGatewayEIP.
+        :param pulumi.Input[_builtins.bool] bastion_host_egress_ip: Whether to include the assets of the type BastionHostEgressIP.
+        :param pulumi.Input[_builtins.bool] bastion_host_ingress_ip: Whether to include the assets of the type BastionHostIngressIP.
+        :param pulumi.Input[_builtins.bool] bastion_host_ip: Whether to include the assets of the type BastionHostIP.
+        :param pulumi.Input[_builtins.bool] ecs_eip: Whether to include the assets of the type EcsEIP.
+        :param pulumi.Input[_builtins.bool] ecs_public_ip: Whether to include the assets of the type EcsPublicIP.
+        :param pulumi.Input[_builtins.bool] eip: Whether to include the assets of the type EIP.
+        :param pulumi.Input[_builtins.bool] eni_eip: Whether to include the assets of the type EniEIP.
+        :param pulumi.Input[_builtins.bool] ga_eip: Whether to include the assets of the type GaEIP.
+        :param pulumi.Input[_builtins.bool] havip: Whether to include the assets of the type HAVIP.
+        :param pulumi.Input[_builtins.bool] nat_eip: Whether to include the assets of the type NatEIP.
+        :param pulumi.Input[_builtins.bool] nat_public_ip: Whether to include the assets of the type NatPublicIP.
+        :param pulumi.Input[_builtins.bool] nlb_eip: Whether to include the assets of the type NlbEIP.
+        :param pulumi.Input[_builtins.bool] slb_eip: Whether to include the assets of the type SlbEIP.
+        :param pulumi.Input[_builtins.bool] slb_public_ip: Whether to include the assets of the type SlbPublicIP.
+        """
+        if ai_gateway_eip is not None:
+            pulumi.set(__self__, "ai_gateway_eip", ai_gateway_eip)
+        if alb_eip is not None:
+            pulumi.set(__self__, "alb_eip", alb_eip)
+        if api_gateway_eip is not None:
+            pulumi.set(__self__, "api_gateway_eip", api_gateway_eip)
+        if bastion_host_egress_ip is not None:
+            pulumi.set(__self__, "bastion_host_egress_ip", bastion_host_egress_ip)
+        if bastion_host_ingress_ip is not None:
+            pulumi.set(__self__, "bastion_host_ingress_ip", bastion_host_ingress_ip)
+        if bastion_host_ip is not None:
+            pulumi.set(__self__, "bastion_host_ip", bastion_host_ip)
+        if ecs_eip is not None:
+            pulumi.set(__self__, "ecs_eip", ecs_eip)
+        if ecs_public_ip is not None:
+            pulumi.set(__self__, "ecs_public_ip", ecs_public_ip)
+        if eip is not None:
+            pulumi.set(__self__, "eip", eip)
+        if eni_eip is not None:
+            pulumi.set(__self__, "eni_eip", eni_eip)
+        if ga_eip is not None:
+            pulumi.set(__self__, "ga_eip", ga_eip)
+        if havip is not None:
+            pulumi.set(__self__, "havip", havip)
+        if nat_eip is not None:
+            pulumi.set(__self__, "nat_eip", nat_eip)
+        if nat_public_ip is not None:
+            pulumi.set(__self__, "nat_public_ip", nat_public_ip)
+        if nlb_eip is not None:
+            pulumi.set(__self__, "nlb_eip", nlb_eip)
+        if slb_eip is not None:
+            pulumi.set(__self__, "slb_eip", slb_eip)
+        if slb_public_ip is not None:
+            pulumi.set(__self__, "slb_public_ip", slb_public_ip)
+
+    @_builtins.property
+    @pulumi.getter(name="aiGatewayEip")
+    def ai_gateway_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type AiGatewayEIP.
+        """
+        return pulumi.get(self, "ai_gateway_eip")
+
+    @ai_gateway_eip.setter
+    def ai_gateway_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ai_gateway_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="albEip")
+    def alb_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type AlbEIP.
+        """
+        return pulumi.get(self, "alb_eip")
+
+    @alb_eip.setter
+    def alb_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "alb_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiGatewayEip")
+    def api_gateway_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type ApiGatewayEIP.
+        """
+        return pulumi.get(self, "api_gateway_eip")
+
+    @api_gateway_eip.setter
+    def api_gateway_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "api_gateway_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bastionHostEgressIp")
+    def bastion_host_egress_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type BastionHostEgressIP.
+        """
+        return pulumi.get(self, "bastion_host_egress_ip")
+
+    @bastion_host_egress_ip.setter
+    def bastion_host_egress_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bastion_host_egress_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bastionHostIngressIp")
+    def bastion_host_ingress_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type BastionHostIngressIP.
+        """
+        return pulumi.get(self, "bastion_host_ingress_ip")
+
+    @bastion_host_ingress_ip.setter
+    def bastion_host_ingress_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bastion_host_ingress_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bastionHostIp")
+    def bastion_host_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type BastionHostIP.
+        """
+        return pulumi.get(self, "bastion_host_ip")
+
+    @bastion_host_ip.setter
+    def bastion_host_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "bastion_host_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ecsEip")
+    def ecs_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type EcsEIP.
+        """
+        return pulumi.get(self, "ecs_eip")
+
+    @ecs_eip.setter
+    def ecs_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ecs_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ecsPublicIp")
+    def ecs_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type EcsPublicIP.
+        """
+        return pulumi.get(self, "ecs_public_ip")
+
+    @ecs_public_ip.setter
+    def ecs_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ecs_public_ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type EIP.
+        """
+        return pulumi.get(self, "eip")
+
+    @eip.setter
+    def eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eniEip")
+    def eni_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type EniEIP.
+        """
+        return pulumi.get(self, "eni_eip")
+
+    @eni_eip.setter
+    def eni_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "eni_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gaEip")
+    def ga_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type GaEIP.
+        """
+        return pulumi.get(self, "ga_eip")
+
+    @ga_eip.setter
+    def ga_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ga_eip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def havip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type HAVIP.
+        """
+        return pulumi.get(self, "havip")
+
+    @havip.setter
+    def havip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "havip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="natEip")
+    def nat_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type NatEIP.
+        """
+        return pulumi.get(self, "nat_eip")
+
+    @nat_eip.setter
+    def nat_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "nat_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="natPublicIp")
+    def nat_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type NatPublicIP.
+        """
+        return pulumi.get(self, "nat_public_ip")
+
+    @nat_public_ip.setter
+    def nat_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "nat_public_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nlbEip")
+    def nlb_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type NlbEIP.
+        """
+        return pulumi.get(self, "nlb_eip")
+
+    @nlb_eip.setter
+    def nlb_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "nlb_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slbEip")
+    def slb_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type SlbEIP.
+        """
+        return pulumi.get(self, "slb_eip")
+
+    @slb_eip.setter
+    def slb_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "slb_eip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slbPublicIp")
+    def slb_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type SlbPublicIP.
+        """
+        return pulumi.get(self, "slb_public_ip")
+
+    @slb_public_ip.setter
+    def slb_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "slb_public_ip", value)
+
+
+class AddressBookAssetRegionResourceTypeResourceTypeIpv6ArgsDict(TypedDict):
+    ai_gateway_eipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type AiGatewayEIPv6.
+    """
+    alb_ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type AlbIPv6.
+    """
+    api_gateway_eipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type ApiGatewayEIPv6.
+    """
+    ecs_ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type EcsIPv6.
+    """
+    eni_eipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type EniEIPv6.
+    """
+    ga_eipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type GaEIPv6.
+    """
+    nlb_ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type NlbIPv6.
+    """
+    slb_ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to include the assets of the type SlbIPv6.
+    """
+
+@pulumi.input_type
+class AddressBookAssetRegionResourceTypeResourceTypeIpv6Args:
+    def __init__(__self__, *,
+                 ai_gateway_eipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alb_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_gateway_eipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 eni_eipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ga_eipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nlb_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slb_ipv6: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ai_gateway_eipv6: Whether to include the assets of the type AiGatewayEIPv6.
+        :param pulumi.Input[_builtins.bool] alb_ipv6: Whether to include the assets of the type AlbIPv6.
+        :param pulumi.Input[_builtins.bool] api_gateway_eipv6: Whether to include the assets of the type ApiGatewayEIPv6.
+        :param pulumi.Input[_builtins.bool] ecs_ipv6: Whether to include the assets of the type EcsIPv6.
+        :param pulumi.Input[_builtins.bool] eni_eipv6: Whether to include the assets of the type EniEIPv6.
+        :param pulumi.Input[_builtins.bool] ga_eipv6: Whether to include the assets of the type GaEIPv6.
+        :param pulumi.Input[_builtins.bool] nlb_ipv6: Whether to include the assets of the type NlbIPv6.
+        :param pulumi.Input[_builtins.bool] slb_ipv6: Whether to include the assets of the type SlbIPv6.
+        """
+        if ai_gateway_eipv6 is not None:
+            pulumi.set(__self__, "ai_gateway_eipv6", ai_gateway_eipv6)
+        if alb_ipv6 is not None:
+            pulumi.set(__self__, "alb_ipv6", alb_ipv6)
+        if api_gateway_eipv6 is not None:
+            pulumi.set(__self__, "api_gateway_eipv6", api_gateway_eipv6)
+        if ecs_ipv6 is not None:
+            pulumi.set(__self__, "ecs_ipv6", ecs_ipv6)
+        if eni_eipv6 is not None:
+            pulumi.set(__self__, "eni_eipv6", eni_eipv6)
+        if ga_eipv6 is not None:
+            pulumi.set(__self__, "ga_eipv6", ga_eipv6)
+        if nlb_ipv6 is not None:
+            pulumi.set(__self__, "nlb_ipv6", nlb_ipv6)
+        if slb_ipv6 is not None:
+            pulumi.set(__self__, "slb_ipv6", slb_ipv6)
+
+    @_builtins.property
+    @pulumi.getter(name="aiGatewayEipv6")
+    def ai_gateway_eipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type AiGatewayEIPv6.
+        """
+        return pulumi.get(self, "ai_gateway_eipv6")
+
+    @ai_gateway_eipv6.setter
+    def ai_gateway_eipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ai_gateway_eipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="albIpv6")
+    def alb_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type AlbIPv6.
+        """
+        return pulumi.get(self, "alb_ipv6")
+
+    @alb_ipv6.setter
+    def alb_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "alb_ipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiGatewayEipv6")
+    def api_gateway_eipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type ApiGatewayEIPv6.
+        """
+        return pulumi.get(self, "api_gateway_eipv6")
+
+    @api_gateway_eipv6.setter
+    def api_gateway_eipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "api_gateway_eipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ecsIpv6")
+    def ecs_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type EcsIPv6.
+        """
+        return pulumi.get(self, "ecs_ipv6")
+
+    @ecs_ipv6.setter
+    def ecs_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ecs_ipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eniEipv6")
+    def eni_eipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type EniEIPv6.
+        """
+        return pulumi.get(self, "eni_eipv6")
+
+    @eni_eipv6.setter
+    def eni_eipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "eni_eipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gaEipv6")
+    def ga_eipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type GaEIPv6.
+        """
+        return pulumi.get(self, "ga_eipv6")
+
+    @ga_eipv6.setter
+    def ga_eipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ga_eipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nlbIpv6")
+    def nlb_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type NlbIPv6.
+        """
+        return pulumi.get(self, "nlb_ipv6")
+
+    @nlb_ipv6.setter
+    def nlb_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "nlb_ipv6", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slbIpv6")
+    def slb_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to include the assets of the type SlbIPv6.
+        """
+        return pulumi.get(self, "slb_ipv6")
+
+    @slb_ipv6.setter
+    def slb_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "slb_ipv6", value)
+
 
 class AddressBookEcsTagArgsDict(TypedDict):
     tag_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]

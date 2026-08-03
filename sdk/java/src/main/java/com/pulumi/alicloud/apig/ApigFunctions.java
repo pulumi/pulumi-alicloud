@@ -4,9 +4,24 @@
 package com.pulumi.alicloud.apig;
 
 import com.pulumi.alicloud.Utilities;
+import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersArgs;
+import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+import com.pulumi.alicloud.apig.inputs.GetDomainsPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+import com.pulumi.alicloud.apig.inputs.GetGatewaysPlainArgs;
 import com.pulumi.alicloud.apig.inputs.GetPluginClassesArgs;
 import com.pulumi.alicloud.apig.inputs.GetPluginClassesPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+import com.pulumi.alicloud.apig.inputs.GetPluginsPlainArgs;
+import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+import com.pulumi.alicloud.apig.inputs.GetServicesPlainArgs;
+import com.pulumi.alicloud.apig.outputs.GetAiModelProvidersResult;
+import com.pulumi.alicloud.apig.outputs.GetDomainsResult;
+import com.pulumi.alicloud.apig.outputs.GetGatewaysResult;
 import com.pulumi.alicloud.apig.outputs.GetPluginClassesResult;
+import com.pulumi.alicloud.apig.outputs.GetPluginsResult;
+import com.pulumi.alicloud.apig.outputs.GetServicesResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -15,6 +30,1281 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class ApigFunctions {
+    /**
+     * This data source provides Apig Ai Model Provider available to the user.[What is Ai Model Provider](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAiModelProvider)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getAiModelProviders(GetAiModelProvidersArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstProviderId", default_.providers()[0].modelProviderId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiModelProvidersResult> getAiModelProviders(GetAiModelProvidersArgs args) {
+        return getAiModelProviders(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Ai Model Provider available to the user.[What is Ai Model Provider](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAiModelProvider)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getAiModelProviders(GetAiModelProvidersArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstProviderId", default_.providers()[0].modelProviderId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAiModelProvidersResult> getAiModelProvidersPlain(GetAiModelProvidersPlainArgs args) {
+        return getAiModelProvidersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Ai Model Provider available to the user.[What is Ai Model Provider](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAiModelProvider)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getAiModelProviders(GetAiModelProvidersArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstProviderId", default_.providers()[0].modelProviderId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiModelProvidersResult> getAiModelProviders(GetAiModelProvidersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getAiModelProviders:getAiModelProviders", TypeShape.of(GetAiModelProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Ai Model Provider available to the user.[What is Ai Model Provider](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAiModelProvider)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getAiModelProviders(GetAiModelProvidersArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstProviderId", default_.providers()[0].modelProviderId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAiModelProvidersResult> getAiModelProviders(GetAiModelProvidersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getAiModelProviders:getAiModelProviders", TypeShape.of(GetAiModelProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Ai Model Provider available to the user.[What is Ai Model Provider](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateAiModelProvider)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetAiModelProvidersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var gatewayId = config.require("gatewayId");
+     *         final var default = ApigFunctions.getAiModelProviders(GetAiModelProvidersArgs.builder()
+     *             .gatewayId(gatewayId)
+     *             .build());
+     * 
+     *         ctx.export("firstProviderId", default_.providers()[0].modelProviderId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAiModelProvidersResult> getAiModelProvidersPlain(GetAiModelProvidersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getAiModelProviders:getAiModelProviders", TypeShape.of(GetAiModelProvidersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains() {
+        return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
+        return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
+        return getDomains(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
+        return getDomainsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Domain available to the user.[What is Domain](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateDomain)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.apig.Domain;
+     * import com.pulumi.alicloud.apig.DomainArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetDomainsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+     *             .domainName("example-domain.example.com")
+     *             .gatewayType("API")
+     *             .protocol("HTTP")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getDomains(GetDomainsArgs.builder()
+     *             .ids(defaultDomain.id())
+     *             .nameRegex(defaultDomain.domainName())
+     *             .resourceGroupId("")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigDomainExampleId", default_.applyValue(_default_ -> _default_.domains()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewaysResult> getGateways() {
+        return getGateways(GetGatewaysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewaysResult> getGatewaysPlain() {
+        return getGatewaysPlain(GetGatewaysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args) {
+        return getGateways(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args) {
+        return getGatewaysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetGatewaysResult> getGateways(GetGatewaysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Gateway available to the user.[What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway)
+     * 
+     * &gt; **NOTE:** Available since v1.284.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.vpc.VpcFunctions;
+     * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+     * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetGatewaysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .nameRegex("^default-NODELETING$")
+     *             .build());
+     * 
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.ids()[0])
+     *             .build());
+     * 
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .resourceGroupId(default_.ids()[1])
+     *             .spec("apigw.small.x1")
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultGetNetworks.ids()[0])
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultGetSwitches.ids()[0])
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         final var defaultGetGateways = ApigFunctions.getGateways(GetGatewaysArgs.builder()
+     *             .ids(defaultGateway.id())
+     *             .nameRegex(defaultGateway.gatewayName())
+     *             .gatewayName(name)
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigGatewayExampleId", defaultGetGateways.applyValue(_defaultGetGateways -> _defaultGetGateways.gateways()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(GetGatewaysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * This data source provides the APIG Plugin Class of the current Alibaba Cloud user.
      * 
@@ -406,5 +1696,1496 @@ public final class ApigFunctions {
      */
     public static CompletableFuture<GetPluginClassesResult> getPluginClassesPlain(GetPluginClassesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:apig/getPluginClasses:getPluginClasses", TypeShape.of(GetPluginClassesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins() {
+        return getPlugins(GetPluginsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPluginsResult> getPluginsPlain() {
+        return getPluginsPlain(GetPluginsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins(GetPluginsArgs args) {
+        return getPlugins(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPluginsResult> getPluginsPlain(GetPluginsPlainArgs args) {
+        return getPluginsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins(GetPluginsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPluginsResult> getPlugins(GetPluginsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Apig Plugin available to the user.[What is Plugin](https://next.api.alibabacloud.com/document/APIG/2024-03-27/InstallPlugin)
+     * 
+     * &gt; **NOTE:** Available since v1.285.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Plugin;
+     * import com.pulumi.alicloud.apig.PluginArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetPluginsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var pluginVpcPre = new Network("pluginVpcPre", NetworkArgs.builder()
+     *             .isDefault(false)
+     *             .cidrBlock("10.0.0.0/8")
+     *             .vpcName("plugin-example-vpc")
+     *             .build());
+     * 
+     *         var pluginVswitchPre = new Switch("pluginVswitchPre", SwitchArgs.builder()
+     *             .isDefault(false)
+     *             .vpcId(pluginVpcPre.id())
+     *             .zoneId("cn-hangzhou-i")
+     *             .cidrBlock("10.0.0.0/24")
+     *             .vswitchName("plugin-example-vswitch")
+     *             .build());
+     * 
+     *         var pluginGatewayPre = new Gateway("pluginGatewayPre", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Internet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(pluginVswitchPre.id())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(pluginVpcPre.id())
+     *                 .build())
+     *             .gatewayType("API")
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("plugin-example-gateway")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(true)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultPlugin = new Plugin("defaultPlugin", PluginArgs.builder()
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getPlugins(GetPluginsArgs.builder()
+     *             .ids(defaultPlugin.id())
+     *             .gatewayId(pluginGatewayPre.id())
+     *             .pluginClassId("pls-crpqb35lhtgo800k2m86")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigPluginExampleId", default_.applyValue(_default_ -> _default_.plugins()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPluginsResult> getPluginsPlain(GetPluginsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServicesResult> getServices() {
+        return getServices(GetServicesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServicesResult> getServicesPlain() {
+        return getServicesPlain(GetServicesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServicesResult> getServices(GetServicesArgs args) {
+        return getServices(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args) {
+        return getServicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServicesResult> getServices(GetServicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServicesResult> getServices(GetServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:apig/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides APIG Service available to the user. [What is Service](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateService)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.apig.Gateway;
+     * import com.pulumi.alicloud.apig.GatewayArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayNetworkAccessConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVswitchArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayZoneConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayVpcArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigArgs;
+     * import com.pulumi.alicloud.apig.inputs.GatewayLogConfigSlsArgs;
+     * import com.pulumi.alicloud.apig.Service;
+     * import com.pulumi.alicloud.apig.ServiceArgs;
+     * import com.pulumi.alicloud.apig.ApigFunctions;
+     * import com.pulumi.alicloud.apig.inputs.GetServicesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var address = config.get("address").orElse("127.0.0.1:8080");
+     *         final var address1 = config.get("address1").orElse("127.0.0.1:7891");
+     *         final var address2 = config.get("address2").orElse("127.0.0.1:7890");
+     *         var defaultvpc = new Network("defaultvpc", NetworkArgs.builder()
+     *             .cidrBlock("172.32.0.0/12")
+     *             .vpcName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultvswitch = new Switch("defaultvswitch", SwitchArgs.builder()
+     *             .vpcId(defaultvpc.id())
+     *             .zoneId("cn-hangzhou-g")
+     *             .cidrBlock("172.32.100.0/24")
+     *             .vswitchName("zhenyuan-example")
+     *             .build());
+     * 
+     *         var defaultFsRKYn = new Gateway("defaultFsRKYn", GatewayArgs.builder()
+     *             .networkAccessConfig(GatewayNetworkAccessConfigArgs.builder()
+     *                 .type("Intranet")
+     *                 .build())
+     *             .vswitch(GatewayVswitchArgs.builder()
+     *                 .vswitchId(defaultvswitch.id())
+     *                 .name(defaultvswitch.vswitchName())
+     *                 .build())
+     *             .zoneConfig(GatewayZoneConfigArgs.builder()
+     *                 .selectOption("Auto")
+     *                 .build())
+     *             .vpc(GatewayVpcArgs.builder()
+     *                 .vpcId(defaultvpc.id())
+     *                 .build())
+     *             .paymentType("PayAsYouGo")
+     *             .gatewayName("zhenyuanexample")
+     *             .spec("apigw.small.x1")
+     *             .logConfig(GatewayLogConfigArgs.builder()
+     *                 .sls(GatewayLogConfigSlsArgs.builder()
+     *                     .enable(false)
+     *                     .build())
+     *                 .build())
+     *             .build());
+     * 
+     *         var defaultService = new Service("defaultService", ServiceArgs.builder()
+     *             .addresses(address)
+     *             .serviceName("1784264568")
+     *             .sourceType("VIP")
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .namespace("default")
+     *             .build());
+     * 
+     *         final var default = ApigFunctions.getServices(GetServicesArgs.builder()
+     *             .ids(defaultService.id())
+     *             .nameRegex(defaultService.serviceName())
+     *             .gatewayId(defaultFsRKYn.id())
+     *             .sourceType("VIP")
+     *             .build());
+     * 
+     *         ctx.export("alicloudApigServiceExampleId", default_.applyValue(_default_ -> _default_.services()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:apig/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -23,6 +23,7 @@ class NatGatewayArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
                  access_mode: pulumi.Input[Optional['NatGatewayAccessModeArgs']] = None,
+                 availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -46,6 +47,9 @@ class NatGatewayArgs:
 
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
         :param pulumi.Input['NatGatewayAccessModeArgs'] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        :param pulumi.Input[_builtins.str] availability_mode: The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+               - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+               - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -60,19 +64,21 @@ class NatGatewayArgs:
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
-        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of NAT gateway.
-        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch. The parameter is immutable after resource creation.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
+        if availability_mode is not None:
+            pulumi.set(__self__, "availability_mode", availability_mode)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -139,6 +145,20 @@ class NatGatewayArgs:
     @access_mode.setter
     def access_mode(self, value: pulumi.Input[Optional['NatGatewayAccessModeArgs']]):
         pulumi.set(self, "access_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityMode")
+    def availability_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+        - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+        - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+        """
+        return pulumi.get(self, "availability_mode")
+
+    @availability_mode.setter
+    def availability_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "availability_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -270,7 +290,7 @@ class NatGatewayArgs:
     @pulumi.getter(name="natType")
     def nat_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "nat_type")
 
@@ -282,7 +302,7 @@ class NatGatewayArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "network_type")
 
@@ -355,7 +375,7 @@ class NatGatewayArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The id of VSwitch.
+        The id of VSwitch. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -368,6 +388,7 @@ class NatGatewayArgs:
 class _NatGatewayState:
     def __init__(__self__, *,
                  access_mode: pulumi.Input[Optional['NatGatewayAccessModeArgs']] = None,
+                 availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -394,6 +415,9 @@ class _NatGatewayState:
         Input properties used for looking up and filtering NatGateway resources.
 
         :param pulumi.Input['NatGatewayAccessModeArgs'] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        :param pulumi.Input[_builtins.str] availability_mode: The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+               - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+               - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -409,8 +433,8 @@ class _NatGatewayState:
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
-        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -420,10 +444,12 @@ class _NatGatewayState:
         :param pulumi.Input[_builtins.str] status: (Available since v1.121.0) The status of NAT gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of NAT gateway.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch. The parameter is immutable after resource creation.
         """
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
+        if availability_mode is not None:
+            pulumi.set(__self__, "availability_mode", availability_mode)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -486,6 +512,20 @@ class _NatGatewayState:
     @access_mode.setter
     def access_mode(self, value: pulumi.Input[Optional['NatGatewayAccessModeArgs']]):
         pulumi.set(self, "access_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityMode")
+    def availability_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+        - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+        - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+        """
+        return pulumi.get(self, "availability_mode")
+
+    @availability_mode.setter
+    def availability_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "availability_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -629,7 +669,7 @@ class _NatGatewayState:
     @pulumi.getter(name="natType")
     def nat_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "nat_type")
 
@@ -641,7 +681,7 @@ class _NatGatewayState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "network_type")
 
@@ -750,7 +790,7 @@ class _NatGatewayState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The id of VSwitch.
+        The id of VSwitch. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -766,6 +806,7 @@ class NatGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
+                 availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -874,6 +915,9 @@ class NatGateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        :param pulumi.Input[_builtins.str] availability_mode: The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+               - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+               - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -888,8 +932,8 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
-        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -897,7 +941,7 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of NAT gateway.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch. The parameter is immutable after resource creation.
         """
         ...
     @overload
@@ -1006,6 +1050,7 @@ class NatGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
+                 availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1035,6 +1080,7 @@ class NatGateway(pulumi.CustomResource):
             __props__ = NatGatewayArgs.__new__(NatGatewayArgs)
 
             __props__.__dict__["access_mode"] = access_mode
+            __props__.__dict__["availability_mode"] = availability_mode
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
@@ -1070,6 +1116,7 @@ class NatGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_mode: pulumi.Input[Optional[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
+            availability_mode: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1100,6 +1147,9 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        :param pulumi.Input[_builtins.str] availability_mode: The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+               - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+               - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -1115,8 +1165,8 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[_builtins.str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
-        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        :param pulumi.Input[_builtins.str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
+        :param pulumi.Input[_builtins.str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         :param pulumi.Input[_builtins.str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
         :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1126,13 +1176,14 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: (Available since v1.121.0) The status of NAT gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of NAT gateway.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID.
-        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch.
+        :param pulumi.Input[_builtins.str] vswitch_id: The id of VSwitch. The parameter is immutable after resource creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _NatGatewayState.__new__(_NatGatewayState)
 
         __props__.__dict__["access_mode"] = access_mode
+        __props__.__dict__["availability_mode"] = availability_mode
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
@@ -1164,6 +1215,16 @@ class NatGateway(pulumi.CustomResource):
         The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         """
         return pulumi.get(self, "access_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityMode")
+    def availability_mode(self) -> pulumi.Output[_builtins.str]:
+        """
+        The disaster recovery mode of the NAT gateway. **NOTE:** `availability_mode` requires `nat_type` to be set to `Enhanced`. Valid values:
+        - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+        - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+        """
+        return pulumi.get(self, "availability_mode")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1263,7 +1324,7 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter(name="natType")
     def nat_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
+        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "nat_type")
 
@@ -1271,7 +1332,7 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+        Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "network_type")
 
@@ -1344,7 +1405,7 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The id of VSwitch.
+        The id of VSwitch. The parameter is immutable after resource creation.
         """
         return pulumi.get(self, "vswitch_id")
 

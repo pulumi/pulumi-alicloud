@@ -15,12 +15,24 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'DomainTlsCipherSuitesConfigArgs',
+    'DomainTlsCipherSuitesConfigArgsDict',
+    'DomainTlsCipherSuitesConfigTlsCipherSuiteArgs',
+    'DomainTlsCipherSuitesConfigTlsCipherSuiteArgsDict',
+    'GatewayEnvironmentArgs',
+    'GatewayEnvironmentArgsDict',
+    'GatewayLoadBalancerArgs',
+    'GatewayLoadBalancerArgsDict',
+    'GatewayLoadBalancerPortArgs',
+    'GatewayLoadBalancerPortArgsDict',
     'GatewayLogConfigArgs',
     'GatewayLogConfigArgsDict',
     'GatewayLogConfigSlsArgs',
     'GatewayLogConfigSlsArgsDict',
     'GatewayNetworkAccessConfigArgs',
     'GatewayNetworkAccessConfigArgsDict',
+    'GatewaySecurityGroupArgs',
+    'GatewaySecurityGroupArgsDict',
     'GatewayVpcArgs',
     'GatewayVpcArgsDict',
     'GatewayVswitchArgs',
@@ -29,12 +41,463 @@ __all__ = [
     'GatewayZoneArgsDict',
     'GatewayZoneConfigArgs',
     'GatewayZoneConfigArgsDict',
+    'ServiceHealthCheckConfigArgs',
+    'ServiceHealthCheckConfigArgsDict',
+    'ServiceOutlierDetectionConfigArgs',
+    'ServiceOutlierDetectionConfigArgsDict',
+    'ServicePortArgs',
+    'ServicePortArgsDict',
 ]
+
+class DomainTlsCipherSuitesConfigArgsDict(TypedDict):
+    config_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The configuration type, which can be Default or Custom.
+    """
+    tls_cipher_suites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DomainTlsCipherSuitesConfigTlsCipherSuiteArgsDict']]]]]
+    """
+    TLS cipher suite. See `tls_cipher_suite` below.
+    """
+
+@pulumi.input_type
+class DomainTlsCipherSuitesConfigArgs:
+    def __init__(__self__, *,
+                 config_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_cipher_suites: pulumi.Input[Optional[Sequence[pulumi.Input['DomainTlsCipherSuitesConfigTlsCipherSuiteArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] config_type: The configuration type, which can be Default or Custom.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainTlsCipherSuitesConfigTlsCipherSuiteArgs']]] tls_cipher_suites: TLS cipher suite. See `tls_cipher_suite` below.
+        """
+        if config_type is not None:
+            pulumi.set(__self__, "config_type", config_type)
+        if tls_cipher_suites is not None:
+            pulumi.set(__self__, "tls_cipher_suites", tls_cipher_suites)
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The configuration type, which can be Default or Custom.
+        """
+        return pulumi.get(self, "config_type")
+
+    @config_type.setter
+    def config_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "config_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCipherSuites")
+    def tls_cipher_suites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainTlsCipherSuitesConfigTlsCipherSuiteArgs']]]]:
+        """
+        TLS cipher suite. See `tls_cipher_suite` below.
+        """
+        return pulumi.get(self, "tls_cipher_suites")
+
+    @tls_cipher_suites.setter
+    def tls_cipher_suites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainTlsCipherSuitesConfigTlsCipherSuiteArgs']]]]):
+        pulumi.set(self, "tls_cipher_suites", value)
+
+
+class DomainTlsCipherSuitesConfigTlsCipherSuiteArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the cipher suite.
+    """
+    support_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    support versions
+    """
+
+@pulumi.input_type
+class DomainTlsCipherSuitesConfigTlsCipherSuiteArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the cipher suite.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] support_versions: support versions
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if support_versions is not None:
+            pulumi.set(__self__, "support_versions", support_versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the cipher suite.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="supportVersions")
+    def support_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        support versions
+        """
+        return pulumi.get(self, "support_versions")
+
+    @support_versions.setter
+    def support_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "support_versions", value)
+
+
+class GatewayEnvironmentArgsDict(TypedDict):
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The alias of the environment.
+    """
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the environment.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the availability zone for the gateway.
+    """
+
+@pulumi.input_type
+class GatewayEnvironmentArgs:
+    def __init__(__self__, *,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] alias: The alias of the environment.
+        :param pulumi.Input[_builtins.str] environment_id: The ID of the environment.
+        :param pulumi.Input[_builtins.str] name: The name of the availability zone for the gateway.
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The alias of the environment.
+        """
+        return pulumi.get(self, "alias")
+
+    @alias.setter
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "alias", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the environment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "environment_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class GatewayLoadBalancerArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The address of the load balancer for the gateway.
+    """
+    address_ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IP version of the load balancer.
+    """
+    address_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The load balancer address type.
+    """
+    gateway_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether this is the default ingress address of the gateway.
+    """
+    ipv4_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of IPv4 addresses.
+    """
+    ipv6_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The list of IPv6 addresses.
+    """
+    load_balancer_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the load balancer associated with the gateway.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The load balancing provisioning mode for the gateway.
+    """
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerPortArgsDict']]]]]
+    """
+    The list of listening ports.
+    """
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The status of the gateway.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the load balancer.
+    """
+
+@pulumi.input_type
+class GatewayLoadBalancerArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerPortArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The address of the load balancer for the gateway.
+        :param pulumi.Input[_builtins.str] address_ip_version: The IP version of the load balancer.
+        :param pulumi.Input[_builtins.str] address_type: The load balancer address type.
+        :param pulumi.Input[_builtins.bool] gateway_default: Indicates whether this is the default ingress address of the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_addresses: The list of IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_addresses: The list of IPv6 addresses.
+        :param pulumi.Input[_builtins.str] load_balancer_id: The ID of the load balancer associated with the gateway.
+        :param pulumi.Input[_builtins.str] mode: The load balancing provisioning mode for the gateway.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayLoadBalancerPortArgs']]] ports: The list of listening ports.
+        :param pulumi.Input[_builtins.str] status: The status of the gateway.
+        :param pulumi.Input[_builtins.str] type: The type of the load balancer.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if address_type is not None:
+            pulumi.set(__self__, "address_type", address_type)
+        if gateway_default is not None:
+            pulumi.set(__self__, "gateway_default", gateway_default)
+        if ipv4_addresses is not None:
+            pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The address of the load balancer for the gateway.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IP version of the load balancer.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @address_ip_version.setter
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address_ip_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The load balancer address type.
+        """
+        return pulumi.get(self, "address_type")
+
+    @address_type.setter
+    def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "address_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayDefault")
+    def gateway_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether this is the default ingress address of the gateway.
+        """
+        return pulumi.get(self, "gateway_default")
+
+    @gateway_default.setter
+    def gateway_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "gateway_default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Addresses")
+    def ipv4_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4_addresses")
+
+    @ipv4_addresses.setter
+    def ipv4_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ipv4_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of IPv6 addresses.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @ipv6_addresses.setter
+    def ipv6_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ipv6_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the load balancer associated with the gateway.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @load_balancer_id.setter
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "load_balancer_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The load balancing provisioning mode for the gateway.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerPortArgs']]]]:
+        """
+        The list of listening ports.
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayLoadBalancerPortArgs']]]]):
+        pulumi.set(self, "ports", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The status of the gateway.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the load balancer.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class GatewayLoadBalancerPortArgsDict(TypedDict):
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The port number of the load balancer listener.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The protocol of the load balancer listener.
+    """
+
+@pulumi.input_type
+class GatewayLoadBalancerPortArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] port: The port number of the load balancer listener.
+        :param pulumi.Input[_builtins.str] protocol: The protocol of the load balancer listener.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port number of the load balancer listener.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The protocol of the load balancer listener.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
 
 class GatewayLogConfigArgsDict(TypedDict):
     sls: NotRequired[pulumi.Input[Optional['GatewayLogConfigSlsArgsDict']]]
     """
-    Sls See `sls` below.
+    The Simple Log Service configuration for the gateway. See `sls` below.
     """
 
 @pulumi.input_type
@@ -42,7 +505,7 @@ class GatewayLogConfigArgs:
     def __init__(__self__, *,
                  sls: pulumi.Input[Optional['GatewayLogConfigSlsArgs']] = None):
         """
-        :param pulumi.Input['GatewayLogConfigSlsArgs'] sls: Sls See `sls` below.
+        :param pulumi.Input['GatewayLogConfigSlsArgs'] sls: The Simple Log Service configuration for the gateway. See `sls` below.
         """
         if sls is not None:
             pulumi.set(__self__, "sls", sls)
@@ -51,7 +514,7 @@ class GatewayLogConfigArgs:
     @pulumi.getter
     def sls(self) -> pulumi.Input[Optional['GatewayLogConfigSlsArgs']]:
         """
-        Sls See `sls` below.
+        The Simple Log Service configuration for the gateway. See `sls` below.
         """
         return pulumi.get(self, "sls")
 
@@ -63,7 +526,7 @@ class GatewayLogConfigArgs:
 class GatewayLogConfigSlsArgsDict(TypedDict):
     enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Enable Log Service
+    The Simple Log Service configuration for the gateway.
     """
 
 @pulumi.input_type
@@ -71,7 +534,7 @@ class GatewayLogConfigSlsArgs:
     def __init__(__self__, *,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.bool] enable: Enable Log Service
+        :param pulumi.Input[_builtins.bool] enable: The Simple Log Service configuration for the gateway.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -80,7 +543,7 @@ class GatewayLogConfigSlsArgs:
     @pulumi.getter
     def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable Log Service
+        The Simple Log Service configuration for the gateway.
         """
         return pulumi.get(self, "enable")
 
@@ -92,7 +555,7 @@ class GatewayLogConfigSlsArgs:
 class GatewayNetworkAccessConfigArgsDict(TypedDict):
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Network Access Type
+    The network access type of the gateway instance.
     """
 
 @pulumi.input_type
@@ -100,7 +563,7 @@ class GatewayNetworkAccessConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] type: Network Access Type
+        :param pulumi.Input[_builtins.str] type: The network access type of the gateway instance.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -109,7 +572,7 @@ class GatewayNetworkAccessConfigArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network Access Type
+        The network access type of the gateway instance.
         """
         return pulumi.get(self, "type")
 
@@ -118,14 +581,63 @@ class GatewayNetworkAccessConfigArgs:
         pulumi.set(self, "type", value)
 
 
+class GatewaySecurityGroupArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the availability zone for the gateway.
+    """
+    security_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the security group.
+    """
+
+@pulumi.input_type
+class GatewaySecurityGroupArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the availability zone for the gateway.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @security_group_id.setter
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "security_group_id", value)
+
+
 class GatewayVpcArgsDict(TypedDict):
     vpc_id: pulumi.Input[_builtins.str]
     """
-    The VPC network ID.
+    The ID of the VPC network associated with the gateway.
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The zone name.
+    The name of the availability zone for the gateway.
     """
 
 @pulumi.input_type
@@ -134,8 +646,8 @@ class GatewayVpcArgs:
                  vpc_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] vpc_id: The VPC network ID.
-        :param pulumi.Input[_builtins.str] name: The zone name.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC network associated with the gateway.
+        :param pulumi.Input[_builtins.str] name: The name of the availability zone for the gateway.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if name is not None:
@@ -145,7 +657,7 @@ class GatewayVpcArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The VPC network ID.
+        The ID of the VPC network associated with the gateway.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -157,7 +669,7 @@ class GatewayVpcArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone name.
+        The name of the availability zone for the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +681,7 @@ class GatewayVpcArgs:
 class GatewayVswitchArgsDict(TypedDict):
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The zone name.
+    The name of the availability zone for the gateway.
     """
     vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -182,7 +694,7 @@ class GatewayVswitchArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: The zone name.
+        :param pulumi.Input[_builtins.str] name: The name of the availability zone for the gateway.
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch.
         """
         if name is not None:
@@ -194,7 +706,7 @@ class GatewayVswitchArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone name.
+        The name of the availability zone for the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -218,15 +730,15 @@ class GatewayVswitchArgs:
 class GatewayZoneArgsDict(TypedDict):
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The zone name.
+    The name of the availability zone for the gateway.
     """
     vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The vswitch ID.
+    The ID of the virtual switch in the availability zone.
     """
     zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The zone ID.
+    The ID of the availability zone for the gateway.
     """
 
 @pulumi.input_type
@@ -236,9 +748,9 @@ class GatewayZoneArgs:
                  vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: The zone name.
-        :param pulumi.Input[_builtins.str] vswitch_id: The vswitch ID.
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID.
+        :param pulumi.Input[_builtins.str] name: The name of the availability zone for the gateway.
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the virtual switch in the availability zone.
+        :param pulumi.Input[_builtins.str] zone_id: The ID of the availability zone for the gateway.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -251,7 +763,7 @@ class GatewayZoneArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone name.
+        The name of the availability zone for the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -263,7 +775,7 @@ class GatewayZoneArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The vswitch ID.
+        The ID of the virtual switch in the availability zone.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -275,7 +787,7 @@ class GatewayZoneArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The zone ID.
+        The ID of the availability zone for the gateway.
         """
         return pulumi.get(self, "zone_id")
 
@@ -287,7 +799,7 @@ class GatewayZoneArgs:
 class GatewayZoneConfigArgsDict(TypedDict):
     select_option: pulumi.Input[_builtins.str]
     """
-    Availability Zone Options
+    Zone selection option.
     """
 
 @pulumi.input_type
@@ -295,7 +807,7 @@ class GatewayZoneConfigArgs:
     def __init__(__self__, *,
                  select_option: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] select_option: Availability Zone Options
+        :param pulumi.Input[_builtins.str] select_option: Zone selection option.
         """
         pulumi.set(__self__, "select_option", select_option)
 
@@ -303,12 +815,385 @@ class GatewayZoneConfigArgs:
     @pulumi.getter(name="selectOption")
     def select_option(self) -> pulumi.Input[_builtins.str]:
         """
-        Availability Zone Options
+        Zone selection option.
         """
         return pulumi.get(self, "select_option")
 
     @select_option.setter
     def select_option(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "select_option", value)
+
+
+class ServiceHealthCheckConfigArgsDict(TypedDict):
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable health check
+    """
+    expected_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Expected HTTP status codes
+    """
+    healthy_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Healthy threshold
+    """
+    http_host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Health check host (optional when protocol is HTTP)
+    """
+    http_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Health check path (required when protocol is HTTP)
+    """
+    interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Health check interval
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Health check protocol TCP|HTTP|GRPC
+    """
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Health check response timeout
+    """
+    unhealthy_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Unhealthy threshold
+    """
+
+@pulumi.input_type
+class ServiceHealthCheckConfigArgs:
+    def __init__(__self__, *,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expected_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable: Whether to enable health check
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] expected_statuses: Expected HTTP status codes
+        :param pulumi.Input[_builtins.int] healthy_threshold: Healthy threshold
+        :param pulumi.Input[_builtins.str] http_host: Health check host (optional when protocol is HTTP)
+        :param pulumi.Input[_builtins.str] http_path: Health check path (required when protocol is HTTP)
+        :param pulumi.Input[_builtins.int] interval: Health check interval
+        :param pulumi.Input[_builtins.str] protocol: Health check protocol TCP|HTTP|GRPC
+        :param pulumi.Input[_builtins.int] timeout: Health check response timeout
+        :param pulumi.Input[_builtins.int] unhealthy_threshold: Unhealthy threshold
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if expected_statuses is not None:
+            pulumi.set(__self__, "expected_statuses", expected_statuses)
+        if healthy_threshold is not None:
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        if http_host is not None:
+            pulumi.set(__self__, "http_host", http_host)
+        if http_path is not None:
+            pulumi.set(__self__, "http_path", http_path)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if unhealthy_threshold is not None:
+            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable health check
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expectedStatuses")
+    def expected_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Expected HTTP status codes
+        """
+        return pulumi.get(self, "expected_statuses")
+
+    @expected_statuses.setter
+    def expected_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "expected_statuses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Healthy threshold
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @healthy_threshold.setter
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "healthy_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHost")
+    def http_host(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Health check host (optional when protocol is HTTP)
+        """
+        return pulumi.get(self, "http_host")
+
+    @http_host.setter
+    def http_host(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "http_host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpPath")
+    def http_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Health check path (required when protocol is HTTP)
+        """
+        return pulumi.get(self, "http_path")
+
+    @http_path.setter
+    def http_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "http_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Health check interval
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Health check protocol TCP|HTTP|GRPC
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Health check response timeout
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Unhealthy threshold
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+    @unhealthy_threshold.setter
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "unhealthy_threshold", value)
+
+
+class ServiceOutlierDetectionConfigArgsDict(TypedDict):
+    base_ejection_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Base ejection time
+    """
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to enable outlier detection
+    """
+    failure_percentage_minimum_hosts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Failure percentage minimum hosts
+    """
+    failure_percentage_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Failure percentage threshold
+    """
+    interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Detection interval
+    """
+
+@pulumi.input_type
+class ServiceOutlierDetectionConfigArgs:
+    def __init__(__self__, *,
+                 base_ejection_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failure_percentage_minimum_hosts: pulumi.Input[Optional[_builtins.int]] = None,
+                 failure_percentage_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] base_ejection_time: Base ejection time
+        :param pulumi.Input[_builtins.bool] enable: Whether to enable outlier detection
+        :param pulumi.Input[_builtins.int] failure_percentage_minimum_hosts: Failure percentage minimum hosts
+        :param pulumi.Input[_builtins.int] failure_percentage_threshold: Failure percentage threshold
+        :param pulumi.Input[_builtins.int] interval: Detection interval
+        """
+        if base_ejection_time is not None:
+            pulumi.set(__self__, "base_ejection_time", base_ejection_time)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if failure_percentage_minimum_hosts is not None:
+            pulumi.set(__self__, "failure_percentage_minimum_hosts", failure_percentage_minimum_hosts)
+        if failure_percentage_threshold is not None:
+            pulumi.set(__self__, "failure_percentage_threshold", failure_percentage_threshold)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+
+    @_builtins.property
+    @pulumi.getter(name="baseEjectionTime")
+    def base_ejection_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Base ejection time
+        """
+        return pulumi.get(self, "base_ejection_time")
+
+    @base_ejection_time.setter
+    def base_ejection_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "base_ejection_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable outlier detection
+        """
+        return pulumi.get(self, "enable")
+
+    @enable.setter
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failurePercentageMinimumHosts")
+    def failure_percentage_minimum_hosts(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Failure percentage minimum hosts
+        """
+        return pulumi.get(self, "failure_percentage_minimum_hosts")
+
+    @failure_percentage_minimum_hosts.setter
+    def failure_percentage_minimum_hosts(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "failure_percentage_minimum_hosts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failurePercentageThreshold")
+    def failure_percentage_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Failure percentage threshold
+        """
+        return pulumi.get(self, "failure_percentage_threshold")
+
+    @failure_percentage_threshold.setter
+    def failure_percentage_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "failure_percentage_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Detection interval
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "interval", value)
+
+
+class ServicePortArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Port name.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Port number.
+    """
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Service protocol.
+
+    > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+    """
+
+@pulumi.input_type
+class ServicePortArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Port name.
+        :param pulumi.Input[_builtins.int] port: Port number.
+        :param pulumi.Input[_builtins.str] protocol: Service protocol.
+               
+               > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Port name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Port number.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Service protocol.
+
+        > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
 
 

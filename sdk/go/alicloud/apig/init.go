@@ -21,14 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:apig/aiModelProvider:AiModelProvider":
+		r = &AiModelProvider{}
+	case "alicloud:apig/domain:Domain":
+		r = &Domain{}
 	case "alicloud:apig/environment:Environment":
 		r = &Environment{}
 	case "alicloud:apig/gateway:Gateway":
 		r = &Gateway{}
 	case "alicloud:apig/httpApi:HttpApi":
 		r = &HttpApi{}
+	case "alicloud:apig/plugin:Plugin":
+		r = &Plugin{}
 	case "alicloud:apig/pluginClass:PluginClass":
 		r = &PluginClass{}
+	case "alicloud:apig/service:Service":
+		r = &Service{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -42,6 +50,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apig/aiModelProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apig/domain",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"apig/environment",
@@ -59,7 +77,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"apig/plugin",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"apig/pluginClass",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"apig/service",
 		&module{version},
 	)
 }

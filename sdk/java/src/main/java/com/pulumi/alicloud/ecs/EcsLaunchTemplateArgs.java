@@ -181,14 +181,18 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     * 
+     * &gt; **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     @Import(name="httpPutResponseHopLimit")
     private @Nullable Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * @return The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     * 
+     * &gt; **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     public Optional<Output<Integer>> httpPutResponseHopLimit() {
@@ -1210,7 +1214,9 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+         * 
+         * &gt; **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
          * 
          * @return builder
          * 
@@ -1221,7 +1227,9 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+         * 
+         * &gt; **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
          * 
          * @return builder
          * 
