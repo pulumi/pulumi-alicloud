@@ -757,12 +757,61 @@
             "alicloud_api_gateway_vpc_access": {
                 "current": "alicloud:apigateway/vpcAccess:VpcAccess"
             },
+            "alicloud_apig_ai_model_provider": {
+                "current": "alicloud:apig/aiModelProvider:AiModelProvider",
+                "fields": {
+                    "service_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_apig_domain": {
+                "current": "alicloud:apig/domain:Domain",
+                "fields": {
+                    "tls_cipher_suites_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "tls_cipher_suite": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "support_versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_apig_environment": {
                 "current": "alicloud:apig/environment:Environment"
             },
             "alicloud_apig_gateway": {
                 "current": "alicloud:apig/gateway:Gateway",
                 "fields": {
+                    "environments": {
+                        "maxItemsOne": false
+                    },
+                    "load_balancers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4_addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6_addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "ports": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "log_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -775,6 +824,9 @@
                     },
                     "network_access_config": {
                         "maxItemsOne": true
+                    },
+                    "security_group": {
+                        "maxItemsOne": false
                     },
                     "vpc": {
                         "maxItemsOne": true
@@ -793,13 +845,55 @@
             "alicloud_apig_http_api": {
                 "current": "alicloud:apig/httpApi:HttpApi",
                 "fields": {
+                    "ai_protocols": {
+                        "maxItemsOne": false
+                    },
+                    "deploy_configs": {
+                        "maxItemsOne": false
+                    },
                     "protocols": {
                         "maxItemsOne": false
                     }
                 }
             },
+            "alicloud_apig_plugin": {
+                "current": "alicloud:apig/plugin:Plugin"
+            },
             "alicloud_apig_plugin_class": {
                 "current": "alicloud:apig/pluginClass:PluginClass"
+            },
+            "alicloud_apig_service": {
+                "current": "alicloud:apig/service:Service",
+                "fields": {
+                    "addresses": {
+                        "maxItemsOne": false
+                    },
+                    "dns_servers": {
+                        "maxItemsOne": false
+                    },
+                    "health_check_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "expected_statuses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "outlier_detection_config": {
+                        "maxItemsOne": true
+                    },
+                    "outlier_endpoints": {
+                        "maxItemsOne": false
+                    },
+                    "ports": {
+                        "maxItemsOne": false
+                    },
+                    "unhealthy_endpoints": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_arms_addon_release": {
                 "current": "alicloud:arms/addonRelease:AddonRelease"
@@ -1509,6 +1603,29 @@
                 "fields": {
                     "address_list": {
                         "maxItemsOne": false
+                    },
+                    "asset_member_uids": {
+                        "maxItemsOne": false
+                    },
+                    "asset_region_resource_types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "resource_type": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "ecs_tags": {
                         "maxItemsOne": false
@@ -6906,6 +7023,14 @@
             "alicloud_gpdb_account": {
                 "current": "alicloud:gpdb/account:Account"
             },
+            "alicloud_gpdb_api_key": {
+                "current": "alicloud:gpdb/apiKey:ApiKey",
+                "fields": {
+                    "service_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_gpdb_backup_policy": {
                 "current": "alicloud:gpdb/backupPolicy:BackupPolicy"
             },
@@ -8079,6 +8204,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_nas_log_analysis": {
+                "current": "alicloud:nas/logAnalysis:LogAnalysis"
             },
             "alicloud_nas_mount_target": {
                 "current": "alicloud:nas/mountTarget:MountTarget"
@@ -9299,6 +9427,9 @@
             },
             "alicloud_ram_access_key": {
                 "current": "alicloud:ram/accessKey:AccessKey"
+            },
+            "alicloud_ram_access_key_policy": {
+                "current": "alicloud:ram/accessKeyPolicy:AccessKeyPolicy"
             },
             "alicloud_ram_account_alias": {
                 "current": "alicloud:ram/accountAlias:AccountAlias"
@@ -10959,6 +11090,9 @@
             },
             "alicloud_ssl_certificates_service_certificate": {
                 "current": "alicloud:cas/serviceCertificate:ServiceCertificate"
+            },
+            "alicloud_ssl_certificates_service_company": {
+                "current": "alicloud:sslcertificatesservice/company:Company"
             },
             "alicloud_ssl_certificates_service_pca_cert": {
                 "current": "alicloud:sslcertificatesservicepca/cert:Cert"
@@ -12766,6 +12900,114 @@
             "alicloud_api_gateway_service": {
                 "current": "alicloud:apigateway/getService:getService"
             },
+            "alicloud_apig_ai_model_providers": {
+                "current": "alicloud:apig/getAiModelProviders:getAiModelProviders",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "providers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "bound_services": {
+                                    "maxItemsOne": false
+                                },
+                                "model_cards": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "alicloud_apig_domains": {
+                "current": "alicloud:apig/getDomains:getDomains",
+                "fields": {
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tls_cipher_suites_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tls_cipher_suite": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "support_versions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_apig_gateways": {
+                "current": "alicloud:apig/getGateways:getGateways",
+                "fields": {
+                    "gateways": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "environments": {
+                                    "maxItemsOne": false
+                                },
+                                "load_balancers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4_addresses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_addresses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ports": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "security_group": {
+                                    "maxItemsOne": false
+                                },
+                                "sub_domain_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "vpc": {
+                                    "maxItemsOne": false
+                                },
+                                "vswitch": {
+                                    "maxItemsOne": false
+                                },
+                                "zones": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_apig_plugin_classes": {
                 "current": "alicloud:apig/getPluginClasses:getPluginClasses",
                 "fields": {
@@ -12777,6 +13019,63 @@
                     },
                     "names": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_apig_plugins": {
+                "current": "alicloud:apig/getPlugins:getPlugins",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "plugins": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_apig_services": {
+                "current": "alicloud:apig/getServices:getServices",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    },
+                    "services": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "dns_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "health_check_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "expected_statuses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "outlier_detection_config": {
+                                    "maxItemsOne": false
+                                },
+                                "outlier_endpoints": {
+                                    "maxItemsOne": false
+                                },
+                                "ports": {
+                                    "maxItemsOne": false
+                                },
+                                "unhealthy_endpoints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -14239,6 +14538,29 @@
                             "fields": {
                                 "address_list": {
                                     "maxItemsOne": false
+                                },
+                                "asset_member_uids": {
+                                    "maxItemsOne": false
+                                },
+                                "asset_region_resource_types": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_type": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ipv4": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ipv6": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "ecs_tags": {
                                     "maxItemsOne": false
@@ -19714,6 +20036,17 @@
                     }
                 }
             },
+            "alicloud_gpdb_api_keys": {
+                "current": "alicloud:gpdb/getApiKeys:getApiKeys",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_gpdb_data_backups": {
                 "current": "alicloud:gpdb/getDataBackups:getDataBackups",
                 "fields": {
@@ -21194,6 +21527,17 @@
                     }
                 }
             },
+            "alicloud_nas_log_analyses": {
+                "current": "alicloud:nas/getLogAnalyses:getLogAnalyses",
+                "fields": {
+                    "analyses": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_nas_mount_targets": {
                 "current": "alicloud:nas/getMountTargets:getMountTargets",
                 "fields": {
@@ -22450,6 +22794,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_ram_access_key_policy": {
+                "current": "alicloud:ram/getAccessKeyPolicy:getAccessKeyPolicy"
             },
             "alicloud_ram_account_alias": {
                 "current": "alicloud:ram/getAccountAlias:getAccountAlias"
@@ -24248,6 +24595,20 @@
                 "current": "alicloud:cas/getServiceCertificates:getServiceCertificates",
                 "fields": {
                     "certificates": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_ssl_certificates_service_companies": {
+                "current": "alicloud:sslcertificatesservice/companies:Companies",
+                "fields": {
+                    "companies": {
                         "maxItemsOne": false
                     },
                     "ids": {
