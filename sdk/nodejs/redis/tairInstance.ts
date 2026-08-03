@@ -183,6 +183,14 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly intranetBandwidth: pulumi.Output<number>;
     /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     */
+    declare public readonly maintainEndTime: pulumi.Output<string>;
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     */
+    declare public readonly maintainStartTime: pulumi.Output<string>;
+    /**
      * The maximum number of connections supported by the instance.
      */
     declare public /*out*/ readonly maxConnections: pulumi.Output<number>;
@@ -387,6 +395,8 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["instanceClass"] = state?.instanceClass;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["intranetBandwidth"] = state?.intranetBandwidth;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
             resourceInputs["maxConnections"] = state?.maxConnections;
             resourceInputs["modifyMode"] = state?.modifyMode;
             resourceInputs["networkType"] = state?.networkType;
@@ -456,6 +466,8 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["instanceClass"] = args?.instanceClass;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["intranetBandwidth"] = args?.intranetBandwidth;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
             resourceInputs["modifyMode"] = args?.modifyMode;
             resourceInputs["nodeType"] = args?.nodeType;
             resourceInputs["paramNoLooseSentinelEnabled"] = args?.paramNoLooseSentinelEnabled;
@@ -598,6 +610,14 @@ export interface TairInstanceState {
      * Instance intranet bandwidth
      */
     intranetBandwidth?: pulumi.Input<number | undefined>;
+    /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     */
+    maintainEndTime?: pulumi.Input<string | undefined>;
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     */
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of connections supported by the instance.
      */
@@ -855,6 +875,14 @@ export interface TairInstanceArgs {
      * Instance intranet bandwidth
      */
     intranetBandwidth?: pulumi.Input<number | undefined>;
+    /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     */
+    maintainEndTime?: pulumi.Input<string | undefined>;
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     */
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
      */

@@ -40,7 +40,7 @@ public final class FileSystemSmbAcl {
      * 
      * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
      * 
-     * &gt; **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+     * &gt; **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
      * 
      */
     private @Nullable String homeDirPath;
@@ -96,7 +96,7 @@ public final class FileSystemSmbAcl {
      * 
      * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
      * 
-     * &gt; **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+     * &gt; **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
      * 
      */
     public Optional<String> homeDirPath() {

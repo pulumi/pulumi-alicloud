@@ -6,8 +6,11 @@ package com.pulumi.alicloud.apig;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.apig.GatewayArgs;
 import com.pulumi.alicloud.apig.inputs.GatewayState;
+import com.pulumi.alicloud.apig.outputs.GatewayEnvironment;
+import com.pulumi.alicloud.apig.outputs.GatewayLoadBalancer;
 import com.pulumi.alicloud.apig.outputs.GatewayLogConfig;
 import com.pulumi.alicloud.apig.outputs.GatewayNetworkAccessConfig;
+import com.pulumi.alicloud.apig.outputs.GatewaySecurityGroup;
 import com.pulumi.alicloud.apig.outputs.GatewayVpc;
 import com.pulumi.alicloud.apig.outputs.GatewayVswitch;
 import com.pulumi.alicloud.apig.outputs.GatewayZone;
@@ -26,7 +29,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a APIG Gateway resource.
  * 
- * For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+ * Gateway instance  .
+ * 
+ * For information about APIG Gateway and how to use it, see [What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway).
  * 
  * &gt; **NOTE:** Available since v1.240.0.
  * 
@@ -122,12 +127,26 @@ import javax.annotation.Nullable;
  * APIG Gateway can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:apig/gateway:Gateway example &lt;id&gt;
+ * $ pulumi import alicloud:apig/gateway:Gateway example &lt;gateway_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:apig/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
+    /**
+     * The source from which the gateway was created.
+     * 
+     */
+    @Export(name="createFrom", refs={String.class}, tree="[0]")
+    private Output<String> createFrom;
+
+    /**
+     * @return The source from which the gateway was created.
+     * 
+     */
+    public Output<String> createFrom() {
+        return this.createFrom;
+    }
     /**
      * The creation timestamp. Unit: milliseconds.
      * 
@@ -143,116 +162,198 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The name of the resource
+     * The list of environments associated with the gateway.
+     * 
+     */
+    @Export(name="environments", refs={List.class,GatewayEnvironment.class}, tree="[0,1]")
+    private Output<List<GatewayEnvironment>> environments;
+
+    /**
+     * @return The list of environments associated with the gateway.
+     * 
+     */
+    public Output<List<GatewayEnvironment>> environments() {
+        return this.environments;
+    }
+    /**
+     * Timestamp indicating when the subscription expires. Unit: milliseconds.
+     * 
+     */
+    @Export(name="expireTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> expireTime;
+
+    /**
+     * @return Timestamp indicating when the subscription expires. Unit: milliseconds.
+     * 
+     */
+    public Output<Integer> expireTime() {
+        return this.expireTime;
+    }
+    /**
+     * Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     * 
+     */
+    @Export(name="gatewayEdition", refs={String.class}, tree="[0]")
+    private Output<String> gatewayEdition;
+
+    /**
+     * @return Gateway instance edition. Valid values:
+     * - Professional: Standard instance.
+     * - Serverless: Serverless instance.
+     * - MultiTenantServerless: Multi-tenant Serverless instance.
+     * 
+     */
+    public Output<String> gatewayEdition() {
+        return this.gatewayEdition;
+    }
+    /**
+     * Query by exact match of the gateway name.
      * 
      */
     @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayName;
 
     /**
-     * @return The name of the resource
+     * @return Query by exact match of the gateway name.
      * 
      */
     public Output<Optional<String>> gatewayName() {
         return Codegen.optional(this.gatewayName);
     }
     /**
-     * Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      * 
      */
     @Export(name="gatewayType", refs={String.class}, tree="[0]")
     private Output<String> gatewayType;
 
     /**
-     * @return Describes the gateway type, which is categorized into the following two types:
-     * - API: indicates an API gateway
-     * - AI: Indicates an AI gateway
+     * @return The gateway type. Valid values:
+     * - API: API Gateway
+     * - AI: AI Gateway
      * 
      */
     public Output<String> gatewayType() {
         return this.gatewayType;
     }
     /**
-     * Log Configuration See `logConfig` below.
+     * The list of Gateway ingress addresses.
+     * 
+     */
+    @Export(name="loadBalancers", refs={List.class,GatewayLoadBalancer.class}, tree="[0,1]")
+    private Output<List<GatewayLoadBalancer>> loadBalancers;
+
+    /**
+     * @return The list of Gateway ingress addresses.
+     * 
+     */
+    public Output<List<GatewayLoadBalancer>> loadBalancers() {
+        return this.loadBalancers;
+    }
+    /**
+     * The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Export(name="logConfig", refs={GatewayLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayLogConfig> logConfig;
 
     /**
-     * @return Log Configuration See `logConfig` below.
+     * @return The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Output<Optional<GatewayLogConfig>> logConfig() {
         return Codegen.optional(this.logConfig);
     }
     /**
-     * Network Access Configuration See `networkAccessConfig` below.
+     * The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Export(name="networkAccessConfig", refs={GatewayNetworkAccessConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayNetworkAccessConfig> networkAccessConfig;
 
     /**
-     * @return Network Access Configuration See `networkAccessConfig` below.
+     * @return The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Output<Optional<GatewayNetworkAccessConfig>> networkAccessConfig() {
         return Codegen.optional(this.networkAccessConfig);
     }
     /**
-     * The payment type of the resource
+     * Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return Payment type. Valid values:
+     * - PayAsYouGo: Pay-as-you-go.
+     * - Subscription: Subscription.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The ID of the resource group
+     * The ID of the destination resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the destination resource group.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * Gateway instance specifications
+     * The security group of the gateway.
+     * 
+     */
+    @Export(name="securityGroups", refs={List.class,GatewaySecurityGroup.class}, tree="[0,1]")
+    private Output<List<GatewaySecurityGroup>> securityGroups;
+
+    /**
+     * @return The security group of the gateway.
+     * 
+     */
+    public Output<List<GatewaySecurityGroup>> securityGroups() {
+        return this.securityGroups;
+    }
+    /**
+     * Gateway specification:
+     * - apigw.small.x1: Small specification.
      * 
      */
     @Export(name="spec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spec;
 
     /**
-     * @return Gateway instance specifications
+     * @return Gateway specification:
+     * - apigw.small.x1: Small specification.
      * 
      */
     public Output<Optional<String>> spec() {
         return Codegen.optional(this.spec);
     }
     /**
-     * The status of the resource
+     * The status of the gateway.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource
+     * @return The status of the gateway.
      * 
      */
     public Output<String> status() {
@@ -273,56 +374,98 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPC associated with the Gateway. See `vpc` below.
+     * The target version of the gateway instance.
+     * 
+     */
+    @Export(name="targetVersion", refs={String.class}, tree="[0]")
+    private Output<String> targetVersion;
+
+    /**
+     * @return The target version of the gateway instance.
+     * 
+     */
+    public Output<String> targetVersion() {
+        return this.targetVersion;
+    }
+    /**
+     * The timestamp when the gateway was last updated. Unit: milliseconds.
+     * 
+     */
+    @Export(name="updateTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> updateTime;
+
+    /**
+     * @return The timestamp when the gateway was last updated. Unit: milliseconds.
+     * 
+     */
+    public Output<Integer> updateTime() {
+        return this.updateTime;
+    }
+    /**
+     * The current running version of the gateway instance.
+     * 
+     */
+    @Export(name="version", refs={String.class}, tree="[0]")
+    private Output<String> version;
+
+    /**
+     * @return The current running version of the gateway instance.
+     * 
+     */
+    public Output<String> version() {
+        return this.version;
+    }
+    /**
+     * The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      * 
      */
     @Export(name="vpc", refs={GatewayVpc.class}, tree="[0]")
     private Output</* @Nullable */ GatewayVpc> vpc;
 
     /**
-     * @return The VPC associated with the Gateway. See `vpc` below.
+     * @return The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
      * 
      */
     public Output<Optional<GatewayVpc>> vpc() {
         return Codegen.optional(this.vpc);
     }
     /**
-     * The virtual switch associated with the Gateway. See `vswitch` below.
+     * The vSwitch associated with the gateway. See `vswitch` below.
      * 
      */
     @Export(name="vswitch", refs={GatewayVswitch.class}, tree="[0]")
     private Output</* @Nullable */ GatewayVswitch> vswitch;
 
     /**
-     * @return The virtual switch associated with the Gateway. See `vswitch` below.
+     * @return The vSwitch associated with the gateway. See `vswitch` below.
      * 
      */
     public Output<Optional<GatewayVswitch>> vswitch() {
         return Codegen.optional(this.vswitch);
     }
     /**
-     * Availability Zone Configuration See `zoneConfig` below.
+     * The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Export(name="zoneConfig", refs={GatewayZoneConfig.class}, tree="[0]")
     private Output<GatewayZoneConfig> zoneConfig;
 
     /**
-     * @return Availability Zone Configuration See `zoneConfig` below.
+     * @return The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Output<GatewayZoneConfig> zoneConfig() {
         return this.zoneConfig;
     }
     /**
-     * The List of zones associated with the Gateway. See `zones` below.
+     * The list of zones associated with the gateway. See `zones` below.
      * 
      */
     @Export(name="zones", refs={List.class,GatewayZone.class}, tree="[0,1]")
     private Output<List<GatewayZone>> zones;
 
     /**
-     * @return The List of zones associated with the Gateway. See `zones` below.
+     * @return The list of zones associated with the gateway. See `zones` below.
      * 
      */
     public Output<List<GatewayZone>> zones() {

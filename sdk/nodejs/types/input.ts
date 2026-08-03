@@ -2055,41 +2055,147 @@ export namespace amqp {
 }
 
 export namespace apig {
+    export interface DomainTlsCipherSuitesConfig {
+        /**
+         * The configuration type, which can be Default or Custom.
+         */
+        configType?: pulumi.Input<string | undefined>;
+        /**
+         * TLS cipher suite. See `tlsCipherSuite` below.
+         */
+        tlsCipherSuites?: pulumi.Input<pulumi.Input<inputs.apig.DomainTlsCipherSuitesConfigTlsCipherSuite>[] | undefined>;
+    }
+
+    export interface DomainTlsCipherSuitesConfigTlsCipherSuite {
+        /**
+         * The name of the cipher suite.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * support versions
+         */
+        supportVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface GatewayEnvironment {
+        /**
+         * The alias of the environment.
+         */
+        alias?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the environment.
+         */
+        environmentId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the availability zone for the gateway.
+         */
+        name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayLoadBalancer {
+        /**
+         * The address of the load balancer for the gateway.
+         */
+        address?: pulumi.Input<string | undefined>;
+        /**
+         * The IP version of the load balancer.
+         */
+        addressIpVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The load balancer address type.
+         */
+        addressType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates whether this is the default ingress address of the gateway.
+         */
+        gatewayDefault?: pulumi.Input<boolean | undefined>;
+        /**
+         * The list of IPv4 addresses.
+         */
+        ipv4Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The list of IPv6 addresses.
+         */
+        ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The ID of the load balancer associated with the gateway.
+         */
+        loadBalancerId?: pulumi.Input<string | undefined>;
+        /**
+         * The load balancing provisioning mode for the gateway.
+         */
+        mode?: pulumi.Input<string | undefined>;
+        /**
+         * The list of listening ports.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.apig.GatewayLoadBalancerPort>[] | undefined>;
+        /**
+         * The status of the gateway.
+         */
+        status?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the load balancer.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayLoadBalancerPort {
+        /**
+         * The port number of the load balancer listener.
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * The protocol of the load balancer listener.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
+
     export interface GatewayLogConfig {
         /**
-         * Sls See `sls` below.
+         * The Simple Log Service configuration for the gateway. See `sls` below.
          */
         sls?: pulumi.Input<inputs.apig.GatewayLogConfigSls | undefined>;
     }
 
     export interface GatewayLogConfigSls {
         /**
-         * Enable Log Service
+         * The Simple Log Service configuration for the gateway.
          */
         enable?: pulumi.Input<boolean | undefined>;
     }
 
     export interface GatewayNetworkAccessConfig {
         /**
-         * Network Access Type
+         * The network access type of the gateway instance.
          */
         type?: pulumi.Input<string | undefined>;
     }
 
-    export interface GatewayVpc {
+    export interface GatewaySecurityGroup {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * The VPC network ID.
+         * The ID of the security group.
+         */
+        securityGroupId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayVpc {
+        /**
+         * The name of the availability zone for the gateway.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the VPC network associated with the gateway.
          */
         vpcId: pulumi.Input<string>;
     }
 
     export interface GatewayVswitch {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name?: pulumi.Input<string | undefined>;
         /**
@@ -2100,26 +2206,104 @@ export namespace apig {
 
     export interface GatewayZone {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * The vswitch ID.
+         * The ID of the virtual switch in the availability zone.
          */
         vswitchId?: pulumi.Input<string | undefined>;
         /**
-         * The zone ID.
+         * The ID of the availability zone for the gateway.
          */
         zoneId?: pulumi.Input<string | undefined>;
     }
 
     export interface GatewayZoneConfig {
         /**
-         * Availability Zone Options
+         * Zone selection option.
          */
         selectOption: pulumi.Input<string>;
     }
 
+    export interface ServiceHealthCheckConfig {
+        /**
+         * Whether to enable health check
+         */
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * Expected HTTP status codes
+         */
+        expectedStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Healthy threshold
+         */
+        healthyThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * Health check host (optional when protocol is HTTP)
+         */
+        httpHost?: pulumi.Input<string | undefined>;
+        /**
+         * Health check path (required when protocol is HTTP)
+         */
+        httpPath?: pulumi.Input<string | undefined>;
+        /**
+         * Health check interval
+         */
+        interval?: pulumi.Input<number | undefined>;
+        /**
+         * Health check protocol TCP|HTTP|GRPC
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Health check response timeout
+         */
+        timeout?: pulumi.Input<number | undefined>;
+        /**
+         * Unhealthy threshold
+         */
+        unhealthyThreshold?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceOutlierDetectionConfig {
+        /**
+         * Base ejection time
+         */
+        baseEjectionTime?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to enable outlier detection
+         */
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * Failure percentage minimum hosts
+         */
+        failurePercentageMinimumHosts?: pulumi.Input<number | undefined>;
+        /**
+         * Failure percentage threshold
+         */
+        failurePercentageThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * Detection interval
+         */
+        interval?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServicePort {
+        /**
+         * Port name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Port number.
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * Service protocol.
+         *
+         * > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
 }
 
 export namespace apigateway {
@@ -2166,7 +2350,7 @@ export namespace apigateway {
          */
         contentTypeCategory?: pulumi.Input<string | undefined>;
         /**
-         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
          */
         contentTypeValue?: pulumi.Input<string | undefined>;
         /**
@@ -3702,6 +3886,134 @@ export namespace cloudcontrol {
 }
 
 export namespace cloudfirewall {
+    export interface AddressBookAssetRegionResourceType {
+        /**
+         * The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `assetRegionId` cannot be modified after the Address Book is created.
+         */
+        assetRegionId?: pulumi.Input<string | undefined>;
+        /**
+         * The types of the assets. See `resourceType` below.
+         */
+        resourceType?: pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceType | undefined>;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceType {
+        /**
+         * The IPv4 asset types. See `ipv4` below.
+         */
+        ipv4?: pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceTypeIpv4 | undefined>;
+        /**
+         * The IPv6 asset types. See `ipv6` below.
+         */
+        ipv6?: pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceTypeIpv6 | undefined>;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+        /**
+         * Whether to include the assets of the type AiGatewayEIP.
+         */
+        aiGatewayEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type AlbEIP.
+         */
+        albEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type ApiGatewayEIP.
+         */
+        apiGatewayEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type BastionHostEgressIP.
+         */
+        bastionHostEgressIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type BastionHostIngressIP.
+         */
+        bastionHostIngressIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type BastionHostIP.
+         */
+        bastionHostIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EcsEIP.
+         */
+        ecsEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EcsPublicIP.
+         */
+        ecsPublicIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EIP.
+         */
+        eip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EniEIP.
+         */
+        eniEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type GaEIP.
+         */
+        gaEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type HAVIP.
+         */
+        havip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NatEIP.
+         */
+        natEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NatPublicIP.
+         */
+        natPublicIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NlbEIP.
+         */
+        nlbEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type SlbEIP.
+         */
+        slbEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type SlbPublicIP.
+         */
+        slbPublicIp?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+        /**
+         * Whether to include the assets of the type AiGatewayEIPv6.
+         */
+        aiGatewayEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type AlbIPv6.
+         */
+        albIpv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type ApiGatewayEIPv6.
+         */
+        apiGatewayEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EcsIPv6.
+         */
+        ecsIpv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EniEIPv6.
+         */
+        eniEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type GaEIPv6.
+         */
+        gaEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NlbIPv6.
+         */
+        nlbIpv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type SlbIPv6.
+         */
+        slbIpv6?: pulumi.Input<boolean | undefined>;
+    }
+
     export interface AddressBookEcsTag {
         /**
          * The key of ECS tag that to be matched.
@@ -14855,7 +15167,7 @@ export namespace eventbridge {
          */
         targetId: pulumi.Input<string>;
         /**
-         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `ApacheKafkaSelf`, `http`,`https` and `mysql`.
          * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          */
         type: pulumi.Input<string>;
@@ -18098,7 +18410,7 @@ export namespace nas {
          * - true: On.
          * - false: does not turn on.
          *
-         * > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         * > **NOTE:** Description Only file systems of the SMB protocol type are supported.
          */
         enableOplock?: pulumi.Input<boolean | undefined>;
     }
@@ -18152,7 +18464,7 @@ export namespace nas {
          *
          * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
          *
-         * > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+         * > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
          */
         homeDirPath?: pulumi.Input<string | undefined>;
         /**
@@ -23511,6 +23823,9 @@ export namespace sls {
          */
         toTimeExpr?: pulumi.Input<string | undefined>;
     }
+}
+
+export namespace sslcertificatesservice {
 }
 
 export namespace starrocks {

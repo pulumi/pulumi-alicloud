@@ -168,7 +168,9 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly sourceUserId: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource. Valid values: `Frozen`, `Normal`.
+     * The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     *
+     * > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -301,7 +303,9 @@ export interface UserState {
      */
     sourceUserId?: pulumi.Input<string | undefined>;
     /**
-     * The status of the resource. Valid values: `Frozen`, `Normal`.
+     * The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     *
+     * > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -379,7 +383,9 @@ export interface UserArgs {
      */
     sourceUserId?: pulumi.Input<string | undefined>;
     /**
-     * The status of the resource. Valid values: `Frozen`, `Normal`.
+     * The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+     *
+     * > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
      */
     status?: pulumi.Input<string | undefined>;
     /**

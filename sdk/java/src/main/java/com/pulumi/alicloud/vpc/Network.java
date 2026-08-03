@@ -527,14 +527,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     @Export(name="userCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userCidrs;
 
     /**
-     * @return A list of user CIDRs.
+     * @return A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     public Output<List<String>> userCidrs() {

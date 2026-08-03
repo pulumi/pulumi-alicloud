@@ -92,7 +92,7 @@ type Role struct {
 	AssumeRolePolicyDocument pulumi.StringOutput `pulumi:"assumeRolePolicyDocument"`
 	// (Available since v1.252.0) The time when the RAM role was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the RAM role.
+	// The description of the RAM role. The description must be `1` to `1024` characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
 	//
@@ -162,7 +162,7 @@ type roleState struct {
 	AssumeRolePolicyDocument *string `pulumi:"assumeRolePolicyDocument"`
 	// (Available since v1.252.0) The time when the RAM role was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The description of the RAM role.
+	// The description of the RAM role. The description must be `1` to `1024` characters in length.
 	Description *string `pulumi:"description"`
 	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
 	//
@@ -203,7 +203,7 @@ type RoleState struct {
 	AssumeRolePolicyDocument pulumi.StringPtrInput
 	// (Available since v1.252.0) The time when the RAM role was created.
 	CreateTime pulumi.StringPtrInput
-	// The description of the RAM role.
+	// The description of the RAM role. The description must be `1` to `1024` characters in length.
 	Description pulumi.StringPtrInput
 	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
 	//
@@ -244,7 +244,7 @@ func (RoleState) ElementType() reflect.Type {
 type roleArgs struct {
 	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
 	AssumeRolePolicyDocument *string `pulumi:"assumeRolePolicyDocument"`
-	// The description of the RAM role.
+	// The description of the RAM role. The description must be `1` to `1024` characters in length.
 	Description *string `pulumi:"description"`
 	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
 	//
@@ -280,7 +280,7 @@ type roleArgs struct {
 type RoleArgs struct {
 	// The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
 	AssumeRolePolicyDocument pulumi.StringPtrInput
-	// The description of the RAM role.
+	// The description of the RAM role. The description must be `1` to `1024` characters in length.
 	Description pulumi.StringPtrInput
 	// Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
 	//
@@ -414,7 +414,7 @@ func (o RoleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the RAM role.
+// The description of the RAM role. The description must be `1` to `1024` characters in length.
 func (o RoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

@@ -13,6 +13,985 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AddressBookAssetRegionResourceType struct {
+	// The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `assetRegionId` cannot be modified after the Address Book is created.
+	AssetRegionId *string `pulumi:"assetRegionId"`
+	// The types of the assets. See `resourceType` below.
+	ResourceType *AddressBookAssetRegionResourceTypeResourceType `pulumi:"resourceType"`
+}
+
+// AddressBookAssetRegionResourceTypeInput is an input type that accepts AddressBookAssetRegionResourceTypeArgs and AddressBookAssetRegionResourceTypeOutput values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeInput` via:
+//
+//	AddressBookAssetRegionResourceTypeArgs{...}
+type AddressBookAssetRegionResourceTypeInput interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeOutput() AddressBookAssetRegionResourceTypeOutput
+	ToAddressBookAssetRegionResourceTypeOutputWithContext(context.Context) AddressBookAssetRegionResourceTypeOutput
+}
+
+type AddressBookAssetRegionResourceTypeArgs struct {
+	// The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `assetRegionId` cannot be modified after the Address Book is created.
+	AssetRegionId pulumi.StringPtrInput `pulumi:"assetRegionId"`
+	// The types of the assets. See `resourceType` below.
+	ResourceType AddressBookAssetRegionResourceTypeResourceTypePtrInput `pulumi:"resourceType"`
+}
+
+func (AddressBookAssetRegionResourceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (i AddressBookAssetRegionResourceTypeArgs) ToAddressBookAssetRegionResourceTypeOutput() AddressBookAssetRegionResourceTypeOutput {
+	return i.ToAddressBookAssetRegionResourceTypeOutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeArgs) ToAddressBookAssetRegionResourceTypeOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeOutput)
+}
+
+// AddressBookAssetRegionResourceTypeArrayInput is an input type that accepts AddressBookAssetRegionResourceTypeArray and AddressBookAssetRegionResourceTypeArrayOutput values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeArrayInput` via:
+//
+//	AddressBookAssetRegionResourceTypeArray{ AddressBookAssetRegionResourceTypeArgs{...} }
+type AddressBookAssetRegionResourceTypeArrayInput interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeArrayOutput() AddressBookAssetRegionResourceTypeArrayOutput
+	ToAddressBookAssetRegionResourceTypeArrayOutputWithContext(context.Context) AddressBookAssetRegionResourceTypeArrayOutput
+}
+
+type AddressBookAssetRegionResourceTypeArray []AddressBookAssetRegionResourceTypeInput
+
+func (AddressBookAssetRegionResourceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (i AddressBookAssetRegionResourceTypeArray) ToAddressBookAssetRegionResourceTypeArrayOutput() AddressBookAssetRegionResourceTypeArrayOutput {
+	return i.ToAddressBookAssetRegionResourceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeArray) ToAddressBookAssetRegionResourceTypeArrayOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeArrayOutput)
+}
+
+type AddressBookAssetRegionResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeOutput) ToAddressBookAssetRegionResourceTypeOutput() AddressBookAssetRegionResourceTypeOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeOutput) ToAddressBookAssetRegionResourceTypeOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeOutput {
+	return o
+}
+
+// The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `assetRegionId` cannot be modified after the Address Book is created.
+func (o AddressBookAssetRegionResourceTypeOutput) AssetRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceType) *string { return v.AssetRegionId }).(pulumi.StringPtrOutput)
+}
+
+// The types of the assets. See `resourceType` below.
+func (o AddressBookAssetRegionResourceTypeOutput) ResourceType() AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceType) *AddressBookAssetRegionResourceTypeResourceType {
+		return v.ResourceType
+	}).(AddressBookAssetRegionResourceTypeResourceTypePtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AddressBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeArrayOutput) ToAddressBookAssetRegionResourceTypeArrayOutput() AddressBookAssetRegionResourceTypeArrayOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeArrayOutput) ToAddressBookAssetRegionResourceTypeArrayOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeArrayOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeArrayOutput) Index(i pulumi.IntInput) AddressBookAssetRegionResourceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AddressBookAssetRegionResourceType {
+		return vs[0].([]AddressBookAssetRegionResourceType)[vs[1].(int)]
+	}).(AddressBookAssetRegionResourceTypeOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceType struct {
+	// The IPv4 asset types. See `ipv4` below.
+	Ipv4 *AddressBookAssetRegionResourceTypeResourceTypeIpv4 `pulumi:"ipv4"`
+	// The IPv6 asset types. See `ipv6` below.
+	Ipv6 *AddressBookAssetRegionResourceTypeResourceTypeIpv6 `pulumi:"ipv6"`
+}
+
+// AddressBookAssetRegionResourceTypeResourceTypeInput is an input type that accepts AddressBookAssetRegionResourceTypeResourceTypeArgs and AddressBookAssetRegionResourceTypeResourceTypeOutput values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeResourceTypeInput` via:
+//
+//	AddressBookAssetRegionResourceTypeResourceTypeArgs{...}
+type AddressBookAssetRegionResourceTypeResourceTypeInput interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeResourceTypeOutput() AddressBookAssetRegionResourceTypeResourceTypeOutput
+	ToAddressBookAssetRegionResourceTypeResourceTypeOutputWithContext(context.Context) AddressBookAssetRegionResourceTypeResourceTypeOutput
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeArgs struct {
+	// The IPv4 asset types. See `ipv4` below.
+	Ipv4 AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrInput `pulumi:"ipv4"`
+	// The IPv6 asset types. See `ipv6` below.
+	Ipv6 AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (AddressBookAssetRegionResourceTypeResourceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeArgs) ToAddressBookAssetRegionResourceTypeResourceTypeOutput() AddressBookAssetRegionResourceTypeResourceTypeOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeOutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeArgs) ToAddressBookAssetRegionResourceTypeResourceTypeOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeOutput)
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeArgs) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutput() AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeArgs) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeOutput).ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(ctx)
+}
+
+// AddressBookAssetRegionResourceTypeResourceTypePtrInput is an input type that accepts AddressBookAssetRegionResourceTypeResourceTypeArgs, AddressBookAssetRegionResourceTypeResourceTypePtr and AddressBookAssetRegionResourceTypeResourceTypePtrOutput values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeResourceTypePtrInput` via:
+//
+//	        AddressBookAssetRegionResourceTypeResourceTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddressBookAssetRegionResourceTypeResourceTypePtrInput interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeResourceTypePtrOutput() AddressBookAssetRegionResourceTypeResourceTypePtrOutput
+	ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(context.Context) AddressBookAssetRegionResourceTypeResourceTypePtrOutput
+}
+
+type addressBookAssetRegionResourceTypeResourceTypePtrType AddressBookAssetRegionResourceTypeResourceTypeArgs
+
+func AddressBookAssetRegionResourceTypeResourceTypePtr(v *AddressBookAssetRegionResourceTypeResourceTypeArgs) AddressBookAssetRegionResourceTypeResourceTypePtrInput {
+	return (*addressBookAssetRegionResourceTypeResourceTypePtrType)(v)
+}
+
+func (*addressBookAssetRegionResourceTypeResourceTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (i *addressBookAssetRegionResourceTypeResourceTypePtrType) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutput() AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (i *addressBookAssetRegionResourceTypeResourceTypePtrType) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypePtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeOutput) ToAddressBookAssetRegionResourceTypeResourceTypeOutput() AddressBookAssetRegionResourceTypeResourceTypeOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeOutput) ToAddressBookAssetRegionResourceTypeResourceTypeOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeOutput) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutput() AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return o.ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeOutput) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressBookAssetRegionResourceTypeResourceType) *AddressBookAssetRegionResourceTypeResourceType {
+		return &v
+	}).(AddressBookAssetRegionResourceTypeResourceTypePtrOutput)
+}
+
+// The IPv4 asset types. See `ipv4` below.
+func (o AddressBookAssetRegionResourceTypeResourceTypeOutput) Ipv4() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceType) *AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+		return v.Ipv4
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput)
+}
+
+// The IPv6 asset types. See `ipv6` below.
+func (o AddressBookAssetRegionResourceTypeResourceTypeOutput) Ipv6() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceType) *AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+		return v.Ipv6
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeResourceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypePtrOutput) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutput() AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypePtrOutput) ToAddressBookAssetRegionResourceTypeResourceTypePtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypePtrOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypePtrOutput) Elem() AddressBookAssetRegionResourceTypeResourceTypeOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceType) AddressBookAssetRegionResourceTypeResourceType {
+		if v != nil {
+			return *v
+		}
+		var ret AddressBookAssetRegionResourceTypeResourceType
+		return ret
+	}).(AddressBookAssetRegionResourceTypeResourceTypeOutput)
+}
+
+// The IPv4 asset types. See `ipv4` below.
+func (o AddressBookAssetRegionResourceTypeResourceTypePtrOutput) Ipv4() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceType) *AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput)
+}
+
+// The IPv6 asset types. See `ipv6` below.
+func (o AddressBookAssetRegionResourceTypeResourceTypePtrOutput) Ipv6() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceType) *AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv4 struct {
+	// Whether to include the assets of the type AiGatewayEIP.
+	AiGatewayEip *bool `pulumi:"aiGatewayEip"`
+	// Whether to include the assets of the type AlbEIP.
+	AlbEip *bool `pulumi:"albEip"`
+	// Whether to include the assets of the type ApiGatewayEIP.
+	ApiGatewayEip *bool `pulumi:"apiGatewayEip"`
+	// Whether to include the assets of the type BastionHostEgressIP.
+	BastionHostEgressIp *bool `pulumi:"bastionHostEgressIp"`
+	// Whether to include the assets of the type BastionHostIngressIP.
+	BastionHostIngressIp *bool `pulumi:"bastionHostIngressIp"`
+	// Whether to include the assets of the type BastionHostIP.
+	BastionHostIp *bool `pulumi:"bastionHostIp"`
+	// Whether to include the assets of the type EcsEIP.
+	EcsEip *bool `pulumi:"ecsEip"`
+	// Whether to include the assets of the type EcsPublicIP.
+	EcsPublicIp *bool `pulumi:"ecsPublicIp"`
+	// Whether to include the assets of the type EIP.
+	Eip *bool `pulumi:"eip"`
+	// Whether to include the assets of the type EniEIP.
+	EniEip *bool `pulumi:"eniEip"`
+	// Whether to include the assets of the type GaEIP.
+	GaEip *bool `pulumi:"gaEip"`
+	// Whether to include the assets of the type HAVIP.
+	Havip *bool `pulumi:"havip"`
+	// Whether to include the assets of the type NatEIP.
+	NatEip *bool `pulumi:"natEip"`
+	// Whether to include the assets of the type NatPublicIP.
+	NatPublicIp *bool `pulumi:"natPublicIp"`
+	// Whether to include the assets of the type NlbEIP.
+	NlbEip *bool `pulumi:"nlbEip"`
+	// Whether to include the assets of the type SlbEIP.
+	SlbEip *bool `pulumi:"slbEip"`
+	// Whether to include the assets of the type SlbPublicIP.
+	SlbPublicIp *bool `pulumi:"slbPublicIp"`
+}
+
+// AddressBookAssetRegionResourceTypeResourceTypeIpv4Input is an input type that accepts AddressBookAssetRegionResourceTypeResourceTypeIpv4Args and AddressBookAssetRegionResourceTypeResourceTypeIpv4Output values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeResourceTypeIpv4Input` via:
+//
+//	AddressBookAssetRegionResourceTypeResourceTypeIpv4Args{...}
+type AddressBookAssetRegionResourceTypeResourceTypeIpv4Input interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv4Output() AddressBookAssetRegionResourceTypeResourceTypeIpv4Output
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4Output
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv4Args struct {
+	// Whether to include the assets of the type AiGatewayEIP.
+	AiGatewayEip pulumi.BoolPtrInput `pulumi:"aiGatewayEip"`
+	// Whether to include the assets of the type AlbEIP.
+	AlbEip pulumi.BoolPtrInput `pulumi:"albEip"`
+	// Whether to include the assets of the type ApiGatewayEIP.
+	ApiGatewayEip pulumi.BoolPtrInput `pulumi:"apiGatewayEip"`
+	// Whether to include the assets of the type BastionHostEgressIP.
+	BastionHostEgressIp pulumi.BoolPtrInput `pulumi:"bastionHostEgressIp"`
+	// Whether to include the assets of the type BastionHostIngressIP.
+	BastionHostIngressIp pulumi.BoolPtrInput `pulumi:"bastionHostIngressIp"`
+	// Whether to include the assets of the type BastionHostIP.
+	BastionHostIp pulumi.BoolPtrInput `pulumi:"bastionHostIp"`
+	// Whether to include the assets of the type EcsEIP.
+	EcsEip pulumi.BoolPtrInput `pulumi:"ecsEip"`
+	// Whether to include the assets of the type EcsPublicIP.
+	EcsPublicIp pulumi.BoolPtrInput `pulumi:"ecsPublicIp"`
+	// Whether to include the assets of the type EIP.
+	Eip pulumi.BoolPtrInput `pulumi:"eip"`
+	// Whether to include the assets of the type EniEIP.
+	EniEip pulumi.BoolPtrInput `pulumi:"eniEip"`
+	// Whether to include the assets of the type GaEIP.
+	GaEip pulumi.BoolPtrInput `pulumi:"gaEip"`
+	// Whether to include the assets of the type HAVIP.
+	Havip pulumi.BoolPtrInput `pulumi:"havip"`
+	// Whether to include the assets of the type NatEIP.
+	NatEip pulumi.BoolPtrInput `pulumi:"natEip"`
+	// Whether to include the assets of the type NatPublicIP.
+	NatPublicIp pulumi.BoolPtrInput `pulumi:"natPublicIp"`
+	// Whether to include the assets of the type NlbEIP.
+	NlbEip pulumi.BoolPtrInput `pulumi:"nlbEip"`
+	// Whether to include the assets of the type SlbEIP.
+	SlbEip pulumi.BoolPtrInput `pulumi:"slbEip"`
+	// Whether to include the assets of the type SlbPublicIP.
+	SlbPublicIp pulumi.BoolPtrInput `pulumi:"slbPublicIp"`
+}
+
+func (AddressBookAssetRegionResourceTypeResourceTypeIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv4Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4Output() AddressBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv4Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeIpv4Output)
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv4Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv4Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeIpv4Output).ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(ctx)
+}
+
+// AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrInput is an input type that accepts AddressBookAssetRegionResourceTypeResourceTypeIpv4Args, AddressBookAssetRegionResourceTypeResourceTypeIpv4Ptr and AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrInput` via:
+//
+//	        AddressBookAssetRegionResourceTypeResourceTypeIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrInput interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput
+}
+
+type addressBookAssetRegionResourceTypeResourceTypeIpv4PtrType AddressBookAssetRegionResourceTypeResourceTypeIpv4Args
+
+func AddressBookAssetRegionResourceTypeResourceTypeIpv4Ptr(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4Args) AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrInput {
+	return (*addressBookAssetRegionResourceTypeResourceTypeIpv4PtrType)(v)
+}
+
+func (*addressBookAssetRegionResourceTypeResourceTypeIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (i *addressBookAssetRegionResourceTypeResourceTypeIpv4PtrType) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *addressBookAssetRegionResourceTypeResourceTypeIpv4PtrType) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv4Output struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4Output() AddressBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return o.ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+		return &v
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput)
+}
+
+// Whether to include the assets of the type AiGatewayEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) AiGatewayEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.AiGatewayEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type AlbEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) AlbEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.AlbEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type ApiGatewayEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) ApiGatewayEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.ApiGatewayEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type BastionHostEgressIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) BastionHostEgressIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.BastionHostEgressIp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type BastionHostIngressIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) BastionHostIngressIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.BastionHostIngressIp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type BastionHostIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) BastionHostIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.BastionHostIp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EcsEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) EcsEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.EcsEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EcsPublicIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) EcsPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.EcsPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) Eip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.Eip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EniEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) EniEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.EniEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type GaEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) GaEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.GaEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type HAVIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) Havip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.Havip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NatEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) NatEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.NatEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NatPublicIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) NatPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.NatPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NlbEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) NlbEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.NlbEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type SlbEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) SlbEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.SlbEip }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type SlbPublicIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4Output) SlbPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool { return v.SlbPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) ToAddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) Elem() AddressBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret AddressBookAssetRegionResourceTypeResourceTypeIpv4
+		return ret
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv4Output)
+}
+
+// Whether to include the assets of the type AiGatewayEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) AiGatewayEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AiGatewayEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type AlbEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) AlbEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AlbEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type ApiGatewayEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) ApiGatewayEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApiGatewayEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type BastionHostEgressIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) BastionHostEgressIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BastionHostEgressIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type BastionHostIngressIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) BastionHostIngressIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BastionHostIngressIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type BastionHostIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) BastionHostIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BastionHostIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EcsEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) EcsEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EcsEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EcsPublicIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) EcsPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EcsPublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) Eip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Eip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EniEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) EniEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EniEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type GaEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) GaEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GaEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type HAVIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) Havip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Havip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NatEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) NatEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NatEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NatPublicIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) NatPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NatPublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NlbEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) NlbEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NlbEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type SlbEIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) SlbEip() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SlbEip
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type SlbPublicIP.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput) SlbPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv4) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SlbPublicIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv6 struct {
+	// Whether to include the assets of the type AiGatewayEIPv6.
+	AiGatewayEipv6 *bool `pulumi:"aiGatewayEipv6"`
+	// Whether to include the assets of the type AlbIPv6.
+	AlbIpv6 *bool `pulumi:"albIpv6"`
+	// Whether to include the assets of the type ApiGatewayEIPv6.
+	ApiGatewayEipv6 *bool `pulumi:"apiGatewayEipv6"`
+	// Whether to include the assets of the type EcsIPv6.
+	EcsIpv6 *bool `pulumi:"ecsIpv6"`
+	// Whether to include the assets of the type EniEIPv6.
+	EniEipv6 *bool `pulumi:"eniEipv6"`
+	// Whether to include the assets of the type GaEIPv6.
+	GaEipv6 *bool `pulumi:"gaEipv6"`
+	// Whether to include the assets of the type NlbIPv6.
+	NlbIpv6 *bool `pulumi:"nlbIpv6"`
+	// Whether to include the assets of the type SlbIPv6.
+	SlbIpv6 *bool `pulumi:"slbIpv6"`
+}
+
+// AddressBookAssetRegionResourceTypeResourceTypeIpv6Input is an input type that accepts AddressBookAssetRegionResourceTypeResourceTypeIpv6Args and AddressBookAssetRegionResourceTypeResourceTypeIpv6Output values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeResourceTypeIpv6Input` via:
+//
+//	AddressBookAssetRegionResourceTypeResourceTypeIpv6Args{...}
+type AddressBookAssetRegionResourceTypeResourceTypeIpv6Input interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv6Output() AddressBookAssetRegionResourceTypeResourceTypeIpv6Output
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6Output
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv6Args struct {
+	// Whether to include the assets of the type AiGatewayEIPv6.
+	AiGatewayEipv6 pulumi.BoolPtrInput `pulumi:"aiGatewayEipv6"`
+	// Whether to include the assets of the type AlbIPv6.
+	AlbIpv6 pulumi.BoolPtrInput `pulumi:"albIpv6"`
+	// Whether to include the assets of the type ApiGatewayEIPv6.
+	ApiGatewayEipv6 pulumi.BoolPtrInput `pulumi:"apiGatewayEipv6"`
+	// Whether to include the assets of the type EcsIPv6.
+	EcsIpv6 pulumi.BoolPtrInput `pulumi:"ecsIpv6"`
+	// Whether to include the assets of the type EniEIPv6.
+	EniEipv6 pulumi.BoolPtrInput `pulumi:"eniEipv6"`
+	// Whether to include the assets of the type GaEIPv6.
+	GaEipv6 pulumi.BoolPtrInput `pulumi:"gaEipv6"`
+	// Whether to include the assets of the type NlbIPv6.
+	NlbIpv6 pulumi.BoolPtrInput `pulumi:"nlbIpv6"`
+	// Whether to include the assets of the type SlbIPv6.
+	SlbIpv6 pulumi.BoolPtrInput `pulumi:"slbIpv6"`
+}
+
+func (AddressBookAssetRegionResourceTypeResourceTypeIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv6Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6Output() AddressBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv6Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeIpv6Output)
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv6Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i AddressBookAssetRegionResourceTypeResourceTypeIpv6Args) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeIpv6Output).ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(ctx)
+}
+
+// AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrInput is an input type that accepts AddressBookAssetRegionResourceTypeResourceTypeIpv6Args, AddressBookAssetRegionResourceTypeResourceTypeIpv6Ptr and AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput values.
+// You can construct a concrete instance of `AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrInput` via:
+//
+//	        AddressBookAssetRegionResourceTypeResourceTypeIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrInput interface {
+	pulumi.Input
+
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput
+	ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput
+}
+
+type addressBookAssetRegionResourceTypeResourceTypeIpv6PtrType AddressBookAssetRegionResourceTypeResourceTypeIpv6Args
+
+func AddressBookAssetRegionResourceTypeResourceTypeIpv6Ptr(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6Args) AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrInput {
+	return (*addressBookAssetRegionResourceTypeResourceTypeIpv6PtrType)(v)
+}
+
+func (*addressBookAssetRegionResourceTypeResourceTypeIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (i *addressBookAssetRegionResourceTypeResourceTypeIpv6PtrType) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return i.ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *addressBookAssetRegionResourceTypeResourceTypeIpv6PtrType) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv6Output struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6Output() AddressBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return o.ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+		return &v
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput)
+}
+
+// Whether to include the assets of the type AiGatewayEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) AiGatewayEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.AiGatewayEipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type AlbIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) AlbIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.AlbIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type ApiGatewayEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) ApiGatewayEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.ApiGatewayEipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EcsIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) EcsIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.EcsIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EniEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) EniEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.EniEipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type GaEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) GaEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.GaEipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NlbIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) NlbIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.NlbIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type SlbIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6Output) SlbIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool { return v.SlbIpv6 }).(pulumi.BoolPtrOutput)
+}
+
+type AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput() AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) ToAddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutputWithContext(ctx context.Context) AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput {
+	return o
+}
+
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) Elem() AddressBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret AddressBookAssetRegionResourceTypeResourceTypeIpv6
+		return ret
+	}).(AddressBookAssetRegionResourceTypeResourceTypeIpv6Output)
+}
+
+// Whether to include the assets of the type AiGatewayEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) AiGatewayEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AiGatewayEipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type AlbIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) AlbIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AlbIpv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type ApiGatewayEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) ApiGatewayEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApiGatewayEipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EcsIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) EcsIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EcsIpv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type EniEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) EniEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EniEipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type GaEIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) GaEipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GaEipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type NlbIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) NlbIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NlbIpv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the assets of the type SlbIPv6.
+func (o AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput) SlbIpv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AddressBookAssetRegionResourceTypeResourceTypeIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SlbIpv6
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AddressBookEcsTag struct {
 	// The key of ECS tag that to be matched.
 	TagKey *string `pulumi:"tagKey"`
@@ -2323,23 +3302,31 @@ func (o UserAlarmConfigNotifyConfigArrayOutput) Index(i pulumi.IntInput) UserAla
 }
 
 type GetAddressBooksBook struct {
+	// (Available since v1.286.0) The number of addresses in the Address Book.
+	AddressListCount int `pulumi:"addressListCount"`
 	// The addresses in the Address Book.
 	AddressLists []string `pulumi:"addressLists"`
+	// (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+	AssetMemberUids []int `pulumi:"assetMemberUids"`
+	// (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+	AssetRegionResourceTypes []GetAddressBooksBookAssetRegionResourceType `pulumi:"assetRegionResourceTypes"`
 	// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
 	AutoAddTagEcs int `pulumi:"autoAddTagEcs"`
 	// The description of the Address Book.
 	Description string `pulumi:"description"`
-	// The logical relation among the ECS tags that to be matchedh.
+	// The logical relation among the ECS tags that to be matched.
 	EcsTags []GetAddressBooksBookEcsTag `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName string `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
 	GroupType string `pulumi:"groupType"`
 	// The ID of the Address Book.
 	GroupUuid string `pulumi:"groupUuid"`
 	// The ID of the Address Book.
 	Id string `pulumi:"id"`
+	// (Available since v1.286.0) The number of times that the Address Book is referenced.
+	ReferenceCount int `pulumi:"referenceCount"`
 	// One or more tags for the relationship between.
 	TagRelation string `pulumi:"tagRelation"`
 }
@@ -2356,23 +3343,31 @@ type GetAddressBooksBookInput interface {
 }
 
 type GetAddressBooksBookArgs struct {
+	// (Available since v1.286.0) The number of addresses in the Address Book.
+	AddressListCount pulumi.IntInput `pulumi:"addressListCount"`
 	// The addresses in the Address Book.
 	AddressLists pulumi.StringArrayInput `pulumi:"addressLists"`
+	// (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+	AssetMemberUids pulumi.IntArrayInput `pulumi:"assetMemberUids"`
+	// (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+	AssetRegionResourceTypes GetAddressBooksBookAssetRegionResourceTypeArrayInput `pulumi:"assetRegionResourceTypes"`
 	// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
 	AutoAddTagEcs pulumi.IntInput `pulumi:"autoAddTagEcs"`
 	// The description of the Address Book.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The logical relation among the ECS tags that to be matchedh.
+	// The logical relation among the ECS tags that to be matched.
 	EcsTags GetAddressBooksBookEcsTagArrayInput `pulumi:"ecsTags"`
 	// The name of the Address Book.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+	// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+	// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
 	GroupType pulumi.StringInput `pulumi:"groupType"`
 	// The ID of the Address Book.
 	GroupUuid pulumi.StringInput `pulumi:"groupUuid"`
 	// The ID of the Address Book.
 	Id pulumi.StringInput `pulumi:"id"`
+	// (Available since v1.286.0) The number of times that the Address Book is referenced.
+	ReferenceCount pulumi.IntInput `pulumi:"referenceCount"`
 	// One or more tags for the relationship between.
 	TagRelation pulumi.StringInput `pulumi:"tagRelation"`
 }
@@ -2428,9 +3423,26 @@ func (o GetAddressBooksBookOutput) ToGetAddressBooksBookOutputWithContext(ctx co
 	return o
 }
 
+// (Available since v1.286.0) The number of addresses in the Address Book.
+func (o GetAddressBooksBookOutput) AddressListCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) int { return v.AddressListCount }).(pulumi.IntOutput)
+}
+
 // The addresses in the Address Book.
 func (o GetAddressBooksBookOutput) AddressLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) []string { return v.AddressLists }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+func (o GetAddressBooksBookOutput) AssetMemberUids() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) []int { return v.AssetMemberUids }).(pulumi.IntArrayOutput)
+}
+
+// (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+func (o GetAddressBooksBookOutput) AssetRegionResourceTypes() GetAddressBooksBookAssetRegionResourceTypeArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) []GetAddressBooksBookAssetRegionResourceType {
+		return v.AssetRegionResourceTypes
+	}).(GetAddressBooksBookAssetRegionResourceTypeArrayOutput)
 }
 
 // Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
@@ -2443,7 +3455,7 @@ func (o GetAddressBooksBookOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The logical relation among the ECS tags that to be matchedh.
+// The logical relation among the ECS tags that to be matched.
 func (o GetAddressBooksBookOutput) EcsTags() GetAddressBooksBookEcsTagArrayOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) []GetAddressBooksBookEcsTag { return v.EcsTags }).(GetAddressBooksBookEcsTagArrayOutput)
 }
@@ -2453,8 +3465,8 @@ func (o GetAddressBooksBookOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+// The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+// **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
 func (o GetAddressBooksBookOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.GroupType }).(pulumi.StringOutput)
 }
@@ -2467,6 +3479,11 @@ func (o GetAddressBooksBookOutput) GroupUuid() pulumi.StringOutput {
 // The ID of the Address Book.
 func (o GetAddressBooksBookOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressBooksBook) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (Available since v1.286.0) The number of times that the Address Book is referenced.
+func (o GetAddressBooksBookOutput) ReferenceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAddressBooksBook) int { return v.ReferenceCount }).(pulumi.IntOutput)
 }
 
 // One or more tags for the relationship between.
@@ -2492,6 +3509,625 @@ func (o GetAddressBooksBookArrayOutput) Index(i pulumi.IntInput) GetAddressBooks
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBook {
 		return vs[0].([]GetAddressBooksBook)[vs[1].(int)]
 	}).(GetAddressBooksBookOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceType struct {
+	// The region ID of the assets.
+	AssetRegionId string `pulumi:"assetRegionId"`
+	// The types of the assets.
+	ResourceTypes []GetAddressBooksBookAssetRegionResourceTypeResourceType `pulumi:"resourceTypes"`
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeInput is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeArgs and GetAddressBooksBookAssetRegionResourceTypeOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeInput` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeArgs{...}
+type GetAddressBooksBookAssetRegionResourceTypeInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeOutput() GetAddressBooksBookAssetRegionResourceTypeOutput
+	ToGetAddressBooksBookAssetRegionResourceTypeOutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeOutput
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeArgs struct {
+	// The region ID of the assets.
+	AssetRegionId pulumi.StringInput `pulumi:"assetRegionId"`
+	// The types of the assets.
+	ResourceTypes GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayInput `pulumi:"resourceTypes"`
+}
+
+func (GetAddressBooksBookAssetRegionResourceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeArgs) ToGetAddressBooksBookAssetRegionResourceTypeOutput() GetAddressBooksBookAssetRegionResourceTypeOutput {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeArgs) ToGetAddressBooksBookAssetRegionResourceTypeOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeOutput)
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeArrayInput is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeArray and GetAddressBooksBookAssetRegionResourceTypeArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeArrayInput` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeArray{ GetAddressBooksBookAssetRegionResourceTypeArgs{...} }
+type GetAddressBooksBookAssetRegionResourceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeArrayOutput() GetAddressBooksBookAssetRegionResourceTypeArrayOutput
+	ToGetAddressBooksBookAssetRegionResourceTypeArrayOutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeArrayOutput
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeArray []GetAddressBooksBookAssetRegionResourceTypeInput
+
+func (GetAddressBooksBookAssetRegionResourceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeArray) ToGetAddressBooksBookAssetRegionResourceTypeArrayOutput() GetAddressBooksBookAssetRegionResourceTypeArrayOutput {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeArray) ToGetAddressBooksBookAssetRegionResourceTypeArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeArrayOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeOutput) ToGetAddressBooksBookAssetRegionResourceTypeOutput() GetAddressBooksBookAssetRegionResourceTypeOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeOutput) ToGetAddressBooksBookAssetRegionResourceTypeOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeOutput {
+	return o
+}
+
+// The region ID of the assets.
+func (o GetAddressBooksBookAssetRegionResourceTypeOutput) AssetRegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceType) string { return v.AssetRegionId }).(pulumi.StringOutput)
+}
+
+// The types of the assets.
+func (o GetAddressBooksBookAssetRegionResourceTypeOutput) ResourceTypes() GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceType) []GetAddressBooksBookAssetRegionResourceTypeResourceType {
+		return v.ResourceTypes
+	}).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceType)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeArrayOutput() GetAddressBooksBookAssetRegionResourceTypeArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookAssetRegionResourceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBookAssetRegionResourceType {
+		return vs[0].([]GetAddressBooksBookAssetRegionResourceType)[vs[1].(int)]
+	}).(GetAddressBooksBookAssetRegionResourceTypeOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceType struct {
+	// The IPv4 asset types.
+	Ipv4s []GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4 `pulumi:"ipv4s"`
+	// The IPv6 asset types.
+	Ipv6s []GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6 `pulumi:"ipv6s"`
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeResourceTypeInput is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs and GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeResourceTypeInput` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs{...}
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs struct {
+	// The IPv4 asset types.
+	Ipv4s GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayInput `pulumi:"ipv4s"`
+	// The IPv6 asset types.
+	Ipv6s GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayInput `pulumi:"ipv6s"`
+}
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput)
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayInput is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray and GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayInput` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray{ GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs{...} }
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray []GetAddressBooksBookAssetRegionResourceTypeResourceTypeInput
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput {
+	return o
+}
+
+// The IPv4 asset types.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput) Ipv4s() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceType) []GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4 {
+		return v.Ipv4s
+	}).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput)
+}
+
+// The IPv6 asset types.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput) Ipv6s() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceType) []GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6 {
+		return v.Ipv6s
+	}).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceTypeResourceType)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBookAssetRegionResourceTypeResourceType {
+		return vs[0].([]GetAddressBooksBookAssetRegionResourceTypeResourceType)[vs[1].(int)]
+	}).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4 struct {
+	// Whether the assets of the type AiGatewayEIP are included.
+	AiGatewayEip bool `pulumi:"aiGatewayEip"`
+	// Whether the assets of the type AlbEIP are included.
+	AlbEip bool `pulumi:"albEip"`
+	// Whether the assets of the type ApiGatewayEIP are included.
+	ApiGatewayEip bool `pulumi:"apiGatewayEip"`
+	// Whether the assets of the type BastionHostEgressIP are included.
+	BastionHostEgressIp bool `pulumi:"bastionHostEgressIp"`
+	// Whether the assets of the type BastionHostIngressIP are included.
+	BastionHostIngressIp bool `pulumi:"bastionHostIngressIp"`
+	// Whether the assets of the type BastionHostIP are included.
+	BastionHostIp bool `pulumi:"bastionHostIp"`
+	// Whether the assets of the type EcsEIP are included.
+	EcsEip bool `pulumi:"ecsEip"`
+	// Whether the assets of the type EcsPublicIP are included.
+	EcsPublicIp bool `pulumi:"ecsPublicIp"`
+	// Whether the assets of the type EIP are included.
+	Eip bool `pulumi:"eip"`
+	// Whether the assets of the type EniEIP are included.
+	EniEip bool `pulumi:"eniEip"`
+	// Whether the assets of the type GaEIP are included.
+	GaEip bool `pulumi:"gaEip"`
+	// Whether the assets of the type HAVIP are included.
+	Havip bool `pulumi:"havip"`
+	// Whether the assets of the type NatEIP are included.
+	NatEip bool `pulumi:"natEip"`
+	// Whether the assets of the type NatPublicIP are included.
+	NatPublicIp bool `pulumi:"natPublicIp"`
+	// Whether the assets of the type NlbEIP are included.
+	NlbEip bool `pulumi:"nlbEip"`
+	// Whether the assets of the type SlbEIP are included.
+	SlbEip bool `pulumi:"slbEip"`
+	// Whether the assets of the type SlbPublicIP are included.
+	SlbPublicIp bool `pulumi:"slbPublicIp"`
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Input is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args and GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Input` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args{...}
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Input interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args struct {
+	// Whether the assets of the type AiGatewayEIP are included.
+	AiGatewayEip pulumi.BoolInput `pulumi:"aiGatewayEip"`
+	// Whether the assets of the type AlbEIP are included.
+	AlbEip pulumi.BoolInput `pulumi:"albEip"`
+	// Whether the assets of the type ApiGatewayEIP are included.
+	ApiGatewayEip pulumi.BoolInput `pulumi:"apiGatewayEip"`
+	// Whether the assets of the type BastionHostEgressIP are included.
+	BastionHostEgressIp pulumi.BoolInput `pulumi:"bastionHostEgressIp"`
+	// Whether the assets of the type BastionHostIngressIP are included.
+	BastionHostIngressIp pulumi.BoolInput `pulumi:"bastionHostIngressIp"`
+	// Whether the assets of the type BastionHostIP are included.
+	BastionHostIp pulumi.BoolInput `pulumi:"bastionHostIp"`
+	// Whether the assets of the type EcsEIP are included.
+	EcsEip pulumi.BoolInput `pulumi:"ecsEip"`
+	// Whether the assets of the type EcsPublicIP are included.
+	EcsPublicIp pulumi.BoolInput `pulumi:"ecsPublicIp"`
+	// Whether the assets of the type EIP are included.
+	Eip pulumi.BoolInput `pulumi:"eip"`
+	// Whether the assets of the type EniEIP are included.
+	EniEip pulumi.BoolInput `pulumi:"eniEip"`
+	// Whether the assets of the type GaEIP are included.
+	GaEip pulumi.BoolInput `pulumi:"gaEip"`
+	// Whether the assets of the type HAVIP are included.
+	Havip pulumi.BoolInput `pulumi:"havip"`
+	// Whether the assets of the type NatEIP are included.
+	NatEip pulumi.BoolInput `pulumi:"natEip"`
+	// Whether the assets of the type NatPublicIP are included.
+	NatPublicIp pulumi.BoolInput `pulumi:"natPublicIp"`
+	// Whether the assets of the type NlbEIP are included.
+	NlbEip pulumi.BoolInput `pulumi:"nlbEip"`
+	// Whether the assets of the type SlbEIP are included.
+	SlbEip pulumi.BoolInput `pulumi:"slbEip"`
+	// Whether the assets of the type SlbPublicIP are included.
+	SlbPublicIp pulumi.BoolInput `pulumi:"slbPublicIp"`
+}
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output)
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayInput is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array and GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayInput` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array{ GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args{...} }
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array []GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Input
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4OutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return o
+}
+
+// Whether the assets of the type AiGatewayEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) AiGatewayEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.AiGatewayEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type AlbEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) AlbEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.AlbEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type ApiGatewayEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) ApiGatewayEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.ApiGatewayEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type BastionHostEgressIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) BastionHostEgressIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.BastionHostEgressIp }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type BastionHostIngressIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) BastionHostIngressIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.BastionHostIngressIp }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type BastionHostIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) BastionHostIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.BastionHostIp }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type EcsEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) EcsEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.EcsEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type EcsPublicIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) EcsPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.EcsPublicIp }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type EIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) Eip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.Eip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type EniEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) EniEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.EniEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type GaEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) GaEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.GaEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type HAVIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) Havip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.Havip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type NatEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) NatEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.NatEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type NatPublicIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) NatPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.NatPublicIp }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type NlbEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) NlbEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.NlbEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type SlbEIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) SlbEip() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.SlbEip }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type SlbPublicIP are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output) SlbPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4) bool { return v.SlbPublicIp }).(pulumi.BoolOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4 {
+		return vs[0].([]GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4)[vs[1].(int)]
+	}).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6 struct {
+	// Whether the assets of the type AiGatewayEIPv6 are included.
+	AiGatewayEipv6 bool `pulumi:"aiGatewayEipv6"`
+	// Whether the assets of the type AlbIPv6 are included.
+	AlbIpv6 bool `pulumi:"albIpv6"`
+	// Whether the assets of the type ApiGatewayEIPv6 are included.
+	ApiGatewayEipv6 bool `pulumi:"apiGatewayEipv6"`
+	// Whether the assets of the type EcsIPv6 are included.
+	EcsIpv6 bool `pulumi:"ecsIpv6"`
+	// Whether the assets of the type EniEIPv6 are included.
+	EniEipv6 bool `pulumi:"eniEipv6"`
+	// Whether the assets of the type GaEIPv6 are included.
+	GaEipv6 bool `pulumi:"gaEipv6"`
+	// Whether the assets of the type NlbIPv6 are included.
+	NlbIpv6 bool `pulumi:"nlbIpv6"`
+	// Whether the assets of the type SlbIPv6 are included.
+	SlbIpv6 bool `pulumi:"slbIpv6"`
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Input is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args and GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Input` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args{...}
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Input interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args struct {
+	// Whether the assets of the type AiGatewayEIPv6 are included.
+	AiGatewayEipv6 pulumi.BoolInput `pulumi:"aiGatewayEipv6"`
+	// Whether the assets of the type AlbIPv6 are included.
+	AlbIpv6 pulumi.BoolInput `pulumi:"albIpv6"`
+	// Whether the assets of the type ApiGatewayEIPv6 are included.
+	ApiGatewayEipv6 pulumi.BoolInput `pulumi:"apiGatewayEipv6"`
+	// Whether the assets of the type EcsIPv6 are included.
+	EcsIpv6 pulumi.BoolInput `pulumi:"ecsIpv6"`
+	// Whether the assets of the type EniEIPv6 are included.
+	EniEipv6 pulumi.BoolInput `pulumi:"eniEipv6"`
+	// Whether the assets of the type GaEIPv6 are included.
+	GaEipv6 pulumi.BoolInput `pulumi:"gaEipv6"`
+	// Whether the assets of the type NlbIPv6 are included.
+	NlbIpv6 pulumi.BoolInput `pulumi:"nlbIpv6"`
+	// Whether the assets of the type SlbIPv6 are included.
+	SlbIpv6 pulumi.BoolInput `pulumi:"slbIpv6"`
+}
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output)
+}
+
+// GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayInput is an input type that accepts GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array and GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput values.
+// You can construct a concrete instance of `GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayInput` via:
+//
+//	GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array{ GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args{...} }
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput
+	ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutputWithContext(context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array []GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Input
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput {
+	return i.ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6OutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return o
+}
+
+// Whether the assets of the type AiGatewayEIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) AiGatewayEipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.AiGatewayEipv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type AlbIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) AlbIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.AlbIpv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type ApiGatewayEIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) ApiGatewayEipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.ApiGatewayEipv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type EcsIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) EcsIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.EcsIpv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type EniEIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) EniEipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.EniEipv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type GaEIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) GaEipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.GaEipv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type NlbIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) NlbIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.NlbIpv6 }).(pulumi.BoolOutput)
+}
+
+// Whether the assets of the type SlbIPv6 are included.
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output) SlbIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6) bool { return v.SlbIpv6 }).(pulumi.BoolOutput)
+}
+
+type GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6)(nil)).Elem()
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput() GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput) ToGetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutputWithContext(ctx context.Context) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput {
+	return o
+}
+
+func (o GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput) Index(i pulumi.IntInput) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6 {
+		return vs[0].([]GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6)[vs[1].(int)]
+	}).(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output)
 }
 
 type GetAddressBooksBookEcsTag struct {
@@ -5821,6 +7457,14 @@ func (o GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArra
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeInput)(nil)).Elem(), AddressBookAssetRegionResourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeArrayInput)(nil)).Elem(), AddressBookAssetRegionResourceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeInput)(nil)).Elem(), AddressBookAssetRegionResourceTypeResourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypePtrInput)(nil)).Elem(), AddressBookAssetRegionResourceTypeResourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv4Input)(nil)).Elem(), AddressBookAssetRegionResourceTypeResourceTypeIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrInput)(nil)).Elem(), AddressBookAssetRegionResourceTypeResourceTypeIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv6Input)(nil)).Elem(), AddressBookAssetRegionResourceTypeResourceTypeIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrInput)(nil)).Elem(), AddressBookAssetRegionResourceTypeResourceTypeIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookEcsTagInput)(nil)).Elem(), AddressBookEcsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddressBookEcsTagArrayInput)(nil)).Elem(), AddressBookEcsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallVpcFirewallCenLocalVpcInput)(nil)).Elem(), FirewallVpcFirewallCenLocalVpcArgs{})
@@ -5853,6 +7497,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserAlarmConfigNotifyConfigArrayInput)(nil)).Elem(), UserAlarmConfigNotifyConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookInput)(nil)).Elem(), GetAddressBooksBookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookArrayInput)(nil)).Elem(), GetAddressBooksBookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeInput)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeArrayInput)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeInput)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeResourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayInput)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeResourceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Input)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayInput)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Input)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayInput)(nil)).Elem(), GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagInput)(nil)).Elem(), GetAddressBooksBookEcsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressBooksBookEcsTagArrayInput)(nil)).Elem(), GetAddressBooksBookEcsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetControlPoliciesPolicyInput)(nil)).Elem(), GetControlPoliciesPolicyArgs{})
@@ -5896,6 +7548,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput)(nil)).Elem(), GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArray{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeOutput{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeArrayOutput{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeResourceTypeOutput{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeResourceTypePtrOutput{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeResourceTypeIpv4Output{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeResourceTypeIpv4PtrOutput{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeResourceTypeIpv6Output{})
+	pulumi.RegisterOutputType(AddressBookAssetRegionResourceTypeResourceTypeIpv6PtrOutput{})
 	pulumi.RegisterOutputType(AddressBookEcsTagOutput{})
 	pulumi.RegisterOutputType(AddressBookEcsTagArrayOutput{})
 	pulumi.RegisterOutputType(FirewallVpcFirewallCenLocalVpcOutput{})
@@ -5928,6 +7588,14 @@ func init() {
 	pulumi.RegisterOutputType(UserAlarmConfigNotifyConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeResourceTypeOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeResourceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4Output{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4ArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6Output{})
+	pulumi.RegisterOutputType(GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagOutput{})
 	pulumi.RegisterOutputType(GetAddressBooksBookEcsTagArrayOutput{})
 	pulumi.RegisterOutputType(GetControlPoliciesPolicyOutput{})

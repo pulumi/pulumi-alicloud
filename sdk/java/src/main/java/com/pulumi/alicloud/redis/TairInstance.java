@@ -399,6 +399,34 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.intranetBandwidth;
     }
     /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     * 
+     */
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
+    private Output<String> maintainEndTime;
+
+    /**
+     * @return The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     * 
+     */
+    public Output<String> maintainEndTime() {
+        return this.maintainEndTime;
+    }
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     * 
+     */
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
+    private Output<String> maintainStartTime;
+
+    /**
+     * @return The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     * 
+     */
+    public Output<String> maintainStartTime() {
+        return this.maintainStartTime;
+    }
+    /**
      * The maximum number of connections supported by the instance.
      * 
      */

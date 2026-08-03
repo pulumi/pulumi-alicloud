@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AliCloud.Sslcertificatesservice
+namespace Pulumi.AliCloud.sslCertificatesService
 {
     /// <summary>
     /// Provides a SSL Certificates Pca Certificate resource.

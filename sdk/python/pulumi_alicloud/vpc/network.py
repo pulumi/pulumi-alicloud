@@ -84,7 +84,7 @@ class NetworkArgs:
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -417,7 +417,7 @@ class NetworkArgs:
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of user CIDRs.
+        A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         """
         return pulumi.get(self, "user_cidrs")
 
@@ -521,7 +521,7 @@ class _NetworkState:
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -956,7 +956,7 @@ class _NetworkState:
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of user CIDRs.
+        A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         """
         return pulumi.get(self, "user_cidrs")
 
@@ -1095,7 +1095,7 @@ class Network(pulumi.CustomResource):
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -1319,7 +1319,7 @@ class Network(pulumi.CustomResource):
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.bool] system_route_table_route_propagation_enable: Whether the system route table receives propagation routes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of Vpc.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_cidrs: A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         :param pulumi.Input[_builtins.str] vpc_name: The new name of the VPC.
                The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
                
@@ -1604,7 +1604,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="userCidrs")
     def user_cidrs(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of user CIDRs.
+        A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         """
         return pulumi.get(self, "user_cidrs")
 

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayLogConfig {
     /**
-     * @return Sls See `sls` below.
+     * @return The Simple Log Service configuration for the gateway. See `sls` below.
      * 
      */
     private @Nullable GatewayLogConfigSls sls;
 
     private GatewayLogConfig() {}
     /**
-     * @return Sls See `sls` below.
+     * @return The Simple Log Service configuration for the gateway. See `sls` below.
      * 
      */
     public Optional<GatewayLogConfigSls> sls() {

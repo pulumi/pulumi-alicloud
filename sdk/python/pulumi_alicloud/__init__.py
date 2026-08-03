@@ -913,6 +913,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apig/aiModelProvider",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/aiModelProvider:AiModelProvider": "AiModelProvider"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/domain",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apig/environment",
   "fqn": "pulumi_alicloud.apig",
   "classes": {
@@ -937,10 +953,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apig/plugin",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/plugin:Plugin": "Plugin"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apig/pluginClass",
   "fqn": "pulumi_alicloud.apig",
   "classes": {
    "alicloud:apig/pluginClass:PluginClass": "PluginClass"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/service",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/service:Service": "Service"
   }
  },
  {
@@ -5625,6 +5657,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/apiKey",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/apiKey:ApiKey": "ApiKey"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/backupPolicy",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
@@ -6673,6 +6713,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "nas/logAnalysis",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/logAnalysis:LogAnalysis": "LogAnalysis"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "nas/mountTarget",
   "fqn": "pulumi_alicloud.nas",
   "classes": {
@@ -7597,6 +7645,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ram",
   "classes": {
    "alicloud:ram/accessKey:AccessKey": "AccessKey"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ram/accessKeyPolicy",
+  "fqn": "pulumi_alicloud.ram",
+  "classes": {
+   "alicloud:ram/accessKeyPolicy:AccessKeyPolicy": "AccessKeyPolicy"
   }
  },
  {
@@ -8901,6 +8957,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sms",
   "classes": {
    "alicloud:sms/shortUrl:ShortUrl": "ShortUrl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservice/company",
+  "fqn": "pulumi_alicloud.sslcertificatesservice",
+  "classes": {
+   "alicloud:sslcertificatesservice/company:Company": "Company"
   }
  },
  {

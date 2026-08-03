@@ -16,14 +16,14 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
     public static final GatewayVswitchArgs Empty = new GatewayVswitchArgs();
 
     /**
-     * The zone name.
+     * The name of the availability zone for the gateway.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The zone name.
+         * @param name The name of the availability zone for the gateway.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GatewayVswitchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The zone name.
+         * @param name The name of the availability zone for the gateway.
          * 
          * @return builder
          * 

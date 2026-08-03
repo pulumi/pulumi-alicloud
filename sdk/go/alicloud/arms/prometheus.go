@@ -120,14 +120,20 @@ import (
 type Prometheus struct {
 	pulumi.CustomResourceState
 
+	// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+	ArchiveDuration pulumi.IntOutput `pulumi:"archiveDuration"`
 	// The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
+	// The data storage duration, in days.
+	Duration pulumi.IntOutput `pulumi:"duration"`
 	// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
 	GrafanaInstanceId pulumi.StringOutput `pulumi:"grafanaInstanceId"`
+	// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -178,14 +184,20 @@ func GetPrometheus(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Prometheus resources.
 type prometheusState struct {
+	// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+	ArchiveDuration *int `pulumi:"archiveDuration"`
 	// The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
 	ClusterId *string `pulumi:"clusterId"`
 	// The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
 	ClusterName *string `pulumi:"clusterName"`
 	// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
 	ClusterType *string `pulumi:"clusterType"`
+	// The data storage duration, in days.
+	Duration *int `pulumi:"duration"`
 	// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
 	GrafanaInstanceId *string `pulumi:"grafanaInstanceId"`
+	// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -201,14 +213,20 @@ type prometheusState struct {
 }
 
 type PrometheusState struct {
+	// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+	ArchiveDuration pulumi.IntPtrInput
 	// The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
 	ClusterId pulumi.StringPtrInput
 	// The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
 	ClusterName pulumi.StringPtrInput
 	// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
 	ClusterType pulumi.StringPtrInput
+	// The data storage duration, in days.
+	Duration pulumi.IntPtrInput
 	// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
 	GrafanaInstanceId pulumi.StringPtrInput
+	// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+	PaymentType pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -228,14 +246,20 @@ func (PrometheusState) ElementType() reflect.Type {
 }
 
 type prometheusArgs struct {
+	// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+	ArchiveDuration *int `pulumi:"archiveDuration"`
 	// The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
 	ClusterId *string `pulumi:"clusterId"`
 	// The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
 	ClusterName *string `pulumi:"clusterName"`
 	// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
 	ClusterType string `pulumi:"clusterType"`
+	// The data storage duration, in days.
+	Duration *int `pulumi:"duration"`
 	// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
 	GrafanaInstanceId string `pulumi:"grafanaInstanceId"`
+	// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -252,14 +276,20 @@ type prometheusArgs struct {
 
 // The set of arguments for constructing a Prometheus resource.
 type PrometheusArgs struct {
+	// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+	ArchiveDuration pulumi.IntPtrInput
 	// The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
 	ClusterId pulumi.StringPtrInput
 	// The name of the created cluster. This parameter is required, if you set `clusterType` to `remote-write`, `ecs` or `global-view`.
 	ClusterName pulumi.StringPtrInput
 	// The type of the Prometheus instance. Valid values: `remote-write`, `ecs`, `global-view`, `aliyun-cs`.
 	ClusterType pulumi.StringInput
+	// The data storage duration, in days.
+	Duration pulumi.IntPtrInput
 	// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
 	GrafanaInstanceId pulumi.StringInput
+	// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+	PaymentType pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the security group. This parameter is required, if you set `clusterType` to `ecs` or `aliyun-cs`(ASK instance).
@@ -361,6 +391,11 @@ func (o PrometheusOutput) ToPrometheusOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
+// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+func (o PrometheusOutput) ArchiveDuration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Prometheus) pulumi.IntOutput { return v.ArchiveDuration }).(pulumi.IntOutput)
+}
+
 // The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
 func (o PrometheusOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -376,9 +411,19 @@ func (o PrometheusOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
 }
 
+// The data storage duration, in days.
+func (o PrometheusOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v *Prometheus) pulumi.IntOutput { return v.Duration }).(pulumi.IntOutput)
+}
+
 // The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
 func (o PrometheusOutput) GrafanaInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.GrafanaInstanceId }).(pulumi.StringOutput)
+}
+
+// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+func (o PrometheusOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Prometheus) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

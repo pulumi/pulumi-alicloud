@@ -159,7 +159,7 @@ type Network struct {
 	SystemRouteTableRoutePropagationEnable pulumi.BoolOutput `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs pulumi.StringArrayOutput `pulumi:"userCidrs"`
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -282,7 +282,7 @@ type networkState struct {
 	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags map[string]string `pulumi:"tags"`
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -376,7 +376,7 @@ type NetworkState struct {
 	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
 	// The tags of Vpc.
 	Tags pulumi.StringMapInput
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -458,7 +458,7 @@ type networkArgs struct {
 	SystemRouteTableRoutePropagationEnable *bool `pulumi:"systemRouteTableRoutePropagationEnable"`
 	// The tags of Vpc.
 	Tags map[string]string `pulumi:"tags"`
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -537,7 +537,7 @@ type NetworkArgs struct {
 	SystemRouteTableRoutePropagationEnable pulumi.BoolPtrInput
 	// The tags of Vpc.
 	Tags pulumi.StringMapInput
-	// A list of user CIDRs.
+	// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 	UserCidrs pulumi.StringArrayInput
 	// The new name of the VPC.
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
@@ -798,7 +798,7 @@ func (o NetworkOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// A list of user CIDRs.
+// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
 func (o NetworkOutput) UserCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.UserCidrs }).(pulumi.StringArrayOutput)
 }

@@ -186,7 +186,9 @@ type EcsLaunchTemplate struct {
 	// - disabled: Disabled.
 	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint pulumi.StringOutput `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+	// The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+	//
+	// > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit pulumi.IntOutput `pulumi:"httpPutResponseHopLimit"`
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
@@ -352,7 +354,9 @@ type ecsLaunchTemplateState struct {
 	// - disabled: Disabled.
 	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+	// The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+	//
+	// > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
@@ -489,7 +493,9 @@ type EcsLaunchTemplateState struct {
 	// - disabled: Disabled.
 	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint pulumi.StringPtrInput
-	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+	// The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+	//
+	// > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
@@ -630,7 +636,9 @@ type ecsLaunchTemplateArgs struct {
 	// - disabled: Disabled.
 	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+	// The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+	//
+	// > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
@@ -766,7 +774,9 @@ type EcsLaunchTemplateArgs struct {
 	// - disabled: Disabled.
 	//   **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
 	HttpEndpoint pulumi.StringPtrInput
-	// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+	// The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+	//
+	// > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
 	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
 	// - optional: Not mandatory.
@@ -1017,7 +1027,9 @@ func (o EcsLaunchTemplateOutput) HttpEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.HttpEndpoint }).(pulumi.StringOutput)
 }
 
-// The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+// The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+//
+// > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
 func (o EcsLaunchTemplateOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.IntOutput { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
 }

@@ -17,14 +17,14 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
     public static final GatewayVpcArgs Empty = new GatewayVpcArgs();
 
     /**
-     * The zone name.
+     * The name of the availability zone for the gateway.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,14 +32,14 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC network ID.
+     * The ID of the VPC network associated with the gateway.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The VPC network ID.
+     * @return The ID of the VPC network associated with the gateway.
      * 
      */
     public Output<String> vpcId() {
@@ -72,7 +72,7 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name.
+         * @param name The name of the availability zone for the gateway.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name.
+         * @param name The name of the availability zone for the gateway.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC network ID.
+         * @param vpcId The ID of the VPC network associated with the gateway.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GatewayVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC network ID.
+         * @param vpcId The ID of the VPC network associated with the gateway.
          * 
          * @return builder
          * 
