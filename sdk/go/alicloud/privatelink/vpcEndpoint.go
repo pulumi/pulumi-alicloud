@@ -59,14 +59,14 @@ import (
 //			}
 //			default1FTFrP, err := ecs.NewSecurityGroup(ctx, "default1FTFrP", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultbFzA4a.ID(),
+//				VpcId: defaultbFzA4a.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "defaultjljY5S", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultbFzA4a.ID(),
+//				VpcId: defaultbFzA4a.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,13 +95,13 @@ import (
 //				VpcEndpointName:           pulumi.String(name),
 //				ResourceGroupId:           pulumi.String(_default.Ids[0]),
 //				EndpointType:              pulumi.String("Interface"),
-//				VpcId:                     defaultbFzA4a.ID(),
+//				VpcId:                     defaultbFzA4a.ID().ToIDOutput().ToStringOutput(),
 //				ServiceName:               pulumi.String("com.aliyuncs.privatelink.ap-southeast-5.oss"),
 //				DryRun:                    pulumi.Bool(false),
 //				ZonePrivateIpAddressCount: pulumi.Int(1),
 //				PolicyDocument:            pulumi.String(json0),
 //				SecurityGroupIds: pulumi.StringArray{
-//					default1FTFrP.ID(),
+//					default1FTFrP.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ServiceId:        pulumi.String("epsrv-k1apjysze8u1l9t6uyg9"),
 //				ProtectedEnabled: pulumi.Bool(false),

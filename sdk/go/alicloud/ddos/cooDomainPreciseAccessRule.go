@@ -82,7 +82,7 @@ import (
 //				},
 //				Action:  pulumi.String("accept"),
 //				Expires: pulumi.Int(0),
-//				Domain:  defaultDomainResource.ID(),
+//				Domain:  defaultDomainResource.ID().ToIDOutput().ToStringOutput(),
 //				Name:    pulumi.String(name),
 //			})
 //			if err != nil {

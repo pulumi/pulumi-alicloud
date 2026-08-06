@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewAclEntryAttachment(ctx, "default", &ga.AclEntryAttachmentArgs{
-//				AclId:            _default.ID(),
+//				AclId:            _default.ID().ToIDOutput().ToStringOutput(),
 //				Entry:            pulumi.String("192.168.1.1/32"),
 //				EntryDescription: pulumi.String("terraform-example"),
 //			})

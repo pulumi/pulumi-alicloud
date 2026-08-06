@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = esa.NewUrlObservation(ctx, "default", &esa.UrlObservationArgs{
 //				SdkType: pulumi.String("automatic"),
-//				SiteId:  defaultSite.ID(),
+//				SiteId:  defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				Url:     pulumi.String("terraform.cn/a.html"),
 //			})
 //			if err != nil {

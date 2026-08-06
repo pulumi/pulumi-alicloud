@@ -44,17 +44,11 @@ import (
 //			countSize := len(_default.Zones)
 //			zoneId := countSize.ApplyT(func(countSize int) (ecp.GetZonesZone, error) {
 //				return ecp.GetZonesZone(_default.Zones[int(countSize-1)]), nil
-//			}).(ecp.GetZonesZoneOutput).ApplyT(func(obj ecp.GetZonesZone) (*string, error) {
-//				val := obj.ZoneId
-//				return &val, nil
-//			}).(pulumi.StringPtrOutput)
+//			}).(ecp.GetZonesZoneOutput).ZoneId()
 //			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
 //			_ = instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
 //				return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)]), nil
-//			}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
-//				val := obj.InstanceType
-//				return &val, nil
-//			}).(pulumi.StringPtrOutput)
+//			}).(ecp.GetInstanceTypesInstanceTypeOutput).InstanceType()
 //			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
@@ -84,16 +78,13 @@ import (
 //				Description:  pulumi.Any(name),
 //				Force:        pulumi.Bool(true),
 //				KeyPairName:  defaultKeyPair.KeyPairName,
-//				VswitchId: pulumi.String(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (*string, error) {
+//				VswitchId: defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) (*string, error) {
 //					return &defaultGetSwitches.Ids[0], nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				ImageId: pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
-//				InstanceType: pulumi.String(instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
+//				InstanceType: instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
 //					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[int(instanceTypeCountSize-1)]), nil
-//				}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
-//					val := obj.InstanceType
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(ecp.GetInstanceTypesInstanceTypeOutput).InstanceType(),
 //				PaymentType: pulumi.String("PayAsYouGo"),
 //			})
 //			if err != nil {

@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			TR, err := cen.NewTransitRouter(ctx, "TR", &cen.TransitRouterArgs{
-//				CenId: cen2.ID(),
+//				CenId: cen2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			vpc1vsw1, err := vpc.NewSwitch(ctx, "vpc1vsw1", &vpc.SwitchArgs{
-//				VpcId:     vpc1.ID(),
+//				VpcId:     vpc1.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-h"),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			vpc1vsw2, err := vpc.NewSwitch(ctx, "vpc1vsw2", &vpc.SwitchArgs{
-//				VpcId:     vpc1.ID(),
+//				VpcId:     vpc1.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-i"),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
@@ -81,15 +81,15 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
-//				VpcId: vpc1.ID(),
-//				CenId: cen2.ID(),
+//				VpcId: vpc1.ID().ToIDOutput().ToStringOutput(),
+//				CenId: cen2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						VswitchId: vpc1vsw1.ID(),
+//						VswitchId: vpc1vsw1.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    vpc1vsw1.ZoneId,
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						VswitchId: vpc1vsw2.ID(),
+//						VswitchId: vpc1vsw2.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    vpc1vsw2.ZoneId,
 //					},
 //				},
@@ -103,7 +103,7 @@ import (
 //			}
 //			_, err = cloudfirewall.NewVpcFirewallAclEngineMode(ctx, "default", &cloudfirewall.VpcFirewallAclEngineModeArgs{
 //				StrictMode:    pulumi.Int(0),
-//				VpcFirewallId: cen2.ID(),
+//				VpcFirewallId: cen2.ID().ToIDOutput().ToStringOutput(),
 //				MemberUid:     pulumi.String("1511928242963727"),
 //			})
 //			if err != nil {

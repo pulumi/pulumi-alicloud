@@ -59,8 +59,8 @@ import (
 //				return err
 //			}
 //			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       example.ID(),
+//				InstanceId:            exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
@@ -70,7 +70,7 @@ import (
 //			_, err = cen.NewRouteService(ctx, "example", &cen.RouteServiceArgs{
 //				AccessRegionId: pulumi.String(_default.Regions[0].Id),
 //				HostRegionId:   pulumi.String(_default.Regions[0].Id),
-//				HostVpcId:      example.ID(),
+//				HostVpcId:      example.ID().ToIDOutput().ToStringOutput(),
 //				CenId:          exampleInstanceAttachment.InstanceId,
 //				Host:           pulumi.String("100.118.28.52/32"),
 //			})

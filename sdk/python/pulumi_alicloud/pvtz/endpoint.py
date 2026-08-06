@@ -251,7 +251,7 @@ class Endpoint(pulumi.CustomResource):
                 vpc_id=default_network.id,
                 cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=default_switch_range["value"]).apply(lambda invoke: invoke.result),
+                    netnum=default_switch_range["value"]).result,
                 zone_id=default.zones[default_switch_range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
@@ -332,7 +332,7 @@ class Endpoint(pulumi.CustomResource):
                 vpc_id=default_network.id,
                 cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=default_switch_range["value"]).apply(lambda invoke: invoke.result),
+                    netnum=default_switch_range["value"]).result,
                 zone_id=default.zones[default_switch_range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,

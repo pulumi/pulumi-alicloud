@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -65,10 +65,10 @@ import (
 //				return err
 //			}
 //			defaultNatGateway, err := vpc.NewNatGateway(ctx, "default", &vpc.NatGatewayArgs{
-//				VpcId:          defaultNetwork.ID(),
+//				VpcId:          defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				NatGatewayName: pulumi.String(name),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
-//				VswitchId:      defaultSwitch.ID(),
+//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				NatType:        pulumi.String("Enhanced"),
 //			})
 //			if err != nil {
@@ -81,15 +81,15 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEipAssociation(ctx, "default", &ecs.EipAssociationArgs{
-//				AllocationId: defaultEipAddress.ID(),
-//				InstanceId:   defaultNatGateway.ID(),
+//				AllocationId: defaultEipAddress.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   defaultNatGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewSnatEntry(ctx, "default", &vpc.SnatEntryArgs{
 //				SnatTableId:     defaultNatGateway.SnatTableIds,
-//				SourceVswitchId: defaultSwitch.ID(),
+//				SourceVswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SnatIp:          defaultEipAddress.IpAddress,
 //			})
 //			if err != nil {

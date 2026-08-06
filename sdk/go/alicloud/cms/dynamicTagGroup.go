@@ -49,7 +49,7 @@ import (
 //			_, err = cms.NewDynamicTagGroup(ctx, "default", &cms.DynamicTagGroupArgs{
 //				TagKey: pulumi.String(name),
 //				ContactGroupLists: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
 //					&cms.DynamicTagGroupMatchExpressArgs{

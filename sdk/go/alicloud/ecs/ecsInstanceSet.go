@@ -78,7 +78,7 @@ import (
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.17.3.0/24"),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
 // if err != nil {
@@ -86,12 +86,12 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
 // }
-// var splat0 pulumi.StringArray
+// var splat0 pulumi.IDArray
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
@@ -104,8 +104,8 @@ import (
 // SystemDiskPerformanceLevel: pulumi.String("PL0"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // SystemDiskSize: pulumi.Int(200),
-// VswitchId: defaultSwitch.ID(),
-// SecurityGroupIds: splat0,
+// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+// SecurityGroupIds: toPulumiIDArray(splat0),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
 // if err != nil {
@@ -113,6 +113,13 @@ import (
 // }
 // return nil
 // })
+// }
+// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+// var pulumiArr pulumi.IDArray
+// for _, v := range arr {
+// pulumiArr = append(pulumiArr, pulumi.ID(v))
+// }
+// return pulumiArr
 // }
 // ```
 //

@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -65,7 +65,7 @@ import (
 //			}
 //			defaultInstance, err := kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
 //				DbInstanceName: pulumi.String(name),
-//				VswitchId:      defaultSwitch.ID(),
+//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:         pulumi.String(_default.Zones[0].Id),
 //				InstanceClass:  pulumi.String("redis.master.large.default"),
 //				InstanceType:   pulumi.String("Redis"),
@@ -86,7 +86,7 @@ import (
 //				return err
 //			}
 //			_, err = kvstore.NewBackupPolicy(ctx, "default", &kvstore.BackupPolicyArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				BackupPeriods: pulumi.StringArray{
 //					pulumi.String("Tuesday"),
 //					pulumi.String("Wednesday"),

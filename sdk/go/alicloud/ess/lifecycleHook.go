@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.Sprintf("%v-bar", name),
@@ -84,7 +84,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(myName),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -99,15 +99,15 @@ import (
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//					default2.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					default2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ess.NewLifecycleHook(ctx, "default", &ess.LifecycleHookArgs{
-//				ScalingGroupId:       defaultScalingGroup.ID(),
+//				ScalingGroupId:       defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				Name:                 pulumi.String(myName),
 //				LifecycleTransition:  pulumi.String("SCALE_OUT"),
 //				HeartbeatTimeout:     pulumi.Int(400),

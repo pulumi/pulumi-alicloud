@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			invokeReplace1, err := std.Replace(ctx, &std.ReplaceArgs{
-//				Text: std.Timeadd(ctx, &std.TimeaddArgs{
+//				Text: std.Timeadd(ctx, std.TimeaddArgs{
 //					Duration:  example.Rfc3339,
 //					Timestamp: "24h",
 //				}, nil).Result,
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			_, err = sag.NewQosPolicy(ctx, "default", &sag.QosPolicyArgs{
-//				QosId:           _default.ID(),
+//				QosId:           _default.ID().ToIDOutput().ToStringOutput(),
 //				Name:            pulumi.String(name),
 //				Description:     pulumi.String(name),
 //				Priority:        pulumi.Int(1),

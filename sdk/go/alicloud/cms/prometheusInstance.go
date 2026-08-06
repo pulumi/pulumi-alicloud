@@ -64,7 +64,7 @@ import (
 //			}
 //			_, err = cms.NewPrometheusInstance(ctx, "default", &cms.PrometheusInstanceArgs{
 //				PrometheusInstanceName: pulumi.String(name),
-//				Workspace:              defaultWorkspace.ID(),
+//				Workspace:              defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

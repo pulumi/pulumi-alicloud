@@ -443,7 +443,7 @@ class DataLimit(pulumi.CustomResource):
                 input=[
                     default_account_privilege.instance_id,
                     default_database.name,
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             resource_type="RDS",
             user_name=default_database.name,
             password=default_rds_account.account_password,
@@ -554,7 +554,7 @@ class DataLimit(pulumi.CustomResource):
                 input=[
                     default_account_privilege.instance_id,
                     default_database.name,
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             resource_type="RDS",
             user_name=default_database.name,
             password=default_rds_account.account_password,

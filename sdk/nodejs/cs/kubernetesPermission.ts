@@ -67,8 +67,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: defaultSwitch.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     newNatGateway: false,
  *     podCidr: podCidr,
  *     serviceCidr: serviceCidr,

@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultTQWN3k, err := vpc.NewSwitch(ctx, "defaultTQWN3k", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID(),
+//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zoneIdI),
 //				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
@@ -75,18 +75,18 @@ import (
 //			}
 //			defaultaqnt22, err := clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "defaultaqnt22", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
 //				ZoneId:    pulumi.String(zoneIdI),
-//				VpcId:     defaultktKLuM.ID(),
+//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
 //				ScaleMin:  pulumi.String("8"),
 //				ScaleMax:  pulumi.String("16"),
-//				VswitchId: defaultTQWN3k.ID(),
+//				VswitchId: defaultTQWN3k.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = clickhouseenterprisedbcluster.NewPublicEndpoint(ctx, "default", &clickhouseenterprisedbcluster.PublicEndpointArgs{
-//				DbInstanceId:           defaultaqnt22.ID(),
+//				DbInstanceId:           defaultaqnt22.ID().ToIDOutput().ToStringOutput(),
 //				NetType:                pulumi.String("Public"),
-//				ConnectionStringPrefix: defaultaqnt22.ID(),
+//				ConnectionStringPrefix: defaultaqnt22.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

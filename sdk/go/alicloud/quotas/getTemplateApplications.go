@@ -67,7 +67,7 @@ import (
 //			}
 //			defaultGetTemplateApplications := quotas.LookupTemplateApplicationsOutput(ctx, quotas.GetTemplateApplicationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultTemplateApplications.ID(),
+//					defaultTemplateApplications.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ProductCode:     pulumi.String("vpc"),
 //				QuotaActionCode: pulumi.String("vpc_whitelist/ha_vip_whitelist"),

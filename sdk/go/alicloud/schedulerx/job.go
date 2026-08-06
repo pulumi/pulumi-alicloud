@@ -50,11 +50,11 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal([]interface{}{
-//				map[string]interface{}{
+//				map[string]string{
 //					"userName":  "name1",
 //					"userPhone": "89756******",
 //				},
-//				map[string]interface{}{
+//				map[string]string{
 //					"userName": "name2",
 //					"ding":     "http://www.example.com",
 //				},
@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"sendChannel": "sms,ding",
 //			})
 //			if err != nil {

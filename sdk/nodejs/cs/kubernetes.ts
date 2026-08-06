@@ -123,7 +123,7 @@ import * as utilities from "../utilities";
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
- *         }).apply(invoke => invoke.result) : vpcId,
+ *         }).result : vpcId,
  *         cidrBlock: vswitchCidrs[range],
  *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
  *     }));
@@ -135,7 +135,7 @@ import * as utilities from "../utilities";
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
- *         }).apply(invoke => invoke.result) : vpcId,
+ *         }).result : vpcId,
  *         cidrBlock: terwayVswitchCidrs[range],
  *         zoneId: pulumi.all([enhanced, enhanced.then(enhanced => enhanced.zones).length]).apply(([enhanced, length]) => enhanced.zones[range < length ? range : 0].zoneId),
  *     }));
@@ -173,8 +173,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: vswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
  *         separator: ",",
  *         input: terwayVswitchIds,
@@ -186,8 +186,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: terwayVswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     masterInstanceTypes: [
  *         cloudEssd[0].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),
  *         cloudEssd[1].apply(cloudEssd => cloudEssd.instanceTypes?.[0]?.id),

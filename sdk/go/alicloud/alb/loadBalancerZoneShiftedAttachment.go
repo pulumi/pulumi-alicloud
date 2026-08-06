@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			albExampleTfJ, err := vpc.NewSwitch(ctx, "alb_example_tf_j", &vpc.SwitchArgs{
-//				VpcId:       albExampleTfVpc.ID(),
+//				VpcId:       albExampleTfVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-beijing-j"),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
 //				VswitchName: pulumi.String(invokeFormat.Result),
@@ -79,7 +79,7 @@ import (
 //				return err
 //			}
 //			albExampleTfK, err := vpc.NewSwitch(ctx, "alb_example_tf_k", &vpc.SwitchArgs{
-//				VpcId:       albExampleTfVpc.ID(),
+//				VpcId:       albExampleTfVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-beijing-k"),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VswitchName: pulumi.String(invokeFormat1.Result),
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			defaultDSY0JJ, err := vpc.NewSwitch(ctx, "defaultDSY0JJ", &vpc.SwitchArgs{
-//				VpcId:       albExampleTfVpc.ID(),
+//				VpcId:       albExampleTfVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-beijing-f"),
 //				CidrBlock:   pulumi.String("192.168.3.0/24"),
 //				VswitchName: pulumi.String(invokeFormat2.Result),
@@ -107,7 +107,7 @@ import (
 //			}
 //			default78TIYG, err := alb.NewLoadBalancer(ctx, "default78TIYG", &alb.LoadBalancerArgs{
 //				LoadBalancerEdition: pulumi.String("Standard"),
-//				VpcId:               albExampleTfVpc.ID(),
+//				VpcId:               albExampleTfVpc.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerBillingConfig: &alb.LoadBalancerLoadBalancerBillingConfigArgs{
 //					PayType: pulumi.String("PayAsYouGo"),
 //				},
@@ -115,15 +115,15 @@ import (
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: albExampleTfJ.ID(),
+//						VswitchId: albExampleTfJ.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    albExampleTfJ.ZoneId,
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: albExampleTfK.ID(),
+//						VswitchId: albExampleTfK.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    albExampleTfK.ZoneId,
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultDSY0JJ.ID(),
+//						VswitchId: defaultDSY0JJ.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    defaultDSY0JJ.ZoneId,
 //					},
 //				},
@@ -133,8 +133,8 @@ import (
 //			}
 //			_, err = alb.NewLoadBalancerZoneShiftedAttachment(ctx, "default", &alb.LoadBalancerZoneShiftedAttachmentArgs{
 //				ZoneId:         defaultDSY0JJ.ZoneId,
-//				VswitchId:      defaultDSY0JJ.ID(),
-//				LoadBalancerId: default78TIYG.ID(),
+//				VswitchId:      defaultDSY0JJ.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId: default78TIYG.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

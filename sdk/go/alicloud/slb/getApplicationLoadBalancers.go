@@ -31,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := slb.GetApplicationLoadBalancers(ctx, &slb.GetApplicationLoadBalancersArgs{
 //				NameRegex: pulumi.StringRef("sample_slb"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},

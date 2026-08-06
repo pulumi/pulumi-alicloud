@@ -58,7 +58,7 @@ import (
 //				CodeRepoAccessToken: pulumi.String("token-01"),
 //				Accessibility:       pulumi.String("PRIVATE"),
 //				DisplayName:         pulumi.String("codesource-example-01"),
-//				WorkspaceId:         defaultgklBnM.ID(),
+//				WorkspaceId:         defaultgklBnM.ID().ToIDOutput().ToStringOutput(),
 //				CodeBranch:          pulumi.String("master"),
 //				CodeRepoUserName:    pulumi.String("user-01"),
 //			})

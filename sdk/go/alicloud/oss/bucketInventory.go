@@ -57,7 +57,7 @@ import (
 //						pulumi.String("ETag"),
 //					},
 //				},
-//				Bucket: createBucket.ID(),
+//				Bucket: createBucket.ID().ToIDOutput().ToStringOutput(),
 //				Filter: &oss.BucketInventoryFilterArgs{
 //					Prefix:         pulumi.String("Pics/"),
 //					LowerSizeBound: pulumi.Int(256),

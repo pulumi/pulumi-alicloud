@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
 //				Name:              pulumi.Sprintf("%v-%v", name, _default.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewRegistryEnterpriseRepo(ctx, "example", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
+//				InstanceId: defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
 //				Namespace:  defaultRegistryEnterpriseNamespace.Name,
 //				Name:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //				RepoType:   pulumi.String("PUBLIC"),

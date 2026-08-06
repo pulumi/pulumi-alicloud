@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewKeyVersion(ctx, "keyversion", &kms.KeyVersionArgs{
-//				KeyId: this.ID(),
+//				KeyId: this.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

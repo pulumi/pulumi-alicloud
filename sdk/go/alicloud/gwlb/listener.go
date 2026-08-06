@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId1),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String(invokeFormat.Result),
@@ -86,11 +86,11 @@ import (
 //				return err
 //			}
 //			defaultLoadBalancer, err := gwlb.NewLoadBalancer(ctx, "default", &gwlb.LoadBalancerArgs{
-//				VpcId:            defaultNetwork.ID(),
+//				VpcId:            defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerName: pulumi.String(invokeFormat1.Result),
 //				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
 //					&gwlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch.ID(),
+//						VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(zoneId1),
 //					},
 //				},
@@ -142,7 +142,7 @@ import (
 //					HealthCheckEnabled:        pulumi.Bool(true),
 //					HealthyThreshold:          pulumi.Int(2),
 //				},
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Scheduler: pulumi.String("5TCH"),
 //			})
 //			if err != nil {
@@ -150,8 +150,8 @@ import (
 //			}
 //			_, err = gwlb.NewListener(ctx, "default", &gwlb.ListenerArgs{
 //				ListenerDescription: pulumi.String("example-tf-lsn"),
-//				ServerGroupId:       defaultServerGroup.ID(),
-//				LoadBalancerId:      defaultLoadBalancer.ID(),
+//				ServerGroupId:       defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
+//				LoadBalancerId:      defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

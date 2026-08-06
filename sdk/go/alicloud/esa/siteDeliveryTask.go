@@ -78,7 +78,7 @@ import (
 //				BusinessType: pulumi.String("dcdn_log_access_l1"),
 //				FieldName:    pulumi.String("ConsoleLog,CPUTime,Duration,ErrorCode,ErrorMessage,ResponseSize,ResponseStatus,RoutineName,ClientRequestID,LogTimestamp,FetchStatus,SubRequestID"),
 //				DeliveryType: pulumi.String("http"),
-//				SiteId:       resourceSiteHttpExample.ID(),
+//				SiteId:       resourceSiteHttpExample.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -72,7 +72,7 @@ import (
 //			}
 //			ids := ram.GetPoliciesOutput(ctx, ram.GetPoliciesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultPolicy.ID(),
+//					defaultPolicy.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("ramPoliciesId0", ids.ApplyT(func(ids ram.GetPoliciesResult) (*string, error) {

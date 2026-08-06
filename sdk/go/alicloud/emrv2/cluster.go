@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -96,7 +96,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +131,7 @@ import (
 //				NodeGroups: emrv2.ClusterNodeGroupArray{
 //					&emrv2.ClusterNodeGroupArgs{
 //						VswitchIds: pulumi.StringArray{
-//							defaultSwitch.ID(),
+//							defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //						},
 //						InstanceTypes: pulumi.StringArray{
 //							pulumi.String("ecs.g7.xlarge"),
@@ -162,7 +162,7 @@ import (
 //						SpotInstanceRemedy: pulumi.Bool(false),
 //						NodeGroupType:      pulumi.String("CORE"),
 //						VswitchIds: pulumi.StringArray{
-//							defaultSwitch.ID(),
+//							defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //						},
 //						NodeCount:        pulumi.Int(2),
 //						GracefulShutdown: pulumi.Bool(false),
@@ -202,12 +202,12 @@ import (
 //				NodeAttributes: emrv2.ClusterNodeAttributeArray{
 //					&emrv2.ClusterNodeAttributeArgs{
 //						ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
-//						KeyPairName:       defaultEcsKeyPair.ID(),
+//						KeyPairName:       defaultEcsKeyPair.ID().ToIDOutput().ToStringOutput(),
 //						DataDiskEncrypted: pulumi.Bool(true),
 //						DataDiskKmsKeyId:  pulumi.String(defaultGetKeys.Ids[0]),
-//						VpcId:             defaultNetwork.ID(),
+//						VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //						RamRole:           defaultRole.Name,
-//						SecurityGroupId:   defaultSecurityGroup.ID(),
+//						SecurityGroupId:   defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				ResourceGroupId: pulumi.String(_default.Ids[0]),

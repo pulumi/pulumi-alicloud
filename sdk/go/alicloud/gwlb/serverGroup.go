@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultc3uVID, err := vpc.NewSwitch(ctx, "defaultc3uVID", &vpc.SwitchArgs{
-//				VpcId:       defaultEaxcvb.ID(),
+//				VpcId:       defaultEaxcvb.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId1),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String("tf-example-vsw1"),
@@ -75,7 +75,7 @@ import (
 //			default7NNxRl, err := ecs.NewSecurityGroup(ctx, "default7NNxRl", &ecs.SecurityGroupArgs{
 //				Description:       pulumi.String("sg"),
 //				SecurityGroupName: pulumi.String("sg_name"),
-//				VpcId:             defaultEaxcvb.ID(),
+//				VpcId:             defaultEaxcvb.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupType: pulumi.String("normal"),
 //			})
 //			if err != nil {
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			defaultH6McvC, err := ecs.NewInstance(ctx, "defaultH6McvC", &ecs.InstanceArgs{
-//				VswitchId:               defaultc3uVID.ID(),
+//				VswitchId:               defaultc3uVID.ID().ToIDOutput().ToStringOutput(),
 //				ImageId:                 pulumi.String("aliyun_2_1903_x64_20G_alibase_20231221.vhd"),
 //				InstanceType:            pulumi.String("ecs.g6.large"),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
@@ -100,7 +100,7 @@ import (
 //				InstanceName:            pulumi.String(invokeFormat.Result),
 //				Description:             pulumi.String("tf-example-ecs"),
 //				SecurityGroups: pulumi.StringArray{
-//					default7NNxRl.ID(),
+//					default7NNxRl.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				AvailabilityZone:   defaultc3uVID.ZoneId,
 //				InstanceChargeType: pulumi.String("PostPaid"),
@@ -112,7 +112,7 @@ import (
 //				DryRun: pulumi.Bool(false),
 //				Servers: gwlb.ServerGroupServerArray{
 //					&gwlb.ServerGroupServerArgs{
-//						ServerId:   defaultH6McvC.ID(),
+//						ServerId:   defaultH6McvC.ID().ToIDOutput().ToStringOutput(),
 //						ServerType: pulumi.String("Ecs"),
 //					},
 //				},
@@ -122,7 +122,7 @@ import (
 //					ConnectionDrainEnabled: pulumi.Bool(true),
 //					ConnectionDrainTimeout: pulumi.Int(1),
 //				},
-//				VpcId:           defaultEaxcvb.ID(),
+//				VpcId:           defaultEaxcvb.ID().ToIDOutput().ToStringOutput(),
 //				ServerGroupType: pulumi.String("Instance"),
 //				ServerGroupName: pulumi.String(name),
 //				HealthCheckConfig: &gwlb.ServerGroupHealthCheckConfigArgs{

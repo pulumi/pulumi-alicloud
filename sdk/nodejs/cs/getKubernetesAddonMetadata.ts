@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     name: "nginx-ingress-controller",
  *     version: "v1.1.2-aliyun.2",
  * });
- * export const addonConfigSchema = defaultGetKubernetesAddonMetadata.apply(defaultGetKubernetesAddonMetadata => defaultGetKubernetesAddonMetadata.configSchema);
+ * export const addonConfigSchema = defaultGetKubernetesAddonMetadata.configSchema;
  * ```
  */
 export function getKubernetesAddonMetadata(args: GetKubernetesAddonMetadataArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAddonMetadataResult> {
@@ -150,7 +150,7 @@ export interface GetKubernetesAddonMetadataResult {
  *     name: "nginx-ingress-controller",
  *     version: "v1.1.2-aliyun.2",
  * });
- * export const addonConfigSchema = defaultGetKubernetesAddonMetadata.apply(defaultGetKubernetesAddonMetadata => defaultGetKubernetesAddonMetadata.configSchema);
+ * export const addonConfigSchema = defaultGetKubernetesAddonMetadata.configSchema;
  * ```
  */
 export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {

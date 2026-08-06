@@ -32,7 +32,7 @@ import (
 //			// Declare the data source
 //			example, err := oos.GetTemplates(ctx, &oos.GetTemplatesArgs{
 //				NameRegex: pulumi.StringRef("test"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"Created": "TF",
 //					"For":     "template Test",
 //				},

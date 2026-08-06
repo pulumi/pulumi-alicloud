@@ -55,7 +55,7 @@ import (
 //				Accessibility:  pulumi.String("PRIVATE"),
 //				ArtifactUri:    pulumi.String("oss://yyt-409262.oss-cn-hangzhou.aliyuncs.com/example/"),
 //				ExperimentName: pulumi.String(name),
-//				WorkspaceId:    defaultDI9fsL.ID(),
+//				WorkspaceId:    defaultDI9fsL.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

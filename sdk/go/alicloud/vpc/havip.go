@@ -59,14 +59,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewHAVip(ctx, "example", &vpc.HAVipArgs{
-//				VswitchId:   exampleSwitch.ID(),
+//				VswitchId:   exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {

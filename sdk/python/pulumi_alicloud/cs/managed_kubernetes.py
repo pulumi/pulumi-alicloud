@@ -2002,7 +2002,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         for vswitches_range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
             vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=vswitch_cidrs[vswitches_range["value"]],
                 zone_id=enhanced.zones[vswitches_range["value"]].zone_id))
         # According to the vswitch cidr blocks to launch several vswitches
@@ -2010,7 +2010,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
             terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
                 zone_id=enhanced.zones[terway_vswitches_range["value"]].zone_id))
         k8s = alicloud.cs.ManagedKubernetes("k8s",
@@ -2020,12 +2020,12 @@ class ManagedKubernetes(pulumi.CustomResource):
                 text=std.join(separator=",",
                     input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.split_output(separator=",",
                 text=std.join_output(separator=",",
-                    input=[__item.id for __item in vswitches]).apply(lambda invoke: invoke.result)).apply(lambda invoke: invoke.result),
+                    input=[__item.id for __item in vswitches]).result).result,
             pod_vswitch_ids=std.split(separator=",",
                 text=std.join(separator=",",
                     input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.split_output(separator=",",
                 text=std.join_output(separator=",",
-                    input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: invoke.result)).apply(lambda invoke: invoke.result),
+                    input=[__item.id for __item in terway_vswitches]).result).result,
             new_nat_gateway=True,
             proxy_mode=proxy_mode,
             service_cidr=service_cidr,
@@ -2406,7 +2406,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         for vswitches_range in [{"value": i} for i in range(0, 0 if len(vswitch_ids) > 0 else len(vswitch_cidrs))]:
             vswitches.append(alicloud.vpc.Switch(f"vswitches-{vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=vswitch_cidrs[vswitches_range["value"]],
                 zone_id=enhanced.zones[vswitches_range["value"]].zone_id))
         # According to the vswitch cidr blocks to launch several vswitches
@@ -2414,7 +2414,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         for terway_vswitches_range in [{"value": i} for i in range(0, 0 if len(terway_vswitch_ids) > 0 else len(terway_vswitch_cidrs))]:
             terway_vswitches.append(alicloud.vpc.Switch(f"terway_vswitches-{terway_vswitches_range['value']}",
                 vpc_id=std.join_output(separator="",
-                    input=[__item.id for __item in vpc]).apply(lambda invoke: invoke.result) if vpc_id == "" else vpc_id,
+                    input=[__item.id for __item in vpc]).result if vpc_id == "" else vpc_id,
                 cidr_block=terway_vswitch_cidrs[terway_vswitches_range["value"]],
                 zone_id=enhanced.zones[terway_vswitches_range["value"]].zone_id))
         k8s = alicloud.cs.ManagedKubernetes("k8s",
@@ -2424,12 +2424,12 @@ class ManagedKubernetes(pulumi.CustomResource):
                 text=std.join(separator=",",
                     input=vswitch_ids).result).result if len(vswitch_ids) > 0 else [] if len(vswitch_cidrs) < 1 else std.split_output(separator=",",
                 text=std.join_output(separator=",",
-                    input=[__item.id for __item in vswitches]).apply(lambda invoke: invoke.result)).apply(lambda invoke: invoke.result),
+                    input=[__item.id for __item in vswitches]).result).result,
             pod_vswitch_ids=std.split(separator=",",
                 text=std.join(separator=",",
                     input=terway_vswitch_ids).result).result if len(terway_vswitch_ids) > 0 else [] if len(terway_vswitch_cidrs) < 1 else std.split_output(separator=",",
                 text=std.join_output(separator=",",
-                    input=[__item.id for __item in terway_vswitches]).apply(lambda invoke: invoke.result)).apply(lambda invoke: invoke.result),
+                    input=[__item.id for __item in terway_vswitches]).result).result,
             new_nat_gateway=True,
             proxy_mode=proxy_mode,
             service_cidr=service_cidr,

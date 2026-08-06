@@ -56,7 +56,7 @@ import (
 //				Active:             pulumi.Bool(true),
 //				Description:        pulumi.String("产品版本测试"),
 //				ProductVersionName: pulumi.String(name),
-//				ProductId:          defaultmaeTcE.ID(),
+//				ProductId:          defaultmaeTcE.ID().ToIDOutput().ToStringOutput(),
 //				TemplateType:       pulumi.String("RosTerraformTemplate"),
 //			})
 //			if err != nil {

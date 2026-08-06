@@ -100,7 +100,7 @@ import (
 //			}
 //			ids := cas.GetServiceCertificatesOutput(ctx, cas.GetServiceCertificatesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("sslCertificatesServiceCertificatesId0", ids.ApplyT(func(ids cas.GetServiceCertificatesResult) (*string, error) {

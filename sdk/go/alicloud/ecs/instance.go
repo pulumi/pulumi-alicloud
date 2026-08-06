@@ -59,7 +59,7 @@ import (
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 // SecurityGroupName: pulumi.String(name),
 // Description: pulumi.String("foo"),
-// VpcId: vpc2.ID(),
+// VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -81,7 +81,7 @@ import (
 // return err
 // }
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// VpcId: vpc2.ID(),
+// VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
@@ -89,20 +89,20 @@ import (
 // if err != nil {
 // return err
 // }
-// var splat0 pulumi.StringArray
+// var splat0 pulumi.IDArray
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
 // _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 // AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-// SecurityGroups: splat0,
+// SecurityGroups: toPulumiIDArray(splat0),
 // InstanceType: pulumi.String(instanceType),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // SystemDiskName: pulumi.String(name),
 // SystemDiskDescription: pulumi.String("test_foo_system_disk_description"),
 // ImageId: pulumi.String(imageId),
 // InstanceName: pulumi.String(name),
-// VswitchId: vswitch.ID(),
+// VswitchId: vswitch.ID().ToIDOutput().ToStringOutput(),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // DataDisks: ecs.InstanceDataDiskArray{
 // &ecs.InstanceDataDiskArgs{
@@ -111,7 +111,7 @@ import (
 // Category: pulumi.String("cloud_efficiency"),
 // Description: pulumi.String("disk2"),
 // Encrypted: pulumi.Bool(true),
-// KmsKeyId: key.ID(),
+// KmsKeyId: key.ID().ToIDOutput().ToStringOutput(),
 // },
 // },
 // })
@@ -120,6 +120,13 @@ import (
 // }
 // return nil
 // })
+// }
+// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+// var pulumiArr pulumi.IDArray
+// for _, v := range arr {
+// pulumiArr = append(pulumiArr, pulumi.ID(v))
+// }
+// return pulumiArr
 // }
 // ```
 //

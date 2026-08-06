@@ -94,7 +94,7 @@ import (
 //			}
 //			ids := cloudmonitor.GetServiceMetricAlarmRulesOutput(ctx, cloudmonitor.GetServiceMetricAlarmRulesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAlarm.ID(),
+//					defaultAlarm.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("cloudMonitorServiceMetricAlarmRulesId0", ids.ApplyT(func(ids cloudmonitor.GetServiceMetricAlarmRulesResult) (*string, error) {

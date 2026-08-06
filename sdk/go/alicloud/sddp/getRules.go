@@ -43,12 +43,10 @@ import (
 //			}
 //			_default := sddp.GetRulesOutput(ctx, sddp.GetRulesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultRule.ID(),
+//					defaultRule.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
-//			ctx.Export("sddpRuleId", _default.ApplyT(func(_default sddp.GetRulesResult) (*string, error) {
-//				return _default.Id, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("sddpRuleId", _default.Id())
 //			return nil
 //		})
 //	}

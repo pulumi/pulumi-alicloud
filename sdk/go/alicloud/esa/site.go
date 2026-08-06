@@ -69,7 +69,7 @@ import (
 //				SiteName:        pulumi.Sprintf("bcd%v.com", defaultInteger.Result),
 //				Coverage:        pulumi.String("overseas"),
 //				AccessType:      pulumi.String("NS"),
-//				InstanceId:      defaultIEoDfU.ID(),
+//				InstanceId:      defaultIEoDfU.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {

@@ -80,12 +80,12 @@ import (
 //				return err
 //			}
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
-//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
 //				BundleId:      pulumi.String(_default.Bundles[0].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //				EndUserIds: pulumi.StringArray{
-//					defaultUser.ID(),
+//					defaultUser.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -93,7 +93,7 @@ import (
 //			}
 //			ids := eds.GetDesktopsOutput(ctx, eds.GetDesktopsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDesktop.ID(),
+//					defaultDesktop.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("ecdDesktopId1", ids.ApplyT(func(ids eds.GetDesktopsResult) (*string, error) {

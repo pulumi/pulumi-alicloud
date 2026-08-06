@@ -38,7 +38,7 @@ import (
 //			}
 //			// Encrypt plaintext 'example'
 //			encrypted, err := kms.NewCiphertext(ctx, "encrypted", &kms.CiphertextArgs{
-//				KeyId:     key.ID(),
+//				KeyId:     key.ID().ToIDOutput().ToStringOutput(),
 //				Plaintext: pulumi.String("example"),
 //			})
 //			if err != nil {
@@ -48,9 +48,7 @@ import (
 //			plaintext := kms.GetPlaintextOutput(ctx, kms.GetPlaintextOutputArgs{
 //				CiphertextBlob: encrypted.CiphertextBlob,
 //			}, nil)
-//			ctx.Export("decrypted", plaintext.ApplyT(func(plaintext kms.GetPlaintextResult) (*string, error) {
-//				return plaintext.Plaintext, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("decrypted", plaintext.Plaintext())
 //			return nil
 //		})
 //	}

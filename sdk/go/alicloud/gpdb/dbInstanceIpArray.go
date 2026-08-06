@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			defaultwLA5v4, err := vpc.NewSwitch(ctx, "defaultwLA5v4", &vpc.SwitchArgs{
-//				VpcId:     defaultNpLRa1.ID(),
+//				VpcId:     defaultNpLRa1.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -74,10 +74,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultwLA5v4.ID(),
+//				VswitchId:           defaultwLA5v4.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               defaultNpLRa1.ID(),
+//				VpcId:               defaultNpLRa1.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //				Description:         pulumi.String(name),
@@ -93,7 +93,7 @@ import (
 //					pulumi.String("19.19.81.0"),
 //				},
 //				DbInstanceIpArrayName: pulumi.String("taffy"),
-//				DbInstanceId:          defaultHKdDs3.ID(),
+//				DbInstanceId:          defaultHKdDs3.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

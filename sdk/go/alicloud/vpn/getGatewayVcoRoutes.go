@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
-//				CenId:                    defaultInstance.ID(),
+//				CenId:                    defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterDescription: pulumi.String("desd"),
 //				TransitRouterName:        pulumi.Any(name),
 //			})
@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultGatewayVpnAttachment, err := vpn.NewGatewayVpnAttachment(ctx, "default", &vpn.GatewayVpnAttachmentArgs{
-//				CustomerGatewayId: defaultCustomerGateway.ID(),
+//				CustomerGatewayId: defaultCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //				NetworkType:       pulumi.String("public"),
 //				LocalSubnet:       pulumi.String("0.0.0.0/0"),
 //				RemoteSubnet:      pulumi.String("0.0.0.0/0"),
@@ -109,7 +109,7 @@ import (
 //				TransitRouterAttachmentName:        pulumi.Any(name),
 //				CenId:                              defaultTransitRouter.CenId,
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				VpnId:                              defaultGatewayVpnAttachment.ID(),
+//				VpnId:                              defaultGatewayVpnAttachment.ID().ToIDOutput().ToStringOutput(),
 //				Zones: cen.TransitRouterVpnAttachmentZoneArray{
 //					&cen.TransitRouterVpnAttachmentZoneArgs{
 //						ZoneId: pulumi.String(_default.Resources[0].MasterZones[0]),

@@ -78,7 +78,7 @@ import (
 //			}
 //			_default := cms.GetSiteMonitorsOutput(ctx, cms.GetSiteMonitorsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultSiteMonitor.ID(),
+//					defaultSiteMonitor.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				TaskType: pulumi.String("HTTP"),
 //			}, nil)

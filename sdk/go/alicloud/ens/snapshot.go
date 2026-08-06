@@ -53,7 +53,7 @@ import (
 //				Description:  pulumi.String(name),
 //				EnsRegionId:  pulumi.String("ch-zurich-1"),
 //				SnapshotName: pulumi.String(name),
-//				DiskId:       disk.ID(),
+//				DiskId:       disk.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

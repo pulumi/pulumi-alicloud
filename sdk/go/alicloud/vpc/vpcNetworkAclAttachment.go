@@ -53,15 +53,12 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId: defaultNetwork.ID(),
-//				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //					Input:   defaultNetwork.CidrBlock,
 //					Newbits: pulumi.Int(8),
 //					Netnum:  pulumi.Int(2),
-//				}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				ZoneId: pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -74,8 +71,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewVpcNetworkAclAttachment(ctx, "default", &vpc.VpcNetworkAclAttachmentArgs{
-//				NetworkAclId: defaultNetworkAcl.ID(),
-//				ResourceId:   defaultSwitch.ID(),
+//				NetworkAclId: defaultNetworkAcl.ID().ToIDOutput().ToStringOutput(),
+//				ResourceId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ResourceType: pulumi.String("VSwitch"),
 //			})
 //			if err != nil {

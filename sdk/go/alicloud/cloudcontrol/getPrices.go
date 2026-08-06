@@ -36,7 +36,7 @@ import (
 //				name = param
 //			}
 //			_default, err := cloudcontrol.GetPrices(ctx, &cloudcontrol.GetPricesArgs{
-//				DesireAttributes: map[string]interface{}{
+//				DesireAttributes: map[string]string{
 //					"AddressType": "internet",
 //					"PaymentType": "PayAsYouGo",
 //				},

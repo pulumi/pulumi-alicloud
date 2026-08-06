@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
- *         }).apply(invoke => invoke.result) : vpcId,
+ *         }).result : vpcId,
  *         cidrBlock: vswitchCidrs[range],
  *         zoneId: enhanced.then(enhanced => enhanced.zones[range].zoneId),
  *     }));
@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  *         vpcId: vpcId == "" ? std.joinOutput({
  *             separator: "",
  *             input: vpc.map(__item => __item.id),
- *         }).apply(invoke => invoke.result) : vpcId,
+ *         }).result : vpcId,
  *         cidrBlock: terwayVswitchCidrs[range],
  *         zoneId: enhanced.then(enhanced => enhanced.zones[range].zoneId),
  *     }));
@@ -119,8 +119,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: vswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     podVswitchIds: terwayVswitchIds.length > 0 ? std.join({
  *         separator: ",",
  *         input: terwayVswitchIds,
@@ -132,8 +132,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: terwayVswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     newNatGateway: true,
  *     proxyMode: proxyMode,
  *     serviceCidr: serviceCidr,

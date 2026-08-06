@@ -85,7 +85,7 @@ import (
 //							IpsecLifetime: pulumi.Int(16400),
 //							IpsecPfs:      pulumi.String("group5"),
 //						},
-//						CustomerGatewayId: defaultCustomerGateway.ID(),
+//						CustomerGatewayId: defaultCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //						Role:              pulumi.String("master"),
 //						TunnelBgpConfig: &vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs{
 //							LocalAsn:   pulumi.String("1219002"),
@@ -122,7 +122,7 @@ import (
 //							IpsecAuthAlg:  pulumi.String("md5"),
 //							IpsecEncAlg:   pulumi.String("aes256"),
 //						},
-//						CustomerGatewayId: defaultCustomerGateway.ID(),
+//						CustomerGatewayId: defaultCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //						Role:              pulumi.String("slave"),
 //						TunnelBgpConfig: &vpn.ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs{
 //							LocalAsn:   pulumi.String("1219002"),
@@ -139,7 +139,7 @@ import (
 //				VpnGatewayId: pulumi.String(_default.Ids[0]),
 //				RouteSource:  pulumi.String("192.168.1.0/24"),
 //				RouteDest:    pulumi.String("10.0.0.0/24"),
-//				NextHop:      defaultConnection.ID(),
+//				NextHop:      defaultConnection.ID().ToIDOutput().ToStringOutput(),
 //				Weight:       pulumi.Int(0),
 //				PublishVpc:   pulumi.Bool(false),
 //			})

@@ -62,8 +62,8 @@ import (
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpointServiceUser(ctx, "example", &privatelink.VpcEndpointServiceUserArgs{
-//				ServiceId: example.ID(),
-//				UserId:    exampleUser.ID(),
+//				ServiceId: example.ID().ToIDOutput().ToStringOutput(),
+//				UserId:    exampleUser.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

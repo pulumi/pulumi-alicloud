@@ -78,7 +78,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(true),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -116,9 +116,9 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				Name:      pulumi.String(name),
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
@@ -138,7 +138,7 @@ import (
 //			}
 //			defaultK8sApplication, err := edas.NewK8sApplication(ctx, "default", &edas.K8sApplicationArgs{
 //				ApplicationName:        pulumi.String(name),
-//				ClusterId:              defaultK8sCluster.ID(),
+//				ClusterId:              defaultK8sCluster.ID().ToIDOutput().ToStringOutput(),
 //				PackageType:            pulumi.String("FatJar"),
 //				PackageUrl:             pulumi.String("http://edas-bj.oss-cn-beijing.aliyuncs.com/prod/demo/SPRING_CLOUD_PROVIDER.jar"),
 //				Jdk:                    pulumi.String("Open JDK 8"),
@@ -151,7 +151,7 @@ import (
 //				return err
 //			}
 //			_, err = edas.NewK8sSlbAttachment(ctx, "default", &edas.K8sSlbAttachmentArgs{
-//				AppId: defaultK8sApplication.ID(),
+//				AppId: defaultK8sApplication.ID().ToIDOutput().ToStringOutput(),
 //				SlbConfigs: edas.K8sSlbAttachmentSlbConfigArray{
 //					&edas.K8sSlbAttachmentSlbConfigArgs{
 //						Type:      pulumi.String("internet"),

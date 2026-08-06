@@ -85,9 +85,9 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId:       defaultNetwork.ID(),
+//					VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //					CidrBlock:   pulumi.String(invokeFormat.Result),
-//					ZoneId:      _default.Zones[val0].Id,
+//					ZoneId:      pulumi.String(_default.Zones[val0].Id),
 //					VswitchName: pulumi.String(invokeFormat1.Result),
 //				})
 //				if err != nil {
@@ -96,7 +96,7 @@ import (
 //				defaultSwitch = append(defaultSwitch, __res)
 //			}
 //			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
-//				VpcId:                defaultNetwork.ID(),
+//				VpcId:                defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				AddressType:          pulumi.String("Internet"),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				LoadBalancerName:     pulumi.String(name),
@@ -110,11 +110,11 @@ import (
 //				},
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch[0].ID(),
+//						VswitchId: defaultSwitch[0].ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(_default.Zones[0].Id),
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch[1].ID(),
+//						VswitchId: defaultSwitch[1].ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(_default.Zones[1].Id),
 //					},
 //				},
@@ -124,7 +124,7 @@ import (
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
-//				VpcId:           defaultNetwork.ID(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ServerGroupName: pulumi.String(name),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
@@ -226,7 +226,7 @@ import (
 //				defaultServiceCertificate = append(defaultServiceCertificate, __res)
 //			}
 //			defaultListener, err := alb.NewListener(ctx, "default", &alb.ListenerArgs{
-//				LoadBalancerId:      defaultLoadBalancer.ID(),
+//				LoadBalancerId:      defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				ListenerProtocol:    pulumi.String("HTTPS"),
 //				ListenerPort:        pulumi.Int(8081),
 //				ListenerDescription: pulumi.String(name),
@@ -236,7 +236,7 @@ import (
 //						ForwardGroupConfig: &alb.ListenerDefaultActionForwardGroupConfigArgs{
 //							ServerGroupTuples: alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{
 //								&alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{
-//									ServerGroupId: defaultServerGroup.ID(),
+//									ServerGroupId: defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //						},
@@ -246,30 +246,24 @@ import (
 //					CertificateId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //						Separator: pulumi.String(""),
 //						Input: pulumi.StringArray{
-//							defaultServiceCertificate[0].ID(),
+//							defaultServiceCertificate[0].ID().ToIDOutput().ToStringOutput(),
 //							pulumi.String("-cn-hangzhou"),
 //						},
-//					}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//						val := invoke.Result
-//						return &val, nil
-//					}).(pulumi.StringPtrOutput),
+//					}, nil).Result(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alb.NewListenerAdditionalCertificateAttachment(ctx, "default", &alb.ListenerAdditionalCertificateAttachmentArgs{
-//				CertificateId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//				CertificateId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String(""),
 //					Input: pulumi.StringArray{
-//						defaultServiceCertificate[1].ID(),
+//						defaultServiceCertificate[1].ID().ToIDOutput().ToStringOutput(),
 //						pulumi.String("-cn-hangzhou"),
 //					},
-//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
-//				ListenerId: defaultListener.ID(),
+//				}, nil).Result(),
+//				ListenerId: defaultListener.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

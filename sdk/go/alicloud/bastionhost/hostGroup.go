@@ -79,7 +79,7 @@ import (
 //				Period:      pulumi.Int(1),
 //				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -87,7 +87,7 @@ import (
 //			}
 //			_, err = bastionhost.NewHostGroup(ctx, "default", &bastionhost.HostGroupArgs{
 //				HostGroupName: pulumi.String(name),
-//				InstanceId:    defaultInstance.ID(),
+//				InstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

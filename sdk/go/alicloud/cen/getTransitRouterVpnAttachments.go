@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
+//				CenId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -77,7 +77,7 @@ import (
 //				VpnAttachmentName: pulumi.String(name),
 //				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
 //					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
-//						CustomerGatewayId:  defaultCustomerGateway.ID(),
+//						CustomerGatewayId:  defaultCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //						EnableDpd:          pulumi.Bool(true),
 //						EnableNatTraversal: pulumi.Bool(true),
 //						TunnelIndex:        pulumi.Int(1),
@@ -119,7 +119,7 @@ import (
 //							IpsecPfs:      pulumi.String("group5"),
 //							IpsecAuthAlg:  pulumi.String("sha256"),
 //						},
-//						CustomerGatewayId: defaultCustomerGateway.ID(),
+//						CustomerGatewayId: defaultCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //						EnableDpd:         pulumi.Bool(true),
 //					},
 //				},
@@ -134,7 +134,7 @@ import (
 //				TransitRouterAttachmentName:        pulumi.String(name),
 //				CenId:                              defaultTransitRouter.CenId,
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				VpnId:                              defaultGatewayVpnAttachment.ID(),
+//				VpnId:                              defaultGatewayVpnAttachment.ID().ToIDOutput().ToStringOutput(),
 //				VpnOwnerId:                         pulumi.String(_default.Id),
 //				ChargeType:                         pulumi.String("POSTPAY"),
 //				Tags: pulumi.StringMap{
@@ -147,7 +147,7 @@ import (
 //			}
 //			ids := cen.GetTransitRouterVpnAttachmentsOutput(ctx, cen.GetTransitRouterVpnAttachmentsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultTransitRouterVpnAttachment.ID(),
+//					defaultTransitRouterVpnAttachment.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				CenId:           defaultTransitRouterVpnAttachment.CenId,
 //				TransitRouterId: defaultTransitRouterVpnAttachment.TransitRouterId,

@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				CenId:                    example.ID(),
+//				CenId:                    example.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterDescription: pulumi.String(name),
 //				TransitRouterName:        pulumi.String(name),
 //			})
@@ -71,7 +71,7 @@ import (
 //				EffectImmediately: pulumi.Bool(false),
 //				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
 //					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
-//						CustomerGatewayId:  exampleCustomerGateway.ID(),
+//						CustomerGatewayId:  exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //						Role:               pulumi.String("master"),
 //						TunnelIndex:        pulumi.Int(1),
 //						EnableDpd:          pulumi.Bool(true),
@@ -95,7 +95,7 @@ import (
 //						},
 //					},
 //					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
-//						CustomerGatewayId:  exampleCustomerGateway.ID(),
+//						CustomerGatewayId:  exampleCustomerGateway.ID().ToIDOutput().ToStringOutput(),
 //						Role:               pulumi.String("slave"),
 //						TunnelIndex:        pulumi.Int(2),
 //						EnableDpd:          pulumi.Bool(true),
@@ -140,7 +140,7 @@ import (
 //				TransitRouterVpnAttachmentName:     pulumi.String(name),
 //				CenId:                              exampleTransitRouter.CenId,
 //				TransitRouterId:                    exampleTransitRouterCidr.TransitRouterId,
-//				VpnId:                              exampleGatewayVpnAttachment.ID(),
+//				VpnId:                              exampleGatewayVpnAttachment.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

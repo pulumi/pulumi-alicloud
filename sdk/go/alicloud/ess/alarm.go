@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -93,7 +93,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(myName),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -105,14 +105,14 @@ import (
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("22/22"),
 //				Priority:        pulumi.Int(1),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				CidrIp:          pulumi.String("172.16.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.Sprintf("%v-bar", name),
@@ -126,8 +126,8 @@ import (
 //				ScalingGroupName: pulumi.String(myName),
 //				DefaultCooldown:  pulumi.Int(20),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
-//					default2.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//					default2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
@@ -139,7 +139,7 @@ import (
 //			}
 //			defaultScalingRule, err := ess.NewScalingRule(ctx, "default", &ess.ScalingRuleArgs{
 //				ScalingRuleName: pulumi.String(myName),
-//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ScalingGroupId:  defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				AdjustmentType:  pulumi.String("TotalCapacity"),
 //				AdjustmentValue: pulumi.Int(2),
 //				Cooldown:        pulumi.Int(60),
@@ -153,7 +153,7 @@ import (
 //				AlarmActions: pulumi.StringArray{
 //					defaultScalingRule.Ari,
 //				},
-//				ScalingGroupId:     defaultScalingGroup.ID(),
+//				ScalingGroupId:     defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				MetricType:         pulumi.String("system"),
 //				MetricName:         pulumi.String("CpuUtilization"),
 //				Period:             pulumi.Int(300),

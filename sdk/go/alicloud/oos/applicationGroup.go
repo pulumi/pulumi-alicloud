@@ -73,7 +73,7 @@ import (
 //			}
 //			_, err = oos.NewApplicationGroup(ctx, "default", &oos.ApplicationGroupArgs{
 //				ApplicationGroupName: pulumi.String(name),
-//				ApplicationName:      defaultApplication.ID(),
+//				ApplicationName:      defaultApplication.ID().ToIDOutput().ToStringOutput(),
 //				DeployRegionId:       pulumi.String(defaultGetRegions.Regions[0].Id),
 //				Description:          pulumi.String(name),
 //				ImportTagKey:         pulumi.String("example_key"),

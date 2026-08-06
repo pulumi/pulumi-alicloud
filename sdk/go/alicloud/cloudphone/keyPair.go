@@ -49,7 +49,7 @@ import (
 //			}
 //			defaultYHMlTO, err := cloudphoneinstance.NewGroup(ctx, "defaultYHMlTO", &cloudphoneinstance.GroupArgs{
 //				InstanceGroupSpec: pulumi.String("acp.basic.small"),
-//				PolicyGroupId:     defaultjZ1gi0.ID(),
+//				PolicyGroupId:     defaultjZ1gi0.ID().ToIDOutput().ToStringOutput(),
 //				InstanceGroupName: pulumi.String("AutoCreateGroupName"),
 //				Period:            pulumi.Int(1),
 //				NumberOfInstances: pulumi.Int(1),
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudphoneinstance.NewCloudPhoneInstance(ctx, "defaulthdBep1", &cloudphoneinstance.CloudPhoneInstanceArgs{
-//				AndroidInstanceGroupId: defaultYHMlTO.ID(),
+//				AndroidInstanceGroupId: defaultYHMlTO.ID().ToIDOutput().ToStringOutput(),
 //				AndroidInstanceName:    pulumi.String("CreateInstanceName"),
 //			})
 //			if err != nil {

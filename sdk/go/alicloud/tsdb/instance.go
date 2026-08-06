@@ -51,14 +51,14 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				AvailabilityZone: pulumi.String(example.Ids[0]),
 //				CidrBlock:        pulumi.String("192.168.1.0/24"),
-//				VpcId:            exampleNetwork.ID(),
+//				VpcId:            exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = tsdb.NewInstance(ctx, "example", &tsdb.InstanceArgs{
 //				PaymentType:     pulumi.String("PayAsYouGo"),
-//				VswitchId:       exampleSwitch.ID(),
+//				VswitchId:       exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InstanceStorage: pulumi.String("50"),
 //				InstanceClass:   pulumi.String("tsdb.1x.basic"),
 //				EngineType:      pulumi.String("tsdb_tsdb"),

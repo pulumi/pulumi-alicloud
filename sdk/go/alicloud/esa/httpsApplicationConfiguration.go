@@ -58,7 +58,7 @@ import (
 //				Hsts:                  pulumi.String("off"),
 //				RuleName:              pulumi.String("rule_example"),
 //				RuleEnable:            pulumi.String("off"),
-//				SiteId:                defaultSite.ID(),
+//				SiteId:                defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				AltSvcPersist:         pulumi.String("off"),
 //				HstsPreload:           pulumi.String("off"),
 //				HstsIncludeSubdomains: pulumi.String("off"),

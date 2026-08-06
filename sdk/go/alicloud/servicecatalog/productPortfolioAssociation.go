@@ -69,8 +69,8 @@ import (
 //				return err
 //			}
 //			_, err = servicecatalog.NewProductPortfolioAssociation(ctx, "default", &servicecatalog.ProductPortfolioAssociationArgs{
-//				PortfolioId: default0yAgJ8.ID(),
-//				ProductId:   defaultRetBJw.ID(),
+//				PortfolioId: default0yAgJ8.ID().ToIDOutput().ToStringOutput(),
+//				ProductId:   defaultRetBJw.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

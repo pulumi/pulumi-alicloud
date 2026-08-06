@@ -75,7 +75,7 @@ import (
 //			}
 //			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
 //				Input: "acs:mns:cn-hangzhou:1511928242963727:/queues/%s",
-//				Args: pulumi.StringArray{
+//				Args: pulumi.IDArray{
 //					createQueue.ID(),
 //				},
 //			}, nil)

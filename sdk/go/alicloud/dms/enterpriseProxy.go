@@ -91,7 +91,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
 //			})
 //			if err != nil {
@@ -99,7 +99,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -110,7 +110,7 @@ import (
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InstanceName:          pulumi.String(name),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("100.104.5.0/24"),
@@ -125,7 +125,7 @@ import (
 //				return err
 //			}
 //			defaultAccount, err := rds.NewAccount(ctx, "default", &rds.AccountArgs{
-//				DbInstanceId:    defaultInstance.ID(),
+//				DbInstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:     pulumi.String("tfexamplename"),
 //				AccountPassword: pulumi.String("Example12345"),
 //				AccountType:     pulumi.String("Normal"),

@@ -69,8 +69,8 @@ import (
 //				return err
 //			}
 //			example1, err := cen.NewInstanceAttachment(ctx, "example1", &cen.InstanceAttachmentArgs{
-//				InstanceId:            example.ID(),
-//				ChildInstanceId:       vpc1.ID(),
+//				InstanceId:            example.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       vpc1.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(region1),
 //			})
@@ -78,8 +78,8 @@ import (
 //				return err
 //			}
 //			example2, err := cen.NewInstanceAttachment(ctx, "example2", &cen.InstanceAttachmentArgs{
-//				InstanceId:            example.ID(),
-//				ChildInstanceId:       vpc2.ID(),
+//				InstanceId:            example.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       vpc2.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(region2),
 //			})
@@ -96,8 +96,8 @@ import (
 //				return err
 //			}
 //			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "example", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         example.ID(),
-//				BandwidthPackageId: exampleBandwidthPackage.ID(),
+//				InstanceId:         example.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

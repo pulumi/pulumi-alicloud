@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = drds.NewPolardbxInstance(ctx, "default", &drds.PolardbxInstanceArgs{
 //				TopologyType:  pulumi.String("3azones"),
-//				VswitchId:     exampleSwitch.ID(),
+//				VswitchId:     exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				PrimaryZone:   pulumi.String("ap-southeast-1a"),
 //				CnNodeCount:   pulumi.Int(2),
 //				DnClass:       pulumi.String("mysql.n4.medium.25"),
@@ -75,7 +75,7 @@ import (
 //				DnNodeCount:   pulumi.Int(2),
 //				SecondaryZone: pulumi.String("ap-southeast-1b"),
 //				TertiaryZone:  pulumi.String("ap-southeast-1c"),
-//				VpcId:         example.ID(),
+//				VpcId:         example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

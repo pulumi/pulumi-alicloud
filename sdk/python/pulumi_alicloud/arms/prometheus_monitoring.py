@@ -216,7 +216,7 @@ class PrometheusMonitoring(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=8).apply(lambda invoke: invoke.result),
+                netnum=8).result,
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
@@ -342,7 +342,7 @@ class PrometheusMonitoring(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=8).apply(lambda invoke: invoke.result),
+                netnum=8).result,
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",

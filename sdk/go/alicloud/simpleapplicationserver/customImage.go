@@ -60,12 +60,12 @@ import (
 //				return err
 //			}
 //			defaultGetServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			defaultSnapshot, err := simpleapplicationserver.NewSnapshot(ctx, "default", &simpleapplicationserver.SnapshotArgs{
-//				DiskId: pulumi.String(defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
+//				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
 //					return &defaultGetServerDisks.Ids[0], nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				SnapshotName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -73,8 +73,8 @@ import (
 //			}
 //			_, err = simpleapplicationserver.NewCustomImage(ctx, "default", &simpleapplicationserver.CustomImageArgs{
 //				CustomImageName:  pulumi.String(name),
-//				InstanceId:       defaultInstance.ID(),
-//				SystemSnapshotId: defaultSnapshot.ID(),
+//				InstanceId:       defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				SystemSnapshotId: defaultSnapshot.ID().ToIDOutput().ToStringOutput(),
 //				Status:           pulumi.String("Share"),
 //				Description:      pulumi.String(name),
 //			})

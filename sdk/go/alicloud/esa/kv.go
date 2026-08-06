@@ -46,7 +46,7 @@ import (
 //				ExpirationTtl: pulumi.Int(360),
 //				Value:         pulumi.String("example_value"),
 //				Expiration:    pulumi.Int(1690),
-//				Namespace:     _default.ID(),
+//				Namespace:     _default.ID().ToIDOutput().ToStringOutput(),
 //				Key:           pulumi.String("example_key"),
 //			})
 //			if err != nil {

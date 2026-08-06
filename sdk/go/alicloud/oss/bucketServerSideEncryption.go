@@ -70,7 +70,7 @@ import (
 //			}
 //			_, err = oss.NewBucketServerSideEncryption(ctx, "default", &oss.BucketServerSideEncryptionArgs{
 //				KmsDataEncryption: pulumi.String("SM4"),
-//				KmsMasterKeyId:    getKMS.ID(),
+//				KmsMasterKeyId:    getKMS.ID().ToIDOutput().ToStringOutput(),
 //				Bucket:            createBucket.Bucket,
 //				SseAlgorithm:      pulumi.String("KMS"),
 //			})

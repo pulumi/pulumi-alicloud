@@ -74,7 +74,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("10.2.1.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
@@ -84,9 +84,9 @@ import (
 //			_, err = cs.NewServerlessKubernetes(ctx, "serverless", &cs.ServerlessKubernetesArgs{
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:               pulumi.Bool(true),
 //				EndpointPublicAccessEnabled: pulumi.Bool(true),

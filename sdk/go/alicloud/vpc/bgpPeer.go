@@ -74,7 +74,7 @@ import (
 //				BgpGroupName: pulumi.String(name),
 //				Description:  pulumi.String(name),
 //				PeerAsn:      pulumi.Int(1111),
-//				RouterId:     exampleVirtualBorderRouter.ID(),
+//				RouterId:     exampleVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
 //				IsFakeAsn:    pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //			}
 //			_, err = vpc.NewBgpPeer(ctx, "example", &vpc.BgpPeerArgs{
 //				BfdMultiHop:   pulumi.Int(10),
-//				BgpGroupId:    exampleBgpGroup.ID(),
+//				BgpGroupId:    exampleBgpGroup.ID().ToIDOutput().ToStringOutput(),
 //				EnableBfd:     pulumi.Bool(true),
 //				IpVersion:     pulumi.String("IPV4"),
 //				PeerIpAddress: pulumi.String("1.1.1.1"),

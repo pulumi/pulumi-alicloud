@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			defaultkCZhNu, err := vpc.NewSwitch(ctx, "defaultkCZhNu", &vpc.SwitchArgs{
-//				VpcId:     defaultp2mwWM.ID(),
+//				VpcId:     defaultp2mwWM.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zoneIdI),
 //				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
@@ -91,11 +91,11 @@ import (
 //			}
 //			defaultQ5vukB, err := clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "defaultQ5vukB", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
 //				ZoneId:       defaultkCZhNu.ZoneId,
-//				VpcId:        defaultp2mwWM.ID(),
+//				VpcId:        defaultp2mwWM.ID().ToIDOutput().ToStringOutput(),
 //				NodeScaleMin: pulumi.Int(4),
 //				NodeScaleMax: pulumi.Int(4),
 //				NodeCount:    pulumi.Int(2),
-//				VswitchId:    defaultkCZhNu.ID(),
+//				VswitchId:    defaultkCZhNu.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //				NodeScaleMin:              pulumi.Int(4),
 //				ComputingGroupDescription: pulumi.String("example"),
 //				NodeCount:                 pulumi.Int(2),
-//				DbInstanceId:              defaultQ5vukB.ID(),
+//				DbInstanceId:              defaultQ5vukB.ID().ToIDOutput().ToStringOutput(),
 //				NodeScaleMax:              pulumi.Int(4),
 //				IsReadonly:                pulumi.Bool(false),
 //			})

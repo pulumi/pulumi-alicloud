@@ -57,7 +57,7 @@ import (
 //			}
 //			_default := ims.GetOidcProvidersOutput(ctx, ims.GetOidcProvidersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultOidcProvider.ID(),
+//					defaultOidcProvider.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudImsOidcProviderExampleId", _default.ApplyT(func(_default ims.GetOidcProvidersResult) (*string, error) {

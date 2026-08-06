@@ -78,7 +78,7 @@ import (
 //			defaultGetSwitches := vpc.GetSwitchesOutput(ctx, vpc.GetSwitchesOutputArgs{
 //				VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //					length := _args[0].(int)
-//					id := _args[1].(string)
+//					id := _args[1].(pulumi.ID)
 //					var tmp1 *string
 //					if length > 0 {
 //						tmp1 = defaultGetNetworks.Ids[0]
@@ -97,9 +97,7 @@ import (
 //				return err
 //			}
 //			var defaultSwitch []*vpc.Switch
-//			for index := 0; index < int(len(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) ([]string, error) {
-//				return defaultGetSwitches.Ids, nil
-//			}).(pulumi.StringArrayOutput)).ApplyT(func(length int) (int, error) {
+//			for index := 0; index < int(len(defaultGetSwitches.Ids()).ApplyT(func(length int) (int, error) {
 //				var tmp3 int
 //				if length > 0 {
 //					tmp3 = 0
@@ -111,9 +109,9 @@ import (
 //				key0 := index
 //				_ := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId: pulumi.String(pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
+//					VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //						length := _args[0].(int)
-//						id := _args[1].(string)
+//						id := _args[1].(pulumi.ID)
 //						var tmp2 *string
 //						if length > 0 {
 //							tmp2 = defaultGetNetworks.Ids[0]
@@ -121,7 +119,7 @@ import (
 //							tmp2 = id
 //						}
 //						return &tmp2, nil
-//					}).(pulumi.StringPtrOutput)),
+//					}).(pulumi.StringPtrOutput),
 //					CidrBlock: pulumi.String(invokeCidrsubnet.Result),
 //					ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				})
@@ -137,7 +135,7 @@ import (
 //				Network: &servicemesh.ServiceMeshNetworkArgs{
 //					VpcId: pulumi.All(len(defaultGetNetworks.Ids), defaultNetwork[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //						length := _args[0].(int)
-//						id := _args[1].(string)
+//						id := _args[1].(pulumi.ID)
 //						var tmp4 *string
 //						if length > 0 {
 //							tmp4 = defaultGetNetworks.Ids[0]
@@ -147,12 +145,10 @@ import (
 //						return &tmp4, nil
 //					}).(pulumi.StringPtrOutput),
 //					VswitcheLists: pulumi.StringArray{
-//						pulumi.All(len(defaultGetSwitches.ApplyT(func(defaultGetSwitches vpc.GetSwitchesResult) ([]string, error) {
-//							return defaultGetSwitches.Ids, nil
-//						}).(pulumi.StringArrayOutput)), defaultGetSwitches, defaultSwitch[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
+//						pulumi.All(len(defaultGetSwitches.Ids()), defaultGetSwitches, defaultSwitch[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //							length := _args[0].(int)
 //							defaultGetSwitches := _args[1].(vpc.GetSwitchesResult)
-//							id := _args[2].(string)
+//							id := _args[2].(pulumi.ID)
 //							var tmp5 *string
 //							if length > 0 {
 //								tmp5 = defaultGetSwitches.Ids[0]
@@ -168,7 +164,7 @@ import (
 //				return err
 //			}
 //			_, err = servicemesh.NewExtensionProvider(ctx, "default", &servicemesh.ExtensionProviderArgs{
-//				ServiceMeshId:         defaultServiceMesh.ID(),
+//				ServiceMeshId:         defaultServiceMesh.ID().ToIDOutput().ToStringOutput(),
 //				ExtensionProviderName: pulumi.String("httpextauth-tf-example"),
 //				Type:                  pulumi.String("httpextauth"),
 //				Config:                pulumi.String("{\"headersToDownstreamOnDeny\":[\"content-type\",\"set-cookie\"],\"headersToUpstreamOnAllow\":[\"authorization\",\"cookie\",\"path\",\"x-auth-request-access-token\",\"x-forwarded-access-token\"],\"includeRequestHeadersInCheck\":[\"cookie\",\"x-forward-access-token\"],\"oidc\":{\"clientID\":\"qweqweqwewqeqwe\",\"clientSecret\":\"asdasdasdasdsadas\",\"cookieExpire\":\"1000\",\"cookieRefresh\":\"500\",\"cookieSecret\":\"scxzcxzcxzcxzcxz\",\"issuerURI\":\"qweqwewqeqweqweqwe\",\"redirectDomain\":\"www.alicloud-provider.cn\",\"redirectProtocol\":\"http\",\"scopes\":[\"profile\"]},\"port\":4180,\"service\":\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\",\"timeout\":\"10s\"}"),

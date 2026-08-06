@@ -70,15 +70,12 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId: defaultNetwork.ID(),
-//					CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//					VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//					CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //						Input:   defaultNetwork.CidrBlock,
 //						Newbits: pulumi.Int(8),
 //						Netnum:  pulumi.Int(val0),
-//					}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-//						val := invoke.Result
-//						return &val, nil
-//					}).(pulumi.StringPtrOutput)),
+//					}, nil).Result(),
 //					ZoneId: pulumi.String(_default.Zones[val0].ZoneId),
 //				})
 //				if err != nil {
@@ -87,7 +84,7 @@ import (
 //				defaultSwitch = append(defaultSwitch, __res)
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
@@ -95,19 +92,19 @@ import (
 //			}
 //			_, err = pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
 //				EndpointName:    pulumi.String(name),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				VpcId:           defaultNetwork.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
 //				IpConfigs: pvtz.EndpointIpConfigArray{
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[0].ZoneId,
 //						CidrBlock: defaultSwitch[0].CidrBlock,
-//						VswitchId: defaultSwitch[0].ID(),
+//						VswitchId: defaultSwitch[0].ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&pvtz.EndpointIpConfigArgs{
 //						ZoneId:    defaultSwitch[1].ZoneId,
 //						CidrBlock: defaultSwitch[1].CidrBlock,
-//						VswitchId: defaultSwitch[1].ID(),
+//						VswitchId: defaultSwitch[1].ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"summary": "This operation supports querying the list of instances based on different request conditions and associating the query instance details. ",
 //			})
 //			if err != nil {

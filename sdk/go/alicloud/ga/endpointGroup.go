@@ -72,8 +72,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      _default.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -108,7 +108,7 @@ import (
 //				defaultEipAddress = append(defaultEipAddress, __res)
 //			}
 //			_, err = ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
-//				AcceleratorId: _default.ID(),
+//				AcceleratorId: _default.ID().ToIDOutput().ToStringOutput(),
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
 //						Endpoint: defaultEipAddress[0].IpAddress,
@@ -122,7 +122,7 @@ import (
 //					},
 //				},
 //				EndpointGroupRegion: pulumi.String(region),
-//				ListenerId:          defaultListener.ID(),
+//				ListenerId:          defaultListener.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

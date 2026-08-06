@@ -33,7 +33,7 @@ import (
 //			kmsSecretsDs, err := kms.GetSecrets(ctx, &kms.GetSecretsArgs{
 //				FetchTags: pulumi.BoolRef(true),
 //				NameRegex: pulumi.StringRef("name_regex"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"k-aa": "v-aa",
 //					"k-bb": "v-bb",
 //				},

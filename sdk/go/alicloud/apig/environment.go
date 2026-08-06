@@ -94,7 +94,7 @@ import (
 //			_, err = apig.NewEnvironment(ctx, "default", &apig.EnvironmentArgs{
 //				Description:     pulumi.String(name),
 //				EnvironmentName: pulumi.String(name),
-//				GatewayId:       defaultgateway.ID(),
+//				GatewayId:       defaultgateway.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupId: pulumi.String(_default.Ids[1]),
 //			})
 //			if err != nil {

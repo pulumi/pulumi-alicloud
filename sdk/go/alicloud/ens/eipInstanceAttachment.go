@@ -80,8 +80,8 @@ import (
 //				return err
 //			}
 //			_, err = ens.NewEipInstanceAttachment(ctx, "default", &ens.EipInstanceAttachmentArgs{
-//				InstanceId:   defaultXKjq1W.ID(),
-//				AllocationId: defaultsGsN4e.ID(),
+//				InstanceId:   defaultXKjq1W.ID().ToIDOutput().ToStringOutput(),
+//				AllocationId: defaultsGsN4e.ID().ToIDOutput().ToStringOutput(),
 //				InstanceType: pulumi.String("EnsInstance"),
 //				Standby:      pulumi.Bool(false),
 //			})

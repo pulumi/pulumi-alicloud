@@ -47,7 +47,7 @@ import (
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
-//				VpcId:           _default.ID(),
+//				VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
 //				ServerGroupName: pulumi.String(name),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),
@@ -61,7 +61,7 @@ import (
 //			}
 //			ids := alb.GetServerGroupsOutput(ctx, alb.GetServerGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultServerGroup.ID(),
+//					defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("albServerGroupId0", ids.ApplyT(func(ids alb.GetServerGroupsResult) (*string, error) {

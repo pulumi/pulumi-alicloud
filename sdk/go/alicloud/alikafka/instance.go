@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
@@ -82,12 +82,12 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"kafka.log.retention.hours": "96",
 //				"kafka.message.max.bytes":   "1048576",
 //			})
@@ -103,8 +103,8 @@ import (
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
 //				SpecType:      pulumi.String("professional"),
-//				VswitchId:     defaultSwitch.ID(),
-//				SecurityGroup: defaultSecurityGroup.ID(),
+//				VswitchId:     defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroup: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				Config:        pulumi.String(json0),
 //			})
 //			if err != nil {

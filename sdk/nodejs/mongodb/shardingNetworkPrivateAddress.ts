@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultShardingNetworkPrivateAddress = new alicloud.mongodb.ShardingNetworkPrivateAddress("default", {
  *     dbInstanceId: defaultShardingInstance.id,
- *     nodeId: defaultShardingInstance.shardLists.apply(shardLists => shardLists[0].nodeId),
+ *     nodeId: defaultShardingInstance.shardLists[0].nodeId,
  *     zoneId: defaultShardingInstance.zoneId,
  *     accountName: "example",
  *     accountPassword: "Example_123",

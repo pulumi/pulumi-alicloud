@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			createVswJ, err := vpc.NewSwitch(ctx, "create_vsw_j", &vpc.SwitchArgs{
-//				VpcId:     createVpc.ID(),
+//				VpcId:     createVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			createVswK, err := vpc.NewSwitch(ctx, "create_vsw_k", &vpc.SwitchArgs{
-//				VpcId:     createVpc.ID(),
+//				VpcId:     createVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(_default.Zones[1].Id),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
@@ -76,17 +76,17 @@ import (
 //				AddressIpVersion: pulumi.String("Ipv4"),
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: createVswJ.ID(),
+//						VswitchId: createVswJ.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    createVswJ.ZoneId,
 //					},
 //					&nlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: createVswK.ID(),
+//						VswitchId: createVswK.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    createVswK.ZoneId,
 //					},
 //				},
 //				LoadBalancerType: pulumi.String("Network"),
 //				LoadBalancerName: pulumi.String(name),
-//				VpcId:            createVpc.ID(),
+//				VpcId:            createVpc.ID().ToIDOutput().ToStringOutput(),
 //				AddressType:      pulumi.String("Internet"),
 //			})
 //			if err != nil {
@@ -97,7 +97,7 @@ import (
 //				Scheduler:        pulumi.String("Wrr"),
 //				HealthCheck:      &nlb.ServerGroupHealthCheckArgs{},
 //				ServerGroupType:  pulumi.String("Instance"),
-//				VpcId:            createVpc.ID(),
+//				VpcId:            createVpc.ID().ToIDOutput().ToStringOutput(),
 //				Protocol:         pulumi.String("TCPSSL"),
 //				ServerGroupName:  pulumi.String(name),
 //			})
@@ -184,11 +184,11 @@ import (
 //	}
 //	createListener, err := nlb.NewListener(ctx, "create_listener", &nlb.ListenerArgs{
 //		ListenerPort:     pulumi.Int(443),
-//		ServerGroupId:    createSg.ID(),
-//		LoadBalancerId:   lb.ID(),
+//		ServerGroupId:    createSg.ID().ToIDOutput().ToStringOutput(),
+//		LoadBalancerId:   lb.ID().ToIDOutput().ToStringOutput(),
 //		ListenerProtocol: pulumi.String("TCPSSL"),
 //		CertificateIds: pulumi.StringArray{
-//			ssl0.ID().ApplyT(func(id string) (string, error) {
+//			ssl0.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //				return fmt.Sprintf("%v-cn-hangzhou", id), nil
 //			}).(pulumi.StringOutput),
 //		},
@@ -256,8 +256,8 @@ import (
 //				return err
 //			}
 //			_, err = nlb.NewListenerAdditionalCertificateAttachment(ctx, "default", &nlb.ListenerAdditionalCertificateAttachmentArgs{
-//				CertificateId: ssl.ID(),
-//				ListenerId:    createListener.ID(),
+//				CertificateId: ssl.ID().ToIDOutput().ToStringOutput(),
+//				ListenerId:    createListener.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

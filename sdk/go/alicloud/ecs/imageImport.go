@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("fc/hello.zip"),
 //				Content: pulumi.String("    # -*- coding: utf-8 -*-\n    def handler(event, context):\n    print \\\"hello world\\\"\n    return 'hello world'\n"),
 //			})
@@ -76,8 +76,8 @@ import (
 //				Description:  pulumi.String(name),
 //				DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
 //					&ecs.ImageImportDiskDeviceMappingArgs{
-//						OssBucket:     defaultBucket.ID(),
-//						OssObject:     defaultBucketObject.ID(),
+//						OssBucket:     defaultBucket.ID().ToIDOutput().ToStringOutput(),
+//						OssObject:     defaultBucketObject.ID().ToIDOutput().ToStringOutput(),
 //						DiskImageSize: pulumi.Int(5),
 //					},
 //				},

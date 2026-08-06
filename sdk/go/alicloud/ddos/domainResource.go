@@ -61,7 +61,7 @@ import (
 //				Domain: pulumi.String(domain),
 //				RsType: pulumi.Int(0),
 //				InstanceIds: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				RealServers: pulumi.StringArray{
 //					pulumi.String("177.167.32.11"),

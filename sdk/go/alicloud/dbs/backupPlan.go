@@ -108,14 +108,14 @@ import (
 //				return err
 //			}
 //			defaultDatabase, err := rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Name:       pulumi.String("tfdatabase"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "default", &rds.RdsAccountArgs{
-//				DbInstanceId:    defaultInstance.ID(),
+//				DbInstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:     pulumi.String("tfnormal000"),
 //				AccountPassword: pulumi.String("Test12345"),
 //			})
@@ -123,7 +123,7 @@ import (
 //				return err
 //			}
 //			defaultAccountPrivilege, err := rds.NewAccountPrivilege(ctx, "default", &rds.AccountPrivilegeArgs{
-//				InstanceId:  defaultInstance.ID(),
+//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				AccountName: defaultRdsAccount.AccountName,
 //				Privilege:   pulumi.String("ReadWrite"),
 //				DbNames: pulumi.StringArray{
@@ -145,7 +145,7 @@ import (
 //				SourceEndpointInstanceType: pulumi.String("RDS"),
 //				ResourceGroupId:            pulumi.String(_default.Ids[0]),
 //				SourceEndpointRegion:       pulumi.String("cn-hangzhou"),
-//				SourceEndpointInstanceId:   defaultInstance.ID(),
+//				SourceEndpointInstanceId:   defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				SourceEndpointUserName:     defaultAccountPrivilege.AccountName,
 //				SourceEndpointPassword:     defaultRdsAccount.AccountPassword,
 //				BackupObjects: defaultDatabase.Name.ApplyT(func(name string) (string, error) {

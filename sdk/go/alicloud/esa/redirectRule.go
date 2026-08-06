@@ -62,7 +62,7 @@ import (
 //			}
 //			resourceSiteRedirectRuleExample, err := esa.NewSite(ctx, "resource_Site_RedirectRule_example", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", _default.Result),
-//				InstanceId: resourceRedirectRuleExample.ID(),
+//				InstanceId: resourceRedirectRuleExample.ID().ToIDOutput().ToStringOutput(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -72,7 +72,7 @@ import (
 //			_, err = esa.NewRedirectRule(ctx, "default", &esa.RedirectRuleArgs{
 //				StatusCode:         pulumi.String("301"),
 //				RuleName:           pulumi.String("example"),
-//				SiteId:             resourceSiteRedirectRuleExample.ID(),
+//				SiteId:             resourceSiteRedirectRuleExample.ID().ToIDOutput().ToStringOutput(),
 //				Type:               pulumi.String("static"),
 //				ReserveQueryString: pulumi.String("on"),
 //				TargetUrl:          pulumi.String("http://www.exapmle.com/index.html"),

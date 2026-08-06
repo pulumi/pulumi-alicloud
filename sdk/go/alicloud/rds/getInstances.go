@@ -33,7 +33,7 @@ import (
 //			dbInstancesDs, err := rds.GetInstances(ctx, &rds.GetInstancesArgs{
 //				NameRegex: pulumi.StringRef("data-\\d+"),
 //				Status:    pulumi.StringRef("Running"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"type": "database",
 //					"size": "tiny",
 //				},

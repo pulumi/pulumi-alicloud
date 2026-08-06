@@ -54,7 +54,7 @@ import (
 //			}
 //			defaultSite, err := esa.NewSite(ctx, "default", &esa.SiteArgs{
 //				SiteName:   pulumi.String("idlexamplerecord.com"),
-//				InstanceId: _default.ID(),
+//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -71,7 +71,7 @@ import (
 //				Ttl:        pulumi.Int(100),
 //				RecordName: pulumi.String("_udp._sip.idlexamplerecord.com"),
 //				Comment:    pulumi.String("This is a remark"),
-//				SiteId:     defaultSite.ID(),
+//				SiteId:     defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				RecordType: pulumi.String("SRV"),
 //			})
 //			if err != nil {

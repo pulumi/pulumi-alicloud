@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultujlpyG, err := vpc.NewSwitch(ctx, "defaultujlpyG", &vpc.SwitchArgs{
-//				VpcId:       defaultq6pcFe.ID(),
+//				VpcId:       defaultq6pcFe.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String("sr-example-ng"),
@@ -76,10 +76,10 @@ import (
 //				Vswitches: starrocks.InstanceVswitchArray{
 //					&starrocks.InstanceVswitchArgs{
 //						ZoneId:    pulumi.String("cn-hangzhou-i"),
-//						VswitchId: defaultujlpyG.ID(),
+//						VswitchId: defaultujlpyG.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				VpcId:                defaultq6pcFe.ID(),
+//				VpcId:                defaultq6pcFe.ID().ToIDOutput().ToStringOutput(),
 //				Version:              pulumi.String("3.3"),
 //				RunMode:              pulumi.String("shared_data"),
 //				PackageType:          pulumi.String("official"),
@@ -103,7 +103,7 @@ import (
 //			_, err = starrocks.NewNodeGroup(ctx, "default", &starrocks.NodeGroupArgs{
 //				Description:              pulumi.String("example_desc"),
 //				NodeGroupName:            pulumi.String("ng_676"),
-//				InstanceId:               defaultvjnpM0.ID(),
+//				InstanceId:               defaultvjnpM0.ID().ToIDOutput().ToStringOutput(),
 //				SpecType:                 pulumi.String("standard"),
 //				StoragePerformanceLevel:  pulumi.String("pl1"),
 //				PricingCycle:             pulumi.String("1"),

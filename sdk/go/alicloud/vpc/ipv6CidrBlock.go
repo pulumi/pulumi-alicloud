@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewIpamIpamPoolCidr(ctx, "defaultIpv6PoolCidr", &vpc.IpamIpamPoolCidrArgs{
-//				IpamPoolId:    defaultIpv6Pool.ID(),
+//				IpamPoolId:    defaultIpv6Pool.ID().ToIDOutput().ToStringOutput(),
 //				NetmaskLength: pulumi.Int(56),
 //			})
 //			if err != nil {
@@ -74,8 +74,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewIpv6CidrBlock(ctx, "default", &vpc.Ipv6CidrBlockArgs{
-//				Ipv6IpamPoolId: defaultIpv6Pool.ID(),
-//				VpcId:          defaultVpc.ID(),
+//				Ipv6IpamPoolId: defaultIpv6Pool.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:          defaultVpc.ID().ToIDOutput().ToStringOutput(),
 //				Ipv6CidrMask:   pulumi.Int(56),
 //			})
 //			if err != nil {

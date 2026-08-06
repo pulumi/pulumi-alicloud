@@ -59,7 +59,7 @@ import (
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String("tf_example"),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterPrefixListAssociation(ctx, "example", &cen.TransitRouterPrefixListAssociationArgs{
-//				PrefixListId:         example.ID(),
+//				PrefixListId:         example.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterId:      exampleTransitRouter.TransitRouterId,
 //				TransitRouterTableId: exampleTransitRouterRouteTable.TransitRouterRouteTableId,
 //				NextHop:              pulumi.String("BlackHole"),

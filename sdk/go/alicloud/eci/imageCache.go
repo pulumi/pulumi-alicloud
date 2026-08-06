@@ -57,7 +57,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].ZoneIds[0]),
 //			})
 //			if err != nil {
@@ -65,7 +65,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -94,9 +94,9 @@ import (
 //				Images: pulumi.StringArray{
 //					pulumi.Sprintf("registry-vpc.%v.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.Regions[0].Id),
 //				},
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				VswitchId:       defaultSwitch.ID(),
-//				EipInstanceId:   defaultEipAddress.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				EipInstanceId:   defaultEipAddress.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

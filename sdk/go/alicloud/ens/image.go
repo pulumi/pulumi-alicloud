@@ -61,7 +61,7 @@ import (
 //			}
 //			_, err = ens.NewImage(ctx, "default", &ens.ImageArgs{
 //				ImageName:              pulumi.String(name),
-//				InstanceId:             _default.ID(),
+//				InstanceId:             _default.ID().ToIDOutput().ToStringOutput(),
 //				DeleteAfterImageUpload: pulumi.String("false"),
 //			})
 //			if err != nil {

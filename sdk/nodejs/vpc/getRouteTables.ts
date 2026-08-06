@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     ids: [fooRouteTable.id],
  *     routeTableType: "Custom",
  * });
- * export const routeTableIds = foo.apply(foo => foo.ids);
+ * export const routeTableIds = foo.ids;
  * ```
  */
 export function getRouteTables(args?: GetRouteTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteTablesResult> {
@@ -191,7 +191,7 @@ export interface GetRouteTablesResult {
  *     ids: [fooRouteTable.id],
  *     routeTableType: "Custom",
  * });
- * export const routeTableIds = foo.apply(foo => foo.ids);
+ * export const routeTableIds = foo.ids;
  * ```
  */
 export function getRouteTablesOutput(args?: GetRouteTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteTablesResult> {

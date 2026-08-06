@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultVSwitch, err := vpc.NewSwitch(ctx, "defaultVSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultVpc.ID(),
+//				VpcId:       defaultVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //				CidrBlock:   pulumi.String("172.16.53.0/24"),
 //				VswitchName: pulumi.String(name),
@@ -67,7 +67,7 @@ import (
 //					},
 //					&hologram.InstanceEndpointArgs{
 //						Type:      pulumi.String("VPCSingleTunnel"),
-//						VswitchId: defaultVSwitch.ID(),
+//						VswitchId: defaultVSwitch.ID().ToIDOutput().ToStringOutput(),
 //						VpcId:     defaultVSwitch.VpcId,
 //					},
 //				},

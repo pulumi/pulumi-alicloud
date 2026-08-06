@@ -58,8 +58,8 @@ import (
 //			_, err = vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
 //				Ipv4GatewayName:        pulumi.String(name),
 //				Ipv4GatewayDescription: pulumi.String(name),
-//				ResourceGroupId:        _default.ID(),
-//				VpcId:                  defaultNetwork.ID(),
+//				ResourceGroupId:        _default.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                  defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

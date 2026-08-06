@@ -67,7 +67,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +75,7 @@ import (
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String("New security group"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,9 +95,9 @@ import (
 //				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId: defaultSwitch.ID(),
+//				VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -110,9 +110,9 @@ import (
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
-//				VswitchId:            defaultSwitch.ID(),
+//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Description:      pulumi.String("Basic example"),
 //				PrimaryIpAddress: pulumi.String("192.168.0.2"),
@@ -126,8 +126,8 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "default", &ecs.EcsNetworkInterfaceAttachmentArgs{
-//				NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
-//				InstanceId:         defaultInstance.ID(),
+//				NetworkInterfaceId: defaultEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:         defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

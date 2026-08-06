@@ -69,7 +69,7 @@ import (
 //			}
 //			defaultPrometheusInstance, err := cms.NewPrometheusInstance(ctx, "default", &cms.PrometheusInstanceArgs{
 //				PrometheusInstanceName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				Workspace:              defaultWorkspace.ID(),
+//				Workspace:              defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +79,7 @@ import (
 //				Version:            pulumi.String("V2"),
 //				PrometheusInstances: cms.PrometheusViewPrometheusInstanceArray{
 //					&cms.PrometheusViewPrometheusInstanceArgs{
-//						PrometheusInstanceId: defaultPrometheusInstance.ID(),
+//						PrometheusInstanceId: defaultPrometheusInstance.ID().ToIDOutput().ToStringOutput(),
 //						RegionId:             defaultPrometheusInstance.RegionId,
 //						UserId:               pulumi.String(_default.Id),
 //					},

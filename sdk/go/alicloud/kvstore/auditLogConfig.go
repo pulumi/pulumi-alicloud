@@ -60,7 +60,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //			}
 //			defaultInstance, err := kvstore.NewInstance(ctx, "default", &kvstore.InstanceArgs{
 //				DbInstanceName:  pulumi.String(name),
-//				VswitchId:       defaultSwitch.ID(),
+//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //				ZoneId:          pulumi.String(_default.Zones[0].Id),
 //				InstanceClass:   pulumi.String("redis.master.large.default"),
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = kvstore.NewAuditLogConfig(ctx, "example", &kvstore.AuditLogConfigArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				DbAudit:    pulumi.Bool(true),
 //				Retention:  pulumi.Int(1),
 //			})

@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			defaultp4O7qi, err := vpc.NewSwitch(ctx, "defaultp4O7qi", &vpc.SwitchArgs{
-//				VpcId:       defaultikZ0gD.ID(),
+//				VpcId:       defaultikZ0gD.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.6.0/24"),
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
@@ -67,10 +67,10 @@ import (
 //			}
 //			default2iRZpC, err := vpc.NewNatGateway(ctx, "default2iRZpC", &vpc.NatGatewayArgs{
 //				EipBindMode:    pulumi.String("MULTI_BINDED"),
-//				VpcId:          defaultikZ0gD.ID(),
+//				VpcId:          defaultikZ0gD.ID().ToIDOutput().ToStringOutput(),
 //				NatGatewayName: pulumi.String(name),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
-//				VswitchId:      defaultp4O7qi.ID(),
+//				VswitchId:      defaultp4O7qi.ID().ToIDOutput().ToStringOutput(),
 //				NatType:        pulumi.String("Enhanced"),
 //				NetworkType:    pulumi.String("internet"),
 //			})
@@ -84,8 +84,8 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEipAssociation(ctx, "defaults2MTuO", &ecs.EipAssociationArgs{
-//				InstanceId:   default2iRZpC.ID(),
-//				AllocationId: defaultyiRwgs.ID(),
+//				InstanceId:   default2iRZpC.ID().ToIDOutput().ToStringOutput(),
+//				AllocationId: defaultyiRwgs.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("NAT"),
 //				InstanceType: pulumi.String("Nat"),
 //			})
@@ -95,18 +95,18 @@ import (
 //			defaultAKE43g, err := vpc.NewSnatEntry(ctx, "defaultAKE43g", &vpc.SnatEntryArgs{
 //				SnatIp:          defaultyiRwgs.IpAddress,
 //				SnatTableId:     default2iRZpC.SnatTableIds,
-//				SourceVswitchId: defaultp4O7qi.ID(),
+//				SourceVswitchId: defaultp4O7qi.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudfirewall.NewNatFirewall(ctx, "default", &cloudfirewall.NatFirewallArgs{
-//				NatGatewayId: default2iRZpC.ID(),
+//				NatGatewayId: default2iRZpC.ID().ToIDOutput().ToStringOutput(),
 //				NatRouteEntryLists: cloudfirewall.NatFirewallNatRouteEntryListArray{
 //					&cloudfirewall.NatFirewallNatRouteEntryListArgs{
 //						NexthopType:     pulumi.String("NatGateway"),
 //						RouteTableId:    defaultikZ0gD.RouteTableId,
-//						NexthopId:       default2iRZpC.ID(),
+//						NexthopId:       default2iRZpC.ID().ToIDOutput().ToStringOutput(),
 //						DestinationCidr: pulumi.String("0.0.0.0/0"),
 //					},
 //				},
@@ -118,7 +118,7 @@ import (
 //				ProxyName:      pulumi.String("CFW-example"),
 //				VswitchId:      defaultAKE43g.SourceVswitchId,
 //				StrictMode:     pulumi.Int(0),
-//				VpcId:          defaultikZ0gD.ID(),
+//				VpcId:          defaultikZ0gD.ID().ToIDOutput().ToStringOutput(),
 //				VswitchCidr:    pulumi.String("172.16.5.0/24"),
 //			})
 //			if err != nil {

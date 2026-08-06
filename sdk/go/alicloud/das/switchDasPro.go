@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(defaultGetNodeClasses.Classes[0].ZoneId),
 //				VswitchName: pulumi.String(name),
@@ -78,7 +78,7 @@ import (
 //				DbVersion:   pulumi.String("8.0"),
 //				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
 //				PayType:     pulumi.String("PostPaid"),
-//				VswitchId:   defaultSwitch.ID(),
+//				VswitchId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String(name),
 //				DbClusterIpArrays: polardb.ClusterDbClusterIpArrayArray{
 //					&polardb.ClusterDbClusterIpArrayArgs{
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			_, err = das.NewSwitchDasPro(ctx, "default", &das.SwitchDasProArgs{
-//				InstanceId:   defaultCluster.ID(),
+//				InstanceId:   defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				SqlRetention: pulumi.Int(30),
 //				UserId:       pulumi.String(_default.Id),
 //			})

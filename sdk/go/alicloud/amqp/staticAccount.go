@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = amqp.NewStaticAccount(ctx, "default", &amqp.StaticAccountArgs{
-//				InstanceId: _default.ID(),
+//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
 //				AccessKey:  pulumi.String(accessKey),
 //				SecretKey:  pulumi.String(secretKey),
 //			})

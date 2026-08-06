@@ -42,7 +42,7 @@ import (
 //			}
 //			defaultNasFileSystem, err := eds.NewNasFileSystem(ctx, "default", &eds.NasFileSystemArgs{
 //				Description:       pulumi.String("your_description"),
-//				OfficeSiteId:      _default.ID(),
+//				OfficeSiteId:      _default.ID().ToIDOutput().ToStringOutput(),
 //				NasFileSystemName: pulumi.String("your_nas_file_system_name"),
 //			})
 //			if err != nil {

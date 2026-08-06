@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const _default = alicloud.sddp.getRulesOutput({
  *     ids: [defaultRule.id],
  * });
- * export const sddpRuleId = _default.apply(_default => _default.id);
+ * export const sddpRuleId = _default.id;
  * ```
  */
 export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesResult> {
@@ -181,7 +181,7 @@ export interface GetRulesResult {
  * const _default = alicloud.sddp.getRulesOutput({
  *     ids: [defaultRule.id],
  * });
- * export const sddpRuleId = _default.apply(_default => _default.id);
+ * export const sddpRuleId = _default.id;
  * ```
  */
 export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesResult> {

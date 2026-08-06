@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -75,7 +75,7 @@ import (
 //				InstanceStorage:       pulumi.Int(20),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String(name),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceStorageType: pulumi.String("local_ssd"),
 //			})
 //			if err != nil {
@@ -83,18 +83,18 @@ import (
 //			}
 //			defaultReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "default", &rds.ReadOnlyInstanceArgs{
 //				ZoneId:             defaultInstance.ZoneId,
-//				MasterDbInstanceId: defaultInstance.ID(),
+//				MasterDbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				EngineVersion:      defaultInstance.EngineVersion,
 //				InstanceStorage:    defaultInstance.InstanceStorage,
 //				InstanceType:       defaultInstance.InstanceType,
 //				InstanceName:       pulumi.Sprintf("%vreadonly", name),
-//				VswitchId:          defaultSwitch.ID(),
+//				VswitchId:          defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rds.NewRdsDbProxy(ctx, "default", &rds.RdsDbProxyArgs{
-//				InstanceId:                       defaultInstance.ID(),
+//				InstanceId:                       defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				InstanceNetworkType:              pulumi.String("VPC"),
 //				VpcId:                            defaultInstance.VpcId,
 //				VswitchId:                        defaultInstance.VswitchId,
@@ -107,11 +107,11 @@ import (
 //				ReadOnlyInstanceDistributionType: pulumi.String("Custom"),
 //				ReadOnlyInstanceWeights: rds.RdsDbProxyReadOnlyInstanceWeightArray{
 //					&rds.RdsDbProxyReadOnlyInstanceWeightArgs{
-//						InstanceId: defaultInstance.ID(),
+//						InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //						Weight:     pulumi.String("100"),
 //					},
 //					&rds.RdsDbProxyReadOnlyInstanceWeightArgs{
-//						InstanceId: defaultReadOnlyInstance.ID(),
+//						InstanceId: defaultReadOnlyInstance.ID().ToIDOutput().ToStringOutput(),
 //						Weight:     pulumi.String("500"),
 //					},
 //				},

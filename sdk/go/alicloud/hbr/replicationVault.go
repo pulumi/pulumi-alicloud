@@ -62,7 +62,7 @@ import (
 //			}
 //			_, err = hbr.NewReplicationVault(ctx, "default", &hbr.ReplicationVaultArgs{
 //				ReplicationSourceRegionId: pulumi.String(sourceRegion),
-//				ReplicationSourceVaultId:  defaultVault.ID(),
+//				ReplicationSourceVaultId:  defaultVault.ID().ToIDOutput().ToStringOutput(),
 //				VaultName:                 pulumi.String("terraform-example"),
 //				VaultStorageClass:         pulumi.String("STANDARD"),
 //				Description:               pulumi.String("terraform-example"),

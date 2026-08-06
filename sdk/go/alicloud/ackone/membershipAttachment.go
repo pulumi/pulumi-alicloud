@@ -70,7 +70,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				CidrBlock: pulumi.String("10.4.0.0/24"),
-//				VpcId:     _default.ID(),
+//				VpcId:     _default.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(enhanced.Zones[0].ZoneId),
 //			})
 //			if err != nil {
@@ -95,7 +95,7 @@ import (
 //			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:             pulumi.Bool(true),
 //				PodCidr:                   pulumi.String(invokeCidrsubnet.Result),
@@ -114,9 +114,9 @@ import (
 //			}
 //			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String(name),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -131,9 +131,9 @@ import (
 //			}
 //			defaultCluster, err := ackone.NewCluster(ctx, "default", &ackone.ClusterArgs{
 //				Network: &ackone.ClusterNetworkArgs{
-//					VpcId: _default.ID(),
+//					VpcId: _default.ID().ToIDOutput().ToStringOutput(),
 //					Vswitches: pulumi.StringArray{
-//						defaultSwitch.ID(),
+//						defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				ArgocdEnabled: pulumi.Bool(false),
@@ -144,8 +144,8 @@ import (
 //				return err
 //			}
 //			_, err = ackone.NewMembershipAttachment(ctx, "default", &ackone.MembershipAttachmentArgs{
-//				ClusterId:    defaultCluster.ID(),
-//				SubClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				SubClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

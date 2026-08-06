@@ -40,13 +40,11 @@ import (
 //			}
 //			_default := sddp.GetConfigsOutput(ctx, sddp.GetConfigsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultConfig.ID(),
+//					defaultConfig.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				OutputFile: pulumi.String("./t.json"),
 //			}, nil)
-//			ctx.Export("sddpConfigId", _default.ApplyT(func(_default sddp.GetConfigsResult) ([]string, error) {
-//				return _default.Ids, nil
-//			}).(pulumi.StringArrayOutput))
+//			ctx.Export("sddpConfigId", _default.Ids())
 //			return nil
 //		})
 //	}

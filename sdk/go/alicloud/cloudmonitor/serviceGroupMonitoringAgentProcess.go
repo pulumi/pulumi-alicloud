@@ -55,14 +55,14 @@ import (
 //			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
 //				MonitorGroupName: pulumi.String(name),
 //				ContactGroups: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudmonitor.NewServiceGroupMonitoringAgentProcess(ctx, "default", &cloudmonitor.ServiceGroupMonitoringAgentProcessArgs{
-//				GroupId:                    defaultMonitorGroup.ID(),
+//				GroupId:                    defaultMonitorGroup.ID().ToIDOutput().ToStringOutput(),
 //				ProcessName:                pulumi.String(name),
 //				MatchExpressFilterRelation: pulumi.String("or"),
 //				MatchExpresses: cloudmonitor.ServiceGroupMonitoringAgentProcessMatchExpressArray{

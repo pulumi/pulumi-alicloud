@@ -62,7 +62,7 @@ import (
 //			}
 //			resourceHttpBasicConfigurationSetExample, err := esa.NewSite(ctx, "resource_HttpBasicConfiguration_set_example", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", _default.Result),
-//				InstanceId: example.ID(),
+//				InstanceId: example.ID().ToIDOutput().ToStringOutput(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -73,7 +73,7 @@ import (
 //				Https:      pulumi.String("on"),
 //				Rule:       pulumi.String("true"),
 //				RuleName:   pulumi.String("example2"),
-//				SiteId:     resourceHttpBasicConfigurationSetExample.ID(),
+//				SiteId:     resourceHttpBasicConfigurationSetExample.ID().ToIDOutput().ToStringOutput(),
 //				RuleEnable: pulumi.String("on"),
 //			})
 //			if err != nil {

@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewRouterVpcAssociation(ctx, "default", &expressconnect.RouterVpcAssociationArgs{
-//				EcrId: defaultM9YxGW.ID(),
+//				EcrId: defaultM9YxGW.ID().ToIDOutput().ToStringOutput(),
 //				AllowedPrefixes: pulumi.StringArray{
 //					pulumi.String("172.16.4.0/24"),
 //					pulumi.String("172.16.3.0/24"),
@@ -68,7 +68,7 @@ import (
 //				},
 //				VpcOwnerId:          pulumi.String(current.Id),
 //				AssociationRegionId: pulumi.String("cn-hangzhou"),
-//				VpcId:               default8qAtD6.ID(),
+//				VpcId:               default8qAtD6.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

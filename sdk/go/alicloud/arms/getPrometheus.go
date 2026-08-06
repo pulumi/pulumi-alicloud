@@ -62,7 +62,7 @@ import (
 //				GrafanaInstanceId: pulumi.String("free"),
 //				VpcId:             pulumi.String(_default.Ids[0]),
 //				VswitchId:         pulumi.String(defaultGetSwitches.Ids[0]),
-//				SecurityGroupId:   defaultSecurityGroup.ID(),
+//				SecurityGroupId:   defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Ids[0]),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),

@@ -54,7 +54,7 @@ import (
 //			}
 //			ids := esa.GetWafRulesetsOutput(ctx, esa.GetWafRulesetsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultWafRuleset.ID(),
+//					defaultWafRuleset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				SiteId:      defaultWafRuleset.SiteId,
 //				Phase:       defaultWafRuleset.Phase,

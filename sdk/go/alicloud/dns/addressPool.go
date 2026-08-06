@@ -86,7 +86,7 @@ import (
 //			}
 //			_, err = dns.NewAddressPool(ctx, "default", &dns.AddressPoolArgs{
 //				AddressPoolName: pulumi.String(name),
-//				InstanceId:      defaultGtmInstance.ID(),
+//				InstanceId:      defaultGtmInstance.ID().ToIDOutput().ToStringOutput(),
 //				LbaStrategy:     pulumi.String("RATIO"),
 //				Type:            pulumi.String("IPV4"),
 //				Addresses: dns.AddressPoolAddressArray{

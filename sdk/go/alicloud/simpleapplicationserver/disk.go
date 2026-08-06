@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = simpleapplicationserver.NewDisk(ctx, "default", &simpleapplicationserver.DiskArgs{
 //				DiskSize:   pulumi.Int(20),
-//				InstanceId: defaultV70JQf.ID(),
+//				InstanceId: defaultV70JQf.ID().ToIDOutput().ToStringOutput(),
 //				Remark:     pulumi.String("example"),
 //			})
 //			if err != nil {

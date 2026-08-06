@@ -253,7 +253,7 @@ class ApplicationScale(pulumi.CustomResource):
             ecu_infos=[pulumi.Output.all(
                 ecu_map=default_instance_cluster_attachment.ecu_map,
                 id=default_instance.id
-        ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][resolved_outputs['id']])
+        ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][str(resolved_outputs['id'])])
         ])
         ```
 
@@ -340,7 +340,7 @@ class ApplicationScale(pulumi.CustomResource):
             ecu_infos=[pulumi.Output.all(
                 ecu_map=default_instance_cluster_attachment.ecu_map,
                 id=default_instance.id
-        ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][resolved_outputs['id']])
+        ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][str(resolved_outputs['id'])])
         ])
         ```
 

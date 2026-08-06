@@ -57,7 +57,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].ZoneIds[0]),
 //			})
 //			if err != nil {
@@ -65,7 +65,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -88,11 +88,11 @@ import (
 //				return err
 //			}
 //			_, err = eci.NewVirtualNode(ctx, "default", &eci.VirtualNodeArgs{
-//				SecurityGroupId:     defaultSecurityGroup.ID(),
+//				SecurityGroupId:     defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				VirtualNodeName:     pulumi.String(name),
-//				VswitchId:           defaultSwitch.ID(),
+//				VswitchId:           defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				EnablePublicNetwork: pulumi.Bool(false),
-//				EipInstanceId:       defaultEipAddress.ID(),
+//				EipInstanceId:       defaultEipAddress.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupId:     pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				KubeConfig:          pulumi.String("kube_config"),
 //				Tags: pulumi.StringMap{

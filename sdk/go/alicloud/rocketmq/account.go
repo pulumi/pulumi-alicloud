@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultvMQbCy, err := vpc.NewSwitch(ctx, "defaultvMQbCy", &vpc.SwitchArgs{
-//				VpcId:       defaultg6ZXs2.ID(),
+//				VpcId:       defaultg6ZXs2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				VswitchName: pulumi.String("pop-example-vswitch"),
@@ -79,10 +79,10 @@ import (
 //				},
 //				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
 //					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
-//						VpcId: defaultg6ZXs2.ID(),
+//						VpcId: defaultg6ZXs2.ID().ToIDOutput().ToStringOutput(),
 //						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
 //							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
-//								VswitchId: defaultvMQbCy.ID(),
+//								VswitchId: defaultvMQbCy.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -105,7 +105,7 @@ import (
 //			}
 //			_, err = rocketmq.NewAccount(ctx, "default", &rocketmq.AccountArgs{
 //				AccountStatus: pulumi.String("ENABLE"),
-//				InstanceId:    default9hAb83.ID(),
+//				InstanceId:    default9hAb83.ID().ToIDOutput().ToStringOutput(),
 //				Username:      pulumi.String("tfexample"),
 //				Password:      pulumi.String("1741835136"),
 //			})

@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			defaultZoneRecord, err := pvtz.NewZoneRecord(ctx, "default", &pvtz.ZoneRecordArgs{
-//				ZoneId:   _default.ID(),
+//				ZoneId:   _default.ID().ToIDOutput().ToStringOutput(),
 //				Rr:       pulumi.String("www"),
 //				Type:     pulumi.String("MX"),
 //				Value:    pulumi.String(name),

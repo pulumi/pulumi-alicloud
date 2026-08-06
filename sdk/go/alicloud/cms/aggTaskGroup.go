@@ -72,7 +72,7 @@ import (
 //				val0 := index
 //				__res, err := cms.NewPrometheusInstance(ctx, fmt.Sprintf("default-%v", key0), &cms.PrometheusInstanceArgs{
 //					PrometheusInstanceName: pulumi.Sprintf("%v_%v", name, val0),
-//					Workspace:              defaultWorkspace.ID(),
+//					Workspace:              defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
 //				})
 //				if err != nil {
 //					return err
@@ -80,8 +80,8 @@ import (
 //				defaultPrometheusInstance = append(defaultPrometheusInstance, __res)
 //			}
 //			_, err = cms.NewAggTaskGroup(ctx, "default", &cms.AggTaskGroupArgs{
-//				SourcePrometheusId: defaultPrometheusInstance[0].ID(),
-//				TargetPrometheusId: defaultPrometheusInstance[1].ID(),
+//				SourcePrometheusId: defaultPrometheusInstance[0].ID().ToIDOutput().ToStringOutput(),
+//				TargetPrometheusId: defaultPrometheusInstance[1].ID().ToIDOutput().ToStringOutput(),
 //				AggTaskGroupName:   pulumi.String(name),
 //				AggTaskGroupConfig: pulumi.String(`groups:
 //   - name: \"node.rules\"

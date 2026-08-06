@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = mhub.NewApp(ctx, "default", &mhub.AppArgs{
 //				AppName:     pulumi.String(name),
-//				ProductId:   _default.ID(),
+//				ProductId:   _default.ID().ToIDOutput().ToStringOutput(),
 //				PackageName: pulumi.String("com.example.android"),
 //				Type:        pulumi.String("Android"),
 //			})

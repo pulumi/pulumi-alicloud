@@ -73,7 +73,7 @@ import (
 //			}
 //			defaultGetDbInstances := selectdb.GetDbInstancesOutput(ctx, selectdb.GetDbInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDbInstance.ID(),
+//					defaultDbInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("dbInstance", defaultGetDbInstances.ApplyT(func(defaultGetDbInstances selectdb.GetDbInstancesResult) (*string, error) {

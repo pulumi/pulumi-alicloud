@@ -73,7 +73,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String("terraform-example"),
-//				VpcId:             _default.ID(),
+//				VpcId:             _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-//				VpcId:       vpc2.ID(),
+//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -72,10 +72,10 @@ import (
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
 //				AppDescription: pulumi.String("tf-testaccDescription"),
 //				AppName:        pulumi.String("tf-testaccAppName131"),
-//				NamespaceId:    defaultNamespace.ID(),
+//				NamespaceId:    defaultNamespace.ID().ToIDOutput().ToStringOutput(),
 //				ImageUrl:       pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
 //				PackageType:    pulumi.String("Image"),
-//				VswitchId:      vsw.ID(),
+//				VswitchId:      vsw.ID().ToIDOutput().ToStringOutput(),
 //				Timezone:       pulumi.String("Asia/Beijing"),
 //				Replicas:       pulumi.Int(5),
 //				Cpu:            pulumi.Int(500),
@@ -86,7 +86,7 @@ import (
 //			}
 //			defaultGetApplications := sae.GetApplicationsOutput(ctx, sae.GetApplicationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultApplication.ID(),
+//					defaultApplication.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("saeApplicationId", defaultGetApplications.ApplyT(func(defaultGetApplications sae.GetApplicationsResult) (*string, error) {

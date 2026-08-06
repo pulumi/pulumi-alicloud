@@ -74,14 +74,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -98,13 +98,13 @@ import (
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
 //				AppDescription:    pulumi.String(name),
 //				AppName:           pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				NamespaceId:       defaultNamespace.ID(),
+//				NamespaceId:       defaultNamespace.ID().ToIDOutput().ToStringOutput(),
 //				ImageUrl:          pulumi.String("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5"),
 //				PackageType:       pulumi.String("Image"),
 //				Jdk:               pulumi.String("Open JDK 8"),
-//				SecurityGroupId:   defaultSecurityGroup.ID(),
-//				VpcId:             defaultNetwork.ID(),
-//				VswitchId:         defaultSwitch.ID(),
+//				SecurityGroupId:   defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Timezone:          pulumi.String("Asia/Beijing"),
 //				Replicas:          pulumi.Int(5),
 //				Cpu:               pulumi.Int(500),
@@ -116,7 +116,7 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultSwitch.ID(),
+//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("internet"),
 //			})
@@ -124,8 +124,8 @@ import (
 //				return err
 //			}
 //			_, err = sae.NewLoadBalancerInternet(ctx, "default", &sae.LoadBalancerInternetArgs{
-//				AppId:         defaultApplication.ID(),
-//				InternetSlbId: defaultApplicationLoadBalancer.ID(),
+//				AppId:         defaultApplication.ID().ToIDOutput().ToStringOutput(),
+//				InternetSlbId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				Internets: sae.LoadBalancerInternetInternetArray{
 //					&sae.LoadBalancerInternetInternetArgs{
 //						Protocol:   pulumi.String("TCP"),

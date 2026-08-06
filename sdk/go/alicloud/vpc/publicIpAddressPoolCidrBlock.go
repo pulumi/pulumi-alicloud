@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewPublicIpAddressPoolCidrBlock(ctx, "default", &vpc.PublicIpAddressPoolCidrBlockArgs{
-//				PublicIpAddressPoolId: defaultPublicIpAddressPool.ID(),
+//				PublicIpAddressPoolId: defaultPublicIpAddressPool.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:             pulumi.String("47.118.126.0/25"),
 //			})
 //			if err != nil {

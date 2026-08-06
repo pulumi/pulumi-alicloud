@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			_, err = amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
-//				InstanceId:      defaultInstance.ID(),
+//				InstanceId:      defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				VirtualHostName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {

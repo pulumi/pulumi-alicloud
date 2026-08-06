@@ -51,7 +51,7 @@ import (
 //			}
 //			_default := vod.GetDomainsOutput(ctx, vod.GetDomainsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDomain.ID(),
+//					defaultDomain.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Tags: pulumi.StringMap{
 //					"key1": pulumi.String("value1"),

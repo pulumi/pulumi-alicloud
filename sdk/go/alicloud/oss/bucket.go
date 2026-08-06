@@ -138,7 +138,7 @@ import (
 //			_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
 //				Bucket: pulumi.Sprintf("example-logging-%v", _default.Result),
 //				Logging: &oss.BucketLoggingTypeArgs{
-//					TargetBucket: bucket_target.ID(),
+//					TargetBucket: bucket_target.ID().ToIDOutput().ToStringOutput(),
 //					TargetPrefix: pulumi.String("log/"),
 //				},
 //			})
@@ -691,7 +691,7 @@ import (
 //				Bucket: pulumi.Sprintf("terraform-example-kms-%v", _default.Result),
 //				ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
 //					SseAlgorithm:   pulumi.String("KMS"),
-//					KmsMasterKeyId: kms2.ID(),
+//					KmsMasterKeyId: kms2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

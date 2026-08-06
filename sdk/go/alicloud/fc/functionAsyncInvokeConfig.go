@@ -130,7 +130,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -141,7 +141,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID(),
+//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),

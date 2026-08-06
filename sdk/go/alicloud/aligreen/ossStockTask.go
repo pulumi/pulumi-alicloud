@@ -29,6 +29,7 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"strconv"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/aligreen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
@@ -73,7 +74,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -81,7 +82,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -89,7 +90,7 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -97,7 +98,7 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -105,7 +106,7 @@ import (
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -120,7 +121,7 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//			tmpJSON6, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -128,7 +129,7 @@ import (
 //				return err
 //			}
 //			json6 := string(tmpJSON6)
-//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//			tmpJSON7, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -136,7 +137,7 @@ import (
 //				return err
 //			}
 //			json7 := string(tmpJSON7)
-//			tmpJSON8, err := json.Marshal(map[string]interface{}{
+//			tmpJSON8, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -144,7 +145,7 @@ import (
 //				return err
 //			}
 //			json8 := string(tmpJSON8)
-//			tmpJSON9, err := json.Marshal(map[string]interface{}{
+//			tmpJSON9, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -163,7 +164,7 @@ import (
 //				return err
 //			}
 //			json10 := string(tmpJSON10)
-//			tmpJSON11, err := json.Marshal(map[string]interface{}{
+//			tmpJSON11, err := json.Marshal(map[string]string{
 //				"Type":  "suggestion",
 //				"Value": "block",
 //			})
@@ -205,7 +206,7 @@ import (
 //				ImageLiveFreezeConfig:          pulumi.String(json1),
 //				VideoTerrorismFreezeConfig:     pulumi.String(json2),
 //				ImageTerrorismFreezeConfig:     pulumi.String(json3),
-//				CallbackId:                     defaultJnW8Na.ID(),
+//				CallbackId:                     defaultJnW8Na.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				ImageAdFreezeConfig:            pulumi.String(json4),
 //				BizType:                        pulumi.String("recommend_massmedia_template_01"),
 //				AudioScenes:                    pulumi.String(json5),

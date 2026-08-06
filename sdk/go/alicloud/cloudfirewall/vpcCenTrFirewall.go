@@ -106,7 +106,7 @@ import (
 //			tr, err := cen.NewTransitRouter(ctx, "tr", &cen.TransitRouterArgs{
 //				TransitRouterName:        pulumi.String(name),
 //				TransitRouterDescription: pulumi.String("tr-created-by-terraform"),
-//				CenId:                    cen2.ID(),
+//				CenId:                    cen2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -122,14 +122,14 @@ import (
 //			vpc1vsw1, err := vpc.NewSwitch(ctx, "vpc1vsw1", &vpc.SwitchArgs{
 //				CidrBlock:   pulumi.String("192.168.1.0/25"),
 //				VswitchName: pulumi.String(name),
-//				VpcId:       vpc1.ID(),
+//				VpcId:       vpc1.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Resources[0].MasterZones[1]),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpc1vsw2, err := vpc.NewSwitch(ctx, "vpc1vsw2", &vpc.SwitchArgs{
-//				VpcId:       vpc1.ID(),
+//				VpcId:       vpc1.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("192.168.1.128/26"),
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(_default.Resources[0].MasterZones[2]),
@@ -138,7 +138,7 @@ import (
 //				return err
 //			}
 //			foo, err := vpc.NewRouteTable(ctx, "foo", &vpc.RouteTableArgs{
-//				VpcId:          vpc1.ID(),
+//				VpcId:          vpc1.ID().ToIDOutput().ToStringOutput(),
 //				RouteTableName: pulumi.String(name),
 //				Description:    pulumi.String(name),
 //			})
@@ -148,16 +148,16 @@ import (
 //			tr_vpc1, err := cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc1", &cen.TransitRouterVpcAttachmentArgs{
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						VswitchId: vpc1vsw1.ID(),
+//						VswitchId: vpc1vsw1.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(_default.Resources[0].MasterZones[1]),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(_default.Resources[0].MasterZones[2]),
-//						VswitchId: vpc1vsw2.ID(),
+//						VswitchId: vpc1vsw2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				VpcId:           vpc1.ID(),
-//				CenId:           cen2.ID(),
+//				VpcId:           vpc1.ID().ToIDOutput().ToStringOutput(),
+//				CenId:           cen2.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterId: tr.TransitRouterId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				foo,

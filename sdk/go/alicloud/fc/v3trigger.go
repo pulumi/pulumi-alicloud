@@ -78,7 +78,7 @@ import (
 //				"eventName":    "CachedObjectsPushed",
 //				"eventVersion": "1.0.0",
 //				"notes":        "example",
-//				"filter": map[string]interface{}{
+//				"filter": map[string][]string{
 //					"domain": []string{
 //						"example.com",
 //					},

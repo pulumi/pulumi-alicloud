@@ -698,7 +698,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                     input=[
                         default_node_pool[0].scaling_group_id,
                         default_node_pool[1].scaling_group_id,
-                    ]).apply(lambda invoke: invoke.result),
+                    ]).result,
                 "20": default_node_pool[2].scaling_group_id,
             })
         ```
@@ -828,7 +828,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                     input=[
                         default_node_pool[0].scaling_group_id,
                         default_node_pool[1].scaling_group_id,
-                    ]).apply(lambda invoke: invoke.result),
+                    ]).result,
                 "20": default_node_pool[2].scaling_group_id,
             })
         ```

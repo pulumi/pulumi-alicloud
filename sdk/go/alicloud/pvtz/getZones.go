@@ -45,7 +45,7 @@ import (
 //			}
 //			ids := pvtz.GetZonesOutput(ctx, pvtz.GetZonesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("pvtzZonesId0", ids.ApplyT(func(ids pvtz.GetZonesResult) (*string, error) {

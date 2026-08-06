@@ -63,17 +63,14 @@ import (
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String("api-resource-test1-hz"),
-//				VpcId:       vpc2.ID(),
+//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
-//				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //					Input:   vpc2.CidrBlock,
 //					Newbits: pulumi.Int(8),
 //					Netnum:  pulumi.Int(8),
-//				}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +109,7 @@ import (
 //				ServiceCidr:   pulumi.String("172.23.0.0/16"),
 //				PodCidr:       pulumi.String("10.95.0.0/16"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
+//					vswitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -126,14 +123,14 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				Name:      pulumi.String("desired_size"),
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
+//					vswitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
+//					_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
 //						return _default.InstanceTypes[0].Id, nil
-//					}).(pulumi.StringPtrOutput)),
+//					}).(pulumi.StringPtrOutput),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),
@@ -165,7 +162,7 @@ import (
 //			defaultAddonRelease, err := arms.NewAddonRelease(ctx, "default", &arms.AddonReleaseArgs{
 //				AliyunLang:    pulumi.String("zh"),
 //				AddonName:     pulumi.String("mysql"),
-//				EnvironmentId: defaultEnvironment.ID(),
+//				EnvironmentId: defaultEnvironment.ID().ToIDOutput().ToStringOutput(),
 //				AddonVersion:  pulumi.String("0.0.2"),
 //				Values:        pulumi.String(json0),
 //			})
@@ -175,7 +172,7 @@ import (
 //			ids := arms.GetAddonReleasesOutput(ctx, arms.GetAddonReleasesOutputArgs{
 //				EnvironmentId: defaultAddonRelease.EnvironmentId,
 //				Ids: pulumi.StringArray{
-//					defaultAddonRelease.ID(),
+//					defaultAddonRelease.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("armsEnvServiceMonitorsId0", ids.ApplyT(func(ids arms.GetAddonReleasesResult) (*string, error) {

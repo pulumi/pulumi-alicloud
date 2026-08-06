@@ -91,7 +91,7 @@ import (
 // tmp1 = defaultGetDirectories.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:47,12-34),
 // []string{
 // "",

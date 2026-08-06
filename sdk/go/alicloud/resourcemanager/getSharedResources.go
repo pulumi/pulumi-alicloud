@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultSharedResource, err := resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
-//				ResourceShareId: defaultResourceShare.ID(),
+//				ResourceShareId: defaultResourceShare.ID().ToIDOutput().ToStringOutput(),
 //				ResourceId:      pulumi.String(defaultGetSwitches.Ids[0]),
 //				ResourceType:    pulumi.String("VSwitch"),
 //			})

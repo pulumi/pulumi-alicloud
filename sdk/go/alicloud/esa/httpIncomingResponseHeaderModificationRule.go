@@ -62,7 +62,7 @@ import (
 //			}
 //			resourceSiteHttpIncomingResponseHeaderModificationRuleExample, err := esa.NewSite(ctx, "resource_Site_HttpIncomingResponseHeaderModificationRule_example", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn%v.cn", _default.Result),
-//				InstanceId: resourceHttpIncomingResponseHeaderModificationRuleExample.ID(),
+//				InstanceId: resourceHttpIncomingResponseHeaderModificationRuleExample.ID().ToIDOutput().ToStringOutput(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewHttpIncomingResponseHeaderModificationRule(ctx, "default", &esa.HttpIncomingResponseHeaderModificationRuleArgs{
-//				SiteId:     resourceSiteHttpIncomingResponseHeaderModificationRuleExample.ID(),
+//				SiteId:     resourceSiteHttpIncomingResponseHeaderModificationRuleExample.ID().ToIDOutput().ToStringOutput(),
 //				RuleEnable: pulumi.String("on"),
 //				ResponseHeaderModifications: esa.HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray{
 //					&esa.HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs{

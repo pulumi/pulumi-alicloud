@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *             input: defaultNetwork[2].cidrBlock,
  *             newbits: 8,
  *             netnum: range,
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *         zoneId: _default.then(_default => _default.zones[range].zoneId),
  *     }));
  * }

@@ -61,7 +61,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -70,7 +70,7 @@ import (
 //			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.1.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
 //			})
 //			if err != nil {
@@ -78,7 +78,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -89,18 +89,18 @@ import (
 //				LoadBalancerType: pulumi.String("Network"),
 //				AddressType:      pulumi.String("Internet"),
 //				AddressIpVersion: pulumi.String("Ipv4"),
-//				VpcId:            defaultNetwork.ID(),
+//				VpcId:            defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),
 //				},
 //				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
 //					&nlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch.ID(),
+//						VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(defaultGetZones.Zones[0].Id),
 //					},
 //					&nlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: default1.ID(),
+//						VswitchId: default1.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(defaultGetZones.Zones[1].Id),
 //					},
 //				},
@@ -112,7 +112,7 @@ import (
 //				ResourceGroupId:        pulumi.String(_default.Ids[0]),
 //				ServerGroupName:        pulumi.String(name),
 //				ServerGroupType:        pulumi.String("Instance"),
-//				VpcId:                  defaultNetwork.ID(),
+//				VpcId:                  defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Scheduler:              pulumi.String("Wrr"),
 //				Protocol:               pulumi.String("TCP"),
 //				ConnectionDrainEnabled: pulumi.Bool(true),
@@ -145,8 +145,8 @@ import (
 //				ListenerProtocol:     pulumi.String("TCP"),
 //				ListenerPort:         pulumi.Int(80),
 //				ListenerDescription:  pulumi.String(name),
-//				LoadBalancerId:       defaultLoadBalancer.ID(),
-//				ServerGroupId:        defaultServerGroup.ID(),
+//				LoadBalancerId:       defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				ServerGroupId:        defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
 //				IdleTimeout:          pulumi.Int(900),
 //				ProxyProtocolEnabled: pulumi.Bool(true),
 //				Cps:                  pulumi.Int(10000),

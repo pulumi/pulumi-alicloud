@@ -46,7 +46,7 @@ import (
 //			defaultfIoHt5, err := wafv3.NewDefenseTemplate(ctx, "defaultfIoHt5", &wafv3.DefenseTemplateArgs{
 //				Status:              pulumi.String("1"),
 //				Description:         pulumi.String("testCreate"),
-//				InstanceId:          defaultnxb04D.ID(),
+//				InstanceId:          defaultnxb04D.ID().ToIDOutput().ToStringOutput(),
 //				DefenseTemplateName: pulumi.String("1782219650"),
 //				TemplateOrigin:      pulumi.String("custom"),
 //				DefenseScene:        pulumi.String("custom_acl"),
@@ -57,7 +57,7 @@ import (
 //			}
 //			default9dtEmt, err := wafv3.NewAddressBook(ctx, "default9dtEmt", &wafv3.AddressBookArgs{
 //				Description:     pulumi.String("test"),
-//				InstanceId:      defaultnxb04D.ID(),
+//				InstanceId:      defaultnxb04D.ID().ToIDOutput().ToStringOutput(),
 //				AddressBookName: pulumi.String("1782219650"),
 //				AddressLists: pulumi.StringArray{
 //					pulumi.String("100.100.100.100/32"),
@@ -71,7 +71,7 @@ import (
 //			}
 //			_, err = wafv3.NewAddressBook(ctx, "defaultSB0uHV", &wafv3.AddressBookArgs{
 //				Description:     pulumi.String("test"),
-//				InstanceId:      defaultnxb04D.ID(),
+//				InstanceId:      defaultnxb04D.ID().ToIDOutput().ToStringOutput(),
 //				AddressBookName: pulumi.String("1782219650"),
 //				AddressLists: pulumi.StringArray{
 //					pulumi.String("100.100.100.100/32"),
@@ -85,7 +85,7 @@ import (
 //			}
 //			defaultDefenseRule, err := wafv3.NewDefenseRule(ctx, "default", &wafv3.DefenseRuleArgs{
 //				DefenseOrigin: pulumi.String("custom"),
-//				InstanceId:    defaultnxb04D.ID(),
+//				InstanceId:    defaultnxb04D.ID().ToIDOutput().ToStringOutput(),
 //				Config: &wafv3.DefenseRuleConfigArgs{
 //					RuleAction: pulumi.String("block"),
 //					Conditions: wafv3.DefenseRuleConfigConditionArray{
@@ -166,10 +166,10 @@ import (
 //			}
 //			_default := wafv3.GetDefenseRulesOutput(ctx, wafv3.GetDefenseRulesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDefenseRule.ID(),
+//					defaultDefenseRule.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DefenseType: pulumi.String("template"),
-//				InstanceId:  defaultnxb04D.ID(),
+//				InstanceId:  defaultnxb04D.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("alicloudWafv3DefenseRuleExampleId", _default.ApplyT(func(_default wafv3.GetDefenseRulesResult) (*string, error) {
 //				return _default.Rules[0].Id, nil

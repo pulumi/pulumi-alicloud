@@ -61,7 +61,7 @@ import (
 //			}
 //			default45mCzM, err := vpc.NewSwitch(ctx, "default45mCzM", &vpc.SwitchArgs{
 //				Description: pulumi.String(name),
-//				VpcId:       defaultX7MgJO.ID(),
+//				VpcId:       defaultX7MgJO.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //			})
@@ -73,17 +73,17 @@ import (
 //				TableEngineNodeCount:     pulumi.Int(2),
 //				InstanceStorage:          pulumi.String("80"),
 //				ZoneId:                   pulumi.String(zoneId),
-//				VswitchId:                default45mCzM.ID(),
+//				VswitchId:                default45mCzM.ID().ToIDOutput().ToStringOutput(),
 //				DiskCategory:             pulumi.String("cloud_efficiency"),
 //				TableEngineSpecification: pulumi.String("lindorm.g.xlarge"),
 //				InstanceName:             pulumi.String("tf-example"),
-//				VpcId:                    defaultX7MgJO.ID(),
+//				VpcId:                    defaultX7MgJO.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = lindorm.NewPublicNetwork(ctx, "default", &lindorm.PublicNetworkArgs{
-//				InstanceId:          defaultQpsLKr.ID(),
+//				InstanceId:          defaultQpsLKr.ID().ToIDOutput().ToStringOutput(),
 //				EnablePublicNetwork: pulumi.Int(1),
 //				EngineType:          pulumi.String("lindorm"),
 //			})

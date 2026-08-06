@@ -74,14 +74,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -98,12 +98,12 @@ import (
 //			defaultApplication, err := sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
 //				AppDescription:  pulumi.String(name),
 //				AppName:         pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				NamespaceId:     defaultNamespace.ID(),
+//				NamespaceId:     defaultNamespace.ID().ToIDOutput().ToStringOutput(),
 //				ImageUrl:        pulumi.Sprintf("registry-vpc.%v.aliyuncs.com/sae-demo-image/consumer:1.0", _default.Regions[0].Id),
 //				PackageType:     pulumi.String("Image"),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				VpcId:           defaultNetwork.ID(),
-//				VswitchId:       defaultSwitch.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Timezone:        pulumi.String("Asia/Beijing"),
 //				Replicas:        pulumi.Int(5),
 //				Cpu:             pulumi.Int(500),
@@ -114,7 +114,7 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultSwitch.ID(),
+//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),
 //			})
@@ -122,12 +122,12 @@ import (
 //				return err
 //			}
 //			_, err = sae.NewIngress(ctx, "default", &sae.IngressArgs{
-//				SlbId:        defaultApplicationLoadBalancer.ID(),
-//				NamespaceId:  defaultNamespace.ID(),
+//				SlbId:        defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+//				NamespaceId:  defaultNamespace.ID().ToIDOutput().ToStringOutput(),
 //				ListenerPort: pulumi.Int(80),
 //				Rules: sae.IngressRuleArray{
 //					&sae.IngressRuleArgs{
-//						AppId:         defaultApplication.ID(),
+//						AppId:         defaultApplication.ID().ToIDOutput().ToStringOutput(),
 //						ContainerPort: pulumi.Int(443),
 //						Domain:        pulumi.String("www.alicloud.com"),
 //						AppName:       defaultApplication.AppName,
@@ -135,7 +135,7 @@ import (
 //					},
 //				},
 //				DefaultRule: &sae.IngressDefaultRuleArgs{
-//					AppId:         defaultApplication.ID(),
+//					AppId:         defaultApplication.ID().ToIDOutput().ToStringOutput(),
 //					ContainerPort: pulumi.Int(443),
 //				},
 //			})

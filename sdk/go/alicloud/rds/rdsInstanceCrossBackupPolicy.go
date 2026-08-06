@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Ids[0]),
 //				VswitchName: pulumi.String(name),
@@ -86,14 +86,14 @@ import (
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				Category:              pulumi.String("HighAvailability"),
 //				InstanceName:          pulumi.String(name),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceStorageType: pulumi.String("local_ssd"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rds.NewRdsInstanceCrossBackupPolicy(ctx, "default", &rds.RdsInstanceCrossBackupPolicyArgs{
-//				InstanceId:        defaultInstance.ID(),
+//				InstanceId:        defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				CrossBackupRegion: pulumi.String(regions.Ids[0]),
 //			})
 //			if err != nil {

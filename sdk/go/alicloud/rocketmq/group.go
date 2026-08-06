@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err = rocketmq.NewGroup(ctx, "default", &rocketmq.GroupArgs{
 //				GroupName:  pulumi.String(groupName),
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Remark:     pulumi.String("dafault_ons_group_remark"),
 //			})
 //			if err != nil {

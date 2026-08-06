@@ -82,7 +82,7 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("CreateVSwitch-%v", key0), &vpc.SwitchArgs{
-// VpcId: createVPC.ID(),
+// VpcId: createVPC.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String(vswitchCidrs[val0]),
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
@@ -95,18 +95,13 @@ import (
 // NamePrefix: pulumi.String(clusterName),
 // ClusterSpec: pulumi.String("ack.standard"),
 // Profile: pulumi.String("Default"),
-// VswitchIds: pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// VswitchIds: std.SplitOutput(ctx, std.SplitOutputArgs{
 // Separator: pulumi.String(","),
 // Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:48,19-38),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput),
-// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
-// return invoke.Result, nil
-// }).(pulumi.StringArrayOutput)),
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:48,19-38)),
+// }, nil).Result(),
+// }, nil).Result(),
 // PodCidr: pulumi.String(podCidr),
 // ServiceCidr: pulumi.String(serviceCidr),
 // IsEnterpriseSecurityGroup: pulumi.Bool(true),
@@ -137,14 +132,14 @@ import (
 // return err
 // }
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "base", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID(),
+// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
 // PolicyName: pulumi.String("ACKPSPReadOnlyRootFilesystem"),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "string", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID(),
+// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
 // PolicyName: pulumi.String("ACKPVSizeConstraint"),
 // Action: pulumi.String("deny"),
 // Parameters: pulumi.StringMap{
@@ -155,7 +150,7 @@ import (
 // return err
 // }
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "int_bool", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID(),
+// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
 // PolicyName: pulumi.String("ACKPSPHostNetworkingPorts"),
 // Namespaces: pulumi.StringArray{
 // pulumi.String("test"),
@@ -178,7 +173,7 @@ import (
 // }
 // json0 := string(tmpJSON0)
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "array", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID(),
+// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
 // PolicyName: pulumi.String("ACKAllowedRepos"),
 // Parameters: pulumi.StringMap{
 // "repos": pulumi.String(json0),
@@ -187,12 +182,12 @@ import (
 // if err != nil {
 // return err
 // }
-// tmpJSON1, err := json.Marshal([]map[string]interface{}{
-// map[string]interface{}{
+// tmpJSON1, err := json.Marshal([]map[string]string{
+// {
 // "key": "test",
 // "allowedRegex": "^test.*$",
 // },
-// map[string]interface{}{
+// {
 // "key": "env",
 // "allowedRegex": "^(dev|prod)$",
 // "optional": false,
@@ -203,7 +198,7 @@ import (
 // }
 // json1 := string(tmpJSON1)
 // _, err = cs.NewKubernetesPolicyInstance(ctx, "object", &cs.KubernetesPolicyInstanceArgs{
-// ClusterId: createCluster.ID(),
+// ClusterId: createCluster.ID().ToIDOutput().ToStringOutput(),
 // PolicyName: pulumi.String("ACKRequiredLabels"),
 // Action: pulumi.String("warn"),
 // Namespaces: pulumi.StringArray{

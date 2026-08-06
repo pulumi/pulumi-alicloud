@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultTRk7k3, err := vpc.NewSwitch(ctx, "defaultTRk7k3", &vpc.SwitchArgs{
-//				VpcId:     defaulttYTx5F.ID(),
+//				VpcId:     defaulttYTx5F.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zone1),
 //				CidrBlock: pulumi.String("192.168.10.0/24"),
 //			})
@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			default23kGFr, err := vpc.NewSwitch(ctx, "default23kGFr", &vpc.SwitchArgs{
-//				VpcId:     defaulttYTx5F.ID(),
+//				VpcId:     defaulttYTx5F.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zone2),
 //				CidrBlock: pulumi.String("192.168.20.0/24"),
 //			})
@@ -81,11 +81,11 @@ import (
 //			_, err = vpn.NewGatewayEnhancedVpnGateway(ctx, "default", &vpn.GatewayEnhancedVpnGatewayArgs{
 //				VpnType:                   pulumi.String("Normal"),
 //				Description:               pulumi.String("default"),
-//				DisasterRecoveryVswitchId: default23kGFr.ID(),
-//				VpcId:                     defaulttYTx5F.ID(),
+//				DisasterRecoveryVswitchId: default23kGFr.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                     defaulttYTx5F.ID().ToIDOutput().ToStringOutput(),
 //				VpnGatewayName:            pulumi.String("default"),
 //				NetworkType:               pulumi.String("public"),
-//				VswitchId:                 defaultTRk7k3.ID(),
+//				VswitchId:                 defaultTRk7k3.ID().ToIDOutput().ToStringOutput(),
 //				GatewayType:               pulumi.String("Enhanced.SiteToSite"),
 //				AutoPropagate:             pulumi.Bool(false),
 //			})

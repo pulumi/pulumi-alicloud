@@ -45,7 +45,7 @@ import (
 //			}
 //			ids := directmail.GetDomainsOutput(ctx, directmail.GetDomainsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("directMailDomainsId0", ids.ApplyT(func(ids directmail.GetDomainsResult) (*string, error) {

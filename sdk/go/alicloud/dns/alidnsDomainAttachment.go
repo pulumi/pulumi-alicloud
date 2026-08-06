@@ -38,7 +38,7 @@ import (
 //			}
 //			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "default", &dns.AlidnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
-//				GroupId:    _default.ID(),
+//				GroupId:    _default.ID().ToIDOutput().ToStringOutput(),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewAlidnsDomainAttachment(ctx, "default", &dns.AlidnsDomainAttachmentArgs{
-//				InstanceId: defaultAlidnsInstance.ID(),
+//				InstanceId: defaultAlidnsInstance.ID().ToIDOutput().ToStringOutput(),
 //				DomainNames: pulumi.StringArray{
 //					defaultAlidnsDomain.DomainName,
 //				},

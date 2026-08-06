@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			defaultoZAPmO, err := vpc.NewSwitch(ctx, "defaultoZAPmO", &vpc.SwitchArgs{
-//				VpcId:     defaultkyVC70.ID(),
+//				VpcId:     defaultkyVC70.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //			})
@@ -95,10 +95,10 @@ import (
 //				return err
 //			}
 //			_, err = nas.NewAccessPoint(ctx, "default", &nas.AccessPointArgs{
-//				VpcId:           defaultkyVC70.ID(),
+//				VpcId:           defaultkyVC70.ID().ToIDOutput().ToStringOutput(),
 //				AccessGroup:     defaultBbc7ev.AccessGroupName,
-//				VswitchId:       defaultoZAPmO.ID(),
-//				FileSystemId:    defaultVtUpDh.ID(),
+//				VswitchId:       defaultoZAPmO.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:    defaultVtUpDh.ID().ToIDOutput().ToStringOutput(),
 //				AccessPointName: pulumi.String(name),
 //				PosixUser: &nas.AccessPointPosixUserArgs{
 //					PosixGroupId: pulumi.Int(123),

@@ -58,7 +58,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zone),
 //			})
 //			if err != nil {
@@ -66,23 +66,20 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: example.ID(),
+//				VpcId: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "example", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
-//				VswitchId:            exampleSwitch.ID(),
-//				PrimaryIpAddress: pulumi.String(std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
+//				VswitchId:            exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				PrimaryIpAddress: std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
 //					Input: exampleSwitch.CidrBlock,
 //					Host:  pulumi.Int(100),
-//				}, nil).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -96,7 +93,7 @@ import (
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String(name),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				SupportMulticast:  pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -112,11 +109,11 @@ import (
 //			exampleTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "example", &cen.TransitRouterVpcAttachmentArgs{
 //				CenId:           exampleTransitRouter.CenId,
 //				TransitRouterId: exampleTransitRouterMulticastDomain.TransitRouterId,
-//				VpcId:           example.ID(),
+//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(zone),
-//						VswitchId: exampleSwitch.ID(),
+//						VswitchId: exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -124,17 +121,17 @@ import (
 //				return err
 //			}
 //			exampleTransitRouterMulticastDomainAssociation, err := cen.NewTransitRouterMulticastDomainAssociation(ctx, "example", &cen.TransitRouterMulticastDomainAssociationArgs{
-//				TransitRouterMulticastDomainId: exampleTransitRouterMulticastDomain.ID(),
+//				TransitRouterMulticastDomainId: exampleTransitRouterMulticastDomain.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterAttachmentId:      exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
-//				VswitchId:                      exampleSwitch.ID(),
+//				VswitchId:                      exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterMulticastDomainMember(ctx, "example", &cen.TransitRouterMulticastDomainMemberArgs{
-//				VpcId:                          example.ID(),
+//				VpcId:                          example.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterMulticastDomainId: exampleTransitRouterMulticastDomainAssociation.TransitRouterMulticastDomainId,
-//				NetworkInterfaceId:             exampleEcsNetworkInterface.ID(),
+//				NetworkInterfaceId:             exampleEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 //				GroupIpAddress:                 pulumi.String("239.1.1.1"),
 //			})
 //			if err != nil {

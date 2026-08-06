@@ -67,7 +67,7 @@ import (
 //			}
 //			_, err = amqp.NewExchange(ctx, "default", &amqp.ExchangeArgs{
 //				VirtualHostName:   pulumi.String(virtualHostName),
-//				InstanceId:        createInstance.ID(),
+//				InstanceId:        createInstance.ID().ToIDOutput().ToStringOutput(),
 //				Internal:          pulumi.Bool(true),
 //				AutoDeleteState:   pulumi.Bool(false),
 //				ExchangeName:      pulumi.String(name),

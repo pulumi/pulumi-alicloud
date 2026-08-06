@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  *             defaultAccountPrivilege.instanceId,
  *             defaultDatabase.name,
  *         ],
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     resourceType: "RDS",
  *     userName: defaultDatabase.name,
  *     password: defaultRdsAccount.accountPassword,

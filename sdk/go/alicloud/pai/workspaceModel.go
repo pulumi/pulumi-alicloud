@@ -64,7 +64,7 @@ import (
 //				Task:          pulumi.String("text-to-image-synthesis"),
 //				ModelName:     pulumi.String(name),
 //				Accessibility: pulumi.String("PRIVATE"),
-//				WorkspaceId:   defaultENuC6u.ID(),
+//				WorkspaceId:   defaultENuC6u.ID().ToIDOutput().ToStringOutput(),
 //				ModelType:     pulumi.String("Checkpoint"),
 //				Labels: pai.WorkspaceModelLabelArray{
 //					&pai.WorkspaceModelLabelArgs{

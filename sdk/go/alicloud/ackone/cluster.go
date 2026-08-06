@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultyVSwitch, err := vpc.NewSwitch(ctx, "defaultyVSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultVpc.ID(),
+//				VpcId:       defaultVpc.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.2.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -66,9 +66,9 @@ import (
 //			}
 //			_, err = ackone.NewCluster(ctx, "default", &ackone.ClusterArgs{
 //				Network: &ackone.ClusterNetworkArgs{
-//					VpcId: defaultVpc.ID(),
+//					VpcId: defaultVpc.ID().ToIDOutput().ToStringOutput(),
 //					Vswitches: pulumi.StringArray{
-//						defaultyVSwitch.ID(),
+//						defaultyVSwitch.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Profile: pulumi.String("XFlow"),

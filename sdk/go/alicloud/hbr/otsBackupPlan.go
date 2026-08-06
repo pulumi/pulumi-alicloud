@@ -116,13 +116,13 @@ import (
 //			}
 //			_, err = hbr.NewOtsBackupPlan(ctx, "example", &hbr.OtsBackupPlanArgs{
 //				OtsBackupPlanName:    pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
-//				VaultId:              defaultVault.ID(),
+//				VaultId:              defaultVault.ID().ToIDOutput().ToStringOutput(),
 //				BackupType:           pulumi.String("COMPLETE"),
 //				Retention:            pulumi.String("1"),
 //				InstanceName:         defaultInstance.Name,
 //				CrossAccountType:     pulumi.String("SELF_ACCOUNT"),
 //				CrossAccountUserId:   pulumi.String(_default.Id),
-//				CrossAccountRoleName: defaultRole.ID(),
+//				CrossAccountRoleName: defaultRole.ID().ToIDOutput().ToStringOutput(),
 //				OtsDetails: hbr.OtsBackupPlanOtsDetailArray{
 //					&hbr.OtsBackupPlanOtsDetailArgs{
 //						TableNames: pulumi.StringArray{

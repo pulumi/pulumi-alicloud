@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			vpcvsw1, err := vpc.NewSwitch(ctx, "vpcvsw1", &vpc.SwitchArgs{
-//				VpcId:     vpc2.ID(),
+//				VpcId:     vpc2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-i"),
 //				CidrBlock: pulumi.String("172.16.3.0/24"),
 //			})
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			vpcvsw2, err := vpc.NewSwitch(ctx, "vpcvsw2", &vpc.SwitchArgs{
-//				VpcId:     vpc2.ID(),
+//				VpcId:     vpc2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-j"),
 //				CidrBlock: pulumi.String("172.16.4.0/24"),
 //			})
@@ -75,16 +75,16 @@ import (
 //				RegionNo:           pulumi.String("cn-hangzhou"),
 //				AccessInstanceName: pulumi.String(name),
 //				Port:               pulumi.Int(53),
-//				PrimaryVswitchId:   vpcvsw1.ID(),
+//				PrimaryVswitchId:   vpcvsw1.ID().ToIDOutput().ToStringOutput(),
 //				StandbyDns:         pulumi.String("4.4.4.4"),
 //				PrimaryDns:         pulumi.String("8.8.8.8"),
-//				VpcId:              vpc2.ID(),
+//				VpcId:              vpc2.ID().ToIDOutput().ToStringOutput(),
 //				PrivateDnsType:     pulumi.String("Custom"),
 //				FirewallTypes: pulumi.StringArray{
 //					pulumi.String("internet"),
 //				},
 //				IpProtocol:       pulumi.String("UDP"),
-//				StandbyVswitchId: vpcvsw2.ID(),
+//				StandbyVswitchId: vpcvsw2.ID().ToIDOutput().ToStringOutput(),
 //				DomainNameLists: pulumi.StringArray{
 //					pulumi.String("www.aliyun.com"),
 //				},

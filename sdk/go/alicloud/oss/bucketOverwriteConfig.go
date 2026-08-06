@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucketOverwriteConfig(ctx, "default", &oss.BucketOverwriteConfigArgs{
-//				Bucket: defaultrdrM3m.ID(),
+//				Bucket: defaultrdrM3m.ID().ToIDOutput().ToStringOutput(),
 //				Rules: oss.BucketOverwriteConfigRuleArray{
 //					&oss.BucketOverwriteConfigRuleArgs{
 //						Id:     pulumi.String("rule1"),

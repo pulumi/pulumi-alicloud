@@ -88,7 +88,7 @@ import (
 //			}
 //			_default := governance.GetBaselinesOutput(ctx, governance.GetBaselinesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultBaseline.ID(),
+//					defaultBaseline.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultBaseline.BaselineName,
 //			}, nil)

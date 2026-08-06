@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -60,19 +60,19 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultSwitch.ID(),
+//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = slb.NewServerGroup(ctx, "default", &slb.ServerGroupArgs{
-//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			sampleDs := slb.GetServerGroupsOutput(ctx, slb.GetServerGroupsOutputArgs{
-//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("firstSlbServerGroupId", sampleDs.ApplyT(func(sampleDs slb.GetServerGroupsResult) (*string, error) {
 //				return sampleDs.SlbServerGroups[0].Id, nil

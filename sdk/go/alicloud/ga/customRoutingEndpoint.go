@@ -58,7 +58,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -84,8 +84,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      defaultAccelerator.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//				AcceleratorId:      defaultAccelerator.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -105,7 +105,7 @@ import (
 //			}
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
-//				ListenerId:                     defaultListener.ID(),
+//				ListenerId:                     defaultListener.ID().ToIDOutput().ToStringOutput(),
 //				EndpointGroupRegion:            pulumi.String(region),
 //				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:                    pulumi.String("terraform-example"),
@@ -114,8 +114,8 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewCustomRoutingEndpoint(ctx, "default", &ga.CustomRoutingEndpointArgs{
-//				EndpointGroupId:         defaultCustomRoutingEndpointGroup.ID(),
-//				Endpoint:                defaultSwitch.ID(),
+//				EndpointGroupId:         defaultCustomRoutingEndpointGroup.ID().ToIDOutput().ToStringOutput(),
+//				Endpoint:                defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Type:                    pulumi.String("PrivateSubNet"),
 //				TrafficToEndpointPolicy: pulumi.String("DenyAll"),
 //			})

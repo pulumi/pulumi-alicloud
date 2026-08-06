@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			_, err = cr.NewChartNamespace(ctx, "example", &cr.ChartNamespaceArgs{
-//				InstanceId:    example.ID(),
+//				InstanceId:    example.ID().ToIDOutput().ToStringOutput(),
 //				NamespaceName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {

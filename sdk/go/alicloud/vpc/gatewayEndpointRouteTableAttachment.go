@@ -60,7 +60,7 @@ import (
 //
 // `),
 //
-//				VpcId:                     defaulteVpc.ID(),
+//				VpcId:                     defaulteVpc.ID().ToIDOutput().ToStringOutput(),
 //				GatewayEndpointDescrption: pulumi.String("test-gateway-endpoint"),
 //				GatewayEndpointName:       pulumi.Sprintf("%v1", name),
 //			})
@@ -68,15 +68,15 @@ import (
 //				return err
 //			}
 //			defaultRT, err := vpc.NewRouteTable(ctx, "defaultRT", &vpc.RouteTableArgs{
-//				VpcId:          defaulteVpc.ID(),
+//				VpcId:          defaulteVpc.ID().ToIDOutput().ToStringOutput(),
 //				RouteTableName: pulumi.Sprintf("%v2", name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewGatewayEndpointRouteTableAttachment(ctx, "default", &vpc.GatewayEndpointRouteTableAttachmentArgs{
-//				GatewayEndpointId: defaultGE.ID(),
-//				RouteTableId:      defaultRT.ID(),
+//				GatewayEndpointId: defaultGE.ID().ToIDOutput().ToStringOutput(),
+//				RouteTableId:      defaultRT.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

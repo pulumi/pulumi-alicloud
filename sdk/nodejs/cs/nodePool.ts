@@ -450,15 +450,15 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: vswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     podVswitchIds: std.splitOutput({
  *         separator: ",",
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: terwayVswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     newNatGateway: true,
  *     serviceCidr: "10.11.0.0/16",
  *     slbInternetEnabled: true,
@@ -493,8 +493,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: vswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     autoMode: {
  *         enabled: true,
  *     },
@@ -568,8 +568,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: vswitches.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     instanceTypes: ["ecs.c6.xlarge"],
  *     systemDiskCategory: "cloud_efficiency",
  *     systemDiskSize: 40,

@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -75,7 +75,7 @@ import (
 //				PayType:          pulumi.String("PostPaid"),
 //				DbType:           pulumi.String("PostgreSQL"),
 //				DbNodeClass:      pulumi.String("polar.pg.x4.medium.c"),
-//				VswitchId:        defaultSwitch.ID(),
+//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,7 +84,7 @@ import (
 //				AccountType:     pulumi.String("Normal"),
 //				AccountName:     pulumi.String("nzh"),
 //				AccountPassword: pulumi.String("Ali123456"),
-//				DbClusterId:     dbcluster.ID(),
+//				DbClusterId:     dbcluster.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -92,7 +92,7 @@ import (
 //			database, err := polardb.NewDatabase(ctx, "database", &polardb.DatabaseArgs{
 //				CharacterSetName: pulumi.String("UTF8"),
 //				DbDescription:    pulumi.String(name),
-//				DbClusterId:      dbcluster.ID(),
+//				DbClusterId:      dbcluster.ID().ToIDOutput().ToStringOutput(),
 //				DbName:           pulumi.String("nzh"),
 //				AccountName:      account.DbClusterId,
 //			})
@@ -101,7 +101,7 @@ import (
 //			}
 //			_, err = alicloud.NewPolarDbExtension(ctx, "default", &alicloud.PolarDbExtensionArgs{
 //				ExtensionName: pulumi.String("postgres_fdw"),
-//				DbClusterId:   dbcluster.ID(),
+//				DbClusterId:   dbcluster.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:   account.AccountName,
 //				DbName:        database.DbName,
 //			})

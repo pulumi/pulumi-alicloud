@@ -46,7 +46,7 @@ import (
 //			}
 //			ids := privatelink.GetVpcEndpointServicesOutput(ctx, privatelink.GetVpcEndpointServicesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("privatelinkVpcEndpointServicesId0", ids.ApplyT(func(ids privatelink.GetVpcEndpointServicesResult) (*string, error) {

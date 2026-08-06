@@ -61,13 +61,13 @@ import (
 //						InstanceDomain: _default.InstanceName.ApplyT(func(instanceName string) (string, error) {
 //							return fmt.Sprintf("%v-registry-vpc.cn-hangzhou.cr.aliyuncs.com", instanceName), nil
 //						}).(pulumi.StringOutput),
-//						StorageDomain: _default.ID().ApplyT(func(id string) (string, error) {
+//						StorageDomain: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("https://%v-registry.oss-cn-hangzhou-internal.aliyuncs.com", id), nil
 //						}).(pulumi.StringOutput),
 //						EndpointType: pulumi.String("Internet"),
 //					},
 //				},
-//				InstanceId: _default.ID(),
+//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

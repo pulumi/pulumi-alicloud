@@ -28,6 +28,7 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"strconv"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
@@ -69,8 +70,8 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"address": []map[string]interface{}{
-//					map[string]interface{}{
+//				"address": []map[string]string{
+//					{
 //						"host": "127.0.0.1",
 //						"port": "1234",
 //					},
@@ -82,7 +83,7 @@ import (
 //				"loginMode":        "Anonymous",
 //				"securityProtocol": "authTypeNone",
 //				"envType":          "Prod",
-//				"properties": map[string]interface{}{
+//				"properties": map[string]string{
 //					"key1": "value1",
 //				},
 //			})
@@ -95,7 +96,7 @@ import (
 //				DataSourceName:           pulumi.String(name),
 //				ConnectionProperties:     pulumi.String(json0),
 //				ConnectionPropertiesMode: pulumi.String("UrlMode"),
-//				ProjectId:                defaultkguw4R.ID(),
+//				ProjectId:                defaultkguw4R.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Description:              pulumi.String(name),
 //			})
 //			if err != nil {

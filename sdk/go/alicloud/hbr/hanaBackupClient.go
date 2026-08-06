@@ -71,7 +71,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -79,7 +79,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -89,11 +89,11 @@ import (
 //				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				AvailabilityZone: pulumi.String(example.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceName:       pulumi.String("terraform-example"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				VswitchId:          exampleSwitch.ID(),
+//				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -121,15 +121,15 @@ import (
 //				UseSsl:              pulumi.Bool(false),
 //				UserName:            pulumi.String("admin"),
 //				ValidateCertificate: pulumi.Bool(false),
-//				VaultId:             exampleVault.ID(),
+//				VaultId:             exampleVault.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewHanaBackupClient(ctx, "default", &hbr.HanaBackupClientArgs{
-//				VaultId: exampleVault.ID(),
+//				VaultId: exampleVault.ID().ToIDOutput().ToStringOutput(),
 //				ClientInfo: pulumi.All(exampleInstance.ID(), exampleHanaInstance.HanaInstanceId).ApplyT(func(_args []interface{}) (string, error) {
-//					id := _args[0].(string)
+//					id := _args[0].(pulumi.ID)
 //					hanaInstanceId := _args[1].(string)
 //					return fmt.Sprintf("[ { \"instanceId\": \"%v\", \"clusterId\": \"%v\", \"sourceTypes\": [ \"HANA\" ]  }]", id, hanaInstanceId), nil
 //				}).(pulumi.StringOutput),

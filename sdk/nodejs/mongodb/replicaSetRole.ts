@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * // modify private network address.
  * const _private = new alicloud.mongodb.ReplicaSetRole("private", {
  *     dbInstanceId: defaultInstance.id,
- *     roleId: defaultInstance.replicaSets.apply(replicaSets => replicaSets[0].roleId),
+ *     roleId: defaultInstance.replicaSets[0].roleId,
  *     connectionPrefix: "test-tf-private-change",
  *     connectionPort: 3718,
  *     networkType: "VPC",
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * // modify public network address.
  * const _public = new alicloud.mongodb.ReplicaSetRole("public", {
  *     dbInstanceId: defaultInstance.id,
- *     roleId: defaultPublicNetworkAddress.replicaSets.apply(replicaSets => replicaSets[0].roleId),
+ *     roleId: defaultPublicNetworkAddress.replicaSets[0].roleId,
  *     connectionPrefix: "test-tf-public-0",
  *     connectionPort: 3719,
  *     networkType: "Public",

@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
@@ -65,7 +65,7 @@ import (
 //				DiskSize:     pulumi.Int(500),
 //				DeployType:   pulumi.Int(4),
 //				IoMax:        pulumi.Int(20),
-//				VswitchId:    defaultSwitch.ID(),
+//				VswitchId:    defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			defaultHVcskT, err := wafv3.NewDomain(ctx, "defaultHVcskT", &wafv3.DomainArgs{
-//				InstanceId: defaultHaF1fD.ID(),
+//				InstanceId: defaultHaF1fD.ID().ToIDOutput().ToStringOutput(),
 //				Listen: &wafv3.DomainListenArgs{
 //					HttpPorts: pulumi.IntArray{
 //						pulumi.Int(80),
@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			_, err = wafv3.NewDomain(ctx, "defaultEH4CwO", &wafv3.DomainArgs{
-//				InstanceId: defaultHaF1fD.ID(),
+//				InstanceId: defaultHaF1fD.ID().ToIDOutput().ToStringOutput(),
 //				Listen: &wafv3.DomainListenArgs{
 //					HttpPorts: pulumi.IntArray{
 //						pulumi.Int(80),
@@ -87,7 +87,7 @@ import (
 //				return err
 //			}
 //			_, err = wafv3.NewDomain(ctx, "defaultY0ge1N", &wafv3.DomainArgs{
-//				InstanceId: defaultHaF1fD.ID(),
+//				InstanceId: defaultHaF1fD.ID().ToIDOutput().ToStringOutput(),
 //				Listen: &wafv3.DomainListenArgs{
 //					HttpPorts: pulumi.IntArray{
 //						pulumi.Int(80),
@@ -111,7 +111,7 @@ import (
 //					defaultHVcskT.DomainId,
 //				},
 //				Description: pulumi.String("example"),
-//				InstanceId:  defaultHaF1fD.ID(),
+//				InstanceId:  defaultHaF1fD.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -27,6 +27,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
@@ -79,8 +81,8 @@ import (
 //				return err
 //			}
 //			_, err = dataworks.NewProjectMember(ctx, "default", &dataworks.ProjectMemberArgs{
-//				UserId:    defaultKCTrB2.ID(),
-//				ProjectId: defaultQeRfvU.ID(),
+//				UserId:    defaultKCTrB2.ID().ToIDOutput().ToStringOutput(),
+//				ProjectId: defaultQeRfvU.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Roles: dataworks.ProjectMemberRoleArray{
 //					&dataworks.ProjectMemberRoleArgs{
 //						Code: pulumi.String(adminCode),

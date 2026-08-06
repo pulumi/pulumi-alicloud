@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
 //				Engine:                 pulumi.String("MySQL"),
-//				VpcId:                  _default.ID(),
+//				VpcId:                  _default.ID().ToIDOutput().ToStringOutput(),
 //				CpuAllocationRatio:     pulumi.Int(101),
 //				MemAllocationRatio:     pulumi.Int(50),
 //				DiskAllocationRatio:    pulumi.Int(200),

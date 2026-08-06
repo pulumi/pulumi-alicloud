@@ -50,7 +50,7 @@ import (
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 //				VswitchName:      pulumi.String(name),
 //				CidrBlock:        pulumi.String("172.16.0.0/24"),
-//				VpcId:            vpc2.ID(),
+//				VpcId:            vpc2.ID().ToIDOutput().ToStringOutput(),
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {

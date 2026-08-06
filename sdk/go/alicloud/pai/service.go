@@ -53,7 +53,7 @@ import (
 //					"instance": 1,
 //					"memory":   2000,
 //					"name":     "tfexample",
-//					"rpc": map[string]interface{}{
+//					"rpc": map[string]int{
 //						"keepalive": 70000,
 //					},
 //				},

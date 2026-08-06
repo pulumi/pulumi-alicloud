@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultQa94Y1, err := cen.NewTransitRouter(ctx, "defaultQa94Y1", &cen.TransitRouterArgs{
-//				CenId:             defaultQKBiay.ID(),
+//				CenId:             defaultQKBiay.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -72,8 +72,8 @@ import (
 //			}
 //			defaultedPu6c, err := expressconnect.NewRouterTrAssociation(ctx, "defaultedPu6c", &expressconnect.RouterTrAssociationArgs{
 //				AssociationRegionId:  pulumi.String("cn-hangzhou"),
-//				EcrId:                defaultO8Hcfx.ID(),
-//				CenId:                defaultQKBiay.ID(),
+//				EcrId:                defaultO8Hcfx.ID().ToIDOutput().ToStringOutput(),
+//				CenId:                defaultQKBiay.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterId:      defaultQa94Y1.TransitRouterId,
 //				TransitRouterOwnerId: pulumi.String(current.Id),
 //			})
@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterEcrAttachment(ctx, "default", &cen.TransitRouterEcrAttachmentArgs{
-//				EcrId:                              defaultO8Hcfx.ID(),
+//				EcrId:                              defaultO8Hcfx.ID().ToIDOutput().ToStringOutput(),
 //				CenId:                              defaultedPu6c.CenId,
 //				TransitRouterEcrAttachmentName:     pulumi.String(name),
 //				TransitRouterAttachmentDescription: pulumi.String(name),

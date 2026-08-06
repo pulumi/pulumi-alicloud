@@ -40,7 +40,7 @@ import (
 //			_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
 //				NameRegex: pulumi.String("^tf-testAcc.*"),
 //				Ids: pulumi.StringArray{
-//					fooCommonBandwithPackage.ID(),
+//					fooCommonBandwithPackage.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			return nil

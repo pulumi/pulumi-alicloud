@@ -62,20 +62,17 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId: pulumi.String(len(_default.Zones).ApplyT(func(length int) (alicloud.GetZonesZone, error) {
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				ZoneId: len(_default.Zones).ApplyT(func(length int) (alicloud.GetZonesZone, error) {
 //					return alicloud.GetZonesZone(_default.Zones[int(length-1)]), nil
-//				}).(alicloud.GetZonesZoneOutput).ApplyT(func(obj alicloud.GetZonesZone) (*string, error) {
-//					val := obj.Id
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(alicloud.GetZonesZoneOutput).Id(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -87,10 +84,10 @@ import (
 //			_, err = arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
 //				ClusterType:       pulumi.String("ecs"),
 //				GrafanaInstanceId: pulumi.String("free"),
-//				VpcId:             defaultNetwork.ID(),
-//				VswitchId:         defaultSwitch.ID(),
-//				SecurityGroupId:   defaultSecurityGroup.ID(),
-//				ClusterName: defaultNetwork.ID().ApplyT(func(id string) (string, error) {
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId:   defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
+//				ClusterName: defaultNetwork.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("%v-%v", name, id), nil
 //				}).(pulumi.StringOutput),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),

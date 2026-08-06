@@ -60,7 +60,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -76,10 +76,10 @@ import (
 //			defaultInstance, err := alikafka.NewInstance(ctx, "default", &alikafka.InstanceArgs{
 //				DeployType:     pulumi.Int(4),
 //				InstanceType:   pulumi.String("alikafka_serverless"),
-//				VswitchId:      defaultSwitch.ID(),
+//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SpecType:       pulumi.String("normal"),
 //				ServiceVersion: pulumi.String("3.3.1"),
-//				SecurityGroup:  defaultSecurityGroup.ID(),
+//				SecurityGroup:  defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				Config:         pulumi.String("{\"enable.acl\":\"true\"}"),
 //				ServerlessConfig: &alikafka.InstanceServerlessConfigArgs{
 //					ReservedPublishCapacity:   pulumi.Int(60),
@@ -106,7 +106,7 @@ import (
 //					pulumi.String("Friday"),
 //				},
 //				RuleName:   pulumi.String(name),
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

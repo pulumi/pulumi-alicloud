@@ -55,7 +55,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -81,7 +81,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(false),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -92,7 +92,7 @@ import (
 //				return err
 //			}
 //			defaultGetKubernetesAddons := cs.GetKubernetesAddonsOutput(ctx, cs.GetKubernetesAddonsOutputArgs{
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("addons", defaultGetKubernetesAddons.ApplyT(func(defaultGetKubernetesAddons cs.GetKubernetesAddonsResult) ([]cs.GetKubernetesAddonsAddon, error) {
 //				return []cs.GetKubernetesAddonsAddon(defaultGetKubernetesAddons.Addons), nil

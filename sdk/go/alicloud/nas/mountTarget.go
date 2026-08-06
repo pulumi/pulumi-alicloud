@@ -46,10 +46,7 @@ import (
 //			countSize := len(_default.Zones)
 //			zoneId := countSize.ApplyT(func(countSize int) (nas.GetZonesZone, error) {
 //				return nas.GetZonesZone(_default.Zones[int(countSize-1)]), nil
-//			}).(nas.GetZonesZoneOutput).ApplyT(func(obj nas.GetZonesZone) (*string, error) {
-//				val := obj.ZoneId
-//				return &val, nil
-//			}).(pulumi.StringPtrOutput)
+//			}).(nas.GetZonesZoneOutput).ZoneId()
 //			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
@@ -60,7 +57,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: example.VpcName,
 //				CidrBlock:   example.CidrBlock,
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
@@ -86,10 +83,10 @@ import (
 //				return err
 //			}
 //			_, err = nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
-//				FileSystemId:    exampleFileSystem.ID(),
+//				FileSystemId:    exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //				AccessGroupName: exampleAccessGroup.AccessGroupName,
-//				VswitchId:       exampleSwitch.ID(),
-//				VpcId:           example.ID(),
+//				VswitchId:       exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
 //				NetworkType:     exampleAccessGroup.AccessGroupType,
 //			})
 //			if err != nil {

@@ -85,9 +85,9 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId:       defaultNetwork.ID(),
+//					VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //					CidrBlock:   pulumi.String(invokeFormat.Result),
-//					ZoneId:      _default.Zones[val0].Id,
+//					ZoneId:      pulumi.String(_default.Zones[val0].Id),
 //					VswitchName: pulumi.String(invokeFormat1.Result),
 //				})
 //				if err != nil {
@@ -96,7 +96,7 @@ import (
 //				defaultSwitch = append(defaultSwitch, __res)
 //			}
 //			defaultLoadBalancer, err := alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
-//				VpcId:                defaultNetwork.ID(),
+//				VpcId:                defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				AddressType:          pulumi.String("Internet"),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				LoadBalancerName:     pulumi.String(name),
@@ -110,11 +110,11 @@ import (
 //				},
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch[0].ID(),
+//						VswitchId: defaultSwitch[0].ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(_default.Zones[0].Id),
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: defaultSwitch[1].ID(),
+//						VswitchId: defaultSwitch[1].ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(_default.Zones[1].Id),
 //					},
 //				},
@@ -124,7 +124,7 @@ import (
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				Protocol:        pulumi.String("HTTP"),
-//				VpcId:           defaultNetwork.ID(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ServerGroupName: pulumi.String(name),
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Groups[0].Id),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
@@ -141,7 +141,7 @@ import (
 //				return err
 //			}
 //			defaultListener, err := alb.NewListener(ctx, "default", &alb.ListenerArgs{
-//				LoadBalancerId:      defaultLoadBalancer.ID(),
+//				LoadBalancerId:      defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				ListenerProtocol:    pulumi.String("HTTP"),
 //				ListenerPort:        pulumi.Int(80),
 //				ListenerDescription: pulumi.String(name),
@@ -151,7 +151,7 @@ import (
 //						ForwardGroupConfig: &alb.ListenerDefaultActionForwardGroupConfigArgs{
 //							ServerGroupTuples: alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArray{
 //								&alb.ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs{
-//									ServerGroupId: defaultServerGroup.ID(),
+//									ServerGroupId: defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //						},
@@ -163,7 +163,7 @@ import (
 //			}
 //			_, err = alb.NewRule(ctx, "default", &alb.RuleArgs{
 //				RuleName:   pulumi.String(name),
-//				ListenerId: defaultListener.ID(),
+//				ListenerId: defaultListener.ID().ToIDOutput().ToStringOutput(),
 //				Priority:   pulumi.Int(555),
 //				RuleConditions: alb.RuleRuleConditionArray{
 //					&alb.RuleRuleConditionArgs{
@@ -183,7 +183,7 @@ import (
 //						ForwardGroupConfig: &alb.RuleRuleActionForwardGroupConfigArgs{
 //							ServerGroupTuples: alb.RuleRuleActionForwardGroupConfigServerGroupTupleArray{
 //								&alb.RuleRuleActionForwardGroupConfigServerGroupTupleArgs{
-//									ServerGroupId: defaultServerGroup.ID(),
+//									ServerGroupId: defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //						},

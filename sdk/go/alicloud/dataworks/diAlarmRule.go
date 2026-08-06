@@ -29,6 +29,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -53,7 +55,7 @@ import (
 //			}
 //			defaultUW8inp, err := dataworks.NewDiJob(ctx, "defaultUW8inp", &dataworks.DiJobArgs{
 //				Description:          pulumi.String("xxxx"),
-//				ProjectId:            defaulteNv8bu.ID(),
+//				ProjectId:            defaulteNv8bu.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				JobName:              pulumi.String("xxx"),
 //				MigrationType:        pulumi.String("api_xxx"),
 //				SourceDataSourceType: pulumi.String("xxx"),

@@ -54,7 +54,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[1].ZoneId),
 //			})
 //			if err != nil {
@@ -67,15 +67,15 @@ import (
 //				Capacity:       pulumi.Int(3600),
 //				Description:    pulumi.String("terraform-example"),
 //				ZoneId:         pulumi.String(example.Zones[1].ZoneId),
-//				VpcId:          exampleNetwork.ID(),
-//				VswitchId:      exampleSwitch.ID(),
+//				VpcId:          exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleMountTarget, err := nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
-//				FileSystemId: exampleFileSystem.ID(),
-//				VswitchId:    exampleSwitch.ID(),
+//				FileSystemId: exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:    exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -108,18 +108,15 @@ import (
 //			_, err = nas.NewDataFlow(ctx, "example", &nas.DataFlowArgs{
 //				FsetId:             exampleFileset.FilesetId,
 //				Description:        pulumi.String("terraform-example"),
-//				FileSystemId:       exampleFileSystem.ID(),
+//				FileSystemId:       exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //				SourceSecurityType: pulumi.String("SSL"),
-//				SourceStorage: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//				SourceStorage: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String(""),
 //					Input: pulumi.StringArray{
 //						pulumi.String("oss://"),
 //						exampleBucket.Bucket,
 //					},
-//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				Throughput: pulumi.Int(600),
 //			})
 //			if err != nil {

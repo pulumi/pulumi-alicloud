@@ -60,14 +60,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -88,15 +88,15 @@ import (
 //				IoMax:          pulumi.Int(20),
 //				SpecType:       pulumi.String("professional"),
 //				ServiceVersion: pulumi.String("2.2.0"),
-//				VswitchId:      defaultSwitch.ID(),
-//				SecurityGroup:  defaultSecurityGroup.ID(),
+//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroup:  defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				Config:         pulumi.String("  {\n    \\\"enable.acl\\\": \\\"true\\\"\n  }\n"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewSaslUser(ctx, "default", &alikafka.SaslUserArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Username:   pulumi.String(name),
 //				Password:   pulumi.String("tf_example123"),
 //			})

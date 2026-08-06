@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
-//				GroupId:         example.ID(),
+//				GroupId:         example.ID().ToIDOutput().ToStringOutput(),
 //				Name:            pulumi.String("tf-example"),
 //				Description:     pulumi.String("tf-example"),
 //				AuthType:        pulumi.String("APP"),
@@ -119,7 +119,7 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
-//				GroupId:         example.ID(),
+//				GroupId:         example.ID().ToIDOutput().ToStringOutput(),
 //				Name:            pulumi.String("tf-example"),
 //				Description:     pulumi.String("tf-example"),
 //				AuthType:        pulumi.String("APP"),
@@ -137,7 +137,7 @@ import (
 //					Path:    pulumi.String("/web/cloudapi"),
 //					Timeout: pulumi.Int(12),
 //				},
-//				BackendId:      exampleBackend.ID(),
+//				BackendId:      exampleBackend.ID().ToIDOutput().ToStringOutput(),
 //				BackendEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {

@@ -72,7 +72,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = maxcompute.NewRole(ctx, "default", &maxcompute.RoleArgs{
 //				Type:        pulumi.String("admin"),
-//				ProjectName: _default.ID(),
+//				ProjectName: _default.ID().ToIDOutput().ToStringOutput(),
 //				Policy:      pulumi.String(json0),
 //				RoleName:    pulumi.String("tf_example112"),
 //			})

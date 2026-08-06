@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			exampleRouteTable, err := vpc.NewRouteTable(ctx, "example", &vpc.RouteTableArgs{
-//				VpcId:          example.ID(),
+//				VpcId:          example.ID().ToIDOutput().ToStringOutput(),
 //				RouteTableName: pulumi.String("terraform-example"),
 //				Description:    pulumi.String("terraform-example"),
 //				AssociateType:  pulumi.String("Gateway"),
@@ -52,15 +52,15 @@ import (
 //			}
 //			exampleIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "example", &vpc.Ipv4GatewayArgs{
 //				Ipv4GatewayName: pulumi.String("terraform-example"),
-//				VpcId:           example.ID(),
+//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
 //				Enabled:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewGatewayRouteTableAttachment(ctx, "example", &vpc.GatewayRouteTableAttachmentArgs{
-//				Ipv4GatewayId: exampleIpv4Gateway.ID(),
-//				RouteTableId:  exampleRouteTable.ID(),
+//				Ipv4GatewayId: exampleIpv4Gateway.ID().ToIDOutput().ToStringOutput(),
+//				RouteTableId:  exampleRouteTable.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

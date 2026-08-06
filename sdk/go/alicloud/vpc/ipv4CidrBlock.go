@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = vpc.NewIpv4CidrBlock(ctx, "default", &vpc.Ipv4CidrBlockArgs{
 //				SecondaryCidrBlock: pulumi.String("192.168.0.0/16"),
-//				VpcId:              defaultvpc.ID(),
+//				VpcId:              defaultvpc.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

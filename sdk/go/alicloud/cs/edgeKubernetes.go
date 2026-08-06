@@ -83,7 +83,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -92,7 +92,7 @@ import (
 //			_, err = cs.NewEdgeKubernetes(ctx, "default", &cs.EdgeKubernetesArgs{
 //				NamePrefix: pulumi.String(name),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
@@ -174,7 +174,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -183,7 +183,7 @@ import (
 //			_, err = cs.NewEdgeKubernetes(ctx, "default", &cs.EdgeKubernetesArgs{
 //				NamePrefix: pulumi.String(name),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),

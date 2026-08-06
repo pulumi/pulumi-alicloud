@@ -43,7 +43,7 @@ import (
 //				VpcId:                 pulumi.StringRef("example_value"),
 //				VswitchId:             pulumi.StringRef("example_value"),
 //				ZoneId:                pulumi.StringRef("example_value"),
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"Created": "MongodbServerlessInstance",
 //					"For":     "TF",
 //				},

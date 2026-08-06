@@ -56,7 +56,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       _default.ID(),
+//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("192.168.192.0/24"),
 //				ZoneId:      pulumi.String(zoneId),
 //			})
@@ -65,15 +65,15 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: _default.ID(),
+//				VpcId: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eais.NewInstance(ctx, "default", &eais.InstanceArgs{
 //				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),
-//				VswitchId:       defaultSwitch.ID(),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				InstanceName:    pulumi.String(name),
 //			})
 //			if err != nil {

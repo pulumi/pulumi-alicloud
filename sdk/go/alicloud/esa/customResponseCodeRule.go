@@ -54,7 +54,7 @@ import (
 //			}
 //			resourceSiteCustomResponseCodeRuleExample, err := esa.NewSite(ctx, "resource_Site_CustomResponseCodeRule_example", &esa.SiteArgs{
 //				SiteName:   pulumi.String("hyhexample.cn"),
-//				InstanceId: resourceRatePlanInstanceCustomResponseCodeRuleExample.ID(),
+//				InstanceId: resourceRatePlanInstanceCustomResponseCodeRuleExample.ID().ToIDOutput().ToStringOutput(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = esa.NewCustomResponseCodeRule(ctx, "default", &esa.CustomResponseCodeRuleArgs{
 //				PageId:      pulumi.String("0"),
-//				SiteId:      resourceSiteCustomResponseCodeRuleExample.ID(),
+//				SiteId:      resourceSiteCustomResponseCodeRuleExample.ID().ToIDOutput().ToStringOutput(),
 //				ReturnCode:  pulumi.String("400"),
 //				RuleEnable:  pulumi.String("on"),
 //				Rule:        pulumi.String("(http.host eq \"video.example.com\")"),

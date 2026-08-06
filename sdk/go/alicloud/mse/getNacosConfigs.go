@@ -49,7 +49,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //			exampleCluster, err := mse.NewCluster(ctx, "example", &mse.ClusterArgs{
 //				ConnectionType:       pulumi.String("slb"),
 //				NetType:              pulumi.String("privatenet"),
-//				VswitchId:            exampleSwitch.ID(),
+//				VswitchId:            exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
 //				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
 //				InstanceCount:        pulumi.Int(3),
@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			exampleEngineNamespace, err := mse.NewEngineNamespace(ctx, "example", &mse.EngineNamespaceArgs{
-//				InstanceId:        exampleCluster.ID(),
+//				InstanceId:        exampleCluster.ID().ToIDOutput().ToStringOutput(),
 //				NamespaceShowName: pulumi.String("example"),
 //				NamespaceId:       pulumi.String("example"),
 //			})
@@ -79,7 +79,7 @@ import (
 //				return err
 //			}
 //			_, err = mse.NewNacosConfig(ctx, "example", &mse.NacosConfigArgs{
-//				InstanceId:  exampleCluster.ID(),
+//				InstanceId:  exampleCluster.ID().ToIDOutput().ToStringOutput(),
 //				DataId:      pulumi.String("example"),
 //				Group:       pulumi.String("example"),
 //				NamespaceId: exampleEngineNamespace.NamespaceId,
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			_ = mse.GetNacosConfigsOutput(ctx, mse.GetNacosConfigsOutputArgs{
-//				InstanceId:    exampleCluster.ID(),
+//				InstanceId:    exampleCluster.ID().ToIDOutput().ToStringOutput(),
 //				EnableDetails: pulumi.Bool(true),
 //				NamespaceId:   exampleEngineNamespace.NamespaceId,
 //			}, nil)

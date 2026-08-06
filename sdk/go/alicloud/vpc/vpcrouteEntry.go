@@ -51,7 +51,7 @@ import (
 //			}
 //			defaultIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
 //				Ipv4GatewayName: pulumi.String(name),
-//				VpcId:           _default.ID(),
+//				VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
 //				Enabled:         pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //				RouteTableId:         _default.RouteTableId,
 //				DestinationCidrBlock: pulumi.String("172.11.1.1/32"),
 //				NexthopType:          pulumi.String("Ipv4Gateway"),
-//				NexthopId:            defaultIpv4Gateway.ID(),
+//				NexthopId:            defaultIpv4Gateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -66,7 +66,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("192.168.0.0/16"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {
@@ -79,8 +79,8 @@ import (
 //				return err
 //			}
 //			_, err = resourcemanager.NewSharedResource(ctx, "default", &resourcemanager.SharedResourceArgs{
-//				ResourceShareId: defaultResourceShare.ID(),
-//				ResourceId:      defaultSwitch.ID(),
+//				ResourceShareId: defaultResourceShare.ID().ToIDOutput().ToStringOutput(),
+//				ResourceId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ResourceType:    pulumi.String("VSwitch"),
 //			})
 //			if err != nil {

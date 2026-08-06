@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			domainExtensionSwitch, err := vpc.NewSwitch(ctx, "domain_extension", &vpc.SwitchArgs{
-//				VpcId:       domainExtensionNetwork.ID(),
+//				VpcId:       domainExtensionNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(domainExtension.Zones[0].Id),
 //				VswitchName: pulumi.String(slbDomainExtensionName),
@@ -66,7 +66,7 @@ import (
 //				LoadBalancerName: pulumi.String(slbDomainExtensionName),
 //				AddressType:      pulumi.String("intranet"),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
-//				VswitchId:        domainExtensionSwitch.ID(),
+//				VswitchId:        domainExtensionSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -130,7 +130,7 @@ import (
 //				return err
 //			}
 //			https, err := slb.NewListener(ctx, "https", &slb.ListenerArgs{
-//				LoadBalancerId:         instance.ID(),
+//				LoadBalancerId:         instance.ID().ToIDOutput().ToStringOutput(),
 //				BackendPort:            pulumi.Int(80),
 //				FrontendPort:           pulumi.Int(443),
 //				Protocol:               pulumi.String("https"),
@@ -147,16 +147,16 @@ import (
 //				HealthCheckInterval:    pulumi.Int(5),
 //				HealthCheckHttpCode:    pulumi.String("http_2xx,http_3xx"),
 //				Bandwidth:              pulumi.Int(10),
-//				ServerCertificateId:    domainExtensionServerCertificate.ID(),
+//				ServerCertificateId:    domainExtensionServerCertificate.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = slb.NewDomainExtension(ctx, "example1", &slb.DomainExtensionArgs{
-//				LoadBalancerId:      instance.ID(),
+//				LoadBalancerId:      instance.ID().ToIDOutput().ToStringOutput(),
 //				FrontendPort:        https.FrontendPort,
 //				Domain:              pulumi.String("www.test.com"),
-//				ServerCertificateId: domainExtensionServerCertificate.ID(),
+//				ServerCertificateId: domainExtensionServerCertificate.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

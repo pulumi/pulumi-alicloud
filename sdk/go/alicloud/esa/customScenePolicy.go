@@ -59,7 +59,7 @@ import (
 //			_, err = esa.NewCustomScenePolicy(ctx, "default", &esa.CustomScenePolicyArgs{
 //				EndTime:               pulumi.String("2025-08-07T17:00:00Z"),
 //				CreateTime:            pulumi.String("2025-07-07T17:00:00Z"),
-//				SiteIds:               defaultSite.ID(),
+//				SiteIds:               defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				Template:              pulumi.String("promotion"),
 //				CustomScenePolicyName: pulumi.String("example-policy"),
 //			})

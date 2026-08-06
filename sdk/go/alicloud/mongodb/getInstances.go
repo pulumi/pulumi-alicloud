@@ -78,7 +78,7 @@ import (
 //			}
 //			ids := mongodb.GetInstancesOutput(ctx, mongodb.GetInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultInstance.ID(),
+//					defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("mongodbInstancesId0", ids.ApplyT(func(ids mongodb.GetInstancesResult) (*string, error) {

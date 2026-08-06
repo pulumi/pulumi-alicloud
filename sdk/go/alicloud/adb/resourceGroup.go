@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -84,8 +84,8 @@ import (
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("10.168.1.11"),
 //				},
-//				VpcId:     defaultNetwork.ID(),
-//				VswitchId: defaultSwitch.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
@@ -99,7 +99,7 @@ import (
 //				GroupName:   pulumi.String("TF_EXAMPLE"),
 //				GroupType:   pulumi.String("batch"),
 //				NodeNum:     pulumi.Int(0),
-//				DbClusterId: defaultDBCluster.ID(),
+//				DbClusterId: defaultDBCluster.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

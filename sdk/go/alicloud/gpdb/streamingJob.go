@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			defaultaSWhbT, err := vpc.NewSwitch(ctx, "defaultaSWhbT", &vpc.SwitchArgs{
-//				VpcId:     defaultTXqb15.ID(),
+//				VpcId:     defaultTXqb15.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -70,10 +70,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultaSWhbT.ID(),
+//				VswitchId:           defaultaSWhbT.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               defaultTXqb15.ID(),
+//				VpcId:               defaultTXqb15.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //			})
@@ -82,14 +82,14 @@ import (
 //			}
 //			default2dUszY, err := gpdb.NewStreamingDataService(ctx, "default2dUszY", &gpdb.StreamingDataServiceArgs{
 //				ServiceName:        pulumi.String("example"),
-//				DbInstanceId:       defaulth2ghc1.ID(),
+//				DbInstanceId:       defaulth2ghc1.ID().ToIDOutput().ToStringOutput(),
 //				ServiceDescription: pulumi.String("example"),
 //				ServiceSpec:        pulumi.String("8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"brokers":   "alikafka-post-cn-g4t3t4eod004-1-vpc.alikafka.aliyuncs.com:9092,alikafka-post-cn-g4t3t4eod004-2-vpc.alikafka.aliyuncs.com:9092,alikafka-post-cn-g4t3t4eod004-3-vpc.alikafka.aliyuncs.com:9092",
 //				"delimiter": "|",
 //				"format":    "delimited",
@@ -100,7 +100,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			defaultcDQItu, err := gpdb.NewStreamingDataSource(ctx, "defaultcDQItu", &gpdb.StreamingDataSourceArgs{
-//				DbInstanceId:          defaulth2ghc1.ID(),
+//				DbInstanceId:          defaulth2ghc1.ID().ToIDOutput().ToStringOutput(),
 //				DataSourceName:        pulumi.String("example"),
 //				DataSourceConfig:      pulumi.String(json0),
 //				DataSourceType:        pulumi.String("kafka"),
@@ -117,7 +117,7 @@ import (
 //				JobName:        pulumi.String("example-kafka"),
 //				JobDescription: pulumi.String("example-kafka"),
 //				DestDatabase:   pulumi.String("adb_sampledata_tpch"),
-//				DbInstanceId:   defaulth2ghc1.ID(),
+//				DbInstanceId:   defaulth2ghc1.ID().ToIDOutput().ToStringOutput(),
 //				DestTable:      pulumi.String("customer"),
 //				DataSourceId:   defaultcDQItu.DataSourceId,
 //				Password:       pulumi.String("example_001"),

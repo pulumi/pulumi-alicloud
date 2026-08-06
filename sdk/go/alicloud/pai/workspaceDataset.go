@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"mountPath": "/mnt/data/",
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //				DatasetName:    pulumi.String(name),
 //				DataSourceType: pulumi.String("NAS"),
 //				SourceType:     pulumi.String("ITAG"),
-//				WorkspaceId:    defaultWorkspace.ID(),
+//				WorkspaceId:    defaultWorkspace.ID().ToIDOutput().ToStringOutput(),
 //				DataType:       pulumi.String("PIC"),
 //				Property:       pulumi.String("DIRECTORY"),
 //				Uri:            pulumi.String("nas://086b649545.cn-hangzhou/"),

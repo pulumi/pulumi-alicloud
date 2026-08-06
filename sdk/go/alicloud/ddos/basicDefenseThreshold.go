@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			_, err = ddos.NewBasicDefenseThreshold(ctx, "default", &ddos.BasicDefenseThresholdArgs{
-//				InstanceId:   _default.ID(),
+//				InstanceId:   _default.ID().ToIDOutput().ToStringOutput(),
 //				DdosType:     pulumi.String("defense"),
 //				InstanceType: pulumi.String("eip"),
 //				Bps:          pulumi.Int(390),

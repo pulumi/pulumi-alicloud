@@ -57,14 +57,14 @@ import (
 //			}
 //			_, err = expressconnect.NewTrafficQosAssociation(ctx, "associateQos", &expressconnect.TrafficQosAssociationArgs{
 //				InstanceId:   pulumi.String(_default.Ids[1]),
-//				QosId:        createQos.ID(),
+//				QosId:        createQos.ID().ToIDOutput().ToStringOutput(),
 //				InstanceType: pulumi.String("PHYSICALCONNECTION"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = expressconnect.NewTrafficQosQueue(ctx, "createQosQueue", &expressconnect.TrafficQosQueueArgs{
-//				QosId:            createQos.ID(),
+//				QosId:            createQos.ID().ToIDOutput().ToStringOutput(),
 //				BandwidthPercent: pulumi.String("60"),
 //				QueueDescription: pulumi.String("terraform-example"),
 //				QueueName:        pulumi.String(name),

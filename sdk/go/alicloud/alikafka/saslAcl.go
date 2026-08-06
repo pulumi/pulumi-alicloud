@@ -69,14 +69,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,14 +91,14 @@ import (
 //				SpecType:       pulumi.String("professional"),
 //				ServiceVersion: pulumi.String("2.2.0"),
 //				Config:         pulumi.String("{\"enable.acl\":\"true\"}"),
-//				VswitchId:      defaultSwitch.ID(),
-//				SecurityGroup:  defaultSecurityGroup.ID(),
+//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroup:  defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultTopic, err := alikafka.NewTopic(ctx, "default", &alikafka.TopicArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Topic:      pulumi.String("example-topic"),
 //				Remark:     pulumi.String("topic-remark"),
 //			})
@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			defaultSaslUser, err := alikafka.NewSaslUser(ctx, "default", &alikafka.SaslUserArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Username:   pulumi.String(name),
 //				Password:   pulumi.String("tf_example123"),
 //			})
@@ -114,7 +114,7 @@ import (
 //				return err
 //			}
 //			_, err = alikafka.NewSaslAcl(ctx, "default", &alikafka.SaslAclArgs{
-//				InstanceId:             defaultInstance.ID(),
+//				InstanceId:             defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Username:               defaultSaslUser.Username,
 //				AclResourceType:        pulumi.String("Topic"),
 //				AclResourceName:        defaultTopic.Topic,

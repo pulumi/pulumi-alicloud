@@ -70,7 +70,7 @@ import (
 //				PeerGatewayIp:         pulumi.String("10.0.0.6"),
 //				LocalGatewayIp:        pulumi.String("10.0.0.5"),
 //				PhysicalConnectionId:  pulumi.String(example.Connections[1].Id),
-//				VbrId:                 _default.ID(),
+//				VbrId:                 _default.ID().ToIDOutput().ToStringOutput(),
 //				PeeringSubnetMask:     pulumi.String("255.255.255.252"),
 //				VlanId:                pulumi.Int(1122),
 //				EnableIpv6:            pulumi.Bool(true),

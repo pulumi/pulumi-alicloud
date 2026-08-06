@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -77,7 +77,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -89,11 +89,11 @@ import (
 //				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
-//				VswitchId:             exampleSwitch.ID(),
+//				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -150,7 +150,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -160,7 +160,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -172,11 +172,11 @@ import (
 //				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String("terraform-example"),
-//				VswitchId:             exampleSwitch.ID(),
+//				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Parameters: rds.InstanceParameterArray{
 //					&rds.InstanceParameterArgs{
@@ -268,9 +268,9 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("example-%v", key0), &vpc.SwitchArgs{
-// VpcId: exampleNetwork.ID(),
+// VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String(invokeFormat.Result),
-// ZoneId: example.Zones[val0].Id,
+// ZoneId: pulumi.String(example.Zones[val0].Id),
 // VswitchName: pulumi.String(invokeFormat1.Result),
 // })
 // if err != nil {
@@ -280,7 +280,7 @@ import (
 // }
 // exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 // Name: pulumi.String("terraform-example"),
-// VpcId: exampleNetwork.ID(),
+// VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -292,17 +292,14 @@ import (
 // InstanceStorage: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 // InstanceChargeType: pulumi.String("Postpaid"),
 // InstanceName: pulumi.String("terraform-example"),
-// VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// VswitchId: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:56,17-36),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:56,17-36)),
+// }, nil).Result(),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("cloud_essd"),
 // SecurityGroupIds: pulumi.StringArray{
-// exampleSecurityGroup.ID(),
+// exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 // },
 // ZoneId: pulumi.String(example.Zones[0].Id),
 // ZoneIdSlaveA: pulumi.String(example.Zones[1].Id),
@@ -393,9 +390,9 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("example-%v", key0), &vpc.SwitchArgs{
-// VpcId: exampleNetwork.ID(),
+// VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String(invokeFormat.Result),
-// ZoneId: example.Zones[val0].Id,
+// ZoneId: pulumi.String(example.Zones[val0].Id),
 // VswitchName: pulumi.String(invokeFormat1.Result),
 // })
 // if err != nil {
@@ -405,7 +402,7 @@ import (
 // }
 // _, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: exampleNetwork.ID(),
+// VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -418,13 +415,10 @@ import (
 // InstanceStorage: pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 // InstanceChargeType: pulumi.String("Postpaid"),
 // InstanceName: pulumi.String(name),
-// VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// VswitchId: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:61,17-36),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:61,17-36)),
+// }, nil).Result(),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("cloud_essd"),
 // ZoneId: pulumi.String(example.Zones[0].Id),
@@ -514,9 +508,9 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("example-%v", key0), &vpc.SwitchArgs{
-// VpcId: exampleNetwork.ID(),
+// VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String(invokeFormat.Result),
-// ZoneId: example.Zones[val0].Id,
+// ZoneId: pulumi.String(example.Zones[val0].Id),
 // VswitchName: pulumi.String(invokeFormat1.Result),
 // })
 // if err != nil {
@@ -526,7 +520,7 @@ import (
 // }
 // _, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: exampleNetwork.ID(),
+// VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -539,13 +533,10 @@ import (
 // InstanceStorage: pulumi.Int(20),
 // InstanceChargeType: pulumi.String("Postpaid"),
 // InstanceName: pulumi.String(name),
-// VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// VswitchId: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:59,17-36),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:59,17-36)),
+// }, nil).Result(),
 // MonitoringPeriod: pulumi.Int(60),
 // DbInstanceStorageType: pulumi.String("local_ssd"),
 // ZoneId: pulumi.String(example.Zones[0].Id),
@@ -610,7 +601,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Ids[1]),
 //				VswitchName: pulumi.String(name),
@@ -626,7 +617,7 @@ import (
 //				InstanceChargeType:    pulumi.String("Serverless"),
 //				InstanceName:          pulumi.String(name),
 //				ZoneId:                pulumi.String(example.Ids[1]),
-//				VswitchId:             exampleSwitch.ID(),
+//				VswitchId:             exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				Category:              pulumi.String("serverless_basic"),
 //				ServerlessConfigs: rds.InstanceServerlessConfigArray{
@@ -782,7 +773,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Ids[1]),
 //				VswitchName: pulumi.String(name),
@@ -799,16 +790,13 @@ import (
 //				InstanceName:       pulumi.String(name),
 //				ZoneId:             pulumi.String(example.Ids[1]),
 //				ZoneIdSlaveA:       pulumi.String(example.Ids[1]),
-//				VswitchId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//				VswitchId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String(","),
 //					Input: pulumi.StringArray{
-//						exampleSwitch.ID(),
-//						exampleSwitch.ID(),
+//						exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//						exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //					},
-//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				Category:              pulumi.String("serverless_ha"),
 //				ServerlessConfigs: rds.InstanceServerlessConfigArray{

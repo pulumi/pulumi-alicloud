@@ -63,7 +63,7 @@ import (
 //			}
 //			vs, err := vpc.NewSwitch(ctx, "vs", &vpc.SwitchArgs{
 //				Description: pulumi.String("pipelineExecution-start"),
-//				VpcId:       pipelineExecution_vpc.ID(),
+//				VpcId:       pipelineExecution_vpc.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(invokeFormat.Result),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
@@ -75,7 +75,7 @@ import (
 //				BaseImageType:  pulumi.String("IMAGE"),
 //				Description:    pulumi.String("example"),
 //				SystemDiskSize: pulumi.Int(40),
-//				VswitchId:      vs.ID(),
+//				VswitchId:      vs.ID().ToIDOutput().ToStringOutput(),
 //				AddAccounts: pulumi.StringArray{
 //					pulumi.String("1284387915995949"),
 //				},
@@ -92,7 +92,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewImagePipelineExecution(ctx, "default", &ecs.ImagePipelineExecutionArgs{
-//				ImagePipelineId: pipelineExection_pipeline.ID(),
+//				ImagePipelineId: pipelineExection_pipeline.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

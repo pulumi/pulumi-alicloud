@@ -397,7 +397,7 @@ class DataFlow(pulumi.CustomResource):
                 input=[
                     "oss://",
                     example_bucket.bucket,
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             throughput=600)
         ```
 
@@ -494,7 +494,7 @@ class DataFlow(pulumi.CustomResource):
                 input=[
                     "oss://",
                     example_bucket.bucket,
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             throughput=600)
         ```
 

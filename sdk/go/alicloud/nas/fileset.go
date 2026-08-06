@@ -53,7 +53,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[1].ZoneId),
 //			})
 //			if err != nil {
@@ -65,14 +65,14 @@ import (
 //				FileSystemType: pulumi.String("cpfs"),
 //				Capacity:       pulumi.Int(3600),
 //				ZoneId:         pulumi.String(example.Zones[1].ZoneId),
-//				VpcId:          exampleNetwork.ID(),
-//				VswitchId:      exampleSwitch.ID(),
+//				VpcId:          exampleNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:      exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = nas.NewFileset(ctx, "example", &nas.FilesetArgs{
-//				FileSystemId:   exampleFileSystem.ID(),
+//				FileSystemId:   exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //				Description:    pulumi.String("terraform-example"),
 //				FileSystemPath: pulumi.String("/example_path/"),
 //			})

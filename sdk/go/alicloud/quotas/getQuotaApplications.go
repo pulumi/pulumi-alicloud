@@ -51,7 +51,7 @@ import (
 //				EnableDetails: pulumi.Bool(true),
 //				QuotaCategory: defaultQuotaApplication.QuotaCategory,
 //				Ids: pulumi.StringArray{
-//					defaultQuotaApplication.ID(),
+//					defaultQuotaApplication.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			return nil
