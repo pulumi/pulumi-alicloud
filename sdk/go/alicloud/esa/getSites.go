@@ -51,14 +51,14 @@ import (
 //				SiteName:   pulumi.String("bcd.com"),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
-//				InstanceId: defaultIEoDfU.ID(),
+//				InstanceId: defaultIEoDfU.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default := esa.GetSitesOutput(ctx, esa.GetSitesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultSite.ID(),
+//					defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultSite.SiteName,
 //				SiteName:  pulumi.String("bcd.com"),

@@ -69,8 +69,8 @@ import (
 //				return err
 //			}
 //			exampleHzInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example_hz", &cen.InstanceAttachmentArgs{
-//				InstanceId:            example.ID(),
-//				ChildInstanceId:       exampleHz.ID(),
+//				InstanceId:            example.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       exampleHz.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(sourceRegion),
 //			})
@@ -78,8 +78,8 @@ import (
 //				return err
 //			}
 //			exampleShInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example_sh", &cen.InstanceAttachmentArgs{
-//				InstanceId:            example.ID(),
-//				ChildInstanceId:       exampleSh.ID(),
+//				InstanceId:            example.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       exampleSh.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(destinationRegion),
 //			})
@@ -88,7 +88,7 @@ import (
 //			}
 //			_, err = cen.NewRouteMap(ctx, "default", &cen.RouteMapArgs{
 //				CenRegionId:       pulumi.String(sourceRegion),
-//				CenId:             example.ID(),
+//				CenId:             example.ID().ToIDOutput().ToStringOutput(),
 //				Description:       pulumi.String("tf_example"),
 //				Priority:          pulumi.Int(1),
 //				TransmitDirection: pulumi.String("RegionIn"),

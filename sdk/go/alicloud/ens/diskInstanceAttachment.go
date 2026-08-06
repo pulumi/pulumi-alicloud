@@ -70,9 +70,9 @@ import (
 //				return err
 //			}
 //			_, err = ens.NewDiskInstanceAttachment(ctx, "default", &ens.DiskInstanceAttachmentArgs{
-//				InstanceId:         defaultInstance.ID(),
+//				InstanceId:         defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				DeleteWithInstance: pulumi.String("false"),
-//				DiskId:             _default.ID(),
+//				DiskId:             _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

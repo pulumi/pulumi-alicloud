@@ -54,8 +54,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      _default.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//				AcceleratorId:      _default.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewAclEntryAttachment(ctx, "default", &ga.AclEntryAttachmentArgs{
-//				AclId:            defaultAcl.ID(),
+//				AclId:            defaultAcl.ID().ToIDOutput().ToStringOutput(),
 //				Entry:            pulumi.String("192.168.1.1/32"),
 //				EntryDescription: pulumi.String("terraform-example"),
 //			})
@@ -88,8 +88,8 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewAclAttachment(ctx, "default", &ga.AclAttachmentArgs{
-//				ListenerId: defaultListener.ID(),
-//				AclId:      defaultAcl.ID(),
+//				ListenerId: defaultListener.ID().ToIDOutput().ToStringOutput(),
+//				AclId:      defaultAcl.ID().ToIDOutput().ToStringOutput(),
 //				AclType:    pulumi.String("white"),
 //			})
 //			if err != nil {

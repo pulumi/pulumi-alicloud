@@ -34,7 +34,7 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewListener(ctx, "tcp", &slb.ListenerArgs{
-//				LoadBalancerId:         _default.ID(),
+//				LoadBalancerId:         _default.ID().ToIDOutput().ToStringOutput(),
 //				BackendPort:            pulumi.Int(22),
 //				FrontendPort:           pulumi.Int(22),
 //				Protocol:               pulumi.String("tcp"),
@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			sampleDs := slb.GetListenersOutput(ctx, slb.GetListenersOutputArgs{
-//				LoadBalancerId: _default.ID(),
+//				LoadBalancerId: _default.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("firstSlbListenerProtocol", sampleDs.ApplyT(func(sampleDs slb.GetListenersResult) (*string, error) {
 //				return sampleDs.SlbListeners[0].Protocol, nil

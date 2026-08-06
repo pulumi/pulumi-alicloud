@@ -56,7 +56,7 @@ import (
 //				Category:    pulumi.String("cloud_efficiency"),
 //				Size:        pulumi.Int(30),
 //				Encrypted:   pulumi.Bool(true),
-//				KmsKeyId:    exampleKey.ID(),
+//				KmsKeyId:    exampleKey.ID().ToIDOutput().ToStringOutput(),
 //				Tags: pulumi.StringMap{
 //					"Name": pulumi.String("terraform-example"),
 //				},

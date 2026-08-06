@@ -67,14 +67,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,14 +86,14 @@ import (
 //				DiskSize:      pulumi.Int(500),
 //				DeployType:    pulumi.Int(5),
 //				IoMax:         pulumi.Int(20),
-//				VswitchId:     defaultSwitch.ID(),
-//				SecurityGroup: defaultSecurityGroup.ID(),
+//				VswitchId:     defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroup: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alikafka.NewInstanceAllowedIpAttachment(ctx, "default", &alikafka.InstanceAllowedIpAttachmentArgs{
-//				InstanceId:  defaultInstance.ID(),
+//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				AllowedType: pulumi.String("vpc"),
 //				PortRange:   pulumi.String("9092/9092"),
 //				AllowedIp:   pulumi.String("114.237.9.78/32"),

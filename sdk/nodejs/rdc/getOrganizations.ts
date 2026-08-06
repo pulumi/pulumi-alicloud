@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.rdc.getOrganizationsOutput({
  *     ids: [_default.id],
  * });
- * export const rdcOrganizationId1 = ids.apply(ids => ids.id);
+ * export const rdcOrganizationId1 = ids.id;
  * const nameRegex = alicloud.rdc.getOrganizations({
  *     nameRegex: "^my-Organization",
  * });
@@ -115,7 +115,7 @@ export interface GetOrganizationsResult {
  * const ids = alicloud.rdc.getOrganizationsOutput({
  *     ids: [_default.id],
  * });
- * export const rdcOrganizationId1 = ids.apply(ids => ids.id);
+ * export const rdcOrganizationId1 = ids.id;
  * const nameRegex = alicloud.rdc.getOrganizations({
  *     nameRegex: "^my-Organization",
  * });

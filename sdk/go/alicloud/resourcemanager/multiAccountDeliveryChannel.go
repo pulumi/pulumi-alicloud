@@ -83,9 +83,9 @@ import (
 //				MultiAccountDeliveryChannelName: pulumi.String("multi_delivery_channel_resource_spec_mq_example"),
 //				DeliveryChannelFilter: &resourcemanager.MultiAccountDeliveryChannelDeliveryChannelFilterArgs{
 //					AccountScopes: pulumi.StringArray{
-//						defaultuHQ8Cu.ID(),
-//						defaultioI16p.ID(),
-//						default55Uum4.ID(),
+//						defaultuHQ8Cu.ID().ToIDOutput().ToStringOutput(),
+//						defaultioI16p.ID().ToIDOutput().ToStringOutput(),
+//						default55Uum4.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					ResourceTypes: pulumi.StringArray{
 //						pulumi.String("ACS::ACK::Cluster"),

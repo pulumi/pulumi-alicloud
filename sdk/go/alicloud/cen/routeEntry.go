@@ -74,7 +74,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,9 +93,9 @@ import (
 //				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId:               exampleSwitch.ID(),
+//				VswitchId:               exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //			})
 //			if err != nil {
@@ -109,8 +109,8 @@ import (
 //				return err
 //			}
 //			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance2.ID(),
-//				ChildInstanceId:       exampleNetwork.ID(),
+//				InstanceId:            exampleInstance2.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
@@ -121,7 +121,7 @@ import (
 //				RouteTableId:         exampleNetwork.RouteTableId,
 //				DestinationCidrblock: pulumi.String("11.0.0.0/16"),
 //				NexthopType:          pulumi.String("Instance"),
-//				NexthopId:            exampleInstance.ID(),
+//				NexthopId:            exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

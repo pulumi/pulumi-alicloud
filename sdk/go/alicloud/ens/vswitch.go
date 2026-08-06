@@ -54,7 +54,7 @@ import (
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
 //				VswitchName: pulumi.String(name),
 //				EnsRegionId: pulumi.String("cn-chenzhou-telecom_unicom_cmcc"),
-//				NetworkId:   _default.ID(),
+//				NetworkId:   _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

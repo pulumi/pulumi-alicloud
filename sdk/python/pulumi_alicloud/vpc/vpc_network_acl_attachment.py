@@ -179,7 +179,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=2).apply(lambda invoke: invoke.result),
+                netnum=2).result,
             zone_id=default.zones[0].id)
         default_network_acl = alicloud.vpc.NetworkAcl("default", vpc_id=default_switch.vpc_id)
         default_vpc_network_acl_attachment = alicloud.vpc.VpcNetworkAclAttachment("default",
@@ -237,7 +237,7 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
             vpc_id=default_network.id,
             cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=2).apply(lambda invoke: invoke.result),
+                netnum=2).result,
             zone_id=default.zones[0].id)
         default_network_acl = alicloud.vpc.NetworkAcl("default", vpc_id=default_switch.vpc_id)
         default_vpc_network_acl_attachment = alicloud.vpc.VpcNetworkAclAttachment("default",

@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = dfs.NewAccessRule(ctx, "default", &dfs.AccessRuleArgs{
 //				NetworkSegment: pulumi.String("192.0.2.0/24"),
-//				AccessGroupId:  _default.ID(),
+//				AccessGroupId:  _default.ID().ToIDOutput().ToStringOutput(),
 //				Description:    pulumi.String(name),
 //				RwAccessType:   pulumi.String("RDWR"),
 //				Priority:       pulumi.Int(10),

@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = cassandra.NewDataCenter(ctx, "default", &cassandra.DataCenterArgs{
-//				ClusterId:      _default.ID(),
+//				ClusterId:      _default.ID().ToIDOutput().ToStringOutput(),
 //				DataCenterName: pulumi.String("dc-2"),
 //				AutoRenew:      pulumi.Bool(false),
 //				InstanceType:   pulumi.String("cassandra.c.large"),

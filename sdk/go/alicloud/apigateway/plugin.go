@@ -42,12 +42,12 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]interface{}{
 //				"routes": []interface{}{
 //					map[string]interface{}{
 //						"name":      "Vip",
 //						"condition": "$CaAppId = 123456",
-//						"backend": map[string]interface{}{
+//						"backend": map[string]string{
 //							"type":          "HTTP-VPC",
 //							"vpcAccessName": "slbAccessForVip",
 //						},
@@ -64,12 +64,12 @@ import (
 //					map[string]interface{}{
 //						"name":      "BlueGreenPercent05",
 //						"condition": "1 = 1",
-//						"backend": map[string]interface{}{
+//						"backend": map[string]string{
 //							"type":    "HTTP",
 //							"address": "https://beta-version.api.foo.com",
 //						},
-//						"constant-parameters": []map[string]interface{}{
-//							map[string]interface{}{
+//						"constant-parameters": []map[string]string{
+//							{
 //								"name":     "x-route-blue-green",
 //								"location": "header",
 //								"value":    "route-blue-green",

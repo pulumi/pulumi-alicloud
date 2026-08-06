@@ -40,7 +40,7 @@ import (
 //			}
 //			_, err = kms.NewAlias(ctx, "this", &kms.AliasArgs{
 //				AliasName: pulumi.String("alias/example_kms_alias"),
-//				KeyId:     this.ID(),
+//				KeyId:     this.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

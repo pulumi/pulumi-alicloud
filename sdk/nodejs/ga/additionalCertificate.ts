@@ -121,7 +121,7 @@ import * as utilities from "../utilities";
  *                 defaultServiceCertificate[1].id,
  *                 region,
  *             ],
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *     }],
  * });
  * const domain = "alicloud-provider.cn";
@@ -132,7 +132,7 @@ import * as utilities from "../utilities";
  *             defaultServiceCertificate[1].id,
  *             region,
  *         ],
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     domain: domain,
  *     acceleratorId: defaultListener.acceleratorId,
  *     listenerId: defaultListener.id,

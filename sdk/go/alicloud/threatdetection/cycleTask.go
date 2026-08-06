@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
 //				"targetInfo": []map[string]interface{}{
 //					map[string]interface{}{
 //						"type":   "groupId",

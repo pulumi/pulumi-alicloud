@@ -205,7 +205,7 @@ class EnvFeature(pulumi.CustomResource):
             zone_id=enhanced.zones[0].zone_id,
             cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8).apply(lambda invoke: invoke.result))
+                netnum=8).result)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -314,7 +314,7 @@ class EnvFeature(pulumi.CustomResource):
             zone_id=enhanced.zones[0].zone_id,
             cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8).apply(lambda invoke: invoke.result))
+                netnum=8).result)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[

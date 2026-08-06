@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
 //				Name:              pulumi.Sprintf("%v-%v", name, _default.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),

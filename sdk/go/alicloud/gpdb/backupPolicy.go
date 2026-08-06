@@ -100,7 +100,7 @@ import (
 // tmp1 = defaultGetSwitches.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,12-25),
 // []string{
 // "",
@@ -140,7 +140,7 @@ import (
 // return err
 // }
 // _, err = gpdb.NewBackupPolicy(ctx, "default", &gpdb.BackupPolicyArgs{
-// DbInstanceId: defaultInstance.ID(),
+// DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 // RecoveryPointPeriod: pulumi.String("1"),
 // EnableRecoveryPoint: pulumi.Bool(true),
 // PreferredBackupPeriod: pulumi.String("Wednesday"),

@@ -61,7 +61,7 @@ import (
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::OSS::Bucket"),
 //				},
-//				AggregatorId: create_agg.ID(),
+//				AggregatorId: create_agg.ID().ToIDOutput().ToStringOutput(),
 //				InputParameters: pulumi.StringMap{
 //					"tag1Key":   pulumi.String("aaa"),
 //					"tag1Value": pulumi.String("bbb"),
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string][]map[string]interface{}{
 //				"properties": []map[string]interface{}{
 //					map[string]interface{}{
 //						"name":          "regionId",
@@ -112,7 +112,7 @@ import (
 //				RemediationSourceType:   pulumi.String("ALIYUN"),
 //				InvokeType:              pulumi.String("MANUAL_EXECUTION"),
 //				RemediationType:         pulumi.String("OOS"),
-//				AggregatorId:            create_agg.ID(),
+//				AggregatorId:            create_agg.ID().ToIDOutput().ToStringOutput(),
 //				RemediationOriginParams: pulumi.String(json0),
 //			})
 //			if err != nil {

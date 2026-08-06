@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -72,7 +72,7 @@ import (
 //			}
 //			_, err = ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -85,7 +85,7 @@ import (
 //				InstanceStorage:    pulumi.Int(20),
 //				InstanceChargeType: pulumi.String("Postpaid"),
 //				InstanceName:       pulumi.String(name),
-//				VswitchId:          exampleSwitch.ID(),
+//				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("100.69.7.112"),
@@ -96,12 +96,12 @@ import (
 //			}
 //			exampleReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "example", &rds.ReadOnlyInstanceArgs{
 //				ZoneId:             exampleInstance.ZoneId,
-//				MasterDbInstanceId: exampleInstance.ID(),
+//				MasterDbInstanceId: exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				EngineVersion:      exampleInstance.EngineVersion,
 //				InstanceStorage:    exampleInstance.InstanceStorage,
 //				InstanceType:       exampleInstance.InstanceType,
 //				InstanceName:       pulumi.Sprintf("%vreadonly", name),
-//				VswitchId:          exampleSwitch.ID(),
+//				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

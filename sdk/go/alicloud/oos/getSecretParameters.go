@@ -63,7 +63,7 @@ import (
 //			}
 //			ids := oos.GetSecretParametersOutput(ctx, oos.GetSecretParametersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("oosSecretParameterId0", ids.ApplyT(func(ids oos.GetSecretParametersResult) (*string, error) {

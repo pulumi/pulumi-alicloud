@@ -55,7 +55,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})

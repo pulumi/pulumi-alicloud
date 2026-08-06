@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			_, err = log.NewResourceRecord(ctx, "example", &log.ResourceRecordArgs{
-//				ResourceName: example.ID(),
+//				ResourceName: example.ID().ToIDOutput().ToStringOutput(),
 //				RecordId:     pulumi.String("tf_user_example"),
 //				Tag:          pulumi.String("tf example"),
 //				Value: pulumi.String(`{

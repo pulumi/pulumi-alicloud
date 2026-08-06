@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-//				VpcId:     vpc_amp_instance_example.ID(),
+//				VpcId:     vpc_amp_instance_example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-k"),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewSwitch(ctx, "vswitch-j", &vpc.SwitchArgs{
-//				VpcId:     vpc_amp_instance_example.ID(),
+//				VpcId:     vpc_amp_instance_example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-j"),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			shareVswitch, err := vpc.NewSwitch(ctx, "shareVswitch", &vpc.SwitchArgs{
-//				VpcId:     shareVPC.ID(),
+//				VpcId:     shareVPC.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-k"),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			share_vswitch2, err := vpc.NewSwitch(ctx, "share-vswitch2", &vpc.SwitchArgs{
-//				VpcId:     share_VPC2.ID(),
+//				VpcId:     share_VPC2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-k"),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -130,7 +130,7 @@ import (
 //				return err
 //			}
 //			share_vsw3, err := vpc.NewSwitch(ctx, "share-vsw3", &vpc.SwitchArgs{
-//				VpcId:     share_VPC3.ID(),
+//				VpcId:     share_VPC3.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-hangzhou-k"),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -150,25 +150,25 @@ import (
 //					pulumi.String("cn-hangzhou-j"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
+//					vswitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				BindVpcs: kms.InstanceBindVpcArray{
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      shareVswitch.VpcId,
 //						RegionId:   pulumi.String("cn-hangzhou"),
-//						VswitchId:  shareVswitch.ID(),
+//						VswitchId:  shareVswitch.ID().ToIDOutput().ToStringOutput(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      share_vswitch2.VpcId,
 //						RegionId:   pulumi.String("cn-hangzhou"),
-//						VswitchId:  share_vswitch2.ID(),
+//						VswitchId:  share_vswitch2.ID().ToIDOutput().ToStringOutput(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //					&kms.InstanceBindVpcArgs{
 //						VpcId:      share_vsw3.VpcId,
 //						RegionId:   pulumi.String("cn-hangzhou"),
-//						VswitchId:  share_vsw3.ID(),
+//						VswitchId:  share_vsw3.ID().ToIDOutput().ToStringOutput(),
 //						VpcOwnerId: pulumi.String(current.Id),
 //					},
 //				},
@@ -182,7 +182,7 @@ import (
 //			}
 //			_default := kms.GetInstancesOutput(ctx, kms.GetInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultInstance.ID(),
+//					defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudKmsInstanceExampleId", _default.ApplyT(func(_default kms.GetInstancesResult) (*string, error) {

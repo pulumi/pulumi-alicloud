@@ -67,7 +67,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -75,7 +75,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,9 +84,9 @@ import (
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId:               defaultSwitch.ID(),
+//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
@@ -105,8 +105,8 @@ import (
 //				return err
 //			}
 //			defaultDiskAttachment, err := ecs.NewDiskAttachment(ctx, "default", &ecs.DiskAttachmentArgs{
-//				DiskId:     defaultEcsDisk.ID(),
-//				InstanceId: defaultInstance.ID(),
+//				DiskId:     defaultEcsDisk.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -117,7 +117,7 @@ import (
 //					defaultDiskAttachment.DiskId,
 //				},
 //				SnapshotGroupName:          pulumi.String("terraform-example"),
-//				InstanceId:                 defaultInstance.ID(),
+//				InstanceId:                 defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				InstantAccess:              pulumi.Bool(true),
 //				InstantAccessRetentionDays: pulumi.Int(1),
 //				Tags: pulumi.StringMap{

@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zoneId),
 //				CidrBlock: pulumi.String("10.0.0.0/24"),
 //			})
@@ -65,9 +65,9 @@ import (
 //			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
 //				EngineVersion:     pulumi.String("4.4"),
 //				StorageType:       pulumi.String("cloud_essd1"),
-//				VswitchId:         defaultSwitch.ID(),
+//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
@@ -77,17 +77,17 @@ import (
 //				return err
 //			}
 //			defaultPublicNetworkAddress, err := mongodb.NewPublicNetworkAddress(ctx, "default", &mongodb.PublicNetworkAddressArgs{
-//				DbInstanceId: defaultInstance.ID(),
+//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// modify private network address.
 //			_, err = mongodb.NewReplicaSetRole(ctx, "private", &mongodb.ReplicaSetRoleArgs{
-//				DbInstanceId: defaultInstance.ID(),
-//				RoleId: pulumi.String(defaultInstance.ReplicaSets.ApplyT(func(replicaSets []mongodb.InstanceReplicaSet) (*string, error) {
+//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				RoleId: defaultInstance.ReplicaSets.ApplyT(func(replicaSets []mongodb.InstanceReplicaSet) (*string, error) {
 //					return replicaSets[0].RoleId, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				ConnectionPrefix: pulumi.String("test-tf-private-change"),
 //				ConnectionPort:   pulumi.Int(3718),
 //				NetworkType:      pulumi.String("VPC"),
@@ -97,10 +97,10 @@ import (
 //			}
 //			// modify public network address.
 //			_, err = mongodb.NewReplicaSetRole(ctx, "public", &mongodb.ReplicaSetRoleArgs{
-//				DbInstanceId: defaultInstance.ID(),
-//				RoleId: pulumi.String(defaultPublicNetworkAddress.ReplicaSets.ApplyT(func(replicaSets []mongodb.PublicNetworkAddressReplicaSet) (*string, error) {
+//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				RoleId: defaultPublicNetworkAddress.ReplicaSets.ApplyT(func(replicaSets []mongodb.PublicNetworkAddressReplicaSet) (*string, error) {
 //					return replicaSets[0].RoleId, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				ConnectionPrefix: pulumi.String("test-tf-public-0"),
 //				ConnectionPort:   pulumi.Int(3719),
 //				NetworkType:      pulumi.String("Public"),

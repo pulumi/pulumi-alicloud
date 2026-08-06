@@ -63,7 +63,7 @@ import (
 //				OssBackupPlanName: pulumi.String("terraform-example"),
 //				Prefix:            pulumi.String("/example"),
 //				Bucket:            defaultBucket.Bucket,
-//				VaultId:           defaultVault.ID(),
+//				VaultId:           defaultVault.ID().ToIDOutput().ToStringOutput(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),
 //				Retention:         pulumi.String("2"),

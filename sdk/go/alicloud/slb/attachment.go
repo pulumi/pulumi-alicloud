@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -80,7 +80,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -92,26 +92,26 @@ import (
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceName: pulumi.String(name),
-//				VswitchId:    defaultSwitch.ID(),
+//				VswitchId:    defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultSwitch.ID(),
+//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerSpec: pulumi.String("slb.s1.small"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = slb.NewAttachment(ctx, "default", &slb.AttachmentArgs{
-//				LoadBalancerId: defaultApplicationLoadBalancer.ID(),
+//				LoadBalancerId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				InstanceIds: pulumi.StringArray{
-//					defaultInstance.ID(),
+//					defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Weight: pulumi.Int(90),
 //			})

@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			sub, err := sslcertificatesservicepca.NewCertificate(ctx, "sub", &sslcertificatesservicepca.CertificateArgs{
-//				ParentIdentifier: root.ID(),
+//				ParentIdentifier: root.ID().ToIDOutput().ToStringOutput(),
 //				Organization:     pulumi.String("a"),
 //				Years:            pulumi.Int(1),
 //				Locality:         pulumi.String("a"),
@@ -69,7 +69,7 @@ import (
 //				Months:           pulumi.Int(1),
 //				CustomIdentifier: pulumi.String("181"),
 //				Algorithm:        pulumi.String("RSA_2048"),
-//				ParentIdentifier: sub.ID(),
+//				ParentIdentifier: sub.ID().ToIDOutput().ToStringOutput(),
 //				SanValue:         pulumi.String("somebody@example.com"),
 //				EnableCrl:        pulumi.Int(1),
 //				OrganizationUnit: pulumi.String("aliyun"),

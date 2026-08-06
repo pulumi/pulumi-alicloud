@@ -64,7 +64,7 @@ import (
 //				FlvVideoSeekMode: pulumi.String("by_byte"),
 //				Mp4SeekStart:     pulumi.String("start"),
 //				FlvSeekEnd:       pulumi.String("end"),
-//				SiteId:           defaultSite.ID(),
+//				SiteId:           defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				Sequence:         pulumi.Int(1),
 //				SiteVersion:      pulumi.Int(0),
 //				RuleName:         pulumi.String("example"),

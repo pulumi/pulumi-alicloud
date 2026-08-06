@@ -61,7 +61,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -83,7 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"IngressDashboardEnabled": "true",
 //			})
 //			if err != nil {
@@ -94,7 +94,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(false),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -113,7 +113,7 @@ import (
 //			}
 //			// data source provides the information of available addons
 //			_ = cs.GetKubernetesAddonsOutput(ctx, cs.GetKubernetesAddonsOutputArgs{
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				NameRegex: pulumi.String("logtail-ds"),
 //			}, nil)
 //			tmpJSON1, err := json.Marshal(map[string]interface{}{})
@@ -123,7 +123,7 @@ import (
 //			json1 := string(tmpJSON1)
 //			// Manage addon resource
 //			_, err = cs.NewKubernetesAddon(ctx, "logtail-ds", &cs.KubernetesAddonArgs{
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				Name:      pulumi.String("logtail-ds"),
 //				Version:   pulumi.String("v1.6.0.0-aliyun"),
 //				Config:    pulumi.String(json1),

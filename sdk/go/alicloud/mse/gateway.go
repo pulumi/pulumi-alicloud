@@ -75,9 +75,9 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("example-%v", key0), &vpc.SwitchArgs{
-//					VpcId:       exampleNetwork.ID(),
+//					VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //					CidrBlock:   pulumi.String(invokeFormat.Result),
-//					ZoneId:      example.Zones[val0].Id,
+//					ZoneId:      pulumi.String(example.Zones[val0].Id),
 //					VswitchName: pulumi.String(invokeFormat1.Result),
 //				})
 //				if err != nil {
@@ -89,9 +89,9 @@ import (
 //				GatewayName:     pulumi.String("terraform-example"),
 //				Replica:         pulumi.Int(2),
 //				Spec:            pulumi.String("MSE_GTW_2_4_200_c"),
-//				VswitchId:       exampleSwitch[0].ID(),
-//				BackupVswitchId: exampleSwitch[1].ID(),
-//				VpcId:           exampleNetwork.ID(),
+//				VswitchId:       exampleSwitch[0].ID().ToIDOutput().ToStringOutput(),
+//				BackupVswitchId: exampleSwitch[1].ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

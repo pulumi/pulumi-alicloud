@@ -43,7 +43,7 @@ import (
 //			}
 //			_, err = message.NewServiceEndpointAcl(ctx, "default", &message.ServiceEndpointAclArgs{
 //				Cidr:         pulumi.String("192.168.1.1/23"),
-//				EndpointType: _default.ID(),
+//				EndpointType: _default.ID().ToIDOutput().ToStringOutput(),
 //				AclStrategy:  pulumi.String("allow"),
 //			})
 //			if err != nil {

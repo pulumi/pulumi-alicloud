@@ -52,14 +52,14 @@ import (
 //				HotTtl:          pulumi.Int(8),
 //				RetentionPeriod: pulumi.Int(30),
 //				ShardCount:      pulumi.Int(2),
-//				ProjectName:     defaulthhAPo6.ID(),
+//				ProjectName:     defaulthhAPo6.ID().ToIDOutput().ToStringOutput(),
 //				LogstoreName:    pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sls.NewEtl(ctx, "default", &sls.EtlArgs{
-//				Project:     defaulthhAPo6.ID(),
+//				Project:     defaulthhAPo6.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("etl-1740472705-185721"),
 //				Configuration: &sls.EtlConfigurationArgs{
 //					Script:  pulumi.String("* | extend a=1"),

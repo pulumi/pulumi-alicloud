@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ehpc.getJobTemplatesOutput({
  *     ids: [_default.id],
  * });
- * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
+ * export const ehpcJobTemplateId1 = ids.id;
  * ```
  */
 export function getJobTemplates(args?: GetJobTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetJobTemplatesResult> {
@@ -87,7 +87,7 @@ export interface GetJobTemplatesResult {
  * const ids = alicloud.ehpc.getJobTemplatesOutput({
  *     ids: [_default.id],
  * });
- * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
+ * export const ehpcJobTemplateId1 = ids.id;
  * ```
  */
 export function getJobTemplatesOutput(args?: GetJobTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJobTemplatesResult> {

@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -84,7 +84,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -96,21 +96,21 @@ import (
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("22/22"),
 //				Priority:        pulumi.Int(1),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				CidrIp:          pulumi.String("172.16.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				VswitchId:               defaultSwitch.ID(),
+//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceName: pulumi.String(name),
 //			})
@@ -129,9 +129,9 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEcsInvocation(ctx, "default", &ecs.EcsInvocationArgs{
-//				CommandId: defaultCommand.ID(),
+//				CommandId: defaultCommand.ID().ToIDOutput().ToStringOutput(),
 //				InstanceIds: pulumi.StringArray{
-//					defaultInstance.ID(),
+//					defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

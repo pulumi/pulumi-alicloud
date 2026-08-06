@@ -107,7 +107,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //			})
 //			if err != nil {
@@ -133,7 +133,7 @@ import (
 //				NamePrefix:  pulumi.Sprintf("terraform-example-%v", _default.Result),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(true),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -152,9 +152,9 @@ import (
 //			}
 //			_, err = cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String(name),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -191,9 +191,9 @@ import (
 //			// The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
 //			_, err = cs.NewNodePool(ctx, "desired_size", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("desired_size"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -209,9 +209,9 @@ import (
 //			// Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
 //			_, err = cs.NewNodePool(ctx, "maintenance", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("maintenance"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -244,9 +244,9 @@ import (
 //			// Create a node pool with spot instance.
 //			_, err = cs.NewNodePool(ctx, "spot_instance", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("spot_instance"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -274,9 +274,9 @@ import (
 //			// Use Spot instances to create a node pool with auto-scaling enabled
 //			_, err = cs.NewNodePool(ctx, "spot_auto_scaling", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("spot_auto_scaling"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -303,9 +303,9 @@ import (
 //			// Create a `PrePaid` node pool.
 //			_, err = cs.NewNodePool(ctx, "prepaid_node", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("prepaid_node"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -326,9 +326,9 @@ import (
 //			// #Create a node pool with customized kubelet parameters
 //			_, err = cs.NewNodePool(ctx, "customized_kubelet", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("customized_kubelet"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),

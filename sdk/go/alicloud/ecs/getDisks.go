@@ -103,7 +103,7 @@ type GetDisksArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -236,7 +236,7 @@ type GetDisksOutputArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},

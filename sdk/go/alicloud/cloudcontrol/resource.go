@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"InstanceName": "terraform-example-ons-instance",
 //			})
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //				ResourceId:   mqInstance.ResourceId,
 //				DesireAttributes: mqInstance.ResourceId.ApplyT(func(resourceId string) (pulumi.String, error) {
 //					var _zero pulumi.String
-//					tmpJSON1, err := json.Marshal(map[string]interface{}{
+//					tmpJSON1, err := json.Marshal(map[string]string{
 //						"InstanceId":  resourceId,
 //						"TopicName":   "terraform-example-ons-topic",
 //						"MessageType": "1",

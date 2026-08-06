@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			_, err = pai.NewFlowPipeline(ctx, "default", &pai.FlowPipelineArgs{
-//				WorkspaceId: defaultWjQD1e.ID(),
+//				WorkspaceId: defaultWjQD1e.ID().ToIDOutput().ToStringOutput(),
 //				Manifest: pulumi.Sprintf(`apiVersion: \"core/v1\"
 //
 // metadata:

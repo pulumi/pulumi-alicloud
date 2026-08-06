@@ -67,8 +67,8 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewGroupPluginAttachment(ctx, "example", &apigateway.GroupPluginAttachmentArgs{
-//				GroupId:   example.ID(),
-//				PluginId:  examplePlugin.ID(),
+//				GroupId:   example.ID().ToIDOutput().ToStringOutput(),
+//				PluginId:  examplePlugin.ID().ToIDOutput().ToStringOutput(),
 //				StageName: pulumi.String("RELEASE"),
 //			})
 //			if err != nil {

@@ -68,7 +68,7 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupName: pulumi.String("tf-example-security-group"),
 //				SecurityGroupType: pulumi.String("normal"),
 //			})
@@ -76,7 +76,7 @@ import (
 //				return err
 //			}
 //			default0, err := vpc.NewSwitch(ctx, "default0", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock: pulumi.String(vsw1Cidr),
 //				ZoneId:    pulumi.String(zone1),
 //			})
@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zone2),
 //				CidrBlock: pulumi.String(vsw2Cidr),
 //			})
@@ -94,11 +94,11 @@ import (
 //			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
 //				PodCidr: pulumi.String(containerCidr),
 //				VswitchIds: pulumi.StringArray{
-//					default0.ID(),
-//					default1.ID(),
+//					default0.ID().ToIDOutput().ToStringOutput(),
+//					default1.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ServiceCidr:     pulumi.String(serviceCidr),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				ClusterSpec:     pulumi.String("ack.pro.small"),
 //			})
 //			if err != nil {
@@ -106,7 +106,7 @@ import (
 //			}
 //			_default := cs.GetClustersOutput(ctx, cs.GetClustersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultManagedKubernetes.ID(),
+//					defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultManagedKubernetes.Name,
 //			}, nil)

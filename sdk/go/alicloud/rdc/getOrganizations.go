@@ -48,12 +48,10 @@ import (
 //			}
 //			ids := rdc.GetOrganizationsOutput(ctx, rdc.GetOrganizationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
-//			ctx.Export("rdcOrganizationId1", ids.ApplyT(func(ids rdc.GetOrganizationsResult) (*string, error) {
-//				return ids.Id, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("rdcOrganizationId1", ids.Id())
 //			nameRegex, err := rdc.GetOrganizations(ctx, &rdc.GetOrganizationsArgs{
 //				NameRegex: pulumi.StringRef("^my-Organization"),
 //			}, nil)

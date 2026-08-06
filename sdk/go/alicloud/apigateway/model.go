@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewModel(ctx, "default", &apigateway.ModelArgs{
-//				GroupId:     _default.ID(),
+//				GroupId:     _default.ID().ToIDOutput().ToStringOutput(),
 //				ModelName:   pulumi.String("example_value"),
 //				Schema:      pulumi.String("{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}"),
 //				Description: pulumi.String("example_value"),

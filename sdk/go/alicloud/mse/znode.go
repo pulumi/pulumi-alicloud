@@ -52,7 +52,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -70,8 +70,8 @@ import (
 //				},
 //				ClusterAliasName: pulumi.String("terraform-example"),
 //				MseVersion:       pulumi.String("mse_dev"),
-//				VswitchId:        exampleSwitch.ID(),
-//				VpcId:            exampleNetwork.ID(),
+//				VswitchId:        exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:            exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -79,14 +79,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -97,9 +97,9 @@ import (
 //				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId:               defaultSwitch.ID(),
+//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
@@ -113,15 +113,15 @@ import (
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
 //				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
-//				VpcId:           defaultNetwork.ID(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = edas.NewInstanceClusterAttachment(ctx, "default", &edas.InstanceClusterAttachmentArgs{
-//				ClusterId: defaultCluster.ID(),
+//				ClusterId: defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				InstanceIds: pulumi.StringArray{
-//					defaultInstance.ID(),
+//					defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -129,7 +129,7 @@ import (
 //			}
 //			defaultApplication, err := edas.NewApplication(ctx, "default", &edas.ApplicationArgs{
 //				ApplicationName: pulumi.String(name),
-//				ClusterId:       defaultCluster.ID(),
+//				ClusterId:       defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				PackageType:     pulumi.String("JAR"),
 //			})
 //			if err != nil {
@@ -137,7 +137,7 @@ import (
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        defaultSwitch.ID(),
+//				VswitchId:        defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),
 //			})
@@ -145,8 +145,8 @@ import (
 //				return err
 //			}
 //			_, err = edas.NewSlbAttachment(ctx, "default", &edas.SlbAttachmentArgs{
-//				AppId: defaultApplication.ID(),
-//				SlbId: defaultApplicationLoadBalancer.ID(),
+//				AppId: defaultApplication.ID().ToIDOutput().ToStringOutput(),
+//				SlbId: defaultApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				SlbIp: defaultApplicationLoadBalancer.Address,
 //				Type:  defaultApplicationLoadBalancer.AddressType,
 //			})

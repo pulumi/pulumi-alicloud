@@ -80,8 +80,8 @@ import (
 //				Amount:            pulumi.Int(1),
 //				AutoPay:           pulumi.Bool(false),
 //				GpuAcceleration:   pulumi.Bool(false),
-//				PolicyGroupId:     defaultjZ1gi0.ID(),
-//				OfficeSiteId:      defaultH2a5KS.ID(),
+//				PolicyGroupId:     defaultjZ1gi0.ID().ToIDOutput().ToStringOutput(),
+//				OfficeSiteId:      defaultH2a5KS.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

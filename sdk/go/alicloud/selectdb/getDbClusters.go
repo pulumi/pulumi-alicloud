@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			defaultDbCluster, err := selectdb.NewDbCluster(ctx, "default", &selectdb.DbClusterArgs{
-//				DbInstanceId:         defaultDbInstance.ID(),
+//				DbInstanceId:         defaultDbInstance.ID().ToIDOutput().ToStringOutput(),
 //				DbClusterDescription: pulumi.String(name),
 //				DbClusterClass:       pulumi.String("selectdb.2xlarge"),
 //				CacheSize:            pulumi.Int(400),
@@ -83,7 +83,7 @@ import (
 //			}
 //			defaultGetDbClusters := selectdb.GetDbClustersOutput(ctx, selectdb.GetDbClustersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDbCluster.ID(),
+//					defaultDbCluster.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("dbCluster", defaultGetDbClusters.ApplyT(func(defaultGetDbClusters selectdb.GetDbClustersResult) (*string, error) {

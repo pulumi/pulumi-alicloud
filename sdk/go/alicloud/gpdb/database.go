@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultl8haQ3, err := vpc.NewSwitch(ctx, "defaultl8haQ3", &vpc.SwitchArgs{
-//				VpcId:     default35OkxY.ID(),
+//				VpcId:     default35OkxY.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -66,10 +66,10 @@ import (
 //				EngineVersion:       pulumi.String("6.0"),
 //				Engine:              pulumi.String("gpdb"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultl8haQ3.ID(),
+//				VswitchId:           defaultl8haQ3.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               default35OkxY.ID(),
+//				VpcId:               default35OkxY.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //				DatabaseName:     pulumi.String("seagull"),
 //				Collate:          pulumi.String("en_US.utf8"),
 //				Ctype:            pulumi.String("en_US.utf8"),
-//				DbInstanceId:     defaultTC08a9.ID(),
+//				DbInstanceId:     defaultTC08a9.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

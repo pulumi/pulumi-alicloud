@@ -179,7 +179,7 @@ import * as utilities from "../utilities";
  *     vswitchId: std.joinOutput({
  *         separator: ",",
  *         input: exampleSwitch.map(__item => __item.id),
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     monitoringPeriod: 60,
  *     dbInstanceStorageType: "cloud_essd",
  *     securityGroupIds: [exampleSecurityGroup.id],
@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  *     vswitchId: std.joinOutput({
  *         separator: ",",
  *         input: exampleSwitch.map(__item => __item.id),
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     monitoringPeriod: 60,
  *     dbInstanceStorageType: "cloud_essd",
  *     zoneId: example.then(example => example.zones?.[0]?.id),
@@ -316,7 +316,7 @@ import * as utilities from "../utilities";
  *     vswitchId: std.joinOutput({
  *         separator: ",",
  *         input: exampleSwitch.map(__item => __item.id),
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     monitoringPeriod: 60,
  *     dbInstanceStorageType: "local_ssd",
  *     zoneId: example.then(example => example.zones?.[0]?.id),
@@ -477,7 +477,7 @@ import * as utilities from "../utilities";
  *             exampleSwitch.id,
  *             exampleSwitch.id,
  *         ],
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     dbInstanceStorageType: "cloud_essd",
  *     category: "serverless_ha",
  *     serverlessConfigs: [{

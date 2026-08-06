@@ -55,7 +55,7 @@ import (
 //				Rule:        pulumi.String("http.host eq \"video.example.com\""),
 //				SiteVersion: pulumi.Int(0),
 //				RuleName:    pulumi.String("rule_example"),
-//				SiteId:      example.ID(),
+//				SiteId:      example.ID().ToIDOutput().ToStringOutput(),
 //				Zstd:        pulumi.String("off"),
 //				RuleEnable:  pulumi.String("off"),
 //			})

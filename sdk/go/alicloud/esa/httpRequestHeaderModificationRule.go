@@ -62,7 +62,7 @@ import (
 //			}
 //			site, err := esa.NewSite(ctx, "site", &esa.SiteArgs{
 //				SiteName:   pulumi.Sprintf("gositecdn-%v.cn", _default.Result),
-//				InstanceId: instance.ID(),
+//				InstanceId: instance.ID().ToIDOutput().ToStringOutput(),
 //				Coverage:   pulumi.String("overseas"),
 //				AccessType: pulumi.String("NS"),
 //			})
@@ -78,7 +78,7 @@ import (
 //						Name:      pulumi.String("example_modify1"),
 //					},
 //				},
-//				SiteId:      site.ID(),
+//				SiteId:      site.ID().ToIDOutput().ToStringOutput(),
 //				RuleEnable:  pulumi.String("off"),
 //				Rule:        pulumi.String("(http.request.uri eq \"/content?page=1234\")"),
 //				SiteVersion: pulumi.Int(0),

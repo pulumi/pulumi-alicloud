@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        _default.ID(),
+//				InstanceId:        _default.ID().ToIDOutput().ToStringOutput(),
 //				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PRIVATE"),
@@ -65,7 +65,7 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "default", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: _default.ID(),
+//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
 //				Namespace:  defaultRegistryEnterpriseNamespace.Name,
 //				Name:       pulumi.String(name),
 //				RepoType:   pulumi.String("PRIVATE"),
@@ -80,7 +80,7 @@ import (
 //				RetentionTagCount: pulumi.Int(30),
 //				ScheduleTime:      pulumi.String("WEEK"),
 //				Scope:             pulumi.String("REPO"),
-//				InstanceId:        _default.ID(),
+//				InstanceId:        _default.ID().ToIDOutput().ToStringOutput(),
 //				TagRegexp:         pulumi.String(".*"),
 //				RepoName:          defaultRegistryEnterpriseRepo.Name,
 //			})

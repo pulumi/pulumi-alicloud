@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * const defaultGetIngresses = alicloud.sae.getIngressesOutput({
  *     ids: [defaultIngress.id],
  * });
- * export const saeIngressId = defaultGetIngresses.ingressList[0].id;
+ * export const saeIngressId = defaultGetIngresses.ingressList?.[0]?.id;
  * ```
  */
 export function getIngresses(args: GetIngressesArgs, opts?: pulumi.InvokeOptions): Promise<GetIngressesResult> {
@@ -189,7 +189,7 @@ export interface GetIngressesResult {
  * const defaultGetIngresses = alicloud.sae.getIngressesOutput({
  *     ids: [defaultIngress.id],
  * });
- * export const saeIngressId = defaultGetIngresses.ingressList[0].id;
+ * export const saeIngressId = defaultGetIngresses.ingressList?.[0]?.id;
  * ```
  */
 export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIngressesResult> {

@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			defaultVw2U9u, err := cen.NewTransitRouter(ctx, "defaultVw2U9u", &cen.TransitRouterArgs{
-//				CenId: defaultc5kxyC.ID(),
+//				CenId: defaultc5kxyC.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //				ProjectName:     defaultStore.ProjectName,
 //				FlowLogName:     pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				LogFormatString: pulumi.String("${srcaddr}${dstaddr}${bytes}"),
-//				CenId:           defaultc5kxyC.ID(),
+//				CenId:           defaultc5kxyC.ID().ToIDOutput().ToStringOutput(),
 //				LogStoreName:    defaultStore.LogstoreName,
 //				Interval:        pulumi.Int(600),
 //				Status:          pulumi.String("Active"),
@@ -92,7 +92,7 @@ import (
 //			}
 //			_default := cen.GetFlowlogsOutput(ctx, cen.GetFlowlogsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultFlowLog.ID(),
+//					defaultFlowLog.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("firstCenFlowlogId", _default.ApplyT(func(_default cen.GetFlowlogsResult) (*string, error) {

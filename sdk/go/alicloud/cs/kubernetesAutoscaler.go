@@ -84,7 +84,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -110,7 +110,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(true),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -122,7 +122,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -132,7 +132,7 @@ import (
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
@@ -143,10 +143,10 @@ import (
 //				return err
 //			}
 //			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
-//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ScalingGroupId:  defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),
 //			})
@@ -154,7 +154,7 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewKubernetesAutoscaler(ctx, "default", &cs.KubernetesAutoscalerArgs{
-//				ClusterId:            defaultManagedKubernetes.ID(),
+//				ClusterId:            defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				Utilization:          pulumi.String("0.5"),
 //				CoolDownDuration:     pulumi.String("10m"),
 //				DeferScaleInDuration: pulumi.String("10m"),

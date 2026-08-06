@@ -78,7 +78,7 @@ import (
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				IsDefault:   pulumi.Bool(false),
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String("example-cluster-vsw"),
@@ -102,17 +102,17 @@ import (
 //				return err
 //			}
 //			exampleMountTarget, err := nas.NewMountTarget(ctx, "example", &nas.MountTargetArgs{
-//				VpcId:           example.ID(),
+//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
 //				NetworkType:     pulumi.String("Vpc"),
 //				AccessGroupName: exampleAccessGroup.AccessGroupName,
-//				VswitchId:       exampleSwitch.ID(),
-//				FileSystemId:    exampleFileSystem.ID(),
+//				VswitchId:       exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:    exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				VpcId:             example.ID(),
+//				VpcId:             example.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupType: pulumi.String("normal"),
 //			})
 //			if err != nil {
@@ -120,10 +120,10 @@ import (
 //			}
 //			_, err = ehpc.NewClusterV2(ctx, "default", &ehpc.ClusterV2Args{
 //				ClusterCredentials: &ehpc.ClusterV2ClusterCredentialsArgs{
-//					KeyPairName: exampleEcsKeyPair.ID(),
+//					KeyPairName: exampleEcsKeyPair.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ClusterMode:        pulumi.String("Integrated"),
-//				ClusterVpcId:       example.ID(),
+//				ClusterVpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				DeletionProtection: pulumi.Bool(true),
 //				SharedStorages: ehpc.ClusterV2SharedStorageArray{
 //					&ehpc.ClusterV2SharedStorageArgs{
@@ -131,14 +131,14 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: exampleMountTarget.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      exampleFileSystem.ID(),
+//						FileSystemId:      exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //					},
 //					&ehpc.ClusterV2SharedStorageArgs{
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: exampleMountTarget.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      exampleFileSystem.ID(),
+//						FileSystemId:      exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //						MountOptions:      pulumi.String("-t nfs -o vers=3,nolock,proto=tcp,noresvport"),
 //						MountDirectory:    pulumi.String("/opt"),
 //					},
@@ -148,12 +148,12 @@ import (
 //						NasDirectory:      pulumi.String("/"),
 //						MountTargetDomain: exampleMountTarget.MountTargetDomain,
 //						ProtocolType:      pulumi.String("NFS"),
-//						FileSystemId:      exampleFileSystem.ID(),
+//						FileSystemId:      exampleFileSystem.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				ClusterVswitchId: exampleSwitch.ID(),
+//				ClusterVswitchId: exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ClusterCategory:  pulumi.String("Standard"),
-//				SecurityGroupId:  exampleSecurityGroup.ID(),
+//				SecurityGroupId:  exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				ClusterName:      pulumi.String(name),
 //				Manager: &ehpc.ClusterV2ManagerArgs{
 //					ManagerNode: &ehpc.ClusterV2ManagerManagerNodeArgs{

@@ -66,17 +66,14 @@ import (
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 //				Description: pulumi.String(name),
-//				VpcId:       vpc2.ID(),
+//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
 //				VswitchName: pulumi.String(name),
 //				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
-//				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//				CidrBlock: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 //					Input:   vpc2.CidrBlock,
 //					Newbits: pulumi.Int(8),
 //					Netnum:  pulumi.Int(8),
-//				}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //			})
 //			if err != nil {
 //				return err
@@ -115,7 +112,7 @@ import (
 //				ServiceCidr:   pulumi.String("172.23.0.0/16"),
 //				PodCidr:       pulumi.String("10.95.0.0/16"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
+//					vswitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -129,14 +126,14 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("desired_size"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
+//					vswitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
+//					_default.ApplyT(func(_default ecs.GetInstanceTypesResult) (*string, error) {
 //						return _default.InstanceTypes[0].Id, nil
-//					}).(pulumi.StringPtrOutput)),
+//					}).(pulumi.StringPtrOutput),
 //				},
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				SystemDiskSize:     pulumi.Int(40),

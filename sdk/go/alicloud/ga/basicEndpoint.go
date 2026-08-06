@@ -63,23 +63,23 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Name:  pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
-//				VswitchId: defaultSwitch.ID(),
+//				VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			defaultBasicEndpointGroup, err := ga.NewBasicEndpointGroup(ctx, "default", &ga.BasicEndpointGroupArgs{
-//				AcceleratorId:          defaultBasicAccelerator.ID(),
+//				AcceleratorId:          defaultBasicAccelerator.ID().ToIDOutput().ToStringOutput(),
 //				EndpointGroupRegion:    pulumi.String(region),
 //				BasicEndpointGroupName: pulumi.String("terraform-example"),
 //				Description:            pulumi.String("terraform-example"),
@@ -106,10 +106,10 @@ import (
 //				return err
 //			}
 //			_, err = ga.NewBasicEndpoint(ctx, "default", &ga.BasicEndpointArgs{
-//				AcceleratorId:          defaultBasicAccelerator.ID(),
-//				EndpointGroupId:        defaultBasicEndpointGroup.ID(),
+//				AcceleratorId:          defaultBasicAccelerator.ID().ToIDOutput().ToStringOutput(),
+//				EndpointGroupId:        defaultBasicEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				EndpointType:           pulumi.String("ENI"),
-//				EndpointAddress:        defaultEcsNetworkInterface.ID(),
+//				EndpointAddress:        defaultEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 //				EndpointSubAddressType: pulumi.String("secondary"),
 //				EndpointSubAddress:     pulumi.String("192.168.0.1"),
 //				BasicEndpointName:      pulumi.String("terraform-example"),

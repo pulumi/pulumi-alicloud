@@ -63,7 +63,7 @@ import (
 //				Reason:          pulumi.String("example"),
 //				QuotaActionCode: pulumi.String("quotas.label_multi/A"),
 //				AliyunUids: pulumi.StringArray{
-//					account.ID(),
+//					account.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ProductCode: pulumi.String("quotas"),
 //			})

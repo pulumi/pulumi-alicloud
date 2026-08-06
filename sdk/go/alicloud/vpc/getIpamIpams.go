@@ -52,7 +52,7 @@ import (
 //			}
 //			defaultGetIpamIpams := vpc.GetIpamIpamsOutput(ctx, vpc.GetIpamIpamsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultIpamIpam.ID(),
+//					defaultIpamIpam.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultIpamIpam.IpamName,
 //				IpamName:  pulumi.String(name),

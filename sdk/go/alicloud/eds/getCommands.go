@@ -72,8 +72,8 @@ import (
 //				return err
 //			}
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
-//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
 //				BundleId:      pulumi.String(_default.Bundles[0].Id),
 //				DesktopName:   pulumi.Any(name),
 //			})
@@ -83,7 +83,7 @@ import (
 //			_, err = eds.NewCommand(ctx, "default", &eds.CommandArgs{
 //				CommandContent: pulumi.String("ipconfig"),
 //				CommandType:    pulumi.String("RunPowerShellScript"),
-//				DesktopId:      defaultDesktop.ID(),
+//				DesktopId:      defaultDesktop.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

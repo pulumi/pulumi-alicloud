@@ -291,14 +291,14 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
                     input=[
                         default_service_certificate[0].id,
                         "-cn-hangzhou",
-                    ]).apply(lambda invoke: invoke.result),
+                    ]).result,
             })
         default_listener_additional_certificate_attachment = alicloud.alb.ListenerAdditionalCertificateAttachment("default",
             certificate_id=std.join_output(separator="",
                 input=[
                     default_service_certificate[1].id,
                     "-cn-hangzhou",
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             listener_id=default_listener.id)
         ```
 
@@ -478,14 +478,14 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
                     input=[
                         default_service_certificate[0].id,
                         "-cn-hangzhou",
-                    ]).apply(lambda invoke: invoke.result),
+                    ]).result,
             })
         default_listener_additional_certificate_attachment = alicloud.alb.ListenerAdditionalCertificateAttachment("default",
             certificate_id=std.join_output(separator="",
                 input=[
                     default_service_certificate[1].id,
                     "-cn-hangzhou",
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             listener_id=default_listener.id)
         ```
 

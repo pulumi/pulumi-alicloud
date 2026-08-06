@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			default106DkE, err := vpc.NewSwitch(ctx, "default106DkE", &vpc.SwitchArgs{
-//				VpcId:       defaultB21JUD.ID(),
+//				VpcId:       defaultB21JUD.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				VswitchName: pulumi.String("sr-example"),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
@@ -80,7 +80,7 @@ import (
 //				},
 //				Vswitches: starrocks.InstanceVswitchArray{
 //					&starrocks.InstanceVswitchArgs{
-//						VswitchId: default106DkE.ID(),
+//						VswitchId: default106DkE.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String("cn-hangzhou-i"),
 //					},
 //				},
@@ -99,7 +99,7 @@ import (
 //				ClusterZoneId:        pulumi.String("cn-hangzhou-i"),
 //				Duration:             pulumi.Int(1),
 //				PayType:              pulumi.String("postPaid"),
-//				VpcId:                defaultB21JUD.ID(),
+//				VpcId:                defaultB21JUD.ID().ToIDOutput().ToStringOutput(),
 //				Version:              pulumi.String("3.3"),
 //				RunMode:              pulumi.String("shared_data"),
 //				PackageType:          pulumi.String("official"),

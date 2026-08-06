@@ -71,17 +71,17 @@ import (
 //			}
 //			_default, err := vpc.NewPeerConnection(ctx, "default", &vpc.PeerConnectionArgs{
 //				PeerConnectionName: pulumi.String(name),
-//				VpcId:              local.ID(),
+//				VpcId:              local.ID().ToIDOutput().ToStringOutput(),
 //				AcceptingAliUid:    pulumi.String(accepting.Id),
 //				AcceptingRegionId:  pulumi.String(acceptingRegion),
-//				AcceptingVpcId:     acceptingNetwork.ID(),
+//				AcceptingVpcId:     acceptingNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Description:        pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewPeerConnectionAccepter(ctx, "default", &vpc.PeerConnectionAccepterArgs{
-//				InstanceId: _default.ID(),
+//				InstanceId: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

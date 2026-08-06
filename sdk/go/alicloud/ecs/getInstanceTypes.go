@@ -73,7 +73,7 @@ import (
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VswitchName: pulumi.String(name),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String("192.168.192.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // })
@@ -82,22 +82,22 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
 // }
 // _, err = ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 // NetworkInterfaceName: pulumi.String(name),
-// VswitchId: defaultSwitch.ID(),
+// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 // SecurityGroupIds: pulumi.StringArray{
-// defaultSecurityGroup.ID(),
+// defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 // },
 // })
 // if err != nil {
 // return err
 // }
-// var splat0 pulumi.StringArray
+// var splat0 pulumi.IDArray
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
@@ -111,13 +111,13 @@ import (
 // ImageId: pulumi.String(defaultGetImages.Images[0].Id),
 // InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 // InstanceName: pulumi.String(name),
-// SecurityGroups: splat0,
+// SecurityGroups: toPulumiIDArray(splat0),
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
-// VswitchId: defaultSwitch.ID(),
+// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -126,6 +126,13 @@ import (
 // }
 // return nil
 // })
+// }
+// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+// var pulumiArr pulumi.IDArray
+// for _, v := range arr {
+// pulumiArr = append(pulumiArr, pulumi.ID(v))
+// }
+// return pulumiArr
 // }
 // ```
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {

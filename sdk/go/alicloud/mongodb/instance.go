@@ -61,7 +61,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
@@ -71,7 +71,7 @@ import (
 //				EngineVersion:     pulumi.String("4.2"),
 //				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
 //				DbInstanceStorage: pulumi.Int(10),
-//				VswitchId:         defaultSwitch.ID(),
+//				VswitchId:         defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityIpLists: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("100.69.7.112"),

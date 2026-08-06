@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    exampleUuid.Result,
 //					Search:  "-",
 //					Replace: "",
@@ -105,7 +105,7 @@ import (
 //				ProjectName:         exampleProject.ProjectName,
 //				ResourceType:        pulumi.String("VPC"),
 //				ResourceGroupId:     pulumi.String(_default.Ids[0]),
-//				ResourceId:          example.ID(),
+//				ResourceId:          example.ID().ToIDOutput().ToStringOutput(),
 //				AggregationInterval: pulumi.String("1"),
 //				TrafficType:         pulumi.String("All"),
 //			})

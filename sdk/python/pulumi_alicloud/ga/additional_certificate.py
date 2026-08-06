@@ -281,7 +281,7 @@ class AdditionalCertificate(pulumi.CustomResource):
                     input=[
                         default_service_certificate[1].id,
                         region,
-                    ]).apply(lambda invoke: invoke.result),
+                    ]).result,
             }])
         domain = "alicloud-provider.cn"
         default_additional_certificate = alicloud.ga.AdditionalCertificate("default",
@@ -289,7 +289,7 @@ class AdditionalCertificate(pulumi.CustomResource):
                 input=[
                     default_service_certificate[1].id,
                     region,
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             domain=domain,
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id)
@@ -431,7 +431,7 @@ class AdditionalCertificate(pulumi.CustomResource):
                     input=[
                         default_service_certificate[1].id,
                         region,
-                    ]).apply(lambda invoke: invoke.result),
+                    ]).result,
             }])
         domain = "alicloud-provider.cn"
         default_additional_certificate = alicloud.ga.AdditionalCertificate("default",
@@ -439,7 +439,7 @@ class AdditionalCertificate(pulumi.CustomResource):
                 input=[
                     default_service_certificate[1].id,
                     region,
-                ]).apply(lambda invoke: invoke.result),
+                ]).result,
             domain=domain,
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id)

@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    defaultUuid.Result,
 //					Search:  "-",
 //					Replace: "",
@@ -105,7 +105,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr1, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    defaultUuid.Result,
 //					Search:  "-",
 //					Replace: "",
@@ -125,10 +125,10 @@ import (
 //			}
 //			_, err = cms.NewHybridMonitorSlsTask(ctx, "default", &cms.HybridMonitorSlsTaskArgs{
 //				TaskName:          pulumi.String(name),
-//				Namespace:         defaultNamespace.ID(),
+//				Namespace:         defaultNamespace.ID().ToIDOutput().ToStringOutput(),
 //				Description:       pulumi.String(name),
 //				CollectInterval:   pulumi.Int(60),
-//				CollectTargetType: defaultSlsGroup.ID(),
+//				CollectTargetType: defaultSlsGroup.ID().ToIDOutput().ToStringOutput(),
 //				SlsProcessConfig: &cms.HybridMonitorSlsTaskSlsProcessConfigArgs{
 //					Filter: &cms.HybridMonitorSlsTaskSlsProcessConfigFilterArgs{
 //						Relation: pulumi.String("and"),

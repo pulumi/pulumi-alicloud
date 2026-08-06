@@ -313,7 +313,7 @@ if err != nil {
 return err
 }
 vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-VpcId: vpc2.ID(),
+VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
 CidrBlock: pulumi.String("172.16.0.0/24"),
 ZoneId: pulumi.String(_default.Zones[0].Id),
 VswitchName: pulumi.String(name),
@@ -325,7 +325,7 @@ return err
 group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 Name: pulumi.String(name),
 Description: pulumi.String("foo"),
-VpcId: vpc2.ID(),
+VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
 })
 if err != nil {
 return err
@@ -339,20 +339,20 @@ Status: pulumi.String("Enabled"),
 if err != nil {
 return err
 }
-var splat0 pulumi.StringArray
+var splat0 pulumi.IDArray
 for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 splat0 = append(splat0, val0.ID())
 }
 _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-SecurityGroups: splat0,
+SecurityGroups: toPulumiIDArray(splat0),
 InstanceType: pulumi.String("ecs.n4.large"),
 SystemDiskCategory: pulumi.String("cloud_efficiency"),
 SystemDiskName: pulumi.String(name),
 SystemDiskDescription: pulumi.String("system_disk_description"),
 ImageId: pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
 InstanceName: pulumi.String(name),
-VswitchId: vswitch.ID(),
+VswitchId: vswitch.ID().ToIDOutput().ToStringOutput(),
 InternetMaxBandwidthOut: pulumi.Int(10),
 DataDisks: ecs.InstanceDataDiskArray{
 &ecs.InstanceDataDiskArgs{
@@ -361,7 +361,7 @@ Size: pulumi.Int(20),
 Category: pulumi.String("cloud_efficiency"),
 Description: pulumi.String("disk-description"),
 Encrypted: pulumi.Bool(true),
-KmsKeyId: key.ID(),
+KmsKeyId: key.ID().ToIDOutput().ToStringOutput(),
 },
 },
 })
@@ -370,6 +370,13 @@ return err
 }
 return nil
 })
+}
+func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+var pulumiArr pulumi.IDArray
+for _, v := range arr {
+pulumiArr = append(pulumiArr, pulumi.ID(v))
+}
+return pulumiArr
 }
 ```
 

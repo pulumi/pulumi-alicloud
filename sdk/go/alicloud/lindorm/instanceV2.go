@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			default9umuzwH, err := vpc.NewSwitch(ctx, "default9umuzwH", &vpc.SwitchArgs{
-//				VpcId:     defaultR8vXlP.ID(),
+//				VpcId:     defaultR8vXlP.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("172.16.0.0/24"),
 //			})
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			defaultgOFAo3L, err := vpc.NewSwitch(ctx, "defaultgOFAo3L", &vpc.SwitchArgs{
-//				VpcId:     defaultR8vXlP.ID(),
+//				VpcId:     defaultR8vXlP.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-l"),
 //				CidrBlock: pulumi.String("172.16.1.0/24"),
 //			})
@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultTAbr2pJ, err := vpc.NewSwitch(ctx, "defaultTAbr2pJ", &vpc.SwitchArgs{
-//				VpcId:     defaultR8vXlP.ID(),
+//				VpcId:     defaultR8vXlP.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-j"),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
@@ -92,11 +92,11 @@ import (
 //				ZoneId:           pulumi.String("cn-beijing-h"),
 //				CloudStorageType: pulumi.String("PerformanceStorage"),
 //				ArchVersion:      pulumi.String("2.0"),
-//				VswitchId:        default9umuzwH.ID(),
-//				StandbyVswitchId: defaultgOFAo3L.ID(),
-//				PrimaryVswitchId: default9umuzwH.ID(),
-//				ArbiterVswitchId: defaultTAbr2pJ.ID(),
-//				VpcId:            defaultR8vXlP.ID(),
+//				VswitchId:        default9umuzwH.ID().ToIDOutput().ToStringOutput(),
+//				StandbyVswitchId: defaultgOFAo3L.ID().ToIDOutput().ToStringOutput(),
+//				PrimaryVswitchId: default9umuzwH.ID().ToIDOutput().ToStringOutput(),
+//				ArbiterVswitchId: defaultTAbr2pJ.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:            defaultR8vXlP.ID().ToIDOutput().ToStringOutput(),
 //				InstanceAlias:    pulumi.String("preTest-MZ"),
 //				PaymentType:      pulumi.String("POSTPAY"),
 //				ArbiterZoneId:    pulumi.String("cn-beijing-j"),

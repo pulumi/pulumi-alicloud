@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewRoutineRelatedRecord(ctx, "default", &esa.RoutineRelatedRecordArgs{
-//				Name:       defaultRoutine.ID(),
+//				Name:       defaultRoutine.ID().ToIDOutput().ToStringOutput(),
 //				RecordName: pulumi.String("tfexampleacc.com"),
 //				SiteId:     pulumi.Int(_default.Sites[0].Id),
 //			})

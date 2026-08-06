@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -61,14 +61,14 @@ import (
 //				DbVersion:   pulumi.String("8.0"),
 //				DbNodeClass: pulumi.String(_default.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				PayType:     pulumi.String("PostPaid"),
-//				VswitchId:   defaultSwitch.ID(),
+//				VswitchId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAccount, err := polardb.NewAccount(ctx, "default", &polardb.AccountArgs{
-//				DbClusterId:        defaultCluster.ID(),
+//				DbClusterId:        defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:        pulumi.String("terraform_example"),
 //				AccountPassword:    pulumi.String("Example1234"),
 //				AccountDescription: pulumi.String("terraform-example"),
@@ -77,14 +77,14 @@ import (
 //				return err
 //			}
 //			defaultDatabase, err := polardb.NewDatabase(ctx, "default", &polardb.DatabaseArgs{
-//				DbClusterId: defaultCluster.ID(),
+//				DbClusterId: defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				DbName:      pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = polardb.NewAccountPrivilege(ctx, "default", &polardb.AccountPrivilegeArgs{
-//				DbClusterId:      defaultCluster.ID(),
+//				DbClusterId:      defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:      defaultAccount.AccountName,
 //				AccountPrivilege: pulumi.String("ReadOnly"),
 //				DbNames: pulumi.StringArray{

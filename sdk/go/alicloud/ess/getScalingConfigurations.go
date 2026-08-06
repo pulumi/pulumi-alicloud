@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -90,7 +90,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(myName),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -102,7 +102,7 @@ import (
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("22/22"),
 //				Priority:        pulumi.Int(1),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				CidrIp:          pulumi.String("172.16.0.0/24"),
 //			})
 //			if err != nil {
@@ -117,17 +117,17 @@ import (
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
-//				ScalingGroupId:           defaultScalingGroup.ID(),
+//				ScalingGroupId:           defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				ImageId:                  pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:             pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroupId:          defaultSecurityGroup.ID(),
+//				SecurityGroupId:          defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				ForceDelete:              pulumi.Bool(true),
 //				Active:                   pulumi.Bool(true),
 //				ScalingConfigurationName: pulumi.String("scaling_configuration_name"),
@@ -136,9 +136,9 @@ import (
 //				return err
 //			}
 //			scalingconfigurationsDs := ess.GetScalingConfigurationsOutput(ctx, ess.GetScalingConfigurationsOutputArgs{
-//				ScalingGroupId: defaultScalingGroup.ID(),
+//				ScalingGroupId: defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				Ids: pulumi.StringArray{
-//					defaultScalingConfiguration.ID(),
+//					defaultScalingConfiguration.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: pulumi.String("scaling_configuration_name"),
 //			}, nil)

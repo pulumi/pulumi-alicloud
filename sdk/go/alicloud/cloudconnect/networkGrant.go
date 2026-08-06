@@ -71,8 +71,8 @@ import (
 //				return err
 //			}
 //			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
-//				CcnId:  _default.ID(),
-//				CenId:  cen2.ID(),
+//				CcnId:  _default.ID().ToIDOutput().ToStringOutput(),
+//				CenId:  cen2.ID().ToIDOutput().ToStringOutput(),
 //				CenUid: pulumi.Float64(anotherUid),
 //			})
 //			if err != nil {

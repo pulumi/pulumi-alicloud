@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const plaintext = alicloud.kms.getPlaintextOutput({
  *     ciphertextBlob: encrypted.ciphertextBlob,
  * });
- * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
+ * export const decrypted = plaintext.plaintext;
  * ```
  */
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
@@ -96,7 +96,7 @@ export interface GetPlaintextResult {
  * const plaintext = alicloud.kms.getPlaintextOutput({
  *     ciphertextBlob: encrypted.ciphertextBlob,
  * });
- * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
+ * export const decrypted = plaintext.plaintext;
  * ```
  */
 export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPlaintextResult> {

@@ -102,7 +102,7 @@ import (
 // tmp1 = defaultGetSwitches.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:32,12-25),
 // []string{
 // "",
@@ -127,7 +127,7 @@ import (
 // return err
 // }
 // _, err = redis.NewBackup(ctx, "default", &redis.BackupArgs{
-// InstanceId: defaultInstance.ID(),
+// InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 // BackupRetentionPeriod: pulumi.Int(7),
 // })
 // if err != nil {

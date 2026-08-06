@@ -114,7 +114,7 @@ import * as utilities from "../utilities";
  *                 defaultNodePool[0].scalingGroupId,
  *                 defaultNodePool[1].scalingGroupId,
  *             ],
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *         "20": defaultNodePool[2].scalingGroupId,
  *     },
  * });

@@ -1134,7 +1134,7 @@ type GetInstancesInstance struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -1203,7 +1203,7 @@ type GetInstancesInstanceArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -1355,7 +1355,7 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ots.GetInstances(ctx, &ots.GetInstancesArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},

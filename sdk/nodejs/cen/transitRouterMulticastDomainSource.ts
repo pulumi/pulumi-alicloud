@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *     primaryIpAddress: std.cidrhostOutput({
  *         input: defaultMaster.cidrBlock,
  *         host: 100,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     tags: {
  *         Created: "TF",
  *         For: "Test",

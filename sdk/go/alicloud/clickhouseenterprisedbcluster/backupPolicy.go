@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultTQWN3k, err := vpc.NewSwitch(ctx, "defaultTQWN3k", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID(),
+//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zoneIdI),
 //				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
@@ -75,10 +75,10 @@ import (
 //			}
 //			default1tTLwe, err := clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "default1tTLwe", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
 //				ZoneId:    pulumi.String(zoneIdI),
-//				VpcId:     defaultktKLuM.ID(),
+//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
 //				ScaleMin:  pulumi.String("8"),
 //				ScaleMax:  pulumi.String("16"),
-//				VswitchId: defaultTQWN3k.ID(),
+//				VswitchId: defaultTQWN3k.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -87,7 +87,7 @@ import (
 //				PreferredBackupPeriod: pulumi.String("Monday"),
 //				PreferredBackupTime:   pulumi.String("04:00Z-05:00Z"),
 //				BackupRetentionPeriod: pulumi.Int(7),
-//				DbInstanceId:          default1tTLwe.ID(),
+//				DbInstanceId:          default1tTLwe.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

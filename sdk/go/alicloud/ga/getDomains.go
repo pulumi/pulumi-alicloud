@@ -59,9 +59,9 @@ import (
 //				}
 //				defaultAccelerator = append(defaultAccelerator, __res)
 //			}
-//			_ = pulumi.All(len(_default.Accelerators), defaultAccelerator[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
+//			_ = pulumi.IDInput(pulumi.All(len(_default.Accelerators), defaultAccelerator[0].ID()).ApplyT(func(_args []interface{}) (*string, error) {
 //				length := _args[0].(int)
-//				id := _args[1].(string)
+//				id := _args[1].(pulumi.ID)
 //				var tmp1 *string
 //				if length > 0 {
 //					tmp1 = _default.Accelerators[0].Id
@@ -69,7 +69,7 @@ import (
 //					tmp1 = id
 //				}
 //				return &tmp1, nil
-//			}).(pulumi.StringPtrOutput)
+//			}).(pulumi.StringPtrOutput))
 //			defaultGetDomains, err := ga.GetDomains(ctx, &ga.GetDomainsArgs{
 //				AcceleratorId: pulumi.StringRef(acceleratorIdLocals),
 //				Domain:        pulumi.StringRef("your_domain"),

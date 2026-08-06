@@ -68,9 +68,9 @@ import (
 //				return err
 //			}
 //			_, err = expressconnect.NewRouterVbrChildInstance(ctx, "default", &expressconnect.RouterVbrChildInstanceArgs{
-//				ChildInstanceId:       defaultydbbk3.ID(),
+//				ChildInstanceId:       defaultydbbk3.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-//				EcrId:                 defaultAAlhUy.ID(),
+//				EcrId:                 defaultAAlhUy.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VBR"),
 //				ChildInstanceOwnerId:  pulumi.String(current.Id),
 //			})

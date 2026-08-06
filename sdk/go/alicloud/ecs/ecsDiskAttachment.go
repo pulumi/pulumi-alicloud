@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
+//				VpcId:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock: pulumi.String("10.4.0.0/24"),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //			})
@@ -73,7 +73,7 @@ import (
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:        pulumi.String("tf-example"),
 //				Description: pulumi.String("New security group"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,9 +93,9 @@ import (
 //				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId: defaultSwitch.ID(),
+//				VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -124,8 +124,8 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEcsDiskAttachment(ctx, "default", &ecs.EcsDiskAttachmentArgs{
-//				DiskId:     defaultEcsDisk.ID(),
-//				InstanceId: defaultInstance.ID(),
+//				DiskId:     defaultEcsDisk.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

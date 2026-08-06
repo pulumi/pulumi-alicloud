@@ -101,7 +101,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]int{
 //				"packetNum":      20,
 //				"packetLossRate": 10,
 //			})
@@ -143,15 +143,15 @@ import (
 //				Remark:                pulumi.String("terraform-example-remark"),
 //				HealthTasks: alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArray{
 //					&alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArgs{
-//						TemplateId: ping.ID(),
+//						TemplateId: ping.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArgs{
 //						Port:       pulumi.Int(53),
-//						TemplateId: tcp.ID(),
+//						TemplateId: tcp.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&alidnscloudgtmaddress.AlidnsCloudGtmAddressHealthTaskArgs{
 //						Port:       pulumi.Int(443),
-//						TemplateId: https.ID(),
+//						TemplateId: https.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

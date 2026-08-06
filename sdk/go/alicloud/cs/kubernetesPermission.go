@@ -103,7 +103,7 @@ import (
 //	    val0 := index
 //
 // __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-// VpcId: vpc2.ID(),
+// VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String(vswitchCidrs[val0]),
 // ZoneId: pulumi.String(enhanced.Zones[val0].ZoneId),
 // })
@@ -117,18 +117,13 @@ import (
 // Name: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 // ClusterSpec: pulumi.String("ack.pro.small"),
 // Version: pulumi.String(_default.Metadatas[0].Version),
-// WorkerVswitchIds: pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// WorkerVswitchIds: std.SplitOutput(ctx, std.SplitOutputArgs{
 // Separator: pulumi.String(","),
 // Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:63,19-38),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput),
-// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
-// return invoke.Result, nil
-// }).(pulumi.StringArrayOutput)),
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:63,19-38)),
+// }, nil).Result(),
+// }, nil).Result(),
 // NewNatGateway: pulumi.Bool(false),
 // PodCidr: pulumi.String(podCidr),
 // ServiceCidr: pulumi.String(serviceCidr),
@@ -146,10 +141,10 @@ import (
 // }
 // // Create a cluster permission for user.
 // _, err = cs.NewKubernetesPermission(ctx, "default", &cs.KubernetesPermissionArgs{
-// Uid: user.ID(),
+// Uid: user.ID().ToIDOutput().ToStringOutput(),
 // Permissions: cs.KubernetesPermissionPermissionArray{
 // &cs.KubernetesPermissionPermissionArgs{
-// Cluster: defaultManagedKubernetes.ID(),
+// Cluster: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 // RoleType: pulumi.String("cluster"),
 // RoleName: pulumi.String("admin"),
 // Namespace: pulumi.String(""),
@@ -162,10 +157,10 @@ import (
 // return err
 // }
 // _, err = cs.NewKubernetesPermission(ctx, "attach", &cs.KubernetesPermissionArgs{
-// Uid: user.ID(),
+// Uid: user.ID().ToIDOutput().ToStringOutput(),
 // Permissions: cs.KubernetesPermissionPermissionArray{
 // &cs.KubernetesPermissionPermissionArgs{
-// Cluster: defaultManagedKubernetes.ID(),
+// Cluster: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 // RoleType: pulumi.String("namespace"),
 // RoleName: pulumi.String("cs:dev"),
 // Namespace: pulumi.String("default"),

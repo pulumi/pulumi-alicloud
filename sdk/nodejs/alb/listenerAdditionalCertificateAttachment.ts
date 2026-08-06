@@ -171,7 +171,7 @@ import * as utilities from "../utilities";
  *                 defaultServiceCertificate[0].id,
  *                 "-cn-hangzhou",
  *             ],
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *     },
  * });
  * const defaultListenerAdditionalCertificateAttachment = new alicloud.alb.ListenerAdditionalCertificateAttachment("default", {
@@ -181,7 +181,7 @@ import * as utilities from "../utilities";
  *             defaultServiceCertificate[1].id,
  *             "-cn-hangzhou",
  *         ],
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     listenerId: defaultListener.id,
  * });
  * ```

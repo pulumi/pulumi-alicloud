@@ -77,7 +77,7 @@ import (
 //				QueuingStatusCode:           pulumi.String("200"),
 //				WaitingRoomName:             pulumi.String("waitingroom_example"),
 //				Status:                      pulumi.String("off"),
-//				SiteId:                      resourceSiteExample.ID(),
+//				SiteId:                      resourceSiteExample.ID().ToIDOutput().ToStringOutput(),
 //				QueueAllEnable:              pulumi.String("off"),
 //				DisableSessionRenewalEnable: pulumi.String("off"),
 //				Description:                 pulumi.String("example"),

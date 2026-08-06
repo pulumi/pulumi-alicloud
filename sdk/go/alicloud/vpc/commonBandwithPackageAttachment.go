@@ -62,8 +62,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewCommonBandwithPackageAttachment(ctx, "default", &vpc.CommonBandwithPackageAttachmentArgs{
-//				BandwidthPackageId:        _default.ID(),
-//				InstanceId:                defaultEipAddress.ID(),
+//				BandwidthPackageId:        _default.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:                defaultEipAddress.ID().ToIDOutput().ToStringOutput(),
 //				BandwidthPackageBandwidth: pulumi.String("2"),
 //				IpType:                    pulumi.String("EIP"),
 //			})

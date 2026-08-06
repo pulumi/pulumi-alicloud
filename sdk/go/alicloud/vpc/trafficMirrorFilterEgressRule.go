@@ -45,7 +45,7 @@ import (
 //				Priority:              pulumi.Int(2),
 //				SourceCidrBlock:       pulumi.String("10.0.0.0/11"),
 //				DestinationCidrBlock:  pulumi.String("10.0.0.0/12"),
-//				TrafficMirrorFilterId: example.ID(),
+//				TrafficMirrorFilterId: example.ID().ToIDOutput().ToStringOutput(),
 //				Protocol:              pulumi.String("ALL"),
 //			})
 //			if err != nil {

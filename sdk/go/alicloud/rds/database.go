@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -84,7 +84,7 @@ import (
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
 //				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InstanceName:          pulumi.String(name),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //			})
@@ -92,7 +92,7 @@ import (
 //				return err
 //			}
 //			_, err = rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
-//				InstanceId:   defaultInstance.ID(),
+//				InstanceId:   defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				DataBaseName: pulumi.String(name),
 //				CharacterSet: pulumi.String("utf8"),
 //			})

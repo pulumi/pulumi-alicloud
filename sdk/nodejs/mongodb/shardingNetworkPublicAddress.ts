@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * });
  * const example = new alicloud.mongodb.ShardingNetworkPublicAddress("example", {
  *     dbInstanceId: defaultShardingInstance.id,
- *     nodeId: defaultShardingInstance.mongoLists.apply(mongoLists => mongoLists[0].nodeId),
+ *     nodeId: defaultShardingInstance.mongoLists[0].nodeId,
  * });
  * ```
  *

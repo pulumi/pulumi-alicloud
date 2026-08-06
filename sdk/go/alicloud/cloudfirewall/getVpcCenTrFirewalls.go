@@ -88,7 +88,7 @@ import (
 //				SupportMulticast:         pulumi.Bool(false),
 //				TransitRouterName:        pulumi.String("CEN_TR_Terraform"),
 //				TransitRouterDescription: pulumi.String("tr-created-by-terraform"),
-//				CenId:                    cen2.ID(),
+//				CenId:                    cen2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,14 +104,14 @@ import (
 //			vpc1vsw1, err := vpc.NewSwitch(ctx, "vpc1vsw1", &vpc.SwitchArgs{
 //				CidrBlock:   pulumi.String("192.168.1.0/25"),
 //				VswitchName: pulumi.String("vpc1-vsw1"),
-//				VpcId:       vpc1.ID(),
+//				VpcId:       vpc1.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zone1),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpc1vsw2, err := vpc.NewSwitch(ctx, "vpc1vsw2", &vpc.SwitchArgs{
-//				VpcId:       vpc1.ID(),
+//				VpcId:       vpc1.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("192.168.1.128/26"),
 //				VswitchName: pulumi.String("vpc1-vsw2"),
 //				ZoneId:      pulumi.String(zone2),
@@ -130,7 +130,7 @@ import (
 //			vpc2vsw1, err := vpc.NewSwitch(ctx, "vpc2vsw1", &vpc.SwitchArgs{
 //				CidrBlock:   pulumi.String("192.168.2.0/25"),
 //				VswitchName: pulumi.String("vpc2-vsw1"),
-//				VpcId:       vpc2.ID(),
+//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zone1),
 //			})
 //			if err != nil {
@@ -139,7 +139,7 @@ import (
 //			vpc2vsw2, err := vpc.NewSwitch(ctx, "vpc2vsw2", &vpc.SwitchArgs{
 //				CidrBlock:   pulumi.String("192.168.2.128/26"),
 //				VswitchName: pulumi.String("vpc2-vsw2"),
-//				VpcId:       vpc2.ID(),
+//				VpcId:       vpc2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zone2),
 //			})
 //			if err != nil {
@@ -149,34 +149,34 @@ import (
 //				AutoPublishRouteEnabled: pulumi.Bool(false),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						VswitchId: vpc1vsw1.ID(),
+//						VswitchId: vpc1vsw1.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    vpc1vsw1.ZoneId,
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    vpc1vsw2.ZoneId,
-//						VswitchId: vpc1vsw2.ID(),
+//						VswitchId: vpc1vsw2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
-//				VpcId: vpc1.ID(),
-//				CenId: cen2.ID(),
+//				VpcId: vpc1.ID().ToIDOutput().ToStringOutput(),
+//				CenId: cen2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterVpcAttachment(ctx, "tr-vpc2", &cen.TransitRouterVpcAttachmentArgs{
 //				AutoPublishRouteEnabled: pulumi.Bool(false),
-//				VpcId:                   vpc2.ID(),
+//				VpcId:                   vpc2.ID().ToIDOutput().ToStringOutput(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						VswitchId: vpc2vsw1.ID(),
+//						VswitchId: vpc2vsw1.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    vpc2vsw1.ZoneId,
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						VswitchId: vpc2vsw2.ID(),
+//						VswitchId: vpc2vsw2.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    vpc2vsw2.ZoneId,
 //					},
 //				},
-//				CenId: cen2.ID(),
+//				CenId: cen2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //				FirewallDescription:    pulumi.String("VpcCenTrFirewall created by terraform"),
 //				RegionNo:               pulumi.String(region),
 //				RouteMode:              pulumi.String("managed"),
-//				CenId:                  cen2.ID(),
+//				CenId:                  cen2.ID().ToIDOutput().ToStringOutput(),
 //				FirewallVpcCidr:        pulumi.String(firewallVpcCidr),
 //				TransitRouterId:        tr.TransitRouterId,
 //				TrAttachmentMasterCidr: pulumi.String(trAttachmentMasterCidr),
@@ -198,9 +198,9 @@ import (
 //			}
 //			_default := cloudfirewall.GetVpcCenTrFirewallsOutput(ctx, cloudfirewall.GetVpcCenTrFirewallsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultVpcCenTrFirewall.ID(),
+//					defaultVpcCenTrFirewall.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				CenId:           cen2.ID(),
+//				CenId:           cen2.ID().ToIDOutput().ToStringOutput(),
 //				FirewallName:    pulumi.String(firewallName),
 //				RegionNo:        pulumi.String(region),
 //				RouteMode:       pulumi.String("managed"),

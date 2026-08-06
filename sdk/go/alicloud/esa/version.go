@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewVersion(ctx, "default", &esa.VersionArgs{
-//				SiteId:        defaultSite.ID(),
+//				SiteId:        defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				Description:   pulumi.String("example"),
 //				OriginVersion: pulumi.Int(0),
 //			})

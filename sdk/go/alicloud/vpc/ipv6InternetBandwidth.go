@@ -55,7 +55,7 @@ import (
 // return err
 // }
 // vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String("172.16.0.0/21"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
@@ -67,7 +67,7 @@ import (
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 // Name: pulumi.String(name),
 // Description: pulumi.String("foo"),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -89,7 +89,7 @@ import (
 // if err != nil {
 // return err
 // }
-// var splat0 pulumi.StringArray
+// var splat0 pulumi.IDArray
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
@@ -100,28 +100,28 @@ import (
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // ImageId: pulumi.String(defaultGetImages.Images[0].Id),
 // InstanceName: pulumi.String(name),
-// VswitchId: vsw.ID(),
+// VswitchId: vsw.ID().ToIDOutput().ToStringOutput(),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// SecurityGroups: splat0,
+// SecurityGroups: toPulumiIDArray(splat0),
 // })
 // if err != nil {
 // return err
 // }
 // example, err := vpc.NewIpv6Gateway(ctx, "example", &vpc.Ipv6GatewayArgs{
 // Ipv6GatewayName: pulumi.String("example_value"),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
 // }
 // defaultGetIpv6Addresses := vpc.GetIpv6AddressesOutput(ctx, vpc.GetIpv6AddressesOutputArgs{
-// AssociatedInstanceId: vpcInstance.ID(),
+// AssociatedInstanceId: vpcInstance.ID().ToIDOutput().ToStringOutput(),
 // Status: pulumi.String("Available"),
 // }, nil);
 // _, err = vpc.NewIpv6InternetBandwidth(ctx, "example", &vpc.Ipv6InternetBandwidthArgs{
-// Ipv6AddressId: pulumi.String(defaultGetIpv6Addresses.ApplyT(func(defaultGetIpv6Addresses vpc.GetIpv6AddressesResult) (*string, error) {
+// Ipv6AddressId: defaultGetIpv6Addresses.ApplyT(func(defaultGetIpv6Addresses vpc.GetIpv6AddressesResult) (*string, error) {
 // return defaultGetIpv6Addresses.Addresses[0].Id, nil
-// }).(pulumi.StringPtrOutput)),
+// }).(pulumi.StringPtrOutput),
 // Ipv6GatewayId: example.Ipv6GatewayId,
 // InternetChargeType: pulumi.String("PayByBandwidth"),
 // Bandwidth: pulumi.Int(20),
@@ -131,6 +131,13 @@ import (
 // }
 // return nil
 // })
+// }
+// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+// var pulumiArr pulumi.IDArray
+// for _, v := range arr {
+// pulumiArr = append(pulumiArr, pulumi.ID(v))
+// }
+// return pulumiArr
 // }
 // ```
 //

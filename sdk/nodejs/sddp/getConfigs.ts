@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
  * });
- * export const sddpConfigId = _default.apply(_default => _default.ids);
+ * export const sddpConfigId = _default.ids;
  * ```
  */
 export function getConfigs(args?: GetConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigsResult> {
@@ -92,7 +92,7 @@ export interface GetConfigsResult {
  *     ids: [defaultConfig.id],
  *     outputFile: "./t.json",
  * });
- * export const sddpConfigId = _default.apply(_default => _default.ids);
+ * export const sddpConfigId = _default.ids;
  * ```
  */
 export function getConfigsOutput(args?: GetConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigsResult> {

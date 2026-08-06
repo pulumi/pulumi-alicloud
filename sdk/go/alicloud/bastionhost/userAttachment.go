@@ -77,21 +77,21 @@ import (
 //				Period:      pulumi.Int(1),
 //				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultUserGroup, err := bastionhost.NewUserGroup(ctx, "default", &bastionhost.UserGroupArgs{
-//				InstanceId:    defaultInstance.ID(),
+//				InstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				UserGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			localUser, err := bastionhost.NewUser(ctx, "local_user", &bastionhost.UserArgs{
-//				InstanceId:        defaultInstance.ID(),
+//				InstanceId:        defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				MobileCountryCode: pulumi.String("CN"),
 //				Mobile:            pulumi.String("13312345678"),
 //				Password:          pulumi.String("YourPassword-123"),
@@ -102,7 +102,7 @@ import (
 //				return err
 //			}
 //			_, err = bastionhost.NewUserAttachment(ctx, "default", &bastionhost.UserAttachmentArgs{
-//				InstanceId:  defaultInstance.ID(),
+//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				UserGroupId: defaultUserGroup.UserGroupId,
 //				UserId:      localUser.UserId,
 //			})

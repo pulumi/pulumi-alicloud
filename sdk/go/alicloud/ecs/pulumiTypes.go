@@ -6256,7 +6256,7 @@ type GetDisksDisk struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -6353,7 +6353,7 @@ type GetDisksDiskArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -6605,7 +6605,7 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.GetDisks(ctx, &ecs.GetDisksArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},
@@ -14892,7 +14892,7 @@ type GetInstancesInstance struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -14977,7 +14977,7 @@ type GetInstancesInstanceArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -15166,7 +15166,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},
@@ -16642,7 +16642,7 @@ type GetSecurityGroupsGroup struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -16697,7 +16697,7 @@ type GetSecurityGroupsGroupArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -16814,7 +16814,7 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},

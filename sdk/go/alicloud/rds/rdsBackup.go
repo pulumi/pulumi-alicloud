@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = rds.NewRdsBackup(ctx, "example", &rds.RdsBackupArgs{
-//				DbInstanceId: example.ID(),
+//				DbInstanceId: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

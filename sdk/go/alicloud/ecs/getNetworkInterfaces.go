@@ -56,23 +56,23 @@ import (
 //				VswitchName:      pulumi.String(name),
 //				CidrBlock:        pulumi.String("192.168.0.0/24"),
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
-//				VpcId:            vpc2.ID(),
+//				VpcId:            vpc2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: vpc2.ID(),
+//				VpcId: vpc2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_interface, err := vpc.NewNetworkInterface(ctx, "interface", &vpc.NetworkInterfaceArgs{
 //				Name:      pulumi.Sprintf("%v%v", name, "%d"),
-//				VswitchId: vswitch.ID(),
+//				VswitchId: vswitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroups: pulumi.StringArray{
-//					group.ID(),
+//					group.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Description: pulumi.String("Basic test"),
 //				PrivateIp:   pulumi.String("192.168.0.2"),
@@ -86,21 +86,21 @@ import (
 //			instance, err := ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					group.ID(),
+//					group.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceType:            pulumi.String("ecs.e3.xlarge"),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				ImageId:                 pulumi.String("centos_7_04_64_20G_alibase_201701015.vhd"),
 //				InstanceName:            pulumi.String(name),
-//				VswitchId:               vswitch.ID(),
+//				VswitchId:               vswitch.ID().ToIDOutput().ToStringOutput(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			attachment, err := vpc.NewNetworkInterfaceAttachment(ctx, "attachment", &vpc.NetworkInterfaceAttachmentArgs{
-//				InstanceId:         instance.ID(),
-//				NetworkInterfaceId: _interface.ID(),
+//				InstanceId:         instance.ID().ToIDOutput().ToStringOutput(),
+//				NetworkInterfaceId: _interface.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -113,12 +113,12 @@ import (
 //				Tags: pulumi.StringMap{
 //					"TF-VER": pulumi.String("0.11.3"),
 //				},
-//				VpcId:           vpc2.ID(),
-//				VswitchId:       vswitch.ID(),
+//				VpcId:           vpc2.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       vswitch.ID().ToIDOutput().ToStringOutput(),
 //				PrivateIp:       pulumi.String("192.168.0.2"),
-//				SecurityGroupId: group.ID(),
+//				SecurityGroupId: group.ID().ToIDOutput().ToStringOutput(),
 //				Type:            pulumi.String("Secondary"),
-//				InstanceId:      instance.ID(),
+//				InstanceId:      instance.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("eni0Name", defaultGetNetworkInterfaces.ApplyT(func(defaultGetNetworkInterfaces ecs.GetNetworkInterfacesResult) (*string, error) {
 //				return defaultGetNetworkInterfaces.Interfaces[0].Name, nil

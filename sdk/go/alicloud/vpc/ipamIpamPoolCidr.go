@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err = vpc.NewIpamIpamPoolCidr(ctx, "default", &vpc.IpamIpamPoolCidrArgs{
 //				Cidr:       pulumi.String("10.0.0.0/8"),
-//				IpamPoolId: defaultIpamPool.ID(),
+//				IpamPoolId: defaultIpamPool.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

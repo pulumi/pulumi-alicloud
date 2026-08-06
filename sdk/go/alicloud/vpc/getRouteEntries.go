@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
-//				VpcId:            fooNetwork.ID(),
+//				VpcId:            fooNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:        pulumi.String("10.1.1.0/24"),
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				VswitchName:      pulumi.String(name),
@@ -78,16 +78,16 @@ import (
 //			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tf_test_foo", &ecs.SecurityGroupArgs{
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String("foo"),
-//				VpcId:       fooNetwork.ID(),
+//				VpcId:       fooNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			fooInstance, err := ecs.NewInstance(ctx, "foo", &ecs.InstanceArgs{
 //				SecurityGroups: pulumi.StringArray{
-//					tfTestFoo.ID(),
+//					tfTestFoo.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId:               fooSwitch.ID(),
+//				VswitchId:               fooSwitch.ID().ToIDOutput().ToStringOutput(),
 //				AllocatePublicIp:        pulumi.Bool(true),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
 //				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
@@ -104,7 +104,7 @@ import (
 //				RouteTableId:         fooNetwork.RouteTableId,
 //				DestinationCidrblock: pulumi.String("172.11.1.1/32"),
 //				NexthopType:          pulumi.String("Instance"),
-//				NexthopId:            fooInstance.ID(),
+//				NexthopId:            fooInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -116,7 +116,7 @@ import (
 //				Policy:          pulumi.String("accept"),
 //				PortRange:       pulumi.String("22/22"),
 //				Priority:        pulumi.Int(1),
-//				SecurityGroupId: tfTestFoo.ID(),
+//				SecurityGroupId: tfTestFoo.ID().ToIDOutput().ToStringOutput(),
 //				CidrIp:          pulumi.String("0.0.0.0/0"),
 //			})
 //			if err != nil {

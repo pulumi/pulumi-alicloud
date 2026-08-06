@@ -57,7 +57,7 @@ import (
 //			exampleMaster, err := vpc.NewSwitch(ctx, "example_master", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(masterZone),
 //			})
 //			if err != nil {
@@ -66,7 +66,7 @@ import (
 //			exampleSlave, err := vpc.NewSwitch(ctx, "example_slave", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VpcId:       example.ID(),
+//				VpcId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(slaveZone),
 //			})
 //			if err != nil {
@@ -81,23 +81,23 @@ import (
 //			}
 //			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String(name),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterVpcAttachment(ctx, "example", &cen.TransitRouterVpcAttachmentArgs{
-//				CenId:           exampleInstance.ID(),
+//				CenId:           exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterId: exampleTransitRouter.TransitRouterId,
-//				VpcId:           example.ID(),
+//				VpcId:           example.ID().ToIDOutput().ToStringOutput(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(masterZone),
-//						VswitchId: exampleMaster.ID(),
+//						VswitchId: exampleMaster.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(slaveZone),
-//						VswitchId: exampleSlave.ID(),
+//						VswitchId: exampleSlave.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				TransitRouterVpcAttachmentName:     pulumi.String(name),

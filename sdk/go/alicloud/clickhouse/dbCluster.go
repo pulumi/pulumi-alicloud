@@ -66,7 +66,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetRegions.Regions[0].ZoneIds[0].ZoneId),
 //			})
 //			if err != nil {
@@ -81,8 +81,8 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				DbNodeStorage:        pulumi.String("100"),
 //				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            defaultSwitch.ID(),
-//				VpcId:                defaultNetwork.ID(),
+//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {

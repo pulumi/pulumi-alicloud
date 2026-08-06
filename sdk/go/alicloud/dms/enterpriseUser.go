@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = dms.NewEnterpriseUser(ctx, "default", &dms.EnterpriseUserArgs{
-//				Uid:      _default.ID(),
+//				Uid:      _default.ID().ToIDOutput().ToStringOutput(),
 //				UserName: pulumi.String(name),
 //				RoleNames: pulumi.StringArray{
 //					pulumi.String("DBA"),

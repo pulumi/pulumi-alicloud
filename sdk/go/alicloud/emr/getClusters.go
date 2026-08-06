@@ -210,7 +210,7 @@ import (
 //				},
 //				HighAvailabilityEnable: pulumi.Bool(true),
 //				ZoneId:                 pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
-//				SecurityGroupId:        defaultSecurityGroup.ID(),
+//				SecurityGroupId:        defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				IsOpenPublicIp:         pulumi.Bool(true),
 //				ChargeType:             pulumi.String("PostPaid"),
 //				VswitchId:              pulumi.String(defaultGetSwitches.Ids[0]),

@@ -213,7 +213,7 @@ import (
 // tmp4 = defaultGetSecurityGroups.Ids[0]
 // } else {
 // tmp4 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:91,12-38),
 // []string{
 // "",
@@ -229,7 +229,7 @@ import (
 // tmp5 = defaultGetEcsDeploymentSets.Sets[0].DeploymentSetId
 // } else {
 // tmp5 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:94,12-41),
 // []string{
 // "",
@@ -245,7 +245,7 @@ import (
 // tmp6 = defaultGetKeyPairs.Ids[0]
 // } else {
 // tmp6 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:97,12-32),
 // []string{
 // "",
@@ -261,7 +261,7 @@ import (
 // tmp7 = defaultGetDedicatedHostGroups.Ids[0]
 // } else {
 // tmp7 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:100,12-43),
 // []string{
 // "",

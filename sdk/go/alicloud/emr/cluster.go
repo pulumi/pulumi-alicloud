@@ -98,7 +98,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID()
+//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -129,7 +129,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID()
+//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -220,13 +220,13 @@ import (
 //			}
 //			var tmp12 pulumi.String
 //			if securityGroupId == "" {
-//				tmp12 = defaultSecurityGroup[0].ID()
+//				tmp12 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp12 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp13 pulumi.String
 //			if vswitchId == "" {
-//				tmp13 = vswitch[0].ID()
+//				tmp13 = vswitch[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
@@ -374,7 +374,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID()
+//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -405,7 +405,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID()
+//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -496,13 +496,13 @@ import (
 //			}
 //			var tmp12 pulumi.String
 //			if securityGroupId == "" {
-//				tmp12 = defaultSecurityGroup[0].ID()
+//				tmp12 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp12 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp13 pulumi.String
 //			if vswitchId == "" {
-//				tmp13 = vswitch[0].ID()
+//				tmp13 = vswitch[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
@@ -648,7 +648,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID()
+//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -679,7 +679,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID()
+//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -770,13 +770,13 @@ import (
 //			}
 //			var tmp12 pulumi.String
 //			if securityGroupId == "" {
-//				tmp12 = defaultSecurityGroup[0].ID()
+//				tmp12 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp12 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp13 pulumi.String
 //			if vswitchId == "" {
-//				tmp13 = vswitch[0].ID()
+//				tmp13 = vswitch[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp13 = pulumi.Any(vswitchId)
 //			}
@@ -914,7 +914,7 @@ import (
 //			}
 //			var tmp1 pulumi.String
 //			if vpcId == "" {
-//				tmp1 = vpc2[0].ID()
+//				tmp1 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp1 = pulumi.Any(vpcId)
 //			}
@@ -945,7 +945,7 @@ import (
 //			}
 //			var tmp4 pulumi.String
 //			if vpcId == "" {
-//				tmp4 = vpc2[0].ID()
+//				tmp4 = vpc2[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp4 = pulumi.Any(vpcId)
 //			}
@@ -1012,13 +1012,13 @@ import (
 //			}
 //			var tmp8 pulumi.String
 //			if securityGroupId == "" {
-//				tmp8 = defaultSecurityGroup[0].ID()
+//				tmp8 = defaultSecurityGroup[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp8 = pulumi.Any(securityGroupId)
 //			}
 //			var tmp9 pulumi.String
 //			if vswitchId == "" {
-//				tmp9 = vswitch[0].ID()
+//				tmp9 = vswitch[0].ID().ToIDOutput().ToStringOutput()
 //			} else {
 //				tmp9 = pulumi.Any(vswitchId)
 //			}

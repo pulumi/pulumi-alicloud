@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = apigateway.NewAclEntryAttachment(ctx, "default", &apigateway.AclEntryAttachmentArgs{
-//				AclId:   _default.ID(),
+//				AclId:   _default.ID().ToIDOutput().ToStringOutput(),
 //				Entry:   pulumi.String("128.0.0.1/32"),
 //				Comment: pulumi.String("test comment"),
 //			})

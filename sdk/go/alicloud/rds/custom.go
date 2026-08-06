@@ -88,7 +88,7 @@ import (
 //				return err
 //			}
 //			vSwitchId, err := vpc.NewSwitch(ctx, "vSwitchId", &vpc.SwitchArgs{
-//				VpcId:       vpcId.ID(),
+//				VpcId:       vpcId.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(exampleZoneId),
 //				VswitchName: pulumi.String(vswtich_id),
 //				CidrBlock:   pulumi.String("172.16.5.0/24"),
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			securityGroupId, err := ecs.NewSecurityGroup(ctx, "securityGroupId", &ecs.SecurityGroupArgs{
-//				VpcId:             vpcId.ID(),
+//				VpcId:             vpcId.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupName: pulumi.String(securitygroupName),
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			keyPairName, err := ecs.NewEcsKeyPair(ctx, "KeyPairName", &ecs.EcsKeyPairArgs{
-//				KeyPairName: vSwitchId.ID(),
+//				KeyPairName: vSwitchId.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -128,11 +128,11 @@ import (
 //				},
 //				Status: pulumi.String("Running"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					securityGroupId.ID(),
+//					securityGroupId.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				IoOptimized:                 pulumi.String("optimized"),
 //				Description:                 pulumi.String(description),
-//				KeyPairName:                 keyPairName.ID(),
+//				KeyPairName:                 keyPairName.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:                      pulumi.String(exampleZoneId),
 //				InstanceChargeType:          pulumi.String("Prepaid"),
 //				InternetMaxBandwidthOut:     pulumi.Int(0),
@@ -147,7 +147,7 @@ import (
 //				HostName:        pulumi.String("1743386110"),
 //				CreateMode:      pulumi.String("0"),
 //				SpotStrategy:    pulumi.String("NoSpot"),
-//				VswitchId:       vSwitchId.ID(),
+//				VswitchId:       vSwitchId.ID().ToIDOutput().ToStringOutput(),
 //				SupportCase:     pulumi.String("eni"),
 //				DeploymentSetId: pulumi.String(deploymentsetid),
 //				DryRun:          pulumi.Bool(false),

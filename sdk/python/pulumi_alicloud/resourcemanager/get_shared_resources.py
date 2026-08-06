@@ -143,7 +143,7 @@ def get_shared_resources(ids: Optional[Sequence[_builtins.str]] = None,
         ]).result])
     pulumi.export("firstResourceManagerSharedResourceId", ids.resources[0].id)
     resource_share_id = alicloud.resourcemanager.get_shared_resources_output(resource_share_id=default_shared_resource.resource_share_id)
-    pulumi.export("secondResourceManagerSharedResourceId", resource_share_id.resources[0].id)
+    pulumi.export("secondResourceManagerSharedResourceId", resource_share_id.apply(lambda resource_share_id: resource_share_id.resources[0].id))
     ```
 
 
@@ -206,7 +206,7 @@ def get_shared_resources_output(ids: pulumi.Input[Optional[Optional[Sequence[_bu
         ]).result])
     pulumi.export("firstResourceManagerSharedResourceId", ids.resources[0].id)
     resource_share_id = alicloud.resourcemanager.get_shared_resources_output(resource_share_id=default_shared_resource.resource_share_id)
-    pulumi.export("secondResourceManagerSharedResourceId", resource_share_id.resources[0].id)
+    pulumi.export("secondResourceManagerSharedResourceId", resource_share_id.apply(lambda resource_share_id: resource_share_id.resources[0].id))
     ```
 
 

@@ -40,12 +40,10 @@ import (
 //			}
 //			ids := ehpc.GetJobTemplatesOutput(ctx, ehpc.GetJobTemplatesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
-//			ctx.Export("ehpcJobTemplateId1", ids.ApplyT(func(ids ehpc.GetJobTemplatesResult) (*string, error) {
-//				return ids.Id, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("ehpcJobTemplateId1", ids.Id())
 //			return nil
 //		})
 //	}

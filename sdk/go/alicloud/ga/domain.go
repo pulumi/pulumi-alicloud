@@ -44,7 +44,7 @@ import (
 //			}
 //			_, err = ga.NewDomain(ctx, "default", &ga.DomainArgs{
 //				Domain:        pulumi.String("changes.com.cn"),
-//				AcceleratorId: _default.ID(),
+//				AcceleratorId: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

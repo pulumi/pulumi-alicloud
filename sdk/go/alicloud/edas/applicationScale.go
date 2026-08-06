@@ -78,14 +78,14 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -96,9 +96,9 @@ import (
 //				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId:               defaultSwitch.ID(),
+//				VswitchId:               defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InstanceChargeType:      pulumi.String("PostPaid"),
@@ -112,15 +112,15 @@ import (
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
 //				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
-//				VpcId:           defaultNetwork.ID(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultInstanceClusterAttachment, err := edas.NewInstanceClusterAttachment(ctx, "default", &edas.InstanceClusterAttachmentArgs{
-//				ClusterId: defaultCluster.ID(),
+//				ClusterId: defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				InstanceIds: pulumi.StringArray{
-//					defaultInstance.ID(),
+//					defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -128,14 +128,14 @@ import (
 //			}
 //			defaultApplication, err := edas.NewApplication(ctx, "default", &edas.ApplicationArgs{
 //				ApplicationName: pulumi.String(name),
-//				ClusterId:       defaultCluster.ID(),
+//				ClusterId:       defaultCluster.ID().ToIDOutput().ToStringOutput(),
 //				PackageType:     pulumi.String("WAR"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultDeployGroup, err := edas.NewDeployGroup(ctx, "default", &edas.DeployGroupArgs{
-//				AppId:     defaultApplication.ID(),
+//				AppId:     defaultApplication.ID().ToIDOutput().ToStringOutput(),
 //				GroupName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -145,14 +145,14 @@ import (
 //				AppId: defaultDeployGroup.AppId,
 //			}, nil)
 //			_, err = edas.NewApplicationScale(ctx, "default", &edas.ApplicationScaleArgs{
-//				AppId: defaultApplication.ID(),
-//				DeployGroup: pulumi.String(defaultGetDeployGroups.ApplyT(func(defaultGetDeployGroups edas.GetDeployGroupsResult) (*string, error) {
+//				AppId: defaultApplication.ID().ToIDOutput().ToStringOutput(),
+//				DeployGroup: defaultGetDeployGroups.ApplyT(func(defaultGetDeployGroups edas.GetDeployGroupsResult) (*string, error) {
 //					return defaultGetDeployGroups.Groups[0].GroupId, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				EcuInfos: pulumi.StringArray{
 //					pulumi.All(defaultInstanceClusterAttachment.EcuMap, defaultInstance.ID()).ApplyT(func(_args []interface{}) (string, error) {
 //						ecuMap := _args[0].(map[string]string)
-//						id := _args[1].(string)
+//						id := _args[1].(pulumi.ID)
 //						return ecuMap[id], nil
 //					}).(pulumi.StringOutput),
 //				},

@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -100,7 +100,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(myName),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -114,17 +114,17 @@ import (
 //					pulumi.String("OldestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultScalingConfiguration, err := ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
-//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ScalingGroupId:  defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
 //				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				SystemDiskSize:  pulumi.Int(50),
 //				ForceDelete:     pulumi.Bool(true),
 //				Active:          pulumi.Bool(true),
@@ -135,7 +135,7 @@ import (
 //			}
 //			defaultServerGroup, err := alb.NewServerGroup(ctx, "default", &alb.ServerGroupArgs{
 //				ServerGroupName: pulumi.String(myName),
-//				VpcId:           defaultNetwork.ID(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
 //					HealthCheckEnabled: pulumi.Bool(false),
 //				},
@@ -150,7 +150,7 @@ import (
 //			}
 //			_, err = ess.NewServerGroupAttachment(ctx, "default", &ess.ServerGroupAttachmentArgs{
 //				ScalingGroupId: defaultScalingConfiguration.ScalingGroupId,
-//				ServerGroupId:  defaultServerGroup.ID(),
+//				ServerGroupId:  defaultServerGroup.ID().ToIDOutput().ToStringOutput(),
 //				Port:           pulumi.Int(9000),
 //				Type:           pulumi.String("ALB"),
 //				Weight:         pulumi.Int(50),

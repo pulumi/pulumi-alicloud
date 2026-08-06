@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = vpc.NewPrefixList(ctx, "default", &vpc.PrefixListArgs{
 //				MaxEntries:            pulumi.Int(50),
-//				ResourceGroupId:       defaultRg.ID(),
+//				ResourceGroupId:       defaultRg.ID().ToIDOutput().ToStringOutput(),
 //				PrefixListDescription: pulumi.String("test"),
 //				IpVersion:             pulumi.String("IPV4"),
 //				PrefixListName:        pulumi.String(name),

@@ -84,14 +84,14 @@ import (
 // if err != nil {
 // return err
 // }
-// var splat0 pulumi.StringArray
+// var splat0 pulumi.IDArray
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
 // defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
 // ImageId: pulumi.String(defaultGetImages.Images[0].Id),
 // InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-// SecurityGroups: splat0,
+// SecurityGroups: toPulumiIDArray(splat0),
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
@@ -105,13 +105,20 @@ import (
 // }
 // _, err = databasefilesystem.NewInstanceAttachment(ctx, "default", &databasefilesystem.InstanceAttachmentArgs{
 // InstanceId: pulumi.String(_default.Instances[0].Id),
-// EcsId: defaultInstance.ID(),
+// EcsId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
 // }
 // return nil
 // })
+// }
+// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+// var pulumiArr pulumi.IDArray
+// for _, v := range arr {
+// pulumiArr = append(pulumiArr, pulumi.ID(v))
+// }
+// return pulumiArr
 // }
 // ```
 //

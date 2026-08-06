@@ -53,7 +53,7 @@ import (
 //				Rule:        pulumi.String("http.host eq \"video.example.com\""),
 //				SiteVersion: pulumi.Int(0),
 //				RuleName:    pulumi.String("rule_example"),
-//				SiteId:      defaultSite.ID(),
+//				SiteId:      defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				RuleEnable:  pulumi.String("off"),
 //				Enable:      pulumi.String("off"),
 //			})

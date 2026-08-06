@@ -67,7 +67,7 @@ import (
 //				Rule:        pulumi.String("(http.host eq \"video.example1.com\")"),
 //				Sequence:    pulumi.Int(1),
 //				RoutineName: defaultRoutine.Name,
-//				SiteId:      defaultSite.ID(),
+//				SiteId:      defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				Bypass:      pulumi.String("off"),
 //				RouteName:   pulumi.String("example_routine"),
 //			})

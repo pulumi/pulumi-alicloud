@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			defaultRv5UXt, err := vpc.NewSwitch(ctx, "defaultRv5UXt", &vpc.SwitchArgs{
-//				VpcId:     defaultZc8RD9.ID(),
+//				VpcId:     defaultZc8RD9.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -75,17 +75,17 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String(_default.Zones[0].Id),
-//				VswitchId:           defaultRv5UXt.ID(),
+//				VswitchId:           defaultRv5UXt.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               defaultZc8RD9.ID(),
+//				VpcId:               defaultZc8RD9.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Description:         pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]int{
 //				"CpuRateLimit":      10,
 //				"MemoryLimit":       10,
 //				"MemorySharedQuota": 80,
@@ -98,7 +98,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = gpdb.NewDbResourceGroup(ctx, "default", &gpdb.DbResourceGroupArgs{
 //				ResourceGroupConfig: pulumi.String(json0),
-//				DbInstanceId:        defaultJXWSlW.ID(),
+//				DbInstanceId:        defaultJXWSlW.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupName:   pulumi.String("yb_example_group"),
 //			})
 //			if err != nil {

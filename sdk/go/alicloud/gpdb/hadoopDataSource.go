@@ -194,12 +194,12 @@ import (
 //				NodeAttributes: emrv2.ClusterNodeAttributeArray{
 //					&emrv2.ClusterNodeAttributeArgs{
 //						ZoneId:            pulumi.String("cn-beijing-h"),
-//						KeyPairName:       defaultEcsKeyPair.ID(),
+//						KeyPairName:       defaultEcsKeyPair.ID().ToIDOutput().ToStringOutput(),
 //						DataDiskEncrypted: pulumi.Bool(true),
 //						DataDiskKmsKeyId:  pulumi.String(defaultGetKeys.Ids[0]),
 //						VpcId:             pulumi.String(defaultGetNetworks.Ids[0]),
 //						RamRole:           defaultRole.Name,
-//						SecurityGroupId:   defaultSecurityGroup.ID(),
+//						SecurityGroupId:   defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
@@ -233,7 +233,7 @@ import (
 //			}
 //			defaultyOxz1K, err := gpdb.NewExternalDataService(ctx, "defaultyOxz1K", &gpdb.ExternalDataServiceArgs{
 //				ServiceName:        pulumi.String(name),
-//				DbInstanceId:       defaultZoepvx.ID(),
+//				DbInstanceId:       defaultZoepvx.ID().ToIDOutput().ToStringOutput(),
 //				ServiceDescription: pulumi.String(name),
 //				ServiceSpec:        pulumi.String("8"),
 //			})
@@ -250,8 +250,8 @@ import (
 //				MapReduceConf:         pulumi.String("aaa"),
 //				DataSourceType:        pulumi.String("hive"),
 //				HadoopCoreConf:        pulumi.String("aaa"),
-//				EmrInstanceId:         defaultCluster.ID(),
-//				DbInstanceId:          defaultZoepvx.ID(),
+//				EmrInstanceId:         defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				DbInstanceId:          defaultZoepvx.ID().ToIDOutput().ToStringOutput(),
 //				HadoopHostsAddress:    pulumi.String("aaa"),
 //			})
 //			if err != nil {

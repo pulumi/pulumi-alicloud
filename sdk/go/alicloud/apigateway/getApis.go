@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			defaultApi, err := apigateway.NewApi(ctx, "default", &apigateway.ApiArgs{
-//				GroupId:     _default.ID(),
+//				GroupId:     _default.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //				AuthType:    pulumi.String("APP"),
@@ -79,7 +79,7 @@ import (
 //			}
 //			ids := apigateway.GetApisOutput(ctx, apigateway.GetApisOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultApi.ID(),
+//					defaultApi.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("apiGatewayApisId0", ids.ApplyT(func(ids apigateway.GetApisResult) (*string, error) {

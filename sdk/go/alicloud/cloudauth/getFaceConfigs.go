@@ -40,7 +40,7 @@ import (
 //			}
 //			_default := cloudauth.GetFaceConfigsOutput(ctx, cloudauth.GetFaceConfigsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultFaceConfig.ID(),
+//					defaultFaceConfig.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultFaceConfig.BizName,
 //			}, nil)

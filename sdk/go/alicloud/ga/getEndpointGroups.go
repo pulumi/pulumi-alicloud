@@ -64,7 +64,7 @@ import (
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
 //				AcceleratorId:      pulumi.String(_default.Ids[0]),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -94,7 +94,7 @@ import (
 //			}
 //			defaultEndpointGroup, err := ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
 //				AcceleratorId:              defaultListener.AcceleratorId,
-//				ListenerId:                 defaultListener.ID(),
+//				ListenerId:                 defaultListener.ID().ToIDOutput().ToStringOutput(),
 //				Description:                pulumi.String(name),
 //				Name:                       pulumi.String(name),
 //				ThresholdCount:             pulumi.Int(4),
@@ -122,7 +122,7 @@ import (
 //			defaultGetEndpointGroups := ga.GetEndpointGroupsOutput(ctx, ga.GetEndpointGroupsOutputArgs{
 //				AcceleratorId: defaultEndpointGroup.AcceleratorId,
 //				Ids: pulumi.StringArray{
-//					defaultEndpointGroup.ID(),
+//					defaultEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("firstGaEndpointGroupId", defaultGetEndpointGroups.ApplyT(func(defaultGetEndpointGroups ga.GetEndpointGroupsResult) (*string, error) {

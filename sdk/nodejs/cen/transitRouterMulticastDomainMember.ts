@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     primaryIpAddress: std.cidrhostOutput({
  *         input: exampleSwitch.cidrBlock,
  *         host: 100,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     securityGroupIds: [exampleSecurityGroup.id],
  * });
  * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});

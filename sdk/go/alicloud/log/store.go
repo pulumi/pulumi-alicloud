@@ -137,7 +137,7 @@ import (
 //				Description:         pulumi.String("terraform-example"),
 //				PendingWindowInDays: pulumi.Int(7),
 //				Status:              pulumi.String("Enabled"),
-//				DkmsInstanceId:      defaultInstance.ID(),
+//				DkmsInstanceId:      defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -159,7 +159,7 @@ import (
 //					Enable:      pulumi.Bool(true),
 //					EncryptType: pulumi.String("default"),
 //					UserCmkInfo: &log.StoreEncryptConfUserCmkInfoArgs{
-//						CmkKeyId: exampleKey.ID(),
+//						CmkKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 //						Arn:      pulumi.Sprintf("acs:ram::%v:role/aliyunlogdefaultrole", example.Id),
 //						RegionId: pulumi.String(region),
 //					},

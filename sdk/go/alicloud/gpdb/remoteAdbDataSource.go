@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			defaultwSAVpf, err := vpc.NewSwitch(ctx, "defaultwSAVpf", &vpc.SwitchArgs{
-//				VpcId:     default4Mf0nY.ID(),
+//				VpcId:     default4Mf0nY.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -75,10 +75,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultwSAVpf.ID(),
+//				VswitchId:           defaultwSAVpf.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               default4Mf0nY.ID(),
+//				VpcId:               default4Mf0nY.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //			})
@@ -96,10 +96,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           defaultwSAVpf.ID(),
+//				VswitchId:           defaultwSAVpf.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               default4Mf0nY.ID(),
+//				VpcId:               default4Mf0nY.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //			})
@@ -108,7 +108,7 @@ import (
 //			}
 //			_, err = gpdb.NewAccount(ctx, "default26qpEo", &gpdb.AccountArgs{
 //				AccountDescription: pulumi.String("example_001"),
-//				DbInstanceId:       defaultEtEzMF.ID(),
+//				DbInstanceId:       defaultEtEzMF.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:        pulumi.String("example_001"),
 //				AccountPassword:    pulumi.String("example_001"),
 //			})
@@ -117,7 +117,7 @@ import (
 //			}
 //			defaultwXePof, err := gpdb.NewAccount(ctx, "defaultwXePof", &gpdb.AccountArgs{
 //				AccountDescription: pulumi.String("example_001"),
-//				DbInstanceId:       defaultEY7t9t.ID(),
+//				DbInstanceId:       defaultEY7t9t.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:        pulumi.String("example_001"),
 //				AccountPassword:    pulumi.String("example_001"),
 //			})
@@ -133,7 +133,7 @@ import (
 //				DataSourceName:      pulumi.String("myexample"),
 //				UserPassword:        pulumi.String("example_001"),
 //				ManagerUserPassword: pulumi.String("example_001"),
-//				LocalDbInstanceId:   defaultEtEzMF.ID(),
+//				LocalDbInstanceId:   defaultEtEzMF.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

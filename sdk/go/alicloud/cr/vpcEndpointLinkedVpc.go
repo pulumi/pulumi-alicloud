@@ -66,7 +66,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -84,9 +84,9 @@ import (
 //				return err
 //			}
 //			_, err = cr.NewVpcEndpointLinkedVpc(ctx, "default", &cr.VpcEndpointLinkedVpcArgs{
-//				InstanceId:                  defaultRegistryEnterpriseInstance.ID(),
-//				VpcId:                       defaultNetwork.ID(),
-//				VswitchId:                   defaultSwitch.ID(),
+//				InstanceId:                  defaultRegistryEnterpriseInstance.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:                       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:                   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ModuleName:                  pulumi.String("Registry"),
 //				EnableCreateDnsRecordInPvzt: pulumi.Bool(true),
 //			})

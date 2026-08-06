@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -69,14 +69,14 @@ import (
 //				EngineVersion:   pulumi.String("5.6"),
 //				InstanceType:    pulumi.String("rds.mysql.t1.small"),
 //				InstanceStorage: pulumi.Int(10),
-//				VswitchId:       defaultSwitch.ID(),
+//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				InstanceName:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rds.NewConnection(ctx, "default", &rds.ConnectionArgs{
-//				InstanceId:       defaultInstance.ID(),
+//				InstanceId:       defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionPrefix: pulumi.String("testabc"),
 //			})
 //			if err != nil {

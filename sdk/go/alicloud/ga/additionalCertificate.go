@@ -70,7 +70,7 @@ import (
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
 //				AcceleratorId:      pulumi.String(_default.Ids[0]),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -169,13 +169,10 @@ import (
 //						Id: std.JoinOutput(ctx, std.JoinOutputArgs{
 //							Separator: pulumi.String("-"),
 //							Input: pulumi.StringArray{
-//								defaultServiceCertificate[1].ID(),
+//								defaultServiceCertificate[1].ID().ToIDOutput().ToStringOutput(),
 //								pulumi.String(region),
 //							},
-//						}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//							val := invoke.Result
-//							return &val, nil
-//						}).(pulumi.StringPtrOutput),
+//						}, nil).Result(),
 //					},
 //				},
 //			})
@@ -184,19 +181,16 @@ import (
 //			}
 //			domain := "alicloud-provider.cn"
 //			_, err = ga.NewAdditionalCertificate(ctx, "default", &ga.AdditionalCertificateArgs{
-//				CertificateId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//				CertificateId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String("-"),
 //					Input: pulumi.StringArray{
-//						defaultServiceCertificate[1].ID(),
+//						defaultServiceCertificate[1].ID().ToIDOutput().ToStringOutput(),
 //						pulumi.String(region),
 //					},
-//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				Domain:        pulumi.String(domain),
 //				AcceleratorId: defaultListener.AcceleratorId,
-//				ListenerId:    defaultListener.ID(),
+//				ListenerId:    defaultListener.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

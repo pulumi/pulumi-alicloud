@@ -85,7 +85,7 @@ import (
 // tmp1 = _default.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:40,12-34),
 // []string{
 // "",

@@ -76,7 +76,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -102,7 +102,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				WorkerVswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(true),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -114,9 +114,9 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				Name:      pulumi.String(name),
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),

@@ -101,7 +101,7 @@ import (
 // tmp1 = defaultGetSwitches.Ids[0]
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
-// Input: pulumi.StringArrayArray{
+// Input: []interface{}{
 // %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:35,12-25),
 // []string{
 // "",
@@ -127,7 +127,7 @@ import (
 // }
 // _ = vpn.GetGatewaysOutput(ctx, vpn.GetGatewaysOutputArgs{
 // Ids: pulumi.StringArray{
-// defaultGateway.ID(),
+// defaultGateway.ID().ToIDOutput().ToStringOutput(),
 // },
 // IncludeReservationData: pulumi.Bool(true),
 // OutputFile: pulumi.String("/tmp/vpns"),

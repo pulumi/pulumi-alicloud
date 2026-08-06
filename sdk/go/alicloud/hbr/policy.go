@@ -63,7 +63,7 @@ import (
 //						Schedule:    pulumi.String("I|1631685600|P1D"),
 //						Retention:   pulumi.Int(7),
 //						ArchiveDays: pulumi.Int(0),
-//						VaultId:     defaultyk84Hc.ID(),
+//						VaultId:     defaultyk84Hc.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				PolicyDescription: pulumi.String("policy example"),

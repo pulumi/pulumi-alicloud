@@ -52,7 +52,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String("vpc-123456"),
 //			})
@@ -69,7 +69,7 @@ import (
 //				DbInstanceDescription: pulumi.String("Created by terraform"),
 //				InstanceNetworkType:   pulumi.String("VPC"),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

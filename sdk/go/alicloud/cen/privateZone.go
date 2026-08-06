@@ -63,8 +63,8 @@ import (
 //				return err
 //			}
 //			defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "default", &cen.InstanceAttachmentArgs{
-//				InstanceId:            defaultInstance.ID(),
-//				ChildInstanceId:       defaultNetwork.ID(),
+//				InstanceId:            defaultInstance.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
@@ -74,7 +74,7 @@ import (
 //			_, err = cen.NewPrivateZone(ctx, "default", &cen.PrivateZoneArgs{
 //				CenId:          defaultInstanceAttachment.InstanceId,
 //				AccessRegionId: pulumi.String(_default.Regions[0].Id),
-//				HostVpcId:      defaultNetwork.ID(),
+//				HostVpcId:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				HostRegionId:   pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {

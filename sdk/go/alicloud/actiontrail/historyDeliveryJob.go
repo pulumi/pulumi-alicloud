@@ -77,8 +77,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON0, err := json.Marshal([]map[string]string{
+//				{
 //					"ServiceName": "PDS",
 //				},
 //			})
@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "default", &actiontrail.HistoryDeliveryJobArgs{
-//				TrailName: defaultTrail.ID(),
+//				TrailName: defaultTrail.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

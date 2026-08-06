@@ -74,7 +74,7 @@ import (
 //				BgpGroupName: pulumi.String(name),
 //				Description:  pulumi.String(name),
 //				PeerAsn:      pulumi.Int(1111),
-//				RouterId:     exampleVirtualBorderRouter.ID(),
+//				RouterId:     exampleVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
 //				IsFakeAsn:    pulumi.Bool(true),
 //			})
 //			if err != nil {

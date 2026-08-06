@@ -79,7 +79,7 @@ import (
 //			}
 //			default675v38, err := vpc.NewSwitch(ctx, "default675v38", &vpc.SwitchArgs{
 //				Description: pulumi.String("default_resg_vsw001"),
-//				VpcId:       defaulte4zhaL.ID(),
+//				VpcId:       defaulte4zhaL.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-beijing-g"),
 //				VswitchName: pulumi.String(invokeFormat1.Result),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
@@ -89,10 +89,10 @@ import (
 //			}
 //			_, err = dataworks.NewDwResourceGroup(ctx, "default", &dataworks.DwResourceGroupArgs{
 //				PaymentType:         pulumi.String("PostPaid"),
-//				DefaultVpcId:        defaulte4zhaL.ID(),
+//				DefaultVpcId:        defaulte4zhaL.ID().ToIDOutput().ToStringOutput(),
 //				Remark:              pulumi.String("openapi_example"),
 //				ResourceGroupName:   pulumi.String("openapi_pop2_example_resg00002"),
-//				DefaultVswitchId:    default675v38.ID(),
+//				DefaultVswitchId:    default675v38.ID().ToIDOutput().ToStringOutput(),
 //				PaymentDurationUnit: pulumi.String("Month"),
 //				Specification:       pulumi.Int(500),
 //				PaymentDuration:     pulumi.Int(1),

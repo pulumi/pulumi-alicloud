@@ -62,7 +62,7 @@ import (
 //							Start:        pulumi.String("-15m"),
 //							End:          pulumi.String("now"),
 //							StoreType:    pulumi.String("log"),
-//							Project:      defaultINsMgl.ID(),
+//							Project:      defaultINsMgl.ID().ToIDOutput().ToStringOutput(),
 //							Store:        pulumi.String("alert"),
 //							Region:       pulumi.String("cn-beijing"),
 //							PowerSqlMode: pulumi.String("disable"),
@@ -164,7 +164,7 @@ import (
 //					},
 //				},
 //				AlertName:   pulumi.String(alertName),
-//				ProjectName: defaultINsMgl.ID(),
+//				ProjectName: defaultINsMgl.ID().ToIDOutput().ToStringOutput(),
 //				Schedule: &sls.AlertScheduleArgs{
 //					Type:           pulumi.String("Cron"),
 //					RunImmdiately:  pulumi.Bool(true),
@@ -180,10 +180,10 @@ import (
 //			}
 //			_default := sls.GetAlertsOutput(ctx, sls.GetAlertsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAlert.ID(),
+//					defaultAlert.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex:   defaultAlert.AlertName,
-//				ProjectName: defaultINsMgl.ID(),
+//				ProjectName: defaultINsMgl.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("alicloudSlsAlertExampleId", _default.ApplyT(func(_default sls.GetAlertsResult) (*string, error) {
 //				return _default.Alerts[0].Id, nil

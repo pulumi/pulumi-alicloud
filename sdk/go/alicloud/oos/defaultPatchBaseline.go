@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = oos.NewDefaultPatchBaseline(ctx, "default", &oos.DefaultPatchBaselineArgs{
-//				PatchBaselineName: _default.ID(),
+//				PatchBaselineName: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

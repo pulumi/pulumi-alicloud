@@ -49,7 +49,7 @@ import (
 //			}
 //			_default := threatdetection.GetAntiBruteForceRulesOutput(ctx, threatdetection.GetAntiBruteForceRulesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAntiBruteForceRule.ID(),
+//					defaultAntiBruteForceRule.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: defaultAntiBruteForceRule.Name,
 //			}, nil)

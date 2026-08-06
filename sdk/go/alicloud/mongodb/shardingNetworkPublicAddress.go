@@ -61,7 +61,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
@@ -69,7 +69,7 @@ import (
 //			}
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "default", &mongodb.ShardingInstanceArgs{
 //				ZoneId:        pulumi.String(zoneId),
-//				VswitchId:     defaultSwitch.ID(),
+//				VswitchId:     defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				EngineVersion: pulumi.String("4.2"),
 //				Name:          pulumi.String(name),
 //				ShardLists: mongodb.ShardingInstanceShardListArray{
@@ -96,10 +96,10 @@ import (
 //				return err
 //			}
 //			_, err = mongodb.NewShardingNetworkPublicAddress(ctx, "example", &mongodb.ShardingNetworkPublicAddressArgs{
-//				DbInstanceId: defaultShardingInstance.ID(),
-//				NodeId: pulumi.String(defaultShardingInstance.MongoLists.ApplyT(func(mongoLists []mongodb.ShardingInstanceMongoList) (*string, error) {
+//				DbInstanceId: defaultShardingInstance.ID().ToIDOutput().ToStringOutput(),
+//				NodeId: defaultShardingInstance.MongoLists.ApplyT(func(mongoLists []mongodb.ShardingInstanceMongoList) (*string, error) {
 //					return mongoLists[0].NodeId, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err

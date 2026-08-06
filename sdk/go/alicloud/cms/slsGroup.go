@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    defaultUuid.Result,
 //					Search:  "-",
 //					Replace: "",

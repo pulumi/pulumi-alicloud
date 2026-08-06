@@ -82,7 +82,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -90,7 +90,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -102,18 +102,18 @@ import (
 //				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String(name),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRdsAccount, err := rds.NewRdsAccount(ctx, "default", &rds.RdsAccountArgs{
-//				DbInstanceId:    defaultInstance.ID(),
+//				DbInstanceId:    defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:     pulumi.String(name),
 //				AccountPassword: pulumi.String("Example1234"),
 //			})
@@ -121,14 +121,14 @@ import (
 //				return err
 //			}
 //			defaultDatabase, err := rds.NewDatabase(ctx, "default", &rds.DatabaseArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Name:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultAccountPrivilege, err := rds.NewAccountPrivilege(ctx, "default", &rds.AccountPrivilegeArgs{
-//				InstanceId:  defaultInstance.ID(),
+//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				AccountName: defaultRdsAccount.AccountName,
 //				Privilege:   pulumi.String("ReadWrite"),
 //				DbNames: pulumi.StringArray{
@@ -141,16 +141,13 @@ import (
 //			_, err = sddp.NewDataLimit(ctx, "default", &sddp.DataLimitArgs{
 //				AuditStatus: pulumi.Int(0),
 //				EngineType:  pulumi.String("MySQL"),
-//				ParentId: pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+//				ParentId: std.JoinOutput(ctx, std.JoinOutputArgs{
 //					Separator: pulumi.String("."),
 //					Input: pulumi.StringArray{
 //						defaultAccountPrivilege.InstanceId,
 //						defaultDatabase.Name,
 //					},
-//				}, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				ResourceType:    pulumi.String("RDS"),
 //				UserName:        defaultDatabase.Name,
 //				Password:        defaultRdsAccount.AccountPassword,

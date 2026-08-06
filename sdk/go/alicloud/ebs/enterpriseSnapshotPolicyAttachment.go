@@ -69,8 +69,8 @@ import (
 //				return err
 //			}
 //			_, err = ebs.NewEnterpriseSnapshotPolicyAttachment(ctx, "default", &ebs.EnterpriseSnapshotPolicyAttachmentArgs{
-//				PolicyId: defaultPE3jjR.ID(),
-//				DiskId:   defaultJkW46o.ID(),
+//				PolicyId: defaultPE3jjR.ID().ToIDOutput().ToStringOutput(),
+//				DiskId:   defaultJkW46o.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

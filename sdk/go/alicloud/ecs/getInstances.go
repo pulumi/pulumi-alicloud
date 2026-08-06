@@ -89,7 +89,7 @@ type GetInstancesArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -187,7 +187,7 @@ type GetInstancesOutputArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},

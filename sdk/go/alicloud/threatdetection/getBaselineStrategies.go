@@ -43,7 +43,7 @@ import (
 //			}
 //			_ = threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultBaselineStrategy.ID(),
+//					defaultBaselineStrategy.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex:  defaultBaselineStrategy.Name,
 //				CustomType: pulumi.String("custom"),

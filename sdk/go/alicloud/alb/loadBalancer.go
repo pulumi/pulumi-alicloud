@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			default1, err := vpc.NewSwitch(ctx, "default1", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("10.4.1.0/24"),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //				VswitchName: pulumi.Sprintf("%v_1", name),
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("10.4.2.0/24"),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
 //				VswitchName: pulumi.Sprintf("%v_2", name),
@@ -80,7 +80,7 @@ import (
 //			_, err = alb.NewLoadBalancer(ctx, "default", &alb.LoadBalancerArgs{
 //				LoadBalancerEdition:  pulumi.String("Basic"),
 //				AddressType:          pulumi.String("Internet"),
-//				VpcId:                defaultNetwork.ID(),
+//				VpcId:                defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				AddressAllocatedMode: pulumi.String("Fixed"),
 //				ResourceGroupId:      pulumi.String(_default.Groups[0].Id),
 //				LoadBalancerName:     pulumi.String(name),
@@ -92,11 +92,11 @@ import (
 //				},
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: default1.ID(),
+//						VswitchId: default1.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(defaultGetZones.Zones[0].Id),
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: default2.ID(),
+//						VswitchId: default2.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(defaultGetZones.Zones[1].Id),
 //					},
 //				},

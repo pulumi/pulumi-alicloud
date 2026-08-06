@@ -57,7 +57,7 @@ import (
 //			}
 //			_, err = cloudfirewall.NewInstanceMember(ctx, "default", &cloudfirewall.InstanceMemberArgs{
 //				MemberDesc: pulumi.Sprintf("%v-%v", name, _default.Result),
-//				MemberUid:  defaultAccount.ID(),
+//				MemberUid:  defaultAccount.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"mountPath": "/mnt/data/",
 //			})
 //			if err != nil {
@@ -73,7 +73,7 @@ import (
 //				Accessibility:  pulumi.String("PRIVATE"),
 //				SourceType:     pulumi.String("USER"),
 //				DataType:       pulumi.String("PIC"),
-//				WorkspaceId:    defaultAiWorkspace.ID(),
+//				WorkspaceId:    defaultAiWorkspace.ID().ToIDOutput().ToStringOutput(),
 //				Options:        pulumi.String(json0),
 //				Description:    pulumi.String(name),
 //				SourceId:       pulumi.String("d-xxxxx_v1"),
@@ -86,7 +86,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"mountPath": "/mnt/data/verion/",
 //			})
 //			if err != nil {
@@ -109,7 +109,7 @@ import (
 //				},
 //				Uri:       pulumi.String("oss://ai4d-q9lgxlpwxzqluij66y.oss-cn-hangzhou.aliyuncs.com/"),
 //				Property:  pulumi.String("DIRECTORY"),
-//				DatasetId: defaultDataset.ID(),
+//				DatasetId: defaultDataset.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -62,13 +62,13 @@ import (
 //				return err
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
+//				CenId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRouterTrAssociation, err := expressconnect.NewRouterTrAssociation(ctx, "default", &expressconnect.RouterTrAssociationArgs{
-//				EcrId:                defaultRouterExpressConnectRouter.ID(),
+//				EcrId:                defaultRouterExpressConnectRouter.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterId:      defaultTransitRouter.TransitRouterId,
 //				CenId:                defaultTransitRouter.CenId,
 //				TransitRouterOwnerId: pulumi.String(_default.Id),
@@ -84,7 +84,7 @@ import (
 //			}
 //			ids := expressconnect.GetRouterTrAssociationsOutput(ctx, expressconnect.GetRouterTrAssociationsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultRouterTrAssociation.ID(),
+//					defaultRouterTrAssociation.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				EcrId: defaultRouterTrAssociation.EcrId,
 //			}, nil)

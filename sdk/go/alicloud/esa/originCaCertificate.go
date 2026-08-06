@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			_, err = esa.NewOriginCaCertificate(ctx, "default", &esa.OriginCaCertificateArgs{
-//				SiteId: example.ID(),
+//				SiteId: example.ID().ToIDOutput().ToStringOutput(),
 //				Certificate: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDRTCCAi2gAwIBAgIUHRPTIPKP2zN9on/NCzBe0BV68UUwDQYJKoZIhvcNAQEF

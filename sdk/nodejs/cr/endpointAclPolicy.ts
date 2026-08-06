@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     moduleName: "Registry",
  * });
  * const defaultEndpointAclPolicy = new alicloud.cr.EndpointAclPolicy("default", {
- *     instanceId: _default.apply(_default => _default.instanceId),
+ *     instanceId: _default.instanceId,
  *     entry: "192.168.1.0/24",
  *     description: name,
  *     moduleName: "Registry",

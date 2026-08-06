@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			nameRegex := cloudstoragegateway.GetGatewaysOutput(ctx, cloudstoragegateway.GetGatewaysOutputArgs{
-//				StorageBundleId: example.ID(),
+//				StorageBundleId: example.ID().ToIDOutput().ToStringOutput(),
 //				NameRegex:       pulumi.String("^my-Gateway"),
 //			}, nil)
 //			ctx.Export("cloudStorageGatewayGatewayId", nameRegex.ApplyT(func(nameRegex cloudstoragegateway.GetGatewaysResult) (*string, error) {

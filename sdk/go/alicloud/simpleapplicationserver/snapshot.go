@@ -72,12 +72,12 @@ import (
 //				return err
 //			}
 //			defaultGetServerDisks := simpleapplicationserver.GetServerDisksOutput(ctx, simpleapplicationserver.GetServerDisksOutputArgs{
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			_, err = simpleapplicationserver.NewSnapshot(ctx, "default", &simpleapplicationserver.SnapshotArgs{
-//				DiskId: pulumi.String(defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
+//				DiskId: defaultGetServerDisks.ApplyT(func(defaultGetServerDisks simpleapplicationserver.GetServerDisksResult) (*string, error) {
 //					return &defaultGetServerDisks.Ids[0], nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				SnapshotName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
 //			})
 //			if err != nil {

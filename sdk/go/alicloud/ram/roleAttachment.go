@@ -72,7 +72,7 @@ import (
 // return err
 // }
 // defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
 // ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
@@ -82,7 +82,7 @@ import (
 // }
 // defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 // SecurityGroupName: pulumi.String(name),
-// VpcId: defaultNetwork.ID(),
+// VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 // })
 // if err != nil {
 // return err
@@ -94,21 +94,21 @@ import (
 // Policy: pulumi.String("accept"),
 // PortRange: pulumi.String("22/22"),
 // Priority: pulumi.Int(1),
-// SecurityGroupId: defaultSecurityGroup.ID(),
+// SecurityGroupId: defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 // CidrIp: pulumi.String("172.16.0.0/24"),
 // })
 // if err != nil {
 // return err
 // }
 // foo, err := ecs.NewInstance(ctx, "foo", &ecs.InstanceArgs{
-// VswitchId: defaultSwitch.ID(),
+// VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 // ImageId: pulumi.String(defaultGetImages.Images[0].Id),
 // InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(5),
 // SecurityGroups: pulumi.StringArray{
-// defaultSecurityGroup.ID(),
+// defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 // },
 // InstanceName: pulumi.String(name),
 // })
@@ -140,19 +140,26 @@ import (
 // if err != nil {
 // return err
 // }
-// var splat0 pulumi.StringArray
+// var splat0 pulumi.IDArray
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
 // _, err = ram.NewRoleAttachment(ctx, "attach", &ram.RoleAttachmentArgs{
 // RoleName: role.Name,
-// InstanceIds: splat0,
+// InstanceIds: toPulumiIDArray(splat0),
 // })
 // if err != nil {
 // return err
 // }
 // return nil
 // })
+// }
+// func toPulumiIDArray(arr []pulumi.ID) pulumi.IDArray {
+// var pulumiArr pulumi.IDArray
+// for _, v := range arr {
+// pulumiArr = append(pulumiArr, pulumi.ID(v))
+// }
+// return pulumiArr
 // }
 // ```
 //

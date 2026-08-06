@@ -62,7 +62,7 @@ import (
 //			_, err = rds.NewAiInstance(ctx, "default", &rds.AiInstanceArgs{
 //				AppName:        pulumi.String(name),
 //				AppType:        pulumi.String("supabase"),
-//				DbInstanceName: defaultInstance.ID(),
+//				DbInstanceName: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

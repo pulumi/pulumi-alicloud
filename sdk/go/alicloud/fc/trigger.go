@@ -137,7 +137,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -148,7 +148,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.String("terraform-example"),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID(),
+//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -296,7 +296,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -307,7 +307,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID(),
+//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -469,7 +469,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -480,7 +480,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID(),
+//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -579,7 +579,7 @@ import (
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
-//				Bucket:  defaultBucket.ID(),
+//				Bucket:  defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
@@ -590,7 +590,7 @@ import (
 //				Service:     defaultService.Name,
 //				Name:        pulumi.String("terraform-example"),
 //				Description: pulumi.String("example"),
-//				OssBucket:   defaultBucket.ID(),
+//				OssBucket:   defaultBucket.ID().ToIDOutput().ToStringOutput(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
 //				Runtime:     pulumi.String("python3.10"),
@@ -602,18 +602,18 @@ import (
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"triggerEnable":       false,
 //				"asyncInvocationType": false,
-//				"eventSourceConfig": map[string]interface{}{
+//				"eventSourceConfig": map[string]string{
 //					"eventSourceType": "Default",
 //				},
 //				"eventRuleFilterPattern": "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}",
-//				"eventSinkConfig": map[string]interface{}{
-//					"deliveryOption": map[string]interface{}{
+//				"eventSinkConfig": map[string]map[string]string{
+//					"deliveryOption": map[string]string{
 //						"mode":        "event-driven",
 //						"eventSchema": "CloudEvents",
 //					},
 //				},
 //				"runOptions": map[string]interface{}{
-//					"retryStrategy": map[string]interface{}{
+//					"retryStrategy": map[string]string{
 //						"PushRetryStrategy": "BACKOFF_RETRY",
 //					},
 //					"errorsTolerance": "ALL",
@@ -639,7 +639,7 @@ import (
 //				"asyncInvocationType": false,
 //				"eventSourceConfig": map[string]interface{}{
 //					"eventSourceType": "MNS",
-//					"eventSourceParameters": map[string]interface{}{
+//					"eventSourceParameters": map[string]map[string]interface{}{
 //						"sourceMNSParameters": map[string]interface{}{
 //							"RegionId":       defaultGetRegions.Regions[0].Id,
 //							"QueueName":      "mns-queue",
@@ -648,14 +648,14 @@ import (
 //					},
 //				},
 //				"eventRuleFilterPattern": "{}",
-//				"eventSinkConfig": map[string]interface{}{
-//					"deliveryOption": map[string]interface{}{
+//				"eventSinkConfig": map[string]map[string]string{
+//					"deliveryOption": map[string]string{
 //						"mode":        "event-driven",
 //						"eventSchema": "CloudEvents",
 //					},
 //				},
 //				"runOptions": map[string]interface{}{
-//					"retryStrategy": map[string]interface{}{
+//					"retryStrategy": map[string]string{
 //						"PushRetryStrategy": "BACKOFF_RETRY",
 //					},
 //					"errorsTolerance": "ALL",
@@ -685,7 +685,7 @@ import (
 //			}
 //			defaultGroup, err := rocketmq.NewGroup(ctx, "default", &rocketmq.GroupArgs{
 //				GroupName:  pulumi.String("GID-example"),
-//				InstanceId: defaultInstance.ID(),
+//				InstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Remark:     pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
@@ -693,7 +693,7 @@ import (
 //			}
 //			defaultTopic, err := rocketmq.NewTopic(ctx, "default", &rocketmq.TopicArgs{
 //				TopicName:   pulumi.String("mytopic"),
-//				InstanceId:  defaultInstance.ID(),
+//				InstanceId:  defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				MessageType: pulumi.Int(0),
 //				Remark:      pulumi.String("terraform-example"),
 //			})
@@ -706,7 +706,7 @@ import (
 //				Name:     pulumi.String("terraform-example-rocketmq"),
 //				Type:     pulumi.String("eventbridge"),
 //				Config: pulumi.All(defaultInstance.ID(), defaultGroup.GroupName, defaultTopic.TopicName).ApplyT(func(_args []interface{}) (string, error) {
-//					id := _args[0].(string)
+//					id := _args[0].(pulumi.ID)
 //					groupName := _args[1].(string)
 //					topicName := _args[2].(string)
 //					var _zero string
@@ -714,15 +714,15 @@ import (
 //						"triggerEnable":          false,
 //						"asyncInvocationType":    false,
 //						"eventRuleFilterPattern": "{}",
-//						"eventSinkConfig": map[string]interface{}{
-//							"deliveryOption": map[string]interface{}{
+//						"eventSinkConfig": map[string]map[string]string{
+//							"deliveryOption": map[string]string{
 //								"mode":        "event-driven",
 //								"eventSchema": "CloudEvents",
 //							},
 //						},
 //						"eventSourceConfig": map[string]interface{}{
 //							"eventSourceType": "RocketMQ",
-//							"eventSourceParameters": map[string]interface{}{
+//							"eventSourceParameters": map[string]map[string]interface{}{
 //								"sourceRocketMQParameters": map[string]interface{}{
 //									"RegionId":   defaultGetRegions.Regions[0].Id,
 //									"InstanceId": id,
@@ -735,7 +735,7 @@ import (
 //							},
 //						},
 //						"runOptions": map[string]interface{}{
-//							"retryStrategy": map[string]interface{}{
+//							"retryStrategy": map[string]string{
 //								"PushRetryStrategy": "BACKOFF_RETRY",
 //							},
 //							"errorsTolerance": "ALL",
@@ -766,7 +766,7 @@ import (
 //				return err
 //			}
 //			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
-//				InstanceId:      defaultInstance2.ID(),
+//				InstanceId:      defaultInstance2.ID().ToIDOutput().ToStringOutput(),
 //				VirtualHostName: pulumi.String("example-VirtualHost"),
 //			})
 //			if err != nil {
@@ -786,7 +786,7 @@ import (
 //				Name:     pulumi.String("terraform-example-rabbitmq"),
 //				Type:     pulumi.String("eventbridge"),
 //				Config: pulumi.All(defaultInstance2.ID(), defaultVirtualHost.VirtualHostName, defaultQueue.QueueName).ApplyT(func(_args []interface{}) (string, error) {
-//					id := _args[0].(string)
+//					id := _args[0].(pulumi.ID)
 //					virtualHostName := _args[1].(string)
 //					queueName := _args[2].(string)
 //					var _zero string
@@ -796,7 +796,7 @@ import (
 //						"eventRuleFilterPattern": "{}",
 //						"eventSourceConfig": map[string]interface{}{
 //							"eventSourceType": "RabbitMQ",
-//							"eventSourceParameters": map[string]interface{}{
+//							"eventSourceParameters": map[string]map[string]interface{}{
 //								"sourceRabbitMQParameters": map[string]interface{}{
 //									"RegionId":        defaultGetRegions.Regions[0].Id,
 //									"InstanceId":      id,
@@ -805,14 +805,14 @@ import (
 //								},
 //							},
 //						},
-//						"eventSinkConfig": map[string]interface{}{
-//							"deliveryOption": map[string]interface{}{
+//						"eventSinkConfig": map[string]map[string]string{
+//							"deliveryOption": map[string]string{
 //								"mode":        "event-driven",
 //								"eventSchema": "CloudEvents",
 //							},
 //						},
 //						"runOptions": map[string]interface{}{
-//							"retryStrategy": map[string]interface{}{
+//							"retryStrategy": map[string]string{
 //								"PushRetryStrategy": "BACKOFF_RETRY",
 //							},
 //							"errorsTolerance": "ALL",

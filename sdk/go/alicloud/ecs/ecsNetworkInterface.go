@@ -62,14 +62,14 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,9 +82,9 @@ import (
 //			}
 //			_, err = ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
-//				VswitchId:            defaultSwitch.ID(),
+//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Description:      pulumi.String("Basic test"),
 //				PrimaryIpAddress: pulumi.String("192.168.0.2"),

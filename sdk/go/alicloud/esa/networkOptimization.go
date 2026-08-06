@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = esa.NewNetworkOptimization(ctx, "default", &esa.NetworkOptimizationArgs{
 //				SiteVersion:       pulumi.Int(0),
-//				SiteId:            defaultSite.ID(),
+//				SiteId:            defaultSite.ID().ToIDOutput().ToStringOutput(),
 //				RuleEnable:        pulumi.String("on"),
 //				Websocket:         pulumi.String("off"),
 //				Rule:              pulumi.String("(http.host eq \"tf.example.com\")"),

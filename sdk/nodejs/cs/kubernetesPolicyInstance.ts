@@ -49,8 +49,8 @@ import * as utilities from "../utilities";
  *         text: std.joinOutput({
  *             separator: ",",
  *             input: createVSwitch.map(__item => __item.id),
- *         }).apply(invoke => invoke.result),
- *     }).apply(invoke => invoke.result),
+ *         }).result,
+ *     }).result,
  *     podCidr: podCidr,
  *     serviceCidr: serviceCidr,
  *     isEnterpriseSecurityGroup: true,

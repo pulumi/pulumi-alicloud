@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  *             "oss://",
  *             exampleBucket.bucket,
  *         ],
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     throughput: 600,
  * });
  * ```

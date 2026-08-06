@@ -85,7 +85,7 @@ import (
 //					LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //					PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //					PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//					PhysicalConnectionId:    example.Connections[val0].Id,
+//					PhysicalConnectionId:    pulumi.String(example.Connections[val0].Id),
 //					VirtualBorderRouterName: pulumi.String(invokeFormat.Result),
 //					VlanId:                  int(vlanId.Id + val0),
 //					MinRxInterval:           pulumi.Int(1000),
@@ -110,8 +110,8 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := cen.NewInstanceAttachment(ctx, fmt.Sprintf("example-%v", key0), &cen.InstanceAttachmentArgs{
-//					InstanceId:            exampleInstance.ID(),
-//					ChildInstanceId:       exampleVirtualBorderRouter[val0].ID(),
+//					InstanceId:            exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//					ChildInstanceId:       exampleVirtualBorderRouter[val0].ID().ToIDOutput().ToStringOutput(),
 //					ChildInstanceType:     pulumi.String("VBR"),
 //					ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //				})

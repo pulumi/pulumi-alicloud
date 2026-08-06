@@ -152,13 +152,10 @@ import (
 // }
 // var tmp1 pulumi.String
 // if vpcId == "" {
-// tmp1 = pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// tmp1 = std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(""),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:74,17-26),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput))
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:74,17-26)),
+// }, nil).Result()
 // } else {
 // tmp1 = pulumi.String(vpcId)
 // }
@@ -187,13 +184,10 @@ import (
 // }
 // var tmp3 pulumi.String
 // if vpcId == "" {
-// tmp3 = pulumi.String(std.JoinOutput(ctx, std.JoinOutputArgs{
+// tmp3 = std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(""),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:89,17-26),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput))
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:89,17-26)),
+// }, nil).Result()
 // } else {
 // tmp3 = pulumi.String(vpcId)
 // }
@@ -225,24 +219,19 @@ import (
 // tmp5 = pulumi.StringArray{
 // }
 // } else {
-// tmp5 = pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// tmp5 = std.SplitOutput(ctx, std.SplitOutputArgs{
 // Separator: pulumi.String(","),
 // Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:108,19-34),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput),
-// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
-// return invoke.Result, nil
-// }).(pulumi.StringArrayOutput))
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:108,19-34)),
+// }, nil).Result(),
+// }, nil).Result()
 // }
 // var tmp6 pulumi.StringArray
 // if len(vswitchIds) > 0 {
 // tmp6 = pulumi.StringArray(std.Split(ctx, &std.SplitArgs{
 // Separator: ",",
-// Text: std.Join(ctx, &std.JoinArgs{
+// Text: std.Join(ctx, std.JoinArgs{
 // Separator: ",",
 // Input: vswitchIds,
 // }, nil).Result,
@@ -255,24 +244,19 @@ import (
 // tmp7 = pulumi.StringArray{
 // }
 // } else {
-// tmp7 = pulumi.StringArray(std.SplitOutput(ctx, std.SplitOutputArgs{
+// tmp7 = std.SplitOutput(ctx, std.SplitOutputArgs{
 // Separator: pulumi.String(","),
 // Text: std.JoinOutput(ctx, std.JoinOutputArgs{
 // Separator: pulumi.String(","),
-// Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:121,19-40),
-// }, nil).ApplyT(func(invoke std.JoinResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput),
-// }, nil).ApplyT(func(invoke std.SplitResult) ([]string, error) {
-// return invoke.Result, nil
-// }).(pulumi.StringArrayOutput))
+// Input: pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:121,19-40)),
+// }, nil).Result(),
+// }, nil).Result()
 // }
 // var tmp8 pulumi.StringArray
 // if len(terwayVswitchIds) > 0 {
 // tmp8 = pulumi.StringArray(std.Split(ctx, &std.SplitArgs{
 // Separator: ",",
-// Text: std.Join(ctx, &std.JoinArgs{
+// Text: std.Join(ctx, std.JoinArgs{
 // Separator: ",",
 // Input: terwayVswitchIds,
 // }, nil).Result,
@@ -280,14 +264,14 @@ import (
 // } else {
 // tmp8 = tmp7
 // }
-// tmpJSON0, err := json.Marshal(map[string]interface{}{
+// tmpJSON0, err := json.Marshal(map[string]string{
 // "IngressDashboardEnabled": "true",
 // })
 // if err != nil {
 // return err
 // }
 // json0 := string(tmpJSON0)
-// tmpJSON1, err := json.Marshal(map[string]interface{}{
+// tmpJSON1, err := json.Marshal(map[string]string{
 // "IngressSlbNetworkType": "internet",
 // })
 // if err != nil {
@@ -382,14 +366,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"ENITrunking": "true",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"NetworkPolicy": "false",
 //				"ENITrunking":   "true",
 //				"IPVlan":        "false",
@@ -398,7 +382,7 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]string{
 //				"CnfsOssEnable": "false",
 //				"CnfsNasEnable": "false",
 //			})
@@ -406,22 +390,22 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]string{
 //				"IngressDashboardEnabled": "true",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"sls_project_name": "",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
-//				"albIngress": map[string]interface{}{
+//			tmpJSON5, err := json.Marshal(map[string]map[string]bool{
+//				"albIngress": map[string]bool{
 //					"CreateDefaultALBConfig": false,
 //				},
 //			})
@@ -429,7 +413,7 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//			tmpJSON6, err := json.Marshal(map[string]string{
 //				"prometheusMode": "default",
 //			})
 //			if err != nil {

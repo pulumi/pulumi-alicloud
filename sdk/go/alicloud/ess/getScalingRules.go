@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
@@ -80,14 +80,14 @@ import (
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultScalingRule, err := ess.NewScalingRule(ctx, "default", &ess.ScalingRuleArgs{
-//				ScalingGroupId:  defaultScalingGroup.ID(),
+//				ScalingGroupId:  defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				ScalingRuleName: pulumi.String(myName),
 //				AdjustmentType:  pulumi.String("PercentChangeInCapacity"),
 //				AdjustmentValue: pulumi.Int(1),
@@ -96,9 +96,9 @@ import (
 //				return err
 //			}
 //			scalingrulesDs := ess.GetScalingRulesOutput(ctx, ess.GetScalingRulesOutputArgs{
-//				ScalingGroupId: defaultScalingGroup.ID(),
+//				ScalingGroupId: defaultScalingGroup.ID().ToIDOutput().ToStringOutput(),
 //				Ids: pulumi.StringArray{
-//					defaultScalingRule.ID(),
+//					defaultScalingRule.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex: pulumi.String(myName),
 //			}, nil)

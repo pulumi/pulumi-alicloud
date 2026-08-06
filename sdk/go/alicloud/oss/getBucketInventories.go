@@ -50,7 +50,7 @@ import (
 //						pulumi.String("ETag"),
 //					},
 //				},
-//				Bucket: createBucket.ID(),
+//				Bucket: createBucket.ID().ToIDOutput().ToStringOutput(),
 //				Filter: &oss.BucketInventoryFilterArgs{
 //					Prefix:         pulumi.String("Pics/"),
 //					LowerSizeBound: pulumi.Int(256),
@@ -69,9 +69,9 @@ import (
 //			}
 //			_default := oss.GetBucketInventoriesOutput(ctx, oss.GetBucketInventoriesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultBucketInventory.ID(),
+//					defaultBucketInventory.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				Bucket: createBucket.ID(),
+//				Bucket: createBucket.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("alicloudOssBucketInventoryExampleId", _default.ApplyT(func(_default oss.GetBucketInventoriesResult) (*string, error) {
 //				return _default.Inventories[0].Id, nil

@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    defaultUuid.Result,
 //					Search:  "-",
 //					Replace: "",
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr1, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    defaultUuid.Result,
 //					Search:  "-",
 //					Replace: "",
@@ -107,7 +107,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Stocks[0].ZoneId),
 //				VswitchName: pulumi.String(name),
@@ -121,10 +121,10 @@ import (
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("Iscsi"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              defaultSwitch.ID(),
+//				VswitchId:              defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ReleaseAfterExpiration: pulumi.Bool(true),
 //				PublicNetworkBandwidth: pulumi.Int(40),
-//				StorageBundleId:        defaultStorageBundle.ID(),
+//				StorageBundleId:        defaultStorageBundle.ID().ToIDOutput().ToStringOutput(),
 //				Location:               pulumi.String("Cloud"),
 //			})
 //			if err != nil {
@@ -132,7 +132,7 @@ import (
 //			}
 //			defaultGatewayCacheDisk, err := cloudstoragegateway.NewGatewayCacheDisk(ctx, "default", &cloudstoragegateway.GatewayCacheDiskArgs{
 //				CacheDiskCategory: pulumi.String("cloud_efficiency"),
-//				GatewayId:         defaultGateway.ID(),
+//				GatewayId:         defaultGateway.ID().ToIDOutput().ToStringOutput(),
 //				CacheDiskSizeInGb: pulumi.Int(50),
 //			})
 //			if err != nil {
@@ -143,7 +143,7 @@ import (
 //				ChapEnabled:            pulumi.Bool(false),
 //				ChunkSize:              pulumi.Int(8192),
 //				GatewayBlockVolumeName: pulumi.String("example"),
-//				GatewayId:              defaultGateway.ID(),
+//				GatewayId:              defaultGateway.ID().ToIDOutput().ToStringOutput(),
 //				LocalPath:              defaultGatewayCacheDisk.LocalFilePath,
 //				OssBucketName:          defaultBucket.Bucket,
 //				OssBucketSsl:           pulumi.Bool(true),

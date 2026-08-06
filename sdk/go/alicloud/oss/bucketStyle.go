@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucketStyle(ctx, "default", &oss.BucketStyleArgs{
-//				Bucket:    createBucket.ID(),
+//				Bucket:    createBucket.ID().ToIDOutput().ToStringOutput(),
 //				StyleName: pulumi.String("style-933"),
 //				Content:   pulumi.String("image/resize,p_75,w_75"),
 //				Category:  pulumi.String("document"),

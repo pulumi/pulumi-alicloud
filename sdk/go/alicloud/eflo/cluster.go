@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			createVswitch, err := vpc.NewSwitch(ctx, "create_vswitch", &vpc.SwitchArgs{
-//				VpcId:       createVpc.ID(),
+//				VpcId:       createVpc.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-b"),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				VswitchName: pulumi.String("cluster-resoure-example"),
@@ -68,7 +68,7 @@ import (
 //				Description:       pulumi.String("sg"),
 //				SecurityGroupName: pulumi.String("cluster-resoure-example"),
 //				SecurityGroupType: pulumi.String("normal"),
-//				VpcId:             createVpc.ID(),
+//				VpcId:             createVpc.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -94,8 +94,8 @@ import (
 //				Networks: &eflo.ClusterNetworksArgs{
 //					TailIpVersion: pulumi.String("ipv4"),
 //					NewVpdInfo: &eflo.ClusterNetworksNewVpdInfoArgs{
-//						MonitorVpcId:     createVpc.ID(),
-//						MonitorVswitchId: createVswitch.ID(),
+//						MonitorVpcId:     createVpc.ID().ToIDOutput().ToStringOutput(),
+//						MonitorVswitchId: createVswitch.ID().ToIDOutput().ToStringOutput(),
 //						CenId:            pulumi.String("11111"),
 //						CloudLinkId:      pulumi.String("1111"),
 //						VpdCidr:          pulumi.String("111"),
@@ -108,10 +108,10 @@ import (
 //						},
 //						CloudLinkCidr: pulumi.String("169.254.128.0/23"),
 //					},
-//					SecurityGroupId: createSecurityGroup.ID(),
+//					SecurityGroupId: createSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //					VswitchZoneId:   pulumi.String("cn-hangzhou-b"),
-//					VpcId:           createVpc.ID(),
-//					VswitchId:       createVswitch.ID(),
+//					VpcId:           createVpc.ID().ToIDOutput().ToStringOutput(),
+//					VswitchId:       createVswitch.ID().ToIDOutput().ToStringOutput(),
 //					VpdInfo: &eflo.ClusterNetworksVpdInfoArgs{
 //						VpdId: pulumi.String("111"),
 //						VpdSubnets: pulumi.StringArray{

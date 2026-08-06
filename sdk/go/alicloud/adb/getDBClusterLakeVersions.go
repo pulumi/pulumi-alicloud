@@ -64,7 +64,7 @@ import (
 //			}
 //			ids := adb.GetDBClusterLakeVersionsOutput(ctx, adb.GetDBClusterLakeVersionsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDBClusterLakeVersion.ID(),
+//					defaultDBClusterLakeVersion.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("adbDbClusterLakeVersionId1", ids.ApplyT(func(ids adb.GetDBClusterLakeVersionsResult) (*string, error) {

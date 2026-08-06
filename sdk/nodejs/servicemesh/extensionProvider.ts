@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
  * });
  * const defaultSwitch: alicloud.vpc.Switch[] = [];
- * defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ * defaultGetSwitches.ids.length.apply(length => {
  *     for (let range = 0; range < (length > 0 ? 0 : 1); range++) {
  *         defaultSwitch.push(new alicloud.vpc.Switch(`default-${range}`, {
  *             vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     edition: "Default",
  *     network: {
  *         vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
- *         vswitcheLists: [pulumi.all([defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, defaultSwitch[0].id]).apply(([length, defaultGetSwitches, id]) => length > 0 ? defaultGetSwitches.ids?.[0] : id)],
+ *         vswitcheLists: [pulumi.all([defaultGetSwitches.ids.length, defaultGetSwitches, defaultSwitch[0].id]).apply(([length, defaultGetSwitches, id]) => length > 0 ? defaultGetSwitches.ids?.[0] : id)],
  *     },
  * });
  * const defaultExtensionProvider = new alicloud.servicemesh.ExtensionProvider("default", {

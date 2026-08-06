@@ -55,7 +55,7 @@ import (
 //			}
 //			_, err = expressconnect.NewTrafficQosAssociation(ctx, "associateQos", &expressconnect.TrafficQosAssociationArgs{
 //				InstanceId:   pulumi.String(_default.Ids[1]),
-//				QosId:        createQos.ID(),
+//				QosId:        createQos.ID().ToIDOutput().ToStringOutput(),
 //				InstanceType: pulumi.String("PHYSICALCONNECTION"),
 //			})
 //			if err != nil {

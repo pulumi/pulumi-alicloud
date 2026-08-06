@@ -98,7 +98,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-i"),
 //			})
 //			if err != nil {
@@ -107,21 +107,21 @@ import (
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
 //				Description:       pulumi.String(name),
-//				VpcId:             exampleNetwork.ID(),
+//				VpcId:             exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
 //				AvailabilityZone:        pulumi.String("cn-hangzhou-i"),
-//				VswitchId:               exampleSwitch.ID(),
+//				VswitchId:               exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ImageId:                 pulumi.String(exampleGetImages.Images[0].Id),
 //				InstanceType:            pulumi.String(example.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceName: pulumi.String(name),
 //				UserData:     pulumi.String("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf"),
@@ -131,8 +131,8 @@ import (
 //			}
 //			eais2, err := eais.NewInstance(ctx, "eais", &eais.InstanceArgs{
 //				InstanceName:    pulumi.String(name),
-//				VswitchId:       exampleSwitch.ID(),
-//				SecurityGroupId: exampleSecurityGroup.ID(),
+//				VswitchId:       exampleSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroupId: exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),
 //				Category:        pulumi.String("ei"),
 //			})
@@ -140,8 +140,8 @@ import (
 //				return err
 //			}
 //			_, err = eais.NewClientInstanceAttachment(ctx, "default", &eais.ClientInstanceAttachmentArgs{
-//				InstanceId:       eais2.ID(),
-//				ClientInstanceId: exampleInstance.ID(),
+//				InstanceId:       eais2.ID().ToIDOutput().ToStringOutput(),
+//				ClientInstanceId: exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				Category:         pulumi.String("ei"),
 //				Status:           pulumi.String("Bound"),
 //				EiInstanceType:   pulumi.String("eais.ei-a6.2xlarge"),

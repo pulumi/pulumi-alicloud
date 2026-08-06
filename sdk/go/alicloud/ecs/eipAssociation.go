@@ -81,7 +81,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -100,9 +100,9 @@ import (
 //				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
 //				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VswitchId: exampleSwitch.ID(),
+//				VswitchId: exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),
@@ -118,8 +118,8 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEipAssociation(ctx, "example", &ecs.EipAssociationArgs{
-//				AllocationId: exampleEipAddress.ID(),
-//				InstanceId:   exampleInstance.ID(),
+//				AllocationId: exampleEipAddress.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

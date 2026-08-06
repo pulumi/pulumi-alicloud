@@ -86,7 +86,7 @@ import (
 //			}
 //			_, err = dcdn.NewWafPolicyDomainAttachment(ctx, "example", &dcdn.WafPolicyDomainAttachmentArgs{
 //				DomainName: exampleWafDomain.DomainName,
-//				PolicyId:   exampleWafPolicy.ID(),
+//				PolicyId:   exampleWafPolicy.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

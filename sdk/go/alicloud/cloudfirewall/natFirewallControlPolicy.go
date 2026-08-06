@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			defaultFHDM3F, err := vpc.NewSwitch(ctx, "defaultFHDM3F", &vpc.SwitchArgs{
-//				VpcId:     defaultDEiWfM.ID(),
+//				VpcId:     defaultDEiWfM.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				CidrBlock: pulumi.String("172.16.2.0/24"),
 //			})
@@ -72,10 +72,10 @@ import (
 //				return err
 //			}
 //			defaultMbS2Ts, err := vpc.NewNatGateway(ctx, "defaultMbS2Ts", &vpc.NatGatewayArgs{
-//				VpcId:          defaultDEiWfM.ID(),
+//				VpcId:          defaultDEiWfM.ID().ToIDOutput().ToStringOutput(),
 //				NatGatewayName: pulumi.String(name),
 //				PaymentType:    pulumi.String("PayAsYouGo"),
-//				VswitchId:      defaultFHDM3F.ID(),
+//				VswitchId:      defaultFHDM3F.ID().ToIDOutput().ToStringOutput(),
 //				NatType:        pulumi.String("Enhanced"),
 //			})
 //			if err != nil {
@@ -208,7 +208,7 @@ import (
 //				AclAction:         pulumi.String("log"),
 //				DestPortGroup:     port.GroupName,
 //				RepeatType:        pulumi.String("Weekly"),
-//				NatGatewayId:      defaultMbS2Ts.ID(),
+//				NatGatewayId:      defaultMbS2Ts.ID().ToIDOutput().ToStringOutput(),
 //				Source:            pulumi.String("1.1.1.1/32"),
 //				Direction:         pulumi.String("out"),
 //				RepeatEndTime:     pulumi.String("21:30"),

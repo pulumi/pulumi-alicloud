@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultAKE43g = new alicloud.vpc.SnatEntry("defaultAKE43g", {
  *     snatIp: defaultyiRwgs.ipAddress,
- *     snatTableId: default2iRZpC.snatTableIds[0],
+ *     snatTableId: default2iRZpC.snatTableIds.apply(snatTableIds => snatTableIds[0]).apply(x =>String(x)),
  *     eipAffinity: 1,
  *     sourceVswitchId: defaultp4O7qi.id,
  * });
@@ -241,7 +241,7 @@ export interface GetNatFirewallsResult {
  * });
  * const defaultAKE43g = new alicloud.vpc.SnatEntry("defaultAKE43g", {
  *     snatIp: defaultyiRwgs.ipAddress,
- *     snatTableId: default2iRZpC.snatTableIds[0],
+ *     snatTableId: default2iRZpC.snatTableIds.apply(snatTableIds => snatTableIds[0]).apply(x =>String(x)),
  *     eipAffinity: 1,
  *     sourceVswitchId: defaultp4O7qi.id,
  * });

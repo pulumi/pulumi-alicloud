@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = cen.NewFlowLog(ctx, "default", &cen.FlowLogArgs{
 //				FlowLogName:  pulumi.String("my-flowlog"),
-//				CenId:        _default.ID(),
+//				CenId:        _default.ID().ToIDOutput().ToStringOutput(),
 //				ProjectName:  defaultProject.Name,
 //				LogStoreName: defaultStore.Name,
 //			})

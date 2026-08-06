@@ -66,7 +66,7 @@ import (
 //				return err
 //			}
 //			defaultTQWN3k, err := vpc.NewSwitch(ctx, "defaultTQWN3k", &vpc.SwitchArgs{
-//				VpcId:     defaultktKLuM.ID(),
+//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zoneIdI),
 //				CidrBlock: pulumi.String(vswIpRangeI),
 //			})
@@ -75,10 +75,10 @@ import (
 //			}
 //			defaultWrovOd, err := clickhouseenterprisedbcluster.NewClickHouseEnterpriseDbCluster(ctx, "defaultWrovOd", &clickhouseenterprisedbcluster.ClickHouseEnterpriseDbClusterArgs{
 //				ZoneId:    pulumi.String(zoneIdI),
-//				VpcId:     defaultktKLuM.ID(),
+//				VpcId:     defaultktKLuM.ID().ToIDOutput().ToStringOutput(),
 //				ScaleMin:  pulumi.String("8"),
 //				ScaleMax:  pulumi.String("16"),
-//				VswitchId: defaultTQWN3k.ID(),
+//				VswitchId: defaultTQWN3k.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,7 @@ import (
 //			_, err = clickhouseenterprisedbcluster.NewAccount(ctx, "default", &clickhouseenterprisedbcluster.AccountArgs{
 //				Account:      pulumi.String("abc"),
 //				Description:  pulumi.String("example_desc"),
-//				DbInstanceId: defaultWrovOd.ID(),
+//				DbInstanceId: defaultWrovOd.ID().ToIDOutput().ToStringOutput(),
 //				AccountType:  pulumi.String("NormalAccount"),
 //				Password:     pulumi.String("abc123456!"),
 //				DmlAuthSetting: &clickhouseenterprisedbcluster.AccountDmlAuthSettingArgs{

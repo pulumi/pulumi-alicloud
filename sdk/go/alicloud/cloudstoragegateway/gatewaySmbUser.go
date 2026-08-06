@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			invokeSubstr, err := std.Substr(ctx, &std.SubstrArgs{
-//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, &std.ReplaceArgs{
+//				Input: fmt.Sprintf("tf-example-%v", std.Replace(ctx, std.ReplaceArgs{
 //					Text:    defaultUuid.Result,
 //					Search:  "-",
 //					Replace: "",
@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
@@ -96,10 +96,10 @@ import (
 //				GatewayClass:           pulumi.String("Standard"),
 //				Type:                   pulumi.String("File"),
 //				PaymentType:            pulumi.String("PayAsYouGo"),
-//				VswitchId:              defaultSwitch.ID(),
+//				VswitchId:              defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				ReleaseAfterExpiration: pulumi.Bool(false),
 //				PublicNetworkBandwidth: pulumi.Int(40),
-//				StorageBundleId:        defaultStorageBundle.ID(),
+//				StorageBundleId:        defaultStorageBundle.ID().ToIDOutput().ToStringOutput(),
 //				Location:               pulumi.String("Cloud"),
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ import (
 //			_, err = cloudstoragegateway.NewGatewaySmbUser(ctx, "default", &cloudstoragegateway.GatewaySmbUserArgs{
 //				Username:  pulumi.String("example_username"),
 //				Password:  pulumi.String("password"),
-//				GatewayId: defaultGateway.ID(),
+//				GatewayId: defaultGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

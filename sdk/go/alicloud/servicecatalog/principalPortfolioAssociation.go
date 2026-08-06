@@ -78,8 +78,8 @@ import (
 //				return err
 //			}
 //			_, err = servicecatalog.NewPrincipalPortfolioAssociation(ctx, "default", &servicecatalog.PrincipalPortfolioAssociationArgs{
-//				PrincipalId:   default48JHf4.ID(),
-//				PortfolioId:   defaultDaXVxI.ID(),
+//				PrincipalId:   default48JHf4.ID().ToIDOutput().ToStringOutput(),
+//				PortfolioId:   defaultDaXVxI.ID().ToIDOutput().ToStringOutput(),
 //				PrincipalType: pulumi.String("RamRole"),
 //			})
 //			if err != nil {

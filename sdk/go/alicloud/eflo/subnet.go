@@ -62,7 +62,7 @@ import (
 //				SubnetName: pulumi.String(name),
 //				ZoneId:     pulumi.String(_default.Zones[0].Id),
 //				Cidr:       pulumi.String("10.0.0.0/16"),
-//				VpdId:      defaultVpd.ID(),
+//				VpdId:      defaultVpd.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

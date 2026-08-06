@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewAclEntryAttachment(ctx, "attachment", &slb.AclEntryAttachmentArgs{
-//				AclId:   attachment.ID(),
+//				AclId:   attachment.ID().ToIDOutput().ToStringOutput(),
 //				Entry:   pulumi.String("168.10.10.0/24"),
 //				Comment: pulumi.String("second"),
 //			})

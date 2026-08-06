@@ -84,7 +84,7 @@ import (
 //			}
 //			_, err = gpdb.NewAccount(ctx, "defaultsk1eaS", &gpdb.AccountArgs{
 //				AccountDescription: pulumi.String("example_001"),
-//				DbInstanceId:       defaulttuqTmM.ID(),
+//				DbInstanceId:       defaulttuqTmM.ID().ToIDOutput().ToStringOutput(),
 //				AccountName:        pulumi.String("example_001"),
 //				AccountPassword:    pulumi.String("example_001"),
 //				AccountType:        pulumi.String("Normal"),
@@ -94,7 +94,7 @@ import (
 //			}
 //			defaultRXkfKL, err := gpdb.NewExternalDataService(ctx, "defaultRXkfKL", &gpdb.ExternalDataServiceArgs{
 //				ServiceName:        pulumi.String(name),
-//				DbInstanceId:       defaulttuqTmM.ID(),
+//				DbInstanceId:       defaulttuqTmM.ID().ToIDOutput().ToStringOutput(),
 //				ServiceDescription: pulumi.String("myexample"),
 //				ServiceSpec:        pulumi.String("8"),
 //			})
@@ -104,7 +104,7 @@ import (
 //			_, err = gpdb.NewJdbcDataSource(ctx, "default", &gpdb.JdbcDataSourceArgs{
 //				JdbcConnectionString:  pulumi.String("jdbc:mysql://rm-2ze327yr44c61183c.mysql.rds.aliyuncs.com:3306/example_001"),
 //				DataSourceDescription: pulumi.String("myexample"),
-//				DbInstanceId:          defaulttuqTmM.ID(),
+//				DbInstanceId:          defaulttuqTmM.ID().ToIDOutput().ToStringOutput(),
 //				JdbcPassword:          pulumi.String("example_001"),
 //				DataSourceName:        defaultRXkfKL.ServiceName,
 //				DataSourceType:        pulumi.String("mysql"),

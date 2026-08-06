@@ -27,6 +27,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -104,7 +106,7 @@ import (
 //			_, err = eflo.NewExperimentPlan(ctx, "default", &eflo.ExperimentPlanArgs{
 //				ResourceId: defaultResource.ResourceId,
 //				PlanName:   pulumi.String(name),
-//				TemplateId: defaultpSZN7t.ID(),
+//				TemplateId: defaultpSZN7t.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

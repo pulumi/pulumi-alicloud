@@ -66,7 +66,7 @@ import (
 //						Schedule:    pulumi.String("I|1631685600|P1D"),
 //						Retention:   pulumi.Int(7),
 //						ArchiveDays: pulumi.Int(0),
-//						VaultId:     defaultyk84Hc.ID(),
+//						VaultId:     defaultyk84Hc.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				PolicyDescription: pulumi.String("policy example"),
@@ -84,7 +84,7 @@ import (
 //			_, err = hbr.NewPolicyBinding(ctx, "default", &hbr.PolicyBindingArgs{
 //				SourceType:               pulumi.String("OSS"),
 //				Disabled:                 pulumi.Bool(false),
-//				PolicyId:                 defaultoqWvHQ.ID(),
+//				PolicyId:                 defaultoqWvHQ.ID().ToIDOutput().ToStringOutput(),
 //				DataSourceId:             defaultKtt2XY.Bucket,
 //				PolicyBindingDescription: pulumi.String("policy binding example (update)"),
 //				Source:                   pulumi.String("prefix-example-update/"),

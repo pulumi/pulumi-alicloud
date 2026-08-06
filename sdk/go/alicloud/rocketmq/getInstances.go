@@ -44,7 +44,7 @@ import (
 //			}
 //			instancesDs := rocketmq.GetInstancesOutput(ctx, rocketmq.GetInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex:  _default.Name,
 //				OutputFile: pulumi.String("instances.txt"),

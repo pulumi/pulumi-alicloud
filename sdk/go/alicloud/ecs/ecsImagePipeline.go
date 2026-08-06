@@ -77,7 +77,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -102,7 +102,7 @@ import (
 //					pulumi.String("cn-qingdao"),
 //					pulumi.String("cn-zhangjiakou"),
 //				},
-//				VswitchId: defaultSwitch.ID(),
+//				VswitchId: defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("Acceptance-test"),

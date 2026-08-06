@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Ids[0]),
 //				VswitchName: pulumi.String(name),
@@ -77,7 +77,7 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -89,11 +89,11 @@ import (
 //				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType:    pulumi.String("Postpaid"),
 //				InstanceName:          pulumi.String(name),
-//				VswitchId:             defaultSwitch.ID(),
+//				VswitchId:             defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringPeriod:      pulumi.Int(60),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ZoneId:       pulumi.String(_default.Ids[0]),
 //				ZoneIdSlaveA: pulumi.String(_default.Ids[0]),
@@ -102,7 +102,7 @@ import (
 //				return err
 //			}
 //			_, err = rds.NewDbNode(ctx, "default", &rds.DbNodeArgs{
-//				DbInstanceId: defaultInstance.ID(),
+//				DbInstanceId: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				ClassCode:    defaultInstance.InstanceType,
 //				ZoneId:       defaultSwitch.ZoneId,
 //			})

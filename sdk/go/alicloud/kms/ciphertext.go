@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewCiphertext(ctx, "encrypted", &kms.CiphertextArgs{
-//				KeyId:     key.ID(),
+//				KeyId:     key.ID().ToIDOutput().ToStringOutput(),
 //				Plaintext: pulumi.String("example"),
 //			})
 //			if err != nil {

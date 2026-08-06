@@ -86,7 +86,7 @@ import (
 //			}
 //			_default := fc.GetV3TriggersOutput(ctx, fc.GetV3TriggersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultV3Trigger.ID(),
+//					defaultV3Trigger.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex:    defaultV3Trigger.TriggerName,
 //				FunctionName: pulumi.String(functionName),

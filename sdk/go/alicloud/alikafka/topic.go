@@ -62,7 +62,7 @@ import (
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
@@ -70,12 +70,12 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"enable.acl": "true",
 //			})
 //			if err != nil {
@@ -91,14 +91,14 @@ import (
 //				IoMax:          pulumi.Int(20),
 //				SpecType:       pulumi.String("professional"),
 //				ServiceVersion: pulumi.String("2.2.0"),
-//				VswitchId:      defaultSwitch.ID(),
-//				SecurityGroup:  defaultSecurityGroup.ID(),
+//				VswitchId:      defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				SecurityGroup:  defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				Config:         pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"message.format.version": "2.2.0",
 //				"max.message.bytes":      "10485760",
 //				"min.insync.replicas":    "1",
@@ -110,7 +110,7 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = alikafka.NewTopic(ctx, "default", &alikafka.TopicArgs{
-//				InstanceId:   defaultInstance.ID(),
+//				InstanceId:   defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //				Topic:        pulumi.String(name),
 //				Remark:       pulumi.String(name),
 //				LocalTopic:   pulumi.Bool(true),

@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = cms.NewEventRule(ctx, "example", &cms.EventRuleArgs{
 //				RuleName:    pulumi.String(name),
-//				GroupId:     _default.ID(),
+//				GroupId:     _default.ID().ToIDOutput().ToStringOutput(),
 //				SilenceTime: pulumi.Int(100),
 //				Description: pulumi.String(name),
 //				Status:      pulumi.String("ENABLED"),

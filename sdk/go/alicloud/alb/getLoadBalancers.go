@@ -65,7 +65,7 @@ import (
 //			}
 //			zoneASwitch, err := vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
 //				VswitchName:       pulumi.String(name),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:         pulumi.String("192.168.0.0/18"),
 //				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
 //				Ipv6CidrBlockMask: pulumi.Int(6),
@@ -75,7 +75,7 @@ import (
 //			}
 //			zoneB, err := vpc.NewSwitch(ctx, "zone_b", &vpc.SwitchArgs{
 //				VswitchName:       pulumi.String(name),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:         pulumi.String("192.168.128.0/18"),
 //				ZoneId:            pulumi.String(defaultGetZones.Zones[1].Id),
 //				Ipv6CidrBlockMask: pulumi.Int(8),
@@ -85,7 +85,7 @@ import (
 //			}
 //			defaultIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
 //				Ipv6GatewayName: pulumi.String(name),
-//				VpcId:           defaultNetwork.ID(),
+//				VpcId:           defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //				AddressAllocatedMode:      pulumi.String("Fixed"),
 //				AddressIpVersion:          pulumi.String("DualStack"),
 //				Ipv6AddressType:           pulumi.String("Internet"),
-//				BandwidthPackageId:        defaultCommonBandwithPackage.ID(),
+//				BandwidthPackageId:        defaultCommonBandwithPackage.ID().ToIDOutput().ToStringOutput(),
 //				ResourceGroupId:           pulumi.String(_default.Groups[1].Id),
 //				LoadBalancerName:          pulumi.String(name),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
@@ -113,14 +113,14 @@ import (
 //				},
 //				ZoneMappings: alb.LoadBalancerZoneMappingArray{
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId:       zoneASwitch.ID(),
+//						VswitchId:       zoneASwitch.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:          zoneASwitch.ZoneId,
 //						EipType:         pulumi.String("Common"),
-//						AllocationId:    zoneA.ID(),
+//						AllocationId:    zoneA.ID().ToIDOutput().ToStringOutput(),
 //						IntranetAddress: pulumi.String("192.168.10.1"),
 //					},
 //					&alb.LoadBalancerZoneMappingArgs{
-//						VswitchId: zoneB.ID(),
+//						VswitchId: zoneB.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    zoneB.ZoneId,
 //					},
 //				},
@@ -133,7 +133,7 @@ import (
 //			}
 //			ids := alb.GetLoadBalancersOutput(ctx, alb.GetLoadBalancersOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultLoadBalancer.ID(),
+//					defaultLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("albLoadBalancersId0", ids.ApplyT(func(ids alb.GetLoadBalancersResult) (*string, error) {

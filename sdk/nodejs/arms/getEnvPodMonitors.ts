@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: `${name}-${defaultInteger.result}`,
@@ -221,7 +221,7 @@ export interface GetEnvPodMonitorsResult {
  *         input: vpc.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  * });
  * const defaultSnapshotPolicy = new alicloud.ecs.SnapshotPolicy("default", {
  *     name: `${name}-${defaultInteger.result}`,

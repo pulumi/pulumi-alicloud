@@ -47,7 +47,7 @@ import (
 //			}
 //			defaultDynamicTagGroup, err := cms.NewDynamicTagGroup(ctx, "default", &cms.DynamicTagGroupArgs{
 //				ContactGroupLists: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				TagKey: pulumi.String("your_tag_key"),
 //				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{
@@ -62,7 +62,7 @@ import (
 //			}
 //			ids := cms.GetDynamicTagGroupsOutput(ctx, cms.GetDynamicTagGroupsOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultDynamicTagGroup.ID(),
+//					defaultDynamicTagGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("cmsDynamicTagGroupId1", ids.ApplyT(func(ids cms.GetDynamicTagGroupsResult) (*string, error) {

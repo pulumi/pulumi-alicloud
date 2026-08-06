@@ -78,7 +78,7 @@ import (
 //			}
 //			_, err = vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
 //				VswitchName:       pulumi.String(name),
-//				VpcId:             defaultNetwork.ID(),
+//				VpcId:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:         pulumi.String("172.16.0.0/24"),
 //				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
 //				Ipv6CidrBlockMask: pulumi.Int(6),
@@ -100,7 +100,7 @@ import (
 //				AutoRenew:                pulumi.Bool(true),
 //				Spec:                     pulumi.String("Mini.2"),
 //				OppositeRouterType:       pulumi.String("VRouter"),
-//				RouterId:                 defaultVirtualBorderRouter.ID(),
+//				RouterId:                 defaultVirtualBorderRouter.ID().ToIDOutput().ToStringOutput(),
 //				Description:              pulumi.String("terraform-example"),
 //				AccessPointId:            pulumi.String("ap-cn-hangzhou-jg-B"),
 //				ResourceGroupId:          pulumi.String(_default.Ids[0]),

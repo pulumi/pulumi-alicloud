@@ -45,13 +45,13 @@ import (
 //				return err
 //			}
 //			defaultUmmxnE, err := cen.NewTransitRouter(ctx, "defaultUmmxnE", &cen.TransitRouterArgs{
-//				CenId: defaultpSZB78.ID(),
+//				CenId: defaultpSZB78.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultksqgSa, err := cen.NewTransitRouter(ctx, "defaultksqgSa", &cen.TransitRouterArgs{
-//				CenId: defaultpSZB78.ID(),
+//				CenId: defaultpSZB78.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ import (
 //			defaultnXZ83y, err := cen.NewTransitRouterPeerAttachment(ctx, "defaultnXZ83y", &cen.TransitRouterPeerAttachmentArgs{
 //				DefaultLinkType:           pulumi.String("Platinum"),
 //				BandwidthType:             pulumi.String("DataTransfer"),
-//				CenId:                     defaultpSZB78.ID(),
+//				CenId:                     defaultpSZB78.ID().ToIDOutput().ToStringOutput(),
 //				PeerTransitRouterRegionId: pulumi.String("cn-hangzhou"),
 //				TransitRouterId:           defaultUmmxnE.TransitRouterId,
 //				PeerTransitRouterId:       defaultksqgSa.TransitRouterId,

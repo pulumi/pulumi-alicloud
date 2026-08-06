@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -79,21 +79,21 @@ import (
 //				InstanceStorage:    pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				InstanceChargeType: pulumi.String("Postpaid"),
 //				InstanceName:       pulumi.String("terraform-example"),
-//				VswitchId:          exampleSwitch.ID(),
+//				VswitchId:          exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringPeriod:   pulumi.Int(60),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleRdsBackup, err := rds.NewRdsBackup(ctx, "example", &rds.RdsBackupArgs{
-//				DbInstanceId:    exampleInstance.ID(),
+//				DbInstanceId:    exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				RemoveFromState: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rds.NewRdsCloneDbInstance(ctx, "example", &rds.RdsCloneDbInstanceArgs{
-//				SourceDbInstanceId:    exampleInstance.ID(),
+//				SourceDbInstanceId:    exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
 //				PaymentType:           pulumi.String("PayAsYouGo"),
 //				BackupId:              exampleRdsBackup.BackupId,

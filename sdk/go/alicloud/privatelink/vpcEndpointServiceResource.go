@@ -70,7 +70,7 @@ import (
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       exampleNetwork.ID(),
+//				VpcId:       exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -78,14 +78,14 @@ import (
 //			}
 //			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
 //				SecurityGroupName: pulumi.String(name),
-//				VpcId:             exampleNetwork.ID(),
+//				VpcId:             exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "example", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
-//				VswitchId:        exampleSwitch.ID(),
+//				VswitchId:        exampleSwitch.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
 //				AddressType:      pulumi.String("intranet"),
 //			})
@@ -93,19 +93,19 @@ import (
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpoint(ctx, "example", &privatelink.VpcEndpointArgs{
-//				ServiceId: exampleVpcEndpointService.ID(),
+//				ServiceId: exampleVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//					exampleSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				VpcId:           exampleNetwork.ID(),
+//				VpcId:           exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				VpcEndpointName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = privatelink.NewVpcEndpointServiceResource(ctx, "example", &privatelink.VpcEndpointServiceResourceArgs{
-//				ServiceId:    exampleVpcEndpointService.ID(),
-//				ResourceId:   exampleApplicationLoadBalancer.ID(),
+//				ServiceId:    exampleVpcEndpointService.ID().ToIDOutput().ToStringOutput(),
+//				ResourceId:   exampleApplicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 //				ResourceType: pulumi.String("slb"),
 //			})
 //			if err != nil {

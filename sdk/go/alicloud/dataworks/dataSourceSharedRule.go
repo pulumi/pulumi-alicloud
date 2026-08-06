@@ -30,6 +30,7 @@ import (
 // import (
 //
 //	"encoding/json"
+//	"strconv"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dataworks"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
@@ -95,8 +96,8 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"address": []map[string]interface{}{
-//					map[string]interface{}{
+//				"address": []map[string]string{
+//					{
 //						"host": "127.0.0.1",
 //						"port": "1234",
 //					},
@@ -108,7 +109,7 @@ import (
 //				"loginMode":        "Anonymous",
 //				"securityProtocol": "authTypeNone",
 //				"envType":          "Prod",
-//				"properties": map[string]interface{}{
+//				"properties": map[string]string{
 //					"key1": "value1",
 //				},
 //			})
@@ -120,14 +121,14 @@ import (
 //				Type:                     pulumi.String("hive"),
 //				DataSourceName:           pulumi.String(invokeFormat1.Result),
 //				ConnectionProperties:     pulumi.String(json0),
-//				ProjectId:                defaultQeRfvU.ID(),
+//				ProjectId:                defaultQeRfvU.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				ConnectionPropertiesMode: pulumi.String("UrlMode"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataworks.NewDataSourceSharedRule(ctx, "default", &dataworks.DataSourceSharedRuleArgs{
-//				TargetProjectId: defaultasjsH5.ID(),
+//				TargetProjectId: defaultasjsH5.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				DataSourceId:    defaultvzu0wG.DataSourceId,
 //				EnvType:         pulumi.String("Prod"),
 //			})

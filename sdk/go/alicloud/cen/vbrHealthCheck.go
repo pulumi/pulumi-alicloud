@@ -85,8 +85,8 @@ import (
 //				return err
 //			}
 //			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       example.ID(),
+//				InstanceId:            exampleInstance.ID().ToIDOutput().ToStringOutput(),
+//				ChildInstanceId:       example.ID().ToIDOutput().ToStringOutput(),
 //				ChildInstanceType:     pulumi.String("VBR"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
 //			})
@@ -94,10 +94,10 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewVbrHealthCheck(ctx, "example", &cen.VbrHealthCheckArgs{
-//				CenId:               exampleInstance.ID(),
+//				CenId:               exampleInstance.ID().ToIDOutput().ToStringOutput(),
 //				HealthCheckSourceIp: pulumi.String("192.168.1.2"),
 //				HealthCheckTargetIp: pulumi.String("10.0.0.2"),
-//				VbrInstanceId:       example.ID(),
+//				VbrInstanceId:       example.ID().ToIDOutput().ToStringOutput(),
 //				VbrInstanceRegionId: exampleInstanceAttachment.ChildInstanceRegionId,
 //				HealthCheckInterval: pulumi.Int(2),
 //				HealthyThreshold:    pulumi.Int(8),

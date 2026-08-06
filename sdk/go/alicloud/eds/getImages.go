@@ -71,8 +71,8 @@ import (
 //				return err
 //			}
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
-//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
 //				BundleId:      pulumi.String(_default.Bundles[1].Id),
 //				DesktopName:   pulumi.String("your_desktop_name"),
 //			})
@@ -81,7 +81,7 @@ import (
 //			}
 //			defaultImage, err := eds.NewImage(ctx, "default", &eds.ImageArgs{
 //				ImageName:   pulumi.String("your_image_name"),
-//				DesktopId:   defaultDesktop.ID(),
+//				DesktopId:   defaultDesktop.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("example_value"),
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ import (
 //			}
 //			ids := eds.GetImagesOutput(ctx, eds.GetImagesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultImage.ID(),
+//					defaultImage.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("ecdImageId1", ids.ApplyT(func(ids eds.GetImagesResult) (*string, error) {

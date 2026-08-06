@@ -51,7 +51,7 @@ import (
 //			_, err = eds.NewAdConnectorOfficeSite(ctx, "default", &eds.AdConnectorOfficeSiteArgs{
 //				AdConnectorOfficeSiteName: pulumi.String(name),
 //				Bandwidth:                 pulumi.Int(100),
-//				CenId:                     _default.ID(),
+//				CenId:                     _default.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:                 pulumi.String("10.0.0.0/12"),
 //				DesktopAccessType:         pulumi.String("INTERNET"),
 //				DnsAddresses: pulumi.StringArray{

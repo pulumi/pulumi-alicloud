@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *         input: defaultNetwork.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });

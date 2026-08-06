@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			defaultN80M7S, err := vpc.NewSwitch(ctx, "defaultN80M7S", &vpc.SwitchArgs{
-//				VpcId:       defaultILXuit.ID(),
+//				VpcId:       defaultILXuit.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				VswitchName: pulumi.String("milvus-example"),
@@ -68,7 +68,7 @@ import (
 //				ZoneId: pulumi.String(zoneId),
 //				VswitchIds: alicloud.MilvusInstanceVswitchIdArray{
 //					&alicloud.MilvusInstanceVswitchIdArgs{
-//						VswId:  defaultN80M7S.ID(),
+//						VswId:  defaultN80M7S.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId: defaultN80M7S.ZoneId,
 //					},
 //				},
@@ -83,7 +83,7 @@ import (
 //				},
 //				InstanceName:        pulumi.String("镇远测试包年包月"),
 //				DbVersion:           pulumi.String("2.4"),
-//				VpcId:               defaultILXuit.ID(),
+//				VpcId:               defaultILXuit.ID().ToIDOutput().ToStringOutput(),
 //				Ha:                  pulumi.Bool(false),
 //				PaymentType:         pulumi.String("Subscription"),
 //				MultiZoneMode:       pulumi.String("Single"),

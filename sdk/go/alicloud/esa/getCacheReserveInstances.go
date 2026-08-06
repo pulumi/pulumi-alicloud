@@ -49,7 +49,7 @@ import (
 //			}
 //			ids := esa.GetCacheReserveInstancesOutput(ctx, esa.GetCacheReserveInstancesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("esaCacheReserveInstancesId0", ids.ApplyT(func(ids esa.GetCacheReserveInstancesResult) (*string, error) {

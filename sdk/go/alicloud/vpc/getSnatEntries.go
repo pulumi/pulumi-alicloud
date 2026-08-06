@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
-//				VpcId:            fooNetwork.ID(),
+//				VpcId:            fooNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:        pulumi.String("172.16.0.0/21"),
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				VswitchName:      pulumi.String(name),
@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			fooNatGateway, err := vpc.NewNatGateway(ctx, "foo", &vpc.NatGatewayArgs{
-//				VpcId:         fooNetwork.ID(),
+//				VpcId:         fooNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Specification: pulumi.String("Small"),
 //				Name:          pulumi.String(name),
 //			})
@@ -74,15 +74,15 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEipAssociation(ctx, "foo", &ecs.EipAssociationArgs{
-//				AllocationId: fooEipAddress.ID(),
-//				InstanceId:   fooNatGateway.ID(),
+//				AllocationId: fooEipAddress.ID().ToIDOutput().ToStringOutput(),
+//				InstanceId:   fooNatGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			fooSnatEntry, err := vpc.NewSnatEntry(ctx, "foo", &vpc.SnatEntryArgs{
 //				SnatTableId:     fooNatGateway.SnatTableIds,
-//				SourceVswitchId: fooSwitch.ID(),
+//				SourceVswitchId: fooSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SnatIp:          fooEipAddress.IpAddress,
 //			})
 //			if err != nil {

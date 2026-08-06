@@ -95,7 +95,7 @@ import (
 //			}
 //			_default := cms.GetAlertRulesV2Output(ctx, cms.GetAlertRulesV2OutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAlertRuleV2.ID(),
+//					defaultAlertRuleV2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("alicloudCmsAlertRuleV2ExampleId", _default.ApplyT(func(_default cms.GetAlertRulesV2Result) (*string, error) {

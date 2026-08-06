@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			defaultjUrTYm, err := vpc.NewSwitch(ctx, "defaultjUrTYm", &vpc.SwitchArgs{
-//				VpcId:       defaultrqDtGm.ID(),
+//				VpcId:       defaultrqDtGm.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-j"),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				VswitchName: pulumi.String("pop-example-vswitch"),
@@ -72,10 +72,10 @@ import (
 //				Remark:        pulumi.String("example"),
 //				NetworkInfo: &rocketmq.RocketMQInstanceNetworkInfoArgs{
 //					VpcInfo: &rocketmq.RocketMQInstanceNetworkInfoVpcInfoArgs{
-//						VpcId: defaultrqDtGm.ID(),
+//						VpcId: defaultrqDtGm.ID().ToIDOutput().ToStringOutput(),
 //						Vswitches: rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArray{
 //							&rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{
-//								VswitchId: defaultjUrTYm.ID(),
+//								VswitchId: defaultjUrTYm.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -98,7 +98,7 @@ import (
 //			}
 //			defaultMeNlxe, err := rocketmq.NewAccount(ctx, "defaultMeNlxe", &rocketmq.AccountArgs{
 //				AccountStatus: pulumi.String("ENABLE"),
-//				InstanceId:    defaultKJZNVM.ID(),
+//				InstanceId:    defaultKJZNVM.ID().ToIDOutput().ToStringOutput(),
 //				Username:      pulumi.String("tfexample"),
 //				Password:      pulumi.String("123456"),
 //			})
@@ -106,7 +106,7 @@ import (
 //				return err
 //			}
 //			defaultVA0zog, err := rocketmq.NewRocketMQTopic(ctx, "defaultVA0zog", &rocketmq.RocketMQTopicArgs{
-//				InstanceId:  defaultKJZNVM.ID(),
+//				InstanceId:  defaultKJZNVM.ID().ToIDOutput().ToStringOutput(),
 //				MessageType: pulumi.String("NORMAL"),
 //				TopicName:   pulumi.String("tfexample"),
 //			})
@@ -118,7 +118,7 @@ import (
 //					pulumi.String("Pub"),
 //					pulumi.String("Sub"),
 //				},
-//				InstanceId:   defaultKJZNVM.ID(),
+//				InstanceId:   defaultKJZNVM.ID().ToIDOutput().ToStringOutput(),
 //				Username:     defaultMeNlxe.Username,
 //				ResourceName: defaultVA0zog.TopicName,
 //				ResourceType: pulumi.String("Topic"),

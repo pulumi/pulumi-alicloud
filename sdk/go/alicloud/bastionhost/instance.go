@@ -84,7 +84,7 @@ import (
 //				Period:      pulumi.Int(1),
 //				VswitchId:   pulumi.String(defaultGetSwitches.Ids[0]),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -152,7 +152,7 @@ import (
 //				Bandwidth:   pulumi.String("5"),
 //				Period:      pulumi.Int(1),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
 //				AdAuthServers: bastionhost.InstanceAdAuthServerArray{

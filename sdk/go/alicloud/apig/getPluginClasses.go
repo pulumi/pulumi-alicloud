@@ -44,7 +44,7 @@ import (
 //			}
 //			ids := apig.GetPluginClassesOutput(ctx, apig.GetPluginClassesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, nil)
 //			ctx.Export("apigPluginClassId0", ids.ApplyT(func(ids apig.GetPluginClassesResult) (*string, error) {

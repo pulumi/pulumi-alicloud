@@ -51,7 +51,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       _default.ID(),
+//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String("cn-hangzhou-e"),
 //			})
 //			if err != nil {
@@ -80,11 +80,11 @@ import (
 //			}
 //			_, err = dfs.NewMountPoint(ctx, "default", &dfs.MountPointArgs{
 //				Description:   pulumi.String(name),
-//				VpcId:         _default.ID(),
-//				FileSystemId:  defaultFileSystem.ID(),
-//				AccessGroupId: defaultAccessGroup.ID(),
+//				VpcId:         _default.ID().ToIDOutput().ToStringOutput(),
+//				FileSystemId:  defaultFileSystem.ID().ToIDOutput().ToStringOutput(),
+//				AccessGroupId: defaultAccessGroup.ID().ToIDOutput().ToStringOutput(),
 //				NetworkType:   pulumi.String("VPC"),
-//				VswitchId:     defaultSwitch.ID(),
+//				VswitchId:     defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

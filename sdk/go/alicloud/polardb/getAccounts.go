@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(this.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -62,7 +62,7 @@ import (
 //				PayType:     pulumi.String("PostPaid"),
 //				DbNodeCount: pulumi.Int(2),
 //				DbNodeClass: pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
-//				VswitchId:   defaultSwitch.ID(),
+//				VswitchId:   defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -72,9 +72,9 @@ import (
 //				Status:           pulumi.String("Running"),
 //			}, nil)
 //			account, err := polardb.NewAccount(ctx, "account", &polardb.AccountArgs{
-//				DbClusterId: pulumi.String(polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
+//				DbClusterId: polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (*string, error) {
 //					return polardbClustersDs.Clusters[0].Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //				AccountName:        pulumi.String("tfnormal_01"),
 //				AccountPassword:    pulumi.String("Test12345"),
 //				AccountDescription: pulumi.String("tf_account_description"),

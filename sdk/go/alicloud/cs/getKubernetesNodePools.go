@@ -62,7 +62,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(enhanced.Zones[0].ZoneId),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //				NamePrefix:  pulumi.String(name),
 //				ClusterSpec: pulumi.String("ack.pro.small"),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NewNatGateway:      pulumi.Bool(true),
 //				PodCidr:            pulumi.String(invokeCidrsubnet.Result),
@@ -107,9 +107,9 @@ import (
 //			}
 //			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
 //				NodePoolName: pulumi.String("spot_auto_scaling"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
+//				ClusterId:    defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InstanceTypes: pulumi.StringArray{
 //					pulumi.String(cloudEfficiency.InstanceTypes[0].Id),
@@ -137,7 +137,7 @@ import (
 //				Ids: pulumi.StringArray{
 //					defaultNodePool.NodePoolId,
 //				},
-//				ClusterId: defaultManagedKubernetes.ID(),
+//				ClusterId: defaultManagedKubernetes.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			ctx.Export("alicloudCsKubernetesNodePoolExampleId", _default.ApplyT(func(_default cs.GetKubernetesNodePoolsResult) (*string, error) {
 //				return _default.Nodepools[0].NodePoolId, nil

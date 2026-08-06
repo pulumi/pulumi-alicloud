@@ -93,8 +93,8 @@ import (
 //				return err
 //			}
 //			_, err = rds.NewCustomDiskAttachment(ctx, "default", &rds.CustomDiskAttachmentArgs{
-//				InstanceId: defaultCustom.ID(),
-//				DiskId:     defaultCustomDisk.ID(),
+//				InstanceId: defaultCustom.ID().ToIDOutput().ToStringOutput(),
+//				DiskId:     defaultCustomDisk.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

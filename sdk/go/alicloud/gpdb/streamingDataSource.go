@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			default59ZqyD, err := vpc.NewSwitch(ctx, "default59ZqyD", &vpc.SwitchArgs{
-//				VpcId:     defaultDfkYOR.ID(),
+//				VpcId:     defaultDfkYOR.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String("cn-beijing-h"),
 //				CidrBlock: pulumi.String("192.168.1.0/24"),
 //			})
@@ -99,10 +99,10 @@ import (
 //				SslEnabled:          pulumi.Int(0),
 //				EngineVersion:       pulumi.String("6.0"),
 //				ZoneId:              pulumi.String("cn-beijing-h"),
-//				VswitchId:           default59ZqyD.ID(),
+//				VswitchId:           default59ZqyD.ID().ToIDOutput().ToStringOutput(),
 //				StorageSize:         pulumi.Int(50),
 //				MasterCu:            pulumi.Int(4),
-//				VpcId:               defaultDfkYOR.ID(),
+//				VpcId:               defaultDfkYOR.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Engine:              pulumi.String("gpdb"),
 //			})
@@ -111,7 +111,7 @@ import (
 //			}
 //			defaultwruvdv, err := gpdb.NewStreamingDataService(ctx, "defaultwruvdv", &gpdb.StreamingDataServiceArgs{
 //				ServiceName:        pulumi.String("example"),
-//				DbInstanceId:       default7mX6ld.ID(),
+//				DbInstanceId:       default7mX6ld.ID().ToIDOutput().ToStringOutput(),
 //				ServiceDescription: pulumi.String("example"),
 //				ServiceSpec:        pulumi.String("8"),
 //			})
@@ -119,7 +119,7 @@ import (
 //				return err
 //			}
 //			_, err = gpdb.NewStreamingDataSource(ctx, "default", &gpdb.StreamingDataSourceArgs{
-//				DbInstanceId:          default7mX6ld.ID(),
+//				DbInstanceId:          default7mX6ld.ID().ToIDOutput().ToStringOutput(),
 //				DataSourceName:        pulumi.String("example-kafka3"),
 //				DataSourceConfig:      pulumi.String(kafka_config),
 //				DataSourceType:        pulumi.String("kafka"),

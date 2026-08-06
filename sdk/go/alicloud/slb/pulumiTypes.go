@@ -2992,7 +2992,7 @@ type GetLoadBalancersBalancer struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -3069,7 +3069,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -3278,7 +3278,7 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},
@@ -3688,7 +3688,7 @@ type GetLoadBalancersSlb struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -3751,7 +3751,7 @@ type GetLoadBalancersSlbArgs struct {
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-	// 			Tags: map[string]interface{}{
+	// 			Tags: map[string]string{
 	// 				"tagKey1": "tagValue1",
 	// 				"tagKey2": "tagValue2",
 	// 			},
@@ -3885,7 +3885,7 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.GetLoadBalancers(ctx, &slb.GetLoadBalancersArgs{
-//				Tags: map[string]interface{}{
+//				Tags: map[string]string{
 //					"tagKey1": "tagValue1",
 //					"tagKey2": "tagValue2",
 //				},

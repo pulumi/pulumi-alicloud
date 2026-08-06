@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			_, err = adb.NewConnection(ctx, "default", &adb.ConnectionArgs{
-//				DbClusterId:      cluster.ID(),
+//				DbClusterId:      cluster.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionPrefix: pulumi.String("example"),
 //			})
 //			if err != nil {

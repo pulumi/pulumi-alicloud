@@ -55,7 +55,7 @@ import (
 //			}
 //			defaultGetAddressBooks := wafv3.GetAddressBooksOutput(ctx, wafv3.GetAddressBooksOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultAddressBook.ID(),
+//					defaultAddressBook.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				NameRegex:  defaultAddressBook.AddressBookName,
 //				InstanceId: pulumi.String(_default.Ids[0]),

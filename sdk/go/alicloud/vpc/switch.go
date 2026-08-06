@@ -52,7 +52,7 @@ import (
 //			_, err = vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				VpcId:       fooNetwork.ID(),
+//				VpcId:       fooNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(foo.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			cidrBlocks, err := vpc.NewIpv4CidrBlock(ctx, "cidr_blocks", &vpc.Ipv4CidrBlockArgs{
-//				VpcId:              vpc2.ID(),
+//				VpcId:              vpc2.ID().ToIDOutput().ToStringOutput(),
 //				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
 //			})
 //			if err != nil {
@@ -147,7 +147,7 @@ import (
 //				return err
 //			}
 //			fooIpv4CidrBlock, err := vpc.NewIpv4CidrBlock(ctx, "foo", &vpc.Ipv4CidrBlockArgs{
-//				VpcId:              fooNetwork.ID(),
+//				VpcId:              fooNetwork.ID().ToIDOutput().ToStringOutput(),
 //				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
 //			})
 //			if err != nil {

@@ -57,7 +57,7 @@ import (
 //			_, err = vpc.NewTrafficMirrorFilter(ctx, "default", &vpc.TrafficMirrorFilterArgs{
 //				TrafficMirrorFilterDescription: pulumi.String("test"),
 //				TrafficMirrorFilterName:        pulumi.String(name),
-//				ResourceGroupId:                default3iXhoa.ID(),
+//				ResourceGroupId:                default3iXhoa.ID().ToIDOutput().ToStringOutput(),
 //				EgressRules: vpc.TrafficMirrorFilterEgressRuleTypeArray{
 //					&vpc.TrafficMirrorFilterEgressRuleTypeArgs{
 //						Priority:             pulumi.Int(1),

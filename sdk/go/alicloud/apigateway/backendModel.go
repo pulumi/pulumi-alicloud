@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"ServiceAddress":     "http://apigateway.alicloudapi.com:8080",
 //				"HttpTargetHostName": "www.example.com",
 //			})
@@ -59,7 +59,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = apigateway.NewBackendModel(ctx, "default", &apigateway.BackendModelArgs{
-//				BackendId:        _default.ID(),
+//				BackendId:        _default.ID().ToIDOutput().ToStringOutput(),
 //				BackendType:      pulumi.String("HTTP"),
 //				StageName:        pulumi.String("RELEASE"),
 //				Description:      pulumi.String(name),

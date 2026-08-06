@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       _default.ID(),
+//				VpcId:       _default.ID().ToIDOutput().ToStringOutput(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String("cn-beijing-k"),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -63,9 +63,9 @@ import (
 //				Description:     pulumi.String("terraform-example-app"),
 //				ApplicationType: pulumi.String("polarclaw"),
 //				Architecture:    pulumi.String("x86"),
-//				DbClusterId:     defaultCluster.ID(),
-//				VswitchId:       defaultSwitch.ID(),
-//				VpcId:           _default.ID(),
+//				DbClusterId:     defaultCluster.ID().ToIDOutput().ToStringOutput(),
+//				VswitchId:       defaultSwitch.ID().ToIDOutput().ToStringOutput(),
+//				VpcId:           _default.ID().ToIDOutput().ToStringOutput(),
 //				RegionId:        pulumi.String("cn-beijing"),
 //				ZoneId:          pulumi.String("cn-beijing-k"),
 //				PayType:         pulumi.String("PostPaid"),

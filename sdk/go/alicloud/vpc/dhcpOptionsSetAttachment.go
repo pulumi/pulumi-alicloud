@@ -57,8 +57,8 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewDhcpOptionsSetAttachment(ctx, "example", &vpc.DhcpOptionsSetAttachmentArgs{
-//				VpcId:            example.ID(),
-//				DhcpOptionsSetId: exampleDhcpOptionsSet.ID(),
+//				VpcId:            example.ID().ToIDOutput().ToStringOutput(),
+//				DhcpOptionsSetId: exampleDhcpOptionsSet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -74,8 +74,8 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "default", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
-//				AutoSnapshotPolicyId: defaultAutoSnapshotPolicy.ID(),
-//				DiskId:               defaultEcsDisk.ID(),
+//				AutoSnapshotPolicyId: defaultAutoSnapshotPolicy.ID().ToIDOutput().ToStringOutput(),
+//				DiskId:               defaultEcsDisk.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultg0DCAR, err := vpc.NewSwitch(ctx, "defaultg0DCAR", &vpc.SwitchArgs{
-//				VpcId:     defaultie35CW.ID(),
+//				VpcId:     defaultie35CW.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:    pulumi.String(zoneId),
 //				CidrBlock: pulumi.String("10.0.0.0/24"),
 //			})
@@ -69,9 +69,9 @@ import (
 //			defaultHrZmxC, err := mongodb.NewInstance(ctx, "defaultHrZmxC", &mongodb.InstanceArgs{
 //				EngineVersion:     pulumi.String("4.4"),
 //				StorageType:       pulumi.String("cloud_essd1"),
-//				VswitchId:         defaultg0DCAR.ID(),
+//				VswitchId:         defaultg0DCAR.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceStorage: pulumi.Int(20),
-//				VpcId:             defaultie35CW.ID(),
+//				VpcId:             defaultie35CW.ID().ToIDOutput().ToStringOutput(),
 //				DbInstanceClass:   pulumi.String("mdb.shard.4x.large.d"),
 //				StorageEngine:     pulumi.String("WiredTiger"),
 //				NetworkType:       pulumi.String("VPC"),
@@ -81,7 +81,7 @@ import (
 //				return err
 //			}
 //			_, err = mongodb.NewPrivateSrvNetworkAddress(ctx, "default", &mongodb.PrivateSrvNetworkAddressArgs{
-//				DbInstanceId: defaultHrZmxC.ID(),
+//				DbInstanceId: defaultHrZmxC.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

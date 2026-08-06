@@ -59,7 +59,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
@@ -67,7 +67,7 @@ import (
 //			}
 //			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
 //				Engine:                 pulumi.String("MySQL"),
-//				VpcId:                  defaultNetwork.ID(),
+//				VpcId:                  defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				CpuAllocationRatio:     pulumi.Int(101),
 //				MemAllocationRatio:     pulumi.Int(50),
 //				DiskAllocationRatio:    pulumi.Int(200),
@@ -89,10 +89,10 @@ import (
 //			}
 //			defaultDedicatedHost, err := cddc.NewDedicatedHost(ctx, "default", &cddc.DedicatedHostArgs{
 //				HostName:             pulumi.String(name),
-//				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
+//				DedicatedHostGroupId: defaultDedicatedHostGroup.ID().ToIDOutput().ToStringOutput(),
 //				HostClass:            pulumi.String(defaultGetHostEcsLevelInfos.Infos[0].ResClassCode),
 //				ZoneId:               pulumi.String(_default.Ids[0]),
-//				VswitchId:            defaultSwitch.ID(),
+//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),

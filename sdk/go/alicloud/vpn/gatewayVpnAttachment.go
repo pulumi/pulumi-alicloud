@@ -60,7 +60,7 @@ import (
 //				TunnelOptionsSpecifications: vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArray{
 //					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
 //						TunnelIndex:        pulumi.Int(1),
-//						CustomerGatewayId:  _default.ID(),
+//						CustomerGatewayId:  _default.ID().ToIDOutput().ToStringOutput(),
 //						EnableDpd:          pulumi.Bool(true),
 //						EnableNatTraversal: pulumi.Bool(true),
 //						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
@@ -83,7 +83,7 @@ import (
 //					},
 //					&vpn.GatewayVpnAttachmentTunnelOptionsSpecificationArgs{
 //						TunnelIndex:        pulumi.Int(2),
-//						CustomerGatewayId:  _default.ID(),
+//						CustomerGatewayId:  _default.ID().ToIDOutput().ToStringOutput(),
 //						EnableDpd:          pulumi.Bool(true),
 //						EnableNatTraversal: pulumi.Bool(true),
 //						TunnelIkeConfig: &vpn.GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfigArgs{
@@ -167,7 +167,7 @@ import (
 //							IpsecAuthAlg:  pulumi.String("md5"),
 //							IpsecEncAlg:   pulumi.String("aes"),
 //						},
-//						CustomerGatewayId:  cgw1.ID(),
+//						CustomerGatewayId:  cgw1.ID().ToIDOutput().ToStringOutput(),
 //						EnableDpd:          pulumi.Bool(true),
 //						EnableNatTraversal: pulumi.Bool(true),
 //						TunnelIndex:        pulumi.Int(1),
@@ -195,7 +195,7 @@ import (
 //							IpsecPfs:      pulumi.String("group5"),
 //							IpsecAuthAlg:  pulumi.String("sha256"),
 //						},
-//						CustomerGatewayId:  cgw1.ID(),
+//						CustomerGatewayId:  cgw1.ID().ToIDOutput().ToStringOutput(),
 //						EnableDpd:          pulumi.Bool(true),
 //						EnableNatTraversal: pulumi.Bool(true),
 //						TunnelIndex:        pulumi.Int(2),

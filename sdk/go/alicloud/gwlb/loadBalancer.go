@@ -76,7 +76,7 @@ import (
 //				return err
 //			}
 //			default9NaKmL, err := vpc.NewSwitch(ctx, "default9NaKmL", &vpc.SwitchArgs{
-//				VpcId:       defaulti9Axhl.ID(),
+//				VpcId:       defaulti9Axhl.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId1),
 //				CidrBlock:   pulumi.String("10.0.0.0/24"),
 //				VswitchName: pulumi.String(invokeFormat.Result),
@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			_, err = vpc.NewSwitch(ctx, "defaultH4pKT4", &vpc.SwitchArgs{
-//				VpcId:       defaulti9Axhl.ID(),
+//				VpcId:       defaulti9Axhl.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(zoneId2),
 //				CidrBlock:   pulumi.String("10.0.1.0/24"),
 //				VswitchName: pulumi.String(invokeFormat1.Result),
@@ -103,11 +103,11 @@ import (
 //				return err
 //			}
 //			_, err = gwlb.NewLoadBalancer(ctx, "default", &gwlb.LoadBalancerArgs{
-//				VpcId:            defaulti9Axhl.ID(),
+//				VpcId:            defaulti9Axhl.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancerName: pulumi.String(name),
 //				ZoneMappings: gwlb.LoadBalancerZoneMappingArray{
 //					&gwlb.LoadBalancerZoneMappingArgs{
-//						VswitchId: default9NaKmL.ID(),
+//						VswitchId: default9NaKmL.ID().ToIDOutput().ToStringOutput(),
 //						ZoneId:    pulumi.String(zoneId1),
 //					},
 //				},

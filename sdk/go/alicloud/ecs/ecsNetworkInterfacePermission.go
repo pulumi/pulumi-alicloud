@@ -62,7 +62,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
@@ -70,25 +70,22 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String("terraform-example"),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String("terraform-example"),
-//				VswitchId:            defaultSwitch.ID(),
+//				VswitchId:            defaultSwitch.ID().ToIDOutput().ToStringOutput(),
 //				SecurityGroupIds: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					defaultSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Description: pulumi.String("terraform-example"),
-//				PrimaryIpAddress: pulumi.String(std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
+//				PrimaryIpAddress: std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
 //					Input: defaultSwitch.CidrBlock,
 //					Host:  pulumi.Int(100),
-//				}, nil).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				Tags: pulumi.StringMap{
 //					"Created": pulumi.String("TF"),
 //					"For":     pulumi.String("example"),
@@ -100,7 +97,7 @@ import (
 //			}
 //			_, err = ecs.NewEcsNetworkInterfacePermission(ctx, "example", &ecs.EcsNetworkInterfacePermissionArgs{
 //				AccountId:          pulumi.String(defaultGetAccount.Id),
-//				NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
+//				NetworkInterfaceId: defaultEcsNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 //				Permission:         pulumi.String("InstanceAttach"),
 //				Force:              pulumi.Bool(true),
 //			})

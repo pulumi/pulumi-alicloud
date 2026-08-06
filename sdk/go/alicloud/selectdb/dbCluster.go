@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			_, err = selectdb.NewDbCluster(ctx, "default", &selectdb.DbClusterArgs{
-//				DbInstanceId:         defaultDbInstance.ID(),
+//				DbInstanceId:         defaultDbInstance.ID().ToIDOutput().ToStringOutput(),
 //				DbClusterDescription: pulumi.String(name),
 //				DbClusterClass:       pulumi.String("selectdb.2xlarge"),
 //				CacheSize:            pulumi.Int(400),

@@ -91,8 +91,8 @@ import (
 //				return err
 //			}
 //			defaultDesktop, err := eds.NewDesktop(ctx, "default", &eds.DesktopArgs{
-//				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
-//				PolicyGroupId: defaultEcdPolicyGroup.ID(),
+//				OfficeSiteId:  defaultSimpleOfficeSite.ID().ToIDOutput().ToStringOutput(),
+//				PolicyGroupId: defaultEcdPolicyGroup.ID().ToIDOutput().ToStringOutput(),
 //				BundleId:      pulumi.String(_default.Bundles[1].Id),
 //				DesktopName:   pulumi.String(name),
 //			})
@@ -101,7 +101,7 @@ import (
 //			}
 //			_, err = eds.NewSnapshot(ctx, "default", &eds.SnapshotArgs{
 //				Description:    pulumi.String(name),
-//				DesktopId:      defaultDesktop.ID(),
+//				DesktopId:      defaultDesktop.ID().ToIDOutput().ToStringOutput(),
 //				SnapshotName:   pulumi.String(name),
 //				SourceDiskType: pulumi.String("SYSTEM"),
 //			})

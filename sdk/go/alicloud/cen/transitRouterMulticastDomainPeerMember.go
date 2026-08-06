@@ -56,8 +56,8 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "default", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         _default.ID(),
-//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//				InstanceId:         _default.ID().ToIDOutput().ToStringOutput(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -106,8 +106,8 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterMulticastDomainPeerMember(ctx, "default", &cen.TransitRouterMulticastDomainPeerMemberArgs{
-//				TransitRouterMulticastDomainId:     defaultTransitRouterMulticastDomain.ID(),
-//				PeerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.ID(),
+//				TransitRouterMulticastDomainId:     defaultTransitRouterMulticastDomain.ID().ToIDOutput().ToStringOutput(),
+//				PeerTransitRouterMulticastDomainId: peerTransitRouterMulticastDomain.ID().ToIDOutput().ToStringOutput(),
 //				GroupIpAddress:                     pulumi.String("224.1.0.0"),
 //			})
 //			if err != nil {

@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
-//				CenId:             example.ID(),
+//				CenId:             example.ID().ToIDOutput().ToStringOutput(),
 //				TransitRouterName: pulumi.String(name),
 //			})
 //			if err != nil {

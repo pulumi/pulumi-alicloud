@@ -59,7 +59,7 @@ import (
 //			}
 //			_default := threatdetection.GetHoneypotProbesOutput(ctx, threatdetection.GetHoneypotProbesOutputArgs{
 //				Ids: pulumi.StringArray{
-//					defaultHoneypotProbe.ID(),
+//					defaultHoneypotProbe.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DisplayName:   pulumi.String(name),
 //				ProbeType:     pulumi.String("host_probe"),

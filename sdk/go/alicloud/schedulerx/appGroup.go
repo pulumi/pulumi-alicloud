@@ -49,11 +49,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON0, err := json.Marshal([]map[string]string{
+//				{
 //					"name": "contact-group-1",
 //				},
-//				map[string]interface{}{
+//				{
 //					"name": "contact-group-2",
 //				},
 //			})
@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"sendChannel":    "sms,ding",
 //				"alarmType":      "Contacts",
 //				"webhookIsAtAll": "false",
