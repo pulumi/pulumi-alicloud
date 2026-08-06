@@ -40,8 +40,11 @@ import (
 //				name = param
 //			}
 //			_, err := esa.NewRoutine(ctx, "default", &esa.RoutineArgs{
-//				Description: pulumi.String(name),
-//				Name:        pulumi.String(name),
+//				Description:     pulumi.String(name),
+//				Name:            pulumi.String(name),
+//				Code:            pulumi.String("addEventListener('fetch', e => e.respondWith(new Response('hello world')))"),
+//				CodeDescription: pulumi.String("initial version"),
+//				DeployEnv:       pulumi.String("staging"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,7 +55,7 @@ import (
 //
 // ```
 //
-// 📚 Need more examples? VIEW MORE EXAMPLES
+// Manage the routine code from a local file:
 //
 // ## Import
 //
@@ -64,11 +67,19 @@ import (
 type Routine struct {
 	pulumi.CustomResourceState
 
+	// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+	Code pulumi.StringPtrOutput `pulumi:"code"`
+	// The description attached to the committed code version.
+	CodeDescription pulumi.StringPtrOutput `pulumi:"codeDescription"`
 	// The time when the routine was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The routine name, which must be unique in the same account.
+	// The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+	DeployEnv pulumi.StringPtrOutput `pulumi:"deployEnv"`
+	// The description of the routine.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Routine Name
+	// The most recent committed code version of the routine.
+	LatestCodeVersion pulumi.StringOutput `pulumi:"latestCodeVersion"`
+	// Routine Name, which must be unique in the same account.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -102,20 +113,36 @@ func GetRoutine(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Routine resources.
 type routineState struct {
+	// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+	Code *string `pulumi:"code"`
+	// The description attached to the committed code version.
+	CodeDescription *string `pulumi:"codeDescription"`
 	// The time when the routine was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The routine name, which must be unique in the same account.
+	// The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+	DeployEnv *string `pulumi:"deployEnv"`
+	// The description of the routine.
 	Description *string `pulumi:"description"`
-	// Routine Name
+	// The most recent committed code version of the routine.
+	LatestCodeVersion *string `pulumi:"latestCodeVersion"`
+	// Routine Name, which must be unique in the same account.
 	Name *string `pulumi:"name"`
 }
 
 type RoutineState struct {
+	// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+	Code pulumi.StringPtrInput
+	// The description attached to the committed code version.
+	CodeDescription pulumi.StringPtrInput
 	// The time when the routine was created.
 	CreateTime pulumi.StringPtrInput
-	// The routine name, which must be unique in the same account.
+	// The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+	DeployEnv pulumi.StringPtrInput
+	// The description of the routine.
 	Description pulumi.StringPtrInput
-	// Routine Name
+	// The most recent committed code version of the routine.
+	LatestCodeVersion pulumi.StringPtrInput
+	// Routine Name, which must be unique in the same account.
 	Name pulumi.StringPtrInput
 }
 
@@ -124,17 +151,29 @@ func (RoutineState) ElementType() reflect.Type {
 }
 
 type routineArgs struct {
-	// The routine name, which must be unique in the same account.
+	// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+	Code *string `pulumi:"code"`
+	// The description attached to the committed code version.
+	CodeDescription *string `pulumi:"codeDescription"`
+	// The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+	DeployEnv *string `pulumi:"deployEnv"`
+	// The description of the routine.
 	Description *string `pulumi:"description"`
-	// Routine Name
+	// Routine Name, which must be unique in the same account.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Routine resource.
 type RoutineArgs struct {
-	// The routine name, which must be unique in the same account.
+	// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+	Code pulumi.StringPtrInput
+	// The description attached to the committed code version.
+	CodeDescription pulumi.StringPtrInput
+	// The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+	DeployEnv pulumi.StringPtrInput
+	// The description of the routine.
 	Description pulumi.StringPtrInput
-	// Routine Name
+	// Routine Name, which must be unique in the same account.
 	Name pulumi.StringPtrInput
 }
 
@@ -225,17 +264,37 @@ func (o RoutineOutput) ToRoutineOutputWithContext(ctx context.Context) RoutineOu
 	return o
 }
 
+// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+func (o RoutineOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The description attached to the committed code version.
+func (o RoutineOutput) CodeDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.CodeDescription }).(pulumi.StringPtrOutput)
+}
+
 // The time when the routine was created.
 func (o RoutineOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The routine name, which must be unique in the same account.
+// The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+func (o RoutineOutput) DeployEnv() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.DeployEnv }).(pulumi.StringPtrOutput)
+}
+
+// The description of the routine.
 func (o RoutineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Routine Name
+// The most recent committed code version of the routine.
+func (o RoutineOutput) LatestCodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.LatestCodeVersion }).(pulumi.StringOutput)
+}
+
+// Routine Name, which must be unique in the same account.
 func (o RoutineOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

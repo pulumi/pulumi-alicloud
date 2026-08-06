@@ -183,11 +183,11 @@ type Switch struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The creation time of the VSwitch.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of VSwitch.
+	// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 pulumi.BoolOutput `pulumi:"enableIpv6"`
@@ -214,7 +214,7 @@ type Switch struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcIpv6CidrBlock pulumi.StringPtrOutput `pulumi:"vpcIpv6CidrBlock"`
-	// The name of the VSwitch.
+	// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -254,11 +254,11 @@ type switchState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The creation time of the VSwitch.
 	CreateTime *string `pulumi:"createTime"`
-	// The description of VSwitch.
+	// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
@@ -285,7 +285,7 @@ type switchState struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcIpv6CidrBlock *string `pulumi:"vpcIpv6CidrBlock"`
-	// The name of the VSwitch.
+	// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	VswitchName *string `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId *string `pulumi:"zoneId"`
@@ -296,11 +296,11 @@ type SwitchState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock pulumi.StringPtrInput
 	// The creation time of the VSwitch.
 	CreateTime pulumi.StringPtrInput
-	// The description of VSwitch.
+	// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 pulumi.BoolPtrInput
@@ -327,7 +327,7 @@ type SwitchState struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcIpv6CidrBlock pulumi.StringPtrInput
-	// The name of the VSwitch.
+	// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	VswitchName pulumi.StringPtrInput
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId pulumi.StringPtrInput
@@ -342,9 +342,9 @@ type switchArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// The description of VSwitch.
+	// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
@@ -367,7 +367,7 @@ type switchArgs struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcIpv6CidrBlock *string `pulumi:"vpcIpv6CidrBlock"`
-	// The name of the VSwitch.
+	// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	VswitchName *string `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId *string `pulumi:"zoneId"`
@@ -379,9 +379,9 @@ type SwitchArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock pulumi.StringPtrInput
-	// The description of VSwitch.
+	// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// Whether the IPv6 function is enabled in the switch. Value:
 	EnableIpv6 pulumi.BoolPtrInput
@@ -404,7 +404,7 @@ type SwitchArgs struct {
 	//
 	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcIpv6CidrBlock pulumi.StringPtrInput
-	// The name of the VSwitch.
+	// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	VswitchName pulumi.StringPtrInput
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId pulumi.StringPtrInput
@@ -504,7 +504,7 @@ func (o SwitchOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+// The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 func (o SwitchOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
 }
@@ -514,7 +514,7 @@ func (o SwitchOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of VSwitch.
+// The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
 func (o SwitchOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -571,7 +571,7 @@ func (o SwitchOutput) VpcIpv6CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.VpcIpv6CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The name of the VSwitch.
+// The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 func (o SwitchOutput) VswitchName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VswitchName }).(pulumi.StringOutput)
 }

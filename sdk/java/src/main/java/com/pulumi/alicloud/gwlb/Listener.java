@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -269,6 +270,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     * 
+     */
+    @Export(name="tcpIdleTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> tcpIdleTimeout;
+
+    /**
+     * @return The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     * 
+     */
+    public Output<Integer> tcpIdleTimeout() {
+        return this.tcpIdleTimeout;
     }
 
     /**

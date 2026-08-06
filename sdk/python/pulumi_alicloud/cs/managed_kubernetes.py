@@ -30,6 +30,7 @@ class ManagedKubernetesArgs:
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']] = None,
                  control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -88,6 +89,7 @@ class ManagedKubernetesArgs:
                * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
                
                ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
+        :param pulumi.Input['ManagedKubernetesControlPlaneEndpointsConfigArgs'] control_plane_endpoints_config: The cluster access configuration. See `control_plane_endpoints_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
@@ -183,6 +185,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
         if cluster_spec is not None:
             pulumi.set(__self__, "cluster_spec", cluster_spec)
+        if control_plane_endpoints_config is not None:
+            pulumi.set(__self__, "control_plane_endpoints_config", control_plane_endpoints_config)
         if control_plane_log_components is not None:
             pulumi.set(__self__, "control_plane_log_components", control_plane_log_components)
         if control_plane_log_project is not None:
@@ -383,6 +387,18 @@ class ManagedKubernetesArgs:
     @cluster_spec.setter
     def cluster_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneEndpointsConfig")
+    def control_plane_endpoints_config(self) -> pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']]:
+        """
+        The cluster access configuration. See `control_plane_endpoints_config` below.
+        """
+        return pulumi.get(self, "control_plane_endpoints_config")
+
+    @control_plane_endpoints_config.setter
+    def control_plane_endpoints_config(self, value: pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']]):
+        pulumi.set(self, "control_plane_endpoints_config", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogComponents")
@@ -875,6 +891,7 @@ class _ManagedKubernetesState:
                  cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
                  connections: pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']] = None,
                  control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -942,6 +959,7 @@ class _ManagedKubernetesState:
                
                ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param pulumi.Input['ManagedKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input['ManagedKubernetesControlPlaneEndpointsConfigArgs'] control_plane_endpoints_config: The cluster access configuration. See `control_plane_endpoints_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
@@ -1051,6 +1069,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "cluster_spec", cluster_spec)
         if connections is not None:
             pulumi.set(__self__, "connections", connections)
+        if control_plane_endpoints_config is not None:
+            pulumi.set(__self__, "control_plane_endpoints_config", control_plane_endpoints_config)
         if control_plane_log_components is not None:
             pulumi.set(__self__, "control_plane_log_components", control_plane_log_components)
         if control_plane_log_project is not None:
@@ -1290,6 +1310,18 @@ class _ManagedKubernetesState:
     @connections.setter
     def connections(self, value: pulumi.Input[Optional['ManagedKubernetesConnectionsArgs']]):
         pulumi.set(self, "connections", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneEndpointsConfig")
+    def control_plane_endpoints_config(self) -> pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']]:
+        """
+        The cluster access configuration. See `control_plane_endpoints_config` below.
+        """
+        return pulumi.get(self, "control_plane_endpoints_config")
+
+    @control_plane_endpoints_config.setter
+    def control_plane_endpoints_config(self, value: pulumi.Input[Optional['ManagedKubernetesControlPlaneEndpointsConfigArgs']]):
+        pulumi.set(self, "control_plane_endpoints_config", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogComponents")
@@ -1867,6 +1899,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict']]] = None,
                  control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2204,6 +2237,60 @@ class ManagedKubernetes(pulumi.CustomResource):
             ])
         ```
 
+        ACK Cluster with an automatically created private NLB
+
+        When `load_balancer_id` is omitted, ACK automatically creates and manages a private NLB for the cluster API server endpoint, so there is no need to create an `nlb.LoadBalancer` resource. The cluster must span at least two zones so that the auto-created NLB gets a valid zone list.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-auto-nlb"
+        # The kubernetes service cidr block.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "172.23.0.0/16"
+        default = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        default1 = alicloud.vpc.Switch("default_1",
+            vswitch_name=f"{name}-1",
+            vpc_id=default_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default.zones[0].id)
+        default2 = alicloud.vpc.Switch("default_2",
+            vswitch_name=f"{name}-2",
+            vpc_id=default_network.id,
+            cidr_block="10.1.2.0/24",
+            zone_id=default.zones[1].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=name,
+            cluster_spec="ack.pro.small",
+            vswitch_ids=[
+                default1.id,
+                default2.id,
+            ],
+            pod_vswitch_ids=[
+                default1.id,
+                default2.id,
+            ],
+            new_nat_gateway=False,
+            service_cidr=service_cidr,
+            is_enterprise_security_group=True,
+            addons=[{
+                "name": "terway-eniip",
+            }],
+            control_plane_endpoints_config={
+                "load_balancers_configs": [{
+                    "endpoint_type": "private",
+                }],
+            })
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -2235,6 +2322,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                * ack.pro.4xlarge : ACK Pro Provisioned Control Plane (Pro 4XL). Requires whitelist access from customer service.
                
                ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
+        :param pulumi.Input[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict']] control_plane_endpoints_config: The cluster access configuration. See `control_plane_endpoints_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
@@ -2608,6 +2696,60 @@ class ManagedKubernetes(pulumi.CustomResource):
             ])
         ```
 
+        ACK Cluster with an automatically created private NLB
+
+        When `load_balancer_id` is omitted, ACK automatically creates and manages a private NLB for the cluster API server endpoint, so there is no need to create an `nlb.LoadBalancer` resource. The cluster must span at least two zones so that the auto-created NLB gets a valid zone list.
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example-auto-nlb"
+        # The kubernetes service cidr block.
+        service_cidr = config.get("serviceCidr")
+        if service_cidr is None:
+            service_cidr = "172.23.0.0/16"
+        default = alicloud.nlb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.1.0.0/21")
+        default1 = alicloud.vpc.Switch("default_1",
+            vswitch_name=f"{name}-1",
+            vpc_id=default_network.id,
+            cidr_block="10.1.1.0/24",
+            zone_id=default.zones[0].id)
+        default2 = alicloud.vpc.Switch("default_2",
+            vswitch_name=f"{name}-2",
+            vpc_id=default_network.id,
+            cidr_block="10.1.2.0/24",
+            zone_id=default.zones[1].id)
+        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
+            name=name,
+            cluster_spec="ack.pro.small",
+            vswitch_ids=[
+                default1.id,
+                default2.id,
+            ],
+            pod_vswitch_ids=[
+                default1.id,
+                default2.id,
+            ],
+            new_nat_gateway=False,
+            service_cidr=service_cidr,
+            is_enterprise_security_group=True,
+            addons=[{
+                "name": "terway-eniip",
+            }],
+            control_plane_endpoints_config={
+                "load_balancers_configs": [{
+                    "endpoint_type": "private",
+                }],
+            })
+        ```
+
         📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
@@ -2643,6 +2785,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  cluster_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict']]] = None,
                  control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2698,6 +2841,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
             __props__.__dict__["cluster_domain"] = cluster_domain
             __props__.__dict__["cluster_spec"] = cluster_spec
+            __props__.__dict__["control_plane_endpoints_config"] = control_plane_endpoints_config
             __props__.__dict__["control_plane_log_components"] = control_plane_log_components
             __props__.__dict__["control_plane_log_project"] = control_plane_log_project
             __props__.__dict__["control_plane_log_ttl"] = control_plane_log_ttl
@@ -2765,6 +2909,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             cluster_domain: pulumi.Input[Optional[_builtins.str]] = None,
             cluster_spec: pulumi.Input[Optional[_builtins.str]] = None,
             connections: pulumi.Input[Optional[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']]] = None,
+            control_plane_endpoints_config: pulumi.Input[Optional[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict']]] = None,
             control_plane_log_components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             control_plane_log_project: pulumi.Input[Optional[_builtins.str]] = None,
             control_plane_log_ttl: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2836,6 +2981,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                
                ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
         :param pulumi.Input[Union['ManagedKubernetesConnectionsArgs', 'ManagedKubernetesConnectionsArgsDict']] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[Union['ManagedKubernetesControlPlaneEndpointsConfigArgs', 'ManagedKubernetesControlPlaneEndpointsConfigArgsDict']] control_plane_endpoints_config: The cluster access configuration. See `control_plane_endpoints_config` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] control_plane_log_components: List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
         :param pulumi.Input[_builtins.str] control_plane_log_project: Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
         :param pulumi.Input[_builtins.str] control_plane_log_ttl: Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
@@ -2926,6 +3072,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["cluster_domain"] = cluster_domain
         __props__.__dict__["cluster_spec"] = cluster_spec
         __props__.__dict__["connections"] = connections
+        __props__.__dict__["control_plane_endpoints_config"] = control_plane_endpoints_config
         __props__.__dict__["control_plane_log_components"] = control_plane_log_components
         __props__.__dict__["control_plane_log_project"] = control_plane_log_project
         __props__.__dict__["control_plane_log_ttl"] = control_plane_log_ttl
@@ -3072,6 +3219,14 @@ class ManagedKubernetes(pulumi.CustomResource):
         Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneEndpointsConfig")
+    def control_plane_endpoints_config(self) -> pulumi.Output['outputs.ManagedKubernetesControlPlaneEndpointsConfig']:
+        """
+        The cluster access configuration. See `control_plane_endpoints_config` below.
+        """
+        return pulumi.get(self, "control_plane_endpoints_config")
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneLogComponents")

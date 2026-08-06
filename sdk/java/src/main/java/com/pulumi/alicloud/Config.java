@@ -150,7 +150,7 @@ public final class Config {
         return Codegen.objectProp("signVersion", SignVersion.class).config(config).get();
     }
 /**
- * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+ * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
  * 
  */
     public Optional<Boolean> skipRegionValidation() {

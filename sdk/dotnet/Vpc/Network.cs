@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The status of ClassicLink function.
+        /// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         /// </summary>
         [Output("classicLinkEnabled")]
         public Output<bool?> ClassicLinkEnabled { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// A list of user CIDRs.
+        /// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         /// </summary>
         [Output("userCidrs")]
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// The status of ClassicLink function.
+        /// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         /// </summary>
         [Input("classicLinkEnabled")]
         public Input<bool>? ClassicLinkEnabled { get; set; }
@@ -459,7 +459,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// A list of user CIDRs.
+        /// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         /// </summary>
         public InputList<string> UserCidrs
         {
@@ -494,7 +494,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// The status of ClassicLink function.
+        /// The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
         /// </summary>
         [Input("classicLinkEnabled")]
         public Input<bool>? ClassicLinkEnabled { get; set; }
@@ -687,7 +687,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// A list of user CIDRs.
+        /// A list of user CIDRs. Up to `3` CIDR blocks can be specified.
         /// </summary>
         public InputList<string> UserCidrs
         {

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Apig.Inputs
     public sealed class GatewayNetworkAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Network Access Type
+        /// The network access type of the gateway instance.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -61,6 +61,8 @@ class BackupPolicyArgs:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -227,6 +229,8 @@ class BackupPolicyArgs:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -552,6 +556,8 @@ class _BackupPolicyState:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -708,6 +714,8 @@ class _BackupPolicyState:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -1096,6 +1104,8 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -1322,6 +1332,8 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -1430,6 +1442,8 @@ class BackupPolicy(pulumi.CustomResource):
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         """
         return pulumi.get(self, "backup_interval")
 

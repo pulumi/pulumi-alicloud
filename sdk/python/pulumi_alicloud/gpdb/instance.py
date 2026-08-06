@@ -26,6 +26,8 @@ class InstanceArgs:
                  engine_version: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -54,6 +56,8 @@ class InstanceArgs:
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -64,11 +68,15 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
 
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] engine: The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
         :param pulumi.Input[_builtins.str] engine_version: The version of the database engine used by the instance.
         :param pulumi.Input[_builtins.str] vswitch_id: The vswitch id.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -93,6 +101,7 @@ class InstanceArgs:
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -113,6 +122,8 @@ class InstanceArgs:
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                
@@ -132,6 +143,10 @@ class InstanceArgs:
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if cache_storage_size is not None:
+            pulumi.set(__self__, "cache_storage_size", cache_storage_size)
         if create_sample_data is not None:
             pulumi.set(__self__, "create_sample_data", create_sample_data)
         if data_share_status is not None:
@@ -200,6 +215,10 @@ class InstanceArgs:
             pulumi.set(__self__, "seg_storage_type", seg_storage_type)
         if serverless_mode is not None:
             pulumi.set(__self__, "serverless_mode", serverless_mode)
+        if serverless_resource is not None:
+            pulumi.set(__self__, "serverless_resource", serverless_resource)
+        if src_db_instance_name is not None:
+            pulumi.set(__self__, "src_db_instance_name", src_db_instance_name)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if storage_size is not None:
@@ -219,7 +238,9 @@ class InstanceArgs:
     @pulumi.getter(name="dbInstanceMode")
     def db_instance_mode(self) -> pulumi.Input[_builtins.str]:
         """
-        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+
+        > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         """
         return pulumi.get(self, "db_instance_mode")
 
@@ -275,6 +296,30 @@ class InstanceArgs:
     @availability_zone.setter
     def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheStorageSize")
+    def cache_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        """
+        return pulumi.get(self, "cache_storage_size")
+
+    @cache_storage_size.setter
+    def cache_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="createSampleData")
@@ -415,6 +460,7 @@ class InstanceArgs:
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -633,6 +679,30 @@ class InstanceArgs:
         pulumi.set(self, "serverless_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverlessResource")
+    def serverless_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        """
+        return pulumi.get(self, "serverless_resource")
+
+    @serverless_resource.setter
+    def serverless_resource(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serverless_resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcDbInstanceName")
+    def src_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "src_db_instance_name")
+
+    @src_db_instance_name.setter
+    def src_db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_db_instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -723,6 +793,8 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  connection_string: pulumi.Input[Optional[_builtins.str]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -756,6 +828,8 @@ class _InstanceState:
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -769,6 +843,8 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
 
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
@@ -778,7 +854,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
@@ -797,6 +875,7 @@ class _InstanceState:
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -818,6 +897,8 @@ class _InstanceState:
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -835,6 +916,10 @@ class _InstanceState:
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if cache_storage_size is not None:
+            pulumi.set(__self__, "cache_storage_size", cache_storage_size)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if create_sample_data is not None:
@@ -913,6 +998,10 @@ class _InstanceState:
             pulumi.set(__self__, "seg_storage_type", seg_storage_type)
         if serverless_mode is not None:
             pulumi.set(__self__, "serverless_mode", serverless_mode)
+        if serverless_resource is not None:
+            pulumi.set(__self__, "serverless_resource", serverless_resource)
+        if src_db_instance_name is not None:
+            pulumi.set(__self__, "src_db_instance_name", src_db_instance_name)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if status is not None:
@@ -944,6 +1033,30 @@ class _InstanceState:
     @availability_zone.setter
     def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheStorageSize")
+    def cache_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        """
+        return pulumi.get(self, "cache_storage_size")
+
+    @cache_storage_size.setter
+    def cache_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "cache_storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
@@ -1013,7 +1126,9 @@ class _InstanceState:
     @pulumi.getter(name="dbInstanceMode")
     def db_instance_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+
+        > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         """
         return pulumi.get(self, "db_instance_mode")
 
@@ -1132,6 +1247,7 @@ class _InstanceState:
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -1362,6 +1478,30 @@ class _InstanceState:
         pulumi.set(self, "serverless_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="serverlessResource")
+    def serverless_resource(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        """
+        return pulumi.get(self, "serverless_resource")
+
+    @serverless_resource.setter
+    def serverless_resource(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "serverless_resource", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcDbInstanceName")
+    def src_db_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "src_db_instance_name")
+
+    @src_db_instance_name.setter
+    def src_db_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "src_db_instance_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1479,6 +1619,8 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1510,6 +1652,8 @@ class Instance(pulumi.CustomResource):
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1521,7 +1665,7 @@ class Instance(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
+        You can see the detail product introduction in the [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) API reference.
 
         > **NOTE:** Available since v1.47.0.
 
@@ -1577,6 +1721,8 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[_builtins.str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -1585,7 +1731,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
@@ -1604,6 +1752,7 @@ class Instance(pulumi.CustomResource):
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -1624,6 +1773,8 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                
@@ -1643,7 +1794,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
+        You can see the detail product introduction in the [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) API reference.
 
         > **NOTE:** Available since v1.47.0.
 
@@ -1712,6 +1863,8 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
                  db_instance_category: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1743,6 +1896,8 @@ class Instance(pulumi.CustomResource):
                  seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
                  seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+                 src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
                  storage_size: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1761,6 +1916,8 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["backup_id"] = backup_id
+            __props__.__dict__["cache_storage_size"] = cache_storage_size
             __props__.__dict__["create_sample_data"] = create_sample_data
             __props__.__dict__["data_share_status"] = data_share_status
             __props__.__dict__["db_instance_category"] = db_instance_category
@@ -1798,6 +1955,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["seg_node_num"] = seg_node_num
             __props__.__dict__["seg_storage_type"] = seg_storage_type
             __props__.__dict__["serverless_mode"] = serverless_mode
+            __props__.__dict__["serverless_resource"] = serverless_resource
+            __props__.__dict__["src_db_instance_name"] = src_db_instance_name
             __props__.__dict__["ssl_enabled"] = ssl_enabled
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["tags"] = tags
@@ -1822,6 +1981,8 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cache_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
             connection_string: pulumi.Input[Optional[_builtins.str]] = None,
             create_sample_data: pulumi.Input[Optional[_builtins.bool]] = None,
             data_share_status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1855,6 +2016,8 @@ class Instance(pulumi.CustomResource):
             seg_node_num: pulumi.Input[Optional[_builtins.int]] = None,
             seg_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
             serverless_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_resource: pulumi.Input[Optional[_builtins.int]] = None,
+            src_db_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             storage_size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1872,6 +2035,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
+        :param pulumi.Input[_builtins.str] backup_id: The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        :param pulumi.Input[_builtins.int] cache_storage_size: The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
         :param pulumi.Input[_builtins.str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[_builtins.bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
@@ -1881,7 +2046,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
                
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
-        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        :param pulumi.Input[_builtins.str] db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+               
+               > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         :param pulumi.Input[_builtins.str] description: The description of the instance.
         :param pulumi.Input[_builtins.str] encryption_key: The ID of the encryption key.
                
@@ -1900,6 +2067,7 @@ class Instance(pulumi.CustomResource):
                - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
                
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+               **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpWhitelistArgs', 'InstanceIpWhitelistArgsDict']]]] ip_whitelists: The ip whitelist. See `ip_whitelist` below.
                Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[_builtins.str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -1921,6 +2089,8 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         :param pulumi.Input[_builtins.str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         :param pulumi.Input[_builtins.str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        :param pulumi.Input[_builtins.int] serverless_resource: The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        :param pulumi.Input[_builtins.str] src_db_instance_name: The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
         :param pulumi.Input[_builtins.int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[_builtins.str] status: The status of the instance.
         :param pulumi.Input[_builtins.int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -1938,6 +2108,8 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["backup_id"] = backup_id
+        __props__.__dict__["cache_storage_size"] = cache_storage_size
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["create_sample_data"] = create_sample_data
         __props__.__dict__["data_share_status"] = data_share_status
@@ -1971,6 +2143,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["seg_node_num"] = seg_node_num
         __props__.__dict__["seg_storage_type"] = seg_storage_type
         __props__.__dict__["serverless_mode"] = serverless_mode
+        __props__.__dict__["serverless_resource"] = serverless_resource
+        __props__.__dict__["src_db_instance_name"] = src_db_instance_name
         __props__.__dict__["ssl_enabled"] = ssl_enabled
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
@@ -1990,6 +2164,22 @@ class Instance(pulumi.CustomResource):
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
         return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="cacheStorageSize")
+    def cache_storage_size(self) -> pulumi.Output[_builtins.int]:
+        """
+        The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cache_storage_size` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        """
+        return pulumi.get(self, "cache_storage_size")
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
@@ -2039,7 +2229,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceMode")
     def db_instance_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+        The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+
+        > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `db_instance_mode` is set to `ServerlessPro`, instance sizing is controlled via `serverless_resource` and `cache_storage_size` instead of `instance_spec`.
         """
         return pulumi.get(self, "db_instance_mode")
 
@@ -2114,7 +2306,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="instanceSpec")
-    def instance_spec(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def instance_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The specification of segment nodes. Valid values: `2C16G`, `4C32G`, `16C128G`, `2C8G`, `4C16G`, `8C32G`, `8C64G`, `16C64G`, `32C256G`, `64C512G`, `96C768G`, `128C1024G`.
         - If `db_instance_category` is set to `HighAvailability`, and `db_instance_mode` is set to `StorageElastic`. Valid values: `2C16G`, `4C32G`, `16C128G`.
@@ -2122,6 +2314,7 @@ class Instance(pulumi.CustomResource):
         - If `db_instance_mode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
 
         > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+        **NOTE:** For `ServerlessPro` instances, `instance_spec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverless_resource` and `cache_storage_size`. The placeholder is read into state but should not be set in the configuration.
         """
         return pulumi.get(self, "instance_spec")
 
@@ -2161,7 +2354,7 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="masterNodeNum")
     @_utilities.deprecated("""Field `master_node_num` has been deprecated from provider version 1.213.0.""")
-    def master_node_num(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def master_node_num(self) -> pulumi.Output[_builtins.int]:
         """
         The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         """
@@ -2274,6 +2467,22 @@ class Instance(pulumi.CustomResource):
         The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         """
         return pulumi.get(self, "serverless_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serverlessResource")
+    def serverless_resource(self) -> pulumi.Output[_builtins.int]:
+        """
+        The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverless_resource` is valid only when `db_instance_mode` is set to `ServerlessPro`.
+        """
+        return pulumi.get(self, "serverless_resource")
+
+    @_builtins.property
+    @pulumi.getter(name="srcDbInstanceName")
+    def src_db_instance_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The source instance ID for creating an instance from a backup set. Must be set together with `backup_id`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+        """
+        return pulumi.get(self, "src_db_instance_name")
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")

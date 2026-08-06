@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayNetworkAccessConfig {
     /**
-     * @return Network Access Type
+     * @return The network access type of the gateway instance.
      * 
      */
     private @Nullable String type;
 
     private GatewayNetworkAccessConfig() {}
     /**
-     * @return Network Access Type
+     * @return The network access type of the gateway instance.
      * 
      */
     public Optional<String> type() {

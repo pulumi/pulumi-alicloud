@@ -130,7 +130,7 @@ type providerArgs struct {
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile *string              `pulumi:"sharedCredentialsFile"`
 	SignVersion           *ProviderSignVersion `pulumi:"signVersion"`
-	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
 	SkipRegionValidation *bool `pulumi:"skipRegionValidation"`
 	// The source ip for the assume role invoking.
 	SourceIp *string `pulumi:"sourceIp"`
@@ -181,7 +181,7 @@ type ProviderArgs struct {
 	// The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
 	SharedCredentialsFile pulumi.StringPtrInput
 	SignVersion           ProviderSignVersionPtrInput
-	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+	// Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
 	SkipRegionValidation pulumi.BoolPtrInput
 	// The source ip for the assume role invoking.
 	SourceIp pulumi.StringPtrInput

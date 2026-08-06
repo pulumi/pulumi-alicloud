@@ -207,8 +207,8 @@ class ClusterArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -1245,8 +1245,8 @@ class ClusterArgs:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -1507,8 +1507,8 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -2634,8 +2634,8 @@ class _ClusterState:
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         """
         return pulumi.get(self, "tde_status")
 
@@ -2999,8 +2999,8 @@ class Cluster(pulumi.CustomResource):
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[_builtins.str] target_db_revision_version_code: The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         :param pulumi.Input[_builtins.str] target_minor_version: The target minor version of the cluster. Used during creation.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -3527,8 +3527,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] tde_region: (Available since 1.200.0) The region where the TDE key resides.
                > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
                **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
-        :param pulumi.Input[_builtins.str] tde_status: turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-               > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        :param pulumi.Input[_builtins.str] tde_status: Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+               > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         :param pulumi.Input[_builtins.str] upgrade_type: Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         :param pulumi.Input[_builtins.str] vpc_id: The id of the VPC.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch DB instances in one VPC.
@@ -4274,8 +4274,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="tdeStatus")
     def tde_status(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-        > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
+        Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+        > **NOTE:** `tde_status` only supports modification from `Disabled` to `Enabled`.
         """
         return pulumi.get(self, "tde_status")
 

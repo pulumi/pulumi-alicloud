@@ -83,6 +83,8 @@ type Disk struct {
 	DiskName    pulumi.StringOutput    `pulumi:"diskName"`
 	DryRun      pulumi.BoolPtrOutput   `pulumi:"dryRun"`
 	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -168,6 +170,8 @@ type diskState struct {
 	DiskName    *string `pulumi:"diskName"`
 	DryRun      *bool   `pulumi:"dryRun"`
 	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -224,6 +228,8 @@ type DiskState struct {
 	DiskName    pulumi.StringPtrInput
 	DryRun      pulumi.BoolPtrInput
 	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -283,6 +289,8 @@ type diskArgs struct {
 	DiskName    *string `pulumi:"diskName"`
 	DryRun      *bool   `pulumi:"dryRun"`
 	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -336,6 +344,8 @@ type DiskArgs struct {
 	DiskName    pulumi.StringPtrInput
 	DryRun      pulumi.BoolPtrInput
 	// Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
@@ -505,6 +515,8 @@ func (o DiskOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // Indicates whether to apply a created automatic snapshot policy to the disk. Default value: false.
+//
+// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 func (o DiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
 }

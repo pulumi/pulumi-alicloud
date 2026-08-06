@@ -62,10 +62,28 @@ namespace Pulumi.AliCloud.CloudFirewall
     public partial class AddressBook : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Available since v1.286.0) The number of addresses in the Address Book.
+        /// </summary>
+        [Output("addressListCount")]
+        public Output<int> AddressListCount { get; private set; } = null!;
+
+        /// <summary>
         /// The list of addresses.
         /// </summary>
         [Output("addressLists")]
         public Output<ImmutableArray<string>> AddressLists { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of member account UIDs of the asset Address Book.
+        /// </summary>
+        [Output("assetMemberUids")]
+        public Output<ImmutableArray<int>> AssetMemberUids { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of regions and asset types of the asset Address Book. See `AssetRegionResourceTypes` below.
+        /// </summary>
+        [Output("assetRegionResourceTypes")]
+        public Output<ImmutableArray<Outputs.AddressBookAssetRegionResourceType>> AssetRegionResourceTypes { get; private set; } = null!;
 
         /// <summary>
         /// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
@@ -92,8 +110,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
-        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`, `Asset`, `assetIpv6`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`. From version 1.286.0, `GroupType` can be set to `Asset`, `assetIpv6`.
         /// </summary>
         [Output("groupType")]
         public Output<string> GroupType { get; private set; } = null!;
@@ -103,6 +121,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.286.0) The number of times that the Address Book is referenced.
+        /// </summary>
+        [Output("referenceCount")]
+        public Output<int> ReferenceCount { get; private set; } = null!;
 
         /// <summary>
         /// The logical relation among the ECS tags that to be matched. Default value: `And`. Valid values:
@@ -168,6 +192,30 @@ namespace Pulumi.AliCloud.CloudFirewall
             set => _addressLists = value;
         }
 
+        [Input("assetMemberUids")]
+        private InputList<int>? _assetMemberUids;
+
+        /// <summary>
+        /// The list of member account UIDs of the asset Address Book.
+        /// </summary>
+        public InputList<int> AssetMemberUids
+        {
+            get => _assetMemberUids ?? (_assetMemberUids = new InputList<int>());
+            set => _assetMemberUids = value;
+        }
+
+        [Input("assetRegionResourceTypes")]
+        private InputList<Inputs.AddressBookAssetRegionResourceTypeArgs>? _assetRegionResourceTypes;
+
+        /// <summary>
+        /// The list of regions and asset types of the asset Address Book. See `AssetRegionResourceTypes` below.
+        /// </summary>
+        public InputList<Inputs.AddressBookAssetRegionResourceTypeArgs> AssetRegionResourceTypes
+        {
+            get => _assetRegionResourceTypes ?? (_assetRegionResourceTypes = new InputList<Inputs.AddressBookAssetRegionResourceTypeArgs>());
+            set => _assetRegionResourceTypes = value;
+        }
+
         /// <summary>
         /// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         /// </summary>
@@ -199,8 +247,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
-        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`, `Asset`, `assetIpv6`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`. From version 1.286.0, `GroupType` can be set to `Asset`, `assetIpv6`.
         /// </summary>
         [Input("groupType", required: true)]
         public Input<string> GroupType { get; set; } = null!;
@@ -225,6 +273,12 @@ namespace Pulumi.AliCloud.CloudFirewall
 
     public sealed class AddressBookState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.286.0) The number of addresses in the Address Book.
+        /// </summary>
+        [Input("addressListCount")]
+        public Input<int>? AddressListCount { get; set; }
+
         [Input("addressLists")]
         private InputList<string>? _addressLists;
 
@@ -235,6 +289,30 @@ namespace Pulumi.AliCloud.CloudFirewall
         {
             get => _addressLists ?? (_addressLists = new InputList<string>());
             set => _addressLists = value;
+        }
+
+        [Input("assetMemberUids")]
+        private InputList<int>? _assetMemberUids;
+
+        /// <summary>
+        /// The list of member account UIDs of the asset Address Book.
+        /// </summary>
+        public InputList<int> AssetMemberUids
+        {
+            get => _assetMemberUids ?? (_assetMemberUids = new InputList<int>());
+            set => _assetMemberUids = value;
+        }
+
+        [Input("assetRegionResourceTypes")]
+        private InputList<Inputs.AddressBookAssetRegionResourceTypeGetArgs>? _assetRegionResourceTypes;
+
+        /// <summary>
+        /// The list of regions and asset types of the asset Address Book. See `AssetRegionResourceTypes` below.
+        /// </summary>
+        public InputList<Inputs.AddressBookAssetRegionResourceTypeGetArgs> AssetRegionResourceTypes
+        {
+            get => _assetRegionResourceTypes ?? (_assetRegionResourceTypes = new InputList<Inputs.AddressBookAssetRegionResourceTypeGetArgs>());
+            set => _assetRegionResourceTypes = value;
         }
 
         /// <summary>
@@ -268,8 +346,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
-        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`, `Asset`, `assetIpv6`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`. From version 1.286.0, `GroupType` can be set to `Asset`, `assetIpv6`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
@@ -279,6 +357,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
+
+        /// <summary>
+        /// (Available since v1.286.0) The number of times that the Address Book is referenced.
+        /// </summary>
+        [Input("referenceCount")]
+        public Input<int>? ReferenceCount { get; set; }
 
         /// <summary>
         /// The logical relation among the ECS tags that to be matched. Default value: `And`. Valid values:

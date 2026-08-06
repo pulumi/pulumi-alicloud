@@ -255,14 +255,14 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
         return this.securityGroupRuleId;
     }
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     @Export(name="sourceGroupOwnerAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceGroupOwnerAccount;
 
     /**
-     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * @return The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     public Output<Optional<String>> sourceGroupOwnerAccount() {

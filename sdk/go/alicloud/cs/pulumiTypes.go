@@ -3091,6 +3091,439 @@ func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesControlPlaneEndpointsConfig struct {
+	// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+	InternalDnsConfig *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig `pulumi:"internalDnsConfig"`
+	// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+	LoadBalancersConfigs []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig `pulumi:"loadBalancersConfigs"`
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigArgs and ManagedKubernetesControlPlaneEndpointsConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigArgs{...}
+type ManagedKubernetesControlPlaneEndpointsConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigArgs struct {
+	// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+	InternalDnsConfig ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput `pulumi:"internalDnsConfig"`
+	// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+	LoadBalancersConfigs ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput `pulumi:"loadBalancersConfigs"`
+}
+
+func (ManagedKubernetesControlPlaneEndpointsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigOutput)
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigOutput).ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigPtrInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigArgs, ManagedKubernetesControlPlaneEndpointsConfigPtr and ManagedKubernetesControlPlaneEndpointsConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigPtrInput` via:
+//
+//	        ManagedKubernetesControlPlaneEndpointsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesControlPlaneEndpointsConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput
+}
+
+type managedKubernetesControlPlaneEndpointsConfigPtrType ManagedKubernetesControlPlaneEndpointsConfigArgs
+
+func ManagedKubernetesControlPlaneEndpointsConfigPtr(v *ManagedKubernetesControlPlaneEndpointsConfigArgs) ManagedKubernetesControlPlaneEndpointsConfigPtrInput {
+	return (*managedKubernetesControlPlaneEndpointsConfigPtrType)(v)
+}
+
+func (*managedKubernetesControlPlaneEndpointsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o.ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesControlPlaneEndpointsConfig) *ManagedKubernetesControlPlaneEndpointsConfig {
+		return &v
+	}).(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput)
+}
+
+// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) InternalDnsConfig() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfig) *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		return v.InternalDnsConfig
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) LoadBalancersConfigs() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfig) []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+		return v.LoadBalancersConfigs
+	}).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) Elem() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfig) ManagedKubernetesControlPlaneEndpointsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesControlPlaneEndpointsConfig
+		return ret
+	}).(ManagedKubernetesControlPlaneEndpointsConfigOutput)
+}
+
+// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) InternalDnsConfig() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfig) *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.InternalDnsConfig
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) LoadBalancersConfigs() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfig) []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancersConfigs
+	}).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig struct {
+	// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+	BindVpcs []string `pulumi:"bindVpcs"`
+	// Whether the RRSA feature has been enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs and ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{...}
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs struct {
+	// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+	BindVpcs pulumi.StringArrayInput `pulumi:"bindVpcs"`
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput)
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput).ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs, ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtr and ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput` via:
+//
+//	        ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput
+}
+
+type managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs
+
+func ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtr(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput {
+	return (*managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType)(v)
+}
+
+func (*managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		return &v
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) BindVpcs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) []string { return v.BindVpcs }).(pulumi.StringArrayOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) Elem() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig
+		return ret
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput)
+}
+
+// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) BindVpcs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BindVpcs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig struct {
+	// The access address.
+	Endpoint *string `pulumi:"endpoint"`
+	// The endpoint type. Valid values: `private`, `public`.
+	EndpointType *string `pulumi:"endpointType"`
+	// The ID of the SLB (NLB) instance associated with the endpoint.
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs and ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{...}
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs struct {
+	// The access address.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The endpoint type. Valid values: `private`, `public`.
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+	// The ID of the SLB (NLB) instance associated with the endpoint.
+	LoadBalancerId pulumi.StringPtrInput `pulumi:"loadBalancerId"`
+}
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput)
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray and ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray{ ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{...} }
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return o
+}
+
+// The access address.
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint type. Valid values: `private`, `public`.
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the SLB (NLB) instance associated with the endpoint.
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) LoadBalancerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig) *string {
+		return v.LoadBalancerId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+		return vs[0].([]ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)[vs[1].(int)]
+	}).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput)
+}
+
 type ManagedKubernetesDeleteOption struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode *string `pulumi:"deleteMode"`
@@ -15390,6 +15823,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsPtrInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigPtrInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionArrayInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
@@ -15565,6 +16004,12 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowOutput{})

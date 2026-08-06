@@ -213,6 +213,21 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Import(name="destinationEndpointSsl")
+    private @Nullable Output<String> destinationEndpointSsl;
+
+    /**
+     * @return The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Optional<Output<String>> destinationEndpointSsl() {
+        return Optional.ofNullable(this.destinationEndpointSsl);
+    }
+
+    /**
      * The username of database account.
      * 
      */
@@ -438,6 +453,21 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Import(name="sourceEndpointSsl")
+    private @Nullable Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Optional<Output<String>> sourceEndpointSsl() {
+        return Optional.ofNullable(this.sourceEndpointSsl);
+    }
+
+    /**
      * The username of database account.
      * 
      */
@@ -498,6 +528,7 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
         this.destinationEndpointPassword = $.destinationEndpointPassword;
         this.destinationEndpointPort = $.destinationEndpointPort;
         this.destinationEndpointRegion = $.destinationEndpointRegion;
+        this.destinationEndpointSsl = $.destinationEndpointSsl;
         this.destinationEndpointUserName = $.destinationEndpointUserName;
         this.dtsInstanceId = $.dtsInstanceId;
         this.dtsJobName = $.dtsJobName;
@@ -513,6 +544,7 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
         this.sourceEndpointPort = $.sourceEndpointPort;
         this.sourceEndpointRegion = $.sourceEndpointRegion;
         this.sourceEndpointRole = $.sourceEndpointRole;
+        this.sourceEndpointSsl = $.sourceEndpointSsl;
         this.sourceEndpointUserName = $.sourceEndpointUserName;
         this.status = $.status;
         this.structureInitialization = $.structureInitialization;
@@ -807,6 +839,27 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder destinationEndpointRegion(String destinationEndpointRegion) {
             return destinationEndpointRegion(Output.of(destinationEndpointRegion));
+        }
+
+        /**
+         * @param destinationEndpointSsl The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationEndpointSsl(@Nullable Output<String> destinationEndpointSsl) {
+            $.destinationEndpointSsl = destinationEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param destinationEndpointSsl The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationEndpointSsl(String destinationEndpointSsl) {
+            return destinationEndpointSsl(Output.of(destinationEndpointSsl));
         }
 
         /**
@@ -1122,6 +1175,27 @@ public final class MigrationJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceEndpointRole(String sourceEndpointRole) {
             return sourceEndpointRole(Output.of(sourceEndpointRole));
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(@Nullable Output<String> sourceEndpointSsl) {
+            $.sourceEndpointSsl = sourceEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(String sourceEndpointSsl) {
+            return sourceEndpointSsl(Output.of(sourceEndpointSsl));
         }
 
         /**

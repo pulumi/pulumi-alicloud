@@ -36,6 +36,9 @@ __all__ = [
     'ManagedKubernetesAutoMode',
     'ManagedKubernetesCertificateAuthority',
     'ManagedKubernetesConnections',
+    'ManagedKubernetesControlPlaneEndpointsConfig',
+    'ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig',
+    'ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig',
     'ManagedKubernetesDeleteOption',
     'ManagedKubernetesMaintenanceWindow',
     'ManagedKubernetesOperationPolicy',
@@ -1833,6 +1836,166 @@ class ManagedKubernetesConnections(dict):
         Service Access Domain.
         """
         return pulumi.get(self, "service_domain")
+
+
+@pulumi.output_type
+class ManagedKubernetesControlPlaneEndpointsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalDnsConfig":
+            suggest = "internal_dns_config"
+        elif key == "loadBalancersConfigs":
+            suggest = "load_balancers_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesControlPlaneEndpointsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 internal_dns_config: Optional['outputs.ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig'] = None,
+                 load_balancers_configs: Optional[Sequence['outputs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig']] = None):
+        """
+        :param 'ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs' internal_dns_config: The cluster internal domain name configuration, applicable to ACK managed clusters. See `internal_dns_config` below.
+        :param Sequence['ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs'] load_balancers_configs: The load balancing configuration for cluster access. See `load_balancers_config` below.
+        """
+        if internal_dns_config is not None:
+            pulumi.set(__self__, "internal_dns_config", internal_dns_config)
+        if load_balancers_configs is not None:
+            pulumi.set(__self__, "load_balancers_configs", load_balancers_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="internalDnsConfig")
+    def internal_dns_config(self) -> Optional['outputs.ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig']:
+        """
+        The cluster internal domain name configuration, applicable to ACK managed clusters. See `internal_dns_config` below.
+        """
+        return pulumi.get(self, "internal_dns_config")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancersConfigs")
+    def load_balancers_configs(self) -> Optional[Sequence['outputs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig']]:
+        """
+        The load balancing configuration for cluster access. See `load_balancers_config` below.
+        """
+        return pulumi.get(self, "load_balancers_configs")
+
+
+@pulumi.output_type
+class ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindVpcs":
+            suggest = "bind_vpcs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bind_vpcs: Optional[Sequence[_builtins.str]] = None,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] bind_vpcs: The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+        :param _builtins.bool enabled: Whether the RRSA feature has been enabled.
+        """
+        if bind_vpcs is not None:
+            pulumi.set(__self__, "bind_vpcs", bind_vpcs)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="bindVpcs")
+    def bind_vpcs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+        """
+        return pulumi.get(self, "bind_vpcs")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointType":
+            suggest = "endpoint_type"
+        elif key == "loadBalancerId":
+            suggest = "load_balancer_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: Optional[_builtins.str] = None,
+                 endpoint_type: Optional[_builtins.str] = None,
+                 load_balancer_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str endpoint: The access address.
+        :param _builtins.str endpoint_type: The endpoint type. Valid values: `private`, `public`.
+        :param _builtins.str load_balancer_id: The ID of the SLB (NLB) instance associated with the endpoint.
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The access address.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[_builtins.str]:
+        """
+        The endpoint type. Valid values: `private`, `public`.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the SLB (NLB) instance associated with the endpoint.
+        """
+        return pulumi.get(self, "load_balancer_id")
 
 
 @pulumi.output_type

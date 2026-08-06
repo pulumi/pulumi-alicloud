@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Apig.Outputs
     public sealed class GatewayZone
     {
         /// <summary>
-        /// The zone name.
+        /// The name of the availability zone for the gateway.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The vswitch ID.
+        /// The ID of the virtual switch in the availability zone.
         /// </summary>
         public readonly string? VswitchId;
         /// <summary>
-        /// The zone ID.
+        /// The ID of the availability zone for the gateway.
         /// </summary>
         public readonly string? ZoneId;
 

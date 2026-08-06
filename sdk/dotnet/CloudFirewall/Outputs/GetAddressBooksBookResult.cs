@@ -14,9 +14,21 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     public sealed class GetAddressBooksBookResult
     {
         /// <summary>
+        /// (Available since v1.286.0) The number of addresses in the Address Book.
+        /// </summary>
+        public readonly int AddressListCount;
+        /// <summary>
         /// The addresses in the Address Book.
         /// </summary>
         public readonly ImmutableArray<string> AddressLists;
+        /// <summary>
+        /// (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+        /// </summary>
+        public readonly ImmutableArray<int> AssetMemberUids;
+        /// <summary>
+        /// (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAddressBooksBookAssetRegionResourceTypeResult> AssetRegionResourceTypes;
         /// <summary>
         /// Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
         /// </summary>
@@ -26,7 +38,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The logical relation among the ECS tags that to be matchedh.
+        /// The logical relation among the ECS tags that to be matched.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAddressBooksBookEcsTagResult> EcsTags;
         /// <summary>
@@ -34,8 +46,8 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`.
-        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`.
+        /// The type of the Address Book. Valid values: `Ip`, `Ipv6`, `Domain`, `Port`, `Tag`, `Asset`, `assetIpv6`.
+        /// **NOTE:** From version 1.213.1, `GroupType` can be set to `Ipv6`, `Domain`, `Port`. From version 1.286.0, `GroupType` can be set to `Asset`, `assetIpv6`.
         /// </summary>
         public readonly string GroupType;
         /// <summary>
@@ -47,13 +59,23 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (Available since v1.286.0) The number of times that the Address Book is referenced.
+        /// </summary>
+        public readonly int ReferenceCount;
+        /// <summary>
         /// One or more tags for the relationship between.
         /// </summary>
         public readonly string TagRelation;
 
         [OutputConstructor]
         private GetAddressBooksBookResult(
+            int addressListCount,
+
             ImmutableArray<string> addressLists,
+
+            ImmutableArray<int> assetMemberUids,
+
+            ImmutableArray<Outputs.GetAddressBooksBookAssetRegionResourceTypeResult> assetRegionResourceTypes,
 
             int autoAddTagEcs,
 
@@ -69,9 +91,14 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
 
             string id,
 
+            int referenceCount,
+
             string tagRelation)
         {
+            AddressListCount = addressListCount;
             AddressLists = addressLists;
+            AssetMemberUids = assetMemberUids;
+            AssetRegionResourceTypes = assetRegionResourceTypes;
             AutoAddTagEcs = autoAddTagEcs;
             Description = description;
             EcsTags = ecsTags;
@@ -79,6 +106,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
             GroupType = groupType;
             GroupUuid = groupUuid;
             Id = id;
+            ReferenceCount = referenceCount;
             TagRelation = tagRelation;
         }
     }

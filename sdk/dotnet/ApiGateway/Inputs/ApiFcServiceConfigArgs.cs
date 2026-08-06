@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.ApiGateway.Inputs
         public Input<string>? ContentTypeCategory { get; set; }
 
         /// <summary>
-        /// The value of the Content-Type header when `ContentTypeCategory` is `DEFAULT` or `CUSTOM`.
+        /// The value of the Content-Type header when `ContentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `ContentTypeCategory` is set to `CLIENT`.
         /// </summary>
         [Input("contentTypeValue")]
         public Input<string>? ContentTypeValue { get; set; }

@@ -847,6 +847,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
+     */
+    @Import(name="replicaCount")
+    private @Nullable Output<Integer> replicaCount;
+
+    /**
+     * @return The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * 
+     */
+    public Optional<Output<Integer>> replicaCount() {
+        return Optional.ofNullable(this.replicaCount);
+    }
+
+    /**
      * The ID of resource group which the resource belongs.
      * 
      */
@@ -998,6 +1013,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> slaveReadOnlyCount() {
         return Optional.ofNullable(this.slaveReadOnlyCount);
+    }
+
+    /**
+     * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     * 
+     */
+    @Import(name="slaveReplicaCount")
+    private @Nullable Output<Integer> slaveReplicaCount;
+
+    /**
+     * @return The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     * 
+     */
+    public Optional<Output<Integer>> slaveReplicaCount() {
+        return Optional.ofNullable(this.slaveReplicaCount);
     }
 
     /**
@@ -1179,6 +1211,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.privateIp = $.privateIp;
         this.qps = $.qps;
         this.readOnlyCount = $.readOnlyCount;
+        this.replicaCount = $.replicaCount;
         this.resourceGroupId = $.resourceGroupId;
         this.restoreTime = $.restoreTime;
         this.roleArn = $.roleArn;
@@ -1189,6 +1222,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.securityIps = $.securityIps;
         this.shardCount = $.shardCount;
         this.slaveReadOnlyCount = $.slaveReadOnlyCount;
+        this.slaveReplicaCount = $.slaveReplicaCount;
         this.srcdbInstanceId = $.srcdbInstanceId;
         this.sslEnable = $.sslEnable;
         this.status = $.status;
@@ -2368,6 +2402,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param replicaCount The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaCount(@Nullable Output<Integer> replicaCount) {
+            $.replicaCount = replicaCount;
+            return this;
+        }
+
+        /**
+         * @param replicaCount The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaCount(Integer replicaCount) {
+            return replicaCount(Output.of(replicaCount));
+        }
+
+        /**
          * @param resourceGroupId The ID of resource group which the resource belongs.
          * 
          * @return builder
@@ -2589,6 +2644,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder slaveReadOnlyCount(Integer slaveReadOnlyCount) {
             return slaveReadOnlyCount(Output.of(slaveReadOnlyCount));
+        }
+
+        /**
+         * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveReplicaCount(@Nullable Output<Integer> slaveReplicaCount) {
+            $.slaveReplicaCount = slaveReplicaCount;
+            return this;
+        }
+
+        /**
+         * @param slaveReplicaCount The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+         * &gt; **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveReplicaCount(Integer slaveReplicaCount) {
+            return slaveReplicaCount(Output.of(slaveReplicaCount));
         }
 
         /**

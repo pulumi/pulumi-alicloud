@@ -129,7 +129,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly securityGroupRuleId: pulumi.Output<string>;
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
     declare public readonly sourceGroupOwnerAccount: pulumi.Output<string | undefined>;
     /**
@@ -251,7 +251,7 @@ export interface SecurityGroupRuleState {
      */
     securityGroupRuleId?: pulumi.Input<string | undefined>;
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
     sourceGroupOwnerAccount?: pulumi.Input<string | undefined>;
     /**
@@ -312,7 +312,7 @@ export interface SecurityGroupRuleArgs {
      */
     securityGroupId: pulumi.Input<string>;
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      */
     sourceGroupOwnerAccount?: pulumi.Input<string | undefined>;
     /**

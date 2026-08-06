@@ -741,23 +741,23 @@ class InstanceParameterArgsDict(TypedDict):
     """
     default_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Available since v1.231.0) The default value of the parameter.
+    The default value of the parameter.
     """
     force_restart_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+    Whether to force restart the instance to config the parameter.
     """
     is_changeable_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Available since v1.231.0) Whether the parameter is changeable.
+    Whether the parameter is changeable.
     """
     optional_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Available since v1.231.0) The optional range of the parameter.
+    The optional range of the parameter.
     """
     parameter_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Available since v1.231.0) The description of the parameter.
+    The description of the parameter.
     """
 
 @pulumi.input_type
@@ -773,11 +773,11 @@ class InstanceParameterArgs:
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input[_builtins.str] value: The value of the parameter.
-        :param pulumi.Input[_builtins.str] default_value: (Available since v1.231.0) The default value of the parameter.
-        :param pulumi.Input[_builtins.str] force_restart_instance: (Available since v1.231.0) Whether to force restart the instance to config the parameter.
-        :param pulumi.Input[_builtins.str] is_changeable_config: (Available since v1.231.0) Whether the parameter is changeable.
-        :param pulumi.Input[_builtins.str] optional_range: (Available since v1.231.0) The optional range of the parameter.
-        :param pulumi.Input[_builtins.str] parameter_description: (Available since v1.231.0) The description of the parameter.
+        :param pulumi.Input[_builtins.str] default_value: The default value of the parameter.
+        :param pulumi.Input[_builtins.str] force_restart_instance: Whether to force restart the instance to config the parameter.
+        :param pulumi.Input[_builtins.str] is_changeable_config: Whether the parameter is changeable.
+        :param pulumi.Input[_builtins.str] optional_range: The optional range of the parameter.
+        :param pulumi.Input[_builtins.str] parameter_description: The description of the parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -820,7 +820,7 @@ class InstanceParameterArgs:
     @pulumi.getter(name="defaultValue")
     def default_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.231.0) The default value of the parameter.
+        The default value of the parameter.
         """
         return pulumi.get(self, "default_value")
 
@@ -832,7 +832,7 @@ class InstanceParameterArgs:
     @pulumi.getter(name="forceRestartInstance")
     def force_restart_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+        Whether to force restart the instance to config the parameter.
         """
         return pulumi.get(self, "force_restart_instance")
 
@@ -844,7 +844,7 @@ class InstanceParameterArgs:
     @pulumi.getter(name="isChangeableConfig")
     def is_changeable_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.231.0) Whether the parameter is changeable.
+        Whether the parameter is changeable.
         """
         return pulumi.get(self, "is_changeable_config")
 
@@ -856,7 +856,7 @@ class InstanceParameterArgs:
     @pulumi.getter(name="optionalRange")
     def optional_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.231.0) The optional range of the parameter.
+        The optional range of the parameter.
         """
         return pulumi.get(self, "optional_range")
 
@@ -868,7 +868,7 @@ class InstanceParameterArgs:
     @pulumi.getter(name="parameterDescription")
     def parameter_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Available since v1.231.0) The description of the parameter.
+        The description of the parameter.
         """
         return pulumi.get(self, "parameter_description")
 

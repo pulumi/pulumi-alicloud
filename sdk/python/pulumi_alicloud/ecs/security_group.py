@@ -38,7 +38,7 @@ class SecurityGroupArgs:
                - `Drop`: The internal isolation policy.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         :param pulumi.Input[_builtins.str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC in which you want to create the security group.
@@ -136,7 +136,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "security_group_name")
 
@@ -205,7 +205,7 @@ class _SecurityGroupState:
                - `Drop`: The internal isolation policy.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         :param pulumi.Input[_builtins.str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC in which you want to create the security group.
@@ -317,7 +317,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "security_group_name")
 
@@ -439,7 +439,7 @@ class SecurityGroup(pulumi.CustomResource):
                - `Drop`: The internal isolation policy.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         :param pulumi.Input[_builtins.str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC in which you want to create the security group.
@@ -580,7 +580,7 @@ class SecurityGroup(pulumi.CustomResource):
                - `Drop`: The internal isolation policy.
         :param pulumi.Input[_builtins.str] name: Field `name` has been deprecated from provider version 1.239.0. New field `security_group_name` instead.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resource_group_id` can be modified.
-        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        :param pulumi.Input[_builtins.str] security_group_name: The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         :param pulumi.Input[_builtins.str] security_group_type: The type of the security group. Default value: `normal`. Valid values:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC in which you want to create the security group.
@@ -657,7 +657,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupName")
     def security_group_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
+        The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\\_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "security_group_name")
 

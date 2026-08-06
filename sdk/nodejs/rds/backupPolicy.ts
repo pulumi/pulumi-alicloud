@@ -104,6 +104,8 @@ export class BackupPolicy extends pulumi.CustomResource {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      */
     declare public readonly backupInterval: pulumi.Output<string>;
     /**
@@ -323,6 +325,8 @@ export interface BackupPolicyState {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      */
     backupInterval?: pulumi.Input<string | undefined>;
     /**
@@ -467,6 +471,8 @@ export interface BackupPolicyArgs {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      */
     backupInterval?: pulumi.Input<string | undefined>;
     /**

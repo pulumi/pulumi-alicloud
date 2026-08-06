@@ -119,7 +119,7 @@ type SecurityGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
 	SecurityGroupName pulumi.StringOutput `pulumi:"securityGroupName"`
 	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType pulumi.StringOutput `pulumi:"securityGroupType"`
@@ -177,7 +177,7 @@ type securityGroupState struct {
 	Name *string `pulumi:"name"`
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType *string `pulumi:"securityGroupType"`
@@ -206,7 +206,7 @@ type SecurityGroupState struct {
 	Name pulumi.StringPtrInput
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
 	SecurityGroupName pulumi.StringPtrInput
 	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType pulumi.StringPtrInput
@@ -237,7 +237,7 @@ type securityGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType *string `pulumi:"securityGroupType"`
@@ -265,7 +265,7 @@ type SecurityGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The ID of the resource group to which the security group belongs. **NOTE:** From version 1.115.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
-	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+	// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
 	SecurityGroupName pulumi.StringPtrInput
 	// The type of the security group. Default value: `normal`. Valid values:
 	SecurityGroupType pulumi.StringPtrInput
@@ -398,7 +398,7 @@ func (o SecurityGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
 func (o SecurityGroupOutput) SecurityGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.SecurityGroupName }).(pulumi.StringOutput)
 }

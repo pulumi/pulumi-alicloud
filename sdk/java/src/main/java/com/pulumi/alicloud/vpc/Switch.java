@@ -224,14 +224,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      * 
      */
     @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
-     * @return The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * @return The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      * 
      */
     public Output<String> cidrBlock() {
@@ -252,14 +252,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of VSwitch.
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of VSwitch.
+     * @return The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
@@ -406,14 +406,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vpcIpv6CidrBlock);
     }
     /**
-     * The name of the VSwitch.
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="vswitchName", refs={String.class}, tree="[0]")
     private Output<String> vswitchName;
 
     /**
-     * @return The name of the VSwitch.
+     * @return The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<String> vswitchName() {

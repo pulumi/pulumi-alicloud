@@ -29,7 +29,9 @@ class ServerlessKubernetesArgs:
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_options: pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
@@ -55,7 +57,7 @@ class ServerlessKubernetesArgs:
         """
         The set of arguments for constructing a ServerlessKubernetes resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -68,7 +70,11 @@ class ServerlessKubernetesArgs:
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
@@ -119,8 +125,12 @@ class ServerlessKubernetesArgs:
             pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disable_encryption is not None:
+            pulumi.set(__self__, "disable_encryption", disable_encryption)
         if enable_rrsa is not None:
             pulumi.set(__self__, "enable_rrsa", enable_rrsa)
+        if encryption_provider_key is not None:
+            pulumi.set(__self__, "encryption_provider_key", encryption_provider_key)
         if endpoint_public_access_enabled is not None:
             pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
         if kube_config is not None:
@@ -185,7 +195,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter
     def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
         """
-        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "addons")
 
@@ -286,6 +296,19 @@ class ServerlessKubernetesArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableEncryption")
+    def disable_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+        > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "disable_encryption")
+
+    @disable_encryption.setter
+    def disable_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_encryption", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -296,6 +319,19 @@ class ServerlessKubernetesArgs:
     @enable_rrsa.setter
     def enable_rrsa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_rrsa", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionProviderKey")
+    def encryption_provider_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+        > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "encryption_provider_key")
+
+    @encryption_provider_key.setter
+    def encryption_provider_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "encryption_provider_key", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointPublicAccessEnabled")
@@ -580,7 +616,9 @@ class _ServerlessKubernetesState:
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_options: pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
@@ -607,7 +645,7 @@ class _ServerlessKubernetesState:
         """
         Input properties used for looking up and filtering ServerlessKubernetes resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -620,7 +658,11 @@ class _ServerlessKubernetesState:
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
@@ -672,8 +714,12 @@ class _ServerlessKubernetesState:
             pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if disable_encryption is not None:
+            pulumi.set(__self__, "disable_encryption", disable_encryption)
         if enable_rrsa is not None:
             pulumi.set(__self__, "enable_rrsa", enable_rrsa)
+        if encryption_provider_key is not None:
+            pulumi.set(__self__, "encryption_provider_key", encryption_provider_key)
         if endpoint_public_access_enabled is not None:
             pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
         if kube_config is not None:
@@ -740,7 +786,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter
     def addons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerlessKubernetesAddonArgs']]]]:
         """
-        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "addons")
 
@@ -841,6 +887,19 @@ class _ServerlessKubernetesState:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="disableEncryption")
+    def disable_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+        > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "disable_encryption")
+
+    @disable_encryption.setter
+    def disable_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disable_encryption", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -851,6 +910,19 @@ class _ServerlessKubernetesState:
     @enable_rrsa.setter
     def enable_rrsa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_rrsa", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionProviderKey")
+    def encryption_provider_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+        > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "encryption_provider_key")
+
+    @encryption_provider_key.setter
+    def encryption_provider_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "encryption_provider_key", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointPublicAccessEnabled")
@@ -1150,7 +1222,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1175,7 +1249,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
+        > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
 
         This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
 
@@ -1249,7 +1323,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1262,7 +1336,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
@@ -1295,7 +1373,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  args: Optional[ServerlessKubernetesArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
+        > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
 
         This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
 
@@ -1390,7 +1468,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  custom_san: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
                  load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1430,7 +1510,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["custom_san"] = custom_san
             __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["deletion_protection"] = deletion_protection
+            __props__.__dict__["disable_encryption"] = disable_encryption
             __props__.__dict__["enable_rrsa"] = enable_rrsa
+            __props__.__dict__["encryption_provider_key"] = encryption_provider_key
             __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
@@ -1472,7 +1554,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
             custom_san: pulumi.Input[Optional[_builtins.str]] = None,
             delete_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_rrsa: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_provider_key: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             kube_config: pulumi.Input[Optional[_builtins.str]] = None,
             load_balancer_spec: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1503,7 +1587,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesAddonArgs', 'ServerlessKubernetesAddonArgsDict']]]] addons: You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         :param pulumi.Input[_builtins.str] client_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
         :param pulumi.Input[_builtins.str] client_key: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
         :param pulumi.Input[_builtins.str] cluster_ca_cert: From version 1.248.0, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `cs_get_cluster_credential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
@@ -1516,7 +1600,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
+        :param pulumi.Input[_builtins.bool] disable_encryption: Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+               > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
+        :param pulumi.Input[_builtins.str] encryption_provider_key: The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+               > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
         :param pulumi.Input[_builtins.bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[_builtins.str] kube_config: The path of kube config, like ~/.kube/config. Please use the attribute output_file of new DataSource `cs_get_cluster_credential` to replace it.
         :param pulumi.Input[_builtins.str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
@@ -1555,7 +1643,9 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["custom_san"] = custom_san
         __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["disable_encryption"] = disable_encryption
         __props__.__dict__["enable_rrsa"] = enable_rrsa
+        __props__.__dict__["encryption_provider_key"] = encryption_provider_key
         __props__.__dict__["endpoint_public_access_enabled"] = endpoint_public_access_enabled
         __props__.__dict__["kube_config"] = kube_config
         __props__.__dict__["load_balancer_spec"] = load_balancer_spec
@@ -1585,7 +1675,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def addons(self) -> pulumi.Output[Optional[Sequence['outputs.ServerlessKubernetesAddon']]]:
         """
-        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created.
+        You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource cs_kubernetes_addon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
         """
         return pulumi.get(self, "addons")
 
@@ -1654,12 +1744,30 @@ class ServerlessKubernetes(pulumi.CustomResource):
         return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
+    @pulumi.getter(name="disableEncryption")
+    def disable_encryption(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+        > **Note:** When enabling encryption, you must explicitly set `disable_encryption = false` along with `encryption_provider_key`. When disabling encryption, you only need to set `disable_encryption = true`, and the `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "disable_encryption")
+
+    @_builtins.property
     @pulumi.getter(name="enableRrsa")
     def enable_rrsa(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
         """
         return pulumi.get(self, "enable_rrsa")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionProviderKey")
+    def encryption_provider_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+        > **Note:** To enable encryption, you must specify both `encryption_provider_key` and `disable_encryption = false`. When `disable_encryption` is set to `true`, changes to `encryption_provider_key` will be ignored.
+        """
+        return pulumi.get(self, "encryption_provider_key")
 
     @_builtins.property
     @pulumi.getter(name="endpointPublicAccessEnabled")

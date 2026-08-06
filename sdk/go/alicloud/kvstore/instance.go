@@ -405,6 +405,8 @@ type Instance struct {
 	Qps pulumi.IntOutput `pulumi:"qps"`
 	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
 	ReadOnlyCount pulumi.IntPtrOutput `pulumi:"readOnlyCount"`
+	// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
@@ -427,6 +429,9 @@ type Instance struct {
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount pulumi.IntPtrOutput `pulumi:"slaveReadOnlyCount"`
+	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+	SlaveReplicaCount pulumi.IntOutput `pulumi:"slaveReplicaCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrOutput `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -607,6 +612,8 @@ type instanceState struct {
 	Qps *int `pulumi:"qps"`
 	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
 	ReadOnlyCount *int `pulumi:"readOnlyCount"`
+	// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	ReplicaCount *int `pulumi:"replicaCount"`
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
@@ -629,6 +636,9 @@ type instanceState struct {
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
+	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+	SlaveReplicaCount *int `pulumi:"slaveReplicaCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -773,6 +783,8 @@ type InstanceState struct {
 	Qps pulumi.IntPtrInput
 	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
 	ReadOnlyCount pulumi.IntPtrInput
+	// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	ReplicaCount pulumi.IntPtrInput
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time of a backup file.
@@ -795,6 +807,9 @@ type InstanceState struct {
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount pulumi.IntPtrInput
+	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+	SlaveReplicaCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -933,6 +948,8 @@ type instanceArgs struct {
 	PrivateIp *string `pulumi:"privateIp"`
 	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
 	ReadOnlyCount *int `pulumi:"readOnlyCount"`
+	// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	ReplicaCount *int `pulumi:"replicaCount"`
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The point in time of a backup file.
@@ -955,6 +972,9 @@ type instanceArgs struct {
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
+	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+	SlaveReplicaCount *int `pulumi:"slaveReplicaCount"`
 	// The ID of the source instance.
 	SrcdbInstanceId *string `pulumi:"srcdbInstanceId"`
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -1088,6 +1108,8 @@ type InstanceArgs struct {
 	PrivateIp pulumi.StringPtrInput
 	// The number of read replicas in the primary zone. Valid values: `1` to `9`.
 	ReadOnlyCount pulumi.IntPtrInput
+	// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	ReplicaCount pulumi.IntPtrInput
 	// The ID of resource group which the resource belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The point in time of a backup file.
@@ -1110,6 +1132,9 @@ type InstanceArgs struct {
 	// The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
 	// > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 	SlaveReadOnlyCount pulumi.IntPtrInput
+	// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+	// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+	SlaveReplicaCount pulumi.IntPtrInput
 	// The ID of the source instance.
 	SrcdbInstanceId pulumi.StringPtrInput
 	// Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
@@ -1488,6 +1513,11 @@ func (o InstanceOutput) ReadOnlyCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ReadOnlyCount }).(pulumi.IntPtrOutput)
 }
 
+// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+func (o InstanceOutput) ReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ReplicaCount }).(pulumi.IntOutput)
+}
+
 // The ID of resource group which the resource belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -1538,6 +1568,12 @@ func (o InstanceOutput) ShardCount() pulumi.IntOutput {
 // > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
 func (o InstanceOutput) SlaveReadOnlyCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SlaveReadOnlyCount }).(pulumi.IntPtrOutput)
+}
+
+// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+// > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+func (o InstanceOutput) SlaveReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SlaveReplicaCount }).(pulumi.IntOutput)
 }
 
 // The ID of the source instance.

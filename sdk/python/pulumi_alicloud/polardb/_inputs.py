@@ -27,6 +27,14 @@ __all__ = [
     'ClusterDbRevisionVersionListArgsDict',
     'ClusterParameterArgs',
     'ClusterParameterArgsDict',
+    'DynamoTableAttributeArgs',
+    'DynamoTableAttributeArgsDict',
+    'DynamoTableGlobalSecondaryIndexArgs',
+    'DynamoTableGlobalSecondaryIndexArgsDict',
+    'DynamoTableLocalSecondaryIndexArgs',
+    'DynamoTableLocalSecondaryIndexArgsDict',
+    'DynamoTableTtlArgs',
+    'DynamoTableTtlArgsDict',
     'ParameterGroupParameterArgs',
     'ParameterGroupParameterArgsDict',
 ]
@@ -406,6 +414,335 @@ class ClusterParameterArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class DynamoTableAttributeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the attribute.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+    """
+
+@pulumi.input_type
+class DynamoTableAttributeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the attribute.
+        :param pulumi.Input[_builtins.str] type: The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+class DynamoTableGlobalSecondaryIndexArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the index.
+    """
+    projection_type: pulumi.Input[_builtins.str]
+    """
+    The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+    """
+    hash_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The attribute name used as the partition key of the index.
+    """
+    non_key_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A set of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+    """
+    range_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The attribute name used as the sort key of the index.
+    """
+    read_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of read capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+    """
+    write_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of write capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+    """
+
+@pulumi.input_type
+class DynamoTableGlobalSecondaryIndexArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 projection_type: pulumi.Input[_builtins.str],
+                 hash_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 non_key_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 range_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 write_capacity: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the index.
+        :param pulumi.Input[_builtins.str] projection_type: The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        :param pulumi.Input[_builtins.str] hash_key: The attribute name used as the partition key of the index.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] non_key_attributes: A set of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        :param pulumi.Input[_builtins.str] range_key: The attribute name used as the sort key of the index.
+        :param pulumi.Input[_builtins.int] read_capacity: The number of read capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        :param pulumi.Input[_builtins.int] write_capacity: The number of write capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "projection_type", projection_type)
+        if hash_key is not None:
+            pulumi.set(__self__, "hash_key", hash_key)
+        if non_key_attributes is not None:
+            pulumi.set(__self__, "non_key_attributes", non_key_attributes)
+        if range_key is not None:
+            pulumi.set(__self__, "range_key", range_key)
+        if read_capacity is not None:
+            pulumi.set(__self__, "read_capacity", read_capacity)
+        if write_capacity is not None:
+            pulumi.set(__self__, "write_capacity", write_capacity)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the index.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectionType")
+    def projection_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        """
+        return pulumi.get(self, "projection_type")
+
+    @projection_type.setter
+    def projection_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "projection_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hashKey")
+    def hash_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The attribute name used as the partition key of the index.
+        """
+        return pulumi.get(self, "hash_key")
+
+    @hash_key.setter
+    def hash_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "hash_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nonKeyAttributes")
+    def non_key_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        """
+        return pulumi.get(self, "non_key_attributes")
+
+    @non_key_attributes.setter
+    def non_key_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "non_key_attributes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rangeKey")
+    def range_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The attribute name used as the sort key of the index.
+        """
+        return pulumi.get(self, "range_key")
+
+    @range_key.setter
+    def range_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "range_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readCapacity")
+    def read_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of read capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        """
+        return pulumi.get(self, "read_capacity")
+
+    @read_capacity.setter
+    def read_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "read_capacity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writeCapacity")
+    def write_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of write capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        """
+        return pulumi.get(self, "write_capacity")
+
+    @write_capacity.setter
+    def write_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "write_capacity", value)
+
+
+class DynamoTableLocalSecondaryIndexArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the index.
+    """
+    projection_type: pulumi.Input[_builtins.str]
+    """
+    The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+    """
+    range_key: pulumi.Input[_builtins.str]
+    """
+    The attribute name used as the sort key of the index.
+    """
+    non_key_attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+    """
+
+@pulumi.input_type
+class DynamoTableLocalSecondaryIndexArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 projection_type: pulumi.Input[_builtins.str],
+                 range_key: pulumi.Input[_builtins.str],
+                 non_key_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the index.
+        :param pulumi.Input[_builtins.str] projection_type: The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        :param pulumi.Input[_builtins.str] range_key: The attribute name used as the sort key of the index.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] non_key_attributes: A list of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "projection_type", projection_type)
+        pulumi.set(__self__, "range_key", range_key)
+        if non_key_attributes is not None:
+            pulumi.set(__self__, "non_key_attributes", non_key_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the index.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectionType")
+    def projection_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        """
+        return pulumi.get(self, "projection_type")
+
+    @projection_type.setter
+    def projection_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "projection_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rangeKey")
+    def range_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The attribute name used as the sort key of the index.
+        """
+        return pulumi.get(self, "range_key")
+
+    @range_key.setter
+    def range_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nonKeyAttributes")
+    def non_key_attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        """
+        return pulumi.get(self, "non_key_attributes")
+
+    @non_key_attributes.setter
+    def non_key_attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "non_key_attributes", value)
+
+
+class DynamoTableTtlArgsDict(TypedDict):
+    attribute_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the attribute that stores the TTL timestamp.
+    """
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether TTL is enabled. Default to `false`.
+    """
+
+@pulumi.input_type
+class DynamoTableTtlArgs:
+    def __init__(__self__, *,
+                 attribute_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] attribute_name: The name of the attribute that stores the TTL timestamp.
+        :param pulumi.Input[_builtins.bool] enabled: Whether TTL is enabled. Default to `false`.
+        """
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the attribute that stores the TTL timestamp.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @attribute_name.setter
+    def attribute_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "attribute_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether TTL is enabled. Default to `false`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 class ParameterGroupParameterArgsDict(TypedDict):

@@ -20,12 +20,14 @@ from .get_data_flows import *
 from .get_file_systems import *
 from .get_filesets import *
 from .get_lifecycle_policies import *
+from .get_log_analyses import *
 from .get_mount_targets import *
 from .get_protocols import *
 from .get_service import *
 from .get_snapshots import *
 from .get_zones import *
 from .lifecycle_policy import *
+from .log_analysis import *
 from .mount_target import *
 from .protocol_mount_target import *
 from .protocol_service import *

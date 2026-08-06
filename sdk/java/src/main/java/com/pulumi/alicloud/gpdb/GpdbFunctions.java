@@ -6,6 +6,8 @@ package com.pulumi.alicloud.gpdb;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.gpdb.inputs.GetAccountsArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetAccountsPlainArgs;
+import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
+import com.pulumi.alicloud.gpdb.inputs.GetApiKeysPlainArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDataBackupsArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDataBackupsPlainArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetDbInstancePlansArgs;
@@ -17,6 +19,7 @@ import com.pulumi.alicloud.gpdb.inputs.GetLogBackupsPlainArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
 import com.pulumi.alicloud.gpdb.inputs.GetZonesPlainArgs;
 import com.pulumi.alicloud.gpdb.outputs.GetAccountsResult;
+import com.pulumi.alicloud.gpdb.outputs.GetApiKeysResult;
 import com.pulumi.alicloud.gpdb.outputs.GetDataBackupsResult;
 import com.pulumi.alicloud.gpdb.outputs.GetDbInstancePlansResult;
 import com.pulumi.alicloud.gpdb.outputs.GetInstancesResult;
@@ -299,6 +302,231 @@ public final class GpdbFunctions {
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:gpdb/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Api Key available to the user.[What is Api Key](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateApiKey)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var workspaceId = config.get("workspaceId").orElse("ws-xxxxxxx");
+     *         final var default = GpdbFunctions.getApiKeys(GetApiKeysArgs.builder()
+     *             .workspaceId(workspaceId)
+     *             .build());
+     * 
+     *         ctx.export("gpdbApiKeyId", default_.keys()[0].keyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApiKeysResult> getApiKeys(GetApiKeysArgs args) {
+        return getApiKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Gpdb Api Key available to the user.[What is Api Key](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateApiKey)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var workspaceId = config.get("workspaceId").orElse("ws-xxxxxxx");
+     *         final var default = GpdbFunctions.getApiKeys(GetApiKeysArgs.builder()
+     *             .workspaceId(workspaceId)
+     *             .build());
+     * 
+     *         ctx.export("gpdbApiKeyId", default_.keys()[0].keyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetApiKeysResult> getApiKeysPlain(GetApiKeysPlainArgs args) {
+        return getApiKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Gpdb Api Key available to the user.[What is Api Key](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateApiKey)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var workspaceId = config.get("workspaceId").orElse("ws-xxxxxxx");
+     *         final var default = GpdbFunctions.getApiKeys(GetApiKeysArgs.builder()
+     *             .workspaceId(workspaceId)
+     *             .build());
+     * 
+     *         ctx.export("gpdbApiKeyId", default_.keys()[0].keyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApiKeysResult> getApiKeys(GetApiKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getApiKeys:getApiKeys", TypeShape.of(GetApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Api Key available to the user.[What is Api Key](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateApiKey)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var workspaceId = config.get("workspaceId").orElse("ws-xxxxxxx");
+     *         final var default = GpdbFunctions.getApiKeys(GetApiKeysArgs.builder()
+     *             .workspaceId(workspaceId)
+     *             .build());
+     * 
+     *         ctx.export("gpdbApiKeyId", default_.keys()[0].keyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetApiKeysResult> getApiKeys(GetApiKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:gpdb/getApiKeys:getApiKeys", TypeShape.of(GetApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Gpdb Api Key available to the user.[What is Api Key](https://next.api.alibabacloud.com/document/gpdb/2016-05-03/CreateApiKey)
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
+     * import com.pulumi.alicloud.gpdb.inputs.GetApiKeysArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var workspaceId = config.get("workspaceId").orElse("ws-xxxxxxx");
+     *         final var default = GpdbFunctions.getApiKeys(GetApiKeysArgs.builder()
+     *             .workspaceId(workspaceId)
+     *             .build());
+     * 
+     *         ctx.export("gpdbApiKeyId", default_.keys()[0].keyId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetApiKeysResult> getApiKeysPlain(GetApiKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:gpdb/getApiKeys:getApiKeys", TypeShape.of(GetApiKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Gpdb Data Backup available to the user.[What is Data Backup](https://www.alibabacloud.com/help/en/)

@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Apig.Inputs
     public sealed class GatewayZoneGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The zone name.
+        /// The name of the availability zone for the gateway.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The vswitch ID.
+        /// The ID of the virtual switch in the availability zone.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The zone ID.
+        /// The ID of the availability zone for the gateway.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

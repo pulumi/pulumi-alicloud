@@ -45,6 +45,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     * 
+     */
+    @Import(name="backupId")
+    private @Nullable Output<String> backupId;
+
+    /**
+     * @return The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     * 
+     */
+    public Optional<Output<String>> backupId() {
+        return Optional.ofNullable(this.backupId);
+    }
+
+    /**
+     * The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     * 
+     */
+    @Import(name="cacheStorageSize")
+    private @Nullable Output<Integer> cacheStorageSize;
+
+    /**
+     * @return The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     * 
+     */
+    public Optional<Output<Integer>> cacheStorageSize() {
+        return Optional.ofNullable(this.cacheStorageSize);
+    }
+
+    /**
      * (Available since v1.196.0) The connection string of the instance.
      * 
      */
@@ -128,14 +158,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+     * 
+     * &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
      * 
      */
     @Import(name="dbInstanceMode")
     private @Nullable Output<String> dbInstanceMode;
 
     /**
-     * @return The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * @return The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+     * 
+     * &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
      * 
      */
     public Optional<Output<String>> dbInstanceMode() {
@@ -285,6 +319,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * 
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      * 
      */
     @Import(name="instanceSpec")
@@ -297,6 +332,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      * 
      * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      * 
      */
     public Optional<Output<String>> instanceSpec() {
@@ -604,6 +640,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     * 
+     */
+    @Import(name="serverlessResource")
+    private @Nullable Output<Integer> serverlessResource;
+
+    /**
+     * @return The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     * 
+     */
+    public Optional<Output<Integer>> serverlessResource() {
+        return Optional.ofNullable(this.serverlessResource);
+    }
+
+    /**
+     * The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     * 
+     */
+    @Import(name="srcDbInstanceName")
+    private @Nullable Output<String> srcDbInstanceName;
+
+    /**
+     * @return The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     * 
+     */
+    public Optional<Output<String>> srcDbInstanceName() {
+        return Optional.ofNullable(this.srcDbInstanceName);
+    }
+
+    /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      * 
      */
@@ -746,6 +812,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     private InstanceState(InstanceState $) {
         this.availabilityZone = $.availabilityZone;
+        this.backupId = $.backupId;
+        this.cacheStorageSize = $.cacheStorageSize;
         this.connectionString = $.connectionString;
         this.createSampleData = $.createSampleData;
         this.dataShareStatus = $.dataShareStatus;
@@ -779,6 +847,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.segNodeNum = $.segNodeNum;
         this.segStorageType = $.segStorageType;
         this.serverlessMode = $.serverlessMode;
+        this.serverlessResource = $.serverlessResource;
+        this.srcDbInstanceName = $.srcDbInstanceName;
         this.sslEnabled = $.sslEnabled;
         this.status = $.status;
         this.storageSize = $.storageSize;
@@ -835,6 +905,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead. */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
+        }
+
+        /**
+         * @param backupId The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupId(@Nullable Output<String> backupId) {
+            $.backupId = backupId;
+            return this;
+        }
+
+        /**
+         * @param backupId The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupId(String backupId) {
+            return backupId(Output.of(backupId));
+        }
+
+        /**
+         * @param cacheStorageSize The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheStorageSize(@Nullable Output<Integer> cacheStorageSize) {
+            $.cacheStorageSize = cacheStorageSize;
+            return this;
+        }
+
+        /**
+         * @param cacheStorageSize The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cacheStorageSize(Integer cacheStorageSize) {
+            return cacheStorageSize(Output.of(cacheStorageSize));
         }
 
         /**
@@ -951,7 +1063,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceMode The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+         * @param dbInstanceMode The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+         * 
+         * &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
          * 
          * @return builder
          * 
@@ -962,7 +1076,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceMode The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+         * @param dbInstanceMode The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+         * 
+         * &gt; **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
          * 
          * @return builder
          * 
@@ -1162,6 +1278,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
          * 
          * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+         * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
          * 
          * @return builder
          * 
@@ -1178,6 +1295,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
          * 
          * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+         * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
          * 
          * @return builder
          * 
@@ -1627,6 +1745,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverlessMode(String serverlessMode) {
             return serverlessMode(Output.of(serverlessMode));
+        }
+
+        /**
+         * @param serverlessResource The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessResource(@Nullable Output<Integer> serverlessResource) {
+            $.serverlessResource = serverlessResource;
+            return this;
+        }
+
+        /**
+         * @param serverlessResource The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessResource(Integer serverlessResource) {
+            return serverlessResource(Output.of(serverlessResource));
+        }
+
+        /**
+         * @param srcDbInstanceName The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceName(@Nullable Output<String> srcDbInstanceName) {
+            $.srcDbInstanceName = srcDbInstanceName;
+            return this;
+        }
+
+        /**
+         * @param srcDbInstanceName The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceName(String srcDbInstanceName) {
+            return srcDbInstanceName(Output.of(srcDbInstanceName));
         }
 
         /**

@@ -110,7 +110,9 @@ type EcsDisk struct {
 	DiskName pulumi.StringOutput `pulumi:"diskName"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
@@ -224,7 +226,9 @@ type ecsDiskState struct {
 	DiskName *string `pulumi:"diskName"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
@@ -309,7 +313,9 @@ type EcsDiskState struct {
 	DiskName pulumi.StringPtrInput
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
@@ -396,7 +402,9 @@ type ecsDiskArgs struct {
 	DiskName *string `pulumi:"diskName"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
@@ -476,7 +484,9 @@ type EcsDiskArgs struct {
 	DiskName pulumi.StringPtrInput
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+	// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+	//
+	// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
 	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
@@ -673,7 +683,9 @@ func (o EcsDiskOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+//
+// Deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
 func (o EcsDiskOutput) EnableAutoSnapshot() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.BoolOutput { return v.EnableAutoSnapshot }).(pulumi.BoolOutput)
 }

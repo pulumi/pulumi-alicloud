@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -77,95 +78,181 @@ import javax.annotation.Nullable;
  * APIG Http Api can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:apig/httpApi:HttpApi example &lt;id&gt;
+ * $ pulumi import alicloud:apig/httpApi:HttpApi example &lt;http_api_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:apig/httpApi:HttpApi")
 public class HttpApi extends com.pulumi.resources.CustomResource {
     /**
-     * API path
+     * AI API protocols. Currently the supported value is `OpenAI/v1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Export(name="aiProtocols", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> aiProtocols;
+
+    /**
+     * @return AI API protocols. Currently the supported value is `OpenAI/v1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Output<Optional<List<String>>> aiProtocols() {
+        return Codegen.optional(this.aiProtocols);
+    }
+    /**
+     * API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Export(name="basePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basePath;
 
     /**
-     * @return API path
+     * @return API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Output<Optional<String>> basePath() {
         return Codegen.optional(this.basePath);
     }
     /**
-     * Description of API
+     * API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    @Export(name="deployConfigs", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> deployConfigs;
+
+    /**
+     * @return API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    public Output<Optional<List<String>>> deployConfigs() {
+        return Codegen.optional(this.deployConfigs);
+    }
+    /**
+     * API description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of API
+     * @return API description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the resource
+     * Whether to enable authentication.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Export(name="enableAuth", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableAuth;
+
+    /**
+     * @return Whether to enable authentication.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Output<Optional<Boolean>> enableAuth() {
+        return Codegen.optional(this.enableAuth);
+    }
+    /**
+     * Perform an exact search by name.
      * 
      */
     @Export(name="httpApiName", refs={String.class}, tree="[0]")
     private Output<String> httpApiName;
 
     /**
-     * @return The name of the resource
+     * @return Perform an exact search by name.
      * 
      */
     public Output<String> httpApiName() {
         return this.httpApiName;
     }
     /**
-     * API protocol
+     * AI model category
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Export(name="modelCategory", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> modelCategory;
+
+    /**
+     * @return AI model category
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Output<Optional<String>> modelCategory() {
+        return Codegen.optional(this.modelCategory);
+    }
+    /**
+     * List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      * 
      */
     @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> protocols;
 
     /**
-     * @return API protocol
+     * @return List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      * 
      */
     public Output<List<String>> protocols() {
         return this.protocols;
     }
     /**
-     * The ID of the resource group
+     * The ID of the resource group. It can be modified to migrate the resource to another resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group. It can be modified to migrate the resource to another resource group.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * API type
+     * The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return API type
+     * @return The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

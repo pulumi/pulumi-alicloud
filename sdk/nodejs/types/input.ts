@@ -2055,41 +2055,147 @@ export namespace amqp {
 }
 
 export namespace apig {
+    export interface DomainTlsCipherSuitesConfig {
+        /**
+         * The configuration type, which can be Default or Custom.
+         */
+        configType?: pulumi.Input<string | undefined>;
+        /**
+         * TLS cipher suite. See `tlsCipherSuite` below.
+         */
+        tlsCipherSuites?: pulumi.Input<pulumi.Input<inputs.apig.DomainTlsCipherSuitesConfigTlsCipherSuite>[] | undefined>;
+    }
+
+    export interface DomainTlsCipherSuitesConfigTlsCipherSuite {
+        /**
+         * The name of the cipher suite.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * support versions
+         */
+        supportVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface GatewayEnvironment {
+        /**
+         * The alias of the environment.
+         */
+        alias?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the environment.
+         */
+        environmentId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the availability zone for the gateway.
+         */
+        name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayLoadBalancer {
+        /**
+         * The address of the load balancer for the gateway.
+         */
+        address?: pulumi.Input<string | undefined>;
+        /**
+         * The IP version of the load balancer.
+         */
+        addressIpVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The load balancer address type.
+         */
+        addressType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates whether this is the default ingress address of the gateway.
+         */
+        gatewayDefault?: pulumi.Input<boolean | undefined>;
+        /**
+         * The list of IPv4 addresses.
+         */
+        ipv4Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The list of IPv6 addresses.
+         */
+        ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The ID of the load balancer associated with the gateway.
+         */
+        loadBalancerId?: pulumi.Input<string | undefined>;
+        /**
+         * The load balancing provisioning mode for the gateway.
+         */
+        mode?: pulumi.Input<string | undefined>;
+        /**
+         * The list of listening ports.
+         */
+        ports?: pulumi.Input<pulumi.Input<inputs.apig.GatewayLoadBalancerPort>[] | undefined>;
+        /**
+         * The status of the gateway.
+         */
+        status?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the load balancer.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayLoadBalancerPort {
+        /**
+         * The port number of the load balancer listener.
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * The protocol of the load balancer listener.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
+
     export interface GatewayLogConfig {
         /**
-         * Sls See `sls` below.
+         * The Simple Log Service configuration for the gateway. See `sls` below.
          */
         sls?: pulumi.Input<inputs.apig.GatewayLogConfigSls | undefined>;
     }
 
     export interface GatewayLogConfigSls {
         /**
-         * Enable Log Service
+         * The Simple Log Service configuration for the gateway.
          */
         enable?: pulumi.Input<boolean | undefined>;
     }
 
     export interface GatewayNetworkAccessConfig {
         /**
-         * Network Access Type
+         * The network access type of the gateway instance.
          */
         type?: pulumi.Input<string | undefined>;
     }
 
-    export interface GatewayVpc {
+    export interface GatewaySecurityGroup {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * The VPC network ID.
+         * The ID of the security group.
+         */
+        securityGroupId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GatewayVpc {
+        /**
+         * The name of the availability zone for the gateway.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the VPC network associated with the gateway.
          */
         vpcId: pulumi.Input<string>;
     }
 
     export interface GatewayVswitch {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name?: pulumi.Input<string | undefined>;
         /**
@@ -2100,26 +2206,381 @@ export namespace apig {
 
     export interface GatewayZone {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * The vswitch ID.
+         * The ID of the virtual switch in the availability zone.
          */
         vswitchId?: pulumi.Input<string | undefined>;
         /**
-         * The zone ID.
+         * The ID of the availability zone for the gateway.
          */
         zoneId?: pulumi.Input<string | undefined>;
     }
 
     export interface GatewayZoneConfig {
         /**
-         * Availability Zone Options
+         * Zone selection option.
          */
         selectOption: pulumi.Input<string>;
     }
 
+    export interface GetRoutesEnvironmentInfo {
+        /**
+         * The alias of the environment name.
+         */
+        alias?: string;
+        /**
+         * The environment ID.
+         */
+        environmentId?: string;
+        /**
+         * The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+         */
+        gatewayInfos?: inputs.apig.GetRoutesEnvironmentInfoGatewayInfo[];
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: string;
+        /**
+         * The default second-level domain names of the environment. See `subDomains` below.
+         */
+        subDomains?: inputs.apig.GetRoutesEnvironmentInfoSubDomain[];
+    }
+
+    export interface GetRoutesEnvironmentInfoArgs {
+        /**
+         * The alias of the environment name.
+         */
+        alias?: pulumi.Input<string | undefined>;
+        /**
+         * The environment ID.
+         */
+        environmentId?: pulumi.Input<string | undefined>;
+        /**
+         * The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+         */
+        gatewayInfos?: pulumi.Input<pulumi.Input<inputs.apig.GetRoutesEnvironmentInfoGatewayInfoArgs>[] | undefined>;
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The default second-level domain names of the environment. See `subDomains` below.
+         */
+        subDomains?: pulumi.Input<pulumi.Input<inputs.apig.GetRoutesEnvironmentInfoSubDomainArgs>[] | undefined>;
+    }
+
+    export interface GetRoutesEnvironmentInfoGatewayInfo {
+        /**
+         * The edition of the gateway instance.
+         */
+        gatewayEdition?: string;
+        /**
+         * The ID of the Cloud-native API Gateway.
+         */
+        gatewayId?: string;
+        /**
+         * The parameter name.
+         */
+        name?: string;
+    }
+
+    export interface GetRoutesEnvironmentInfoGatewayInfoArgs {
+        /**
+         * The edition of the gateway instance.
+         */
+        gatewayEdition?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the Cloud-native API Gateway.
+         */
+        gatewayId?: pulumi.Input<string | undefined>;
+        /**
+         * The parameter name.
+         */
+        name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetRoutesEnvironmentInfoSubDomain {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId?: string;
+        /**
+         * The parameter name.
+         */
+        name?: string;
+        /**
+         * The domain access type, such as Intranet or Internet.
+         */
+        networkType?: string;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol?: string;
+    }
+
+    export interface GetRoutesEnvironmentInfoSubDomainArgs {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId?: pulumi.Input<string | undefined>;
+        /**
+         * The parameter name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The domain access type, such as Intranet or Internet.
+         */
+        networkType?: pulumi.Input<string | undefined>;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouteBackend {
+        /**
+         * The backend service scenario.
+         * - SingleService: Single service.
+         * - MultiServiceByRatio: Canary release across multiple services by ratio.
+         * - Mock: Mock service.
+         * - Redirect: Redirect service.
+         */
+        scene?: pulumi.Input<string | undefined>;
+        /**
+         * Backend service. See `services` below.
+         */
+        services?: pulumi.Input<pulumi.Input<inputs.apig.RouteBackendService>[] | undefined>;
+    }
+
+    export interface RouteBackendService {
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Service port. Do not specify this parameter for dynamic ports.
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * The unique identifier of the backend service to which this route forwards traffic.
+         */
+        serviceId?: pulumi.Input<string | undefined>;
+        /**
+         * The version label of the backend service used for routing and canary release scenarios.
+         */
+        version?: pulumi.Input<string | undefined>;
+        /**
+         * The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+         */
+        weight?: pulumi.Input<number | undefined>;
+    }
+
+    export interface RouteEnvironmentInfo {
+        /**
+         * The alias of the environment name.
+         */
+        alias?: pulumi.Input<string | undefined>;
+        /**
+         * The unique identifier of the APIG environment where this route is published and deployed.
+         */
+        environmentId?: pulumi.Input<string | undefined>;
+        /**
+         * The gateway instance information corresponding to the environment.
+         */
+        gatewayInfos?: pulumi.Input<pulumi.Input<inputs.apig.RouteEnvironmentInfoGatewayInfo>[] | undefined>;
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The default second-level domain names of the environment.
+         */
+        subDomains?: pulumi.Input<pulumi.Input<inputs.apig.RouteEnvironmentInfoSubDomain>[] | undefined>;
+    }
+
+    export interface RouteEnvironmentInfoGatewayInfo {
+        /**
+         * The edition of the gateway instance.
+         */
+        gatewayEdition?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the Cloud-native API Gateway.
+         */
+        gatewayId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouteEnvironmentInfoSubDomain {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The domain access type, such as Intranet or Internet.
+         */
+        networkType?: pulumi.Input<string | undefined>;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouteMatch {
+        /**
+         * The list of HTTP request header matching rules. See `headers` below.
+         */
+        headers?: pulumi.Input<pulumi.Input<inputs.apig.RouteMatchHeader>[] | undefined>;
+        /**
+         * Specifies whether the path is case-sensitive.
+         */
+        ignoreUriCase?: pulumi.Input<boolean | undefined>;
+        /**
+         * The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+         */
+        methods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The path rule. See `path` below.
+         */
+        path?: pulumi.Input<inputs.apig.RouteMatchPath | undefined>;
+        /**
+         * The matching rules for query parameters. See `queryParams` below.
+         */
+        queryParams?: pulumi.Input<pulumi.Input<inputs.apig.RouteMatchQueryParam>[] | undefined>;
+    }
+
+    export interface RouteMatchHeader {
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * The query parameter value that incoming requests must supply to be routed by this route.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouteMatchPath {
+        /**
+         * The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * The query parameter value that incoming requests must supply to be routed by this route.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RouteMatchQueryParam {
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * The query parameter value that incoming requests must supply to be routed by this route.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ServiceHealthCheckConfig {
+        /**
+         * Whether to enable health check
+         */
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * Expected HTTP status codes
+         */
+        expectedStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Healthy threshold
+         */
+        healthyThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * Health check host (optional when protocol is HTTP)
+         */
+        httpHost?: pulumi.Input<string | undefined>;
+        /**
+         * Health check path (required when protocol is HTTP)
+         */
+        httpPath?: pulumi.Input<string | undefined>;
+        /**
+         * Health check interval
+         */
+        interval?: pulumi.Input<number | undefined>;
+        /**
+         * Health check protocol TCP|HTTP|GRPC
+         */
+        protocol?: pulumi.Input<string | undefined>;
+        /**
+         * Health check response timeout
+         */
+        timeout?: pulumi.Input<number | undefined>;
+        /**
+         * Unhealthy threshold
+         */
+        unhealthyThreshold?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServiceOutlierDetectionConfig {
+        /**
+         * Base ejection time
+         */
+        baseEjectionTime?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to enable outlier detection
+         */
+        enable?: pulumi.Input<boolean | undefined>;
+        /**
+         * Failure percentage minimum hosts
+         */
+        failurePercentageMinimumHosts?: pulumi.Input<number | undefined>;
+        /**
+         * Failure percentage threshold
+         */
+        failurePercentageThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * Detection interval
+         */
+        interval?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ServicePort {
+        /**
+         * Port name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Port number.
+         */
+        port?: pulumi.Input<number | undefined>;
+        /**
+         * Service protocol.
+         *
+         * > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+         */
+        protocol?: pulumi.Input<string | undefined>;
+    }
 }
 
 export namespace apigateway {
@@ -2166,7 +2627,7 @@ export namespace apigateway {
          */
         contentTypeCategory?: pulumi.Input<string | undefined>;
         /**
-         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
          */
         contentTypeValue?: pulumi.Input<string | undefined>;
         /**
@@ -3702,6 +4163,134 @@ export namespace cloudcontrol {
 }
 
 export namespace cloudfirewall {
+    export interface AddressBookAssetRegionResourceType {
+        /**
+         * The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `assetRegionId` cannot be modified after the Address Book is created.
+         */
+        assetRegionId?: pulumi.Input<string | undefined>;
+        /**
+         * The types of the assets. See `resourceType` below.
+         */
+        resourceType?: pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceType | undefined>;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceType {
+        /**
+         * The IPv4 asset types. See `ipv4` below.
+         */
+        ipv4?: pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceTypeIpv4 | undefined>;
+        /**
+         * The IPv6 asset types. See `ipv6` below.
+         */
+        ipv6?: pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceTypeIpv6 | undefined>;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+        /**
+         * Whether to include the assets of the type AiGatewayEIP.
+         */
+        aiGatewayEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type AlbEIP.
+         */
+        albEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type ApiGatewayEIP.
+         */
+        apiGatewayEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type BastionHostEgressIP.
+         */
+        bastionHostEgressIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type BastionHostIngressIP.
+         */
+        bastionHostIngressIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type BastionHostIP.
+         */
+        bastionHostIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EcsEIP.
+         */
+        ecsEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EcsPublicIP.
+         */
+        ecsPublicIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EIP.
+         */
+        eip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EniEIP.
+         */
+        eniEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type GaEIP.
+         */
+        gaEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type HAVIP.
+         */
+        havip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NatEIP.
+         */
+        natEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NatPublicIP.
+         */
+        natPublicIp?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NlbEIP.
+         */
+        nlbEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type SlbEIP.
+         */
+        slbEip?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type SlbPublicIP.
+         */
+        slbPublicIp?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+        /**
+         * Whether to include the assets of the type AiGatewayEIPv6.
+         */
+        aiGatewayEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type AlbIPv6.
+         */
+        albIpv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type ApiGatewayEIPv6.
+         */
+        apiGatewayEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EcsIPv6.
+         */
+        ecsIpv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type EniEIPv6.
+         */
+        eniEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type GaEIPv6.
+         */
+        gaEipv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type NlbIPv6.
+         */
+        nlbIpv6?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether to include the assets of the type SlbIPv6.
+         */
+        slbIpv6?: pulumi.Input<boolean | undefined>;
+    }
+
     export interface AddressBookEcsTag {
         /**
          * The key of ECS tag that to be matched.
@@ -6598,6 +7187,43 @@ export namespace cs {
          * Service Access Domain.
          */
         serviceDomain?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ManagedKubernetesControlPlaneEndpointsConfig {
+        /**
+         * The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+         */
+        internalDnsConfig?: pulumi.Input<inputs.cs.ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig | undefined>;
+        /**
+         * The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+         */
+        loadBalancersConfigs?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig>[] | undefined>;
+    }
+
+    export interface ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+        /**
+         * The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+         */
+        bindVpcs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+        /**
+         * The access address.
+         */
+        endpoint?: pulumi.Input<string | undefined>;
+        /**
+         * The endpoint type. Valid values: `private`, `public`.
+         */
+        endpointType?: pulumi.Input<string | undefined>;
+        /**
+         * The ID of the SLB (NLB) instance associated with the endpoint.
+         */
+        loadBalancerId?: pulumi.Input<string | undefined>;
     }
 
     export interface ManagedKubernetesDeleteOption {
@@ -12917,6 +13543,17 @@ export namespace esa {
         weight?: pulumi.Input<number | undefined>;
     }
 
+    export interface RoutineCodeDeploymentCodeVersion {
+        /**
+         * The committed code version to deploy.
+         */
+        codeVersion: pulumi.Input<string>;
+        /**
+         * The traffic percentage of this code version. Valid values: 1 to 100.
+         */
+        percentage: pulumi.Input<number>;
+    }
+
     export interface SiteDeliveryTaskHttpDelivery {
         compress?: pulumi.Input<string | undefined>;
         destUrl?: pulumi.Input<string | undefined>;
@@ -14855,7 +15492,7 @@ export namespace eventbridge {
          */
         targetId: pulumi.Input<string>;
         /**
-         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `ApacheKafkaSelf`, `http`,`https` and `mysql`.
          * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          */
         type: pulumi.Input<string>;
@@ -16189,15 +16826,15 @@ export namespace gpdb {
 
     export interface InstanceParameter {
         /**
-         * (Available since v1.231.0) The default value of the parameter.
+         * The default value of the parameter.
          */
         defaultValue?: pulumi.Input<string | undefined>;
         /**
-         * (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+         * Whether to force restart the instance to config the parameter.
          */
         forceRestartInstance?: pulumi.Input<string | undefined>;
         /**
-         * (Available since v1.231.0) Whether the parameter is changeable.
+         * Whether the parameter is changeable.
          */
         isChangeableConfig?: pulumi.Input<string | undefined>;
         /**
@@ -16205,11 +16842,11 @@ export namespace gpdb {
          */
         name: pulumi.Input<string>;
         /**
-         * (Available since v1.231.0) The optional range of the parameter.
+         * The optional range of the parameter.
          */
         optionalRange?: pulumi.Input<string | undefined>;
         /**
-         * (Available since v1.231.0) The description of the parameter.
+         * The description of the parameter.
          */
         parameterDescription?: pulumi.Input<string | undefined>;
         /**
@@ -16303,7 +16940,7 @@ export namespace gwlb {
         /**
          * The domain name that you want to use for health checks. Valid values:
          *
-         * *   **$SERVER_IP** (default): the private IP address of a backend server.
+         * - **$SERVER_IP** (default): the private IP address of a backend server.
          */
         healthCheckDomain?: pulumi.Input<string | undefined>;
         /**
@@ -16361,7 +16998,7 @@ export namespace gwlb {
 
     export interface ServerGroupServer {
         /**
-         * (Optional, Computed, Int) The port that is used by the backend server.
+         * The port that is used by the backend server.
          */
         port?: pulumi.Input<number | undefined>;
         /**
@@ -16389,7 +17026,13 @@ export namespace gwlb {
          */
         serverType: pulumi.Input<string>;
         /**
-         * Indicates the status of the backend server.
+         * Indicates the status of the backend server. Valid values:
+         *
+         * - `Adding`: The backend server is being added.
+         * - `Available`: The backend server is available.
+         * - `Draining`: The backend server is in connection draining.
+         * - `Removing`: The backend server is being removed.
+         * - `Replacing`: The backend server is being replaced.
          */
         status?: pulumi.Input<string | undefined>;
     }
@@ -18098,7 +18741,7 @@ export namespace nas {
          * - true: On.
          * - false: does not turn on.
          *
-         * > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         * > **NOTE:** Description Only file systems of the SMB protocol type are supported.
          */
         enableOplock?: pulumi.Input<boolean | undefined>;
     }
@@ -18152,7 +18795,7 @@ export namespace nas {
          *
          * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
          *
-         * > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+         * > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
          */
         homeDirPath?: pulumi.Input<string | undefined>;
         /**
@@ -19632,6 +20275,78 @@ export namespace polardb {
         value: pulumi.Input<string>;
     }
 
+    export interface DynamoTableAttribute {
+        /**
+         * The name of the attribute.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface DynamoTableGlobalSecondaryIndex {
+        /**
+         * The attribute name used as the partition key of the index.
+         */
+        hashKey?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the index.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * A set of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+         */
+        nonKeyAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+         */
+        projectionType: pulumi.Input<string>;
+        /**
+         * The attribute name used as the sort key of the index.
+         */
+        rangeKey?: pulumi.Input<string | undefined>;
+        /**
+         * The number of read capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+         */
+        readCapacity?: pulumi.Input<number | undefined>;
+        /**
+         * The number of write capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+         */
+        writeCapacity?: pulumi.Input<number | undefined>;
+    }
+
+    export interface DynamoTableLocalSecondaryIndex {
+        /**
+         * The name of the index.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * A list of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+         */
+        nonKeyAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+         */
+        projectionType: pulumi.Input<string>;
+        /**
+         * The attribute name used as the sort key of the index.
+         */
+        rangeKey: pulumi.Input<string>;
+    }
+
+    export interface DynamoTableTtl {
+        /**
+         * The name of the attribute that stores the TTL timestamp.
+         */
+        attributeName?: pulumi.Input<string | undefined>;
+        /**
+         * Whether TTL is enabled. Default to `false`.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+    }
+
     export interface ParameterGroupParameter {
         /**
          * The name of the parameter.
@@ -19645,6 +20360,20 @@ export namespace polardb {
 }
 
 export namespace privatelink {
+    export interface VpcEndpointServiceResource {
+        /**
+         * The ID of the service resource.
+         */
+        resourceId?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the service resource. Valid values:
+         */
+        resourceType?: pulumi.Input<string | undefined>;
+        /**
+         * The zone ID of the service resource.
+         */
+        zoneId?: pulumi.Input<string | undefined>;
+    }
 }
 
 export namespace pvtz {
@@ -23510,6 +24239,67 @@ export namespace sls {
          * End of the SQL time window.
          */
         toTimeExpr?: pulumi.Input<string | undefined>;
+    }
+}
+
+export namespace sslcertificatesservice {
+    export interface InstanceParameter {
+        /**
+         * The module code. Common values are `fullSpec` (certificate brand and grade for a single-domain certificate), `wildcardSpec` (the same for a wildcard certificate), `fullDomainCount` (number of single domain names) and `wildcardDomainCount` (number of wildcard domain names).
+         */
+        code: pulumi.Input<string>;
+        /**
+         * The value of the module identified by `code`. For the domain-count modules this is an integer from 1 to 150. For `fullSpec` and `wildcardSpec` this is a specification code such as `ws.dv.f`.
+         *
+         * Specification codes accepted by `fullSpec` follow a `brand.grade.type` pattern, for example:
+         *
+         * | Value | Brand | Grade |
+         * | --- | --- | --- |
+         * | `ws.dv.f` | WoSign | DV |
+         * | `rap.dv.f` | Rapid | DV |
+         * | `vt.dv.f` / `vt.ov.f` | vTrus | DV / OV |
+         * | `cf.ov.f` / `cf.ev.f` | CFCA | OV / EV |
+         * | `gs.dv.f` / `gs.ov.f` | GlobalSign | DV / OV |
+         * | `geo.dv.f` / `geo.ov.f` / `geo.ev.f` | GeoTrust | DV / OV / EV |
+         * | `ss.ov.f` / `ss.ev.f` | DigiCert | OV / EV |
+         *
+         * > **NOTE:** The list above is a snapshot and is not exhaustive. Specifications, prices and availability differ per account and change over time. Call [DescribePricingModule](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/DescribePricingModule) with `ProductCode` and `ProductType` set to `cas` to get the values your account can actually order.
+         */
+        value: pulumi.Input<string>;
+    }
+
+}
+
+export namespace sslcertificatesservicecertificate {
+    export interface ApplyDomainValidationList {
+        /**
+         * The record value used when the domain is validated through a CNAME record.
+         */
+        cname?: pulumi.Input<string | undefined>;
+        /**
+         * The host record used when the domain is validated through a CNAME record.
+         */
+        cnameKey?: pulumi.Input<string | undefined>;
+        /**
+         * The domain names the certificate is requested for, separated by commas.
+         */
+        domain?: pulumi.Input<string | undefined>;
+        /**
+         * The root domain of the domain name to be validated. Use this value to locate the DNS zone when adding the validation record.
+         */
+        rootDomain?: pulumi.Input<string | undefined>;
+        /**
+         * The host record of the validation record.
+         */
+        validationKey?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the validation record. Valid values: `TXT`, `CNAME` and `FILE`.
+         */
+        validationType?: pulumi.Input<string | undefined>;
+        /**
+         * The value of the validation record.
+         */
+        validationValue?: pulumi.Input<string | undefined>;
     }
 }
 

@@ -125,6 +125,12 @@ export class NatGateway extends pulumi.CustomResource {
      */
     declare public readonly accessMode: pulumi.Output<outputs.vpc.NatGatewayAccessMode>;
     /**
+     * The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     */
+    declare public readonly availabilityMode: pulumi.Output<string>;
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -177,11 +183,11 @@ export class NatGateway extends pulumi.CustomResource {
      */
     declare public readonly natGatewayName: pulumi.Output<string>;
     /**
-     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      */
     declare public readonly natType: pulumi.Output<string>;
     /**
-     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      */
     declare public readonly networkType: pulumi.Output<string>;
     /**
@@ -218,7 +224,7 @@ export class NatGateway extends pulumi.CustomResource {
      */
     declare public readonly vpcId: pulumi.Output<string>;
     /**
-     * The id of VSwitch.
+     * The id of VSwitch. The parameter is immutable after resource creation.
      */
     declare public readonly vswitchId: pulumi.Output<string | undefined>;
 
@@ -236,6 +242,7 @@ export class NatGateway extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
             resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["availabilityMode"] = state?.availabilityMode;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["dryRun"] = state?.dryRun;
@@ -264,6 +271,7 @@ export class NatGateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["availabilityMode"] = args?.availabilityMode;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["dryRun"] = args?.dryRun;
@@ -300,6 +308,12 @@ export interface NatGatewayState {
      * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      */
     accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode | undefined>;
+    /**
+     * The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     */
+    availabilityMode?: pulumi.Input<string | undefined>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -353,11 +367,11 @@ export interface NatGatewayState {
      */
     natGatewayName?: pulumi.Input<string | undefined>;
     /**
-     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      */
     natType?: pulumi.Input<string | undefined>;
     /**
-     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      */
     networkType?: pulumi.Input<string | undefined>;
     /**
@@ -394,7 +408,7 @@ export interface NatGatewayState {
      */
     vpcId?: pulumi.Input<string | undefined>;
     /**
-     * The id of VSwitch.
+     * The id of VSwitch. The parameter is immutable after resource creation.
      */
     vswitchId?: pulumi.Input<string | undefined>;
 }
@@ -407,6 +421,12 @@ export interface NatGatewayArgs {
      * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      */
     accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode | undefined>;
+    /**
+     * The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     */
+    availabilityMode?: pulumi.Input<string | undefined>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -456,11 +476,11 @@ export interface NatGatewayArgs {
      */
     natGatewayName?: pulumi.Input<string | undefined>;
     /**
-     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      */
     natType?: pulumi.Input<string | undefined>;
     /**
-     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      */
     networkType?: pulumi.Input<string | undefined>;
     /**
@@ -489,7 +509,7 @@ export interface NatGatewayArgs {
      */
     vpcId: pulumi.Input<string>;
     /**
-     * The id of VSwitch.
+     * The id of VSwitch. The parameter is immutable after resource creation.
      */
     vswitchId?: pulumi.Input<string | undefined>;
 }

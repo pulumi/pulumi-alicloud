@@ -99,7 +99,7 @@ export class Role extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The description of the RAM role.
+     * The description of the RAM role. The description must be `1` to `1024` characters in length.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -219,7 +219,7 @@ export interface RoleState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The description of the RAM role.
+     * The description of the RAM role. The description must be `1` to `1024` characters in length.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -283,7 +283,7 @@ export interface RoleArgs {
      */
     assumeRolePolicyDocument?: pulumi.Input<string | undefined>;
     /**
-     * The description of the RAM role.
+     * The description of the RAM role. The description must be `1` to `1024` characters in length.
      */
     description?: pulumi.Input<string | undefined>;
     /**
