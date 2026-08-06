@@ -39,6 +39,7 @@ from .policy_version import *
 from .resource_directory import *
 from .resource_directory_sharing import *
 from .resource_group import *
+from .resource_group_settings import *
 from .resource_share import *
 from .role import *
 from .saved_query import *

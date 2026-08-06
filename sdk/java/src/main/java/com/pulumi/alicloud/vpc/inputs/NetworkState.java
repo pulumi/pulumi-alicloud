@@ -42,16 +42,24 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of ClassicLink function.
+     * The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+     * 
+     * @deprecated
+     * Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      * 
      */
+    @Deprecated /* Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. */
     @Import(name="classicLinkEnabled")
     private @Nullable Output<Boolean> classicLinkEnabled;
 
     /**
-     * @return The status of ClassicLink function.
+     * @return The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+     * 
+     * @deprecated
+     * Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      * 
      */
+    @Deprecated /* Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. */
     public Optional<Output<Boolean>> classicLinkEnabled() {
         return Optional.ofNullable(this.classicLinkEnabled);
     }
@@ -510,14 +518,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     @Import(name="userCidrs")
     private @Nullable Output<List<String>> userCidrs;
 
     /**
-     * @return A list of user CIDRs.
+     * @return A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     public Optional<Output<List<String>>> userCidrs() {
@@ -625,22 +633,30 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param classicLinkEnabled The status of ClassicLink function.
+         * @param classicLinkEnabled The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. */
         public Builder classicLinkEnabled(@Nullable Output<Boolean> classicLinkEnabled) {
             $.classicLinkEnabled = classicLinkEnabled;
             return this;
         }
 
         /**
-         * @param classicLinkEnabled The status of ClassicLink function.
+         * @param classicLinkEnabled The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
+         * 
          */
+        @Deprecated /* Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. */
         public Builder classicLinkEnabled(Boolean classicLinkEnabled) {
             return classicLinkEnabled(Output.of(classicLinkEnabled));
         }
@@ -1273,7 +1289,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs A list of user CIDRs.
+         * @param userCidrs A list of user CIDRs. Up to `3` CIDR blocks can be specified.
          * 
          * @return builder
          * 
@@ -1284,7 +1300,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs A list of user CIDRs.
+         * @param userCidrs A list of user CIDRs. Up to `3` CIDR blocks can be specified.
          * 
          * @return builder
          * 
@@ -1294,7 +1310,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs A list of user CIDRs.
+         * @param userCidrs A list of user CIDRs. Up to `3` CIDR blocks can be specified.
          * 
          * @return builder
          * 

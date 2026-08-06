@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Apig.Outputs
     public sealed class GatewayZoneConfig
     {
         /// <summary>
-        /// Availability Zone Options
+        /// Zone selection option.
         /// </summary>
         public readonly string SelectOption;
 

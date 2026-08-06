@@ -818,6 +818,7 @@ provider configuration:
 * `signVersion` - (Optional, Available since v1.215.0) A `signVersion` block to specify the signature version used for the API requests of certain cloud products (currently `oss` and `sls`). Only one `signVersion` block may be in the configuration.
 
 * `skipRegionValidation` - (Optional, Available since v1.52.0) Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+  Can also be set with the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable since v1.287.0.
 
 * `configurationSource` - (Optional, Available since v1.56.0) Use a string to mark a configuration file source, like `pulumi-alicloud-modules/pulumi-alicloud-ecs-instance` or `pulumi-provider-alicloud/examples/vpc`.
   The length should not more than 1024(Before 1.283.0, it should not more than 128. Before 1.207.2, it should not more than 64). Since the version 1.145.0, it supports to be set by environment variable `TF_APPEND_USER_AGENT`. See `Custom User-Agent Information`.

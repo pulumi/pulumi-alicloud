@@ -433,7 +433,7 @@ type ServerGroupHealthCheckConfig struct {
 	HealthCheckConnectTimeout *int `pulumi:"healthCheckConnectTimeout"`
 	// The domain name that you want to use for health checks. Valid values:
 	//
-	// *   **$SERVER_IP** (default): the private IP address of a backend server.
+	// - **$SERVER_IP** (default): the private IP address of a backend server.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
 	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
@@ -502,7 +502,7 @@ type ServerGroupHealthCheckConfigArgs struct {
 	HealthCheckConnectTimeout pulumi.IntPtrInput `pulumi:"healthCheckConnectTimeout"`
 	// The domain name that you want to use for health checks. Valid values:
 	//
-	// *   **$SERVER_IP** (default): the private IP address of a backend server.
+	// - **$SERVER_IP** (default): the private IP address of a backend server.
 	HealthCheckDomain pulumi.StringPtrInput `pulumi:"healthCheckDomain"`
 	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
@@ -642,7 +642,7 @@ func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectTimeout() pulumi.I
 
 // The domain name that you want to use for health checks. Valid values:
 //
-// *   **$SERVER_IP** (default): the private IP address of a backend server.
+// - **$SERVER_IP** (default): the private IP address of a backend server.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
 }
@@ -761,7 +761,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectTimeout() pulum
 
 // The domain name that you want to use for health checks. Valid values:
 //
-// *   **$SERVER_IP** (default): the private IP address of a backend server.
+// - **$SERVER_IP** (default): the private IP address of a backend server.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -865,7 +865,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPt
 }
 
 type ServerGroupServer struct {
-	// (Optional, Computed, Int) The port that is used by the backend server.
+	// The port that is used by the backend server.
 	Port *int `pulumi:"port"`
 	// The server group ID.
 	ServerGroupId *string `pulumi:"serverGroupId"`
@@ -883,7 +883,13 @@ type ServerGroupServer struct {
 	// - `Eci`: elastic container instance
 	// - `Ip`: IP address
 	ServerType string `pulumi:"serverType"`
-	// Indicates the status of the backend server.
+	// Indicates the status of the backend server. Valid values:
+	//
+	// - `Adding`: The backend server is being added.
+	// - `Available`: The backend server is available.
+	// - `Draining`: The backend server is in connection draining.
+	// - `Removing`: The backend server is being removed.
+	// - `Replacing`: The backend server is being replaced.
 	Status *string `pulumi:"status"`
 }
 
@@ -899,7 +905,7 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	// (Optional, Computed, Int) The port that is used by the backend server.
+	// The port that is used by the backend server.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The server group ID.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
@@ -917,7 +923,13 @@ type ServerGroupServerArgs struct {
 	// - `Eci`: elastic container instance
 	// - `Ip`: IP address
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// Indicates the status of the backend server.
+	// Indicates the status of the backend server. Valid values:
+	//
+	// - `Adding`: The backend server is being added.
+	// - `Available`: The backend server is available.
+	// - `Draining`: The backend server is in connection draining.
+	// - `Removing`: The backend server is being removed.
+	// - `Replacing`: The backend server is being replaced.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -972,7 +984,7 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 	return o
 }
 
-// (Optional, Computed, Int) The port that is used by the backend server.
+// The port that is used by the backend server.
 func (o ServerGroupServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1005,7 +1017,13 @@ func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// Indicates the status of the backend server.
+// Indicates the status of the backend server. Valid values:
+//
+// - `Adding`: The backend server is being added.
+// - `Available`: The backend server is available.
+// - `Draining`: The backend server is in connection draining.
+// - `Removing`: The backend server is being removed.
+// - `Replacing`: The backend server is being replaced.
 func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

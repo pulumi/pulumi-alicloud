@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `True`, `False`.
+        /// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `True` and `False`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         /// </summary>
         [Output("enableAutoSnapshot")]
         public Output<bool> EnableAutoSnapshot { get; private set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `True`, `False`.
+        /// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `True` and `False`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
@@ -566,7 +566,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `True`, `False`.
+        /// Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `True` and `False`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }

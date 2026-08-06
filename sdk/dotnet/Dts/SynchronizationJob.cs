@@ -358,6 +358,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointRole { get; private set; } = null!;
 
         /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Output("destinationEndpointSsl")]
+        public Output<string> DestinationEndpointSsl { get; private set; } = null!;
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Output("destinationEndpointUserName")]
@@ -411,6 +417,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        /// 
+        /// &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `SourceEndpointSsl` and `DestinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
         /// </summary>
         [Output("reserve")]
         public Output<string> Reserve { get; private set; } = null!;
@@ -483,6 +491,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Output("sourceEndpointRole")]
         public Output<string?> SourceEndpointRole { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Output("sourceEndpointSsl")]
+        public Output<string> SourceEndpointSsl { get; private set; } = null!;
 
         /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
@@ -684,6 +698,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("destinationEndpointSsl")]
+        public Input<string>? DestinationEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
@@ -737,6 +757,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        /// 
+        /// &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `SourceEndpointSsl` and `DestinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
         /// </summary>
         [Input("reserve")]
         public Input<string>? Reserve { get; set; }
@@ -809,6 +831,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("sourceEndpointRole")]
         public Input<string>? SourceEndpointRole { get; set; }
+
+        /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
 
         /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
@@ -972,6 +1000,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("destinationEndpointSsl")]
+        public Input<string>? DestinationEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
@@ -1025,6 +1059,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        /// 
+        /// &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `SourceEndpointSsl` and `DestinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
         /// </summary>
         [Input("reserve")]
         public Input<string>? Reserve { get; set; }
@@ -1097,6 +1133,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("sourceEndpointRole")]
         public Input<string>? SourceEndpointRole { get; set; }
+
+        /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
 
         /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).

@@ -16,14 +16,14 @@ public final class GatewayLogConfigSlsArgs extends com.pulumi.resources.Resource
     public static final GatewayLogConfigSlsArgs Empty = new GatewayLogConfigSlsArgs();
 
     /**
-     * Enable Log Service
+     * The Simple Log Service configuration for the gateway.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Enable Log Service
+     * @return The Simple Log Service configuration for the gateway.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -55,7 +55,7 @@ public final class GatewayLogConfigSlsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enable Enable Log Service
+         * @param enable The Simple Log Service configuration for the gateway.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GatewayLogConfigSlsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enable Enable Log Service
+         * @param enable The Simple Log Service configuration for the gateway.
          * 
          * @return builder
          * 

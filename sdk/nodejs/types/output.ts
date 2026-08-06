@@ -3864,41 +3864,147 @@ export namespace amqp {
 }
 
 export namespace apig {
+    export interface DomainTlsCipherSuitesConfig {
+        /**
+         * The configuration type, which can be Default or Custom.
+         */
+        configType?: string;
+        /**
+         * TLS cipher suite. See `tlsCipherSuite` below.
+         */
+        tlsCipherSuites?: outputs.apig.DomainTlsCipherSuitesConfigTlsCipherSuite[];
+    }
+
+    export interface DomainTlsCipherSuitesConfigTlsCipherSuite {
+        /**
+         * The name of the cipher suite.
+         */
+        name?: string;
+        /**
+         * support versions
+         */
+        supportVersions?: string[];
+    }
+
+    export interface GatewayEnvironment {
+        /**
+         * The alias of the environment.
+         */
+        alias: string;
+        /**
+         * The ID of the environment.
+         */
+        environmentId: string;
+        /**
+         * The name of the availability zone for the gateway.
+         */
+        name: string;
+    }
+
+    export interface GatewayLoadBalancer {
+        /**
+         * The address of the load balancer for the gateway.
+         */
+        address: string;
+        /**
+         * The IP version of the load balancer.
+         */
+        addressIpVersion: string;
+        /**
+         * The load balancer address type.
+         */
+        addressType: string;
+        /**
+         * Indicates whether this is the default ingress address of the gateway.
+         */
+        gatewayDefault: boolean;
+        /**
+         * The list of IPv4 addresses.
+         */
+        ipv4Addresses: string[];
+        /**
+         * The list of IPv6 addresses.
+         */
+        ipv6Addresses: string[];
+        /**
+         * The ID of the load balancer associated with the gateway.
+         */
+        loadBalancerId: string;
+        /**
+         * The load balancing provisioning mode for the gateway.
+         */
+        mode: string;
+        /**
+         * The list of listening ports.
+         */
+        ports: outputs.apig.GatewayLoadBalancerPort[];
+        /**
+         * The status of the gateway.
+         */
+        status: string;
+        /**
+         * The type of the load balancer.
+         */
+        type: string;
+    }
+
+    export interface GatewayLoadBalancerPort {
+        /**
+         * The port number of the load balancer listener.
+         */
+        port: number;
+        /**
+         * The protocol of the load balancer listener.
+         */
+        protocol: string;
+    }
+
     export interface GatewayLogConfig {
         /**
-         * Sls See `sls` below.
+         * The Simple Log Service configuration for the gateway. See `sls` below.
          */
         sls?: outputs.apig.GatewayLogConfigSls;
     }
 
     export interface GatewayLogConfigSls {
         /**
-         * Enable Log Service
+         * The Simple Log Service configuration for the gateway.
          */
         enable?: boolean;
     }
 
     export interface GatewayNetworkAccessConfig {
         /**
-         * Network Access Type
+         * The network access type of the gateway instance.
          */
         type?: string;
     }
 
-    export interface GatewayVpc {
+    export interface GatewaySecurityGroup {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name: string;
         /**
-         * The VPC network ID.
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+    }
+
+    export interface GatewayVpc {
+        /**
+         * The name of the availability zone for the gateway.
+         */
+        name: string;
+        /**
+         * The ID of the VPC network associated with the gateway.
          */
         vpcId: string;
     }
 
     export interface GatewayVswitch {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name: string;
         /**
@@ -3909,24 +4015,457 @@ export namespace apig {
 
     export interface GatewayZone {
         /**
-         * The zone name.
+         * The name of the availability zone for the gateway.
          */
         name: string;
         /**
-         * The vswitch ID.
+         * The ID of the virtual switch in the availability zone.
          */
         vswitchId?: string;
         /**
-         * The zone ID.
+         * The ID of the availability zone for the gateway.
          */
         zoneId?: string;
     }
 
     export interface GatewayZoneConfig {
         /**
-         * Availability Zone Options
+         * Zone selection option.
          */
         selectOption: string;
+    }
+
+    export interface GetAiModelProvidersProvider {
+        /**
+         * A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
+         */
+        boundServices: outputs.apig.GetAiModelProvidersProviderBoundService[];
+        /**
+         * Model supplier presentation name.
+         */
+        displayName: string;
+        /**
+         * The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * A list of model cards currently associated with the model supplier. Each element contains the following attributes:
+         */
+        modelCards: outputs.apig.GetAiModelProvidersProviderModelCard[];
+        /**
+         * The number of model cards currently associated with the model supplier.
+         */
+        modelCount: number;
+        /**
+         * The model provider identifier.
+         */
+        modelProvider: string;
+        /**
+         * The first ID of the resource.
+         */
+        modelProviderId: string;
+        /**
+         * The model source.
+         */
+        source: string;
+        /**
+         * The last update time of the model card.
+         */
+        updateTime: string;
+    }
+
+    export interface GetAiModelProvidersProviderBoundService {
+        /**
+         * The express type of the AI service.
+         */
+        expressType: string;
+        /**
+         * The group name of the AI service.
+         */
+        groupName: string;
+        /**
+         * The name of the AI service.
+         */
+        name: string;
+        /**
+         * The namespace of the AI service.
+         */
+        namespace: string;
+        /**
+         * The PAI workspace ID.
+         */
+        paiWorkspaceId: string;
+        /**
+         * The PAI workspace name.
+         */
+        paiWorkspaceName: string;
+        /**
+         * The qualifier of the AI service.
+         */
+        qualifier: string;
+        /**
+         * The ID of the AI service.
+         */
+        serviceId: string;
+        /**
+         * The source type of the AI service.
+         */
+        sourceType: string;
+        /**
+         * The status of the AI service.
+         */
+        status: string;
+    }
+
+    export interface GetAiModelProvidersProviderModelCard {
+        /**
+         * The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+         */
+        gatewayId: string;
+        /**
+         * The ID of the model card.
+         */
+        modelCardId: string;
+        /**
+         * The model name.
+         */
+        modelName: string;
+        /**
+         * The model provider identifier.
+         */
+        modelProvider: string;
+        /**
+         * The model source.
+         */
+        source: string;
+        /**
+         * The last update time of the model card.
+         */
+        updateTime: string;
+    }
+
+    export interface GetDomainsDomain {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. CA certificate identifier.
+         */
+        caCertIdentifier: string;
+        /**
+         * tls cert identifier.
+         */
+        certIdentifier: string;
+        /**
+         * client CA certificate.
+         */
+        clientCaCert: string;
+        /**
+         * domain id.
+         */
+        domainId: string;
+        /**
+         * domain name.
+         */
+        domainName: string;
+        /**
+         * domain scope.
+         */
+        domainScope: string;
+        /**
+         * Set the HTTPS protocol type and whether to enable forced HTTPS redirection.
+         */
+        forceHttps: boolean;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Whether to enable http2 settings.
+         */
+        http2Option: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Whether to enable mTLS mutual authentication.
+         */
+        mTlsEnabled: boolean;
+        /**
+         * Protocol, HTTP/HTTPS.
+         */
+        protocol: string;
+        /**
+         * The ID of the resource group
+         */
+        resourceGroupId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. TlsCipherSuitesConfig.
+         */
+        tlsCipherSuitesConfigs: outputs.apig.GetDomainsDomainTlsCipherSuitesConfig[];
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The maximum version of the TLS protocol.
+         */
+        tlsMax: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The minimum version of the TLS protocol.
+         */
+        tlsMin: string;
+    }
+
+    export interface GetDomainsDomainTlsCipherSuitesConfig {
+        /**
+         * config type, Default or Custom.
+         */
+        configType: string;
+        /**
+         * tls Cipher Suite.
+         */
+        tlsCipherSuites: outputs.apig.GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite[];
+    }
+
+    export interface GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuite {
+        /**
+         * cipher suite name.
+         */
+        name: string;
+        /**
+         * support versions.
+         */
+        supportVersions: string[];
+    }
+
+    export interface GetGatewaysGateway {
+        /**
+         * The source from which the gateway was created.
+         */
+        createFrom: string;
+        /**
+         * Creation timestamp.
+         */
+        createTime: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The list of environments associated with the gateway.
+         */
+        environments: outputs.apig.GetGatewaysGatewayEnvironment[];
+        /**
+         * Timestamp indicating when the subscription expires.
+         */
+        expireTime: number;
+        /**
+         * Gateway instance edition:.
+         */
+        gatewayEdition: string;
+        /**
+         * Cloud-native API gateway ID.
+         */
+        gatewayId: string;
+        /**
+         * The name of the gateway.
+         */
+        gatewayName: string;
+        /**
+         * The gateway type.
+         */
+        gatewayType: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The list of Gateway ingress addresses.
+         */
+        loadBalancers: outputs.apig.GetGatewaysGatewayLoadBalancer[];
+        /**
+         * Payment type:.
+         */
+        paymentType: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * Security group of the gateway.
+         */
+        securityGroups: outputs.apig.GetGatewaysGatewaySecurityGroup[];
+        /**
+         * Gateway specification:.
+         */
+        spec: string;
+        /**
+         * Gateway status:.
+         */
+        status: string;
+        /**
+         * List of second-level domain names.
+         */
+        subDomainInfos: outputs.apig.GetGatewaysGatewaySubDomainInfo[];
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The target version of the gateway instance.
+         */
+        targetVersion: string;
+        /**
+         * The timestamp when the resource was last updated.
+         */
+        updateTime: number;
+        /**
+         * The current running version of the gateway instance.
+         */
+        version: string;
+        /**
+         * The Virtual Private Cloud (VPC) associated with the gateway.
+         */
+        vpcs: outputs.apig.GetGatewaysGatewayVpc[];
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The vSwitch associated with the gateway.
+         */
+        vswitches: outputs.apig.GetGatewaysGatewayVswitch[];
+        /**
+         * The list of zones associated with the gateway.
+         */
+        zones: outputs.apig.GetGatewaysGatewayZone[];
+    }
+
+    export interface GetGatewaysGatewayEnvironment {
+        /**
+         * The alias of the environment.
+         */
+        alias: string;
+        /**
+         * The ID of the environment.
+         */
+        environmentId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+         */
+        name: string;
+    }
+
+    export interface GetGatewaysGatewayLoadBalancer {
+        /**
+         * The address of the load balancer for the gateway.
+         */
+        address: string;
+        /**
+         * IP version:.
+         */
+        addressIpVersion: string;
+        /**
+         * Load balancer address type:.
+         */
+        addressType: string;
+        /**
+         * Indicates whether this is the default ingress address of the gateway.
+         */
+        gatewayDefault: boolean;
+        /**
+         * The list of IPv4 addresses.
+         */
+        ipv4Addresses: string[];
+        /**
+         * The list of IPv6 addresses.
+         */
+        ipv6Addresses: string[];
+        /**
+         * The ID of the load balancer associated with the gateway.
+         */
+        loadBalancerId: string;
+        /**
+         * Load balancing provisioning mode for the gateway:.
+         */
+        mode: string;
+        /**
+         * The list of listening ports.
+         */
+        ports: outputs.apig.GetGatewaysGatewayLoadBalancerPort[];
+        /**
+         * Gateway status:.
+         */
+        status: string;
+        /**
+         * Load balancer type:.
+         */
+        type: string;
+    }
+
+    export interface GetGatewaysGatewayLoadBalancerPort {
+        /**
+         * The port number of the load balancer listener.
+         */
+        port: number;
+        /**
+         * The protocol used by the secondary domain name.
+         */
+        protocol: string;
+    }
+
+    export interface GetGatewaysGatewaySecurityGroup {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+         */
+        name: string;
+        /**
+         * The ID of the security group.
+         */
+        securityGroupId: string;
+    }
+
+    export interface GetGatewaysGatewaySubDomainInfo {
+        /**
+         * The ID of the secondary domain name for the gateway.
+         */
+        domainId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+         */
+        name: string;
+        /**
+         * Network type:.
+         */
+        networkType: string;
+        /**
+         * The protocol used by the secondary domain name.
+         */
+        protocol: string;
+    }
+
+    export interface GetGatewaysGatewayVpc {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+         */
+        name: string;
+        /**
+         * The ID of the VPC network associated with the gateway.
+         */
+        vpcId: string;
+    }
+
+    export interface GetGatewaysGatewayVswitch {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+         */
+        name: string;
+        /**
+         * The ID of the virtual switch in the availability zone.
+         */
+        vswitchId: string;
+    }
+
+    export interface GetGatewaysGatewayZone {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the availability zone for the gateway.
+         */
+        name: string;
+        /**
+         * The ID of the virtual switch in the availability zone.
+         */
+        vswitchId: string;
+        /**
+         * The ID of the availability zone for the gateway.
+         */
+        zoneId: string;
     }
 
     export interface GetPluginClassesClass {
@@ -3970,6 +4509,733 @@ export namespace apig {
          * The programming language of the wasm plugin. It is available when `enableDetails` is set to `true`.
          */
         wasmLanguage: string;
+    }
+
+    export interface GetPluginsPlugin {
+        /**
+         * The filter parameter for the gateway instance ID.
+         */
+        gatewayId: string;
+        /**
+         * The gateway name.
+         */
+        gatewayName: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The plugin class ID.
+         */
+        pluginClassId: string;
+        /**
+         * The filter parameter for the plugin class name.
+         */
+        pluginClassName: string;
+        /**
+         * The plugin ID.
+         */
+        pluginId: string;
+    }
+
+    export interface GetRoutesEnvironmentInfo {
+        /**
+         * The alias of the environment name.
+         */
+        alias: string;
+        /**
+         * The environment ID.
+         */
+        environmentId?: string;
+        /**
+         * The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+         */
+        gatewayInfos: outputs.apig.GetRoutesEnvironmentInfoGatewayInfo[];
+        /**
+         * The name of the second-level domain name.
+         */
+        name: string;
+        /**
+         * The default second-level domain names of the environment. See `subDomains` below.
+         */
+        subDomains: outputs.apig.GetRoutesEnvironmentInfoSubDomain[];
+    }
+
+    export interface GetRoutesEnvironmentInfoGatewayInfo {
+        /**
+         * The edition of the gateway instance.
+         */
+        gatewayEdition: string;
+        /**
+         * The ID of the Cloud-native API Gateway.
+         */
+        gatewayId: string;
+        /**
+         * The parameter name.
+         */
+        name: string;
+    }
+
+    export interface GetRoutesEnvironmentInfoSubDomain {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId: string;
+        /**
+         * The parameter name.
+         */
+        name: string;
+        /**
+         * The domain access type, such as Intranet or Internet.
+         */
+        networkType: string;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol: string;
+    }
+
+    export interface GetRoutesRoute {
+        /**
+         * Backend service.
+         */
+        backends: outputs.apig.GetRoutesRouteBackend[];
+        /**
+         * Indicates whether the route is a built-in route.
+         */
+        builtin: string;
+        /**
+         * The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+         */
+        createTime: string;
+        /**
+         * The description of the route.
+         */
+        description: string;
+        /**
+         * The domain name information.
+         */
+        domainInfos: outputs.apig.GetRoutesRouteDomainInfo[];
+        /**
+         * The environment information of the route. See `environmentInfo` below.
+         */
+        environmentInfos: outputs.apig.GetRoutesRouteEnvironmentInfo[];
+        /**
+         * The publishing status of the route on each gateway.
+         */
+        gatewayStatus: {[key: string]: string};
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The route match rule.
+         */
+        matches: outputs.apig.GetRoutesRouteMatch[];
+        /**
+         * The route ID.
+         */
+        routeId: string;
+        /**
+         * The name of the route.
+         */
+        routeName: string;
+        /**
+         * The deployment status of the route.
+         */
+        status: string;
+        /**
+         * The update time in Greenwich Mean Time (GMT).
+         */
+        updateTime: string;
+    }
+
+    export interface GetRoutesRouteBackend {
+        /**
+         * The backend service scenario.
+         */
+        scene: string;
+        /**
+         * Backend service.
+         */
+        services: outputs.apig.GetRoutesRouteBackendService[];
+    }
+
+    export interface GetRoutesRouteBackendService {
+        /**
+         * The parameter name.
+         */
+        name: string;
+        /**
+         * Service port.
+         */
+        port: number;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol: string;
+        /**
+         * Service ID.
+         */
+        serviceId: string;
+        /**
+         * Service version.
+         */
+        version: string;
+        /**
+         * The percentage value of the traffic ratio.
+         */
+        weight: number;
+    }
+
+    export interface GetRoutesRouteDomainInfo {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId: string;
+        /**
+         * The parameter name.
+         */
+        name: string;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol: string;
+    }
+
+    export interface GetRoutesRouteEnvironmentInfo {
+        /**
+         * The alias of the environment name.
+         */
+        alias: string;
+        /**
+         * The environment ID.
+         */
+        environmentId: string;
+        /**
+         * The gateway instance information corresponding to the environment. See `gatewayInfo` below.
+         */
+        gatewayInfos: outputs.apig.GetRoutesRouteEnvironmentInfoGatewayInfo[];
+        /**
+         * The name of the second-level domain name.
+         */
+        name: string;
+        /**
+         * The default second-level domain names of the environment. See `subDomains` below.
+         */
+        subDomains: outputs.apig.GetRoutesRouteEnvironmentInfoSubDomain[];
+    }
+
+    export interface GetRoutesRouteEnvironmentInfoGatewayInfo {
+        /**
+         * The edition of the gateway instance.
+         */
+        gatewayEdition: string;
+        /**
+         * The ID of the Cloud-native API Gateway.
+         */
+        gatewayId: string;
+        /**
+         * The parameter name.
+         */
+        name: string;
+    }
+
+    export interface GetRoutesRouteEnvironmentInfoSubDomain {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId: string;
+        /**
+         * The parameter name.
+         */
+        name: string;
+        /**
+         * The domain access type, such as Intranet or Internet.
+         */
+        networkType: string;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol: string;
+    }
+
+    export interface GetRoutesRouteMatch {
+        /**
+         * The list of HTTP request header matching rules.
+         */
+        headers: outputs.apig.GetRoutesRouteMatchHeader[];
+        /**
+         * Specifies whether the path is case-sensitive.
+         */
+        ignoreUriCase: boolean;
+        /**
+         * The request method.
+         */
+        methods: string[];
+        /**
+         * The path rule.
+         */
+        paths: outputs.apig.GetRoutesRouteMatchPath[];
+        /**
+         * The matching rules for query parameters.
+         */
+        queryParams: outputs.apig.GetRoutesRouteMatchQueryParam[];
+    }
+
+    export interface GetRoutesRouteMatchHeader {
+        /**
+         * The parameter name.
+         */
+        name: string;
+        /**
+         * The matching rule for the query parameter.
+         */
+        type: string;
+        /**
+         * The parameter value.
+         */
+        value: string;
+    }
+
+    export interface GetRoutesRouteMatchPath {
+        /**
+         * The matching rule for the query parameter.
+         */
+        type: string;
+        /**
+         * The parameter value.
+         */
+        value: string;
+    }
+
+    export interface GetRoutesRouteMatchQueryParam {
+        /**
+         * The parameter name.
+         */
+        name: string;
+        /**
+         * The matching rule for the query parameter.
+         */
+        type: string;
+        /**
+         * The parameter value.
+         */
+        value: string;
+    }
+
+    export interface GetServicesService {
+        /**
+         * A list of domain names or fixed addresses.
+         */
+        addresses: string[];
+        /**
+         * Creation timestamp.
+         */
+        createTimestamp: number;
+        /**
+         * DNS servers.
+         */
+        dnsServers: string[];
+        /**
+         * Express type.
+         */
+        expressType: string;
+        /**
+         * The ID of the Cloud Native API Gateway.
+         */
+        gatewayId: string;
+        /**
+         * Health check configuration.
+         */
+        healthCheckConfigs: outputs.apig.GetServicesServiceHealthCheckConfig[];
+        /**
+         * Health status.
+         */
+        healthStatus: string;
+        /**
+         * Healthy panic threshold.
+         */
+        healthyPanicThreshold: number;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The namespace of the service.
+         */
+        namespace: string;
+        /**
+         * Outlier detection configuration.
+         */
+        outlierDetectionConfigs: outputs.apig.GetServicesServiceOutlierDetectionConfig[];
+        /**
+         * Outlier endpoints.
+         */
+        outlierEndpoints: string[];
+        /**
+         * Port information.
+         */
+        ports: outputs.apig.GetServicesServicePort[];
+        /**
+         * Service protocol.
+         */
+        protocol: string;
+        /**
+         * The function version or alias.
+         */
+        qualifier: string;
+        /**
+         * The ID of the resource group
+         */
+        resourceGroupId: string;
+        /**
+         * Runtime detail error code.
+         */
+        runtimeDetailErrorCode: string;
+        /**
+         * Runtime detail status.
+         */
+        runtimeDetailStatus: string;
+        /**
+         * service id.
+         */
+        serviceId: string;
+        /**
+         * Service Name, need to fill in manually when sourceType is VIP/DNS/AI.
+         */
+        serviceName: string;
+        /**
+         * service source type, optional value is K8S/MSE_NACOS/FC3/SAE_K8S_SERVICE/VIP/DNS/AI
+         */
+        sourceType: string;
+        /**
+         * Unhealthy endpoints.
+         */
+        unhealthyEndpoints: string[];
+        /**
+         * Update timestamp.
+         */
+        updateTimestamp: number;
+    }
+
+    export interface GetServicesServiceHealthCheckConfig {
+        /**
+         * Whether to enable outlier detection.
+         */
+        enable: boolean;
+        /**
+         * Expected HTTP status codes.
+         */
+        expectedStatuses: string[];
+        /**
+         * Healthy threshold.
+         */
+        healthyThreshold: number;
+        /**
+         * Health check host (optional when protocol is HTTP).
+         */
+        httpHost: string;
+        /**
+         * Health check path (required when protocol is HTTP).
+         */
+        httpPath: string;
+        /**
+         * Detection interval.
+         */
+        interval: number;
+        /**
+         * Service protocol.
+         */
+        protocol: string;
+        /**
+         * Health check response timeout.
+         */
+        timeout: number;
+        /**
+         * Unhealthy threshold.
+         */
+        unhealthyThreshold: number;
+    }
+
+    export interface GetServicesServiceOutlierDetectionConfig {
+        /**
+         * Base ejection time.
+         */
+        baseEjectionTime: number;
+        /**
+         * Whether to enable outlier detection.
+         */
+        enable: boolean;
+        /**
+         * Failure percentage minimum hosts.
+         */
+        failurePercentageMinimumHosts: number;
+        /**
+         * Failure percentage threshold.
+         */
+        failurePercentageThreshold: number;
+        /**
+         * Detection interval.
+         */
+        interval: number;
+    }
+
+    export interface GetServicesServicePort {
+        /**
+         * Port name.
+         */
+        name: string;
+        /**
+         * Port number.
+         */
+        port: number;
+        /**
+         * Service protocol.
+         */
+        protocol: string;
+    }
+
+    export interface RouteBackend {
+        /**
+         * The backend service scenario.
+         * - SingleService: Single service.
+         * - MultiServiceByRatio: Canary release across multiple services by ratio.
+         * - Mock: Mock service.
+         * - Redirect: Redirect service.
+         */
+        scene?: string;
+        /**
+         * Backend service. See `services` below.
+         */
+        services?: outputs.apig.RouteBackendService[];
+    }
+
+    export interface RouteBackendService {
+        /**
+         * The name of the second-level domain name.
+         */
+        name: string;
+        /**
+         * Service port. Do not specify this parameter for dynamic ports.
+         */
+        port?: number;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol?: string;
+        /**
+         * The unique identifier of the backend service to which this route forwards traffic.
+         */
+        serviceId?: string;
+        /**
+         * The version label of the backend service used for routing and canary release scenarios.
+         */
+        version?: string;
+        /**
+         * The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+         */
+        weight: number;
+    }
+
+    export interface RouteEnvironmentInfo {
+        /**
+         * The alias of the environment name.
+         */
+        alias: string;
+        /**
+         * The unique identifier of the APIG environment where this route is published and deployed.
+         */
+        environmentId?: string;
+        /**
+         * The gateway instance information corresponding to the environment.
+         */
+        gatewayInfos: outputs.apig.RouteEnvironmentInfoGatewayInfo[];
+        /**
+         * The name of the second-level domain name.
+         */
+        name: string;
+        /**
+         * The default second-level domain names of the environment.
+         */
+        subDomains: outputs.apig.RouteEnvironmentInfoSubDomain[];
+    }
+
+    export interface RouteEnvironmentInfoGatewayInfo {
+        /**
+         * The edition of the gateway instance.
+         */
+        gatewayEdition: string;
+        /**
+         * The ID of the Cloud-native API Gateway.
+         */
+        gatewayId: string;
+        /**
+         * The name of the second-level domain name.
+         */
+        name: string;
+    }
+
+    export interface RouteEnvironmentInfoSubDomain {
+        /**
+         * The ID of the second-level domain name.
+         */
+        domainId: string;
+        /**
+         * The name of the second-level domain name.
+         */
+        name: string;
+        /**
+         * The domain access type, such as Intranet or Internet.
+         */
+        networkType: string;
+        /**
+         * The domain protocol, such as HTTP or HTTPS.
+         */
+        protocol: string;
+    }
+
+    export interface RouteMatch {
+        /**
+         * The list of HTTP request header matching rules. See `headers` below.
+         */
+        headers?: outputs.apig.RouteMatchHeader[];
+        /**
+         * Specifies whether the path is case-sensitive.
+         */
+        ignoreUriCase?: boolean;
+        /**
+         * The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+         */
+        methods?: string[];
+        /**
+         * The path rule. See `path` below.
+         */
+        path?: outputs.apig.RouteMatchPath;
+        /**
+         * The matching rules for query parameters. See `queryParams` below.
+         */
+        queryParams?: outputs.apig.RouteMatchQueryParam[];
+    }
+
+    export interface RouteMatchHeader {
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: string;
+        /**
+         * The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+         */
+        type?: string;
+        /**
+         * The query parameter value that incoming requests must supply to be routed by this route.
+         */
+        value?: string;
+    }
+
+    export interface RouteMatchPath {
+        /**
+         * The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+         */
+        type?: string;
+        /**
+         * The query parameter value that incoming requests must supply to be routed by this route.
+         */
+        value?: string;
+    }
+
+    export interface RouteMatchQueryParam {
+        /**
+         * The name of the second-level domain name.
+         */
+        name?: string;
+        /**
+         * The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+         */
+        type?: string;
+        /**
+         * The query parameter value that incoming requests must supply to be routed by this route.
+         */
+        value?: string;
+    }
+
+    export interface ServiceHealthCheckConfig {
+        /**
+         * Whether to enable health check
+         */
+        enable?: boolean;
+        /**
+         * Expected HTTP status codes
+         */
+        expectedStatuses?: string[];
+        /**
+         * Healthy threshold
+         */
+        healthyThreshold?: number;
+        /**
+         * Health check host (optional when protocol is HTTP)
+         */
+        httpHost?: string;
+        /**
+         * Health check path (required when protocol is HTTP)
+         */
+        httpPath?: string;
+        /**
+         * Health check interval
+         */
+        interval?: number;
+        /**
+         * Health check protocol TCP|HTTP|GRPC
+         */
+        protocol?: string;
+        /**
+         * Health check response timeout
+         */
+        timeout?: number;
+        /**
+         * Unhealthy threshold
+         */
+        unhealthyThreshold?: number;
+    }
+
+    export interface ServiceOutlierDetectionConfig {
+        /**
+         * Base ejection time
+         */
+        baseEjectionTime?: number;
+        /**
+         * Whether to enable outlier detection
+         */
+        enable?: boolean;
+        /**
+         * Failure percentage minimum hosts
+         */
+        failurePercentageMinimumHosts?: number;
+        /**
+         * Failure percentage threshold
+         */
+        failurePercentageThreshold?: number;
+        /**
+         * Detection interval
+         */
+        interval?: number;
+    }
+
+    export interface ServicePort {
+        /**
+         * Port name.
+         */
+        name: string;
+        /**
+         * Port number.
+         */
+        port: number;
+        /**
+         * Service protocol.
+         *
+         * > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+         */
+        protocol: string;
     }
 
 }
@@ -4018,7 +5284,7 @@ export namespace apigateway {
          */
         contentTypeCategory: string;
         /**
-         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
          */
         contentTypeValue: string;
         /**
@@ -10271,6 +11537,134 @@ export namespace cloudcontrol {
 }
 
 export namespace cloudfirewall {
+    export interface AddressBookAssetRegionResourceType {
+        /**
+         * The region ID of the assets. Set the value to `all` to specify all the regions. **NOTE:** `assetRegionId` cannot be modified after the Address Book is created.
+         */
+        assetRegionId?: string;
+        /**
+         * The types of the assets. See `resourceType` below.
+         */
+        resourceType?: outputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceType;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceType {
+        /**
+         * The IPv4 asset types. See `ipv4` below.
+         */
+        ipv4?: outputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceTypeIpv4;
+        /**
+         * The IPv6 asset types. See `ipv6` below.
+         */
+        ipv6?: outputs.cloudfirewall.AddressBookAssetRegionResourceTypeResourceTypeIpv6;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceTypeIpv4 {
+        /**
+         * Whether to include the assets of the type AiGatewayEIP.
+         */
+        aiGatewayEip?: boolean;
+        /**
+         * Whether to include the assets of the type AlbEIP.
+         */
+        albEip?: boolean;
+        /**
+         * Whether to include the assets of the type ApiGatewayEIP.
+         */
+        apiGatewayEip?: boolean;
+        /**
+         * Whether to include the assets of the type BastionHostEgressIP.
+         */
+        bastionHostEgressIp?: boolean;
+        /**
+         * Whether to include the assets of the type BastionHostIngressIP.
+         */
+        bastionHostIngressIp?: boolean;
+        /**
+         * Whether to include the assets of the type BastionHostIP.
+         */
+        bastionHostIp?: boolean;
+        /**
+         * Whether to include the assets of the type EcsEIP.
+         */
+        ecsEip?: boolean;
+        /**
+         * Whether to include the assets of the type EcsPublicIP.
+         */
+        ecsPublicIp?: boolean;
+        /**
+         * Whether to include the assets of the type EIP.
+         */
+        eip?: boolean;
+        /**
+         * Whether to include the assets of the type EniEIP.
+         */
+        eniEip?: boolean;
+        /**
+         * Whether to include the assets of the type GaEIP.
+         */
+        gaEip?: boolean;
+        /**
+         * Whether to include the assets of the type HAVIP.
+         */
+        havip?: boolean;
+        /**
+         * Whether to include the assets of the type NatEIP.
+         */
+        natEip?: boolean;
+        /**
+         * Whether to include the assets of the type NatPublicIP.
+         */
+        natPublicIp?: boolean;
+        /**
+         * Whether to include the assets of the type NlbEIP.
+         */
+        nlbEip?: boolean;
+        /**
+         * Whether to include the assets of the type SlbEIP.
+         */
+        slbEip?: boolean;
+        /**
+         * Whether to include the assets of the type SlbPublicIP.
+         */
+        slbPublicIp?: boolean;
+    }
+
+    export interface AddressBookAssetRegionResourceTypeResourceTypeIpv6 {
+        /**
+         * Whether to include the assets of the type AiGatewayEIPv6.
+         */
+        aiGatewayEipv6?: boolean;
+        /**
+         * Whether to include the assets of the type AlbIPv6.
+         */
+        albIpv6?: boolean;
+        /**
+         * Whether to include the assets of the type ApiGatewayEIPv6.
+         */
+        apiGatewayEipv6?: boolean;
+        /**
+         * Whether to include the assets of the type EcsIPv6.
+         */
+        ecsIpv6?: boolean;
+        /**
+         * Whether to include the assets of the type EniEIPv6.
+         */
+        eniEipv6?: boolean;
+        /**
+         * Whether to include the assets of the type GaEIPv6.
+         */
+        gaEipv6?: boolean;
+        /**
+         * Whether to include the assets of the type NlbIPv6.
+         */
+        nlbIpv6?: boolean;
+        /**
+         * Whether to include the assets of the type SlbIPv6.
+         */
+        slbIpv6?: boolean;
+    }
+
     export interface AddressBookEcsTag {
         /**
          * The key of ECS tag that to be matched.
@@ -10494,9 +11888,21 @@ export namespace cloudfirewall {
 
     export interface GetAddressBooksBook {
         /**
+         * (Available since v1.286.0) The number of addresses in the Address Book.
+         */
+        addressListCount: number;
+        /**
          * The addresses in the Address Book.
          */
         addressLists: string[];
+        /**
+         * (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+         */
+        assetMemberUids: number[];
+        /**
+         * (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+         */
+        assetRegionResourceTypes: outputs.cloudfirewall.GetAddressBooksBookAssetRegionResourceType[];
         /**
          * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
          */
@@ -10506,7 +11912,7 @@ export namespace cloudfirewall {
          */
         description: string;
         /**
-         * The logical relation among the ECS tags that to be matchedh.
+         * The logical relation among the ECS tags that to be matched.
          */
         ecsTags: outputs.cloudfirewall.GetAddressBooksBookEcsTag[];
         /**
@@ -10514,8 +11920,8 @@ export namespace cloudfirewall {
          */
         groupName: string;
         /**
-         * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+         * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
          */
         groupType: string;
         /**
@@ -10527,9 +11933,141 @@ export namespace cloudfirewall {
          */
         id: string;
         /**
+         * (Available since v1.286.0) The number of times that the Address Book is referenced.
+         */
+        referenceCount: number;
+        /**
          * One or more tags for the relationship between.
          */
         tagRelation: string;
+    }
+
+    export interface GetAddressBooksBookAssetRegionResourceType {
+        /**
+         * The region ID of the assets.
+         */
+        assetRegionId: string;
+        /**
+         * The types of the assets.
+         */
+        resourceTypes: outputs.cloudfirewall.GetAddressBooksBookAssetRegionResourceTypeResourceType[];
+    }
+
+    export interface GetAddressBooksBookAssetRegionResourceTypeResourceType {
+        /**
+         * The IPv4 asset types.
+         */
+        ipv4s: outputs.cloudfirewall.GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4[];
+        /**
+         * The IPv6 asset types.
+         */
+        ipv6s: outputs.cloudfirewall.GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6[];
+    }
+
+    export interface GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv4 {
+        /**
+         * Whether the assets of the type AiGatewayEIP are included.
+         */
+        aiGatewayEip: boolean;
+        /**
+         * Whether the assets of the type AlbEIP are included.
+         */
+        albEip: boolean;
+        /**
+         * Whether the assets of the type ApiGatewayEIP are included.
+         */
+        apiGatewayEip: boolean;
+        /**
+         * Whether the assets of the type BastionHostEgressIP are included.
+         */
+        bastionHostEgressIp: boolean;
+        /**
+         * Whether the assets of the type BastionHostIngressIP are included.
+         */
+        bastionHostIngressIp: boolean;
+        /**
+         * Whether the assets of the type BastionHostIP are included.
+         */
+        bastionHostIp: boolean;
+        /**
+         * Whether the assets of the type EcsEIP are included.
+         */
+        ecsEip: boolean;
+        /**
+         * Whether the assets of the type EcsPublicIP are included.
+         */
+        ecsPublicIp: boolean;
+        /**
+         * Whether the assets of the type EIP are included.
+         */
+        eip: boolean;
+        /**
+         * Whether the assets of the type EniEIP are included.
+         */
+        eniEip: boolean;
+        /**
+         * Whether the assets of the type GaEIP are included.
+         */
+        gaEip: boolean;
+        /**
+         * Whether the assets of the type HAVIP are included.
+         */
+        havip: boolean;
+        /**
+         * Whether the assets of the type NatEIP are included.
+         */
+        natEip: boolean;
+        /**
+         * Whether the assets of the type NatPublicIP are included.
+         */
+        natPublicIp: boolean;
+        /**
+         * Whether the assets of the type NlbEIP are included.
+         */
+        nlbEip: boolean;
+        /**
+         * Whether the assets of the type SlbEIP are included.
+         */
+        slbEip: boolean;
+        /**
+         * Whether the assets of the type SlbPublicIP are included.
+         */
+        slbPublicIp: boolean;
+    }
+
+    export interface GetAddressBooksBookAssetRegionResourceTypeResourceTypeIpv6 {
+        /**
+         * Whether the assets of the type AiGatewayEIPv6 are included.
+         */
+        aiGatewayEipv6: boolean;
+        /**
+         * Whether the assets of the type AlbIPv6 are included.
+         */
+        albIpv6: boolean;
+        /**
+         * Whether the assets of the type ApiGatewayEIPv6 are included.
+         */
+        apiGatewayEipv6: boolean;
+        /**
+         * Whether the assets of the type EcsIPv6 are included.
+         */
+        ecsIpv6: boolean;
+        /**
+         * Whether the assets of the type EniEIPv6 are included.
+         */
+        eniEipv6: boolean;
+        /**
+         * Whether the assets of the type GaEIPv6 are included.
+         */
+        gaEipv6: boolean;
+        /**
+         * Whether the assets of the type NlbIPv6 are included.
+         */
+        nlbIpv6: boolean;
+        /**
+         * Whether the assets of the type SlbIPv6 are included.
+         */
+        slbIpv6: boolean;
     }
 
     export interface GetAddressBooksBookEcsTag {
@@ -19477,6 +21015,43 @@ export namespace cs {
          * Service Access Domain.
          */
         serviceDomain: string;
+    }
+
+    export interface ManagedKubernetesControlPlaneEndpointsConfig {
+        /**
+         * The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+         */
+        internalDnsConfig: outputs.cs.ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig;
+        /**
+         * The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+         */
+        loadBalancersConfigs: outputs.cs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig[];
+    }
+
+    export interface ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+        /**
+         * The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+         */
+        bindVpcs: string[];
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+        /**
+         * The access address.
+         */
+        endpoint: string;
+        /**
+         * The endpoint type. Valid values: `private`, `public`.
+         */
+        endpointType: string;
+        /**
+         * The ID of the SLB (NLB) instance associated with the endpoint.
+         */
+        loadBalancerId: string;
     }
 
     export interface ManagedKubernetesDeleteOption {
@@ -35335,6 +36910,41 @@ export namespace esa {
         siteVersion: number;
     }
 
+    export interface GetRoutineCodeVersionsVersion {
+        /**
+         * The build ID of the code version.
+         */
+        buildId: number;
+        /**
+         * The description of the code version.
+         */
+        codeDescription: string;
+        /**
+         * The code version number.
+         */
+        codeVersion: string;
+        /**
+         * The time when the code version was created, in RFC 3339 (UTC) format.
+         */
+        createTime: string;
+        /**
+         * The environment bundled with the code version. Valid values: `staging`, `production`.
+         */
+        deployEnv: string;
+        /**
+         * Whether the code version bundles environment variables.
+         */
+        hasEnvVars: boolean;
+        /**
+         * The ID of the code version. Same as `codeVersion`.
+         */
+        id: string;
+        /**
+         * The status of the code version.
+         */
+        status: string;
+    }
+
     export interface GetSitesSite {
         /**
          * Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
@@ -35792,6 +37402,17 @@ export namespace esa {
          * The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
          */
         weight?: number;
+    }
+
+    export interface RoutineCodeDeploymentCodeVersion {
+        /**
+         * The committed code version to deploy.
+         */
+        codeVersion: string;
+        /**
+         * The traffic percentage of this code version. Valid values: 1 to 100.
+         */
+        percentage: number;
     }
 
     export interface SiteDeliveryTaskHttpDelivery {
@@ -38550,7 +40171,7 @@ export namespace eventbridge {
          */
         targetId: string;
         /**
-         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+         * The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `ApacheKafkaSelf`, `http`,`https` and `mysql`.
          * **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
          */
         type: string;
@@ -42611,6 +44232,33 @@ export namespace gpdb {
         status: string;
     }
 
+    export interface GetApiKeysKey {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * The description of the API key.
+         */
+        description: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * The ID of the API key.
+         */
+        keyId: string;
+        /**
+         * The name of the API key.
+         */
+        keyName: string;
+        /**
+         * The prefix of the API key.
+         */
+        keyPrefix: string;
+    }
+
     export interface GetDataBackupsBackup {
         /**
          * The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
@@ -42985,15 +44633,15 @@ export namespace gpdb {
 
     export interface InstanceParameter {
         /**
-         * (Available since v1.231.0) The default value of the parameter.
+         * The default value of the parameter.
          */
         defaultValue: string;
         /**
-         * (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+         * Whether to force restart the instance to config the parameter.
          */
         forceRestartInstance: string;
         /**
-         * (Available since v1.231.0) Whether the parameter is changeable.
+         * Whether the parameter is changeable.
          */
         isChangeableConfig: string;
         /**
@@ -43001,11 +44649,11 @@ export namespace gpdb {
          */
         name: string;
         /**
-         * (Available since v1.231.0) The optional range of the parameter.
+         * The optional range of the parameter.
          */
         optionalRange: string;
         /**
-         * (Available since v1.231.0) The description of the parameter.
+         * The description of the parameter.
          */
         parameterDescription: string;
         /**
@@ -43265,7 +44913,7 @@ export namespace gwlb {
         /**
          * The domain name that you want to use for health checks. Valid values:
          *
-         * *   **$SERVER_IP** (default): the private IP address of a backend server.
+         * - **$SERVER_IP** (default): the private IP address of a backend server.
          */
         healthCheckDomain: string;
         /**
@@ -43323,7 +44971,7 @@ export namespace gwlb {
 
     export interface ServerGroupServer {
         /**
-         * (Optional, Computed, Int) The port that is used by the backend server.
+         * The port that is used by the backend server.
          */
         port: number;
         /**
@@ -43351,7 +44999,13 @@ export namespace gwlb {
          */
         serverType: string;
         /**
-         * Indicates the status of the backend server.
+         * Indicates the status of the backend server. Valid values:
+         *
+         * - `Adding`: The backend server is being added.
+         * - `Available`: The backend server is available.
+         * - `Draining`: The backend server is in connection draining.
+         * - `Removing`: The backend server is being removed.
+         * - `Replacing`: The backend server is being replaced.
          */
         status: string;
     }
@@ -48609,7 +50263,7 @@ export namespace nas {
          * - true: On.
          * - false: does not turn on.
          *
-         * > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+         * > **NOTE:** Description Only file systems of the SMB protocol type are supported.
          */
         enableOplock: boolean;
     }
@@ -48663,7 +50317,7 @@ export namespace nas {
          *
          * For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
          *
-         * > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+         * > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
          */
         homeDirPath?: string;
         /**
@@ -48955,6 +50609,33 @@ export namespace nas {
          * The storage type of the data that is dumped to the IA storage medium.
          */
         storageType: string;
+    }
+
+    export interface GetLogAnalysesAnalysis {
+        /**
+         * The ID of the file system for which log delivery is enabled.
+         */
+        fileSystemId: string;
+        /**
+         * The ID of the Log Analysis. It is the same as the file system ID.
+         */
+        id: string;
+        /**
+         * The name of the Logstore that receives NAS logs.
+         */
+        logstore: string;
+        /**
+         * The name of the project that receives NAS logs.
+         */
+        project: string;
+        /**
+         * The Simple Log Service region of the log project.
+         */
+        region: string;
+        /**
+         * The ARN of the service role used by NAS to deliver logs to Simple Log Service.
+         */
+        roleArn: string;
     }
 
     export interface GetMountTargetsTarget {
@@ -52457,6 +54138,78 @@ export namespace polardb {
         value: string;
     }
 
+    export interface DynamoTableAttribute {
+        /**
+         * The name of the attribute.
+         */
+        name: string;
+        /**
+         * The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+         */
+        type: string;
+    }
+
+    export interface DynamoTableGlobalSecondaryIndex {
+        /**
+         * The attribute name used as the partition key of the index.
+         */
+        hashKey: string;
+        /**
+         * The name of the index.
+         */
+        name: string;
+        /**
+         * A set of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+         */
+        nonKeyAttributes?: string[];
+        /**
+         * The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+         */
+        projectionType: string;
+        /**
+         * The attribute name used as the sort key of the index.
+         */
+        rangeKey: string;
+        /**
+         * The number of read capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+         */
+        readCapacity: number;
+        /**
+         * The number of write capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+         */
+        writeCapacity: number;
+    }
+
+    export interface DynamoTableLocalSecondaryIndex {
+        /**
+         * The name of the index.
+         */
+        name: string;
+        /**
+         * A list of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+         */
+        nonKeyAttributes?: string[];
+        /**
+         * The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+         */
+        projectionType: string;
+        /**
+         * The attribute name used as the sort key of the index.
+         */
+        rangeKey: string;
+    }
+
+    export interface DynamoTableTtl {
+        /**
+         * The name of the attribute that stores the TTL timestamp.
+         */
+        attributeName?: string;
+        /**
+         * Whether TTL is enabled. Default to `false`.
+         */
+        enabled?: boolean;
+    }
+
     export interface GetAccountsAccount {
         /**
          * Account description.
@@ -53048,6 +54801,21 @@ export namespace privatelink {
          * The private network to which the terminal node belongs..
          */
         vpcId: string;
+    }
+
+    export interface VpcEndpointServiceResource {
+        /**
+         * The ID of the service resource.
+         */
+        resourceId?: string;
+        /**
+         * The type of the service resource. Valid values:
+         */
+        resourceType?: string;
+        /**
+         * The zone ID of the service resource.
+         */
+        zoneId: string;
     }
 
 }
@@ -63243,6 +65011,273 @@ export namespace sls {
          * End of the SQL time window.
          */
         toTimeExpr?: string;
+    }
+
+}
+
+export namespace sslcertificatesservice {
+    export interface CompaniesCompany {
+        /**
+         * The city where the company is located.
+         */
+        city: string;
+        /**
+         * The address of the company.
+         */
+        companyAddress: string;
+        /**
+         * The code of the company.
+         */
+        companyCode: string;
+        /**
+         * The email address of the company.
+         */
+        companyEmail: string;
+        /**
+         * The ID of the company used to filter the results.
+         */
+        companyId: number;
+        /**
+         * The name of the company.
+         */
+        companyName: string;
+        /**
+         * The contact phone number of the company.
+         */
+        companyPhone: string;
+        /**
+         * The type of the company.
+         */
+        companyType: number;
+        /**
+         * The country code of the company.
+         */
+        countryCode: string;
+        /**
+         * The department of the company.
+         */
+        department: string;
+        /**
+         * The ID of the Company.
+         */
+        id: number;
+        /**
+         * The natural language of the content within the request and response.
+         */
+        lang: string;
+        /**
+         * The postal code of the company.
+         */
+        postCode: string;
+        /**
+         * The province where the company is located.
+         */
+        province: string;
+    }
+
+    export interface ContactsContact {
+        /**
+         * The first ID of the resource.
+         */
+        contactId: number;
+        /**
+         * The email address of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        email: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: number;
+        /**
+         * The mobile phone number of the contact. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        mobile: string;
+        /**
+         * The name of the resource
+         */
+        name: string;
+        /**
+         * The Webhook address used to receive notifications. **NOTE:** This field is only available when `enableDetails` is `true`.
+         */
+        webhooks: string;
+    }
+
+    export interface InstanceParameter {
+        /**
+         * The module code. Common values are `fullSpec` (certificate brand and grade for a single-domain certificate), `wildcardSpec` (the same for a wildcard certificate), `fullDomainCount` (number of single domain names) and `wildcardDomainCount` (number of wildcard domain names).
+         */
+        code: string;
+        /**
+         * The value of the module identified by `code`. For the domain-count modules this is an integer from 1 to 150. For `fullSpec` and `wildcardSpec` this is a specification code such as `ws.dv.f`.
+         *
+         * Specification codes accepted by `fullSpec` follow a `brand.grade.type` pattern, for example:
+         *
+         * | Value | Brand | Grade |
+         * | --- | --- | --- |
+         * | `ws.dv.f` | WoSign | DV |
+         * | `rap.dv.f` | Rapid | DV |
+         * | `vt.dv.f` / `vt.ov.f` | vTrus | DV / OV |
+         * | `cf.ov.f` / `cf.ev.f` | CFCA | OV / EV |
+         * | `gs.dv.f` / `gs.ov.f` | GlobalSign | DV / OV |
+         * | `geo.dv.f` / `geo.ov.f` / `geo.ev.f` | GeoTrust | DV / OV / EV |
+         * | `ss.ov.f` / `ss.ev.f` | DigiCert | OV / EV |
+         *
+         * > **NOTE:** The list above is a snapshot and is not exhaustive. Specifications, prices and availability differ per account and change over time. Call [DescribePricingModule](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/DescribePricingModule) with `ProductCode` and `ProductType` set to `cas` to get the values your account can actually order.
+         */
+        value: string;
+    }
+
+    export interface InstancesInstance {
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Specifies whether to enable managed renewal.
+         */
+        autoReissue: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Average waiting time for issuing a certificate of this specification, in seconds.
+         */
+        averageWaitingTime: string;
+        /**
+         * The certificate brand. Valid values: WoSign, CFCA, DigiCert, GeoTrust, GlobalSign, vTrus, and Alibaba.
+         */
+        brand: string;
+        /**
+         * The type of the certificate. Valid values: DV, OV, and EV.
+         */
+        certificateType: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The city where the company or organization to which the certificate purchaser belongs is located.
+         */
+        city: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The company information ID.
+         */
+        companyId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The list of contact IDs.
+         */
+        contactIdLists: number[];
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The code of the country or region where the certificate organization is located.
+         */
+        countryCode: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The CSR content.
+         */
+        csr: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The domain names to be bound to the certificate.
+         */
+        domain: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of single domain names included in the instance.
+         */
+        fullDomainCount: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The method used to generate the Certificate Signing Request (CSR).
+         */
+        generateCsrMethod: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Instance expiration time, a UNIX timestamp in seconds.
+         */
+        instanceEndTime: number;
+        /**
+         * The instance ID.
+         */
+        instanceId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The name of the instance.
+         */
+        instanceName: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Instance start time, a UNIX timestamp in seconds.
+         */
+        instanceStartTime: number;
+        /**
+         * The instance type. Valid values: BUY: official certificate; TEST: test certificate.
+         */
+        instanceType: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The certificate algorithm.
+         */
+        keyAlgorithm: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Order end time, a UNIX timestamp in seconds.
+         */
+        orderEndTime: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. Order start time, a UNIX timestamp in seconds.
+         */
+        orderStartTime: number;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The province or region where the company is located.
+         */
+        province: string;
+        /**
+         * The ID of the resource group.
+         */
+        resourceGroupId: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The specification of the purchased instance.
+         */
+        spec: string;
+        /**
+         * The instance status.
+         */
+        status: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The tags of the instance.
+         */
+        tags: {[key: string]: string};
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The upgrade status of the instance.
+         */
+        upgradeStatus: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The verification method for the certificate application.
+         */
+        validationMethod: string;
+        /**
+         * **NOTE:** This field is only available when `enableDetails` is `true`. The number of wildcard domain names included in the instance.
+         */
+        wildcardDomainCount: number;
+    }
+
+}
+
+export namespace sslcertificatesservicecertificate {
+    export interface ApplyDomainValidationList {
+        /**
+         * The record value used when the domain is validated through a CNAME record.
+         */
+        cname: string;
+        /**
+         * The host record used when the domain is validated through a CNAME record.
+         */
+        cnameKey: string;
+        /**
+         * The domain names the certificate is requested for, separated by commas.
+         */
+        domain: string;
+        /**
+         * The root domain of the domain name to be validated. Use this value to locate the DNS zone when adding the validation record.
+         */
+        rootDomain: string;
+        /**
+         * The host record of the validation record.
+         */
+        validationKey: string;
+        /**
+         * The type of the validation record. Valid values: `TXT`, `CNAME` and `FILE`.
+         */
+        validationType: string;
+        /**
+         * The value of the validation record.
+         */
+        validationValue: string;
     }
 
 }

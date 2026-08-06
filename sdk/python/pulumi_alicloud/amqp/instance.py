@@ -23,8 +23,10 @@ class InstanceArgs:
                  auth_model: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  max_connections: pulumi.Input[Optional[_builtins.int]] = None,
                  max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
@@ -56,13 +58,19 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] auth_model: The authentication mode of the instance. Default value: `ram`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
+        :param pulumi.Input[_builtins.bool] encrypted_instance: Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+               - `instance_type = "vip"`.
+               - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+               
+               > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
-               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+               > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -78,7 +86,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
-        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
@@ -95,10 +103,14 @@ class InstanceArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if encrypted_instance is not None:
+            pulumi.set(__self__, "encrypted_instance", encrypted_instance)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if listener_mode is not None:
             pulumi.set(__self__, "listener_mode", listener_mode)
         if max_connections is not None:
@@ -195,6 +207,22 @@ class InstanceArgs:
         pulumi.set(self, "edition", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptedInstance")
+    def encrypted_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+        - `instance_type = "vip"`.
+        - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+
+        > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
+        """
+        return pulumi.get(self, "encrypted_instance")
+
+    @encrypted_instance.setter
+    def encrypted_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encrypted_instance", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -215,13 +243,25 @@ class InstanceArgs:
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
         - serverless: Serverless Edition.
-        > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
     def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerMode")
@@ -385,7 +425,7 @@ class InstanceArgs:
     @pulumi.getter(name="serverlessChargeType")
     def serverless_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing type of the serverless instance. Value: onDemand.
+        The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         """
         return pulumi.get(self, "serverless_charge_type")
 
@@ -497,8 +537,10 @@ class _InstanceState:
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_time: pulumi.Input[Optional[_builtins.int]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  max_connections: pulumi.Input[Optional[_builtins.int]] = None,
                  max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
@@ -530,13 +572,19 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
+        :param pulumi.Input[_builtins.bool] encrypted_instance: Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+               - `instance_type = "vip"`.
+               - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+               
+               > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
-               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+               > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -555,7 +603,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
-        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -574,10 +622,14 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if encrypted_instance is not None:
+            pulumi.set(__self__, "encrypted_instance", encrypted_instance)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
         if listener_mode is not None:
             pulumi.set(__self__, "listener_mode", listener_mode)
         if max_connections is not None:
@@ -676,6 +728,22 @@ class _InstanceState:
         pulumi.set(self, "edition", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptedInstance")
+    def encrypted_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+        - `instance_type = "vip"`.
+        - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+
+        > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
+        """
+        return pulumi.get(self, "encrypted_instance")
+
+    @encrypted_instance.setter
+    def encrypted_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "encrypted_instance", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -696,13 +764,25 @@ class _InstanceState:
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
         - serverless: Serverless Edition.
-        > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
     def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerMode")
@@ -880,7 +960,7 @@ class _InstanceState:
     @pulumi.getter(name="serverlessChargeType")
     def serverless_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The billing type of the serverless instance. Value: onDemand.
+        The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         """
         return pulumi.get(self, "serverless_charge_type")
 
@@ -1006,8 +1086,10 @@ class Instance(pulumi.CustomResource):
                  auth_model: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  max_connections: pulumi.Input[Optional[_builtins.int]] = None,
                  max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1113,13 +1195,19 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] auth_model: The authentication mode of the instance. Default value: `ram`. Valid values:
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
+        :param pulumi.Input[_builtins.bool] encrypted_instance: Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+               - `instance_type = "vip"`.
+               - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+               
+               > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
-               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+               > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -1138,7 +1226,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
-        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         :param pulumi.Input[_builtins.bool] support_eip: Whether to support public network.
@@ -1248,8 +1336,10 @@ class Instance(pulumi.CustomResource):
                  auth_model: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  max_connections: pulumi.Input[Optional[_builtins.int]] = None,
                  max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1285,8 +1375,10 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["auth_model"] = auth_model
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["edition"] = edition
+            __props__.__dict__["encrypted_instance"] = encrypted_instance
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_type"] = instance_type
+            __props__.__dict__["kms_key_id"] = kms_key_id
             __props__.__dict__["listener_mode"] = listener_mode
             __props__.__dict__["max_connections"] = max_connections
             __props__.__dict__["max_eip_tps"] = max_eip_tps
@@ -1328,8 +1420,10 @@ class Instance(pulumi.CustomResource):
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.int]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_instance: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
             max_connections: pulumi.Input[Optional[_builtins.int]] = None,
             max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1365,13 +1459,19 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
         :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
+        :param pulumi.Input[_builtins.bool] encrypted_instance: Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+               - `instance_type = "vip"`.
+               - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+               
+               > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values:
                - professional: professional Edition
                - enterprise: enterprise Edition
                - vip: Platinum Edition.
                - serverless: Serverless Edition.
-               > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+               > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
+        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
         :param pulumi.Input[_builtins.str] listener_mode: The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         :param pulumi.Input[_builtins.int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[_builtins.str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
@@ -1390,7 +1490,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         :param pulumi.Input[_builtins.str] renewal_status: The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
-        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Value: onDemand.
+        :param pulumi.Input[_builtins.str] serverless_charge_type: The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         :param pulumi.Input[_builtins.bool] serverless_switch: Whether to enable the Serverless elastic capability on the instance.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[_builtins.str] storage_size: Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
@@ -1409,8 +1509,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["edition"] = edition
+        __props__.__dict__["encrypted_instance"] = encrypted_instance
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["kms_key_id"] = kms_key_id
         __props__.__dict__["listener_mode"] = listener_mode
         __props__.__dict__["max_connections"] = max_connections
         __props__.__dict__["max_eip_tps"] = max_eip_tps
@@ -1470,6 +1572,18 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "edition")
 
     @_builtins.property
+    @pulumi.getter(name="encryptedInstance")
+    def encrypted_instance(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enable storage encryption when creating the instance. When set to `true`, `kms_key_id` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+        - `instance_type = "vip"`.
+        - `payment_type = "PayAsYouGo"`, `serverless_charge_type = "provisioned"`, and `edition = "dedicated"`.
+
+        > **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encrypted_instance` replaces the instance.
+        """
+        return pulumi.get(self, "encrypted_instance")
+
+    @_builtins.property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1486,9 +1600,17 @@ class Instance(pulumi.CustomResource):
         - enterprise: enterprise Edition
         - vip: Platinum Edition.
         - serverless: Serverless Edition.
-        > **NOTE:** There should not set the `instance_type` parameter when creating a serverless instance. Only need to set `payment_type = "PayAsYouGo"` and `serverless_charge_type = "onDemand"`.
+        > **NOTE:** Do not set `instance_type` when creating a serverless instance. Set `payment_type = "PayAsYouGo"` and choose `serverless_charge_type = "onDemand"` or `serverless_charge_type = "provisioned"`.
         """
         return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encrypted_instance = true` when the instance is created. Changing `kms_key_id` replaces the instance.
+        """
+        return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="listenerMode")
@@ -1610,7 +1732,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serverlessChargeType")
     def serverless_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The billing type of the serverless instance. Value: onDemand.
+        The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
         """
         return pulumi.get(self, "serverless_charge_type")
 

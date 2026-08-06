@@ -324,6 +324,8 @@ type SynchronizationJob struct {
 	DestinationEndpointRegion pulumi.StringPtrOutput `pulumi:"destinationEndpointRegion"`
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole pulumi.StringPtrOutput `pulumi:"destinationEndpointRole"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringOutput `pulumi:"destinationEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrOutput `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
@@ -345,6 +347,8 @@ type SynchronizationJob struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrOutput `pulumi:"jobParameters"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve pulumi.StringOutput `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"sourceEndpointDatabaseName"`
@@ -371,6 +375,8 @@ type SynchronizationJob struct {
 	SourceEndpointRegion pulumi.StringPtrOutput `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringOutput `pulumi:"sourceEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
 	// Data Delivery link switch instance id
@@ -486,6 +492,8 @@ type synchronizationJobState struct {
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole *string `pulumi:"destinationEndpointRole"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
@@ -507,6 +515,8 @@ type synchronizationJobState struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters *string `pulumi:"jobParameters"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve *string `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
@@ -533,6 +543,8 @@ type synchronizationJobState struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// Data Delivery link switch instance id
@@ -589,6 +601,8 @@ type SynchronizationJobState struct {
 	DestinationEndpointRegion pulumi.StringPtrInput
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
@@ -610,6 +624,8 @@ type SynchronizationJobState struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrInput
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
@@ -636,6 +652,8 @@ type SynchronizationJobState struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
 	// Data Delivery link switch instance id
@@ -696,6 +714,8 @@ type synchronizationJobArgs struct {
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole *string `pulumi:"destinationEndpointRole"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
@@ -717,6 +737,8 @@ type synchronizationJobArgs struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters *string `pulumi:"jobParameters"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve *string `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
@@ -743,6 +765,8 @@ type synchronizationJobArgs struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// Data Delivery link switch instance id
@@ -800,6 +824,8 @@ type SynchronizationJobArgs struct {
 	DestinationEndpointRegion pulumi.StringPtrInput
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
@@ -821,6 +847,8 @@ type SynchronizationJobArgs struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrInput
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
@@ -847,6 +875,8 @@ type SynchronizationJobArgs struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
 	// Data Delivery link switch instance id
@@ -1049,6 +1079,11 @@ func (o SynchronizationJobOutput) DestinationEndpointRole() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRole }).(pulumi.StringPtrOutput)
 }
 
+// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o SynchronizationJobOutput) DestinationEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DestinationEndpointSsl }).(pulumi.StringOutput)
+}
+
 // The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 func (o SynchronizationJobOutput) DestinationEndpointUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointUserName }).(pulumi.StringPtrOutput)
@@ -1094,6 +1129,8 @@ func (o SynchronizationJobOutput) JobParameters() pulumi.StringPtrOutput {
 }
 
 // DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+//
+// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 func (o SynchronizationJobOutput) Reserve() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Reserve }).(pulumi.StringOutput)
 }
@@ -1154,6 +1191,11 @@ func (o SynchronizationJobOutput) SourceEndpointRegion() pulumi.StringPtrOutput 
 // The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 func (o SynchronizationJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
+}
+
+// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o SynchronizationJobOutput) SourceEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.SourceEndpointSsl }).(pulumi.StringOutput)
 }
 
 // The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).

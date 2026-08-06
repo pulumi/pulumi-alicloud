@@ -20,6 +20,11 @@ export const getServiceTopics: typeof import("./getServiceTopics").getServiceTop
 export const getServiceTopicsOutput: typeof import("./getServiceTopics").getServiceTopicsOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceTopics","getServiceTopicsOutput"], () => require("./getServiceTopics"));
 
+export { ServiceAccountLoggingArgs, ServiceAccountLoggingState } from "./serviceAccountLogging";
+export type ServiceAccountLogging = import("./serviceAccountLogging").ServiceAccountLogging;
+export const ServiceAccountLogging: typeof import("./serviceAccountLogging").ServiceAccountLogging = null as any;
+utilities.lazyLoad(exports, ["ServiceAccountLogging"], () => require("./serviceAccountLogging"));
+
 export { ServiceEndpointArgs, ServiceEndpointState } from "./serviceEndpoint";
 export type ServiceEndpoint = import("./serviceEndpoint").ServiceEndpoint;
 export const ServiceEndpoint: typeof import("./serviceEndpoint").ServiceEndpoint = null as any;
@@ -60,6 +65,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:message/serviceAccountLogging:ServiceAccountLogging":
+                return new ServiceAccountLogging(name, <any>undefined, { urn })
             case "alicloud:message/serviceEndpoint:ServiceEndpoint":
                 return new ServiceEndpoint(name, <any>undefined, { urn })
             case "alicloud:message/serviceEndpointAcl:ServiceEndpointAcl":
@@ -79,6 +86,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "message/serviceAccountLogging", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEndpointAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "message/serviceEventRule", _module)

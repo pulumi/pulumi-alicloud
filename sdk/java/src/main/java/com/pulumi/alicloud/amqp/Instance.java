@@ -208,6 +208,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.edition;
     }
     /**
+     * Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = &#34;vip&#34;`.
+     * - `paymentType = &#34;PayAsYouGo&#34;`, `serverlessChargeType = &#34;provisioned&#34;`, and `edition = &#34;dedicated&#34;`.
+     * 
+     * &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     * 
+     */
+    @Export(name="encryptedInstance", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> encryptedInstance;
+
+    /**
+     * @return Whether to enable storage encryption when creating the instance. When set to `true`, `kmsKeyId` must also be specified. AMQP currently supports storage encryption for the following SKU combinations:
+     * - `instanceType = &#34;vip&#34;`.
+     * - `paymentType = &#34;PayAsYouGo&#34;`, `serverlessChargeType = &#34;provisioned&#34;`, and `edition = &#34;dedicated&#34;`.
+     * 
+     * &gt; **NOTE:** SKU eligibility is validated by the AMQP API when the instance is created, and unsupported combinations are rejected by the backend. Storage encryption cannot be enabled or modified after creation. Changing `encryptedInstance` replaces the instance.
+     * 
+     */
+    public Output<Boolean> encryptedInstance() {
+        return this.encryptedInstance;
+    }
+    /**
      * The instance name.
      * 
      */
@@ -227,7 +249,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
+     * &gt; **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = &#34;PayAsYouGo&#34;` and choose `serverlessChargeType = &#34;onDemand&#34;` or `serverlessChargeType = &#34;provisioned&#34;`.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
@@ -239,11 +261,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - enterprise: enterprise Edition
      * - vip: Platinum Edition.
      * - serverless: Serverless Edition.
-     * &gt; **NOTE:** There should not set the `instanceType` parameter when creating a serverless instance. Only need to set `paymentType = &#34;PayAsYouGo&#34;` and `serverlessChargeType = &#34;onDemand&#34;`.
+     * &gt; **NOTE:** Do not set `instanceType` when creating a serverless instance. Set `paymentType = &#34;PayAsYouGo&#34;` and choose `serverlessChargeType = &#34;onDemand&#34;` or `serverlessChargeType = &#34;provisioned&#34;`.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
+    }
+    /**
+     * The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     * 
+     */
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKeyId;
+
+    /**
+     * @return The ID of the KMS key used for storage encryption. The key must be in the same region as the instance, enabled, symmetric, and usable for encryption and decryption. This argument must be specified together with `encryptedInstance = true` when the instance is created. Changing `kmsKeyId` replaces the instance.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyId() {
+        return Codegen.optional(this.kmsKeyId);
     }
     /**
      * The Listener mode. Valid values: `tcpAndSsl`, `sslOnly`.
@@ -450,14 +486,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityGroupId);
     }
     /**
-     * The billing type of the serverless instance. Value: onDemand.
+     * The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      * 
      */
     @Export(name="serverlessChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverlessChargeType;
 
     /**
-     * @return The billing type of the serverless instance. Value: onDemand.
+     * @return The billing type of the serverless instance. Valid values: `onDemand`, `provisioned`.
      * 
      */
     public Output<Optional<String>> serverlessChargeType() {

@@ -199,6 +199,12 @@ namespace Pulumi.AliCloud.Gwlb
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        /// <summary>
+        /// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+        /// </summary>
+        [Output("tcpIdleTimeout")]
+        public Output<int> TcpIdleTimeout { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Listener resource with the given unique name, arguments, and options.
@@ -283,6 +289,12 @@ namespace Pulumi.AliCloud.Gwlb
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+        /// </summary>
+        [Input("tcpIdleTimeout")]
+        public Input<int>? TcpIdleTimeout { get; set; }
+
         public ListenerArgs()
         {
         }
@@ -340,6 +352,12 @@ namespace Pulumi.AliCloud.Gwlb
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+        /// </summary>
+        [Input("tcpIdleTimeout")]
+        public Input<int>? TcpIdleTimeout { get; set; }
 
         public ListenerState()
         {

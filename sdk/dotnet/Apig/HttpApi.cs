@@ -56,47 +56,86 @@ namespace Pulumi.AliCloud.Apig
     /// APIG Http Api can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:apig/httpApi:HttpApi example &lt;id&gt;
+    /// $ pulumi import alicloud:apig/httpApi:HttpApi example &lt;http_api_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apig/httpApi:HttpApi")]
     public partial class HttpApi : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// API path
+        /// AI API protocols. Currently the supported value is `OpenAI/v1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Output("aiProtocols")]
+        public Output<ImmutableArray<string>> AiProtocols { get; private set; } = null!;
+
+        /// <summary>
+        /// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `Type` is `Rest`; when `Type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Output("basePath")]
         public Output<string?> BasePath { get; private set; } = null!;
 
         /// <summary>
-        /// Description of API
+        /// API deployment configurations. It is required when `Type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        /// </summary>
+        [Output("deployConfigs")]
+        public Output<ImmutableArray<string>> DeployConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// API description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource
+        /// Whether to enable authentication.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Output("enableAuth")]
+        public Output<bool?> EnableAuth { get; private set; } = null!;
+
+        /// <summary>
+        /// Perform an exact search by name.
         /// </summary>
         [Output("httpApiName")]
         public Output<string> HttpApiName { get; private set; } = null!;
 
         /// <summary>
-        /// API protocol
+        /// AI model category
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Output("modelCategory")]
+        public Output<string?> ModelCategory { get; private set; } = null!;
+
+        /// <summary>
+        /// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
         /// </summary>
         [Output("protocols")]
         public Output<ImmutableArray<string>> Protocols { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group. It can be modified to migrate the resource to another resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// API type
+        /// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+        /// - Http
+        /// - Rest
+        /// - LLM
+        /// - WebSocket
+        /// - HttpIngress
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -144,29 +183,75 @@ namespace Pulumi.AliCloud.Apig
 
     public sealed class HttpApiArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aiProtocols")]
+        private InputList<string>? _aiProtocols;
+
         /// <summary>
-        /// API path
+        /// AI API protocols. Currently the supported value is `OpenAI/v1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        public InputList<string> AiProtocols
+        {
+            get => _aiProtocols ?? (_aiProtocols = new InputList<string>());
+            set => _aiProtocols = value;
+        }
+
+        /// <summary>
+        /// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `Type` is `Rest`; when `Type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("basePath")]
         public Input<string>? BasePath { get; set; }
 
+        [Input("deployConfigs")]
+        private InputList<string>? _deployConfigs;
+
         /// <summary>
-        /// Description of API
+        /// API deployment configurations. It is required when `Type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        /// </summary>
+        public InputList<string> DeployConfigs
+        {
+            get => _deployConfigs ?? (_deployConfigs = new InputList<string>());
+            set => _deployConfigs = value;
+        }
+
+        /// <summary>
+        /// API description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the resource
+        /// Whether to enable authentication.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("enableAuth")]
+        public Input<bool>? EnableAuth { get; set; }
+
+        /// <summary>
+        /// Perform an exact search by name.
         /// </summary>
         [Input("httpApiName", required: true)]
         public Input<string> HttpApiName { get; set; } = null!;
+
+        /// <summary>
+        /// AI model category
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("modelCategory")]
+        public Input<string>? ModelCategory { get; set; }
 
         [Input("protocols", required: true)]
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// API protocol
+        /// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
         /// </summary>
         public InputList<string> Protocols
         {
@@ -175,16 +260,21 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group. It can be modified to migrate the resource to another resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// API type
+        /// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+        /// - Http
+        /// - Rest
+        /// - LLM
+        /// - WebSocket
+        /// - HttpIngress
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public HttpApiArgs()
         {
@@ -194,29 +284,75 @@ namespace Pulumi.AliCloud.Apig
 
     public sealed class HttpApiState : global::Pulumi.ResourceArgs
     {
+        [Input("aiProtocols")]
+        private InputList<string>? _aiProtocols;
+
         /// <summary>
-        /// API path
+        /// AI API protocols. Currently the supported value is `OpenAI/v1`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        public InputList<string> AiProtocols
+        {
+            get => _aiProtocols ?? (_aiProtocols = new InputList<string>());
+            set => _aiProtocols = value;
+        }
+
+        /// <summary>
+        /// API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `Type` is `Rest`; when `Type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
         /// </summary>
         [Input("basePath")]
         public Input<string>? BasePath { get; set; }
 
+        [Input("deployConfigs")]
+        private InputList<string>? _deployConfigs;
+
         /// <summary>
-        /// Description of API
+        /// API deployment configurations. It is required when `Type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+        /// 
+        /// &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+        /// </summary>
+        public InputList<string> DeployConfigs
+        {
+            get => _deployConfigs ?? (_deployConfigs = new InputList<string>());
+            set => _deployConfigs = value;
+        }
+
+        /// <summary>
+        /// API description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the resource
+        /// Whether to enable authentication.
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("enableAuth")]
+        public Input<bool>? EnableAuth { get; set; }
+
+        /// <summary>
+        /// Perform an exact search by name.
         /// </summary>
         [Input("httpApiName")]
         public Input<string>? HttpApiName { get; set; }
+
+        /// <summary>
+        /// AI model category
+        /// 
+        /// &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+        /// </summary>
+        [Input("modelCategory")]
+        public Input<string>? ModelCategory { get; set; }
 
         [Input("protocols")]
         private InputList<string>? _protocols;
 
         /// <summary>
-        /// API protocol
+        /// List of API access protocols. Valid values: `HTTP`, `HTTPS`.
         /// </summary>
         public InputList<string> Protocols
         {
@@ -225,13 +361,18 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group. It can be modified to migrate the resource to another resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// API type
+        /// The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+        /// - Http
+        /// - Rest
+        /// - LLM
+        /// - WebSocket
+        /// - HttpIngress
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -18,6 +18,8 @@ import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
 import com.pulumi.alicloud.nas.inputs.GetFilesetsPlainArgs;
 import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
 import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesPlainArgs;
+import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+import com.pulumi.alicloud.nas.inputs.GetLogAnalysesPlainArgs;
 import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
 import com.pulumi.alicloud.nas.inputs.GetMountTargetsPlainArgs;
 import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
@@ -35,6 +37,7 @@ import com.pulumi.alicloud.nas.outputs.GetDataFlowsResult;
 import com.pulumi.alicloud.nas.outputs.GetFileSystemsResult;
 import com.pulumi.alicloud.nas.outputs.GetFilesetsResult;
 import com.pulumi.alicloud.nas.outputs.GetLifecyclePoliciesResult;
+import com.pulumi.alicloud.nas.outputs.GetLogAnalysesResult;
 import com.pulumi.alicloud.nas.outputs.GetMountTargetsResult;
 import com.pulumi.alicloud.nas.outputs.GetProtocolsResult;
 import com.pulumi.alicloud.nas.outputs.GetServiceResult;
@@ -1981,6 +1984,398 @@ public final class NasFunctions {
      */
     public static CompletableFuture<GetLifecyclePoliciesResult> getLifecyclePoliciesPlain(GetLifecyclePoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", TypeShape.of(GetLifecyclePoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogAnalysesResult> getLogAnalyses() {
+        return getLogAnalyses(GetLogAnalysesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLogAnalysesResult> getLogAnalysesPlain() {
+        return getLogAnalysesPlain(GetLogAnalysesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogAnalysesResult> getLogAnalyses(GetLogAnalysesArgs args) {
+        return getLogAnalyses(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLogAnalysesResult> getLogAnalysesPlain(GetLogAnalysesPlainArgs args) {
+        return getLogAnalysesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogAnalysesResult> getLogAnalyses(GetLogAnalysesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nas/getLogAnalyses:getLogAnalyses", TypeShape.of(GetLogAnalysesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLogAnalysesResult> getLogAnalyses(GetLogAnalysesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:nas/getLogAnalyses:getLogAnalyses", TypeShape.of(GetLogAnalysesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides File Storage (NAS) Log Analysis available to the user.
+     * 
+     * &gt; **NOTE:** Available since v1.286.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.FileSystem;
+     * import com.pulumi.alicloud.nas.FileSystemArgs;
+     * import com.pulumi.alicloud.nas.LogAnalysis;
+     * import com.pulumi.alicloud.nas.LogAnalysisArgs;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetLogAnalysesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
+     *             .protocolType("NFS")
+     *             .storageType("Capacity")
+     *             .build());
+     * 
+     *         var defaultLogAnalysis = new LogAnalysis("defaultLogAnalysis", LogAnalysisArgs.builder()
+     *             .fileSystemId(defaultFileSystem.id())
+     *             .build());
+     * 
+     *         final var default = NasFunctions.getLogAnalyses(GetLogAnalysesArgs.builder()
+     *             .ids(defaultLogAnalysis.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasLogAnalysisExampleId", default_.applyValue(_default_ -> _default_.analyses()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLogAnalysesResult> getLogAnalysesPlain(GetLogAnalysesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:nas/getLogAnalyses:getLogAnalyses", TypeShape.of(GetLogAnalysesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides MountTargets available to the user.

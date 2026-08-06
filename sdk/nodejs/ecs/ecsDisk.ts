@@ -126,7 +126,9 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     *
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      */
     declare public readonly enableAutoSnapshot: pulumi.Output<boolean>;
     declare public readonly encryptAlgorithm: pulumi.Output<string | undefined>;
@@ -350,7 +352,9 @@ export interface EcsDiskState {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     *
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      */
     enableAutoSnapshot?: pulumi.Input<boolean | undefined>;
     encryptAlgorithm?: pulumi.Input<string | undefined>;
@@ -490,7 +494,9 @@ export interface EcsDiskArgs {
      */
     dryRun?: pulumi.Input<boolean | undefined>;
     /**
-     * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     *
+     * @deprecated This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      */
     enableAutoSnapshot?: pulumi.Input<boolean | undefined>;
     encryptAlgorithm?: pulumi.Input<string | undefined>;

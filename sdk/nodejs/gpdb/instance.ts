@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
+ * You can see the detail product introduction in the [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) API reference.
  *
  * > **NOTE:** Available since v1.47.0.
  *
@@ -98,6 +98,14 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly availabilityZone: pulumi.Output<string>;
     /**
+     * The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     */
+    declare public readonly backupId: pulumi.Output<string | undefined>;
+    /**
+     * The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     */
+    declare public readonly cacheStorageSize: pulumi.Output<number>;
+    /**
      * (Available since v1.196.0) The connection string of the instance.
      */
     declare public /*out*/ readonly connectionString: pulumi.Output<string>;
@@ -122,7 +130,9 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly dbInstanceClass: pulumi.Output<string | undefined>;
     /**
-     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+     *
+     * > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
      */
     declare public readonly dbInstanceMode: pulumi.Output<string>;
     /**
@@ -170,8 +180,9 @@ export class Instance extends pulumi.CustomResource {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      *
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      */
-    declare public readonly instanceSpec: pulumi.Output<string | undefined>;
+    declare public readonly instanceSpec: pulumi.Output<string>;
     /**
      * The ip whitelist. See `ipWhitelist` below.
      * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
@@ -194,7 +205,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      */
-    declare public readonly masterNodeNum: pulumi.Output<number | undefined>;
+    declare public readonly masterNodeNum: pulumi.Output<number>;
     /**
      * The parameters. See `parameters` below.
      */
@@ -254,6 +265,14 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly serverlessMode: pulumi.Output<string>;
     /**
+     * The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     */
+    declare public readonly serverlessResource: pulumi.Output<number>;
+    /**
+     * The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     */
+    declare public readonly srcDbInstanceName: pulumi.Output<string | undefined>;
+    /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
     declare public readonly sslEnabled: pulumi.Output<number>;
@@ -306,6 +325,8 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["cacheStorageSize"] = state?.cacheStorageSize;
             resourceInputs["connectionString"] = state?.connectionString;
             resourceInputs["createSampleData"] = state?.createSampleData;
             resourceInputs["dataShareStatus"] = state?.dataShareStatus;
@@ -339,6 +360,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["segNodeNum"] = state?.segNodeNum;
             resourceInputs["segStorageType"] = state?.segStorageType;
             resourceInputs["serverlessMode"] = state?.serverlessMode;
+            resourceInputs["serverlessResource"] = state?.serverlessResource;
+            resourceInputs["srcDbInstanceName"] = state?.srcDbInstanceName;
             resourceInputs["sslEnabled"] = state?.sslEnabled;
             resourceInputs["status"] = state?.status;
             resourceInputs["storageSize"] = state?.storageSize;
@@ -363,6 +386,8 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["cacheStorageSize"] = args?.cacheStorageSize;
             resourceInputs["createSampleData"] = args?.createSampleData;
             resourceInputs["dataShareStatus"] = args?.dataShareStatus;
             resourceInputs["dbInstanceCategory"] = args?.dbInstanceCategory;
@@ -394,6 +419,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["segNodeNum"] = args?.segNodeNum;
             resourceInputs["segStorageType"] = args?.segStorageType;
             resourceInputs["serverlessMode"] = args?.serverlessMode;
+            resourceInputs["serverlessResource"] = args?.serverlessResource;
+            resourceInputs["srcDbInstanceName"] = args?.srcDbInstanceName;
             resourceInputs["sslEnabled"] = args?.sslEnabled;
             resourceInputs["storageSize"] = args?.storageSize;
             resourceInputs["tags"] = args?.tags;
@@ -422,6 +449,14 @@ export interface InstanceState {
      */
     availabilityZone?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     */
+    backupId?: pulumi.Input<string | undefined>;
+    /**
+     * The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     */
+    cacheStorageSize?: pulumi.Input<number | undefined>;
+    /**
      * (Available since v1.196.0) The connection string of the instance.
      */
     connectionString?: pulumi.Input<string | undefined>;
@@ -446,7 +481,9 @@ export interface InstanceState {
      */
     dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
-     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+     *
+     * > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
      */
     dbInstanceMode?: pulumi.Input<string | undefined>;
     /**
@@ -494,6 +531,7 @@ export interface InstanceState {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      *
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      */
     instanceSpec?: pulumi.Input<string | undefined>;
     /**
@@ -578,6 +616,14 @@ export interface InstanceState {
      */
     serverlessMode?: pulumi.Input<string | undefined>;
     /**
+     * The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     */
+    serverlessResource?: pulumi.Input<number | undefined>;
+    /**
+     * The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     */
+    srcDbInstanceName?: pulumi.Input<string | undefined>;
+    /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
     sslEnabled?: pulumi.Input<number | undefined>;
@@ -628,6 +674,14 @@ export interface InstanceArgs {
      */
     availabilityZone?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the backup set. If specified, the instance is created from the existing backup set. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     */
+    backupId?: pulumi.Input<string | undefined>;
+    /**
+     * The cache storage size, in GB. Valid values: `800` to `102400`. **NOTE:** `cacheStorageSize` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     */
+    cacheStorageSize?: pulumi.Input<number | undefined>;
+    /**
      * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
      */
     createSampleData?: pulumi.Input<boolean | undefined>;
@@ -648,7 +702,9 @@ export interface InstanceArgs {
      */
     dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
-     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
+     * The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`, `ServerlessPro`.
+     *
+     * > **NOTE:** `ServerlessPro` is a dedicated Serverless Pro instance form. When `dbInstanceMode` is set to `ServerlessPro`, instance sizing is controlled via `serverlessResource` and `cacheStorageSize` instead of `instanceSpec`.
      */
     dbInstanceMode: pulumi.Input<string>;
     /**
@@ -696,6 +752,7 @@ export interface InstanceArgs {
      * - If `dbInstanceMode` is set to `Serverless`. Valid values: `4C16G`, `8C32G`.
      *
      * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     * **NOTE:** For `ServerlessPro` instances, `instanceSpec` is a server-side placeholder (e.g. `1C8G`) returned by the API and is not user-configurable; sizing is controlled via `serverlessResource` and `cacheStorageSize`. The placeholder is read into state but should not be set in the configuration.
      */
     instanceSpec?: pulumi.Input<string | undefined>;
     /**
@@ -775,6 +832,14 @@ export interface InstanceArgs {
      * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
      */
     serverlessMode?: pulumi.Input<string | undefined>;
+    /**
+     * The computing resource threshold, in ACU. Valid values: `16` to `1024`. **NOTE:** `serverlessResource` is valid only when `dbInstanceMode` is set to `ServerlessPro`.
+     */
+    serverlessResource?: pulumi.Input<number | undefined>;
+    /**
+     * The source instance ID for creating an instance from a backup set. Must be set together with `backupId`; the GPDB CreateDBInstance API requires `SrcDbInstanceName` and `BackupId` to be null or not null at the same time. See [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance).
+     */
+    srcDbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */

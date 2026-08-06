@@ -57,6 +57,8 @@ import (
 type Zone struct {
 	pulumi.CustomResourceState
 
+	// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+	DnsGroup pulumi.StringOutput `pulumi:"dnsGroup"`
 	// Whether the Private Zone is ptr.
 	IsPtr pulumi.BoolOutput `pulumi:"isPtr"`
 	// The language. Valid values: "zh", "en", "jp".
@@ -118,6 +120,8 @@ func GetZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
+	// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+	DnsGroup *string `pulumi:"dnsGroup"`
 	// Whether the Private Zone is ptr.
 	IsPtr *bool `pulumi:"isPtr"`
 	// The language. Valid values: "zh", "en", "jp".
@@ -150,6 +154,8 @@ type zoneState struct {
 }
 
 type ZoneState struct {
+	// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+	DnsGroup pulumi.StringPtrInput
 	// Whether the Private Zone is ptr.
 	IsPtr pulumi.BoolPtrInput
 	// The language. Valid values: "zh", "en", "jp".
@@ -186,6 +192,8 @@ func (ZoneState) ElementType() reflect.Type {
 }
 
 type zoneArgs struct {
+	// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+	DnsGroup *string `pulumi:"dnsGroup"`
 	// The language. Valid values: "zh", "en", "jp".
 	Lang *string `pulumi:"lang"`
 	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
@@ -215,6 +223,8 @@ type zoneArgs struct {
 
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
+	// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+	DnsGroup pulumi.StringPtrInput
 	// The language. Valid values: "zh", "en", "jp".
 	Lang pulumi.StringPtrInput
 	// The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
@@ -327,6 +337,11 @@ func (o ZoneOutput) ToZoneOutput() ZoneOutput {
 
 func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
+}
+
+// The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` > `NORMAL_ZONE`) is not supported by the API.
+func (o ZoneOutput) DnsGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.DnsGroup }).(pulumi.StringOutput)
 }
 
 // Whether the Private Zone is ptr.

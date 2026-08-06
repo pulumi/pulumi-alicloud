@@ -74,6 +74,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
      * 
+     * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
+     * 
      */
     @Import(name="backupInterval")
     private @Nullable Output<String> backupInterval;
@@ -88,6 +90,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     * 
+     * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      * 
      */
     public Optional<Output<String>> backupInterval() {
@@ -619,6 +623,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * - 480: A snapshot backup is performed once every 480 minutes.
          * - 720: A snapshot backup is performed once every 720 minutes.
          * 
+         * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
+         * 
          * @return builder
          * 
          */
@@ -637,6 +643,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * - 360: A snapshot backup is performed once every 360 minutes.
          * - 480: A snapshot backup is performed once every 480 minutes.
          * - 720: A snapshot backup is performed once every 720 minutes.
+         * 
+         * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
          * 
          * @return builder
          * 

@@ -304,6 +304,8 @@ type MigrationJob struct {
 	DestinationEndpointPort pulumi.StringPtrOutput `pulumi:"destinationEndpointPort"`
 	// The region of destination instance.
 	DestinationEndpointRegion pulumi.StringPtrOutput `pulumi:"destinationEndpointRegion"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringOutput `pulumi:"destinationEndpointSsl"`
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringPtrOutput `pulumi:"destinationEndpointUserName"`
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -334,6 +336,8 @@ type MigrationJob struct {
 	SourceEndpointRegion pulumi.StringPtrOutput `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringOutput `pulumi:"sourceEndpointSsl"`
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
@@ -425,6 +429,8 @@ type migrationJobState struct {
 	DestinationEndpointPort *string `pulumi:"destinationEndpointPort"`
 	// The region of destination instance.
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account.
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -455,6 +461,8 @@ type migrationJobState struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account.
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
@@ -490,6 +498,8 @@ type MigrationJobState struct {
 	DestinationEndpointPort pulumi.StringPtrInput
 	// The region of destination instance.
 	DestinationEndpointRegion pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -520,6 +530,8 @@ type MigrationJobState struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
@@ -559,6 +571,8 @@ type migrationJobArgs struct {
 	DestinationEndpointPort *string `pulumi:"destinationEndpointPort"`
 	// The region of destination instance.
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account.
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -589,6 +603,8 @@ type migrationJobArgs struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account.
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
@@ -625,6 +641,8 @@ type MigrationJobArgs struct {
 	DestinationEndpointPort pulumi.StringPtrInput
 	// The region of destination instance.
 	DestinationEndpointRegion pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -655,6 +673,8 @@ type MigrationJobArgs struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
@@ -815,6 +835,11 @@ func (o MigrationJobOutput) DestinationEndpointRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRegion }).(pulumi.StringPtrOutput)
 }
 
+// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o MigrationJobOutput) DestinationEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DestinationEndpointSsl }).(pulumi.StringOutput)
+}
+
 // The username of database account.
 func (o MigrationJobOutput) DestinationEndpointUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointUserName }).(pulumi.StringPtrOutput)
@@ -888,6 +913,11 @@ func (o MigrationJobOutput) SourceEndpointRegion() pulumi.StringPtrOutput {
 // The name of the role configured for the cloud account to which the source instance belongs.
 func (o MigrationJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
+}
+
+// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o MigrationJobOutput) SourceEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.SourceEndpointSsl }).(pulumi.StringOutput)
 }
 
 // The username of database account.

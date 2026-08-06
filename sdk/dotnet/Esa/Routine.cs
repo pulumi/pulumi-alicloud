@@ -34,12 +34,15 @@ namespace Pulumi.AliCloud.Esa
     ///     {
     ///         Description = name,
     ///         Name = name,
+    ///         Code = "addEventListener('fetch', e =&gt; e.respondWith(new Response('hello world')))",
+    ///         CodeDescription = "initial version",
+    ///         DeployEnv = "staging",
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// Manage the routine code from a local file:
     /// 
     /// ## Import
     /// 
@@ -53,19 +56,43 @@ namespace Pulumi.AliCloud.Esa
     public partial class Routine : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        /// </summary>
+        [Output("code")]
+        public Output<string?> Code { get; private set; } = null!;
+
+        /// <summary>
+        /// The description attached to the committed code version.
+        /// </summary>
+        [Output("codeDescription")]
+        public Output<string?> CodeDescription { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the routine was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The routine name, which must be unique in the same account.
+        /// The environment whose environment variables are bundled when committing the code version. Valid values: `Staging`, `Production`. If not set, no environment variables are bundled.
+        /// </summary>
+        [Output("deployEnv")]
+        public Output<string?> DeployEnv { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the routine.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Routine Name
+        /// The most recent committed code version of the routine.
+        /// </summary>
+        [Output("latestCodeVersion")]
+        public Output<string> LatestCodeVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Routine Name, which must be unique in the same account.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -117,13 +144,31 @@ namespace Pulumi.AliCloud.Esa
     public sealed class RoutineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The routine name, which must be unique in the same account.
+        /// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        /// </summary>
+        [Input("code")]
+        public Input<string>? Code { get; set; }
+
+        /// <summary>
+        /// The description attached to the committed code version.
+        /// </summary>
+        [Input("codeDescription")]
+        public Input<string>? CodeDescription { get; set; }
+
+        /// <summary>
+        /// The environment whose environment variables are bundled when committing the code version. Valid values: `Staging`, `Production`. If not set, no environment variables are bundled.
+        /// </summary>
+        [Input("deployEnv")]
+        public Input<string>? DeployEnv { get; set; }
+
+        /// <summary>
+        /// The description of the routine.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Routine Name
+        /// Routine Name, which must be unique in the same account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -137,19 +182,43 @@ namespace Pulumi.AliCloud.Esa
     public sealed class RoutineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        /// </summary>
+        [Input("code")]
+        public Input<string>? Code { get; set; }
+
+        /// <summary>
+        /// The description attached to the committed code version.
+        /// </summary>
+        [Input("codeDescription")]
+        public Input<string>? CodeDescription { get; set; }
+
+        /// <summary>
         /// The time when the routine was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The routine name, which must be unique in the same account.
+        /// The environment whose environment variables are bundled when committing the code version. Valid values: `Staging`, `Production`. If not set, no environment variables are bundled.
+        /// </summary>
+        [Input("deployEnv")]
+        public Input<string>? DeployEnv { get; set; }
+
+        /// <summary>
+        /// The description of the routine.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Routine Name
+        /// The most recent committed code version of the routine.
+        /// </summary>
+        [Input("latestCodeVersion")]
+        public Input<string>? LatestCodeVersion { get; set; }
+
+        /// <summary>
+        /// Routine Name, which must be unique in the same account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

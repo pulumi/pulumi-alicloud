@@ -548,6 +548,100 @@ import (
 //
 // ```
 //
+// # ACK Cluster with an automatically created private NLB
+//
+// When `loadBalancerId` is omitted, ACK automatically creates and manages a private NLB for the cluster API server endpoint, so there is no need to create an `nlb.LoadBalancer` resource. The cluster must span at least two zones so that the auto-created NLB gets a valid zone list.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example-auto-nlb"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			// The kubernetes service cidr block.
+//			serviceCidr := "172.23.0.0/16"
+//			if param := cfg.Get("serviceCidr"); param != "" {
+//				serviceCidr = param
+//			}
+//			_default, err := nlb.GetZones(ctx, &nlb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.1.0.0/21"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := vpc.NewSwitch(ctx, "default_1", &vpc.SwitchArgs{
+//				VswitchName: pulumi.Sprintf("%v-1", name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.1.1.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default2, err := vpc.NewSwitch(ctx, "default_2", &vpc.SwitchArgs{
+//				VswitchName: pulumi.Sprintf("%v-2", name),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.1.2.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[1].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+//				Name:        pulumi.String(name),
+//				ClusterSpec: pulumi.String("ack.pro.small"),
+//				VswitchIds: pulumi.StringArray{
+//					default1.ID(),
+//					default2.ID(),
+//				},
+//				PodVswitchIds: pulumi.StringArray{
+//					default1.ID(),
+//					default2.ID(),
+//				},
+//				NewNatGateway:             pulumi.Bool(false),
+//				ServiceCidr:               pulumi.String(serviceCidr),
+//				IsEnterpriseSecurityGroup: pulumi.Bool(true),
+//				Addons: cs.ManagedKubernetesAddonArray{
+//					&cs.ManagedKubernetesAddonArgs{
+//						Name: pulumi.String("terway-eniip"),
+//					},
+//				},
+//				ControlPlaneEndpointsConfig: &cs.ManagedKubernetesControlPlaneEndpointsConfigArgs{
+//					LoadBalancersConfigs: cs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray{
+//						&cs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{
+//							EndpointType: pulumi.String("private"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
@@ -599,6 +693,8 @@ type ManagedKubernetes struct {
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
 	Connections ManagedKubernetesConnectionsOutput `pulumi:"connections"`
+	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+	ControlPlaneEndpointsConfig ManagedKubernetesControlPlaneEndpointsConfigOutput `pulumi:"controlPlaneEndpointsConfig"`
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
 	ControlPlaneLogComponents pulumi.StringArrayOutput `pulumi:"controlPlaneLogComponents"`
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -792,6 +888,8 @@ type managedKubernetesState struct {
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
 	Connections *ManagedKubernetesConnections `pulumi:"connections"`
+	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+	ControlPlaneEndpointsConfig *ManagedKubernetesControlPlaneEndpointsConfig `pulumi:"controlPlaneEndpointsConfig"`
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
 	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -956,6 +1054,8 @@ type ManagedKubernetesState struct {
 	ClusterSpec pulumi.StringPtrInput
 	// Map of kubernetes cluster connection information.
 	Connections ManagedKubernetesConnectionsPtrInput
+	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+	ControlPlaneEndpointsConfig ManagedKubernetesControlPlaneEndpointsConfigPtrInput
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
 	ControlPlaneLogComponents pulumi.StringArrayInput
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -1118,6 +1218,8 @@ type managedKubernetesArgs struct {
 	//
 	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec *string `pulumi:"clusterSpec"`
+	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+	ControlPlaneEndpointsConfig *ManagedKubernetesControlPlaneEndpointsConfig `pulumi:"controlPlaneEndpointsConfig"`
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
 	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -1263,6 +1365,8 @@ type ManagedKubernetesArgs struct {
 	//
 	// ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
 	ClusterSpec pulumi.StringPtrInput
+	// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+	ControlPlaneEndpointsConfig ManagedKubernetesControlPlaneEndpointsConfigPtrInput
 	// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
 	ControlPlaneLogComponents pulumi.StringArrayInput
 	// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
@@ -1530,6 +1634,13 @@ func (o ManagedKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 // Map of kubernetes cluster connection information.
 func (o ManagedKubernetesOutput) Connections() ManagedKubernetesConnectionsOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesConnectionsOutput { return v.Connections }).(ManagedKubernetesConnectionsOutput)
+}
+
+// The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+func (o ManagedKubernetesOutput) ControlPlaneEndpointsConfig() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesControlPlaneEndpointsConfigOutput {
+		return v.ControlPlaneEndpointsConfig
+	}).(ManagedKubernetesControlPlaneEndpointsConfigOutput)
 }
 
 // List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.

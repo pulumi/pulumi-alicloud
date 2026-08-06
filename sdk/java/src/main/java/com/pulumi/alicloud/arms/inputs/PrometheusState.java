@@ -5,6 +5,7 @@ package com.pulumi.alicloud.arms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
 
     public static final PrometheusState Empty = new PrometheusState();
+
+    /**
+     * The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     * 
+     */
+    @Import(name="archiveDuration")
+    private @Nullable Output<Integer> archiveDuration;
+
+    /**
+     * @return The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     * 
+     */
+    public Optional<Output<Integer>> archiveDuration() {
+        return Optional.ofNullable(this.archiveDuration);
+    }
 
     /**
      * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
@@ -62,6 +78,21 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The data storage duration, in days.
+     * 
+     */
+    @Import(name="duration")
+    private @Nullable Output<Integer> duration;
+
+    /**
+     * @return The data storage duration, in days.
+     * 
+     */
+    public Optional<Output<Integer>> duration() {
+        return Optional.ofNullable(this.duration);
+    }
+
+    /**
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      * 
      */
@@ -74,6 +105,21 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> grafanaInstanceId() {
         return Optional.ofNullable(this.grafanaInstanceId);
+    }
+
+    /**
+     * The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
     }
 
     /**
@@ -169,10 +215,13 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
     private PrometheusState() {}
 
     private PrometheusState(PrometheusState $) {
+        this.archiveDuration = $.archiveDuration;
         this.clusterId = $.clusterId;
         this.clusterName = $.clusterName;
         this.clusterType = $.clusterType;
+        this.duration = $.duration;
         this.grafanaInstanceId = $.grafanaInstanceId;
+        this.paymentType = $.paymentType;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupId = $.securityGroupId;
         this.subClustersJson = $.subClustersJson;
@@ -197,6 +246,27 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(PrometheusState defaults) {
             $ = new PrometheusState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param archiveDuration The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archiveDuration(@Nullable Output<Integer> archiveDuration) {
+            $.archiveDuration = archiveDuration;
+            return this;
+        }
+
+        /**
+         * @param archiveDuration The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archiveDuration(Integer archiveDuration) {
+            return archiveDuration(Output.of(archiveDuration));
         }
 
         /**
@@ -263,6 +333,27 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param duration The data storage duration, in days.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(@Nullable Output<Integer> duration) {
+            $.duration = duration;
+            return this;
+        }
+
+        /**
+         * @param duration The data storage duration, in days.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(Integer duration) {
+            return duration(Output.of(duration));
+        }
+
+        /**
          * @param grafanaInstanceId The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
          * 
          * @return builder
@@ -281,6 +372,27 @@ public final class PrometheusState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder grafanaInstanceId(String grafanaInstanceId) {
             return grafanaInstanceId(Output.of(grafanaInstanceId));
+        }
+
+        /**
+         * @param paymentType The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
         }
 
         /**

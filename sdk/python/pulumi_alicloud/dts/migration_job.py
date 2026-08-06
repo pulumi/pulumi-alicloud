@@ -36,6 +36,7 @@ class MigrationJobArgs:
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_class: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,6 +49,7 @@ class MigrationJobArgs:
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -70,6 +72,7 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
@@ -82,6 +85,7 @@ class MigrationJobArgs:
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         """
@@ -110,6 +114,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        if destination_endpoint_ssl is not None:
+            pulumi.set(__self__, "destination_endpoint_ssl", destination_endpoint_ssl)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_job_name is not None:
@@ -134,6 +140,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        if source_endpoint_ssl is not None:
+            pulumi.set(__self__, "source_endpoint_ssl", source_endpoint_ssl)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
@@ -344,6 +352,18 @@ class MigrationJobArgs:
         pulumi.set(self, "destination_endpoint_region", value)
 
     @_builtins.property
+    @pulumi.getter(name="destinationEndpointSsl")
+    def destination_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "destination_endpoint_ssl")
+
+    @destination_endpoint_ssl.setter
+    def destination_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
     def destination_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -488,6 +508,18 @@ class MigrationJobArgs:
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @source_endpoint_ssl.setter
+    def source_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -528,6 +560,7 @@ class _MigrationJobState:
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -543,6 +576,7 @@ class _MigrationJobState:
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -562,6 +596,7 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
@@ -577,6 +612,7 @@ class _MigrationJobState:
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
@@ -607,6 +643,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
             pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+        if destination_endpoint_ssl is not None:
+            pulumi.set(__self__, "destination_endpoint_ssl", destination_endpoint_ssl)
         if destination_endpoint_user_name is not None:
             pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_instance_id is not None:
@@ -637,6 +675,8 @@ class _MigrationJobState:
             pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
             pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+        if source_endpoint_ssl is not None:
+            pulumi.set(__self__, "source_endpoint_ssl", source_endpoint_ssl)
         if source_endpoint_user_name is not None:
             pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
@@ -799,6 +839,18 @@ class _MigrationJobState:
     @destination_endpoint_region.setter
     def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationEndpointSsl")
+    def destination_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "destination_endpoint_ssl")
+
+    @destination_endpoint_ssl.setter
+    def destination_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "destination_endpoint_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
@@ -981,6 +1033,18 @@ class _MigrationJobState:
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
+
+    @source_endpoint_ssl.setter
+    def source_endpoint_ssl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_endpoint_ssl", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
     def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1036,6 +1100,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1051,6 +1116,7 @@ class MigrationJob(pulumi.CustomResource):
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1208,6 +1274,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
@@ -1223,6 +1290,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
@@ -1399,6 +1467,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1414,6 +1483,7 @@ class MigrationJob(pulumi.CustomResource):
                  source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
                  source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1449,6 +1519,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["destination_endpoint_password"] = destination_endpoint_password
             __props__.__dict__["destination_endpoint_port"] = destination_endpoint_port
             __props__.__dict__["destination_endpoint_region"] = destination_endpoint_region
+            __props__.__dict__["destination_endpoint_ssl"] = destination_endpoint_ssl
             __props__.__dict__["destination_endpoint_user_name"] = destination_endpoint_user_name
             if dts_instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dts_instance_id'")
@@ -1470,6 +1541,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["source_endpoint_port"] = source_endpoint_port
             __props__.__dict__["source_endpoint_region"] = source_endpoint_region
             __props__.__dict__["source_endpoint_role"] = source_endpoint_role
+            __props__.__dict__["source_endpoint_ssl"] = source_endpoint_ssl
             __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
             __props__.__dict__["status"] = status
             if structure_initialization is None and not opts.urn:
@@ -1498,6 +1570,7 @@ class MigrationJob(pulumi.CustomResource):
             destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
             destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1513,6 +1586,7 @@ class MigrationJob(pulumi.CustomResource):
             source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ssl: pulumi.Input[Optional[_builtins.str]] = None,
             source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None) -> 'MigrationJob':
@@ -1536,6 +1610,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] destination_endpoint_password: The password of database account.
         :param pulumi.Input[_builtins.str] destination_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] destination_endpoint_region: The region of destination instance.
+        :param pulumi.Input[_builtins.str] destination_endpoint_ssl: The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] destination_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] dts_instance_id: The Migration instance ID. The ID of `dts.MigrationInstance`.
         :param pulumi.Input[_builtins.str] dts_job_name: The name of migration job.
@@ -1551,6 +1626,7 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_endpoint_port: The port of source endpoint.
         :param pulumi.Input[_builtins.str] source_endpoint_region: The region of source instance.
         :param pulumi.Input[_builtins.str] source_endpoint_role: The name of the role configured for the cloud account to which the source instance belongs.
+        :param pulumi.Input[_builtins.str] source_endpoint_ssl: The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
         :param pulumi.Input[_builtins.str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         :param pulumi.Input[_builtins.bool] structure_initialization: Whether to perform a database table structure to migrate.
@@ -1572,6 +1648,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["destination_endpoint_password"] = destination_endpoint_password
         __props__.__dict__["destination_endpoint_port"] = destination_endpoint_port
         __props__.__dict__["destination_endpoint_region"] = destination_endpoint_region
+        __props__.__dict__["destination_endpoint_ssl"] = destination_endpoint_ssl
         __props__.__dict__["destination_endpoint_user_name"] = destination_endpoint_user_name
         __props__.__dict__["dts_instance_id"] = dts_instance_id
         __props__.__dict__["dts_job_name"] = dts_job_name
@@ -1587,6 +1664,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["source_endpoint_port"] = source_endpoint_port
         __props__.__dict__["source_endpoint_region"] = source_endpoint_region
         __props__.__dict__["source_endpoint_role"] = source_endpoint_role
+        __props__.__dict__["source_endpoint_ssl"] = source_endpoint_ssl
         __props__.__dict__["source_endpoint_user_name"] = source_endpoint_user_name
         __props__.__dict__["status"] = status
         __props__.__dict__["structure_initialization"] = structure_initialization
@@ -1695,6 +1773,14 @@ class MigrationJob(pulumi.CustomResource):
         The region of destination instance.
         """
         return pulumi.get(self, "destination_endpoint_region")
+
+    @_builtins.property
+    @pulumi.getter(name="destinationEndpointSsl")
+    def destination_endpoint_ssl(self) -> pulumi.Output[_builtins.str]:
+        """
+        The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "destination_endpoint_ssl")
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
@@ -1815,6 +1901,14 @@ class MigrationJob(pulumi.CustomResource):
         The name of the role configured for the cloud account to which the source instance belongs.
         """
         return pulumi.get(self, "source_endpoint_role")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceEndpointSsl")
+    def source_endpoint_ssl(self) -> pulumi.Output[_builtins.str]:
+        """
+        The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        """
+        return pulumi.get(self, "source_endpoint_ssl")
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")

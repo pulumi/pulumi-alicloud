@@ -5,6 +5,7 @@ package com.pulumi.alicloud.apig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +18,37 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     public static final HttpApiState Empty = new HttpApiState();
 
     /**
-     * API path
+     * AI API protocols. Currently the supported value is `OpenAI/v1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Import(name="aiProtocols")
+    private @Nullable Output<List<String>> aiProtocols;
+
+    /**
+     * @return AI API protocols. Currently the supported value is `OpenAI/v1`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Optional<Output<List<String>>> aiProtocols() {
+        return Optional.ofNullable(this.aiProtocols);
+    }
+
+    /**
+     * API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     @Import(name="basePath")
     private @Nullable Output<String> basePath;
 
     /**
-     * @return API path
+     * @return API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      * 
      */
     public Optional<Output<String>> basePath() {
@@ -32,14 +56,33 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of API
+     * API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    @Import(name="deployConfigs")
+    private @Nullable Output<List<String>> deployConfigs;
+
+    /**
+     * @return API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+     * 
+     * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+     * 
+     */
+    public Optional<Output<List<String>>> deployConfigs() {
+        return Optional.ofNullable(this.deployConfigs);
+    }
+
+    /**
+     * API description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of API
+     * @return API description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,14 +90,33 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the resource
+     * Whether to enable authentication.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Import(name="enableAuth")
+    private @Nullable Output<Boolean> enableAuth;
+
+    /**
+     * @return Whether to enable authentication.
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAuth() {
+        return Optional.ofNullable(this.enableAuth);
+    }
+
+    /**
+     * Perform an exact search by name.
      * 
      */
     @Import(name="httpApiName")
     private @Nullable Output<String> httpApiName;
 
     /**
-     * @return The name of the resource
+     * @return Perform an exact search by name.
      * 
      */
     public Optional<Output<String>> httpApiName() {
@@ -62,14 +124,33 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * API protocol
+     * AI model category
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    @Import(name="modelCategory")
+    private @Nullable Output<String> modelCategory;
+
+    /**
+     * @return AI model category
+     * 
+     * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+     * 
+     */
+    public Optional<Output<String>> modelCategory() {
+        return Optional.ofNullable(this.modelCategory);
+    }
+
+    /**
+     * List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      * 
      */
     @Import(name="protocols")
     private @Nullable Output<List<String>> protocols;
 
     /**
-     * @return API protocol
+     * @return List of API access protocols. Valid values: `HTTP`, `HTTPS`.
      * 
      */
     public Optional<Output<List<String>>> protocols() {
@@ -77,14 +158,14 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group
+     * The ID of the resource group. It can be modified to migrate the resource to another resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group. It can be modified to migrate the resource to another resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -92,14 +173,24 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * API type
+     * The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return API type
+     * @return The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+     * - Http
+     * - Rest
+     * - LLM
+     * - WebSocket
+     * - HttpIngress
      * 
      */
     public Optional<Output<String>> type() {
@@ -109,9 +200,13 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
     private HttpApiState() {}
 
     private HttpApiState(HttpApiState $) {
+        this.aiProtocols = $.aiProtocols;
         this.basePath = $.basePath;
+        this.deployConfigs = $.deployConfigs;
         this.description = $.description;
+        this.enableAuth = $.enableAuth;
         this.httpApiName = $.httpApiName;
+        this.modelCategory = $.modelCategory;
         this.protocols = $.protocols;
         this.resourceGroupId = $.resourceGroupId;
         this.type = $.type;
@@ -136,7 +231,46 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basePath API path
+         * @param aiProtocols AI API protocols. Currently the supported value is `OpenAI/v1`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiProtocols(@Nullable Output<List<String>> aiProtocols) {
+            $.aiProtocols = aiProtocols;
+            return this;
+        }
+
+        /**
+         * @param aiProtocols AI API protocols. Currently the supported value is `OpenAI/v1`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiProtocols(List<String> aiProtocols) {
+            return aiProtocols(Output.of(aiProtocols));
+        }
+
+        /**
+         * @param aiProtocols AI API protocols. Currently the supported value is `OpenAI/v1`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aiProtocols(String... aiProtocols) {
+            return aiProtocols(List.of(aiProtocols));
+        }
+
+        /**
+         * @param basePath API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -147,7 +281,9 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param basePath API path
+         * @param basePath API base path. It must start with a forward slash (/), be at most 256 bytes long, and must not contain spaces. It is required when `type` is `Rest`; when `type` is `LLM`, `Ai`, or `Agent`, it can be omitted and defaults to `/`.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
          * 
          * @return builder
          * 
@@ -157,7 +293,44 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of API
+         * @param deployConfigs API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployConfigs(@Nullable Output<List<String>> deployConfigs) {
+            $.deployConfigs = deployConfigs;
+            return this;
+        }
+
+        /**
+         * @param deployConfigs API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployConfigs(List<String> deployConfigs) {
+            return deployConfigs(Output.of(deployConfigs));
+        }
+
+        /**
+         * @param deployConfigs API deployment configurations. It is required when `type` is `LLM` or `Ai`, and only a single deployment configuration can be specified. Other types do not need this field.
+         * 
+         * &gt; **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployConfigs(String... deployConfigs) {
+            return deployConfigs(List.of(deployConfigs));
+        }
+
+        /**
+         * @param description API description.
          * 
          * @return builder
          * 
@@ -168,7 +341,7 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of API
+         * @param description API description.
          * 
          * @return builder
          * 
@@ -178,7 +351,32 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpApiName The name of the resource
+         * @param enableAuth Whether to enable authentication.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAuth(@Nullable Output<Boolean> enableAuth) {
+            $.enableAuth = enableAuth;
+            return this;
+        }
+
+        /**
+         * @param enableAuth Whether to enable authentication.
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAuth(Boolean enableAuth) {
+            return enableAuth(Output.of(enableAuth));
+        }
+
+        /**
+         * @param httpApiName Perform an exact search by name.
          * 
          * @return builder
          * 
@@ -189,7 +387,7 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpApiName The name of the resource
+         * @param httpApiName Perform an exact search by name.
          * 
          * @return builder
          * 
@@ -199,7 +397,32 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols API protocol
+         * @param modelCategory AI model category
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelCategory(@Nullable Output<String> modelCategory) {
+            $.modelCategory = modelCategory;
+            return this;
+        }
+
+        /**
+         * @param modelCategory AI model category
+         * 
+         * &gt; **NOTE:** This parameter is immutable. Changing it after creation has no effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modelCategory(String modelCategory) {
+            return modelCategory(Output.of(modelCategory));
+        }
+
+        /**
+         * @param protocols List of API access protocols. Valid values: `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -210,7 +433,7 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols API protocol
+         * @param protocols List of API access protocols. Valid values: `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -220,7 +443,7 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocols API protocol
+         * @param protocols List of API access protocols. Valid values: `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -230,7 +453,7 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the resource group. It can be modified to migrate the resource to another resource group.
          * 
          * @return builder
          * 
@@ -241,7 +464,7 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the resource group. It can be modified to migrate the resource to another resource group.
          * 
          * @return builder
          * 
@@ -251,7 +474,12 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type API type
+         * @param type The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+         * - Http
+         * - Rest
+         * - LLM
+         * - WebSocket
+         * - HttpIngress
          * 
          * @return builder
          * 
@@ -262,7 +490,12 @@ public final class HttpApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type API type
+         * @param type The type of the HTTP API. Multiple types are supported and must be separated by commas (,).
+         * - Http
+         * - Rest
+         * - LLM
+         * - WebSocket
+         * - HttpIngress
          * 
          * @return builder
          * 

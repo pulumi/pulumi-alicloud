@@ -107,6 +107,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** If the instance runs MySQL, `BackupInterval` is supported only when the `EngineVersion` of the instance is `5.7` or `8.0`, the `Category` of the instance is `HighAvailability` (High-availability Edition) or `Cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`DbInstanceStorageType` is not `LocalSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         /// </summary>
         [Output("backupInterval")]
         public Output<string> BackupInterval { get; private set; } = null!;
@@ -333,6 +335,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** If the instance runs MySQL, `BackupInterval` is supported only when the `EngineVersion` of the instance is `5.7` or `8.0`, the `Category` of the instance is `HighAvailability` (High-availability Edition) or `Cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`DbInstanceStorageType` is not `LocalSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         /// </summary>
         [Input("backupInterval")]
         public Input<string>? BackupInterval { get; set; }
@@ -534,6 +538,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** If the instance runs MySQL, `BackupInterval` is supported only when the `EngineVersion` of the instance is `5.7` or `8.0`, the `Category` of the instance is `HighAvailability` (High-availability Edition) or `Cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`DbInstanceStorageType` is not `LocalSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         /// </summary>
         [Input("backupInterval")]
         public Input<string>? BackupInterval { get; set; }

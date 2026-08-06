@@ -55,6 +55,16 @@ export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
+export { DynamoItemArgs, DynamoItemState } from "./dynamoItem";
+export type DynamoItem = import("./dynamoItem").DynamoItem;
+export const DynamoItem: typeof import("./dynamoItem").DynamoItem = null as any;
+utilities.lazyLoad(exports, ["DynamoItem"], () => require("./dynamoItem"));
+
+export { DynamoTableArgs, DynamoTableState } from "./dynamoTable";
+export type DynamoTable = import("./dynamoTable").DynamoTable;
+export const DynamoTable: typeof import("./dynamoTable").DynamoTable = null as any;
+utilities.lazyLoad(exports, ["DynamoTable"], () => require("./dynamoTable"));
+
 export { EndpointArgs, EndpointState } from "./endpoint";
 export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
@@ -165,6 +175,10 @@ const _module = {
                 return new ClusterEndpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/database:Database":
                 return new Database(name, <any>undefined, { urn })
+            case "alicloud:polardb/dynamoItem:DynamoItem":
+                return new DynamoItem(name, <any>undefined, { urn })
+            case "alicloud:polardb/dynamoTable:DynamoTable":
+                return new DynamoTable(name, <any>undefined, { urn })
             case "alicloud:polardb/endpoint:Endpoint":
                 return new Endpoint(name, <any>undefined, { urn })
             case "alicloud:polardb/endpointAddress:EndpointAddress":
@@ -198,6 +212,8 @@ pulumi.runtime.registerResourceModule("alicloud", "polardb/batchTask", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/clusterEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/database", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/dynamoItem", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/dynamoTable", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpointAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/globalDatabaseNetwork", _module)

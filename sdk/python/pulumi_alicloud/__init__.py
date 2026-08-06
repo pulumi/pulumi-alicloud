@@ -296,6 +296,8 @@ if typing.TYPE_CHECKING:
     sms = __sms
     import pulumi_alicloud.sslcertificatesservice as __sslcertificatesservice
     sslcertificatesservice = __sslcertificatesservice
+    import pulumi_alicloud.sslcertificatesservicecertificate as __sslcertificatesservicecertificate
+    sslcertificatesservicecertificate = __sslcertificatesservicecertificate
     import pulumi_alicloud.sslcertificatesservicepca as __sslcertificatesservicepca
     sslcertificatesservicepca = __sslcertificatesservicepca
     import pulumi_alicloud.starrocks as __starrocks
@@ -455,6 +457,7 @@ else:
     sls = _utilities.lazy_import('pulumi_alicloud.sls')
     sms = _utilities.lazy_import('pulumi_alicloud.sms')
     sslcertificatesservice = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservice')
+    sslcertificatesservicecertificate = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservicecertificate')
     sslcertificatesservicepca = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservicepca')
     starrocks = _utilities.lazy_import('pulumi_alicloud.starrocks')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
@@ -913,6 +916,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apig/aiModelProvider",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/aiModelProvider:AiModelProvider": "AiModelProvider"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/domain",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apig/environment",
   "fqn": "pulumi_alicloud.apig",
   "classes": {
@@ -937,10 +956,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "apig/plugin",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/plugin:Plugin": "Plugin"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "apig/pluginClass",
   "fqn": "pulumi_alicloud.apig",
   "classes": {
    "alicloud:apig/pluginClass:PluginClass": "PluginClass"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/route",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/route:Route": "Route"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "apig/service",
+  "fqn": "pulumi_alicloud.apig",
+  "classes": {
+   "alicloud:apig/service:Service": "Service"
   }
  },
  {
@@ -4801,6 +4844,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/routineCodeDeployment",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/routineCodeDeployment:RoutineCodeDeployment": "RoutineCodeDeployment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/routineRelatedRecord",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -5625,6 +5676,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/apiKey",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/apiKey:ApiKey": "ApiKey"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/backupPolicy",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
@@ -6377,6 +6436,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "message/serviceAccountLogging",
+  "fqn": "pulumi_alicloud.message",
+  "classes": {
+   "alicloud:message/serviceAccountLogging:ServiceAccountLogging": "ServiceAccountLogging"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "message/serviceEndpoint",
   "fqn": "pulumi_alicloud.message",
   "classes": {
@@ -6669,6 +6736,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.nas",
   "classes": {
    "alicloud:nas/lifecyclePolicy:LifecyclePolicy": "LifecyclePolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "nas/logAnalysis",
+  "fqn": "pulumi_alicloud.nas",
+  "classes": {
+   "alicloud:nas/logAnalysis:LogAnalysis": "LogAnalysis"
   }
  },
  {
@@ -7361,6 +7436,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/dynamoItem",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/dynamoItem:DynamoItem": "DynamoItem"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/dynamoTable",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/dynamoTable:DynamoTable": "DynamoTable"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/endpoint",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
@@ -7597,6 +7688,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ram",
   "classes": {
    "alicloud:ram/accessKey:AccessKey": "AccessKey"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ram/accessKeyPolicy",
+  "fqn": "pulumi_alicloud.ram",
+  "classes": {
+   "alicloud:ram/accessKeyPolicy:AccessKeyPolicy": "AccessKeyPolicy"
   }
  },
  {
@@ -8133,6 +8232,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
    "alicloud:resourcemanager/resourceGroup:ResourceGroup": "ResourceGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "resourcemanager/resourceGroupSettings",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/resourceGroupSettings:ResourceGroupSettings": "ResourceGroupSettings"
   }
  },
  {
@@ -8905,10 +9012,42 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "sslcertificatesservice/company",
+  "fqn": "pulumi_alicloud.sslcertificatesservice",
+  "classes": {
+   "alicloud:sslcertificatesservice/company:Company": "Company"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservice/contact",
+  "fqn": "pulumi_alicloud.sslcertificatesservice",
+  "classes": {
+   "alicloud:sslcertificatesservice/contact:Contact": "Contact"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservice/instance",
+  "fqn": "pulumi_alicloud.sslcertificatesservice",
+  "classes": {
+   "alicloud:sslcertificatesservice/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "sslcertificatesservice/pcaCertificate",
   "fqn": "pulumi_alicloud.sslcertificatesservice",
   "classes": {
    "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate": "PcaCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sslcertificatesservicecertificate/apply",
+  "fqn": "pulumi_alicloud.sslcertificatesservicecertificate",
+  "classes": {
+   "alicloud:sslcertificatesservicecertificate/apply:Apply": "Apply"
   }
  },
  {

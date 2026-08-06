@@ -189,6 +189,15 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<string> Scheduler { get; private set; } = null!;
 
         /// <summary>
+        /// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+        /// 
+        /// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+        /// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+        /// </summary>
+        [Output("serverFailoverMode")]
+        public Output<string> ServerFailoverMode { get; private set; } = null!;
+
+        /// <summary>
         /// The server group name.
         /// 
         /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -325,6 +334,15 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
+        /// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+        /// 
+        /// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+        /// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+        /// </summary>
+        [Input("serverFailoverMode")]
+        public Input<string>? ServerFailoverMode { get; set; }
+
+        /// <summary>
         /// The server group name.
         /// 
         /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -433,6 +451,15 @@ namespace Pulumi.AliCloud.Gwlb
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
+
+        /// <summary>
+        /// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+        /// 
+        /// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+        /// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+        /// </summary>
+        [Input("serverFailoverMode")]
+        public Input<string>? ServerFailoverMode { get; set; }
 
         /// <summary>
         /// The server group name.

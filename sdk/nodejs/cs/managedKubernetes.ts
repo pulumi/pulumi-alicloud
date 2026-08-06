@@ -307,6 +307,60 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ACK Cluster with an automatically created private NLB
+ *
+ * When `loadBalancerId` is omitted, ACK automatically creates and manages a private NLB for the cluster API server endpoint, so there is no need to create an `alicloud.nlb.LoadBalancer` resource. The cluster must span at least two zones so that the auto-created NLB gets a valid zone list.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example-auto-nlb";
+ * // The kubernetes service cidr block.
+ * const serviceCidr = config.get("serviceCidr") || "172.23.0.0/16";
+ * const _default = alicloud.nlb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.1.0.0/21",
+ * });
+ * const default1 = new alicloud.vpc.Switch("default_1", {
+ *     vswitchName: `${name}-1`,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.1.1.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const default2 = new alicloud.vpc.Switch("default_2", {
+ *     vswitchName: `${name}-2`,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "10.1.2.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[1]?.id),
+ * });
+ * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
+ *     name: name,
+ *     clusterSpec: "ack.pro.small",
+ *     vswitchIds: [
+ *         default1.id,
+ *         default2.id,
+ *     ],
+ *     podVswitchIds: [
+ *         default1.id,
+ *         default2.id,
+ *     ],
+ *     newNatGateway: false,
+ *     serviceCidr: serviceCidr,
+ *     isEnterpriseSecurityGroup: true,
+ *     addons: [{
+ *         name: "terway-eniip",
+ *     }],
+ *     controlPlaneEndpointsConfig: {
+ *         loadBalancersConfigs: [{
+ *             endpointType: "private",
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
@@ -406,6 +460,10 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      * Map of kubernetes cluster connection information.
      */
     declare public /*out*/ readonly connections: pulumi.Output<outputs.cs.ManagedKubernetesConnections>;
+    /**
+     * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     */
+    declare public readonly controlPlaneEndpointsConfig: pulumi.Output<outputs.cs.ManagedKubernetesControlPlaneEndpointsConfig>;
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      */
@@ -641,6 +699,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["clusterDomain"] = state?.clusterDomain;
             resourceInputs["clusterSpec"] = state?.clusterSpec;
             resourceInputs["connections"] = state?.connections;
+            resourceInputs["controlPlaneEndpointsConfig"] = state?.controlPlaneEndpointsConfig;
             resourceInputs["controlPlaneLogComponents"] = state?.controlPlaneLogComponents;
             resourceInputs["controlPlaneLogProject"] = state?.controlPlaneLogProject;
             resourceInputs["controlPlaneLogTtl"] = state?.controlPlaneLogTtl;
@@ -696,6 +755,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["clusterCaCert"] = args?.clusterCaCert;
             resourceInputs["clusterDomain"] = args?.clusterDomain;
             resourceInputs["clusterSpec"] = args?.clusterSpec;
+            resourceInputs["controlPlaneEndpointsConfig"] = args?.controlPlaneEndpointsConfig;
             resourceInputs["controlPlaneLogComponents"] = args?.controlPlaneLogComponents;
             resourceInputs["controlPlaneLogProject"] = args?.controlPlaneLogProject;
             resourceInputs["controlPlaneLogTtl"] = args?.controlPlaneLogTtl;
@@ -813,6 +873,10 @@ export interface ManagedKubernetesState {
      * Map of kubernetes cluster connection information.
      */
     connections?: pulumi.Input<inputs.cs.ManagedKubernetesConnections | undefined>;
+    /**
+     * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     */
+    controlPlaneEndpointsConfig?: pulumi.Input<inputs.cs.ManagedKubernetesControlPlaneEndpointsConfig | undefined>;
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      */
@@ -1080,6 +1144,10 @@ export interface ManagedKubernetesArgs {
      * ACK Pro Provisioned Control Plane (Pro XL/2XL/4XL) tiers pre-allocate and dedicate control plane resources to ensure consistently high API concurrency and pod scheduling performance, making them suitable for AI training/inference, ultra-large-scale clusters, and mission-critical workloads. For details, see [Cluster management fees](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee) and [ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane).
      */
     clusterSpec?: pulumi.Input<string | undefined>;
+    /**
+     * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     */
+    controlPlaneEndpointsConfig?: pulumi.Input<inputs.cs.ManagedKubernetesControlPlaneEndpointsConfig | undefined>;
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      */

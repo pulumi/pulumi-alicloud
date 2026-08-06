@@ -16,14 +16,14 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
     public static final GatewayZoneArgs Empty = new GatewayZoneArgs();
 
     /**
-     * The zone name.
+     * The name of the availability zone for the gateway.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch ID.
+     * The ID of the virtual switch in the availability zone.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch ID.
+     * @return The ID of the virtual switch in the availability zone.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -46,14 +46,14 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID.
+     * The ID of the availability zone for the gateway.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID.
+     * @return The ID of the availability zone for the gateway.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -87,7 +87,7 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name.
+         * @param name The name of the availability zone for the gateway.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name.
+         * @param name The name of the availability zone for the gateway.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch ID.
+         * @param vswitchId The ID of the virtual switch in the availability zone.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch ID.
+         * @param vswitchId The ID of the virtual switch in the availability zone.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID.
+         * @param zoneId The ID of the availability zone for the gateway.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GatewayZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID.
+         * @param zoneId The ID of the availability zone for the gateway.
          * 
          * @return builder
          * 

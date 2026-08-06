@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
     public sealed class InstanceParameter
     {
         /// <summary>
-        /// (Available since v1.231.0) The default value of the parameter.
+        /// The default value of the parameter.
         /// </summary>
         public readonly string? DefaultValue;
         /// <summary>
-        /// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+        /// Whether to force restart the instance to config the parameter.
         /// </summary>
         public readonly string? ForceRestartInstance;
         /// <summary>
-        /// (Available since v1.231.0) Whether the parameter is changeable.
+        /// Whether the parameter is changeable.
         /// </summary>
         public readonly string? IsChangeableConfig;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Available since v1.231.0) The optional range of the parameter.
+        /// The optional range of the parameter.
         /// </summary>
         public readonly string? OptionalRange;
         /// <summary>
-        /// (Available since v1.231.0) The description of the parameter.
+        /// The description of the parameter.
         /// </summary>
         public readonly string? ParameterDescription;
         /// <summary>

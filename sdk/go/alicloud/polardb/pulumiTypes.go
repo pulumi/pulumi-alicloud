@@ -691,6 +691,543 @@ func (o ClusterParameterArrayOutput) Index(i pulumi.IntInput) ClusterParameterOu
 	}).(ClusterParameterOutput)
 }
 
+type DynamoTableAttribute struct {
+	// The name of the attribute.
+	Name string `pulumi:"name"`
+	// The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+	Type string `pulumi:"type"`
+}
+
+// DynamoTableAttributeInput is an input type that accepts DynamoTableAttributeArgs and DynamoTableAttributeOutput values.
+// You can construct a concrete instance of `DynamoTableAttributeInput` via:
+//
+//	DynamoTableAttributeArgs{...}
+type DynamoTableAttributeInput interface {
+	pulumi.Input
+
+	ToDynamoTableAttributeOutput() DynamoTableAttributeOutput
+	ToDynamoTableAttributeOutputWithContext(context.Context) DynamoTableAttributeOutput
+}
+
+type DynamoTableAttributeArgs struct {
+	// The name of the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DynamoTableAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableAttribute)(nil)).Elem()
+}
+
+func (i DynamoTableAttributeArgs) ToDynamoTableAttributeOutput() DynamoTableAttributeOutput {
+	return i.ToDynamoTableAttributeOutputWithContext(context.Background())
+}
+
+func (i DynamoTableAttributeArgs) ToDynamoTableAttributeOutputWithContext(ctx context.Context) DynamoTableAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableAttributeOutput)
+}
+
+// DynamoTableAttributeArrayInput is an input type that accepts DynamoTableAttributeArray and DynamoTableAttributeArrayOutput values.
+// You can construct a concrete instance of `DynamoTableAttributeArrayInput` via:
+//
+//	DynamoTableAttributeArray{ DynamoTableAttributeArgs{...} }
+type DynamoTableAttributeArrayInput interface {
+	pulumi.Input
+
+	ToDynamoTableAttributeArrayOutput() DynamoTableAttributeArrayOutput
+	ToDynamoTableAttributeArrayOutputWithContext(context.Context) DynamoTableAttributeArrayOutput
+}
+
+type DynamoTableAttributeArray []DynamoTableAttributeInput
+
+func (DynamoTableAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamoTableAttribute)(nil)).Elem()
+}
+
+func (i DynamoTableAttributeArray) ToDynamoTableAttributeArrayOutput() DynamoTableAttributeArrayOutput {
+	return i.ToDynamoTableAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i DynamoTableAttributeArray) ToDynamoTableAttributeArrayOutputWithContext(ctx context.Context) DynamoTableAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableAttributeArrayOutput)
+}
+
+type DynamoTableAttributeOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableAttribute)(nil)).Elem()
+}
+
+func (o DynamoTableAttributeOutput) ToDynamoTableAttributeOutput() DynamoTableAttributeOutput {
+	return o
+}
+
+func (o DynamoTableAttributeOutput) ToDynamoTableAttributeOutputWithContext(ctx context.Context) DynamoTableAttributeOutput {
+	return o
+}
+
+// The name of the attribute.
+func (o DynamoTableAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+func (o DynamoTableAttributeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableAttribute) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DynamoTableAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamoTableAttribute)(nil)).Elem()
+}
+
+func (o DynamoTableAttributeArrayOutput) ToDynamoTableAttributeArrayOutput() DynamoTableAttributeArrayOutput {
+	return o
+}
+
+func (o DynamoTableAttributeArrayOutput) ToDynamoTableAttributeArrayOutputWithContext(ctx context.Context) DynamoTableAttributeArrayOutput {
+	return o
+}
+
+func (o DynamoTableAttributeArrayOutput) Index(i pulumi.IntInput) DynamoTableAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamoTableAttribute {
+		return vs[0].([]DynamoTableAttribute)[vs[1].(int)]
+	}).(DynamoTableAttributeOutput)
+}
+
+type DynamoTableGlobalSecondaryIndex struct {
+	// The attribute name used as the partition key of the index.
+	HashKey *string `pulumi:"hashKey"`
+	// The name of the index.
+	Name string `pulumi:"name"`
+	// A set of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
+	// The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+	ProjectionType string `pulumi:"projectionType"`
+	// The attribute name used as the sort key of the index.
+	RangeKey *string `pulumi:"rangeKey"`
+	// The number of read capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+	ReadCapacity *int `pulumi:"readCapacity"`
+	// The number of write capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+	WriteCapacity *int `pulumi:"writeCapacity"`
+}
+
+// DynamoTableGlobalSecondaryIndexInput is an input type that accepts DynamoTableGlobalSecondaryIndexArgs and DynamoTableGlobalSecondaryIndexOutput values.
+// You can construct a concrete instance of `DynamoTableGlobalSecondaryIndexInput` via:
+//
+//	DynamoTableGlobalSecondaryIndexArgs{...}
+type DynamoTableGlobalSecondaryIndexInput interface {
+	pulumi.Input
+
+	ToDynamoTableGlobalSecondaryIndexOutput() DynamoTableGlobalSecondaryIndexOutput
+	ToDynamoTableGlobalSecondaryIndexOutputWithContext(context.Context) DynamoTableGlobalSecondaryIndexOutput
+}
+
+type DynamoTableGlobalSecondaryIndexArgs struct {
+	// The attribute name used as the partition key of the index.
+	HashKey pulumi.StringPtrInput `pulumi:"hashKey"`
+	// The name of the index.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A set of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
+	// The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
+	// The attribute name used as the sort key of the index.
+	RangeKey pulumi.StringPtrInput `pulumi:"rangeKey"`
+	// The number of read capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+	ReadCapacity pulumi.IntPtrInput `pulumi:"readCapacity"`
+	// The number of write capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+	WriteCapacity pulumi.IntPtrInput `pulumi:"writeCapacity"`
+}
+
+func (DynamoTableGlobalSecondaryIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableGlobalSecondaryIndex)(nil)).Elem()
+}
+
+func (i DynamoTableGlobalSecondaryIndexArgs) ToDynamoTableGlobalSecondaryIndexOutput() DynamoTableGlobalSecondaryIndexOutput {
+	return i.ToDynamoTableGlobalSecondaryIndexOutputWithContext(context.Background())
+}
+
+func (i DynamoTableGlobalSecondaryIndexArgs) ToDynamoTableGlobalSecondaryIndexOutputWithContext(ctx context.Context) DynamoTableGlobalSecondaryIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableGlobalSecondaryIndexOutput)
+}
+
+// DynamoTableGlobalSecondaryIndexArrayInput is an input type that accepts DynamoTableGlobalSecondaryIndexArray and DynamoTableGlobalSecondaryIndexArrayOutput values.
+// You can construct a concrete instance of `DynamoTableGlobalSecondaryIndexArrayInput` via:
+//
+//	DynamoTableGlobalSecondaryIndexArray{ DynamoTableGlobalSecondaryIndexArgs{...} }
+type DynamoTableGlobalSecondaryIndexArrayInput interface {
+	pulumi.Input
+
+	ToDynamoTableGlobalSecondaryIndexArrayOutput() DynamoTableGlobalSecondaryIndexArrayOutput
+	ToDynamoTableGlobalSecondaryIndexArrayOutputWithContext(context.Context) DynamoTableGlobalSecondaryIndexArrayOutput
+}
+
+type DynamoTableGlobalSecondaryIndexArray []DynamoTableGlobalSecondaryIndexInput
+
+func (DynamoTableGlobalSecondaryIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamoTableGlobalSecondaryIndex)(nil)).Elem()
+}
+
+func (i DynamoTableGlobalSecondaryIndexArray) ToDynamoTableGlobalSecondaryIndexArrayOutput() DynamoTableGlobalSecondaryIndexArrayOutput {
+	return i.ToDynamoTableGlobalSecondaryIndexArrayOutputWithContext(context.Background())
+}
+
+func (i DynamoTableGlobalSecondaryIndexArray) ToDynamoTableGlobalSecondaryIndexArrayOutputWithContext(ctx context.Context) DynamoTableGlobalSecondaryIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableGlobalSecondaryIndexArrayOutput)
+}
+
+type DynamoTableGlobalSecondaryIndexOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableGlobalSecondaryIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableGlobalSecondaryIndex)(nil)).Elem()
+}
+
+func (o DynamoTableGlobalSecondaryIndexOutput) ToDynamoTableGlobalSecondaryIndexOutput() DynamoTableGlobalSecondaryIndexOutput {
+	return o
+}
+
+func (o DynamoTableGlobalSecondaryIndexOutput) ToDynamoTableGlobalSecondaryIndexOutputWithContext(ctx context.Context) DynamoTableGlobalSecondaryIndexOutput {
+	return o
+}
+
+// The attribute name used as the partition key of the index.
+func (o DynamoTableGlobalSecondaryIndexOutput) HashKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) *string { return v.HashKey }).(pulumi.StringPtrOutput)
+}
+
+// The name of the index.
+func (o DynamoTableGlobalSecondaryIndexOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A set of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+func (o DynamoTableGlobalSecondaryIndexOutput) NonKeyAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
+}
+
+// The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+func (o DynamoTableGlobalSecondaryIndexOutput) ProjectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) string { return v.ProjectionType }).(pulumi.StringOutput)
+}
+
+// The attribute name used as the sort key of the index.
+func (o DynamoTableGlobalSecondaryIndexOutput) RangeKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) *string { return v.RangeKey }).(pulumi.StringPtrOutput)
+}
+
+// The number of read capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+func (o DynamoTableGlobalSecondaryIndexOutput) ReadCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) *int { return v.ReadCapacity }).(pulumi.IntPtrOutput)
+}
+
+// The number of write capacity units for the index. Only valid when `billingMode` is `PROVISIONED`.
+func (o DynamoTableGlobalSecondaryIndexOutput) WriteCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DynamoTableGlobalSecondaryIndex) *int { return v.WriteCapacity }).(pulumi.IntPtrOutput)
+}
+
+type DynamoTableGlobalSecondaryIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableGlobalSecondaryIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamoTableGlobalSecondaryIndex)(nil)).Elem()
+}
+
+func (o DynamoTableGlobalSecondaryIndexArrayOutput) ToDynamoTableGlobalSecondaryIndexArrayOutput() DynamoTableGlobalSecondaryIndexArrayOutput {
+	return o
+}
+
+func (o DynamoTableGlobalSecondaryIndexArrayOutput) ToDynamoTableGlobalSecondaryIndexArrayOutputWithContext(ctx context.Context) DynamoTableGlobalSecondaryIndexArrayOutput {
+	return o
+}
+
+func (o DynamoTableGlobalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) DynamoTableGlobalSecondaryIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamoTableGlobalSecondaryIndex {
+		return vs[0].([]DynamoTableGlobalSecondaryIndex)[vs[1].(int)]
+	}).(DynamoTableGlobalSecondaryIndexOutput)
+}
+
+type DynamoTableLocalSecondaryIndex struct {
+	// The name of the index.
+	Name string `pulumi:"name"`
+	// A list of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+	NonKeyAttributes []string `pulumi:"nonKeyAttributes"`
+	// The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+	ProjectionType string `pulumi:"projectionType"`
+	// The attribute name used as the sort key of the index.
+	RangeKey string `pulumi:"rangeKey"`
+}
+
+// DynamoTableLocalSecondaryIndexInput is an input type that accepts DynamoTableLocalSecondaryIndexArgs and DynamoTableLocalSecondaryIndexOutput values.
+// You can construct a concrete instance of `DynamoTableLocalSecondaryIndexInput` via:
+//
+//	DynamoTableLocalSecondaryIndexArgs{...}
+type DynamoTableLocalSecondaryIndexInput interface {
+	pulumi.Input
+
+	ToDynamoTableLocalSecondaryIndexOutput() DynamoTableLocalSecondaryIndexOutput
+	ToDynamoTableLocalSecondaryIndexOutputWithContext(context.Context) DynamoTableLocalSecondaryIndexOutput
+}
+
+type DynamoTableLocalSecondaryIndexArgs struct {
+	// The name of the index.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+	NonKeyAttributes pulumi.StringArrayInput `pulumi:"nonKeyAttributes"`
+	// The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+	ProjectionType pulumi.StringInput `pulumi:"projectionType"`
+	// The attribute name used as the sort key of the index.
+	RangeKey pulumi.StringInput `pulumi:"rangeKey"`
+}
+
+func (DynamoTableLocalSecondaryIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableLocalSecondaryIndex)(nil)).Elem()
+}
+
+func (i DynamoTableLocalSecondaryIndexArgs) ToDynamoTableLocalSecondaryIndexOutput() DynamoTableLocalSecondaryIndexOutput {
+	return i.ToDynamoTableLocalSecondaryIndexOutputWithContext(context.Background())
+}
+
+func (i DynamoTableLocalSecondaryIndexArgs) ToDynamoTableLocalSecondaryIndexOutputWithContext(ctx context.Context) DynamoTableLocalSecondaryIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableLocalSecondaryIndexOutput)
+}
+
+// DynamoTableLocalSecondaryIndexArrayInput is an input type that accepts DynamoTableLocalSecondaryIndexArray and DynamoTableLocalSecondaryIndexArrayOutput values.
+// You can construct a concrete instance of `DynamoTableLocalSecondaryIndexArrayInput` via:
+//
+//	DynamoTableLocalSecondaryIndexArray{ DynamoTableLocalSecondaryIndexArgs{...} }
+type DynamoTableLocalSecondaryIndexArrayInput interface {
+	pulumi.Input
+
+	ToDynamoTableLocalSecondaryIndexArrayOutput() DynamoTableLocalSecondaryIndexArrayOutput
+	ToDynamoTableLocalSecondaryIndexArrayOutputWithContext(context.Context) DynamoTableLocalSecondaryIndexArrayOutput
+}
+
+type DynamoTableLocalSecondaryIndexArray []DynamoTableLocalSecondaryIndexInput
+
+func (DynamoTableLocalSecondaryIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamoTableLocalSecondaryIndex)(nil)).Elem()
+}
+
+func (i DynamoTableLocalSecondaryIndexArray) ToDynamoTableLocalSecondaryIndexArrayOutput() DynamoTableLocalSecondaryIndexArrayOutput {
+	return i.ToDynamoTableLocalSecondaryIndexArrayOutputWithContext(context.Background())
+}
+
+func (i DynamoTableLocalSecondaryIndexArray) ToDynamoTableLocalSecondaryIndexArrayOutputWithContext(ctx context.Context) DynamoTableLocalSecondaryIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableLocalSecondaryIndexArrayOutput)
+}
+
+type DynamoTableLocalSecondaryIndexOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableLocalSecondaryIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableLocalSecondaryIndex)(nil)).Elem()
+}
+
+func (o DynamoTableLocalSecondaryIndexOutput) ToDynamoTableLocalSecondaryIndexOutput() DynamoTableLocalSecondaryIndexOutput {
+	return o
+}
+
+func (o DynamoTableLocalSecondaryIndexOutput) ToDynamoTableLocalSecondaryIndexOutputWithContext(ctx context.Context) DynamoTableLocalSecondaryIndexOutput {
+	return o
+}
+
+// The name of the index.
+func (o DynamoTableLocalSecondaryIndexOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableLocalSecondaryIndex) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of non-key attribute names projected into the index. Only valid when `projectionType` is `INCLUDE`.
+func (o DynamoTableLocalSecondaryIndexOutput) NonKeyAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DynamoTableLocalSecondaryIndex) []string { return v.NonKeyAttributes }).(pulumi.StringArrayOutput)
+}
+
+// The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+func (o DynamoTableLocalSecondaryIndexOutput) ProjectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableLocalSecondaryIndex) string { return v.ProjectionType }).(pulumi.StringOutput)
+}
+
+// The attribute name used as the sort key of the index.
+func (o DynamoTableLocalSecondaryIndexOutput) RangeKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamoTableLocalSecondaryIndex) string { return v.RangeKey }).(pulumi.StringOutput)
+}
+
+type DynamoTableLocalSecondaryIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableLocalSecondaryIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DynamoTableLocalSecondaryIndex)(nil)).Elem()
+}
+
+func (o DynamoTableLocalSecondaryIndexArrayOutput) ToDynamoTableLocalSecondaryIndexArrayOutput() DynamoTableLocalSecondaryIndexArrayOutput {
+	return o
+}
+
+func (o DynamoTableLocalSecondaryIndexArrayOutput) ToDynamoTableLocalSecondaryIndexArrayOutputWithContext(ctx context.Context) DynamoTableLocalSecondaryIndexArrayOutput {
+	return o
+}
+
+func (o DynamoTableLocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) DynamoTableLocalSecondaryIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DynamoTableLocalSecondaryIndex {
+		return vs[0].([]DynamoTableLocalSecondaryIndex)[vs[1].(int)]
+	}).(DynamoTableLocalSecondaryIndexOutput)
+}
+
+type DynamoTableTtl struct {
+	// The name of the attribute that stores the TTL timestamp.
+	AttributeName *string `pulumi:"attributeName"`
+	// Whether TTL is enabled. Default to `false`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DynamoTableTtlInput is an input type that accepts DynamoTableTtlArgs and DynamoTableTtlOutput values.
+// You can construct a concrete instance of `DynamoTableTtlInput` via:
+//
+//	DynamoTableTtlArgs{...}
+type DynamoTableTtlInput interface {
+	pulumi.Input
+
+	ToDynamoTableTtlOutput() DynamoTableTtlOutput
+	ToDynamoTableTtlOutputWithContext(context.Context) DynamoTableTtlOutput
+}
+
+type DynamoTableTtlArgs struct {
+	// The name of the attribute that stores the TTL timestamp.
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	// Whether TTL is enabled. Default to `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DynamoTableTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableTtl)(nil)).Elem()
+}
+
+func (i DynamoTableTtlArgs) ToDynamoTableTtlOutput() DynamoTableTtlOutput {
+	return i.ToDynamoTableTtlOutputWithContext(context.Background())
+}
+
+func (i DynamoTableTtlArgs) ToDynamoTableTtlOutputWithContext(ctx context.Context) DynamoTableTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableTtlOutput)
+}
+
+func (i DynamoTableTtlArgs) ToDynamoTableTtlPtrOutput() DynamoTableTtlPtrOutput {
+	return i.ToDynamoTableTtlPtrOutputWithContext(context.Background())
+}
+
+func (i DynamoTableTtlArgs) ToDynamoTableTtlPtrOutputWithContext(ctx context.Context) DynamoTableTtlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableTtlOutput).ToDynamoTableTtlPtrOutputWithContext(ctx)
+}
+
+// DynamoTableTtlPtrInput is an input type that accepts DynamoTableTtlArgs, DynamoTableTtlPtr and DynamoTableTtlPtrOutput values.
+// You can construct a concrete instance of `DynamoTableTtlPtrInput` via:
+//
+//	        DynamoTableTtlArgs{...}
+//
+//	or:
+//
+//	        nil
+type DynamoTableTtlPtrInput interface {
+	pulumi.Input
+
+	ToDynamoTableTtlPtrOutput() DynamoTableTtlPtrOutput
+	ToDynamoTableTtlPtrOutputWithContext(context.Context) DynamoTableTtlPtrOutput
+}
+
+type dynamoTableTtlPtrType DynamoTableTtlArgs
+
+func DynamoTableTtlPtr(v *DynamoTableTtlArgs) DynamoTableTtlPtrInput {
+	return (*dynamoTableTtlPtrType)(v)
+}
+
+func (*dynamoTableTtlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamoTableTtl)(nil)).Elem()
+}
+
+func (i *dynamoTableTtlPtrType) ToDynamoTableTtlPtrOutput() DynamoTableTtlPtrOutput {
+	return i.ToDynamoTableTtlPtrOutputWithContext(context.Background())
+}
+
+func (i *dynamoTableTtlPtrType) ToDynamoTableTtlPtrOutputWithContext(ctx context.Context) DynamoTableTtlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamoTableTtlPtrOutput)
+}
+
+type DynamoTableTtlOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamoTableTtl)(nil)).Elem()
+}
+
+func (o DynamoTableTtlOutput) ToDynamoTableTtlOutput() DynamoTableTtlOutput {
+	return o
+}
+
+func (o DynamoTableTtlOutput) ToDynamoTableTtlOutputWithContext(ctx context.Context) DynamoTableTtlOutput {
+	return o
+}
+
+func (o DynamoTableTtlOutput) ToDynamoTableTtlPtrOutput() DynamoTableTtlPtrOutput {
+	return o.ToDynamoTableTtlPtrOutputWithContext(context.Background())
+}
+
+func (o DynamoTableTtlOutput) ToDynamoTableTtlPtrOutputWithContext(ctx context.Context) DynamoTableTtlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamoTableTtl) *DynamoTableTtl {
+		return &v
+	}).(DynamoTableTtlPtrOutput)
+}
+
+// The name of the attribute that stores the TTL timestamp.
+func (o DynamoTableTtlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamoTableTtl) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+// Whether TTL is enabled. Default to `false`.
+func (o DynamoTableTtlOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DynamoTableTtl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DynamoTableTtlPtrOutput struct{ *pulumi.OutputState }
+
+func (DynamoTableTtlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamoTableTtl)(nil)).Elem()
+}
+
+func (o DynamoTableTtlPtrOutput) ToDynamoTableTtlPtrOutput() DynamoTableTtlPtrOutput {
+	return o
+}
+
+func (o DynamoTableTtlPtrOutput) ToDynamoTableTtlPtrOutputWithContext(ctx context.Context) DynamoTableTtlPtrOutput {
+	return o
+}
+
+func (o DynamoTableTtlPtrOutput) Elem() DynamoTableTtlOutput {
+	return o.ApplyT(func(v *DynamoTableTtl) DynamoTableTtl {
+		if v != nil {
+			return *v
+		}
+		var ret DynamoTableTtl
+		return ret
+	}).(DynamoTableTtlOutput)
+}
+
+// The name of the attribute that stores the TTL timestamp.
+func (o DynamoTableTtlPtrOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamoTableTtl) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AttributeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether TTL is enabled. Default to `false`.
+func (o DynamoTableTtlPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DynamoTableTtl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ParameterGroupParameter struct {
 	// The name of the parameter.
 	ParamName *string `pulumi:"paramName"`
@@ -2935,6 +3472,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDbRevisionVersionListArrayInput)(nil)).Elem(), ClusterDbRevisionVersionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterParameterInput)(nil)).Elem(), ClusterParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterParameterArrayInput)(nil)).Elem(), ClusterParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableAttributeInput)(nil)).Elem(), DynamoTableAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableAttributeArrayInput)(nil)).Elem(), DynamoTableAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableGlobalSecondaryIndexInput)(nil)).Elem(), DynamoTableGlobalSecondaryIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableGlobalSecondaryIndexArrayInput)(nil)).Elem(), DynamoTableGlobalSecondaryIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableLocalSecondaryIndexInput)(nil)).Elem(), DynamoTableLocalSecondaryIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableLocalSecondaryIndexArrayInput)(nil)).Elem(), DynamoTableLocalSecondaryIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableTtlInput)(nil)).Elem(), DynamoTableTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DynamoTableTtlPtrInput)(nil)).Elem(), DynamoTableTtlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterInput)(nil)).Elem(), ParameterGroupParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterGroupParameterArrayInput)(nil)).Elem(), ParameterGroupParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
@@ -2979,6 +3524,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDbRevisionVersionListArrayOutput{})
 	pulumi.RegisterOutputType(ClusterParameterOutput{})
 	pulumi.RegisterOutputType(ClusterParameterArrayOutput{})
+	pulumi.RegisterOutputType(DynamoTableAttributeOutput{})
+	pulumi.RegisterOutputType(DynamoTableAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DynamoTableGlobalSecondaryIndexOutput{})
+	pulumi.RegisterOutputType(DynamoTableGlobalSecondaryIndexArrayOutput{})
+	pulumi.RegisterOutputType(DynamoTableLocalSecondaryIndexOutput{})
+	pulumi.RegisterOutputType(DynamoTableLocalSecondaryIndexArrayOutput{})
+	pulumi.RegisterOutputType(DynamoTableTtlOutput{})
+	pulumi.RegisterOutputType(DynamoTableTtlPtrOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterOutput{})
 	pulumi.RegisterOutputType(ParameterGroupParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})

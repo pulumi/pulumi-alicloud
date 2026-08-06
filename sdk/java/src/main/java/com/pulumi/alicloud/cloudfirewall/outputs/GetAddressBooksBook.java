@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cloudfirewall.outputs;
 
+import com.pulumi.alicloud.cloudfirewall.outputs.GetAddressBooksBookAssetRegionResourceType;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetAddressBooksBookEcsTag;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -14,10 +15,25 @@ import java.util.Objects;
 @CustomType
 public final class GetAddressBooksBook {
     /**
+     * @return (Available since v1.286.0) The number of addresses in the Address Book.
+     * 
+     */
+    private Integer addressListCount;
+    /**
      * @return The addresses in the Address Book.
      * 
      */
     private List<String> addressLists;
+    /**
+     * @return (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+     * 
+     */
+    private List<Integer> assetMemberUids;
+    /**
+     * @return (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+     * 
+     */
+    private List<GetAddressBooksBookAssetRegionResourceType> assetRegionResourceTypes;
     /**
      * @return Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
      * 
@@ -29,7 +45,7 @@ public final class GetAddressBooksBook {
      */
     private String description;
     /**
-     * @return The logical relation among the ECS tags that to be matchedh.
+     * @return The logical relation among the ECS tags that to be matched.
      * 
      */
     private List<GetAddressBooksBookEcsTag> ecsTags;
@@ -39,8 +55,8 @@ public final class GetAddressBooksBook {
      */
     private String groupName;
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      * 
      */
     private String groupType;
@@ -55,6 +71,11 @@ public final class GetAddressBooksBook {
      */
     private String id;
     /**
+     * @return (Available since v1.286.0) The number of times that the Address Book is referenced.
+     * 
+     */
+    private Integer referenceCount;
+    /**
      * @return One or more tags for the relationship between.
      * 
      */
@@ -62,11 +83,32 @@ public final class GetAddressBooksBook {
 
     private GetAddressBooksBook() {}
     /**
+     * @return (Available since v1.286.0) The number of addresses in the Address Book.
+     * 
+     */
+    public Integer addressListCount() {
+        return this.addressListCount;
+    }
+    /**
      * @return The addresses in the Address Book.
      * 
      */
     public List<String> addressLists() {
         return this.addressLists;
+    }
+    /**
+     * @return (Available since v1.286.0) The list of member account UIDs of the asset Address Book.
+     * 
+     */
+    public List<Integer> assetMemberUids() {
+        return this.assetMemberUids;
+    }
+    /**
+     * @return (Available since v1.286.0) The list of regions and asset types of the asset Address Book.
+     * 
+     */
+    public List<GetAddressBooksBookAssetRegionResourceType> assetRegionResourceTypes() {
+        return this.assetRegionResourceTypes;
     }
     /**
      * @return Whether you want to automatically add new matching tags of the ECS IP address to the Address Book.
@@ -83,7 +125,7 @@ public final class GetAddressBooksBook {
         return this.description;
     }
     /**
-     * @return The logical relation among the ECS tags that to be matchedh.
+     * @return The logical relation among the ECS tags that to be matched.
      * 
      */
     public List<GetAddressBooksBookEcsTag> ecsTags() {
@@ -97,8 +139,8 @@ public final class GetAddressBooksBook {
         return this.groupName;
     }
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      * 
      */
     public String groupType() {
@@ -119,6 +161,13 @@ public final class GetAddressBooksBook {
         return this.id;
     }
     /**
+     * @return (Available since v1.286.0) The number of times that the Address Book is referenced.
+     * 
+     */
+    public Integer referenceCount() {
+        return this.referenceCount;
+    }
+    /**
      * @return One or more tags for the relationship between.
      * 
      */
@@ -135,7 +184,10 @@ public final class GetAddressBooksBook {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer addressListCount;
         private List<String> addressLists;
+        private List<Integer> assetMemberUids;
+        private List<GetAddressBooksBookAssetRegionResourceType> assetRegionResourceTypes;
         private Integer autoAddTagEcs;
         private String description;
         private List<GetAddressBooksBookEcsTag> ecsTags;
@@ -143,11 +195,15 @@ public final class GetAddressBooksBook {
         private String groupType;
         private String groupUuid;
         private String id;
+        private Integer referenceCount;
         private String tagRelation;
         public Builder() {}
         public Builder(GetAddressBooksBook defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.addressListCount = defaults.addressListCount;
     	      this.addressLists = defaults.addressLists;
+    	      this.assetMemberUids = defaults.assetMemberUids;
+    	      this.assetRegionResourceTypes = defaults.assetRegionResourceTypes;
     	      this.autoAddTagEcs = defaults.autoAddTagEcs;
     	      this.description = defaults.description;
     	      this.ecsTags = defaults.ecsTags;
@@ -155,9 +211,18 @@ public final class GetAddressBooksBook {
     	      this.groupType = defaults.groupType;
     	      this.groupUuid = defaults.groupUuid;
     	      this.id = defaults.id;
+    	      this.referenceCount = defaults.referenceCount;
     	      this.tagRelation = defaults.tagRelation;
         }
 
+        @CustomType.Setter
+        public Builder addressListCount(Integer addressListCount) {
+            if (addressListCount == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "addressListCount");
+            }
+            this.addressListCount = addressListCount;
+            return this;
+        }
         @CustomType.Setter
         public Builder addressLists(List<String> addressLists) {
             if (addressLists == null) {
@@ -168,6 +233,28 @@ public final class GetAddressBooksBook {
         }
         public Builder addressLists(String... addressLists) {
             return addressLists(List.of(addressLists));
+        }
+        @CustomType.Setter
+        public Builder assetMemberUids(List<Integer> assetMemberUids) {
+            if (assetMemberUids == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "assetMemberUids");
+            }
+            this.assetMemberUids = assetMemberUids;
+            return this;
+        }
+        public Builder assetMemberUids(Integer... assetMemberUids) {
+            return assetMemberUids(List.of(assetMemberUids));
+        }
+        @CustomType.Setter
+        public Builder assetRegionResourceTypes(List<GetAddressBooksBookAssetRegionResourceType> assetRegionResourceTypes) {
+            if (assetRegionResourceTypes == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "assetRegionResourceTypes");
+            }
+            this.assetRegionResourceTypes = assetRegionResourceTypes;
+            return this;
+        }
+        public Builder assetRegionResourceTypes(GetAddressBooksBookAssetRegionResourceType... assetRegionResourceTypes) {
+            return assetRegionResourceTypes(List.of(assetRegionResourceTypes));
         }
         @CustomType.Setter
         public Builder autoAddTagEcs(Integer autoAddTagEcs) {
@@ -229,6 +316,14 @@ public final class GetAddressBooksBook {
             return this;
         }
         @CustomType.Setter
+        public Builder referenceCount(Integer referenceCount) {
+            if (referenceCount == null) {
+              throw new MissingRequiredPropertyException("GetAddressBooksBook", "referenceCount");
+            }
+            this.referenceCount = referenceCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tagRelation(String tagRelation) {
             if (tagRelation == null) {
               throw new MissingRequiredPropertyException("GetAddressBooksBook", "tagRelation");
@@ -238,7 +333,10 @@ public final class GetAddressBooksBook {
         }
         public GetAddressBooksBook build() {
             final var _resultValue = new GetAddressBooksBook();
+            _resultValue.addressListCount = addressListCount;
             _resultValue.addressLists = addressLists;
+            _resultValue.assetMemberUids = assetMemberUids;
+            _resultValue.assetRegionResourceTypes = assetRegionResourceTypes;
             _resultValue.autoAddTagEcs = autoAddTagEcs;
             _resultValue.description = description;
             _resultValue.ecsTags = ecsTags;
@@ -246,6 +344,7 @@ public final class GetAddressBooksBook {
             _resultValue.groupType = groupType;
             _resultValue.groupUuid = groupUuid;
             _resultValue.id = id;
+            _resultValue.referenceCount = referenceCount;
             _resultValue.tagRelation = tagRelation;
             return _resultValue;
         }

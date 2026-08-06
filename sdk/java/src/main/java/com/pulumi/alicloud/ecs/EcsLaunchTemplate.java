@@ -328,14 +328,18 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.httpEndpoint;
     }
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     * 
+     * &gt; **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * @return The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     * 
+     * &gt; **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      * 
      */
     public Output<Integer> httpPutResponseHopLimit() {

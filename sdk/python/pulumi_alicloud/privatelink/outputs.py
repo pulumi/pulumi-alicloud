@@ -15,6 +15,7 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'VpcEndpointServiceResource',
     'GetVpcEndpointConnectionsConnectionResult',
     'GetVpcEndpointServiceResourcesResourceResult',
     'GetVpcEndpointServiceUsersUserResult',
@@ -22,6 +23,70 @@ __all__ = [
     'GetVpcEndpointZonesZoneResult',
     'GetVpcEndpointsEndpointResult',
 ]
+
+@pulumi.output_type
+class VpcEndpointServiceResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcEndpointServiceResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcEndpointServiceResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcEndpointServiceResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_id: Optional[_builtins.str] = None,
+                 resource_type: Optional[_builtins.str] = None,
+                 zone_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str resource_id: The ID of the service resource.
+        :param _builtins.str resource_type: The type of the service resource. Valid values:
+        :param _builtins.str zone_id: The zone ID of the service resource.
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the service resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the service resource. Valid values:
+        """
+        return pulumi.get(self, "resource_type")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The zone ID of the service resource.
+        """
+        return pulumi.get(self, "zone_id")
+
 
 @pulumi.output_type
 class GetVpcEndpointConnectionsConnectionResult(dict):

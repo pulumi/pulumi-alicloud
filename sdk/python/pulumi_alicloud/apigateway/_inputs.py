@@ -198,7 +198,7 @@ class ApiFcServiceConfigArgsDict(TypedDict):
     """
     content_type_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+    The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`. This field is ignored when `content_type_category` is set to `CLIENT`.
     """
     function_base_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -262,7 +262,7 @@ class ApiFcServiceConfigArgs:
                * `DEFAULT`: Use the default value provided by API Gateway.
                * `CUSTOM`: Use a custom value.
                * `CLIENT`: Use the Content-Type header from the client request.
-        :param pulumi.Input[_builtins.str] content_type_value: The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+        :param pulumi.Input[_builtins.str] content_type_value: The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`. This field is ignored when `content_type_category` is set to `CLIENT`.
         :param pulumi.Input[_builtins.str] function_base_url: The base url of function compute service. Required if `function_type` is `HttpTrigger`.
         :param pulumi.Input[_builtins.str] function_name: The function name of function compute service. Required if `function_type` is `FCEvent`.
         :param pulumi.Input[_builtins.str] function_type: The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
@@ -354,7 +354,7 @@ class ApiFcServiceConfigArgs:
     @pulumi.getter(name="contentTypeValue")
     def content_type_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`.
+        The value of the Content-Type header when `content_type_category` is `DEFAULT` or `CUSTOM`. This field is ignored when `content_type_category` is set to `CLIENT`.
         """
         return pulumi.get(self, "content_type_value")
 
