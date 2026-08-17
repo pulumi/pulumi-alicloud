@@ -16,14 +16,14 @@ public final class GatewayLogConfigArgs extends com.pulumi.resources.ResourceArg
     public static final GatewayLogConfigArgs Empty = new GatewayLogConfigArgs();
 
     /**
-     * Sls See `sls` below.
+     * The Simple Log Service configuration for the gateway. See `sls` below.
      * 
      */
     @Import(name="sls")
     private @Nullable Output<GatewayLogConfigSlsArgs> sls;
 
     /**
-     * @return Sls See `sls` below.
+     * @return The Simple Log Service configuration for the gateway. See `sls` below.
      * 
      */
     public Optional<Output<GatewayLogConfigSlsArgs>> sls() {
@@ -55,7 +55,7 @@ public final class GatewayLogConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sls Sls See `sls` below.
+         * @param sls The Simple Log Service configuration for the gateway. See `sls` below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GatewayLogConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param sls Sls See `sls` below.
+         * @param sls The Simple Log Service configuration for the gateway. See `sls` below.
          * 
          * @return builder
          * 

@@ -19,6 +19,21 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     public static final ZoneArgs Empty = new ZoneArgs();
 
     /**
+     * The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+     * 
+     */
+    @Import(name="dnsGroup")
+    private @Nullable Output<String> dnsGroup;
+
+    /**
+     * @return The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+     * 
+     */
+    public Optional<Output<String>> dnsGroup() {
+        return Optional.ofNullable(this.dnsGroup);
+    }
+
+    /**
      * The language. Valid values: &#34;zh&#34;, &#34;en&#34;, &#34;jp&#34;.
      * 
      */
@@ -185,6 +200,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     private ZoneArgs() {}
 
     private ZoneArgs(ZoneArgs $) {
+        this.dnsGroup = $.dnsGroup;
         this.lang = $.lang;
         this.name = $.name;
         this.proxyPattern = $.proxyPattern;
@@ -213,6 +229,27 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ZoneArgs defaults) {
             $ = new ZoneArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dnsGroup The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsGroup(@Nullable Output<String> dnsGroup) {
+            $.dnsGroup = dnsGroup;
+            return this;
+        }
+
+        /**
+         * @param dnsGroup The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsGroup(String dnsGroup) {
+            return dnsGroup(Output.of(dnsGroup));
         }
 
         /**

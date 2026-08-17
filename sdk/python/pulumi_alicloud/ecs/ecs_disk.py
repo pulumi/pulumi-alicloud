@@ -57,7 +57,7 @@ class EcsDiskArgs:
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -116,6 +116,9 @@ class EcsDiskArgs:
             pulumi.set(__self__, "disk_name", disk_name)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if enable_auto_snapshot is not None:
+            warnings.warn("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""", DeprecationWarning)
+            pulumi.log.warn("""enable_auto_snapshot is deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
         if enable_auto_snapshot is not None:
             pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         if encrypt_algorithm is not None:
@@ -264,9 +267,10 @@ class EcsDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
+    @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -542,7 +546,7 @@ class _EcsDiskState:
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -605,6 +609,9 @@ class _EcsDiskState:
             pulumi.set(__self__, "disk_name", disk_name)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if enable_auto_snapshot is not None:
+            warnings.warn("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""", DeprecationWarning)
+            pulumi.log.warn("""enable_auto_snapshot is deprecated: This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
         if enable_auto_snapshot is not None:
             pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
         if encrypt_algorithm is not None:
@@ -769,9 +776,10 @@ class _EcsDiskState:
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
+    @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 
@@ -1121,7 +1129,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -1353,7 +1361,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[_builtins.str] disk_name: The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[_builtins.bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
-        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.bool] enable_auto_snapshot: Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         :param pulumi.Input[_builtins.bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
@@ -1509,9 +1517,10 @@ class EcsDisk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableAutoSnapshot")
+    @_utilities.deprecated("""This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.""")
     def enable_auto_snapshot(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+        Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
         """
         return pulumi.get(self, "enable_auto_snapshot")
 

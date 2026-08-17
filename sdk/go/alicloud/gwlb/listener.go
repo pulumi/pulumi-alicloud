@@ -190,6 +190,8 @@ type Listener struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+	TcpIdleTimeout pulumi.IntOutput `pulumi:"tcpIdleTimeout"`
 }
 
 // NewListener registers a new resource with the given unique name, arguments, and options.
@@ -244,6 +246,8 @@ type listenerState struct {
 	Status *string `pulumi:"status"`
 	// The tags. You can specify at most 20 tags in each call.
 	Tags map[string]string `pulumi:"tags"`
+	// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+	TcpIdleTimeout *int `pulumi:"tcpIdleTimeout"`
 }
 
 type ListenerState struct {
@@ -263,6 +267,8 @@ type ListenerState struct {
 	Status pulumi.StringPtrInput
 	// The tags. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapInput
+	// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+	TcpIdleTimeout pulumi.IntPtrInput
 }
 
 func (ListenerState) ElementType() reflect.Type {
@@ -282,6 +288,8 @@ type listenerArgs struct {
 	ServerGroupId string `pulumi:"serverGroupId"`
 	// The tags. You can specify at most 20 tags in each call.
 	Tags map[string]string `pulumi:"tags"`
+	// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+	TcpIdleTimeout *int `pulumi:"tcpIdleTimeout"`
 }
 
 // The set of arguments for constructing a Listener resource.
@@ -298,6 +306,8 @@ type ListenerArgs struct {
 	ServerGroupId pulumi.StringInput
 	// The tags. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapInput
+	// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+	TcpIdleTimeout pulumi.IntPtrInput
 }
 
 func (ListenerArgs) ElementType() reflect.Type {
@@ -422,6 +432,11 @@ func (o ListenerOutput) Status() pulumi.StringOutput {
 // The tags. You can specify at most 20 tags in each call.
 func (o ListenerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+func (o ListenerOutput) TcpIdleTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.TcpIdleTimeout }).(pulumi.IntOutput)
 }
 
 type ListenerArrayOutput struct{ *pulumi.OutputState }

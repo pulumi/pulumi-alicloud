@@ -41,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterEndpoint{}
 	case "alicloud:polardb/database:Database":
 		r = &Database{}
+	case "alicloud:polardb/dynamoItem:DynamoItem":
+		r = &DynamoItem{}
+	case "alicloud:polardb/dynamoTable:DynamoTable":
+		r = &DynamoTable{}
 	case "alicloud:polardb/endpoint:Endpoint":
 		r = &Endpoint{}
 	case "alicloud:polardb/endpointAddress:EndpointAddress":
@@ -120,6 +124,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"polardb/database",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/dynamoItem",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/dynamoTable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

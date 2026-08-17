@@ -203,12 +203,11 @@ import (
 type ClusterV2 struct {
 	pulumi.CustomResourceState
 
+	// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+	AdditionalPackages ClusterV2AdditionalPackageArrayOutput `pulumi:"additionalPackages"`
 	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
 	Addons ClusterV2AddonArrayOutput `pulumi:"addons"`
-	// Specifies whether to enable auto scale-out for the cluster. Valid values:
-	//
-	// - true
-	// - false
+	// The version of the E-HPC client.
 	ClientVersion pulumi.StringOutput `pulumi:"clientVersion"`
 	// The cluster type. Valid values:
 	//
@@ -217,14 +216,20 @@ type ClusterV2 struct {
 	ClusterCategory pulumi.StringPtrOutput `pulumi:"clusterCategory"`
 	// Security credentials for the cluster. See `clusterCredentials` below.
 	ClusterCredentials ClusterV2ClusterCredentialsOutput `pulumi:"clusterCredentials"`
+	// The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+	ClusterCustomConfiguration ClusterV2ClusterCustomConfigurationOutput `pulumi:"clusterCustomConfiguration"`
+	// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+	ClusterDescription pulumi.StringPtrOutput `pulumi:"clusterDescription"`
 	// The deployment mode of the cluster. Valid values:
 	//
 	// - Integrated
 	// - Hybrid
 	// - Custom
 	ClusterMode pulumi.StringPtrOutput `pulumi:"clusterMode"`
-	// The post-processing script of the cluster.
+	// The name of the cluster.
 	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
+	// (Available since v1.288.0) The status of the cluster.
+	ClusterStatus pulumi.StringOutput `pulumi:"clusterStatus"`
 	// The ID of the virtual private cloud (VPC) in which the cluster resides.
 	ClusterVpcId pulumi.StringPtrOutput `pulumi:"clusterVpcId"`
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
@@ -232,17 +237,55 @@ type ClusterV2 struct {
 	ClusterVswitchId pulumi.StringPtrOutput `pulumi:"clusterVswitchId"`
 	// The time when the cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable deletion protection for the cluster. Valid values:
+	//
+	// - true
+	// - false
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// (Available since v1.288.0) The version of the E-HPC cluster.
+	EhpcVersion pulumi.StringOutput `pulumi:"ehpcVersion"`
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleIn pulumi.BoolOutput `pulumi:"enableScaleIn"`
+	// Specifies whether to enable auto scale-out for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleOut pulumi.BoolOutput `pulumi:"enableScaleOut"`
+	// The time interval of auto scale-out for the cluster.
+	GrowInterval pulumi.IntOutput `pulumi:"growInterval"`
+	// The idle duration of the compute nodes allowed by the cluster.
+	IdleInterval pulumi.IntOutput `pulumi:"idleInterval"`
+	// Specifies whether to use an enterprise security group. Valid values:
+	//
+	// - true: An enterprise security group is automatically created and used.
+	// - false: A basic security group is automatically created and used.
+	IsEnterpriseSecurityGroup pulumi.BoolPtrOutput `pulumi:"isEnterpriseSecurityGroup"`
 	// The configurations of the cluster management node. See `manager` below.
 	Manager ClusterV2ManagerPtrOutput `pulumi:"manager"`
+	// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+	MaxCoreCount pulumi.IntOutput `pulumi:"maxCoreCount"`
+	// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+	MaxCount pulumi.IntOutput `pulumi:"maxCount"`
+	// (Available since v1.288.0) The time when the cluster was modified.
+	ModifyTime pulumi.StringOutput `pulumi:"modifyTime"`
+	// The monitoring configuration of the cluster. See `monitorSpec` below.
+	MonitorSpec ClusterV2MonitorSpecOutput `pulumi:"monitorSpec"`
+	// The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+	Queues ClusterV2QueueArrayOutput `pulumi:"queues"`
 	// The ID of the resource group to which the cluster belongs.
 	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The scheduler configuration of the cluster. See `schedulerSpec` below.
+	SchedulerSpec ClusterV2SchedulerSpecOutput `pulumi:"schedulerSpec"`
 	// The security group ID.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// List of cluster shared storage configurations. See `sharedStorages` below.
 	SharedStorages ClusterV2SharedStorageArrayOutput `pulumi:"sharedStorages"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewClusterV2 registers a new resource with the given unique name, arguments, and options.
@@ -292,12 +335,11 @@ func GetClusterV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterV2 resources.
 type clusterV2State struct {
+	// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+	AdditionalPackages []ClusterV2AdditionalPackage `pulumi:"additionalPackages"`
 	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
 	Addons []ClusterV2Addon `pulumi:"addons"`
-	// Specifies whether to enable auto scale-out for the cluster. Valid values:
-	//
-	// - true
-	// - false
+	// The version of the E-HPC client.
 	ClientVersion *string `pulumi:"clientVersion"`
 	// The cluster type. Valid values:
 	//
@@ -306,14 +348,20 @@ type clusterV2State struct {
 	ClusterCategory *string `pulumi:"clusterCategory"`
 	// Security credentials for the cluster. See `clusterCredentials` below.
 	ClusterCredentials *ClusterV2ClusterCredentials `pulumi:"clusterCredentials"`
+	// The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+	ClusterCustomConfiguration *ClusterV2ClusterCustomConfiguration `pulumi:"clusterCustomConfiguration"`
+	// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+	ClusterDescription *string `pulumi:"clusterDescription"`
 	// The deployment mode of the cluster. Valid values:
 	//
 	// - Integrated
 	// - Hybrid
 	// - Custom
 	ClusterMode *string `pulumi:"clusterMode"`
-	// The post-processing script of the cluster.
+	// The name of the cluster.
 	ClusterName *string `pulumi:"clusterName"`
+	// (Available since v1.288.0) The status of the cluster.
+	ClusterStatus *string `pulumi:"clusterStatus"`
 	// The ID of the virtual private cloud (VPC) in which the cluster resides.
 	ClusterVpcId *string `pulumi:"clusterVpcId"`
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
@@ -321,26 +369,63 @@ type clusterV2State struct {
 	ClusterVswitchId *string `pulumi:"clusterVswitchId"`
 	// The time when the cluster was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable deletion protection for the cluster. Valid values:
+	//
+	// - true
+	// - false
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The configurations of the cluster management node. See `manager` below.
-	Manager *ClusterV2Manager `pulumi:"manager"`
-	// The ID of the resource group to which the cluster belongs.
-	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The security group ID.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// List of cluster shared storage configurations. See `sharedStorages` below.
-	SharedStorages []ClusterV2SharedStorage `pulumi:"sharedStorages"`
-}
-
-type ClusterV2State struct {
-	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
-	Addons ClusterV2AddonArrayInput
+	// (Available since v1.288.0) The version of the E-HPC cluster.
+	EhpcVersion *string `pulumi:"ehpcVersion"`
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleIn *bool `pulumi:"enableScaleIn"`
 	// Specifies whether to enable auto scale-out for the cluster. Valid values:
 	//
 	// - true
 	// - false
+	EnableScaleOut *bool `pulumi:"enableScaleOut"`
+	// The time interval of auto scale-out for the cluster.
+	GrowInterval *int `pulumi:"growInterval"`
+	// The idle duration of the compute nodes allowed by the cluster.
+	IdleInterval *int `pulumi:"idleInterval"`
+	// Specifies whether to use an enterprise security group. Valid values:
+	//
+	// - true: An enterprise security group is automatically created and used.
+	// - false: A basic security group is automatically created and used.
+	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
+	// The configurations of the cluster management node. See `manager` below.
+	Manager *ClusterV2Manager `pulumi:"manager"`
+	// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+	MaxCoreCount *int `pulumi:"maxCoreCount"`
+	// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+	MaxCount *int `pulumi:"maxCount"`
+	// (Available since v1.288.0) The time when the cluster was modified.
+	ModifyTime *string `pulumi:"modifyTime"`
+	// The monitoring configuration of the cluster. See `monitorSpec` below.
+	MonitorSpec *ClusterV2MonitorSpec `pulumi:"monitorSpec"`
+	// The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+	Queues []ClusterV2Queue `pulumi:"queues"`
+	// The ID of the resource group to which the cluster belongs.
+	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The scheduler configuration of the cluster. See `schedulerSpec` below.
+	SchedulerSpec *ClusterV2SchedulerSpec `pulumi:"schedulerSpec"`
+	// The security group ID.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// List of cluster shared storage configurations. See `sharedStorages` below.
+	SharedStorages []ClusterV2SharedStorage `pulumi:"sharedStorages"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+type ClusterV2State struct {
+	// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+	AdditionalPackages ClusterV2AdditionalPackageArrayInput
+	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
+	Addons ClusterV2AddonArrayInput
+	// The version of the E-HPC client.
 	ClientVersion pulumi.StringPtrInput
 	// The cluster type. Valid values:
 	//
@@ -349,14 +434,20 @@ type ClusterV2State struct {
 	ClusterCategory pulumi.StringPtrInput
 	// Security credentials for the cluster. See `clusterCredentials` below.
 	ClusterCredentials ClusterV2ClusterCredentialsPtrInput
+	// The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+	ClusterCustomConfiguration ClusterV2ClusterCustomConfigurationPtrInput
+	// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+	ClusterDescription pulumi.StringPtrInput
 	// The deployment mode of the cluster. Valid values:
 	//
 	// - Integrated
 	// - Hybrid
 	// - Custom
 	ClusterMode pulumi.StringPtrInput
-	// The post-processing script of the cluster.
+	// The name of the cluster.
 	ClusterName pulumi.StringPtrInput
+	// (Available since v1.288.0) The status of the cluster.
+	ClusterStatus pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC) in which the cluster resides.
 	ClusterVpcId pulumi.StringPtrInput
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
@@ -364,17 +455,55 @@ type ClusterV2State struct {
 	ClusterVswitchId pulumi.StringPtrInput
 	// The time when the cluster was created.
 	CreateTime pulumi.StringPtrInput
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable deletion protection for the cluster. Valid values:
+	//
+	// - true
+	// - false
 	DeletionProtection pulumi.BoolPtrInput
+	// (Available since v1.288.0) The version of the E-HPC cluster.
+	EhpcVersion pulumi.StringPtrInput
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleIn pulumi.BoolPtrInput
+	// Specifies whether to enable auto scale-out for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleOut pulumi.BoolPtrInput
+	// The time interval of auto scale-out for the cluster.
+	GrowInterval pulumi.IntPtrInput
+	// The idle duration of the compute nodes allowed by the cluster.
+	IdleInterval pulumi.IntPtrInput
+	// Specifies whether to use an enterprise security group. Valid values:
+	//
+	// - true: An enterprise security group is automatically created and used.
+	// - false: A basic security group is automatically created and used.
+	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
 	// The configurations of the cluster management node. See `manager` below.
 	Manager ClusterV2ManagerPtrInput
+	// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+	MaxCoreCount pulumi.IntPtrInput
+	// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+	MaxCount pulumi.IntPtrInput
+	// (Available since v1.288.0) The time when the cluster was modified.
+	ModifyTime pulumi.StringPtrInput
+	// The monitoring configuration of the cluster. See `monitorSpec` below.
+	MonitorSpec ClusterV2MonitorSpecPtrInput
+	// The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+	Queues ClusterV2QueueArrayInput
 	// The ID of the resource group to which the cluster belongs.
 	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
 	ResourceGroupId pulumi.StringPtrInput
+	// The scheduler configuration of the cluster. See `schedulerSpec` below.
+	SchedulerSpec ClusterV2SchedulerSpecPtrInput
 	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
 	// List of cluster shared storage configurations. See `sharedStorages` below.
 	SharedStorages ClusterV2SharedStorageArrayInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (ClusterV2State) ElementType() reflect.Type {
@@ -382,12 +511,11 @@ func (ClusterV2State) ElementType() reflect.Type {
 }
 
 type clusterV2Args struct {
+	// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+	AdditionalPackages []ClusterV2AdditionalPackage `pulumi:"additionalPackages"`
 	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
 	Addons []ClusterV2Addon `pulumi:"addons"`
-	// Specifies whether to enable auto scale-out for the cluster. Valid values:
-	//
-	// - true
-	// - false
+	// The version of the E-HPC client.
 	ClientVersion *string `pulumi:"clientVersion"`
 	// The cluster type. Valid values:
 	//
@@ -396,40 +524,77 @@ type clusterV2Args struct {
 	ClusterCategory *string `pulumi:"clusterCategory"`
 	// Security credentials for the cluster. See `clusterCredentials` below.
 	ClusterCredentials ClusterV2ClusterCredentials `pulumi:"clusterCredentials"`
+	// The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+	ClusterCustomConfiguration *ClusterV2ClusterCustomConfiguration `pulumi:"clusterCustomConfiguration"`
+	// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+	ClusterDescription *string `pulumi:"clusterDescription"`
 	// The deployment mode of the cluster. Valid values:
 	//
 	// - Integrated
 	// - Hybrid
 	// - Custom
 	ClusterMode *string `pulumi:"clusterMode"`
-	// The post-processing script of the cluster.
+	// The name of the cluster.
 	ClusterName *string `pulumi:"clusterName"`
 	// The ID of the virtual private cloud (VPC) in which the cluster resides.
 	ClusterVpcId *string `pulumi:"clusterVpcId"`
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
 	// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
 	ClusterVswitchId *string `pulumi:"clusterVswitchId"`
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable deletion protection for the cluster. Valid values:
+	//
+	// - true
+	// - false
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The configurations of the cluster management node. See `manager` below.
-	Manager *ClusterV2Manager `pulumi:"manager"`
-	// The ID of the resource group to which the cluster belongs.
-	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The security group ID.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// List of cluster shared storage configurations. See `sharedStorages` below.
-	SharedStorages []ClusterV2SharedStorage `pulumi:"sharedStorages"`
-}
-
-// The set of arguments for constructing a ClusterV2 resource.
-type ClusterV2Args struct {
-	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
-	Addons ClusterV2AddonArrayInput
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleIn *bool `pulumi:"enableScaleIn"`
 	// Specifies whether to enable auto scale-out for the cluster. Valid values:
 	//
 	// - true
 	// - false
+	EnableScaleOut *bool `pulumi:"enableScaleOut"`
+	// The time interval of auto scale-out for the cluster.
+	GrowInterval *int `pulumi:"growInterval"`
+	// The idle duration of the compute nodes allowed by the cluster.
+	IdleInterval *int `pulumi:"idleInterval"`
+	// Specifies whether to use an enterprise security group. Valid values:
+	//
+	// - true: An enterprise security group is automatically created and used.
+	// - false: A basic security group is automatically created and used.
+	IsEnterpriseSecurityGroup *bool `pulumi:"isEnterpriseSecurityGroup"`
+	// The configurations of the cluster management node. See `manager` below.
+	Manager *ClusterV2Manager `pulumi:"manager"`
+	// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+	MaxCoreCount *int `pulumi:"maxCoreCount"`
+	// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+	MaxCount *int `pulumi:"maxCount"`
+	// The monitoring configuration of the cluster. See `monitorSpec` below.
+	MonitorSpec *ClusterV2MonitorSpec `pulumi:"monitorSpec"`
+	// The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+	Queues []ClusterV2Queue `pulumi:"queues"`
+	// The ID of the resource group to which the cluster belongs.
+	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The scheduler configuration of the cluster. See `schedulerSpec` below.
+	SchedulerSpec *ClusterV2SchedulerSpec `pulumi:"schedulerSpec"`
+	// The security group ID.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// List of cluster shared storage configurations. See `sharedStorages` below.
+	SharedStorages []ClusterV2SharedStorage `pulumi:"sharedStorages"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// The set of arguments for constructing a ClusterV2 resource.
+type ClusterV2Args struct {
+	// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+	AdditionalPackages ClusterV2AdditionalPackageArrayInput
+	// The cluster custom service component configuration. Only one component is supported. See `addons` below.
+	Addons ClusterV2AddonArrayInput
+	// The version of the E-HPC client.
 	ClientVersion pulumi.StringPtrInput
 	// The cluster type. Valid values:
 	//
@@ -438,30 +603,68 @@ type ClusterV2Args struct {
 	ClusterCategory pulumi.StringPtrInput
 	// Security credentials for the cluster. See `clusterCredentials` below.
 	ClusterCredentials ClusterV2ClusterCredentialsInput
+	// The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+	ClusterCustomConfiguration ClusterV2ClusterCustomConfigurationPtrInput
+	// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+	ClusterDescription pulumi.StringPtrInput
 	// The deployment mode of the cluster. Valid values:
 	//
 	// - Integrated
 	// - Hybrid
 	// - Custom
 	ClusterMode pulumi.StringPtrInput
-	// The post-processing script of the cluster.
+	// The name of the cluster.
 	ClusterName pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC) in which the cluster resides.
 	ClusterVpcId pulumi.StringPtrInput
 	// The ID of the vSwitch that you want the cluster to use. The vSwitch must reside in the VPC that is specified by the `ClusterVpcId` parameter.
 	// You can call the [DescribeVpcs](https://www.alibabacloud.com/help/en/doc-detail/448581.html) operation to query information about the created VPCs and vSwitches.
 	ClusterVswitchId pulumi.StringPtrInput
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable deletion protection for the cluster. Valid values:
+	//
+	// - true
+	// - false
 	DeletionProtection pulumi.BoolPtrInput
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleIn pulumi.BoolPtrInput
+	// Specifies whether to enable auto scale-out for the cluster. Valid values:
+	//
+	// - true
+	// - false
+	EnableScaleOut pulumi.BoolPtrInput
+	// The time interval of auto scale-out for the cluster.
+	GrowInterval pulumi.IntPtrInput
+	// The idle duration of the compute nodes allowed by the cluster.
+	IdleInterval pulumi.IntPtrInput
+	// Specifies whether to use an enterprise security group. Valid values:
+	//
+	// - true: An enterprise security group is automatically created and used.
+	// - false: A basic security group is automatically created and used.
+	IsEnterpriseSecurityGroup pulumi.BoolPtrInput
 	// The configurations of the cluster management node. See `manager` below.
 	Manager ClusterV2ManagerPtrInput
+	// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+	MaxCoreCount pulumi.IntPtrInput
+	// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+	MaxCount pulumi.IntPtrInput
+	// The monitoring configuration of the cluster. See `monitorSpec` below.
+	MonitorSpec ClusterV2MonitorSpecPtrInput
+	// The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+	Queues ClusterV2QueueArrayInput
 	// The ID of the resource group to which the cluster belongs.
 	// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
 	ResourceGroupId pulumi.StringPtrInput
+	// The scheduler configuration of the cluster. See `schedulerSpec` below.
+	SchedulerSpec ClusterV2SchedulerSpecPtrInput
 	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
 	// List of cluster shared storage configurations. See `sharedStorages` below.
 	SharedStorages ClusterV2SharedStorageArrayInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (ClusterV2Args) ElementType() reflect.Type {
@@ -551,15 +754,17 @@ func (o ClusterV2Output) ToClusterV2OutputWithContext(ctx context.Context) Clust
 	return o
 }
 
+// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+func (o ClusterV2Output) AdditionalPackages() ClusterV2AdditionalPackageArrayOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2AdditionalPackageArrayOutput { return v.AdditionalPackages }).(ClusterV2AdditionalPackageArrayOutput)
+}
+
 // The cluster custom service component configuration. Only one component is supported. See `addons` below.
 func (o ClusterV2Output) Addons() ClusterV2AddonArrayOutput {
 	return o.ApplyT(func(v *ClusterV2) ClusterV2AddonArrayOutput { return v.Addons }).(ClusterV2AddonArrayOutput)
 }
 
-// Specifies whether to enable auto scale-out for the cluster. Valid values:
-//
-// - true
-// - false
+// The version of the E-HPC client.
 func (o ClusterV2Output) ClientVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.ClientVersion }).(pulumi.StringOutput)
 }
@@ -577,6 +782,16 @@ func (o ClusterV2Output) ClusterCredentials() ClusterV2ClusterCredentialsOutput 
 	return o.ApplyT(func(v *ClusterV2) ClusterV2ClusterCredentialsOutput { return v.ClusterCredentials }).(ClusterV2ClusterCredentialsOutput)
 }
 
+// The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+func (o ClusterV2Output) ClusterCustomConfiguration() ClusterV2ClusterCustomConfigurationOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2ClusterCustomConfigurationOutput { return v.ClusterCustomConfiguration }).(ClusterV2ClusterCustomConfigurationOutput)
+}
+
+// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+func (o ClusterV2Output) ClusterDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.ClusterDescription }).(pulumi.StringPtrOutput)
+}
+
 // The deployment mode of the cluster. Valid values:
 //
 // - Integrated
@@ -586,9 +801,14 @@ func (o ClusterV2Output) ClusterMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.ClusterMode }).(pulumi.StringPtrOutput)
 }
 
-// The post-processing script of the cluster.
+// The name of the cluster.
 func (o ClusterV2Output) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringPtrOutput { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.288.0) The status of the cluster.
+func (o ClusterV2Output) ClusterStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.ClusterStatus }).(pulumi.StringOutput)
 }
 
 // The ID of the virtual private cloud (VPC) in which the cluster resides.
@@ -607,9 +827,51 @@ func (o ClusterV2Output) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The idle duration of the compute nodes allowed by the cluster.
+// Specifies whether to enable deletion protection for the cluster. Valid values:
+//
+// - true
+// - false
 func (o ClusterV2Output) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// (Available since v1.288.0) The version of the E-HPC cluster.
+func (o ClusterV2Output) EhpcVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.EhpcVersion }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable auto scale-in for the cluster. Valid values:
+//
+// - true
+// - false
+func (o ClusterV2Output) EnableScaleIn() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.BoolOutput { return v.EnableScaleIn }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to enable auto scale-out for the cluster. Valid values:
+//
+// - true
+// - false
+func (o ClusterV2Output) EnableScaleOut() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.BoolOutput { return v.EnableScaleOut }).(pulumi.BoolOutput)
+}
+
+// The time interval of auto scale-out for the cluster.
+func (o ClusterV2Output) GrowInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.IntOutput { return v.GrowInterval }).(pulumi.IntOutput)
+}
+
+// The idle duration of the compute nodes allowed by the cluster.
+func (o ClusterV2Output) IdleInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.IntOutput { return v.IdleInterval }).(pulumi.IntOutput)
+}
+
+// Specifies whether to use an enterprise security group. Valid values:
+//
+// - true: An enterprise security group is automatically created and used.
+// - false: A basic security group is automatically created and used.
+func (o ClusterV2Output) IsEnterpriseSecurityGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.BoolPtrOutput { return v.IsEnterpriseSecurityGroup }).(pulumi.BoolPtrOutput)
 }
 
 // The configurations of the cluster management node. See `manager` below.
@@ -617,10 +879,40 @@ func (o ClusterV2Output) Manager() ClusterV2ManagerPtrOutput {
 	return o.ApplyT(func(v *ClusterV2) ClusterV2ManagerPtrOutput { return v.Manager }).(ClusterV2ManagerPtrOutput)
 }
 
+// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+func (o ClusterV2Output) MaxCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.IntOutput { return v.MaxCoreCount }).(pulumi.IntOutput)
+}
+
+// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+func (o ClusterV2Output) MaxCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.IntOutput { return v.MaxCount }).(pulumi.IntOutput)
+}
+
+// (Available since v1.288.0) The time when the cluster was modified.
+func (o ClusterV2Output) ModifyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.ModifyTime }).(pulumi.StringOutput)
+}
+
+// The monitoring configuration of the cluster. See `monitorSpec` below.
+func (o ClusterV2Output) MonitorSpec() ClusterV2MonitorSpecOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2MonitorSpecOutput { return v.MonitorSpec }).(ClusterV2MonitorSpecOutput)
+}
+
+// The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+func (o ClusterV2Output) Queues() ClusterV2QueueArrayOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2QueueArrayOutput { return v.Queues }).(ClusterV2QueueArrayOutput)
+}
+
 // The ID of the resource group to which the cluster belongs.
 // You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
 func (o ClusterV2Output) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterV2) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The scheduler configuration of the cluster. See `schedulerSpec` below.
+func (o ClusterV2Output) SchedulerSpec() ClusterV2SchedulerSpecOutput {
+	return o.ApplyT(func(v *ClusterV2) ClusterV2SchedulerSpecOutput { return v.SchedulerSpec }).(ClusterV2SchedulerSpecOutput)
 }
 
 // The security group ID.
@@ -631,6 +923,11 @@ func (o ClusterV2Output) SecurityGroupId() pulumi.StringPtrOutput {
 // List of cluster shared storage configurations. See `sharedStorages` below.
 func (o ClusterV2Output) SharedStorages() ClusterV2SharedStorageArrayOutput {
 	return o.ApplyT(func(v *ClusterV2) ClusterV2SharedStorageArrayOutput { return v.SharedStorages }).(ClusterV2SharedStorageArrayOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o ClusterV2Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClusterV2) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ClusterV2ArrayOutput struct{ *pulumi.OutputState }

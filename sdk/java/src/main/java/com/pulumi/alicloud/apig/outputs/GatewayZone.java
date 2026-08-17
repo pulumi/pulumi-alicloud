@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayZone {
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The vswitch ID.
+     * @return The ID of the virtual switch in the availability zone.
      * 
      */
     private @Nullable String vswitchId;
     /**
-     * @return The zone ID.
+     * @return The ID of the availability zone for the gateway.
      * 
      */
     private @Nullable String zoneId;
 
     private GatewayZone() {}
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The vswitch ID.
+     * @return The ID of the virtual switch in the availability zone.
      * 
      */
     public Optional<String> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
     /**
-     * @return The zone ID.
+     * @return The ID of the availability zone for the gateway.
      * 
      */
     public Optional<String> zoneId() {

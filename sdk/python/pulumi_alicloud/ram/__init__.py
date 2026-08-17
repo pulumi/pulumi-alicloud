@@ -7,9 +7,11 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .access_key import *
+from .access_key_policy import *
 from .account_alias import *
 from .account_password_policy import *
 from .alias import *
+from .get_access_key_policy import *
 from .get_account_alias import *
 from .get_account_aliases import *
 from .get_groups import *

@@ -2014,6 +2014,142 @@ func (o ServiceMetricAlarmRulePrometheusAnnotationArrayOutput) Index(i pulumi.In
 	}).(ServiceMetricAlarmRulePrometheusAnnotationOutput)
 }
 
+type ServiceMetricAlarmRuleTarget struct {
+	// The Alibaba Cloud Resource Name (ARN) of the resource that receives the alert. The API rejects a target that omits it. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service and Function Compute are supported:
+	// - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource that receives the alert. Valid values: queues, topics. {Resource name}: the queue name if the resource type is queues, or the topic name if the resource type is topics.
+	// - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+	// - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+	// - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+	Arn *string `pulumi:"arn"`
+	// The parameters of the alert callback, in the JSON format.
+	JsonParams *string `pulumi:"jsonParams"`
+	// The level of the alert. Valid values: `INFO`, `WARN`, `CRITICAL`. The value is matched case-insensitively, so `Info`, `Warn` and `Critical` are accepted as well.
+	Level *string `pulumi:"level"`
+	// The ID of the alert trigger target. It only needs to be unique within the alert rule. The API rejects a target that omits it.
+	TargetId *string `pulumi:"targetId"`
+}
+
+// ServiceMetricAlarmRuleTargetInput is an input type that accepts ServiceMetricAlarmRuleTargetArgs and ServiceMetricAlarmRuleTargetOutput values.
+// You can construct a concrete instance of `ServiceMetricAlarmRuleTargetInput` via:
+//
+//	ServiceMetricAlarmRuleTargetArgs{...}
+type ServiceMetricAlarmRuleTargetInput interface {
+	pulumi.Input
+
+	ToServiceMetricAlarmRuleTargetOutput() ServiceMetricAlarmRuleTargetOutput
+	ToServiceMetricAlarmRuleTargetOutputWithContext(context.Context) ServiceMetricAlarmRuleTargetOutput
+}
+
+type ServiceMetricAlarmRuleTargetArgs struct {
+	// The Alibaba Cloud Resource Name (ARN) of the resource that receives the alert. The API rejects a target that omits it. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service and Function Compute are supported:
+	// - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource that receives the alert. Valid values: queues, topics. {Resource name}: the queue name if the resource type is queues, or the topic name if the resource type is topics.
+	// - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+	// - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+	// - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The parameters of the alert callback, in the JSON format.
+	JsonParams pulumi.StringPtrInput `pulumi:"jsonParams"`
+	// The level of the alert. Valid values: `INFO`, `WARN`, `CRITICAL`. The value is matched case-insensitively, so `Info`, `Warn` and `Critical` are accepted as well.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// The ID of the alert trigger target. It only needs to be unique within the alert rule. The API rejects a target that omits it.
+	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
+}
+
+func (ServiceMetricAlarmRuleTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMetricAlarmRuleTarget)(nil)).Elem()
+}
+
+func (i ServiceMetricAlarmRuleTargetArgs) ToServiceMetricAlarmRuleTargetOutput() ServiceMetricAlarmRuleTargetOutput {
+	return i.ToServiceMetricAlarmRuleTargetOutputWithContext(context.Background())
+}
+
+func (i ServiceMetricAlarmRuleTargetArgs) ToServiceMetricAlarmRuleTargetOutputWithContext(ctx context.Context) ServiceMetricAlarmRuleTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMetricAlarmRuleTargetOutput)
+}
+
+// ServiceMetricAlarmRuleTargetArrayInput is an input type that accepts ServiceMetricAlarmRuleTargetArray and ServiceMetricAlarmRuleTargetArrayOutput values.
+// You can construct a concrete instance of `ServiceMetricAlarmRuleTargetArrayInput` via:
+//
+//	ServiceMetricAlarmRuleTargetArray{ ServiceMetricAlarmRuleTargetArgs{...} }
+type ServiceMetricAlarmRuleTargetArrayInput interface {
+	pulumi.Input
+
+	ToServiceMetricAlarmRuleTargetArrayOutput() ServiceMetricAlarmRuleTargetArrayOutput
+	ToServiceMetricAlarmRuleTargetArrayOutputWithContext(context.Context) ServiceMetricAlarmRuleTargetArrayOutput
+}
+
+type ServiceMetricAlarmRuleTargetArray []ServiceMetricAlarmRuleTargetInput
+
+func (ServiceMetricAlarmRuleTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMetricAlarmRuleTarget)(nil)).Elem()
+}
+
+func (i ServiceMetricAlarmRuleTargetArray) ToServiceMetricAlarmRuleTargetArrayOutput() ServiceMetricAlarmRuleTargetArrayOutput {
+	return i.ToServiceMetricAlarmRuleTargetArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceMetricAlarmRuleTargetArray) ToServiceMetricAlarmRuleTargetArrayOutputWithContext(ctx context.Context) ServiceMetricAlarmRuleTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMetricAlarmRuleTargetArrayOutput)
+}
+
+type ServiceMetricAlarmRuleTargetOutput struct{ *pulumi.OutputState }
+
+func (ServiceMetricAlarmRuleTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMetricAlarmRuleTarget)(nil)).Elem()
+}
+
+func (o ServiceMetricAlarmRuleTargetOutput) ToServiceMetricAlarmRuleTargetOutput() ServiceMetricAlarmRuleTargetOutput {
+	return o
+}
+
+func (o ServiceMetricAlarmRuleTargetOutput) ToServiceMetricAlarmRuleTargetOutputWithContext(ctx context.Context) ServiceMetricAlarmRuleTargetOutput {
+	return o
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the resource that receives the alert. The API rejects a target that omits it. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service and Function Compute are supported:
+// - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource that receives the alert. Valid values: queues, topics. {Resource name}: the queue name if the resource type is queues, or the topic name if the resource type is topics.
+// - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+// - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+// - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+func (o ServiceMetricAlarmRuleTargetOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMetricAlarmRuleTarget) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The parameters of the alert callback, in the JSON format.
+func (o ServiceMetricAlarmRuleTargetOutput) JsonParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMetricAlarmRuleTarget) *string { return v.JsonParams }).(pulumi.StringPtrOutput)
+}
+
+// The level of the alert. Valid values: `INFO`, `WARN`, `CRITICAL`. The value is matched case-insensitively, so `Info`, `Warn` and `Critical` are accepted as well.
+func (o ServiceMetricAlarmRuleTargetOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMetricAlarmRuleTarget) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the alert trigger target. It only needs to be unique within the alert rule. The API rejects a target that omits it.
+func (o ServiceMetricAlarmRuleTargetOutput) TargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMetricAlarmRuleTarget) *string { return v.TargetId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceMetricAlarmRuleTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceMetricAlarmRuleTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceMetricAlarmRuleTarget)(nil)).Elem()
+}
+
+func (o ServiceMetricAlarmRuleTargetArrayOutput) ToServiceMetricAlarmRuleTargetArrayOutput() ServiceMetricAlarmRuleTargetArrayOutput {
+	return o
+}
+
+func (o ServiceMetricAlarmRuleTargetArrayOutput) ToServiceMetricAlarmRuleTargetArrayOutputWithContext(ctx context.Context) ServiceMetricAlarmRuleTargetArrayOutput {
+	return o
+}
+
+func (o ServiceMetricAlarmRuleTargetArrayOutput) Index(i pulumi.IntInput) ServiceMetricAlarmRuleTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceMetricAlarmRuleTarget {
+		return vs[0].([]ServiceMetricAlarmRuleTarget)[vs[1].(int)]
+	}).(ServiceMetricAlarmRuleTargetOutput)
+}
+
 type GetServiceHybridDoubleWritesHybridDoubleWrite struct {
 	// The ID of the Hybrid Double Write. It formats as `<source_namespace>:<source_user_id>`.
 	Id string `pulumi:"id"`
@@ -3369,6 +3505,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMetricAlarmRulePrometheusPtrInput)(nil)).Elem(), ServiceMetricAlarmRulePrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMetricAlarmRulePrometheusAnnotationInput)(nil)).Elem(), ServiceMetricAlarmRulePrometheusAnnotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMetricAlarmRulePrometheusAnnotationArrayInput)(nil)).Elem(), ServiceMetricAlarmRulePrometheusAnnotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMetricAlarmRuleTargetInput)(nil)).Elem(), ServiceMetricAlarmRuleTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMetricAlarmRuleTargetArrayInput)(nil)).Elem(), ServiceMetricAlarmRuleTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWriteInput)(nil)).Elem(), GetServiceHybridDoubleWritesHybridDoubleWriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceHybridDoubleWritesHybridDoubleWriteArrayInput)(nil)).Elem(), GetServiceHybridDoubleWritesHybridDoubleWriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceMetricAlarmRulesRuleInput)(nil)).Elem(), GetServiceMetricAlarmRulesRuleArgs{})
@@ -3409,6 +3547,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceMetricAlarmRulePrometheusPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMetricAlarmRulePrometheusAnnotationOutput{})
 	pulumi.RegisterOutputType(ServiceMetricAlarmRulePrometheusAnnotationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceMetricAlarmRuleTargetOutput{})
+	pulumi.RegisterOutputType(ServiceMetricAlarmRuleTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceHybridDoubleWritesHybridDoubleWriteOutput{})
 	pulumi.RegisterOutputType(GetServiceHybridDoubleWritesHybridDoubleWriteArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceMetricAlarmRulesRuleOutput{})

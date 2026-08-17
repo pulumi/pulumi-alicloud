@@ -419,6 +419,20 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationEndpointRegion);
     }
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Export(name="destinationEndpointSsl", refs={String.class}, tree="[0]")
+    private Output<String> destinationEndpointSsl;
+
+    /**
+     * @return The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Output<String> destinationEndpointSsl() {
+        return this.destinationEndpointSsl;
+    }
+    /**
      * The username of database account.
      * 
      */
@@ -627,6 +641,20 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceEndpointRole() {
         return Codegen.optional(this.sourceEndpointRole);
+    }
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Export(name="sourceEndpointSsl", refs={String.class}, tree="[0]")
+    private Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Output<String> sourceEndpointSsl() {
+        return this.sourceEndpointSsl;
     }
     /**
      * The username of database account.

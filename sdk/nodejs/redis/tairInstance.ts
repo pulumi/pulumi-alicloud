@@ -116,6 +116,10 @@ export class TairInstance extends pulumi.CustomResource {
      */
     declare public readonly clusterBackupId: pulumi.Output<string | undefined>;
     /**
+     * The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+     */
+    declare public readonly config: pulumi.Output<{[key: string]: string}>;
+    /**
      * The internal endpoint of the instance.
      */
     declare public /*out*/ readonly connectionDomain: pulumi.Output<string>;
@@ -182,6 +186,14 @@ export class TairInstance extends pulumi.CustomResource {
      * Instance intranet bandwidth
      */
     declare public readonly intranetBandwidth: pulumi.Output<number>;
+    /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     */
+    declare public readonly maintainEndTime: pulumi.Output<string>;
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     */
+    declare public readonly maintainStartTime: pulumi.Output<string>;
     /**
      * The maximum number of connections supported by the instance.
      */
@@ -375,6 +387,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
             resourceInputs["backupId"] = state?.backupId;
             resourceInputs["clusterBackupId"] = state?.clusterBackupId;
+            resourceInputs["config"] = state?.config;
             resourceInputs["connectionDomain"] = state?.connectionDomain;
             resourceInputs["connectionStringPrefix"] = state?.connectionStringPrefix;
             resourceInputs["createTime"] = state?.createTime;
@@ -387,6 +400,8 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["instanceClass"] = state?.instanceClass;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["intranetBandwidth"] = state?.intranetBandwidth;
+            resourceInputs["maintainEndTime"] = state?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = state?.maintainStartTime;
             resourceInputs["maxConnections"] = state?.maxConnections;
             resourceInputs["modifyMode"] = state?.modifyMode;
             resourceInputs["networkType"] = state?.networkType;
@@ -446,6 +461,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
             resourceInputs["backupId"] = args?.backupId;
             resourceInputs["clusterBackupId"] = args?.clusterBackupId;
+            resourceInputs["config"] = args?.config;
             resourceInputs["connectionStringPrefix"] = args?.connectionStringPrefix;
             resourceInputs["effectiveTime"] = args?.effectiveTime;
             resourceInputs["encryptionKey"] = args?.encryptionKey;
@@ -456,6 +472,8 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["instanceClass"] = args?.instanceClass;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["intranetBandwidth"] = args?.intranetBandwidth;
+            resourceInputs["maintainEndTime"] = args?.maintainEndTime;
+            resourceInputs["maintainStartTime"] = args?.maintainStartTime;
             resourceInputs["modifyMode"] = args?.modifyMode;
             resourceInputs["nodeType"] = args?.nodeType;
             resourceInputs["paramNoLooseSentinelEnabled"] = args?.paramNoLooseSentinelEnabled;
@@ -532,6 +550,10 @@ export interface TairInstanceState {
      */
     clusterBackupId?: pulumi.Input<string | undefined>;
     /**
+     * The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+     */
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The internal endpoint of the instance.
      */
     connectionDomain?: pulumi.Input<string | undefined>;
@@ -598,6 +620,14 @@ export interface TairInstanceState {
      * Instance intranet bandwidth
      */
     intranetBandwidth?: pulumi.Input<number | undefined>;
+    /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     */
+    maintainEndTime?: pulumi.Input<string | undefined>;
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     */
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of connections supported by the instance.
      */
@@ -797,6 +827,10 @@ export interface TairInstanceArgs {
      */
     clusterBackupId?: pulumi.Input<string | undefined>;
     /**
+     * The configuration of the Tair (Redis OSS-Compatible) instance. It is a map of Redis configuration parameters, such as `maxmemory-policy` and `appendonly`. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters). This attribute is applied via the `ModifyInstanceConfig` API and only takes effect when the instance is in the running state, so it is recommended to set or update it after the instance is created.
+     */
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
      */
     connectionStringPrefix?: pulumi.Input<string | undefined>;
@@ -855,6 +889,14 @@ export interface TairInstanceArgs {
      * Instance intranet bandwidth
      */
     intranetBandwidth?: pulumi.Input<number | undefined>;
+    /**
+     * The end time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). The interval between the start time and the end time must be at least 1 hour. Example: `06:00Z`.
+     */
+    maintainEndTime?: pulumi.Input<string | undefined>;
+    /**
+     * The start time of the maintenance window of the Tair instance. The time is in the `HH:mmZ` format (UTC). Example: `02:00Z`.
+     */
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
      */

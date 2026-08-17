@@ -279,6 +279,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     declare public readonly destinationEndpointRole: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly destinationEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     declare public readonly destinationEndpointUserName: pulumi.Output<string | undefined>;
@@ -316,6 +320,8 @@ export class SynchronizationJob extends pulumi.CustomResource {
     declare public readonly jobParameters: pulumi.Output<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     *
+     * > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      */
     declare public readonly reserve: pulumi.Output<string>;
     /**
@@ -365,6 +371,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      * The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
      */
     declare public readonly sourceEndpointRole: pulumi.Output<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly sourceEndpointSsl: pulumi.Output<string>;
     /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
@@ -419,6 +429,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPort"] = state?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = state?.destinationEndpointRegion;
             resourceInputs["destinationEndpointRole"] = state?.destinationEndpointRole;
+            resourceInputs["destinationEndpointSsl"] = state?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = state?.destinationEndpointUserName;
             resourceInputs["dtsBisLabel"] = state?.dtsBisLabel;
             resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
@@ -439,6 +450,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = state?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = state?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
             resourceInputs["sourceEndpointVswitchId"] = state?.sourceEndpointVswitchId;
             resourceInputs["status"] = state?.status;
@@ -496,6 +508,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPort"] = args?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = args?.destinationEndpointRegion;
             resourceInputs["destinationEndpointRole"] = args?.destinationEndpointRole;
+            resourceInputs["destinationEndpointSsl"] = args?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = args?.destinationEndpointUserName;
             resourceInputs["dtsBisLabel"] = args?.dtsBisLabel;
             resourceInputs["dtsInstanceId"] = args?.dtsInstanceId;
@@ -516,6 +529,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = args?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = args?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
             resourceInputs["sourceEndpointVswitchId"] = args?.sourceEndpointVswitchId;
             resourceInputs["status"] = args?.status;
@@ -615,6 +629,10 @@ export interface SynchronizationJobState {
      */
     destinationEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     destinationEndpointUserName?: pulumi.Input<string | undefined>;
@@ -652,6 +670,8 @@ export interface SynchronizationJobState {
     jobParameters?: pulumi.Input<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     *
+     * > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      */
     reserve?: pulumi.Input<string | undefined>;
     /**
@@ -701,6 +721,10 @@ export interface SynchronizationJobState {
      * The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
@@ -811,6 +835,10 @@ export interface SynchronizationJobArgs {
      */
     destinationEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */
     destinationEndpointUserName?: pulumi.Input<string | undefined>;
@@ -848,6 +876,8 @@ export interface SynchronizationJobArgs {
     jobParameters?: pulumi.Input<string | undefined>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     *
+     * > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      */
     reserve?: pulumi.Input<string | undefined>;
     /**
@@ -897,6 +927,10 @@ export interface SynchronizationJobArgs {
      * The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      */

@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .account import *
+from .api_key import *
 from .backup_policy import *
 from .connection import *
 from .database import *
@@ -16,6 +17,7 @@ from .db_resource_group import *
 from .elastic_instance import *
 from .external_data_service import *
 from .get_accounts import *
+from .get_api_keys import *
 from .get_data_backups import *
 from .get_db_instance_plans import *
 from .get_instances import *

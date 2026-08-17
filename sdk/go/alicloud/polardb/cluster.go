@@ -407,8 +407,8 @@ type Cluster struct {
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 	TdeRegion pulumi.StringOutput `pulumi:"tdeRegion"`
-	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+	// > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
 	TdeStatus pulumi.StringPtrOutput `pulumi:"tdeStatus"`
 	// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
 	UpgradeType pulumi.StringPtrOutput `pulumi:"upgradeType"`
@@ -652,8 +652,8 @@ type clusterState struct {
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 	TdeRegion *string `pulumi:"tdeRegion"`
-	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+	// > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
 	UpgradeType *string `pulumi:"upgradeType"`
@@ -859,8 +859,8 @@ type ClusterState struct {
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 	TdeRegion pulumi.StringPtrInput
-	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+	// > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
 	TdeStatus pulumi.StringPtrInput
 	// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
 	UpgradeType pulumi.StringPtrInput
@@ -1056,8 +1056,8 @@ type clusterArgs struct {
 	TargetDbRevisionVersionCode *string `pulumi:"targetDbRevisionVersionCode"`
 	// The target minor version of the cluster. Used during creation.
 	TargetMinorVersion *string `pulumi:"targetMinorVersion"`
-	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+	// > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
 	TdeStatus *string `pulumi:"tdeStatus"`
 	// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
 	UpgradeType *string `pulumi:"upgradeType"`
@@ -1250,8 +1250,8 @@ type ClusterArgs struct {
 	TargetDbRevisionVersionCode pulumi.StringPtrInput
 	// The target minor version of the cluster. Used during creation.
 	TargetMinorVersion pulumi.StringPtrInput
-	// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-	// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+	// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+	// > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
 	TdeStatus pulumi.StringPtrInput
 	// Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
 	UpgradeType pulumi.StringPtrInput
@@ -1771,8 +1771,8 @@ func (o ClusterOutput) TdeRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TdeRegion }).(pulumi.StringOutput)
 }
 
-// turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-// > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+// Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+// > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
 func (o ClusterOutput) TdeStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.TdeStatus }).(pulumi.StringPtrOutput)
 }

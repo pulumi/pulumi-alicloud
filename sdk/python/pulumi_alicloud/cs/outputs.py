@@ -36,6 +36,9 @@ __all__ = [
     'ManagedKubernetesAutoMode',
     'ManagedKubernetesCertificateAuthority',
     'ManagedKubernetesConnections',
+    'ManagedKubernetesControlPlaneEndpointsConfig',
+    'ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig',
+    'ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig',
     'ManagedKubernetesDeleteOption',
     'ManagedKubernetesMaintenanceWindow',
     'ManagedKubernetesOperationPolicy',
@@ -43,6 +46,7 @@ __all__ = [
     'ManagedKubernetesRrsaMetadata',
     'ManagedKubernetesUpgradePolicy',
     'NodePoolAutoMode',
+    'NodePoolContainerdConfig',
     'NodePoolDataDisk',
     'NodePoolEfloNodeGroup',
     'NodePoolInstanceMetadataOptions',
@@ -1836,6 +1840,166 @@ class ManagedKubernetesConnections(dict):
 
 
 @pulumi.output_type
+class ManagedKubernetesControlPlaneEndpointsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalDnsConfig":
+            suggest = "internal_dns_config"
+        elif key == "loadBalancersConfigs":
+            suggest = "load_balancers_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesControlPlaneEndpointsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 internal_dns_config: Optional['outputs.ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig'] = None,
+                 load_balancers_configs: Optional[Sequence['outputs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig']] = None):
+        """
+        :param 'ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs' internal_dns_config: The cluster internal domain name configuration, applicable to ACK managed clusters. See `internal_dns_config` below.
+        :param Sequence['ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs'] load_balancers_configs: The load balancing configuration for cluster access. See `load_balancers_config` below.
+        """
+        if internal_dns_config is not None:
+            pulumi.set(__self__, "internal_dns_config", internal_dns_config)
+        if load_balancers_configs is not None:
+            pulumi.set(__self__, "load_balancers_configs", load_balancers_configs)
+
+    @_builtins.property
+    @pulumi.getter(name="internalDnsConfig")
+    def internal_dns_config(self) -> Optional['outputs.ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig']:
+        """
+        The cluster internal domain name configuration, applicable to ACK managed clusters. See `internal_dns_config` below.
+        """
+        return pulumi.get(self, "internal_dns_config")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancersConfigs")
+    def load_balancers_configs(self) -> Optional[Sequence['outputs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig']]:
+        """
+        The load balancing configuration for cluster access. See `load_balancers_config` below.
+        """
+        return pulumi.get(self, "load_balancers_configs")
+
+
+@pulumi.output_type
+class ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindVpcs":
+            suggest = "bind_vpcs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bind_vpcs: Optional[Sequence[_builtins.str]] = None,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] bind_vpcs: The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+        :param _builtins.bool enabled: Whether the RRSA feature has been enabled.
+        """
+        if bind_vpcs is not None:
+            pulumi.set(__self__, "bind_vpcs", bind_vpcs)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="bindVpcs")
+    def bind_vpcs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+        """
+        return pulumi.get(self, "bind_vpcs")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointType":
+            suggest = "endpoint_type"
+        elif key == "loadBalancerId":
+            suggest = "load_balancer_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: Optional[_builtins.str] = None,
+                 endpoint_type: Optional[_builtins.str] = None,
+                 load_balancer_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str endpoint: The access address.
+        :param _builtins.str endpoint_type: The endpoint type. Valid values: `private`, `public`.
+        :param _builtins.str load_balancer_id: The ID of the SLB (NLB) instance associated with the endpoint.
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The access address.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[_builtins.str]:
+        """
+        The endpoint type. Valid values: `private`, `public`.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the SLB (NLB) instance associated with the endpoint.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+
+@pulumi.output_type
 class ManagedKubernetesDeleteOption(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2277,6 +2441,126 @@ class NodePoolAutoMode(dict):
         Whether to enable auto mode. Valid values:
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class NodePoolContainerdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreImageDefinedVolume":
+            suggest = "ignore_image_defined_volume"
+        elif key == "insecureRegistries":
+            suggest = "insecure_registries"
+        elif key == "limitCore":
+            suggest = "limit_core"
+        elif key == "limitMemLock":
+            suggest = "limit_mem_lock"
+        elif key == "limitNoFile":
+            suggest = "limit_no_file"
+        elif key == "maxConcurrentDownloads":
+            suggest = "max_concurrent_downloads"
+        elif key == "registryMirrors":
+            suggest = "registry_mirrors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolContainerdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolContainerdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolContainerdConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ignore_image_defined_volume: Optional[_builtins.str] = None,
+                 insecure_registries: Optional[Sequence[_builtins.str]] = None,
+                 limit_core: Optional[_builtins.str] = None,
+                 limit_mem_lock: Optional[_builtins.str] = None,
+                 limit_no_file: Optional[_builtins.str] = None,
+                 max_concurrent_downloads: Optional[_builtins.int] = None,
+                 registry_mirrors: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str ignore_image_defined_volume: Whether to ignore volumes defined in the image. Valid values: lowercase `"true"`, `"false"` or `""`. If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"false"`) writes the key to the containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        :param Sequence[_builtins.str] insecure_registries: Allow the container runtime to skip TLS certificate verification when pulling images. Typically used in test environments with self-signed certificate registries. The format is domain name or IP address without protocol prefix (e.g., `registry.example.com`, `192.168.1.1:5000`).
+        :param _builtins.str limit_core: The coredump size limit. Valid values: `""` or a canonical decimal integer string from `"0"` to `"9007199254740991"` (e.g. `"0"`, `"1024"`; forms like `"+10"` or `"010"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"0"`) writes the corresponding value. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        :param _builtins.str limit_mem_lock: The maximum locked memory limit. Valid values: `""` or a canonical decimal integer string from `"65536"` to `"9007199254740991"` (forms like `"+65536"` or `"065536"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        :param _builtins.str limit_no_file: The maximum number of file handles. Valid values: `""` or a canonical decimal integer string from `"1024"` to `"9007199254740991"` (forms like `"+2048"` or `"02048"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        :param _builtins.int max_concurrent_downloads: The maximum number of concurrent downloads for container images. Valid values: `1` to `20`.
+        :param Sequence[_builtins.str] registry_mirrors: Configure mirror sites for container image registries to accelerate image pulls. Each string follows the format `registry=mirror1[&override_path],mirror2[&override_path],...`. The part before `=` is the container image registry, which must be a domain name or IP address without protocol prefix (optionally including a port number), e.g., `docker.io`, `192.168.1.1:5000`. The part after `=` is one or more mirror sites separated by commas; each mirror must start with `http://` or `https://` followed by an IP address or domain name (optionally including a port number), e.g., `https://registry.cn-hangzhou.aliyuncs.com`. Append `&override_path` to a mirror to enable path override for that mirror.
+        """
+        if ignore_image_defined_volume is not None:
+            pulumi.set(__self__, "ignore_image_defined_volume", ignore_image_defined_volume)
+        if insecure_registries is not None:
+            pulumi.set(__self__, "insecure_registries", insecure_registries)
+        if limit_core is not None:
+            pulumi.set(__self__, "limit_core", limit_core)
+        if limit_mem_lock is not None:
+            pulumi.set(__self__, "limit_mem_lock", limit_mem_lock)
+        if limit_no_file is not None:
+            pulumi.set(__self__, "limit_no_file", limit_no_file)
+        if max_concurrent_downloads is not None:
+            pulumi.set(__self__, "max_concurrent_downloads", max_concurrent_downloads)
+        if registry_mirrors is not None:
+            pulumi.set(__self__, "registry_mirrors", registry_mirrors)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreImageDefinedVolume")
+    def ignore_image_defined_volume(self) -> Optional[_builtins.str]:
+        """
+        Whether to ignore volumes defined in the image. Valid values: lowercase `"true"`, `"false"` or `""`. If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"false"`) writes the key to the containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        """
+        return pulumi.get(self, "ignore_image_defined_volume")
+
+    @_builtins.property
+    @pulumi.getter(name="insecureRegistries")
+    def insecure_registries(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Allow the container runtime to skip TLS certificate verification when pulling images. Typically used in test environments with self-signed certificate registries. The format is domain name or IP address without protocol prefix (e.g., `registry.example.com`, `192.168.1.1:5000`).
+        """
+        return pulumi.get(self, "insecure_registries")
+
+    @_builtins.property
+    @pulumi.getter(name="limitCore")
+    def limit_core(self) -> Optional[_builtins.str]:
+        """
+        The coredump size limit. Valid values: `""` or a canonical decimal integer string from `"0"` to `"9007199254740991"` (e.g. `"0"`, `"1024"`; forms like `"+10"` or `"010"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"0"`) writes the corresponding value. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        """
+        return pulumi.get(self, "limit_core")
+
+    @_builtins.property
+    @pulumi.getter(name="limitMemLock")
+    def limit_mem_lock(self) -> Optional[_builtins.str]:
+        """
+        The maximum locked memory limit. Valid values: `""` or a canonical decimal integer string from `"65536"` to `"9007199254740991"` (forms like `"+65536"` or `"065536"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        """
+        return pulumi.get(self, "limit_mem_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="limitNoFile")
+    def limit_no_file(self) -> Optional[_builtins.str]:
+        """
+        The maximum number of file handles. Valid values: `""` or a canonical decimal integer string from `"1024"` to `"9007199254740991"` (forms like `"+2048"` or `"02048"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+        """
+        return pulumi.get(self, "limit_no_file")
+
+    @_builtins.property
+    @pulumi.getter(name="maxConcurrentDownloads")
+    def max_concurrent_downloads(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of concurrent downloads for container images. Valid values: `1` to `20`.
+        """
+        return pulumi.get(self, "max_concurrent_downloads")
+
+    @_builtins.property
+    @pulumi.getter(name="registryMirrors")
+    def registry_mirrors(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Configure mirror sites for container image registries to accelerate image pulls. Each string follows the format `registry=mirror1[&override_path],mirror2[&override_path],...`. The part before `=` is the container image registry, which must be a domain name or IP address without protocol prefix (optionally including a port number), e.g., `docker.io`, `192.168.1.1:5000`. The part after `=` is one or more mirror sites separated by commas; each mirror must start with `http://` or `https://` followed by an IP address or domain name (optionally including a port number), e.g., `https://registry.cn-hangzhou.aliyuncs.com`. Append `&override_path` to a mirror to enable path override for that mirror.
+        """
+        return pulumi.get(self, "registry_mirrors")
 
 
 @pulumi.output_type
@@ -8180,6 +8464,7 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
                  repo_quota: _builtins.str,
                  repo_usage: _builtins.str,
                  specification: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
                  temp_username: _builtins.str,
                  vpc_endpoints: Sequence[_builtins.str]):
         """
@@ -8193,6 +8478,7 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         :param _builtins.str repo_quota: The max number of repos that an instance can create.
         :param _builtins.str repo_usage: The number of repos already created.
         :param _builtins.str specification: Specification of Container Registry Enterprise Edition instance.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
         :param _builtins.str temp_username: The username that was used to log on to the registry.
         :param Sequence[_builtins.str] vpc_endpoints: A list of domains for access on vpc network.
         """
@@ -8206,6 +8492,7 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         pulumi.set(__self__, "repo_quota", repo_quota)
         pulumi.set(__self__, "repo_usage", repo_usage)
         pulumi.set(__self__, "specification", specification)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "temp_username", temp_username)
         pulumi.set(__self__, "vpc_endpoints", vpc_endpoints)
 
@@ -8288,6 +8575,14 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         Specification of Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "specification")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="tempUsername")

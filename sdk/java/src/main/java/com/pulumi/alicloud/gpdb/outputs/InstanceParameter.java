@@ -13,17 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceParameter {
     /**
-     * @return (Available since v1.231.0) The default value of the parameter.
+     * @return The default value of the parameter.
      * 
      */
     private @Nullable String defaultValue;
     /**
-     * @return (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+     * @return Whether to force restart the instance to config the parameter.
      * 
      */
     private @Nullable String forceRestartInstance;
     /**
-     * @return (Available since v1.231.0) Whether the parameter is changeable.
+     * @return Whether the parameter is changeable.
      * 
      */
     private @Nullable String isChangeableConfig;
@@ -33,12 +33,12 @@ public final class InstanceParameter {
      */
     private String name;
     /**
-     * @return (Available since v1.231.0) The optional range of the parameter.
+     * @return The optional range of the parameter.
      * 
      */
     private @Nullable String optionalRange;
     /**
-     * @return (Available since v1.231.0) The description of the parameter.
+     * @return The description of the parameter.
      * 
      */
     private @Nullable String parameterDescription;
@@ -50,21 +50,21 @@ public final class InstanceParameter {
 
     private InstanceParameter() {}
     /**
-     * @return (Available since v1.231.0) The default value of the parameter.
+     * @return The default value of the parameter.
      * 
      */
     public Optional<String> defaultValue() {
         return Optional.ofNullable(this.defaultValue);
     }
     /**
-     * @return (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+     * @return Whether to force restart the instance to config the parameter.
      * 
      */
     public Optional<String> forceRestartInstance() {
         return Optional.ofNullable(this.forceRestartInstance);
     }
     /**
-     * @return (Available since v1.231.0) Whether the parameter is changeable.
+     * @return Whether the parameter is changeable.
      * 
      */
     public Optional<String> isChangeableConfig() {
@@ -78,14 +78,14 @@ public final class InstanceParameter {
         return this.name;
     }
     /**
-     * @return (Available since v1.231.0) The optional range of the parameter.
+     * @return The optional range of the parameter.
      * 
      */
     public Optional<String> optionalRange() {
         return Optional.ofNullable(this.optionalRange);
     }
     /**
-     * @return (Available since v1.231.0) The description of the parameter.
+     * @return The description of the parameter.
      * 
      */
     public Optional<String> parameterDescription() {

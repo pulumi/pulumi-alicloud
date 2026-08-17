@@ -545,6 +545,12 @@ namespace Pulumi.AliCloud.KVStore
         public Output<int?> ReadOnlyCount { get; private set; } = null!;
 
         /// <summary>
+        /// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// </summary>
+        [Output("replicaCount")]
+        public Output<int> ReplicaCount { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Output("resourceGroupId")]
@@ -605,6 +611,13 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Output("slaveReadOnlyCount")]
         public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+        /// </summary>
+        [Output("slaveReplicaCount")]
+        public Output<int> SlaveReplicaCount { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the source instance.
@@ -1025,6 +1038,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? ReadOnlyCount { get; set; }
 
         /// <summary>
+        /// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -1091,6 +1110,13 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("slaveReadOnlyCount")]
         public Input<int>? SlaveReadOnlyCount { get; set; }
+
+        /// <summary>
+        /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+        /// </summary>
+        [Input("slaveReplicaCount")]
+        public Input<int>? SlaveReplicaCount { get; set; }
 
         /// <summary>
         /// The ID of the source instance.
@@ -1493,6 +1519,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<int>? ReadOnlyCount { get; set; }
 
         /// <summary>
+        /// The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// </summary>
+        [Input("replicaCount")]
+        public Input<int>? ReplicaCount { get; set; }
+
+        /// <summary>
         /// The ID of resource group which the resource belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -1559,6 +1591,13 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         [Input("slaveReadOnlyCount")]
         public Input<int>? SlaveReadOnlyCount { get; set; }
+
+        /// <summary>
+        /// The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        /// &gt; **NOTE:** `ReplicaCount`/`SlaveReplicaCount` (replica nodes) and `ReadOnlyCount`/`SlaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+        /// </summary>
+        [Input("slaveReplicaCount")]
+        public Input<int>? SlaveReplicaCount { get; set; }
 
         /// <summary>
         /// The ID of the source instance.

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -97,6 +98,21 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     * 
+     */
+    @Import(name="tcpIdleTimeout")
+    private @Nullable Output<Integer> tcpIdleTimeout;
+
+    /**
+     * @return The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+     * 
+     */
+    public Optional<Output<Integer>> tcpIdleTimeout() {
+        return Optional.ofNullable(this.tcpIdleTimeout);
+    }
+
     private ListenerArgs() {}
 
     private ListenerArgs(ListenerArgs $) {
@@ -105,6 +121,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         this.loadBalancerId = $.loadBalancerId;
         this.serverGroupId = $.serverGroupId;
         this.tags = $.tags;
+        this.tcpIdleTimeout = $.tcpIdleTimeout;
     }
 
     public static Builder builder() {
@@ -232,6 +249,27 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tcpIdleTimeout The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tcpIdleTimeout(@Nullable Output<Integer> tcpIdleTimeout) {
+            $.tcpIdleTimeout = tcpIdleTimeout;
+            return this;
+        }
+
+        /**
+         * @param tcpIdleTimeout The timeout period of an idle TCP connection. Unit: seconds. Valid values: `60` to `6000`. Default value: `350`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tcpIdleTimeout(Integer tcpIdleTimeout) {
+            return tcpIdleTimeout(Output.of(tcpIdleTimeout));
         }
 
         public ListenerArgs build() {

@@ -661,6 +661,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
      * - 1: enables the feature.
      * - 0: disables the feature.
@@ -1849,6 +1864,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
         this.force = $.force;
+        this.forceDelete = $.forceDelete;
         this.forceEncryption = $.forceEncryption;
         this.forceRestart = $.forceRestart;
         this.freshWhiteListReadins = $.freshWhiteListReadins;
@@ -2757,6 +2773,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder force(String force) {
             return force(Output.of(force));
+        }
+
+        /**
+         * @param forceDelete Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instanceChargeType` is `Prepaid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**

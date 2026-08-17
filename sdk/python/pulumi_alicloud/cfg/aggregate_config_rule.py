@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AggregateConfigRuleArgs', 'AggregateConfigRule']
 
@@ -28,6 +30,7 @@ class AggregateConfigRuleArgs:
                  source_owner: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_tags_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]]] = None,
                  input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,6 +53,7 @@ class AggregateConfigRuleArgs:
         :param pulumi.Input[_builtins.str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]] exclude_tags_scopes: The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[_builtins.str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[_builtins.str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -69,6 +73,8 @@ class AggregateConfigRuleArgs:
             pulumi.set(__self__, "description", description)
         if exclude_resource_ids_scope is not None:
             pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+        if exclude_tags_scopes is not None:
+            pulumi.set(__self__, "exclude_tags_scopes", exclude_tags_scopes)
         if input_parameters is not None:
             pulumi.set(__self__, "input_parameters", input_parameters)
         if maximum_execution_frequency is not None:
@@ -196,6 +202,18 @@ class AggregateConfigRuleArgs:
         pulumi.set(self, "exclude_resource_ids_scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="excludeTagsScopes")
+    def exclude_tags_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]]]:
+        """
+        The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
+        """
+        return pulumi.get(self, "exclude_tags_scopes")
+
+    @exclude_tags_scopes.setter
+    def exclude_tags_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]]]):
+        pulumi.set(self, "exclude_tags_scopes", value)
+
+    @_builtins.property
     @pulumi.getter(name="inputParameters")
     def input_parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -289,6 +307,7 @@ class _AggregateConfigRuleState:
                  config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_tags_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]]] = None,
                  input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -312,6 +331,7 @@ class _AggregateConfigRuleState:
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]] exclude_tags_scopes: The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[_builtins.str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[_builtins.str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -336,6 +356,8 @@ class _AggregateConfigRuleState:
             pulumi.set(__self__, "description", description)
         if exclude_resource_ids_scope is not None:
             pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+        if exclude_tags_scopes is not None:
+            pulumi.set(__self__, "exclude_tags_scopes", exclude_tags_scopes)
         if input_parameters is not None:
             pulumi.set(__self__, "input_parameters", input_parameters)
         if maximum_execution_frequency is not None:
@@ -433,6 +455,18 @@ class _AggregateConfigRuleState:
     @exclude_resource_ids_scope.setter
     def exclude_resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_ids_scope", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeTagsScopes")
+    def exclude_tags_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]]]:
+        """
+        The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
+        """
+        return pulumi.get(self, "exclude_tags_scopes")
+
+    @exclude_tags_scopes.setter
+    def exclude_tags_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AggregateConfigRuleExcludeTagsScopeArgs']]]]):
+        pulumi.set(self, "exclude_tags_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="inputParameters")
@@ -578,6 +612,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                  config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_tags_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateConfigRuleExcludeTagsScopeArgs', 'AggregateConfigRuleExcludeTagsScopeArgsDict']]]]] = None,
                  input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -655,6 +690,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateConfigRuleExcludeTagsScopeArgs', 'AggregateConfigRuleExcludeTagsScopeArgsDict']]]] exclude_tags_scopes: The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[_builtins.str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[_builtins.str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -748,6 +784,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                  config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_tags_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateConfigRuleExcludeTagsScopeArgs', 'AggregateConfigRuleExcludeTagsScopeArgsDict']]]]] = None,
                  input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -779,6 +816,7 @@ class AggregateConfigRule(pulumi.CustomResource):
             __props__.__dict__["config_rule_trigger_types"] = config_rule_trigger_types
             __props__.__dict__["description"] = description
             __props__.__dict__["exclude_resource_ids_scope"] = exclude_resource_ids_scope
+            __props__.__dict__["exclude_tags_scopes"] = exclude_tags_scopes
             __props__.__dict__["input_parameters"] = input_parameters
             __props__.__dict__["maximum_execution_frequency"] = maximum_execution_frequency
             __props__.__dict__["region_ids_scope"] = region_ids_scope
@@ -815,6 +853,7 @@ class AggregateConfigRule(pulumi.CustomResource):
             config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_tags_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AggregateConfigRuleExcludeTagsScopeArgs', 'AggregateConfigRuleExcludeTagsScopeArgsDict']]]]] = None,
             input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
             region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -842,6 +881,7 @@ class AggregateConfigRule(pulumi.CustomResource):
                > **NOTE:** Separate multiple trigger types with commas (,).
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] exclude_resource_ids_scope: The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregateConfigRuleExcludeTagsScopeArgs', 'AggregateConfigRuleExcludeTagsScopeArgsDict']]]] exclude_tags_scopes: The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] input_parameters: The settings map of the input parameters for the rule.
         :param pulumi.Input[_builtins.str] maximum_execution_frequency: The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         :param pulumi.Input[_builtins.str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
@@ -864,6 +904,7 @@ class AggregateConfigRule(pulumi.CustomResource):
         __props__.__dict__["config_rule_trigger_types"] = config_rule_trigger_types
         __props__.__dict__["description"] = description
         __props__.__dict__["exclude_resource_ids_scope"] = exclude_resource_ids_scope
+        __props__.__dict__["exclude_tags_scopes"] = exclude_tags_scopes
         __props__.__dict__["input_parameters"] = input_parameters
         __props__.__dict__["maximum_execution_frequency"] = maximum_execution_frequency
         __props__.__dict__["region_ids_scope"] = region_ids_scope
@@ -927,6 +968,14 @@ class AggregateConfigRule(pulumi.CustomResource):
         The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeTagsScopes")
+    def exclude_tags_scopes(self) -> pulumi.Output[Optional[Sequence['outputs.AggregateConfigRuleExcludeTagsScope']]]:
+        """
+        The rule monitors excluded tags, only applies to rules created based on managed rules. See `exclude_tags_scope` below for details.
+        """
+        return pulumi.get(self, "exclude_tags_scopes")
 
     @_builtins.property
     @pulumi.getter(name="inputParameters")

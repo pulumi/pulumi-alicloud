@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
         /// </summary>
         [Output("securityGroupName")]
         public Output<string> SecurityGroupName { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+        /// The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
         /// </summary>
         [Input("securityGroupName")]
         public Input<string>? SecurityGroupName { get; set; }

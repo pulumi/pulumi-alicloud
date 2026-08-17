@@ -28,6 +28,7 @@ __all__ = [
     'ServiceMetricAlarmRuleLabel',
     'ServiceMetricAlarmRulePrometheus',
     'ServiceMetricAlarmRulePrometheusAnnotation',
+    'ServiceMetricAlarmRuleTarget',
     'GetServiceHybridDoubleWritesHybridDoubleWriteResult',
     'GetServiceMetricAlarmRulesRuleResult',
     'GetServiceMetricAlarmRulesRuleCompositeExpressionResult',
@@ -874,6 +875,88 @@ class ServiceMetricAlarmRulePrometheusAnnotation(dict):
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServiceMetricAlarmRuleTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jsonParams":
+            suggest = "json_params"
+        elif key == "targetId":
+            suggest = "target_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceMetricAlarmRuleTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceMetricAlarmRuleTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceMetricAlarmRuleTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arn: Optional[_builtins.str] = None,
+                 json_params: Optional[_builtins.str] = None,
+                 level: Optional[_builtins.str] = None,
+                 target_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str arn: The Alibaba Cloud Resource Name (ARN) of the resource that receives the alert. The API rejects a target that omits it. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service and Function Compute are supported:
+               - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource that receives the alert. Valid values: queues, topics. {Resource name}: the queue name if the resource type is queues, or the topic name if the resource type is topics.
+               - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+               - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+               - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+        :param _builtins.str json_params: The parameters of the alert callback, in the JSON format.
+        :param _builtins.str level: The level of the alert. Valid values: `INFO`, `WARN`, `CRITICAL`. The value is matched case-insensitively, so `Info`, `Warn` and `Critical` are accepted as well.
+        :param _builtins.str target_id: The ID of the alert trigger target. It only needs to be unique within the alert rule. The API rejects a target that omits it.
+        """
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if json_params is not None:
+            pulumi.set(__self__, "json_params", json_params)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if target_id is not None:
+            pulumi.set(__self__, "target_id", target_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def arn(self) -> Optional[_builtins.str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the resource that receives the alert. The API rejects a target that omits it. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service and Function Compute are supported:
+        - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource that receives the alert. Valid values: queues, topics. {Resource name}: the queue name if the resource type is queues, or the topic name if the resource type is topics.
+        - Auto Scaling: `acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}`
+        - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
+        - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
+        """
+        return pulumi.get(self, "arn")
+
+    @_builtins.property
+    @pulumi.getter(name="jsonParams")
+    def json_params(self) -> Optional[_builtins.str]:
+        """
+        The parameters of the alert callback, in the JSON format.
+        """
+        return pulumi.get(self, "json_params")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> Optional[_builtins.str]:
+        """
+        The level of the alert. Valid values: `INFO`, `WARN`, `CRITICAL`. The value is matched case-insensitively, so `Info`, `Warn` and `Critical` are accepted as well.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the alert trigger target. It only needs to be unique within the alert rule. The API rejects a target that omits it.
+        """
+        return pulumi.get(self, "target_id")
 
 
 @pulumi.output_type

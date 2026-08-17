@@ -22,6 +22,10 @@ __all__ = [
     'ClusterDbClusterIpArray',
     'ClusterDbRevisionVersionList',
     'ClusterParameter',
+    'DynamoTableAttribute',
+    'DynamoTableGlobalSecondaryIndex',
+    'DynamoTableLocalSecondaryIndex',
+    'DynamoTableTtl',
     'ParameterGroupParameter',
     'GetAccountsAccountResult',
     'GetAccountsAccountDatabasePrivilegeResult',
@@ -374,6 +378,272 @@ class ClusterParameter(dict):
         Kernel parameter value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DynamoTableAttribute(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: The name of the attribute.
+        :param _builtins.str type: The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The attribute data type. Valid values: `S` (string), `N` (number), `B` (binary).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class DynamoTableGlobalSecondaryIndex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectionType":
+            suggest = "projection_type"
+        elif key == "hashKey":
+            suggest = "hash_key"
+        elif key == "nonKeyAttributes":
+            suggest = "non_key_attributes"
+        elif key == "rangeKey":
+            suggest = "range_key"
+        elif key == "readCapacity":
+            suggest = "read_capacity"
+        elif key == "writeCapacity":
+            suggest = "write_capacity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamoTableGlobalSecondaryIndex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamoTableGlobalSecondaryIndex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamoTableGlobalSecondaryIndex.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 projection_type: _builtins.str,
+                 hash_key: Optional[_builtins.str] = None,
+                 non_key_attributes: Optional[Sequence[_builtins.str]] = None,
+                 range_key: Optional[_builtins.str] = None,
+                 read_capacity: Optional[_builtins.int] = None,
+                 write_capacity: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str name: The name of the index.
+        :param _builtins.str projection_type: The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        :param _builtins.str hash_key: The attribute name used as the partition key of the index.
+        :param Sequence[_builtins.str] non_key_attributes: A set of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        :param _builtins.str range_key: The attribute name used as the sort key of the index.
+        :param _builtins.int read_capacity: The number of read capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        :param _builtins.int write_capacity: The number of write capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "projection_type", projection_type)
+        if hash_key is not None:
+            pulumi.set(__self__, "hash_key", hash_key)
+        if non_key_attributes is not None:
+            pulumi.set(__self__, "non_key_attributes", non_key_attributes)
+        if range_key is not None:
+            pulumi.set(__self__, "range_key", range_key)
+        if read_capacity is not None:
+            pulumi.set(__self__, "read_capacity", read_capacity)
+        if write_capacity is not None:
+            pulumi.set(__self__, "write_capacity", write_capacity)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the index.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="projectionType")
+    def projection_type(self) -> _builtins.str:
+        """
+        The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        """
+        return pulumi.get(self, "projection_type")
+
+    @_builtins.property
+    @pulumi.getter(name="hashKey")
+    def hash_key(self) -> Optional[_builtins.str]:
+        """
+        The attribute name used as the partition key of the index.
+        """
+        return pulumi.get(self, "hash_key")
+
+    @_builtins.property
+    @pulumi.getter(name="nonKeyAttributes")
+    def non_key_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A set of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        """
+        return pulumi.get(self, "non_key_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeKey")
+    def range_key(self) -> Optional[_builtins.str]:
+        """
+        The attribute name used as the sort key of the index.
+        """
+        return pulumi.get(self, "range_key")
+
+    @_builtins.property
+    @pulumi.getter(name="readCapacity")
+    def read_capacity(self) -> Optional[_builtins.int]:
+        """
+        The number of read capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        """
+        return pulumi.get(self, "read_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="writeCapacity")
+    def write_capacity(self) -> Optional[_builtins.int]:
+        """
+        The number of write capacity units for the index. Only valid when `billing_mode` is `PROVISIONED`.
+        """
+        return pulumi.get(self, "write_capacity")
+
+
+@pulumi.output_type
+class DynamoTableLocalSecondaryIndex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectionType":
+            suggest = "projection_type"
+        elif key == "rangeKey":
+            suggest = "range_key"
+        elif key == "nonKeyAttributes":
+            suggest = "non_key_attributes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamoTableLocalSecondaryIndex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamoTableLocalSecondaryIndex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamoTableLocalSecondaryIndex.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 projection_type: _builtins.str,
+                 range_key: _builtins.str,
+                 non_key_attributes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str name: The name of the index.
+        :param _builtins.str projection_type: The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        :param _builtins.str range_key: The attribute name used as the sort key of the index.
+        :param Sequence[_builtins.str] non_key_attributes: A list of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "projection_type", projection_type)
+        pulumi.set(__self__, "range_key", range_key)
+        if non_key_attributes is not None:
+            pulumi.set(__self__, "non_key_attributes", non_key_attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the index.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="projectionType")
+    def projection_type(self) -> _builtins.str:
+        """
+        The set of attributes projected into the index. Valid values: `ALL`, `KEYS_ONLY`, `INCLUDE`.
+        """
+        return pulumi.get(self, "projection_type")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeKey")
+    def range_key(self) -> _builtins.str:
+        """
+        The attribute name used as the sort key of the index.
+        """
+        return pulumi.get(self, "range_key")
+
+    @_builtins.property
+    @pulumi.getter(name="nonKeyAttributes")
+    def non_key_attributes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of non-key attribute names projected into the index. Only valid when `projection_type` is `INCLUDE`.
+        """
+        return pulumi.get(self, "non_key_attributes")
+
+
+@pulumi.output_type
+class DynamoTableTtl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamoTableTtl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamoTableTtl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamoTableTtl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attribute_name: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str attribute_name: The name of the attribute that stores the TTL timestamp.
+        :param _builtins.bool enabled: Whether TTL is enabled. Default to `false`.
+        """
+        if attribute_name is not None:
+            pulumi.set(__self__, "attribute_name", attribute_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="attributeName")
+    def attribute_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the attribute that stores the TTL timestamp.
+        """
+        return pulumi.get(self, "attribute_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether TTL is enabled. Default to `false`.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

@@ -8,6 +8,7 @@ import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAuditLogConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAutoModeArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesCertificateAuthorityArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesConnectionsArgs;
+import com.pulumi.alicloud.cs.inputs.ManagedKubernetesControlPlaneEndpointsConfigArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesDeleteOptionArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesMaintenanceWindowArgs;
 import com.pulumi.alicloud.cs.inputs.ManagedKubernetesOperationPolicyArgs;
@@ -242,6 +243,21 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<ManagedKubernetesConnectionsArgs>> connections() {
         return Optional.ofNullable(this.connections);
+    }
+
+    /**
+     * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     * 
+     */
+    @Import(name="controlPlaneEndpointsConfig")
+    private @Nullable Output<ManagedKubernetesControlPlaneEndpointsConfigArgs> controlPlaneEndpointsConfig;
+
+    /**
+     * @return The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     * 
+     */
+    public Optional<Output<ManagedKubernetesControlPlaneEndpointsConfigArgs>> controlPlaneEndpointsConfig() {
+        return Optional.ofNullable(this.controlPlaneEndpointsConfig);
     }
 
     /**
@@ -994,6 +1010,7 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         this.clusterDomain = $.clusterDomain;
         this.clusterSpec = $.clusterSpec;
         this.connections = $.connections;
+        this.controlPlaneEndpointsConfig = $.controlPlaneEndpointsConfig;
         this.controlPlaneLogComponents = $.controlPlaneLogComponents;
         this.controlPlaneLogProject = $.controlPlaneLogProject;
         this.controlPlaneLogTtl = $.controlPlaneLogTtl;
@@ -1357,6 +1374,27 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
          */
         public Builder connections(ManagedKubernetesConnectionsArgs connections) {
             return connections(Output.of(connections));
+        }
+
+        /**
+         * @param controlPlaneEndpointsConfig The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEndpointsConfig(@Nullable Output<ManagedKubernetesControlPlaneEndpointsConfigArgs> controlPlaneEndpointsConfig) {
+            $.controlPlaneEndpointsConfig = controlPlaneEndpointsConfig;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneEndpointsConfig The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEndpointsConfig(ManagedKubernetesControlPlaneEndpointsConfigArgs controlPlaneEndpointsConfig) {
+            return controlPlaneEndpointsConfig(Output.of(controlPlaneEndpointsConfig));
         }
 
         /**

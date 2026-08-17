@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultOssBackupPlan = new OssBackupPlan("defaultOssBackupPlan", OssBackupPlanArgs.builder()
  *             .ossBackupPlanName("terraform-example")
- *             .prefix("/example")
+ *             .prefix("example")
  *             .bucket(defaultBucket.bucket())
  *             .vaultId(defaultVault.id())
  *             .schedule("I|1602673264|PT2H")

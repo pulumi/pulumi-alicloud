@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CompaniesArgs, CompaniesResult, CompaniesOutputArgs } from "./companies";
+export const companies: typeof import("./companies").companies = null as any;
+export const companiesOutput: typeof import("./companies").companiesOutput = null as any;
+utilities.lazyLoad(exports, ["companies","companiesOutput"], () => require("./companies"));
+
+export { CompanyArgs, CompanyState } from "./company";
+export type Company = import("./company").Company;
+export const Company: typeof import("./company").Company = null as any;
+utilities.lazyLoad(exports, ["Company"], () => require("./company"));
+
+export { ContactArgs, ContactState } from "./contact";
+export type Contact = import("./contact").Contact;
+export const Contact: typeof import("./contact").Contact = null as any;
+utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
+
+export { ContactsArgs, ContactsResult, ContactsOutputArgs } from "./contacts";
+export const contacts: typeof import("./contacts").contacts = null as any;
+export const contactsOutput: typeof import("./contacts").contactsOutput = null as any;
+utilities.lazyLoad(exports, ["contacts","contactsOutput"], () => require("./contacts"));
+
+export { InstancesArgs, InstancesResult, InstancesOutputArgs } from "./instances";
+export const instances: typeof import("./instances").instances = null as any;
+export const instancesOutput: typeof import("./instances").instancesOutput = null as any;
+utilities.lazyLoad(exports, ["instances","instancesOutput"], () => require("./instances"));
+
 export { PcaCertificateArgs, PcaCertificateState } from "./pcaCertificate";
 export type PcaCertificate = import("./pcaCertificate").PcaCertificate;
 export const PcaCertificate: typeof import("./pcaCertificate").PcaCertificate = null as any;
@@ -15,6 +40,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:sslcertificatesservice/company:Company":
+                return new Company(name, <any>undefined, { urn })
+            case "alicloud:sslcertificatesservice/contact:Contact":
+                return new Contact(name, <any>undefined, { urn })
             case "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate":
                 return new PcaCertificate(name, <any>undefined, { urn })
             default:
@@ -22,4 +51,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "sslcertificatesservice/company", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sslcertificatesservice/contact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sslcertificatesservice/pcaCertificate", _module)

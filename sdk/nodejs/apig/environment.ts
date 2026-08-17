@@ -4,72 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a APIG Environment resource.
- *
- * For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
- *
- * > **NOTE:** Available since v1.240.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as std from "@pulumi/std";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.resourcemanager.getResourceGroups({});
- * const defaultGetNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- * });
- * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultGetNetworks.ids?.[0],
- * }));
- * const defaultgateway = new alicloud.apig.Gateway("defaultgateway", {
- *     networkAccessConfig: {
- *         type: "Intranet",
- *     },
- *     vswitch: {
- *         vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
- *     },
- *     zoneConfig: {
- *         selectOption: "Auto",
- *     },
- *     vpc: {
- *         vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
- *     },
- *     paymentType: "PayAsYouGo",
- *     gatewayName: std.format({
- *         input: "%s2",
- *         args: [name],
- *     }).then(invoke => invoke.result),
- *     spec: "apigw.small.x1",
- *     logConfig: {
- *         sls: {},
- *     },
- * });
- * const defaultEnvironment = new alicloud.apig.Environment("default", {
- *     description: name,
- *     environmentName: name,
- *     gatewayId: defaultgateway.id,
- *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
- * });
- * ```
- *
- * 📚 Need more examples? VIEW MORE EXAMPLES
- *
- * ## Import
- *
- * APIG Environment can be imported using the id, e.g.
- *
- * ```sh
- * $ pulumi import alicloud:apig/environment:Environment example <id>
- * ```
- */
 export class Environment extends pulumi.CustomResource {
     /**
      * Get an existing Environment resource's state with the given name, ID, and optional extra
@@ -98,21 +32,9 @@ export class Environment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Environment.__pulumiType;
     }
 
-    /**
-     * Description
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The name of the resource
-     */
     declare public readonly environmentName: pulumi.Output<string>;
-    /**
-     * Gateway id
-     */
     declare public readonly gatewayId: pulumi.Output<string>;
-    /**
-     * The ID of the resource group
-     */
     declare public readonly resourceGroupId: pulumi.Output<string>;
 
     /**
@@ -154,21 +76,9 @@ export class Environment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Environment resources.
  */
 export interface EnvironmentState {
-    /**
-     * Description
-     */
     description?: pulumi.Input<string | undefined>;
-    /**
-     * The name of the resource
-     */
     environmentName?: pulumi.Input<string | undefined>;
-    /**
-     * Gateway id
-     */
     gatewayId?: pulumi.Input<string | undefined>;
-    /**
-     * The ID of the resource group
-     */
     resourceGroupId?: pulumi.Input<string | undefined>;
 }
 
@@ -176,20 +86,8 @@ export interface EnvironmentState {
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
-    /**
-     * Description
-     */
     description?: pulumi.Input<string | undefined>;
-    /**
-     * The name of the resource
-     */
     environmentName: pulumi.Input<string>;
-    /**
-     * Gateway id
-     */
     gatewayId: pulumi.Input<string>;
-    /**
-     * The ID of the resource group
-     */
     resourceGroupId?: pulumi.Input<string | undefined>;
 }

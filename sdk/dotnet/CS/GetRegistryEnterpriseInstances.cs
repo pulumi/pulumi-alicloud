@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.86.0+
+        /// &gt; **NOTE:** Available since v1.86.0
         /// 
         /// ## Example Usage
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.86.0+
+        /// &gt; **NOTE:** Available since v1.86.0
         /// 
         /// ## Example Usage
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available in v1.86.0+
+        /// &gt; **NOTE:** Available since v1.86.0
         /// 
         /// ## Example Usage
         /// 
@@ -141,6 +141,18 @@ namespace Pulumi.AliCloud.CS
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
         public GetRegistryEnterpriseInstancesArgs()
         {
         }
@@ -179,6 +191,18 @@ namespace Pulumi.AliCloud.CS
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public GetRegistryEnterpriseInstancesInvokeArgs()
         {
         }
@@ -208,6 +232,10 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// (Available since v1.288.0) A mapping of tags assigned to the instance.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetRegistryEnterpriseInstancesResult(
@@ -223,7 +251,9 @@ namespace Pulumi.AliCloud.CS
 
             ImmutableArray<string> names,
 
-            string? outputFile)
+            string? outputFile,
+
+            ImmutableDictionary<string, string>? tags)
         {
             EnableDetails = enableDetails;
             Id = id;
@@ -232,6 +262,7 @@ namespace Pulumi.AliCloud.CS
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            Tags = tags;
         }
     }
 }

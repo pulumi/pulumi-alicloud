@@ -157,6 +157,10 @@ type NatGateway struct {
 
 	// The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
 	AccessMode NatGatewayAccessModeOutput `pulumi:"accessMode"`
+	// The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+	// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+	// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+	AvailabilityMode pulumi.StringOutput `pulumi:"availabilityMode"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -187,9 +191,9 @@ type NatGateway struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName pulumi.StringOutput `pulumi:"natGatewayName"`
-	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
 	NatType pulumi.StringOutput `pulumi:"natType"`
-	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -208,7 +212,7 @@ type NatGateway struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The id of VSwitch.
+	// The id of VSwitch. The parameter is immutable after resource creation.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
@@ -247,6 +251,10 @@ func GetNatGateway(ctx *pulumi.Context,
 type natGatewayState struct {
 	// The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
 	AccessMode *NatGatewayAccessMode `pulumi:"accessMode"`
+	// The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+	// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+	// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+	AvailabilityMode *string `pulumi:"availabilityMode"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -277,9 +285,9 @@ type natGatewayState struct {
 	Name *string `pulumi:"name"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName *string `pulumi:"natGatewayName"`
-	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
 	NatType *string `pulumi:"natType"`
-	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
 	NetworkType *string `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -298,13 +306,17 @@ type natGatewayState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
-	// The id of VSwitch.
+	// The id of VSwitch. The parameter is immutable after resource creation.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type NatGatewayState struct {
 	// The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
 	AccessMode NatGatewayAccessModePtrInput
+	// The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+	// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+	// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+	AvailabilityMode pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -335,9 +347,9 @@ type NatGatewayState struct {
 	Name pulumi.StringPtrInput
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName pulumi.StringPtrInput
-	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
 	NatType pulumi.StringPtrInput
-	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
 	NetworkType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -356,7 +368,7 @@ type NatGatewayState struct {
 	Tags pulumi.StringMapInput
 	// The VPC ID.
 	VpcId pulumi.StringPtrInput
-	// The id of VSwitch.
+	// The id of VSwitch. The parameter is immutable after resource creation.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -367,6 +379,10 @@ func (NatGatewayState) ElementType() reflect.Type {
 type natGatewayArgs struct {
 	// The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
 	AccessMode *NatGatewayAccessMode `pulumi:"accessMode"`
+	// The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+	// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+	// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+	AvailabilityMode *string `pulumi:"availabilityMode"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -395,9 +411,9 @@ type natGatewayArgs struct {
 	Name *string `pulumi:"name"`
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName *string `pulumi:"natGatewayName"`
-	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
 	NatType *string `pulumi:"natType"`
-	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
 	NetworkType *string `pulumi:"networkType"`
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -412,7 +428,7 @@ type natGatewayArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
-	// The id of VSwitch.
+	// The id of VSwitch. The parameter is immutable after resource creation.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -420,6 +436,10 @@ type natGatewayArgs struct {
 type NatGatewayArgs struct {
 	// The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
 	AccessMode NatGatewayAccessModePtrInput
+	// The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+	// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+	// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+	AvailabilityMode pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -448,9 +468,9 @@ type NatGatewayArgs struct {
 	Name pulumi.StringPtrInput
 	// Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
 	NatGatewayName pulumi.StringPtrInput
-	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+	// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
 	NatType pulumi.StringPtrInput
-	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+	// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
 	NetworkType pulumi.StringPtrInput
 	// The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -465,7 +485,7 @@ type NatGatewayArgs struct {
 	Tags pulumi.StringMapInput
 	// The VPC ID.
 	VpcId pulumi.StringInput
-	// The id of VSwitch.
+	// The id of VSwitch. The parameter is immutable after resource creation.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -561,6 +581,13 @@ func (o NatGatewayOutput) AccessMode() NatGatewayAccessModeOutput {
 	return o.ApplyT(func(v *NatGateway) NatGatewayAccessModeOutput { return v.AccessMode }).(NatGatewayAccessModeOutput)
 }
 
+// The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+// - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+// - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+func (o NatGatewayOutput) AvailabilityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.AvailabilityMode }).(pulumi.StringOutput)
+}
+
 // Whether enable the deletion protection or not. Default value: `false`.
 // - true: Enable deletion protection.
 // - false: Disable deletion protection.
@@ -624,12 +651,12 @@ func (o NatGatewayOutput) NatGatewayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NatGatewayName }).(pulumi.StringOutput)
 }
 
-// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+// The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
 func (o NatGatewayOutput) NatType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NatType }).(pulumi.StringOutput)
 }
 
-// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+// Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
 func (o NatGatewayOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
 }
@@ -675,7 +702,7 @@ func (o NatGatewayOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The id of VSwitch.
+// The id of VSwitch. The parameter is immutable after resource creation.
 func (o NatGatewayOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

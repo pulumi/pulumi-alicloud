@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cfg.inputs;
 
+import com.pulumi.alicloud.cfg.inputs.AggregateConfigRuleExcludeTagsScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -112,6 +113,21 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> excludeResourceIdsScope() {
         return Optional.ofNullable(this.excludeResourceIdsScope);
+    }
+
+    /**
+     * The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     * 
+     */
+    @Import(name="excludeTagsScopes")
+    private @Nullable Output<List<AggregateConfigRuleExcludeTagsScopeArgs>> excludeTagsScopes;
+
+    /**
+     * @return The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+     * 
+     */
+    public Optional<Output<List<AggregateConfigRuleExcludeTagsScopeArgs>>> excludeTagsScopes() {
+        return Optional.ofNullable(this.excludeTagsScopes);
     }
 
     /**
@@ -288,6 +304,7 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
         this.configRuleTriggerTypes = $.configRuleTriggerTypes;
         this.description = $.description;
         this.excludeResourceIdsScope = $.excludeResourceIdsScope;
+        this.excludeTagsScopes = $.excludeTagsScopes;
         this.inputParameters = $.inputParameters;
         this.maximumExecutionFrequency = $.maximumExecutionFrequency;
         this.regionIdsScope = $.regionIdsScope;
@@ -449,6 +466,37 @@ public final class AggregateConfigRuleState extends com.pulumi.resources.Resourc
          */
         public Builder excludeResourceIdsScope(String excludeResourceIdsScope) {
             return excludeResourceIdsScope(Output.of(excludeResourceIdsScope));
+        }
+
+        /**
+         * @param excludeTagsScopes The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeTagsScopes(@Nullable Output<List<AggregateConfigRuleExcludeTagsScopeArgs>> excludeTagsScopes) {
+            $.excludeTagsScopes = excludeTagsScopes;
+            return this;
+        }
+
+        /**
+         * @param excludeTagsScopes The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeTagsScopes(List<AggregateConfigRuleExcludeTagsScopeArgs> excludeTagsScopes) {
+            return excludeTagsScopes(Output.of(excludeTagsScopes));
+        }
+
+        /**
+         * @param excludeTagsScopes The rule monitors excluded tags, only applies to rules created based on managed rules. See `excludeTagsScope` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeTagsScopes(AggregateConfigRuleExcludeTagsScopeArgs... excludeTagsScopes) {
+            return excludeTagsScopes(List.of(excludeTagsScopes));
         }
 
         /**

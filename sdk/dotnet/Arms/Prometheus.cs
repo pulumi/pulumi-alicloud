@@ -95,6 +95,12 @@ namespace Pulumi.AliCloud.Arms
     public partial class Prometheus : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+        /// </summary>
+        [Output("archiveDuration")]
+        public Output<int> ArchiveDuration { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the Kubernetes cluster. This parameter is required, if you set `ClusterType` to `aliyun-cs`.
         /// </summary>
         [Output("clusterId")]
@@ -113,10 +119,22 @@ namespace Pulumi.AliCloud.Arms
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
+        /// The data storage duration, in days.
+        /// </summary>
+        [Output("duration")]
+        public Output<int> Duration { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `GrafanaInstanceId` to `Free`.
         /// </summary>
         [Output("grafanaInstanceId")]
         public Output<string> GrafanaInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -201,6 +219,12 @@ namespace Pulumi.AliCloud.Arms
     public sealed class PrometheusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+        /// </summary>
+        [Input("archiveDuration")]
+        public Input<int>? ArchiveDuration { get; set; }
+
+        /// <summary>
         /// The ID of the Kubernetes cluster. This parameter is required, if you set `ClusterType` to `aliyun-cs`.
         /// </summary>
         [Input("clusterId")]
@@ -219,10 +243,22 @@ namespace Pulumi.AliCloud.Arms
         public Input<string> ClusterType { get; set; } = null!;
 
         /// <summary>
+        /// The data storage duration, in days.
+        /// </summary>
+        [Input("duration")]
+        public Input<int>? Duration { get; set; }
+
+        /// <summary>
         /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `GrafanaInstanceId` to `Free`.
         /// </summary>
         [Input("grafanaInstanceId", required: true)]
         public Input<string> GrafanaInstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The ID of the resource group.
@@ -275,6 +311,12 @@ namespace Pulumi.AliCloud.Arms
     public sealed class PrometheusState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+        /// </summary>
+        [Input("archiveDuration")]
+        public Input<int>? ArchiveDuration { get; set; }
+
+        /// <summary>
         /// The ID of the Kubernetes cluster. This parameter is required, if you set `ClusterType` to `aliyun-cs`.
         /// </summary>
         [Input("clusterId")]
@@ -293,10 +335,22 @@ namespace Pulumi.AliCloud.Arms
         public Input<string>? ClusterType { get; set; }
 
         /// <summary>
+        /// The data storage duration, in days.
+        /// </summary>
+        [Input("duration")]
+        public Input<int>? Duration { get; set; }
+
+        /// <summary>
         /// The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `GrafanaInstanceId` to `Free`.
         /// </summary>
         [Input("grafanaInstanceId")]
         public Input<string>? GrafanaInstanceId { get; set; }
+
+        /// <summary>
+        /// The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

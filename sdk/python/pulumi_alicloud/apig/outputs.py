@@ -16,22 +16,429 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DomainTlsCipherSuitesConfig',
+    'DomainTlsCipherSuitesConfigTlsCipherSuite',
+    'GatewayEnvironment',
+    'GatewayLoadBalancer',
+    'GatewayLoadBalancerPort',
     'GatewayLogConfig',
     'GatewayLogConfigSls',
     'GatewayNetworkAccessConfig',
+    'GatewaySecurityGroup',
     'GatewayVpc',
     'GatewayVswitch',
     'GatewayZone',
     'GatewayZoneConfig',
+    'RouteBackend',
+    'RouteBackendService',
+    'RouteEnvironmentInfo',
+    'RouteEnvironmentInfoGatewayInfo',
+    'RouteEnvironmentInfoSubDomain',
+    'RouteMatch',
+    'RouteMatchHeader',
+    'RouteMatchPath',
+    'RouteMatchQueryParam',
+    'ServiceHealthCheckConfig',
+    'ServiceOutlierDetectionConfig',
+    'ServicePort',
+    'GetAiModelProvidersProviderResult',
+    'GetAiModelProvidersProviderBoundServiceResult',
+    'GetAiModelProvidersProviderModelCardResult',
+    'GetDomainsDomainResult',
+    'GetDomainsDomainTlsCipherSuitesConfigResult',
+    'GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteResult',
+    'GetGatewaysGatewayResult',
+    'GetGatewaysGatewayEnvironmentResult',
+    'GetGatewaysGatewayLoadBalancerResult',
+    'GetGatewaysGatewayLoadBalancerPortResult',
+    'GetGatewaysGatewaySecurityGroupResult',
+    'GetGatewaysGatewaySubDomainInfoResult',
+    'GetGatewaysGatewayVpcResult',
+    'GetGatewaysGatewayVswitchResult',
+    'GetGatewaysGatewayZoneResult',
     'GetPluginClassesClassResult',
+    'GetPluginsPluginResult',
+    'GetRoutesEnvironmentInfoResult',
+    'GetRoutesEnvironmentInfoGatewayInfoResult',
+    'GetRoutesEnvironmentInfoSubDomainResult',
+    'GetRoutesRouteResult',
+    'GetRoutesRouteBackendResult',
+    'GetRoutesRouteBackendServiceResult',
+    'GetRoutesRouteDomainInfoResult',
+    'GetRoutesRouteEnvironmentInfoResult',
+    'GetRoutesRouteEnvironmentInfoGatewayInfoResult',
+    'GetRoutesRouteEnvironmentInfoSubDomainResult',
+    'GetRoutesRouteMatchResult',
+    'GetRoutesRouteMatchHeaderResult',
+    'GetRoutesRouteMatchPathResult',
+    'GetRoutesRouteMatchQueryParamResult',
+    'GetServicesServiceResult',
+    'GetServicesServiceHealthCheckConfigResult',
+    'GetServicesServiceOutlierDetectionConfigResult',
+    'GetServicesServicePortResult',
 ]
+
+@pulumi.output_type
+class DomainTlsCipherSuitesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configType":
+            suggest = "config_type"
+        elif key == "tlsCipherSuites":
+            suggest = "tls_cipher_suites"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainTlsCipherSuitesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainTlsCipherSuitesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainTlsCipherSuitesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_type: Optional[_builtins.str] = None,
+                 tls_cipher_suites: Optional[Sequence['outputs.DomainTlsCipherSuitesConfigTlsCipherSuite']] = None):
+        """
+        :param _builtins.str config_type: The configuration type, which can be Default or Custom.
+        :param Sequence['DomainTlsCipherSuitesConfigTlsCipherSuiteArgs'] tls_cipher_suites: TLS cipher suite. See `tls_cipher_suite` below.
+        """
+        if config_type is not None:
+            pulumi.set(__self__, "config_type", config_type)
+        if tls_cipher_suites is not None:
+            pulumi.set(__self__, "tls_cipher_suites", tls_cipher_suites)
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> Optional[_builtins.str]:
+        """
+        The configuration type, which can be Default or Custom.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCipherSuites")
+    def tls_cipher_suites(self) -> Optional[Sequence['outputs.DomainTlsCipherSuitesConfigTlsCipherSuite']]:
+        """
+        TLS cipher suite. See `tls_cipher_suite` below.
+        """
+        return pulumi.get(self, "tls_cipher_suites")
+
+
+@pulumi.output_type
+class DomainTlsCipherSuitesConfigTlsCipherSuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportVersions":
+            suggest = "support_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainTlsCipherSuitesConfigTlsCipherSuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainTlsCipherSuitesConfigTlsCipherSuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainTlsCipherSuitesConfigTlsCipherSuite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 support_versions: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str name: The name of the cipher suite.
+        :param Sequence[_builtins.str] support_versions: support versions
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if support_versions is not None:
+            pulumi.set(__self__, "support_versions", support_versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the cipher suite.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="supportVersions")
+    def support_versions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        support versions
+        """
+        return pulumi.get(self, "support_versions")
+
+
+@pulumi.output_type
+class GatewayEnvironment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentId":
+            suggest = "environment_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayEnvironment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayEnvironment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayEnvironment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 environment_id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: The alias of the environment.
+        :param _builtins.str environment_id: The ID of the environment.
+        :param _builtins.str name: The name of the availability zone for the gateway.
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        The alias of the environment.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the environment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GatewayLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressIpVersion":
+            suggest = "address_ip_version"
+        elif key == "addressType":
+            suggest = "address_type"
+        elif key == "gatewayDefault":
+            suggest = "gateway_default"
+        elif key == "ipv4Addresses":
+            suggest = "ipv4_addresses"
+        elif key == "ipv6Addresses":
+            suggest = "ipv6_addresses"
+        elif key == "loadBalancerId":
+            suggest = "load_balancer_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 address_ip_version: Optional[_builtins.str] = None,
+                 address_type: Optional[_builtins.str] = None,
+                 gateway_default: Optional[_builtins.bool] = None,
+                 ipv4_addresses: Optional[Sequence[_builtins.str]] = None,
+                 ipv6_addresses: Optional[Sequence[_builtins.str]] = None,
+                 load_balancer_id: Optional[_builtins.str] = None,
+                 mode: Optional[_builtins.str] = None,
+                 ports: Optional[Sequence['outputs.GatewayLoadBalancerPort']] = None,
+                 status: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: The address of the load balancer for the gateway.
+        :param _builtins.str address_ip_version: The IP version of the load balancer.
+        :param _builtins.str address_type: The load balancer address type.
+        :param _builtins.bool gateway_default: Indicates whether this is the default ingress address of the gateway.
+        :param Sequence[_builtins.str] ipv4_addresses: The list of IPv4 addresses.
+        :param Sequence[_builtins.str] ipv6_addresses: The list of IPv6 addresses.
+        :param _builtins.str load_balancer_id: The ID of the load balancer associated with the gateway.
+        :param _builtins.str mode: The load balancing provisioning mode for the gateway.
+        :param Sequence['GatewayLoadBalancerPortArgs'] ports: The list of listening ports.
+        :param _builtins.str status: The status of the gateway.
+        :param _builtins.str type: The type of the load balancer.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if address_ip_version is not None:
+            pulumi.set(__self__, "address_ip_version", address_ip_version)
+        if address_type is not None:
+            pulumi.set(__self__, "address_type", address_type)
+        if gateway_default is not None:
+            pulumi.set(__self__, "gateway_default", gateway_default)
+        if ipv4_addresses is not None:
+            pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
+        if ipv6_addresses is not None:
+            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The address of the load balancer for the gateway.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> Optional[_builtins.str]:
+        """
+        The IP version of the load balancer.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @_builtins.property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> Optional[_builtins.str]:
+        """
+        The load balancer address type.
+        """
+        return pulumi.get(self, "address_type")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayDefault")
+    def gateway_default(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether this is the default ingress address of the gateway.
+        """
+        return pulumi.get(self, "gateway_default")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Addresses")
+    def ipv4_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The list of IPv6 addresses.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the load balancer associated with the gateway.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        The load balancing provisioning mode for the gateway.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence['outputs.GatewayLoadBalancerPort']]:
+        """
+        The list of listening ports.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the gateway.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the load balancer.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GatewayLoadBalancerPort(dict):
+    def __init__(__self__, *,
+                 port: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int port: The port number of the load balancer listener.
+        :param _builtins.str protocol: The protocol of the load balancer listener.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port number of the load balancer listener.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        The protocol of the load balancer listener.
+        """
+        return pulumi.get(self, "protocol")
+
 
 @pulumi.output_type
 class GatewayLogConfig(dict):
     def __init__(__self__, *,
                  sls: Optional['outputs.GatewayLogConfigSls'] = None):
         """
-        :param 'GatewayLogConfigSlsArgs' sls: Sls See `sls` below.
+        :param 'GatewayLogConfigSlsArgs' sls: The Simple Log Service configuration for the gateway. See `sls` below.
         """
         if sls is not None:
             pulumi.set(__self__, "sls", sls)
@@ -40,7 +447,7 @@ class GatewayLogConfig(dict):
     @pulumi.getter
     def sls(self) -> Optional['outputs.GatewayLogConfigSls']:
         """
-        Sls See `sls` below.
+        The Simple Log Service configuration for the gateway. See `sls` below.
         """
         return pulumi.get(self, "sls")
 
@@ -50,7 +457,7 @@ class GatewayLogConfigSls(dict):
     def __init__(__self__, *,
                  enable: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enable: Enable Log Service
+        :param _builtins.bool enable: The Simple Log Service configuration for the gateway.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -59,7 +466,7 @@ class GatewayLogConfigSls(dict):
     @pulumi.getter
     def enable(self) -> Optional[_builtins.bool]:
         """
-        Enable Log Service
+        The Simple Log Service configuration for the gateway.
         """
         return pulumi.get(self, "enable")
 
@@ -69,7 +476,7 @@ class GatewayNetworkAccessConfig(dict):
     def __init__(__self__, *,
                  type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str type: Network Access Type
+        :param _builtins.str type: The network access type of the gateway instance.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -78,9 +485,57 @@ class GatewayNetworkAccessConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Network Access Type
+        The network access type of the gateway instance.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GatewaySecurityGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "securityGroupId":
+            suggest = "security_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewaySecurityGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewaySecurityGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewaySecurityGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 security_group_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the availability zone for the gateway.
+        :param _builtins.str security_group_id: The ID of the security group.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
 
 
 @pulumi.output_type
@@ -106,8 +561,8 @@ class GatewayVpc(dict):
                  vpc_id: _builtins.str,
                  name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str vpc_id: The VPC network ID.
-        :param _builtins.str name: The zone name.
+        :param _builtins.str vpc_id: The ID of the VPC network associated with the gateway.
+        :param _builtins.str name: The name of the availability zone for the gateway.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if name is not None:
@@ -117,7 +572,7 @@ class GatewayVpc(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        The VPC network ID.
+        The ID of the VPC network associated with the gateway.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -125,7 +580,7 @@ class GatewayVpc(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The zone name.
+        The name of the availability zone for the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -153,7 +608,7 @@ class GatewayVswitch(dict):
                  name: Optional[_builtins.str] = None,
                  vswitch_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: The zone name.
+        :param _builtins.str name: The name of the availability zone for the gateway.
         :param _builtins.str vswitch_id: The ID of the virtual switch.
         """
         if name is not None:
@@ -165,7 +620,7 @@ class GatewayVswitch(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The zone name.
+        The name of the availability zone for the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -204,9 +659,9 @@ class GatewayZone(dict):
                  vswitch_id: Optional[_builtins.str] = None,
                  zone_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: The zone name.
-        :param _builtins.str vswitch_id: The vswitch ID.
-        :param _builtins.str zone_id: The zone ID.
+        :param _builtins.str name: The name of the availability zone for the gateway.
+        :param _builtins.str vswitch_id: The ID of the virtual switch in the availability zone.
+        :param _builtins.str zone_id: The ID of the availability zone for the gateway.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -219,7 +674,7 @@ class GatewayZone(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        The zone name.
+        The name of the availability zone for the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -227,7 +682,7 @@ class GatewayZone(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[_builtins.str]:
         """
-        The vswitch ID.
+        The ID of the virtual switch in the availability zone.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -235,7 +690,7 @@ class GatewayZone(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
-        The zone ID.
+        The ID of the availability zone for the gateway.
         """
         return pulumi.get(self, "zone_id")
 
@@ -262,7 +717,7 @@ class GatewayZoneConfig(dict):
     def __init__(__self__, *,
                  select_option: _builtins.str):
         """
-        :param _builtins.str select_option: Availability Zone Options
+        :param _builtins.str select_option: Zone selection option.
         """
         pulumi.set(__self__, "select_option", select_option)
 
@@ -270,9 +725,2018 @@ class GatewayZoneConfig(dict):
     @pulumi.getter(name="selectOption")
     def select_option(self) -> _builtins.str:
         """
-        Availability Zone Options
+        Zone selection option.
         """
         return pulumi.get(self, "select_option")
+
+
+@pulumi.output_type
+class RouteBackend(dict):
+    def __init__(__self__, *,
+                 scene: Optional[_builtins.str] = None,
+                 services: Optional[Sequence['outputs.RouteBackendService']] = None):
+        """
+        :param _builtins.str scene: The backend service scenario.
+               - SingleService: Single service.
+               - MultiServiceByRatio: Canary release across multiple services by ratio.
+               - Mock: Mock service.
+               - Redirect: Redirect service.
+        :param Sequence['RouteBackendServiceArgs'] services: Backend service. See `services` below.
+        """
+        if scene is not None:
+            pulumi.set(__self__, "scene", scene)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def scene(self) -> Optional[_builtins.str]:
+        """
+        The backend service scenario.
+        - SingleService: Single service.
+        - MultiServiceByRatio: Canary release across multiple services by ratio.
+        - Mock: Mock service.
+        - Redirect: Redirect service.
+        """
+        return pulumi.get(self, "scene")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Optional[Sequence['outputs.RouteBackendService']]:
+        """
+        Backend service. See `services` below.
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class RouteBackendService(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceId":
+            suggest = "service_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteBackendService. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteBackendService.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteBackendService.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 service_id: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None,
+                 weight: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str name: The name of the second-level domain name.
+        :param _builtins.int port: Service port. Do not specify this parameter for dynamic ports.
+        :param _builtins.str protocol: The domain protocol, such as HTTP or HTTPS.
+        :param _builtins.str service_id: The unique identifier of the backend service to which this route forwards traffic.
+        :param _builtins.str version: The version label of the backend service used for routing and canary release scenarios.
+        :param _builtins.int weight: The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if service_id is not None:
+            pulumi.set(__self__, "service_id", service_id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Service port. Do not specify this parameter for dynamic ports.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        The domain protocol, such as HTTP or HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of the backend service to which this route forwards traffic.
+        """
+        return pulumi.get(self, "service_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        The version label of the backend service used for routing and canary release scenarios.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> Optional[_builtins.int]:
+        """
+        The percentage value of the traffic ratio. You can specify the weight of the service when the scenario is proportional (canary) routing. This parameter is not required in other scenarios.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class RouteEnvironmentInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "environmentId":
+            suggest = "environment_id"
+        elif key == "gatewayInfos":
+            suggest = "gateway_infos"
+        elif key == "subDomains":
+            suggest = "sub_domains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteEnvironmentInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteEnvironmentInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteEnvironmentInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 environment_id: Optional[_builtins.str] = None,
+                 gateway_infos: Optional[Sequence['outputs.RouteEnvironmentInfoGatewayInfo']] = None,
+                 name: Optional[_builtins.str] = None,
+                 sub_domains: Optional[Sequence['outputs.RouteEnvironmentInfoSubDomain']] = None):
+        """
+        :param _builtins.str alias: The alias of the environment name.
+        :param _builtins.str environment_id: The unique identifier of the APIG environment where this route is published and deployed.
+        :param Sequence['RouteEnvironmentInfoGatewayInfoArgs'] gateway_infos: The gateway instance information corresponding to the environment.
+        :param _builtins.str name: The name of the second-level domain name.
+        :param Sequence['RouteEnvironmentInfoSubDomainArgs'] sub_domains: The default second-level domain names of the environment.
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+        if gateway_infos is not None:
+            pulumi.set(__self__, "gateway_infos", gateway_infos)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if sub_domains is not None:
+            pulumi.set(__self__, "sub_domains", sub_domains)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        The alias of the environment name.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> Optional[_builtins.str]:
+        """
+        The unique identifier of the APIG environment where this route is published and deployed.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayInfos")
+    def gateway_infos(self) -> Optional[Sequence['outputs.RouteEnvironmentInfoGatewayInfo']]:
+        """
+        The gateway instance information corresponding to the environment.
+        """
+        return pulumi.get(self, "gateway_infos")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subDomains")
+    def sub_domains(self) -> Optional[Sequence['outputs.RouteEnvironmentInfoSubDomain']]:
+        """
+        The default second-level domain names of the environment.
+        """
+        return pulumi.get(self, "sub_domains")
+
+
+@pulumi.output_type
+class RouteEnvironmentInfoGatewayInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayEdition":
+            suggest = "gateway_edition"
+        elif key == "gatewayId":
+            suggest = "gateway_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteEnvironmentInfoGatewayInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteEnvironmentInfoGatewayInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteEnvironmentInfoGatewayInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gateway_edition: Optional[_builtins.str] = None,
+                 gateway_id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gateway_edition: The edition of the gateway instance.
+        :param _builtins.str gateway_id: The ID of the Cloud-native API Gateway.
+        :param _builtins.str name: The name of the second-level domain name.
+        """
+        if gateway_edition is not None:
+            pulumi.set(__self__, "gateway_edition", gateway_edition)
+        if gateway_id is not None:
+            pulumi.set(__self__, "gateway_id", gateway_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> Optional[_builtins.str]:
+        """
+        The edition of the gateway instance.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the Cloud-native API Gateway.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class RouteEnvironmentInfoSubDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainId":
+            suggest = "domain_id"
+        elif key == "networkType":
+            suggest = "network_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteEnvironmentInfoSubDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteEnvironmentInfoSubDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteEnvironmentInfoSubDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 network_type: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain_id: The ID of the second-level domain name.
+        :param _builtins.str name: The name of the second-level domain name.
+        :param _builtins.str network_type: The domain access type, such as Intranet or Internet.
+        :param _builtins.str protocol: The domain protocol, such as HTTP or HTTPS.
+        """
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_type is not None:
+            pulumi.set(__self__, "network_type", network_type)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the second-level domain name.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> Optional[_builtins.str]:
+        """
+        The domain access type, such as Intranet or Internet.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        The domain protocol, such as HTTP or HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class RouteMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreUriCase":
+            suggest = "ignore_uri_case"
+        elif key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouteMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouteMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouteMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.RouteMatchHeader']] = None,
+                 ignore_uri_case: Optional[_builtins.bool] = None,
+                 methods: Optional[Sequence[_builtins.str]] = None,
+                 path: Optional['outputs.RouteMatchPath'] = None,
+                 query_params: Optional[Sequence['outputs.RouteMatchQueryParam']] = None):
+        """
+        :param Sequence['RouteMatchHeaderArgs'] headers: The list of HTTP request header matching rules. See `headers` below.
+        :param _builtins.bool ignore_uri_case: Specifies whether the path is case-sensitive.
+        :param Sequence[_builtins.str] methods: The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+        :param 'RouteMatchPathArgs' path: The path rule. See `path` below.
+        :param Sequence['RouteMatchQueryParamArgs'] query_params: The matching rules for query parameters. See `query_params` below.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if ignore_uri_case is not None:
+            pulumi.set(__self__, "ignore_uri_case", ignore_uri_case)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if query_params is not None:
+            pulumi.set(__self__, "query_params", query_params)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.RouteMatchHeader']]:
+        """
+        The list of HTTP request header matching rules. See `headers` below.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreUriCase")
+    def ignore_uri_case(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether the path is case-sensitive.
+        """
+        return pulumi.get(self, "ignore_uri_case")
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The request method. Valid values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTION, TRACE, and PATCH.
+        """
+        return pulumi.get(self, "methods")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional['outputs.RouteMatchPath']:
+        """
+        The path rule. See `path` below.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> Optional[Sequence['outputs.RouteMatchQueryParam']]:
+        """
+        The matching rules for query parameters. See `query_params` below.
+        """
+        return pulumi.get(self, "query_params")
+
+
+@pulumi.output_type
+class RouteMatchHeader(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the second-level domain name.
+        :param _builtins.str type: The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+        :param _builtins.str value: The query parameter value that incoming requests must supply to be routed by this route.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The query parameter value that incoming requests must supply to be routed by this route.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RouteMatchPath(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+        :param _builtins.str value: The query parameter value that incoming requests must supply to be routed by this route.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The query parameter value that incoming requests must supply to be routed by this route.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RouteMatchQueryParam(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the second-level domain name.
+        :param _builtins.str type: The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+        :param _builtins.str value: The query parameter value that incoming requests must supply to be routed by this route.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The matching rule for the query parameter. Valid values: Exact (exact match), Prefix (prefix match), and Regex (regular expression match).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The query parameter value that incoming requests must supply to be routed by this route.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServiceHealthCheckConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expectedStatuses":
+            suggest = "expected_statuses"
+        elif key == "healthyThreshold":
+            suggest = "healthy_threshold"
+        elif key == "httpHost":
+            suggest = "http_host"
+        elif key == "httpPath":
+            suggest = "http_path"
+        elif key == "unhealthyThreshold":
+            suggest = "unhealthy_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceHealthCheckConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceHealthCheckConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceHealthCheckConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable: Optional[_builtins.bool] = None,
+                 expected_statuses: Optional[Sequence[_builtins.str]] = None,
+                 healthy_threshold: Optional[_builtins.int] = None,
+                 http_host: Optional[_builtins.str] = None,
+                 http_path: Optional[_builtins.str] = None,
+                 interval: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 timeout: Optional[_builtins.int] = None,
+                 unhealthy_threshold: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool enable: Whether to enable health check
+        :param Sequence[_builtins.str] expected_statuses: Expected HTTP status codes
+        :param _builtins.int healthy_threshold: Healthy threshold
+        :param _builtins.str http_host: Health check host (optional when protocol is HTTP)
+        :param _builtins.str http_path: Health check path (required when protocol is HTTP)
+        :param _builtins.int interval: Health check interval
+        :param _builtins.str protocol: Health check protocol TCP|HTTP|GRPC
+        :param _builtins.int timeout: Health check response timeout
+        :param _builtins.int unhealthy_threshold: Unhealthy threshold
+        """
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if expected_statuses is not None:
+            pulumi.set(__self__, "expected_statuses", expected_statuses)
+        if healthy_threshold is not None:
+            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        if http_host is not None:
+            pulumi.set(__self__, "http_host", http_host)
+        if http_path is not None:
+            pulumi.set(__self__, "http_path", http_path)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if unhealthy_threshold is not None:
+            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable health check
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedStatuses")
+    def expected_statuses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Expected HTTP status codes
+        """
+        return pulumi.get(self, "expected_statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> Optional[_builtins.int]:
+        """
+        Healthy threshold
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="httpHost")
+    def http_host(self) -> Optional[_builtins.str]:
+        """
+        Health check host (optional when protocol is HTTP)
+        """
+        return pulumi.get(self, "http_host")
+
+    @_builtins.property
+    @pulumi.getter(name="httpPath")
+    def http_path(self) -> Optional[_builtins.str]:
+        """
+        Health check path (required when protocol is HTTP)
+        """
+        return pulumi.get(self, "http_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.int]:
+        """
+        Health check interval
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Health check protocol TCP|HTTP|GRPC
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.int]:
+        """
+        Health check response timeout
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> Optional[_builtins.int]:
+        """
+        Unhealthy threshold
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+
+@pulumi.output_type
+class ServiceOutlierDetectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseEjectionTime":
+            suggest = "base_ejection_time"
+        elif key == "failurePercentageMinimumHosts":
+            suggest = "failure_percentage_minimum_hosts"
+        elif key == "failurePercentageThreshold":
+            suggest = "failure_percentage_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceOutlierDetectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceOutlierDetectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceOutlierDetectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_ejection_time: Optional[_builtins.int] = None,
+                 enable: Optional[_builtins.bool] = None,
+                 failure_percentage_minimum_hosts: Optional[_builtins.int] = None,
+                 failure_percentage_threshold: Optional[_builtins.int] = None,
+                 interval: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int base_ejection_time: Base ejection time
+        :param _builtins.bool enable: Whether to enable outlier detection
+        :param _builtins.int failure_percentage_minimum_hosts: Failure percentage minimum hosts
+        :param _builtins.int failure_percentage_threshold: Failure percentage threshold
+        :param _builtins.int interval: Detection interval
+        """
+        if base_ejection_time is not None:
+            pulumi.set(__self__, "base_ejection_time", base_ejection_time)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if failure_percentage_minimum_hosts is not None:
+            pulumi.set(__self__, "failure_percentage_minimum_hosts", failure_percentage_minimum_hosts)
+        if failure_percentage_threshold is not None:
+            pulumi.set(__self__, "failure_percentage_threshold", failure_percentage_threshold)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+
+    @_builtins.property
+    @pulumi.getter(name="baseEjectionTime")
+    def base_ejection_time(self) -> Optional[_builtins.int]:
+        """
+        Base ejection time
+        """
+        return pulumi.get(self, "base_ejection_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable outlier detection
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="failurePercentageMinimumHosts")
+    def failure_percentage_minimum_hosts(self) -> Optional[_builtins.int]:
+        """
+        Failure percentage minimum hosts
+        """
+        return pulumi.get(self, "failure_percentage_minimum_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="failurePercentageThreshold")
+    def failure_percentage_threshold(self) -> Optional[_builtins.int]:
+        """
+        Failure percentage threshold
+        """
+        return pulumi.get(self, "failure_percentage_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.int]:
+        """
+        Detection interval
+        """
+        return pulumi.get(self, "interval")
+
+
+@pulumi.output_type
+class ServicePort(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Port name.
+        :param _builtins.int port: Port number.
+        :param _builtins.str protocol: Service protocol.
+               
+               > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Port name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port number.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Service protocol.
+
+        > **NOTE:** The parameter `protocol` is immutable after resource creation. Changing it after creation has no effect.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetAiModelProvidersProviderResult(dict):
+    def __init__(__self__, *,
+                 bound_services: Sequence['outputs.GetAiModelProvidersProviderBoundServiceResult'],
+                 display_name: _builtins.str,
+                 gateway_id: _builtins.str,
+                 id: _builtins.str,
+                 model_cards: Sequence['outputs.GetAiModelProvidersProviderModelCardResult'],
+                 model_count: _builtins.int,
+                 model_provider: _builtins.str,
+                 model_provider_id: _builtins.str,
+                 source: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param Sequence['GetAiModelProvidersProviderBoundServiceArgs'] bound_services: A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
+        :param _builtins.str display_name: Model supplier presentation name.
+        :param _builtins.str gateway_id: The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param Sequence['GetAiModelProvidersProviderModelCardArgs'] model_cards: A list of model cards currently associated with the model supplier. Each element contains the following attributes:
+        :param _builtins.int model_count: The number of model cards currently associated with the model supplier.
+        :param _builtins.str model_provider: The model provider identifier.
+        :param _builtins.str model_provider_id: The first ID of the resource.
+        :param _builtins.str source: The model source.
+        :param _builtins.str update_time: The last update time of the model card.
+        """
+        pulumi.set(__self__, "bound_services", bound_services)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "model_cards", model_cards)
+        pulumi.set(__self__, "model_count", model_count)
+        pulumi.set(__self__, "model_provider", model_provider)
+        pulumi.set(__self__, "model_provider_id", model_provider_id)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="boundServices")
+    def bound_services(self) -> Sequence['outputs.GetAiModelProvidersProviderBoundServiceResult']:
+        """
+        A list of AI service summaries currently bound to this model vendor. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "bound_services")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Model supplier presentation name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCards")
+    def model_cards(self) -> Sequence['outputs.GetAiModelProvidersProviderModelCardResult']:
+        """
+        A list of model cards currently associated with the model supplier. Each element contains the following attributes:
+        """
+        return pulumi.get(self, "model_cards")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCount")
+    def model_count(self) -> _builtins.int:
+        """
+        The number of model cards currently associated with the model supplier.
+        """
+        return pulumi.get(self, "model_count")
+
+    @_builtins.property
+    @pulumi.getter(name="modelProvider")
+    def model_provider(self) -> _builtins.str:
+        """
+        The model provider identifier.
+        """
+        return pulumi.get(self, "model_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="modelProviderId")
+    def model_provider_id(self) -> _builtins.str:
+        """
+        The first ID of the resource.
+        """
+        return pulumi.get(self, "model_provider_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        The model source.
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The last update time of the model card.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetAiModelProvidersProviderBoundServiceResult(dict):
+    def __init__(__self__, *,
+                 express_type: _builtins.str,
+                 group_name: _builtins.str,
+                 name: _builtins.str,
+                 namespace: _builtins.str,
+                 pai_workspace_id: _builtins.str,
+                 pai_workspace_name: _builtins.str,
+                 qualifier: _builtins.str,
+                 service_id: _builtins.str,
+                 source_type: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str express_type: The express type of the AI service.
+        :param _builtins.str group_name: The group name of the AI service.
+        :param _builtins.str name: The name of the AI service.
+        :param _builtins.str namespace: The namespace of the AI service.
+        :param _builtins.str pai_workspace_id: The PAI workspace ID.
+        :param _builtins.str pai_workspace_name: The PAI workspace name.
+        :param _builtins.str qualifier: The qualifier of the AI service.
+        :param _builtins.str service_id: The ID of the AI service.
+        :param _builtins.str source_type: The source type of the AI service.
+        :param _builtins.str status: The status of the AI service.
+        """
+        pulumi.set(__self__, "express_type", express_type)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "pai_workspace_id", pai_workspace_id)
+        pulumi.set(__self__, "pai_workspace_name", pai_workspace_name)
+        pulumi.set(__self__, "qualifier", qualifier)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="expressType")
+    def express_type(self) -> _builtins.str:
+        """
+        The express type of the AI service.
+        """
+        return pulumi.get(self, "express_type")
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> _builtins.str:
+        """
+        The group name of the AI service.
+        """
+        return pulumi.get(self, "group_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the AI service.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The namespace of the AI service.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="paiWorkspaceId")
+    def pai_workspace_id(self) -> _builtins.str:
+        """
+        The PAI workspace ID.
+        """
+        return pulumi.get(self, "pai_workspace_id")
+
+    @_builtins.property
+    @pulumi.getter(name="paiWorkspaceName")
+    def pai_workspace_name(self) -> _builtins.str:
+        """
+        The PAI workspace name.
+        """
+        return pulumi.get(self, "pai_workspace_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def qualifier(self) -> _builtins.str:
+        """
+        The qualifier of the AI service.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> _builtins.str:
+        """
+        The ID of the AI service.
+        """
+        return pulumi.get(self, "service_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        The source type of the AI service.
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the AI service.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAiModelProvidersProviderModelCardResult(dict):
+    def __init__(__self__, *,
+                 gateway_id: _builtins.str,
+                 model_card_id: _builtins.str,
+                 model_name: _builtins.str,
+                 model_provider: _builtins.str,
+                 source: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param _builtins.str gateway_id: The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+        :param _builtins.str model_card_id: The ID of the model card.
+        :param _builtins.str model_name: The model name.
+        :param _builtins.str model_provider: The model provider identifier.
+        :param _builtins.str source: The model source.
+        :param _builtins.str update_time: The last update time of the model card.
+        """
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "model_card_id", model_card_id)
+        pulumi.set(__self__, "model_name", model_name)
+        pulumi.set(__self__, "model_provider", model_provider)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the AI gateway instance. The target instance must exist, belong to the current account, and be of the AI gateway type.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="modelCardId")
+    def model_card_id(self) -> _builtins.str:
+        """
+        The ID of the model card.
+        """
+        return pulumi.get(self, "model_card_id")
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> _builtins.str:
+        """
+        The model name.
+        """
+        return pulumi.get(self, "model_name")
+
+    @_builtins.property
+    @pulumi.getter(name="modelProvider")
+    def model_provider(self) -> _builtins.str:
+        """
+        The model provider identifier.
+        """
+        return pulumi.get(self, "model_provider")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        The model source.
+        """
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The last update time of the model card.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetDomainsDomainResult(dict):
+    def __init__(__self__, *,
+                 ca_cert_identifier: _builtins.str,
+                 cert_identifier: _builtins.str,
+                 client_ca_cert: _builtins.str,
+                 domain_id: _builtins.str,
+                 domain_name: _builtins.str,
+                 domain_scope: _builtins.str,
+                 force_https: _builtins.bool,
+                 http2_option: _builtins.str,
+                 id: _builtins.str,
+                 m_tls_enabled: _builtins.bool,
+                 protocol: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 tls_cipher_suites_configs: Sequence['outputs.GetDomainsDomainTlsCipherSuitesConfigResult'],
+                 tls_max: _builtins.str,
+                 tls_min: _builtins.str):
+        """
+        :param _builtins.str ca_cert_identifier: **NOTE:** This field is only available when `enable_details` is `true`. CA certificate identifier.
+        :param _builtins.str cert_identifier: tls cert identifier.
+        :param _builtins.str client_ca_cert: client CA certificate.
+        :param _builtins.str domain_id: domain id.
+        :param _builtins.str domain_name: domain name.
+        :param _builtins.str domain_scope: domain scope.
+        :param _builtins.bool force_https: Set the HTTPS protocol type and whether to enable forced HTTPS redirection.
+        :param _builtins.str http2_option: **NOTE:** This field is only available when `enable_details` is `true`. Whether to enable http2 settings.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.bool m_tls_enabled: Whether to enable mTLS mutual authentication.
+        :param _builtins.str protocol: Protocol, HTTP/HTTPS.
+        :param _builtins.str resource_group_id: The ID of the resource group
+        :param Sequence['GetDomainsDomainTlsCipherSuitesConfigArgs'] tls_cipher_suites_configs: **NOTE:** This field is only available when `enable_details` is `true`. TlsCipherSuitesConfig.
+        :param _builtins.str tls_max: **NOTE:** This field is only available when `enable_details` is `true`. The maximum version of the TLS protocol.
+        :param _builtins.str tls_min: **NOTE:** This field is only available when `enable_details` is `true`. The minimum version of the TLS protocol.
+        """
+        pulumi.set(__self__, "ca_cert_identifier", ca_cert_identifier)
+        pulumi.set(__self__, "cert_identifier", cert_identifier)
+        pulumi.set(__self__, "client_ca_cert", client_ca_cert)
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "domain_scope", domain_scope)
+        pulumi.set(__self__, "force_https", force_https)
+        pulumi.set(__self__, "http2_option", http2_option)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "m_tls_enabled", m_tls_enabled)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "tls_cipher_suites_configs", tls_cipher_suites_configs)
+        pulumi.set(__self__, "tls_max", tls_max)
+        pulumi.set(__self__, "tls_min", tls_min)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertIdentifier")
+    def ca_cert_identifier(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. CA certificate identifier.
+        """
+        return pulumi.get(self, "ca_cert_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="certIdentifier")
+    def cert_identifier(self) -> _builtins.str:
+        """
+        tls cert identifier.
+        """
+        return pulumi.get(self, "cert_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCaCert")
+    def client_ca_cert(self) -> _builtins.str:
+        """
+        client CA certificate.
+        """
+        return pulumi.get(self, "client_ca_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        domain id.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> _builtins.str:
+        """
+        domain name.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="domainScope")
+    def domain_scope(self) -> _builtins.str:
+        """
+        domain scope.
+        """
+        return pulumi.get(self, "domain_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="forceHttps")
+    def force_https(self) -> _builtins.bool:
+        """
+        Set the HTTPS protocol type and whether to enable forced HTTPS redirection.
+        """
+        return pulumi.get(self, "force_https")
+
+    @_builtins.property
+    @pulumi.getter(name="http2Option")
+    def http2_option(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. Whether to enable http2 settings.
+        """
+        return pulumi.get(self, "http2_option")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="mTlsEnabled")
+    def m_tls_enabled(self) -> _builtins.bool:
+        """
+        Whether to enable mTLS mutual authentication.
+        """
+        return pulumi.get(self, "m_tls_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol, HTTP/HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCipherSuitesConfigs")
+    def tls_cipher_suites_configs(self) -> Sequence['outputs.GetDomainsDomainTlsCipherSuitesConfigResult']:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. TlsCipherSuitesConfig.
+        """
+        return pulumi.get(self, "tls_cipher_suites_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMax")
+    def tls_max(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The maximum version of the TLS protocol.
+        """
+        return pulumi.get(self, "tls_max")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsMin")
+    def tls_min(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The minimum version of the TLS protocol.
+        """
+        return pulumi.get(self, "tls_min")
+
+
+@pulumi.output_type
+class GetDomainsDomainTlsCipherSuitesConfigResult(dict):
+    def __init__(__self__, *,
+                 config_type: _builtins.str,
+                 tls_cipher_suites: Sequence['outputs.GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteResult']):
+        """
+        :param _builtins.str config_type: config type, Default or Custom.
+        :param Sequence['GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteArgs'] tls_cipher_suites: tls Cipher Suite.
+        """
+        pulumi.set(__self__, "config_type", config_type)
+        pulumi.set(__self__, "tls_cipher_suites", tls_cipher_suites)
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> _builtins.str:
+        """
+        config type, Default or Custom.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCipherSuites")
+    def tls_cipher_suites(self) -> Sequence['outputs.GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteResult']:
+        """
+        tls Cipher Suite.
+        """
+        return pulumi.get(self, "tls_cipher_suites")
+
+
+@pulumi.output_type
+class GetDomainsDomainTlsCipherSuitesConfigTlsCipherSuiteResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 support_versions: Sequence[_builtins.str]):
+        """
+        :param _builtins.str name: cipher suite name.
+        :param Sequence[_builtins.str] support_versions: support versions.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "support_versions", support_versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        cipher suite name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="supportVersions")
+    def support_versions(self) -> Sequence[_builtins.str]:
+        """
+        support versions.
+        """
+        return pulumi.get(self, "support_versions")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 create_from: _builtins.str,
+                 create_time: _builtins.int,
+                 environments: Sequence['outputs.GetGatewaysGatewayEnvironmentResult'],
+                 expire_time: _builtins.int,
+                 gateway_edition: _builtins.str,
+                 gateway_id: _builtins.str,
+                 gateway_name: _builtins.str,
+                 gateway_type: _builtins.str,
+                 id: _builtins.str,
+                 load_balancers: Sequence['outputs.GetGatewaysGatewayLoadBalancerResult'],
+                 payment_type: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 security_groups: Sequence['outputs.GetGatewaysGatewaySecurityGroupResult'],
+                 spec: _builtins.str,
+                 status: _builtins.str,
+                 sub_domain_infos: Sequence['outputs.GetGatewaysGatewaySubDomainInfoResult'],
+                 tags: Mapping[str, _builtins.str],
+                 target_version: _builtins.str,
+                 update_time: _builtins.int,
+                 version: _builtins.str,
+                 vpcs: Sequence['outputs.GetGatewaysGatewayVpcResult'],
+                 vswitches: Sequence['outputs.GetGatewaysGatewayVswitchResult'],
+                 zones: Sequence['outputs.GetGatewaysGatewayZoneResult']):
+        """
+        :param _builtins.str create_from: The source from which the gateway was created.
+        :param _builtins.int create_time: Creation timestamp.
+        :param Sequence['GetGatewaysGatewayEnvironmentArgs'] environments: **NOTE:** This field is only available when `enable_details` is `true`. The list of environments associated with the gateway.
+        :param _builtins.int expire_time: Timestamp indicating when the subscription expires.
+        :param _builtins.str gateway_edition: Gateway instance edition:.
+        :param _builtins.str gateway_id: Cloud-native API gateway ID.
+        :param _builtins.str gateway_name: The name of the gateway.
+        :param _builtins.str gateway_type: The gateway type.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param Sequence['GetGatewaysGatewayLoadBalancerArgs'] load_balancers: The list of Gateway ingress addresses.
+        :param _builtins.str payment_type: Payment type:.
+        :param _builtins.str resource_group_id: The ID of the resource group.
+        :param Sequence['GetGatewaysGatewaySecurityGroupArgs'] security_groups: Security group of the gateway.
+        :param _builtins.str spec: Gateway specification:.
+        :param _builtins.str status: Gateway status:.
+        :param Sequence['GetGatewaysGatewaySubDomainInfoArgs'] sub_domain_infos: List of second-level domain names.
+        :param Mapping[str, _builtins.str] tags: The tag of the resource.
+        :param _builtins.str target_version: The target version of the gateway instance.
+        :param _builtins.int update_time: The timestamp when the resource was last updated.
+        :param _builtins.str version: The current running version of the gateway instance.
+        :param Sequence['GetGatewaysGatewayVpcArgs'] vpcs: The Virtual Private Cloud (VPC) associated with the gateway.
+        :param Sequence['GetGatewaysGatewayVswitchArgs'] vswitches: **NOTE:** This field is only available when `enable_details` is `true`. The vSwitch associated with the gateway.
+        :param Sequence['GetGatewaysGatewayZoneArgs'] zones: The list of zones associated with the gateway.
+        """
+        pulumi.set(__self__, "create_from", create_from)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "environments", environments)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "gateway_edition", gateway_edition)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "gateway_type", gateway_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "load_balancers", load_balancers)
+        pulumi.set(__self__, "payment_type", payment_type)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "spec", spec)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "sub_domain_infos", sub_domain_infos)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "target_version", target_version)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "vpcs", vpcs)
+        pulumi.set(__self__, "vswitches", vswitches)
+        pulumi.set(__self__, "zones", zones)
+
+    @_builtins.property
+    @pulumi.getter(name="createFrom")
+    def create_from(self) -> _builtins.str:
+        """
+        The source from which the gateway was created.
+        """
+        return pulumi.get(self, "create_from")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.int:
+        """
+        Creation timestamp.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def environments(self) -> Sequence['outputs.GetGatewaysGatewayEnvironmentResult']:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The list of environments associated with the gateway.
+        """
+        return pulumi.get(self, "environments")
+
+    @_builtins.property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> _builtins.int:
+        """
+        Timestamp indicating when the subscription expires.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> _builtins.str:
+        """
+        Gateway instance edition:.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        Cloud-native API gateway ID.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayName")
+    def gateway_name(self) -> _builtins.str:
+        """
+        The name of the gateway.
+        """
+        return pulumi.get(self, "gateway_name")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayType")
+    def gateway_type(self) -> _builtins.str:
+        """
+        The gateway type.
+        """
+        return pulumi.get(self, "gateway_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancers")
+    def load_balancers(self) -> Sequence['outputs.GetGatewaysGatewayLoadBalancerResult']:
+        """
+        The list of Gateway ingress addresses.
+        """
+        return pulumi.get(self, "load_balancers")
+
+    @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> _builtins.str:
+        """
+        Payment type:.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Sequence['outputs.GetGatewaysGatewaySecurityGroupResult']:
+        """
+        Security group of the gateway.
+        """
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> _builtins.str:
+        """
+        Gateway specification:.
+        """
+        return pulumi.get(self, "spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Gateway status:.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="subDomainInfos")
+    def sub_domain_infos(self) -> Sequence['outputs.GetGatewaysGatewaySubDomainInfoResult']:
+        """
+        List of second-level domain names.
+        """
+        return pulumi.get(self, "sub_domain_infos")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="targetVersion")
+    def target_version(self) -> _builtins.str:
+        """
+        The target version of the gateway instance.
+        """
+        return pulumi.get(self, "target_version")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.int:
+        """
+        The timestamp when the resource was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        The current running version of the gateway instance.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter
+    def vpcs(self) -> Sequence['outputs.GetGatewaysGatewayVpcResult']:
+        """
+        The Virtual Private Cloud (VPC) associated with the gateway.
+        """
+        return pulumi.get(self, "vpcs")
+
+    @_builtins.property
+    @pulumi.getter
+    def vswitches(self) -> Sequence['outputs.GetGatewaysGatewayVswitchResult']:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The vSwitch associated with the gateway.
+        """
+        return pulumi.get(self, "vswitches")
+
+    @_builtins.property
+    @pulumi.getter
+    def zones(self) -> Sequence['outputs.GetGatewaysGatewayZoneResult']:
+        """
+        The list of zones associated with the gateway.
+        """
+        return pulumi.get(self, "zones")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 alias: _builtins.str,
+                 environment_id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str alias: The alias of the environment.
+        :param _builtins.str environment_id: The ID of the environment.
+        :param _builtins.str name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> _builtins.str:
+        """
+        The alias of the environment.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The ID of the environment.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayLoadBalancerResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 address_ip_version: _builtins.str,
+                 address_type: _builtins.str,
+                 gateway_default: _builtins.bool,
+                 ipv4_addresses: Sequence[_builtins.str],
+                 ipv6_addresses: Sequence[_builtins.str],
+                 load_balancer_id: _builtins.str,
+                 mode: _builtins.str,
+                 ports: Sequence['outputs.GetGatewaysGatewayLoadBalancerPortResult'],
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str address: The address of the load balancer for the gateway.
+        :param _builtins.str address_ip_version: IP version:.
+        :param _builtins.str address_type: Load balancer address type:.
+        :param _builtins.bool gateway_default: Indicates whether this is the default ingress address of the gateway.
+        :param Sequence[_builtins.str] ipv4_addresses: The list of IPv4 addresses.
+        :param Sequence[_builtins.str] ipv6_addresses: The list of IPv6 addresses.
+        :param _builtins.str load_balancer_id: The ID of the load balancer associated with the gateway.
+        :param _builtins.str mode: Load balancing provisioning mode for the gateway:.
+        :param Sequence['GetGatewaysGatewayLoadBalancerPortArgs'] ports: The list of listening ports.
+        :param _builtins.str status: Gateway status:.
+        :param _builtins.str type: Load balancer type:.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_ip_version", address_ip_version)
+        pulumi.set(__self__, "address_type", address_type)
+        pulumi.set(__self__, "gateway_default", gateway_default)
+        pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
+        pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The address of the load balancer for the gateway.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="addressIpVersion")
+    def address_ip_version(self) -> _builtins.str:
+        """
+        IP version:.
+        """
+        return pulumi.get(self, "address_ip_version")
+
+    @_builtins.property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> _builtins.str:
+        """
+        Load balancer address type:.
+        """
+        return pulumi.get(self, "address_type")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayDefault")
+    def gateway_default(self) -> _builtins.bool:
+        """
+        Indicates whether this is the default ingress address of the gateway.
+        """
+        return pulumi.get(self, "gateway_default")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Addresses")
+    def ipv4_addresses(self) -> Sequence[_builtins.str]:
+        """
+        The list of IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Sequence[_builtins.str]:
+        """
+        The list of IPv6 addresses.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> _builtins.str:
+        """
+        The ID of the load balancer associated with the gateway.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Load balancing provisioning mode for the gateway:.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetGatewaysGatewayLoadBalancerPortResult']:
+        """
+        The list of listening ports.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Gateway status:.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Load balancer type:.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayLoadBalancerPortResult(dict):
+    def __init__(__self__, *,
+                 port: _builtins.int,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.int port: The port number of the load balancer listener.
+        :param _builtins.str protocol: The protocol used by the secondary domain name.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The port number of the load balancer listener.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The protocol used by the secondary domain name.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetGatewaysGatewaySecurityGroupResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 security_group_id: _builtins.str):
+        """
+        :param _builtins.str name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        :param _builtins.str security_group_id: The ID of the security group.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "security_group_id", security_group_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        The ID of the security group.
+        """
+        return pulumi.get(self, "security_group_id")
+
+
+@pulumi.output_type
+class GetGatewaysGatewaySubDomainInfoResult(dict):
+    def __init__(__self__, *,
+                 domain_id: _builtins.str,
+                 name: _builtins.str,
+                 network_type: _builtins.str,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str domain_id: The ID of the secondary domain name for the gateway.
+        :param _builtins.str name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        :param _builtins.str network_type: Network type:.
+        :param _builtins.str protocol: The protocol used by the secondary domain name.
+        """
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        The ID of the secondary domain name for the gateway.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        Network type:.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The protocol used by the secondary domain name.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayVpcResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 vpc_id: _builtins.str):
+        """
+        :param _builtins.str name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        :param _builtins.str vpc_id: The ID of the VPC network associated with the gateway.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        The ID of the VPC network associated with the gateway.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayVswitchResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 vswitch_id: _builtins.str):
+        """
+        :param _builtins.str name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        :param _builtins.str vswitch_id: The ID of the virtual switch in the availability zone.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> _builtins.str:
+        """
+        The ID of the virtual switch in the availability zone.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class GetGatewaysGatewayZoneResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 vswitch_id: _builtins.str,
+                 zone_id: _builtins.str):
+        """
+        :param _builtins.str name: **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        :param _builtins.str vswitch_id: The ID of the virtual switch in the availability zone.
+        :param _builtins.str zone_id: The ID of the availability zone for the gateway.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        **NOTE:** This field is only available when `enable_details` is `true`. The name of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> _builtins.str:
+        """
+        The ID of the virtual switch in the availability zone.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> _builtins.str:
+        """
+        The ID of the availability zone for the gateway.
+        """
+        return pulumi.get(self, "zone_id")
 
 
 @pulumi.output_type
@@ -390,5 +2854,1316 @@ class GetPluginClassesClassResult(dict):
         The programming language of the wasm plugin. It is available when `enable_details` is set to `true`.
         """
         return pulumi.get(self, "wasm_language")
+
+
+@pulumi.output_type
+class GetPluginsPluginResult(dict):
+    def __init__(__self__, *,
+                 gateway_id: _builtins.str,
+                 gateway_name: _builtins.str,
+                 id: _builtins.str,
+                 plugin_class_id: _builtins.str,
+                 plugin_class_name: _builtins.str,
+                 plugin_id: _builtins.str):
+        """
+        :param _builtins.str gateway_id: The filter parameter for the gateway instance ID.
+        :param _builtins.str gateway_name: The gateway name.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str plugin_class_id: The plugin class ID.
+        :param _builtins.str plugin_class_name: The filter parameter for the plugin class name.
+        :param _builtins.str plugin_id: The plugin ID.
+        """
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "gateway_name", gateway_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "plugin_class_id", plugin_class_id)
+        pulumi.set(__self__, "plugin_class_name", plugin_class_name)
+        pulumi.set(__self__, "plugin_id", plugin_id)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The filter parameter for the gateway instance ID.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayName")
+    def gateway_name(self) -> _builtins.str:
+        """
+        The gateway name.
+        """
+        return pulumi.get(self, "gateway_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="pluginClassId")
+    def plugin_class_id(self) -> _builtins.str:
+        """
+        The plugin class ID.
+        """
+        return pulumi.get(self, "plugin_class_id")
+
+    @_builtins.property
+    @pulumi.getter(name="pluginClassName")
+    def plugin_class_name(self) -> _builtins.str:
+        """
+        The filter parameter for the plugin class name.
+        """
+        return pulumi.get(self, "plugin_class_name")
+
+    @_builtins.property
+    @pulumi.getter(name="pluginId")
+    def plugin_id(self) -> _builtins.str:
+        """
+        The plugin ID.
+        """
+        return pulumi.get(self, "plugin_id")
+
+
+@pulumi.output_type
+class GetRoutesEnvironmentInfoResult(dict):
+    def __init__(__self__, *,
+                 alias: _builtins.str,
+                 gateway_infos: Sequence['outputs.GetRoutesEnvironmentInfoGatewayInfoResult'],
+                 name: _builtins.str,
+                 sub_domains: Sequence['outputs.GetRoutesEnvironmentInfoSubDomainResult'],
+                 environment_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: The alias of the environment name.
+        :param Sequence['GetRoutesEnvironmentInfoGatewayInfoArgs'] gateway_infos: The gateway instance information corresponding to the environment. See `gateway_info` below.
+        :param _builtins.str name: The name of the second-level domain name.
+        :param Sequence['GetRoutesEnvironmentInfoSubDomainArgs'] sub_domains: The default second-level domain names of the environment. See `sub_domains` below.
+        :param _builtins.str environment_id: The environment ID.
+        """
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "gateway_infos", gateway_infos)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "sub_domains", sub_domains)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> _builtins.str:
+        """
+        The alias of the environment name.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayInfos")
+    def gateway_infos(self) -> Sequence['outputs.GetRoutesEnvironmentInfoGatewayInfoResult']:
+        """
+        The gateway instance information corresponding to the environment. See `gateway_info` below.
+        """
+        return pulumi.get(self, "gateway_infos")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subDomains")
+    def sub_domains(self) -> Sequence['outputs.GetRoutesEnvironmentInfoSubDomainResult']:
+        """
+        The default second-level domain names of the environment. See `sub_domains` below.
+        """
+        return pulumi.get(self, "sub_domains")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> Optional[_builtins.str]:
+        """
+        The environment ID.
+        """
+        return pulumi.get(self, "environment_id")
+
+
+@pulumi.output_type
+class GetRoutesEnvironmentInfoGatewayInfoResult(dict):
+    def __init__(__self__, *,
+                 gateway_edition: _builtins.str,
+                 gateway_id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str gateway_edition: The edition of the gateway instance.
+        :param _builtins.str gateway_id: The ID of the Cloud-native API Gateway.
+        :param _builtins.str name: The parameter name.
+        """
+        pulumi.set(__self__, "gateway_edition", gateway_edition)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> _builtins.str:
+        """
+        The edition of the gateway instance.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the Cloud-native API Gateway.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRoutesEnvironmentInfoSubDomainResult(dict):
+    def __init__(__self__, *,
+                 domain_id: _builtins.str,
+                 name: _builtins.str,
+                 network_type: _builtins.str,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str domain_id: The ID of the second-level domain name.
+        :param _builtins.str name: The parameter name.
+        :param _builtins.str network_type: The domain access type, such as Intranet or Internet.
+        :param _builtins.str protocol: The domain protocol, such as HTTP or HTTPS.
+        """
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        The ID of the second-level domain name.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        The domain access type, such as Intranet or Internet.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The domain protocol, such as HTTP or HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetRoutesRouteResult(dict):
+    def __init__(__self__, *,
+                 backends: Sequence['outputs.GetRoutesRouteBackendResult'],
+                 builtin: _builtins.str,
+                 create_time: _builtins.str,
+                 description: _builtins.str,
+                 domain_infos: Sequence['outputs.GetRoutesRouteDomainInfoResult'],
+                 environment_infos: Sequence['outputs.GetRoutesRouteEnvironmentInfoResult'],
+                 gateway_status: Mapping[str, _builtins.str],
+                 id: _builtins.str,
+                 matches: Sequence['outputs.GetRoutesRouteMatchResult'],
+                 route_id: _builtins.str,
+                 route_name: _builtins.str,
+                 status: _builtins.str,
+                 update_time: _builtins.str):
+        """
+        :param Sequence['GetRoutesRouteBackendArgs'] backends: Backend service.
+        :param _builtins.str builtin: Indicates whether the route is a built-in route.
+        :param _builtins.str create_time: The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+        :param _builtins.str description: The description of the route.
+        :param Sequence['GetRoutesRouteDomainInfoArgs'] domain_infos: The domain name information.
+        :param Sequence['GetRoutesRouteEnvironmentInfoArgs'] environment_infos: The environment information of the route. See `environment_info` below.
+        :param Mapping[str, _builtins.str] gateway_status: The publishing status of the route on each gateway.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param Sequence['GetRoutesRouteMatchArgs'] matches: The route match rule.
+        :param _builtins.str route_id: The route ID.
+        :param _builtins.str route_name: The name of the route.
+        :param _builtins.str status: The deployment status of the route.
+        :param _builtins.str update_time: The update time in Greenwich Mean Time (GMT).
+        """
+        pulumi.set(__self__, "backends", backends)
+        pulumi.set(__self__, "builtin", builtin)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "domain_infos", domain_infos)
+        pulumi.set(__self__, "environment_infos", environment_infos)
+        pulumi.set(__self__, "gateway_status", gateway_status)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "matches", matches)
+        pulumi.set(__self__, "route_id", route_id)
+        pulumi.set(__self__, "route_name", route_name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def backends(self) -> Sequence['outputs.GetRoutesRouteBackendResult']:
+        """
+        Backend service.
+        """
+        return pulumi.get(self, "backends")
+
+    @_builtins.property
+    @pulumi.getter
+    def builtin(self) -> _builtins.str:
+        """
+        Indicates whether the route is a built-in route.
+        """
+        return pulumi.get(self, "builtin")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the route.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="domainInfos")
+    def domain_infos(self) -> Sequence['outputs.GetRoutesRouteDomainInfoResult']:
+        """
+        The domain name information.
+        """
+        return pulumi.get(self, "domain_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentInfos")
+    def environment_infos(self) -> Sequence['outputs.GetRoutesRouteEnvironmentInfoResult']:
+        """
+        The environment information of the route. See `environment_info` below.
+        """
+        return pulumi.get(self, "environment_infos")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayStatus")
+    def gateway_status(self) -> Mapping[str, _builtins.str]:
+        """
+        The publishing status of the route on each gateway.
+        """
+        return pulumi.get(self, "gateway_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def matches(self) -> Sequence['outputs.GetRoutesRouteMatchResult']:
+        """
+        The route match rule.
+        """
+        return pulumi.get(self, "matches")
+
+    @_builtins.property
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> _builtins.str:
+        """
+        The route ID.
+        """
+        return pulumi.get(self, "route_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routeName")
+    def route_name(self) -> _builtins.str:
+        """
+        The name of the route.
+        """
+        return pulumi.get(self, "route_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The deployment status of the route.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        The update time in Greenwich Mean Time (GMT).
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GetRoutesRouteBackendResult(dict):
+    def __init__(__self__, *,
+                 scene: _builtins.str,
+                 services: Sequence['outputs.GetRoutesRouteBackendServiceResult']):
+        """
+        :param _builtins.str scene: The backend service scenario.
+        :param Sequence['GetRoutesRouteBackendServiceArgs'] services: Backend service.
+        """
+        pulumi.set(__self__, "scene", scene)
+        pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def scene(self) -> _builtins.str:
+        """
+        The backend service scenario.
+        """
+        return pulumi.get(self, "scene")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Sequence['outputs.GetRoutesRouteBackendServiceResult']:
+        """
+        Backend service.
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class GetRoutesRouteBackendServiceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 port: _builtins.int,
+                 protocol: _builtins.str,
+                 service_id: _builtins.str,
+                 version: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str name: The parameter name.
+        :param _builtins.int port: Service port.
+        :param _builtins.str protocol: The domain protocol, such as HTTP or HTTPS.
+        :param _builtins.str service_id: Service ID.
+        :param _builtins.str version: Service version.
+        :param _builtins.int weight: The percentage value of the traffic ratio.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Service port.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The domain protocol, such as HTTP or HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> _builtins.str:
+        """
+        Service ID.
+        """
+        return pulumi.get(self, "service_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        Service version.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        The percentage value of the traffic ratio.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetRoutesRouteDomainInfoResult(dict):
+    def __init__(__self__, *,
+                 domain_id: _builtins.str,
+                 name: _builtins.str,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str domain_id: The ID of the second-level domain name.
+        :param _builtins.str name: The parameter name.
+        :param _builtins.str protocol: The domain protocol, such as HTTP or HTTPS.
+        """
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        The ID of the second-level domain name.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The domain protocol, such as HTTP or HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetRoutesRouteEnvironmentInfoResult(dict):
+    def __init__(__self__, *,
+                 alias: _builtins.str,
+                 environment_id: _builtins.str,
+                 gateway_infos: Sequence['outputs.GetRoutesRouteEnvironmentInfoGatewayInfoResult'],
+                 name: _builtins.str,
+                 sub_domains: Sequence['outputs.GetRoutesRouteEnvironmentInfoSubDomainResult']):
+        """
+        :param _builtins.str alias: The alias of the environment name.
+        :param _builtins.str environment_id: The environment ID.
+        :param Sequence['GetRoutesRouteEnvironmentInfoGatewayInfoArgs'] gateway_infos: The gateway instance information corresponding to the environment. See `gateway_info` below.
+        :param _builtins.str name: The name of the second-level domain name.
+        :param Sequence['GetRoutesRouteEnvironmentInfoSubDomainArgs'] sub_domains: The default second-level domain names of the environment. See `sub_domains` below.
+        """
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "gateway_infos", gateway_infos)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "sub_domains", sub_domains)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> _builtins.str:
+        """
+        The alias of the environment name.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        """
+        The environment ID.
+        """
+        return pulumi.get(self, "environment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayInfos")
+    def gateway_infos(self) -> Sequence['outputs.GetRoutesRouteEnvironmentInfoGatewayInfoResult']:
+        """
+        The gateway instance information corresponding to the environment. See `gateway_info` below.
+        """
+        return pulumi.get(self, "gateway_infos")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the second-level domain name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="subDomains")
+    def sub_domains(self) -> Sequence['outputs.GetRoutesRouteEnvironmentInfoSubDomainResult']:
+        """
+        The default second-level domain names of the environment. See `sub_domains` below.
+        """
+        return pulumi.get(self, "sub_domains")
+
+
+@pulumi.output_type
+class GetRoutesRouteEnvironmentInfoGatewayInfoResult(dict):
+    def __init__(__self__, *,
+                 gateway_edition: _builtins.str,
+                 gateway_id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str gateway_edition: The edition of the gateway instance.
+        :param _builtins.str gateway_id: The ID of the Cloud-native API Gateway.
+        :param _builtins.str name: The parameter name.
+        """
+        pulumi.set(__self__, "gateway_edition", gateway_edition)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayEdition")
+    def gateway_edition(self) -> _builtins.str:
+        """
+        The edition of the gateway instance.
+        """
+        return pulumi.get(self, "gateway_edition")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the Cloud-native API Gateway.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRoutesRouteEnvironmentInfoSubDomainResult(dict):
+    def __init__(__self__, *,
+                 domain_id: _builtins.str,
+                 name: _builtins.str,
+                 network_type: _builtins.str,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str domain_id: The ID of the second-level domain name.
+        :param _builtins.str name: The parameter name.
+        :param _builtins.str network_type: The domain access type, such as Intranet or Internet.
+        :param _builtins.str protocol: The domain protocol, such as HTTP or HTTPS.
+        """
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        The ID of the second-level domain name.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> _builtins.str:
+        """
+        The domain access type, such as Intranet or Internet.
+        """
+        return pulumi.get(self, "network_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        The domain protocol, such as HTTP or HTTPS.
+        """
+        return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class GetRoutesRouteMatchResult(dict):
+    def __init__(__self__, *,
+                 headers: Sequence['outputs.GetRoutesRouteMatchHeaderResult'],
+                 ignore_uri_case: _builtins.bool,
+                 methods: Sequence[_builtins.str],
+                 paths: Sequence['outputs.GetRoutesRouteMatchPathResult'],
+                 query_params: Sequence['outputs.GetRoutesRouteMatchQueryParamResult']):
+        """
+        :param Sequence['GetRoutesRouteMatchHeaderArgs'] headers: The list of HTTP request header matching rules.
+        :param _builtins.bool ignore_uri_case: Specifies whether the path is case-sensitive.
+        :param Sequence[_builtins.str] methods: The request method.
+        :param Sequence['GetRoutesRouteMatchPathArgs'] paths: The path rule.
+        :param Sequence['GetRoutesRouteMatchQueryParamArgs'] query_params: The matching rules for query parameters.
+        """
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "ignore_uri_case", ignore_uri_case)
+        pulumi.set(__self__, "methods", methods)
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "query_params", query_params)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Sequence['outputs.GetRoutesRouteMatchHeaderResult']:
+        """
+        The list of HTTP request header matching rules.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreUriCase")
+    def ignore_uri_case(self) -> _builtins.bool:
+        """
+        Specifies whether the path is case-sensitive.
+        """
+        return pulumi.get(self, "ignore_uri_case")
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Sequence[_builtins.str]:
+        """
+        The request method.
+        """
+        return pulumi.get(self, "methods")
+
+    @_builtins.property
+    @pulumi.getter
+    def paths(self) -> Sequence['outputs.GetRoutesRouteMatchPathResult']:
+        """
+        The path rule.
+        """
+        return pulumi.get(self, "paths")
+
+    @_builtins.property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> Sequence['outputs.GetRoutesRouteMatchQueryParamResult']:
+        """
+        The matching rules for query parameters.
+        """
+        return pulumi.get(self, "query_params")
+
+
+@pulumi.output_type
+class GetRoutesRouteMatchHeaderResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The parameter name.
+        :param _builtins.str type: The matching rule for the query parameter.
+        :param _builtins.str value: The parameter value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The matching rule for the query parameter.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The parameter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRoutesRouteMatchPathResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str type: The matching rule for the query parameter.
+        :param _builtins.str value: The parameter value.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The matching rule for the query parameter.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The parameter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetRoutesRouteMatchQueryParamResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The parameter name.
+        :param _builtins.str type: The matching rule for the query parameter.
+        :param _builtins.str value: The parameter value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The matching rule for the query parameter.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The parameter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServicesServiceResult(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence[_builtins.str],
+                 create_timestamp: _builtins.int,
+                 dns_servers: Sequence[_builtins.str],
+                 express_type: _builtins.str,
+                 gateway_id: _builtins.str,
+                 health_check_configs: Sequence['outputs.GetServicesServiceHealthCheckConfigResult'],
+                 health_status: _builtins.str,
+                 healthy_panic_threshold: _builtins.float,
+                 id: _builtins.str,
+                 namespace: _builtins.str,
+                 outlier_detection_configs: Sequence['outputs.GetServicesServiceOutlierDetectionConfigResult'],
+                 outlier_endpoints: Sequence[_builtins.str],
+                 ports: Sequence['outputs.GetServicesServicePortResult'],
+                 protocol: _builtins.str,
+                 qualifier: _builtins.str,
+                 resource_group_id: _builtins.str,
+                 runtime_detail_error_code: _builtins.str,
+                 runtime_detail_status: _builtins.str,
+                 service_id: _builtins.str,
+                 service_name: _builtins.str,
+                 source_type: _builtins.str,
+                 unhealthy_endpoints: Sequence[_builtins.str],
+                 update_timestamp: _builtins.int):
+        """
+        :param Sequence[_builtins.str] addresses: A list of domain names or fixed addresses.
+        :param _builtins.int create_timestamp: Creation timestamp.
+        :param Sequence[_builtins.str] dns_servers: DNS servers.
+        :param _builtins.str express_type: Express type.
+        :param _builtins.str gateway_id: The ID of the Cloud Native API Gateway.
+        :param Sequence['GetServicesServiceHealthCheckConfigArgs'] health_check_configs: Health check configuration.
+        :param _builtins.str health_status: Health status.
+        :param _builtins.float healthy_panic_threshold: Healthy panic threshold.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str namespace: The namespace of the service.
+        :param Sequence['GetServicesServiceOutlierDetectionConfigArgs'] outlier_detection_configs: Outlier detection configuration.
+        :param Sequence[_builtins.str] outlier_endpoints: Outlier endpoints.
+        :param Sequence['GetServicesServicePortArgs'] ports: Port information.
+        :param _builtins.str protocol: Service protocol.
+        :param _builtins.str qualifier: The function version or alias.
+        :param _builtins.str resource_group_id: The ID of the resource group
+        :param _builtins.str runtime_detail_error_code: Runtime detail error code.
+        :param _builtins.str runtime_detail_status: Runtime detail status.
+        :param _builtins.str service_id: service id.
+        :param _builtins.str service_name: Service Name, need to fill in manually when sourceType is VIP/DNS/AI.
+        :param _builtins.str source_type: service source type, optional value is K8S/MSE_NACOS/FC3/SAE_K8S_SERVICE/VIP/DNS/AI
+        :param Sequence[_builtins.str] unhealthy_endpoints: Unhealthy endpoints.
+        :param _builtins.int update_timestamp: Update timestamp.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "create_timestamp", create_timestamp)
+        pulumi.set(__self__, "dns_servers", dns_servers)
+        pulumi.set(__self__, "express_type", express_type)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "health_check_configs", health_check_configs)
+        pulumi.set(__self__, "health_status", health_status)
+        pulumi.set(__self__, "healthy_panic_threshold", healthy_panic_threshold)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "outlier_detection_configs", outlier_detection_configs)
+        pulumi.set(__self__, "outlier_endpoints", outlier_endpoints)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "qualifier", qualifier)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "runtime_detail_error_code", runtime_detail_error_code)
+        pulumi.set(__self__, "runtime_detail_status", runtime_detail_status)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "unhealthy_endpoints", unhealthy_endpoints)
+        pulumi.set(__self__, "update_timestamp", update_timestamp)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence[_builtins.str]:
+        """
+        A list of domain names or fixed addresses.
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="createTimestamp")
+    def create_timestamp(self) -> _builtins.int:
+        """
+        Creation timestamp.
+        """
+        return pulumi.get(self, "create_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Sequence[_builtins.str]:
+        """
+        DNS servers.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @_builtins.property
+    @pulumi.getter(name="expressType")
+    def express_type(self) -> _builtins.str:
+        """
+        Express type.
+        """
+        return pulumi.get(self, "express_type")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        The ID of the Cloud Native API Gateway.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckConfigs")
+    def health_check_configs(self) -> Sequence['outputs.GetServicesServiceHealthCheckConfigResult']:
+        """
+        Health check configuration.
+        """
+        return pulumi.get(self, "health_check_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="healthStatus")
+    def health_status(self) -> _builtins.str:
+        """
+        Health status.
+        """
+        return pulumi.get(self, "health_status")
+
+    @_builtins.property
+    @pulumi.getter(name="healthyPanicThreshold")
+    def healthy_panic_threshold(self) -> _builtins.float:
+        """
+        Healthy panic threshold.
+        """
+        return pulumi.get(self, "healthy_panic_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        The namespace of the service.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="outlierDetectionConfigs")
+    def outlier_detection_configs(self) -> Sequence['outputs.GetServicesServiceOutlierDetectionConfigResult']:
+        """
+        Outlier detection configuration.
+        """
+        return pulumi.get(self, "outlier_detection_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="outlierEndpoints")
+    def outlier_endpoints(self) -> Sequence[_builtins.str]:
+        """
+        Outlier endpoints.
+        """
+        return pulumi.get(self, "outlier_endpoints")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Sequence['outputs.GetServicesServicePortResult']:
+        """
+        Port information.
+        """
+        return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Service protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def qualifier(self) -> _builtins.str:
+        """
+        The function version or alias.
+        """
+        return pulumi.get(self, "qualifier")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeDetailErrorCode")
+    def runtime_detail_error_code(self) -> _builtins.str:
+        """
+        Runtime detail error code.
+        """
+        return pulumi.get(self, "runtime_detail_error_code")
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeDetailStatus")
+    def runtime_detail_status(self) -> _builtins.str:
+        """
+        Runtime detail status.
+        """
+        return pulumi.get(self, "runtime_detail_status")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> _builtins.str:
+        """
+        service id.
+        """
+        return pulumi.get(self, "service_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> _builtins.str:
+        """
+        Service Name, need to fill in manually when sourceType is VIP/DNS/AI.
+        """
+        return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        service source type, optional value is K8S/MSE_NACOS/FC3/SAE_K8S_SERVICE/VIP/DNS/AI
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyEndpoints")
+    def unhealthy_endpoints(self) -> Sequence[_builtins.str]:
+        """
+        Unhealthy endpoints.
+        """
+        return pulumi.get(self, "unhealthy_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTimestamp")
+    def update_timestamp(self) -> _builtins.int:
+        """
+        Update timestamp.
+        """
+        return pulumi.get(self, "update_timestamp")
+
+
+@pulumi.output_type
+class GetServicesServiceHealthCheckConfigResult(dict):
+    def __init__(__self__, *,
+                 enable: _builtins.bool,
+                 expected_statuses: Sequence[_builtins.str],
+                 healthy_threshold: _builtins.int,
+                 http_host: _builtins.str,
+                 http_path: _builtins.str,
+                 interval: _builtins.int,
+                 protocol: _builtins.str,
+                 timeout: _builtins.int,
+                 unhealthy_threshold: _builtins.int):
+        """
+        :param _builtins.bool enable: Whether to enable outlier detection.
+        :param Sequence[_builtins.str] expected_statuses: Expected HTTP status codes.
+        :param _builtins.int healthy_threshold: Healthy threshold.
+        :param _builtins.str http_host: Health check host (optional when protocol is HTTP).
+        :param _builtins.str http_path: Health check path (required when protocol is HTTP).
+        :param _builtins.int interval: Detection interval.
+        :param _builtins.str protocol: Service protocol.
+        :param _builtins.int timeout: Health check response timeout.
+        :param _builtins.int unhealthy_threshold: Unhealthy threshold.
+        """
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "expected_statuses", expected_statuses)
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "http_host", http_host)
+        pulumi.set(__self__, "http_path", http_path)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> _builtins.bool:
+        """
+        Whether to enable outlier detection.
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedStatuses")
+    def expected_statuses(self) -> Sequence[_builtins.str]:
+        """
+        Expected HTTP status codes.
+        """
+        return pulumi.get(self, "expected_statuses")
+
+    @_builtins.property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> _builtins.int:
+        """
+        Healthy threshold.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="httpHost")
+    def http_host(self) -> _builtins.str:
+        """
+        Health check host (optional when protocol is HTTP).
+        """
+        return pulumi.get(self, "http_host")
+
+    @_builtins.property
+    @pulumi.getter(name="httpPath")
+    def http_path(self) -> _builtins.str:
+        """
+        Health check path (required when protocol is HTTP).
+        """
+        return pulumi.get(self, "http_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.int:
+        """
+        Detection interval.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Service protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Health check response timeout.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> _builtins.int:
+        """
+        Unhealthy threshold.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+
+@pulumi.output_type
+class GetServicesServiceOutlierDetectionConfigResult(dict):
+    def __init__(__self__, *,
+                 base_ejection_time: _builtins.int,
+                 enable: _builtins.bool,
+                 failure_percentage_minimum_hosts: _builtins.int,
+                 failure_percentage_threshold: _builtins.int,
+                 interval: _builtins.int):
+        """
+        :param _builtins.int base_ejection_time: Base ejection time.
+        :param _builtins.bool enable: Whether to enable outlier detection.
+        :param _builtins.int failure_percentage_minimum_hosts: Failure percentage minimum hosts.
+        :param _builtins.int failure_percentage_threshold: Failure percentage threshold.
+        :param _builtins.int interval: Detection interval.
+        """
+        pulumi.set(__self__, "base_ejection_time", base_ejection_time)
+        pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "failure_percentage_minimum_hosts", failure_percentage_minimum_hosts)
+        pulumi.set(__self__, "failure_percentage_threshold", failure_percentage_threshold)
+        pulumi.set(__self__, "interval", interval)
+
+    @_builtins.property
+    @pulumi.getter(name="baseEjectionTime")
+    def base_ejection_time(self) -> _builtins.int:
+        """
+        Base ejection time.
+        """
+        return pulumi.get(self, "base_ejection_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def enable(self) -> _builtins.bool:
+        """
+        Whether to enable outlier detection.
+        """
+        return pulumi.get(self, "enable")
+
+    @_builtins.property
+    @pulumi.getter(name="failurePercentageMinimumHosts")
+    def failure_percentage_minimum_hosts(self) -> _builtins.int:
+        """
+        Failure percentage minimum hosts.
+        """
+        return pulumi.get(self, "failure_percentage_minimum_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="failurePercentageThreshold")
+    def failure_percentage_threshold(self) -> _builtins.int:
+        """
+        Failure percentage threshold.
+        """
+        return pulumi.get(self, "failure_percentage_threshold")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.int:
+        """
+        Detection interval.
+        """
+        return pulumi.get(self, "interval")
+
+
+@pulumi.output_type
+class GetServicesServicePortResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 port: _builtins.int,
+                 protocol: _builtins.str):
+        """
+        :param _builtins.str name: Port name.
+        :param _builtins.int port: Port number.
+        :param _builtins.str protocol: Service protocol.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Port name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port number.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Service protocol.
+        """
+        return pulumi.get(self, "protocol")
 
 

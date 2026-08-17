@@ -71,7 +71,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     /**
      * The domain name that you want to use for health checks. Valid values:
      * 
-     * *   **$SERVER_IP** (default): the private IP address of a backend server.
+     * - **$SERVER_IP** (default): the private IP address of a backend server.
      * 
      */
     @Import(name="healthCheckDomain")
@@ -80,7 +80,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     /**
      * @return The domain name that you want to use for health checks. Valid values:
      * 
-     * *   **$SERVER_IP** (default): the private IP address of a backend server.
+     * - **$SERVER_IP** (default): the private IP address of a backend server.
      * 
      */
     public Optional<Output<String>> healthCheckDomain() {
@@ -336,7 +336,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         /**
          * @param healthCheckDomain The domain name that you want to use for health checks. Valid values:
          * 
-         * *   **$SERVER_IP** (default): the private IP address of a backend server.
+         * - **$SERVER_IP** (default): the private IP address of a backend server.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         /**
          * @param healthCheckDomain The domain name that you want to use for health checks. Valid values:
          * 
-         * *   **$SERVER_IP** (default): the private IP address of a backend server.
+         * - **$SERVER_IP** (default): the private IP address of a backend server.
          * 
          * @return builder
          * 

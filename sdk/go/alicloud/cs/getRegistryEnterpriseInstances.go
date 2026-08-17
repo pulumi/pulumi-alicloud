@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list Container Registry Enterprise Edition instances on Alibaba Cloud.
 //
-// > **NOTE:** Available in v1.86.0+
+// > **NOTE:** Available since v1.86.0
 //
 // ## Example Usage
 //
@@ -63,6 +63,8 @@ type GetRegistryEnterpriseInstancesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
+	// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getRegistryEnterpriseInstances.
@@ -78,6 +80,8 @@ type GetRegistryEnterpriseInstancesResult struct {
 	// A list of instance names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
+	// (Available since v1.288.0) A mapping of tags assigned to the instance.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetRegistryEnterpriseInstancesOutput(ctx *pulumi.Context, args GetRegistryEnterpriseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetRegistryEnterpriseInstancesResultOutput {
@@ -99,6 +103,8 @@ type GetRegistryEnterpriseInstancesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetRegistryEnterpriseInstancesOutputArgs) ElementType() reflect.Type {
@@ -152,6 +158,11 @@ func (o GetRegistryEnterpriseInstancesResultOutput) Names() pulumi.StringArrayOu
 
 func (o GetRegistryEnterpriseInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.288.0) A mapping of tags assigned to the instance.
+func (o GetRegistryEnterpriseInstancesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

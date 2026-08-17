@@ -67,6 +67,7 @@ class InstanceArgs:
                  private_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restore_time: pulumi.Input[Optional[_builtins.str]] = None,
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -77,6 +78,7 @@ class InstanceArgs:
                  security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -139,6 +141,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[_builtins.str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[_builtins.int] read_only_count: The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        :param pulumi.Input[_builtins.int] replica_count: The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
@@ -151,6 +154,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -275,6 +280,8 @@ class InstanceArgs:
             pulumi.set(__self__, "private_ip", private_ip)
         if read_only_count is not None:
             pulumi.set(__self__, "read_only_count", read_only_count)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_time is not None:
@@ -295,6 +302,8 @@ class InstanceArgs:
             pulumi.set(__self__, "shard_count", shard_count)
         if slave_read_only_count is not None:
             pulumi.set(__self__, "slave_read_only_count", slave_read_only_count)
+        if slave_replica_count is not None:
+            pulumi.set(__self__, "slave_replica_count", slave_replica_count)
         if srcdb_instance_id is not None:
             pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
         if ssl_enable is not None:
@@ -876,6 +885,18 @@ class InstanceArgs:
         pulumi.set(self, "read_only_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "replica_count", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -996,6 +1017,19 @@ class InstanceArgs:
     @slave_read_only_count.setter
     def slave_read_only_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "slave_read_only_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slaveReplicaCount")
+    def slave_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+        """
+        return pulumi.get(self, "slave_replica_count")
+
+    @slave_replica_count.setter
+    def slave_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "slave_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="srcdbInstanceId")
@@ -1138,6 +1172,7 @@ class _InstanceState:
                  private_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  qps: pulumi.Input[Optional[_builtins.int]] = None,
                  read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restore_time: pulumi.Input[Optional[_builtins.str]] = None,
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1148,6 +1183,7 @@ class _InstanceState:
                  security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1215,6 +1251,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[_builtins.int] qps: Theoretical maximum QPS value.
         :param pulumi.Input[_builtins.int] read_only_count: The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        :param pulumi.Input[_builtins.int] replica_count: The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
@@ -1227,6 +1264,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -1363,6 +1402,8 @@ class _InstanceState:
             pulumi.set(__self__, "qps", qps)
         if read_only_count is not None:
             pulumi.set(__self__, "read_only_count", read_only_count)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if restore_time is not None:
@@ -1383,6 +1424,8 @@ class _InstanceState:
             pulumi.set(__self__, "shard_count", shard_count)
         if slave_read_only_count is not None:
             pulumi.set(__self__, "slave_read_only_count", slave_read_only_count)
+        if slave_replica_count is not None:
+            pulumi.set(__self__, "slave_replica_count", slave_replica_count)
         if srcdb_instance_id is not None:
             pulumi.set(__self__, "srcdb_instance_id", srcdb_instance_id)
         if ssl_enable is not None:
@@ -2015,6 +2058,18 @@ class _InstanceState:
         pulumi.set(self, "read_only_count", value)
 
     @_builtins.property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @replica_count.setter
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "replica_count", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -2135,6 +2190,19 @@ class _InstanceState:
     @slave_read_only_count.setter
     def slave_read_only_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "slave_read_only_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slaveReplicaCount")
+    def slave_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+        """
+        return pulumi.get(self, "slave_replica_count")
+
+    @slave_replica_count.setter
+    def slave_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "slave_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="srcdbInstanceId")
@@ -2288,6 +2356,7 @@ class Instance(pulumi.CustomResource):
                  private_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restore_time: pulumi.Input[Optional[_builtins.str]] = None,
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2298,6 +2367,7 @@ class Instance(pulumi.CustomResource):
                  security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2510,6 +2580,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_connection_prefix: Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
         :param pulumi.Input[_builtins.str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[_builtins.int] read_only_count: The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        :param pulumi.Input[_builtins.int] replica_count: The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
@@ -2522,6 +2593,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -2750,6 +2823,7 @@ class Instance(pulumi.CustomResource):
                  private_connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  private_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restore_time: pulumi.Input[Optional[_builtins.str]] = None,
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2760,6 +2834,7 @@ class Instance(pulumi.CustomResource):
                  security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
                  srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2822,6 +2897,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["private_connection_prefix"] = private_connection_prefix
             __props__.__dict__["private_ip"] = private_ip
             __props__.__dict__["read_only_count"] = read_only_count
+            __props__.__dict__["replica_count"] = replica_count
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["restore_time"] = restore_time
             __props__.__dict__["role_arn"] = role_arn
@@ -2832,6 +2908,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["security_ips"] = security_ips
             __props__.__dict__["shard_count"] = shard_count
             __props__.__dict__["slave_read_only_count"] = slave_read_only_count
+            __props__.__dict__["slave_replica_count"] = slave_replica_count
             __props__.__dict__["srcdb_instance_id"] = srcdb_instance_id
             __props__.__dict__["ssl_enable"] = ssl_enable
             __props__.__dict__["tags"] = tags
@@ -2906,6 +2983,7 @@ class Instance(pulumi.CustomResource):
             private_ip: pulumi.Input[Optional[_builtins.str]] = None,
             qps: pulumi.Input[Optional[_builtins.int]] = None,
             read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             restore_time: pulumi.Input[Optional[_builtins.str]] = None,
             role_arn: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2916,6 +2994,7 @@ class Instance(pulumi.CustomResource):
             security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             shard_count: pulumi.Input[Optional[_builtins.int]] = None,
             slave_read_only_count: pulumi.Input[Optional[_builtins.int]] = None,
+            slave_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
             srcdb_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_enable: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2987,6 +3066,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_ip: The internal IP address of the instance.
         :param pulumi.Input[_builtins.int] qps: Theoretical maximum QPS value.
         :param pulumi.Input[_builtins.int] read_only_count: The number of read replicas in the primary zone. Valid values: `1` to `9`.
+        :param pulumi.Input[_builtins.int] replica_count: The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[_builtins.str] restore_time: The point in time of a backup file.
         :param pulumi.Input[_builtins.str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
@@ -2999,6 +3079,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] shard_count: The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shard_count` can be modified.
         :param pulumi.Input[_builtins.int] slave_read_only_count: The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondary_zone_id` and `slave_read_only_count`.
                > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
+        :param pulumi.Input[_builtins.int] slave_replica_count: The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+               > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
         :param pulumi.Input[_builtins.str] srcdb_instance_id: The ID of the source instance.
         :param pulumi.Input[_builtins.str] ssl_enable: Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
                **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
@@ -3065,6 +3147,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["qps"] = qps
         __props__.__dict__["read_only_count"] = read_only_count
+        __props__.__dict__["replica_count"] = replica_count
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["restore_time"] = restore_time
         __props__.__dict__["role_arn"] = role_arn
@@ -3075,6 +3158,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["security_ips"] = security_ips
         __props__.__dict__["shard_count"] = shard_count
         __props__.__dict__["slave_read_only_count"] = slave_read_only_count
+        __props__.__dict__["slave_replica_count"] = slave_replica_count
         __props__.__dict__["srcdb_instance_id"] = srcdb_instance_id
         __props__.__dict__["ssl_enable"] = ssl_enable
         __props__.__dict__["status"] = status
@@ -3500,6 +3584,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "read_only_count")
 
     @_builtins.property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
@@ -3580,6 +3672,15 @@ class Instance(pulumi.CustomResource):
         > **NOTE:** The sum of `read_only_count` and `slave_read_only_count` cannot be greater than `9`.
         """
         return pulumi.get(self, "slave_read_only_count")
+
+    @_builtins.property
+    @pulumi.getter(name="slaveReplicaCount")
+    def slave_replica_count(self) -> pulumi.Output[_builtins.int]:
+        """
+        The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+        > **NOTE:** `replica_count`/`slave_replica_count` (replica nodes) and `read_only_count`/`slave_read_only_count` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+        """
+        return pulumi.get(self, "slave_replica_count")
 
     @_builtins.property
     @pulumi.getter(name="srcdbInstanceId")

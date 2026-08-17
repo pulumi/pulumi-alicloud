@@ -193,7 +193,9 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string?> SourceUserId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Frozen`, `Normal`.
+        /// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+        /// 
+        /// &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -349,7 +351,9 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? SourceUserId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Frozen`, `Normal`.
+        /// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+        /// 
+        /// &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -457,7 +461,9 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? SourceUserId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Frozen`, `Normal`.
+        /// The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+        /// 
+        /// &gt; **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

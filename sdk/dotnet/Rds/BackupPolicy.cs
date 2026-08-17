@@ -107,6 +107,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** If the instance runs MySQL, `BackupInterval` is supported only when the `EngineVersion` of the instance is `5.7` or `8.0`, the `Category` of the instance is `HighAvailability` (High-availability Edition) or `Cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`DbInstanceStorageType` is not `LocalSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         /// </summary>
         [Output("backupInterval")]
         public Output<string> BackupInterval { get; private set; } = null!;
@@ -178,10 +180,22 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool> EnableIncrementDataBackup { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `True`, `False`. This parameter takes effect only when `EnableBackupLog` is `True` and BackupPolicyMode is set to DataBackupPolicy.
+        /// </summary>
+        [Output("enablePitrProtection")]
+        public Output<bool> EnablePitrProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Instance high space usage protection policy. Valid when the `EnableBackupLog` is `True`. Valid values are `Enable`, `Disable`.
         /// </summary>
         [Output("highSpaceUsageProtection")]
         public Output<string?> HighSpaceUsageProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `EnableIncrementDataBackup` is `True` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+        /// </summary>
+        [Output("incBackupInterval")]
+        public Output<int> IncBackupInterval { get; private set; } = null!;
 
         /// <summary>
         /// The Id of instance that can run database.
@@ -333,6 +347,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** If the instance runs MySQL, `BackupInterval` is supported only when the `EngineVersion` of the instance is `5.7` or `8.0`, the `Category` of the instance is `HighAvailability` (High-availability Edition) or `Cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`DbInstanceStorageType` is not `LocalSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         /// </summary>
         [Input("backupInterval")]
         public Input<string>? BackupInterval { get; set; }
@@ -411,10 +427,22 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? EnableIncrementDataBackup { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `True`, `False`. This parameter takes effect only when `EnableBackupLog` is `True` and BackupPolicyMode is set to DataBackupPolicy.
+        /// </summary>
+        [Input("enablePitrProtection")]
+        public Input<bool>? EnablePitrProtection { get; set; }
+
+        /// <summary>
         /// Instance high space usage protection policy. Valid when the `EnableBackupLog` is `True`. Valid values are `Enable`, `Disable`.
         /// </summary>
         [Input("highSpaceUsageProtection")]
         public Input<string>? HighSpaceUsageProtection { get; set; }
+
+        /// <summary>
+        /// The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `EnableIncrementDataBackup` is `True` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+        /// </summary>
+        [Input("incBackupInterval")]
+        public Input<int>? IncBackupInterval { get; set; }
 
         /// <summary>
         /// The Id of instance that can run database.
@@ -534,6 +562,8 @@ namespace Pulumi.AliCloud.Rds
         /// - 360: A snapshot backup is performed once every 360 minutes.
         /// - 480: A snapshot backup is performed once every 480 minutes.
         /// - 720: A snapshot backup is performed once every 720 minutes.
+        /// 
+        /// &gt; **NOTE:** If the instance runs MySQL, `BackupInterval` is supported only when the `EngineVersion` of the instance is `5.7` or `8.0`, the `Category` of the instance is `HighAvailability` (High-availability Edition) or `Cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`DbInstanceStorageType` is not `LocalSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         /// </summary>
         [Input("backupInterval")]
         public Input<string>? BackupInterval { get; set; }
@@ -612,10 +642,22 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? EnableIncrementDataBackup { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `True`, `False`. This parameter takes effect only when `EnableBackupLog` is `True` and BackupPolicyMode is set to DataBackupPolicy.
+        /// </summary>
+        [Input("enablePitrProtection")]
+        public Input<bool>? EnablePitrProtection { get; set; }
+
+        /// <summary>
         /// Instance high space usage protection policy. Valid when the `EnableBackupLog` is `True`. Valid values are `Enable`, `Disable`.
         /// </summary>
         [Input("highSpaceUsageProtection")]
         public Input<string>? HighSpaceUsageProtection { get; set; }
+
+        /// <summary>
+        /// The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `EnableIncrementDataBackup` is `True` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+        /// </summary>
+        [Input("incBackupInterval")]
+        public Input<int>? IncBackupInterval { get; set; }
 
         /// <summary>
         /// The Id of instance that can run database.

@@ -266,6 +266,21 @@ import * as utilities from "../utilities";
  *         readOnlyPort: "0",
  *         allowedUnsafeSysctls: ["net.ipv4.route.min_pmtu"],
  *     },
+ *     containerdConfig: {
+ *         maxConcurrentDownloads: 10,
+ *         ignoreImageDefinedVolume: "true",
+ *         limitCore: "10",
+ *         limitNoFile: "1024",
+ *         limitMemLock: "65536",
+ *         registryMirrors: [
+ *             "docker.io=https://registry.cn-hangzhou.aliyuncs.com,https://mirror2.example.com&override_path",
+ *             "gcr.io=https://gcr-mirror.example.com&override_path",
+ *         ],
+ *         insecureRegistries: [
+ *             "registry.example.com",
+ *             "192.168.1.1:5000",
+ *         ],
+ *     },
  *     rollingPolicy: {
  *         maxParallelism: 1,
  *     },
@@ -657,6 +672,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly compensateWithOnDemand: pulumi.Output<boolean | undefined>;
     /**
+     * Containerd configuration parameters for worker nodes.
+     *
+     * > **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     */
+    declare public readonly containerdConfig: pulumi.Output<outputs.cs.NodePoolContainerdConfig | undefined>;
+    /**
      * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
      */
     declare public readonly cpuPolicy: pulumi.Output<string>;
@@ -1033,6 +1054,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["cisEnabled"] = state?.cisEnabled;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["compensateWithOnDemand"] = state?.compensateWithOnDemand;
+            resourceInputs["containerdConfig"] = state?.containerdConfig;
             resourceInputs["cpuPolicy"] = state?.cpuPolicy;
             resourceInputs["dataDisks"] = state?.dataDisks;
             resourceInputs["deploymentSetId"] = state?.deploymentSetId;
@@ -1119,6 +1141,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["cisEnabled"] = args?.cisEnabled;
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["compensateWithOnDemand"] = args?.compensateWithOnDemand;
+            resourceInputs["containerdConfig"] = args?.containerdConfig;
             resourceInputs["cpuPolicy"] = args?.cpuPolicy;
             resourceInputs["dataDisks"] = args?.dataDisks;
             resourceInputs["deploymentSetId"] = args?.deploymentSetId;
@@ -1232,6 +1255,12 @@ export interface NodePoolState {
      * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      */
     compensateWithOnDemand?: pulumi.Input<boolean | undefined>;
+    /**
+     * Containerd configuration parameters for worker nodes.
+     *
+     * > **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     */
+    containerdConfig?: pulumi.Input<inputs.cs.NodePoolContainerdConfig | undefined>;
     /**
      * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
      */
@@ -1621,6 +1650,12 @@ export interface NodePoolArgs {
      * Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multiAzPolicy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
      */
     compensateWithOnDemand?: pulumi.Input<boolean | undefined>;
+    /**
+     * Containerd configuration parameters for worker nodes.
+     *
+     * > **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     */
+    containerdConfig?: pulumi.Input<inputs.cs.NodePoolContainerdConfig | undefined>;
     /**
      * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
      */

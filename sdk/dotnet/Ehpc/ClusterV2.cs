@@ -192,16 +192,19 @@ namespace Pulumi.AliCloud.Ehpc
     public partial class ClusterV2 : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `AdditionalPackages` below.
+        /// </summary>
+        [Output("additionalPackages")]
+        public Output<ImmutableArray<Outputs.ClusterV2AdditionalPackage>> AdditionalPackages { get; private set; } = null!;
+
+        /// <summary>
         /// The cluster custom service component configuration. Only one component is supported. See `Addons` below.
         /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ClusterV2Addon>> Addons { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable auto scale-out for the cluster. Valid values:
-        /// 
-        /// - true
-        /// - false
+        /// The version of the E-HPC client.
         /// </summary>
         [Output("clientVersion")]
         public Output<string> ClientVersion { get; private set; } = null!;
@@ -222,6 +225,18 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<Outputs.ClusterV2ClusterCredentials> ClusterCredentials { get; private set; } = null!;
 
         /// <summary>
+        /// The post-processing script configuration of the cluster. See `ClusterCustomConfiguration` below.
+        /// </summary>
+        [Output("clusterCustomConfiguration")]
+        public Output<Outputs.ClusterV2ClusterCustomConfiguration> ClusterCustomConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+        /// </summary>
+        [Output("clusterDescription")]
+        public Output<string?> ClusterDescription { get; private set; } = null!;
+
+        /// <summary>
         /// The deployment mode of the cluster. Valid values:
         /// 
         /// - Integrated
@@ -232,10 +247,16 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string?> ClusterMode { get; private set; } = null!;
 
         /// <summary>
-        /// The post-processing script of the cluster.
+        /// The name of the cluster.
         /// </summary>
         [Output("clusterName")]
         public Output<string?> ClusterName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.288.0) The status of the cluster.
+        /// </summary>
+        [Output("clusterStatus")]
+        public Output<string> ClusterStatus { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) in which the cluster resides.
@@ -257,10 +278,58 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The idle duration of the compute nodes allowed by the cluster.
+        /// Specifies whether to enable deletion protection for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.288.0) The version of the E-HPC cluster.
+        /// </summary>
+        [Output("ehpcVersion")]
+        public Output<string> EhpcVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable auto scale-in for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Output("enableScaleIn")]
+        public Output<bool> EnableScaleIn { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable auto scale-out for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Output("enableScaleOut")]
+        public Output<bool> EnableScaleOut { get; private set; } = null!;
+
+        /// <summary>
+        /// The time interval of auto scale-out for the cluster.
+        /// </summary>
+        [Output("growInterval")]
+        public Output<int> GrowInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// The idle duration of the compute nodes allowed by the cluster.
+        /// </summary>
+        [Output("idleInterval")]
+        public Output<int> IdleInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to use an enterprise security group. Valid values:
+        /// 
+        /// - true: An enterprise security group is automatically created and used.
+        /// - false: A basic security group is automatically created and used.
+        /// </summary>
+        [Output("isEnterpriseSecurityGroup")]
+        public Output<bool?> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
         /// <summary>
         /// The configurations of the cluster management node. See `Manager` below.
@@ -269,11 +338,47 @@ namespace Pulumi.AliCloud.Ehpc
         public Output<Outputs.ClusterV2Manager?> Manager { get; private set; } = null!;
 
         /// <summary>
+        /// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        /// </summary>
+        [Output("maxCoreCount")]
+        public Output<int> MaxCoreCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        /// </summary>
+        [Output("maxCount")]
+        public Output<int> MaxCount { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.288.0) The time when the cluster was modified.
+        /// </summary>
+        [Output("modifyTime")]
+        public Output<string> ModifyTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The monitoring configuration of the cluster. See `MonitorSpec` below.
+        /// </summary>
+        [Output("monitorSpec")]
+        public Output<Outputs.ClusterV2MonitorSpec> MonitorSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// The queue configurations of the cluster. The value range of N is 0 to 8. See `Queues` below.
+        /// </summary>
+        [Output("queues")]
+        public Output<ImmutableArray<Outputs.ClusterV2Queue>> Queues { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group to which the cluster belongs.
         /// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The scheduler configuration of the cluster. See `SchedulerSpec` below.
+        /// </summary>
+        [Output("schedulerSpec")]
+        public Output<Outputs.ClusterV2SchedulerSpec> SchedulerSpec { get; private set; } = null!;
 
         /// <summary>
         /// The security group ID.
@@ -286,6 +391,12 @@ namespace Pulumi.AliCloud.Ehpc
         /// </summary>
         [Output("sharedStorages")]
         public Output<ImmutableArray<Outputs.ClusterV2SharedStorage>> SharedStorages { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -338,6 +449,18 @@ namespace Pulumi.AliCloud.Ehpc
 
     public sealed class ClusterV2Args : global::Pulumi.ResourceArgs
     {
+        [Input("additionalPackages")]
+        private InputList<Inputs.ClusterV2AdditionalPackageArgs>? _additionalPackages;
+
+        /// <summary>
+        /// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `AdditionalPackages` below.
+        /// </summary>
+        public InputList<Inputs.ClusterV2AdditionalPackageArgs> AdditionalPackages
+        {
+            get => _additionalPackages ?? (_additionalPackages = new InputList<Inputs.ClusterV2AdditionalPackageArgs>());
+            set => _additionalPackages = value;
+        }
+
         [Input("addons")]
         private InputList<Inputs.ClusterV2AddonArgs>? _addons;
 
@@ -355,10 +478,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
-        /// Specifies whether to enable auto scale-out for the cluster. Valid values:
-        /// 
-        /// - true
-        /// - false
+        /// The version of the E-HPC client.
         /// </summary>
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
@@ -389,6 +509,18 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
+        /// The post-processing script configuration of the cluster. See `ClusterCustomConfiguration` below.
+        /// </summary>
+        [Input("clusterCustomConfiguration")]
+        public Input<Inputs.ClusterV2ClusterCustomConfigurationArgs>? ClusterCustomConfiguration { get; set; }
+
+        /// <summary>
+        /// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+        /// </summary>
+        [Input("clusterDescription")]
+        public Input<string>? ClusterDescription { get; set; }
+
+        /// <summary>
         /// The deployment mode of the cluster. Valid values:
         /// 
         /// - Integrated
@@ -399,7 +531,7 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? ClusterMode { get; set; }
 
         /// <summary>
-        /// The post-processing script of the cluster.
+        /// The name of the cluster.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
@@ -418,10 +550,52 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? ClusterVswitchId { get; set; }
 
         /// <summary>
-        /// The idle duration of the compute nodes allowed by the cluster.
+        /// Specifies whether to enable deletion protection for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable auto scale-in for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("enableScaleIn")]
+        public Input<bool>? EnableScaleIn { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable auto scale-out for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("enableScaleOut")]
+        public Input<bool>? EnableScaleOut { get; set; }
+
+        /// <summary>
+        /// The time interval of auto scale-out for the cluster.
+        /// </summary>
+        [Input("growInterval")]
+        public Input<int>? GrowInterval { get; set; }
+
+        /// <summary>
+        /// The idle duration of the compute nodes allowed by the cluster.
+        /// </summary>
+        [Input("idleInterval")]
+        public Input<int>? IdleInterval { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use an enterprise security group. Valid values:
+        /// 
+        /// - true: An enterprise security group is automatically created and used.
+        /// - false: A basic security group is automatically created and used.
+        /// </summary>
+        [Input("isEnterpriseSecurityGroup")]
+        public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
         /// The configurations of the cluster management node. See `Manager` below.
@@ -430,11 +604,47 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<Inputs.ClusterV2ManagerArgs>? Manager { get; set; }
 
         /// <summary>
+        /// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        /// </summary>
+        [Input("maxCoreCount")]
+        public Input<int>? MaxCoreCount { get; set; }
+
+        /// <summary>
+        /// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        /// </summary>
+        [Input("maxCount")]
+        public Input<int>? MaxCount { get; set; }
+
+        /// <summary>
+        /// The monitoring configuration of the cluster. See `MonitorSpec` below.
+        /// </summary>
+        [Input("monitorSpec")]
+        public Input<Inputs.ClusterV2MonitorSpecArgs>? MonitorSpec { get; set; }
+
+        [Input("queues")]
+        private InputList<Inputs.ClusterV2QueueArgs>? _queues;
+
+        /// <summary>
+        /// The queue configurations of the cluster. The value range of N is 0 to 8. See `Queues` below.
+        /// </summary>
+        public InputList<Inputs.ClusterV2QueueArgs> Queues
+        {
+            get => _queues ?? (_queues = new InputList<Inputs.ClusterV2QueueArgs>());
+            set => _queues = value;
+        }
+
+        /// <summary>
         /// The ID of the resource group to which the cluster belongs.
         /// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The scheduler configuration of the cluster. See `SchedulerSpec` below.
+        /// </summary>
+        [Input("schedulerSpec")]
+        public Input<Inputs.ClusterV2SchedulerSpecArgs>? SchedulerSpec { get; set; }
 
         /// <summary>
         /// The security group ID.
@@ -454,6 +664,18 @@ namespace Pulumi.AliCloud.Ehpc
             set => _sharedStorages = value;
         }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public ClusterV2Args()
         {
         }
@@ -462,6 +684,18 @@ namespace Pulumi.AliCloud.Ehpc
 
     public sealed class ClusterV2State : global::Pulumi.ResourceArgs
     {
+        [Input("additionalPackages")]
+        private InputList<Inputs.ClusterV2AdditionalPackageGetArgs>? _additionalPackages;
+
+        /// <summary>
+        /// The list of software to be installed on the cluster. The value range of N is 0 to 10. See `AdditionalPackages` below.
+        /// </summary>
+        public InputList<Inputs.ClusterV2AdditionalPackageGetArgs> AdditionalPackages
+        {
+            get => _additionalPackages ?? (_additionalPackages = new InputList<Inputs.ClusterV2AdditionalPackageGetArgs>());
+            set => _additionalPackages = value;
+        }
+
         [Input("addons")]
         private InputList<Inputs.ClusterV2AddonGetArgs>? _addons;
 
@@ -479,10 +713,7 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
-        /// Specifies whether to enable auto scale-out for the cluster. Valid values:
-        /// 
-        /// - true
-        /// - false
+        /// The version of the E-HPC client.
         /// </summary>
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
@@ -513,6 +744,18 @@ namespace Pulumi.AliCloud.Ehpc
         }
 
         /// <summary>
+        /// The post-processing script configuration of the cluster. See `ClusterCustomConfiguration` below.
+        /// </summary>
+        [Input("clusterCustomConfiguration")]
+        public Input<Inputs.ClusterV2ClusterCustomConfigurationGetArgs>? ClusterCustomConfiguration { get; set; }
+
+        /// <summary>
+        /// The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+        /// </summary>
+        [Input("clusterDescription")]
+        public Input<string>? ClusterDescription { get; set; }
+
+        /// <summary>
         /// The deployment mode of the cluster. Valid values:
         /// 
         /// - Integrated
@@ -523,10 +766,16 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? ClusterMode { get; set; }
 
         /// <summary>
-        /// The post-processing script of the cluster.
+        /// The name of the cluster.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.288.0) The status of the cluster.
+        /// </summary>
+        [Input("clusterStatus")]
+        public Input<string>? ClusterStatus { get; set; }
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) in which the cluster resides.
@@ -548,10 +797,58 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The idle duration of the compute nodes allowed by the cluster.
+        /// Specifies whether to enable deletion protection for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// (Available since v1.288.0) The version of the E-HPC cluster.
+        /// </summary>
+        [Input("ehpcVersion")]
+        public Input<string>? EhpcVersion { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable auto scale-in for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("enableScaleIn")]
+        public Input<bool>? EnableScaleIn { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable auto scale-out for the cluster. Valid values:
+        /// 
+        /// - true
+        /// - false
+        /// </summary>
+        [Input("enableScaleOut")]
+        public Input<bool>? EnableScaleOut { get; set; }
+
+        /// <summary>
+        /// The time interval of auto scale-out for the cluster.
+        /// </summary>
+        [Input("growInterval")]
+        public Input<int>? GrowInterval { get; set; }
+
+        /// <summary>
+        /// The idle duration of the compute nodes allowed by the cluster.
+        /// </summary>
+        [Input("idleInterval")]
+        public Input<int>? IdleInterval { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use an enterprise security group. Valid values:
+        /// 
+        /// - true: An enterprise security group is automatically created and used.
+        /// - false: A basic security group is automatically created and used.
+        /// </summary>
+        [Input("isEnterpriseSecurityGroup")]
+        public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
         /// <summary>
         /// The configurations of the cluster management node. See `Manager` below.
@@ -560,11 +857,53 @@ namespace Pulumi.AliCloud.Ehpc
         public Input<Inputs.ClusterV2ManagerGetArgs>? Manager { get; set; }
 
         /// <summary>
+        /// The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+        /// </summary>
+        [Input("maxCoreCount")]
+        public Input<int>? MaxCoreCount { get; set; }
+
+        /// <summary>
+        /// The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+        /// </summary>
+        [Input("maxCount")]
+        public Input<int>? MaxCount { get; set; }
+
+        /// <summary>
+        /// (Available since v1.288.0) The time when the cluster was modified.
+        /// </summary>
+        [Input("modifyTime")]
+        public Input<string>? ModifyTime { get; set; }
+
+        /// <summary>
+        /// The monitoring configuration of the cluster. See `MonitorSpec` below.
+        /// </summary>
+        [Input("monitorSpec")]
+        public Input<Inputs.ClusterV2MonitorSpecGetArgs>? MonitorSpec { get; set; }
+
+        [Input("queues")]
+        private InputList<Inputs.ClusterV2QueueGetArgs>? _queues;
+
+        /// <summary>
+        /// The queue configurations of the cluster. The value range of N is 0 to 8. See `Queues` below.
+        /// </summary>
+        public InputList<Inputs.ClusterV2QueueGetArgs> Queues
+        {
+            get => _queues ?? (_queues = new InputList<Inputs.ClusterV2QueueGetArgs>());
+            set => _queues = value;
+        }
+
+        /// <summary>
         /// The ID of the resource group to which the cluster belongs.
         /// You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The scheduler configuration of the cluster. See `SchedulerSpec` below.
+        /// </summary>
+        [Input("schedulerSpec")]
+        public Input<Inputs.ClusterV2SchedulerSpecGetArgs>? SchedulerSpec { get; set; }
 
         /// <summary>
         /// The security group ID.
@@ -582,6 +921,18 @@ namespace Pulumi.AliCloud.Ehpc
         {
             get => _sharedStorages ?? (_sharedStorages = new InputList<Inputs.ClusterV2SharedStorageGetArgs>());
             set => _sharedStorages = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
         }
 
         public ClusterV2State()

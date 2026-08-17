@@ -24,10 +24,13 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.esa.Routine("default", {
  *     description: name,
  *     name: name,
+ *     code: "addEventListener('fetch', e => e.respondWith(new Response('hello world')))",
+ *     codeDescription: "initial version",
+ *     deployEnv: "staging",
  * });
  * ```
  *
- * 📚 Need more examples? VIEW MORE EXAMPLES
+ * Manage the routine code from a local file:
  *
  * ## Import
  *
@@ -66,15 +69,31 @@ export class Routine extends pulumi.CustomResource {
     }
 
     /**
+     * The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+     */
+    declare public readonly code: pulumi.Output<string | undefined>;
+    /**
+     * The description attached to the committed code version.
+     */
+    declare public readonly codeDescription: pulumi.Output<string | undefined>;
+    /**
      * The time when the routine was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The routine name, which must be unique in the same account.
+     * The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     */
+    declare public readonly deployEnv: pulumi.Output<string | undefined>;
+    /**
+     * The description of the routine.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Routine Name
+     * The most recent committed code version of the routine.
+     */
+    declare public /*out*/ readonly latestCodeVersion: pulumi.Output<string>;
+    /**
+     * Routine Name, which must be unique in the same account.
      */
     declare public readonly name: pulumi.Output<string>;
 
@@ -91,14 +110,22 @@ export class Routine extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoutineState | undefined;
+            resourceInputs["code"] = state?.code;
+            resourceInputs["codeDescription"] = state?.codeDescription;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deployEnv"] = state?.deployEnv;
             resourceInputs["description"] = state?.description;
+            resourceInputs["latestCodeVersion"] = state?.latestCodeVersion;
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
+            resourceInputs["code"] = args?.code;
+            resourceInputs["codeDescription"] = args?.codeDescription;
+            resourceInputs["deployEnv"] = args?.deployEnv;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["latestCodeVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Routine.__pulumiType, name, resourceInputs, opts);
@@ -110,15 +137,31 @@ export class Routine extends pulumi.CustomResource {
  */
 export interface RoutineState {
     /**
+     * The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+     */
+    code?: pulumi.Input<string | undefined>;
+    /**
+     * The description attached to the committed code version.
+     */
+    codeDescription?: pulumi.Input<string | undefined>;
+    /**
      * The time when the routine was created.
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The routine name, which must be unique in the same account.
+     * The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     */
+    deployEnv?: pulumi.Input<string | undefined>;
+    /**
+     * The description of the routine.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Routine Name
+     * The most recent committed code version of the routine.
+     */
+    latestCodeVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Routine Name, which must be unique in the same account.
      */
     name?: pulumi.Input<string | undefined>;
 }
@@ -128,11 +171,23 @@ export interface RoutineState {
  */
 export interface RoutineArgs {
     /**
-     * The routine name, which must be unique in the same account.
+     * The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+     */
+    code?: pulumi.Input<string | undefined>;
+    /**
+     * The description attached to the committed code version.
+     */
+    codeDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     */
+    deployEnv?: pulumi.Input<string | undefined>;
+    /**
+     * The description of the routine.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Routine Name
+     * Routine Name, which must be unique in the same account.
      */
     name?: pulumi.Input<string | undefined>;
 }

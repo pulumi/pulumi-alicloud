@@ -324,6 +324,112 @@ func (o AggregateCompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput)
 	}).(AggregateCompliancePackConfigRuleIdOutput)
 }
 
+type AggregateConfigRuleExcludeTagsScope struct {
+	// The key of the tag to be excluded.
+	TagKey *string `pulumi:"tagKey"`
+	// The value of the tag to be excluded.
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// AggregateConfigRuleExcludeTagsScopeInput is an input type that accepts AggregateConfigRuleExcludeTagsScopeArgs and AggregateConfigRuleExcludeTagsScopeOutput values.
+// You can construct a concrete instance of `AggregateConfigRuleExcludeTagsScopeInput` via:
+//
+//	AggregateConfigRuleExcludeTagsScopeArgs{...}
+type AggregateConfigRuleExcludeTagsScopeInput interface {
+	pulumi.Input
+
+	ToAggregateConfigRuleExcludeTagsScopeOutput() AggregateConfigRuleExcludeTagsScopeOutput
+	ToAggregateConfigRuleExcludeTagsScopeOutputWithContext(context.Context) AggregateConfigRuleExcludeTagsScopeOutput
+}
+
+type AggregateConfigRuleExcludeTagsScopeArgs struct {
+	// The key of the tag to be excluded.
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The value of the tag to be excluded.
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (AggregateConfigRuleExcludeTagsScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateConfigRuleExcludeTagsScope)(nil)).Elem()
+}
+
+func (i AggregateConfigRuleExcludeTagsScopeArgs) ToAggregateConfigRuleExcludeTagsScopeOutput() AggregateConfigRuleExcludeTagsScopeOutput {
+	return i.ToAggregateConfigRuleExcludeTagsScopeOutputWithContext(context.Background())
+}
+
+func (i AggregateConfigRuleExcludeTagsScopeArgs) ToAggregateConfigRuleExcludeTagsScopeOutputWithContext(ctx context.Context) AggregateConfigRuleExcludeTagsScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRuleExcludeTagsScopeOutput)
+}
+
+// AggregateConfigRuleExcludeTagsScopeArrayInput is an input type that accepts AggregateConfigRuleExcludeTagsScopeArray and AggregateConfigRuleExcludeTagsScopeArrayOutput values.
+// You can construct a concrete instance of `AggregateConfigRuleExcludeTagsScopeArrayInput` via:
+//
+//	AggregateConfigRuleExcludeTagsScopeArray{ AggregateConfigRuleExcludeTagsScopeArgs{...} }
+type AggregateConfigRuleExcludeTagsScopeArrayInput interface {
+	pulumi.Input
+
+	ToAggregateConfigRuleExcludeTagsScopeArrayOutput() AggregateConfigRuleExcludeTagsScopeArrayOutput
+	ToAggregateConfigRuleExcludeTagsScopeArrayOutputWithContext(context.Context) AggregateConfigRuleExcludeTagsScopeArrayOutput
+}
+
+type AggregateConfigRuleExcludeTagsScopeArray []AggregateConfigRuleExcludeTagsScopeInput
+
+func (AggregateConfigRuleExcludeTagsScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregateConfigRuleExcludeTagsScope)(nil)).Elem()
+}
+
+func (i AggregateConfigRuleExcludeTagsScopeArray) ToAggregateConfigRuleExcludeTagsScopeArrayOutput() AggregateConfigRuleExcludeTagsScopeArrayOutput {
+	return i.ToAggregateConfigRuleExcludeTagsScopeArrayOutputWithContext(context.Background())
+}
+
+func (i AggregateConfigRuleExcludeTagsScopeArray) ToAggregateConfigRuleExcludeTagsScopeArrayOutputWithContext(ctx context.Context) AggregateConfigRuleExcludeTagsScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AggregateConfigRuleExcludeTagsScopeArrayOutput)
+}
+
+type AggregateConfigRuleExcludeTagsScopeOutput struct{ *pulumi.OutputState }
+
+func (AggregateConfigRuleExcludeTagsScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregateConfigRuleExcludeTagsScope)(nil)).Elem()
+}
+
+func (o AggregateConfigRuleExcludeTagsScopeOutput) ToAggregateConfigRuleExcludeTagsScopeOutput() AggregateConfigRuleExcludeTagsScopeOutput {
+	return o
+}
+
+func (o AggregateConfigRuleExcludeTagsScopeOutput) ToAggregateConfigRuleExcludeTagsScopeOutputWithContext(ctx context.Context) AggregateConfigRuleExcludeTagsScopeOutput {
+	return o
+}
+
+// The key of the tag to be excluded.
+func (o AggregateConfigRuleExcludeTagsScopeOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregateConfigRuleExcludeTagsScope) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of the tag to be excluded.
+func (o AggregateConfigRuleExcludeTagsScopeOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregateConfigRuleExcludeTagsScope) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type AggregateConfigRuleExcludeTagsScopeArrayOutput struct{ *pulumi.OutputState }
+
+func (AggregateConfigRuleExcludeTagsScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AggregateConfigRuleExcludeTagsScope)(nil)).Elem()
+}
+
+func (o AggregateConfigRuleExcludeTagsScopeArrayOutput) ToAggregateConfigRuleExcludeTagsScopeArrayOutput() AggregateConfigRuleExcludeTagsScopeArrayOutput {
+	return o
+}
+
+func (o AggregateConfigRuleExcludeTagsScopeArrayOutput) ToAggregateConfigRuleExcludeTagsScopeArrayOutputWithContext(ctx context.Context) AggregateConfigRuleExcludeTagsScopeArrayOutput {
+	return o
+}
+
+func (o AggregateConfigRuleExcludeTagsScopeArrayOutput) Index(i pulumi.IntInput) AggregateConfigRuleExcludeTagsScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AggregateConfigRuleExcludeTagsScope {
+		return vs[0].([]AggregateConfigRuleExcludeTagsScope)[vs[1].(int)]
+	}).(AggregateConfigRuleExcludeTagsScopeOutput)
+}
+
 type AggregatorAggregatorAccount struct {
 	// The member ID.
 	AccountId *string `pulumi:"accountId"`
@@ -3713,6 +3819,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackConfigRuleConfigRuleParameterArrayInput)(nil)).Elem(), AggregateCompliancePackConfigRuleConfigRuleParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackConfigRuleIdInput)(nil)).Elem(), AggregateCompliancePackConfigRuleIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregateCompliancePackConfigRuleIdArrayInput)(nil)).Elem(), AggregateCompliancePackConfigRuleIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregateConfigRuleExcludeTagsScopeInput)(nil)).Elem(), AggregateConfigRuleExcludeTagsScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AggregateConfigRuleExcludeTagsScopeArrayInput)(nil)).Elem(), AggregateConfigRuleExcludeTagsScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregatorAggregatorAccountInput)(nil)).Elem(), AggregatorAggregatorAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregatorAggregatorAccountArrayInput)(nil)).Elem(), AggregatorAggregatorAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CompliancePackConfigRuleInput)(nil)).Elem(), CompliancePackConfigRuleArgs{})
@@ -3763,6 +3871,8 @@ func init() {
 	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleConfigRuleParameterArrayOutput{})
 	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleIdOutput{})
 	pulumi.RegisterOutputType(AggregateCompliancePackConfigRuleIdArrayOutput{})
+	pulumi.RegisterOutputType(AggregateConfigRuleExcludeTagsScopeOutput{})
+	pulumi.RegisterOutputType(AggregateConfigRuleExcludeTagsScopeArrayOutput{})
 	pulumi.RegisterOutputType(AggregatorAggregatorAccountOutput{})
 	pulumi.RegisterOutputType(AggregatorAggregatorAccountArrayOutput{})
 	pulumi.RegisterOutputType(CompliancePackConfigRuleOutput{})

@@ -421,6 +421,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly readOnlyCount: pulumi.Output<number | undefined>;
     /**
+     * The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     */
+    declare public readonly replicaCount: pulumi.Output<number>;
+    /**
      * The ID of resource group which the resource belongs.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
@@ -462,6 +466,11 @@ export class Instance extends pulumi.CustomResource {
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     declare public readonly slaveReadOnlyCount: pulumi.Output<number | undefined>;
+    /**
+     * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     */
+    declare public readonly slaveReplicaCount: pulumi.Output<number>;
     /**
      * The ID of the source instance.
      */
@@ -561,6 +570,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateIp"] = state?.privateIp;
             resourceInputs["qps"] = state?.qps;
             resourceInputs["readOnlyCount"] = state?.readOnlyCount;
+            resourceInputs["replicaCount"] = state?.replicaCount;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["restoreTime"] = state?.restoreTime;
             resourceInputs["roleArn"] = state?.roleArn;
@@ -571,6 +581,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIps"] = state?.securityIps;
             resourceInputs["shardCount"] = state?.shardCount;
             resourceInputs["slaveReadOnlyCount"] = state?.slaveReadOnlyCount;
+            resourceInputs["slaveReplicaCount"] = state?.slaveReplicaCount;
             resourceInputs["srcdbInstanceId"] = state?.srcdbInstanceId;
             resourceInputs["sslEnable"] = state?.sslEnable;
             resourceInputs["status"] = state?.status;
@@ -627,6 +638,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["privateConnectionPrefix"] = args?.privateConnectionPrefix;
             resourceInputs["privateIp"] = args?.privateIp;
             resourceInputs["readOnlyCount"] = args?.readOnlyCount;
+            resourceInputs["replicaCount"] = args?.replicaCount;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["restoreTime"] = args?.restoreTime;
             resourceInputs["roleArn"] = args?.roleArn;
@@ -637,6 +649,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityIps"] = args?.securityIps;
             resourceInputs["shardCount"] = args?.shardCount;
             resourceInputs["slaveReadOnlyCount"] = args?.slaveReadOnlyCount;
+            resourceInputs["slaveReplicaCount"] = args?.slaveReplicaCount;
             resourceInputs["srcdbInstanceId"] = args?.srcdbInstanceId;
             resourceInputs["sslEnable"] = args?.sslEnable;
             resourceInputs["tags"] = args?.tags;
@@ -884,6 +897,10 @@ export interface InstanceState {
      */
     readOnlyCount?: pulumi.Input<number | undefined>;
     /**
+     * The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     */
+    replicaCount?: pulumi.Input<number | undefined>;
+    /**
      * The ID of resource group which the resource belongs.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
@@ -925,6 +942,11 @@ export interface InstanceState {
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     slaveReadOnlyCount?: pulumi.Input<number | undefined>;
+    /**
+     * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     */
+    slaveReplicaCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the source instance.
      */
@@ -1171,6 +1193,10 @@ export interface InstanceArgs {
      */
     readOnlyCount?: pulumi.Input<number | undefined>;
     /**
+     * The number of replica nodes in the primary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     */
+    replicaCount?: pulumi.Input<number | undefined>;
+    /**
      * The ID of resource group which the resource belongs.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
@@ -1212,6 +1238,11 @@ export interface InstanceArgs {
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
     slaveReadOnlyCount?: pulumi.Input<number | undefined>;
+    /**
+     * The number of replica nodes in the secondary zone. If not specified, the value is assigned by the system based on the instance architecture.
+     * > **NOTE:** `replicaCount`/`slaveReplicaCount` (replica nodes) and `readOnlyCount`/`slaveReadOnlyCount` (read-only nodes) are mutually exclusive. An instance cannot have both replicas and read-only nodes at the same time.
+     */
+    slaveReplicaCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the source instance.
      */

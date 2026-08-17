@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.cloudfirewall;
 
+import com.pulumi.alicloud.cloudfirewall.inputs.AddressBookAssetRegionResourceTypeArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.AddressBookEcsTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -32,6 +33,36 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> addressLists() {
         return Optional.ofNullable(this.addressLists);
+    }
+
+    /**
+     * The list of member account UIDs of the asset Address Book.
+     * 
+     */
+    @Import(name="assetMemberUids")
+    private @Nullable Output<List<Integer>> assetMemberUids;
+
+    /**
+     * @return The list of member account UIDs of the asset Address Book.
+     * 
+     */
+    public Optional<Output<List<Integer>>> assetMemberUids() {
+        return Optional.ofNullable(this.assetMemberUids);
+    }
+
+    /**
+     * The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     * 
+     */
+    @Import(name="assetRegionResourceTypes")
+    private @Nullable Output<List<AddressBookAssetRegionResourceTypeArgs>> assetRegionResourceTypes;
+
+    /**
+     * @return The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     * 
+     */
+    public Optional<Output<List<AddressBookAssetRegionResourceTypeArgs>>> assetRegionResourceTypes() {
+        return Optional.ofNullable(this.assetRegionResourceTypes);
     }
 
     /**
@@ -95,16 +126,16 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      * 
      */
     @Import(name="groupType", required=true)
     private Output<String> groupType;
 
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      * 
      */
     public Output<String> groupType() {
@@ -145,6 +176,8 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
 
     private AddressBookArgs(AddressBookArgs $) {
         this.addressLists = $.addressLists;
+        this.assetMemberUids = $.assetMemberUids;
+        this.assetRegionResourceTypes = $.assetRegionResourceTypes;
         this.autoAddTagEcs = $.autoAddTagEcs;
         this.description = $.description;
         this.ecsTags = $.ecsTags;
@@ -201,6 +234,68 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addressLists(String... addressLists) {
             return addressLists(List.of(addressLists));
+        }
+
+        /**
+         * @param assetMemberUids The list of member account UIDs of the asset Address Book.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetMemberUids(@Nullable Output<List<Integer>> assetMemberUids) {
+            $.assetMemberUids = assetMemberUids;
+            return this;
+        }
+
+        /**
+         * @param assetMemberUids The list of member account UIDs of the asset Address Book.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetMemberUids(List<Integer> assetMemberUids) {
+            return assetMemberUids(Output.of(assetMemberUids));
+        }
+
+        /**
+         * @param assetMemberUids The list of member account UIDs of the asset Address Book.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetMemberUids(Integer... assetMemberUids) {
+            return assetMemberUids(List.of(assetMemberUids));
+        }
+
+        /**
+         * @param assetRegionResourceTypes The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetRegionResourceTypes(@Nullable Output<List<AddressBookAssetRegionResourceTypeArgs>> assetRegionResourceTypes) {
+            $.assetRegionResourceTypes = assetRegionResourceTypes;
+            return this;
+        }
+
+        /**
+         * @param assetRegionResourceTypes The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetRegionResourceTypes(List<AddressBookAssetRegionResourceTypeArgs> assetRegionResourceTypes) {
+            return assetRegionResourceTypes(Output.of(assetRegionResourceTypes));
+        }
+
+        /**
+         * @param assetRegionResourceTypes The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetRegionResourceTypes(AddressBookAssetRegionResourceTypeArgs... assetRegionResourceTypes) {
+            return assetRegionResourceTypes(List.of(assetRegionResourceTypes));
         }
 
         /**
@@ -298,8 +393,8 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
          * 
          * @return builder
          * 
@@ -310,8 +405,8 @@ public final class AddressBookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+         * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
          * 
          * @return builder
          * 
