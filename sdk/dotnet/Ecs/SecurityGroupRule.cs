@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SecurityGroupRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
+        /// The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Output("sourceGroupOwnerAccount")]
         public Output<string?> SourceGroupOwnerAccount { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
+        /// The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Input("sourceGroupOwnerAccount")]
         public Input<string>? SourceGroupOwnerAccount { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityGroupRuleId { get; set; }
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
+        /// The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Input("sourceGroupOwnerAccount")]
         public Input<string>? SourceGroupOwnerAccount { get; set; }

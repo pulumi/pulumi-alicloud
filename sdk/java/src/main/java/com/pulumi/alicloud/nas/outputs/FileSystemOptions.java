@@ -16,7 +16,7 @@ public final class FileSystemOptions {
      * - true: On.
      * - false: does not turn on.
      * 
-     * &gt; **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+     * &gt; **NOTE:** Description Only file systems of the SMB protocol type are supported.
      * 
      */
     private @Nullable Boolean enableOplock;
@@ -27,7 +27,7 @@ public final class FileSystemOptions {
      * - true: On.
      * - false: does not turn on.
      * 
-     * &gt; **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+     * &gt; **NOTE:** Description Only file systems of the SMB protocol type are supported.
      * 
      */
     public Optional<Boolean> enableOplock() {

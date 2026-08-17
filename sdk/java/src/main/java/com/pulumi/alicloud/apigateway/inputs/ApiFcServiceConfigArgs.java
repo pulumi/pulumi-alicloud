@@ -55,14 +55,14 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
      * 
      */
     @Import(name="contentTypeValue")
     private @Nullable Output<String> contentTypeValue;
 
     /**
-     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
      * 
      */
     public Optional<Output<String>> contentTypeValue() {
@@ -320,7 +320,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param contentTypeValue The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * @param contentTypeValue The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ApiFcServiceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param contentTypeValue The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+         * @param contentTypeValue The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
          * 
          * @return builder
          * 

@@ -61,7 +61,7 @@ import (
 //			}
 //			_, err = hbr.NewOssBackupPlan(ctx, "default", &hbr.OssBackupPlanArgs{
 //				OssBackupPlanName: pulumi.String("terraform-example"),
-//				Prefix:            pulumi.String("/example"),
+//				Prefix:            pulumi.String("example"),
 //				Bucket:            defaultBucket.Bucket,
 //				VaultId:           defaultVault.ID().ToIDOutput().ToStringOutput(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),

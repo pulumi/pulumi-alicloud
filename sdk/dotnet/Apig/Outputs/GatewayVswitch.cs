@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Apig.Outputs
     public sealed class GatewayVswitch
     {
         /// <summary>
-        /// The zone name.
+        /// The name of the availability zone for the gateway.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -18,14 +18,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     public static final ServerGroupServerArgs Empty = new ServerGroupServerArgs();
 
     /**
-     * (Optional, Computed, Int) The port that is used by the backend server.
+     * The port that is used by the backend server.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return (Optional, Computed, Int) The port that is used by the backend server.
+     * @return The port that is used by the backend server.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -109,14 +109,26 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Indicates the status of the backend server.
+     * Indicates the status of the backend server. Valid values:
+     * 
+     * - `Adding`: The backend server is being added.
+     * - `Available`: The backend server is available.
+     * - `Draining`: The backend server is in connection draining.
+     * - `Removing`: The backend server is being removed.
+     * - `Replacing`: The backend server is being replaced.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Indicates the status of the backend server.
+     * @return Indicates the status of the backend server. Valid values:
+     * 
+     * - `Adding`: The backend server is being added.
+     * - `Available`: The backend server is available.
+     * - `Draining`: The backend server is in connection draining.
+     * - `Removing`: The backend server is being removed.
+     * - `Replacing`: The backend server is being replaced.
      * 
      */
     public Optional<Output<String>> status() {
@@ -153,7 +165,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port (Optional, Computed, Int) The port that is used by the backend server.
+         * @param port The port that is used by the backend server.
          * 
          * @return builder
          * 
@@ -164,7 +176,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port (Optional, Computed, Int) The port that is used by the backend server.
+         * @param port The port that is used by the backend server.
          * 
          * @return builder
          * 
@@ -274,7 +286,13 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status Indicates the status of the backend server.
+         * @param status Indicates the status of the backend server. Valid values:
+         * 
+         * - `Adding`: The backend server is being added.
+         * - `Available`: The backend server is available.
+         * - `Draining`: The backend server is in connection draining.
+         * - `Removing`: The backend server is being removed.
+         * - `Replacing`: The backend server is being replaced.
          * 
          * @return builder
          * 
@@ -285,7 +303,13 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status Indicates the status of the backend server.
+         * @param status Indicates the status of the backend server. Valid values:
+         * 
+         * - `Adding`: The backend server is being added.
+         * - `Available`: The backend server is available.
+         * - `Draining`: The backend server is in connection draining.
+         * - `Removing`: The backend server is being removed.
+         * - `Replacing`: The backend server is being replaced.
          * 
          * @return builder
          * 

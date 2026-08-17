@@ -10,6 +10,11 @@ export type AccessKey = import("./accessKey").AccessKey;
 export const AccessKey: typeof import("./accessKey").AccessKey = null as any;
 utilities.lazyLoad(exports, ["AccessKey"], () => require("./accessKey"));
 
+export { AccessKeyPolicyArgs, AccessKeyPolicyState } from "./accessKeyPolicy";
+export type AccessKeyPolicy = import("./accessKeyPolicy").AccessKeyPolicy;
+export const AccessKeyPolicy: typeof import("./accessKeyPolicy").AccessKeyPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessKeyPolicy"], () => require("./accessKeyPolicy"));
+
 export { AccountAliasArgs, AccountAliasState } from "./accountAlias";
 export type AccountAlias = import("./accountAlias").AccountAlias;
 export const AccountAlias: typeof import("./accountAlias").AccountAlias = null as any;
@@ -24,6 +29,11 @@ export { AliasArgs, AliasState } from "./alias";
 export type Alias = import("./alias").Alias;
 export const Alias: typeof import("./alias").Alias = null as any;
 utilities.lazyLoad(exports, ["Alias"], () => require("./alias"));
+
+export { GetAccessKeyPolicyArgs, GetAccessKeyPolicyResult, GetAccessKeyPolicyOutputArgs } from "./getAccessKeyPolicy";
+export const getAccessKeyPolicy: typeof import("./getAccessKeyPolicy").getAccessKeyPolicy = null as any;
+export const getAccessKeyPolicyOutput: typeof import("./getAccessKeyPolicy").getAccessKeyPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessKeyPolicy","getAccessKeyPolicyOutput"], () => require("./getAccessKeyPolicy"));
 
 export { GetAccountAliasArgs, GetAccountAliasResult, GetAccountAliasOutputArgs } from "./getAccountAlias";
 export const getAccountAlias: typeof import("./getAccountAlias").getAccountAlias = null as any;
@@ -152,6 +162,8 @@ const _module = {
         switch (type) {
             case "alicloud:ram/accessKey:AccessKey":
                 return new AccessKey(name, <any>undefined, { urn })
+            case "alicloud:ram/accessKeyPolicy:AccessKeyPolicy":
+                return new AccessKeyPolicy(name, <any>undefined, { urn })
             case "alicloud:ram/accountAlias:AccountAlias":
                 return new AccountAlias(name, <any>undefined, { urn })
             case "alicloud:ram/accountPasswordPolicy:AccountPasswordPolicy":
@@ -192,6 +204,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ram/accessKey", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ram/accessKeyPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/accountAlias", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/accountPasswordPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ram/alias", _module)

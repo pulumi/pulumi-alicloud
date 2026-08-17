@@ -6,17 +6,24 @@ package com.pulumi.alicloud.ehpc;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ehpc.ClusterV2Args;
 import com.pulumi.alicloud.ehpc.inputs.ClusterV2State;
+import com.pulumi.alicloud.ehpc.outputs.ClusterV2AdditionalPackage;
 import com.pulumi.alicloud.ehpc.outputs.ClusterV2Addon;
 import com.pulumi.alicloud.ehpc.outputs.ClusterV2ClusterCredentials;
+import com.pulumi.alicloud.ehpc.outputs.ClusterV2ClusterCustomConfiguration;
 import com.pulumi.alicloud.ehpc.outputs.ClusterV2Manager;
+import com.pulumi.alicloud.ehpc.outputs.ClusterV2MonitorSpec;
+import com.pulumi.alicloud.ehpc.outputs.ClusterV2Queue;
+import com.pulumi.alicloud.ehpc.outputs.ClusterV2SchedulerSpec;
 import com.pulumi.alicloud.ehpc.outputs.ClusterV2SharedStorage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -222,6 +229,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ehpc/clusterV2:ClusterV2")
 public class ClusterV2 extends com.pulumi.resources.CustomResource {
     /**
+     * The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     * 
+     */
+    @Export(name="additionalPackages", refs={List.class,ClusterV2AdditionalPackage.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterV2AdditionalPackage>> additionalPackages;
+
+    /**
+     * @return The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     * 
+     */
+    public Output<Optional<List<ClusterV2AdditionalPackage>>> additionalPackages() {
+        return Codegen.optional(this.additionalPackages);
+    }
+    /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
      * 
      */
@@ -236,20 +257,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.addons);
     }
     /**
-     * Specifies whether to enable auto scale-out for the cluster. Valid values:
-     * 
-     * - true
-     * - false
+     * The version of the E-HPC client.
      * 
      */
     @Export(name="clientVersion", refs={String.class}, tree="[0]")
     private Output<String> clientVersion;
 
     /**
-     * @return Specifies whether to enable auto scale-out for the cluster. Valid values:
-     * 
-     * - true
-     * - false
+     * @return The version of the E-HPC client.
      * 
      */
     public Output<String> clientVersion() {
@@ -290,6 +305,34 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return this.clusterCredentials;
     }
     /**
+     * The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     * 
+     */
+    @Export(name="clusterCustomConfiguration", refs={ClusterV2ClusterCustomConfiguration.class}, tree="[0]")
+    private Output<ClusterV2ClusterCustomConfiguration> clusterCustomConfiguration;
+
+    /**
+     * @return The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     * 
+     */
+    public Output<ClusterV2ClusterCustomConfiguration> clusterCustomConfiguration() {
+        return this.clusterCustomConfiguration;
+    }
+    /**
+     * The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     * 
+     */
+    @Export(name="clusterDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clusterDescription;
+
+    /**
+     * @return The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     * 
+     */
+    public Output<Optional<String>> clusterDescription() {
+        return Codegen.optional(this.clusterDescription);
+    }
+    /**
      * The deployment mode of the cluster. Valid values:
      * 
      * - Integrated
@@ -312,18 +355,32 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterMode);
     }
     /**
-     * The post-processing script of the cluster.
+     * The name of the cluster.
      * 
      */
     @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterName;
 
     /**
-     * @return The post-processing script of the cluster.
+     * @return The name of the cluster.
      * 
      */
     public Output<Optional<String>> clusterName() {
         return Codegen.optional(this.clusterName);
+    }
+    /**
+     * (Available since v1.288.0) The status of the cluster.
+     * 
+     */
+    @Export(name="clusterStatus", refs={String.class}, tree="[0]")
+    private Output<String> clusterStatus;
+
+    /**
+     * @return (Available since v1.288.0) The status of the cluster.
+     * 
+     */
+    public Output<String> clusterStatus() {
+        return this.clusterStatus;
     }
     /**
      * The ID of the virtual private cloud (VPC) in which the cluster resides.
@@ -370,18 +427,126 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The idle duration of the compute nodes allowed by the cluster.
+     * Specifies whether to enable deletion protection for the cluster. Valid values:
+     * 
+     * - true
+     * - false
      * 
      */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return The idle duration of the compute nodes allowed by the cluster.
+     * @return Specifies whether to enable deletion protection for the cluster. Valid values:
+     * 
+     * - true
+     * - false
      * 
      */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
+    }
+    /**
+     * (Available since v1.288.0) The version of the E-HPC cluster.
+     * 
+     */
+    @Export(name="ehpcVersion", refs={String.class}, tree="[0]")
+    private Output<String> ehpcVersion;
+
+    /**
+     * @return (Available since v1.288.0) The version of the E-HPC cluster.
+     * 
+     */
+    public Output<String> ehpcVersion() {
+        return this.ehpcVersion;
+    }
+    /**
+     * Specifies whether to enable auto scale-in for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    @Export(name="enableScaleIn", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableScaleIn;
+
+    /**
+     * @return Specifies whether to enable auto scale-in for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    public Output<Boolean> enableScaleIn() {
+        return this.enableScaleIn;
+    }
+    /**
+     * Specifies whether to enable auto scale-out for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    @Export(name="enableScaleOut", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableScaleOut;
+
+    /**
+     * @return Specifies whether to enable auto scale-out for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    public Output<Boolean> enableScaleOut() {
+        return this.enableScaleOut;
+    }
+    /**
+     * The time interval of auto scale-out for the cluster.
+     * 
+     */
+    @Export(name="growInterval", refs={Integer.class}, tree="[0]")
+    private Output<Integer> growInterval;
+
+    /**
+     * @return The time interval of auto scale-out for the cluster.
+     * 
+     */
+    public Output<Integer> growInterval() {
+        return this.growInterval;
+    }
+    /**
+     * The idle duration of the compute nodes allowed by the cluster.
+     * 
+     */
+    @Export(name="idleInterval", refs={Integer.class}, tree="[0]")
+    private Output<Integer> idleInterval;
+
+    /**
+     * @return The idle duration of the compute nodes allowed by the cluster.
+     * 
+     */
+    public Output<Integer> idleInterval() {
+        return this.idleInterval;
+    }
+    /**
+     * Specifies whether to use an enterprise security group. Valid values:
+     * 
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     * 
+     */
+    @Export(name="isEnterpriseSecurityGroup", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isEnterpriseSecurityGroup;
+
+    /**
+     * @return Specifies whether to use an enterprise security group. Valid values:
+     * 
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     * 
+     */
+    public Output<Optional<Boolean>> isEnterpriseSecurityGroup() {
+        return Codegen.optional(this.isEnterpriseSecurityGroup);
     }
     /**
      * The configurations of the cluster management node. See `manager` below.
@@ -398,6 +563,76 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.manager);
     }
     /**
+     * The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     * 
+     */
+    @Export(name="maxCoreCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxCoreCount;
+
+    /**
+     * @return The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     * 
+     */
+    public Output<Integer> maxCoreCount() {
+        return this.maxCoreCount;
+    }
+    /**
+     * The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     * 
+     */
+    @Export(name="maxCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxCount;
+
+    /**
+     * @return The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     * 
+     */
+    public Output<Integer> maxCount() {
+        return this.maxCount;
+    }
+    /**
+     * (Available since v1.288.0) The time when the cluster was modified.
+     * 
+     */
+    @Export(name="modifyTime", refs={String.class}, tree="[0]")
+    private Output<String> modifyTime;
+
+    /**
+     * @return (Available since v1.288.0) The time when the cluster was modified.
+     * 
+     */
+    public Output<String> modifyTime() {
+        return this.modifyTime;
+    }
+    /**
+     * The monitoring configuration of the cluster. See `monitorSpec` below.
+     * 
+     */
+    @Export(name="monitorSpec", refs={ClusterV2MonitorSpec.class}, tree="[0]")
+    private Output<ClusterV2MonitorSpec> monitorSpec;
+
+    /**
+     * @return The monitoring configuration of the cluster. See `monitorSpec` below.
+     * 
+     */
+    public Output<ClusterV2MonitorSpec> monitorSpec() {
+        return this.monitorSpec;
+    }
+    /**
+     * The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     * 
+     */
+    @Export(name="queues", refs={List.class,ClusterV2Queue.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ClusterV2Queue>> queues;
+
+    /**
+     * @return The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     * 
+     */
+    public Output<Optional<List<ClusterV2Queue>>> queues() {
+        return Codegen.optional(this.queues);
+    }
+    /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      * 
@@ -412,6 +647,20 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The scheduler configuration of the cluster. See `schedulerSpec` below.
+     * 
+     */
+    @Export(name="schedulerSpec", refs={ClusterV2SchedulerSpec.class}, tree="[0]")
+    private Output<ClusterV2SchedulerSpec> schedulerSpec;
+
+    /**
+     * @return The scheduler configuration of the cluster. See `schedulerSpec` below.
+     * 
+     */
+    public Output<ClusterV2SchedulerSpec> schedulerSpec() {
+        return this.schedulerSpec;
     }
     /**
      * The security group ID.
@@ -440,6 +689,20 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ClusterV2SharedStorage>> sharedStorages() {
         return this.sharedStorages;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

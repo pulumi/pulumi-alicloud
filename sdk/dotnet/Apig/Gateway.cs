@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Apig
     /// <summary>
     /// Provides a APIG Gateway resource.
     /// 
-    /// For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+    /// Gateway instance  .
+    /// 
+    /// For information about APIG Gateway and how to use it, see [What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway).
     /// 
     /// &gt; **NOTE:** Available since v1.240.0.
     /// 
@@ -89,12 +91,18 @@ namespace Pulumi.AliCloud.Apig
     /// APIG Gateway can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:apig/gateway:Gateway example &lt;id&gt;
+    /// $ pulumi import alicloud:apig/gateway:Gateway example &lt;gateway_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:apig/gateway:Gateway")]
     public partial class Gateway : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The source from which the gateway was created.
+        /// </summary>
+        [Output("createFrom")]
+        public Output<string> CreateFrom { get; private set; } = null!;
+
         /// <summary>
         /// The creation timestamp. Unit: milliseconds.
         /// </summary>
@@ -102,51 +110,87 @@ namespace Pulumi.AliCloud.Apig
         public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource
+        /// The list of environments associated with the gateway.
+        /// </summary>
+        [Output("environments")]
+        public Output<ImmutableArray<Outputs.GatewayEnvironment>> Environments { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp indicating when the subscription expires. Unit: milliseconds.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<int> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Gateway instance edition. Valid values:
+        /// - Professional: Standard instance.
+        /// - Serverless: Serverless instance.
+        /// - MultiTenantServerless: Multi-tenant Serverless instance.
+        /// </summary>
+        [Output("gatewayEdition")]
+        public Output<string> GatewayEdition { get; private set; } = null!;
+
+        /// <summary>
+        /// Query by exact match of the gateway name.
         /// </summary>
         [Output("gatewayName")]
         public Output<string?> GatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the gateway type, which is categorized into the following two types:
-        /// - API: indicates an API gateway
-        /// - AI: Indicates an AI gateway
+        /// The gateway type. Valid values:
+        /// - API: API Gateway
+        /// - AI: AI Gateway
         /// </summary>
         [Output("gatewayType")]
         public Output<string> GatewayType { get; private set; } = null!;
 
         /// <summary>
-        /// Log Configuration See `LogConfig` below.
+        /// The list of Gateway ingress addresses.
+        /// </summary>
+        [Output("loadBalancers")]
+        public Output<ImmutableArray<Outputs.GatewayLoadBalancer>> LoadBalancers { get; private set; } = null!;
+
+        /// <summary>
+        /// The log configuration for the gateway instance. See `LogConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Output("logConfig")]
         public Output<Outputs.GatewayLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Network Access Configuration See `NetworkAccessConfig` below.
+        /// The network access type of the gateway instance. See `NetworkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Output("networkAccessConfig")]
         public Output<Outputs.GatewayNetworkAccessConfig?> NetworkAccessConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource
+        /// Payment type. Valid values:
+        /// - PayAsYouGo: Pay-as-you-go.
+        /// - Subscription: Subscription.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the destination resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Gateway instance specifications
+        /// The security group of the gateway.
+        /// </summary>
+        [Output("securityGroups")]
+        public Output<ImmutableArray<Outputs.GatewaySecurityGroup>> SecurityGroups { get; private set; } = null!;
+
+        /// <summary>
+        /// Gateway specification:  
+        /// - apigw.small.x1: Small specification.
         /// </summary>
         [Output("spec")]
         public Output<string?> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the gateway.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -158,25 +202,43 @@ namespace Pulumi.AliCloud.Apig
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC associated with the Gateway. See `Vpc` below.
+        /// The target version of the gateway instance.
+        /// </summary>
+        [Output("targetVersion")]
+        public Output<string> TargetVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp when the gateway was last updated. Unit: milliseconds.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<int> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The current running version of the gateway instance.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
+        /// <summary>
+        /// The Virtual Private Cloud (VPC) associated with the gateway. See `Vpc` below.
         /// </summary>
         [Output("vpc")]
         public Output<Outputs.GatewayVpc?> Vpc { get; private set; } = null!;
 
         /// <summary>
-        /// The virtual switch associated with the Gateway. See `Vswitch` below.
+        /// The vSwitch associated with the gateway. See `Vswitch` below.
         /// </summary>
         [Output("vswitch")]
         public Output<Outputs.GatewayVswitch?> Vswitch { get; private set; } = null!;
 
         /// <summary>
-        /// Availability Zone Configuration See `ZoneConfig` below.
+        /// The availability zone selection option for the gateway. See `ZoneConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Output("zoneConfig")]
         public Output<Outputs.GatewayZoneConfig> ZoneConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The List of zones associated with the Gateway. See `Zones` below.
+        /// The list of zones associated with the gateway. See `Zones` below.
         /// </summary>
         [Output("zones")]
         public Output<ImmutableArray<Outputs.GatewayZone>> Zones { get; private set; } = null!;
@@ -228,45 +290,57 @@ namespace Pulumi.AliCloud.Apig
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the resource
+        /// Gateway instance edition. Valid values:
+        /// - Professional: Standard instance.
+        /// - Serverless: Serverless instance.
+        /// - MultiTenantServerless: Multi-tenant Serverless instance.
+        /// </summary>
+        [Input("gatewayEdition")]
+        public Input<string>? GatewayEdition { get; set; }
+
+        /// <summary>
+        /// Query by exact match of the gateway name.
         /// </summary>
         [Input("gatewayName")]
         public Input<string>? GatewayName { get; set; }
 
         /// <summary>
-        /// Describes the gateway type, which is categorized into the following two types:
-        /// - API: indicates an API gateway
-        /// - AI: Indicates an AI gateway
+        /// The gateway type. Valid values:
+        /// - API: API Gateway
+        /// - AI: AI Gateway
         /// </summary>
         [Input("gatewayType")]
         public Input<string>? GatewayType { get; set; }
 
         /// <summary>
-        /// Log Configuration See `LogConfig` below.
+        /// The log configuration for the gateway instance. See `LogConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.GatewayLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Network Access Configuration See `NetworkAccessConfig` below.
+        /// The network access type of the gateway instance. See `NetworkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("networkAccessConfig")]
         public Input<Inputs.GatewayNetworkAccessConfigArgs>? NetworkAccessConfig { get; set; }
 
         /// <summary>
-        /// The payment type of the resource
+        /// Payment type. Valid values:
+        /// - PayAsYouGo: Pay-as-you-go.
+        /// - Subscription: Subscription.
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the destination resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Gateway instance specifications
+        /// Gateway specification:  
+        /// - apigw.small.x1: Small specification.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
@@ -284,19 +358,19 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// The VPC associated with the Gateway. See `Vpc` below.
+        /// The Virtual Private Cloud (VPC) associated with the gateway. See `Vpc` below.
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.GatewayVpcArgs>? Vpc { get; set; }
 
         /// <summary>
-        /// The virtual switch associated with the Gateway. See `Vswitch` below.
+        /// The vSwitch associated with the gateway. See `Vswitch` below.
         /// </summary>
         [Input("vswitch")]
         public Input<Inputs.GatewayVswitchArgs>? Vswitch { get; set; }
 
         /// <summary>
-        /// Availability Zone Configuration See `ZoneConfig` below.
+        /// The availability zone selection option for the gateway. See `ZoneConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("zoneConfig", required: true)]
         public Input<Inputs.GatewayZoneConfigArgs> ZoneConfig { get; set; } = null!;
@@ -305,7 +379,7 @@ namespace Pulumi.AliCloud.Apig
         private InputList<Inputs.GatewayZoneArgs>? _zones;
 
         /// <summary>
-        /// The List of zones associated with the Gateway. See `Zones` below.
+        /// The list of zones associated with the gateway. See `Zones` below.
         /// </summary>
         public InputList<Inputs.GatewayZoneArgs> Zones
         {
@@ -322,57 +396,117 @@ namespace Pulumi.AliCloud.Apig
     public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The source from which the gateway was created.
+        /// </summary>
+        [Input("createFrom")]
+        public Input<string>? CreateFrom { get; set; }
+
+        /// <summary>
         /// The creation timestamp. Unit: milliseconds.
         /// </summary>
         [Input("createTime")]
         public Input<int>? CreateTime { get; set; }
 
+        [Input("environments")]
+        private InputList<Inputs.GatewayEnvironmentGetArgs>? _environments;
+
         /// <summary>
-        /// The name of the resource
+        /// The list of environments associated with the gateway.
+        /// </summary>
+        public InputList<Inputs.GatewayEnvironmentGetArgs> Environments
+        {
+            get => _environments ?? (_environments = new InputList<Inputs.GatewayEnvironmentGetArgs>());
+            set => _environments = value;
+        }
+
+        /// <summary>
+        /// Timestamp indicating when the subscription expires. Unit: milliseconds.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<int>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// Gateway instance edition. Valid values:
+        /// - Professional: Standard instance.
+        /// - Serverless: Serverless instance.
+        /// - MultiTenantServerless: Multi-tenant Serverless instance.
+        /// </summary>
+        [Input("gatewayEdition")]
+        public Input<string>? GatewayEdition { get; set; }
+
+        /// <summary>
+        /// Query by exact match of the gateway name.
         /// </summary>
         [Input("gatewayName")]
         public Input<string>? GatewayName { get; set; }
 
         /// <summary>
-        /// Describes the gateway type, which is categorized into the following two types:
-        /// - API: indicates an API gateway
-        /// - AI: Indicates an AI gateway
+        /// The gateway type. Valid values:
+        /// - API: API Gateway
+        /// - AI: AI Gateway
         /// </summary>
         [Input("gatewayType")]
         public Input<string>? GatewayType { get; set; }
 
+        [Input("loadBalancers")]
+        private InputList<Inputs.GatewayLoadBalancerGetArgs>? _loadBalancers;
+
         /// <summary>
-        /// Log Configuration See `LogConfig` below.
+        /// The list of Gateway ingress addresses.
+        /// </summary>
+        public InputList<Inputs.GatewayLoadBalancerGetArgs> LoadBalancers
+        {
+            get => _loadBalancers ?? (_loadBalancers = new InputList<Inputs.GatewayLoadBalancerGetArgs>());
+            set => _loadBalancers = value;
+        }
+
+        /// <summary>
+        /// The log configuration for the gateway instance. See `LogConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("logConfig")]
         public Input<Inputs.GatewayLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// Network Access Configuration See `NetworkAccessConfig` below.
+        /// The network access type of the gateway instance. See `NetworkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("networkAccessConfig")]
         public Input<Inputs.GatewayNetworkAccessConfigGetArgs>? NetworkAccessConfig { get; set; }
 
         /// <summary>
-        /// The payment type of the resource
+        /// Payment type. Valid values:
+        /// - PayAsYouGo: Pay-as-you-go.
+        /// - Subscription: Subscription.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the destination resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("securityGroups")]
+        private InputList<Inputs.GatewaySecurityGroupGetArgs>? _securityGroups;
+
         /// <summary>
-        /// Gateway instance specifications
+        /// The security group of the gateway.
+        /// </summary>
+        public InputList<Inputs.GatewaySecurityGroupGetArgs> SecurityGroups
+        {
+            get => _securityGroups ?? (_securityGroups = new InputList<Inputs.GatewaySecurityGroupGetArgs>());
+            set => _securityGroups = value;
+        }
+
+        /// <summary>
+        /// Gateway specification:  
+        /// - apigw.small.x1: Small specification.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// The status of the gateway.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -390,19 +524,37 @@ namespace Pulumi.AliCloud.Apig
         }
 
         /// <summary>
-        /// The VPC associated with the Gateway. See `Vpc` below.
+        /// The target version of the gateway instance.
+        /// </summary>
+        [Input("targetVersion")]
+        public Input<string>? TargetVersion { get; set; }
+
+        /// <summary>
+        /// The timestamp when the gateway was last updated. Unit: milliseconds.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<int>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// The current running version of the gateway instance.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The Virtual Private Cloud (VPC) associated with the gateway. See `Vpc` below.
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.GatewayVpcGetArgs>? Vpc { get; set; }
 
         /// <summary>
-        /// The virtual switch associated with the Gateway. See `Vswitch` below.
+        /// The vSwitch associated with the gateway. See `Vswitch` below.
         /// </summary>
         [Input("vswitch")]
         public Input<Inputs.GatewayVswitchGetArgs>? Vswitch { get; set; }
 
         /// <summary>
-        /// Availability Zone Configuration See `ZoneConfig` below.
+        /// The availability zone selection option for the gateway. See `ZoneConfig` below. **Note: The parameter is immutable after resource creation.**
         /// </summary>
         [Input("zoneConfig")]
         public Input<Inputs.GatewayZoneConfigGetArgs>? ZoneConfig { get; set; }
@@ -411,7 +563,7 @@ namespace Pulumi.AliCloud.Apig
         private InputList<Inputs.GatewayZoneGetArgs>? _zones;
 
         /// <summary>
-        /// The List of zones associated with the Gateway. See `Zones` below.
+        /// The list of zones associated with the gateway. See `Zones` below.
         /// </summary>
         public InputList<Inputs.GatewayZoneGetArgs> Zones
         {

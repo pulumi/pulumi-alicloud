@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -101,6 +103,10 @@ export class VpcEndpointService extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
+     * The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     */
+    declare public readonly resources: pulumi.Output<outputs.privatelink.VpcEndpointServiceResource[]>;
+    /**
      * The service state of the endpoint service.
      */
     declare public /*out*/ readonly serviceBusinessStatus: pulumi.Output<string>;
@@ -162,6 +168,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["payer"] = state?.payer;
             resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resources"] = state?.resources;
             resourceInputs["serviceBusinessStatus"] = state?.serviceBusinessStatus;
             resourceInputs["serviceDescription"] = state?.serviceDescription;
             resourceInputs["serviceDomain"] = state?.serviceDomain;
@@ -180,6 +187,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["payer"] = args?.payer;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["resources"] = args?.resources;
             resourceInputs["serviceDescription"] = args?.serviceDescription;
             resourceInputs["serviceResourceType"] = args?.serviceResourceType;
             resourceInputs["serviceSupportIpv6"] = args?.serviceSupportIpv6;
@@ -236,6 +244,10 @@ export interface VpcEndpointServiceState {
      * The resource group ID.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     */
+    resources?: pulumi.Input<pulumi.Input<inputs.privatelink.VpcEndpointServiceResource>[] | undefined>;
     /**
      * The service state of the endpoint service.
      */
@@ -308,6 +320,10 @@ export interface VpcEndpointServiceArgs {
      * The resource group ID.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     */
+    resources?: pulumi.Input<pulumi.Input<inputs.privatelink.VpcEndpointServiceResource>[] | undefined>;
     /**
      * The description of the endpoint service.
      */

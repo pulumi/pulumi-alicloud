@@ -67,7 +67,9 @@ class UserArgs:
                * SE: Sweden (+46)
         :param pulumi.Input[_builtins.str] password: Specify the New User's Password. Supports up to 128 Characters. Description of the New User as the Source of the Local User That Is, Source Value for Local, this Parameter Is Required.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+               
+               > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "source", source)
@@ -237,7 +239,9 @@ class UserArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource. Valid values: `Frozen`, `Normal`.
+        The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+
+        > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         """
         return pulumi.get(self, "status")
 
@@ -297,7 +301,9 @@ class _UserState:
                * LDAP: LDAP-authenticated User
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+               
+               > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         :param pulumi.Input[_builtins.str] user_id: The User ID.
         :param pulumi.Input[_builtins.str] user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
@@ -462,7 +468,9 @@ class _UserState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the resource. Valid values: `Frozen`, `Normal`.
+        The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+
+        > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         """
         return pulumi.get(self, "status")
 
@@ -616,7 +624,9 @@ class User(pulumi.CustomResource):
                * LDAP: LDAP-authenticated User
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+               
+               > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         :param pulumi.Input[_builtins.str] user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
         ...
@@ -810,7 +820,9 @@ class User(pulumi.CustomResource):
                * LDAP: LDAP-authenticated User
                > **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
         :param pulumi.Input[_builtins.str] source_user_id: Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+               
+               > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         :param pulumi.Input[_builtins.str] user_id: The User ID.
         :param pulumi.Input[_builtins.str] user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
@@ -932,7 +944,9 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource. Valid values: `Frozen`, `Normal`.
+        The status of the resource. Valid values: `Frozen`, `Normal`, `RemoteDNChanged`.
+
+        > **NOTE:** Set to `Frozen` to lock the account, or `Normal` to unlock it. `RemoteDNChanged` is only returned by the API to indicate that the user's remote DN (Distinguished Name) setting is incorrect; configuring it takes no effect.
         """
         return pulumi.get(self, "status")
 

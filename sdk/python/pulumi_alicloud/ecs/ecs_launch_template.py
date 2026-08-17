@@ -91,7 +91,9 @@ class EcsLaunchTemplateArgs:
                - enabled: Enabled.
                - disabled: Disabled.
                  **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
-        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+               
+               > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
@@ -399,7 +401,9 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+
+        > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 
@@ -1013,7 +1017,9 @@ class _EcsLaunchTemplateState:
                - enabled: Enabled.
                - disabled: Disabled.
                  **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
-        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+               
+               > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
@@ -1324,7 +1330,9 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+
+        > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 
@@ -2057,7 +2065,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - enabled: Enabled.
                - disabled: Disabled.
                  **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
-        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+               
+               > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
@@ -2440,7 +2450,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - enabled: Enabled.
                - disabled: Disabled.
                  **NOTE:** From version 1.260.0, `http_endpoint` can be modified.
-        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        :param pulumi.Input[_builtins.int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+               
+               > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         :param pulumi.Input[_builtins.str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
                - optional: Not mandatory.
                - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
@@ -2643,7 +2655,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Output[_builtins.int]:
         """
-        The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
+        The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+
+        > **NOTE:** From version 1.260.0, `http_put_response_hop_limit` can be modified.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 

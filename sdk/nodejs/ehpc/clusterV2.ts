@@ -177,14 +177,15 @@ export class ClusterV2 extends pulumi.CustomResource {
     }
 
     /**
+     * The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     */
+    declare public readonly additionalPackages: pulumi.Output<outputs.ehpc.ClusterV2AdditionalPackage[] | undefined>;
+    /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
      */
     declare public readonly addons: pulumi.Output<outputs.ehpc.ClusterV2Addon[] | undefined>;
     /**
-     * Specifies whether to enable auto scale-out for the cluster. Valid values:
-     *
-     * - true
-     * - false
+     * The version of the E-HPC client.
      */
     declare public readonly clientVersion: pulumi.Output<string>;
     /**
@@ -199,6 +200,14 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     declare public readonly clusterCredentials: pulumi.Output<outputs.ehpc.ClusterV2ClusterCredentials>;
     /**
+     * The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     */
+    declare public readonly clusterCustomConfiguration: pulumi.Output<outputs.ehpc.ClusterV2ClusterCustomConfiguration>;
+    /**
+     * The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     */
+    declare public readonly clusterDescription: pulumi.Output<string | undefined>;
+    /**
      * The deployment mode of the cluster. Valid values:
      *
      * - Integrated
@@ -207,9 +216,13 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     declare public readonly clusterMode: pulumi.Output<string | undefined>;
     /**
-     * The post-processing script of the cluster.
+     * The name of the cluster.
      */
     declare public readonly clusterName: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.288.0) The status of the cluster.
+     */
+    declare public /*out*/ readonly clusterStatus: pulumi.Output<string>;
     /**
      * The ID of the virtual private cloud (VPC) in which the cluster resides.
      */
@@ -224,18 +237,78 @@ export class ClusterV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The idle duration of the compute nodes allowed by the cluster.
+     * Specifies whether to enable deletion protection for the cluster. Valid values:
+     *
+     * - true
+     * - false
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available since v1.288.0) The version of the E-HPC cluster.
+     */
+    declare public /*out*/ readonly ehpcVersion: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable auto scale-in for the cluster. Valid values:
+     *
+     * - true
+     * - false
+     */
+    declare public readonly enableScaleIn: pulumi.Output<boolean>;
+    /**
+     * Specifies whether to enable auto scale-out for the cluster. Valid values:
+     *
+     * - true
+     * - false
+     */
+    declare public readonly enableScaleOut: pulumi.Output<boolean>;
+    /**
+     * The time interval of auto scale-out for the cluster.
+     */
+    declare public readonly growInterval: pulumi.Output<number>;
+    /**
+     * The idle duration of the compute nodes allowed by the cluster.
+     */
+    declare public readonly idleInterval: pulumi.Output<number>;
+    /**
+     * Specifies whether to use an enterprise security group. Valid values:
+     *
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     */
+    declare public readonly isEnterpriseSecurityGroup: pulumi.Output<boolean | undefined>;
     /**
      * The configurations of the cluster management node. See `manager` below.
      */
     declare public readonly manager: pulumi.Output<outputs.ehpc.ClusterV2Manager | undefined>;
     /**
+     * The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     */
+    declare public readonly maxCoreCount: pulumi.Output<number>;
+    /**
+     * The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     */
+    declare public readonly maxCount: pulumi.Output<number>;
+    /**
+     * (Available since v1.288.0) The time when the cluster was modified.
+     */
+    declare public /*out*/ readonly modifyTime: pulumi.Output<string>;
+    /**
+     * The monitoring configuration of the cluster. See `monitorSpec` below.
+     */
+    declare public readonly monitorSpec: pulumi.Output<outputs.ehpc.ClusterV2MonitorSpec>;
+    /**
+     * The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     */
+    declare public readonly queues: pulumi.Output<outputs.ehpc.ClusterV2Queue[] | undefined>;
+    /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * The scheduler configuration of the cluster. See `schedulerSpec` below.
+     */
+    declare public readonly schedulerSpec: pulumi.Output<outputs.ehpc.ClusterV2SchedulerSpec>;
     /**
      * The security group ID.
      */
@@ -244,6 +317,10 @@ export class ClusterV2 extends pulumi.CustomResource {
      * List of cluster shared storage configurations. See `sharedStorages` below.
      */
     declare public readonly sharedStorages: pulumi.Output<outputs.ehpc.ClusterV2SharedStorage[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a ClusterV2 resource with the given unique name, arguments, and options.
@@ -258,20 +335,37 @@ export class ClusterV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterV2State | undefined;
+            resourceInputs["additionalPackages"] = state?.additionalPackages;
             resourceInputs["addons"] = state?.addons;
             resourceInputs["clientVersion"] = state?.clientVersion;
             resourceInputs["clusterCategory"] = state?.clusterCategory;
             resourceInputs["clusterCredentials"] = state?.clusterCredentials;
+            resourceInputs["clusterCustomConfiguration"] = state?.clusterCustomConfiguration;
+            resourceInputs["clusterDescription"] = state?.clusterDescription;
             resourceInputs["clusterMode"] = state?.clusterMode;
             resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["clusterStatus"] = state?.clusterStatus;
             resourceInputs["clusterVpcId"] = state?.clusterVpcId;
             resourceInputs["clusterVswitchId"] = state?.clusterVswitchId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["ehpcVersion"] = state?.ehpcVersion;
+            resourceInputs["enableScaleIn"] = state?.enableScaleIn;
+            resourceInputs["enableScaleOut"] = state?.enableScaleOut;
+            resourceInputs["growInterval"] = state?.growInterval;
+            resourceInputs["idleInterval"] = state?.idleInterval;
+            resourceInputs["isEnterpriseSecurityGroup"] = state?.isEnterpriseSecurityGroup;
             resourceInputs["manager"] = state?.manager;
+            resourceInputs["maxCoreCount"] = state?.maxCoreCount;
+            resourceInputs["maxCount"] = state?.maxCount;
+            resourceInputs["modifyTime"] = state?.modifyTime;
+            resourceInputs["monitorSpec"] = state?.monitorSpec;
+            resourceInputs["queues"] = state?.queues;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["schedulerSpec"] = state?.schedulerSpec;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["sharedStorages"] = state?.sharedStorages;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as ClusterV2Args | undefined;
             if (args?.clusterCredentials === undefined && !opts.urn) {
@@ -280,20 +374,37 @@ export class ClusterV2 extends pulumi.CustomResource {
             if (args?.sharedStorages === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sharedStorages'");
             }
+            resourceInputs["additionalPackages"] = args?.additionalPackages;
             resourceInputs["addons"] = args?.addons ? pulumi.secret(args.addons) : undefined;
             resourceInputs["clientVersion"] = args?.clientVersion;
             resourceInputs["clusterCategory"] = args?.clusterCategory;
             resourceInputs["clusterCredentials"] = args?.clusterCredentials ? pulumi.secret(args.clusterCredentials) : undefined;
+            resourceInputs["clusterCustomConfiguration"] = args?.clusterCustomConfiguration;
+            resourceInputs["clusterDescription"] = args?.clusterDescription;
             resourceInputs["clusterMode"] = args?.clusterMode;
             resourceInputs["clusterName"] = args?.clusterName;
             resourceInputs["clusterVpcId"] = args?.clusterVpcId;
             resourceInputs["clusterVswitchId"] = args?.clusterVswitchId;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["enableScaleIn"] = args?.enableScaleIn;
+            resourceInputs["enableScaleOut"] = args?.enableScaleOut;
+            resourceInputs["growInterval"] = args?.growInterval;
+            resourceInputs["idleInterval"] = args?.idleInterval;
+            resourceInputs["isEnterpriseSecurityGroup"] = args?.isEnterpriseSecurityGroup;
             resourceInputs["manager"] = args?.manager;
+            resourceInputs["maxCoreCount"] = args?.maxCoreCount;
+            resourceInputs["maxCount"] = args?.maxCount;
+            resourceInputs["monitorSpec"] = args?.monitorSpec;
+            resourceInputs["queues"] = args?.queues;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["schedulerSpec"] = args?.schedulerSpec;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["sharedStorages"] = args?.sharedStorages;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["clusterStatus"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["ehpcVersion"] = undefined /*out*/;
+            resourceInputs["modifyTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["addons", "clusterCredentials"] };
@@ -307,14 +418,15 @@ export class ClusterV2 extends pulumi.CustomResource {
  */
 export interface ClusterV2State {
     /**
+     * The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     */
+    additionalPackages?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2AdditionalPackage>[] | undefined>;
+    /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Addon>[] | undefined>;
     /**
-     * Specifies whether to enable auto scale-out for the cluster. Valid values:
-     *
-     * - true
-     * - false
+     * The version of the E-HPC client.
      */
     clientVersion?: pulumi.Input<string | undefined>;
     /**
@@ -329,6 +441,14 @@ export interface ClusterV2State {
      */
     clusterCredentials?: pulumi.Input<inputs.ehpc.ClusterV2ClusterCredentials | undefined>;
     /**
+     * The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     */
+    clusterCustomConfiguration?: pulumi.Input<inputs.ehpc.ClusterV2ClusterCustomConfiguration | undefined>;
+    /**
+     * The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     */
+    clusterDescription?: pulumi.Input<string | undefined>;
+    /**
      * The deployment mode of the cluster. Valid values:
      *
      * - Integrated
@@ -337,9 +457,13 @@ export interface ClusterV2State {
      */
     clusterMode?: pulumi.Input<string | undefined>;
     /**
-     * The post-processing script of the cluster.
+     * The name of the cluster.
      */
     clusterName?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.288.0) The status of the cluster.
+     */
+    clusterStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) in which the cluster resides.
      */
@@ -354,18 +478,78 @@ export interface ClusterV2State {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The idle duration of the compute nodes allowed by the cluster.
+     * Specifies whether to enable deletion protection for the cluster. Valid values:
+     *
+     * - true
+     * - false
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Available since v1.288.0) The version of the E-HPC cluster.
+     */
+    ehpcVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether to enable auto scale-in for the cluster. Valid values:
+     *
+     * - true
+     * - false
+     */
+    enableScaleIn?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to enable auto scale-out for the cluster. Valid values:
+     *
+     * - true
+     * - false
+     */
+    enableScaleOut?: pulumi.Input<boolean | undefined>;
+    /**
+     * The time interval of auto scale-out for the cluster.
+     */
+    growInterval?: pulumi.Input<number | undefined>;
+    /**
+     * The idle duration of the compute nodes allowed by the cluster.
+     */
+    idleInterval?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether to use an enterprise security group. Valid values:
+     *
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     */
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The configurations of the cluster management node. See `manager` below.
      */
     manager?: pulumi.Input<inputs.ehpc.ClusterV2Manager | undefined>;
     /**
+     * The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     */
+    maxCoreCount?: pulumi.Input<number | undefined>;
+    /**
+     * The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     */
+    maxCount?: pulumi.Input<number | undefined>;
+    /**
+     * (Available since v1.288.0) The time when the cluster was modified.
+     */
+    modifyTime?: pulumi.Input<string | undefined>;
+    /**
+     * The monitoring configuration of the cluster. See `monitorSpec` below.
+     */
+    monitorSpec?: pulumi.Input<inputs.ehpc.ClusterV2MonitorSpec | undefined>;
+    /**
+     * The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     */
+    queues?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Queue>[] | undefined>;
+    /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The scheduler configuration of the cluster. See `schedulerSpec` below.
+     */
+    schedulerSpec?: pulumi.Input<inputs.ehpc.ClusterV2SchedulerSpec | undefined>;
     /**
      * The security group ID.
      */
@@ -374,6 +558,10 @@ export interface ClusterV2State {
      * List of cluster shared storage configurations. See `sharedStorages` below.
      */
     sharedStorages?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2SharedStorage>[] | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -381,14 +569,15 @@ export interface ClusterV2State {
  */
 export interface ClusterV2Args {
     /**
+     * The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     */
+    additionalPackages?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2AdditionalPackage>[] | undefined>;
+    /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
      */
     addons?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Addon>[] | undefined>;
     /**
-     * Specifies whether to enable auto scale-out for the cluster. Valid values:
-     *
-     * - true
-     * - false
+     * The version of the E-HPC client.
      */
     clientVersion?: pulumi.Input<string | undefined>;
     /**
@@ -403,6 +592,14 @@ export interface ClusterV2Args {
      */
     clusterCredentials: pulumi.Input<inputs.ehpc.ClusterV2ClusterCredentials>;
     /**
+     * The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     */
+    clusterCustomConfiguration?: pulumi.Input<inputs.ehpc.ClusterV2ClusterCustomConfiguration | undefined>;
+    /**
+     * The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     */
+    clusterDescription?: pulumi.Input<string | undefined>;
+    /**
      * The deployment mode of the cluster. Valid values:
      *
      * - Integrated
@@ -411,7 +608,7 @@ export interface ClusterV2Args {
      */
     clusterMode?: pulumi.Input<string | undefined>;
     /**
-     * The post-processing script of the cluster.
+     * The name of the cluster.
      */
     clusterName?: pulumi.Input<string | undefined>;
     /**
@@ -424,18 +621,70 @@ export interface ClusterV2Args {
      */
     clusterVswitchId?: pulumi.Input<string | undefined>;
     /**
-     * The idle duration of the compute nodes allowed by the cluster.
+     * Specifies whether to enable deletion protection for the cluster. Valid values:
+     *
+     * - true
+     * - false
      */
     deletionProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to enable auto scale-in for the cluster. Valid values:
+     *
+     * - true
+     * - false
+     */
+    enableScaleIn?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether to enable auto scale-out for the cluster. Valid values:
+     *
+     * - true
+     * - false
+     */
+    enableScaleOut?: pulumi.Input<boolean | undefined>;
+    /**
+     * The time interval of auto scale-out for the cluster.
+     */
+    growInterval?: pulumi.Input<number | undefined>;
+    /**
+     * The idle duration of the compute nodes allowed by the cluster.
+     */
+    idleInterval?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether to use an enterprise security group. Valid values:
+     *
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     */
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The configurations of the cluster management node. See `manager` below.
      */
     manager?: pulumi.Input<inputs.ehpc.ClusterV2Manager | undefined>;
     /**
+     * The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     */
+    maxCoreCount?: pulumi.Input<number | undefined>;
+    /**
+     * The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     */
+    maxCount?: pulumi.Input<number | undefined>;
+    /**
+     * The monitoring configuration of the cluster. See `monitorSpec` below.
+     */
+    monitorSpec?: pulumi.Input<inputs.ehpc.ClusterV2MonitorSpec | undefined>;
+    /**
+     * The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     */
+    queues?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2Queue>[] | undefined>;
+    /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * The scheduler configuration of the cluster. See `schedulerSpec` below.
+     */
+    schedulerSpec?: pulumi.Input<inputs.ehpc.ClusterV2SchedulerSpec | undefined>;
     /**
      * The security group ID.
      */
@@ -444,4 +693,8 @@ export interface ClusterV2Args {
      * List of cluster shared storage configurations. See `sharedStorages` below.
      */
     sharedStorages: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterV2SharedStorage>[]>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

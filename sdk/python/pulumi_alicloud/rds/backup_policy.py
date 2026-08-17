@@ -33,7 +33,9 @@ class BackupPolicyArgs:
                  compress_type: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_pitr_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 inc_backup_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
                  log_backup: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -61,6 +63,8 @@ class BackupPolicyArgs:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -82,7 +86,9 @@ class BackupPolicyArgs:
                - false (default): disables the feature.
                - true: enables the feature.
                  ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        :param pulumi.Input[_builtins.bool] enable_pitr_protection: Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        :param pulumi.Input[_builtins.int] inc_backup_interval: The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[_builtins.int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
         :param pulumi.Input[_builtins.bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
@@ -132,8 +138,12 @@ class BackupPolicyArgs:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if enable_increment_data_backup is not None:
             pulumi.set(__self__, "enable_increment_data_backup", enable_increment_data_backup)
+        if enable_pitr_protection is not None:
+            pulumi.set(__self__, "enable_pitr_protection", enable_pitr_protection)
         if high_space_usage_protection is not None:
             pulumi.set(__self__, "high_space_usage_protection", high_space_usage_protection)
+        if inc_backup_interval is not None:
+            pulumi.set(__self__, "inc_backup_interval", inc_backup_interval)
         if local_log_retention_hours is not None:
             pulumi.set(__self__, "local_log_retention_hours", local_log_retention_hours)
         if local_log_retention_space is not None:
@@ -227,6 +237,8 @@ class BackupPolicyArgs:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -357,6 +369,18 @@ class BackupPolicyArgs:
         pulumi.set(self, "enable_increment_data_backup", value)
 
     @_builtins.property
+    @pulumi.getter(name="enablePitrProtection")
+    def enable_pitr_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+        """
+        return pulumi.get(self, "enable_pitr_protection")
+
+    @enable_pitr_protection.setter
+    def enable_pitr_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_pitr_protection", value)
+
+    @_builtins.property
     @pulumi.getter(name="highSpaceUsageProtection")
     def high_space_usage_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -367,6 +391,18 @@ class BackupPolicyArgs:
     @high_space_usage_protection.setter
     def high_space_usage_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "high_space_usage_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="incBackupInterval")
+    def inc_backup_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+        """
+        return pulumi.get(self, "inc_backup_interval")
+
+    @inc_backup_interval.setter
+    def inc_backup_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "inc_backup_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="localLogRetentionHours")
@@ -524,7 +560,9 @@ class _BackupPolicyState:
                  compress_type: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_pitr_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 inc_backup_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
@@ -552,6 +590,8 @@ class _BackupPolicyState:
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -573,7 +613,9 @@ class _BackupPolicyState:
                - false (default): disables the feature.
                - true: enables the feature.
                  ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        :param pulumi.Input[_builtins.bool] enable_pitr_protection: Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        :param pulumi.Input[_builtins.int] inc_backup_interval: The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[_builtins.int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
@@ -623,8 +665,12 @@ class _BackupPolicyState:
             pulumi.set(__self__, "enable_backup_log", enable_backup_log)
         if enable_increment_data_backup is not None:
             pulumi.set(__self__, "enable_increment_data_backup", enable_increment_data_backup)
+        if enable_pitr_protection is not None:
+            pulumi.set(__self__, "enable_pitr_protection", enable_pitr_protection)
         if high_space_usage_protection is not None:
             pulumi.set(__self__, "high_space_usage_protection", high_space_usage_protection)
+        if inc_backup_interval is not None:
+            pulumi.set(__self__, "inc_backup_interval", inc_backup_interval)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if local_log_retention_hours is not None:
@@ -708,6 +754,8 @@ class _BackupPolicyState:
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -838,6 +886,18 @@ class _BackupPolicyState:
         pulumi.set(self, "enable_increment_data_backup", value)
 
     @_builtins.property
+    @pulumi.getter(name="enablePitrProtection")
+    def enable_pitr_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+        """
+        return pulumi.get(self, "enable_pitr_protection")
+
+    @enable_pitr_protection.setter
+    def enable_pitr_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_pitr_protection", value)
+
+    @_builtins.property
     @pulumi.getter(name="highSpaceUsageProtection")
     def high_space_usage_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -848,6 +908,18 @@ class _BackupPolicyState:
     @high_space_usage_protection.setter
     def high_space_usage_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "high_space_usage_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="incBackupInterval")
+    def inc_backup_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+        """
+        return pulumi.get(self, "inc_backup_interval")
+
+    @inc_backup_interval.setter
+    def inc_backup_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "inc_backup_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -1020,7 +1092,9 @@ class BackupPolicy(pulumi.CustomResource):
                  compress_type: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_pitr_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 inc_backup_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1096,6 +1170,8 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -1117,7 +1193,9 @@ class BackupPolicy(pulumi.CustomResource):
                - false (default): disables the feature.
                - true: enables the feature.
                  ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        :param pulumi.Input[_builtins.bool] enable_pitr_protection: Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        :param pulumi.Input[_builtins.int] inc_backup_interval: The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[_builtins.int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
@@ -1217,7 +1295,9 @@ class BackupPolicy(pulumi.CustomResource):
                  compress_type: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_pitr_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 inc_backup_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1252,7 +1332,9 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["compress_type"] = compress_type
             __props__.__dict__["enable_backup_log"] = enable_backup_log
             __props__.__dict__["enable_increment_data_backup"] = enable_increment_data_backup
+            __props__.__dict__["enable_pitr_protection"] = enable_pitr_protection
             __props__.__dict__["high_space_usage_protection"] = high_space_usage_protection
+            __props__.__dict__["inc_backup_interval"] = inc_backup_interval
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -1290,7 +1372,9 @@ class BackupPolicy(pulumi.CustomResource):
             compress_type: pulumi.Input[Optional[_builtins.str]] = None,
             enable_backup_log: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_increment_data_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_pitr_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             high_space_usage_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            inc_backup_interval: pulumi.Input[Optional[_builtins.int]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             local_log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
             local_log_retention_space: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1322,6 +1406,8 @@ class BackupPolicy(pulumi.CustomResource):
                - 360: A snapshot backup is performed once every 360 minutes.
                - 480: A snapshot backup is performed once every 480 minutes.
                - 720: A snapshot backup is performed once every 720 minutes.
+               
+               > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         :param pulumi.Input[_builtins.str] backup_method: The backup method of the instance. Valid values:
                - Physical: physical backup
                - Snapshot: snapshot backup
@@ -1343,7 +1429,9 @@ class BackupPolicy(pulumi.CustomResource):
                - false (default): disables the feature.
                - true: enables the feature.
                  ->**NOTE:** This parameter takes effect only on instances that run SQL Server with cloud disks. This parameter takes effect only when BackupPolicyMode is set to DataBackupPolicy.
+        :param pulumi.Input[_builtins.bool] enable_pitr_protection: Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
         :param pulumi.Input[_builtins.str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
+        :param pulumi.Input[_builtins.int] inc_backup_interval: The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
         :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[_builtins.int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[_builtins.int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
@@ -1378,7 +1466,9 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["compress_type"] = compress_type
         __props__.__dict__["enable_backup_log"] = enable_backup_log
         __props__.__dict__["enable_increment_data_backup"] = enable_increment_data_backup
+        __props__.__dict__["enable_pitr_protection"] = enable_pitr_protection
         __props__.__dict__["high_space_usage_protection"] = high_space_usage_protection
+        __props__.__dict__["inc_backup_interval"] = inc_backup_interval
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["local_log_retention_hours"] = local_log_retention_hours
         __props__.__dict__["local_log_retention_space"] = local_log_retention_space
@@ -1430,6 +1520,8 @@ class BackupPolicy(pulumi.CustomResource):
         - 360: A snapshot backup is performed once every 360 minutes.
         - 480: A snapshot backup is performed once every 480 minutes.
         - 720: A snapshot backup is performed once every 720 minutes.
+
+        > **NOTE:** If the instance runs MySQL, `backup_interval` is supported only when the `engine_version` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`db_instance_storage_type` is not `local_ssd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
         """
         return pulumi.get(self, "backup_interval")
 
@@ -1520,12 +1612,28 @@ class BackupPolicy(pulumi.CustomResource):
         return pulumi.get(self, "enable_increment_data_backup")
 
     @_builtins.property
+    @pulumi.getter(name="enablePitrProtection")
+    def enable_pitr_protection(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enable_backup_log` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+        """
+        return pulumi.get(self, "enable_pitr_protection")
+
+    @_builtins.property
     @pulumi.getter(name="highSpaceUsageProtection")
     def high_space_usage_protection(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         """
         return pulumi.get(self, "high_space_usage_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="incBackupInterval")
+    def inc_backup_interval(self) -> pulumi.Output[_builtins.int]:
+        """
+        The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enable_increment_data_backup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+        """
+        return pulumi.get(self, "inc_backup_interval")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")

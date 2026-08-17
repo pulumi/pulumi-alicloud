@@ -174,14 +174,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     @Import(name="sourceGroupOwnerAccount")
     private @Nullable Output<String> sourceGroupOwnerAccount;
 
     /**
-     * @return The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+     * @return The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
      * 
      */
     public Optional<Output<String>> sourceGroupOwnerAccount() {
@@ -471,7 +471,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+         * @param sourceGroupOwnerAccount The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceGroupOwnerAccount The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
+         * @param sourceGroupOwnerAccount The Alibaba Cloud user account of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidrIp` has already been set.
          * 
          * @return builder
          * 

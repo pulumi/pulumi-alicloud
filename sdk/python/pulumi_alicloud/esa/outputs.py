@@ -29,6 +29,7 @@ __all__ = [
     'OriginPoolOriginAuthConf',
     'RecordAuthConf',
     'RecordData',
+    'RoutineCodeDeploymentCodeVersion',
     'SiteDeliveryTaskHttpDelivery',
     'SiteDeliveryTaskHttpDeliveryStandardAuthParam',
     'SiteDeliveryTaskKafkaDelivery',
@@ -82,6 +83,7 @@ __all__ = [
     'GetHttpsBasicConfigurationsConfigurationResult',
     'GetNetworkOptimizationsOptimizationResult',
     'GetOriginRulesRuleResult',
+    'GetRoutineCodeVersionsVersionResult',
     'GetSitesSiteResult',
     'GetWafRulesetsQueryArgsResult',
     'GetWafRulesetsSetResult',
@@ -1283,6 +1285,52 @@ class RecordData(dict):
         The weight of the record, specified within the range of 0 to 65,535. This parameter is required when you add SRV or URI records.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class RoutineCodeDeploymentCodeVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "codeVersion":
+            suggest = "code_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutineCodeDeploymentCodeVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutineCodeDeploymentCodeVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutineCodeDeploymentCodeVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 code_version: _builtins.str,
+                 percentage: _builtins.int):
+        """
+        :param _builtins.str code_version: The committed code version to deploy.
+        :param _builtins.int percentage: The traffic percentage of this code version. Valid values: 1 to 100.
+        """
+        pulumi.set(__self__, "code_version", code_version)
+        pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter(name="codeVersion")
+    def code_version(self) -> _builtins.str:
+        """
+        The committed code version to deploy.
+        """
+        return pulumi.get(self, "code_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.int:
+        """
+        The traffic percentage of this code version. Valid values: 1 to 100.
+        """
+        return pulumi.get(self, "percentage")
 
 
 @pulumi.output_type
@@ -4738,6 +4786,101 @@ class GetOriginRulesRuleResult(dict):
         The version of the site.
         """
         return pulumi.get(self, "site_version")
+
+
+@pulumi.output_type
+class GetRoutineCodeVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 build_id: _builtins.int,
+                 code_description: _builtins.str,
+                 code_version: _builtins.str,
+                 create_time: _builtins.str,
+                 deploy_env: _builtins.str,
+                 has_env_vars: _builtins.bool,
+                 id: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.int build_id: The build ID of the code version.
+        :param _builtins.str code_description: The description of the code version.
+        :param _builtins.str code_version: The code version number.
+        :param _builtins.str create_time: The time when the code version was created, in RFC 3339 (UTC) format.
+        :param _builtins.str deploy_env: The environment bundled with the code version. Valid values: `staging`, `production`.
+        :param _builtins.bool has_env_vars: Whether the code version bundles environment variables.
+        :param _builtins.str id: The ID of the code version. Same as `code_version`.
+        :param _builtins.str status: The status of the code version.
+        """
+        pulumi.set(__self__, "build_id", build_id)
+        pulumi.set(__self__, "code_description", code_description)
+        pulumi.set(__self__, "code_version", code_version)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deploy_env", deploy_env)
+        pulumi.set(__self__, "has_env_vars", has_env_vars)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="buildId")
+    def build_id(self) -> _builtins.int:
+        """
+        The build ID of the code version.
+        """
+        return pulumi.get(self, "build_id")
+
+    @_builtins.property
+    @pulumi.getter(name="codeDescription")
+    def code_description(self) -> _builtins.str:
+        """
+        The description of the code version.
+        """
+        return pulumi.get(self, "code_description")
+
+    @_builtins.property
+    @pulumi.getter(name="codeVersion")
+    def code_version(self) -> _builtins.str:
+        """
+        The code version number.
+        """
+        return pulumi.get(self, "code_version")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The time when the code version was created, in RFC 3339 (UTC) format.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deployEnv")
+    def deploy_env(self) -> _builtins.str:
+        """
+        The environment bundled with the code version. Valid values: `staging`, `production`.
+        """
+        return pulumi.get(self, "deploy_env")
+
+    @_builtins.property
+    @pulumi.getter(name="hasEnvVars")
+    def has_env_vars(self) -> _builtins.bool:
+        """
+        Whether the code version bundles environment variables.
+        """
+        return pulumi.get(self, "has_env_vars")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the code version. Same as `code_version`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the code version.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("default", new()
     ///     {
     ///         OssBackupPlanName = "terraform-example",
-    ///         Prefix = "/example",
+    ///         Prefix = "example",
     ///         Bucket = defaultBucket.BucketName,
     ///         VaultId = defaultVault.Id,
     ///         Schedule = "I|1602673264|PT2H",

@@ -74,6 +74,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
      * 
+     * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
+     * 
      */
     @Import(name="backupInterval")
     private @Nullable Output<String> backupInterval;
@@ -88,6 +90,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     * 
+     * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      * 
      */
     public Optional<Output<String>> backupInterval() {
@@ -270,6 +274,21 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+     * 
+     */
+    @Import(name="enablePitrProtection")
+    private @Nullable Output<Boolean> enablePitrProtection;
+
+    /**
+     * @return Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+     * 
+     */
+    public Optional<Output<Boolean>> enablePitrProtection() {
+        return Optional.ofNullable(this.enablePitrProtection);
+    }
+
+    /**
      * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      * 
      */
@@ -282,6 +301,21 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> highSpaceUsageProtection() {
         return Optional.ofNullable(this.highSpaceUsageProtection);
+    }
+
+    /**
+     * The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+     * 
+     */
+    @Import(name="incBackupInterval")
+    private @Nullable Output<Integer> incBackupInterval;
+
+    /**
+     * @return The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+     * 
+     */
+    public Optional<Output<Integer>> incBackupInterval() {
+        return Optional.ofNullable(this.incBackupInterval);
     }
 
     /**
@@ -512,7 +546,9 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         this.compressType = $.compressType;
         this.enableBackupLog = $.enableBackupLog;
         this.enableIncrementDataBackup = $.enableIncrementDataBackup;
+        this.enablePitrProtection = $.enablePitrProtection;
         this.highSpaceUsageProtection = $.highSpaceUsageProtection;
+        this.incBackupInterval = $.incBackupInterval;
         this.instanceId = $.instanceId;
         this.localLogRetentionHours = $.localLogRetentionHours;
         this.localLogRetentionSpace = $.localLogRetentionSpace;
@@ -619,6 +655,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * - 480: A snapshot backup is performed once every 480 minutes.
          * - 720: A snapshot backup is performed once every 720 minutes.
          * 
+         * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
+         * 
          * @return builder
          * 
          */
@@ -637,6 +675,8 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          * - 360: A snapshot backup is performed once every 360 minutes.
          * - 480: A snapshot backup is performed once every 480 minutes.
          * - 720: A snapshot backup is performed once every 720 minutes.
+         * 
+         * &gt; **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
          * 
          * @return builder
          * 
@@ -889,6 +929,27 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enablePitrProtection Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePitrProtection(@Nullable Output<Boolean> enablePitrProtection) {
+            $.enablePitrProtection = enablePitrProtection;
+            return this;
+        }
+
+        /**
+         * @param enablePitrProtection Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePitrProtection(Boolean enablePitrProtection) {
+            return enablePitrProtection(Output.of(enablePitrProtection));
+        }
+
+        /**
          * @param highSpaceUsageProtection Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
          * 
          * @return builder
@@ -907,6 +968,27 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder highSpaceUsageProtection(String highSpaceUsageProtection) {
             return highSpaceUsageProtection(Output.of(highSpaceUsageProtection));
+        }
+
+        /**
+         * @param incBackupInterval The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incBackupInterval(@Nullable Output<Integer> incBackupInterval) {
+            $.incBackupInterval = incBackupInterval;
+            return this;
+        }
+
+        /**
+         * @param incBackupInterval The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incBackupInterval(Integer incBackupInterval) {
+            return incBackupInterval(Output.of(incBackupInterval));
         }
 
         /**

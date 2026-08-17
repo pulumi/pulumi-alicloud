@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Nas.Inputs
         /// 
         /// For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
         /// 
-        /// &gt; **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+        /// &gt; **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
         /// </summary>
         [Input("homeDirPath")]
         public Input<string>? HomeDirPath { get; set; }

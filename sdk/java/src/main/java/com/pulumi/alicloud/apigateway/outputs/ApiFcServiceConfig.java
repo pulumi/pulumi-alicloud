@@ -28,7 +28,7 @@ public final class ApiFcServiceConfig {
      */
     private @Nullable String contentTypeCategory;
     /**
-     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
      * 
      */
     private @Nullable String contentTypeValue;
@@ -107,7 +107,7 @@ public final class ApiFcServiceConfig {
         return Optional.ofNullable(this.contentTypeCategory);
     }
     /**
-     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`.
+     * @return The value of the Content-Type header when `contentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `contentTypeCategory` is set to `CLIENT`.
      * 
      */
     public Optional<String> contentTypeValue() {

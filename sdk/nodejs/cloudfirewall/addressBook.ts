@@ -73,9 +73,21 @@ export class AddressBook extends pulumi.CustomResource {
     }
 
     /**
+     * (Available since v1.286.0) The number of addresses in the Address Book.
+     */
+    declare public /*out*/ readonly addressListCount: pulumi.Output<number>;
+    /**
      * The list of addresses.
      */
-    declare public readonly addressLists: pulumi.Output<string[] | undefined>;
+    declare public readonly addressLists: pulumi.Output<string[]>;
+    /**
+     * The list of member account UIDs of the asset Address Book.
+     */
+    declare public readonly assetMemberUids: pulumi.Output<number[] | undefined>;
+    /**
+     * The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     */
+    declare public readonly assetRegionResourceTypes: pulumi.Output<outputs.cloudfirewall.AddressBookAssetRegionResourceType[] | undefined>;
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      */
@@ -93,14 +105,18 @@ export class AddressBook extends pulumi.CustomResource {
      */
     declare public readonly groupName: pulumi.Output<string>;
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      */
     declare public readonly groupType: pulumi.Output<string>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
     declare public readonly lang: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.286.0) The number of times that the Address Book is referenced.
+     */
+    declare public /*out*/ readonly referenceCount: pulumi.Output<number>;
     /**
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
@@ -119,13 +135,17 @@ export class AddressBook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressBookState | undefined;
+            resourceInputs["addressListCount"] = state?.addressListCount;
             resourceInputs["addressLists"] = state?.addressLists;
+            resourceInputs["assetMemberUids"] = state?.assetMemberUids;
+            resourceInputs["assetRegionResourceTypes"] = state?.assetRegionResourceTypes;
             resourceInputs["autoAddTagEcs"] = state?.autoAddTagEcs;
             resourceInputs["description"] = state?.description;
             resourceInputs["ecsTags"] = state?.ecsTags;
             resourceInputs["groupName"] = state?.groupName;
             resourceInputs["groupType"] = state?.groupType;
             resourceInputs["lang"] = state?.lang;
+            resourceInputs["referenceCount"] = state?.referenceCount;
             resourceInputs["tagRelation"] = state?.tagRelation;
         } else {
             const args = argsOrState as AddressBookArgs | undefined;
@@ -139,6 +159,8 @@ export class AddressBook extends pulumi.CustomResource {
                 throw new Error("Missing required property 'groupType'");
             }
             resourceInputs["addressLists"] = args?.addressLists;
+            resourceInputs["assetMemberUids"] = args?.assetMemberUids;
+            resourceInputs["assetRegionResourceTypes"] = args?.assetRegionResourceTypes;
             resourceInputs["autoAddTagEcs"] = args?.autoAddTagEcs;
             resourceInputs["description"] = args?.description;
             resourceInputs["ecsTags"] = args?.ecsTags;
@@ -146,6 +168,8 @@ export class AddressBook extends pulumi.CustomResource {
             resourceInputs["groupType"] = args?.groupType;
             resourceInputs["lang"] = args?.lang;
             resourceInputs["tagRelation"] = args?.tagRelation;
+            resourceInputs["addressListCount"] = undefined /*out*/;
+            resourceInputs["referenceCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressBook.__pulumiType, name, resourceInputs, opts);
@@ -157,9 +181,21 @@ export class AddressBook extends pulumi.CustomResource {
  */
 export interface AddressBookState {
     /**
+     * (Available since v1.286.0) The number of addresses in the Address Book.
+     */
+    addressListCount?: pulumi.Input<number | undefined>;
+    /**
      * The list of addresses.
      */
     addressLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The list of member account UIDs of the asset Address Book.
+     */
+    assetMemberUids?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     */
+    assetRegionResourceTypes?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceType>[] | undefined>;
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      */
@@ -177,14 +213,18 @@ export interface AddressBookState {
      */
     groupName?: pulumi.Input<string | undefined>;
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      */
     groupType?: pulumi.Input<string | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
     lang?: pulumi.Input<string | undefined>;
+    /**
+     * (Available since v1.286.0) The number of times that the Address Book is referenced.
+     */
+    referenceCount?: pulumi.Input<number | undefined>;
     /**
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
      */
@@ -199,6 +239,14 @@ export interface AddressBookArgs {
      * The list of addresses.
      */
     addressLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The list of member account UIDs of the asset Address Book.
+     */
+    assetMemberUids?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     */
+    assetRegionResourceTypes?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.AddressBookAssetRegionResourceType>[] | undefined>;
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
      */
@@ -216,8 +264,8 @@ export interface AddressBookArgs {
      */
     groupName: pulumi.Input<string>;
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      */
     groupType: pulumi.Input<string>;
     /**

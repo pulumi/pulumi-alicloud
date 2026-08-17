@@ -14,7 +14,9 @@ import (
 
 // Provides a APIG Gateway resource.
 //
-// For information about APIG Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/).
+// Gateway instance  .
+//
+// For information about APIG Gateway and how to use it, see [What is Gateway](https://next.api.alibabacloud.com/document/APIG/2024-03-27/CreateGateway).
 //
 // > **NOTE:** Available since v1.240.0.
 //
@@ -103,40 +105,64 @@ import (
 // APIG Gateway can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:apig/gateway:Gateway example <id>
+// $ pulumi import alicloud:apig/gateway:Gateway example <gateway_id>
 // ```
 type Gateway struct {
 	pulumi.CustomResourceState
 
+	// The source from which the gateway was created.
+	CreateFrom pulumi.StringOutput `pulumi:"createFrom"`
 	// The creation timestamp. Unit: milliseconds.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
-	// The name of the resource
+	// The list of environments associated with the gateway.
+	Environments GatewayEnvironmentArrayOutput `pulumi:"environments"`
+	// Timestamp indicating when the subscription expires. Unit: milliseconds.
+	ExpireTime pulumi.IntOutput `pulumi:"expireTime"`
+	// Gateway instance edition. Valid values:
+	// - Professional: Standard instance.
+	// - Serverless: Serverless instance.
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	GatewayEdition pulumi.StringOutput `pulumi:"gatewayEdition"`
+	// Query by exact match of the gateway name.
 	GatewayName pulumi.StringPtrOutput `pulumi:"gatewayName"`
-	// Describes the gateway type, which is categorized into the following two types:
-	// - API: indicates an API gateway
-	// - AI: Indicates an AI gateway
+	// The gateway type. Valid values:
+	// - API: API Gateway
+	// - AI: AI Gateway
 	GatewayType pulumi.StringOutput `pulumi:"gatewayType"`
-	// Log Configuration See `logConfig` below.
+	// The list of Gateway ingress addresses.
+	LoadBalancers GatewayLoadBalancerArrayOutput `pulumi:"loadBalancers"`
+	// The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
 	LogConfig GatewayLogConfigPtrOutput `pulumi:"logConfig"`
-	// Network Access Configuration See `networkAccessConfig` below.
+	// The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
 	NetworkAccessConfig GatewayNetworkAccessConfigPtrOutput `pulumi:"networkAccessConfig"`
-	// The payment type of the resource
+	// Payment type. Valid values:
+	// - PayAsYouGo: Pay-as-you-go.
+	// - Subscription: Subscription.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
-	// The ID of the resource group
+	// The ID of the destination resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Gateway instance specifications
+	// The security group of the gateway.
+	SecurityGroups GatewaySecurityGroupArrayOutput `pulumi:"securityGroups"`
+	// Gateway specification:
+	// - apigw.small.x1: Small specification.
 	Spec pulumi.StringPtrOutput `pulumi:"spec"`
-	// The status of the resource
+	// The status of the gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The VPC associated with the Gateway. See `vpc` below.
+	// The target version of the gateway instance.
+	TargetVersion pulumi.StringOutput `pulumi:"targetVersion"`
+	// The timestamp when the gateway was last updated. Unit: milliseconds.
+	UpdateTime pulumi.IntOutput `pulumi:"updateTime"`
+	// The current running version of the gateway instance.
+	Version pulumi.StringOutput `pulumi:"version"`
+	// The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
 	Vpc GatewayVpcPtrOutput `pulumi:"vpc"`
-	// The virtual switch associated with the Gateway. See `vswitch` below.
+	// The vSwitch associated with the gateway. See `vswitch` below.
 	Vswitch GatewayVswitchPtrOutput `pulumi:"vswitch"`
-	// Availability Zone Configuration See `zoneConfig` below.
+	// The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
 	ZoneConfig GatewayZoneConfigOutput `pulumi:"zoneConfig"`
-	// The List of zones associated with the Gateway. See `zones` below.
+	// The list of zones associated with the gateway. See `zones` below.
 	Zones GatewayZoneArrayOutput `pulumi:"zones"`
 }
 
@@ -176,68 +202,116 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
+	// The source from which the gateway was created.
+	CreateFrom *string `pulumi:"createFrom"`
 	// The creation timestamp. Unit: milliseconds.
 	CreateTime *int `pulumi:"createTime"`
-	// The name of the resource
+	// The list of environments associated with the gateway.
+	Environments []GatewayEnvironment `pulumi:"environments"`
+	// Timestamp indicating when the subscription expires. Unit: milliseconds.
+	ExpireTime *int `pulumi:"expireTime"`
+	// Gateway instance edition. Valid values:
+	// - Professional: Standard instance.
+	// - Serverless: Serverless instance.
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	GatewayEdition *string `pulumi:"gatewayEdition"`
+	// Query by exact match of the gateway name.
 	GatewayName *string `pulumi:"gatewayName"`
-	// Describes the gateway type, which is categorized into the following two types:
-	// - API: indicates an API gateway
-	// - AI: Indicates an AI gateway
+	// The gateway type. Valid values:
+	// - API: API Gateway
+	// - AI: AI Gateway
 	GatewayType *string `pulumi:"gatewayType"`
-	// Log Configuration See `logConfig` below.
+	// The list of Gateway ingress addresses.
+	LoadBalancers []GatewayLoadBalancer `pulumi:"loadBalancers"`
+	// The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
 	LogConfig *GatewayLogConfig `pulumi:"logConfig"`
-	// Network Access Configuration See `networkAccessConfig` below.
+	// The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
 	NetworkAccessConfig *GatewayNetworkAccessConfig `pulumi:"networkAccessConfig"`
-	// The payment type of the resource
+	// Payment type. Valid values:
+	// - PayAsYouGo: Pay-as-you-go.
+	// - Subscription: Subscription.
 	PaymentType *string `pulumi:"paymentType"`
-	// The ID of the resource group
+	// The ID of the destination resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Gateway instance specifications
+	// The security group of the gateway.
+	SecurityGroups []GatewaySecurityGroup `pulumi:"securityGroups"`
+	// Gateway specification:
+	// - apigw.small.x1: Small specification.
 	Spec *string `pulumi:"spec"`
-	// The status of the resource
+	// The status of the gateway.
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The VPC associated with the Gateway. See `vpc` below.
+	// The target version of the gateway instance.
+	TargetVersion *string `pulumi:"targetVersion"`
+	// The timestamp when the gateway was last updated. Unit: milliseconds.
+	UpdateTime *int `pulumi:"updateTime"`
+	// The current running version of the gateway instance.
+	Version *string `pulumi:"version"`
+	// The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
 	Vpc *GatewayVpc `pulumi:"vpc"`
-	// The virtual switch associated with the Gateway. See `vswitch` below.
+	// The vSwitch associated with the gateway. See `vswitch` below.
 	Vswitch *GatewayVswitch `pulumi:"vswitch"`
-	// Availability Zone Configuration See `zoneConfig` below.
+	// The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
 	ZoneConfig *GatewayZoneConfig `pulumi:"zoneConfig"`
-	// The List of zones associated with the Gateway. See `zones` below.
+	// The list of zones associated with the gateway. See `zones` below.
 	Zones []GatewayZone `pulumi:"zones"`
 }
 
 type GatewayState struct {
+	// The source from which the gateway was created.
+	CreateFrom pulumi.StringPtrInput
 	// The creation timestamp. Unit: milliseconds.
 	CreateTime pulumi.IntPtrInput
-	// The name of the resource
+	// The list of environments associated with the gateway.
+	Environments GatewayEnvironmentArrayInput
+	// Timestamp indicating when the subscription expires. Unit: milliseconds.
+	ExpireTime pulumi.IntPtrInput
+	// Gateway instance edition. Valid values:
+	// - Professional: Standard instance.
+	// - Serverless: Serverless instance.
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	GatewayEdition pulumi.StringPtrInput
+	// Query by exact match of the gateway name.
 	GatewayName pulumi.StringPtrInput
-	// Describes the gateway type, which is categorized into the following two types:
-	// - API: indicates an API gateway
-	// - AI: Indicates an AI gateway
+	// The gateway type. Valid values:
+	// - API: API Gateway
+	// - AI: AI Gateway
 	GatewayType pulumi.StringPtrInput
-	// Log Configuration See `logConfig` below.
+	// The list of Gateway ingress addresses.
+	LoadBalancers GatewayLoadBalancerArrayInput
+	// The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
 	LogConfig GatewayLogConfigPtrInput
-	// Network Access Configuration See `networkAccessConfig` below.
+	// The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
 	NetworkAccessConfig GatewayNetworkAccessConfigPtrInput
-	// The payment type of the resource
+	// Payment type. Valid values:
+	// - PayAsYouGo: Pay-as-you-go.
+	// - Subscription: Subscription.
 	PaymentType pulumi.StringPtrInput
-	// The ID of the resource group
+	// The ID of the destination resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Gateway instance specifications
+	// The security group of the gateway.
+	SecurityGroups GatewaySecurityGroupArrayInput
+	// Gateway specification:
+	// - apigw.small.x1: Small specification.
 	Spec pulumi.StringPtrInput
-	// The status of the resource
+	// The status of the gateway.
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The VPC associated with the Gateway. See `vpc` below.
+	// The target version of the gateway instance.
+	TargetVersion pulumi.StringPtrInput
+	// The timestamp when the gateway was last updated. Unit: milliseconds.
+	UpdateTime pulumi.IntPtrInput
+	// The current running version of the gateway instance.
+	Version pulumi.StringPtrInput
+	// The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
 	Vpc GatewayVpcPtrInput
-	// The virtual switch associated with the Gateway. See `vswitch` below.
+	// The vSwitch associated with the gateway. See `vswitch` below.
 	Vswitch GatewayVswitchPtrInput
-	// Availability Zone Configuration See `zoneConfig` below.
+	// The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
 	ZoneConfig GatewayZoneConfigPtrInput
-	// The List of zones associated with the Gateway. See `zones` below.
+	// The list of zones associated with the gateway. See `zones` below.
 	Zones GatewayZoneArrayInput
 }
 
@@ -246,61 +320,77 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// The name of the resource
+	// Gateway instance edition. Valid values:
+	// - Professional: Standard instance.
+	// - Serverless: Serverless instance.
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	GatewayEdition *string `pulumi:"gatewayEdition"`
+	// Query by exact match of the gateway name.
 	GatewayName *string `pulumi:"gatewayName"`
-	// Describes the gateway type, which is categorized into the following two types:
-	// - API: indicates an API gateway
-	// - AI: Indicates an AI gateway
+	// The gateway type. Valid values:
+	// - API: API Gateway
+	// - AI: AI Gateway
 	GatewayType *string `pulumi:"gatewayType"`
-	// Log Configuration See `logConfig` below.
+	// The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
 	LogConfig *GatewayLogConfig `pulumi:"logConfig"`
-	// Network Access Configuration See `networkAccessConfig` below.
+	// The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
 	NetworkAccessConfig *GatewayNetworkAccessConfig `pulumi:"networkAccessConfig"`
-	// The payment type of the resource
+	// Payment type. Valid values:
+	// - PayAsYouGo: Pay-as-you-go.
+	// - Subscription: Subscription.
 	PaymentType string `pulumi:"paymentType"`
-	// The ID of the resource group
+	// The ID of the destination resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Gateway instance specifications
+	// Gateway specification:
+	// - apigw.small.x1: Small specification.
 	Spec *string `pulumi:"spec"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The VPC associated with the Gateway. See `vpc` below.
+	// The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
 	Vpc *GatewayVpc `pulumi:"vpc"`
-	// The virtual switch associated with the Gateway. See `vswitch` below.
+	// The vSwitch associated with the gateway. See `vswitch` below.
 	Vswitch *GatewayVswitch `pulumi:"vswitch"`
-	// Availability Zone Configuration See `zoneConfig` below.
+	// The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
 	ZoneConfig GatewayZoneConfig `pulumi:"zoneConfig"`
-	// The List of zones associated with the Gateway. See `zones` below.
+	// The list of zones associated with the gateway. See `zones` below.
 	Zones []GatewayZone `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// The name of the resource
+	// Gateway instance edition. Valid values:
+	// - Professional: Standard instance.
+	// - Serverless: Serverless instance.
+	// - MultiTenantServerless: Multi-tenant Serverless instance.
+	GatewayEdition pulumi.StringPtrInput
+	// Query by exact match of the gateway name.
 	GatewayName pulumi.StringPtrInput
-	// Describes the gateway type, which is categorized into the following two types:
-	// - API: indicates an API gateway
-	// - AI: Indicates an AI gateway
+	// The gateway type. Valid values:
+	// - API: API Gateway
+	// - AI: AI Gateway
 	GatewayType pulumi.StringPtrInput
-	// Log Configuration See `logConfig` below.
+	// The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
 	LogConfig GatewayLogConfigPtrInput
-	// Network Access Configuration See `networkAccessConfig` below.
+	// The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
 	NetworkAccessConfig GatewayNetworkAccessConfigPtrInput
-	// The payment type of the resource
+	// Payment type. Valid values:
+	// - PayAsYouGo: Pay-as-you-go.
+	// - Subscription: Subscription.
 	PaymentType pulumi.StringInput
-	// The ID of the resource group
+	// The ID of the destination resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Gateway instance specifications
+	// Gateway specification:
+	// - apigw.small.x1: Small specification.
 	Spec pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The VPC associated with the Gateway. See `vpc` below.
+	// The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
 	Vpc GatewayVpcPtrInput
-	// The virtual switch associated with the Gateway. See `vswitch` below.
+	// The vSwitch associated with the gateway. See `vswitch` below.
 	Vswitch GatewayVswitchPtrInput
-	// Availability Zone Configuration See `zoneConfig` below.
+	// The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
 	ZoneConfig GatewayZoneConfigInput
-	// The List of zones associated with the Gateway. See `zones` below.
+	// The list of zones associated with the gateway. See `zones` below.
 	Zones GatewayZoneArrayInput
 }
 
@@ -391,49 +481,85 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// The source from which the gateway was created.
+func (o GatewayOutput) CreateFrom() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.CreateFrom }).(pulumi.StringOutput)
+}
+
 // The creation timestamp. Unit: milliseconds.
 func (o GatewayOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
-// The name of the resource
+// The list of environments associated with the gateway.
+func (o GatewayOutput) Environments() GatewayEnvironmentArrayOutput {
+	return o.ApplyT(func(v *Gateway) GatewayEnvironmentArrayOutput { return v.Environments }).(GatewayEnvironmentArrayOutput)
+}
+
+// Timestamp indicating when the subscription expires. Unit: milliseconds.
+func (o GatewayOutput) ExpireTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.ExpireTime }).(pulumi.IntOutput)
+}
+
+// Gateway instance edition. Valid values:
+// - Professional: Standard instance.
+// - Serverless: Serverless instance.
+// - MultiTenantServerless: Multi-tenant Serverless instance.
+func (o GatewayOutput) GatewayEdition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayEdition }).(pulumi.StringOutput)
+}
+
+// Query by exact match of the gateway name.
 func (o GatewayOutput) GatewayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewayName }).(pulumi.StringPtrOutput)
 }
 
-// Describes the gateway type, which is categorized into the following two types:
-// - API: indicates an API gateway
-// - AI: Indicates an AI gateway
+// The gateway type. Valid values:
+// - API: API Gateway
+// - AI: AI Gateway
 func (o GatewayOutput) GatewayType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayType }).(pulumi.StringOutput)
 }
 
-// Log Configuration See `logConfig` below.
+// The list of Gateway ingress addresses.
+func (o GatewayOutput) LoadBalancers() GatewayLoadBalancerArrayOutput {
+	return o.ApplyT(func(v *Gateway) GatewayLoadBalancerArrayOutput { return v.LoadBalancers }).(GatewayLoadBalancerArrayOutput)
+}
+
+// The log configuration for the gateway instance. See `logConfig` below. **Note: The parameter is immutable after resource creation.**
 func (o GatewayOutput) LogConfig() GatewayLogConfigPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayLogConfigPtrOutput { return v.LogConfig }).(GatewayLogConfigPtrOutput)
 }
 
-// Network Access Configuration See `networkAccessConfig` below.
+// The network access type of the gateway instance. See `networkAccessConfig` below. **Note: The parameter is immutable after resource creation.**
 func (o GatewayOutput) NetworkAccessConfig() GatewayNetworkAccessConfigPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayNetworkAccessConfigPtrOutput { return v.NetworkAccessConfig }).(GatewayNetworkAccessConfigPtrOutput)
 }
 
-// The payment type of the resource
+// Payment type. Valid values:
+// - PayAsYouGo: Pay-as-you-go.
+// - Subscription: Subscription.
 func (o GatewayOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group
+// The ID of the destination resource group.
 func (o GatewayOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Gateway instance specifications
+// The security group of the gateway.
+func (o GatewayOutput) SecurityGroups() GatewaySecurityGroupArrayOutput {
+	return o.ApplyT(func(v *Gateway) GatewaySecurityGroupArrayOutput { return v.SecurityGroups }).(GatewaySecurityGroupArrayOutput)
+}
+
+// Gateway specification:
+// - apigw.small.x1: Small specification.
 func (o GatewayOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Spec }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource
+// The status of the gateway.
 func (o GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -443,22 +569,37 @@ func (o GatewayOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The VPC associated with the Gateway. See `vpc` below.
+// The target version of the gateway instance.
+func (o GatewayOutput) TargetVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.TargetVersion }).(pulumi.StringOutput)
+}
+
+// The timestamp when the gateway was last updated. Unit: milliseconds.
+func (o GatewayOutput) UpdateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.UpdateTime }).(pulumi.IntOutput)
+}
+
+// The current running version of the gateway instance.
+func (o GatewayOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The Virtual Private Cloud (VPC) associated with the gateway. See `vpc` below.
 func (o GatewayOutput) Vpc() GatewayVpcPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayVpcPtrOutput { return v.Vpc }).(GatewayVpcPtrOutput)
 }
 
-// The virtual switch associated with the Gateway. See `vswitch` below.
+// The vSwitch associated with the gateway. See `vswitch` below.
 func (o GatewayOutput) Vswitch() GatewayVswitchPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayVswitchPtrOutput { return v.Vswitch }).(GatewayVswitchPtrOutput)
 }
 
-// Availability Zone Configuration See `zoneConfig` below.
+// The availability zone selection option for the gateway. See `zoneConfig` below. **Note: The parameter is immutable after resource creation.**
 func (o GatewayOutput) ZoneConfig() GatewayZoneConfigOutput {
 	return o.ApplyT(func(v *Gateway) GatewayZoneConfigOutput { return v.ZoneConfig }).(GatewayZoneConfigOutput)
 }
 
-// The List of zones associated with the Gateway. See `zones` below.
+// The list of zones associated with the gateway. See `zones` below.
 func (o GatewayOutput) Zones() GatewayZoneArrayOutput {
 	return o.ApplyT(func(v *Gateway) GatewayZoneArrayOutput { return v.Zones }).(GatewayZoneArrayOutput)
 }

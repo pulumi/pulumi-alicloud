@@ -184,6 +184,11 @@ type ServerGroup struct {
 	// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	Scheduler pulumi.StringOutput `pulumi:"scheduler"`
+	// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+	//
+	// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+	// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+	ServerFailoverMode pulumi.StringOutput `pulumi:"serverFailoverMode"`
 	// The server group name.
 	//
 	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -263,6 +268,11 @@ type serverGroupState struct {
 	// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
+	// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+	//
+	// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+	// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+	ServerFailoverMode *string `pulumi:"serverFailoverMode"`
 	// The server group name.
 	//
 	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -310,6 +320,11 @@ type ServerGroupState struct {
 	// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
+	// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+	//
+	// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+	// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+	ServerFailoverMode pulumi.StringPtrInput
 	// The server group name.
 	//
 	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -359,6 +374,11 @@ type serverGroupArgs struct {
 	// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
+	// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+	//
+	// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+	// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+	ServerFailoverMode *string `pulumi:"serverFailoverMode"`
 	// The server group name.
 	//
 	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -403,6 +423,11 @@ type ServerGroupArgs struct {
 	// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
+	// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+	//
+	// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+	// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+	ServerFailoverMode pulumi.StringPtrInput
 	// The server group name.
 	//
 	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
@@ -553,6 +578,14 @@ func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 // - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
 func (o ServerGroupOutput) Scheduler() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Scheduler }).(pulumi.StringOutput)
+}
+
+// The failover policy for existing connections when a backend server becomes unhealthy. Valid values:
+//
+// - `NoRebalance` (default): existing connections on the unhealthy backend server are not redistributed to other healthy backend servers.
+// - `Rebalance`: existing connections on the unhealthy backend server are redistributed to other healthy backend servers.
+func (o ServerGroupOutput) ServerFailoverMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerFailoverMode }).(pulumi.StringOutput)
 }
 
 // The server group name.

@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AiModelProviderArgs, AiModelProviderState } from "./aiModelProvider";
+export type AiModelProvider = import("./aiModelProvider").AiModelProvider;
+export const AiModelProvider: typeof import("./aiModelProvider").AiModelProvider = null as any;
+utilities.lazyLoad(exports, ["AiModelProvider"], () => require("./aiModelProvider"));
+
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
@@ -15,40 +25,100 @@ export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
+export { GetAiModelProvidersArgs, GetAiModelProvidersResult, GetAiModelProvidersOutputArgs } from "./getAiModelProviders";
+export const getAiModelProviders: typeof import("./getAiModelProviders").getAiModelProviders = null as any;
+export const getAiModelProvidersOutput: typeof import("./getAiModelProviders").getAiModelProvidersOutput = null as any;
+utilities.lazyLoad(exports, ["getAiModelProviders","getAiModelProvidersOutput"], () => require("./getAiModelProviders"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetGatewaysArgs, GetGatewaysResult, GetGatewaysOutputArgs } from "./getGateways";
+export const getGateways: typeof import("./getGateways").getGateways = null as any;
+export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getGateways","getGatewaysOutput"], () => require("./getGateways"));
+
 export { GetPluginClassesArgs, GetPluginClassesResult, GetPluginClassesOutputArgs } from "./getPluginClasses";
 export const getPluginClasses: typeof import("./getPluginClasses").getPluginClasses = null as any;
 export const getPluginClassesOutput: typeof import("./getPluginClasses").getPluginClassesOutput = null as any;
 utilities.lazyLoad(exports, ["getPluginClasses","getPluginClassesOutput"], () => require("./getPluginClasses"));
+
+export { GetPluginsArgs, GetPluginsResult, GetPluginsOutputArgs } from "./getPlugins";
+export const getPlugins: typeof import("./getPlugins").getPlugins = null as any;
+export const getPluginsOutput: typeof import("./getPlugins").getPluginsOutput = null as any;
+utilities.lazyLoad(exports, ["getPlugins","getPluginsOutput"], () => require("./getPlugins"));
+
+export { GetRoutesArgs, GetRoutesResult, GetRoutesOutputArgs } from "./getRoutes";
+export const getRoutes: typeof import("./getRoutes").getRoutes = null as any;
+export const getRoutesOutput: typeof import("./getRoutes").getRoutesOutput = null as any;
+utilities.lazyLoad(exports, ["getRoutes","getRoutesOutput"], () => require("./getRoutes"));
+
+export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./getServices";
+export const getServices: typeof import("./getServices").getServices = null as any;
+export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getServices","getServicesOutput"], () => require("./getServices"));
 
 export { HttpApiArgs, HttpApiState } from "./httpApi";
 export type HttpApi = import("./httpApi").HttpApi;
 export const HttpApi: typeof import("./httpApi").HttpApi = null as any;
 utilities.lazyLoad(exports, ["HttpApi"], () => require("./httpApi"));
 
+export { PluginArgs, PluginState } from "./plugin";
+export type Plugin = import("./plugin").Plugin;
+export const Plugin: typeof import("./plugin").Plugin = null as any;
+utilities.lazyLoad(exports, ["Plugin"], () => require("./plugin"));
+
 export { PluginClassArgs, PluginClassState } from "./pluginClass";
 export type PluginClass = import("./pluginClass").PluginClass;
 export const PluginClass: typeof import("./pluginClass").PluginClass = null as any;
 utilities.lazyLoad(exports, ["PluginClass"], () => require("./pluginClass"));
+
+export { RouteArgs, RouteState } from "./route";
+export type Route = import("./route").Route;
+export const Route: typeof import("./route").Route = null as any;
+utilities.lazyLoad(exports, ["Route"], () => require("./route"));
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:apig/aiModelProvider:AiModelProvider":
+                return new AiModelProvider(name, <any>undefined, { urn })
+            case "alicloud:apig/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
             case "alicloud:apig/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
             case "alicloud:apig/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
             case "alicloud:apig/httpApi:HttpApi":
                 return new HttpApi(name, <any>undefined, { urn })
+            case "alicloud:apig/plugin:Plugin":
+                return new Plugin(name, <any>undefined, { urn })
             case "alicloud:apig/pluginClass:PluginClass":
                 return new PluginClass(name, <any>undefined, { urn })
+            case "alicloud:apig/route:Route":
+                return new Route(name, <any>undefined, { urn })
+            case "alicloud:apig/service:Service":
+                return new Service(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "apig/aiModelProvider", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/domain", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/environment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/httpApi", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/plugin", _module)
 pulumi.runtime.registerResourceModule("alicloud", "apig/pluginClass", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/route", _module)
+pulumi.runtime.registerResourceModule("alicloud", "apig/service", _module)

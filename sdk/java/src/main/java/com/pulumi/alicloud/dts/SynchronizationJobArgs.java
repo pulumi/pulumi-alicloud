@@ -324,6 +324,21 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Import(name="destinationEndpointSsl")
+    private @Nullable Output<String> destinationEndpointSsl;
+
+    /**
+     * @return The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Optional<Output<String>> destinationEndpointSsl() {
+        return Optional.ofNullable(this.destinationEndpointSsl);
+    }
+
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      * 
      */
@@ -454,12 +469,16 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      * 
+     * &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
+     * 
      */
     @Import(name="reserve")
     private @Nullable Output<String> reserve;
 
     /**
      * @return DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+     * 
+     * &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
      * 
      */
     public Optional<Output<String>> reserve() {
@@ -638,6 +657,21 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    @Import(name="sourceEndpointSsl")
+    private @Nullable Output<String> sourceEndpointSsl;
+
+    /**
+     * @return The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     * 
+     */
+    public Optional<Output<String>> sourceEndpointSsl() {
+        return Optional.ofNullable(this.sourceEndpointSsl);
+    }
+
+    /**
      * The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
      * 
      */
@@ -735,6 +769,7 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
         this.destinationEndpointPort = $.destinationEndpointPort;
         this.destinationEndpointRegion = $.destinationEndpointRegion;
         this.destinationEndpointRole = $.destinationEndpointRole;
+        this.destinationEndpointSsl = $.destinationEndpointSsl;
         this.destinationEndpointUserName = $.destinationEndpointUserName;
         this.dtsBisLabel = $.dtsBisLabel;
         this.dtsInstanceId = $.dtsInstanceId;
@@ -755,6 +790,7 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
         this.sourceEndpointPort = $.sourceEndpointPort;
         this.sourceEndpointRegion = $.sourceEndpointRegion;
         this.sourceEndpointRole = $.sourceEndpointRole;
+        this.sourceEndpointSsl = $.sourceEndpointSsl;
         this.sourceEndpointUserName = $.sourceEndpointUserName;
         this.sourceEndpointVswitchId = $.sourceEndpointVswitchId;
         this.status = $.status;
@@ -1207,6 +1243,27 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param destinationEndpointSsl The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationEndpointSsl(@Nullable Output<String> destinationEndpointSsl) {
+            $.destinationEndpointSsl = destinationEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param destinationEndpointSsl The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationEndpointSsl(String destinationEndpointSsl) {
+            return destinationEndpointSsl(Output.of(destinationEndpointSsl));
+        }
+
+        /**
          * @param destinationEndpointUserName The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
          * 
          * @return builder
@@ -1385,6 +1442,8 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
         /**
          * @param reserve DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
          * 
+         * &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
+         * 
          * @return builder
          * 
          */
@@ -1395,6 +1454,8 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param reserve DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+         * 
+         * &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
          * 
          * @return builder
          * 
@@ -1638,6 +1699,27 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
          */
         public Builder sourceEndpointRole(String sourceEndpointRole) {
             return sourceEndpointRole(Output.of(sourceEndpointRole));
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(@Nullable Output<String> sourceEndpointSsl) {
+            $.sourceEndpointSsl = sourceEndpointSsl;
+            return this;
+        }
+
+        /**
+         * @param sourceEndpointSsl The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceEndpointSsl(String sourceEndpointSsl) {
+            return sourceEndpointSsl(Output.of(sourceEndpointSsl));
         }
 
         /**

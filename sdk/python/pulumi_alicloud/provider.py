@@ -64,7 +64,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[_builtins.str] security_token: security token. A security token is only required if you are using Security Token Service.
         :param pulumi.Input[_builtins.str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         :param pulumi.Input[_builtins.str] source_ip: The source ip for the assume role invoking.
         """
         if access_key is not None:
@@ -415,7 +415,7 @@ class ProviderArgs:
     @pulumi.getter(name="skipRegionValidation")
     def skip_region_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         """
         return pulumi.get(self, "skip_region_validation")
 
@@ -493,7 +493,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] secure_transport: The security transport for the assume role invoking.
         :param pulumi.Input[_builtins.str] security_token: security token. A security token is only required if you are using Security Token Service.
         :param pulumi.Input[_builtins.str] shared_credentials_file: The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
-        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
+        :param pulumi.Input[_builtins.bool] skip_region_validation: Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet). It can also be sourced from the `ALICLOUD_SKIP_REGION_VALIDATION` environment variable.
         :param pulumi.Input[_builtins.str] source_ip: The source ip for the assume role invoking.
         """
         ...

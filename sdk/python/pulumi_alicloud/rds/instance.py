@@ -53,6 +53,7 @@ class InstanceArgs:
                  effective_time: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_encryption: pulumi.Input[Optional[_builtins.int]] = None,
                  force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
                  fresh_white_list_readins: pulumi.Input[Optional[_builtins.str]] = None,
@@ -254,6 +255,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.bool] force_delete: Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
         :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
@@ -467,6 +469,8 @@ class InstanceArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if force_encryption is not None:
             pulumi.set(__self__, "force_encryption", force_encryption)
         if force_restart is not None:
@@ -1083,6 +1087,18 @@ class InstanceArgs:
     @force.setter
     def force(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEncryption")
@@ -1935,6 +1951,7 @@ class _InstanceState:
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_encryption: pulumi.Input[Optional[_builtins.int]] = None,
                  force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
                  fresh_white_list_readins: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2129,6 +2146,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.bool] force_delete: Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
         :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
@@ -2366,6 +2384,8 @@ class _InstanceState:
             pulumi.set(__self__, "engine_version", engine_version)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if force_encryption is not None:
             pulumi.set(__self__, "force_encryption", force_encryption)
         if force_restart is not None:
@@ -2991,6 +3011,18 @@ class _InstanceState:
     @force.setter
     def force(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="forceEncryption")
@@ -3916,6 +3948,7 @@ class Instance(pulumi.CustomResource):
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_encryption: pulumi.Input[Optional[_builtins.int]] = None,
                  force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
                  fresh_white_list_readins: pulumi.Input[Optional[_builtins.str]] = None,
@@ -4081,6 +4114,7 @@ class Instance(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Create a High Availability RDS MySQL Instance
 
         ```python
@@ -4389,9 +4423,9 @@ class Instance(pulumi.CustomResource):
 
         ### Deleting `rds.Instance` or removing it from your configuration
 
-        The `rds.Instance` resource allows you to manage `instance_charge_type = "Prepaid"` db instance, but Terraform cannot destroy it.
-        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
-        You can resume managing the subscription db instance via the AlibabaCloud Console.
+        By default, the `rds.Instance` resource cannot destroy a `Prepaid` (Subscription) DB instance. Deleting the resource or removing it from your configuration will remove it from the state file and management, but will not destroy the DB Instance. You can resume managing the subscription db instance via the AlibabaCloud Console.
+
+        To destroy a Subscription DB instance, set `force_delete = true` on the resource. Terraform will first convert the instance from `PrePaid` to `PostPaid` (settling the remaining subscription period) and then delete it. This conversion has billing consequences, so it must be enabled explicitly.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -4529,6 +4563,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.bool] force_delete: Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
         :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
@@ -4805,6 +4840,7 @@ class Instance(pulumi.CustomResource):
                 },
             ])
         ```
+
         ### Create a High Availability RDS MySQL Instance
 
         ```python
@@ -5113,9 +5149,9 @@ class Instance(pulumi.CustomResource):
 
         ### Deleting `rds.Instance` or removing it from your configuration
 
-        The `rds.Instance` resource allows you to manage `instance_charge_type = "Prepaid"` db instance, but Terraform cannot destroy it.
-        Deleting the subscription resource or removing it from your configuration will remove it from your state file and management, but will not destroy the DB Instance.
-        You can resume managing the subscription db instance via the AlibabaCloud Console.
+        By default, the `rds.Instance` resource cannot destroy a `Prepaid` (Subscription) DB instance. Deleting the resource or removing it from your configuration will remove it from the state file and management, but will not destroy the DB Instance. You can resume managing the subscription db instance via the AlibabaCloud Console.
+
+        To destroy a Subscription DB instance, set `force_delete = true` on the resource. Terraform will first convert the instance from `PrePaid` to `PostPaid` (settling the remaining subscription period) and then delete it. This conversion has billing consequences, so it must be enabled explicitly.
 
         📚 Need more examples? VIEW MORE EXAMPLES
 
@@ -5173,6 +5209,7 @@ class Instance(pulumi.CustomResource):
                  engine: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_version: pulumi.Input[Optional[_builtins.str]] = None,
                  force: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_encryption: pulumi.Input[Optional[_builtins.int]] = None,
                  force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
                  fresh_white_list_readins: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5278,6 +5315,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'engine_version'")
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force"] = force
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["force_encryption"] = force_encryption
             __props__.__dict__["force_restart"] = force_restart
             __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
@@ -5395,6 +5433,7 @@ class Instance(pulumi.CustomResource):
             engine: pulumi.Input[Optional[_builtins.str]] = None,
             engine_version: pulumi.Input[Optional[_builtins.str]] = None,
             force: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             force_encryption: pulumi.Input[Optional[_builtins.int]] = None,
             force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
             fresh_white_list_readins: pulumi.Input[Optional[_builtins.str]] = None,
@@ -5593,6 +5632,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] force: Specifies whether to enable forcible switching. Valid values:
                - Yes
                - No
+        :param pulumi.Input[_builtins.bool] force_delete: Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
         :param pulumi.Input[_builtins.int] force_encryption: Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for MySQL and SQL Server instances. Valid values:
                - 1: enables the feature.
                - 0: disables the feature.
@@ -5801,6 +5841,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["engine"] = engine
         __props__.__dict__["engine_version"] = engine_version
         __props__.__dict__["force"] = force
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["force_encryption"] = force_encryption
         __props__.__dict__["force_restart"] = force_restart
         __props__.__dict__["fresh_white_list_readins"] = fresh_white_list_readins
@@ -6224,6 +6265,14 @@ class Instance(pulumi.CustomResource):
         - No
         """
         return pulumi.get(self, "force")
+
+    @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Used to forcibly delete a `PrePaid` (Subscription) RDS instance. When set to `true`, the instance is converted to `PostPaid` before deletion, which settles the remaining subscription period. Default to `false`. It only takes effect when `instance_charge_type` is `Prepaid`.
+        """
+        return pulumi.get(self, "force_delete")
 
     @_builtins.property
     @pulumi.getter(name="forceEncryption")

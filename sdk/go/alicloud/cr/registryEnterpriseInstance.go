@@ -59,6 +59,10 @@ import (
 //				RenewalStatus: pulumi.String("AutoRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
 //				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Test"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -153,6 +157,8 @@ type RegistryEnterpriseInstance struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Instance Status
 	Status pulumi.StringOutput `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The number of VPC access controls.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -279,6 +285,8 @@ type registryEnterpriseInstanceState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Instance Status
 	Status *string `pulumi:"status"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The number of VPC access controls.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -360,6 +368,8 @@ type RegistryEnterpriseInstanceState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Instance Status
 	Status pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The number of VPC access controls.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -431,6 +441,8 @@ type registryEnterpriseInstanceArgs struct {
 	RepoQuota *int `pulumi:"repoQuota"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The number of VPC access controls.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -499,6 +511,8 @@ type RegistryEnterpriseInstanceArgs struct {
 	RepoQuota pulumi.IntPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput
 	// The number of VPC access controls.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -729,6 +743,11 @@ func (o RegistryEnterpriseInstanceOutput) ResourceGroupId() pulumi.StringOutput 
 // Instance Status
 func (o RegistryEnterpriseInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to assign to the resource.
+func (o RegistryEnterpriseInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The number of VPC access controls.

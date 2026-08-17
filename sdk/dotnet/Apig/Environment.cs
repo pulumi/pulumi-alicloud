@@ -9,119 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Apig
 {
-    /// <summary>
-    /// Provides a APIG Environment resource.
-    /// 
-    /// For information about APIG Environment and how to use it, see [What is Environment](https://next.api.aliyun.com/api/APIG/2024-03-27/CreateEnvironment).
-    /// 
-    /// &gt; **NOTE:** Available since v1.240.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///     });
-    /// 
-    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var defaultgateway = new AliCloud.Apig.Gateway("defaultgateway", new()
-    ///     {
-    ///         NetworkAccessConfig = new AliCloud.Apig.Inputs.GatewayNetworkAccessConfigArgs
-    ///         {
-    ///             Type = "Intranet",
-    ///         },
-    ///         Vswitch = new AliCloud.Apig.Inputs.GatewayVswitchArgs
-    ///         {
-    ///             VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         },
-    ///         ZoneConfig = new AliCloud.Apig.Inputs.GatewayZoneConfigArgs
-    ///         {
-    ///             SelectOption = "Auto",
-    ///         },
-    ///         Vpc = new AliCloud.Apig.Inputs.GatewayVpcArgs
-    ///         {
-    ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         },
-    ///         PaymentType = "PayAsYouGo",
-    ///         GatewayName = Std.Format.Invoke(new()
-    ///         {
-    ///             Input = "%s2",
-    ///             Args = new[]
-    ///             {
-    ///                 name,
-    ///             },
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Spec = "apigw.small.x1",
-    ///         LogConfig = new AliCloud.Apig.Inputs.GatewayLogConfigArgs
-    ///         {
-    ///             Sls = null,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultEnvironment = new AliCloud.Apig.Environment("default", new()
-    ///     {
-    ///         Description = name,
-    ///         EnvironmentName = name,
-    ///         GatewayId = defaultgateway.Id,
-    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// 📚 Need more examples? VIEW MORE EXAMPLES
-    /// 
-    /// ## Import
-    /// 
-    /// APIG Environment can be imported using the id, e.g.
-    /// 
-    /// ```sh
-    /// $ pulumi import alicloud:apig/environment:Environment example &lt;id&gt;
-    /// ```
-    /// </summary>
     [AliCloudResourceType("alicloud:apig/environment:Environment")]
     public partial class Environment : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Description
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the resource
-        /// </summary>
         [Output("environmentName")]
         public Output<string> EnvironmentName { get; private set; } = null!;
 
-        /// <summary>
-        /// Gateway id
-        /// </summary>
         [Output("gatewayId")]
         public Output<string> GatewayId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the resource group
-        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
@@ -171,27 +70,15 @@ namespace Pulumi.AliCloud.Apig
 
     public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the resource
-        /// </summary>
         [Input("environmentName", required: true)]
         public Input<string> EnvironmentName { get; set; } = null!;
 
-        /// <summary>
-        /// Gateway id
-        /// </summary>
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the resource group
-        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -203,27 +90,15 @@ namespace Pulumi.AliCloud.Apig
 
     public sealed class EnvironmentState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Description
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of the resource
-        /// </summary>
         [Input("environmentName")]
         public Input<string>? EnvironmentName { get; set; }
 
-        /// <summary>
-        /// Gateway id
-        /// </summary>
         [Input("gatewayId")]
         public Input<string>? GatewayId { get; set; }
 
-        /// <summary>
-        /// The ID of the resource group
-        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 

@@ -241,6 +241,10 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly destinationEndpointRegion: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly destinationEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of database account.
      */
     declare public readonly destinationEndpointUserName: pulumi.Output<string | undefined>;
@@ -301,6 +305,10 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly sourceEndpointRole: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly sourceEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of database account.
      */
     declare public readonly sourceEndpointUserName: pulumi.Output<string | undefined>;
@@ -339,6 +347,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPassword"] = state?.destinationEndpointPassword;
             resourceInputs["destinationEndpointPort"] = state?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = state?.destinationEndpointRegion;
+            resourceInputs["destinationEndpointSsl"] = state?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = state?.destinationEndpointUserName;
             resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
             resourceInputs["dtsJobName"] = state?.dtsJobName;
@@ -354,6 +363,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = state?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = state?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
             resourceInputs["status"] = state?.status;
             resourceInputs["structureInitialization"] = state?.structureInitialization;
@@ -399,6 +409,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPassword"] = args?.destinationEndpointPassword;
             resourceInputs["destinationEndpointPort"] = args?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = args?.destinationEndpointRegion;
+            resourceInputs["destinationEndpointSsl"] = args?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = args?.destinationEndpointUserName;
             resourceInputs["dtsInstanceId"] = args?.dtsInstanceId;
             resourceInputs["dtsJobName"] = args?.dtsJobName;
@@ -414,6 +425,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = args?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = args?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
             resourceInputs["status"] = args?.status;
             resourceInputs["structureInitialization"] = args?.structureInitialization;
@@ -480,6 +492,10 @@ export interface MigrationJobState {
      */
     destinationEndpointRegion?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account.
      */
     destinationEndpointUserName?: pulumi.Input<string | undefined>;
@@ -539,6 +555,10 @@ export interface MigrationJobState {
      * The name of the role configured for the cloud account to which the source instance belongs.
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
@@ -610,6 +630,10 @@ export interface MigrationJobArgs {
      */
     destinationEndpointRegion?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account.
      */
     destinationEndpointUserName?: pulumi.Input<string | undefined>;
@@ -669,6 +693,10 @@ export interface MigrationJobArgs {
      * The name of the role configured for the cloud account to which the source instance belongs.
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */

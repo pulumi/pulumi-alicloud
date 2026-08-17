@@ -23,14 +23,14 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
     public static final ServerlessKubernetesArgs Empty = new ServerlessKubernetesArgs();
 
     /**
-     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      * 
      */
     @Import(name="addons")
     private @Nullable Output<List<ServerlessKubernetesAddonArgs>> addons;
 
     /**
-     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+     * @return You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
      * 
      */
     public Optional<Output<List<ServerlessKubernetesAddonArgs>>> addons() {
@@ -177,6 +177,23 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     * 
+     */
+    @Import(name="disableEncryption")
+    private @Nullable Output<Boolean> disableEncryption;
+
+    /**
+     * @return Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+     * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+     * 
+     */
+    public Optional<Output<Boolean>> disableEncryption() {
+        return Optional.ofNullable(this.disableEncryption);
+    }
+
+    /**
      * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      * 
      */
@@ -189,6 +206,23 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> enableRrsa() {
         return Optional.ofNullable(this.enableRrsa);
+    }
+
+    /**
+     * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     * 
+     */
+    @Import(name="encryptionProviderKey")
+    private @Nullable Output<String> encryptionProviderKey;
+
+    /**
+     * @return The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+     * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+     * 
+     */
+    public Optional<Output<String>> encryptionProviderKey() {
+        return Optional.ofNullable(this.encryptionProviderKey);
     }
 
     /**
@@ -576,7 +610,9 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         this.customSan = $.customSan;
         this.deleteOptions = $.deleteOptions;
         this.deletionProtection = $.deletionProtection;
+        this.disableEncryption = $.disableEncryption;
         this.enableRrsa = $.enableRrsa;
+        this.encryptionProviderKey = $.encryptionProviderKey;
         this.endpointPublicAccessEnabled = $.endpointPublicAccessEnabled;
         this.kubeConfig = $.kubeConfig;
         this.loadBalancerSpec = $.loadBalancerSpec;
@@ -620,7 +656,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -631,7 +667,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -641,7 +677,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+         * @param addons You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
          * 
          * @return builder
          * 
@@ -842,6 +878,29 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param disableEncryption Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+         * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEncryption(@Nullable Output<Boolean> disableEncryption) {
+            $.disableEncryption = disableEncryption;
+            return this;
+        }
+
+        /**
+         * @param disableEncryption Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+         * &gt; **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEncryption(Boolean disableEncryption) {
+            return disableEncryption(Output.of(disableEncryption));
+        }
+
+        /**
          * @param enableRrsa Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
          * 
          * @return builder
@@ -860,6 +919,29 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
          */
         public Builder enableRrsa(Boolean enableRrsa) {
             return enableRrsa(Output.of(enableRrsa));
+        }
+
+        /**
+         * @param encryptionProviderKey The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+         * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionProviderKey(@Nullable Output<String> encryptionProviderKey) {
+            $.encryptionProviderKey = encryptionProviderKey;
+            return this;
+        }
+
+        /**
+         * @param encryptionProviderKey The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+         * &gt; **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionProviderKey(String encryptionProviderKey) {
+            return encryptionProviderKey(Output.of(encryptionProviderKey));
         }
 
         /**

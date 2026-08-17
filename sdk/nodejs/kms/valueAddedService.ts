@@ -13,6 +13,8 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.267.0.
  *
+ * > **NOTE:** A value added service can be purchased only once per region while it is in effect. If the account already holds it, for example because it was purchased in the console, a duplicate order is charged and then refunded automatically and its instance never becomes effective, so creating this resource fails rather than tracking an instance that does not work. Import the existing service instead of creating it.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -107,9 +109,7 @@ export class ValueAddedService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     *
-     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * The value added service type. Valid values:
      */
     declare public readonly valueAddedService: pulumi.Output<string | undefined>;
 
@@ -194,9 +194,7 @@ export interface ValueAddedServiceState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
-     * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     *
-     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * The value added service type. Valid values:
      */
     valueAddedService?: pulumi.Input<string | undefined>;
 }
@@ -230,9 +228,7 @@ export interface ValueAddedServiceArgs {
      */
     renewStatus?: pulumi.Input<string | undefined>;
     /**
-     * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-     *
-     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * The value added service type. Valid values:
      */
     valueAddedService?: pulumi.Input<string | undefined>;
 }

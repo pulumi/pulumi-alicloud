@@ -11,6 +11,7 @@ import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAuditLogConfig;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAutoMode;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesControlPlaneEndpointsConfig;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesOperationPolicy;
@@ -402,6 +403,93 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ACK Cluster with an automatically created private NLB
+ * 
+ * When `loadBalancerId` is omitted, ACK automatically creates and manages a private NLB for the cluster API server endpoint, so there is no need to create an `alicloud.nlb.LoadBalancer` resource. The cluster must span at least two zones so that the auto-created NLB gets a valid zone list.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nlb.NlbFunctions;
+ * import com.pulumi.alicloud.nlb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cs.ManagedKubernetes;
+ * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesAddonArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesControlPlaneEndpointsConfigArgs;
+ * import com.pulumi.alicloud.cs.inputs.ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example-auto-nlb");
+ *         final var serviceCidr = config.get("serviceCidr").orElse("172.23.0.0/16");
+ *         final var default = NlbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.1.0.0/21")
+ *             .build());
+ * 
+ *         var default1 = new Switch("default1", SwitchArgs.builder()
+ *             .vswitchName(String.format("%s-1", name))
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("10.1.1.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var default2 = new Switch("default2", SwitchArgs.builder()
+ *             .vswitchName(String.format("%s-2", name))
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("10.1.2.0/24")
+ *             .zoneId(default_.zones()[1].id())
+ *             .build());
+ * 
+ *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
+ *             .name(name)
+ *             .clusterSpec("ack.pro.small")
+ *             .vswitchIds(            
+ *                 default1.id(),
+ *                 default2.id())
+ *             .podVswitchIds(            
+ *                 default1.id(),
+ *                 default2.id())
+ *             .newNatGateway(false)
+ *             .serviceCidr(serviceCidr)
+ *             .isEnterpriseSecurityGroup(true)
+ *             .addons(ManagedKubernetesAddonArgs.builder()
+ *                 .name("terway-eniip")
+ *                 .build())
+ *             .controlPlaneEndpointsConfig(ManagedKubernetesControlPlaneEndpointsConfigArgs.builder()
+ *                 .loadBalancersConfigs(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs.builder()
+ *                     .endpointType("private")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
@@ -602,6 +690,20 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<ManagedKubernetesConnections> connections() {
         return this.connections;
+    }
+    /**
+     * The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     * 
+     */
+    @Export(name="controlPlaneEndpointsConfig", refs={ManagedKubernetesControlPlaneEndpointsConfig.class}, tree="[0]")
+    private Output<ManagedKubernetesControlPlaneEndpointsConfig> controlPlaneEndpointsConfig;
+
+    /**
+     * @return The cluster access configuration. See `controlPlaneEndpointsConfig` below.
+     * 
+     */
+    public Output<ManagedKubernetesControlPlaneEndpointsConfig> controlPlaneEndpointsConfig() {
+        return this.controlPlaneEndpointsConfig;
     }
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.

@@ -246,6 +246,12 @@ namespace Pulumi.AliCloud.CloudMonitor
         public Output<bool> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `Targets` below.
+        /// </summary>
+        [Output("targets")]
+        public Output<ImmutableArray<Outputs.ServiceMetricAlarmRuleTarget>> Targets { get; private set; } = null!;
+
+        /// <summary>
         /// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         /// </summary>
         [Output("webhook")]
@@ -455,6 +461,18 @@ namespace Pulumi.AliCloud.CloudMonitor
         [Input("status")]
         public Input<bool>? Status { get; set; }
 
+        [Input("targets")]
+        private InputList<Inputs.ServiceMetricAlarmRuleTargetArgs>? _targets;
+
+        /// <summary>
+        /// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `Targets` below.
+        /// </summary>
+        public InputList<Inputs.ServiceMetricAlarmRuleTargetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.ServiceMetricAlarmRuleTargetArgs>());
+            set => _targets = value;
+        }
+
         /// <summary>
         /// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         /// </summary>
@@ -638,6 +656,18 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }
+
+        [Input("targets")]
+        private InputList<Inputs.ServiceMetricAlarmRuleTargetGetArgs>? _targets;
+
+        /// <summary>
+        /// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `Targets` below.
+        /// </summary>
+        public InputList<Inputs.ServiceMetricAlarmRuleTargetGetArgs> Targets
+        {
+            get => _targets ?? (_targets = new InputList<Inputs.ServiceMetricAlarmRuleTargetGetArgs>());
+            set => _targets = value;
+        }
 
         /// <summary>
         /// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.

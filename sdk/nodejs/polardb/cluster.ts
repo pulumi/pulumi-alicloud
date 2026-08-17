@@ -496,8 +496,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly tdeRegion: pulumi.Output<string>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      */
     declare public readonly tdeStatus: pulumi.Output<string | undefined>;
     /**
@@ -1059,8 +1059,8 @@ export interface ClusterState {
      */
     tdeRegion?: pulumi.Input<string | undefined>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      */
     tdeStatus?: pulumi.Input<string | undefined>;
     /**
@@ -1405,8 +1405,8 @@ export interface ClusterArgs {
      */
     targetMinorVersion?: pulumi.Input<string | undefined>;
     /**
-     * turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on.
-     * > **NOTE:** `tdeStatus` Cannot modify after created when `dbType` is `PostgreSQL` or `Oracle`.`tdeStatus` only support modification from `Disabled` to `Enabled` when `dbType` is `MySQL`.
+     * Specifies whether to enable TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be disabled after it is enabled. You can enable TDE during cluster creation or update an existing cluster to enable it.
+     * > **NOTE:** `tdeStatus` only supports modification from `Disabled` to `Enabled`.
      */
     tdeStatus?: pulumi.Input<string | undefined>;
     /**

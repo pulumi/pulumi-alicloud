@@ -116,7 +116,7 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */
     declare public readonly securityGroupName: pulumi.Output<string>;
     /**
@@ -208,7 +208,7 @@ export interface SecurityGroupState {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */
     securityGroupName?: pulumi.Input<string | undefined>;
     /**
@@ -256,7 +256,7 @@ export interface SecurityGroupArgs {
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
+     * The name of the security group. The name must be `2` to `128` characters in length. The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Unicode characters under the Decimal Number category and the categories whose names contain Letter. The name can also contain colons (:), underscores (\_), periods (.), and hyphens (-).
      */
     securityGroupName?: pulumi.Input<string | undefined>;
     /**

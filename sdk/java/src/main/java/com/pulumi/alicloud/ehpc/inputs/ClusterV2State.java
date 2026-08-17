@@ -3,15 +3,22 @@
 
 package com.pulumi.alicloud.ehpc.inputs;
 
+import com.pulumi.alicloud.ehpc.inputs.ClusterV2AdditionalPackageArgs;
 import com.pulumi.alicloud.ehpc.inputs.ClusterV2AddonArgs;
 import com.pulumi.alicloud.ehpc.inputs.ClusterV2ClusterCredentialsArgs;
+import com.pulumi.alicloud.ehpc.inputs.ClusterV2ClusterCustomConfigurationArgs;
 import com.pulumi.alicloud.ehpc.inputs.ClusterV2ManagerArgs;
+import com.pulumi.alicloud.ehpc.inputs.ClusterV2MonitorSpecArgs;
+import com.pulumi.alicloud.ehpc.inputs.ClusterV2QueueArgs;
+import com.pulumi.alicloud.ehpc.inputs.ClusterV2SchedulerSpecArgs;
 import com.pulumi.alicloud.ehpc.inputs.ClusterV2SharedStorageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,6 +27,21 @@ import javax.annotation.Nullable;
 public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterV2State Empty = new ClusterV2State();
+
+    /**
+     * The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     * 
+     */
+    @Import(name="additionalPackages")
+    private @Nullable Output<List<ClusterV2AdditionalPackageArgs>> additionalPackages;
+
+    /**
+     * @return The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+     * 
+     */
+    public Optional<Output<List<ClusterV2AdditionalPackageArgs>>> additionalPackages() {
+        return Optional.ofNullable(this.additionalPackages);
+    }
 
     /**
      * The cluster custom service component configuration. Only one component is supported. See `addons` below.
@@ -37,20 +59,14 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable auto scale-out for the cluster. Valid values:
-     * 
-     * - true
-     * - false
+     * The version of the E-HPC client.
      * 
      */
     @Import(name="clientVersion")
     private @Nullable Output<String> clientVersion;
 
     /**
-     * @return Specifies whether to enable auto scale-out for the cluster. Valid values:
-     * 
-     * - true
-     * - false
+     * @return The version of the E-HPC client.
      * 
      */
     public Optional<Output<String>> clientVersion() {
@@ -94,6 +110,36 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     * 
+     */
+    @Import(name="clusterCustomConfiguration")
+    private @Nullable Output<ClusterV2ClusterCustomConfigurationArgs> clusterCustomConfiguration;
+
+    /**
+     * @return The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+     * 
+     */
+    public Optional<Output<ClusterV2ClusterCustomConfigurationArgs>> clusterCustomConfiguration() {
+        return Optional.ofNullable(this.clusterCustomConfiguration);
+    }
+
+    /**
+     * The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     * 
+     */
+    @Import(name="clusterDescription")
+    private @Nullable Output<String> clusterDescription;
+
+    /**
+     * @return The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+     * 
+     */
+    public Optional<Output<String>> clusterDescription() {
+        return Optional.ofNullable(this.clusterDescription);
+    }
+
+    /**
      * The deployment mode of the cluster. Valid values:
      * 
      * - Integrated
@@ -117,18 +163,33 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The post-processing script of the cluster.
+     * The name of the cluster.
      * 
      */
     @Import(name="clusterName")
     private @Nullable Output<String> clusterName;
 
     /**
-     * @return The post-processing script of the cluster.
+     * @return The name of the cluster.
      * 
      */
     public Optional<Output<String>> clusterName() {
         return Optional.ofNullable(this.clusterName);
+    }
+
+    /**
+     * (Available since v1.288.0) The status of the cluster.
+     * 
+     */
+    @Import(name="clusterStatus")
+    private @Nullable Output<String> clusterStatus;
+
+    /**
+     * @return (Available since v1.288.0) The status of the cluster.
+     * 
+     */
+    public Optional<Output<String>> clusterStatus() {
+        return Optional.ofNullable(this.clusterStatus);
     }
 
     /**
@@ -179,18 +240,132 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The idle duration of the compute nodes allowed by the cluster.
+     * Specifies whether to enable deletion protection for the cluster. Valid values:
+     * 
+     * - true
+     * - false
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return The idle duration of the compute nodes allowed by the cluster.
+     * @return Specifies whether to enable deletion protection for the cluster. Valid values:
+     * 
+     * - true
+     * - false
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * (Available since v1.288.0) The version of the E-HPC cluster.
+     * 
+     */
+    @Import(name="ehpcVersion")
+    private @Nullable Output<String> ehpcVersion;
+
+    /**
+     * @return (Available since v1.288.0) The version of the E-HPC cluster.
+     * 
+     */
+    public Optional<Output<String>> ehpcVersion() {
+        return Optional.ofNullable(this.ehpcVersion);
+    }
+
+    /**
+     * Specifies whether to enable auto scale-in for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    @Import(name="enableScaleIn")
+    private @Nullable Output<Boolean> enableScaleIn;
+
+    /**
+     * @return Specifies whether to enable auto scale-in for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    public Optional<Output<Boolean>> enableScaleIn() {
+        return Optional.ofNullable(this.enableScaleIn);
+    }
+
+    /**
+     * Specifies whether to enable auto scale-out for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    @Import(name="enableScaleOut")
+    private @Nullable Output<Boolean> enableScaleOut;
+
+    /**
+     * @return Specifies whether to enable auto scale-out for the cluster. Valid values:
+     * 
+     * - true
+     * - false
+     * 
+     */
+    public Optional<Output<Boolean>> enableScaleOut() {
+        return Optional.ofNullable(this.enableScaleOut);
+    }
+
+    /**
+     * The time interval of auto scale-out for the cluster.
+     * 
+     */
+    @Import(name="growInterval")
+    private @Nullable Output<Integer> growInterval;
+
+    /**
+     * @return The time interval of auto scale-out for the cluster.
+     * 
+     */
+    public Optional<Output<Integer>> growInterval() {
+        return Optional.ofNullable(this.growInterval);
+    }
+
+    /**
+     * The idle duration of the compute nodes allowed by the cluster.
+     * 
+     */
+    @Import(name="idleInterval")
+    private @Nullable Output<Integer> idleInterval;
+
+    /**
+     * @return The idle duration of the compute nodes allowed by the cluster.
+     * 
+     */
+    public Optional<Output<Integer>> idleInterval() {
+        return Optional.ofNullable(this.idleInterval);
+    }
+
+    /**
+     * Specifies whether to use an enterprise security group. Valid values:
+     * 
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     * 
+     */
+    @Import(name="isEnterpriseSecurityGroup")
+    private @Nullable Output<Boolean> isEnterpriseSecurityGroup;
+
+    /**
+     * @return Specifies whether to use an enterprise security group. Valid values:
+     * 
+     * - true: An enterprise security group is automatically created and used.
+     * - false: A basic security group is automatically created and used.
+     * 
+     */
+    public Optional<Output<Boolean>> isEnterpriseSecurityGroup() {
+        return Optional.ofNullable(this.isEnterpriseSecurityGroup);
     }
 
     /**
@@ -209,6 +384,81 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     * 
+     */
+    @Import(name="maxCoreCount")
+    private @Nullable Output<Integer> maxCoreCount;
+
+    /**
+     * @return The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+     * 
+     */
+    public Optional<Output<Integer>> maxCoreCount() {
+        return Optional.ofNullable(this.maxCoreCount);
+    }
+
+    /**
+     * The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     * 
+     */
+    @Import(name="maxCount")
+    private @Nullable Output<Integer> maxCount;
+
+    /**
+     * @return The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+     * 
+     */
+    public Optional<Output<Integer>> maxCount() {
+        return Optional.ofNullable(this.maxCount);
+    }
+
+    /**
+     * (Available since v1.288.0) The time when the cluster was modified.
+     * 
+     */
+    @Import(name="modifyTime")
+    private @Nullable Output<String> modifyTime;
+
+    /**
+     * @return (Available since v1.288.0) The time when the cluster was modified.
+     * 
+     */
+    public Optional<Output<String>> modifyTime() {
+        return Optional.ofNullable(this.modifyTime);
+    }
+
+    /**
+     * The monitoring configuration of the cluster. See `monitorSpec` below.
+     * 
+     */
+    @Import(name="monitorSpec")
+    private @Nullable Output<ClusterV2MonitorSpecArgs> monitorSpec;
+
+    /**
+     * @return The monitoring configuration of the cluster. See `monitorSpec` below.
+     * 
+     */
+    public Optional<Output<ClusterV2MonitorSpecArgs>> monitorSpec() {
+        return Optional.ofNullable(this.monitorSpec);
+    }
+
+    /**
+     * The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     * 
+     */
+    @Import(name="queues")
+    private @Nullable Output<List<ClusterV2QueueArgs>> queues;
+
+    /**
+     * @return The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+     * 
+     */
+    public Optional<Output<List<ClusterV2QueueArgs>>> queues() {
+        return Optional.ofNullable(this.queues);
+    }
+
+    /**
      * The ID of the resource group to which the cluster belongs.
      * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
      * 
@@ -223,6 +473,21 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The scheduler configuration of the cluster. See `schedulerSpec` below.
+     * 
+     */
+    @Import(name="schedulerSpec")
+    private @Nullable Output<ClusterV2SchedulerSpecArgs> schedulerSpec;
+
+    /**
+     * @return The scheduler configuration of the cluster. See `schedulerSpec` below.
+     * 
+     */
+    public Optional<Output<ClusterV2SchedulerSpecArgs>> schedulerSpec() {
+        return Optional.ofNullable(this.schedulerSpec);
     }
 
     /**
@@ -255,23 +520,55 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sharedStorages);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private ClusterV2State() {}
 
     private ClusterV2State(ClusterV2State $) {
+        this.additionalPackages = $.additionalPackages;
         this.addons = $.addons;
         this.clientVersion = $.clientVersion;
         this.clusterCategory = $.clusterCategory;
         this.clusterCredentials = $.clusterCredentials;
+        this.clusterCustomConfiguration = $.clusterCustomConfiguration;
+        this.clusterDescription = $.clusterDescription;
         this.clusterMode = $.clusterMode;
         this.clusterName = $.clusterName;
+        this.clusterStatus = $.clusterStatus;
         this.clusterVpcId = $.clusterVpcId;
         this.clusterVswitchId = $.clusterVswitchId;
         this.createTime = $.createTime;
         this.deletionProtection = $.deletionProtection;
+        this.ehpcVersion = $.ehpcVersion;
+        this.enableScaleIn = $.enableScaleIn;
+        this.enableScaleOut = $.enableScaleOut;
+        this.growInterval = $.growInterval;
+        this.idleInterval = $.idleInterval;
+        this.isEnterpriseSecurityGroup = $.isEnterpriseSecurityGroup;
         this.manager = $.manager;
+        this.maxCoreCount = $.maxCoreCount;
+        this.maxCount = $.maxCount;
+        this.modifyTime = $.modifyTime;
+        this.monitorSpec = $.monitorSpec;
+        this.queues = $.queues;
         this.resourceGroupId = $.resourceGroupId;
+        this.schedulerSpec = $.schedulerSpec;
         this.securityGroupId = $.securityGroupId;
         this.sharedStorages = $.sharedStorages;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -290,6 +587,37 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterV2State defaults) {
             $ = new ClusterV2State(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalPackages The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPackages(@Nullable Output<List<ClusterV2AdditionalPackageArgs>> additionalPackages) {
+            $.additionalPackages = additionalPackages;
+            return this;
+        }
+
+        /**
+         * @param additionalPackages The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPackages(List<ClusterV2AdditionalPackageArgs> additionalPackages) {
+            return additionalPackages(Output.of(additionalPackages));
+        }
+
+        /**
+         * @param additionalPackages The list of software to be installed on the cluster. The value range of N is 0 to 10. See `additionalPackages` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPackages(ClusterV2AdditionalPackageArgs... additionalPackages) {
+            return additionalPackages(List.of(additionalPackages));
         }
 
         /**
@@ -324,10 +652,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientVersion Specifies whether to enable auto scale-out for the cluster. Valid values:
-         * 
-         * - true
-         * - false
+         * @param clientVersion The version of the E-HPC client.
          * 
          * @return builder
          * 
@@ -338,10 +663,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientVersion Specifies whether to enable auto scale-out for the cluster. Valid values:
-         * 
-         * - true
-         * - false
+         * @param clientVersion The version of the E-HPC client.
          * 
          * @return builder
          * 
@@ -399,6 +721,48 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param clusterCustomConfiguration The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterCustomConfiguration(@Nullable Output<ClusterV2ClusterCustomConfigurationArgs> clusterCustomConfiguration) {
+            $.clusterCustomConfiguration = clusterCustomConfiguration;
+            return this;
+        }
+
+        /**
+         * @param clusterCustomConfiguration The post-processing script configuration of the cluster. See `clusterCustomConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterCustomConfiguration(ClusterV2ClusterCustomConfigurationArgs clusterCustomConfiguration) {
+            return clusterCustomConfiguration(Output.of(clusterCustomConfiguration));
+        }
+
+        /**
+         * @param clusterDescription The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterDescription(@Nullable Output<String> clusterDescription) {
+            $.clusterDescription = clusterDescription;
+            return this;
+        }
+
+        /**
+         * @param clusterDescription The description of the cluster. The description must be 2 to 128 characters in length. It can contain letters, digits, hyphens (-), and underscores (_).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterDescription(String clusterDescription) {
+            return clusterDescription(Output.of(clusterDescription));
+        }
+
+        /**
          * @param clusterMode The deployment mode of the cluster. Valid values:
          * 
          * - Integrated
@@ -428,7 +792,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterName The post-processing script of the cluster.
+         * @param clusterName The name of the cluster.
          * 
          * @return builder
          * 
@@ -439,13 +803,34 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterName The post-processing script of the cluster.
+         * @param clusterName The name of the cluster.
          * 
          * @return builder
          * 
          */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
+        }
+
+        /**
+         * @param clusterStatus (Available since v1.288.0) The status of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterStatus(@Nullable Output<String> clusterStatus) {
+            $.clusterStatus = clusterStatus;
+            return this;
+        }
+
+        /**
+         * @param clusterStatus (Available since v1.288.0) The status of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterStatus(String clusterStatus) {
+            return clusterStatus(Output.of(clusterStatus));
         }
 
         /**
@@ -514,7 +899,10 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection The idle duration of the compute nodes allowed by the cluster.
+         * @param deletionProtection Specifies whether to enable deletion protection for the cluster. Valid values:
+         * 
+         * - true
+         * - false
          * 
          * @return builder
          * 
@@ -525,13 +913,160 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection The idle duration of the compute nodes allowed by the cluster.
+         * @param deletionProtection Specifies whether to enable deletion protection for the cluster. Valid values:
+         * 
+         * - true
+         * - false
          * 
          * @return builder
          * 
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param ehpcVersion (Available since v1.288.0) The version of the E-HPC cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ehpcVersion(@Nullable Output<String> ehpcVersion) {
+            $.ehpcVersion = ehpcVersion;
+            return this;
+        }
+
+        /**
+         * @param ehpcVersion (Available since v1.288.0) The version of the E-HPC cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ehpcVersion(String ehpcVersion) {
+            return ehpcVersion(Output.of(ehpcVersion));
+        }
+
+        /**
+         * @param enableScaleIn Specifies whether to enable auto scale-in for the cluster. Valid values:
+         * 
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableScaleIn(@Nullable Output<Boolean> enableScaleIn) {
+            $.enableScaleIn = enableScaleIn;
+            return this;
+        }
+
+        /**
+         * @param enableScaleIn Specifies whether to enable auto scale-in for the cluster. Valid values:
+         * 
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableScaleIn(Boolean enableScaleIn) {
+            return enableScaleIn(Output.of(enableScaleIn));
+        }
+
+        /**
+         * @param enableScaleOut Specifies whether to enable auto scale-out for the cluster. Valid values:
+         * 
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableScaleOut(@Nullable Output<Boolean> enableScaleOut) {
+            $.enableScaleOut = enableScaleOut;
+            return this;
+        }
+
+        /**
+         * @param enableScaleOut Specifies whether to enable auto scale-out for the cluster. Valid values:
+         * 
+         * - true
+         * - false
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableScaleOut(Boolean enableScaleOut) {
+            return enableScaleOut(Output.of(enableScaleOut));
+        }
+
+        /**
+         * @param growInterval The time interval of auto scale-out for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder growInterval(@Nullable Output<Integer> growInterval) {
+            $.growInterval = growInterval;
+            return this;
+        }
+
+        /**
+         * @param growInterval The time interval of auto scale-out for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder growInterval(Integer growInterval) {
+            return growInterval(Output.of(growInterval));
+        }
+
+        /**
+         * @param idleInterval The idle duration of the compute nodes allowed by the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleInterval(@Nullable Output<Integer> idleInterval) {
+            $.idleInterval = idleInterval;
+            return this;
+        }
+
+        /**
+         * @param idleInterval The idle duration of the compute nodes allowed by the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleInterval(Integer idleInterval) {
+            return idleInterval(Output.of(idleInterval));
+        }
+
+        /**
+         * @param isEnterpriseSecurityGroup Specifies whether to use an enterprise security group. Valid values:
+         * 
+         * - true: An enterprise security group is automatically created and used.
+         * - false: A basic security group is automatically created and used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isEnterpriseSecurityGroup(@Nullable Output<Boolean> isEnterpriseSecurityGroup) {
+            $.isEnterpriseSecurityGroup = isEnterpriseSecurityGroup;
+            return this;
+        }
+
+        /**
+         * @param isEnterpriseSecurityGroup Specifies whether to use an enterprise security group. Valid values:
+         * 
+         * - true: An enterprise security group is automatically created and used.
+         * - false: A basic security group is automatically created and used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isEnterpriseSecurityGroup(Boolean isEnterpriseSecurityGroup) {
+            return isEnterpriseSecurityGroup(Output.of(isEnterpriseSecurityGroup));
         }
 
         /**
@@ -556,6 +1091,121 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maxCoreCount The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxCoreCount(@Nullable Output<Integer> maxCoreCount) {
+            $.maxCoreCount = maxCoreCount;
+            return this;
+        }
+
+        /**
+         * @param maxCoreCount The total number of CPU cores of the compute nodes that the cluster can manage. Valid values: 0 to 100000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxCoreCount(Integer maxCoreCount) {
+            return maxCoreCount(Output.of(maxCoreCount));
+        }
+
+        /**
+         * @param maxCount The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxCount(@Nullable Output<Integer> maxCount) {
+            $.maxCount = maxCount;
+            return this;
+        }
+
+        /**
+         * @param maxCount The number of compute nodes that the cluster can manage. Valid values: 0 to 5000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxCount(Integer maxCount) {
+            return maxCount(Output.of(maxCount));
+        }
+
+        /**
+         * @param modifyTime (Available since v1.288.0) The time when the cluster was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyTime(@Nullable Output<String> modifyTime) {
+            $.modifyTime = modifyTime;
+            return this;
+        }
+
+        /**
+         * @param modifyTime (Available since v1.288.0) The time when the cluster was modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyTime(String modifyTime) {
+            return modifyTime(Output.of(modifyTime));
+        }
+
+        /**
+         * @param monitorSpec The monitoring configuration of the cluster. See `monitorSpec` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorSpec(@Nullable Output<ClusterV2MonitorSpecArgs> monitorSpec) {
+            $.monitorSpec = monitorSpec;
+            return this;
+        }
+
+        /**
+         * @param monitorSpec The monitoring configuration of the cluster. See `monitorSpec` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorSpec(ClusterV2MonitorSpecArgs monitorSpec) {
+            return monitorSpec(Output.of(monitorSpec));
+        }
+
+        /**
+         * @param queues The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queues(@Nullable Output<List<ClusterV2QueueArgs>> queues) {
+            $.queues = queues;
+            return this;
+        }
+
+        /**
+         * @param queues The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queues(List<ClusterV2QueueArgs> queues) {
+            return queues(Output.of(queues));
+        }
+
+        /**
+         * @param queues The queue configurations of the cluster. The value range of N is 0 to 8. See `queues` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queues(ClusterV2QueueArgs... queues) {
+            return queues(List.of(queues));
+        }
+
+        /**
          * @param resourceGroupId The ID of the resource group to which the cluster belongs.
          * You can call the [ListResourceGroups](https://www.alibabacloud.com/help/en/doc-detail/158855.html) operation to obtain the IDs of the resource groups.
          * 
@@ -576,6 +1226,27 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param schedulerSpec The scheduler configuration of the cluster. See `schedulerSpec` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulerSpec(@Nullable Output<ClusterV2SchedulerSpecArgs> schedulerSpec) {
+            $.schedulerSpec = schedulerSpec;
+            return this;
+        }
+
+        /**
+         * @param schedulerSpec The scheduler configuration of the cluster. See `schedulerSpec` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulerSpec(ClusterV2SchedulerSpecArgs schedulerSpec) {
+            return schedulerSpec(Output.of(schedulerSpec));
         }
 
         /**
@@ -628,6 +1299,27 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sharedStorages(ClusterV2SharedStorageArgs... sharedStorages) {
             return sharedStorages(List.of(sharedStorages));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public ClusterV2State build() {

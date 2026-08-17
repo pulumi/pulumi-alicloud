@@ -149,8 +149,8 @@ def get_address_books(group_type: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-           **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+    :param _builtins.str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+           **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
     :param Sequence[_builtins.str] ids: A list of Address Book IDs.
     :param _builtins.str name_regex: A regex string to filter results Address Book name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -207,8 +207,8 @@ def get_address_books_output(group_type: pulumi.Input[Optional[Optional[_builtin
     ```
 
 
-    :param _builtins.str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-           **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
+    :param _builtins.str group_type: The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+           **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `group_type` can be set to `asset`, `assetIpv6`.
     :param Sequence[_builtins.str] ids: A list of Address Book IDs.
     :param _builtins.str name_regex: A regex string to filter results Address Book name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).

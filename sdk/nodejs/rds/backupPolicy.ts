@@ -104,6 +104,8 @@ export class BackupPolicy extends pulumi.CustomResource {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      */
     declare public readonly backupInterval: pulumi.Output<string>;
     /**
@@ -159,9 +161,17 @@ export class BackupPolicy extends pulumi.CustomResource {
      */
     declare public readonly enableIncrementDataBackup: pulumi.Output<boolean>;
     /**
+     * Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+     */
+    declare public readonly enablePitrProtection: pulumi.Output<boolean>;
+    /**
      * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      */
     declare public readonly highSpaceUsageProtection: pulumi.Output<string | undefined>;
+    /**
+     * The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+     */
+    declare public readonly incBackupInterval: pulumi.Output<number>;
     /**
      * The Id of instance that can run database.
      */
@@ -247,7 +257,9 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["compressType"] = state?.compressType;
             resourceInputs["enableBackupLog"] = state?.enableBackupLog;
             resourceInputs["enableIncrementDataBackup"] = state?.enableIncrementDataBackup;
+            resourceInputs["enablePitrProtection"] = state?.enablePitrProtection;
             resourceInputs["highSpaceUsageProtection"] = state?.highSpaceUsageProtection;
+            resourceInputs["incBackupInterval"] = state?.incBackupInterval;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["localLogRetentionHours"] = state?.localLogRetentionHours;
             resourceInputs["localLogRetentionSpace"] = state?.localLogRetentionSpace;
@@ -278,7 +290,9 @@ export class BackupPolicy extends pulumi.CustomResource {
             resourceInputs["compressType"] = args?.compressType;
             resourceInputs["enableBackupLog"] = args?.enableBackupLog;
             resourceInputs["enableIncrementDataBackup"] = args?.enableIncrementDataBackup;
+            resourceInputs["enablePitrProtection"] = args?.enablePitrProtection;
             resourceInputs["highSpaceUsageProtection"] = args?.highSpaceUsageProtection;
+            resourceInputs["incBackupInterval"] = args?.incBackupInterval;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["localLogRetentionHours"] = args?.localLogRetentionHours;
             resourceInputs["localLogRetentionSpace"] = args?.localLogRetentionSpace;
@@ -323,6 +337,8 @@ export interface BackupPolicyState {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      */
     backupInterval?: pulumi.Input<string | undefined>;
     /**
@@ -378,9 +394,17 @@ export interface BackupPolicyState {
      */
     enableIncrementDataBackup?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+     */
+    enablePitrProtection?: pulumi.Input<boolean | undefined>;
+    /**
      * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      */
     highSpaceUsageProtection?: pulumi.Input<string | undefined>;
+    /**
+     * The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+     */
+    incBackupInterval?: pulumi.Input<number | undefined>;
     /**
      * The Id of instance that can run database.
      */
@@ -467,6 +491,8 @@ export interface BackupPolicyArgs {
      * - 360: A snapshot backup is performed once every 360 minutes.
      * - 480: A snapshot backup is performed once every 480 minutes.
      * - 720: A snapshot backup is performed once every 720 minutes.
+     *
+     * > **NOTE:** If the instance runs MySQL, `backupInterval` is supported only when the `engineVersion` of the instance is `5.7` or `8.0`, the `category` of the instance is `HighAvailability` (High-availability Edition) or `cluster` (MySQL Cluster Edition), and the instance is not equipped with local disks (`dbInstanceStorageType` is not `localSsd`). This parameter is ignored for MySQL instances that do not meet all of these conditions.
      */
     backupInterval?: pulumi.Input<string | undefined>;
     /**
@@ -522,9 +548,17 @@ export interface BackupPolicyArgs {
      */
     enableIncrementDataBackup?: pulumi.Input<boolean | undefined>;
     /**
+     * Specifies whether to enable PITR (Point-in-Time Recovery) on the MySQL instance. Valid values are `true`, `false`. This parameter takes effect only when `enableBackupLog` is `true` and BackupPolicyMode is set to DataBackupPolicy.
+     */
+    enablePitrProtection?: pulumi.Input<boolean | undefined>;
+    /**
      * Instance high space usage protection policy. Valid when the `enableBackupLog` is `true`. Valid values are `Enable`, `Disable`.
      */
     highSpaceUsageProtection?: pulumi.Input<string | undefined>;
+    /**
+     * The frequency at which you want to perform incremental backup on the MySQL instance. Valid when the `enableIncrementDataBackup` is `true` and instance is MySQL local disk. Valid values: [60, 120, 240, 360, 720].
+     */
+    incBackupInterval?: pulumi.Input<number | undefined>;
     /**
      * The Id of instance that can run database.
      */

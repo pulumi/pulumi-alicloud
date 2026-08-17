@@ -35,14 +35,14 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the RAM role.
+     * The description of the RAM role. The description must be `1` to `1024` characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the RAM role.
+     * @return The description of the RAM role. The description must be `1` to `1024` characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -280,7 +280,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the RAM role.
+         * @param description The description of the RAM role. The description must be `1` to `1024` characters in length.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class RoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the RAM role.
+         * @param description The description of the RAM role. The description must be `1` to `1024` characters in length.
          * 
          * @return builder
          * 

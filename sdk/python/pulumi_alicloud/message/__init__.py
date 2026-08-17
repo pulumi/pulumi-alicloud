@@ -9,6 +9,7 @@ import typing
 from .get_service_queues import *
 from .get_service_subscriptions import *
 from .get_service_topics import *
+from .service_account_logging import *
 from .service_endpoint import *
 from .service_endpoint_acl import *
 from .service_event_rule import *

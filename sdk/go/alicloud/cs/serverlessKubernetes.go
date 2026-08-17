@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **DEPRECATION NOTICE:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
+// > **DEPRECATED:** This resource has been deprecated since v1.276.0 and will be removed in a future release. Please use `cs.ManagedKubernetes` instead.
 //
 // This resource will help you to manager a Serverless Kubernetes Cluster, see [What is serverless kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-a-dedicated-kubernetes-cluster-that-supports-sandboxed-containers). The cluster is same as container service created by web console.
 //
@@ -119,7 +119,7 @@ import (
 type ServerlessKubernetes struct {
 	pulumi.CustomResourceState
 
-	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 	Addons ServerlessKubernetesAddonArrayOutput `pulumi:"addons"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
@@ -146,8 +146,14 @@ type ServerlessKubernetes struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption pulumi.BoolOutput `pulumi:"disableEncryption"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
+	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+	EncryptionProviderKey pulumi.StringPtrOutput `pulumi:"encryptionProviderKey"`
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrOutput `pulumi:"endpointPublicAccessEnabled"`
 	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
@@ -238,7 +244,7 @@ func GetServerlessKubernetes(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerlessKubernetes resources.
 type serverlessKubernetesState struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
@@ -265,8 +271,14 @@ type serverlessKubernetesState struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption *bool `pulumi:"disableEncryption"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
+	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
 	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
@@ -328,7 +340,7 @@ type serverlessKubernetesState struct {
 }
 
 type ServerlessKubernetesState struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 	Addons ServerlessKubernetesAddonArrayInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
@@ -355,8 +367,14 @@ type ServerlessKubernetesState struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
+	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+	EncryptionProviderKey pulumi.StringPtrInput
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
 	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
@@ -422,7 +440,7 @@ func (ServerlessKubernetesState) ElementType() reflect.Type {
 }
 
 type serverlessKubernetesArgs struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 	Addons []ServerlessKubernetesAddon `pulumi:"addons"`
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
@@ -449,8 +467,14 @@ type serverlessKubernetesArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption *bool `pulumi:"disableEncryption"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
+	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+	EncryptionProviderKey *string `pulumi:"encryptionProviderKey"`
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
 	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
@@ -511,7 +535,7 @@ type serverlessKubernetesArgs struct {
 
 // The set of arguments for constructing a ServerlessKubernetes resource.
 type ServerlessKubernetesArgs struct {
-	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+	// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 	Addons ServerlessKubernetesAddonArrayInput
 	// From version 1.248.0, new DataSource `cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
 	//
@@ -538,8 +562,14 @@ type ServerlessKubernetesArgs struct {
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
+	// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+	// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+	DisableEncryption pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
+	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+	// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+	EncryptionProviderKey pulumi.StringPtrInput
 	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
 	// The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `cs.getClusterCredential` to replace it.
@@ -685,7 +715,7 @@ func (o ServerlessKubernetesOutput) ToServerlessKubernetesOutputWithContext(ctx 
 	return o
 }
 
-// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
+// You can specific network plugin, log component, ingress component and so on. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created. **Note: The parameter is immutable after resource creation.**
 func (o ServerlessKubernetesOutput) Addons() ServerlessKubernetesAddonArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesAddonArrayOutput { return v.Addons }).(ServerlessKubernetesAddonArrayOutput)
 }
@@ -736,9 +766,21 @@ func (o ServerlessKubernetesOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
+// > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
+func (o ServerlessKubernetesOutput) DisableEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolOutput { return v.DisableEncryption }).(pulumi.BoolOutput)
+}
+
 // Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 func (o ServerlessKubernetesOutput) EnableRrsa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EnableRrsa }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
+// > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
+func (o ServerlessKubernetesOutput) EncryptionProviderKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.EncryptionProviderKey }).(pulumi.StringPtrOutput)
 }
 
 // Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.

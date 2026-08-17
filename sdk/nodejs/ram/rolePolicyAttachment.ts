@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  *
  * // Create a RAM Role Policy attachment.
  * const role = new alicloud.ram.Role("role", {
- *     name: "roleName",
- *     document: `    {
+ *     roleName: "roleName",
+ *     assumeRolePolicyDocument: `    {
  *       \\"Statement\\": [
  *         {
  *           \\"Action\\": \\"sts:AssumeRole\\",
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
  *     policyName: policy.policyName,
  *     policyType: policy.type,
- *     roleName: role.name,
+ *     roleName: role.roleName,
  * });
  * ```
  *

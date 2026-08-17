@@ -3091,6 +3091,439 @@ func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ManagedKubernetesControlPlaneEndpointsConfig struct {
+	// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+	InternalDnsConfig *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig `pulumi:"internalDnsConfig"`
+	// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+	LoadBalancersConfigs []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig `pulumi:"loadBalancersConfigs"`
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigArgs and ManagedKubernetesControlPlaneEndpointsConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigArgs{...}
+type ManagedKubernetesControlPlaneEndpointsConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigArgs struct {
+	// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+	InternalDnsConfig ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput `pulumi:"internalDnsConfig"`
+	// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+	LoadBalancersConfigs ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput `pulumi:"loadBalancersConfigs"`
+}
+
+func (ManagedKubernetesControlPlaneEndpointsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigOutput)
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigOutput).ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigPtrInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigArgs, ManagedKubernetesControlPlaneEndpointsConfigPtr and ManagedKubernetesControlPlaneEndpointsConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigPtrInput` via:
+//
+//	        ManagedKubernetesControlPlaneEndpointsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesControlPlaneEndpointsConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput
+}
+
+type managedKubernetesControlPlaneEndpointsConfigPtrType ManagedKubernetesControlPlaneEndpointsConfigArgs
+
+func ManagedKubernetesControlPlaneEndpointsConfigPtr(v *ManagedKubernetesControlPlaneEndpointsConfigArgs) ManagedKubernetesControlPlaneEndpointsConfigPtrInput {
+	return (*managedKubernetesControlPlaneEndpointsConfigPtrType)(v)
+}
+
+func (*managedKubernetesControlPlaneEndpointsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o.ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesControlPlaneEndpointsConfig) *ManagedKubernetesControlPlaneEndpointsConfig {
+		return &v
+	}).(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput)
+}
+
+// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) InternalDnsConfig() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfig) *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		return v.InternalDnsConfig
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigOutput) LoadBalancersConfigs() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfig) []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+		return v.LoadBalancersConfigs
+	}).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) Elem() ManagedKubernetesControlPlaneEndpointsConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfig) ManagedKubernetesControlPlaneEndpointsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesControlPlaneEndpointsConfig
+		return ret
+	}).(ManagedKubernetesControlPlaneEndpointsConfigOutput)
+}
+
+// The cluster internal domain name configuration, applicable to ACK managed clusters. See `internalDnsConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) InternalDnsConfig() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfig) *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.InternalDnsConfig
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+// The load balancing configuration for cluster access. See `loadBalancersConfig` below.
+func (o ManagedKubernetesControlPlaneEndpointsConfigPtrOutput) LoadBalancersConfigs() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfig) []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancersConfigs
+	}).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig struct {
+	// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+	BindVpcs []string `pulumi:"bindVpcs"`
+	// Whether the RRSA feature has been enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs and ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{...}
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs struct {
+	// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+	BindVpcs pulumi.StringArrayInput `pulumi:"bindVpcs"`
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput)
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput).ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs, ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtr and ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput` via:
+//
+//	        ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput
+}
+
+type managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs
+
+func ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtr(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput {
+	return (*managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType)(v)
+}
+
+func (*managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrType) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		return &v
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput)
+}
+
+// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) BindVpcs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) []string { return v.BindVpcs }).(pulumi.StringArrayOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) ToManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) Elem() ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig
+		return ret
+	}).(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput)
+}
+
+// The list of VPCs where the API Server access domain name takes effect. By default, the VPC of the cluster is included.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) BindVpcs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BindVpcs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig struct {
+	// The access address.
+	Endpoint *string `pulumi:"endpoint"`
+	// The endpoint type. Valid values: `private`, `public`.
+	EndpointType *string `pulumi:"endpointType"`
+	// The ID of the SLB (NLB) instance associated with the endpoint.
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs and ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{...}
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs struct {
+	// The access address.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The endpoint type. Valid values: `private`, `public`.
+	EndpointType pulumi.StringPtrInput `pulumi:"endpointType"`
+	// The ID of the SLB (NLB) instance associated with the endpoint.
+	LoadBalancerId pulumi.StringPtrInput `pulumi:"loadBalancerId"`
+}
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput)
+}
+
+// ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput is an input type that accepts ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray and ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput` via:
+//
+//	ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray{ ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{...} }
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput
+	ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray []ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return i.ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return o
+}
+
+// The access address.
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint type. Valid values: `private`, `public`.
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig) *string { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the SLB (NLB) instance associated with the endpoint.
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput) LoadBalancerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig) *string {
+		return v.LoadBalancerId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)(nil)).Elem()
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput() ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) ToManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutputWithContext(ctx context.Context) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig {
+		return vs[0].([]ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfig)[vs[1].(int)]
+	}).(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput)
+}
+
 type ManagedKubernetesDeleteOption struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode *string `pulumi:"deleteMode"`
@@ -4196,6 +4629,257 @@ func (o NodePoolAutoModePtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolContainerdConfig struct {
+	// Whether to ignore volumes defined in the image. Valid values: lowercase `"true"`, `"false"` or `""`. If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"false"`) writes the key to the containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	IgnoreImageDefinedVolume *string `pulumi:"ignoreImageDefinedVolume"`
+	// Allow the container runtime to skip TLS certificate verification when pulling images. Typically used in test environments with self-signed certificate registries. The format is domain name or IP address without protocol prefix (e.g., `registry.example.com`, `192.168.1.1:5000`).
+	InsecureRegistries []string `pulumi:"insecureRegistries"`
+	// The coredump size limit. Valid values: `""` or a canonical decimal integer string from `"0"` to `"9007199254740991"` (e.g. `"0"`, `"1024"`; forms like `"+10"` or `"010"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"0"`) writes the corresponding value. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	LimitCore *string `pulumi:"limitCore"`
+	// The maximum locked memory limit. Valid values: `""` or a canonical decimal integer string from `"65536"` to `"9007199254740991"` (forms like `"+65536"` or `"065536"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	LimitMemLock *string `pulumi:"limitMemLock"`
+	// The maximum number of file handles. Valid values: `""` or a canonical decimal integer string from `"1024"` to `"9007199254740991"` (forms like `"+2048"` or `"02048"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	LimitNoFile *string `pulumi:"limitNoFile"`
+	// The maximum number of concurrent downloads for container images. Valid values: `1` to `20`.
+	MaxConcurrentDownloads *int `pulumi:"maxConcurrentDownloads"`
+	// Configure mirror sites for container image registries to accelerate image pulls. Each string follows the format `registry=mirror1[&override_path],mirror2[&override_path],...`. The part before `=` is the container image registry, which must be a domain name or IP address without protocol prefix (optionally including a port number), e.g., `docker.io`, `192.168.1.1:5000`. The part after `=` is one or more mirror sites separated by commas; each mirror must start with `http://` or `https://` followed by an IP address or domain name (optionally including a port number), e.g., `https://registry.cn-hangzhou.aliyuncs.com`. Append `&override_path` to a mirror to enable path override for that mirror.
+	RegistryMirrors []string `pulumi:"registryMirrors"`
+}
+
+// NodePoolContainerdConfigInput is an input type that accepts NodePoolContainerdConfigArgs and NodePoolContainerdConfigOutput values.
+// You can construct a concrete instance of `NodePoolContainerdConfigInput` via:
+//
+//	NodePoolContainerdConfigArgs{...}
+type NodePoolContainerdConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolContainerdConfigOutput() NodePoolContainerdConfigOutput
+	ToNodePoolContainerdConfigOutputWithContext(context.Context) NodePoolContainerdConfigOutput
+}
+
+type NodePoolContainerdConfigArgs struct {
+	// Whether to ignore volumes defined in the image. Valid values: lowercase `"true"`, `"false"` or `""`. If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"false"`) writes the key to the containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	IgnoreImageDefinedVolume pulumi.StringPtrInput `pulumi:"ignoreImageDefinedVolume"`
+	// Allow the container runtime to skip TLS certificate verification when pulling images. Typically used in test environments with self-signed certificate registries. The format is domain name or IP address without protocol prefix (e.g., `registry.example.com`, `192.168.1.1:5000`).
+	InsecureRegistries pulumi.StringArrayInput `pulumi:"insecureRegistries"`
+	// The coredump size limit. Valid values: `""` or a canonical decimal integer string from `"0"` to `"9007199254740991"` (e.g. `"0"`, `"1024"`; forms like `"+10"` or `"010"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"0"`) writes the corresponding value. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	LimitCore pulumi.StringPtrInput `pulumi:"limitCore"`
+	// The maximum locked memory limit. Valid values: `""` or a canonical decimal integer string from `"65536"` to `"9007199254740991"` (forms like `"+65536"` or `"065536"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	LimitMemLock pulumi.StringPtrInput `pulumi:"limitMemLock"`
+	// The maximum number of file handles. Valid values: `""` or a canonical decimal integer string from `"1024"` to `"9007199254740991"` (forms like `"+2048"` or `"02048"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+	LimitNoFile pulumi.StringPtrInput `pulumi:"limitNoFile"`
+	// The maximum number of concurrent downloads for container images. Valid values: `1` to `20`.
+	MaxConcurrentDownloads pulumi.IntPtrInput `pulumi:"maxConcurrentDownloads"`
+	// Configure mirror sites for container image registries to accelerate image pulls. Each string follows the format `registry=mirror1[&override_path],mirror2[&override_path],...`. The part before `=` is the container image registry, which must be a domain name or IP address without protocol prefix (optionally including a port number), e.g., `docker.io`, `192.168.1.1:5000`. The part after `=` is one or more mirror sites separated by commas; each mirror must start with `http://` or `https://` followed by an IP address or domain name (optionally including a port number), e.g., `https://registry.cn-hangzhou.aliyuncs.com`. Append `&override_path` to a mirror to enable path override for that mirror.
+	RegistryMirrors pulumi.StringArrayInput `pulumi:"registryMirrors"`
+}
+
+func (NodePoolContainerdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolContainerdConfig)(nil)).Elem()
+}
+
+func (i NodePoolContainerdConfigArgs) ToNodePoolContainerdConfigOutput() NodePoolContainerdConfigOutput {
+	return i.ToNodePoolContainerdConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolContainerdConfigArgs) ToNodePoolContainerdConfigOutputWithContext(ctx context.Context) NodePoolContainerdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolContainerdConfigOutput)
+}
+
+func (i NodePoolContainerdConfigArgs) ToNodePoolContainerdConfigPtrOutput() NodePoolContainerdConfigPtrOutput {
+	return i.ToNodePoolContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolContainerdConfigArgs) ToNodePoolContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolContainerdConfigOutput).ToNodePoolContainerdConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolContainerdConfigPtrInput is an input type that accepts NodePoolContainerdConfigArgs, NodePoolContainerdConfigPtr and NodePoolContainerdConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolContainerdConfigPtrInput` via:
+//
+//	        NodePoolContainerdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolContainerdConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolContainerdConfigPtrOutput() NodePoolContainerdConfigPtrOutput
+	ToNodePoolContainerdConfigPtrOutputWithContext(context.Context) NodePoolContainerdConfigPtrOutput
+}
+
+type nodePoolContainerdConfigPtrType NodePoolContainerdConfigArgs
+
+func NodePoolContainerdConfigPtr(v *NodePoolContainerdConfigArgs) NodePoolContainerdConfigPtrInput {
+	return (*nodePoolContainerdConfigPtrType)(v)
+}
+
+func (*nodePoolContainerdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolContainerdConfig)(nil)).Elem()
+}
+
+func (i *nodePoolContainerdConfigPtrType) ToNodePoolContainerdConfigPtrOutput() NodePoolContainerdConfigPtrOutput {
+	return i.ToNodePoolContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolContainerdConfigPtrType) ToNodePoolContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolContainerdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolContainerdConfigPtrOutput)
+}
+
+type NodePoolContainerdConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolContainerdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolContainerdConfig)(nil)).Elem()
+}
+
+func (o NodePoolContainerdConfigOutput) ToNodePoolContainerdConfigOutput() NodePoolContainerdConfigOutput {
+	return o
+}
+
+func (o NodePoolContainerdConfigOutput) ToNodePoolContainerdConfigOutputWithContext(ctx context.Context) NodePoolContainerdConfigOutput {
+	return o
+}
+
+func (o NodePoolContainerdConfigOutput) ToNodePoolContainerdConfigPtrOutput() NodePoolContainerdConfigPtrOutput {
+	return o.ToNodePoolContainerdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolContainerdConfigOutput) ToNodePoolContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolContainerdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolContainerdConfig) *NodePoolContainerdConfig {
+		return &v
+	}).(NodePoolContainerdConfigPtrOutput)
+}
+
+// Whether to ignore volumes defined in the image. Valid values: lowercase `"true"`, `"false"` or `""`. If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"false"`) writes the key to the containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigOutput) IgnoreImageDefinedVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) *string { return v.IgnoreImageDefinedVolume }).(pulumi.StringPtrOutput)
+}
+
+// Allow the container runtime to skip TLS certificate verification when pulling images. Typically used in test environments with self-signed certificate registries. The format is domain name or IP address without protocol prefix (e.g., `registry.example.com`, `192.168.1.1:5000`).
+func (o NodePoolContainerdConfigOutput) InsecureRegistries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) []string { return v.InsecureRegistries }).(pulumi.StringArrayOutput)
+}
+
+// The coredump size limit. Valid values: `""` or a canonical decimal integer string from `"0"` to `"9007199254740991"` (e.g. `"0"`, `"1024"`; forms like `"+10"` or `"010"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"0"`) writes the corresponding value. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigOutput) LimitCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) *string { return v.LimitCore }).(pulumi.StringPtrOutput)
+}
+
+// The maximum locked memory limit. Valid values: `""` or a canonical decimal integer string from `"65536"` to `"9007199254740991"` (forms like `"+65536"` or `"065536"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigOutput) LimitMemLock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) *string { return v.LimitMemLock }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of file handles. Valid values: `""` or a canonical decimal integer string from `"1024"` to `"9007199254740991"` (forms like `"+2048"` or `"02048"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigOutput) LimitNoFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) *string { return v.LimitNoFile }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of concurrent downloads for container images. Valid values: `1` to `20`.
+func (o NodePoolContainerdConfigOutput) MaxConcurrentDownloads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) *int { return v.MaxConcurrentDownloads }).(pulumi.IntPtrOutput)
+}
+
+// Configure mirror sites for container image registries to accelerate image pulls. Each string follows the format `registry=mirror1[&override_path],mirror2[&override_path],...`. The part before `=` is the container image registry, which must be a domain name or IP address without protocol prefix (optionally including a port number), e.g., `docker.io`, `192.168.1.1:5000`. The part after `=` is one or more mirror sites separated by commas; each mirror must start with `http://` or `https://` followed by an IP address or domain name (optionally including a port number), e.g., `https://registry.cn-hangzhou.aliyuncs.com`. Append `&override_path` to a mirror to enable path override for that mirror.
+func (o NodePoolContainerdConfigOutput) RegistryMirrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolContainerdConfig) []string { return v.RegistryMirrors }).(pulumi.StringArrayOutput)
+}
+
+type NodePoolContainerdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolContainerdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolContainerdConfig)(nil)).Elem()
+}
+
+func (o NodePoolContainerdConfigPtrOutput) ToNodePoolContainerdConfigPtrOutput() NodePoolContainerdConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolContainerdConfigPtrOutput) ToNodePoolContainerdConfigPtrOutputWithContext(ctx context.Context) NodePoolContainerdConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolContainerdConfigPtrOutput) Elem() NodePoolContainerdConfigOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) NodePoolContainerdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolContainerdConfig
+		return ret
+	}).(NodePoolContainerdConfigOutput)
+}
+
+// Whether to ignore volumes defined in the image. Valid values: lowercase `"true"`, `"false"` or `""`. If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"false"`) writes the key to the containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigPtrOutput) IgnoreImageDefinedVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreImageDefinedVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow the container runtime to skip TLS certificate verification when pulling images. Typically used in test environments with self-signed certificate registries. The format is domain name or IP address without protocol prefix (e.g., `registry.example.com`, `192.168.1.1:5000`).
+func (o NodePoolContainerdConfigPtrOutput) InsecureRegistries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureRegistries
+	}).(pulumi.StringArrayOutput)
+}
+
+// The coredump size limit. Valid values: `""` or a canonical decimal integer string from `"0"` to `"9007199254740991"` (e.g. `"0"`, `"1024"`; forms like `"+10"` or `"010"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Explicitly setting it (including `"0"`) writes the corresponding value. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigPtrOutput) LimitCore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitCore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum locked memory limit. Valid values: `""` or a canonical decimal integer string from `"65536"` to `"9007199254740991"` (forms like `"+65536"` or `"065536"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigPtrOutput) LimitMemLock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitMemLock
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of file handles. Valid values: `""` or a canonical decimal integer string from `"1024"` to `"9007199254740991"` (forms like `"+2048"` or `"02048"` are not accepted). If not set (or set to `""`), this option is not written to the node containerd configuration. Removing this field from the configuration removes the key from the cloud-side containerd configuration.
+func (o NodePoolContainerdConfigPtrOutput) LimitNoFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LimitNoFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of concurrent downloads for container images. Valid values: `1` to `20`.
+func (o NodePoolContainerdConfigPtrOutput) MaxConcurrentDownloads() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentDownloads
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure mirror sites for container image registries to accelerate image pulls. Each string follows the format `registry=mirror1[&override_path],mirror2[&override_path],...`. The part before `=` is the container image registry, which must be a domain name or IP address without protocol prefix (optionally including a port number), e.g., `docker.io`, `192.168.1.1:5000`. The part after `=` is one or more mirror sites separated by commas; each mirror must start with `http://` or `https://` followed by an IP address or domain name (optionally including a port number), e.g., `https://registry.cn-hangzhou.aliyuncs.com`. Append `&override_path` to a mirror to enable path override for that mirror.
+func (o NodePoolContainerdConfigPtrOutput) RegistryMirrors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolContainerdConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryMirrors
+	}).(pulumi.StringArrayOutput)
 }
 
 type NodePoolDataDisk struct {
@@ -14257,6 +14941,8 @@ type GetRegistryEnterpriseInstancesInstance struct {
 	RepoUsage string `pulumi:"repoUsage"`
 	// Specification of Container Registry Enterprise Edition instance.
 	Specification string `pulumi:"specification"`
+	// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+	Tags map[string]string `pulumi:"tags"`
 	// The username that was used to log on to the registry.
 	TempUsername string `pulumi:"tempUsername"`
 	// A list of domains for access on vpc network.
@@ -14295,6 +14981,8 @@ type GetRegistryEnterpriseInstancesInstanceArgs struct {
 	RepoUsage pulumi.StringInput `pulumi:"repoUsage"`
 	// Specification of Container Registry Enterprise Edition instance.
 	Specification pulumi.StringInput `pulumi:"specification"`
+	// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The username that was used to log on to the registry.
 	TempUsername pulumi.StringInput `pulumi:"tempUsername"`
 	// A list of domains for access on vpc network.
@@ -14400,6 +15088,11 @@ func (o GetRegistryEnterpriseInstancesInstanceOutput) RepoUsage() pulumi.StringO
 // Specification of Container Registry Enterprise Edition instance.
 func (o GetRegistryEnterpriseInstancesInstanceOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) string { return v.Specification }).(pulumi.StringOutput)
+}
+
+// A mapping of tags to filter results by. An instance is returned only when it carries every tag listed here with the same value.
+func (o GetRegistryEnterpriseInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegistryEnterpriseInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The username that was used to log on to the registry.
@@ -15390,6 +16083,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsPtrInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigPtrInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayInput)(nil)).Elem(), ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionArrayInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
@@ -15404,6 +16103,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesUpgradePolicyPtrInput)(nil)).Elem(), ManagedKubernetesUpgradePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoModeInput)(nil)).Elem(), NodePoolAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoModePtrInput)(nil)).Elem(), NodePoolAutoModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolContainerdConfigInput)(nil)).Elem(), NodePoolContainerdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolContainerdConfigPtrInput)(nil)).Elem(), NodePoolContainerdConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolEfloNodeGroupInput)(nil)).Elem(), NodePoolEfloNodeGroupArgs{})
@@ -15565,6 +16266,12 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigInternalDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesControlPlaneEndpointsConfigLoadBalancersConfigArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowOutput{})
@@ -15579,6 +16286,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesUpgradePolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoModeOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoModePtrOutput{})
+	pulumi.RegisterOutputType(NodePoolContainerdConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolContainerdConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolEfloNodeGroupOutput{})

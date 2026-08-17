@@ -192,7 +192,9 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     declare public readonly httpEndpoint: pulumi.Output<string>;
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     *
+     * > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      */
     declare public readonly httpPutResponseHopLimit: pulumi.Output<number>;
     /**
@@ -572,7 +574,9 @@ export interface EcsLaunchTemplateState {
      */
     httpEndpoint?: pulumi.Input<string | undefined>;
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     *
+     * > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      */
     httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
     /**
@@ -822,7 +826,9 @@ export interface EcsLaunchTemplateArgs {
      */
     httpEndpoint?: pulumi.Input<string | undefined>;
     /**
-     * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
+     * The HTTP PUT response hop limit required for instance metadata requests. Valid values: `1` to `64`.
+     *
+     * > **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      */
     httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
     /**
