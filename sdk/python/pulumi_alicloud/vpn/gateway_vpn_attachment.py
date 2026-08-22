@@ -35,6 +35,7 @@ class GatewayVpnAttachmentArgs:
                  network_type: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationArgs']]]] = None,
                  vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -71,6 +72,9 @@ class GatewayVpnAttachmentArgs:
         :param pulumi.Input[_builtins.str] network_type: network type
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.str] tunnel_bandwidth: The bandwidth specification of a single VPN tunnel. Valid values:
+               - `Standard` (default): 1 Gbps.
+               - `Large`: 3 Gbps.
         :param pulumi.Input[Sequence[pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationArgs']]] tunnel_options_specifications: Configure the tunnel.
                - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
                - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
@@ -102,6 +106,8 @@ class GatewayVpnAttachmentArgs:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tunnel_bandwidth is not None:
+            pulumi.set(__self__, "tunnel_bandwidth", tunnel_bandwidth)
         if tunnel_options_specifications is not None:
             pulumi.set(__self__, "tunnel_options_specifications", tunnel_options_specifications)
         if vpn_attachment_name is not None:
@@ -293,6 +299,20 @@ class GatewayVpnAttachmentArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tunnelBandwidth")
+    def tunnel_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The bandwidth specification of a single VPN tunnel. Valid values:
+        - `Standard` (default): 1 Gbps.
+        - `Large`: 3 Gbps.
+        """
+        return pulumi.get(self, "tunnel_bandwidth")
+
+    @tunnel_bandwidth.setter
+    def tunnel_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tunnel_bandwidth", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelOptionsSpecifications")
     def tunnel_options_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationArgs']]]]:
         """
@@ -338,6 +358,7 @@ class _GatewayVpnAttachmentState:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationArgs']]]] = None,
                  vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -376,6 +397,9 @@ class _GatewayVpnAttachmentState:
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] status: The negotiation status of Tunnel.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.str] tunnel_bandwidth: The bandwidth specification of a single VPN tunnel. Valid values:
+               - `Standard` (default): 1 Gbps.
+               - `Large`: 3 Gbps.
         :param pulumi.Input[Sequence[pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationArgs']]] tunnel_options_specifications: Configure the tunnel.
                - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
                - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
@@ -413,6 +437,8 @@ class _GatewayVpnAttachmentState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tunnel_bandwidth is not None:
+            pulumi.set(__self__, "tunnel_bandwidth", tunnel_bandwidth)
         if tunnel_options_specifications is not None:
             pulumi.set(__self__, "tunnel_options_specifications", tunnel_options_specifications)
         if vpn_attachment_name is not None:
@@ -628,6 +654,20 @@ class _GatewayVpnAttachmentState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="tunnelBandwidth")
+    def tunnel_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The bandwidth specification of a single VPN tunnel. Valid values:
+        - `Standard` (default): 1 Gbps.
+        - `Large`: 3 Gbps.
+        """
+        return pulumi.get(self, "tunnel_bandwidth")
+
+    @tunnel_bandwidth.setter
+    def tunnel_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tunnel_bandwidth", value)
+
+    @_builtins.property
     @pulumi.getter(name="tunnelOptionsSpecifications")
     def tunnel_options_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewayVpnAttachmentTunnelOptionsSpecificationArgs']]]]:
         """
@@ -674,6 +714,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                  remote_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayVpnAttachmentTunnelOptionsSpecificationArgs', 'GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict']]]]] = None,
                  vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -888,6 +929,9 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                - If you set LocalSubnet and RemoteSubnet to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.str] tunnel_bandwidth: The bandwidth specification of a single VPN tunnel. Valid values:
+               - `Standard` (default): 1 Gbps.
+               - `Large`: 3 Gbps.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayVpnAttachmentTunnelOptionsSpecificationArgs', 'GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: Configure the tunnel.
                - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
                - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
@@ -1106,6 +1150,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                  remote_subnet: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
                  tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayVpnAttachmentTunnelOptionsSpecificationArgs', 'GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict']]]]] = None,
                  vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1135,6 +1180,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             __props__.__dict__["remote_subnet"] = remote_subnet
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tunnel_bandwidth"] = tunnel_bandwidth
             __props__.__dict__["tunnel_options_specifications"] = tunnel_options_specifications
             __props__.__dict__["vpn_attachment_name"] = vpn_attachment_name
             __props__.__dict__["create_time"] = None
@@ -1165,6 +1211,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tunnel_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
             tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewayVpnAttachmentTunnelOptionsSpecificationArgs', 'GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict']]]]] = None,
             vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayVpnAttachment':
         """
@@ -1207,6 +1254,9 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] status: The negotiation status of Tunnel.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags
+        :param pulumi.Input[_builtins.str] tunnel_bandwidth: The bandwidth specification of a single VPN tunnel. Valid values:
+               - `Standard` (default): 1 Gbps.
+               - `Large`: 3 Gbps.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayVpnAttachmentTunnelOptionsSpecificationArgs', 'GatewayVpnAttachmentTunnelOptionsSpecificationArgsDict']]]] tunnel_options_specifications: Configure the tunnel.
                - You can configure parameters in the `tunnel_options_specification` array when you create a vpn attachment in dual-tunnel mode.
                - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnel_options_specification` below.
@@ -1232,6 +1282,7 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tunnel_bandwidth"] = tunnel_bandwidth
         __props__.__dict__["tunnel_options_specifications"] = tunnel_options_specifications
         __props__.__dict__["vpn_attachment_name"] = vpn_attachment_name
         return GatewayVpnAttachment(resource_name, opts=opts, __props__=__props__)
@@ -1380,6 +1431,16 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         Tags
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="tunnelBandwidth")
+    def tunnel_bandwidth(self) -> pulumi.Output[_builtins.str]:
+        """
+        The bandwidth specification of a single VPN tunnel. Valid values:
+        - `Standard` (default): 1 Gbps.
+        - `Large`: 3 Gbps.
+        """
+        return pulumi.get(self, "tunnel_bandwidth")
 
     @_builtins.property
     @pulumi.getter(name="tunnelOptionsSpecifications")

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cloudfirewall;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cloudfirewall.AddressBookArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.AddressBookState;
+import com.pulumi.alicloud.cloudfirewall.outputs.AddressBookAssetRegionResourceType;
 import com.pulumi.alicloud.cloudfirewall.outputs.AddressBookEcsTag;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -82,18 +83,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudfirewall/addressBook:AddressBook")
 public class AddressBook extends com.pulumi.resources.CustomResource {
     /**
+     * (Available since v1.286.0) The number of addresses in the Address Book.
+     * 
+     */
+    @Export(name="addressListCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> addressListCount;
+
+    /**
+     * @return (Available since v1.286.0) The number of addresses in the Address Book.
+     * 
+     */
+    public Output<Integer> addressListCount() {
+        return this.addressListCount;
+    }
+    /**
      * The list of addresses.
      * 
      */
     @Export(name="addressLists", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> addressLists;
+    private Output<List<String>> addressLists;
 
     /**
      * @return The list of addresses.
      * 
      */
-    public Output<Optional<List<String>>> addressLists() {
-        return Codegen.optional(this.addressLists);
+    public Output<List<String>> addressLists() {
+        return this.addressLists;
+    }
+    /**
+     * The list of member account UIDs of the asset Address Book.
+     * 
+     */
+    @Export(name="assetMemberUids", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<Integer>> assetMemberUids;
+
+    /**
+     * @return The list of member account UIDs of the asset Address Book.
+     * 
+     */
+    public Output<Optional<List<Integer>>> assetMemberUids() {
+        return Codegen.optional(this.assetMemberUids);
+    }
+    /**
+     * The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     * 
+     */
+    @Export(name="assetRegionResourceTypes", refs={List.class,AddressBookAssetRegionResourceType.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AddressBookAssetRegionResourceType>> assetRegionResourceTypes;
+
+    /**
+     * @return The list of regions and asset types of the asset Address Book. See `assetRegionResourceTypes` below.
+     * 
+     */
+    public Output<Optional<List<AddressBookAssetRegionResourceType>>> assetRegionResourceTypes() {
+        return Codegen.optional(this.assetRegionResourceTypes);
     }
     /**
      * Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
@@ -152,16 +195,16 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
         return this.groupName;
     }
     /**
-     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      * 
      */
     @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output<String> groupType;
 
     /**
-     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
-     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
+     * @return The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`, `asset`, `assetIpv6`.
+     * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`. From version 1.286.0, `groupType` can be set to `asset`, `assetIpv6`.
      * 
      */
     public Output<String> groupType() {
@@ -180,6 +223,20 @@ public class AddressBook extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> lang() {
         return Codegen.optional(this.lang);
+    }
+    /**
+     * (Available since v1.286.0) The number of times that the Address Book is referenced.
+     * 
+     */
+    @Export(name="referenceCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> referenceCount;
+
+    /**
+     * @return (Available since v1.286.0) The number of times that the Address Book is referenced.
+     * 
+     */
+    public Output<Integer> referenceCount() {
+        return this.referenceCount;
     }
     /**
      * The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:

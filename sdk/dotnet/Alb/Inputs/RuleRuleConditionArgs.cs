@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class RuleRuleConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of the cookie. See See `CookieConfig` below.
+        /// The configuration of the cookie. See `CookieConfig` below.
         /// </summary>
         [Input("cookieConfig")]
         public Input<Inputs.RuleRuleConditionCookieConfigArgs>? CookieConfig { get; set; }
@@ -74,9 +74,11 @@ namespace Pulumi.AliCloud.Alb.Inputs
         /// - `QueryString`: Requests are forwarded based on the query string.
         /// - `Method`: Request are forwarded based on the request method.
         /// - `Cookie`: Requests are forwarded based on the cookie.
-        /// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-        /// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-        /// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+        /// - `SourceIp`: Requests are forwarded based on the source ip.
+        /// - `ResponseHeader`: Response header.
+        /// - `ResponseStatusCode`: Response status code.
+        /// 
+        /// &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

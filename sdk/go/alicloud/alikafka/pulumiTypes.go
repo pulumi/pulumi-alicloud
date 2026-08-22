@@ -474,9 +474,9 @@ func (o InstanceConfluentConfigPtrOutput) ZookeeperStorage() pulumi.IntPtrOutput
 }
 
 type InstanceServerlessConfig struct {
-	// The reserved capacity for publishing messages.
+	// The reserved capacity for publishing messages. The minimum value is `60`.
 	ReservedPublishCapacity *int `pulumi:"reservedPublishCapacity"`
-	// The reserved capacity for subscribing to message.
+	// The reserved capacity for subscribing to message. The minimum value is `20`.
 	ReservedSubscribeCapacity *int `pulumi:"reservedSubscribeCapacity"`
 }
 
@@ -492,9 +492,9 @@ type InstanceServerlessConfigInput interface {
 }
 
 type InstanceServerlessConfigArgs struct {
-	// The reserved capacity for publishing messages.
+	// The reserved capacity for publishing messages. The minimum value is `60`.
 	ReservedPublishCapacity pulumi.IntPtrInput `pulumi:"reservedPublishCapacity"`
-	// The reserved capacity for subscribing to message.
+	// The reserved capacity for subscribing to message. The minimum value is `20`.
 	ReservedSubscribeCapacity pulumi.IntPtrInput `pulumi:"reservedSubscribeCapacity"`
 }
 
@@ -575,12 +575,12 @@ func (o InstanceServerlessConfigOutput) ToInstanceServerlessConfigPtrOutputWithC
 	}).(InstanceServerlessConfigPtrOutput)
 }
 
-// The reserved capacity for publishing messages.
+// The reserved capacity for publishing messages. The minimum value is `60`.
 func (o InstanceServerlessConfigOutput) ReservedPublishCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceServerlessConfig) *int { return v.ReservedPublishCapacity }).(pulumi.IntPtrOutput)
 }
 
-// The reserved capacity for subscribing to message.
+// The reserved capacity for subscribing to message. The minimum value is `20`.
 func (o InstanceServerlessConfigOutput) ReservedSubscribeCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceServerlessConfig) *int { return v.ReservedSubscribeCapacity }).(pulumi.IntPtrOutput)
 }
@@ -609,7 +609,7 @@ func (o InstanceServerlessConfigPtrOutput) Elem() InstanceServerlessConfigOutput
 	}).(InstanceServerlessConfigOutput)
 }
 
-// The reserved capacity for publishing messages.
+// The reserved capacity for publishing messages. The minimum value is `60`.
 func (o InstanceServerlessConfigPtrOutput) ReservedPublishCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceServerlessConfig) *int {
 		if v == nil {
@@ -619,7 +619,7 @@ func (o InstanceServerlessConfigPtrOutput) ReservedPublishCapacity() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The reserved capacity for subscribing to message.
+// The reserved capacity for subscribing to message. The minimum value is `20`.
 func (o InstanceServerlessConfigPtrOutput) ReservedSubscribeCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceServerlessConfig) *int {
 		if v == nil {

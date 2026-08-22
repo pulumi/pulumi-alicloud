@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayLogConfigSls {
     /**
-     * @return Enable Log Service
+     * @return The Simple Log Service configuration for the gateway.
      * 
      */
     private @Nullable Boolean enable;
 
     private GatewayLogConfigSls() {}
     /**
-     * @return Enable Log Service
+     * @return The Simple Log Service configuration for the gateway.
      * 
      */
     public Optional<Boolean> enable() {

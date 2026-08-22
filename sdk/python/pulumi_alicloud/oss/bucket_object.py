@@ -48,7 +48,7 @@ class BucketObjectArgs:
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
-        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         :param pulumi.Input[_builtins.str] object_worm_retain_until_date: The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `object_worm_mode`.
                
                > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
@@ -220,7 +220,7 @@ class BucketObjectArgs:
     @pulumi.getter(name="objectWormMode")
     def object_worm_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         """
         return pulumi.get(self, "object_worm_mode")
 
@@ -304,7 +304,7 @@ class _BucketObjectState:
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[_builtins.str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
-        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         :param pulumi.Input[_builtins.str] object_worm_retain_until_date: The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `object_worm_mode`.
                
                > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
@@ -509,7 +509,7 @@ class _BucketObjectState:
     @pulumi.getter(name="objectWormMode")
     def object_worm_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         """
         return pulumi.get(self, "object_worm_mode")
 
@@ -593,6 +593,8 @@ class BucketObject(pulumi.CustomResource):
         """
         Provides a resource to put a object(content or file) to a oss bucket.
 
+        > **NOTE:** Available since v0.1.1.
+
         ## Example Usage
 
         ### Uploading a file to a bucket
@@ -651,7 +653,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[_builtins.str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
-        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         :param pulumi.Input[_builtins.str] object_worm_retain_until_date: The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `object_worm_mode`.
                
                > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
@@ -666,6 +668,8 @@ class BucketObject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to put a object(content or file) to a oss bucket.
+
+        > **NOTE:** Available since v0.1.1.
 
         ## Example Usage
 
@@ -821,7 +825,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires: Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[_builtins.str] kms_key_id: Specifies the primary key managed by KMS. This parameter is valid when the value of `server_side_encryption` is set to KMS.
-        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        :param pulumi.Input[_builtins.str] object_worm_mode: The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         :param pulumi.Input[_builtins.str] object_worm_retain_until_date: The UTC time at which the object retention expires, in ISO8601 format with millisecond precision (for example `2026-09-30T00:00:00.000Z`). Must be set together with `object_worm_mode`.
                
                > **Note:** Either `source` or `content` must be provided to specify the bucket content. These two arguments are mutually-exclusive.
@@ -961,7 +965,7 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="objectWormMode")
     def object_worm_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. Updating only this attribute (or `object_worm_retain_until_date`) calls `PutObjectRetention` and does not re-upload the object.
+        The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `object_worm_retain_until_date`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `object_worm_retain_until_date` calls `PutObjectRetention` and does not re-upload the object.
         """
         return pulumi.get(self, "object_worm_mode")
 

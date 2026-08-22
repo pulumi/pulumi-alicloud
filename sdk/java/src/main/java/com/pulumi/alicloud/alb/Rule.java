@@ -193,6 +193,72 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * Removing a request header before forwarding
+ * 
+ * A forwarding rule must contain exactly one final action (`ForwardGroup`, `Redirect` or `FixedResponse`), and that action is executed last, so the `RemoveHeader` extension action has to be declared with a smaller `order`. The example below reuses the listener and the server group created above.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.alb.Rule;
+ * import com.pulumi.alicloud.alb.RuleArgs;
+ * import com.pulumi.alicloud.alb.inputs.RuleRuleConditionArgs;
+ * import com.pulumi.alicloud.alb.inputs.RuleRuleConditionHostConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.RuleRuleActionArgs;
+ * import com.pulumi.alicloud.alb.inputs.RuleRuleActionRemoveHeaderConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.RuleRuleActionForwardGroupConfigArgs;
+ * import com.pulumi.alicloud.alb.inputs.RuleRuleActionForwardGroupConfigServerGroupTupleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var removeHeader = new Rule("removeHeader", RuleArgs.builder()
+ *             .ruleName(String.format("%s_remove_header", name))
+ *             .listenerId(defaultAlicloudAlbListener.id())
+ *             .priority(556)
+ *             .ruleConditions(RuleRuleConditionArgs.builder()
+ *                 .hostConfig(RuleRuleConditionHostConfigArgs.builder()
+ *                     .values("www.example.com")
+ *                     .build())
+ *                 .type("Host")
+ *                 .build())
+ *             .ruleActions(            
+ *                 RuleRuleActionArgs.builder()
+ *                     .removeHeaderConfig(RuleRuleActionRemoveHeaderConfigArgs.builder()
+ *                         .key("X-Debug-Trace")
+ *                         .build())
+ *                     .order(1)
+ *                     .type("RemoveHeader")
+ *                     .build(),
+ *                 RuleRuleActionArgs.builder()
+ *                     .forwardGroupConfig(RuleRuleActionForwardGroupConfigArgs.builder()
+ *                         .serverGroupTuples(RuleRuleActionForwardGroupConfigServerGroupTupleArgs.builder()
+ *                             .serverGroupId(default_.id())
+ *                             .build())
+ *                         .build())
+ *                     .order(9)
+ *                     .type("ForwardGroup")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
@@ -253,14 +319,18 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.listenerId;
     }
     /**
-     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** The priority of each rule within the same listener must be unique.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * @return The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     * 
+     * &gt; **NOTE:** The priority of each rule within the same listener must be unique.
      * 
      */
     public Output<Integer> priority() {

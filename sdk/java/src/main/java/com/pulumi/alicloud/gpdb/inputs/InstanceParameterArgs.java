@@ -17,14 +17,14 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     public static final InstanceParameterArgs Empty = new InstanceParameterArgs();
 
     /**
-     * (Available since v1.231.0) The default value of the parameter.
+     * The default value of the parameter.
      * 
      */
     @Import(name="defaultValue")
     private @Nullable Output<String> defaultValue;
 
     /**
-     * @return (Available since v1.231.0) The default value of the parameter.
+     * @return The default value of the parameter.
      * 
      */
     public Optional<Output<String>> defaultValue() {
@@ -32,14 +32,14 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+     * Whether to force restart the instance to config the parameter.
      * 
      */
     @Import(name="forceRestartInstance")
     private @Nullable Output<String> forceRestartInstance;
 
     /**
-     * @return (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+     * @return Whether to force restart the instance to config the parameter.
      * 
      */
     public Optional<Output<String>> forceRestartInstance() {
@@ -47,14 +47,14 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Available since v1.231.0) Whether the parameter is changeable.
+     * Whether the parameter is changeable.
      * 
      */
     @Import(name="isChangeableConfig")
     private @Nullable Output<String> isChangeableConfig;
 
     /**
-     * @return (Available since v1.231.0) Whether the parameter is changeable.
+     * @return Whether the parameter is changeable.
      * 
      */
     public Optional<Output<String>> isChangeableConfig() {
@@ -77,14 +77,14 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Available since v1.231.0) The optional range of the parameter.
+     * The optional range of the parameter.
      * 
      */
     @Import(name="optionalRange")
     private @Nullable Output<String> optionalRange;
 
     /**
-     * @return (Available since v1.231.0) The optional range of the parameter.
+     * @return The optional range of the parameter.
      * 
      */
     public Optional<Output<String>> optionalRange() {
@@ -92,14 +92,14 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Available since v1.231.0) The description of the parameter.
+     * The description of the parameter.
      * 
      */
     @Import(name="parameterDescription")
     private @Nullable Output<String> parameterDescription;
 
     /**
-     * @return (Available since v1.231.0) The description of the parameter.
+     * @return The description of the parameter.
      * 
      */
     public Optional<Output<String>> parameterDescription() {
@@ -152,7 +152,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defaultValue (Available since v1.231.0) The default value of the parameter.
+         * @param defaultValue The default value of the parameter.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defaultValue (Available since v1.231.0) The default value of the parameter.
+         * @param defaultValue The default value of the parameter.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param forceRestartInstance (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+         * @param forceRestartInstance Whether to force restart the instance to config the parameter.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param forceRestartInstance (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+         * @param forceRestartInstance Whether to force restart the instance to config the parameter.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isChangeableConfig (Available since v1.231.0) Whether the parameter is changeable.
+         * @param isChangeableConfig Whether the parameter is changeable.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isChangeableConfig (Available since v1.231.0) Whether the parameter is changeable.
+         * @param isChangeableConfig Whether the parameter is changeable.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param optionalRange (Available since v1.231.0) The optional range of the parameter.
+         * @param optionalRange The optional range of the parameter.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param optionalRange (Available since v1.231.0) The optional range of the parameter.
+         * @param optionalRange The optional range of the parameter.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameterDescription (Available since v1.231.0) The description of the parameter.
+         * @param parameterDescription The description of the parameter.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameterDescription (Available since v1.231.0) The description of the parameter.
+         * @param parameterDescription The description of the parameter.
          * 
          * @return builder
          * 

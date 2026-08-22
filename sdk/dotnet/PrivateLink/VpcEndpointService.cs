@@ -104,6 +104,12 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `Resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        /// </summary>
+        [Output("resources")]
+        public Output<ImmutableArray<Outputs.VpcEndpointServiceResource>> Resources { get; private set; } = null!;
+
+        /// <summary>
         /// The service state of the endpoint service.
         /// </summary>
         [Output("serviceBusinessStatus")]
@@ -247,6 +253,18 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("resources")]
+        private InputList<Inputs.VpcEndpointServiceResourceArgs>? _resources;
+
+        /// <summary>
+        /// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `Resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        /// </summary>
+        public InputList<Inputs.VpcEndpointServiceResourceArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.VpcEndpointServiceResourceArgs>());
+            set => _resources = value;
+        }
+
         /// <summary>
         /// The description of the endpoint service.
         /// </summary>
@@ -352,6 +370,18 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("resources")]
+        private InputList<Inputs.VpcEndpointServiceResourceGetArgs>? _resources;
+
+        /// <summary>
+        /// The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `Resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+        /// </summary>
+        public InputList<Inputs.VpcEndpointServiceResourceGetArgs> Resources
+        {
+            get => _resources ?? (_resources = new InputList<Inputs.VpcEndpointServiceResourceGetArgs>());
+            set => _resources = value;
+        }
 
         /// <summary>
         /// The service state of the endpoint service.

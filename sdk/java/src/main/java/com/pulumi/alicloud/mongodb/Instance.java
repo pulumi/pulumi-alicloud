@@ -8,6 +8,7 @@ import com.pulumi.alicloud.mongodb.InstanceArgs;
 import com.pulumi.alicloud.mongodb.inputs.InstanceState;
 import com.pulumi.alicloud.mongodb.outputs.InstanceParameter;
 import com.pulumi.alicloud.mongodb.outputs.InstanceReplicaSet;
+import com.pulumi.alicloud.mongodb.outputs.InstanceSecurityIpGroup;
 import com.pulumi.alicloud.mongodb.outputs.InstanceZoneInfo;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -24,7 +25,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+ * You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  * 
  * &gt; **NOTE:** Available since v1.37.0.
  * 
@@ -756,6 +757,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityGroupId);
     }
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     * 
+     */
+    @Export(name="securityIpGroups", refs={List.class,InstanceSecurityIpGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceSecurityIpGroup>> securityIpGroups;
+
+    /**
+     * @return The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     * 
+     */
+    public Output<Optional<List<InstanceSecurityIpGroup>>> securityIpGroups() {
+        return Codegen.optional(this.securityIpGroups);
+    }
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
@@ -772,7 +787,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      * 
      */
     @Export(name="snapshotBackupType", refs={String.class}, tree="[0]")
@@ -781,7 +796,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
-     * - ` Flash  `: single-digit second backup.
+     * - `Flash`: single-digit second backup.
      * 
      */
     public Output<String> snapshotBackupType() {

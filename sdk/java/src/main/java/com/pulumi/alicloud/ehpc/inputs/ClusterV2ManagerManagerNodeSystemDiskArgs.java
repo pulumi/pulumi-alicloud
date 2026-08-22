@@ -16,77 +16,23 @@ public final class ClusterV2ManagerManagerNodeSystemDiskArgs extends com.pulumi.
 
     public static final ClusterV2ManagerManagerNodeSystemDiskArgs Empty = new ClusterV2ManagerManagerNodeSystemDiskArgs();
 
-    /**
-     * Manage the system disk configuration of the node. Value range:
-     * - cloud_efficiency: The Ultra cloud disk.
-     * - cloud_ssd:SSD cloud disk.
-     * - cloud_essd:ESSD cloud disk.
-     * - cloud: ordinary cloud disk.
-     * 
-     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
-    /**
-     * @return Manage the system disk configuration of the node. Value range:
-     * - cloud_efficiency: The Ultra cloud disk.
-     * - cloud_ssd:SSD cloud disk.
-     * - cloud_essd:ESSD cloud disk.
-     * - cloud: ordinary cloud disk.
-     * 
-     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
 
-    /**
-     * When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-     * - PL0: maximum random read/write IOPS 10000 for a single disk.
-     * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-     * - PL2: maximum random read/write IOPS 100000 for a single disk.
-     * - PL3: maximum random read/write IOPS 1 million for a single disk.
-     * 
-     */
     @Import(name="level")
     private @Nullable Output<String> level;
 
-    /**
-     * @return When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-     * - PL0: maximum random read/write IOPS 10000 for a single disk.
-     * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-     * - PL2: maximum random read/write IOPS 100000 for a single disk.
-     * - PL3: maximum random read/write IOPS 1 million for a single disk.
-     * 
-     */
     public Optional<Output<String>> level() {
         return Optional.ofNullable(this.level);
     }
 
-    /**
-     * The system disk size of the management node. Unit: GiB. Value range:
-     * - Ordinary cloud tray: 20~500.
-     * - ESSD cloud disk:
-     * - PL0:1~2048.
-     * - PL1:20~2048.
-     * - PL2:461~2048.
-     * - PL3:1261~2048.
-     * - Other cloud disk types: 20~2048.
-     * 
-     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
-    /**
-     * @return The system disk size of the management node. Unit: GiB. Value range:
-     * - Ordinary cloud tray: 20~500.
-     * - ESSD cloud disk:
-     * - PL0:1~2048.
-     * - PL1:20~2048.
-     * - PL2:461~2048.
-     * - PL3:1261~2048.
-     * - Other cloud disk types: 20~2048.
-     * 
-     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -117,95 +63,29 @@ public final class ClusterV2ManagerManagerNodeSystemDiskArgs extends com.pulumi.
             $ = new ClusterV2ManagerManagerNodeSystemDiskArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param category Manage the system disk configuration of the node. Value range:
-         * - cloud_efficiency: The Ultra cloud disk.
-         * - cloud_ssd:SSD cloud disk.
-         * - cloud_essd:ESSD cloud disk.
-         * - cloud: ordinary cloud disk.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
-        /**
-         * @param category Manage the system disk configuration of the node. Value range:
-         * - cloud_efficiency: The Ultra cloud disk.
-         * - cloud_ssd:SSD cloud disk.
-         * - cloud_essd:ESSD cloud disk.
-         * - cloud: ordinary cloud disk.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(String category) {
             return category(Output.of(category));
         }
 
-        /**
-         * @param level When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-         * - PL0: maximum random read/write IOPS 10000 for a single disk.
-         * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-         * - PL2: maximum random read/write IOPS 100000 for a single disk.
-         * - PL3: maximum random read/write IOPS 1 million for a single disk.
-         * 
-         * @return builder
-         * 
-         */
         public Builder level(@Nullable Output<String> level) {
             $.level = level;
             return this;
         }
 
-        /**
-         * @param level When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
-         * - PL0: maximum random read/write IOPS 10000 for a single disk.
-         * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
-         * - PL2: maximum random read/write IOPS 100000 for a single disk.
-         * - PL3: maximum random read/write IOPS 1 million for a single disk.
-         * 
-         * @return builder
-         * 
-         */
         public Builder level(String level) {
             return level(Output.of(level));
         }
 
-        /**
-         * @param size The system disk size of the management node. Unit: GiB. Value range:
-         * - Ordinary cloud tray: 20~500.
-         * - ESSD cloud disk:
-         * - PL0:1~2048.
-         * - PL1:20~2048.
-         * - PL2:461~2048.
-         * - PL3:1261~2048.
-         * - Other cloud disk types: 20~2048.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
-        /**
-         * @param size The system disk size of the management node. Unit: GiB. Value range:
-         * - Ordinary cloud tray: 20~500.
-         * - ESSD cloud disk:
-         * - PL0:1~2048.
-         * - PL1:20~2048.
-         * - PL2:461~2048.
-         * - PL3:1261~2048.
-         * - Other cloud disk types: 20~2048.
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

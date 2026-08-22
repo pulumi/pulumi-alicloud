@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -117,6 +118,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:arms/prometheus:Prometheus")
 public class Prometheus extends com.pulumi.resources.CustomResource {
     /**
+     * The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     * 
+     */
+    @Export(name="archiveDuration", refs={Integer.class}, tree="[0]")
+    private Output<Integer> archiveDuration;
+
+    /**
+     * @return The number of days for which data is automatically archived after the storage duration expires. Valid values: `60`, `90`, `180`, `365`. `0` indicates that data is not archived.
+     * 
+     */
+    public Output<Integer> archiveDuration() {
+        return this.archiveDuration;
+    }
+    /**
      * The ID of the Kubernetes cluster. This parameter is required, if you set `clusterType` to `aliyun-cs`.
      * 
      */
@@ -159,6 +174,20 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
         return this.clusterType;
     }
     /**
+     * The data storage duration, in days.
+     * 
+     */
+    @Export(name="duration", refs={Integer.class}, tree="[0]")
+    private Output<Integer> duration;
+
+    /**
+     * @return The data storage duration, in days.
+     * 
+     */
+    public Output<Integer> duration() {
+        return this.duration;
+    }
+    /**
      * The ID of the Grafana dedicated instance. When using the shared version of Grafana, you can set `grafanaInstanceId` to `free`.
      * 
      */
@@ -171,6 +200,20 @@ public class Prometheus extends com.pulumi.resources.CustomResource {
      */
     public Output<String> grafanaInstanceId() {
         return this.grafanaInstanceId;
+    }
+    /**
+     * The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return The billing method. Valid values: `POSTPAY` (pay-as-you-go based on the amount of reported metrics), `POSTPAY_GB` (pay-as-you-go based on the amount of written metrics).
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
      * The ID of the resource group.

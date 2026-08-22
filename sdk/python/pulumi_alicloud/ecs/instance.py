@@ -141,7 +141,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
-        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
@@ -699,7 +699,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         """
         return pulumi.get(self, "image_id")
 
@@ -1671,7 +1671,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
-        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
@@ -2306,7 +2306,7 @@ class _InstanceState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         """
         return pulumi.get(self, "image_id")
 
@@ -3431,7 +3431,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
-        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
@@ -3995,7 +3995,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
-        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
@@ -4434,7 +4434,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
+        The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
         """
         return pulumi.get(self, "image_id")
 

@@ -37,8 +37,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a RAM Role Policy attachment.
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Name: pulumi.String("roleName"),
-//				Document: pulumi.String(`    {
+//				RoleName: pulumi.String("roleName"),
+//				AssumeRolePolicyDocument: pulumi.String(`    {
 //	      \"Statement\": [
 //	        {
 //	          \"Action\": \"sts:AssumeRole\",
@@ -97,7 +97,7 @@ import (
 //			_, err = ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
 //				PolicyName: policy.PolicyName,
 //				PolicyType: policy.Type,
-//				RoleName:   role.Name,
+//				RoleName:   role.RoleName,
 //			})
 //			if err != nil {
 //				return err

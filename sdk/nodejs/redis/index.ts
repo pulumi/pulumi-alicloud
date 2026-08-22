@@ -10,6 +10,16 @@ export type Backup = import("./backup").Backup;
 export const Backup: typeof import("./backup").Backup = null as any;
 utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 
+export { GetGlobalSecurityIpGroupsArgs, GetGlobalSecurityIpGroupsResult, GetGlobalSecurityIpGroupsOutputArgs } from "./getGlobalSecurityIpGroups";
+export const getGlobalSecurityIpGroups: typeof import("./getGlobalSecurityIpGroups").getGlobalSecurityIpGroups = null as any;
+export const getGlobalSecurityIpGroupsOutput: typeof import("./getGlobalSecurityIpGroups").getGlobalSecurityIpGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGlobalSecurityIpGroups","getGlobalSecurityIpGroupsOutput"], () => require("./getGlobalSecurityIpGroups"));
+
+export { GlobalSecurityIpGroupArgs, GlobalSecurityIpGroupState } from "./globalSecurityIpGroup";
+export type GlobalSecurityIpGroup = import("./globalSecurityIpGroup").GlobalSecurityIpGroup;
+export const GlobalSecurityIpGroup: typeof import("./globalSecurityIpGroup").GlobalSecurityIpGroup = null as any;
+utilities.lazyLoad(exports, ["GlobalSecurityIpGroup"], () => require("./globalSecurityIpGroup"));
+
 export { TairInstanceArgs, TairInstanceState } from "./tairInstance";
 export type TairInstance = import("./tairInstance").TairInstance;
 export const TairInstance: typeof import("./tairInstance").TairInstance = null as any;
@@ -22,6 +32,8 @@ const _module = {
         switch (type) {
             case "alicloud:redis/backup:Backup":
                 return new Backup(name, <any>undefined, { urn })
+            case "alicloud:redis/globalSecurityIpGroup:GlobalSecurityIpGroup":
+                return new GlobalSecurityIpGroup(name, <any>undefined, { urn })
             case "alicloud:redis/tairInstance:TairInstance":
                 return new TairInstance(name, <any>undefined, { urn })
             default:
@@ -30,4 +42,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "redis/backup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "redis/globalSecurityIpGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "redis/tairInstance", _module)

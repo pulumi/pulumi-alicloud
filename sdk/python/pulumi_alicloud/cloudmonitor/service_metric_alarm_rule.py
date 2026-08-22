@@ -40,6 +40,7 @@ class ServiceMetricAlarmRuleArgs:
                  send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceMetricAlarmRule resource.
@@ -100,6 +101,7 @@ class ServiceMetricAlarmRuleArgs:
         :param pulumi.Input[_builtins.bool] status: The enabled status of the alarm rule. Valid values:
                - true: enabled.
                - false: disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         """
         pulumi.set(__self__, "contact_groups", contact_groups)
@@ -134,6 +136,8 @@ class ServiceMetricAlarmRuleArgs:
             pulumi.set(__self__, "silence_time", silence_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
 
@@ -404,6 +408,18 @@ class ServiceMetricAlarmRuleArgs:
 
     @_builtins.property
     @pulumi.getter
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]]]:
+        """
+        The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+    @_builtins.property
+    @pulumi.getter
     def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
@@ -439,6 +455,7 @@ class _ServiceMetricAlarmRuleState:
                  silence_time: pulumi.Input[Optional[_builtins.str]] = None,
                  source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceMetricAlarmRule resources.
@@ -501,6 +518,7 @@ class _ServiceMetricAlarmRuleState:
         :param pulumi.Input[_builtins.bool] status: The enabled status of the alarm rule. Valid values:
                - true: enabled.
                - false: disabled.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         """
         if composite_expression is not None:
@@ -545,6 +563,8 @@ class _ServiceMetricAlarmRuleState:
             pulumi.set(__self__, "source_type", source_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
 
@@ -839,6 +859,18 @@ class _ServiceMetricAlarmRuleState:
 
     @_builtins.property
     @pulumi.getter
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]]]:
+        """
+        The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceMetricAlarmRuleTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+    @_builtins.property
+    @pulumi.getter
     def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
@@ -875,6 +907,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
                  send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -993,6 +1026,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] status: The enabled status of the alarm rule. Valid values:
                - true: enabled.
                - false: disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         """
         ...
@@ -1093,6 +1127,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
                  send_ok: pulumi.Input[Optional[_builtins.bool]] = None,
                  silence_time: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]]] = None,
                  webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1134,6 +1169,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
             __props__.__dict__["send_ok"] = send_ok
             __props__.__dict__["silence_time"] = silence_time
             __props__.__dict__["status"] = status
+            __props__.__dict__["targets"] = targets
             __props__.__dict__["webhook"] = webhook
             __props__.__dict__["dimensions"] = None
             __props__.__dict__["source_type"] = None
@@ -1168,6 +1204,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
             silence_time: pulumi.Input[Optional[_builtins.str]] = None,
             source_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.bool]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]]] = None,
             webhook: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceMetricAlarmRule':
         """
         Get an existing ServiceMetricAlarmRule resource's state with the given name, id, and optional extra
@@ -1234,6 +1271,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] status: The enabled status of the alarm rule. Valid values:
                - true: enabled.
                - false: disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceMetricAlarmRuleTargetArgs', 'ServiceMetricAlarmRuleTargetArgsDict']]]] targets: The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
         :param pulumi.Input[_builtins.str] webhook: The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1261,6 +1299,7 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         __props__.__dict__["silence_time"] = silence_time
         __props__.__dict__["source_type"] = source_type
         __props__.__dict__["status"] = status
+        __props__.__dict__["targets"] = targets
         __props__.__dict__["webhook"] = webhook
         return ServiceMetricAlarmRule(resource_name, opts=opts, __props__=__props__)
 
@@ -1468,6 +1507,14 @@ class ServiceMetricAlarmRule(pulumi.CustomResource):
         - false: disabled.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> pulumi.Output[Sequence['outputs.ServiceMetricAlarmRuleTarget']]:
+        """
+        The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+        """
+        return pulumi.get(self, "targets")
 
     @_builtins.property
     @pulumi.getter

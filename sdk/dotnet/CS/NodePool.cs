@@ -371,6 +371,24 @@ namespace Pulumi.AliCloud.CS
     ///                 "net.ipv4.route.min_pmtu",
     ///             },
     ///         },
+    ///         ContainerdConfig = new AliCloud.CS.Inputs.NodePoolContainerdConfigArgs
+    ///         {
+    ///             MaxConcurrentDownloads = 10,
+    ///             IgnoreImageDefinedVolume = "true",
+    ///             LimitCore = "10",
+    ///             LimitNoFile = "1024",
+    ///             LimitMemLock = "65536",
+    ///             RegistryMirrors = new[]
+    ///             {
+    ///                 "docker.io=https://registry.cn-hangzhou.aliyuncs.com,https://mirror2.example.com&amp;override_path",
+    ///                 "gcr.io=https://gcr-mirror.example.com&amp;override_path",
+    ///             },
+    ///             InsecureRegistries = new[]
+    ///             {
+    ///                 "registry.example.com",
+    ///                 "192.168.1.1:5000",
+    ///             },
+    ///         },
     ///         RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
     ///         {
     ///             MaxParallelism = 1,
@@ -849,6 +867,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("compensateWithOnDemand")]
         public Output<bool?> CompensateWithOnDemand { get; private set; } = null!;
+
+        /// <summary>
+        /// Containerd configuration parameters for worker nodes.
+        /// 
+        /// &gt; **NOTE:** Setting `ContainerdConfig` at creation time takes effect through an extra NodeConfig update call issued after the node pool has been created. Removing the whole `ContainerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `ContainerdConfig` below.
+        /// </summary>
+        [Output("containerdConfig")]
+        public Output<Outputs.NodePoolContainerdConfig?> ContainerdConfig { get; private set; } = null!;
 
         /// <summary>
         /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:
@@ -1435,6 +1461,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("compensateWithOnDemand")]
         public Input<bool>? CompensateWithOnDemand { get; set; }
+
+        /// <summary>
+        /// Containerd configuration parameters for worker nodes.
+        /// 
+        /// &gt; **NOTE:** Setting `ContainerdConfig` at creation time takes effect through an extra NodeConfig update call issued after the node pool has been created. Removing the whole `ContainerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `ContainerdConfig` below.
+        /// </summary>
+        [Input("containerdConfig")]
+        public Input<Inputs.NodePoolContainerdConfigArgs>? ContainerdConfig { get; set; }
 
         /// <summary>
         /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:
@@ -2064,6 +2098,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("compensateWithOnDemand")]
         public Input<bool>? CompensateWithOnDemand { get; set; }
+
+        /// <summary>
+        /// Containerd configuration parameters for worker nodes.
+        /// 
+        /// &gt; **NOTE:** Setting `ContainerdConfig` at creation time takes effect through an extra NodeConfig update call issued after the node pool has been created. Removing the whole `ContainerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `ContainerdConfig` below.
+        /// </summary>
+        [Input("containerdConfig")]
+        public Input<Inputs.NodePoolContainerdConfigGetArgs>? ContainerdConfig { get; set; }
 
         /// <summary>
         /// Node CPU management policies. Default value: `None`. When the cluster version is 1.12.6 or later, the following two policies are supported:

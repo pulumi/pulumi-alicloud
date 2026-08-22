@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string?> ExcludeResourceIdsScope { get; private set; } = null!;
 
         /// <summary>
+        /// The rule monitors excluded tags, only applies to rules created based on managed rules. See `ExcludeTagsScope` below for details.
+        /// </summary>
+        [Output("excludeTagsScopes")]
+        public Output<ImmutableArray<Outputs.AggregateConfigRuleExcludeTagsScope>> ExcludeTagsScopes { get; private set; } = null!;
+
+        /// <summary>
         /// The settings map of the input parameters for the rule.
         /// </summary>
         [Output("inputParameters")]
@@ -272,6 +278,18 @@ namespace Pulumi.AliCloud.Cfg
         [Input("excludeResourceIdsScope")]
         public Input<string>? ExcludeResourceIdsScope { get; set; }
 
+        [Input("excludeTagsScopes")]
+        private InputList<Inputs.AggregateConfigRuleExcludeTagsScopeArgs>? _excludeTagsScopes;
+
+        /// <summary>
+        /// The rule monitors excluded tags, only applies to rules created based on managed rules. See `ExcludeTagsScope` below for details.
+        /// </summary>
+        public InputList<Inputs.AggregateConfigRuleExcludeTagsScopeArgs> ExcludeTagsScopes
+        {
+            get => _excludeTagsScopes ?? (_excludeTagsScopes = new InputList<Inputs.AggregateConfigRuleExcludeTagsScopeArgs>());
+            set => _excludeTagsScopes = value;
+        }
+
         [Input("inputParameters")]
         private InputMap<string>? _inputParameters;
 
@@ -396,6 +414,18 @@ namespace Pulumi.AliCloud.Cfg
         /// </summary>
         [Input("excludeResourceIdsScope")]
         public Input<string>? ExcludeResourceIdsScope { get; set; }
+
+        [Input("excludeTagsScopes")]
+        private InputList<Inputs.AggregateConfigRuleExcludeTagsScopeGetArgs>? _excludeTagsScopes;
+
+        /// <summary>
+        /// The rule monitors excluded tags, only applies to rules created based on managed rules. See `ExcludeTagsScope` below for details.
+        /// </summary>
+        public InputList<Inputs.AggregateConfigRuleExcludeTagsScopeGetArgs> ExcludeTagsScopes
+        {
+            get => _excludeTagsScopes ?? (_excludeTagsScopes = new InputList<Inputs.AggregateConfigRuleExcludeTagsScopeGetArgs>());
+            set => _excludeTagsScopes = value;
+        }
 
         [Input("inputParameters")]
         private InputMap<string>? _inputParameters;

@@ -31,6 +31,7 @@ class SecurityGroupRuleArgs:
                  prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  source_group_owner_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_group_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_security_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
@@ -38,7 +39,7 @@ class SecurityGroupRuleArgs:
         :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] type: The type of the Security Group Rule. Valid values:
-        :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        :param pulumi.Input[_builtins.str] cidr_ip: The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
@@ -49,7 +50,8 @@ class SecurityGroupRuleArgs:
                For example, `1/200` means that the range of the port numbers is 1-200. Other protocols' 'port_range' can only be "-1/-1", and other values will be invalid.
         :param pulumi.Input[_builtins.str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         :param pulumi.Input[_builtins.int] priority: The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
-        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_id: The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
         :param pulumi.Input[_builtins.str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
@@ -72,7 +74,12 @@ class SecurityGroupRuleArgs:
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if source_group_owner_account is not None:
+            warnings.warn("""Use source_group_owner_id instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_group_owner_account is deprecated: Use source_group_owner_id instead.""")
+        if source_group_owner_account is not None:
             pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
+        if source_group_owner_id is not None:
+            pulumi.set(__self__, "source_group_owner_id", source_group_owner_id)
         if source_security_group_id is not None:
             pulumi.set(__self__, "source_security_group_id", source_security_group_id)
 
@@ -116,7 +123,7 @@ class SecurityGroupRuleArgs:
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -213,15 +220,28 @@ class SecurityGroupRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceGroupOwnerAccount")
+    @_utilities.deprecated("""Use source_group_owner_id instead.""")
     def source_group_owner_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
         """
         return pulumi.get(self, "source_group_owner_account")
 
     @source_group_owner_account.setter
     def source_group_owner_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_group_owner_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceGroupOwnerId")
+    def source_group_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+        """
+        return pulumi.get(self, "source_group_owner_id")
+
+    @source_group_owner_id.setter
+    def source_group_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_group_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSecurityGroupId")
@@ -251,12 +271,13 @@ class _SecurityGroupRuleState:
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_group_owner_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_group_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
 
-        :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        :param pulumi.Input[_builtins.str] cidr_ip: The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
@@ -270,7 +291,8 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[_builtins.int] priority: The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] security_group_rule_id: The ID of the Security Group Rule.
-        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_id: The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
         :param pulumi.Input[_builtins.str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         :param pulumi.Input[_builtins.str] type: The type of the Security Group Rule. Valid values:
         """
@@ -297,7 +319,12 @@ class _SecurityGroupRuleState:
         if security_group_rule_id is not None:
             pulumi.set(__self__, "security_group_rule_id", security_group_rule_id)
         if source_group_owner_account is not None:
+            warnings.warn("""Use source_group_owner_id instead.""", DeprecationWarning)
+            pulumi.log.warn("""source_group_owner_account is deprecated: Use source_group_owner_id instead.""")
+        if source_group_owner_account is not None:
             pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
+        if source_group_owner_id is not None:
+            pulumi.set(__self__, "source_group_owner_id", source_group_owner_id)
         if source_security_group_id is not None:
             pulumi.set(__self__, "source_security_group_id", source_security_group_id)
         if type is not None:
@@ -307,7 +334,7 @@ class _SecurityGroupRuleState:
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -440,15 +467,28 @@ class _SecurityGroupRuleState:
 
     @_builtins.property
     @pulumi.getter(name="sourceGroupOwnerAccount")
+    @_utilities.deprecated("""Use source_group_owner_id instead.""")
     def source_group_owner_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
         """
         return pulumi.get(self, "source_group_owner_account")
 
     @source_group_owner_account.setter
     def source_group_owner_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_group_owner_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceGroupOwnerId")
+    def source_group_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+        """
+        return pulumi.get(self, "source_group_owner_id")
+
+    @source_group_owner_id.setter
+    def source_group_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_group_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSecurityGroupId")
@@ -492,6 +532,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_group_owner_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_group_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -546,7 +587,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        :param pulumi.Input[_builtins.str] cidr_ip: The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
@@ -559,7 +600,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] prefix_list_id: The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
         :param pulumi.Input[_builtins.int] priority: The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
-        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_id: The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
         :param pulumi.Input[_builtins.str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         :param pulumi.Input[_builtins.str] type: The type of the Security Group Rule. Valid values:
         """
@@ -644,6 +686,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_group_owner_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_group_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -670,6 +713,7 @@ class SecurityGroupRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'security_group_id'")
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["source_group_owner_account"] = source_group_owner_account
+            __props__.__dict__["source_group_owner_id"] = source_group_owner_id
             __props__.__dict__["source_security_group_id"] = source_security_group_id
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -697,6 +741,7 @@ class SecurityGroupRule(pulumi.CustomResource):
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_group_owner_account: pulumi.Input[Optional[_builtins.str]] = None,
+            source_group_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityGroupRule':
         """
@@ -706,7 +751,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        :param pulumi.Input[_builtins.str] cidr_ip: The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
@@ -720,7 +765,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] priority: The priority of the Security Group Rule. Default value: `1`. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] security_group_rule_id: The ID of the Security Group Rule.
-        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_account: The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
+        :param pulumi.Input[_builtins.str] source_group_owner_id: The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
         :param pulumi.Input[_builtins.str] source_security_group_id: The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
         :param pulumi.Input[_builtins.str] type: The type of the Security Group Rule. Valid values:
         """
@@ -740,6 +786,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_rule_id"] = security_group_rule_id
         __props__.__dict__["source_group_owner_account"] = source_group_owner_account
+        __props__.__dict__["source_group_owner_id"] = source_group_owner_id
         __props__.__dict__["source_security_group_id"] = source_security_group_id
         __props__.__dict__["type"] = type
         return SecurityGroupRule(resource_name, opts=opts, __props__=__props__)
@@ -748,7 +795,7 @@ class SecurityGroupRule(pulumi.CustomResource):
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `cidr_ip = "0.0.0.0/0"` explicitly.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -837,11 +884,20 @@ class SecurityGroupRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sourceGroupOwnerAccount")
+    @_utilities.deprecated("""Use source_group_owner_id instead.""")
     def source_group_owner_account(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
+        The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `source_group_owner_id` instead. This parameter is invalid if `cidr_ip` has already been set.
         """
         return pulumi.get(self, "source_group_owner_account")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceGroupOwnerId")
+    def source_group_owner_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+        """
+        return pulumi.get(self, "source_group_owner_id")
 
     @_builtins.property
     @pulumi.getter(name="sourceSecurityGroupId")

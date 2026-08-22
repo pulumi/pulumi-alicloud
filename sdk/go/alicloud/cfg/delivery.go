@@ -122,6 +122,8 @@ type Delivery struct {
 	//
 	// Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
 	DeliveryChannelCondition pulumi.StringPtrOutput `pulumi:"deliveryChannelCondition"`
+	// The ID of the delivery channel. It is the same as the resource `id`.
+	DeliveryChannelId pulumi.StringOutput `pulumi:"deliveryChannelId"`
 	// The name of the delivery channel.
 	DeliveryChannelName pulumi.StringPtrOutput `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination.
@@ -204,6 +206,8 @@ type deliveryState struct {
 	//
 	// Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
 	DeliveryChannelCondition *string `pulumi:"deliveryChannelCondition"`
+	// The ID of the delivery channel. It is the same as the resource `id`.
+	DeliveryChannelId *string `pulumi:"deliveryChannelId"`
 	// The name of the delivery channel.
 	DeliveryChannelName *string `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination.
@@ -251,6 +255,8 @@ type DeliveryState struct {
 	//
 	// Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
 	DeliveryChannelCondition pulumi.StringPtrInput
+	// The ID of the delivery channel. It is the same as the resource `id`.
+	DeliveryChannelId pulumi.StringPtrInput
 	// The name of the delivery channel.
 	DeliveryChannelName pulumi.StringPtrInput
 	// The ARN of the delivery destination.
@@ -490,6 +496,11 @@ func (o DeliveryOutput) ConfigurationSnapshot() pulumi.BoolPtrOutput {
 // Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
 func (o DeliveryOutput) DeliveryChannelCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Delivery) pulumi.StringPtrOutput { return v.DeliveryChannelCondition }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the delivery channel. It is the same as the resource `id`.
+func (o DeliveryOutput) DeliveryChannelId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Delivery) pulumi.StringOutput { return v.DeliveryChannelId }).(pulumi.StringOutput)
 }
 
 // The name of the delivery channel.

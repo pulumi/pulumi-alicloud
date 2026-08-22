@@ -175,6 +175,8 @@ type ServiceMetricAlarmRule struct {
 	// - true: enabled.
 	// - false: disabled.
 	Status pulumi.BoolOutput `pulumi:"status"`
+	// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+	Targets ServiceMetricAlarmRuleTargetArrayOutput `pulumi:"targets"`
 	// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
 	Webhook pulumi.StringPtrOutput `pulumi:"webhook"`
 }
@@ -306,6 +308,8 @@ type serviceMetricAlarmRuleState struct {
 	// - true: enabled.
 	// - false: disabled.
 	Status *bool `pulumi:"status"`
+	// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+	Targets []ServiceMetricAlarmRuleTarget `pulumi:"targets"`
 	// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
 	Webhook *string `pulumi:"webhook"`
 }
@@ -390,6 +394,8 @@ type ServiceMetricAlarmRuleState struct {
 	// - true: enabled.
 	// - false: disabled.
 	Status pulumi.BoolPtrInput
+	// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+	Targets ServiceMetricAlarmRuleTargetArrayInput
 	// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
 	Webhook pulumi.StringPtrInput
 }
@@ -474,6 +480,8 @@ type serviceMetricAlarmRuleArgs struct {
 	// - true: enabled.
 	// - false: disabled.
 	Status *bool `pulumi:"status"`
+	// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+	Targets []ServiceMetricAlarmRuleTarget `pulumi:"targets"`
 	// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
 	Webhook *string `pulumi:"webhook"`
 }
@@ -555,6 +563,8 @@ type ServiceMetricAlarmRuleArgs struct {
 	// - true: enabled.
 	// - false: disabled.
 	Status pulumi.BoolPtrInput
+	// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+	Targets ServiceMetricAlarmRuleTargetArrayInput
 	// The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.
 	Webhook pulumi.StringPtrInput
 }
@@ -788,6 +798,11 @@ func (o ServiceMetricAlarmRuleOutput) SourceType() pulumi.StringOutput {
 // - false: disabled.
 func (o ServiceMetricAlarmRuleOutput) Status() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceMetricAlarmRule) pulumi.BoolOutput { return v.Status }).(pulumi.BoolOutput)
+}
+
+// The push channels that receive the alert, in addition to the alert contact groups. Up to 5 targets are supported. See `targets` below.
+func (o ServiceMetricAlarmRuleOutput) Targets() ServiceMetricAlarmRuleTargetArrayOutput {
+	return o.ApplyT(func(v *ServiceMetricAlarmRule) ServiceMetricAlarmRuleTargetArrayOutput { return v.Targets }).(ServiceMetricAlarmRuleTargetArrayOutput)
 }
 
 // The URL address specified for callback when an alert is triggered. A POST request is sent to this URL.

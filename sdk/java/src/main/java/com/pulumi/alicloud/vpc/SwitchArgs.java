@@ -42,14 +42,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      * 
      */
     @Import(name="cidrBlock")
     private @Nullable Output<String> cidrBlock;
 
     /**
-     * @return The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * @return The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      * 
      */
     public Optional<Output<String>> cidrBlock() {
@@ -57,14 +57,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of VSwitch.
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of VSwitch.
+     * @return The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -195,14 +195,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the VSwitch.
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="vswitchName")
     private @Nullable Output<String> vswitchName;
 
     /**
-     * @return The name of the VSwitch.
+     * @return The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> vswitchName() {
@@ -289,7 +289,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of VSwitch.
+         * @param description The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of VSwitch.
+         * @param description The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchName The name of the VSwitch.
+         * @param vswitchName The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchName The name of the VSwitch.
+         * @param vswitchName The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 

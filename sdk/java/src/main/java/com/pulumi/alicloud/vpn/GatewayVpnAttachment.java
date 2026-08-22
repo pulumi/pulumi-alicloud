@@ -522,6 +522,24 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
+     * The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     * 
+     */
+    @Export(name="tunnelBandwidth", refs={String.class}, tree="[0]")
+    private Output<String> tunnelBandwidth;
+
+    /**
+     * @return The bandwidth specification of a single VPN tunnel. Valid values:
+     * - `Standard` (default): 1 Gbps.
+     * - `Large`: 3 Gbps.
+     * 
+     */
+    public Output<String> tunnelBandwidth() {
+        return this.tunnelBandwidth;
+    }
+    /**
      * Configure the tunnel.
      * - You can configure parameters in the `tunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
      * - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `tunnelOptionsSpecification` below.

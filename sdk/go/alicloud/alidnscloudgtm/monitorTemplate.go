@@ -95,7 +95,7 @@ import (
 type MonitorTemplate struct {
 	pulumi.CustomResourceState
 
-	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 	EvaluationCount pulumi.IntOutput `pulumi:"evaluationCount"`
 	// A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
 	ExtendInfo pulumi.StringOutput `pulumi:"extendInfo"`
@@ -168,7 +168,7 @@ func GetMonitorTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MonitorTemplate resources.
 type monitorTemplateState struct {
-	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 	EvaluationCount *int `pulumi:"evaluationCount"`
 	// A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
 	ExtendInfo *string `pulumi:"extendInfo"`
@@ -191,7 +191,7 @@ type monitorTemplateState struct {
 }
 
 type MonitorTemplateState struct {
-	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 	EvaluationCount pulumi.IntPtrInput
 	// A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
 	ExtendInfo pulumi.StringPtrInput
@@ -218,7 +218,7 @@ func (MonitorTemplateState) ElementType() reflect.Type {
 }
 
 type monitorTemplateArgs struct {
-	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 	EvaluationCount int `pulumi:"evaluationCount"`
 	// A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
 	ExtendInfo *string `pulumi:"extendInfo"`
@@ -242,7 +242,7 @@ type monitorTemplateArgs struct {
 
 // The set of arguments for constructing a MonitorTemplate resource.
 type MonitorTemplateArgs struct {
-	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+	// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 	EvaluationCount pulumi.IntInput
 	// A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
 	ExtendInfo pulumi.StringPtrInput
@@ -351,7 +351,7 @@ func (o MonitorTemplateOutput) ToMonitorTemplateOutputWithContext(ctx context.Co
 	return o
 }
 
-// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
 func (o MonitorTemplateOutput) EvaluationCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *MonitorTemplate) pulumi.IntOutput { return v.EvaluationCount }).(pulumi.IntOutput)
 }

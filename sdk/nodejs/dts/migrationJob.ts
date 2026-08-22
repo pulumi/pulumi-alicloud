@@ -205,6 +205,14 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly dbList: pulumi.Output<string>;
     /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     */
+    declare public readonly destPrimaryVswitchId: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     */
+    declare public readonly destSecondaryVswitchId: pulumi.Output<string | undefined>;
+    /**
      * The name of migrate the database.
      */
     declare public readonly destinationEndpointDatabaseName: pulumi.Output<string | undefined>;
@@ -240,6 +248,10 @@ export class MigrationJob extends pulumi.CustomResource {
      * The region of destination instance.
      */
     declare public readonly destinationEndpointRegion: pulumi.Output<string | undefined>;
+    /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly destinationEndpointSsl: pulumi.Output<string>;
     /**
      * The username of database account.
      */
@@ -301,11 +313,25 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     declare public readonly sourceEndpointRole: pulumi.Output<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    declare public readonly sourceEndpointSsl: pulumi.Output<string>;
+    /**
      * The username of database account.
      */
     declare public readonly sourceEndpointUserName: pulumi.Output<string | undefined>;
     /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     */
+    declare public readonly srcPrimaryVswitchId: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     */
+    declare public readonly srcSecondaryVswitchId: pulumi.Output<string | undefined>;
+    /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -330,6 +356,8 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["dataInitialization"] = state?.dataInitialization;
             resourceInputs["dataSynchronization"] = state?.dataSynchronization;
             resourceInputs["dbList"] = state?.dbList;
+            resourceInputs["destPrimaryVswitchId"] = state?.destPrimaryVswitchId;
+            resourceInputs["destSecondaryVswitchId"] = state?.destSecondaryVswitchId;
             resourceInputs["destinationEndpointDatabaseName"] = state?.destinationEndpointDatabaseName;
             resourceInputs["destinationEndpointEngineName"] = state?.destinationEndpointEngineName;
             resourceInputs["destinationEndpointInstanceId"] = state?.destinationEndpointInstanceId;
@@ -339,6 +367,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPassword"] = state?.destinationEndpointPassword;
             resourceInputs["destinationEndpointPort"] = state?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = state?.destinationEndpointRegion;
+            resourceInputs["destinationEndpointSsl"] = state?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = state?.destinationEndpointUserName;
             resourceInputs["dtsInstanceId"] = state?.dtsInstanceId;
             resourceInputs["dtsJobName"] = state?.dtsJobName;
@@ -354,7 +383,10 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = state?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = state?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = state?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = state?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = state?.sourceEndpointUserName;
+            resourceInputs["srcPrimaryVswitchId"] = state?.srcPrimaryVswitchId;
+            resourceInputs["srcSecondaryVswitchId"] = state?.srcSecondaryVswitchId;
             resourceInputs["status"] = state?.status;
             resourceInputs["structureInitialization"] = state?.structureInitialization;
         } else {
@@ -390,6 +422,8 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["dataInitialization"] = args?.dataInitialization;
             resourceInputs["dataSynchronization"] = args?.dataSynchronization;
             resourceInputs["dbList"] = args?.dbList;
+            resourceInputs["destPrimaryVswitchId"] = args?.destPrimaryVswitchId;
+            resourceInputs["destSecondaryVswitchId"] = args?.destSecondaryVswitchId;
             resourceInputs["destinationEndpointDatabaseName"] = args?.destinationEndpointDatabaseName;
             resourceInputs["destinationEndpointEngineName"] = args?.destinationEndpointEngineName;
             resourceInputs["destinationEndpointInstanceId"] = args?.destinationEndpointInstanceId;
@@ -399,6 +433,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["destinationEndpointPassword"] = args?.destinationEndpointPassword;
             resourceInputs["destinationEndpointPort"] = args?.destinationEndpointPort;
             resourceInputs["destinationEndpointRegion"] = args?.destinationEndpointRegion;
+            resourceInputs["destinationEndpointSsl"] = args?.destinationEndpointSsl;
             resourceInputs["destinationEndpointUserName"] = args?.destinationEndpointUserName;
             resourceInputs["dtsInstanceId"] = args?.dtsInstanceId;
             resourceInputs["dtsJobName"] = args?.dtsJobName;
@@ -414,7 +449,10 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["sourceEndpointPort"] = args?.sourceEndpointPort;
             resourceInputs["sourceEndpointRegion"] = args?.sourceEndpointRegion;
             resourceInputs["sourceEndpointRole"] = args?.sourceEndpointRole;
+            resourceInputs["sourceEndpointSsl"] = args?.sourceEndpointSsl;
             resourceInputs["sourceEndpointUserName"] = args?.sourceEndpointUserName;
+            resourceInputs["srcPrimaryVswitchId"] = args?.srcPrimaryVswitchId;
+            resourceInputs["srcSecondaryVswitchId"] = args?.srcSecondaryVswitchId;
             resourceInputs["status"] = args?.status;
             resourceInputs["structureInitialization"] = args?.structureInitialization;
         }
@@ -443,6 +481,14 @@ export interface MigrationJobState {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
      */
     dbList?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The name of migrate the database.
      */
@@ -479,6 +525,10 @@ export interface MigrationJobState {
      * The region of destination instance.
      */
     destinationEndpointRegion?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
@@ -540,11 +590,25 @@ export interface MigrationJobState {
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account.
      */
     sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcSecondaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -573,6 +637,14 @@ export interface MigrationJobArgs {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
      */
     dbList: pulumi.Input<string>;
+    /**
+     * The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+     */
+    destSecondaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The name of migrate the database.
      */
@@ -609,6 +681,10 @@ export interface MigrationJobArgs {
      * The region of destination instance.
      */
     destinationEndpointRegion?: pulumi.Input<string | undefined>;
+    /**
+     * The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    destinationEndpointSsl?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
@@ -670,11 +746,25 @@ export interface MigrationJobArgs {
      */
     sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
+     * The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+     */
+    sourceEndpointSsl?: pulumi.Input<string | undefined>;
+    /**
      * The username of database account.
      */
     sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the primary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcPrimaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+     */
+    srcSecondaryVswitchId?: pulumi.Input<string | undefined>;
+    /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+     *
+     * > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
      */
     status?: pulumi.Input<string | undefined>;
     /**

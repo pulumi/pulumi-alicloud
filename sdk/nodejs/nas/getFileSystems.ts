@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides FileSystems available to the user.
  *
- * > **NOTE**: Available in 1.35.0+
+ * > **NOTE:** Available since v1.35.0+
  *
  * ## Example Usage
  *
@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *
  * const fs = alicloud.nas.getFileSystems({
  *     protocolType: "NFS",
+ *     fileSystemType: "standard",
  *     descriptionRegex: foo.description,
  * });
  * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
@@ -29,6 +30,7 @@ export function getFileSystems(args?: GetFileSystemsArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:nas/getFileSystems:getFileSystems", {
         "descriptionRegex": args.descriptionRegex,
+        "fileSystemType": args.fileSystemType,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "protocolType": args.protocolType,
@@ -44,6 +46,15 @@ export interface GetFileSystemsArgs {
      * A regex string to filter the results by the ：FileSystem description.
      */
     descriptionRegex?: string;
+    /**
+     * The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     */
+    fileSystemType?: string;
     /**
      * A list of FileSystemId.
      */
@@ -78,6 +89,15 @@ export interface GetFileSystemsResult {
      */
     readonly descriptions: string[];
     /**
+     * (Optional, Available in v1.140.0+) The type of the file system.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     */
+    readonly fileSystemType?: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -102,7 +122,7 @@ export interface GetFileSystemsResult {
 /**
  * This data source provides FileSystems available to the user.
  *
- * > **NOTE**: Available in 1.35.0+
+ * > **NOTE:** Available since v1.35.0+
  *
  * ## Example Usage
  *
@@ -112,6 +132,7 @@ export interface GetFileSystemsResult {
  *
  * const fs = alicloud.nas.getFileSystems({
  *     protocolType: "NFS",
+ *     fileSystemType: "standard",
  *     descriptionRegex: foo.description,
  * });
  * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
@@ -122,6 +143,7 @@ export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getFileSystems:getFileSystems", {
         "descriptionRegex": args.descriptionRegex,
+        "fileSystemType": args.fileSystemType,
         "ids": args.ids,
         "outputFile": args.outputFile,
         "protocolType": args.protocolType,
@@ -137,6 +159,15 @@ export interface GetFileSystemsOutputArgs {
      * A regex string to filter the results by the ：FileSystem description.
      */
     descriptionRegex?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     */
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * A list of FileSystemId.
      */

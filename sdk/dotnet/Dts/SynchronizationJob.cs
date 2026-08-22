@@ -289,22 +289,34 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DelayRuleTime { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Output("destPrimaryVswitchId")]
+        public Output<string?> DestPrimaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Output("destSecondaryVswitchId")]
+        public Output<string?> DestSecondaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         /// </summary>
         [Output("destinationEndpointDatabaseName")]
         public Output<string?> DestinationEndpointDatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
 
         /// <summary>
         /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `DestinationEndpointInstanceType`. For example, the value of `DestinationEndpointInstanceType` is:
-        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
+        /// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Output("destinationEndpointInstanceId")]
         public Output<string?> DestinationEndpointInstanceId { get; private set; } = null!;
@@ -358,6 +370,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> DestinationEndpointRole { get; private set; } = null!;
 
         /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Output("destinationEndpointSsl")]
+        public Output<string> DestinationEndpointSsl { get; private set; } = null!;
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Output("destinationEndpointUserName")]
@@ -365,6 +383,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The environment label of the DTS instance. The value is: **normal**, **online**.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// 
         /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// 
@@ -411,6 +431,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        /// 
+        /// &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `SourceEndpointSsl` and `DestinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
         /// </summary>
         [Output("reserve")]
         public Output<string> Reserve { get; private set; } = null!;
@@ -429,9 +451,9 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `SourceEndpointInstanceType`. For example, the value of `SourceEndpointInstanceType` is:
-        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
+        /// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Output("sourceEndpointInstanceId")]
         public Output<string?> SourceEndpointInstanceId { get; private set; } = null!;
@@ -485,6 +507,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string?> SourceEndpointRole { get; private set; } = null!;
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Output("sourceEndpointSsl")]
+        public Output<string> SourceEndpointSsl { get; private set; } = null!;
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Output("sourceEndpointUserName")]
@@ -495,6 +523,18 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Output("sourceEndpointVswitchId")]
         public Output<string?> SourceEndpointVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Output("srcPrimaryVswitchId")]
+        public Output<string?> SrcPrimaryVswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Output("srcSecondaryVswitchId")]
+        public Output<string?> SrcSecondaryVswitchId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
@@ -615,22 +655,34 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DelayRuleTime { get; set; }
 
         /// <summary>
+        /// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destPrimaryVswitchId")]
+        public Input<string>? DestPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destSecondaryVswitchId")]
+        public Input<string>? DestSecondaryVswitchId { get; set; }
+
+        /// <summary>
         /// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointDatabaseName")]
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Input("destinationEndpointEngineName", required: true)]
         public Input<string> DestinationEndpointEngineName { get; set; } = null!;
 
         /// <summary>
         /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `DestinationEndpointInstanceType`. For example, the value of `DestinationEndpointInstanceType` is:
-        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
+        /// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("destinationEndpointInstanceId")]
         public Input<string>? DestinationEndpointInstanceId { get; set; }
@@ -684,6 +736,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("destinationEndpointSsl")]
+        public Input<string>? DestinationEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
@@ -691,6 +749,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The environment label of the DTS instance. The value is: **normal**, **online**.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// 
         /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// 
@@ -737,6 +797,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        /// 
+        /// &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `SourceEndpointSsl` and `DestinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
         /// </summary>
         [Input("reserve")]
         public Input<string>? Reserve { get; set; }
@@ -755,9 +817,9 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `SourceEndpointInstanceType`. For example, the value of `SourceEndpointInstanceType` is:
-        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
+        /// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
@@ -811,6 +873,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("sourceEndpointUserName")]
@@ -821,6 +889,18 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("sourceEndpointVswitchId")]
         public Input<string>? SourceEndpointVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcPrimaryVswitchId")]
+        public Input<string>? SrcPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcSecondaryVswitchId")]
+        public Input<string>? SrcSecondaryVswitchId { get; set; }
 
         /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
@@ -903,22 +983,34 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DelayRuleTime { get; set; }
 
         /// <summary>
+        /// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destPrimaryVswitchId")]
+        public Input<string>? DestPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+        /// </summary>
+        [Input("destSecondaryVswitchId")]
+        public Input<string>? DestSecondaryVswitchId { get; set; }
+
+        /// <summary>
         /// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
         /// </summary>
         [Input("destinationEndpointDatabaseName")]
         public Input<string>? DestinationEndpointDatabaseName { get; set; }
 
         /// <summary>
-        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,` POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+        /// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `Reserve`. For the configuration method, see the description of `Reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
 
         /// <summary>
         /// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `DestinationEndpointInstanceType`. For example, the value of `DestinationEndpointInstanceType` is:
-        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
+        /// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("destinationEndpointInstanceId")]
         public Input<string>? DestinationEndpointInstanceId { get; set; }
@@ -972,6 +1064,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? DestinationEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("destinationEndpointSsl")]
+        public Input<string>? DestinationEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("destinationEndpointUserName")]
@@ -979,6 +1077,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The environment label of the DTS instance. The value is: **normal**, **online**.
+        /// 
+        /// &gt; **NOTE:** `SrcPrimaryVswitchId`, `SrcSecondaryVswitchId`, `DestPrimaryVswitchId` and `DestSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
         /// 
         /// &gt; **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
         /// 
@@ -1025,6 +1125,8 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+        /// 
+        /// &gt; **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `SourceEndpointSsl` and `DestinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
         /// </summary>
         [Input("reserve")]
         public Input<string>? Reserve { get; set; }
@@ -1043,9 +1145,9 @@ namespace Pulumi.AliCloud.Dts
 
         /// <summary>
         /// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `SourceEndpointInstanceType`. For example, the value of `SourceEndpointInstanceType` is:
-        /// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-        /// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-        /// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
+        /// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+        /// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+        /// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `Reserve`.
         /// </summary>
         [Input("sourceEndpointInstanceId")]
         public Input<string>? SourceEndpointInstanceId { get; set; }
@@ -1099,6 +1201,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? SourceEndpointRole { get; set; }
 
         /// <summary>
+        /// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+        /// </summary>
+        [Input("sourceEndpointSsl")]
+        public Input<string>? SourceEndpointSsl { get; set; }
+
+        /// <summary>
         /// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
         /// </summary>
         [Input("sourceEndpointUserName")]
@@ -1109,6 +1217,18 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("sourceEndpointVswitchId")]
         public Input<string>? SourceEndpointVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcPrimaryVswitchId")]
+        public Input<string>? SrcPrimaryVswitchId { get; set; }
+
+        /// <summary>
+        /// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+        /// </summary>
+        [Input("srcSecondaryVswitchId")]
+        public Input<string>? SrcSecondaryVswitchId { get; set; }
 
         /// <summary>
         /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.

@@ -75,6 +75,11 @@ export const getOriginRules: typeof import("./getOriginRules").getOriginRules = 
 export const getOriginRulesOutput: typeof import("./getOriginRules").getOriginRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getOriginRules","getOriginRulesOutput"], () => require("./getOriginRules"));
 
+export { GetRoutineCodeVersionsArgs, GetRoutineCodeVersionsResult, GetRoutineCodeVersionsOutputArgs } from "./getRoutineCodeVersions";
+export const getRoutineCodeVersions: typeof import("./getRoutineCodeVersions").getRoutineCodeVersions = null as any;
+export const getRoutineCodeVersionsOutput: typeof import("./getRoutineCodeVersions").getRoutineCodeVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getRoutineCodeVersions","getRoutineCodeVersionsOutput"], () => require("./getRoutineCodeVersions"));
+
 export { GetSitesArgs, GetSitesResult, GetSitesOutputArgs } from "./getSites";
 export const getSites: typeof import("./getSites").getSites = null as any;
 export const getSitesOutput: typeof import("./getSites").getSitesOutput = null as any;
@@ -204,6 +209,11 @@ export { RoutineArgs, RoutineState } from "./routine";
 export type Routine = import("./routine").Routine;
 export const Routine: typeof import("./routine").Routine = null as any;
 utilities.lazyLoad(exports, ["Routine"], () => require("./routine"));
+
+export { RoutineCodeDeploymentArgs, RoutineCodeDeploymentState } from "./routineCodeDeployment";
+export type RoutineCodeDeployment = import("./routineCodeDeployment").RoutineCodeDeployment;
+export const RoutineCodeDeployment: typeof import("./routineCodeDeployment").RoutineCodeDeployment = null as any;
+utilities.lazyLoad(exports, ["RoutineCodeDeployment"], () => require("./routineCodeDeployment"));
 
 export { RoutineRelatedRecordArgs, RoutineRelatedRecordState } from "./routineRelatedRecord";
 export type RoutineRelatedRecord = import("./routineRelatedRecord").RoutineRelatedRecord;
@@ -358,6 +368,8 @@ const _module = {
                 return new RewriteUrlRule(name, <any>undefined, { urn })
             case "alicloud:esa/routine:Routine":
                 return new Routine(name, <any>undefined, { urn })
+            case "alicloud:esa/routineCodeDeployment:RoutineCodeDeployment":
+                return new RoutineCodeDeployment(name, <any>undefined, { urn })
             case "alicloud:esa/routineRelatedRecord:RoutineRelatedRecord":
                 return new RoutineRelatedRecord(name, <any>undefined, { urn })
             case "alicloud:esa/routineRoute:RoutineRoute":
@@ -429,6 +441,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/record", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/redirectRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/rewriteUrlRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/routine", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/routineCodeDeployment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/routineRelatedRecord", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/routineRoute", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/scheduledPreloadExecution", _module)

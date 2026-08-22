@@ -75,6 +75,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:pvtz/zone:Zone")
 public class Zone extends com.pulumi.resources.CustomResource {
     /**
+     * The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+     * 
+     */
+    @Export(name="dnsGroup", refs={String.class}, tree="[0]")
+    private Output<String> dnsGroup;
+
+    /**
+     * @return The built-in authoritative location zone of the Private Zone. Valid values: `NORMAL_ZONE` (normal zone) and `FAST_ZONE` (fast zone). If not specified, the system uses the account default (accounts opened after April 30, 2025 default to `FAST_ZONE`). Updating this field switches the zone from `NORMAL_ZONE` to `FAST_ZONE`; the reverse direction (`FAST_ZONE` &gt; `NORMAL_ZONE`) is not supported by the API.
+     * 
+     */
+    public Output<String> dnsGroup() {
+        return this.dnsGroup;
+    }
+    /**
      * Whether the Private Zone is ptr.
      * 
      */

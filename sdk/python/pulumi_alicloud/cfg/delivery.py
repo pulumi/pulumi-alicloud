@@ -237,6 +237,7 @@ class _DeliveryState:
                  configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
                  configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
                  delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -264,6 +265,7 @@ class _DeliveryState:
                The setting of the resource types of the events to which you want to subscribe is in the following format: {"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
                
                Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
+        :param pulumi.Input[_builtins.str] delivery_channel_id: The ID of the delivery channel. It is the same as the resource `id`.
         :param pulumi.Input[_builtins.str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[_builtins.str] delivery_channel_target_arn: The ARN of the delivery destination.
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
@@ -288,6 +290,8 @@ class _DeliveryState:
             pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
         if delivery_channel_condition is not None:
             pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+        if delivery_channel_id is not None:
+            pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
         if delivery_channel_name is not None:
             pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
         if delivery_channel_target_arn is not None:
@@ -352,6 +356,18 @@ class _DeliveryState:
     @delivery_channel_condition.setter
     def delivery_channel_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deliveryChannelId")
+    def delivery_channel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the delivery channel. It is the same as the resource `id`.
+        """
+        return pulumi.get(self, "delivery_channel_id")
+
+    @delivery_channel_id.setter
+    def delivery_channel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delivery_channel_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")
@@ -658,6 +674,7 @@ class Delivery(pulumi.CustomResource):
             __props__.__dict__["non_compliant_notification"] = non_compliant_notification
             __props__.__dict__["oversized_data_oss_target_arn"] = oversized_data_oss_target_arn
             __props__.__dict__["status"] = status
+            __props__.__dict__["delivery_channel_id"] = None
         super(Delivery, __self__).__init__(
             'alicloud:cfg/delivery:Delivery',
             resource_name,
@@ -671,6 +688,7 @@ class Delivery(pulumi.CustomResource):
             configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
             configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
             delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_id: pulumi.Input[Optional[_builtins.str]] = None,
             delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
             delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
             delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -702,6 +720,7 @@ class Delivery(pulumi.CustomResource):
                The setting of the resource types of the events to which you want to subscribe is in the following format: {"filterType":"ResourceType","values":["ACS::ACK::Cluster","ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage"],"multiple":true}, The values field indicates the resource types of the events to which you want to subscribe. The value of the field is a JSON array.
                
                Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
+        :param pulumi.Input[_builtins.str] delivery_channel_id: The ID of the delivery channel. It is the same as the resource `id`.
         :param pulumi.Input[_builtins.str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[_builtins.str] delivery_channel_target_arn: The ARN of the delivery destination.
                - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
@@ -727,6 +746,7 @@ class Delivery(pulumi.CustomResource):
         __props__.__dict__["configuration_item_change_notification"] = configuration_item_change_notification
         __props__.__dict__["configuration_snapshot"] = configuration_snapshot
         __props__.__dict__["delivery_channel_condition"] = delivery_channel_condition
+        __props__.__dict__["delivery_channel_id"] = delivery_channel_id
         __props__.__dict__["delivery_channel_name"] = delivery_channel_name
         __props__.__dict__["delivery_channel_target_arn"] = delivery_channel_target_arn
         __props__.__dict__["delivery_channel_type"] = delivery_channel_type
@@ -773,6 +793,14 @@ class Delivery(pulumi.CustomResource):
         Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
         """
         return pulumi.get(self, "delivery_channel_condition")
+
+    @_builtins.property
+    @pulumi.getter(name="deliveryChannelId")
+    def delivery_channel_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the delivery channel. It is the same as the resource `id`.
+        """
+        return pulumi.get(self, "delivery_channel_id")
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")

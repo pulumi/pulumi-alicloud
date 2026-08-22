@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Oss
     /// <summary>
     /// Provides a resource to put a object(content or file) to a oss bucket.
     /// 
+    /// &gt; **NOTE:** Available since v0.1.1.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Uploading a file to a bucket
@@ -174,7 +176,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `ObjectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `ObjectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
         /// </summary>
         [Output("objectWormMode")]
         public Output<string> ObjectWormMode { get; private set; } = null!;
@@ -318,7 +320,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `ObjectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `ObjectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
         /// </summary>
         [Input("objectWormMode")]
         public Input<string>? ObjectWormMode { get; set; }
@@ -430,7 +432,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. Updating only this attribute (or `ObjectWormRetainUntilDate`) calls `PutObjectRetention` and does not re-upload the object.
+        /// The retention mode of the object worm policy. Valid value: `COMPLIANCE`. Must be set together with `ObjectWormRetainUntilDate`. The bucket must have object worm enabled. **Note: The parameter is immutable after resource creation.** Updating `ObjectWormRetainUntilDate` calls `PutObjectRetention` and does not re-upload the object.
         /// </summary>
         [Input("objectWormMode")]
         public Input<string>? ObjectWormMode { get; set; }

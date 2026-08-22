@@ -86,7 +86,9 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly cidrBlock: pulumi.Output<string>;
     /**
-     * The status of ClassicLink function.
+     * The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+     *
+     * @deprecated Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      */
     declare public readonly classicLinkEnabled: pulumi.Output<boolean | undefined>;
     /**
@@ -173,7 +175,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly routeTableId: pulumi.Output<string>;
     /**
-     * The region ID of the VPC to which the route table belongs.
+     * The ID of the VRouter.
      */
     declare public /*out*/ readonly routerId: pulumi.Output<string>;
     /**
@@ -217,7 +219,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      */
     declare public readonly userCidrs: pulumi.Output<string[]>;
     /**
@@ -319,7 +321,9 @@ export interface NetworkState {
      */
     cidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The status of ClassicLink function.
+     * The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+     *
+     * @deprecated Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      */
     classicLinkEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -406,7 +410,7 @@ export interface NetworkState {
      */
     routeTableId?: pulumi.Input<string | undefined>;
     /**
-     * The region ID of the VPC to which the route table belongs.
+     * The ID of the VRouter.
      */
     routerId?: pulumi.Input<string | undefined>;
     /**
@@ -450,7 +454,7 @@ export interface NetworkState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -474,7 +478,9 @@ export interface NetworkArgs {
      */
     cidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The status of ClassicLink function.
+     * The status of ClassicLink function. Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+     *
+     * @deprecated Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      */
     classicLinkEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -575,7 +581,7 @@ export interface NetworkArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      */
     userCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

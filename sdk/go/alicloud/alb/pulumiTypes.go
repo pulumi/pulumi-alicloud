@@ -2815,10 +2815,12 @@ type RuleRuleAction struct {
 	// The configuration of the inserted header field. See `insertHeaderConfig` below.
 	InsertHeaderConfig *RuleRuleActionInsertHeaderConfig `pulumi:"insertHeaderConfig"`
 	// The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+	//
+	// > **NOTE:** The `ForwardGroup`, `Redirect` or `FixedResponse` action is performed last, so its `order` must be greater than the `order` of every other action in the same rule. Otherwise the rule is rejected with `IllegalParam.Order`.
 	Order int `pulumi:"order"`
 	// The configuration of the external redirect action. See `redirectConfig` below.
 	RedirectConfig *RuleRuleActionRedirectConfig `pulumi:"redirectConfig"`
-	// The configuration of the inserted header field. See `removeHeaderConfig` below.
+	// The configuration of the removed header field. See `removeHeaderConfig` below.
 	RemoveHeaderConfig *RuleRuleActionRemoveHeaderConfig `pulumi:"removeHeaderConfig"`
 	// The redirect action within ALB. See `rewriteConfig` below.
 	RewriteConfig *RuleRuleActionRewriteConfig `pulumi:"rewriteConfig"`
@@ -2827,9 +2829,12 @@ type RuleRuleAction struct {
 	// The Traffic mirroring. See `trafficMirrorConfig` below.
 	TrafficMirrorConfig *RuleRuleActionTrafficMirrorConfig `pulumi:"trafficMirrorConfig"`
 	// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-	// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-	// **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+	//
+	// > **NOTE:** A forwarding rule must contain exactly one `ForwardGroup`, `Redirect` or `FixedResponse` action, which is performed last. Every other action is performed before it and can only be used together with it: a rule can contain multiple `InsertHeader` actions, but at most one `Rewrite` action.
+	//
+	// > **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+	//
+	// > **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
 	Type string `pulumi:"type"`
 }
 
@@ -2854,10 +2859,12 @@ type RuleRuleActionArgs struct {
 	// The configuration of the inserted header field. See `insertHeaderConfig` below.
 	InsertHeaderConfig RuleRuleActionInsertHeaderConfigPtrInput `pulumi:"insertHeaderConfig"`
 	// The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+	//
+	// > **NOTE:** The `ForwardGroup`, `Redirect` or `FixedResponse` action is performed last, so its `order` must be greater than the `order` of every other action in the same rule. Otherwise the rule is rejected with `IllegalParam.Order`.
 	Order pulumi.IntInput `pulumi:"order"`
 	// The configuration of the external redirect action. See `redirectConfig` below.
 	RedirectConfig RuleRuleActionRedirectConfigPtrInput `pulumi:"redirectConfig"`
-	// The configuration of the inserted header field. See `removeHeaderConfig` below.
+	// The configuration of the removed header field. See `removeHeaderConfig` below.
 	RemoveHeaderConfig RuleRuleActionRemoveHeaderConfigPtrInput `pulumi:"removeHeaderConfig"`
 	// The redirect action within ALB. See `rewriteConfig` below.
 	RewriteConfig RuleRuleActionRewriteConfigPtrInput `pulumi:"rewriteConfig"`
@@ -2866,9 +2873,12 @@ type RuleRuleActionArgs struct {
 	// The Traffic mirroring. See `trafficMirrorConfig` below.
 	TrafficMirrorConfig RuleRuleActionTrafficMirrorConfigPtrInput `pulumi:"trafficMirrorConfig"`
 	// The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-	// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-	// **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+	//
+	// > **NOTE:** A forwarding rule must contain exactly one `ForwardGroup`, `Redirect` or `FixedResponse` action, which is performed last. Every other action is performed before it and can only be used together with it: a rule can contain multiple `InsertHeader` actions, but at most one `Rewrite` action.
+	//
+	// > **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+	//
+	// > **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2944,6 +2954,8 @@ func (o RuleRuleActionOutput) InsertHeaderConfig() RuleRuleActionInsertHeaderCon
 }
 
 // The order of the forwarding rule actions. Valid values: `1` to `50000`. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
+//
+// > **NOTE:** The `ForwardGroup`, `Redirect` or `FixedResponse` action is performed last, so its `order` must be greater than the `order` of every other action in the same rule. Otherwise the rule is rejected with `IllegalParam.Order`.
 func (o RuleRuleActionOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v RuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
 }
@@ -2953,7 +2965,7 @@ func (o RuleRuleActionOutput) RedirectConfig() RuleRuleActionRedirectConfigPtrOu
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRedirectConfig { return v.RedirectConfig }).(RuleRuleActionRedirectConfigPtrOutput)
 }
 
-// The configuration of the inserted header field. See `removeHeaderConfig` below.
+// The configuration of the removed header field. See `removeHeaderConfig` below.
 func (o RuleRuleActionOutput) RemoveHeaderConfig() RuleRuleActionRemoveHeaderConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionRemoveHeaderConfig { return v.RemoveHeaderConfig }).(RuleRuleActionRemoveHeaderConfigPtrOutput)
 }
@@ -2974,9 +2986,12 @@ func (o RuleRuleActionOutput) TrafficMirrorConfig() RuleRuleActionTrafficMirrorC
 }
 
 // The action type. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `RemoveHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
-// **Note:** The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
-// **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
+//
+// > **NOTE:** A forwarding rule must contain exactly one `ForwardGroup`, `Redirect` or `FixedResponse` action, which is performed last. Every other action is performed before it and can only be used together with it: a rule can contain multiple `InsertHeader` actions, but at most one `Rewrite` action.
+//
+// > **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available since 1.162.0.
+//
+// > **NOTE:** From version 1.205.0, `type` can be set to `Cors`.
 func (o RuleRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3728,7 +3743,8 @@ type RuleRuleActionForwardGroupConfigServerGroupTuple struct {
 	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 	// The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-	// **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+	//
+	// > **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -3747,7 +3763,8 @@ type RuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
 	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
 	// The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-	// **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+	//
+	// > **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -3808,7 +3825,8 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() 
 }
 
 // The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
-// **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
+//
+// > **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
 func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -4021,7 +4039,9 @@ type RuleRuleActionRedirectConfig struct {
 	Path *string `pulumi:"path"`
 	// The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
 	Port *string `pulumi:"port"`
-	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+	//
+	// > **NOTE:** HTTPS listeners can redirect only HTTPS requests.
 	Protocol *string `pulumi:"protocol"`
 	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query *string `pulumi:"query"`
@@ -4047,7 +4067,9 @@ type RuleRuleActionRedirectConfigArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+	//
+	// > **NOTE:** HTTPS listeners can redirect only HTTPS requests.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query pulumi.StringPtrInput `pulumi:"query"`
@@ -4150,7 +4172,9 @@ func (o RuleRuleActionRedirectConfigOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+//
+// > **NOTE:** HTTPS listeners can redirect only HTTPS requests.
 func (o RuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -4224,7 +4248,9 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+//
+// > **NOTE:** HTTPS listeners can redirect only HTTPS requests.
 func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -4553,7 +4579,9 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 type RuleRuleActionTrafficLimitConfig struct {
-	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+	// The number of requests per second for a single IP address. Value range: 1~1000000.
+	//
+	// > **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
 	PerIpQps *int `pulumi:"perIpQps"`
 	// The Number of requests per second. Valid values: `1` to `100000`.
 	Qps *int `pulumi:"qps"`
@@ -4571,7 +4599,9 @@ type RuleRuleActionTrafficLimitConfigInput interface {
 }
 
 type RuleRuleActionTrafficLimitConfigArgs struct {
-	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+	// The number of requests per second for a single IP address. Value range: 1~1000000.
+	//
+	// > **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
 	PerIpQps pulumi.IntPtrInput `pulumi:"perIpQps"`
 	// The Number of requests per second. Valid values: `1` to `100000`.
 	Qps pulumi.IntPtrInput `pulumi:"qps"`
@@ -4654,7 +4684,9 @@ func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConf
 	}).(RuleRuleActionTrafficLimitConfigPtrOutput)
 }
 
-// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+// The number of requests per second for a single IP address. Value range: 1~1000000.
+//
+// > **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
 func (o RuleRuleActionTrafficLimitConfigOutput) PerIpQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.PerIpQps }).(pulumi.IntPtrOutput)
 }
@@ -4688,7 +4720,9 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Elem() RuleRuleActionTrafficL
 	}).(RuleRuleActionTrafficLimitConfigOutput)
 }
 
-// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
+// The number of requests per second for a single IP address. Value range: 1~1000000.
+//
+// > **NOTE:** If `qps` is also configured, the value of `perIpQps` must be smaller than the value of `qps`.
 func (o RuleRuleActionTrafficLimitConfigPtrOutput) PerIpQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
 		if v == nil {
@@ -5105,7 +5139,7 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayO
 }
 
 type RuleRuleCondition struct {
-	// The configuration of the cookie. See See `cookieConfig` below.
+	// The configuration of the cookie. See `cookieConfig` below.
 	CookieConfig *RuleRuleConditionCookieConfig `pulumi:"cookieConfig"`
 	// The configuration of the header field. See `headerConfig` below.
 	HeaderConfig *RuleRuleConditionHeaderConfig `pulumi:"headerConfig"`
@@ -5130,9 +5164,11 @@ type RuleRuleCondition struct {
 	// - `QueryString`: Requests are forwarded based on the query string.
 	// - `Method`: Request are forwarded based on the request method.
 	// - `Cookie`: Requests are forwarded based on the cookie.
-	// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-	// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-	// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+	// - `SourceIp`: Requests are forwarded based on the source ip.
+	// - `ResponseHeader`: Response header.
+	// - `ResponseStatusCode`: Response status code.
+	//
+	// > **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
 	Type string `pulumi:"type"`
 }
 
@@ -5148,7 +5184,7 @@ type RuleRuleConditionInput interface {
 }
 
 type RuleRuleConditionArgs struct {
-	// The configuration of the cookie. See See `cookieConfig` below.
+	// The configuration of the cookie. See `cookieConfig` below.
 	CookieConfig RuleRuleConditionCookieConfigPtrInput `pulumi:"cookieConfig"`
 	// The configuration of the header field. See `headerConfig` below.
 	HeaderConfig RuleRuleConditionHeaderConfigPtrInput `pulumi:"headerConfig"`
@@ -5173,9 +5209,11 @@ type RuleRuleConditionArgs struct {
 	// - `QueryString`: Requests are forwarded based on the query string.
 	// - `Method`: Request are forwarded based on the request method.
 	// - `Cookie`: Requests are forwarded based on the cookie.
-	// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-	// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-	// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+	// - `SourceIp`: Requests are forwarded based on the source ip.
+	// - `ResponseHeader`: Response header.
+	// - `ResponseStatusCode`: Response status code.
+	//
+	// > **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5230,7 +5268,7 @@ func (o RuleRuleConditionOutput) ToRuleRuleConditionOutputWithContext(ctx contex
 	return o
 }
 
-// The configuration of the cookie. See See `cookieConfig` below.
+// The configuration of the cookie. See `cookieConfig` below.
 func (o RuleRuleConditionOutput) CookieConfig() RuleRuleConditionCookieConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleCondition) *RuleRuleConditionCookieConfig { return v.CookieConfig }).(RuleRuleConditionCookieConfigPtrOutput)
 }
@@ -5284,9 +5322,11 @@ func (o RuleRuleConditionOutput) SourceIpConfig() RuleRuleConditionSourceIpConfi
 // - `QueryString`: Requests are forwarded based on the query string.
 // - `Method`: Request are forwarded based on the request method.
 // - `Cookie`: Requests are forwarded based on the cookie.
-// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+// - `SourceIp`: Requests are forwarded based on the source ip.
+// - `ResponseHeader`: Response header.
+// - `ResponseStatusCode`: Response status code.
+//
+// > **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
 func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }

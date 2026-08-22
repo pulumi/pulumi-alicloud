@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.NodePoolArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolState;
 import com.pulumi.alicloud.cs.outputs.NodePoolAutoMode;
+import com.pulumi.alicloud.cs.outputs.NodePoolContainerdConfig;
 import com.pulumi.alicloud.cs.outputs.NodePoolDataDisk;
 import com.pulumi.alicloud.cs.outputs.NodePoolEfloNodeGroup;
 import com.pulumi.alicloud.cs.outputs.NodePoolInstanceMetadataOptions;
@@ -110,6 +111,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
  * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
  * import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
+ * import com.pulumi.alicloud.cs.inputs.NodePoolContainerdConfigArgs;
  * import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -347,6 +349,19 @@ import javax.annotation.Nullable;
  *                 .readOnlyPort("0")
  *                 .allowedUnsafeSysctls("net.ipv4.route.min_pmtu")
  *                 .build())
+ *             .containerdConfig(NodePoolContainerdConfigArgs.builder()
+ *                 .maxConcurrentDownloads(10)
+ *                 .ignoreImageDefinedVolume("true")
+ *                 .limitCore("10")
+ *                 .limitNoFile("1024")
+ *                 .limitMemLock("65536")
+ *                 .registryMirrors(                
+ *                     "docker.io=https://registry.cn-hangzhou.aliyuncs.com,https://mirror2.example.com&override_path",
+ *                     "gcr.io=https://gcr-mirror.example.com&override_path")
+ *                 .insecureRegistries(                
+ *                     "registry.example.com",
+ *                     "192.168.1.1:5000")
+ *                 .build())
  *             .rollingPolicy(NodePoolRollingPolicyArgs.builder()
  *                 .maxParallelism(1)
  *                 .build())
@@ -462,6 +477,24 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> compensateWithOnDemand() {
         return Codegen.optional(this.compensateWithOnDemand);
+    }
+    /**
+     * Containerd configuration parameters for worker nodes.
+     * 
+     * &gt; **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     * 
+     */
+    @Export(name="containerdConfig", refs={NodePoolContainerdConfig.class}, tree="[0]")
+    private Output</* @Nullable */ NodePoolContainerdConfig> containerdConfig;
+
+    /**
+     * @return Containerd configuration parameters for worker nodes.
+     * 
+     * &gt; **NOTE:** Setting `containerdConfig` at creation time takes effect through an extra nodeConfig update call issued after the node pool has been created. Removing the whole `containerdConfig` block clears all custom containerd configuration on the cloud side (the API uses full-replacement semantics); an empty block is equivalent to omitting the parameter. See `containerdConfig` below.
+     * 
+     */
+    public Output<Optional<NodePoolContainerdConfig>> containerdConfig() {
+        return Codegen.optional(this.containerdConfig);
     }
     /**
      * Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:

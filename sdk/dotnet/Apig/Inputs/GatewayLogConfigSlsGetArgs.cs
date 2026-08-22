@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Apig.Inputs
     public sealed class GatewayLogConfigSlsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Log Service
+        /// The Simple Log Service configuration for the gateway.
         /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }

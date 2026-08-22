@@ -6,6 +6,7 @@ package com.pulumi.alicloud.privatelink;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
 import com.pulumi.alicloud.privatelink.inputs.VpcEndpointServiceState;
+import com.pulumi.alicloud.privatelink.outputs.VpcEndpointServiceResource;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -192,6 +193,20 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
+    }
+    /**
+     * The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     * 
+     */
+    @Export(name="resources", refs={List.class,VpcEndpointServiceResource.class}, tree="[0,1]")
+    private Output<List<VpcEndpointServiceResource>> resources;
+
+    /**
+     * @return The service resources to associate with the endpoint service when it is created. A maximum of 10 service resources can be specified at creation. See `resource` below. This argument manages the full lifecycle of the associated service resources; do not use it together with the standalone `alicloud.privatelink.VpcEndpointServiceResource` resource for the same endpoint service, as the two would conflict.
+     * 
+     */
+    public Output<List<VpcEndpointServiceResource>> resources() {
+        return this.resources;
     }
     /**
      * The service state of the endpoint service.

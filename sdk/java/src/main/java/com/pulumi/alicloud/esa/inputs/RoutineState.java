@@ -16,6 +16,36 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     public static final RoutineState Empty = new RoutineState();
 
     /**
+     * The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file(&#34;index.js&#34;)`.
+     * 
+     */
+    @Import(name="code")
+    private @Nullable Output<String> code;
+
+    /**
+     * @return The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file(&#34;index.js&#34;)`.
+     * 
+     */
+    public Optional<Output<String>> code() {
+        return Optional.ofNullable(this.code);
+    }
+
+    /**
+     * The description attached to the committed code version.
+     * 
+     */
+    @Import(name="codeDescription")
+    private @Nullable Output<String> codeDescription;
+
+    /**
+     * @return The description attached to the committed code version.
+     * 
+     */
+    public Optional<Output<String>> codeDescription() {
+        return Optional.ofNullable(this.codeDescription);
+    }
+
+    /**
      * The time when the routine was created.
      * 
      */
@@ -31,14 +61,29 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The routine name, which must be unique in the same account.
+     * The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     * 
+     */
+    @Import(name="deployEnv")
+    private @Nullable Output<String> deployEnv;
+
+    /**
+     * @return The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+     * 
+     */
+    public Optional<Output<String>> deployEnv() {
+        return Optional.ofNullable(this.deployEnv);
+    }
+
+    /**
+     * The description of the routine.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The routine name, which must be unique in the same account.
+     * @return The description of the routine.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +91,29 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Routine Name
+     * The most recent committed code version of the routine.
+     * 
+     */
+    @Import(name="latestCodeVersion")
+    private @Nullable Output<String> latestCodeVersion;
+
+    /**
+     * @return The most recent committed code version of the routine.
+     * 
+     */
+    public Optional<Output<String>> latestCodeVersion() {
+        return Optional.ofNullable(this.latestCodeVersion);
+    }
+
+    /**
+     * Routine Name, which must be unique in the same account.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Routine Name
+     * @return Routine Name, which must be unique in the same account.
      * 
      */
     public Optional<Output<String>> name() {
@@ -63,8 +123,12 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     private RoutineState() {}
 
     private RoutineState(RoutineState $) {
+        this.code = $.code;
+        this.codeDescription = $.codeDescription;
         this.createTime = $.createTime;
+        this.deployEnv = $.deployEnv;
         this.description = $.description;
+        this.latestCodeVersion = $.latestCodeVersion;
         this.name = $.name;
     }
 
@@ -84,6 +148,48 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RoutineState defaults) {
             $ = new RoutineState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param code The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file(&#34;index.js&#34;)`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder code(@Nullable Output<String> code) {
+            $.code = code;
+            return this;
+        }
+
+        /**
+         * @param code The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file(&#34;index.js&#34;)`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder code(String code) {
+            return code(Output.of(code));
+        }
+
+        /**
+         * @param codeDescription The description attached to the committed code version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeDescription(@Nullable Output<String> codeDescription) {
+            $.codeDescription = codeDescription;
+            return this;
+        }
+
+        /**
+         * @param codeDescription The description attached to the committed code version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeDescription(String codeDescription) {
+            return codeDescription(Output.of(codeDescription));
         }
 
         /**
@@ -108,7 +214,28 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The routine name, which must be unique in the same account.
+         * @param deployEnv The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployEnv(@Nullable Output<String> deployEnv) {
+            $.deployEnv = deployEnv;
+            return this;
+        }
+
+        /**
+         * @param deployEnv The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployEnv(String deployEnv) {
+            return deployEnv(Output.of(deployEnv));
+        }
+
+        /**
+         * @param description The description of the routine.
          * 
          * @return builder
          * 
@@ -119,7 +246,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The routine name, which must be unique in the same account.
+         * @param description The description of the routine.
          * 
          * @return builder
          * 
@@ -129,7 +256,28 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Routine Name
+         * @param latestCodeVersion The most recent committed code version of the routine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestCodeVersion(@Nullable Output<String> latestCodeVersion) {
+            $.latestCodeVersion = latestCodeVersion;
+            return this;
+        }
+
+        /**
+         * @param latestCodeVersion The most recent committed code version of the routine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder latestCodeVersion(String latestCodeVersion) {
+            return latestCodeVersion(Output.of(latestCodeVersion));
+        }
+
+        /**
+         * @param name Routine Name, which must be unique in the same account.
          * 
          * @return builder
          * 
@@ -140,7 +288,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Routine Name
+         * @param name Routine Name, which must be unique in the same account.
          * 
          * @return builder
          * 

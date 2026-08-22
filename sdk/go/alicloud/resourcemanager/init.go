@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourceDirectorySharing{}
 	case "alicloud:resourcemanager/resourceGroup:ResourceGroup":
 		r = &ResourceGroup{}
+	case "alicloud:resourcemanager/resourceGroupSettings:ResourceGroupSettings":
+		r = &ResourceGroupSettings{}
 	case "alicloud:resourcemanager/resourceShare:ResourceShare":
 		r = &ResourceShare{}
 	case "alicloud:resourcemanager/role:Role":
@@ -163,6 +165,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/resourceGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/resourceGroupSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -107,6 +107,10 @@ export class Delivery extends pulumi.CustomResource {
      */
     declare public readonly deliveryChannelCondition: pulumi.Output<string | undefined>;
     /**
+     * The ID of the delivery channel. It is the same as the resource `id`.
+     */
+    declare public /*out*/ readonly deliveryChannelId: pulumi.Output<string>;
+    /**
      * The name of the delivery channel.
      */
     declare public readonly deliveryChannelName: pulumi.Output<string | undefined>;
@@ -161,6 +165,7 @@ export class Delivery extends pulumi.CustomResource {
             resourceInputs["configurationItemChangeNotification"] = state?.configurationItemChangeNotification;
             resourceInputs["configurationSnapshot"] = state?.configurationSnapshot;
             resourceInputs["deliveryChannelCondition"] = state?.deliveryChannelCondition;
+            resourceInputs["deliveryChannelId"] = state?.deliveryChannelId;
             resourceInputs["deliveryChannelName"] = state?.deliveryChannelName;
             resourceInputs["deliveryChannelTargetArn"] = state?.deliveryChannelTargetArn;
             resourceInputs["deliveryChannelType"] = state?.deliveryChannelType;
@@ -186,6 +191,7 @@ export class Delivery extends pulumi.CustomResource {
             resourceInputs["nonCompliantNotification"] = args?.nonCompliantNotification;
             resourceInputs["oversizedDataOssTargetArn"] = args?.oversizedDataOssTargetArn;
             resourceInputs["status"] = args?.status;
+            resourceInputs["deliveryChannelId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Delivery.__pulumiType, name, resourceInputs, opts);
@@ -222,6 +228,10 @@ export interface DeliveryState {
      * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
     deliveryChannelCondition?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the delivery channel. It is the same as the resource `id`.
+     */
+    deliveryChannelId?: pulumi.Input<string | undefined>;
     /**
      * The name of the delivery channel.
      */

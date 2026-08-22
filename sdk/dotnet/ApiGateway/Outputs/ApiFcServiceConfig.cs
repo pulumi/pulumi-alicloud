@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ApiGateway.Outputs
         /// </summary>
         public readonly string? ContentTypeCategory;
         /// <summary>
-        /// The value of the Content-Type header when `ContentTypeCategory` is `DEFAULT` or `CUSTOM`.
+        /// The value of the Content-Type header when `ContentTypeCategory` is `DEFAULT` or `CUSTOM`. This field is ignored when `ContentTypeCategory` is set to `CLIENT`.
         /// </summary>
         public readonly string? ContentTypeValue;
         /// <summary>

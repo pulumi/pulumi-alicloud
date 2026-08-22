@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.alikafka
         /// <summary>
         /// The instance edition. Default value: `Normal`. Valid values:
         /// - If `InstanceType` is set to `Alikafka`. Valid values: `Normal`, `Professional`, `professionalForHighRead`.
-        /// - If `InstanceType` is set to `AlikafkaServerless`. Valid values: `Normal`.
+        /// - If `InstanceType` is set to `AlikafkaServerless`. Valid values: `Basic`, `Normal`, `Professional`. **NOTE:** `Basic` is not supported when `PaidType` is set to `PrePaid`.
         /// - If `InstanceType` is set to `AlikafkaConfluent`. Valid values: `Professional`, `Enterprise`.
         /// </summary>
         [Output("specType")]
@@ -580,7 +580,7 @@ namespace Pulumi.AliCloud.alikafka
         /// <summary>
         /// The instance edition. Default value: `Normal`. Valid values:
         /// - If `InstanceType` is set to `Alikafka`. Valid values: `Normal`, `Professional`, `professionalForHighRead`.
-        /// - If `InstanceType` is set to `AlikafkaServerless`. Valid values: `Normal`.
+        /// - If `InstanceType` is set to `AlikafkaServerless`. Valid values: `Basic`, `Normal`, `Professional`. **NOTE:** `Basic` is not supported when `PaidType` is set to `PrePaid`.
         /// - If `InstanceType` is set to `AlikafkaConfluent`. Valid values: `Professional`, `Enterprise`.
         /// </summary>
         [Input("specType")]
@@ -843,7 +843,7 @@ namespace Pulumi.AliCloud.alikafka
         /// <summary>
         /// The instance edition. Default value: `Normal`. Valid values:
         /// - If `InstanceType` is set to `Alikafka`. Valid values: `Normal`, `Professional`, `professionalForHighRead`.
-        /// - If `InstanceType` is set to `AlikafkaServerless`. Valid values: `Normal`.
+        /// - If `InstanceType` is set to `AlikafkaServerless`. Valid values: `Basic`, `Normal`, `Professional`. **NOTE:** `Basic` is not supported when `PaidType` is set to `PrePaid`.
         /// - If `InstanceType` is set to `AlikafkaConfluent`. Valid values: `Professional`, `Enterprise`.
         /// </summary>
         [Input("specType")]

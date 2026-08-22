@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
     public partial class MonitorTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        /// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         /// </summary>
         [Output("evaluationCount")]
         public Output<int> EvaluationCount { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
     public sealed class MonitorTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        /// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         /// </summary>
         [Input("evaluationCount", required: true)]
         public Input<int> EvaluationCount { get; set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.alidnsCloudGtm
     public sealed class MonitorTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
+        /// The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `1`, `2`, `3`.
         /// </summary>
         [Input("evaluationCount")]
         public Input<int>? EvaluationCount { get; set; }

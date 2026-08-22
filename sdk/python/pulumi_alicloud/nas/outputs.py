@@ -29,6 +29,7 @@ __all__ = [
     'GetFileSystemsSystemResult',
     'GetFilesetsFilesetResult',
     'GetLifecyclePoliciesPolicyResult',
+    'GetLogAnalysesAnalysisResult',
     'GetMountTargetsTargetResult',
     'GetSnapshotsSnapshotResult',
     'GetZonesZoneResult',
@@ -206,7 +207,7 @@ class FileSystemOptions(dict):
                - true: On.
                - false: does not turn on.
                
-               > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+               > **NOTE:** Description Only file systems of the SMB protocol type are supported.
         """
         if enable_oplock is not None:
             pulumi.set(__self__, "enable_oplock", enable_oplock)
@@ -219,7 +220,7 @@ class FileSystemOptions(dict):
         - true: On.
         - false: does not turn on.
 
-        > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+        > **NOTE:** Description Only file systems of the SMB protocol type are supported.
         """
         return pulumi.get(self, "enable_oplock")
 
@@ -362,7 +363,7 @@ class FileSystemSmbAcl(dict):
                
                For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
                
-               > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+               > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
         :param _builtins.bool reject_unencrypted_access: Whether to reject non-encrypted clients.
                - true: Deny non-encrypted clients.
                - false (default): Non-encrypted clients are not rejected.
@@ -425,7 +426,7 @@ class FileSystemSmbAcl(dict):
 
         For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 
-        > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+        > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
         """
         return pulumi.get(self, "home_dir_path")
 
@@ -873,12 +874,13 @@ class GetFileSystemsSystemResult(dict):
         :param _builtins.int capacity: (Optional, Available in v1.140.0+) The capacity of the file system.
         :param _builtins.str create_time: Time of creation.
         :param _builtins.str description: Description of the FileSystem.
-        :param _builtins.int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-               * Valid values:
-        :param _builtins.str file_system_type: The type of the file system.
+        :param _builtins.int encrypt_type: (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
+        :param _builtins.str file_system_type: The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
                Valid values:
-               `standard` (Default),
-               `extreme`.
+               `standard`,
+               `extreme`,
+               `cpfs`,
+               `cpfsse`.
         :param _builtins.str id: ID of the FileSystem.
         :param _builtins.str kms_key_id: (Optional, Available in v1.140.0+) The id of the KMS key.
         :param _builtins.int metered_size: MeteredSize of the FileSystem.
@@ -934,8 +936,7 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> _builtins.int:
         """
-        (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-        * Valid values:
+        (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -943,10 +944,12 @@ class GetFileSystemsSystemResult(dict):
     @pulumi.getter(name="fileSystemType")
     def file_system_type(self) -> _builtins.str:
         """
-        The type of the file system.
+        The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
         Valid values:
-        `standard` (Default),
-        `extreme`.
+        `standard`,
+        `extreme`,
+        `cpfs`,
+        `cpfsse`.
         """
         return pulumi.get(self, "file_system_type")
 
@@ -1190,6 +1193,79 @@ class GetLifecyclePoliciesPolicyResult(dict):
         The storage type of the data that is dumped to the IA storage medium.
         """
         return pulumi.get(self, "storage_type")
+
+
+@pulumi.output_type
+class GetLogAnalysesAnalysisResult(dict):
+    def __init__(__self__, *,
+                 file_system_id: _builtins.str,
+                 id: _builtins.str,
+                 logstore: _builtins.str,
+                 project: _builtins.str,
+                 region: _builtins.str,
+                 role_arn: _builtins.str):
+        """
+        :param _builtins.str file_system_id: The ID of the file system for which log delivery is enabled.
+        :param _builtins.str id: The ID of the Log Analysis. It is the same as the file system ID.
+        :param _builtins.str logstore: The name of the Logstore that receives NAS logs.
+        :param _builtins.str project: The name of the project that receives NAS logs.
+        :param _builtins.str region: The Simple Log Service region of the log project.
+        :param _builtins.str role_arn: The ARN of the service role used by NAS to deliver logs to Simple Log Service.
+        """
+        pulumi.set(__self__, "file_system_id", file_system_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "role_arn", role_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> _builtins.str:
+        """
+        The ID of the file system for which log delivery is enabled.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the Log Analysis. It is the same as the file system ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def logstore(self) -> _builtins.str:
+        """
+        The name of the Logstore that receives NAS logs.
+        """
+        return pulumi.get(self, "logstore")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        The name of the project that receives NAS logs.
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The Simple Log Service region of the log project.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> _builtins.str:
+        """
+        The ARN of the service role used by NAS to deliver logs to Simple Log Service.
+        """
+        return pulumi.get(self, "role_arn")
 
 
 @pulumi.output_type

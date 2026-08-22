@@ -169,16 +169,24 @@ public final class EcsDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * 
+     * @deprecated
+     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
+    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
     @Import(name="enableAutoSnapshot")
     private @Nullable Output<Boolean> enableAutoSnapshot;
 
     /**
-     * @return Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+     * @return Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+     * 
+     * @deprecated
+     * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
      * 
      */
+    @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
     public Optional<Output<Boolean>> enableAutoSnapshot() {
         return Optional.ofNullable(this.enableAutoSnapshot);
     }
@@ -768,22 +776,30 @@ public final class EcsDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableAutoSnapshot Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+         * @param enableAutoSnapshot Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+         * 
          */
+        @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
         public Builder enableAutoSnapshot(@Nullable Output<Boolean> enableAutoSnapshot) {
             $.enableAutoSnapshot = enableAutoSnapshot;
             return this;
         }
 
         /**
-         * @param enableAutoSnapshot Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
+         * @param enableAutoSnapshot Specifies whether the automatic snapshot policy feature is enabled for the cloud disk. Valid values: `true` and `false`. The default value is empty, which indicates that the current value is not changed. **NOTE:** This parameter is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk.
+         * 
          */
+        @Deprecated /* This field is deprecated. The automatic snapshot policy feature is enabled by default for a cloud disk after it is created. To use the automatic snapshot policy, apply one to the cloud disk. */
         public Builder enableAutoSnapshot(Boolean enableAutoSnapshot) {
             return enableAutoSnapshot(Output.of(enableAutoSnapshot));
         }

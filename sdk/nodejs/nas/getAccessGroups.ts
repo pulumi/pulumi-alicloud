@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides user-available access groups. Use when you can create mount points
  *
- * > NOTE: Available in 1.35.0+
+ * > **NOTE:** Available since v1.35.0+
  *
  * ## Example Usage
  *
@@ -57,7 +57,7 @@ export interface GetAccessGroupsArgs {
      */
     description?: string;
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+     * The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
      */
     fileSystemType?: string;
     /**
@@ -126,7 +126,7 @@ export interface GetAccessGroupsResult {
 /**
  * This data source provides user-available access groups. Use when you can create mount points
  *
- * > NOTE: Available in 1.35.0+
+ * > **NOTE:** Available since v1.35.0+
  *
  * ## Example Usage
  *
@@ -174,7 +174,7 @@ export interface GetAccessGroupsOutputArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
+     * The type of file system. Valid values: `standard`, `extreme` and `cpfs`. Default to `standard`.
      */
     fileSystemType?: pulumi.Input<string | undefined>;
     /**

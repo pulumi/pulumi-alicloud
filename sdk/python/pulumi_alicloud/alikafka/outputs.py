@@ -318,8 +318,8 @@ class InstanceServerlessConfig(dict):
                  reserved_publish_capacity: Optional[_builtins.int] = None,
                  reserved_subscribe_capacity: Optional[_builtins.int] = None):
         """
-        :param _builtins.int reserved_publish_capacity: The reserved capacity for publishing messages.
-        :param _builtins.int reserved_subscribe_capacity: The reserved capacity for subscribing to message.
+        :param _builtins.int reserved_publish_capacity: The reserved capacity for publishing messages. The minimum value is `60`.
+        :param _builtins.int reserved_subscribe_capacity: The reserved capacity for subscribing to message. The minimum value is `20`.
         """
         if reserved_publish_capacity is not None:
             pulumi.set(__self__, "reserved_publish_capacity", reserved_publish_capacity)
@@ -330,7 +330,7 @@ class InstanceServerlessConfig(dict):
     @pulumi.getter(name="reservedPublishCapacity")
     def reserved_publish_capacity(self) -> Optional[_builtins.int]:
         """
-        The reserved capacity for publishing messages.
+        The reserved capacity for publishing messages. The minimum value is `60`.
         """
         return pulumi.get(self, "reserved_publish_capacity")
 
@@ -338,7 +338,7 @@ class InstanceServerlessConfig(dict):
     @pulumi.getter(name="reservedSubscribeCapacity")
     def reserved_subscribe_capacity(self) -> Optional[_builtins.int]:
         """
-        The reserved capacity for subscribing to message.
+        The reserved capacity for subscribing to message. The minimum value is `20`.
         """
         return pulumi.get(self, "reserved_subscribe_capacity")
 

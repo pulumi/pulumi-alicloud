@@ -30,7 +30,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        /// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+        /// 
+        /// &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

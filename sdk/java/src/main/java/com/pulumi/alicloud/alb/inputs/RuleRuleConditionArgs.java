@@ -26,14 +26,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     public static final RuleRuleConditionArgs Empty = new RuleRuleConditionArgs();
 
     /**
-     * The configuration of the cookie. See See `cookieConfig` below.
+     * The configuration of the cookie. See `cookieConfig` below.
      * 
      */
     @Import(name="cookieConfig")
     private @Nullable Output<RuleRuleConditionCookieConfigArgs> cookieConfig;
 
     /**
-     * @return The configuration of the cookie. See See `cookieConfig` below.
+     * @return The configuration of the cookie. See `cookieConfig` below.
      * 
      */
     public Optional<Output<RuleRuleConditionCookieConfigArgs>> cookieConfig() {
@@ -168,9 +168,11 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
      * - `QueryString`: Requests are forwarded based on the query string.
      * - `Method`: Request are forwarded based on the request method.
      * - `Cookie`: Requests are forwarded based on the cookie.
-     * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-     * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-     * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+     * - `SourceIp`: Requests are forwarded based on the source ip.
+     * - `ResponseHeader`: Response header.
+     * - `ResponseStatusCode`: Response status code.
+     * 
+     * &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
      * 
      */
     @Import(name="type", required=true)
@@ -184,9 +186,11 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
      * - `QueryString`: Requests are forwarded based on the query string.
      * - `Method`: Request are forwarded based on the request method.
      * - `Cookie`: Requests are forwarded based on the cookie.
-     * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-     * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-     * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+     * - `SourceIp`: Requests are forwarded based on the source ip.
+     * - `ResponseHeader`: Response header.
+     * - `ResponseStatusCode`: Response status code.
+     * 
+     * &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
      * 
      */
     public Output<String> type() {
@@ -227,7 +231,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cookieConfig The configuration of the cookie. See See `cookieConfig` below.
+         * @param cookieConfig The configuration of the cookie. See `cookieConfig` below.
          * 
          * @return builder
          * 
@@ -238,7 +242,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cookieConfig The configuration of the cookie. See See `cookieConfig` below.
+         * @param cookieConfig The configuration of the cookie. See `cookieConfig` below.
          * 
          * @return builder
          * 
@@ -423,9 +427,11 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
          * - `QueryString`: Requests are forwarded based on the query string.
          * - `Method`: Request are forwarded based on the request method.
          * - `Cookie`: Requests are forwarded based on the cookie.
-         * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-         * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-         * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+         * - `SourceIp`: Requests are forwarded based on the source ip.
+         * - `ResponseHeader`: Response header.
+         * - `ResponseStatusCode`: Response status code.
+         * 
+         * &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
          * 
          * @return builder
          * 
@@ -443,9 +449,11 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
          * - `QueryString`: Requests are forwarded based on the query string.
          * - `Method`: Request are forwarded based on the request method.
          * - `Cookie`: Requests are forwarded based on the cookie.
-         * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-         * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-         * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+         * - `SourceIp`: Requests are forwarded based on the source ip.
+         * - `ResponseHeader`: Response header.
+         * - `ResponseStatusCode`: Response status code.
+         * 
+         * &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
          * 
          * @return builder
          * 

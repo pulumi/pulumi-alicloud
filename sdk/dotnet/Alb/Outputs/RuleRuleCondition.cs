@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class RuleRuleCondition
     {
         /// <summary>
-        /// The configuration of the cookie. See See `CookieConfig` below.
+        /// The configuration of the cookie. See `CookieConfig` below.
         /// </summary>
         public readonly Outputs.RuleRuleConditionCookieConfig? CookieConfig;
         /// <summary>
@@ -57,9 +57,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// - `QueryString`: Requests are forwarded based on the query string.
         /// - `Method`: Request are forwarded based on the request method.
         /// - `Cookie`: Requests are forwarded based on the cookie.
-        /// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
-        /// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
-        /// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
+        /// - `SourceIp`: Requests are forwarded based on the source ip.
+        /// - `ResponseHeader`: Response header.
+        /// - `ResponseStatusCode`: Response status code.
+        /// 
+        /// &gt; **NOTE:** `SourceIp` is available since v1.162.0. `ResponseHeader` and `ResponseStatusCode` are available since v1.213.1.
         /// </summary>
         public readonly string Type;
 

@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class SecurityGroupRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        /// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `CidrIp = "0.0.0.0/0"` explicitly.
         /// </summary>
         [Output("cidrIp")]
         public Output<string?> CidrIp { get; private set; } = null!;
@@ -142,10 +142,16 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SecurityGroupRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
+        /// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `SourceGroupOwnerId` instead. This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Output("sourceGroupOwnerAccount")]
         public Output<string?> SourceGroupOwnerAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+        /// </summary>
+        [Output("sourceGroupOwnerId")]
+        public Output<string?> SourceGroupOwnerId { get; private set; } = null!;
 
         /// <summary>
         /// The target security group ID within the same region. If this field is specified, the `NicType` can only select `Intranet`.
@@ -206,7 +212,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class SecurityGroupRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        /// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `CidrIp = "0.0.0.0/0"` explicitly.
         /// </summary>
         [Input("cidrIp")]
         public Input<string>? CidrIp { get; set; }
@@ -269,10 +275,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
+        /// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `SourceGroupOwnerId` instead. This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Input("sourceGroupOwnerAccount")]
         public Input<string>? SourceGroupOwnerAccount { get; set; }
+
+        /// <summary>
+        /// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+        /// </summary>
+        [Input("sourceGroupOwnerId")]
+        public Input<string>? SourceGroupOwnerId { get; set; }
 
         /// <summary>
         /// The target security group ID within the same region. If this field is specified, the `NicType` can only select `Intranet`.
@@ -295,7 +307,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class SecurityGroupRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
+        /// The target IPv4 CIDR address range. Other supported formats include 10.159.6.18/12. Only IPv4 is supported. **NOTE:** This field has no default value; leaving it empty does not open traffic to all sources but instead fails with `MissingParameter.Source` (ingress) or `MissingParameter.Dest` (egress). To allow all IPv4 traffic, set `CidrIp = "0.0.0.0/0"` explicitly.
         /// </summary>
         [Input("cidrIp")]
         public Input<string>? CidrIp { get; set; }
@@ -364,10 +376,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityGroupRuleId { get; set; }
 
         /// <summary>
-        /// The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `CidrIp` has already been set.
+        /// The Alibaba Cloud account of the target security group owner when security groups are authorized across accounts. This field may not take effect. Use `SourceGroupOwnerId` instead. This parameter is invalid if `CidrIp` has already been set.
         /// </summary>
         [Input("sourceGroupOwnerAccount")]
         public Input<string>? SourceGroupOwnerAccount { get; set; }
+
+        /// <summary>
+        /// The Alibaba Cloud account ID of the target security group owner when security groups are authorized across accounts.
+        /// </summary>
+        [Input("sourceGroupOwnerId")]
+        public Input<string>? SourceGroupOwnerId { get; set; }
 
         /// <summary>
         /// The target security group ID within the same region. If this field is specified, the `NicType` can only select `Intranet`.

@@ -341,6 +341,14 @@ namespace Pulumi.AliCloud.Vpn
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// The bandwidth specification of a single VPN tunnel. Valid values:
+        /// - `Standard` (default): 1 Gbps.
+        /// - `Large`: 3 Gbps.
+        /// </summary>
+        [Output("tunnelBandwidth")]
+        public Output<string> TunnelBandwidth { get; private set; } = null!;
+
+        /// <summary>
         /// Configure the tunnel.
         /// - You can configure parameters in the `TunnelOptionsSpecification` array when you create a vpn attachment in dual-tunnel mode.
         /// - When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment. See `TunnelOptionsSpecification` below.
@@ -507,6 +515,14 @@ namespace Pulumi.AliCloud.Vpn
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The bandwidth specification of a single VPN tunnel. Valid values:
+        /// - `Standard` (default): 1 Gbps.
+        /// - `Large`: 3 Gbps.
+        /// </summary>
+        [Input("tunnelBandwidth")]
+        public Input<string>? TunnelBandwidth { get; set; }
+
         [Input("tunnelOptionsSpecifications")]
         private InputList<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationArgs>? _tunnelOptionsSpecifications;
 
@@ -653,6 +669,14 @@ namespace Pulumi.AliCloud.Vpn
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The bandwidth specification of a single VPN tunnel. Valid values:
+        /// - `Standard` (default): 1 Gbps.
+        /// - `Large`: 3 Gbps.
+        /// </summary>
+        [Input("tunnelBandwidth")]
+        public Input<string>? TunnelBandwidth { get; set; }
 
         [Input("tunnelOptionsSpecifications")]
         private InputList<Inputs.GatewayVpnAttachmentTunnelOptionsSpecificationGetArgs>? _tunnelOptionsSpecifications;

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVswitch {
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class GatewayVswitch {
 
     private GatewayVswitch() {}
     /**
-     * @return The zone name.
+     * @return The name of the availability zone for the gateway.
      * 
      */
     public Optional<String> name() {

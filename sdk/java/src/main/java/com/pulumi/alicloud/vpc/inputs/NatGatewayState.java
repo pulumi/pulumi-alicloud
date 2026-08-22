@@ -35,6 +35,25 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     * 
+     */
+    @Import(name="availabilityMode")
+    private @Nullable Output<String> availabilityMode;
+
+    /**
+     * @return The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+     * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+     * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+     * 
+     */
+    public Optional<Output<String>> availabilityMode() {
+        return Optional.ofNullable(this.availabilityMode);
+    }
+
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -224,14 +243,14 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      * 
      */
     @Import(name="natType")
     private @Nullable Output<String> natType;
 
     /**
-     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> natType() {
@@ -239,14 +258,14 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+     * @return Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -376,14 +395,14 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of VSwitch.
+     * The id of VSwitch. The parameter is immutable after resource creation.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The id of VSwitch.
+     * @return The id of VSwitch. The parameter is immutable after resource creation.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -394,6 +413,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
     private NatGatewayState(NatGatewayState $) {
         this.accessMode = $.accessMode;
+        this.availabilityMode = $.availabilityMode;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.dryRun = $.dryRun;
@@ -455,6 +475,31 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessMode(NatGatewayAccessModeArgs accessMode) {
             return accessMode(Output.of(accessMode));
+        }
+
+        /**
+         * @param availabilityMode The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+         * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+         * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityMode(@Nullable Output<String> availabilityMode) {
+            $.availabilityMode = availabilityMode;
+            return this;
+        }
+
+        /**
+         * @param availabilityMode The disaster recovery mode of the NAT gateway. **NOTE:** `availabilityMode` requires `natType` to be set to `Enhanced`. Valid values:
+         * - `CrossAZ`: cross-zone disaster recovery (default). The NAT gateway is deployed across multiple zones.
+         * - `SingleAZ`: single-zone disaster recovery. The NAT gateway is deployed in a single zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityMode(String availabilityMode) {
+            return availabilityMode(Output.of(availabilityMode));
         }
 
         /**
@@ -713,7 +758,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -724,7 +769,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
+         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -734,7 +779,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+         * @param networkType Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -745,7 +790,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
+         * @param networkType Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -925,7 +970,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The id of VSwitch.
+         * @param vswitchId The id of VSwitch. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 
@@ -936,7 +981,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The id of VSwitch.
+         * @param vswitchId The id of VSwitch. The parameter is immutable after resource creation.
          * 
          * @return builder
          * 

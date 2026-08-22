@@ -49,6 +49,11 @@ namespace Pulumi.AliCloud.CR
     ///         RenewalStatus = "AutoRenewal",
     ///         InstanceType = "Advanced",
     ///         InstanceName = $"{name}-{@default.Result}",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "Test" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -221,6 +226,12 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The number of VPC access controls.
@@ -418,6 +429,18 @@ namespace Pulumi.AliCloud.CR
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The number of VPC access controls.
         /// 
@@ -613,6 +636,18 @@ namespace Pulumi.AliCloud.CR
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The number of VPC access controls.

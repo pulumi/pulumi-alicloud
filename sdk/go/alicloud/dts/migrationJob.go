@@ -286,6 +286,10 @@ type MigrationJob struct {
 	DataSynchronization pulumi.BoolOutput `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList pulumi.StringOutput `pulumi:"dbList"`
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId pulumi.StringPtrOutput `pulumi:"destPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"destSecondaryVswitchId"`
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"destinationEndpointDatabaseName"`
 	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
@@ -304,6 +308,8 @@ type MigrationJob struct {
 	DestinationEndpointPort pulumi.StringPtrOutput `pulumi:"destinationEndpointPort"`
 	// The region of destination instance.
 	DestinationEndpointRegion pulumi.StringPtrOutput `pulumi:"destinationEndpointRegion"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringOutput `pulumi:"destinationEndpointSsl"`
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringPtrOutput `pulumi:"destinationEndpointUserName"`
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -334,9 +340,17 @@ type MigrationJob struct {
 	SourceEndpointRegion pulumi.StringPtrOutput `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringOutput `pulumi:"sourceEndpointSsl"`
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId pulumi.StringPtrOutput `pulumi:"srcPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization pulumi.BoolOutput `pulumi:"structureInitialization"`
@@ -407,6 +421,10 @@ type migrationJobState struct {
 	DataSynchronization *bool `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList *string `pulumi:"dbList"`
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
 	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
@@ -425,6 +443,8 @@ type migrationJobState struct {
 	DestinationEndpointPort *string `pulumi:"destinationEndpointPort"`
 	// The region of destination instance.
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account.
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -455,9 +475,17 @@ type migrationJobState struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account.
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId *string `pulumi:"srcPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status *string `pulumi:"status"`
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization *bool `pulumi:"structureInitialization"`
@@ -472,6 +500,10 @@ type MigrationJobState struct {
 	DataSynchronization pulumi.BoolPtrInput
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
 	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
@@ -490,6 +522,8 @@ type MigrationJobState struct {
 	DestinationEndpointPort pulumi.StringPtrInput
 	// The region of destination instance.
 	DestinationEndpointRegion pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -520,9 +554,17 @@ type MigrationJobState struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status pulumi.StringPtrInput
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization pulumi.BoolPtrInput
@@ -541,6 +583,10 @@ type migrationJobArgs struct {
 	DataSynchronization bool `pulumi:"dataSynchronization"`
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList string `pulumi:"dbList"`
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
 	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
@@ -559,6 +605,8 @@ type migrationJobArgs struct {
 	DestinationEndpointPort *string `pulumi:"destinationEndpointPort"`
 	// The region of destination instance.
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account.
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -589,9 +637,17 @@ type migrationJobArgs struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account.
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId *string `pulumi:"srcPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status *string `pulumi:"status"`
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization bool `pulumi:"structureInitialization"`
@@ -607,6 +663,10 @@ type MigrationJobArgs struct {
 	DataSynchronization pulumi.BoolInput
 	// Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
 	DbList pulumi.StringInput
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of migrate the database.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
 	// The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
@@ -625,6 +685,8 @@ type MigrationJobArgs struct {
 	DestinationEndpointPort pulumi.StringPtrInput
 	// The region of destination instance.
 	DestinationEndpointRegion pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The Migration instance ID. The ID of `dts.MigrationInstance`.
@@ -655,9 +717,17 @@ type MigrationJobArgs struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs.
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account.
 	SourceEndpointUserName pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	Status pulumi.StringPtrInput
 	// Whether to perform a database table structure to migrate.
 	StructureInitialization pulumi.BoolInput
@@ -770,6 +840,16 @@ func (o MigrationJobOutput) DbList() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DbList }).(pulumi.StringOutput)
 }
 
+// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+func (o MigrationJobOutput) DestPrimaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestPrimaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+func (o MigrationJobOutput) DestSecondaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestSecondaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
 // The name of migrate the database.
 func (o MigrationJobOutput) DestinationEndpointDatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointDatabaseName }).(pulumi.StringPtrOutput)
@@ -813,6 +893,11 @@ func (o MigrationJobOutput) DestinationEndpointPort() pulumi.StringPtrOutput {
 // The region of destination instance.
 func (o MigrationJobOutput) DestinationEndpointRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRegion }).(pulumi.StringPtrOutput)
+}
+
+// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o MigrationJobOutput) DestinationEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DestinationEndpointSsl }).(pulumi.StringOutput)
 }
 
 // The username of database account.
@@ -890,12 +975,29 @@ func (o MigrationJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
 }
 
+// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o MigrationJobOutput) SourceEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.SourceEndpointSsl }).(pulumi.StringOutput)
+}
+
 // The username of database account.
 func (o MigrationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SourceEndpointUserName }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+func (o MigrationJobOutput) SrcPrimaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SrcPrimaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+func (o MigrationJobOutput) SrcSecondaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.SrcSecondaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
 // The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
+//
+// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 func (o MigrationJobOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -40,6 +40,11 @@ export type DynamicTagGroup = import("./dynamicTagGroup").DynamicTagGroup;
 export const DynamicTagGroup: typeof import("./dynamicTagGroup").DynamicTagGroup = null as any;
 utilities.lazyLoad(exports, ["DynamicTagGroup"], () => require("./dynamicTagGroup"));
 
+export { EventNotifyPolicyArgs, EventNotifyPolicyState } from "./eventNotifyPolicy";
+export type EventNotifyPolicy = import("./eventNotifyPolicy").EventNotifyPolicy;
+export const EventNotifyPolicy: typeof import("./eventNotifyPolicy").EventNotifyPolicy = null as any;
+utilities.lazyLoad(exports, ["EventNotifyPolicy"], () => require("./eventNotifyPolicy"));
+
 export { EventRuleArgs, EventRuleState } from "./eventRule";
 export type EventRule = import("./eventRule").EventRule;
 export const EventRule: typeof import("./eventRule").EventRule = null as any;
@@ -64,6 +69,11 @@ export { GetDynamicTagGroupsArgs, GetDynamicTagGroupsResult, GetDynamicTagGroups
 export const getDynamicTagGroups: typeof import("./getDynamicTagGroups").getDynamicTagGroups = null as any;
 export const getDynamicTagGroupsOutput: typeof import("./getDynamicTagGroups").getDynamicTagGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getDynamicTagGroups","getDynamicTagGroupsOutput"], () => require("./getDynamicTagGroups"));
+
+export { GetEventNotifyPoliciesArgs, GetEventNotifyPoliciesResult, GetEventNotifyPoliciesOutputArgs } from "./getEventNotifyPolicies";
+export const getEventNotifyPolicies: typeof import("./getEventNotifyPolicies").getEventNotifyPolicies = null as any;
+export const getEventNotifyPoliciesOutput: typeof import("./getEventNotifyPolicies").getEventNotifyPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getEventNotifyPolicies","getEventNotifyPoliciesOutput"], () => require("./getEventNotifyPolicies"));
 
 export { GetEventRulesArgs, GetEventRulesResult, GetEventRulesOutputArgs } from "./getEventRules";
 export const getEventRules: typeof import("./getEventRules").getEventRules = null as any;
@@ -219,6 +229,8 @@ const _module = {
                 return new AlertRuleV2(name, <any>undefined, { urn })
             case "alicloud:cms/dynamicTagGroup:DynamicTagGroup":
                 return new DynamicTagGroup(name, <any>undefined, { urn })
+            case "alicloud:cms/eventNotifyPolicy:EventNotifyPolicy":
+                return new EventNotifyPolicy(name, <any>undefined, { urn })
             case "alicloud:cms/eventRule:EventRule":
                 return new EventRule(name, <any>undefined, { urn })
             case "alicloud:cms/groupMetricRule:GroupMetricRule":
@@ -261,6 +273,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alarmContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/alertRuleV2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/dynamicTagGroup", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cms/eventNotifyPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/eventRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/groupMetricRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cms/hybridMonitorFcTask", _module)

@@ -19,14 +19,26 @@ __all__ = ['RoutineArgs', 'Routine']
 @pulumi.input_type
 class RoutineArgs:
     def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_env: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Routine resource.
 
-        :param pulumi.Input[_builtins.str] description: The routine name, which must be unique in the same account.
-        :param pulumi.Input[_builtins.str] name: Routine Name
+        :param pulumi.Input[_builtins.str] code: The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        :param pulumi.Input[_builtins.str] code_description: The description attached to the committed code version.
+        :param pulumi.Input[_builtins.str] deploy_env: The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        :param pulumi.Input[_builtins.str] description: The description of the routine.
+        :param pulumi.Input[_builtins.str] name: Routine Name, which must be unique in the same account.
         """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if code_description is not None:
+            pulumi.set(__self__, "code_description", code_description)
+        if deploy_env is not None:
+            pulumi.set(__self__, "deploy_env", deploy_env)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -34,9 +46,45 @@ class RoutineArgs:
 
     @_builtins.property
     @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeDescription")
+    def code_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description attached to the committed code version.
+        """
+        return pulumi.get(self, "code_description")
+
+    @code_description.setter
+    def code_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code_description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deployEnv")
+    def deploy_env(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        """
+        return pulumi.get(self, "deploy_env")
+
+    @deploy_env.setter
+    def deploy_env(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deploy_env", value)
+
+    @_builtins.property
+    @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The routine name, which must be unique in the same account.
+        The description of the routine.
         """
         return pulumi.get(self, "description")
 
@@ -48,7 +96,7 @@ class RoutineArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Routine Name
+        Routine Name, which must be unique in the same account.
         """
         return pulumi.get(self, "name")
 
@@ -60,22 +108,62 @@ class RoutineArgs:
 @pulumi.input_type
 class _RoutineState:
     def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_description: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_env: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_code_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Routine resources.
 
+        :param pulumi.Input[_builtins.str] code: The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        :param pulumi.Input[_builtins.str] code_description: The description attached to the committed code version.
         :param pulumi.Input[_builtins.str] create_time: The time when the routine was created.
-        :param pulumi.Input[_builtins.str] description: The routine name, which must be unique in the same account.
-        :param pulumi.Input[_builtins.str] name: Routine Name
+        :param pulumi.Input[_builtins.str] deploy_env: The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        :param pulumi.Input[_builtins.str] description: The description of the routine.
+        :param pulumi.Input[_builtins.str] latest_code_version: The most recent committed code version of the routine.
+        :param pulumi.Input[_builtins.str] name: Routine Name, which must be unique in the same account.
         """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if code_description is not None:
+            pulumi.set(__self__, "code_description", code_description)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deploy_env is not None:
+            pulumi.set(__self__, "deploy_env", deploy_env)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if latest_code_version is not None:
+            pulumi.set(__self__, "latest_code_version", latest_code_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="codeDescription")
+    def code_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description attached to the committed code version.
+        """
+        return pulumi.get(self, "code_description")
+
+    @code_description.setter
+    def code_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "code_description", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -90,10 +178,22 @@ class _RoutineState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="deployEnv")
+    def deploy_env(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        """
+        return pulumi.get(self, "deploy_env")
+
+    @deploy_env.setter
+    def deploy_env(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deploy_env", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The routine name, which must be unique in the same account.
+        The description of the routine.
         """
         return pulumi.get(self, "description")
 
@@ -102,10 +202,22 @@ class _RoutineState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="latestCodeVersion")
+    def latest_code_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The most recent committed code version of the routine.
+        """
+        return pulumi.get(self, "latest_code_version")
+
+    @latest_code_version.setter
+    def latest_code_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_code_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Routine Name
+        Routine Name, which must be unique in the same account.
         """
         return pulumi.get(self, "name")
 
@@ -120,6 +232,9 @@ class Routine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_env: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -144,10 +259,13 @@ class Routine(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.esa.Routine("default",
             description=name,
-            name=name)
+            name=name,
+            code="addEventListener('fetch', e => e.respondWith(new Response('hello world')))",
+            code_description="initial version",
+            deploy_env="staging")
         ```
 
-        📚 Need more examples? VIEW MORE EXAMPLES
+        Manage the routine code from a local file:
 
         ## Import
 
@@ -160,8 +278,11 @@ class Routine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The routine name, which must be unique in the same account.
-        :param pulumi.Input[_builtins.str] name: Routine Name
+        :param pulumi.Input[_builtins.str] code: The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        :param pulumi.Input[_builtins.str] code_description: The description attached to the committed code version.
+        :param pulumi.Input[_builtins.str] deploy_env: The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        :param pulumi.Input[_builtins.str] description: The description of the routine.
+        :param pulumi.Input[_builtins.str] name: Routine Name, which must be unique in the same account.
         """
         ...
     @overload
@@ -190,10 +311,13 @@ class Routine(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.esa.Routine("default",
             description=name,
-            name=name)
+            name=name,
+            code="addEventListener('fetch', e => e.respondWith(new Response('hello world')))",
+            code_description="initial version",
+            deploy_env="staging")
         ```
 
-        📚 Need more examples? VIEW MORE EXAMPLES
+        Manage the routine code from a local file:
 
         ## Import
 
@@ -219,6 +343,9 @@ class Routine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_env: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -230,9 +357,13 @@ class Routine(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RoutineArgs.__new__(RoutineArgs)
 
+            __props__.__dict__["code"] = code
+            __props__.__dict__["code_description"] = code_description
+            __props__.__dict__["deploy_env"] = deploy_env
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["latest_code_version"] = None
         super(Routine, __self__).__init__(
             'alicloud:esa/routine:Routine',
             resource_name,
@@ -243,8 +374,12 @@ class Routine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            code_description: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_env: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_code_version: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Routine':
         """
         Get an existing Routine resource's state with the given name, id, and optional extra
@@ -253,18 +388,42 @@ class Routine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] code: The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        :param pulumi.Input[_builtins.str] code_description: The description attached to the committed code version.
         :param pulumi.Input[_builtins.str] create_time: The time when the routine was created.
-        :param pulumi.Input[_builtins.str] description: The routine name, which must be unique in the same account.
-        :param pulumi.Input[_builtins.str] name: Routine Name
+        :param pulumi.Input[_builtins.str] deploy_env: The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        :param pulumi.Input[_builtins.str] description: The description of the routine.
+        :param pulumi.Input[_builtins.str] latest_code_version: The most recent committed code version of the routine.
+        :param pulumi.Input[_builtins.str] name: Routine Name, which must be unique in the same account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RoutineState.__new__(_RoutineState)
 
+        __props__.__dict__["code"] = code
+        __props__.__dict__["code_description"] = code_description
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deploy_env"] = deploy_env
         __props__.__dict__["description"] = description
+        __props__.__dict__["latest_code_version"] = latest_code_version
         __props__.__dict__["name"] = name
         return Routine(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The JavaScript source code of the routine. When set or changed, the code is uploaded as a new staging version and then committed into a formal code version. To manage the code from a local file, use the Terraform built-in `file()` function, e.g. `code = file("index.js")`.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter(name="codeDescription")
+    def code_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The description attached to the committed code version.
+        """
+        return pulumi.get(self, "code_description")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -275,18 +434,34 @@ class Routine(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="deployEnv")
+    def deploy_env(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The environment whose environment variables are bundled when committing the code version. Valid values: `staging`, `production`. If not set, no environment variables are bundled.
+        """
+        return pulumi.get(self, "deploy_env")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The routine name, which must be unique in the same account.
+        The description of the routine.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="latestCodeVersion")
+    def latest_code_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The most recent committed code version of the routine.
+        """
+        return pulumi.get(self, "latest_code_version")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Routine Name
+        Routine Name, which must be unique in the same account.
         """
         return pulumi.get(self, "name")
 

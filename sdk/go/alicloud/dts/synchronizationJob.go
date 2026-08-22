@@ -299,14 +299,18 @@ type SynchronizationJob struct {
 	DelayPhone pulumi.StringPtrOutput `pulumi:"delayPhone"`
 	// The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
 	DelayRuleTime pulumi.StringPtrOutput `pulumi:"delayRuleTime"`
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId pulumi.StringPtrOutput `pulumi:"destPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"destSecondaryVswitchId"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName pulumi.StringOutput `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	DestinationEndpointInstanceId pulumi.StringPtrOutput `pulumi:"destinationEndpointInstanceId"`
 	// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	DestinationEndpointInstanceType pulumi.StringOutput `pulumi:"destinationEndpointInstanceType"`
@@ -324,9 +328,13 @@ type SynchronizationJob struct {
 	DestinationEndpointRegion pulumi.StringPtrOutput `pulumi:"destinationEndpointRegion"`
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole pulumi.StringPtrOutput `pulumi:"destinationEndpointRole"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringOutput `pulumi:"destinationEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrOutput `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	//
 	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	//
@@ -345,15 +353,17 @@ type SynchronizationJob struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrOutput `pulumi:"jobParameters"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve pulumi.StringOutput `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrOutput `pulumi:"sourceEndpointDatabaseName"`
 	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName pulumi.StringOutput `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	SourceEndpointInstanceId pulumi.StringPtrOutput `pulumi:"sourceEndpointInstanceId"`
 	// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	SourceEndpointInstanceType pulumi.StringOutput `pulumi:"sourceEndpointInstanceType"`
@@ -371,10 +381,16 @@ type SynchronizationJob struct {
 	SourceEndpointRegion pulumi.StringPtrOutput `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole pulumi.StringPtrOutput `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringOutput `pulumi:"sourceEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrOutput `pulumi:"sourceEndpointUserName"`
 	// Data Delivery link switch instance id
 	SourceEndpointVswitchId pulumi.StringPtrOutput `pulumi:"sourceEndpointVswitchId"`
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId pulumi.StringPtrOutput `pulumi:"srcPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId pulumi.StringPtrOutput `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
@@ -461,14 +477,18 @@ type synchronizationJobState struct {
 	DelayPhone *string `pulumi:"delayPhone"`
 	// The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
 	DelayRuleTime *string `pulumi:"delayRuleTime"`
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	DestinationEndpointInstanceId *string `pulumi:"destinationEndpointInstanceId"`
 	// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	DestinationEndpointInstanceType *string `pulumi:"destinationEndpointInstanceType"`
@@ -486,9 +506,13 @@ type synchronizationJobState struct {
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole *string `pulumi:"destinationEndpointRole"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	//
 	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	//
@@ -507,15 +531,17 @@ type synchronizationJobState struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters *string `pulumi:"jobParameters"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve *string `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
 	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	SourceEndpointInstanceId *string `pulumi:"sourceEndpointInstanceId"`
 	// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	SourceEndpointInstanceType *string `pulumi:"sourceEndpointInstanceType"`
@@ -533,10 +559,16 @@ type synchronizationJobState struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// Data Delivery link switch instance id
 	SourceEndpointVswitchId *string `pulumi:"sourceEndpointVswitchId"`
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId *string `pulumi:"srcPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
@@ -564,14 +596,18 @@ type SynchronizationJobState struct {
 	DelayPhone pulumi.StringPtrInput
 	// The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
 	DelayRuleTime pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	DestinationEndpointInstanceId pulumi.StringPtrInput
 	// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	DestinationEndpointInstanceType pulumi.StringPtrInput
@@ -589,9 +625,13 @@ type SynchronizationJobState struct {
 	DestinationEndpointRegion pulumi.StringPtrInput
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	//
 	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	//
@@ -610,15 +650,17 @@ type SynchronizationJobState struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrInput
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
 	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName pulumi.StringPtrInput
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	SourceEndpointInstanceId pulumi.StringPtrInput
 	// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	SourceEndpointInstanceType pulumi.StringPtrInput
@@ -636,10 +678,16 @@ type SynchronizationJobState struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
 	// Data Delivery link switch instance id
 	SourceEndpointVswitchId pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
@@ -671,14 +719,18 @@ type synchronizationJobArgs struct {
 	DelayPhone *string `pulumi:"delayPhone"`
 	// The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
 	DelayRuleTime *string `pulumi:"delayRuleTime"`
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId *string `pulumi:"destPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId *string `pulumi:"destSecondaryVswitchId"`
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName *string `pulumi:"destinationEndpointDatabaseName"`
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName string `pulumi:"destinationEndpointEngineName"`
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	DestinationEndpointInstanceId *string `pulumi:"destinationEndpointInstanceId"`
 	// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	DestinationEndpointInstanceType string `pulumi:"destinationEndpointInstanceType"`
@@ -696,9 +748,13 @@ type synchronizationJobArgs struct {
 	DestinationEndpointRegion *string `pulumi:"destinationEndpointRegion"`
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole *string `pulumi:"destinationEndpointRole"`
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl *string `pulumi:"destinationEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName *string `pulumi:"destinationEndpointUserName"`
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	//
 	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	//
@@ -717,15 +773,17 @@ type synchronizationJobArgs struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters *string `pulumi:"jobParameters"`
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve *string `pulumi:"reserve"`
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName *string `pulumi:"sourceEndpointDatabaseName"`
 	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	SourceEndpointInstanceId *string `pulumi:"sourceEndpointInstanceId"`
 	// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	SourceEndpointInstanceType string `pulumi:"sourceEndpointInstanceType"`
@@ -743,10 +801,16 @@ type synchronizationJobArgs struct {
 	SourceEndpointRegion *string `pulumi:"sourceEndpointRegion"`
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole *string `pulumi:"sourceEndpointRole"`
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl *string `pulumi:"sourceEndpointSsl"`
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName *string `pulumi:"sourceEndpointUserName"`
 	// Data Delivery link switch instance id
 	SourceEndpointVswitchId *string `pulumi:"sourceEndpointVswitchId"`
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId *string `pulumi:"srcPrimaryVswitchId"`
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId *string `pulumi:"srcSecondaryVswitchId"`
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status *string `pulumi:"status"`
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
@@ -775,14 +839,18 @@ type SynchronizationJobArgs struct {
 	DelayPhone pulumi.StringPtrInput
 	// The delay rule time. When `delayNotice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
 	DelayRuleTime pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+	DestPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+	DestSecondaryVswitchId pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 	DestinationEndpointDatabaseName pulumi.StringPtrInput
-	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+	// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 	DestinationEndpointEngineName pulumi.StringInput
 	// The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	DestinationEndpointInstanceId pulumi.StringPtrInput
 	// The type of destination instance. If the target instance is a PolarDB O engine cluster, the target instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. If the target instance is the Kafka version of Message Queuing, the target instance type needs to be `ECS` or `EXPRESS` as a self-built database, and access via ECS or dedicated line. For the correspondence between supported targets and source instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the target instance is a self-built database, you also need to perform corresponding preparations, please refer to the [overview of preparations](https://help.aliyun.com/document_detail/146958.htm). Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	DestinationEndpointInstanceType pulumi.StringInput
@@ -800,9 +868,13 @@ type SynchronizationJobArgs struct {
 	DestinationEndpointRegion pulumi.StringPtrInput
 	// The role name of the Alibaba Cloud account to which the target instance belongs. This parameter must be entered when data migration or synchronization across Alibaba Cloud accounts is performed. For the permissions and authorization methods required by this role.
 	DestinationEndpointRole pulumi.StringPtrInput
+	// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	DestinationEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	DestinationEndpointUserName pulumi.StringPtrInput
 	// The environment label of the DTS instance. The value is: **normal**, **online**.
+	//
+	// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 	//
 	// > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 	//
@@ -821,15 +893,17 @@ type SynchronizationJobArgs struct {
 	// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
 	JobParameters pulumi.StringPtrInput
 	// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+	//
+	// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 	Reserve pulumi.StringPtrInput
 	// The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
 	SourceEndpointDatabaseName pulumi.StringPtrInput
 	// The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
 	SourceEndpointEngineName pulumi.StringInput
 	// The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-	// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-	// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-	// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+	// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+	// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+	// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 	SourceEndpointInstanceId pulumi.StringPtrInput
 	// The type of source instance. If the source instance is a `PolarDB O` engine cluster, the source instance type needs to be `OTHER` or `EXPRESS` as a self-built database, and access via public IP or dedicated line. For the correspondence between supported source and target instances, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the source instance is a self-built database, you also need to perform corresponding preparations, for details, see [Preparations Overview](https://help.aliyun.com/document_detail/146958.htm). Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
 	SourceEndpointInstanceType pulumi.StringInput
@@ -847,10 +921,16 @@ type SynchronizationJobArgs struct {
 	SourceEndpointRegion pulumi.StringPtrInput
 	// The name of the role configured for the cloud account to which the source instance belongs. Note: this parameter must be passed in when performing cross Alibaba Cloud account data migration or synchronization. For the permissions and authorization methods required by this role, please refer to [How to configure RAM authorization when cross-Alibaba Cloud account data migration or synchronization](https://help.aliyun.com/document_detail/48468.htm).
 	SourceEndpointRole pulumi.StringPtrInput
+	// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+	SourceEndpointSsl pulumi.StringPtrInput
 	// The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 	SourceEndpointUserName pulumi.StringPtrInput
 	// Data Delivery link switch instance id
 	SourceEndpointVswitchId pulumi.StringPtrInput
+	// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+	SrcPrimaryVswitchId pulumi.StringPtrInput
+	// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+	SrcSecondaryVswitchId pulumi.StringPtrInput
 	// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
 	Status pulumi.StringPtrInput
 	// Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
@@ -991,20 +1071,30 @@ func (o SynchronizationJobOutput) DelayRuleTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DelayRuleTime }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the primary vSwitch on the destination side of a VPC NAT connection.
+func (o SynchronizationJobOutput) DestPrimaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestPrimaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary vSwitch on the destination side of a VPC NAT connection.
+func (o SynchronizationJobOutput) DestSecondaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestSecondaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the database to which the migration object belongs in the target instance. Note: when the target instance or target database type is PolarDB O engine, AnalyticDB PostgreSQL, PostgreSQL, MongoDB database, this parameter is available and must be passed in.
 func (o SynchronizationJobOutput) DestinationEndpointDatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointDatabaseName }).(pulumi.StringPtrOutput)
 }
 
-// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`,`  POLARDB_PG `, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
+// The type of destination database. The default value is MYSQL. For the correspondence between supported target libraries and source libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the target instance is KAFKA or MONGODB, you also need to pass in some information in the reserved parameter `reserve`. For the configuration method, see the description of `reserve` parameters. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `ODPS`, `Tablestore`, `ELK`, `REDIS`.
 func (o SynchronizationJobOutput) DestinationEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
 }
 
 // The ID of destination instance. If the target instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the target instance is a self-built database, the value of this parameter changes according to the value of `destinationEndpointInstanceType`. For example, the value of `destinationEndpointInstanceType` is:
-// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 func (o SynchronizationJobOutput) DestinationEndpointInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointInstanceId }).(pulumi.StringPtrOutput)
 }
@@ -1049,12 +1139,19 @@ func (o SynchronizationJobOutput) DestinationEndpointRole() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointRole }).(pulumi.StringPtrOutput)
 }
 
+// The connection method of the destination instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection), `3` (a connection using SCRAM-SHA-256, for a Kafka destination only). `1` is only supported when the destination endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o SynchronizationJobOutput) DestinationEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.DestinationEndpointSsl }).(pulumi.StringOutput)
+}
+
 // The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 func (o SynchronizationJobOutput) DestinationEndpointUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.DestinationEndpointUserName }).(pulumi.StringPtrOutput)
 }
 
 // The environment label of the DTS instance. The value is: **normal**, **online**.
+//
+// > **NOTE:** `srcPrimaryVswitchId`, `srcSecondaryVswitchId`, `destPrimaryVswitchId` and `destSecondaryVswitchId` are only used when the job is created. They are not refreshed from the server, and are not populated by `pulumi import`.
 //
 // > **NOTE:** From the status of `NotStarted` to `Synchronizing`, the resource goes through the `Prechecking` and `Initializing` phases. Because of the `Initializing` phase takes too long, and once the resource passes to the status of `Prechecking`, it can be considered that the task can be executed normally. Therefore, we treat the status of `Initializing` as an equivalent to `Synchronizing`.
 //
@@ -1094,6 +1191,8 @@ func (o SynchronizationJobOutput) JobParameters() pulumi.StringPtrOutput {
 }
 
 // DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
+//
+// > **NOTE:** The `srcSSL` and `destSSL` keys are managed by the properties `sourceEndpointSsl` and `destinationEndpointSsl`. If either property is set, it overrides the corresponding key here.
 func (o SynchronizationJobOutput) Reserve() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.Reserve }).(pulumi.StringOutput)
 }
@@ -1109,9 +1208,9 @@ func (o SynchronizationJobOutput) SourceEndpointEngineName() pulumi.StringOutput
 }
 
 // The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `sourceEndpointInstanceType`. For example, the value of `sourceEndpointInstanceType` is:
-// ** `ECS`, then this parameter needs to be passed into the instance ID of ECS.
-// ** `DG`, then this parameter needs to be passed into the ID of database gateway.
-// ** `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
+// - `ECS`, then this parameter needs to be passed into the instance ID of ECS.
+// - `DG`, then this parameter needs to be passed into the ID of database gateway.
+// - `EXPRESS`, `CEN`, then this parameter needs to be passed in the ID of VPC that has been interconnected with the source database. **Note**: when the value is `CEN`, you also need to pass in the ID of CEN instance in the cloud enterprise network with the reserved parameter `reserve`.
 func (o SynchronizationJobOutput) SourceEndpointInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointInstanceId }).(pulumi.StringPtrOutput)
 }
@@ -1156,6 +1255,11 @@ func (o SynchronizationJobOutput) SourceEndpointRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointRole }).(pulumi.StringPtrOutput)
 }
 
+// The connection method of the source instance. Valid values: `0` (an unencrypted connection), `1` (an SSL-secured connection). Only supported when the source endpoint is accessed as a cloud instance or as a self-managed database hosted on ECS.
+func (o SynchronizationJobOutput) SourceEndpointSsl() pulumi.StringOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.SourceEndpointSsl }).(pulumi.StringOutput)
+}
+
 // The username of database account. Note: in most cases, you need to pass in the database account of the source library. The permissions required for migrating or synchronizing different databases are different. For specific permission requirements, see [Preparing database accounts for data migration](https://help.aliyun.com/document_detail/175878.htm) and [Preparing database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.htm).
 func (o SynchronizationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointUserName }).(pulumi.StringPtrOutput)
@@ -1164,6 +1268,16 @@ func (o SynchronizationJobOutput) SourceEndpointUserName() pulumi.StringPtrOutpu
 // Data Delivery link switch instance id
 func (o SynchronizationJobOutput) SourceEndpointVswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SourceEndpointVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the primary vSwitch on the source side of a VPC NAT connection.
+func (o SynchronizationJobOutput) SrcPrimaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SrcPrimaryVswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the secondary vSwitch on the source side of a VPC NAT connection.
+func (o SynchronizationJobOutput) SrcSecondaryVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringPtrOutput { return v.SrcSecondaryVswitchId }).(pulumi.StringPtrOutput)
 }
 
 // The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.

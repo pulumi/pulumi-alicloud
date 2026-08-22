@@ -27,16 +27,17 @@ public final class GetFileSystemsSystem {
      */
     private String description;
     /**
-     * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-     * * Valid values:
+     * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
      * 
      */
     private Integer encryptType;
     /**
-     * @return The type of the file system.
+     * @return The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
      * Valid values:
-     * `standard` (Default),
-     * `extreme`.
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
      * 
      */
     private String fileSystemType;
@@ -105,18 +106,19 @@ public final class GetFileSystemsSystem {
         return this.description;
     }
     /**
-     * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted.
-     * * Valid values:
+     * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted. Valid values: `0` (The file system is not encrypted), `1` (The file system is encrypted with a managed secret key), `2` (User management key).
      * 
      */
     public Integer encryptType() {
         return this.encryptType;
     }
     /**
-     * @return The type of the file system.
+     * @return The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
      * Valid values:
-     * `standard` (Default),
-     * `extreme`.
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
      * 
      */
     public String fileSystemType() {

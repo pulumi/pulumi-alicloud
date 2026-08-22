@@ -37,7 +37,9 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+        /// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time.
+        /// 
+        /// &gt; **NOTE:** HTTPS listeners can redirect only HTTPS requests.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

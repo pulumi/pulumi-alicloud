@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// <summary>
     /// Provides a MongoDB Sharding Instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-    /// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+    /// You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
     /// 
     /// &gt; **NOTE:** Available since v1.40.0.
     /// 
@@ -174,7 +174,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Specifies whether to enable the log backup feature. Valid values:
-        /// - `1 `: The log backup feature is enabled.
         /// </summary>
         [Output("enableBackupLog")]
         public Output<int> EnableBackupLog { get; private set; } = null!;
@@ -352,6 +351,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `SecurityIpList` (which manages the `Default` group). See `SecurityIpGroups` below.
+        /// </summary>
+        [Output("securityIpGroups")]
+        public Output<ImmutableArray<Outputs.ShardingInstanceSecurityIpGroup>> SecurityIpGroups { get; private set; } = null!;
+
+        /// <summary>
         /// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         /// </summary>
         [Output("securityIpLists")]
@@ -366,7 +371,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The snapshot backup type. Default value: `Standard`. Valid values:
         /// - `Standard`: Standard backup.
-        /// - `Flash `: Single-digit second backup.
+        /// - `Flash`: Single-digit second backup.
         /// </summary>
         [Output("snapshotBackupType")]
         public Output<string> SnapshotBackupType { get; private set; } = null!;
@@ -583,7 +588,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Specifies whether to enable the log backup feature. Valid values:
-        /// - `1 `: The log backup feature is enabled.
         /// </summary>
         [Input("enableBackupLog")]
         public Input<int>? EnableBackupLog { get; set; }
@@ -772,6 +776,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        [Input("securityIpGroups")]
+        private InputList<Inputs.ShardingInstanceSecurityIpGroupArgs>? _securityIpGroups;
+
+        /// <summary>
+        /// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `SecurityIpList` (which manages the `Default` group). See `SecurityIpGroups` below.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceSecurityIpGroupArgs> SecurityIpGroups
+        {
+            get => _securityIpGroups ?? (_securityIpGroups = new InputList<Inputs.ShardingInstanceSecurityIpGroupArgs>());
+            set => _securityIpGroups = value;
+        }
+
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;
 
@@ -799,7 +815,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The snapshot backup type. Default value: `Standard`. Valid values:
         /// - `Standard`: Standard backup.
-        /// - `Flash `: Single-digit second backup.
+        /// - `Flash`: Single-digit second backup.
         /// </summary>
         [Input("snapshotBackupType")]
         public Input<string>? SnapshotBackupType { get; set; }
@@ -968,7 +984,6 @@ namespace Pulumi.AliCloud.MongoDB
 
         /// <summary>
         /// Specifies whether to enable the log backup feature. Valid values:
-        /// - `1 `: The log backup feature is enabled.
         /// </summary>
         [Input("enableBackupLog")]
         public Input<int>? EnableBackupLog { get; set; }
@@ -1175,6 +1190,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
+        [Input("securityIpGroups")]
+        private InputList<Inputs.ShardingInstanceSecurityIpGroupGetArgs>? _securityIpGroups;
+
+        /// <summary>
+        /// The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `SecurityIpList` (which manages the `Default` group). See `SecurityIpGroups` below.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceSecurityIpGroupGetArgs> SecurityIpGroups
+        {
+            get => _securityIpGroups ?? (_securityIpGroups = new InputList<Inputs.ShardingInstanceSecurityIpGroupGetArgs>());
+            set => _securityIpGroups = value;
+        }
+
         [Input("securityIpLists")]
         private InputList<string>? _securityIpLists;
 
@@ -1202,7 +1229,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// <summary>
         /// The snapshot backup type. Default value: `Standard`. Valid values:
         /// - `Standard`: Standard backup.
-        /// - `Flash `: Single-digit second backup.
+        /// - `Flash`: Single-digit second backup.
         /// </summary>
         [Input("snapshotBackupType")]
         public Input<string>? SnapshotBackupType { get; set; }

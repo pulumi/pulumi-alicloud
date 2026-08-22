@@ -203,7 +203,7 @@ class FileSystemOptionsArgsDict(TypedDict):
     - true: On.
     - false: does not turn on.
 
-    > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+    > **NOTE:** Description Only file systems of the SMB protocol type are supported.
     """
 
 @pulumi.input_type
@@ -215,7 +215,7 @@ class FileSystemOptionsArgs:
                - true: On.
                - false: does not turn on.
                
-               > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+               > **NOTE:** Description Only file systems of the SMB protocol type are supported.
         """
         if enable_oplock is not None:
             pulumi.set(__self__, "enable_oplock", enable_oplock)
@@ -228,7 +228,7 @@ class FileSystemOptionsArgs:
         - true: On.
         - false: does not turn on.
 
-        > **NOTE:**  Description Only file systems of the SMB protocol type are supported.
+        > **NOTE:** Description Only file systems of the SMB protocol type are supported.
         """
         return pulumi.get(self, "enable_oplock")
 
@@ -373,7 +373,7 @@ class FileSystemSmbAclArgsDict(TypedDict):
 
     For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 
-    > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+    > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
     """
     reject_unencrypted_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -415,7 +415,7 @@ class FileSystemSmbAclArgs:
                
                For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
                
-               > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+               > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
         :param pulumi.Input[_builtins.bool] reject_unencrypted_access: Whether to reject non-encrypted clients.
                - true: Deny non-encrypted clients.
                - false (default): Non-encrypted clients are not rejected.
@@ -490,7 +490,7 @@ class FileSystemSmbAclArgs:
 
         For example, if the user directory is/home, the file system will automatically create A directory of/home/A when user A logs in. Skip if/home/A already exists.
 
-        > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
+        > **NOTE:** Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
         """
         return pulumi.get(self, "home_dir_path")
 

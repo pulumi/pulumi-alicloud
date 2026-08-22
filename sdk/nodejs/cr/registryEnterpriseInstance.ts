@@ -39,6 +39,10 @@ import * as utilities from "../utilities";
  *     renewalStatus: "AutoRenewal",
  *     instanceType: "Advanced",
  *     instanceName: `${name}-${_default.result}`,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Test",
+ *     },
  * });
  * ```
  *
@@ -195,6 +199,10 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The number of VPC access controls.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -237,6 +245,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["repoQuota"] = state?.repoQuota;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["vpcQuota"] = state?.vpcQuota;
         } else {
             const args = argsOrState as RegistryEnterpriseInstanceArgs | undefined;
@@ -264,6 +273,7 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args?.renewalStatus;
             resourceInputs["repoQuota"] = args?.repoQuota;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["vpcQuota"] = args?.vpcQuota;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
@@ -398,6 +408,10 @@ export interface RegistryEnterpriseInstanceState {
      */
     status?: pulumi.Input<string | undefined>;
     /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The number of VPC access controls.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -499,6 +513,10 @@ export interface RegistryEnterpriseInstanceArgs {
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of VPC access controls.
      *

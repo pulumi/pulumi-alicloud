@@ -6,6 +6,7 @@ package com.pulumi.alicloud.mongodb.inputs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceConfigServerListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceParameterArgs;
+import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceSecurityIpGroupArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
 import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceZoneInfoArgs;
 import com.pulumi.core.Output;
@@ -193,7 +194,6 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies whether to enable the log backup feature. Valid values:
-     * - ` 1  `: The log backup feature is enabled.
      * 
      */
     @Import(name="enableBackupLog")
@@ -201,7 +201,6 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies whether to enable the log backup feature. Valid values:
-     * - ` 1  `: The log backup feature is enabled.
      * 
      */
     public Optional<Output<Integer>> enableBackupLog() {
@@ -637,6 +636,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     * 
+     */
+    @Import(name="securityIpGroups")
+    private @Nullable Output<List<ShardingInstanceSecurityIpGroupArgs>> securityIpGroups;
+
+    /**
+     * @return The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+     * 
+     */
+    public Optional<Output<List<ShardingInstanceSecurityIpGroupArgs>>> securityIpGroups() {
+        return Optional.ofNullable(this.securityIpGroups);
+    }
+
+    /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
      * 
      */
@@ -669,7 +683,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - ` Flash  `: Single-digit second backup.
+     * - `Flash`: Single-digit second backup.
      * 
      */
     @Import(name="snapshotBackupType")
@@ -678,7 +692,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * @return The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: Standard backup.
-     * - ` Flash  `: Single-digit second backup.
+     * - `Flash`: Single-digit second backup.
      * 
      */
     public Optional<Output<String>> snapshotBackupType() {
@@ -903,6 +917,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
+        this.securityIpGroups = $.securityIpGroups;
         this.securityIpLists = $.securityIpLists;
         this.shardLists = $.shardLists;
         this.snapshotBackupType = $.snapshotBackupType;
@@ -1192,7 +1207,6 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param enableBackupLog Specifies whether to enable the log backup feature. Valid values:
-         * - ` 1  `: The log backup feature is enabled.
          * 
          * @return builder
          * 
@@ -1204,7 +1218,6 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param enableBackupLog Specifies whether to enable the log backup feature. Valid values:
-         * - ` 1  `: The log backup feature is enabled.
          * 
          * @return builder
          * 
@@ -1850,6 +1863,37 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param securityIpGroups The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroups(@Nullable Output<List<ShardingInstanceSecurityIpGroupArgs>> securityIpGroups) {
+            $.securityIpGroups = securityIpGroups;
+            return this;
+        }
+
+        /**
+         * @param securityIpGroups The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroups(List<ShardingInstanceSecurityIpGroupArgs> securityIpGroups) {
+            return securityIpGroups(Output.of(securityIpGroups));
+        }
+
+        /**
+         * @param securityIpGroups The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `securityIpList` (which manages the `default` group). See `securityIpGroups` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroups(ShardingInstanceSecurityIpGroupArgs... securityIpGroups) {
+            return securityIpGroups(List.of(securityIpGroups));
+        }
+
+        /**
          * @param securityIpLists List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `[&#34;127.0.0.1&#34;]`.
          * 
          * @return builder
@@ -1914,7 +1958,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
          * - `Standard`: Standard backup.
-         * - ` Flash  `: Single-digit second backup.
+         * - `Flash`: Single-digit second backup.
          * 
          * @return builder
          * 
@@ -1927,7 +1971,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
          * - `Standard`: Standard backup.
-         * - ` Flash  `: Single-digit second backup.
+         * - `Flash`: Single-digit second backup.
          * 
          * @return builder
          * 

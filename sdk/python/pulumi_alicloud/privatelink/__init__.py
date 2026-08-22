@@ -19,4 +19,5 @@ from .vpc_endpoint_service_connection import *
 from .vpc_endpoint_service_resource import *
 from .vpc_endpoint_service_user import *
 from .vpc_endpoint_zone import *
+from ._inputs import *
 from . import outputs

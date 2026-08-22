@@ -143,14 +143,14 @@ public class Role extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of the RAM role.
+     * The description of the RAM role. The description must be `1` to `1024` characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the RAM role.
+     * @return The description of the RAM role. The description must be `1` to `1024` characters in length.
      * 
      */
     public Output<Optional<String>> description() {

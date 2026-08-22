@@ -125,6 +125,45 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Removing a request header before forwarding
+ *
+ * A forwarding rule must contain exactly one final action (`ForwardGroup`, `Redirect` or `FixedResponse`), and that action is executed last, so the `RemoveHeader` extension action has to be declared with a smaller `order`. The example below reuses the listener and the server group created above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const removeHeader = new alicloud.alb.Rule("remove_header", {
+ *     ruleName: `${name}_remove_header`,
+ *     listenerId: defaultAlicloudAlbListener.id,
+ *     priority: 556,
+ *     ruleConditions: [{
+ *         hostConfig: {
+ *             values: ["www.example.com"],
+ *         },
+ *         type: "Host",
+ *     }],
+ *     ruleActions: [
+ *         {
+ *             removeHeaderConfig: {
+ *                 key: "X-Debug-Trace",
+ *             },
+ *             order: 1,
+ *             type: "RemoveHeader",
+ *         },
+ *         {
+ *             forwardGroupConfig: {
+ *                 serverGroupTuples: [{
+ *                     serverGroupId: _default.id,
+ *                 }],
+ *             },
+ *             order: 9,
+ *             type: "ForwardGroup",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
@@ -178,7 +217,9 @@ export class Rule extends pulumi.CustomResource {
      */
     declare public readonly listenerId: pulumi.Output<string>;
     /**
-     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     *
+     * > **NOTE:** The priority of each rule within the same listener must be unique.
      */
     declare public readonly priority: pulumi.Output<number>;
     /**
@@ -269,7 +310,9 @@ export interface RuleState {
      */
     listenerId?: pulumi.Input<string | undefined>;
     /**
-     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     *
+     * > **NOTE:** The priority of each rule within the same listener must be unique.
      */
     priority?: pulumi.Input<number | undefined>;
     /**
@@ -309,7 +352,9 @@ export interface RuleArgs {
      */
     listenerId: pulumi.Input<string>;
     /**
-     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority.
+     *
+     * > **NOTE:** The priority of each rule within the same listener must be unique.
      */
     priority: pulumi.Input<number>;
     /**

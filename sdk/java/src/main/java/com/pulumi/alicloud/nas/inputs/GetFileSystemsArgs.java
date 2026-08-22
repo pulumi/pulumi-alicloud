@@ -32,6 +32,31 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     * 
+     */
+    @Import(name="fileSystemType")
+    private @Nullable Output<String> fileSystemType;
+
+    /**
+     * @return The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     * 
+     */
+    public Optional<Output<String>> fileSystemType() {
+        return Optional.ofNullable(this.fileSystemType);
+    }
+
+    /**
      * A list of FileSystemId.
      * 
      */
@@ -107,6 +132,7 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetFileSystemsArgs(GetFileSystemsArgs $) {
         this.descriptionRegex = $.descriptionRegex;
+        this.fileSystemType = $.fileSystemType;
         this.ids = $.ids;
         this.outputFile = $.outputFile;
         this.protocolType = $.protocolType;
@@ -150,6 +176,37 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder descriptionRegex(String descriptionRegex) {
             return descriptionRegex(Output.of(descriptionRegex));
+        }
+
+        /**
+         * @param fileSystemType The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+         * Valid values:
+         * `standard`,
+         * `extreme`,
+         * `cpfs`,
+         * `cpfsse`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(@Nullable Output<String> fileSystemType) {
+            $.fileSystemType = fileSystemType;
+            return this;
+        }
+
+        /**
+         * @param fileSystemType The type of the file system. Filter file systems by the specified type. If not specified, all file system types are returned.
+         * Valid values:
+         * `standard`,
+         * `extreme`,
+         * `cpfs`,
+         * `cpfsse`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSystemType(String fileSystemType) {
+            return fileSystemType(Output.of(fileSystemType));
         }
 
         /**

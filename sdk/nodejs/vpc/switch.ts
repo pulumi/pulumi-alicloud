@@ -134,7 +134,7 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly availabilityZone: pulumi.Output<string>;
     /**
-     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
     declare public readonly cidrBlock: pulumi.Output<string>;
     /**
@@ -142,7 +142,7 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The description of VSwitch.
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -189,7 +189,7 @@ export class Switch extends pulumi.CustomResource {
      */
     declare public readonly vpcIpv6CidrBlock: pulumi.Output<string | undefined>;
     /**
-     * The name of the VSwitch.
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      */
     declare public readonly vswitchName: pulumi.Output<string>;
     /**
@@ -259,7 +259,7 @@ export interface SwitchState {
      */
     availabilityZone?: pulumi.Input<string | undefined>;
     /**
-     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
     cidrBlock?: pulumi.Input<string | undefined>;
     /**
@@ -267,7 +267,7 @@ export interface SwitchState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The description of VSwitch.
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -314,7 +314,7 @@ export interface SwitchState {
      */
     vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The name of the VSwitch.
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      */
     vswitchName?: pulumi.Input<string | undefined>;
     /**
@@ -334,11 +334,11 @@ export interface SwitchArgs {
      */
     availabilityZone?: pulumi.Input<string | undefined>;
     /**
-     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+     * The IPv4 CIDR block of the VSwitch. The subnet mask must be `16` to `29` bits in length. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
     cidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The description of VSwitch.
+     * The description of VSwitch. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -377,7 +377,7 @@ export interface SwitchArgs {
      */
     vpcIpv6CidrBlock?: pulumi.Input<string | undefined>;
     /**
-     * The name of the VSwitch.
+     * The name of the VSwitch. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      */
     vswitchName?: pulumi.Input<string | undefined>;
     /**

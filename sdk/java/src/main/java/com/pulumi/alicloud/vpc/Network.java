@@ -109,14 +109,18 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.cidrBlock;
     }
     /**
-     * The status of ClassicLink function.
+     * The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
+     * 
+     * @deprecated
+     * Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version.
      * 
      */
+    @Deprecated /* Field 'classic_link_enabled' has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. */
     @Export(name="classicLinkEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> classicLinkEnabled;
 
     /**
-     * @return The status of ClassicLink function.
+     * @return The status of ClassicLink function. Field &#39;classic_link_enabled&#39; has been deprecated from provider version 1.286.0. The underlying ClassicLink feature has been deprecated by Alibaba Cloud and this field will be removed in a future version. For more information, see the deprecated API references [EnableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-enablevpcclassiclink) and [DisableVpcClassicLink](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-disablevpcclassiclink).
      * 
      */
     public Output<Optional<Boolean>> classicLinkEnabled() {
@@ -385,14 +389,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.routeTableId;
     }
     /**
-     * The region ID of the VPC to which the route table belongs.
+     * The ID of the VRouter.
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return The region ID of the VPC to which the route table belongs.
+     * @return The ID of the VRouter.
      * 
      */
     public Output<String> routerId() {
@@ -527,14 +531,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * A list of user CIDRs.
+     * A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     @Export(name="userCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userCidrs;
 
     /**
-     * @return A list of user CIDRs.
+     * @return A list of user CIDRs. Up to `3` CIDR blocks can be specified.
      * 
      */
     public Output<List<String>> userCidrs() {

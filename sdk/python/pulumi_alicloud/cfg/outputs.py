@@ -19,6 +19,7 @@ __all__ = [
     'AggregateCompliancePackConfigRule',
     'AggregateCompliancePackConfigRuleConfigRuleParameter',
     'AggregateCompliancePackConfigRuleId',
+    'AggregateConfigRuleExcludeTagsScope',
     'AggregatorAggregatorAccount',
     'CompliancePackConfigRule',
     'CompliancePackConfigRuleConfigRuleParameter',
@@ -176,6 +177,56 @@ class AggregateCompliancePackConfigRuleId(dict):
         The rule ID of Aggregate Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
+
+
+@pulumi.output_type
+class AggregateConfigRuleExcludeTagsScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregateConfigRuleExcludeTagsScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregateConfigRuleExcludeTagsScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregateConfigRuleExcludeTagsScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: Optional[_builtins.str] = None,
+                 tag_value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str tag_key: The key of the tag to be excluded.
+        :param _builtins.str tag_value: The value of the tag to be excluded.
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @_builtins.property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[_builtins.str]:
+        """
+        The key of the tag to be excluded.
+        """
+        return pulumi.get(self, "tag_key")
+
+    @_builtins.property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[_builtins.str]:
+        """
+        The value of the tag to be excluded.
+        """
+        return pulumi.get(self, "tag_value")
 
 
 @pulumi.output_type

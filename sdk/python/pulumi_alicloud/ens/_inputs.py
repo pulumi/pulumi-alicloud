@@ -21,6 +21,8 @@ __all__ = [
     'InstanceSystemDiskArgsDict',
     'LoadBalancerBackendServerArgs',
     'LoadBalancerBackendServerArgsDict',
+    'SecurityGroupPermissionArgs',
+    'SecurityGroupPermissionArgsDict',
 ]
 
 class InstanceDataDiskArgsDict(TypedDict):
@@ -311,5 +313,272 @@ class LoadBalancerBackendServerArgs:
     @weight.setter
     def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
+
+
+class SecurityGroupPermissionArgsDict(TypedDict):
+    creation_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Creation time, UTC time.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Rule description information
+    """
+    dest_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Destination IP address segment for outbound authorization
+    Example value: 0.0.0.0/0
+    """
+    direction: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Authorized direction
+    Example value: ingress
+    """
+    ip_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    IP protocol
+    Example value: TCP
+    """
+    ipv6_dest_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The target IPv6 address segment.
+    """
+    ipv6_source_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The source IPv6 address segment.
+    """
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Authorization Policy
+    Example value: Accept
+    """
+    port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source end port range.
+    """
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Rule Priority
+    Example value: 1
+    """
+    source_cidr_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Source IP address segment, used for inbound authorization
+    Example value: 0.0.0.0/0
+    """
+    source_port_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The port range of the source security group.
+    """
+
+@pulumi.input_type
+class SecurityGroupPermissionArgs:
+    def __init__(__self__, *,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_dest_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_cidr_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port_range: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] creation_time: Creation time, UTC time.
+        :param pulumi.Input[_builtins.str] description: Rule description information
+        :param pulumi.Input[_builtins.str] dest_cidr_ip: Destination IP address segment for outbound authorization
+               Example value: 0.0.0.0/0
+        :param pulumi.Input[_builtins.str] direction: Authorized direction
+               Example value: ingress
+        :param pulumi.Input[_builtins.str] ip_protocol: IP protocol
+               Example value: TCP
+        :param pulumi.Input[_builtins.str] ipv6_dest_cidr_ip: The target IPv6 address segment.
+        :param pulumi.Input[_builtins.str] ipv6_source_cidr_ip: The source IPv6 address segment.
+        :param pulumi.Input[_builtins.str] policy: Authorization Policy
+               Example value: Accept
+        :param pulumi.Input[_builtins.str] port_range: Source end port range.
+        :param pulumi.Input[_builtins.int] priority: Rule Priority
+               Example value: 1
+        :param pulumi.Input[_builtins.str] source_cidr_ip: Source IP address segment, used for inbound authorization
+               Example value: 0.0.0.0/0
+        :param pulumi.Input[_builtins.str] source_port_range: The port range of the source security group.
+        """
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dest_cidr_ip is not None:
+            pulumi.set(__self__, "dest_cidr_ip", dest_cidr_ip)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ipv6_dest_cidr_ip is not None:
+            pulumi.set(__self__, "ipv6_dest_cidr_ip", ipv6_dest_cidr_ip)
+        if ipv6_source_cidr_ip is not None:
+            pulumi.set(__self__, "ipv6_source_cidr_ip", ipv6_source_cidr_ip)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if source_cidr_ip is not None:
+            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+        if source_port_range is not None:
+            pulumi.set(__self__, "source_port_range", source_port_range)
+
+    @_builtins.property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Creation time, UTC time.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "creation_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Rule description information
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destCidrIp")
+    def dest_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Destination IP address segment for outbound authorization
+        Example value: 0.0.0.0/0
+        """
+        return pulumi.get(self, "dest_cidr_ip")
+
+    @dest_cidr_ip.setter
+    def dest_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dest_cidr_ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Authorized direction
+        Example value: ingress
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        IP protocol
+        Example value: TCP
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6DestCidrIp")
+    def ipv6_dest_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The target IPv6 address segment.
+        """
+        return pulumi.get(self, "ipv6_dest_cidr_ip")
+
+    @ipv6_dest_cidr_ip.setter
+    def ipv6_dest_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_dest_cidr_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6SourceCidrIp")
+    def ipv6_source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The source IPv6 address segment.
+        """
+        return pulumi.get(self, "ipv6_source_cidr_ip")
+
+    @ipv6_source_cidr_ip.setter
+    def ipv6_source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_source_cidr_ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Authorization Policy
+        Example value: Accept
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source end port range.
+        """
+        return pulumi.get(self, "port_range")
+
+    @port_range.setter
+    def port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "port_range", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Rule Priority
+        Example value: 1
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceCidrIp")
+    def source_cidr_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Source IP address segment, used for inbound authorization
+        Example value: 0.0.0.0/0
+        """
+        return pulumi.get(self, "source_cidr_ip")
+
+    @source_cidr_ip.setter
+    def source_cidr_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_cidr_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The port range of the source security group.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @source_port_range.setter
+    def source_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_port_range", value)
 
 

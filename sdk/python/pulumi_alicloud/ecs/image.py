@@ -385,7 +385,8 @@ class _ImageState:
                  resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 usable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -431,6 +432,7 @@ class _ImageState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag
                
                The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.bool] usable: Indicates whether the image is available. Valid values:
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -475,6 +477,8 @@ class _ImageState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if usable is not None:
+            pulumi.set(__self__, "usable", usable)
 
     @_builtins.property
     @pulumi.getter
@@ -738,6 +742,18 @@ class _ImageState:
     @tags.setter
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the image is available. Valid values:
+        """
+        return pulumi.get(self, "usable")
+
+    @usable.setter
+    def usable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "usable", value)
 
 
 @pulumi.type_token("alicloud:ecs/image:Image")
@@ -1018,6 +1034,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["usable"] = None
         super(Image, __self__).__init__(
             'alicloud:ecs/image:Image',
             resource_name,
@@ -1047,7 +1064,8 @@ class Image(pulumi.CustomResource):
             resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Image':
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            usable: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1097,6 +1115,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag
                
                The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.bool] usable: Indicates whether the image is available. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1122,6 +1141,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["usable"] = usable
         return Image(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1306,4 +1326,12 @@ class Image(pulumi.CustomResource):
         The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def usable(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether the image is available. Valid values:
+        """
+        return pulumi.get(self, "usable")
 

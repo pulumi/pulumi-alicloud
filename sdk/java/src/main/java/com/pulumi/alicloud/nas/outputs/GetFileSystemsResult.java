@@ -21,6 +21,16 @@ public final class GetFileSystemsResult {
      */
     private List<String> descriptions;
     /**
+     * @return (Optional, Available in v1.140.0+) The type of the file system.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     * 
+     */
+    private @Nullable String fileSystemType;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -57,6 +67,18 @@ public final class GetFileSystemsResult {
      */
     public List<String> descriptions() {
         return this.descriptions;
+    }
+    /**
+     * @return (Optional, Available in v1.140.0+) The type of the file system.
+     * Valid values:
+     * `standard`,
+     * `extreme`,
+     * `cpfs`,
+     * `cpfsse`.
+     * 
+     */
+    public Optional<String> fileSystemType() {
+        return Optional.ofNullable(this.fileSystemType);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -108,6 +130,7 @@ public final class GetFileSystemsResult {
     public static final class Builder {
         private @Nullable String descriptionRegex;
         private List<String> descriptions;
+        private @Nullable String fileSystemType;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
@@ -119,6 +142,7 @@ public final class GetFileSystemsResult {
     	      Objects.requireNonNull(defaults);
     	      this.descriptionRegex = defaults.descriptionRegex;
     	      this.descriptions = defaults.descriptions;
+    	      this.fileSystemType = defaults.fileSystemType;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
     	      this.outputFile = defaults.outputFile;
@@ -143,6 +167,12 @@ public final class GetFileSystemsResult {
         }
         public Builder descriptions(String... descriptions) {
             return descriptions(List.of(descriptions));
+        }
+        @CustomType.Setter
+        public Builder fileSystemType(@Nullable String fileSystemType) {
+
+            this.fileSystemType = fileSystemType;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -196,6 +226,7 @@ public final class GetFileSystemsResult {
             final var _resultValue = new GetFileSystemsResult();
             _resultValue.descriptionRegex = descriptionRegex;
             _resultValue.descriptions = descriptions;
+            _resultValue.fileSystemType = fileSystemType;
             _resultValue.id = id;
             _resultValue.ids = ids;
             _resultValue.outputFile = outputFile;

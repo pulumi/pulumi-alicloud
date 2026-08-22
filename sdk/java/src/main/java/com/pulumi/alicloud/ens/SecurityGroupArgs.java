@@ -3,9 +3,11 @@
 
 package com.pulumi.alicloud.ens;
 
+import com.pulumi.alicloud.ens.inputs.SecurityGroupPermissionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,16 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final SecurityGroupArgs Empty = new SecurityGroupArgs();
 
     /**
-     * Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return Security group description information
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +35,31 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * A collection of rules for a security group instance See `permissions` below.
+     * 
+     */
+    @Import(name="permissions")
+    private @Nullable Output<List<SecurityGroupPermissionArgs>> permissions;
+
+    /**
+     * @return A collection of rules for a security group instance See `permissions` below.
+     * 
+     */
+    public Optional<Output<List<SecurityGroupPermissionArgs>>> permissions() {
+        return Optional.ofNullable(this.permissions);
+    }
+
+    /**
+     * Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      * 
      */
     @Import(name="securityGroupName")
     private @Nullable Output<String> securityGroupName;
 
     /**
-     * @return Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+     * @return Security group name
+     * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
      * 
      */
     public Optional<Output<String>> securityGroupName() {
@@ -49,6 +70,7 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     private SecurityGroupArgs(SecurityGroupArgs $) {
         this.description = $.description;
+        this.permissions = $.permissions;
         this.securityGroupName = $.securityGroupName;
     }
 
@@ -71,7 +93,8 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param description Security group description information
+         * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
          * 
          * @return builder
          * 
@@ -82,7 +105,8 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param description Security group description information
+         * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https://
          * 
          * @return builder
          * 
@@ -92,7 +116,39 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupName Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+         * @param permissions A collection of rules for a security group instance See `permissions` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissions(@Nullable Output<List<SecurityGroupPermissionArgs>> permissions) {
+            $.permissions = permissions;
+            return this;
+        }
+
+        /**
+         * @param permissions A collection of rules for a security group instance See `permissions` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissions(List<SecurityGroupPermissionArgs> permissions) {
+            return permissions(Output.of(permissions));
+        }
+
+        /**
+         * @param permissions A collection of rules for a security group instance See `permissions` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissions(SecurityGroupPermissionArgs... permissions) {
+            return permissions(List.of(permissions));
+        }
+
+        /**
+         * @param securityGroupName Security group name
+         * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
          * 
          * @return builder
          * 
@@ -103,7 +159,8 @@ public final class SecurityGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupName Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
+         * @param securityGroupName Security group name
+         * The security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with http:// or https. Can contain digits, colons (:), underscores (_), or hyphens (-)
          * 
          * @return builder
          * 

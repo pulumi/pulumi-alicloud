@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupServer {
     /**
-     * @return (Optional, Computed, Int) The port that is used by the backend server.
+     * @return The port that is used by the backend server.
      * 
      */
     private @Nullable Integer port;
@@ -47,14 +47,20 @@ public final class ServerGroupServer {
      */
     private String serverType;
     /**
-     * @return Indicates the status of the backend server.
+     * @return Indicates the status of the backend server. Valid values:
+     * 
+     * - `Adding`: The backend server is being added.
+     * - `Available`: The backend server is available.
+     * - `Draining`: The backend server is in connection draining.
+     * - `Removing`: The backend server is being removed.
+     * - `Replacing`: The backend server is being replaced.
      * 
      */
     private @Nullable String status;
 
     private ServerGroupServer() {}
     /**
-     * @return (Optional, Computed, Int) The port that is used by the backend server.
+     * @return The port that is used by the backend server.
      * 
      */
     public Optional<Integer> port() {
@@ -97,7 +103,13 @@ public final class ServerGroupServer {
         return this.serverType;
     }
     /**
-     * @return Indicates the status of the backend server.
+     * @return Indicates the status of the backend server. Valid values:
+     * 
+     * - `Adding`: The backend server is being added.
+     * - `Available`: The backend server is available.
+     * - `Draining`: The backend server is in connection draining.
+     * - `Removing`: The backend server is being removed.
+     * - `Replacing`: The backend server is being replaced.
      * 
      */
     public Optional<String> status() {

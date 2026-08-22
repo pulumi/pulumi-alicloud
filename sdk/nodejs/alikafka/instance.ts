@@ -236,7 +236,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
     declare public readonly specType: pulumi.Output<string | undefined>;
@@ -546,7 +546,7 @@ export interface InstanceState {
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
     specType?: pulumi.Input<string | undefined>;
@@ -713,7 +713,7 @@ export interface InstanceArgs {
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
-     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
+     * - If `instanceType` is set to `alikafkaServerless`. Valid values: `basic`, `normal`, `professional`. **NOTE:** `basic` is not supported when `paidType` is set to `PrePaid`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
     specType?: pulumi.Input<string | undefined>;

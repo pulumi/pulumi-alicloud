@@ -61,6 +61,7 @@ class InstanceArgs:
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -124,10 +125,11 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - ` Flash  `: single-digit second backup.
+               - `Flash`: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -221,6 +223,8 @@ class InstanceArgs:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_ip_groups is not None:
+            pulumi.set(__self__, "security_ip_groups", security_ip_groups)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if snapshot_backup_type is not None:
@@ -734,6 +738,18 @@ class InstanceArgs:
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]]]:
+        """
+        The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @security_ip_groups.setter
+    def security_ip_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]]]):
+        pulumi.set(self, "security_ip_groups", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -751,7 +767,7 @@ class InstanceArgs:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: standard backup.
-        - ` Flash  `: single-digit second backup.
+        - `Flash`: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -921,6 +937,7 @@ class _InstanceState:
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -990,10 +1007,11 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - ` Flash  `: single-digit second backup.
+               - `Flash`: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -1100,6 +1118,8 @@ class _InstanceState:
             pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
+        if security_ip_groups is not None:
+            pulumi.set(__self__, "security_ip_groups", security_ip_groups)
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
         if snapshot_backup_type is not None:
@@ -1665,6 +1685,18 @@ class _InstanceState:
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]]]:
+        """
+        The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @security_ip_groups.setter
+    def security_ip_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceSecurityIpGroupArgs']]]]):
+        pulumi.set(self, "security_ip_groups", value)
+
+    @_builtins.property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -1682,7 +1714,7 @@ class _InstanceState:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: standard backup.
-        - ` Flash  `: single-digit second backup.
+        - `Flash`: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -1875,6 +1907,7 @@ class Instance(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1890,7 +1923,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+        You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.37.0.
 
@@ -2002,10 +2035,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - ` Flash  `: single-digit second backup.
+               - `Flash`: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2031,7 +2065,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a MongoDB instance resource supports replica set instances only. the MongoDB provides stable, reliable, and automatic scalable database services.
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
-        You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
+        You can see detail product introduction [MongoDB documentation](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
         > **NOTE:** Available since v1.37.0.
 
@@ -2147,6 +2181,7 @@ class Instance(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]]] = None,
                  security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
                  src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2213,6 +2248,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["secondary_zone_id"] = secondary_zone_id
             __props__.__dict__["security_group_id"] = security_group_id
+            __props__.__dict__["security_ip_groups"] = security_ip_groups
             __props__.__dict__["security_ip_lists"] = security_ip_lists
             __props__.__dict__["snapshot_backup_type"] = snapshot_backup_type
             __props__.__dict__["src_db_instance_id"] = src_db_instance_id
@@ -2286,6 +2322,7 @@ class Instance(pulumi.CustomResource):
             role_arn: pulumi.Input[Optional[_builtins.str]] = None,
             secondary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]]] = None,
             security_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             snapshot_backup_type: pulumi.Input[Optional[_builtins.str]] = None,
             src_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2359,10 +2396,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] role_arn: The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
         :param pulumi.Input[_builtins.str] secondary_zone_id: Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zone_id` and `hidden_zone_id` parameter values. From version 1.253.0, `secondary_zone_id` can be modified.
         :param pulumi.Input[_builtins.str] security_group_id: The Security Group ID of ECS.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSecurityIpGroupArgs', 'InstanceSecurityIpGroupArgsDict']]]] security_ip_groups: The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[_builtins.str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
                - `Standard`: standard backup.
-               - ` Flash  `: single-digit second backup.
+               - `Flash`: single-digit second backup.
         :param pulumi.Input[_builtins.str] src_db_instance_id: The source instance ID.
         :param pulumi.Input[_builtins.str] ssl_action: Actions performed on SSL functions. Valid values:
                - `Open`: turn on SSL encryption.
@@ -2429,6 +2467,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["role_arn"] = role_arn
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
+        __props__.__dict__["security_ip_groups"] = security_ip_groups
         __props__.__dict__["security_ip_lists"] = security_ip_lists
         __props__.__dict__["snapshot_backup_type"] = snapshot_backup_type
         __props__.__dict__["src_db_instance_id"] = src_db_instance_id
@@ -2806,6 +2845,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
+    @pulumi.getter(name="securityIpGroups")
+    def security_ip_groups(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceSecurityIpGroup']]]:
+        """
+        The list of named security IP groups. Each element represents a separate IP whitelist group managed independently from `security_ip_list` (which manages the `default` group). See `security_ip_groups` below.
+        """
+        return pulumi.get(self, "security_ip_groups")
+
+    @_builtins.property
     @pulumi.getter(name="securityIpLists")
     def security_ip_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
@@ -2819,7 +2866,7 @@ class Instance(pulumi.CustomResource):
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
         - `Standard`: standard backup.
-        - ` Flash  `: single-digit second backup.
+        - `Flash`: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 

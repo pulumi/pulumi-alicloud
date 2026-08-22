@@ -14,10 +14,10 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
-__all__ = ['VpcEndpointServiceResourceArgs', 'VpcEndpointServiceResource']
+__all__ = ['VpcEndpointServiceResourceInitArgs', 'VpcEndpointServiceResource']
 
 @pulumi.input_type
-class VpcEndpointServiceResourceArgs:
+class VpcEndpointServiceResourceInitArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
@@ -295,7 +295,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VpcEndpointServiceResourceArgs,
+                 args: VpcEndpointServiceResourceInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Private Link Vpc Endpoint Service Resource resource.
@@ -362,12 +362,12 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
 
 
         :param str resource_name: The name of the resource.
-        :param VpcEndpointServiceResourceArgs args: The arguments to use to populate this resource's properties.
+        :param VpcEndpointServiceResourceInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointServiceResourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VpcEndpointServiceResourceInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -388,7 +388,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VpcEndpointServiceResourceArgs.__new__(VpcEndpointServiceResourceArgs)
+            __props__ = VpcEndpointServiceResourceInitArgs.__new__(VpcEndpointServiceResourceInitArgs)
 
             __props__.__dict__["dry_run"] = dry_run
             if resource_id is None and not opts.urn:

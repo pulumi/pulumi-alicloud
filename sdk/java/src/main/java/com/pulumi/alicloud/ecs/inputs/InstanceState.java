@@ -418,14 +418,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+     * The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+     * @return The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -2289,7 +2289,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
          * 
          * @return builder
          * 
@@ -2300,7 +2300,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`.
+         * @param imageId The Image to use for the instance. ECS instance&#39;s image can be replaced via changing `imageId`. If you do not use `launchTemplateId` or `launchTemplateName` to specify a launch template, you must specify `imageId`. How the change is applied is controlled by the provider argument `features.ecs_instance.replace_on_image_update`:
          * 
          * @return builder
          * 

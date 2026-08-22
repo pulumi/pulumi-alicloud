@@ -71,6 +71,10 @@ import javax.annotation.Nullable;
  *             .renewalStatus("AutoRenewal")
  *             .instanceType("Advanced")
  *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "Test")
+ *             ))
  *             .build());
  * 
  *     }
@@ -444,6 +448,20 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The number of VPC access controls.
